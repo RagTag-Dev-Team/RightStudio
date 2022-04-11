@@ -12,11 +12,11 @@
 
 <p align="center">{template_punchline}</p>
 
-<kbd>[![Materio - Vuetify VueJS Free Admin Template Demo Screenshot]({product_demo_image_url})]({product_page_url})</kbd>
+<kbd>[![{template_name}]({product_demo_image_url})]({product_page_url})</kbd>
 
 ## Introduction
 
-{{Introduction}}
+{Introduction}
 
 [View Demo]({product_demo_image_url})
 
@@ -56,9 +56,11 @@ Contribution are always welcome and recommended! Here is how:
 
 - [PixInvent](https://pixinvent.com/)
 
-## Changelog 📆
+## Useful Links 🎁
 
-Please refer to the [CHANGELOG](CHANGELOG.md) file. We will add a detailed release notes to each new release.
+* [Freebies](https://themeselection.com/products/category/download-free-admin-templates/)
+* [Download Free Admin Templates](https://themeselection.com/products/category/download-free-admin-templates/)
+* [Bootstrap 5 CheatSheet](https://bootstrap-cheatsheet.themeselection.com/)
 
 ## Social Media 🌍
 
