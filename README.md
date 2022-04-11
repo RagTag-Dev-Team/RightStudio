@@ -34,7 +34,7 @@ Check out our live [Documentation]($documentation_url)
 
 We use Product purchase code as support tickets to manage Item support.
 
-1. Make sure you use our [Support Portal](https://pixinvent.ticksy.com/) to create a support ticket.
+Make sure you use our [Support Portal](https://pixinvent.ticksy.com/) to create a support ticket.
 
 ## Why forking is disabled? 🔒
 
