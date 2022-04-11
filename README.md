@@ -2,19 +2,19 @@
 
 <p align="center">
    <a href="$product_page_url" target="_blank">
-      <img src="$product_banner_image" alt="$slugified_template_name-demo" width="40px" height="auto">
+      <img src="$product_logo_image_url" alt="$slugified_product_name-logo" width="40px" height="auto">
    </a>
 </p>
 
 <h1 align="center">
    <a href="$product_page_url" target="_blank" align="center">
-      $template_name
+      $product_name
    </a>
 </h1>
 
-<p align="center">$template_punchline</p>
+<p align="center">$product_punchline</p>
 
-[![$template_name Demo Screenshot]($banner_img_url)]($product_page_url)
+[![$product_name Demo Screenshot]($product_banner_img_url)]($product_page_url)
 
 ## Introduction
 
@@ -34,7 +34,7 @@ Check out our live [Documentation]($documentation_url)
 
 We use Product purchase code as support tickets to manage Item support.
 
-1. Make sure you use our [Support Portal]($support_portal_url) to create a support ticket.
+1. Make sure you use our [Support Portal](https://pixinvent.ticksy.com/) to create a support ticket.
 
 ## Why forking is disabled? 🔒
 
