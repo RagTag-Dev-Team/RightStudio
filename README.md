@@ -14,7 +14,11 @@
 
 <p align="center">$product_punchline</p>
 
-[![$product_name Demo Screenshot]($product_banner_img_url)]($product_page_url)
+<p align="center">
+   <a href="$product_page_url" target="_blank" align="center">
+      <img src="$product_banner_img_url" alt="$product_name">
+   </a>
+</p>
 
 ## Introduction
 
@@ -51,27 +55,12 @@ However, you can still keep your repo even after your support expires by setting
 3. Navigate to cloned directory
 4. Remove our repo as origin by running command: `git remote remove origin`
 5. Add your newly created repo as origin by runnign command: `git remote add origin YOUR_NEWLY_CREATE_REPO_GIT_URL`
-5. Add our repo as upstream by running command: `git remote add upstream $product_repo_url`
-6. Push the code to GitHub by running command: `git push -u origin main`
+6. Add our repo as upstream by running command: `git remote add upstream $product_repo_url`
+7. Push the code to GitHub by running command: `git push -u origin main`
 
 Now, whenever you want to pull the latest changes from our repo just pull the changes by running command: `git pull upstream main`
 
 Cheers 🥂 
-
-## Contributing 🦸
-
-Contribution are always welcome and recommended! Here is how:
-
-- Fork the repository ([here is the guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo)).
-- Clone to your machine `git clone https://github.com/YOUR_USERNAME/REPO_URL` Make your changes
-- Create a pull request
-
-### Contribution Requirements 🧰
-
-- When you contribute, you agree to give a non-exclusive license to Pixinvent to use that contribution in any context as we (Pixinvent) see appropriate.
-- If you use content provided by another party, it must be appropriately licensed using an open source license.
-- Contributions are only accepted through Github pull requests.
-- Finally, contributed code must work in all supported browsers.
 
 ## Creators 😇
 
@@ -79,9 +68,9 @@ Contribution are always welcome and recommended! Here is how:
 
 ## Useful Links 🎁
 
-* [Freebies](https://themeselection.com/products/category/download-free-admin-templates/)
-* [Download Free Admin Templates](https://themeselection.com/products/category/download-free-admin-templates/)
-* [Bootstrap 5 CheatSheet](https://bootstrap-cheatsheet.themeselection.com/)
+- [Freebies](https://themeselection.com/products/category/download-free-admin-templates/)
+- [Download Free Admin Templates](https://themeselection.com/products/category/download-free-admin-templates/)
+- [Bootstrap 5 CheatSheet](https://bootstrap-cheatsheet.themeselection.com/)
 
 ## Social Media 🌍
 
