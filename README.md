@@ -50,11 +50,11 @@ Hence, as precautions we disabled forking our repo.
 
 However, you can still keep your repo even after your support expires by setting our repo as upstream:
 
-1. Create a new **private repo** in your GitHub. Make sure it's a private repo. You can't share our code publically as per license.
+1. Create a new **private repo** in your GitHub. Make sure it's a private repo. You can't share our code publicly as per license.
 2. Clone our repo: `git clone $product_repo_url`
 3. Navigate to cloned directory
 4. Remove our repo as origin by running command: `git remote remove origin`
-5. Add your newly created repo as origin by runnign command: `git remote add origin YOUR_NEWLY_CREATE_REPO_GIT_URL`
+5. Add your newly created repo as origin by running command: `git remote add origin YOUR_NEWLY_CREATE_REPO_GIT_URL`
 6. Add our repo as upstream by running command: `git remote add upstream $product_repo_url`
 7. Push the code to GitHub by running command: `git push -u origin main`
 
