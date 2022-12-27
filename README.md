@@ -28,7 +28,7 @@ $introduction_text
 
 ## Installation ⚒️
 
-$installation_steps
+Please [visit]($installation_url_in_docs) our docs for installation guide.
 
 ## Documentation 📜
 
