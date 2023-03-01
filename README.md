@@ -62,6 +62,22 @@ Now, whenever you want to pull the latest changes from our repo just pull the ch
 
 Cheers 🥂 
 
+## Contributing 🦸
+
+Contributions are always welcome and recommended! Here is how:
+
+- Clone our repo `git clone $product_repo_url`
+- create a new branch based on branch you want to make Pull request to. For example if you want to make pull request to main branch, create new branch based on main branch.
+- Push your changes to new branch
+- Create pull request
+
+### Contribution Requirements 🧰
+
+- When you contribute, you agree to give a non-exclusive license to PixInvent to use that contribution in any context as we (PixInvent) see appropriate.
+- If you use content provided by another party, it must be appropriately licensed using an open source license.
+- Contributions are only accepted through Github pull requests.
+- Finally, contributed code must work in all supported browsers.
+
 ## Creators 😇
 
 - [PixInvent](https://pixinvent.com/)
