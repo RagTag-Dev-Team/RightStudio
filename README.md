@@ -60,7 +60,7 @@ However, you can still keep your repo even after your support expires by setting
 
 Now, whenever you want to pull the latest changes from our repo just pull the changes by running command: `git pull upstream main`
 
-Cheers 🥂 
+Cheers 🥂
 
 ## Contributing 🦸
 
