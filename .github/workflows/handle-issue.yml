@@ -1,0 +1,26 @@
+name: Handle Issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+# ℹ️ Required by gh cli
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if user is current organization memeber via GitHub CLI API
+        id: checkIsOrgMember
+        # Don't mark action run as failed even if this step is failed
+        continue-on-error: true
+        run: gh api orgs/${{ github.repository_owner }}/members/${{ github.event.issue.user.login }}
+    
+      - name: Close the issue via GitHub CLI if user is not org member
+        if: steps.checkIsOrgMember.outcome == 'failure'
+        run: "gh issue close ${{ github.event.issue.html_url }} --comment '### Hi [@${{ github.actor }}](https://github.com/${{ github.actor }}) <img src='https://user-images.githubusercontent.com/47495003/171637050-b790338b-c8fd-4807-af43-19c6fd6713ed.gif' height='25px' width='25px'>\nRight now GitHub issues are for our internal use only and creating another issue in this repo will encourage us to remove your repo access.\n\nWe kindly request you create issues on our support portal: <https://pixinvent.ticksy.com/>\n\nOur support team will be happy to help you there.\n\nThank you!' --reason 'not planned'"
