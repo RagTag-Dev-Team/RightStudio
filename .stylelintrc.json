@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "stylelint-use-logical-spec"
+  ],
+  "overrides": [
+    {
+      "customSyntax": "postcss-styled-syntax",
+      "files": [
+        "**/*.tsx"
+      ]
+    }
+  ],
+  "rules": {
+    "liberty/use-logical-spec": "always"
+  }
+}
