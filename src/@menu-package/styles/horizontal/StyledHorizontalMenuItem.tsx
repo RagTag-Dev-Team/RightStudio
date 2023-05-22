@@ -1,7 +1,15 @@
-import styled, { CSSObject } from '@emotion/styled'
-import { menuButtonStyles } from '../../components/horizontal-menu/MenuButton'
+// Third Party Imports
+import styled from '@emotion/styled'
+import type { CSSObject } from '@emotion/styled'
+
+// Type Imports
+import type { MenuItemProps } from '../../components/horizontal-menu/MenuItem'
+
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
-import { MenuItemProps } from '../../components/horizontal-menu/MenuItem'
+
+// Style Imports
+import { menuButtonStyles } from '../../components/horizontal-menu/MenuButton'
 
 type StyledHorizontalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'disabled'> & {
   level: number

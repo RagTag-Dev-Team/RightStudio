@@ -1,9 +1,11 @@
-// Import React
-import { ReactNode } from 'react'
-import { RouterLink } from '../@menu-package/components/RouterLink'
+// React Imports
+import type { ReactNode } from 'react'
 
-// Import Vertical Menu Props
-import { MenuItemProps, SubMenuProps } from '../@menu-package/components/horizontal-menu'
+// Type Imports
+import type { MenuItemProps, SubMenuProps } from '../@menu-package/components/horizontal-menu'
+
+// Component Imports
+import { RouterLink } from '../@menu-package/components/RouterLink'
 
 type MenuData =
   | (Omit<MenuItemProps, 'children'> & { label: string | ReactNode })

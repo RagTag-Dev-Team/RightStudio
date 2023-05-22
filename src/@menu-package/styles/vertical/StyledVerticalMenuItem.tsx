@@ -1,7 +1,15 @@
-import styled, { CSSObject } from '@emotion/styled'
-import { menuButtonStyles } from '../../components/vertical-menu/MenuButton'
+// Third Party Imports
+import styled from '@emotion/styled'
+import type { CSSObject } from '@emotion/styled'
+
+// Type Imports
+import type { MenuItemProps } from '../../components/vertical-menu/MenuItem'
+
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
-import { MenuItemProps } from '../../components/vertical-menu/MenuItem'
+
+// Style Imports
+import { menuButtonStyles } from '../../components/vertical-menu/MenuButton'
 
 type StyledVerticalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'active' | 'disabled'> & {
   level: number

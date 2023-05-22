@@ -1,18 +1,15 @@
 // React Imports
-import {
-  AnchorHTMLAttributes,
-  cloneElement,
-  createElement,
-  forwardRef,
-  ForwardRefRenderFunction,
-  ReactElement,
-  ReactNode
-} from 'react'
+import { cloneElement, createElement, forwardRef } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
 import { css } from '@emotion/react'
+
+// Component Imports
 import { RouterLink } from '../RouterLink'
+
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
 interface MenuButtonProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> {

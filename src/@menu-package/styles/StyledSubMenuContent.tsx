@@ -1,5 +1,8 @@
+// Third Party Imports
 import styled from '@emotion/styled'
-import { SubMenuContentProps } from '../components/vertical-menu/SubMenuContent'
+
+// Type Imports
+import type { SubMenuContentProps } from '../components/vertical-menu/SubMenuContent'
 
 const StyledSubMenuContent = styled.div<SubMenuContentProps>`
   display: none;

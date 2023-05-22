@@ -1,8 +1,15 @@
+// React Imports
 import { useContext } from 'react'
-import { VerticalMenuContext, VerticalMenuContextProps } from '../components/vertical-menu/Menu'
+
+// Type Imports
+import type { VerticalMenuContextProps } from '../components/vertical-menu/Menu'
+
+// Context Imports
+import { VerticalMenuContext } from '../components/vertical-menu/Menu'
 
 const useVerticalMenu = (): VerticalMenuContextProps => {
   const context = useContext(VerticalMenuContext)
+
   if (context === undefined) {
     //TODO: set better error message
     throw new Error('Menu Component is required!')

@@ -1,24 +1,21 @@
-// Import React
-import { isValidElement, ReactNode } from 'react'
+// React Imports
+import { isValidElement } from 'react'
+import type { ReactNode } from 'react'
 
-import fse from 'fs-extra'
-
-// Import Vertical Menu Components
-import {
-  SubMenu as VerticalSubMenu,
-  MenuItem as VerticalMenuItem,
-  MenuSection,
+// Type Imports
+import type {
   SubMenuProps as VerticalSubMenuProps,
   MenuItemProps as VerticalMenuItemProps,
   MenuSectionProps
 } from '../components/vertical-menu'
-
-import {
-  SubMenu as HorizontalSubMenu,
-  MenuItem as HorizontalMenuItem,
+import type {
   SubMenuProps as HorizontalSubMenuProps,
   MenuItemProps as HorizontalMenuItemProps
 } from '../components/horizontal-menu'
+
+// Component Imports
+import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '../components/horizontal-menu'
+import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '../components/vertical-menu'
 
 type VerticalMenuData =
   | (Omit<MenuSectionProps, 'children'> & { isSection: boolean; children: VerticalMenuData[] })
@@ -50,6 +47,7 @@ export const generateVerticalMenu = (menuData: VerticalMenuData[]) => {
           icon={menuSectionItem.icon}
           prefix={menuSectionItem.prefix}
           suffix={menuSectionItem.suffix}
+          // eslint-disable-next-line lines-around-comment
           // i18nKey={menuSectionItem.i18nKey}
           // aclProps={menuSectionItem.aclProps}
           rootStyles={menuSectionItem.rootStyles}
@@ -69,13 +67,14 @@ export const generateVerticalMenu = (menuData: VerticalMenuData[]) => {
           icon={subMenuItem.icon}
           prefix={subMenuItem.prefix}
           suffix={subMenuItem.suffix}
-          // open={subMenuItem.open}
           defaultOpen={subMenuItem.defaultOpen}
           active={subMenuItem.active}
           disabled={subMenuItem.disabled}
           rootStyles={subMenuItem.rootStyles}
-          /* i18nKey={subMenuItem.i18nKey}
-          aclProps={subMenuItem.aclProps} */
+          // eslint-disable-next-line lines-around-comment
+          // open={subMenuItem.open}
+          // i18nKey={subMenuItem.i18nKey}
+          // aclProps={subMenuItem.aclProps}
           component={subMenuItem.component}
         >
           {subMenuItem.children && generateVerticalMenu(subMenuItem.children)}
@@ -94,12 +93,12 @@ export const generateVerticalMenu = (menuData: VerticalMenuData[]) => {
         rel={menuItem.rel}
         prefix={menuItem.prefix}
         suffix={menuItem.suffix}
-        // i18nKey={menuItem.i18nKey}
-        // aclProps={menuItem.aclProps}
         rootStyles={menuItem.rootStyles}
         href={menuItem.href}
         component={menuItem.component}
-
+        // eslint-disable-next-line lines-around-comment
+        // i18nKey={menuItem.i18nKey}
+        // aclProps={menuItem.aclProps}
         // component={<RouterLink href={menuItem.href || '/'} />}
       >
         {menuItem.label}
@@ -147,7 +146,7 @@ export const generateHorizontalMenu = (menuData: HorizontalMenuData[]) => {
         rootStyles={menuItem.rootStyles}
         href={menuItem.href}
         component={menuItem.component}
-
+        // eslint-disable-next-line lines-around-comment
         // component={<RouterLink href={menuItem.href || '/'} />}
       >
         {menuItem.label}
@@ -156,79 +155,7 @@ export const generateHorizontalMenu = (menuData: HorizontalMenuData[]) => {
   })
 }
 
-// Check if the children of a menu item has the provided item in one of its children
-/* export const confirmItemInChildren = (children: ReactNode, item: ReactNode): boolean => {
-  // Base case: if children is not an array or doesn't have any elements, return false.
-  if (!Array.isArray(children) || children.length === 0) {
-    return false
-  }
-
-  // Check if the current element is equal to the item.
-  if (children.includes(item)) {
-    return true
-  }
-
-  // Recursively check if the item exists in any of the child elements.
-  for (let i = 0; i < children.length; i++) {
-    const child: ReactNode = children[i]
-    if (isValidElement(child) && confirmItemInChildren(child.props.children, item)) {
-      return true
-    }
-  }
-
-  // If we've gone through all child elements and haven't found the item, return false.
-  return false
-} */
-
-/* export const confirmUrlInChildren = (children: ReactNode, url: string): boolean => {
-  if (!children) {
-    return false
-  }
-
-  // If children is an array
-  if (Array.isArray(children)) {
-    return children.some((child: ReactNode) => {
-      if (isValidElement(child)) {
-        if (child.props.component && child.props.component.props.href) {
-          // If it is, return true if the child's component's href matches the url
-          return child.props.component.props.href === url
-        }
-        if (child.props.href) {
-          // If it is, return true if the child's component's href matches the url
-          return child.props.href === url
-        }
-
-        // If the child is not a MenuItem or does not have a component prop with href property, check its children recursively
-        if (child.props.children) {
-          return confirmUrlInChildren(child.props.children, url)
-        }
-      }
-
-      return false
-    })
-  } else {
-    // if children is a MenuItem
-    if (isValidElement(children)) {
-      if (children.props.component && children.props.component.props.href) {
-        // If it is, return true if the child's component's href matches the url
-        return children.props.component.props.href === url
-      }
-      if (children.props.href) {
-        // If it is, return true if the child's component's href matches the url
-        return children.props.href === url
-      }
-    }
-  }
-
-  // If children is a submenu
-  if (isValidElement(children) && children.props.children) {
-    return confirmUrlInChildren(children.props.children, url)
-  }
-
-  return false
-} */
-
-export const confirmUrlInChildren = (children: ReactNode, url: Promise<string>): boolean => {
+export const confirmUrlInChildren = (children: ReactNode, url: string): boolean => {
   if (!children) {
     return false
   }
@@ -239,6 +166,7 @@ export const confirmUrlInChildren = (children: ReactNode, url: Promise<string>):
 
   if (isValidElement(children)) {
     const { component, href, children: subChildren } = children.props
+
     if (component && component.props.href) {
       return component.props.href === url
     }

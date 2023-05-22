@@ -1,9 +1,10 @@
 // Import all Horizontal Nav components and export them
-
-import HorizontalNav from './HorizontalNav'
 import Menu from './Menu'
-import MenuItem, { MenuItemProps } from './MenuItem'
-import SubMenu, { SubMenuProps } from './SubMenu'
+import SubMenu from './SubMenu'
+import MenuItem from './MenuItem'
+import HorizontalNav from './HorizontalNav'
+import type { SubMenuProps } from './SubMenu'
+import type { MenuItemProps } from './MenuItem'
 
 export default HorizontalNav
 export { Menu, MenuItem, SubMenu }

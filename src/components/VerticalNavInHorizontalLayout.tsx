@@ -1,16 +1,11 @@
-// Import React
-import { ReactNode } from 'react'
+// React Imports
+import type { ReactNode } from 'react'
 
-// Import Third Party Components
-// import PerfectScrollbar from 'react-perfect-scrollbar'
-import PerfectScrollbar from '../@menu-package/wrapper-componnents/perfectscrollbar'
-
-// Import Vertical Menu Component
-import VerticalNav from '../@menu-package/components/vertical-menu'
-
-// Import Custom Components
+// Component Imports
 import MenuHeader from './MenuHeader'
 import VerticalNavCollapseIcons from './VerticalNavCollapseIcons'
+import VerticalNav from '../@menu-package/components/vertical-menu'
+import PerfectScrollbar from '../@menu-package/wrapper-componnents/perfectscrollbar'
 
 const VerticalNavInHorizontalLayout = ({ children }: { children: ReactNode }) => (
   <VerticalNav backgroundColor='rgba(255,255,0,1)'>

@@ -1,19 +1,21 @@
-// Import React
-import { HTMLAttributes } from 'react'
+// React Imports
+import type { HTMLAttributes } from 'react'
 
-// Import Third party libs
+// Third Party Imports
 import classNames from 'classnames'
-import { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/react'
 
-// Import Styled Components
-import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
-
-// Import Components
+// Component Imports
 import VerticalNavInHorizontalLayout from '../../../components/VerticalNavInHorizontalLayout'
 
-// Import Hooks and Utils
+// Hook Imports
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+
+// Util Imports
 import { horizontalNavClasses } from '../../utils/utilityClasses'
+
+// Styled Component Imports
+import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
 
 // Define Types
 type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
@@ -42,7 +44,7 @@ export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 const HorizontalNav = (props: HorizontalNavProps) => {
-  /* Destructure Props with default values */
+  // Destructure Props with default values
   const {
     switchToVertical = false,
     hideMenu = false,

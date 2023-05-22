@@ -1,21 +1,22 @@
 'use client'
 
-/* React Imports */
-import { AnchorHTMLAttributes, forwardRef, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
-import { useRendersCount } from 'react-use'
+// React Imports
+import { forwardRef } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
 
-/* Third Party Imports */
+// Third Party Imports
 import classNames from 'classnames'
-import { CSSObject } from '@emotion/react'
+import { useRendersCount } from 'react-use'
+import type { CSSObject } from '@emotion/react'
 
-/* Import Menu Classes */
-import { menuClasses } from '../../utils/utilityClasses'
-
-/* Import Hooks */
+// Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
-/* Styled Components */
+// Util Imports
+import { menuClasses } from '../../utils/utilityClasses'
+
+// Styled Component Imports
 import MenuButton from './MenuButton'
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledVerticalMenuItem from '../../styles/vertical/StyledVerticalMenuItem'
@@ -46,7 +47,7 @@ export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefi
 type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'
 
 const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props, ref) => {
-  /* Props */
+  // Props
   const {
     children,
     icon,
@@ -61,12 +62,12 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     ...rest
   } = props
 
-  /* Hooks */
+  // Hooks
   const { isCollapsed, isHovered, transitionOptions, isPopoutWhenCollapsed } = useVerticalNav()
   const { menuItemStyles } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
-  /* Get the styles for the specified element. */
+  // Get the styles for the specified element.
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
     // specified element.

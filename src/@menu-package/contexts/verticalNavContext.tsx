@@ -1,6 +1,8 @@
 'use client'
 
-import { createContext, ReactNode, useCallback, useMemo, useState } from 'react'
+// React Imports
+import { createContext, useCallback, useMemo, useState } from 'react'
+import type { ReactNode } from 'react'
 
 type VerticalNavProviderProps = {
   children: ReactNode

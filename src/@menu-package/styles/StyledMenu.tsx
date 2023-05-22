@@ -1,4 +1,8 @@
-import styled, { CSSObject } from '@emotion/styled'
+// Third Party Imports
+import styled from '@emotion/styled'
+import type { CSSObject } from '@emotion/styled'
+
+// Util Imports
 import { menuClasses } from '../utils/utilityClasses'
 
 type StyledMenuProps = {

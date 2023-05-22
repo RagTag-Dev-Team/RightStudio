@@ -1,21 +1,25 @@
-// This is User Component (Not a core component)
-import { CSSProperties, ReactNode } from 'react'
+//* This is User Component (Not a core component)
 
-// Import Third Party Components
+// React Imports
+import type { CSSProperties, ReactNode } from 'react'
 
 type ContentAreaProps = {
   children?: ReactNode
 }
 
-const ContentAreaStyles: CSSProperties = {
+const contentAreaStyles: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   inlineSize: '100%',
-  overflow: 'hidden',
+  overflow: 'hidden'
 }
 
 const ContentArea = ({ children }: ContentAreaProps) => {
-  return <div className='content-wrapper' style={ContentAreaStyles}>{children}</div>
+  return (
+    <div className='content-wrapper' style={contentAreaStyles}>
+      {children}
+    </div>
+  )
 }
 
 export default ContentArea

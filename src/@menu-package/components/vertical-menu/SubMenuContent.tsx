@@ -1,21 +1,14 @@
-/* React imports */
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  HTMLAttributes,
-  MutableRefObject,
-  ReactNode,
-  useEffect,
-  useState
-} from 'react'
+// React Imports
+import { forwardRef, useEffect, useState } from 'react'
+import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject, ReactNode } from 'react'
 
-/* Third party imports */
-import { CSSObject } from '@emotion/react'
+// Third Party Imports
+import type { CSSObject } from '@emotion/react'
 
-/* Import Hooks */
+// Hook Imports
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
-/* Styled Components */
+// Styled Components
 import StyledUl from '../../styles/StyledUl'
 import StyledSubMenuContent from '../../styles/StyledSubMenuContent'
 
@@ -57,15 +50,18 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
   const [mounted, setMounted] = useState(false)
 
   const { transitionDuration } = useVerticalMenu()
+
   useEffect(() => {
     if (mounted) {
       if (open || (open && isHovered)) {
         const target = SubMenuContentRef?.current
+
         if (target) {
           target.style.display = 'block'
           target.style.overflow = 'hidden'
           target.style.blockSize = 'auto'
           const height = target.offsetHeight
+
           target.style.blockSize = '0px'
           target.offsetHeight
 
@@ -78,6 +74,7 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
         }
       } else {
         const target = SubMenuContentRef?.current
+
         if (target) {
           target.style.overflow = 'hidden'
           target.style.blockSize = `${target.offsetHeight}px`
@@ -91,6 +88,7 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, mounted, SubMenuContentRef])
 
   useEffect(() => {

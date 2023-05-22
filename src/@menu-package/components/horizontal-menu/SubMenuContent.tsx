@@ -1,16 +1,17 @@
-/* React imports */
-import { forwardRef, ForwardRefRenderFunction, HTMLAttributes, ReactNode } from 'react'
+// React Imports
+import { forwardRef } from 'react'
+import type { ForwardRefRenderFunction, HTMLAttributes, ReactNode } from 'react'
 
-/* Third party imports */
-import { CSSObject } from '@emotion/react'
+// Third Party Imports
+import type { CSSObject } from '@emotion/react'
 
-// import PerfectScrollbar from 'react-perfect-scrollbar'
+// Component Imports
 import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
 
-/* Import Hooks */
+// Hook Imports
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 
-/* Styled Components */
+// Styled Component Imports
 import StyledUl from '../../styles/StyledUl'
 import StyledHorizontalSubMenuContent from '../../styles/horizontal/StyledHorizontalSubMenuContent'
 

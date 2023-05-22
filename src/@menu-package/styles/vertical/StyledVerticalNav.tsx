@@ -1,12 +1,17 @@
+// Third Party Imports
 import styled from '@emotion/styled'
-import { VerticalNavProps } from '../../components/vertical-menu/VerticalNav'
-import { VerticalNavState } from '../../contexts/verticalNavContext'
+
+// Type Imports
+import type { VerticalNavState } from '../../contexts/verticalNavContext'
+import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNav'
+
+// Util Imports
 import { verticalNavClasses } from '../../utils/utilityClasses'
 
 type StyledVerticalNavProps = VerticalNavProps &
   Pick<VerticalNavState, 'isBreakpointReached' | 'collapsing' | 'expanding'>
 
-export const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
+const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
   ${({ scrollWithContent }) =>
     !scrollWithContent &&
     `

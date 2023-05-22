@@ -35,13 +35,46 @@
       }
     ],
     // Add new line after block
-    /* "padded-blocks": ["error", "always"],
+    // "padded-blocks": ["error", "always"],
     "padding-line-between-statements": [
       "error",
-      { "blankLine": "always", "prev": "*", "next": "return" },
-      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
-      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
-    ] */
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "function",
+          "multiline-const",
+          "export"
+        ]
+      },
+      {
+        "blankLine": "any",
+        "prev": "export",
+        "next": "export"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      }
+    ],
     // Add new line above return
     "newline-before-return": "error",
     // Add new line after import
@@ -98,7 +131,7 @@
           "react",
           "type"
         ],
-        "newlines-between": "always"
+        "newlines-between": "always-and-inside-groups"
       }
     ],
     // Add new line between imports and first import

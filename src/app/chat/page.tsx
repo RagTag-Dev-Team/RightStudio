@@ -1,3 +1,5 @@
-export default function ChatPage() {
+const ChatPage = () => {
   return <div>ChatPage</div>
 }
+
+export default ChatPage

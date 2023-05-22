@@ -1,4 +1,7 @@
+// Third Party Imports
 import styled from '@emotion/styled'
+
+// Util Imports
 import { verticalNavClasses } from '../../utils/utilityClasses'
 
 const StyledVerticalNavBgImage = styled.img`

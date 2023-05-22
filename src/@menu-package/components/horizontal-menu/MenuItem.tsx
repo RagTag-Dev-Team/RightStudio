@@ -1,23 +1,26 @@
-/* React Imports */
-import { AnchorHTMLAttributes, forwardRef, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
+// React Imports
+import { forwardRef } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
 
-/* Third Party Imports */
+// Third Party Imports
 import classNames from 'classnames'
-import { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/react'
 
-/* Import Menu Classes */
+// Component Imports
+import MenuButton from './MenuButton'
+
+// Hook Imports
+import useHorizontalMenu from '../../hooks/useHorizontalMenu'
+
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
-/* Styled Components */
-import MenuButton from './MenuButton'
+// Styled Component Imports
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
-import StyledHorizontalMenuItem from '../../styles/horizontal/StyledHorizontalMenuItem'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
-import useHorizontalMenu from '../../hooks/useHorizontalMenu'
-
-// import { usePathname } from '../../hooks/usePathname'
+import StyledHorizontalMenuItem from '../../styles/horizontal/StyledHorizontalMenuItem'
 
 export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> & {
   icon?: ReactNode
@@ -46,7 +49,7 @@ export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefi
 type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'
 
 const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props, ref) => {
-  /* Props */
+  // Props
   const {
     children,
     icon,
@@ -80,21 +83,6 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       }
     }
   }
-
-  // Open following code to apply active state to menu items
-  /*   const pathname = usePathname()
-
-  const getHref = () => {
-    if (isValidElement(component)) {
-      const props = component.props
-
-      return props && props.href ? props.href : ''
-    }
-
-    return href || ''
-  }
-
-  const exactMatch = pathname === getHref() */
 
   return (
     <StyledHorizontalMenuItem

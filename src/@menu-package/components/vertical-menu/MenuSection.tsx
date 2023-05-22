@@ -1,20 +1,19 @@
 'use client'
 
 // React Imports
-import { forwardRef, ReactNode, ForwardRefRenderFunction, CSSProperties } from 'react'
-import { useRendersCount } from 'react-use'
+import { forwardRef } from 'react'
+import type { ReactNode, ForwardRefRenderFunction, CSSProperties } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
+import { useRendersCount } from 'react-use'
+import type { CSSObject } from '@emotion/react'
 
-// import styled from '@emotion/styled'
-import { CSSObject } from '@emotion/react'
-
-// Import Hooks
-import useVerticalMenu from '../../hooks/useVerticalMenu'
+// Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
+import useVerticalMenu from '../../hooks/useVerticalMenu'
 
-// Import Menu Classes
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
 // Styled Components
@@ -39,7 +38,6 @@ export type MenuSectionProps = {
 type MenuSectionElement = 'root' | 'icon' | 'label' | 'prefix' | 'suffix'
 
 // Styled Components
-
 const MenuSectionStyles: CSSProperties = {
   display: 'inline-block',
   inlineSize: '100%',
@@ -67,10 +65,10 @@ const MenuSectionContentStyles: CSSProperties = {
 
 // Menu Section
 const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (props, ref) => {
-  /* Props */
+  // Props
   const { children, icon, className, prefix, suffix, label, rootStyles, ...rest } = props
 
-  /* Hooks */
+  // Hooks
   const { isCollapsed, isHovered, transitionOptions } = useVerticalNav()
   const { menuSectionStyles } = useVerticalMenu()
   const rendersCount = useRendersCount()
@@ -84,6 +82,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   }
 
   return (
+    // eslint-disable-next-line lines-around-comment
     // Menu Section
     <li ref={ref} className={classNames(menuClasses.menuSectionRoot, className)} style={MenuSectionStyles}>
       {/* Menu Section Content Wrapper */}

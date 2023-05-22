@@ -1,23 +1,20 @@
-/* Import React */
-import {
+// React Imports
+import { Children, cloneElement, forwardRef, useEffect, useRef, useState } from 'react'
+import type {
   AnchorHTMLAttributes,
-  Children,
-  cloneElement,
-  forwardRef,
   ForwardRefRenderFunction,
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState
+  ReactNode
 } from 'react'
 
-/* Third Party Imports */
-import classnames from 'classnames'
-import styled, { CSSObject } from '@emotion/styled'
+// Next Imports
+import { usePathname } from 'next/navigation'
 
+// Third Party Imports
+import classnames from 'classnames'
+import styled from '@emotion/styled'
 import {
   useFloating,
   autoUpdate,
@@ -38,24 +35,22 @@ import {
   useFloatingTree,
   useTransitionStyles
 } from '@floating-ui/react'
+import type { CSSObject } from '@emotion/styled'
 
-/* Import Classes */
-import { menuClasses } from '../../utils/utilityClasses'
+// Type Imports
+import type { MenuItemProps } from './MenuItem'
 
-/* Import Types */
-import { MenuItemProps } from './MenuItem'
-
-/* Import Components */
+// Component Imports
 import SubMenuContent from './SubMenuContent'
 
-/* Hooks Imports */
-import { usePathname } from '../../hooks/usePathname'
+// Hook Imports
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 
-/* Import Utils */
+// Util Imports
+import { menuClasses } from '../../utils/utilityClasses'
 import { confirmUrlInChildren } from '../../utils/menuUtils'
 
-/* Styled Components */
+// Styled Component Imports
 import MenuButton, { menuButtonStyles } from './MenuButton'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
@@ -116,7 +111,7 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
   }
 `
 
-export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
+const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
   const {
     children,
     className,
@@ -279,6 +274,7 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
     } else {
       setActive(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   const referenceRef = useMergeRefs([refs.setReference, ref])
@@ -362,6 +358,7 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
                 open: open
               })
             ) : (
+              // eslint-disable-next-line lines-around-comment
               /* Expanded Arrow Icon */
               <StyledHorizontalNavExpandIcon level={level} />
             )}

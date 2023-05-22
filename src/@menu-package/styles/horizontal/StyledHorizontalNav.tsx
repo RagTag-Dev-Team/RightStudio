@@ -1,5 +1,8 @@
+// Third Party Imports
 import styled from '@emotion/styled'
-import { HorizontalNavProps } from '../../components/horizontal-menu/HorizontalNav'
+
+// Type Imports
+import type { HorizontalNavProps } from '../../components/horizontal-menu/HorizontalNav'
 
 type StyledHorizontalNavProps = Omit<HorizontalNavProps, 'customBreakPoint'> & { breakpointReached: boolean }
 

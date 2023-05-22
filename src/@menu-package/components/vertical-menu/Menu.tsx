@@ -1,33 +1,24 @@
 'use client'
 
-/* React Imports */
-import {
-  createContext,
-  forwardRef,
-  ForwardRefRenderFunction,
-  MenuHTMLAttributes,
-  MutableRefObject,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
+// React Imports
+import { createContext, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import type { ForwardRefRenderFunction, MenuHTMLAttributes, MutableRefObject, ReactNode } from 'react'
 
-/* Third Party Imports */
+// Next Imports
+import { usePathname } from 'next/navigation'
+
+// Third Party Imports
 import classNames from 'classnames'
-import { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/react'
 
-/* Import Classes */
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
-/* Styled Component Imports */
-import StyledMenu from '../../styles/StyledMenu'
+// Styled Component Imports
 import StyledUl from '../../styles/StyledUl'
-import { usePathname } from '../../hooks/usePathname'
+import StyledMenu from '../../styles/StyledMenu'
 
-/* Menu Item Styles Params Type */
+// Menu Item Styles Params Type
 export type MenuItemStylesParams = {
   level: number
   disabled: boolean
@@ -36,10 +27,10 @@ export type MenuItemStylesParams = {
   open?: boolean
 }
 
-/* Menu Item Style Elements Type */
+// Menu Item Style Elements Type
 export type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
 
-/* Menu Item Styles Type */
+// Menu Item Styles Type
 export type MenuItemStyles = {
   root?: ElementStyles
   button?: ElementStyles
@@ -51,7 +42,7 @@ export type MenuItemStyles = {
   SubMenuExpandIcon?: ElementStyles
 }
 
-/* Menu Section Styles Type */
+// Menu Section Styles Type
 export type MenuSectionStyles = {
   root?: CSSObject
   button?: CSSObject

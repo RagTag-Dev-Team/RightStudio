@@ -1,21 +1,22 @@
 'use client'
 
 // React Imports
-import { createContext, forwardRef, ForwardRefRenderFunction, MenuHTMLAttributes, useMemo } from 'react'
+import { createContext, forwardRef, useMemo } from 'react'
+import type { ForwardRefRenderFunction, MenuHTMLAttributes, ReactNode } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
-import { CSSObject } from '@emotion/react'
 import { FloatingTree } from '@floating-ui/react'
+import type { CSSObject } from '@emotion/react'
 
-// Import Styled Components
+// Util Imports
+import { menuClasses } from '../../utils/utilityClasses'
+
+// Styled Component Imports
 import StyledMenu from '../../styles/StyledMenu'
 import StyledHorizontalUl from '../../styles/horizontal/StyledHorizontalUl'
 
-// Import Utils
-import { menuClasses } from '../../utils/utilityClasses'
-
-/* Menu Item Styles Params Type */
+// Menu Item Styles Params Type
 export type MenuItemStylesParams = {
   level: number
   disabled: boolean
@@ -24,10 +25,10 @@ export type MenuItemStylesParams = {
   open?: boolean
 }
 
-/* Menu Item Style Elements Type */
+// Menu Item Style Elements Type
 export type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
 
-/* Menu Item Styles Type */
+// Menu Item Styles Type
 export type MenuItemStyles = {
   root?: ElementStyles
   button?: ElementStyles
@@ -50,7 +51,7 @@ export type HorizontalMenuContextProps = {
   triggerPopout?: 'hover' | 'click'
   browserScroll?: boolean
   menuItemStyles?: MenuItemStyles
-  renderExpandIcon?: (params: RenderExpandIconParams) => React.ReactNode
+  renderExpandIcon?: (params: RenderExpandIconParams) => ReactNode
   transitionOptions?: {
     duration?: number | string
     easing?: string
@@ -61,7 +62,7 @@ export type HorizontalMenuContextProps = {
 export type MenuProps = HorizontalMenuContextProps &
   MenuHTMLAttributes<HTMLMenuElement> & {
     rootStyles?: CSSObject
-    children?: React.ReactNode
+    children?: ReactNode
   }
 
 const transitionOptionsDefaults = {

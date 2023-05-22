@@ -43,5 +43,6 @@
     "typescript",
     "typescriptreact"
   ],
-  "markdown.extension.toc.updateOnSave": false
+  "markdown.extension.toc.updateOnSave": false,
+  "files.insertFinalNewline": true
 }

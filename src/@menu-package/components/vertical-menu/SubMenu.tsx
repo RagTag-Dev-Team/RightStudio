@@ -1,28 +1,23 @@
 'use client'
 
-/* Import React */
-import {
+// React Imports
+import { Children, cloneElement, forwardRef, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import type {
   AnchorHTMLAttributes,
-  Children,
-  cloneElement,
-  forwardRef,
   ForwardRefRenderFunction,
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  ReactNode,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState
+  ReactNode
 } from 'react'
-import { useRendersCount } from 'react-use'
 
-/* Third Party Imports */
+// Next Imports
+import { usePathname } from 'next/navigation'
+
+// Third Party Imports
 import classnames from 'classnames'
-import styled, { CSSObject } from '@emotion/styled'
-
-// import { createPopper, Instance } from '@popperjs/core';
+import styled from '@emotion/styled'
+import { useRendersCount } from 'react-use'
 import {
   useFloating,
   autoUpdate,
@@ -37,29 +32,25 @@ import {
   useDismiss,
   hide
 } from '@floating-ui/react'
+import type { CSSObject } from '@emotion/styled'
 
-/* Import Classes */
+// Type Imports
+import type { OpenSubmenu } from './Menu'
+import type { MenuItemProps } from './MenuItem'
+
+// Component Imports
+import SubMenuContent from './SubMenuContent'
+import MenuButton, { menuButtonStyles } from './MenuButton'
+
+// Hook Imports
+import useVerticalNav from '../../hooks/useVerticalNav'
+import useVerticalMenu from '../../hooks/useVerticalMenu'
+
+// Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
-
-/* Import Types */
-import { MenuItemProps } from './MenuItem'
-import { OpenSubmenu } from './Menu'
-
-/* Hooks Imports */
-import { usePathname } from '../../hooks/usePathname'
-
-/* Import Utils */
 import { confirmUrlInChildren } from '../../utils/menuUtils'
 
-/* Import Components */
-import SubMenuContent from './SubMenuContent'
-
-/* Hooks Imports */
-import useVerticalMenu from '../../hooks/useVerticalMenu'
-import useVerticalNav from '../../hooks/useVerticalNav'
-
-/* Styled Components */
-import MenuButton, { menuButtonStyles } from './MenuButton'
+// Styled Component Imports
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
@@ -128,7 +119,7 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
   }
 `
 
-export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
+const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
   const {
     children,
     className,
@@ -198,23 +189,6 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
 
   // Merge all the interactions into prop getters
   const { getReferenceProps, getFloatingProps } = useInteractions([hover, click, dismiss, role])
-
-  /* const handleSlideToggle = (): void => {
-    // check if the submenu is open
-    if (typeof openSubmenu === 'undefined') {
-      // if the submenu is not open and its level is 0 and the verticalNav is collapsed and the mouse is not hovering over it, then return
-      if (level === 0 && isCollapsed && !isHovered) {
-        return
-      }
-
-      // if the submenu is not open, then open it
-      onOpenChange?.(!open)
-      setOpen(!open)
-    } else {
-      // if the submenu is open, then close it
-      onOpenChange?.(!openSubmenu)
-    }
-  } */
 
   const handleSlideToggle = (): void => {
     if (level === 0 && isCollapsed && !isHovered) {
@@ -293,13 +267,15 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
     } else {
       setActive(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log(openSubmenu)
-  }, [openSubmenu])
+  }, [openSubmenu]) */
 
   return (
+    // eslint-disable-next-line lines-around-comment
     /* Sub Menu */
     <StyledSubMenu
       ref={ref}
@@ -387,6 +363,7 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
               open: openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false
             })
           ) : isCollapsed && !isHovered && level === 0 ? null : (
+            // eslint-disable-next-line lines-around-comment
             /* Expanded Arrow Icon */
             <StyledVerticalNavExpandIcon
               open={openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false}
@@ -404,11 +381,13 @@ export const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (p
         left={x ?? 0}
         openWhenCollapsed={openWhenCollapsed}
         isPopoutWhenCollapsed={isPopoutWhenCollapsed}
+        // eslint-disable-next-line lines-around-comment
         // open={openSubmenu ?? open}
         open={openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false}
         firstLevel={level === 0}
         isCollapsed={isCollapsed}
         isHovered={isHovered}
+        // eslint-disable-next-line lines-around-comment
         // defaultOpen={openDefault}
         className={menuClasses.subMenuContent}
         rootStyles={getSubMenuItemStyles('subMenuContent')}

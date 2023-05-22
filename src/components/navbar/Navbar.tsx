@@ -1,24 +1,20 @@
 'use client'
 
-// This is User Component (Not a core component)
+//* This is User Component (Not a core component)
 
-// Import Components
+// Components Imports
 import VerticalNavToggle from './VerticalNavToggle'
-
-// Import Styled Components
-import StyledNavbar from '../../styles/StyledNavbar'
-
-// Import Vertical Menu Components
+import { RouterLink } from '../../@menu-package/components/RouterLink'
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../@menu-package/components/horizontal-menu'
 
-// Import Utils
+// Utils Imports
 import { generateHorizontalMenu } from '../../@menu-package/utils/menuUtils'
 
-// Import Menu Data
-import menuData from '../../navigation-data/HorizontalMenuData'
+// Styled Components Imports
+import StyledNavbar from '../../styles/StyledNavbar'
 
-// Import Router Link
-import { RouterLink } from '../../@menu-package/components/RouterLink'
+// Menu Data Imports
+import menuData from '../../navigation-data/HorizontalMenuData'
 
 const Navbar = () => {
   return (

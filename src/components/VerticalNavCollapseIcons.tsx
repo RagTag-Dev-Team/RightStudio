@@ -1,8 +1,11 @@
 'use client'
 
-// This is User Component (Not a core component)
+//* This is User Component (Not a core component)
 
+// Third Party Imports
 import { FiDisc, FiCircle, FiX } from 'react-icons/fi'
+
+// Hook Imports
 import useVerticalNav from '../@menu-package/hooks/useVerticalNav'
 
 const VerticalNavCollapseIcons = () => {

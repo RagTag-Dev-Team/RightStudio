@@ -1,23 +1,24 @@
 'use client'
 
-// React imports
-import { HTMLAttributes, useEffect } from 'react'
+// React Imports
+import { useEffect } from 'react'
+import type { HTMLAttributes } from 'react'
 
-// Third party lib imports
+// Third Party Imports
 import classnames from 'classnames'
-import { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/react'
 
-// Context import
-import { VerticalNavState } from '../../contexts/verticalNavContext'
+// Context Imports
+import type { VerticalNavState } from '../../contexts/verticalNavContext'
 
-// Hook imports
+// Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { verticalNavClasses } from '../../utils/utilityClasses'
 
-// Styled component imports
-import StyledVerticalNav from '../../styles/vertical/StyledVerticalNav'
+// Styled Component Imports
 import StyledBackdrop from '../../styles/StyledBackdrop'
+import StyledVerticalNav from '../../styles/vertical/StyledVerticalNav'
 import StyledVerticalNavBgImage from '../../styles/vertical/StyledVerticalNavBgImage'
 import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer'
 import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
@@ -59,7 +60,7 @@ const transitionOptionsDefaults = {
 
 // VerticalNav Component
 const VerticalNav = (props: VerticalNavProps) => {
-  /* Destructure Props with default values */
+  // Destructure Props with default values
   const {
     width = 260,
     collapsedWidth = 80,
@@ -82,7 +83,7 @@ const VerticalNav = (props: VerticalNavProps) => {
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? BREAK_POINTS[breakPoint] : breakPoint))
 
-  /* Hook */
+  // Hooks
   const {
     updateVerticalNavState,
     isCollapsed: isCollapsedContext,
@@ -115,6 +116,7 @@ const VerticalNav = (props: VerticalNavProps) => {
       isCollapsedContext && updateVerticalNavState({ isCollapsed: false })
       isHoveredContext && updateVerticalNavState({ isHovered: false })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, collapsedWidth, rtl, scrollWithContent, breakpointReached, popoutWhenCollapsed, updateVerticalNavState])
 
   useEffect(() => {
@@ -123,6 +125,7 @@ const VerticalNav = (props: VerticalNavProps) => {
       transitionOptions: { ...transitionOptionsDefaults, ...transitionOptions },
       isToggled: false
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultCollapsed, JSON.stringify(transitionOptions), updateVerticalNavState])
 
   useEffect(() => {
@@ -132,25 +135,27 @@ const VerticalNav = (props: VerticalNavProps) => {
         collapsing: false
       })
     }, transitionOptions?.duration as number)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCollapsedContext])
 
-  /* Handle Backdrop(Content Overlay) Click */
+  // Handle Backdrop(Content Overlay) Click
   const handleBackdropClick = () => {
-    /* Close the verticalNav */
+    // Close the verticalNav
     updateVerticalNavState({ isToggled: false })
   }
 
-  /* Handle VerticalNav Hover Event */
+  // Handle VerticalNav Hover Event
   const handleVerticalNavHover = () => {
-    /* If verticalNav is collapsed then only hover class should be added to verticalNav and hover functionality should work (expand verticalNav width) */
+    /* If verticalNav is collapsed then only hover class should be added to verticalNav
+      and hover functionality should work (expand verticalNav width) */
     if (isCollapsedContext && !isHoveredContext) {
       updateVerticalNavState({ isHovered: true })
     }
   }
 
-  /* Handle VerticalNav Hover Out Event */
+  // Handle VerticalNav Hover Out Event
   const handleVerticalNavHoverOut = () => {
-    /* If verticalNav is collapsed then only remove hover class should contract verticalNav width */
+    // If verticalNav is collapsed then only remove hover class should contract verticalNav width
     if (isCollapsedContext && isHoveredContext) {
       updateVerticalNavState({ isHovered: false })
     }
@@ -180,6 +185,7 @@ const VerticalNav = (props: VerticalNavProps) => {
         className
       )}
       {
+        // eslint-disable-next-line lines-around-comment
         /* Toggle verticalNav on hover only when popoutWhenCollapsed(default false) is false */
         ...(!popoutWhenCollapsed &&
           isCollapsedContext && {
@@ -205,6 +211,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
         {/* Display verticalNav background image if provided by user through props */}
         {backgroundImage && (
+          // eslint-disable-next-line lines-around-comment
           /* VerticalNav Background Image */
           <StyledVerticalNavBgImage
             className={verticalNavClasses.image}
@@ -216,6 +223,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
       {/* When verticalNav is toggled on smaller screen, show/hide verticalNav backdrop */}
       {isToggledContext && breakpointReached && (
+        // eslint-disable-next-line lines-around-comment
         /* VerticalNav Backdrop */
         <StyledBackdrop
           role='button'

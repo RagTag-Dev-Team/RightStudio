@@ -1,8 +1,8 @@
-// Import React
-import { ReactNode } from 'react'
+// React Imports
+import type { ReactNode } from 'react'
 
-// Import Vertical Menu Props
-import { MenuSectionProps, MenuItemProps, SubMenuProps } from '../@menu-package/components/vertical-menu'
+// Type Imports
+import type { MenuSectionProps, MenuItemProps, SubMenuProps } from '../@menu-package/components/vertical-menu'
 
 type MenuData =
   | (Omit<MenuSectionProps, 'children'> & { isSection: boolean; children: MenuData[] })

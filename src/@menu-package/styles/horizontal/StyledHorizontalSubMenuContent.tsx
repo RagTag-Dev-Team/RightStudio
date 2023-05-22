@@ -1,5 +1,8 @@
+// Third Party Imports
 import styled from '@emotion/styled'
-import { SubMenuContentProps } from '../../components/horizontal-menu/SubMenuContent'
+
+// Type Imports
+import type { SubMenuContentProps } from '../../components/horizontal-menu/SubMenuContent'
 
 const StyledHorizontalSubMenuContent = styled.div<SubMenuContentProps>`
   min-inline-size: 200px;
