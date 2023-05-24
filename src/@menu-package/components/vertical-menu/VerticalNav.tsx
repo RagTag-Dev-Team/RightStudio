@@ -8,6 +8,9 @@ import type { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { BreakPointType, TransitionOptionsType } from '../../types'
+
 // Context Imports
 import type { VerticalNavState } from '../../contexts/verticalNavContext'
 
@@ -23,19 +26,10 @@ import StyledVerticalNavBgImage from '../../styles/vertical/StyledVerticalNavBgI
 import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer'
 import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
 
+// Breakpoints Data Import
+import { breakpoints, transitionOptionsDefaults } from '../../defaultConfigs'
+
 // Define Types
-type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
-
-const BREAK_POINTS: Record<BreakPoint, string> = {
-  xs: '480px',
-  sm: '600px',
-  md: '900px',
-  lg: '1200px',
-  xl: '1536px',
-  xxl: '1920px',
-  always: 'always'
-}
-
 export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   width?: VerticalNavState['width']
   collapsedWidth?: VerticalNavState['collapsedWidth']
@@ -43,19 +37,13 @@ export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   rtl?: VerticalNavState['isRtl']
   backgroundColor?: string
   backgroundImage?: string
-  breakPoint?: BreakPoint
+  breakPoint?: BreakPointType
   customBreakPoint?: string
-  transitionOptions?: VerticalNavState['transitionOptions']
+  transitionOptions?: TransitionOptionsType
   backdropColor?: string
   popoutWhenCollapsed?: boolean
   scrollWithContent?: boolean
   customStyle?: CSSObject
-}
-
-const transitionOptionsDefaults = {
-  easing: 'ease-in-out',
-  duration: 300,
-  delay: 0
 }
 
 // VerticalNav Component
@@ -81,7 +69,7 @@ const VerticalNav = (props: VerticalNavProps) => {
   } = props
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? BREAK_POINTS[breakPoint] : breakPoint))
+  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? breakpoints[breakPoint] : breakPoint))
 
   // Hooks
   const {

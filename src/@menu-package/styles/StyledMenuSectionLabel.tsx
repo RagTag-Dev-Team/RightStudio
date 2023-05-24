@@ -1,11 +1,12 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
 
-type StyledMenuSectionLabelProps = {
+// Type Imports
+import type { RootStylesType } from '../types'
+
+type StyledMenuSectionLabelProps = RootStylesType & {
   isCollapsed?: boolean
   isHovered?: boolean
-  rootStyles?: CSSObject
 }
 
 const StyledMenuSectionLabel = styled.span<StyledMenuSectionLabelProps>`

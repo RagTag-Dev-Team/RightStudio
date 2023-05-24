@@ -24,13 +24,9 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
 
   /* Transition */
   transition-property: inline-size, min-inline-size, margin-inline-start, inset-inline-start;
-  transition-duration: ${({ transitionOptions }) =>
-    `${
-      typeof transitionOptions?.duration === 'number' ? `${transitionOptions?.duration}ms` : transitionOptions?.duration
-    }`};
+  transition-duration: ${({ transitionOptions }) => `${transitionOptions?.duration}ms`};
   transition-timing-function: ${({ transitionOptions }) => transitionOptions?.easing};
-  transition-delay: ${({ transitionOptions }) =>
-    `${typeof transitionOptions?.delay === 'number' ? `${transitionOptions?.delay}ms` : transitionOptions?.delay}`};
+  transition-delay: ${({ transitionOptions }) => `${transitionOptions?.delay}ms`};
 
   /* Width & Min Width & Margin */
   inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};

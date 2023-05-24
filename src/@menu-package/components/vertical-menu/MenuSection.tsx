@@ -9,6 +9,10 @@ import classNames from 'classnames'
 import { useRendersCount } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { ACLPropsType, ChildrenType } from '../../types'
+import type { MenuSectionStyles } from './Menu'
+
 // Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
@@ -22,7 +26,7 @@ import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledMenuSectionLabel from '../../styles/StyledMenuSectionLabel'
 
-export type MenuSectionProps = {
+export type MenuSectionProps = Partial<ChildrenType> & {
   label: string
   rootStyles?: CSSObject
   labelStyles?: CSSObject
@@ -31,21 +35,20 @@ export type MenuSectionProps = {
   prefix?: ReactNode
   suffix?: ReactNode
   i18nKey?: string
-  aclProps?: { action: string; subject: string }
-  children?: ReactNode
+  aclProps?: ACLPropsType
 }
 
-type MenuSectionElement = 'root' | 'icon' | 'label' | 'prefix' | 'suffix'
+type MenuSectionElement = keyof MenuSectionStyles
 
 // Styled Components
-const MenuSectionStyles: CSSProperties = {
+const menuSectionRootStyles: CSSProperties = {
   display: 'inline-block',
   inlineSize: '100%',
   position: 'relative',
   overflow: 'hidden'
 }
 
-const MenuSectionWrapperStyles: CSSProperties = {
+const menuSectionWrapperStyles: CSSProperties = {
   display: 'inline-block',
   inlineSize: '100%',
   position: 'relative',
@@ -54,7 +57,7 @@ const MenuSectionWrapperStyles: CSSProperties = {
   overflow: 'hidden'
 }
 
-const MenuSectionContentStyles: CSSProperties = {
+const menuSectionContentStyles: CSSProperties = {
   display: 'inline-flex',
   alignItems: 'center',
   inlineSize: '100%',
@@ -84,11 +87,11 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   return (
     // eslint-disable-next-line lines-around-comment
     // Menu Section
-    <li ref={ref} className={classNames(menuClasses.menuSectionRoot, className)} style={MenuSectionStyles}>
+    <li ref={ref} className={classNames(menuClasses.menuSectionRoot, className)} style={menuSectionRootStyles}>
       {/* Menu Section Content Wrapper */}
-      <ul className={menuClasses.menuSectionWrapper} {...rest} style={MenuSectionWrapperStyles}>
+      <ul className={menuClasses.menuSectionWrapper} {...rest} style={menuSectionWrapperStyles}>
         {/* Menu Section Content */}
-        <li className={menuClasses.menuSectionContent} style={MenuSectionContentStyles}>
+        <li className={menuClasses.menuSectionContent} style={menuSectionContentStyles}>
           {icon && (
             <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuSectionStyles('icon')}>
               {icon}

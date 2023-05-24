@@ -4,38 +4,26 @@ import type { ReactNode } from 'react'
 
 // Type Imports
 import type {
-  SubMenuProps as VerticalSubMenuProps,
-  MenuItemProps as VerticalMenuItemProps,
-  MenuSectionProps
-} from '../components/vertical-menu'
-import type {
-  SubMenuProps as HorizontalSubMenuProps,
-  MenuItemProps as HorizontalMenuItemProps
-} from '../components/horizontal-menu'
+  VerticalMenuDataType,
+  VerticalSectionDataType,
+  VerticalSubMenuDataType,
+  VerticalMenuItemDataType,
+  HorizontalMenuDataType,
+  HorizontalSubMenuDataType,
+  HorizontalMenuItemDataType
+} from '../types'
 
 // Component Imports
 import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '../components/horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '../components/vertical-menu'
 
-type VerticalMenuData =
-  | (Omit<MenuSectionProps, 'children'> & { isSection: boolean; children: VerticalMenuData[] })
-  | (Omit<VerticalMenuItemProps, 'children'> & { label: string | ReactNode })
-  | (Omit<VerticalSubMenuProps, 'children'> & { children: VerticalMenuData[] })
-
-type HorizontalMenuData =
-  | (Omit<HorizontalMenuItemProps, 'children'> & { label: string | ReactNode })
-  | (Omit<HorizontalSubMenuProps, 'children'> & { children: HorizontalMenuData[] })
-
 // Generate a menu from the menu data array
-export const generateVerticalMenu = (menuData: VerticalMenuData[]) => {
+export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {
   // Use the map method to iterate through the array of menu data
-  return menuData.map((item: VerticalMenuData, index) => {
-    const menuSectionItem = item as Omit<MenuSectionProps, 'children'> & {
-      isSection: boolean
-      children: VerticalMenuData[]
-    }
-    const subMenuItem = item as Omit<VerticalSubMenuProps, 'children'> & { children: VerticalMenuData[] }
-    const menuItem = item as Omit<VerticalMenuItemProps, 'children'> & { label: string | ReactNode }
+  return menuData.map((item: VerticalMenuDataType, index) => {
+    const menuSectionItem = item as VerticalSectionDataType
+    const subMenuItem = item as VerticalSubMenuDataType
+    const menuItem = item as VerticalMenuItemDataType
 
     // Check if the current item is a section
     if (menuSectionItem.isSection) {
@@ -108,11 +96,11 @@ export const generateVerticalMenu = (menuData: VerticalMenuData[]) => {
 }
 
 // Generate a menu from the menu data array
-export const generateHorizontalMenu = (menuData: HorizontalMenuData[]) => {
+export const generateHorizontalMenu = (menuData: HorizontalMenuDataType[]) => {
   // Use the map method to iterate through the array of menu data
-  return menuData.map((item: HorizontalMenuData, index) => {
-    const subMenuItem = item as Omit<HorizontalSubMenuProps, 'children'> & { children: HorizontalMenuData[] }
-    const menuItem = item as Omit<HorizontalMenuItemProps, 'children'> & { label: string | ReactNode }
+  return menuData.map((item: HorizontalMenuDataType, index) => {
+    const subMenuItem = item as HorizontalSubMenuDataType
+    const menuItem = item as HorizontalMenuItemDataType
 
     // Check if the current item is a sub menu
     if (subMenuItem.children) {

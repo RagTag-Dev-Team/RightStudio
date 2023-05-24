@@ -2,7 +2,6 @@
 
 // React Imports
 import { forwardRef } from 'react'
-import type { ReactNode } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -12,13 +11,16 @@ import type { LinkProps } from 'next/link'
 // Third Party Imports
 import classNames from 'classnames'
 
+// Type Imports
+import type { ChildrenType } from '../types'
+
 // Util Imports
 import { menuClasses } from '../utils/utilityClasses'
 
-interface RouterLinkProps extends LinkProps {
-  className?: string
-  children?: ReactNode
-}
+type RouterLinkProps = LinkProps &
+  Partial<ChildrenType> & {
+    className?: string
+  }
 
 export const RouterLink = forwardRef((props: RouterLinkProps, ref: any) => {
   const { href, className, ...other } = props

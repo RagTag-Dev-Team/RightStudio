@@ -9,12 +9,18 @@ import classNames from 'classnames'
 import { FloatingTree } from '@floating-ui/react'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { ChildrenType, RenderExpandIconParams, TransitionOptionsType } from '../../types'
+
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
 // Styled Component Imports
 import StyledMenu from '../../styles/StyledMenu'
 import StyledHorizontalUl from '../../styles/horizontal/StyledHorizontalUl'
+
+// Default Transition Options Imports
+import { transitionOptionsDefaults } from '../../defaultConfigs'
 
 // Menu Item Styles Params Type
 export type MenuItemStylesParams = {
@@ -40,36 +46,19 @@ export type MenuItemStyles = {
   SubMenuExpandIcon?: ElementStyles
 }
 
-export type RenderExpandIconParams = {
-  level: number
-  disabled: boolean
-  active: boolean
-  open: boolean
-}
-
 export type HorizontalMenuContextProps = {
   triggerPopout?: 'hover' | 'click'
   browserScroll?: boolean
   menuItemStyles?: MenuItemStyles
   renderExpandIcon?: (params: RenderExpandIconParams) => ReactNode
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
-  }
+  transitionOptions?: TransitionOptionsType
 }
 
 export type MenuProps = HorizontalMenuContextProps &
+  Partial<ChildrenType> &
   MenuHTMLAttributes<HTMLMenuElement> & {
     rootStyles?: CSSObject
-    children?: ReactNode
   }
-
-const transitionOptionsDefaults = {
-  easing: 'ease-in-out',
-  duration: 300,
-  delay: 0
-}
 
 export const HorizontalMenuContext = createContext({} as HorizontalMenuContextProps)
 

@@ -1,17 +1,18 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
+
+// Type Imports
+import type { RootStylesType } from '../../types'
 
 type StyledHorizontalNavExpandIconProps = {
   open?: boolean
   level?: number
 }
 
-type StyledHorizontalNavExpandIconWrapperProps = {
+type StyledHorizontalNavExpandIconWrapperProps = RootStylesType & {
   isCollapsed?: boolean
   level?: number
   isHovered?: boolean
-  rootStyles?: CSSObject
 }
 
 export const StyledHorizontalNavExpandIconWrapper = styled.span<StyledHorizontalNavExpandIconWrapperProps>`

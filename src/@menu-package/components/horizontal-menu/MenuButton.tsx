@@ -1,10 +1,13 @@
 // React Imports
 import { cloneElement, createElement, forwardRef } from 'react'
-import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
+import type { ForwardRefRenderFunction } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
 import { css } from '@emotion/react'
+
+// Type Imports
+import type { ChildrenType, MenuButtonProps } from '../../types'
 
 // Component Imports
 import { RouterLink } from '../RouterLink'
@@ -12,16 +15,9 @@ import { RouterLink } from '../RouterLink'
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
-interface MenuButtonProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> {
-  active?: boolean
-  children?: ReactNode
-  component?: string | ReactElement
-}
-
-interface MenuButtonStylesProps {
+type MenuButtonStylesProps = Partial<ChildrenType> & {
   level: number
   disabled?: boolean
-  children?: ReactNode
 }
 
 export const menuButtonStyles = (props: MenuButtonStylesProps) => {

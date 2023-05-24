@@ -1,17 +1,10 @@
-// React Imports
-import type { ReactNode } from 'react'
-
 // Type Imports
-import type { MenuItemProps, SubMenuProps } from '../@menu-package/components/horizontal-menu'
+import type { HorizontalMenuDataType } from '../@menu-package/types'
 
 // Component Imports
 import { RouterLink } from '../@menu-package/components/RouterLink'
 
-type MenuData =
-  | (Omit<MenuItemProps, 'children'> & { label: string | ReactNode })
-  | (Omit<SubMenuProps, 'children'> & { children: MenuData[] })
-
-const menuData: MenuData[] = [
+const menuData: HorizontalMenuDataType[] = [
   {
     label: 'Home',
     disabled: false,
