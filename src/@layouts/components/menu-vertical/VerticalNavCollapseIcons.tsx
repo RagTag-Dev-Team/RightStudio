@@ -6,7 +6,7 @@
 import { FiDisc, FiCircle, FiX } from 'react-icons/fi'
 
 // Hook Imports
-import useVerticalNav from '../@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 
 const VerticalNavCollapseIcons = () => {
   const { isCollapsed, collapseVerticalNav, isBreakpointReached, toggleVerticalNav } = useVerticalNav()

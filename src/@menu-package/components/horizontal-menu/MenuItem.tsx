@@ -11,6 +11,7 @@ import MenuButton from './MenuButton'
 
 // Hook Imports
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'
+import useVerticalNav from '../../hooks/useVerticalNav'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
@@ -64,7 +65,9 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     ...rest
   } = props
 
+  // Hooks
   const { menuItemStyles } = useHorizontalMenu()
+  const { toggleVerticalNav, isToggled } = useVerticalNav()
 
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
@@ -84,6 +87,13 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     }
   }
 
+  // Handle the click event.
+  const handleClick = () => {
+    if (isToggled) {
+      toggleVerticalNav()
+    }
+  }
+
   return (
     <StyledHorizontalMenuItem
       ref={ref}
@@ -100,7 +110,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       menuItemStyles={getMenuItemStyles('root')}
       rootStyles={rootStyles}
     >
-      <MenuButton className={menuClasses.button} component={component} tabIndex={0} {...rest}>
+      <MenuButton className={menuClasses.button} component={component} tabIndex={0} {...rest} onClick={handleClick}>
         {icon && (
           <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
             {icon}

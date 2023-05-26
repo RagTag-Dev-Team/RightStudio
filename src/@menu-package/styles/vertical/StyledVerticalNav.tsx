@@ -6,7 +6,7 @@ import type { VerticalNavState } from '../../contexts/verticalNavContext'
 import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNav'
 
 // Util Imports
-import { verticalNavClasses } from '../../utils/utilityClasses'
+import { horizontalNavClasses, menuClasses, verticalNavClasses } from '../../utils/utilityClasses'
 
 type StyledVerticalNavProps = VerticalNavProps &
   Pick<VerticalNavState, 'isBreakpointReached' | 'collapsing' | 'expanding'>
@@ -70,6 +70,11 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
       margin-inline-start: ${typeof width === 'number' ? `-${width}px` : `-${width}`};
     }
   `}
+
+  &.${horizontalNavClasses.root} .${menuClasses.root} > ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
   /* User Styles */
   ${({ customStyle }) => customStyle}

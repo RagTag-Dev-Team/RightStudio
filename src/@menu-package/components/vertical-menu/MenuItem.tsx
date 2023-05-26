@@ -63,7 +63,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   } = props
 
   // Hooks
-  const { isCollapsed, isHovered, transitionOptions, isPopoutWhenCollapsed } = useVerticalNav()
+  const { isCollapsed, isHovered, transitionOptions, isPopoutWhenCollapsed, toggleVerticalNav, isToggled } =
+    useVerticalNav()
   const { menuItemStyles } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
@@ -86,6 +87,13 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     }
   }
 
+  // Handle the click event.
+  const handleClick = () => {
+    if (isToggled) {
+      toggleVerticalNav()
+    }
+  }
+
   return (
     <StyledVerticalMenuItem
       ref={ref}
@@ -104,7 +112,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       menuItemStyles={getMenuItemStyles('root')}
       rootStyles={rootStyles}
     >
-      <MenuButton className={menuClasses.button} component={component} tabIndex={0} {...rest}>
+      <MenuButton className={menuClasses.button} component={component} tabIndex={0} {...rest} onClick={handleClick}>
         {icon && (
           <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
             {icon}

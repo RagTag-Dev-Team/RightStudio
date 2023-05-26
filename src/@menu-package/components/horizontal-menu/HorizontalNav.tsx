@@ -1,15 +1,17 @@
 // React Imports
 import type { HTMLAttributes } from 'react'
+import { useEffect } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Component Imports
-import VerticalNavInHorizontalLayout from '../../../components/VerticalNavInHorizontalLayout'
+import VerticalNavInHorizontalLayout from '../../../@layouts/components/menu-horizontal/VerticalNavInHorizontalLayout'
 
 // Hook Imports
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import useLayout from '../../../@layouts/hooks/useLayout'
 
 // Util Imports
 import { horizontalNavClasses } from '../../utils/utilityClasses'
@@ -32,6 +34,7 @@ const BREAK_POINTS: Record<BreakPoint, string> = {
 
 export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   switchToVertical?: boolean
+  setIsBreakpointReached?: (isBreakpointReached: boolean) => void
   hideMenu?: boolean
   breakPoint?: BreakPoint
   customBreakPoint?: string
@@ -46,6 +49,7 @@ export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
 const HorizontalNav = (props: HorizontalNavProps) => {
   // Destructure Props with default values
   const {
+    setIsBreakpointReached,
     switchToVertical = false,
     hideMenu = false,
     breakPoint = 'lg',
@@ -56,12 +60,27 @@ const HorizontalNav = (props: HorizontalNavProps) => {
     ...rest
   } = props
 
+  const { layout } = useLayout()
+
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? BREAK_POINTS[breakPoint] : breakPoint))
 
+  const horizontalMenuClasses = classNames(
+    horizontalNavClasses.root,
+    {
+      [horizontalNavClasses.breakpointReached]: breakpointReached
+    },
+    className
+  )
+
+  // Set the breakpointReached value in the state
+  useEffect(() => {
+    if (setIsBreakpointReached) setIsBreakpointReached(breakpointReached)
+  }, [breakpointReached]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // If switchToVertical is true, then render the VerticalNav component if breakpoint is reached
-  if (switchToVertical && breakpointReached) {
-    return <VerticalNavInHorizontalLayout>{children}</VerticalNavInHorizontalLayout>
+  if (switchToVertical && breakpointReached && layout === 'horizontal') {
+    return <VerticalNavInHorizontalLayout className={horizontalMenuClasses}>{children}</VerticalNavInHorizontalLayout>
   }
 
   // If hideMenu is true, then hide the HorizontalNav component if breakpoint is reached
@@ -76,13 +95,7 @@ const HorizontalNav = (props: HorizontalNavProps) => {
       hideMenu={hideMenu}
       breakpointReached={breakpointReached}
       customStyle={customStyle}
-      className={classNames(
-        horizontalNavClasses.root,
-        {
-          [horizontalNavClasses.breakpointReached]: breakpointReached
-        },
-        className
-      )}
+      className={horizontalMenuClasses}
       {...rest}
     >
       {children}

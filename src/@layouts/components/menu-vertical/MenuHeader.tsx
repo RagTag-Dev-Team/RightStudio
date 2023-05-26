@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react'
 
 // Styled Component Imports
-import StyledMenuHeader from '../@menu-package/styles/StyledMenuHeader'
+import StyledMenuHeader from '../../../@menu-package/styles/StyledMenuHeader'
 
 type MenuHeaderProps = {
   children: ReactNode

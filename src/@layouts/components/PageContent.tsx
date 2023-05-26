@@ -4,7 +4,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 
 type ContentAreaProps = {
-  children?: ReactNode
+  children: ReactNode
 }
 
 const contentAreaStyles: CSSProperties = {
@@ -14,7 +14,7 @@ const contentAreaStyles: CSSProperties = {
   overflow: 'hidden'
 }
 
-const ContentArea = ({ children }: ContentAreaProps) => {
+const PageContent = ({ children }: ContentAreaProps) => {
   return (
     <div className='content-wrapper' style={contentAreaStyles}>
       {children}
@@ -22,4 +22,4 @@ const ContentArea = ({ children }: ContentAreaProps) => {
   )
 }
 
-export default ContentArea
+export default PageContent

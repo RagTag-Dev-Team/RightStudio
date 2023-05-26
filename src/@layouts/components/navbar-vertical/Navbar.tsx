@@ -4,17 +4,17 @@
 
 // Components Imports
 import VerticalNavToggle from './VerticalNavToggle'
-import { RouterLink } from '../../@menu-package/components/RouterLink'
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../@menu-package/components/horizontal-menu'
+import { RouterLink } from '../../../@menu-package/components/RouterLink'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
 
 // Utils Imports
-import { generateHorizontalMenu } from '../../@menu-package/utils/menuUtils'
+import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Styled Components Imports
-import StyledNavbar from '../../styles/StyledNavbar'
+import StyledNavbar from '../../../styles/StyledNavbar'
 
 // Menu Data Imports
-import menuData from '../../navigation-data/HorizontalMenuData'
+import menuData from '../../../navigation-data/HorizontalMenuData'
 
 const Navbar = () => {
   return (
