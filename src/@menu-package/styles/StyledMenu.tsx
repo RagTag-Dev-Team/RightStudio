@@ -1,15 +1,13 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
+
+// Type Imports
+import type { RootStylesType } from '../types'
 
 // Util Imports
 import { menuClasses } from '../utils/utilityClasses'
 
-type StyledMenuProps = {
-  rootStyles?: CSSObject
-}
-
-const StyledMenu = styled.nav<StyledMenuProps>`
+const StyledMenu = styled.nav<RootStylesType>`
   &.${menuClasses.root} {
     ${({ rootStyles }) => rootStyles}
   }

@@ -38,6 +38,7 @@ import {
 import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
+import type { ACLPropsType, ChildrenType, SubMenuItemElement } from '../../types'
 import type { MenuItemProps } from './MenuItem'
 
 // Component Imports
@@ -60,41 +61,31 @@ import StyledHorizontalNavExpandIcon, {
   StyledHorizontalNavExpandIconWrapper
 } from '../../styles/horizontal/StyledHorizontalNavExpandIcon'
 
-export interface SubMenuProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> {
-  label: string | ReactNode
-  icon?: ReactNode
-  prefix?: ReactNode
-  suffix?: ReactNode
-  active?: boolean
-  disabled?: boolean
-  rootStyles?: CSSObject
-  component?: string | ReactElement
-  children?: ReactNode
-  i18nKey?: string
-  aclProps?: { action: string; subject: string }
-  onOpenChange?: (open: boolean) => void
+export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
+  Partial<ChildrenType> & {
+    label: string | ReactNode
+    icon?: ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
+    active?: boolean
+    disabled?: boolean
+    rootStyles?: CSSObject
+    component?: string | ReactElement
+    i18nKey?: string
+    aclProps?: ACLPropsType
+    onOpenChange?: (open: boolean) => void
 
-  /**
-   * @ignore
-   */
-  level?: number
-}
+    /**
+     * @ignore
+     */
+    level?: number
+  }
 
-interface StyledSubMenuProps extends Pick<SubMenuProps, 'rootStyles' | 'active' | 'disabled'> {
+type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'active' | 'disabled'> & {
   level: number
   menuItemStyles?: CSSObject
   buttonStyles?: CSSObject
 }
-
-type MenuItemElement =
-  | 'root'
-  | 'button'
-  | 'label'
-  | 'prefix'
-  | 'suffix'
-  | 'icon'
-  | 'subMenuContent'
-  | 'SubMenuExpandIcon'
 
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
   ${({ menuItemStyles }) => menuItemStyles};
@@ -216,7 +207,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     }
   }
 
-  const getSubMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
+  const getSubMenuItemStyles = (element: SubMenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
     // specified element.
     if (menuItemStyles) {

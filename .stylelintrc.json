@@ -6,7 +6,7 @@
     {
       "customSyntax": "postcss-styled-syntax",
       "files": [
-        "**/*.tsx"
+        "**/*.{js,ts,jsx,tsx}"
       ]
     }
   ],

@@ -1,12 +1,10 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
 
-type StyledMenuLabelProps = {
-  rootStyles?: CSSObject
-}
+// Type Imports
+import type { RootStylesType } from '../types'
 
-const StyledMenuLabel = styled.span<StyledMenuLabelProps>`
+const StyledMenuLabel = styled.span<RootStylesType>`
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;

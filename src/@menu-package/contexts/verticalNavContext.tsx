@@ -2,11 +2,9 @@
 
 // React Imports
 import { createContext, useCallback, useMemo, useState } from 'react'
-import type { ReactNode } from 'react'
 
-type VerticalNavProviderProps = {
-  children: ReactNode
-}
+// Type Imports
+import type { ChildrenType, TransitionOptionsType } from '../types'
 
 export type VerticalNavState = {
   width?: number | string
@@ -20,11 +18,7 @@ export type VerticalNavState = {
   isPopoutWhenCollapsed?: boolean
   collapsing?: boolean // for internal use only
   expanding?: boolean // for internal use only
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
-  }
+  transitionOptions?: TransitionOptionsType
 }
 
 export type VerticalNavContextProps = VerticalNavState & {
@@ -36,7 +30,7 @@ export type VerticalNavContextProps = VerticalNavState & {
 
 const VerticalNavContext = createContext({} as VerticalNavContextProps)
 
-export const VerticalNavProvider = ({ children }: VerticalNavProviderProps) => {
+export const VerticalNavProvider = ({ children }: ChildrenType) => {
   const [verticalNavState, setVerticalNavState] = useState<VerticalNavState>()
 
   /* const updateVerticalNavState = useCallback((values: Partial<VerticalNavState>) => {

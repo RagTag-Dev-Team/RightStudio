@@ -1,12 +1,10 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
 
-type StyledMenuIconProps = {
-  rootStyles?: CSSObject
-}
+// Type Imports
+import type { RootStylesType } from '../types'
 
-const StyledMenuIcon = styled.span<StyledMenuIconProps>`
+const StyledMenuIcon = styled.span<RootStylesType>`
   inline-size: 35px;
   min-inline-size: 35px;
   block-size: 35px;

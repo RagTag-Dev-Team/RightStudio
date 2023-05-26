@@ -9,6 +9,9 @@ import classNames from 'classnames'
 import { useRendersCount } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { ACLPropsType, ChildrenType, MenuItemElement } from '../../types'
+
 // Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
@@ -19,32 +22,30 @@ import { menuClasses } from '../../utils/utilityClasses'
 // Styled Component Imports
 import MenuButton from './MenuButton'
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
-import StyledVerticalMenuItem from '../../styles/vertical/StyledVerticalMenuItem'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
+import StyledVerticalMenuItem from '../../styles/vertical/StyledVerticalMenuItem'
 
-export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> & {
-  icon?: ReactNode
-  prefix?: ReactNode
-  suffix?: ReactNode
-  active?: boolean
-  disabled?: boolean
-  target?: string
-  rel?: string
-  aclProps?: { action: string; subject: string }
-  i18nKey?: string
-  children?: ReactNode
-  component?: string | ReactElement
-  rootStyles?: CSSObject
+export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
+  Partial<ChildrenType> & {
+    icon?: ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
+    active?: boolean
+    disabled?: boolean
+    target?: string
+    rel?: string
+    aclProps?: ACLPropsType
+    i18nKey?: string
+    component?: string | ReactElement
+    rootStyles?: CSSObject
 
-  /**
-   * @ignore
-   */
-  level?: number
-}
-
-type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'
+    /**
+     * @ignore
+     */
+    level?: number
+  }
 
 const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props, ref) => {
   // Props

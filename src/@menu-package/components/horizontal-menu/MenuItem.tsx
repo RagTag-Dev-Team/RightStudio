@@ -6,6 +6,9 @@ import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, Reac
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { ACLPropsType, ChildrenType, MenuItemElement, TransitionOptionsType } from '../../types'
+
 // Component Imports
 import MenuButton from './MenuButton'
 
@@ -23,31 +26,25 @@ import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledHorizontalMenuItem from '../../styles/horizontal/StyledHorizontalMenuItem'
 
-export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> & {
-  icon?: ReactNode
-  prefix?: ReactNode
-  suffix?: ReactNode
-  disabled?: boolean
-  target?: string
-  rel?: string
-  aclProps?: { action: string; subject: string }
-  i18nKey?: string
-  children?: ReactNode
-  component?: string | ReactElement
-  rootStyles?: CSSObject
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
+export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
+  Partial<ChildrenType> & {
+    icon?: ReactNode
+    prefix?: ReactNode
+    suffix?: ReactNode
+    disabled?: boolean
+    target?: string
+    rel?: string
+    aclProps?: ACLPropsType
+    i18nKey?: string
+    component?: string | ReactElement
+    rootStyles?: CSSObject
+    transitionOptions?: TransitionOptionsType
+
+    /**
+     * @ignore
+     */
+    level?: number
   }
-
-  /**
-   * @ignore
-   */
-  level?: number
-}
-
-type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'
 
 const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props, ref) => {
   // Props

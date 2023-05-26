@@ -1,17 +1,14 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
 
-type StyledMenuPrefixProps = {
+// Type Imports
+import type { RootStylesType, TransitionOptionsType } from '../types'
+
+type StyledMenuPrefixProps = RootStylesType & {
   firstLevel?: boolean
   isCollapsed?: boolean
   isHovered?: boolean
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
-  }
-  rootStyles?: CSSObject
+  transitionOptions?: TransitionOptionsType
 }
 
 const StyledMenuPrefix = styled.span<StyledMenuPrefixProps>`

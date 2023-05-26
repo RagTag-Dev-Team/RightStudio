@@ -1,9 +1,12 @@
 // React Imports
 import { forwardRef, useEffect, useState } from 'react'
-import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject, ReactNode } from 'react'
+import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject } from 'react'
 
 // Third Party Imports
 import type { CSSObject } from '@emotion/react'
+
+// Type Imports
+import type { ChildrenType } from '../../types'
 
 // Hook Imports
 import useVerticalMenu from '../../hooks/useVerticalMenu'
@@ -12,23 +15,23 @@ import useVerticalMenu from '../../hooks/useVerticalMenu'
 import StyledUl from '../../styles/StyledUl'
 import StyledSubMenuContent from '../../styles/StyledSubMenuContent'
 
-export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> & {
-  open?: boolean
-  openWhenCollapsed?: boolean
-  openWhenHovered?: boolean
-  transitionDuration?: number
-  isPopoutWhenCollapsed?: boolean
-  firstLevel?: boolean
-  isCollapsed?: boolean
-  isHovered?: boolean
+export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
+  Partial<ChildrenType> & {
+    open?: boolean
+    openWhenCollapsed?: boolean
+    openWhenHovered?: boolean
+    transitionDuration?: number
+    isPopoutWhenCollapsed?: boolean
+    firstLevel?: boolean
+    isCollapsed?: boolean
+    isHovered?: boolean
 
-  // defaultOpen?: boolean
-  strategy?: string
-  top?: number
-  left?: number
-  rootStyles?: CSSObject
-  children?: ReactNode
-}
+    // defaultOpen?: boolean
+    strategy?: string
+    top?: number
+    left?: number
+    rootStyles?: CSSObject
+  }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
   const {

@@ -1,9 +1,12 @@
 // React Imports
 import { forwardRef } from 'react'
-import type { ForwardRefRenderFunction, HTMLAttributes, ReactNode } from 'react'
+import type { ForwardRefRenderFunction, HTMLAttributes } from 'react'
 
 // Third Party Imports
 import type { CSSObject } from '@emotion/react'
+
+// Type Imports
+import type { ChildrenType, TransitionOptionsType } from '../../types'
 
 // Component Imports
 import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
@@ -15,21 +18,17 @@ import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 import StyledUl from '../../styles/StyledUl'
 import StyledHorizontalSubMenuContent from '../../styles/horizontal/StyledHorizontalSubMenuContent'
 
-export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> & {
-  open?: boolean
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
+export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
+  Partial<ChildrenType> & {
+    open?: boolean
+    transitionOptions?: TransitionOptionsType
+    browserScroll?: boolean
+    firstLevel?: boolean
+    strategy?: string
+    top?: number
+    left?: number
+    rootStyles?: CSSObject
   }
-  browserScroll?: boolean
-  firstLevel?: boolean
-  strategy?: string
-  top?: number
-  left?: number
-  rootStyles?: CSSObject
-  children?: ReactNode
-}
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
   const { children, open, firstLevel, strategy, top, left, ...rest } = props

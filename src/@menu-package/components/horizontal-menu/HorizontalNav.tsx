@@ -6,6 +6,9 @@ import { useEffect } from 'react'
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { BreakPointType, TransitionOptionsType } from '../../types'
+
 // Component Imports
 import VerticalNavInHorizontalLayout from '../../../@layouts/components/menu-horizontal/VerticalNavInHorizontalLayout'
 
@@ -20,9 +23,7 @@ import { horizontalNavClasses } from '../../utils/utilityClasses'
 import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
 
 // Define Types
-type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
-
-const BREAK_POINTS: Record<BreakPoint, string> = {
+const BREAK_POINTS: Record<BreakPointType, string> = {
   xs: '480px',
   sm: '600px',
   md: '900px',
@@ -36,13 +37,9 @@ export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   switchToVertical?: boolean
   setIsBreakpointReached?: (isBreakpointReached: boolean) => void
   hideMenu?: boolean
-  breakPoint?: BreakPoint
+  breakPoint?: BreakPointType
   customBreakPoint?: string
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
-  }
+  transitionOptions?: TransitionOptionsType
   customStyle?: CSSObject
 }
 

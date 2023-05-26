@@ -11,12 +11,18 @@ import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
+// Type Imports
+import type { ChildrenType, RenderExpandIconParams } from '../../types'
+
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
 
 // Styled Component Imports
 import StyledUl from '../../styles/StyledUl'
 import StyledMenu from '../../styles/StyledMenu'
+
+// Transition Default Object Imports
+import { transitionOptionsDefaults } from '../../defaultConfigs'
 
 // Menu Item Styles Params Type
 export type MenuItemStylesParams = {
@@ -45,18 +51,10 @@ export type MenuItemStyles = {
 // Menu Section Styles Type
 export type MenuSectionStyles = {
   root?: CSSObject
-  button?: CSSObject
   label?: CSSObject
   prefix?: CSSObject
   suffix?: CSSObject
   icon?: CSSObject
-}
-
-export type RenderExpandIconParams = {
-  level: number
-  disabled: boolean
-  active: boolean
-  open: boolean
 }
 
 export type OpenSubmenu = {
@@ -79,9 +77,9 @@ export type VerticalMenuContextProps = {
 }
 
 export type MenuProps = VerticalMenuContextProps &
+  Partial<ChildrenType> &
   MenuHTMLAttributes<HTMLMenuElement> & {
     rootStyles?: CSSObject
-    children?: ReactNode
   }
 
 export const VerticalMenuContext = createContext({} as VerticalMenuContextProps)
@@ -96,8 +94,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     menuSectionStyles,
     closeOnClick = false,
     triggerPopout = 'hover',
-    transitionDuration = 300,
     subMenuOpenBehavior = 'accordion', // accordion, collapse
+    transitionDuration = transitionOptionsDefaults?.duration,
     ...rest
   } = props
 

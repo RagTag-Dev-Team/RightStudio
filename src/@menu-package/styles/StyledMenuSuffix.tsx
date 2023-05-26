@@ -1,17 +1,14 @@
 // Third Party Imports
 import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
 
-type StyledMenuSuffixProps = {
+// Type Imports
+import type { RootStylesType, TransitionOptionsType } from '../types'
+
+type StyledMenuSuffixProps = RootStylesType & {
   firstLevel?: boolean
   isCollapsed?: boolean
   isHovered?: boolean
-  transitionOptions?: {
-    duration?: number | string
-    easing?: string
-    delay?: number | string
-  }
-  rootStyles?: CSSObject
+  transitionOptions?: TransitionOptionsType
 }
 
 const StyledMenuSuffix = styled.span<StyledMenuSuffixProps>`
