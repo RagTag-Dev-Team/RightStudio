@@ -1,14 +1,10 @@
-// Import types
-import type { ReactNode } from 'react'
+// Type Imports
+import type { ChildrenType } from '../../@menu-package/types'
 
-// Import blank layout
+// Blank Layout Import
 import BlankLayout from '../../@layouts/BlankLayout'
 
-type LayoutProps = {
-  children: ReactNode
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: ChildrenType) => {
   return <BlankLayout>{children}</BlankLayout>
 }
 

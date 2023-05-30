@@ -2,8 +2,14 @@
 import type { ReactNode } from 'react'
 import { isValidElement, Children } from 'react'
 
+// Type Imports
+import type { BreakPointType } from '../../../@menu-package/types'
+
 // Component Imports
-import MenuHeader from '../menu-vertical/MenuHeader'
+import NavHeader from '../vertical/NavHeader'
+import Logo from '../../../components/layout/shared/Logo'
+import NavCollapseIcons from '../vertical/NavCollapseIcons'
+import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
 
 //* We have imported Menu, SubMenu & MenuItem from the horizontal-menu component for matching child component types in mapChildren function below, as the vertical-menu component has the same child components but they will not match the types.
 import { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
@@ -15,15 +21,15 @@ import VerticalNav, {
   MenuItem as VerticalMenuItem
 } from '../../../@menu-package/components/vertical-menu'
 
-import VerticalNavCollapseIcons from '../menu-vertical/VerticalNavCollapseIcons'
-import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
-
+// Type
 type VerticalNavInHorizontalLayoutProps = {
   children: ReactNode
   className?: string
+  breakPoint?: BreakPointType
+  customBreakPoint?: string
 }
 
-//* Reason behind mapping the children of the vertical-menu component to the horizontal-menu component: The Horizontal menu components will not work inside of Vertical menu on small screens. So, we have to map the children of the horizontal-menu components to the vertical-menu components. We also kept the same names and almost similar props for menuitem and submenu components for easy mapping.
+//* Reason behind mapping the children of the horizontal-menu component to the vertical-menu component: The Horizontal menu components will not work inside of Vertical menu on small screens. So, we have to map the children of the horizontal-menu components to the vertical-menu components. We also kept the same names and almost similar props for menuitem and submenu components for easy mapping.
 
 const mapChildren = (children: ReactNode) => {
   return Children.map(children, child => {
@@ -49,14 +55,18 @@ const mapChildren = (children: ReactNode) => {
   })
 }
 
-const VerticalNavInHorizontalLayout = ({ children, className }: VerticalNavInHorizontalLayoutProps) => (
-  <VerticalNav backgroundColor='rgba(255,255,0,1)' className={className}>
-    <MenuHeader>
-      Logo
-      <VerticalNavCollapseIcons />
-    </MenuHeader>
-    <PerfectScrollbar options={{ wheelPropagation: false }}>{mapChildren(children)}</PerfectScrollbar>
-  </VerticalNav>
-)
+const VerticalNavInHorizontalLayout = (props: VerticalNavInHorizontalLayoutProps) => {
+  const { children, className, breakPoint, customBreakPoint } = props
+
+  return (
+    <VerticalNav className={className} breakPoint={breakPoint} customBreakPoint={customBreakPoint}>
+      <NavHeader>
+        <Logo />
+        <NavCollapseIcons />
+      </NavHeader>
+      <PerfectScrollbar options={{ wheelPropagation: false }}>{mapChildren(children)}</PerfectScrollbar>
+    </VerticalNav>
+  )
+}
 
 export default VerticalNavInHorizontalLayout

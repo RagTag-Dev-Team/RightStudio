@@ -4,7 +4,7 @@ import { FiAlignJustify } from 'react-icons/fi'
 // Hook Imports
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 
-const VerticalNavToggle = () => {
+const NavToggle = () => {
   const { toggleVerticalNav, isBreakpointReached } = useVerticalNav()
 
   const handleClick = () => {
@@ -20,4 +20,4 @@ const VerticalNavToggle = () => {
   )
 }
 
-export default VerticalNavToggle
+export default NavToggle

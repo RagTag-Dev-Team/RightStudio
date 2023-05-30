@@ -1,11 +1,8 @@
-//* This is User Component (Not a core component)
-
 // React Imports
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties } from 'react'
 
-type ContentAreaProps = {
-  children: ReactNode
-}
+// Type Imports
+import type { ChildrenType } from '../../@menu-package/types'
 
 const contentAreaStyles: CSSProperties = {
   display: 'flex',
@@ -14,7 +11,7 @@ const contentAreaStyles: CSSProperties = {
   overflow: 'hidden'
 }
 
-const PageContent = ({ children }: ContentAreaProps) => {
+const PageContent = ({ children }: ChildrenType) => {
   return (
     <div className='content-wrapper' style={contentAreaStyles}>
       {children}

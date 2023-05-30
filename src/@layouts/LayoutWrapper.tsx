@@ -1,20 +1,16 @@
 'use client'
 
-// Import types
-import type { ReactNode } from 'react'
+// Type Imports
+import type { ChildrenType } from '../@menu-package/types'
 
-// Import hooks
+// Hook Imports
 import useLayout from './hooks/useLayout'
 
-// Import Layouts
+// Layout Imports
 import VerticalLayout from './VerticalLayout'
 import HorizontalLayout from './HorizontalLayout'
 
-type LayoutWrapperProps = {
-  children: ReactNode
-}
-
-const LayoutWrapper = ({ children }: LayoutWrapperProps) => {
+const LayoutWrapper = ({ children }: ChildrenType) => {
   const { layout } = useLayout()
 
   if (layout === 'horizontal') {

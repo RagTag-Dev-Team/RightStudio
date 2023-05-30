@@ -1,26 +1,33 @@
 // React Imports
 import type { ReactNode } from 'react'
-import { useState } from 'react'
+
+// import { useState } from 'react'
 
 // Component Imports
 
 import Footer from './components/Footer'
 import PageContent from './components/PageContent'
-import Navbar from './components/navbar-horizontal/Navbar'
+import Navbar from '../components/layout/horizontal/Navbar'
 import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
+import Header from './components/horizontal/Header'
+import Navigation from '../components/layout/horizontal/Navigation'
+import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
 
 const HorizontalLayout = ({ children }: { children: ReactNode }) => {
-  const [isBreakpointReached, setIsBreakpointReached] = useState(false)
-
   return (
-    <VerticalNavProvider>
-      <PageContent>
-        <Navbar isBreakpointReached={isBreakpointReached} setIsBreakpointReached={setIsBreakpointReached} />
-        {/* Content */}
-        <div>{children}</div>
-        <Footer />
-      </PageContent>
-    </VerticalNavProvider>
+    <HorizontalNavProvider>
+      <VerticalNavProvider>
+        <PageContent>
+          <Header>
+            <Navbar />
+            <Navigation />
+          </Header>
+          {/* Content */}
+          <div>{children}</div>
+          <Footer />
+        </PageContent>
+      </VerticalNavProvider>
+    </HorizontalNavProvider>
   )
 }
 

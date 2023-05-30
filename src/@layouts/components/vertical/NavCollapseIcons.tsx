@@ -8,7 +8,7 @@ import { FiDisc, FiCircle, FiX } from 'react-icons/fi'
 // Hook Imports
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 
-const VerticalNavCollapseIcons = () => {
+const NavCollapseIcons = () => {
   const { isCollapsed, collapseVerticalNav, isBreakpointReached, toggleVerticalNav } = useVerticalNav()
 
   // Handle Lock / Unlock Icon Buttons click
@@ -39,4 +39,4 @@ const VerticalNavCollapseIcons = () => {
   )
 }
 
-export default VerticalNavCollapseIcons
+export default NavCollapseIcons

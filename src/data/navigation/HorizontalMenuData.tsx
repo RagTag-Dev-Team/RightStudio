@@ -1,8 +1,8 @@
 // Type Imports
-import type { HorizontalMenuDataType } from '../@menu-package/types'
+import type { HorizontalMenuDataType } from '../../@menu-package/types'
 
 // Component Imports
-import { RouterLink } from '../@menu-package/components/RouterLink'
+import { RouterLink } from '../../@menu-package/components/RouterLink'
 
 const menuData: HorizontalMenuDataType[] = [
   {

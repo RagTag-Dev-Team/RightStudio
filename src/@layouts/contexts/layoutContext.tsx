@@ -2,8 +2,10 @@
 'use client'
 
 // React Imports
-import type { ReactNode } from 'react'
 import { createContext, useMemo, useState } from 'react'
+
+// Type Imports
+import type { ChildrenType } from '../../@menu-package/types'
 
 // Layout Context Props
 export type LayoutContextProps = {
@@ -11,16 +13,12 @@ export type LayoutContextProps = {
   switchLayout: (layout: 'vertical' | 'horizontal') => void
 }
 
-// Layout Provider Props
-type LayoutProviderProps = {
-  children: ReactNode
-}
-
 // Create a context for the layout
 const LayoutContext = createContext({} as LayoutContextProps)
 
-export const LayoutProvider = ({ children }: LayoutProviderProps) => {
-  const [layout, setLayout] = useState<LayoutContextProps['layout']>('horizontal')
+export const LayoutProvider = ({ children }: ChildrenType) => {
+  // Todo: Set default layout based on user settings (from ThemeConfig file)
+  const [layout, setLayout] = useState<LayoutContextProps['layout']>('vertical')
 
   // Switch Layout
   const switchLayout = (layout: 'vertical' | 'horizontal') => {

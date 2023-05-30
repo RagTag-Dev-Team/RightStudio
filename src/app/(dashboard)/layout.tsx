@@ -1,5 +1,5 @@
-// Import types
-import type { ReactNode } from 'react'
+// Type Imports
+import type { ChildrenType } from '../../@menu-package/types'
 
 // Context Imports
 import { LayoutProvider } from '../../@layouts/contexts/layoutContext'
@@ -7,11 +7,7 @@ import { LayoutProvider } from '../../@layouts/contexts/layoutContext'
 // Component Imports
 import LayoutWrapper from '../../@layouts/LayoutWrapper'
 
-type LayoutProps = {
-  children: ReactNode
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: ChildrenType) => {
   return (
     <LayoutProvider>
       <LayoutWrapper>{children}</LayoutWrapper>
