@@ -1,5 +1,5 @@
 // React Imports
-import { Children, cloneElement, forwardRef, useEffect, useRef, useState } from 'react'
+import { Children, cloneElement, createContext, forwardRef, useEffect, useRef, useState } from 'react'
 import type {
   AnchorHTMLAttributes,
   ForwardRefRenderFunction,
@@ -87,6 +87,10 @@ type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'active' | 'disabled
   buttonStyles?: CSSObject
 }
 
+type HorizontalSubMenuContextProps = {
+  getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>
+}
+
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
   ${({ menuItemStyles }) => menuItemStyles};
   ${({ rootStyles }) => rootStyles};
@@ -101,6 +105,8 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
     ${({ buttonStyles }) => buttonStyles};
   }
 `
+
+export const HorizontalSubMenuContext = createContext<HorizontalSubMenuContextProps>({ getItemProps: () => ({}) })
 
 const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
   const {
@@ -179,7 +185,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     delay: { open: 75 } // Delay opening submenu by 75ms
   })
   const click = useClick(context, {
-    enabled: triggerPopout === 'click' // Only enable click effect when triggerPopout option is set to 'click'
+    enabled: triggerPopout === 'click', // Only enable click effect when triggerPopout option is set to 'click'
+    toggle: false
   })
 
   const dismiss = useDismiss(context)
@@ -356,6 +363,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           </StyledHorizontalNavExpandIconWrapper>
         </MenuButton>
 
+        <HorizontalSubMenuContext.Provider value={{ getItemProps }}>
         <FloatingPortal>
           {isMounted && (
             <SubMenuContent
@@ -390,6 +398,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
             </SubMenuContent>
           )}
         </FloatingPortal>
+        </HorizontalSubMenuContext.Provider>
       </StyledSubMenu>
     </FloatingNode>
   )

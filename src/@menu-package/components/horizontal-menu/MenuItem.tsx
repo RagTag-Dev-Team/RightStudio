@@ -1,13 +1,17 @@
 // React Imports
-import { forwardRef } from 'react'
-import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
+import { forwardRef, useContext } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode, MouseEvent } from 'react'
 
 // Third Party Imports
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
+import { useFloatingTree } from '@floating-ui/react'
 
 // Type Imports
 import type { ACLPropsType, ChildrenType, MenuItemElement, TransitionOptionsType } from '../../types'
+
+// Context Imports
+import { HorizontalSubMenuContext } from './SubMenu'
 
 // Component Imports
 import MenuButton from './MenuButton'
@@ -63,8 +67,10 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   } = props
 
   // Hooks
+  const tree = useFloatingTree()
   const { menuItemStyles } = useHorizontalMenu()
   const { toggleVerticalNav, isToggled } = useVerticalNav()
+  const { getItemProps } = useContext(HorizontalSubMenuContext)
 
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
@@ -107,7 +113,19 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       menuItemStyles={getMenuItemStyles('root')}
       rootStyles={rootStyles}
     >
-      <MenuButton className={menuClasses.button} component={component} tabIndex={0} {...rest} onClick={handleClick}>
+      <MenuButton
+        className={menuClasses.button}
+        component={component}
+        tabIndex={0}
+        {...rest}
+        onClick={handleClick}
+        {...getItemProps({
+          onClick(event: MouseEvent<HTMLAnchorElement>) {
+            props.onClick?.(event)
+            tree?.events.emit('click')
+          }
+        })}
+      >
         {icon && (
           <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
             {icon}
