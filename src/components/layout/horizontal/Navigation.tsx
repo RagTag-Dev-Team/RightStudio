@@ -1,3 +1,6 @@
+// Do not remove this following 'use client' else SubMenu in rendered in vertical menu on smaller screen will not work.
+'use client'
+
 // Component Imports from @menu-package
 import { RouterLink } from '../../../@menu-package/components/RouterLink'
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
@@ -26,6 +29,28 @@ const Navigation = () => {
             <MenuItem href='/login-v1'>Login v1</MenuItem>
             <MenuItem href='/login-v2'>Login v2</MenuItem>
           </SubMenu>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
+          <MenuItem href='/chat'>Chat</MenuItem>
         </SubMenu>
         <SubMenu label='Manage Users'>
           <MenuItem href='/user-list'>User List</MenuItem>

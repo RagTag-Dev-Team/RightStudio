@@ -168,9 +168,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   })
 
   const hover = useHover(context, {
-    handleClose: safePolygon(), // safePolygon function allows us to reach to submenu
+    handleClose: safePolygon({
+      blockPointerEvents: true
+    }), // safePolygon function allows us to reach to submenu
     restMs: 25, // Only opens submenu when cursor rests for 25ms on a menu
-    enabled: triggerPopout === 'hover' // Only enable hover effect when triggerPopout option is set to 'hover'
+    enabled: triggerPopout === 'hover', // Only enable hover effect when triggerPopout option is set to 'hover'
+    delay: { open: 75 } // Delay opening submenu by 75ms
   })
   const click = useClick(context, {
     enabled: triggerPopout === 'click' // Only enable click effect when triggerPopout option is set to 'click'

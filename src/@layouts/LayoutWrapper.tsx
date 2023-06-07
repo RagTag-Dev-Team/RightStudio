@@ -1,23 +1,23 @@
 'use client'
 
-// Type Imports
-import type { ChildrenType } from '../@menu-package/types'
+// React Imports
+import type { ReactElement } from 'react'
 
 // Hook Imports
 import useLayout from './hooks/useLayout'
 
-// Layout Imports
-import VerticalLayout from './VerticalLayout'
-import HorizontalLayout from './HorizontalLayout'
+// Type
+type LayoutWrapperProps = {
+  verticalLayout: ReactElement
+  horizontalLayout: ReactElement
+}
 
-const LayoutWrapper = ({ children }: ChildrenType) => {
+const LayoutWrapper = (props: LayoutWrapperProps) => {
+  const { verticalLayout, horizontalLayout } = props
   const { layout } = useLayout()
 
-  if (layout === 'horizontal') {
-    return <HorizontalLayout>{children}</HorizontalLayout>
-  } else {
-    return <VerticalLayout>{children}</VerticalLayout>
-  }
+  // Return the layout based on the layout context
+  return layout === 'horizontal' ? horizontalLayout : verticalLayout
 }
 
 export default LayoutWrapper

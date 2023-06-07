@@ -12,12 +12,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 a {
@@ -33,4 +28,13 @@ a {
 
 #root {
   display: flex;
+}
+
+/*! Do note remove following style */
+/* Fix the popout / submenu closing issue when using hover trigger to open the menu and using perfectscrollbar where the bridge create with safe polygon by floating ui was not working */
+[data-floating-ui-safe-polygon] .scrollbar-container {
+  pointer-events: auto;
+}
+[data-floating-ui-safe-polygon] .scrollbar-container .ps__rail-y {
+  pointer-events: none;
 }

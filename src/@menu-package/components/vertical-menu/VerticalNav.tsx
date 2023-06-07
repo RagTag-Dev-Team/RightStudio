@@ -76,7 +76,8 @@ const VerticalNav = (props: VerticalNavProps) => {
     updateVerticalNavState,
     isCollapsed: isCollapsedContext,
     width: widthContext,
-    collapsedWidth: collapsedWidthContext,
+
+    // collapsedWidth: collapsedWidthContext,
     isBreakpointReached: isBreakpointReachedContext,
     isToggled: isToggledContext,
     isHovered: isHoveredContext,
@@ -151,9 +152,9 @@ const VerticalNav = (props: VerticalNavProps) => {
 
   return (
     <StyledVerticalNav
-      width={widthContext}
+      width={defaultCollapsed && !widthContext ? collapsedWidth : width}
       isBreakpointReached={isBreakpointReachedContext}
-      collapsedWidth={collapsedWidthContext}
+      collapsedWidth={collapsedWidth}
       collapsing={collapsingContext}
       expanding={expandingContext}
       transitionOptions={transitionOptionsContext}

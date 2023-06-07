@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import type { HTMLAttributes } from 'react'
 import { useEffect } from 'react'
@@ -36,7 +38,6 @@ const BREAK_POINTS: Record<BreakPointType, string> = {
 
 export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   switchToVertical?: boolean
-  setIsBreakpointReached?: (isBreakpointReached: boolean) => void
   hideMenu?: boolean
   breakPoint?: BreakPointType
   customBreakPoint?: string
@@ -64,13 +65,7 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? BREAK_POINTS[breakPoint] : breakPoint))
 
-  const horizontalMenuClasses = classNames(
-    horizontalNavClasses.root,
-    {
-      [horizontalNavClasses.breakpointReached]: breakpointReached
-    },
-    className
-  )
+  const horizontalMenuClasses = classNames(horizontalNavClasses.root, className)
 
   // Set the breakpointReached value in the state
   useEffect(() => {

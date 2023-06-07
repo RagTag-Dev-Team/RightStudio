@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { forwardRef, useContext } from 'react'
 import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode, MouseEvent } from 'react'

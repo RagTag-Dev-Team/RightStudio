@@ -21,6 +21,13 @@ const data: SearchData[] = [
     shortcut: ['c'],
     keywords: 'chat',
     url: 'chat'
+  },
+  {
+    id: 'about',
+    name: 'About',
+    shortcut: ['a'],
+    keywords: 'about',
+    url: 'about'
   }
 ]
 

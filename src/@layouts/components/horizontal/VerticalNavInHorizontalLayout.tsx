@@ -2,6 +2,9 @@
 import type { ReactNode } from 'react'
 import { isValidElement, Children } from 'react'
 
+// Third-party Imports
+import PerfectScrollbar from 'react-perfect-scrollbar'
+
 // Type Imports
 import type { BreakPointType } from '../../../@menu-package/types'
 
@@ -9,7 +12,6 @@ import type { BreakPointType } from '../../../@menu-package/types'
 import NavHeader from '../vertical/NavHeader'
 import Logo from '../../../components/layout/shared/Logo'
 import NavCollapseIcons from '../vertical/NavCollapseIcons'
-import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
 
 //* We have imported Menu, SubMenu & MenuItem from the horizontal-menu component for matching child component types in mapChildren function below, as the vertical-menu component has the same child components but they will not match the types.
 import { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
@@ -22,8 +24,8 @@ import VerticalNav, {
 } from '../../../@menu-package/components/vertical-menu'
 
 // Type
-type VerticalNavInHorizontalLayoutProps = {
-  children: ReactNode
+export type VerticalNavInHorizontalLayoutProps = {
+  children?: ReactNode
   className?: string
   breakPoint?: BreakPointType
   customBreakPoint?: string
@@ -34,16 +36,19 @@ type VerticalNavInHorizontalLayoutProps = {
 const mapChildren = (children: ReactNode) => {
   return Children.map(children, child => {
     if (isValidElement(child)) {
+      const { children, ...rest } = child.props
+
       switch (child.type) {
         case MenuItem:
           return (
             // eslint-disable-next-line lines-around-comment
             // <VerticalMenuItem component={child.props.component} href={child.props.href}>
-            <VerticalMenuItem {...child.props}>{child.props.children}</VerticalMenuItem>
+            <VerticalMenuItem {...rest}>{children}</VerticalMenuItem>
           )
         case SubMenu:
           // return <VerticalSubmenu label={child.props.label}>{mapChildren(child.props.children)}</VerticalSubmenu>
-          return <VerticalSubmenu {...child.props}>{mapChildren(child.props.children)}</VerticalSubmenu>
+
+          return <VerticalSubmenu {...rest}>{mapChildren(children)}</VerticalSubmenu>
         case Menu:
           return <VerticalMenu>{mapChildren(child.props.children)}</VerticalMenu>
         default:

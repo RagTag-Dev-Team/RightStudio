@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import type { CSSProperties } from 'react'
 
@@ -5,7 +7,8 @@ import type { CSSProperties } from 'react'
 import { useRouter } from 'next/navigation'
 
 // Third-party Imports
-import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch } from 'kbar'
+import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useKBar } from 'kbar'
+import { FiSearch } from 'react-icons/fi'
 
 // Component Imports
 import SearchResults from '../../../@layouts/components/search/SearchResults'
@@ -43,6 +46,22 @@ const BackdropStyle: CSSProperties = {
   backgroundColor: 'rgba(0, 0, 0, 0.3)'
 }
 
+// Search Icon Component
+const SearchIcon = () => {
+  const { query } = useKBar()
+
+  return (
+    <FiSearch
+      className='ts-nav-search-icon'
+      role='button'
+      aria-label='search'
+      onClick={query.toggle}
+      style={{ cursor: 'pointer', margin: '0 16px' }}
+      size={20}
+    />
+  )
+}
+
 // NavSearch Component
 const NavSearch = () => {
   // Hooks
@@ -57,6 +76,7 @@ const NavSearch = () => {
 
   return (
     <KBarProvider actions={searchActions}>
+      <SearchIcon />
       <KBarPortal>
         <KBarPositioner style={{ zIndex: 10 }}>
           <KBarAnimator style={animatorStyle}>

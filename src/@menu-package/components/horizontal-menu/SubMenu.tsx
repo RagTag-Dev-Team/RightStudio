@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { Children, cloneElement, createContext, forwardRef, useEffect, useRef, useState } from 'react'
 import type {
@@ -179,7 +181,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   })
 
   const hover = useHover(context, {
-    handleClose: safePolygon(), // safePolygon function allows us to reach to submenu
+    handleClose: safePolygon({
+      blockPointerEvents: true
+    }), // safePolygon function allows us to reach to submenu
     restMs: 25, // Only opens submenu when cursor rests for 25ms on a menu
     enabled: triggerPopout === 'hover', // Only enable hover effect when triggerPopout option is set to 'hover',
     delay: { open: 75 } // Delay opening submenu by 75ms
@@ -364,40 +368,40 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         </MenuButton>
 
         <HorizontalSubMenuContext.Provider value={{ getItemProps }}>
-        <FloatingPortal>
-          {isMounted && (
-            <SubMenuContent
-              ref={refs.setFloating}
-              {...getFloatingProps()}
-              strategy={strategy}
-              top={y ?? 0}
-              left={x ?? 0}
-              open={open}
-              firstLevel={level === 0}
-              className={menuClasses.subMenuContent}
-              rootStyles={getSubMenuItemStyles('subMenuContent')}
-              style={{ ...styles }}
-            >
-              {childNodes.map((node, index) =>
-                cloneElement(node, {
-                  ...getItemProps({
-                    ref(node: HTMLButtonElement) {
-                      listItemsRef.current[index] = node
-                    },
+          <FloatingPortal>
+            {isMounted && (
+              <SubMenuContent
+                ref={refs.setFloating}
+                {...getFloatingProps()}
+                strategy={strategy}
+                top={y ?? 0}
+                left={x ?? 0}
+                open={open}
+                firstLevel={level === 0}
+                className={menuClasses.subMenuContent}
+                rootStyles={getSubMenuItemStyles('subMenuContent')}
+                style={{ ...styles }}
+              >
+                {childNodes.map((node, index) =>
+                  cloneElement(node, {
+                    ...getItemProps({
+                      ref(node: HTMLButtonElement) {
+                        listItemsRef.current[index] = node
+                      },
 
-                    onClick(event: MouseEvent<HTMLAnchorElement>) {
-                      if (node.props.children && !Array.isArray(node.props.children)) {
-                        node.props.onClick?.(event)
-                        tree?.events.emit('click')
+                      onClick(event: MouseEvent<HTMLAnchorElement>) {
+                        if (node.props.children && !Array.isArray(node.props.children)) {
+                          node.props.onClick?.(event)
+                          tree?.events.emit('click')
+                        }
                       }
-                    }
-                  }),
-                  level: level + 1
-                })
-              )}
-            </SubMenuContent>
-          )}
-        </FloatingPortal>
+                    }),
+                    level: level + 1
+                  })
+                )}
+              </SubMenuContent>
+            )}
+          </FloatingPortal>
         </HorizontalSubMenuContext.Provider>
       </StyledSubMenu>
     </FloatingNode>

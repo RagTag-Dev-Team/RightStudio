@@ -4,12 +4,10 @@ import type { ForwardRefRenderFunction, HTMLAttributes } from 'react'
 
 // Third Party Imports
 import type { CSSObject } from '@emotion/react'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { ChildrenType, TransitionOptionsType } from '../../types'
-
-// Component Imports
-import PerfectScrollbar from '../../../@menu-package/wrapper-componnents/perfectscrollbar'
 
 // Hook Imports
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'

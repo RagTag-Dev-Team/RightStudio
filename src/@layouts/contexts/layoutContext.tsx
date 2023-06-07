@@ -18,7 +18,7 @@ const LayoutContext = createContext({} as LayoutContextProps)
 
 export const LayoutProvider = ({ children }: ChildrenType) => {
   // Todo: Set default layout based on user settings (from ThemeConfig file)
-  const [layout, setLayout] = useState<LayoutContextProps['layout']>('vertical')
+  const [layout, setLayout] = useState<LayoutContextProps['layout']>('horizontal')
 
   // Switch Layout
   const switchLayout = (layout: 'vertical' | 'horizontal') => {
