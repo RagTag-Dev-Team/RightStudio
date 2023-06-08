@@ -1,18 +1,14 @@
 // Type Imports
-import type { VerticalMenuDataType } from '../@menu-package/types'
+import type { VerticalMenuDataType } from '../../@menu-package/types'
 
 const menuData: VerticalMenuDataType[] = [
   {
     label: 'Home',
-    active: false,
     disabled: false,
     target: '_blank',
     rel: 'noopener noreferrer',
     prefix: '-',
     suffix: '+',
-
-    // i18nKey: 'apps-pages',
-    // aclProps: { action: 'read', subject: 'apps-pages' },
     rootStyles: { backgroundColor: '#f4f4f4' },
     href: '/'
   },
@@ -25,9 +21,6 @@ const menuData: VerticalMenuDataType[] = [
     isSection: true,
     prefix: '-',
     suffix: '+',
-
-    // i18nKey: 'apps-pages',
-    // aclProps: { action: 'read', subject: 'apps-pages' },
     rootStyles: { color: 'red' },
     children: [
       {
@@ -43,7 +36,6 @@ const menuData: VerticalMenuDataType[] = [
         prefix: '12',
         suffix: 'AB',
         defaultOpen: false,
-        active: false,
         disabled: false,
         rootStyles: { backgroundColor: 'yellow' },
         children: [

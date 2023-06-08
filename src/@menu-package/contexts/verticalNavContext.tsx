@@ -4,7 +4,7 @@
 import { createContext, useCallback, useMemo, useState } from 'react'
 
 // Type Imports
-import type { ChildrenType, TransitionOptionsType } from '../types'
+import type { ChildrenType } from '../types'
 
 export type VerticalNavState = {
   width?: number | string
@@ -12,13 +12,12 @@ export type VerticalNavState = {
   isCollapsed?: boolean
   isHovered?: boolean
   isToggled?: boolean
-  isRtl?: boolean
   isScrollWithContent?: boolean
   isBreakpointReached?: boolean
   isPopoutWhenCollapsed?: boolean
   collapsing?: boolean // for internal use only
   expanding?: boolean // for internal use only
-  transitionOptions?: TransitionOptionsType
+  transitionDuration?: number
 }
 
 export type VerticalNavContextProps = VerticalNavState & {
@@ -94,7 +93,7 @@ export const VerticalNavProvider = ({ children }: ChildrenType) => {
     }))
   }, [])
 
-  const VerticalNavProviderValue = useMemo(
+  const verticalNavProviderValue = useMemo(
     () => ({
       ...verticalNavState,
       updateVerticalNavState,
@@ -105,7 +104,7 @@ export const VerticalNavProvider = ({ children }: ChildrenType) => {
     [verticalNavState, updateVerticalNavState, collapseVerticalNav, hoverVerticalNav, toggleVerticalNav]
   )
 
-  return <VerticalNavContext.Provider value={VerticalNavProviderValue}>{children}</VerticalNavContext.Provider>
+  return <VerticalNavContext.Provider value={verticalNavProviderValue}>{children}</VerticalNavContext.Provider>
 }
 
 export default VerticalNavContext

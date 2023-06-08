@@ -4,12 +4,12 @@
 import { useEffect } from 'react'
 import type { HTMLAttributes } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import classnames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { BreakPointType, TransitionOptionsType } from '../../types'
+import type { BreakPointType } from '../../types'
 
 // Context Imports
 import type { VerticalNavState } from '../../contexts/verticalNavContext'
@@ -26,44 +26,42 @@ import StyledVerticalNavBgImage from '../../styles/vertical/StyledVerticalNavBgI
 import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer'
 import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
 
-// Breakpoints Data Import
-import { breakpoints, transitionOptionsDefaults } from '../../defaultConfigs'
+// Default Config Imports
+import { breakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
 
 // Define Types
 export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   width?: VerticalNavState['width']
   collapsedWidth?: VerticalNavState['collapsedWidth']
   defaultCollapsed?: boolean
-  rtl?: VerticalNavState['isRtl']
   backgroundColor?: string
   backgroundImage?: string
   breakPoint?: BreakPointType
   customBreakPoint?: string
-  transitionOptions?: TransitionOptionsType
+  transitionDuration?: VerticalNavState['transitionDuration']
   backdropColor?: string
   popoutWhenCollapsed?: boolean
   scrollWithContent?: boolean
-  customStyle?: CSSObject
+  customStyles?: CSSObject
 }
 
 // VerticalNav Component
 const VerticalNav = (props: VerticalNavProps) => {
-  // Destructure Props with default values
+  // Props
   const {
     width = 260,
     collapsedWidth = 80,
     defaultCollapsed = false,
-    rtl = false,
     backgroundColor = 'white',
     backgroundImage,
     breakPoint = 'lg',
     customBreakPoint,
-    transitionOptions = transitionOptionsDefaults,
+    transitionDuration = verticalNavToggleDuration,
     backdropColor,
     popoutWhenCollapsed = false,
     scrollWithContent = false,
     className,
-    customStyle,
+    customStyles,
     children,
     ...rest
   } = props
@@ -83,8 +81,8 @@ const VerticalNav = (props: VerticalNavProps) => {
     isHovered: isHoveredContext,
     collapsing: collapsingContext,
     expanding: expandingContext,
-    transitionOptions: transitionOptionsContext,
-    isScrollWithContent: isScrollWithContentContext
+    isScrollWithContent: isScrollWithContentContext,
+    transitionDuration: transitionDurationContext
   } = useVerticalNav()
 
   // UseEffect, update verticalNav state to set initial values and update values on change
@@ -92,9 +90,8 @@ const VerticalNav = (props: VerticalNavProps) => {
     updateVerticalNavState({
       width,
       collapsedWidth,
-      transitionOptions,
+      transitionDuration,
       isScrollWithContent: scrollWithContent,
-      isRtl: rtl,
       isBreakpointReached: breakpointReached,
       isPopoutWhenCollapsed: popoutWhenCollapsed
     })
@@ -106,16 +103,15 @@ const VerticalNav = (props: VerticalNavProps) => {
       isHoveredContext && updateVerticalNavState({ isHovered: false })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width, collapsedWidth, rtl, scrollWithContent, breakpointReached, popoutWhenCollapsed, updateVerticalNavState])
+  }, [width, collapsedWidth, scrollWithContent, breakpointReached, popoutWhenCollapsed, updateVerticalNavState])
 
   useEffect(() => {
     updateVerticalNavState({
       isCollapsed: defaultCollapsed,
-      transitionOptions: { ...transitionOptionsDefaults, ...transitionOptions },
       isToggled: false
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultCollapsed, JSON.stringify(transitionOptions), updateVerticalNavState])
+  }, [defaultCollapsed, updateVerticalNavState])
 
   useEffect(() => {
     setTimeout(() => {
@@ -123,7 +119,7 @@ const VerticalNav = (props: VerticalNavProps) => {
         expanding: false,
         collapsing: false
       })
-    }, transitionOptions?.duration as number)
+    }, transitionDuration)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCollapsedContext])
 
@@ -157,9 +153,9 @@ const VerticalNav = (props: VerticalNavProps) => {
       collapsedWidth={collapsedWidth}
       collapsing={collapsingContext}
       expanding={expandingContext}
-      transitionOptions={transitionOptionsContext}
-      customStyle={customStyle}
+      customStyles={customStyles}
       scrollWithContent={isScrollWithContentContext}
+      transitionDuration={transitionDurationContext}
       className={classnames(
         verticalNavClasses.root,
         {
@@ -187,8 +183,8 @@ const VerticalNav = (props: VerticalNavProps) => {
       {/* VerticalNav Container for hover effect when verticalNav is collapsed */}
       <StyledVerticalNavContainer
         width={widthContext}
-        transitionOptions={transitionOptionsContext}
         className={verticalNavClasses.container}
+        transitionDuration={transitionDurationContext}
       >
         {/* VerticalNav Container to apply styling like background */}
         <StyledVerticalNavBgColorContainer

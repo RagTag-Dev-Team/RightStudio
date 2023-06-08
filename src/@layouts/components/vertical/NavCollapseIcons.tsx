@@ -1,14 +1,25 @@
 'use client'
 
-//* This is User Component (Not a core component)
+// React Imports
+import type { ReactElement } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import { FiDisc, FiCircle, FiX } from 'react-icons/fi'
 
 // Hook Imports
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 
-const NavCollapseIcons = () => {
+type NavCollapseIconsProps = {
+  closeIcon?: ReactElement
+  lockedIcon?: ReactElement
+  unlockedIcon?: ReactElement
+}
+
+const NavCollapseIcons = (props: NavCollapseIconsProps) => {
+  // Props
+  const { closeIcon, lockedIcon, unlockedIcon } = props
+
+  // Hooks
   const { isCollapsed, collapseVerticalNav, isBreakpointReached, toggleVerticalNav } = useVerticalNav()
 
   // Handle Lock / Unlock Icon Buttons click
@@ -27,15 +38,21 @@ const NavCollapseIcons = () => {
   }
 
   return (
-    <span role='button'>
+    <>
       {isBreakpointReached ? (
-        <FiX onClick={handleClose} />
+        <span role='button' onClick={handleClose}>
+          {closeIcon ?? <FiX />}
+        </span>
       ) : isCollapsed ? (
-        <FiCircle onClick={() => handleClick('lock')} />
+        <span role='button' onClick={() => handleClick('lock')}>
+          {unlockedIcon ?? <FiCircle />}
+        </span>
       ) : (
-        <FiDisc onClick={() => handleClick('unlock')} />
+        <span role='button' onClick={() => handleClick('unlock')}>
+          {lockedIcon ?? <FiDisc />}
+        </span>
       )}
-    </span>
+    </>
   )
 }
 

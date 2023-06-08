@@ -2,7 +2,7 @@
 import { cloneElement, createElement, forwardRef } from 'react'
 import type { ForwardRefRenderFunction } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import classNames from 'classnames'
 import { css } from '@emotion/react'
 
@@ -55,7 +55,7 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
 }
 
 const MenuButton: ForwardRefRenderFunction<HTMLAnchorElement, MenuButtonProps> = (
-  { className, component, active, children, ...rest },
+  { className, component, children, ...rest },
   ref
 ) => {
   if (component) {
@@ -95,7 +95,7 @@ const MenuButton: ForwardRefRenderFunction<HTMLAnchorElement, MenuButtonProps> =
       )
     } else {
       return (
-        <a ref={ref} className={classNames({ [menuClasses.active]: active }, className)} {...rest}>
+        <a ref={ref} className={className} {...rest}>
           {children}
         </a>
       )

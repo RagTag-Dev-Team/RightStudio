@@ -2,15 +2,14 @@
 
 // React Imports
 import { createContext, forwardRef, useMemo } from 'react'
-import type { ForwardRefRenderFunction, MenuHTMLAttributes, ReactNode } from 'react'
+import type { ForwardRefRenderFunction, MenuHTMLAttributes, ReactElement } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import classNames from 'classnames'
 import { FloatingTree } from '@floating-ui/react'
-import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { ChildrenType, RenderExpandIconParams, TransitionOptionsType } from '../../types'
+import type { ChildrenType, MenuItemStyles, RenderExpandIconParams, RootStylesType } from '../../types'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
@@ -19,46 +18,21 @@ import { menuClasses } from '../../utils/utilityClasses'
 import StyledMenu from '../../styles/StyledMenu'
 import StyledHorizontalUl from '../../styles/horizontal/StyledHorizontalUl'
 
-// Default Transition Options Imports
-import { transitionOptionsDefaults } from '../../defaultConfigs'
-
-// Menu Item Styles Params Type
-export type MenuItemStylesParams = {
-  level: number
-  disabled: boolean
-  active?: boolean
-  isSubmenu: boolean
-  open?: boolean
-}
-
-// Menu Item Style Elements Type
-export type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
-
-// Menu Item Styles Type
-export type MenuItemStyles = {
-  root?: ElementStyles
-  button?: ElementStyles
-  label?: ElementStyles
-  prefix?: ElementStyles
-  suffix?: ElementStyles
-  icon?: ElementStyles
-  subMenuContent?: ElementStyles
-  SubMenuExpandIcon?: ElementStyles
-}
+// Default Config Imports
+import { horizontalSubMenuToggleDuration } from '../../defaultConfigs'
 
 export type HorizontalMenuContextProps = {
   triggerPopout?: 'hover' | 'click'
   browserScroll?: boolean
   menuItemStyles?: MenuItemStyles
-  renderExpandIcon?: (params: RenderExpandIconParams) => ReactNode
-  transitionOptions?: TransitionOptionsType
+  renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
+  transitionDuration?: number
 }
 
 export type MenuProps = HorizontalMenuContextProps &
+  RootStylesType &
   Partial<ChildrenType> &
-  MenuHTMLAttributes<HTMLMenuElement> & {
-    rootStyles?: CSSObject
-  }
+  MenuHTMLAttributes<HTMLMenuElement>
 
 export const HorizontalMenuContext = createContext({} as HorizontalMenuContextProps)
 
@@ -70,14 +44,14 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     menuItemStyles,
     triggerPopout = 'hover',
     browserScroll = false,
-    transitionOptions = transitionOptionsDefaults,
+    transitionDuration = horizontalSubMenuToggleDuration,
     renderExpandIcon,
     ...rest
   } = props
 
   const providerValue = useMemo(
-    () => ({ triggerPopout, browserScroll, transitionOptions, menuItemStyles, renderExpandIcon }),
-    [triggerPopout, browserScroll, transitionOptions, menuItemStyles, renderExpandIcon]
+    () => ({ triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, transitionDuration }),
+    [triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, transitionDuration]
   )
 
   return (

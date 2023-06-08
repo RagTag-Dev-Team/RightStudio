@@ -44,5 +44,6 @@
     "typescriptreact"
   ],
   "markdown.extension.toc.updateOnSave": false,
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "editor.linkedEditing": true
 }

@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
@@ -7,7 +7,7 @@ import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNa
 // Util Imports
 import { verticalNavClasses } from '../../utils/utilityClasses'
 
-type StyledVerticalNavContainerProps = Pick<VerticalNavProps, 'width' | 'transitionOptions'>
+type StyledVerticalNavContainerProps = Pick<VerticalNavProps, 'width' | 'transitionDuration'>
 
 const StyledVerticalNavContainer = styled.div<StyledVerticalNavContainerProps>`
   position: relative;
@@ -20,9 +20,9 @@ const StyledVerticalNavContainer = styled.div<StyledVerticalNavContainerProps>`
 
   /* Transition */
   transition-property: inline-size, inset-inline-start;
-  transition-duration: ${({ transitionOptions }) => `${transitionOptions?.duration}ms`};
-  transition-timing-function: ${({ transitionOptions }) => transitionOptions?.easing};
-  transition-delay: ${({ transitionOptions }) => `${transitionOptions?.delay}ms`};
+  transition-duration: ${({ transitionDuration }) => `${transitionDuration}ms`};
+  transition-timing-function: ease-in-out;
+  transition-delay: 0;
 `
 
 export default StyledVerticalNavContainer

@@ -1,5 +1,5 @@
-// React Imports
-import type { ReactNode } from 'react'
+// Type Imports
+import type { ChildrenType } from '../@menu-package/types'
 
 // Component Imports
 import Footer from './components/Footer'
@@ -12,7 +12,7 @@ import Navigation from '../components/layout/horizontal/Navigation'
 import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
 import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
 
-const HorizontalLayout = ({ children }: { children: ReactNode }) => {
+const HorizontalLayout = ({ children }: ChildrenType) => {
   return (
     <HorizontalNavProvider>
       <VerticalNavProvider>

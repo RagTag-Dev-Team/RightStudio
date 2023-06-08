@@ -1,11 +1,5 @@
 // Type Imports
-import type { BreakPointType, TransitionOptionsType } from './types'
-
-export const transitionOptionsDefaults: TransitionOptionsType = {
-  easing: 'ease-in-out',
-  duration: 300,
-  delay: 0
-}
+import type { BreakPointType } from './types'
 
 export const breakpoints: Record<BreakPointType, string> = {
   xs: '480px',
@@ -16,3 +10,7 @@ export const breakpoints: Record<BreakPointType, string> = {
   xxl: '1920px',
   always: 'always'
 }
+
+export const verticalNavToggleDuration = 300
+export const verticalSubMenuToggleDuration = 300
+export const horizontalSubMenuToggleDuration = 200

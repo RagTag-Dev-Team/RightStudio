@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import type { Action } from 'kbar'
 
 // Type Defs

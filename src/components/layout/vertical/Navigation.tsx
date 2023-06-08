@@ -12,7 +12,7 @@ import Logo from '../shared/Logo'
 import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
-import useHorizontalNav from '@/@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 const Navigation = () => {
   const { isBreakpointReached } = useHorizontalNav()

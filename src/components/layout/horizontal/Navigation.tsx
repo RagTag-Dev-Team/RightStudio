@@ -9,7 +9,7 @@ import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/c
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
-// import menuData from '../../../navigation-data/HorizontalMenuData'
+// import menuData from '../../../data/navigation/HorizontalMenuData'
 
 const Navigation = () => {
   return (
@@ -24,34 +24,12 @@ const Navigation = () => {
         <MenuItem href='/email'>Email</MenuItem>
         <MenuItem href='/chat'>Chat</MenuItem>
         <SubMenu label='Authentication'>
-          {/* <MenuItem href='/contact'>Contact</MenuItem> */}
           <SubMenu label='Login'>
             <MenuItem href='/login-v1'>Login v1</MenuItem>
             <MenuItem href='/login-v2'>Login v2</MenuItem>
           </SubMenu>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
-          <MenuItem href='/chat'>Chat</MenuItem>
         </SubMenu>
+        {/* This is how you will normally render submenu */}
         <SubMenu label='Manage Users'>
           <MenuItem href='/user-list'>User List</MenuItem>
           <MenuItem href='/user-details'>User Details</MenuItem>

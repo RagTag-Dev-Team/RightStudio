@@ -1,14 +1,14 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
 import type { RootStylesType } from '../types'
 
 const StyledMenuIcon = styled.span<RootStylesType>`
-  inline-size: 35px;
-  min-inline-size: 35px;
-  block-size: 35px;
-  line-height: 35px;
+  inline-size: 24px;
+  min-inline-size: 24px;
+  block-size: 24px;
+  line-height: 24px;
   text-align: center;
   display: inline-block;
   border-radius: 2px;

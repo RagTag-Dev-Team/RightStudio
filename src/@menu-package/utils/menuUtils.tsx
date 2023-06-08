@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 
 // Type Imports
 import type {
+  ChildrenType,
   VerticalMenuDataType,
   VerticalSectionDataType,
   VerticalSubMenuDataType,
@@ -27,68 +28,32 @@ export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {
 
     // Check if the current item is a section
     if (menuSectionItem.isSection) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { children, isSection, ...rest } = menuSectionItem
+
       // If it is, return a MenuSection component and call generateVerticalMenu with the current menuSectionItem's children
       return (
-        <MenuSection
-          key={index}
-          label={menuSectionItem.label}
-          icon={menuSectionItem.icon}
-          prefix={menuSectionItem.prefix}
-          suffix={menuSectionItem.suffix}
-          // eslint-disable-next-line lines-around-comment
-          // i18nKey={menuSectionItem.i18nKey}
-          // aclProps={menuSectionItem.aclProps}
-          rootStyles={menuSectionItem.rootStyles}
-        >
-          {menuSectionItem.children && generateVerticalMenu(menuSectionItem.children)}
+        <MenuSection key={index} {...rest}>
+          {children && generateVerticalMenu(children)}
         </MenuSection>
       )
     }
 
     // Check if the current item is a sub menu
     if (subMenuItem.children) {
+      const { children, ...rest } = subMenuItem
+
       // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
       return (
-        <VerticalSubMenu
-          key={index}
-          label={subMenuItem.label}
-          icon={subMenuItem.icon}
-          prefix={subMenuItem.prefix}
-          suffix={subMenuItem.suffix}
-          defaultOpen={subMenuItem.defaultOpen}
-          active={subMenuItem.active}
-          disabled={subMenuItem.disabled}
-          rootStyles={subMenuItem.rootStyles}
-          // eslint-disable-next-line lines-around-comment
-          // open={subMenuItem.open}
-          // i18nKey={subMenuItem.i18nKey}
-          // aclProps={subMenuItem.aclProps}
-          component={subMenuItem.component}
-        >
-          {subMenuItem.children && generateVerticalMenu(subMenuItem.children)}
+        <VerticalSubMenu key={index} {...rest}>
+          {children && generateVerticalMenu(children)}
         </VerticalSubMenu>
       )
     }
 
     // If the current item is neither a section nor a sub menu, return a MenuItem component
     return (
-      <VerticalMenuItem
-        key={index}
-        icon={menuItem.icon}
-        active={menuItem.active}
-        disabled={menuItem.disabled}
-        target={menuItem.target}
-        rel={menuItem.rel}
-        prefix={menuItem.prefix}
-        suffix={menuItem.suffix}
-        rootStyles={menuItem.rootStyles}
-        href={menuItem.href}
-        component={menuItem.component}
-        // eslint-disable-next-line lines-around-comment
-        // i18nKey={menuItem.i18nKey}
-        // aclProps={menuItem.aclProps}
-        // component={<RouterLink href={menuItem.href || '/'} />}
-      >
+      <VerticalMenuItem key={index} {...menuItem}>
         {menuItem.label}
       </VerticalMenuItem>
     )
@@ -104,46 +69,26 @@ export const generateHorizontalMenu = (menuData: HorizontalMenuDataType[]) => {
 
     // Check if the current item is a sub menu
     if (subMenuItem.children) {
+      const { children, ...rest } = subMenuItem
+
       // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
       return (
-        <HorizontalSubMenu
-          key={index}
-          label={subMenuItem.label}
-          icon={subMenuItem.icon}
-          prefix={subMenuItem.prefix}
-          suffix={subMenuItem.suffix}
-          disabled={subMenuItem.disabled}
-          rootStyles={subMenuItem.rootStyles}
-          component={subMenuItem.component}
-        >
-          {subMenuItem.children && generateHorizontalMenu(subMenuItem.children)}
+        <HorizontalSubMenu key={index} {...rest}>
+          {children && generateHorizontalMenu(children)}
         </HorizontalSubMenu>
       )
     }
 
     // If the current item is neither a section nor a sub menu, return a MenuItem component
     return (
-      <HorizontalMenuItem
-        key={index}
-        icon={menuItem.icon}
-        disabled={menuItem.disabled}
-        target={menuItem.target}
-        rel={menuItem.rel}
-        prefix={menuItem.prefix}
-        suffix={menuItem.suffix}
-        rootStyles={menuItem.rootStyles}
-        href={menuItem.href}
-        component={menuItem.component}
-        // eslint-disable-next-line lines-around-comment
-        // component={<RouterLink href={menuItem.href || '/'} />}
-      >
+      <HorizontalMenuItem key={index} {...menuItem}>
         {menuItem.label}
       </HorizontalMenuItem>
     )
   })
 }
 
-export const confirmUrlInChildren = (children: ReactNode, url: string): boolean => {
+export const confirmUrlInChildren = (children: ChildrenType['children'], url: string): boolean => {
   if (!children) {
     return false
   }

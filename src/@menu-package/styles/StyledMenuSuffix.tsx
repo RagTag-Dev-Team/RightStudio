@@ -1,21 +1,19 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
-import type { RootStylesType, TransitionOptionsType } from '../types'
+import type { RootStylesType } from '../types'
 
 type StyledMenuSuffixProps = RootStylesType & {
   firstLevel?: boolean
   isCollapsed?: boolean
   isHovered?: boolean
-  transitionOptions?: TransitionOptionsType
 }
 
 const StyledMenuSuffix = styled.span<StyledMenuSuffixProps>`
   margin-inline-end: 5px;
   margin-inline-start: 5px;
-  display: ${({ firstLevel, isCollapsed, isHovered }) =>
-    firstLevel && isCollapsed && !isHovered ? 'none' : 'inline-flex'};
+  display: ${({ firstLevel, isCollapsed, isHovered }) => (firstLevel && isCollapsed && !isHovered ? 'none' : 'flex')};
   ${({ rootStyles }) => rootStyles};
 `
 

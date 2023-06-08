@@ -3,11 +3,10 @@ import { forwardRef } from 'react'
 import type { ForwardRefRenderFunction, HTMLAttributes } from 'react'
 
 // Third Party Imports
-import type { CSSObject } from '@emotion/react'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { ChildrenType, TransitionOptionsType } from '../../types'
+import type { ChildrenType, RootStylesType } from '../../types'
 
 // Hook Imports
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'
@@ -17,21 +16,20 @@ import StyledUl from '../../styles/StyledUl'
 import StyledHorizontalSubMenuContent from '../../styles/horizontal/StyledHorizontalSubMenuContent'
 
 export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
+  RootStylesType &
   Partial<ChildrenType> & {
     open?: boolean
-    transitionOptions?: TransitionOptionsType
     browserScroll?: boolean
     firstLevel?: boolean
     strategy?: string
     top?: number
     left?: number
-    rootStyles?: CSSObject
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
   const { children, open, firstLevel, strategy, top, left, ...rest } = props
 
-  const { transitionOptions, browserScroll } = useHorizontalMenu()
+  const { browserScroll } = useHorizontalMenu()
 
   return (
     <StyledHorizontalSubMenuContent
@@ -41,7 +39,6 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
       strategy={strategy}
       top={top}
       left={left}
-      transitionOptions={transitionOptions}
       browserScroll={browserScroll}
       {...rest}
     >

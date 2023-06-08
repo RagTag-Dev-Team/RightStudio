@@ -18,11 +18,13 @@ const LayoutContext = createContext({} as LayoutContextProps)
 
 export const LayoutProvider = ({ children }: ChildrenType) => {
   // Todo: Set default layout based on user settings (from ThemeConfig file)
-  const [layout, setLayout] = useState<LayoutContextProps['layout']>('horizontal')
+  const [layout, setLayout] = useState<LayoutContextProps['layout']>('vertical')
 
   // Switch Layout
-  const switchLayout = (layout: 'vertical' | 'horizontal') => {
-    setLayout(layout)
+  const switchLayout = (layoutAttr: 'vertical' | 'horizontal') => {
+    if (layout !== layoutAttr) {
+      setLayout(layoutAttr)
+    }
   }
 
   // Memoize the context value to prevent unnecessary re-renders
@@ -31,6 +33,7 @@ export const LayoutProvider = ({ children }: ChildrenType) => {
       layout,
       switchLayout
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [layout]
   )
 

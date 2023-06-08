@@ -2,16 +2,16 @@
 
 // React Imports
 import { forwardRef } from 'react'
-import type { ReactNode, ForwardRefRenderFunction, CSSProperties } from 'react'
+import type { ForwardRefRenderFunction, CSSProperties, ReactElement } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import classNames from 'classnames'
 import { useRendersCount } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { ACLPropsType, ChildrenType } from '../../types'
 import type { MenuSectionStyles } from './Menu'
+import type { ChildrenType, RootStylesType } from '../../types'
 
 // Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
@@ -25,29 +25,24 @@ import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledMenuSectionLabel from '../../styles/StyledMenuSectionLabel'
+import StyledVerticalMenuSection from '../../styles/vertical/StyledVerticalMenuSection'
 
-export type MenuSectionProps = Partial<ChildrenType> & {
-  label: string
-  rootStyles?: CSSObject
-  labelStyles?: CSSObject
-  className?: string
-  icon?: ReactNode
-  prefix?: ReactNode
-  suffix?: ReactNode
-  i18nKey?: string
-  aclProps?: ACLPropsType
-}
+export type MenuSectionProps = Partial<ChildrenType> &
+  RootStylesType & {
+    label: string | ReactElement
+    icon?: ReactElement
+    prefix?: string | ReactElement
+    suffix?: string | ReactElement
+
+    /**
+     * @ignore
+     */
+    className?: string
+  }
 
 type MenuSectionElement = keyof MenuSectionStyles
 
 // Styled Components
-const menuSectionRootStyles: CSSProperties = {
-  display: 'inline-block',
-  inlineSize: '100%',
-  position: 'relative',
-  overflow: 'hidden'
-}
-
 const menuSectionWrapperStyles: CSSProperties = {
   display: 'inline-block',
   inlineSize: '100%',
@@ -58,7 +53,7 @@ const menuSectionWrapperStyles: CSSProperties = {
 }
 
 const menuSectionContentStyles: CSSProperties = {
-  display: 'inline-flex',
+  display: 'flex',
   alignItems: 'center',
   inlineSize: '100%',
   position: 'relative',
@@ -72,7 +67,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   const { children, icon, className, prefix, suffix, label, rootStyles, ...rest } = props
 
   // Hooks
-  const { isCollapsed, isHovered, transitionOptions } = useVerticalNav()
+  const { isCollapsed, isHovered } = useVerticalNav()
   const { menuSectionStyles } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
@@ -87,7 +82,12 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   return (
     // eslint-disable-next-line lines-around-comment
     // Menu Section
-    <li ref={ref} className={classNames(menuClasses.menuSectionRoot, className)} style={menuSectionRootStyles}>
+    <StyledVerticalMenuSection
+      ref={ref}
+      rootStyles={rootStyles}
+      menuSectionStyles={getMenuSectionStyles('root')}
+      className={classNames(menuClasses.menuSectionRoot, className)}
+    >
       {/* Menu Section Content Wrapper */}
       <ul className={menuClasses.menuSectionWrapper} {...rest} style={menuSectionWrapperStyles}>
         {/* Menu Section Content */}
@@ -100,7 +100,6 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
           {prefix && (
             <StyledMenuPrefix
               isCollapsed={isCollapsed}
-              transitionOptions={transitionOptions}
               className={menuClasses.prefix}
               rootStyles={getMenuSectionStyles('prefix')}
             >
@@ -130,7 +129,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
         {/* Render Child */}
         {children}
       </ul>
-    </li>
+    </StyledVerticalMenuSection>
   )
 }
 

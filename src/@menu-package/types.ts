@@ -1,7 +1,7 @@
 // React Imports
 import type { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
@@ -34,21 +34,37 @@ export type SubMenuItemElement =
   | 'suffix'
   | 'icon'
   | 'subMenuContent'
-  | 'SubMenuExpandIcon'
-
-// Transition Options
-export type TransitionOptionsType = {
-  delay?: number
-  easing?: string
-  duration?: number
-}
+  | 'subMenuExpandIcon'
 
 // Menu Button Props
 export type MenuButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   Partial<ChildrenType> & {
-    active?: boolean
     component?: string | ReactElement
   }
+
+// Menu Item Styles Params Type
+export type MenuItemStylesParams = {
+  level: number
+  disabled: boolean
+  active?: boolean
+  isSubmenu: boolean
+  open?: boolean
+}
+
+// Menu Item Style Elements Type
+export type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
+
+// Menu Item Styles Type
+export type MenuItemStyles = {
+  root?: ElementStyles
+  button?: ElementStyles
+  label?: ElementStyles
+  prefix?: ElementStyles
+  suffix?: ElementStyles
+  icon?: ElementStyles
+  subMenuContent?: ElementStyles
+  subMenuExpandIcon?: ElementStyles
+}
 
 // Expand Icon
 export type RenderExpandIconParams = {
@@ -63,14 +79,8 @@ export type RootStylesType = {
   rootStyles?: CSSObject
 }
 
-// ACL Props
-export type ACLPropsType = {
-  action: string
-  subject: string
-}
-
 // Vertical Menu Data
-export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & { label: string | ReactNode }
+export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & { label: string | ReactElement }
 export type VerticalSubMenuDataType = Omit<VerticalSubMenuProps, 'children'> & { children: VerticalMenuDataType[] }
 export type VerticalSectionDataType = Omit<VerticalMenuSectionProps, 'children'> & {
   isSection: boolean
@@ -79,7 +89,7 @@ export type VerticalSectionDataType = Omit<VerticalMenuSectionProps, 'children'>
 export type VerticalMenuDataType = VerticalMenuItemDataType | VerticalSubMenuDataType | VerticalSectionDataType
 
 // Horizontal Menu Data
-export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children'> & { label: string | ReactNode }
+export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children'> & { label: string | ReactElement }
 export type HorizontalSubMenuDataType = Omit<HorizontalSubMenuProps, 'children'> & {
   children: HorizontalMenuDataType[]
 }

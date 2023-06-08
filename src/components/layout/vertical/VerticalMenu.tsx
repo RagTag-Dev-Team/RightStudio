@@ -15,36 +15,18 @@ const VerticalMenu = () => {
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
       <Menu>
-        <MenuItem
-          icon=''
-          target='_blank'
-          rel='noopener noreferrer'
-          // eslint-disable-next-line lines-around-comment
-          // i18nKey='apps-pages'
-          // aclProps={{ action: 'read', subject: 'apps-pages' }}
-          // rootStyles={{ backgroundColor: '#f4f4f4' }}
-          component={<RouterLink href='/' />}
-        >
+        <MenuItem target='_blank' rel='noopener noreferrer' component={<RouterLink href='/' />}>
           Home
         </MenuItem>
-        <SubMenu label='Test' icon='' defaultOpen>
+        <SubMenu label='Test' defaultOpen>
           <SubMenu label='Testing' defaultOpen>
             <MenuItem href='/about'>About</MenuItem>
           </SubMenu>
         </SubMenu>
-        <MenuSection
-          label='Apps & Pages'
-          icon=''
-          prefix='-'
-          suffix='+'
-          // eslint-disable-next-line lines-around-comment
-          // i18nKey='apps-pages'
-          // aclProps={{ action: 'read', subject: 'apps-pages' }}
-          rootStyles={{ color: 'red' }}
-        >
+        <MenuSection label='Apps & Pages' prefix='-' suffix='+' rootStyles={{ color: 'red' }}>
           <MenuItem href='/email'>Email</MenuItem>
           <MenuItem href='/chat'>Chat</MenuItem>
-          <SubMenu label='Authentication' icon=''>
+          <SubMenu label='Authentication'>
             <SubMenu label='Login'>
               <MenuItem href='/login-v1'>Login v1</MenuItem>
               <MenuItem href='/login-v2'>Login v2</MenuItem>

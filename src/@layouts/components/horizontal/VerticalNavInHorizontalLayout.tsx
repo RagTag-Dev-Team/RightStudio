@@ -1,12 +1,12 @@
 // React Imports
-import type { ReactNode } from 'react'
 import { isValidElement, Children } from 'react'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { BreakPointType } from '../../../@menu-package/types'
+import type { BreakPointType, ChildrenType } from '../../../@menu-package/types'
+import type { VerticalNavProps } from '../../../@menu-package/components/vertical-menu/VerticalNav'
 
 // Component Imports
 import NavHeader from '../vertical/NavHeader'
@@ -24,16 +24,16 @@ import VerticalNav, {
 } from '../../../@menu-package/components/vertical-menu'
 
 // Type
-export type VerticalNavInHorizontalLayoutProps = {
-  children?: ReactNode
+type VerticalNavInHorizontalLayoutProps = ChildrenType & {
   className?: string
   breakPoint?: BreakPointType
   customBreakPoint?: string
+  verticalNavProps?: Pick<VerticalNavProps, 'width' | 'backgroundColor' | 'backgroundImage' | 'customStyles'>
 }
 
 //* Reason behind mapping the children of the horizontal-menu component to the vertical-menu component: The Horizontal menu components will not work inside of Vertical menu on small screens. So, we have to map the children of the horizontal-menu components to the vertical-menu components. We also kept the same names and almost similar props for menuitem and submenu components for easy mapping.
 
-const mapChildren = (children: ReactNode) => {
+const mapChildren = (children: ChildrenType['children']) => {
   return Children.map(children, child => {
     if (isValidElement(child)) {
       const { children, ...rest } = child.props
@@ -61,10 +61,15 @@ const mapChildren = (children: ReactNode) => {
 }
 
 const VerticalNavInHorizontalLayout = (props: VerticalNavInHorizontalLayoutProps) => {
-  const { children, className, breakPoint, customBreakPoint } = props
+  const { children, className, breakPoint, customBreakPoint, verticalNavProps } = props
 
   return (
-    <VerticalNav className={className} breakPoint={breakPoint} customBreakPoint={customBreakPoint}>
+    <VerticalNav
+      {...verticalNavProps}
+      className={className}
+      breakPoint={breakPoint}
+      customBreakPoint={customBreakPoint}
+    >
       <NavHeader>
         <Logo />
         <NavCollapseIcons />

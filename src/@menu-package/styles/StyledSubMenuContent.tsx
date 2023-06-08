@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
@@ -8,9 +8,8 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
   display: none;
   overflow: hidden;
   z-index: 999;
-  transition: block-size ${({ transitionDuration }) => transitionDuration}ms;
+  transition: ${({ transitionDuration }) => `block-size ${transitionDuration}ms`};
   box-sizing: border-box;
-  background-color: white;
 
   ${({ isCollapsed, firstLevel, isPopoutWhenCollapsed, isHovered, transitionDuration }) =>
     isCollapsed &&
@@ -26,7 +25,7 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
     isCollapsed && firstLevel && isPopoutWhenCollapsed
       ? `
       padding-inline-start: 0px;
-      inline-size: 200px;
+      inline-size: 260px;
       border-radius: 4px;
       block-size: auto!important;
       display: block!important;
@@ -41,8 +40,8 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
       `}
 
   ${({ strategy }) => strategy && `position:${strategy};`}
-  ${({ top }) => top && `top: ${top}px;`}
-  ${({ left }) => left && `left: ${left}px;`}
+  inset-block-start: ${({ top }) => `${top}px`};
+  inset-inline-start: ${({ left }) => `${left}px`};
   ${({ rootStyles }) => rootStyles};
 `
 

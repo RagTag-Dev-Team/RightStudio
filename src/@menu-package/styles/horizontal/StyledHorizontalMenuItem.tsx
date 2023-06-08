@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 import type { CSSObject } from '@emotion/styled'
 

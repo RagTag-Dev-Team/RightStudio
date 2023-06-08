@@ -1,5 +1,7 @@
 'use client'
-import useLayout from '@/@layouts/hooks/useLayout'
+
+// Hook Imports
+import useLayout from '../@layouts/hooks/useLayout'
 
 const SwitchLayout = () => {
   const { switchLayout, layout } = useLayout()

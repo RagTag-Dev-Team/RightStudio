@@ -1,20 +1,13 @@
 'use client'
 
 // React Imports
-import { Children, cloneElement, forwardRef, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import type {
-  AnchorHTMLAttributes,
-  ForwardRefRenderFunction,
-  KeyboardEvent,
-  MouseEvent,
-  ReactElement,
-  ReactNode
-} from 'react'
+import { Children, cloneElement, forwardRef, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, KeyboardEvent, MouseEvent, ReactElement } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
 
-// Third Party Imports
+// Third-party Imports
 import classnames from 'classnames'
 import styled from '@emotion/styled'
 import { useRendersCount } from 'react-use'
@@ -37,7 +30,7 @@ import type { CSSObject } from '@emotion/styled'
 // Type Imports
 import type { OpenSubmenu } from './Menu'
 import type { MenuItemProps } from './MenuItem'
-import type { ACLPropsType, ChildrenType, SubMenuItemElement } from '../../types'
+import type { ChildrenType, RootStylesType, SubMenuItemElement } from '../../types'
 
 // Component Imports
 import SubMenuContent from './SubMenuContent'
@@ -61,21 +54,18 @@ import StyledVerticalNavExpandIcon, {
 } from '../../styles/vertical/StyledVerticalNavExpandIcon'
 
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
+  RootStylesType &
   Partial<ChildrenType> & {
-    label: string | ReactNode
-    icon?: ReactNode
-    prefix?: ReactNode
-    suffix?: ReactNode
+    label: string | ReactElement
+    icon?: ReactElement
+    prefix?: string | ReactElement
+    suffix?: string | ReactElement
+    defaultOpen?: boolean
+    disabled?: boolean
+    component?: string | ReactElement
+    contentClassName?: string
 
     // open?: boolean
-    defaultOpen?: boolean
-    active?: boolean
-    disabled?: boolean
-    rootStyles?: CSSObject
-    component?: string | ReactElement
-    i18nKey?: string
-    aclProps?: ACLPropsType
-
     // onOpenChange?: (open: boolean) => void
 
     /**
@@ -84,8 +74,9 @@ export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix
     level?: number
   }
 
-type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'active' | 'disabled'> & {
+type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'disabled'> & {
   level: number
+  active?: boolean
   menuItemStyles?: CSSObject
   isPopoutWhenCollapsed?: boolean
   buttonStyles?: CSSObject
@@ -114,31 +105,32 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const {
     children,
     className,
+    contentClassName,
     label,
     icon,
     title,
     prefix,
     suffix,
-
-    // open: openSubmenu,
     defaultOpen,
     level = 0,
     disabled = false,
     rootStyles,
     component,
 
+    // open: openSubmenu,
     // onOpenChange,
     onClick,
     onKeyUp,
     ...rest
   } = props
-  const { isCollapsed, transitionOptions, isPopoutWhenCollapsed, isHovered } = useVerticalNav()
+  const { isCollapsed, isPopoutWhenCollapsed, isHovered } = useVerticalNav()
   const {
     triggerPopout,
     renderExpandIcon,
     menuItemStyles,
     openSubmenu,
     toggleOpenSubmenu,
+    transitionDuration,
 
     // subMenuOpenBehavior,
     openSubmenusRef
@@ -146,12 +138,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const rendersCount = useRendersCount()
 
   // const [open, setOpen] = useState<boolean>(!!defaultOpen)
-
   // const [openDefault, setOpenDefault] = useState<boolean>(!!defaultOpen)
   const [openWhenCollapsed, setOpenWhenCollapsed] = useState<boolean>(false)
   const [active, setActive] = useState<boolean>(false)
 
   // Hooks
+  const id = useId()
   const pathname = usePathname()
 
   const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
@@ -191,7 +183,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
     // onOpenChange?.(!open)
     // setOpen(!open)
-    toggleOpenSubmenu?.({ level, label, active })
+    toggleOpenSubmenu?.({ level, label, active, id })
     if (openSubmenusRef?.current && openSubmenusRef?.current.length > 0) openSubmenusRef.current = []
   }
 
@@ -217,7 +209,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         disabled,
         active,
         isSubmenu: true,
-        open: openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false
+        open: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
       }
 
       // Get the style function for the specified element.
@@ -235,14 +227,14 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     if (isCollapsed && level === 0) {
       setOpenWhenCollapsed(false)
     }
-  }, [isCollapsed, level, transitionOptions, active])
+  }, [isCollapsed, level, active])
 
   useEffect(() => {
     if (confirmUrlInChildren(children, pathname)) {
-      openSubmenusRef?.current.push({ level, label, active: true })
+      openSubmenusRef?.current.push({ level, label, active: true, id })
     } else {
       if (defaultOpen) {
-        openSubmenusRef?.current.push({ level, label, active: false })
+        openSubmenusRef?.current.push({ level, label, active: false, id })
       }
     }
 
@@ -255,8 +247,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     if (confirmUrlInChildren(children, pathname)) {
       setActive(true)
 
-      if (openSubmenusRef?.current.findIndex(submenu => submenu.label === label) === -1) {
-        openSubmenusRef?.current.push({ level, label, active: true })
+      if (openSubmenusRef?.current.findIndex(submenu => submenu.id === id) === -1) {
+        openSubmenusRef?.current.push({ level, label, active: true, id })
       }
     } else {
       setActive(false)
@@ -274,10 +266,10 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     <StyledSubMenu
       ref={ref}
       className={classnames(
-        { [menuClasses.subMenuRoot]: level === 0 },
+        menuClasses.subMenuRoot,
         { [menuClasses.active]: active },
         { [menuClasses.disabled]: disabled },
-        { [menuClasses.open]: openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false },
+        { [menuClasses.open]: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false },
         className
       )}
       menuItemStyles={getSubMenuItemStyles('root')}
@@ -295,10 +287,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         {...(isCollapsed && level === 0 && isPopoutWhenCollapsed && !disabled && getReferenceProps())}
         onKeyUp={handleOnKeyUp}
         title={title}
-        className={menuClasses.button}
+        className={classnames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
-        tabIndex={0}
-        active={active}
+        tabIndex={disabled ? -1 : 0}
         {...rest}
       >
         {/* Menu Item Icon */}
@@ -313,7 +304,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           <StyledMenuPrefix
             isHovered={isHovered}
             isCollapsed={isCollapsed}
-            transitionOptions={transitionOptions}
             firstLevel={level === 0}
             className={menuClasses.prefix}
             rootStyles={getSubMenuItemStyles('prefix')}
@@ -332,7 +322,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           <StyledMenuSuffix
             isHovered={isHovered}
             isCollapsed={isCollapsed}
-            transitionOptions={transitionOptions}
             firstLevel={level === 0}
             className={menuClasses.suffix}
             rootStyles={getSubMenuItemStyles('suffix')}
@@ -343,25 +332,23 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
         {/* Sub Menu Toggle Icon Wrapper */}
         <StyledVerticalNavExpandIconWrapper
-          className={menuClasses.SubMenuExpandIcon}
+          className={menuClasses.subMenuExpandIcon}
           isCollapsed={isCollapsed}
           level={level}
           isHovered={isHovered}
-          rootStyles={getSubMenuItemStyles('SubMenuExpandIcon')}
+          rootStyles={getSubMenuItemStyles('subMenuExpandIcon')}
         >
           {renderExpandIcon ? (
             renderExpandIcon({
               level,
               disabled,
               active,
-              open: openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false
+              open: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
             })
           ) : isCollapsed && !isHovered && level === 0 ? null : (
             // eslint-disable-next-line lines-around-comment
             /* Expanded Arrow Icon */
-            <StyledVerticalNavExpandIcon
-              open={openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false}
-            />
+            <StyledVerticalNavExpandIcon open={openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false} />
           )}
         </StyledVerticalNavExpandIconWrapper>
       </MenuButton>
@@ -375,15 +362,16 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         left={x ?? 0}
         openWhenCollapsed={openWhenCollapsed}
         isPopoutWhenCollapsed={isPopoutWhenCollapsed}
+        transitionDuration={transitionDuration}
         // eslint-disable-next-line lines-around-comment
         // open={openSubmenu ?? open}
-        open={openSubmenu?.some((item: OpenSubmenu) => item.label === label) ?? false}
+        open={openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false}
         firstLevel={level === 0}
         isCollapsed={isCollapsed}
         isHovered={isHovered}
         // eslint-disable-next-line lines-around-comment
         // defaultOpen={openDefault}
-        className={menuClasses.subMenuContent}
+        className={classnames(menuClasses.subMenuContent, contentClassName)}
         rootStyles={getSubMenuItemStyles('subMenuContent')}
       >
         {childNodes.map(node =>

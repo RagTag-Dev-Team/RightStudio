@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 import type { CSSObject } from '@emotion/styled'
 
@@ -11,8 +11,9 @@ import { menuClasses } from '../../utils/utilityClasses'
 // Style Imports
 import { menuButtonStyles } from '../../components/vertical-menu/MenuButton'
 
-type StyledVerticalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'active' | 'disabled'> & {
+type StyledVerticalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'disabled'> & {
   level: number
+  active?: boolean
   menuItemStyles?: CSSObject
   isCollapsed?: boolean
   isPopoutWhenCollapsed?: boolean

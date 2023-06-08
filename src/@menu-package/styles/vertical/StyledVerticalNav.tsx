@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
@@ -9,7 +9,7 @@ import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNa
 import { horizontalNavClasses, menuClasses, verticalNavClasses } from '../../utils/utilityClasses'
 
 type StyledVerticalNavProps = VerticalNavProps &
-  Pick<VerticalNavState, 'isBreakpointReached' | 'collapsing' | 'expanding'>
+  Pick<VerticalNavState, 'isBreakpointReached' | 'collapsing' | 'expanding' | 'transitionDuration'>
 
 const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
   ${({ scrollWithContent }) =>
@@ -24,9 +24,9 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
 
   /* Transition */
   transition-property: inline-size, min-inline-size, margin-inline-start, inset-inline-start;
-  transition-duration: ${({ transitionOptions }) => `${transitionOptions?.duration}ms`};
-  transition-timing-function: ${({ transitionOptions }) => transitionOptions?.easing};
-  transition-delay: ${({ transitionOptions }) => `${transitionOptions?.delay}ms`};
+  transition-duration: ${({ transitionDuration }) => `${transitionDuration}ms`};
+  transition-timing-function: ease-in-out;
+  transition-delay: 0;
 
   /* Width & Min Width & Margin */
   inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};
@@ -73,7 +73,7 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
   }
 
   /* User Styles */
-  ${({ customStyle }) => customStyle}
+  ${({ customStyles }) => customStyles}
 `
 
 export default StyledVerticalNav

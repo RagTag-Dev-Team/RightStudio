@@ -8,13 +8,13 @@ import type {
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  ReactNode
+  HTMLProps
 } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
 
-// Third Party Imports
+// Third-party Imports
 import classnames from 'classnames'
 import styled from '@emotion/styled'
 import {
@@ -40,7 +40,7 @@ import {
 import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
-import type { ACLPropsType, ChildrenType, SubMenuItemElement } from '../../types'
+import type { ChildrenType, RootStylesType, SubMenuItemElement } from '../../types'
 import type { MenuItemProps } from './MenuItem'
 
 // Component Imports
@@ -64,18 +64,17 @@ import StyledHorizontalNavExpandIcon, {
 } from '../../styles/horizontal/StyledHorizontalNavExpandIcon'
 
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
+  RootStylesType &
   Partial<ChildrenType> & {
-    label: string | ReactNode
-    icon?: ReactNode
-    prefix?: ReactNode
-    suffix?: ReactNode
-    active?: boolean
+    label: string | ReactElement
+    icon?: ReactElement
+    prefix?: string | ReactElement
+    suffix?: string | ReactElement
     disabled?: boolean
-    rootStyles?: CSSObject
     component?: string | ReactElement
-    i18nKey?: string
-    aclProps?: ACLPropsType
-    onOpenChange?: (open: boolean) => void
+    contentClassName?: string
+
+    // onOpenChange?: (open: boolean) => void
 
     /**
      * @ignore
@@ -83,14 +82,15 @@ export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix
     level?: number
   }
 
-type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'active' | 'disabled'> & {
+type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'disabled'> & {
   level: number
+  active?: boolean
   menuItemStyles?: CSSObject
   buttonStyles?: CSSObject
 }
 
 type HorizontalSubMenuContextProps = {
-  getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>
+  getItemProps: (userProps?: HTMLProps<HTMLElement>) => Record<string, unknown>
 }
 
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
@@ -114,6 +114,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const {
     children,
     className,
+    contentClassName,
     label,
     icon,
     title,
@@ -128,7 +129,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     ...rest
   } = props
 
-  const { triggerPopout, transitionOptions, renderExpandIcon, menuItemStyles, browserScroll } = useHorizontalMenu()
+  const { triggerPopout, renderExpandIcon, menuItemStyles, browserScroll, transitionDuration } = useHorizontalMenu()
 
   // State
   const [open, setOpen] = useState(false)
@@ -164,7 +165,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Floating UI Transition Styles
   const { isMounted, styles } = useTransitionStyles(context, {
     // Configure both open and close durations:
-    duration: 200,
+    duration: transitionDuration,
 
     initial: {
       opacity: 0,
@@ -305,9 +306,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           onClick={handleOnClick}
           onKeyUp={handleOnKeyUp}
           title={title}
-          className={menuClasses.button}
+          className={classnames(menuClasses.button, { [menuClasses.active]: active })}
           component={component}
-          active={active}
           {...rest}
         >
           {/* Menu Item Icon */}
@@ -320,7 +320,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           {/* Menu Item Prefix */}
           {prefix && (
             <StyledMenuPrefix
-              transitionOptions={transitionOptions}
               firstLevel={level === 0}
               className={menuClasses.prefix}
               rootStyles={getSubMenuItemStyles('prefix')}
@@ -337,7 +336,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           {/* Menu Item Suffix */}
           {suffix && (
             <StyledMenuSuffix
-              transitionOptions={transitionOptions}
               firstLevel={level === 0}
               className={menuClasses.suffix}
               rootStyles={getSubMenuItemStyles('suffix')}
@@ -348,9 +346,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
           {/* Sub Menu Toggle Icon Wrapper */}
           <StyledHorizontalNavExpandIconWrapper
-            className={menuClasses.SubMenuExpandIcon}
+            className={menuClasses.subMenuExpandIcon}
             level={level}
-            rootStyles={getSubMenuItemStyles('SubMenuExpandIcon')}
+            rootStyles={getSubMenuItemStyles('subMenuExpandIcon')}
           >
             {renderExpandIcon ? (
               renderExpandIcon({
@@ -378,7 +376,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
                 left={x ?? 0}
                 open={open}
                 firstLevel={level === 0}
-                className={menuClasses.subMenuContent}
+                className={classnames(menuClasses.subMenuContent, contentClassName)}
                 rootStyles={getSubMenuItemStyles('subMenuContent')}
                 style={{ ...styles }}
               >

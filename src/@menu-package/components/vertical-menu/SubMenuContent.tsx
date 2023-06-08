@@ -2,25 +2,21 @@
 import { forwardRef, useEffect, useState } from 'react'
 import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject } from 'react'
 
-// Third Party Imports
-import type { CSSObject } from '@emotion/react'
-
 // Type Imports
-import type { ChildrenType } from '../../types'
-
-// Hook Imports
-import useVerticalMenu from '../../hooks/useVerticalMenu'
+import type { VerticalMenuContextProps } from './Menu'
+import type { ChildrenType, RootStylesType } from '../../types'
 
 // Styled Components
 import StyledUl from '../../styles/StyledUl'
 import StyledSubMenuContent from '../../styles/StyledSubMenuContent'
 
 export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
+  RootStylesType &
   Partial<ChildrenType> & {
     open?: boolean
     openWhenCollapsed?: boolean
     openWhenHovered?: boolean
-    transitionDuration?: number
+    transitionDuration?: VerticalMenuContextProps['transitionDuration']
     isPopoutWhenCollapsed?: boolean
     firstLevel?: boolean
     isCollapsed?: boolean
@@ -30,7 +26,6 @@ export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
     strategy?: string
     top?: number
     left?: number
-    rootStyles?: CSSObject
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
@@ -43,6 +38,7 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
     strategy,
     top,
     left,
+    transitionDuration,
     isPopoutWhenCollapsed,
     openWhenCollapsed,
     ...rest
@@ -51,8 +47,6 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
   const SubMenuContentRef = ref as MutableRefObject<HTMLDivElement>
 
   const [mounted, setMounted] = useState(false)
-
-  const { transitionDuration } = useVerticalMenu()
 
   useEffect(() => {
     if (mounted) {
@@ -109,8 +103,8 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
       top={top}
       left={left}
       openWhenCollapsed={openWhenCollapsed}
-      transitionDuration={transitionDuration}
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
+      transitionDuration={transitionDuration}
       {...rest}
     >
       <StyledUl>{children}</StyledUl>

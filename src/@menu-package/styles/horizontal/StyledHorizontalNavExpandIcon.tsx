@@ -1,4 +1,4 @@
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 // Type Imports
@@ -16,6 +16,7 @@ type StyledHorizontalNavExpandIconWrapperProps = RootStylesType & {
 }
 
 export const StyledHorizontalNavExpandIconWrapper = styled.span<StyledHorizontalNavExpandIconWrapperProps>`
+  display: flex;
   ${({ isCollapsed, level, isHovered }) =>
     isCollapsed &&
     !isHovered &&

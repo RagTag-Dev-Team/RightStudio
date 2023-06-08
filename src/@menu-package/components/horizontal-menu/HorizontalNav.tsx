@@ -4,12 +4,13 @@
 import type { HTMLAttributes } from 'react'
 import { useEffect } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { BreakPointType, TransitionOptionsType } from '../../types'
+import type { BreakPointType } from '../../types'
+import type { VerticalNavProps } from '../vertical-menu/VerticalNav'
 
 // Component Imports
 import VerticalNavInHorizontalLayout from '../../../@layouts/components/horizontal/VerticalNavInHorizontalLayout'
@@ -25,37 +26,35 @@ import { horizontalNavClasses } from '../../utils/utilityClasses'
 import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
-// Define Types
-const BREAK_POINTS: Record<BreakPointType, string> = {
-  xs: '480px',
-  sm: '600px',
-  md: '900px',
-  lg: '1200px',
-  xl: '1536px',
-  xxl: '1920px',
-  always: 'always'
-}
+// Default Config Imports
+import { breakpoints } from '../../defaultConfigs'
 
+// Define Types
 export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   switchToVertical?: boolean
   hideMenu?: boolean
   breakPoint?: BreakPointType
   customBreakPoint?: string
-  transitionOptions?: TransitionOptionsType
-  customStyle?: CSSObject
+  customStyles?: CSSObject
+  verticalNavProps?: Pick<VerticalNavProps, 'width' | 'backgroundColor' | 'backgroundImage' | 'customStyles'>
+
+  /**
+   * @ignore
+   */
+  setIsBreakpointReached?: (isBreakpointReached: boolean) => void
 }
 
 const HorizontalNav = (props: HorizontalNavProps) => {
-  // Destructure Props with default values
+  // Props
   const {
     switchToVertical = false,
     hideMenu = false,
     breakPoint = 'lg',
     customBreakPoint,
-    customStyle,
+    customStyles,
     className,
     children,
-    ...rest
+    verticalNavProps
   } = props
 
   // Hooks
@@ -63,7 +62,7 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   const { updateIsBreakpointReached } = useHorizontalNav()
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? BREAK_POINTS[breakPoint] : breakPoint))
+  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? breakpoints[breakPoint] : breakPoint))
 
   const horizontalMenuClasses = classNames(horizontalNavClasses.root, className)
 
@@ -76,9 +75,10 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   if (switchToVertical && breakpointReached && layout === 'horizontal') {
     return (
       <VerticalNavInHorizontalLayout
-        className={horizontalMenuClasses}
         breakPoint={breakPoint}
+        className={horizontalMenuClasses}
         customBreakPoint={customBreakPoint}
+        verticalNavProps={verticalNavProps}
       >
         {children}
       </VerticalNavInHorizontalLayout>
@@ -92,14 +92,7 @@ const HorizontalNav = (props: HorizontalNavProps) => {
 
   // If switchToVertical & hideMenu are false, then render the HorizontalNav component
   return (
-    <StyledHorizontalNav
-      switchToVertical={switchToVertical}
-      hideMenu={hideMenu}
-      breakpointReached={breakpointReached}
-      customStyle={customStyle}
-      className={horizontalMenuClasses}
-      {...rest}
-    >
+    <StyledHorizontalNav customStyles={customStyles} className={horizontalMenuClasses}>
       {children}
     </StyledHorizontalNav>
   )

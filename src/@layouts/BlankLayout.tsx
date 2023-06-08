@@ -1,10 +1,10 @@
-// React Imports
-import type { ReactNode } from 'react'
+// Type Imports
+import type { ChildrenType } from '../@menu-package/types'
 
 // Component Imports
 import PageContent from './components/PageContent'
 
-const BlankLayout = ({ children }: { children: ReactNode }) => {
+const BlankLayout = ({ children }: ChildrenType) => {
   return (
     <PageContent>
       {/* Content */}

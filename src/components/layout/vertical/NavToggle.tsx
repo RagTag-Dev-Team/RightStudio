@@ -1,6 +1,6 @@
 'use client'
 
-// Third Party Imports
+// Third-party Imports
 import { FiAlignJustify } from 'react-icons/fi'
 
 // Hook Imports

@@ -1,4 +1,5 @@
-import SwitchLayout from '@/components/SwitchLayout'
+// Component Imports
+import SwitchLayout from '../../../components/SwitchLayout'
 
 const AboutPage = () => {
   return (

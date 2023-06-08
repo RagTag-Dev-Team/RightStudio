@@ -1,6 +1,6 @@
 'use client'
 
-// Third Party Imports
+// Third-party Imports
 import styled from '@emotion/styled'
 
 const StyledFooter = styled.div`
