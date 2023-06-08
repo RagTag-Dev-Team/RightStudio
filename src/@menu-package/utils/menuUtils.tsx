@@ -1,5 +1,5 @@
 // React Imports
-import { isValidElement } from 'react'
+import { Children, isValidElement } from 'react'
 import type { ReactNode } from 'react'
 
 // Type Imports
@@ -15,8 +15,17 @@ import type {
 } from '../types'
 
 // Component Imports
-import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '../components/horizontal-menu'
-import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '../components/vertical-menu'
+import {
+  SubMenu as HorizontalSubMenu,
+  MenuItem as HorizontalMenuItem,
+  Menu as HorizontalMenu
+} from '../components/horizontal-menu'
+import {
+  SubMenu as VerticalSubMenu,
+  MenuItem as VerticalMenuItem,
+  MenuSection,
+  Menu as VerticalMenu
+} from '../components/vertical-menu'
 
 // Generate a menu from the menu data array
 export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {
@@ -112,4 +121,31 @@ export const confirmUrlInChildren = (children: ChildrenType['children'], url: st
   }
 
   return false
+}
+
+/*
+ * Reason behind mapping the children of the horizontal-menu component to the vertical-menu component:
+ * The Horizontal menu components will not work inside of Vertical menu on small screens.
+ * So, we have to map the children of the horizontal-menu components to the vertical-menu components.
+ * We also kept the same names and almost similar props for menuitem and submenu components for easy mapping.
+ */
+export const mapHorizontalToVerticalMenu = (children: ChildrenType['children']) => {
+  return Children.map(children, child => {
+    if (isValidElement(child)) {
+      const { children, ...rest } = child.props
+
+      switch (child.type) {
+        case HorizontalMenuItem:
+          return <VerticalMenuItem {...rest}>{children}</VerticalMenuItem>
+        case HorizontalSubMenu:
+          return <VerticalSubMenu {...rest}>{mapHorizontalToVerticalMenu(children)}</VerticalSubMenu>
+        case HorizontalMenu:
+          return <VerticalMenu>{mapHorizontalToVerticalMenu(child.props.children)}</VerticalMenu>
+        default:
+          return child
+      }
+    }
+
+    return null
+  })
 }

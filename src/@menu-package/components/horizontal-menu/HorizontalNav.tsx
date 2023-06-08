@@ -9,15 +9,14 @@ import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { BreakPointType } from '../../types'
+import type { BreakPointType, ChildrenType } from '../../types'
 import type { VerticalNavProps } from '../vertical-menu/VerticalNav'
 
 // Component Imports
-import VerticalNavInHorizontalLayout from '../../../@layouts/components/horizontal/VerticalNavInHorizontalLayout'
+import VerticalNavInHorizontal from './VerticalNavInHorizontal'
 
 // Hook Imports
 import { useMediaQuery } from '../../hooks/useMediaQuery'
-import useLayout from '../../../@layouts/hooks/useLayout'
 
 // Util Imports
 import { horizontalNavClasses } from '../../utils/utilityClasses'
@@ -37,7 +36,7 @@ export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   customBreakPoint?: string
   customStyles?: CSSObject
   verticalNavProps?: Pick<VerticalNavProps, 'width' | 'backgroundColor' | 'backgroundImage' | 'customStyles'>
-
+  verticalNavContent?: ({ children }: ChildrenType) => JSX.Element
   /**
    * @ignore
    */
@@ -54,11 +53,11 @@ const HorizontalNav = (props: HorizontalNavProps) => {
     customStyles,
     className,
     children,
-    verticalNavProps
+    verticalNavProps,
+    verticalNavContent: VerticalNavContent
   } = props
 
   // Hooks
-  const { layout } = useLayout()
   const { updateIsBreakpointReached } = useHorizontalNav()
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
@@ -72,16 +71,16 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   }, [breakpointReached]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // If switchToVertical is true, then render the VerticalNav component if breakpoint is reached
-  if (switchToVertical && breakpointReached && layout === 'horizontal') {
+  if (switchToVertical && breakpointReached) {
     return (
-      <VerticalNavInHorizontalLayout
+      <VerticalNavInHorizontal
         breakPoint={breakPoint}
         className={horizontalMenuClasses}
         customBreakPoint={customBreakPoint}
         verticalNavProps={verticalNavProps}
       >
-        {children}
-      </VerticalNavInHorizontalLayout>
+        {VerticalNavContent && <VerticalNavContent>{children}</VerticalNavContent>}
+      </VerticalNavInHorizontal>
     )
   }
 

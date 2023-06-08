@@ -71,9 +71,7 @@ export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix
     disabled?: boolean
     component?: string | ReactElement
     contentClassName?: string
-
-    // open?: boolean
-    // onOpenChange?: (open: boolean) => void
+    onOpenChange?: (open: boolean) => void
 
     /**
      * @ignore
@@ -125,7 +123,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     component,
 
     // open: openSubmenu,
-    // onOpenChange,
+    onOpenChange,
     onClick,
     onKeyUp,
     ...rest
@@ -138,14 +136,13 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     openSubmenu,
     toggleOpenSubmenu,
     transitionDuration,
-
-    // subMenuOpenBehavior,
     openSubmenusRef
   } = useVerticalMenu()
+
+  // Hook
   const rendersCount = useRendersCount()
 
-  // const [open, setOpen] = useState<boolean>(!!defaultOpen)
-  // const [openDefault, setOpenDefault] = useState<boolean>(!!defaultOpen)
+  // State
   const [openWhenCollapsed, setOpenWhenCollapsed] = useState<boolean>(false)
   const [active, setActive] = useState<boolean>(false)
 
@@ -183,14 +180,15 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Merge all the interactions into prop getters
   const { getReferenceProps, getFloatingProps } = useInteractions([hover, click, dismiss, role])
 
+  const isSubMenuOpen = openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
+
   const handleSlideToggle = (): void => {
     if (level === 0 && isCollapsed && !isHovered) {
       return
     }
 
-    // onOpenChange?.(!open)
-    // setOpen(!open)
     toggleOpenSubmenu?.({ level, label, active, id })
+    onOpenChange?.(!isSubMenuOpen)
     if (openSubmenusRef?.current && openSubmenusRef?.current.length > 0) openSubmenusRef.current = []
   }
 
@@ -216,7 +214,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         disabled,
         active,
         isSubmenu: true,
-        open: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
+        open: isSubMenuOpen
       }
 
       // Get the style function for the specified element.
@@ -276,7 +274,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         menuClasses.subMenuRoot,
         { [menuClasses.active]: active },
         { [menuClasses.disabled]: disabled },
-        { [menuClasses.open]: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false },
+        { [menuClasses.open]: isSubMenuOpen },
         className
       )}
       menuItemStyles={getSubMenuItemStyles('root')}
@@ -350,12 +348,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
               level,
               disabled,
               active,
-              open: openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
+              open: isSubMenuOpen
             })
           ) : isCollapsed && !isHovered && level === 0 ? null : (
             // eslint-disable-next-line lines-around-comment
             /* Expanded Arrow Icon */
-            <StyledVerticalNavExpandIcon open={openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false} />
+            <StyledVerticalNavExpandIcon open={isSubMenuOpen} />
           )}
         </StyledVerticalNavExpandIconWrapper>
       </MenuButton>
@@ -370,14 +368,10 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         openWhenCollapsed={openWhenCollapsed}
         isPopoutWhenCollapsed={isPopoutWhenCollapsed}
         transitionDuration={transitionDuration}
-        // eslint-disable-next-line lines-around-comment
-        // open={openSubmenu ?? open}
-        open={openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false}
+        open={isSubMenuOpen}
         firstLevel={level === 0}
         isCollapsed={isCollapsed}
         isHovered={isHovered}
-        // eslint-disable-next-line lines-around-comment
-        // defaultOpen={openDefault}
         className={classnames(menuClasses.subMenuContent, contentClassName)}
         rootStyles={getSubMenuItemStyles('subMenuContent')}
       >

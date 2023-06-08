@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import classNames from 'classnames'
-import { useRendersCount } from 'react-use'
+import { useRendersCount, useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
@@ -40,6 +40,7 @@ export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefi
     target?: string
     rel?: string
     component?: string | ReactElement
+    onActiveChange?: (active: boolean) => void
 
     /**
      * @ignore
@@ -58,6 +59,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     level = 0,
     disabled = false,
     component,
+    onActiveChange,
     rootStyles,
     ...rest
   } = props
@@ -112,6 +114,11 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
+  // Call the onActiveChange callback when the active state changes.
+  useUpdateEffect(() => {
+    onActiveChange?.(active)
+  }, [active])
+
   return (
     <StyledVerticalMenuItem
       ref={ref}
@@ -134,8 +141,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         className={classNames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
         tabIndex={disabled ? -1 : 0}
-        {...rest}
         onClick={handleClick}
+        {...rest}
       >
         {icon && (
           <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>

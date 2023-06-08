@@ -7,19 +7,20 @@ import { useTranslation } from 'react-i18next'
 
 // Component Imports from @menu-package
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
+import VerticalNavContent from './VerticalNavContent'
 
 // Utils Imports
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
-// import menuData from '../../../data/navigation/HorizontalMenuData'
+// import menuData from '../../../navigation-data/HorizontalMenuData'
 
 const Navigation = () => {
   // Hooks
   const { t } = useTranslation()
 
   return (
-    <HorizontalNav switchToVertical>
+    <HorizontalNav switchToVertical verticalNavContent={VerticalNavContent}>
       <Menu>
         {/* This is how you will normally render submenu */}
         <SubMenu label={t('navigation.dashboards')}>

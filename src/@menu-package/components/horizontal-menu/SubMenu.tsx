@@ -74,8 +74,7 @@ export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix
     disabled?: boolean
     component?: string | ReactElement
     contentClassName?: string
-
-    // onOpenChange?: (open: boolean) => void
+    onOpenChange?: (open: boolean) => void
 
     /**
      * @ignore
@@ -127,6 +126,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     component,
     onClick,
     onKeyUp,
+    onOpenChange,
     ...rest
   } = props
 
@@ -281,6 +281,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
+  // User event handler for open state change
+  useEffect(() => {
+    onOpenChange?.(open)
+  }, [open])
+
+  // Merge the reference ref with the ref passed to the component
   const referenceRef = useMergeRefs([refs.setReference, ref])
 
   return (
@@ -304,11 +310,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
       >
         {/* Menu Item */}
         <MenuButton
-          onClick={handleOnClick}
-          onKeyUp={handleOnKeyUp}
           title={title}
           className={classnames(menuClasses.button, { [menuClasses.active]: active })}
           component={component}
+          onClick={handleOnClick}
+          onKeyUp={handleOnKeyUp}
           {...rest}
         >
           {/* Menu Item Icon */}

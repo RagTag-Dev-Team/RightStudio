@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import classNames from 'classnames'
+import { useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 import { useFloatingTree } from '@floating-ui/react'
 
@@ -45,6 +46,7 @@ export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefi
     target?: string
     rel?: string
     component?: string | ReactElement
+    onActiveChange?: (active: boolean) => void
 
     /**
      * @ignore
@@ -63,6 +65,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     level = 0,
     disabled = false,
     component,
+    onActiveChange,
     rootStyles,
     ...rest
   } = props
@@ -117,6 +120,11 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
+  // Call the onActiveChange callback when the active state changes.
+  useUpdateEffect(() => {
+    onActiveChange?.(active)
+  }, [active])
+
   return (
     <StyledHorizontalMenuItem
       ref={ref}
@@ -136,7 +144,6 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         className={classNames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
         tabIndex={disabled ? -1 : 0}
-        {...rest}
         onClick={handleClick}
         {...getItemProps({
           onClick(event: MouseEvent<HTMLAnchorElement>) {
@@ -144,6 +151,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
             tree?.events.emit('click')
           }
         })}
+        {...rest}
       >
         {icon && (
           <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
