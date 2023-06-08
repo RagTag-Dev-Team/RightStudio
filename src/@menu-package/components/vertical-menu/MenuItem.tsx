@@ -2,7 +2,7 @@
 
 // React Imports
 import { forwardRef, useEffect, useState } from 'react'
-import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement } from 'react'
+import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, ReactNode } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
@@ -34,8 +34,8 @@ export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefi
   RootStylesType &
   Partial<ChildrenType> & {
     icon?: ReactElement
-    prefix?: string | ReactElement
-    suffix?: string | ReactElement
+    prefix?: ReactNode
+    suffix?: ReactNode
     disabled?: boolean
     target?: string
     rel?: string

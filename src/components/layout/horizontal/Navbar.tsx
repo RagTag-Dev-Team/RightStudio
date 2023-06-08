@@ -4,6 +4,7 @@
 import Logo from '../shared/Logo'
 import NavToggle from './NavToggle'
 import NavSearch from '../shared/NavSearch'
+import Translation from '../shared/Translation'
 import ModeSwitcher from '../shared/ModeSwitcher'
 
 // Styled Components Imports
@@ -24,8 +25,9 @@ const Navbar = () => {
         {!isBreakpointReached && <Logo />}
       </div>
 
-      <div className='ts-nav-right'>
+      <div className='ts-nav-right' style={{ display: 'flex' }}>
         <NavSearch />
+        <Translation />
         <ModeSwitcher />
       </div>
       {/* Search, Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}

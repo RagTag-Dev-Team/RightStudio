@@ -8,7 +8,8 @@ import type {
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  HTMLProps
+  HTMLProps,
+  ReactNode
 } from 'react'
 
 // Next Imports
@@ -66,10 +67,10 @@ import StyledHorizontalNavExpandIcon, {
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
   Partial<ChildrenType> & {
-    label: string | ReactElement
+    label: ReactNode
     icon?: ReactElement
-    prefix?: string | ReactElement
-    suffix?: string | ReactElement
+    prefix?: ReactNode
+    suffix?: ReactNode
     disabled?: boolean
     component?: string | ReactElement
     contentClassName?: string

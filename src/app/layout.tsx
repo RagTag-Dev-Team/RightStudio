@@ -4,6 +4,9 @@ import { Inter } from 'next/font/google'
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
 
+// Component Imports
+import I18n from '../components/i18n'
+
 // Style Imports
 import './globals.css'
 import 'react-perfect-scrollbar/dist/css/styles.css'
@@ -19,6 +22,7 @@ export default function RootLayout({ children }: ChildrenType) {
   return (
     <html lang='en'>
       <body className={inter.className}>
+        <I18n />
         <div id='root'>{children}</div>
       </body>
     </html>

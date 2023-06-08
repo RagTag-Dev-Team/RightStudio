@@ -2,7 +2,7 @@
 
 // React Imports
 import { createContext, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { ForwardRefRenderFunction, MenuHTMLAttributes, MutableRefObject, ReactElement } from 'react'
+import type { ForwardRefRenderFunction, MenuHTMLAttributes, MutableRefObject, ReactElement, ReactNode } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
@@ -35,7 +35,7 @@ export type MenuSectionStyles = {
 
 export type OpenSubmenu = {
   level: number
-  label: string | ReactElement
+  label: ReactNode
   active: boolean
   id: string
 }
@@ -61,9 +61,7 @@ export type VerticalMenuContextProps = {
   /**
    * @ignore
    */
-  toggleOpenSubmenu?: (
-    ...submenus: { level: number; label: string | ReactElement; active?: boolean; id: string }[]
-  ) => void
+  toggleOpenSubmenu?: (...submenus: { level: number; label: ReactNode; active?: boolean; id: string }[]) => void
 }
 
 export type MenuProps = VerticalMenuContextProps &
@@ -93,7 +91,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
   const pathname = usePathname()
 
   const toggleOpenSubmenu = useCallback(
-    (...submenus: { level: number; label: string | ReactElement; active?: boolean; id: string }[]): void => {
+    (...submenus: { level: number; label: ReactNode; active?: boolean; id: string }[]): void => {
       if (!submenus.length) return
 
       const openSubmenuCopy = [...openSubmenu]

@@ -2,7 +2,14 @@
 
 // React Imports
 import { Children, cloneElement, forwardRef, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
-import type { AnchorHTMLAttributes, ForwardRefRenderFunction, KeyboardEvent, MouseEvent, ReactElement } from 'react'
+import type {
+  AnchorHTMLAttributes,
+  ForwardRefRenderFunction,
+  KeyboardEvent,
+  MouseEvent,
+  ReactElement,
+  ReactNode
+} from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
@@ -56,10 +63,10 @@ import StyledVerticalNavExpandIcon, {
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
   Partial<ChildrenType> & {
-    label: string | ReactElement
+    label: ReactNode
     icon?: ReactElement
-    prefix?: string | ReactElement
-    suffix?: string | ReactElement
+    prefix?: ReactNode
+    suffix?: ReactNode
     defaultOpen?: boolean
     disabled?: boolean
     component?: string | ReactElement

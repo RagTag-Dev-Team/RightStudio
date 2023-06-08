@@ -2,7 +2,7 @@
 
 // React Imports
 import { forwardRef } from 'react'
-import type { ForwardRefRenderFunction, CSSProperties, ReactElement } from 'react'
+import type { ForwardRefRenderFunction, CSSProperties, ReactElement, ReactNode } from 'react'
 
 // Third-party Imports
 import classNames from 'classnames'
@@ -29,10 +29,10 @@ import StyledVerticalMenuSection from '../../styles/vertical/StyledVerticalMenuS
 
 export type MenuSectionProps = Partial<ChildrenType> &
   RootStylesType & {
-    label: string | ReactElement
+    label: ReactNode
     icon?: ReactElement
-    prefix?: string | ReactElement
-    suffix?: string | ReactElement
+    prefix?: ReactNode
+    suffix?: ReactNode
 
     /**
      * @ignore
