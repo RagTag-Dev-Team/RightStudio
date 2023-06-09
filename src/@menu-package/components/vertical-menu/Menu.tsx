@@ -12,6 +12,8 @@ import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
+import { FloatingTree } from '@floating-ui/react'
+
 import type { ChildrenType, MenuItemStyles, RenderExpandIconParams, RootStylesType } from '../../types'
 
 // Util Imports
@@ -166,9 +168,11 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
 
   return (
     <VerticalMenuContext.Provider value={providerValue}>
-      <StyledMenu ref={ref} className={classNames(menuClasses.root, className)} rootStyles={rootStyles} {...rest}>
-        <StyledUl>{children}</StyledUl>
-      </StyledMenu>
+      <FloatingTree>
+        <StyledMenu ref={ref} className={classNames(menuClasses.root, className)} rootStyles={rootStyles} {...rest}>
+          <StyledUl>{children}</StyledUl>
+        </StyledMenu>
+      </FloatingTree>
     </VerticalMenuContext.Provider>
   )
 }

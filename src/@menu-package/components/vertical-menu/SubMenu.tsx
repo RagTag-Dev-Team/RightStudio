@@ -30,7 +30,8 @@ import {
   useClick,
   safePolygon,
   useDismiss,
-  hide
+  hide,
+  useFloatingTree
 } from '@floating-ui/react'
 import type { CSSObject } from '@emotion/styled'
 
@@ -150,8 +151,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const id = useId()
   const pathname = usePathname()
 
+  // Floating UI Hooks
+  const tree = useFloatingTree()
+
   const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
 
+  // Refs
   const contentRef = useRef<HTMLDivElement>(null)
 
   const { x, y, strategy, refs, context } = useFloating({
@@ -178,7 +183,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const role = useRole(context, { role: 'menu' })
 
   // Merge all the interactions into prop getters
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover, click, dismiss, role])
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([hover, click, dismiss, role])
 
   const isSubMenuOpen = openSubmenu?.some((item: OpenSubmenu) => item.id === id) ?? false
 
@@ -227,6 +232,21 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
       }
     }
   }
+
+  // Event emitter allows you to communicate across tree components.
+  // This effect closes all menus when an item gets clicked anywhere
+  // in the tree.
+  useEffect(() => {
+    function handleTreeClick() {
+      setOpenWhenCollapsed(false)
+    }
+
+    tree?.events.on('click', handleTreeClick)
+
+    return () => {
+      tree?.events.off('click', handleTreeClick)
+    }
+  }, [tree])
 
   useLayoutEffect(() => {
     if (isCollapsed && level === 0) {
@@ -377,7 +397,15 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
       >
         {childNodes.map(node =>
           cloneElement(node, {
-            ...node.props,
+            // ...node.props,
+            ...getItemProps({
+              onClick(event: MouseEvent<HTMLAnchorElement>) {
+                if (node.props.children && !Array.isArray(node.props.children)) {
+                  node.props.onClick?.(event)
+                  tree?.events.emit('click')
+                }
+              }
+            }),
             level: level + 1
           })
         )}

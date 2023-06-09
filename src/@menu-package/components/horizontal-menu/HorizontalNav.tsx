@@ -37,6 +37,7 @@ export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   customStyles?: CSSObject
   verticalNavProps?: Pick<VerticalNavProps, 'width' | 'backgroundColor' | 'backgroundImage' | 'customStyles'>
   verticalNavContent?: ({ children }: ChildrenType) => JSX.Element
+
   /**
    * @ignore
    */
