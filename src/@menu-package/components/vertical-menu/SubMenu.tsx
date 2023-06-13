@@ -31,7 +31,8 @@ import {
   safePolygon,
   useDismiss,
   hide,
-  useFloatingTree
+  useFloatingTree,
+  FloatingPortal
 } from '@floating-ui/react'
 import type { CSSObject } from '@emotion/styled'
 
@@ -159,7 +160,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Refs
   const contentRef = useRef<HTMLDivElement>(null)
 
-  const { x, y, strategy, refs, context } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
     strategy: 'fixed',
     open: openWhenCollapsed,
     onOpenChange: setOpenWhenCollapsed,
@@ -285,6 +286,43 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     console.log(openSubmenu)
   }, [openSubmenu]) */
 
+  // Conditional FloatingPortal
+  // const FloatingPortalComp = isCollapsed && level === 0 && isPopoutWhenCollapsed ? FloatingPortal : Fragment
+
+  const submenuContent = (
+    <SubMenuContent
+      ref={isCollapsed && level === 0 && isPopoutWhenCollapsed ? refs.setFloating : contentRef}
+      {...(isCollapsed && level === 0 && isPopoutWhenCollapsed && getFloatingProps())}
+      openWhenCollapsed={openWhenCollapsed}
+      isPopoutWhenCollapsed={isPopoutWhenCollapsed}
+      transitionDuration={transitionDuration}
+      open={isSubMenuOpen}
+      firstLevel={level === 0}
+      isCollapsed={isCollapsed}
+      isHovered={isHovered}
+      className={classnames(menuClasses.subMenuContent, contentClassName)}
+      rootStyles={{
+        ...(isCollapsed && level === 0 && isPopoutWhenCollapsed && floatingStyles),
+        ...getSubMenuItemStyles('subMenuContent')
+      }}
+    >
+      {childNodes.map(node =>
+        cloneElement(node, {
+          // ...node.props,
+          ...getItemProps({
+            onClick(event: MouseEvent<HTMLAnchorElement>) {
+              if (node.props.children && !Array.isArray(node.props.children)) {
+                node.props.onClick?.(event)
+                tree?.events.emit('click')
+              }
+            }
+          }),
+          level: level + 1
+        })
+      )}
+    </SubMenuContent>
+  )
+
   return (
     // eslint-disable-next-line lines-around-comment
     /* Sub Menu */
@@ -379,37 +417,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
       </MenuButton>
 
       {/* SubMenu Content */}
-      <SubMenuContent
-        ref={isCollapsed && level === 0 && isPopoutWhenCollapsed ? refs.setFloating : contentRef}
-        {...(isCollapsed && level === 0 && isPopoutWhenCollapsed && getFloatingProps())}
-        strategy={strategy}
-        top={y ?? 0}
-        left={x ?? 0}
-        openWhenCollapsed={openWhenCollapsed}
-        isPopoutWhenCollapsed={isPopoutWhenCollapsed}
-        transitionDuration={transitionDuration}
-        open={isSubMenuOpen}
-        firstLevel={level === 0}
-        isCollapsed={isCollapsed}
-        isHovered={isHovered}
-        className={classnames(menuClasses.subMenuContent, contentClassName)}
-        rootStyles={getSubMenuItemStyles('subMenuContent')}
-      >
-        {childNodes.map(node =>
-          cloneElement(node, {
-            // ...node.props,
-            ...getItemProps({
-              onClick(event: MouseEvent<HTMLAnchorElement>) {
-                if (node.props.children && !Array.isArray(node.props.children)) {
-                  node.props.onClick?.(event)
-                  tree?.events.emit('click')
-                }
-              }
-            }),
-            level: level + 1
-          })
-        )}
-      </SubMenuContent>
+      {isCollapsed && level === 0 && isPopoutWhenCollapsed ? (
+        <FloatingPortal>{openWhenCollapsed && submenuContent}</FloatingPortal>
+      ) : (
+        submenuContent
+      )}
     </StyledSubMenu>
   )
 }

@@ -150,11 +150,14 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Hooks
   const pathname = usePathname()
 
+  // Vars
+  const dir = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
+
   const { x, y, strategy, refs, context } = useFloating({
     open,
     nodeId,
     onOpenChange: setOpen,
-    placement: level > 0 ? 'right-start' : 'bottom-start',
+    placement: level > 0 ? (dir !== 'rtl' ? 'right-start' : 'left-start') : 'bottom-start',
     middleware: [
       offset({ mainAxis: level > 0 ? (browserScroll ? 20 : 10) : 8, alignmentAxis: level > 0 ? -5 : 0 }),
       flip(),

@@ -23,9 +23,6 @@ export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
     isHovered?: boolean
 
     // defaultOpen?: boolean
-    strategy?: string
-    top?: number
-    left?: number
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
@@ -35,9 +32,6 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
     firstLevel,
     isCollapsed,
     isHovered,
-    strategy,
-    top,
-    left,
     transitionDuration,
     isPopoutWhenCollapsed,
     openWhenCollapsed,
@@ -99,9 +93,6 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
       isCollapsed={isCollapsed}
       isHovered={isHovered}
       open={open}
-      strategy={strategy}
-      top={top}
-      left={left}
       openWhenCollapsed={openWhenCollapsed}
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
       transitionDuration={transitionDuration}

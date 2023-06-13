@@ -1,18 +1,3 @@
-export const verticalNavClasses = {
-  root: 'ts-vertical-nav-root',
-  container: 'ts-vertical-nav-container',
-  bgColorContainer: 'ts-vertical-nav-bg-color-container',
-  image: 'ts-vertical-nav-image',
-  backdrop: 'ts-vertical-nav-backdrop',
-  collapsed: 'ts-collapsed',
-  toggled: 'ts-toggled',
-  hovered: 'ts-hovered',
-  scrollWithContent: 'ts-scroll-with-content',
-  breakpointReached: 'ts-breakpoint-reached',
-  collapsing: 'ts-collapsing',
-  expanding: 'ts-expanding'
-}
-
 export const menuClasses = {
   root: 'ts-menu-root',
   menuSectionRoot: 'ts-menusection-root',
@@ -32,6 +17,21 @@ export const menuClasses = {
   disabled: 'ts-disabled',
   active: 'ts-active',
   open: 'ts-open'
+}
+
+export const verticalNavClasses = {
+  root: 'ts-vertical-nav-root',
+  container: 'ts-vertical-nav-container',
+  bgColorContainer: 'ts-vertical-nav-bg-color-container',
+  image: 'ts-vertical-nav-image',
+  backdrop: 'ts-vertical-nav-backdrop',
+  collapsed: 'ts-collapsed',
+  toggled: 'ts-toggled',
+  hovered: 'ts-hovered',
+  scrollWithContent: 'ts-scroll-with-content',
+  breakpointReached: 'ts-breakpoint-reached',
+  collapsing: 'ts-collapsing',
+  expanding: 'ts-expanding'
 }
 
 export const horizontalNavClasses = {

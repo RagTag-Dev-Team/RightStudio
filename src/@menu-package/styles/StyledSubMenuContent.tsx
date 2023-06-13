@@ -21,27 +21,23 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
       transition: block-size ${transitionDuration}ms;
     `}
 
-  ${({ isCollapsed, firstLevel, isPopoutWhenCollapsed, openWhenCollapsed, top }) =>
+  ${({ isCollapsed, firstLevel, isPopoutWhenCollapsed }) =>
     isCollapsed && firstLevel && isPopoutWhenCollapsed
       ? `
+      display: block;
       padding-inline-start: 0px;
       inline-size: 260px;
       border-radius: 4px;
       block-size: auto!important;
-      display: block!important;
       transition: none!important;
       background-color: white;
       box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
-      visibility: ${openWhenCollapsed && top && top > 0 ? 'visible' : 'hidden'};
      `
       : `
       position: static!important;
       transform: none!important;
       `}
 
-  ${({ strategy }) => strategy && `position:${strategy};`}
-  inset-block-start: ${({ top }) => `${top}px`};
-  inset-inline-start: ${({ left }) => `${left}px`};
   ${({ rootStyles }) => rootStyles};
 `
 
