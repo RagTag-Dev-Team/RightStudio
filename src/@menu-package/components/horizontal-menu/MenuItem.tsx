@@ -27,10 +27,10 @@ import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 import useVerticalNav from '../../hooks/useVerticalNav'
 
 // Util Imports
+import { renderMenuIcon } from '../../utils/menuUtils'
 import { menuClasses } from '../../utils/utilityClasses'
 
 // Styled Component Imports
-import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
@@ -76,9 +76,9 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   // Hooks
   const tree = useFloatingTree()
   const pathname = usePathname()
-  const { menuItemStyles } = useHorizontalMenu()
   const { toggleVerticalNav, isToggled } = useVerticalNav()
   const { getItemProps } = useContext(HorizontalSubMenuContext)
+  const { menuItemStyles, renderExpandedMenuItemIcon } = useHorizontalMenu()
 
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
@@ -153,12 +153,17 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         })}
         {...rest}
       >
-        {icon && (
-          <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
-            {icon}
-          </StyledMenuIcon>
-        )}
+        {/* Menu Item Icon */}
+        {renderMenuIcon({
+          icon,
+          level,
+          active,
+          disabled,
+          renderExpandedMenuItemIcon,
+          styles: getMenuItemStyles('icon')
+        })}
 
+        {/* Menu Item Prefix */}
         {prefix && (
           <StyledMenuPrefix
             firstLevel={level === 0}
@@ -169,10 +174,12 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
           </StyledMenuPrefix>
         )}
 
+        {/* Menu Item Label */}
         <StyledMenuLabel className={menuClasses.label} rootStyles={getMenuItemStyles('label')}>
           {children}
         </StyledMenuLabel>
 
+        {/* Menu Item Suffix */}
         {suffix && (
           <StyledMenuSuffix
             firstLevel={level === 0}

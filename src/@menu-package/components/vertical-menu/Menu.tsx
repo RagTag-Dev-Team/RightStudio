@@ -10,11 +10,16 @@ import { usePathname } from 'next/navigation'
 // Third-party Imports
 import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
-
-// Type Imports
 import { FloatingTree } from '@floating-ui/react'
 
-import type { ChildrenType, MenuItemStyles, RenderExpandIconParams, RootStylesType } from '../../types'
+// Type Imports
+import type {
+  ChildrenType,
+  MenuItemStyles,
+  RootStylesType,
+  RenderExpandIconParams,
+  RenderExpandedMenuItemIcon
+} from '../../types'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
@@ -49,6 +54,7 @@ export type VerticalMenuContextProps = {
   menuItemStyles?: MenuItemStyles
   subMenuOpenBehavior?: 'accordion' | 'collapse'
   renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
+  renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
 
   /**
    * @ignore
@@ -80,6 +86,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     rootStyles,
     menuItemStyles,
     renderExpandIcon,
+    renderExpandedMenuItemIcon,
     menuSectionStyles,
     triggerPopout = 'hover',
     subMenuOpenBehavior = 'accordion', // accordion, collapse
@@ -148,6 +155,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       menuItemStyles,
       menuSectionStyles,
       renderExpandIcon,
+      renderExpandedMenuItemIcon,
       openSubmenu,
       openSubmenusRef,
       toggleOpenSubmenu,
@@ -159,6 +167,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       menuItemStyles,
       menuSectionStyles,
       renderExpandIcon,
+      renderExpandedMenuItemIcon,
       openSubmenu,
       openSubmenusRef,
       toggleOpenSubmenu,

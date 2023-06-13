@@ -50,11 +50,10 @@ import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
-import { confirmUrlInChildren } from '../../utils/menuUtils'
+import { confirmUrlInChildren, renderMenuIcon } from '../../utils/menuUtils'
 
 // Styled Component Imports
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
-import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledVerticalNavExpandIcon, {
@@ -133,6 +132,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const {
     triggerPopout,
     renderExpandIcon,
+    renderExpandedMenuItemIcon,
     menuItemStyles,
     openSubmenu,
     toggleOpenSubmenu,
@@ -317,14 +317,17 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         tabIndex={disabled ? -1 : 0}
         {...rest}
       >
-        {/* Menu Item Icon */}
-        {icon && (
-          <StyledMenuIcon className={menuClasses.icon} rootStyles={getSubMenuItemStyles('icon')}>
-            {icon}
-          </StyledMenuIcon>
-        )}
+        {/* Sub Menu Icon */}
+        {renderMenuIcon({
+          icon,
+          level,
+          active,
+          disabled,
+          renderExpandedMenuItemIcon,
+          styles: getSubMenuItemStyles('icon')
+        })}
 
-        {/* Menu Item Prefix */}
+        {/* Sub Menu Prefix */}
         {prefix && (
           <StyledMenuPrefix
             isHovered={isHovered}
@@ -337,12 +340,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           </StyledMenuPrefix>
         )}
 
-        {/* Menu Item Name */}
+        {/* Sub Menu Label */}
         <StyledMenuLabel className={menuClasses.label} rootStyles={getSubMenuItemStyles('label')}>
           {label} {rendersCount}
         </StyledMenuLabel>
 
-        {/* Menu Item Suffix */}
+        {/* Sub Menu Suffix */}
         {suffix && (
           <StyledMenuSuffix
             isHovered={isHovered}
@@ -378,7 +381,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         </StyledVerticalNavExpandIconWrapper>
       </MenuButton>
 
-      {/* SubMenu Content */}
+      {/* Sub Menu Content */}
       <SubMenuContent
         ref={isCollapsed && level === 0 && isPopoutWhenCollapsed ? refs.setFloating : contentRef}
         {...(isCollapsed && level === 0 && isPopoutWhenCollapsed && getFloatingProps())}

@@ -52,12 +52,11 @@ import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
-import { confirmUrlInChildren } from '../../utils/menuUtils'
+import { confirmUrlInChildren, renderMenuIcon } from '../../utils/menuUtils'
 
 // Styled Component Imports
 import MenuButton, { menuButtonStyles } from './MenuButton'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
-import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledHorizontalNavExpandIcon, {
@@ -130,8 +129,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     ...rest
   } = props
 
-  const { triggerPopout, renderExpandIcon, menuItemStyles, browserScroll, transitionDuration } = useHorizontalMenu()
-
   // State
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(false)
@@ -149,6 +146,14 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
   // Hooks
   const pathname = usePathname()
+  const {
+    triggerPopout,
+    renderExpandIcon,
+    menuItemStyles,
+    browserScroll,
+    transitionDuration,
+    renderExpandedMenuItemIcon
+  } = useHorizontalMenu()
 
   const { x, y, strategy, refs, context } = useFloating({
     open,
@@ -284,6 +289,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // User event handler for open state change
   useEffect(() => {
     onOpenChange?.(open)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   // Merge the reference ref with the ref passed to the component
@@ -308,7 +314,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         buttonStyles={getSubMenuItemStyles('button')}
         rootStyles={rootStyles}
       >
-        {/* Menu Item */}
+        {/* Sub Menu */}
         <MenuButton
           title={title}
           className={classnames(menuClasses.button, { [menuClasses.active]: active })}
@@ -317,14 +323,17 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           onKeyUp={handleOnKeyUp}
           {...rest}
         >
-          {/* Menu Item Icon */}
-          {icon && (
-            <StyledMenuIcon className={menuClasses.icon} rootStyles={getSubMenuItemStyles('icon')}>
-              {icon}
-            </StyledMenuIcon>
-          )}
+          {/* Sub Menu Icon */}
+          {renderMenuIcon({
+            icon,
+            level,
+            active,
+            disabled,
+            renderExpandedMenuItemIcon,
+            styles: getSubMenuItemStyles('icon')
+          })}
 
-          {/* Menu Item Prefix */}
+          {/* Sub Menu Prefix */}
           {prefix && (
             <StyledMenuPrefix
               firstLevel={level === 0}
@@ -335,12 +344,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
             </StyledMenuPrefix>
           )}
 
-          {/* Menu Item Name */}
+          {/* Sub Menu Label */}
           <StyledMenuLabel className={menuClasses.label} rootStyles={getSubMenuItemStyles('label')}>
             {label}
           </StyledMenuLabel>
 
-          {/* Menu Item Suffix */}
+          {/* Sub Menu Suffix */}
           {suffix && (
             <StyledMenuSuffix
               firstLevel={level === 0}

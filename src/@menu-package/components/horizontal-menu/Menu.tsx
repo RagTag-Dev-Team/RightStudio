@@ -9,7 +9,13 @@ import classNames from 'classnames'
 import { FloatingTree } from '@floating-ui/react'
 
 // Type Imports
-import type { ChildrenType, MenuItemStyles, RenderExpandIconParams, RootStylesType } from '../../types'
+import type {
+  ChildrenType,
+  MenuItemStyles,
+  RenderExpandIconParams,
+  RenderExpandedMenuItemIcon,
+  RootStylesType
+} from '../../types'
 
 // Util Imports
 import { menuClasses } from '../../utils/utilityClasses'
@@ -26,6 +32,7 @@ export type HorizontalMenuContextProps = {
   browserScroll?: boolean
   menuItemStyles?: MenuItemStyles
   renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
+  renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
   transitionDuration?: number
 }
 
@@ -46,12 +53,20 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     browserScroll = false,
     transitionDuration = horizontalSubMenuToggleDuration,
     renderExpandIcon,
+    renderExpandedMenuItemIcon,
     ...rest
   } = props
 
   const providerValue = useMemo(
-    () => ({ triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, transitionDuration }),
-    [triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, transitionDuration]
+    () => ({
+      triggerPopout,
+      browserScroll,
+      menuItemStyles,
+      renderExpandIcon,
+      renderExpandedMenuItemIcon,
+      transitionDuration
+    }),
+    [triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, renderExpandedMenuItemIcon, transitionDuration]
   )
 
   return (
