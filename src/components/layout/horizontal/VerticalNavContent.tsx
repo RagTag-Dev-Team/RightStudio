@@ -2,7 +2,7 @@
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { ChildrenType } from '@/@menu-package/types'
+import type { ChildrenType } from '../../../@menu-package/types'
 
 // Component Imports
 import NavHeader from '../../../@layouts/components/vertical/NavHeader'

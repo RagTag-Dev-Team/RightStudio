@@ -20,11 +20,11 @@ import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
+import { renderMenuIcon } from '../../utils/menuUtils'
 import { menuClasses } from '../../utils/utilityClasses'
 
 // Styled Component Imports
 import MenuButton from './MenuButton'
-import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
@@ -69,8 +69,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
 
   // Hooks
   const pathname = usePathname()
+  const { menuItemStyles, renderExpandedMenuItemIcon } = useVerticalMenu()
   const { isCollapsed, isHovered, isPopoutWhenCollapsed, toggleVerticalNav, isToggled } = useVerticalNav()
-  const { menuItemStyles } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
   // Get the styles for the specified element.
@@ -144,12 +144,17 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         onClick={handleClick}
         {...rest}
       >
-        {icon && (
-          <StyledMenuIcon className={menuClasses.icon} rootStyles={getMenuItemStyles('icon')}>
-            {icon}
-          </StyledMenuIcon>
-        )}
+        {/* Menu Item Icon */}
+        {renderMenuIcon({
+          icon,
+          level,
+          active,
+          disabled,
+          renderExpandedMenuItemIcon,
+          styles: getMenuItemStyles('icon')
+        })}
 
+        {/* Menu Item Prefix */}
         {prefix && (
           <StyledMenuPrefix
             isHovered={isHovered}
@@ -162,10 +167,12 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
           </StyledMenuPrefix>
         )}
 
+        {/* Menu Item Label */}
         <StyledMenuLabel className={menuClasses.label} rootStyles={getMenuItemStyles('label')}>
           {children} {rendersCount}
         </StyledMenuLabel>
 
+        {/* Menu Item Suffix */}
         {suffix && (
           <StyledMenuSuffix
             isHovered={isHovered}

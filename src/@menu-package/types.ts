@@ -74,6 +74,15 @@ export type RenderExpandIconParams = {
   disabled: boolean
 }
 
+// Icon for menu items in expanded submenu
+export type RenderExpandedMenuItemIcon = {
+  icon:
+    | ReactElement
+    | ((params: { level?: number; active?: boolean; disabled?: boolean }) => ReactElement | null)
+    | null
+  level?: number
+}
+
 // Root Styles
 export type RootStylesType = {
   rootStyles?: CSSObject

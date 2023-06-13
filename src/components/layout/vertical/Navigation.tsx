@@ -20,7 +20,7 @@ const Navigation = () => {
   return (
     // eslint-disable-next-line lines-around-comment
     // Sidebar Vertical Menu
-    <VerticalNav backgroundImage='assets/01.jpg' backgroundColor='rgba(255,255,0,0.8)'>
+    <VerticalNav backgroundImage='/assets/01.jpg' backgroundColor='rgba(255,255,0,0.8)'>
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         {/* Hide Logo on Smaller screens */}

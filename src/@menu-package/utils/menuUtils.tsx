@@ -1,6 +1,9 @@
 // React Imports
 import { Children, isValidElement } from 'react'
-import type { ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
+
+// Third-party Imports
+import type { CSSObject } from '@emotion/react'
 
 // Type Imports
 import type {
@@ -11,7 +14,8 @@ import type {
   VerticalMenuItemDataType,
   HorizontalMenuDataType,
   HorizontalSubMenuDataType,
-  HorizontalMenuItemDataType
+  HorizontalMenuItemDataType,
+  RenderExpandedMenuItemIcon
 } from '../types'
 
 // Component Imports
@@ -26,6 +30,21 @@ import {
   MenuSection,
   Menu as VerticalMenu
 } from '../components/vertical-menu'
+
+// Util Imports
+import { menuClasses } from './utilityClasses'
+
+// Styled Component Imports
+import StyledMenuIcon from '../styles/StyledMenuIcon'
+
+type RenderMenuIconParams = {
+  level?: number
+  active?: boolean
+  disabled?: boolean
+  styles?: CSSObject
+  icon?: ReactElement
+  renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
+}
 
 // Generate a menu from the menu data array
 export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {
@@ -148,4 +167,42 @@ export const mapHorizontalToVerticalMenu = (children: ChildrenType['children']) 
 
     return null
   })
+}
+
+/*
+ * Render all the icons for Menu Item and SubMenu components for all the levels more than 0
+ */
+export const renderMenuIcon = (params: RenderMenuIconParams) => {
+  const { icon, level, active, disabled, styles, renderExpandedMenuItemIcon } = params
+
+  if (icon) {
+    return (
+      <StyledMenuIcon className={menuClasses.icon} rootStyles={styles}>
+        {icon}
+      </StyledMenuIcon>
+    )
+  }
+
+  if (
+    level &&
+    level !== 0 &&
+    renderExpandedMenuItemIcon &&
+    renderExpandedMenuItemIcon.icon !== null &&
+    (!renderExpandedMenuItemIcon.level || renderExpandedMenuItemIcon.level >= level)
+  ) {
+    const iconToRender =
+      typeof renderExpandedMenuItemIcon.icon === 'function'
+        ? renderExpandedMenuItemIcon.icon({ level, active, disabled })
+        : renderExpandedMenuItemIcon.icon
+
+    if (iconToRender) {
+      return (
+        <StyledMenuIcon className={menuClasses.icon} rootStyles={styles}>
+          {iconToRender}
+        </StyledMenuIcon>
+      )
+    }
+  }
+
+  return null
 }
