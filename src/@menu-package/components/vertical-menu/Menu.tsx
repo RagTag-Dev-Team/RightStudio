@@ -48,6 +48,7 @@ export type OpenSubmenu = {
 }
 
 export type VerticalMenuContextProps = {
+  browserScroll?: boolean
   triggerPopout?: 'hover' | 'click'
   transitionDuration?: number
   menuSectionStyles?: MenuSectionStyles
@@ -88,6 +89,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     renderExpandIcon,
     renderExpandedMenuItemIcon,
     menuSectionStyles,
+    browserScroll = false,
     triggerPopout = 'hover',
     subMenuOpenBehavior = 'accordion', // accordion, collapse
     transitionDuration = verticalSubMenuToggleDuration,
@@ -150,6 +152,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
 
   const providerValue = useMemo(
     () => ({
+      browserScroll,
       triggerPopout,
       transitionDuration,
       menuItemStyles,
@@ -162,6 +165,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       subMenuOpenBehavior
     }),
     [
+      browserScroll,
       triggerPopout,
       transitionDuration,
       menuItemStyles,

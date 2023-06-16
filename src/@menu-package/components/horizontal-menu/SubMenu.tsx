@@ -134,6 +134,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const [active, setActive] = useState(false)
 
   // Refs
+  const dir = useRef('ltr')
   const listItemsRef = useRef<Array<HTMLButtonElement | null>>([])
 
   // Filter out falsy values from children
@@ -155,14 +156,15 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     renderExpandedMenuItemIcon
   } = useHorizontalMenu()
 
-  // Vars
-  const dir = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
+  useEffect(() => {
+    dir.current = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
+  }, [])
 
   const { x, y, strategy, refs, context } = useFloating({
     open,
     nodeId,
     onOpenChange: setOpen,
-    placement: level > 0 ? (dir !== 'rtl' ? 'right-start' : 'left-start') : 'bottom-start',
+    placement: level > 0 ? (dir.current !== 'rtl' ? 'right-start' : 'left-start') : 'bottom-start',
     middleware: [
       offset({ mainAxis: level > 0 ? (browserScroll ? 20 : 10) : 8, alignmentAxis: level > 0 ? -5 : 0 }),
       flip(),

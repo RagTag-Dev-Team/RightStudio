@@ -131,6 +131,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   } = props
   const { isCollapsed, isPopoutWhenCollapsed, isHovered } = useVerticalNav()
   const {
+    browserScroll,
     triggerPopout,
     renderExpandIcon,
     renderExpandedMenuItemIcon,
@@ -165,7 +166,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     open: openWhenCollapsed,
     onOpenChange: setOpenWhenCollapsed,
     placement: 'right-start',
-    middleware: [offset(10), flip(), shift(), hide()],
+    middleware: [offset(10), flip({ crossAxis: false }), shift(), hide()],
     whileElementsMounted: autoUpdate
   })
 
@@ -286,18 +287,16 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     console.log(openSubmenu)
   }, [openSubmenu]) */
 
-  // Conditional FloatingPortal
-  // const FloatingPortalComp = isCollapsed && level === 0 && isPopoutWhenCollapsed ? FloatingPortal : Fragment
-
   const submenuContent = (
     <SubMenuContent
       ref={isCollapsed && level === 0 && isPopoutWhenCollapsed ? refs.setFloating : contentRef}
       {...(isCollapsed && level === 0 && isPopoutWhenCollapsed && getFloatingProps())}
+      browserScroll={browserScroll}
       openWhenCollapsed={openWhenCollapsed}
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
       transitionDuration={transitionDuration}
       open={isSubMenuOpen}
-      firstLevel={level === 0}
+      level={level}
       isCollapsed={isCollapsed}
       isHovered={isHovered}
       className={classnames(menuClasses.subMenuContent, contentClassName)}

@@ -33,3 +33,12 @@ a {
 [data-floating-ui-safe-polygon] .scrollbar-container .ps__rail-y {
   pointer-events: none;
 }
+
+.ps__rail-y {
+  inset-inline-end: 0 !important;
+  inset-inline-start: auto !important;
+  & .ps__thumb-y {
+    inset-inline-end: 3px !important;
+    inset-inline-start: auto !important;
+  }
+}

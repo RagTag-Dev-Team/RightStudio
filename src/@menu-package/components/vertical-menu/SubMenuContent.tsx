@@ -2,6 +2,9 @@
 import { forwardRef, useEffect, useState } from 'react'
 import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject } from 'react'
 
+// Third Party Imports
+import PerfectScrollbar from 'react-perfect-scrollbar'
+
 // Type Imports
 import type { VerticalMenuContextProps } from './Menu'
 import type { ChildrenType, RootStylesType } from '../../types'
@@ -18,23 +21,23 @@ export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
     openWhenHovered?: boolean
     transitionDuration?: VerticalMenuContextProps['transitionDuration']
     isPopoutWhenCollapsed?: boolean
-    firstLevel?: boolean
+    level?: number
     isCollapsed?: boolean
     isHovered?: boolean
-
-    // defaultOpen?: boolean
+    browserScroll?: boolean
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
   const {
     children,
     open,
-    firstLevel,
+    level,
     isCollapsed,
     isHovered,
     transitionDuration,
     isPopoutWhenCollapsed,
     openWhenCollapsed,
+    browserScroll,
     ...rest
   } = props
 
@@ -89,16 +92,27 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
   return (
     <StyledSubMenuContent
       ref={ref}
-      firstLevel={firstLevel}
+      level={level}
       isCollapsed={isCollapsed}
       isHovered={isHovered}
       open={open}
       openWhenCollapsed={openWhenCollapsed}
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
       transitionDuration={transitionDuration}
+      browserScroll={browserScroll}
       {...rest}
     >
-      <StyledUl>{children}</StyledUl>
+      {/* If browserScroll is false render PerfectScrollbar */}
+      {!browserScroll && level === 0 && isPopoutWhenCollapsed && isCollapsed ? (
+        <PerfectScrollbar
+          options={{ wheelPropagation: false }}
+          style={{ maxBlockSize: `calc((var(--vh, 1vh) * 100))` }}
+        >
+          <StyledUl>{children}</StyledUl>
+        </PerfectScrollbar>
+      ) : (
+        <StyledUl>{children}</StyledUl>
+      )}
     </StyledSubMenuContent>
   )
 }

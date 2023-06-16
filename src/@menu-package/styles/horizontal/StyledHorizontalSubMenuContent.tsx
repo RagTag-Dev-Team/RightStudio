@@ -13,11 +13,11 @@ const StyledHorizontalSubMenuContent = styled.div<SubMenuContentProps>`
   background-color: white;
   overflow: hidden;
 
-  ${({ browserScroll }) =>
-    browserScroll && `overflow-y: auto; max-block-size: calc((var(--vh, 1vh) * 100) - 120px - 4rem);`}
+  ${({ browserScroll, top }) =>
+    browserScroll && `overflow-y: auto; max-block-size: calc((var(--vh, 1vh) * 100) - ${top}px - 4rem);`}
   ${({ strategy }) => strategy && `position: ${strategy};`}
-  ${({ top }) => top && `top: ${top}px;`}
-  ${({ left }) => left && `left: ${left}px;`}
+  inset-block-start: ${({ top }) => top}px;
+  inset-inline-start: ${({ left }) => left}px;
   ${({ rootStyles }) => rootStyles};
 `
 

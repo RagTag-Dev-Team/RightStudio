@@ -11,9 +11,9 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
   transition: ${({ transitionDuration }) => `block-size ${transitionDuration}ms`};
   box-sizing: border-box;
 
-  ${({ isCollapsed, firstLevel, isPopoutWhenCollapsed, isHovered, transitionDuration }) =>
+  ${({ isCollapsed, level, isPopoutWhenCollapsed, isHovered, transitionDuration }) =>
     isCollapsed &&
-    firstLevel &&
+    level === 0 &&
     !isPopoutWhenCollapsed &&
     !isHovered &&
     `
@@ -21,8 +21,8 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
       transition: block-size ${transitionDuration}ms;
     `}
 
-  ${({ isCollapsed, firstLevel, isPopoutWhenCollapsed }) =>
-    isCollapsed && firstLevel && isPopoutWhenCollapsed
+  ${({ isCollapsed, level, isPopoutWhenCollapsed }) =>
+    isCollapsed && level === 0 && isPopoutWhenCollapsed
       ? `
       display: block;
       padding-inline-start: 0px;
@@ -37,6 +37,9 @@ const StyledSubMenuContent = styled.div<SubMenuContentProps>`
       position: static!important;
       transform: none!important;
       `}
+
+  ${({ browserScroll }) => browserScroll && `overflow-y: auto; max-block-size: calc((var(--vh, 1vh) * 100));`}
+
 
   ${({ rootStyles }) => rootStyles};
 `
