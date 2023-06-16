@@ -1,9 +1,11 @@
 // Third-party Imports
-import { MdOpenInNew } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 
 // Type Imports
 import type { HorizontalMenuDataType } from '../../@menu-package/types'
+
+// Icon Imports
+import LinkExternalIcon from '../../@layouts/svg/LinkExternal'
 
 const HorizontalMenuData = (): HorizontalMenuDataType[] => {
   // Hooks
@@ -471,11 +473,11 @@ const HorizontalMenuData = (): HorizontalMenuDataType[] => {
             },
             {
               label: t('navigation.raiseSupport'),
-              suffix: <MdOpenInNew />
+              suffix: <LinkExternalIcon fontSize='1.125rem' />
             },
             {
               label: t('navigation.documentation'),
-              suffix: <MdOpenInNew />
+              suffix: <LinkExternalIcon fontSize='1.125rem' />
             }
           ]
         }

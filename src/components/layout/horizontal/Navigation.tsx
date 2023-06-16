@@ -2,18 +2,20 @@
 'use client'
 
 // Third-party Imports
-import { MdOpenInNew } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 
 // Component Imports from @menu-package
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
 
-// Utils Imports
+// Util Imports
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
 // import menuData from '../../../navigation-data/HorizontalMenuData'
+
+// Icon Imports
+import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 const Navigation = () => {
   // Hooks
@@ -21,7 +23,7 @@ const Navigation = () => {
 
   return (
     <HorizontalNav switchToVertical verticalNavContent={VerticalNavContent}>
-      <Menu>
+      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         {/* This is how you will normally render submenu */}
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>
@@ -181,8 +183,8 @@ const Navigation = () => {
             </SubMenu>
           </SubMenu>
           <MenuItem disabled>{t('navigation.disabledMenu')}</MenuItem>
-          <MenuItem suffix={<MdOpenInNew />}>{t('navigation.raiseSupport')}</MenuItem>
-          <MenuItem suffix={<MdOpenInNew />}>{t('navigation.documentation')}</MenuItem>
+          <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.raiseSupport')}</MenuItem>
+          <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.documentation')}</MenuItem>
         </SubMenu>
       </Menu>
       {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}

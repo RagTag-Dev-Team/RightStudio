@@ -26,7 +26,7 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
   return css({
     display: 'flex',
     alignItems: 'center',
-    blockSize: '50px',
+    minBlockSize: '30px',
     textDecoration: 'none',
     color: 'inherit',
     boxSizing: 'border-box',
@@ -37,6 +37,11 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
       backgroundColor: '#f3f3f3'
     },
 
+    '&:focus-visible': {
+      outline: 'none',
+      backgroundColor: '#f3f3f3'
+    },
+
     ...(disabled && {
       pointerEvents: 'none',
       cursor: 'default',
@@ -44,8 +49,15 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
     }),
 
     // All the active styles are applied to the button including menu items or submenu
-    [`&.${menuClasses['active']}`]: {
-      backgroundColor: level === 0 ? '#d2e0f9' : children ? '#efefef' : '#f9d2e0'
+    [`&.${menuClasses.active}`]: {
+      ...(level === 0
+        ? {
+            color: 'white',
+            backgroundColor: '#765feb'
+          }
+        : {
+            ...(children ? { backgroundColor: '#f3f3f3' } : { color: '#765feb', backgroundColor: '#765feb1f' })
+          })
     }
   })
 }

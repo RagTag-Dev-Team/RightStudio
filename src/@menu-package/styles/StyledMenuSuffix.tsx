@@ -11,7 +11,6 @@ type StyledMenuSuffixProps = RootStylesType & {
 }
 
 const StyledMenuSuffix = styled.span<StyledMenuSuffixProps>`
-  margin-inline-end: 5px;
   margin-inline-start: 5px;
   display: ${({ firstLevel, isCollapsed, isHovered }) => (firstLevel && isCollapsed && !isHovered ? 'none' : 'flex')};
   ${({ rootStyles }) => rootStyles};

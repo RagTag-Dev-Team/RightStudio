@@ -27,7 +27,7 @@ import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavC
 import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
 
 // Default Config Imports
-import { breakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
+import { defaultBreakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
 
 // Define Types
 export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
@@ -40,7 +40,6 @@ export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   customBreakPoint?: string
   transitionDuration?: VerticalNavState['transitionDuration']
   backdropColor?: string
-  popoutWhenCollapsed?: boolean
   scrollWithContent?: boolean
   customStyles?: CSSObject
 }
@@ -58,7 +57,6 @@ const VerticalNav = (props: VerticalNavProps) => {
     customBreakPoint,
     transitionDuration = verticalNavToggleDuration,
     backdropColor,
-    popoutWhenCollapsed = false,
     scrollWithContent = false,
     className,
     customStyles,
@@ -67,7 +65,9 @@ const VerticalNav = (props: VerticalNavProps) => {
   } = props
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? breakpoints[breakPoint] : breakPoint))
+  const breakpointReached = useMediaQuery(
+    customBreakPoint ?? (breakPoint ? defaultBreakpoints[breakPoint] : breakPoint)
+  )
 
   // Hooks
   const {
@@ -82,7 +82,8 @@ const VerticalNav = (props: VerticalNavProps) => {
     collapsing: collapsingContext,
     expanding: expandingContext,
     isScrollWithContent: isScrollWithContentContext,
-    transitionDuration: transitionDurationContext
+    transitionDuration: transitionDurationContext,
+    isPopoutWhenCollapsed: isPopoutWhenCollapsedContext
   } = useVerticalNav()
 
   // UseEffect, update verticalNav state to set initial values and update values on change
@@ -92,8 +93,7 @@ const VerticalNav = (props: VerticalNavProps) => {
       collapsedWidth,
       transitionDuration,
       isScrollWithContent: scrollWithContent,
-      isBreakpointReached: breakpointReached,
-      isPopoutWhenCollapsed: popoutWhenCollapsed
+      isBreakpointReached: breakpointReached
     })
 
     if (!breakpointReached) {
@@ -103,7 +103,7 @@ const VerticalNav = (props: VerticalNavProps) => {
       isHoveredContext && updateVerticalNavState({ isHovered: false })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width, collapsedWidth, scrollWithContent, breakpointReached, popoutWhenCollapsed, updateVerticalNavState])
+  }, [width, collapsedWidth, scrollWithContent, breakpointReached, updateVerticalNavState])
 
   useEffect(() => {
     updateVerticalNavState({
@@ -171,8 +171,8 @@ const VerticalNav = (props: VerticalNavProps) => {
       )}
       {
         // eslint-disable-next-line lines-around-comment
-        /* Toggle verticalNav on hover only when popoutWhenCollapsed(default false) is false */
-        ...(!popoutWhenCollapsed &&
+        /* Toggle verticalNav on hover only when isPopoutWhenCollapsedContext(default false) is false */
+        ...(!isPopoutWhenCollapsedContext &&
           isCollapsedContext && {
             onMouseEnter: handleVerticalNavHover,
             onMouseLeave: handleVerticalNavHoverOut

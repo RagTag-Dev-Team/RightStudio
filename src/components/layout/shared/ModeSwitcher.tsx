@@ -1,7 +1,8 @@
-import { FiMoon } from 'react-icons/fi'
+// Icon Imports
+import MoonIcon from '../../../@layouts/svg/Moon'
 
 const ModeSwitcher = () => {
-  return <FiMoon size={20} style={{ cursor: 'pointer' }} />
+  return <MoonIcon fontSize='1.25rem' style={{ cursor: 'pointer' }} />
 }
 
 export default ModeSwitcher

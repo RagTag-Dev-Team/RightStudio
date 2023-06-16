@@ -5,9 +5,9 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import type { ChildrenType } from '../../../@menu-package/types'
 
 // Component Imports
-import NavHeader from '../../../@layouts/components/vertical/NavHeader'
+import NavHeader from '../../../@menu-package/components/vertical-menu/NavHeader'
 import Logo from '../shared/Logo'
-import NavCollapseIcons from '../../../@layouts/components/vertical/NavCollapseIcons'
+import NavCollapseIcons from '../../../@menu-package/components/vertical-menu/NavCollapseIcons'
 
 // Util Imports
 import { mapHorizontalToVerticalMenu } from '../../../@menu-package/utils/menuUtils'

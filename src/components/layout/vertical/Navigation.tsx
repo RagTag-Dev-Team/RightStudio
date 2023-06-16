@@ -4,8 +4,8 @@
 import VerticalNav from '../../../@menu-package/components/vertical-menu'
 
 // Component Imports from @layouts
-import NavHeader from '../../../@layouts/components/vertical/NavHeader'
-import NavCollapseIcons from '../../../@layouts/components/vertical/NavCollapseIcons'
+import NavHeader from '../../../@menu-package/components/vertical-menu/NavHeader'
+import NavCollapseIcons from '../../../@menu-package/components/vertical-menu/NavCollapseIcons'
 
 // Component Imports
 import Logo from '../shared/Logo'
@@ -20,7 +20,7 @@ const Navigation = () => {
   return (
     // eslint-disable-next-line lines-around-comment
     // Sidebar Vertical Menu
-    <VerticalNav backgroundImage='/assets/01.jpg' backgroundColor='rgba(255,255,0,0.8)'>
+    <VerticalNav>
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         {/* Hide Logo on Smaller screens */}

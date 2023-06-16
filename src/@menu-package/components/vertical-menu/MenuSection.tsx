@@ -57,7 +57,8 @@ const menuSectionContentStyles: CSSProperties = {
   alignItems: 'center',
   inlineSize: '100%',
   position: 'relative',
-  paddingBlock: '0.8rem',
+  paddingBlock: '0.75rem',
+  paddingInline: '1.25rem',
   overflow: 'hidden'
 }
 
@@ -68,7 +69,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
 
   // Hooks
   const { isCollapsed, isHovered } = useVerticalNav()
-  const { menuSectionStyles } = useVerticalMenu()
+  const { menuSectionStyles, collapsedMenuSectionLabel } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
   const getMenuSectionStyles = (element: MenuSectionElement): CSSObject | undefined => {
@@ -106,15 +107,26 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
               {prefix}
             </StyledMenuPrefix>
           )}
-          {label && (
+          {collapsedMenuSectionLabel && isCollapsed && !isHovered ? (
             <StyledMenuSectionLabel
               isCollapsed={isCollapsed}
               isHovered={isHovered}
               className={menuClasses.menuSectionLabel}
               rootStyles={getMenuSectionStyles('label')}
             >
-              {label} {rendersCount}
+              {collapsedMenuSectionLabel}
             </StyledMenuSectionLabel>
+          ) : (
+            label && (
+              <StyledMenuSectionLabel
+                isCollapsed={isCollapsed}
+                isHovered={isHovered}
+                className={menuClasses.menuSectionLabel}
+                rootStyles={getMenuSectionStyles('label')}
+              >
+                {label} {rendersCount}
+              </StyledMenuSectionLabel>
+            )
           )}
           {suffix && (
             <StyledMenuSuffix

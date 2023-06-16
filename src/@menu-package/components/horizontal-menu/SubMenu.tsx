@@ -63,6 +63,9 @@ import StyledHorizontalNavExpandIcon, {
   StyledHorizontalNavExpandIconWrapper
 } from '../../styles/horizontal/StyledHorizontalNavExpandIcon'
 
+// Icon Imports
+import ChevronRight from '../../svg/ChevronRight'
+
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
   Partial<ChildrenType> & {
@@ -93,8 +96,13 @@ type HorizontalSubMenuContextProps = {
 }
 
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
+  ${({ level }) => level === 0 && { borderRadius: '6px', overflow: 'hidden' }}
   ${({ menuItemStyles }) => menuItemStyles};
   ${({ rootStyles }) => rootStyles};
+
+  &.${menuClasses.open} > .${menuClasses.button} {
+    background-color: #f3f3f3;
+  }
 
   > .${menuClasses.button} {
     ${({ level, disabled, children }) =>
@@ -368,7 +376,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           {/* Sub Menu Toggle Icon Wrapper */}
           <StyledHorizontalNavExpandIconWrapper
             className={menuClasses.subMenuExpandIcon}
-            level={level}
             rootStyles={getSubMenuItemStyles('subMenuExpandIcon')}
           >
             {renderExpandIcon ? (
@@ -381,7 +388,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
             ) : (
               // eslint-disable-next-line lines-around-comment
               /* Expanded Arrow Icon */
-              <StyledHorizontalNavExpandIcon level={level} />
+              <StyledHorizontalNavExpandIcon level={level} transitionDuration={transitionDuration}>
+                <ChevronRight fontSize='1rem' />
+              </StyledHorizontalNavExpandIcon>
             )}
           </StyledHorizontalNavExpandIconWrapper>
         </MenuButton>

@@ -24,14 +24,18 @@
   "exportDefaultFunction": {
     "prefix": "edf",
     "body": [
-      "export default (${1:params}) => { $2 }",
+      "export default (${1:params}) => {",
+      "  $0",
+      "}",
       ""
     ]
   },
   "exportDefaultNamedFunction": {
     "prefix": "ednf",
     "body": [
-      "export default function ${1:functionName}(${2:params}) { $3 }",
+      "export default function ${1:functionName}(${2:params}) {",
+      "  $0",
+      "}",
       ""
     ]
   },
@@ -58,6 +62,20 @@
       "  )",
       "}",
       ""
+    ]
+  },
+  "reactUseState": {
+    "prefix": "useState",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialState})"
+    ]
+  },
+  "reactUseEffect": {
+    "prefix": "useEffect",
+    "body": [
+      "useEffect(() => {",
+      "  $0",
+      "}, [])"
     ]
   },
   // Type Snippets

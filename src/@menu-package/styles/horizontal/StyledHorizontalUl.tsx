@@ -12,6 +12,9 @@ const StyledHorizontalUl = styled.ul`
   position: relative;
   padding: 0;
   margin: 0;
+  & > li:not(:last-of-type) {
+    margin-inline-end: 4px;
+  }
 `
 
 export default StyledHorizontalUl

@@ -19,14 +19,12 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     inset-block-start: 0;
     block-size: 100vh;
   `}
-  border-inline-end: 1px solid #efefef;
   z-index: 9;
 
   /* Transition */
   transition-property: inline-size, min-inline-size, margin-inline-start, inset-inline-start;
   transition-duration: ${({ transitionDuration }) => `${transitionDuration}ms`};
   transition-timing-function: ease-in-out;
-  transition-delay: 0;
 
   /* Width & Min Width & Margin */
   inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};

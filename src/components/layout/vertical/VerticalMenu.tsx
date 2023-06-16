@@ -1,18 +1,20 @@
 'use client'
 
 // Third-party Imports
-import { MdOpenInNew } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Component Imports from @menu-package
 import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/components/vertical-menu'
 
-// Utils Imports
+// Util Imports
 // import { generateVerticalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
 // import menuData from '../../../data/navigation/VerticalMenuData'
+
+// Icon Imports
+import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 const VerticalMenu = () => {
   // Hooks
@@ -24,7 +26,7 @@ const VerticalMenu = () => {
     <PerfectScrollbar options={{ wheelPropagation: false }}>
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu>
+      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         {/* This is how you will normally render submenu */}
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>
@@ -186,8 +188,8 @@ const VerticalMenu = () => {
               </SubMenu>
             </SubMenu>
             <MenuItem disabled>{t('navigation.disabledMenu')}</MenuItem>
-            <MenuItem suffix={<MdOpenInNew />}>{t('navigation.raiseSupport')}</MenuItem>
-            <MenuItem suffix={<MdOpenInNew />}>{t('navigation.documentation')}</MenuItem>
+            <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.raiseSupport')}</MenuItem>
+            <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.documentation')}</MenuItem>
           </SubMenu>
         </MenuSection>
       </Menu>

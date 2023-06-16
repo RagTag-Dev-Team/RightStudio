@@ -22,15 +22,16 @@ type StyledVerticalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'disabled'
 
 const StyledVerticalMenuItem = styled.li<StyledVerticalMenuItemProps>`
   position: relative;
+  margin-block-start: 4px;
   ${({ menuItemStyles }) => menuItemStyles};
   ${({ rootStyles }) => rootStyles};
 
   > .${menuClasses.button} {
-    ${({ level, disabled, active, isCollapsed, isPopoutWhenCollapsed }) =>
+    ${({ level, active, disabled, isCollapsed, isPopoutWhenCollapsed }) =>
       menuButtonStyles({
         level,
-        disabled,
         active,
+        disabled,
         isCollapsed,
         isPopoutWhenCollapsed
       })};

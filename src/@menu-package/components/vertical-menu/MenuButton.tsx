@@ -29,7 +29,7 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
   return css({
     display: 'flex',
     alignItems: 'center',
-    blockSize: '50px',
+    minBlockSize: '30px',
     textDecoration: 'none',
     color: 'inherit',
     boxSizing: 'border-box',
@@ -37,7 +37,12 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
     paddingInlineEnd: '20px',
     paddingInlineStart: `${level === 0 ? 20 : (isPopoutWhenCollapsed && isCollapsed ? level : level + 1) * 20}px`,
 
-    '&:hover': {
+    '&:hover, &[aria-expanded="true"]': {
+      backgroundColor: '#f3f3f3'
+    },
+
+    '&:focus-visible': {
+      outline: 'none',
       backgroundColor: '#f3f3f3'
     },
 
@@ -48,8 +53,9 @@ export const menuButtonStyles = (props: MenuButtonStylesProps) => {
     }),
 
     // All the active styles are applied to the button including menu items or submenu
-    [`&.${menuClasses['active']}`]: {
-      backgroundColor: level === 0 ? '#d2e0f9' : children ? '#efefef' : '#f9d2e0'
+    [`&.${menuClasses.active}`]: {
+      ...(!children && { color: 'white' }),
+      backgroundColor: children ? '#f3f3f3' : '#765feb'
     }
   })
 }

@@ -1,11 +1,11 @@
 'use client'
 
-// Third-party Imports
-import { FiAlignJustify } from 'react-icons/fi'
-
 // Hook Imports
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+
+// Icon Imports
+import HamburgerMenuIcon from '../../../@layouts/svg/HamburgerMenu'
 
 const NavToggle = () => {
   // Hooks
@@ -21,7 +21,7 @@ const NavToggle = () => {
     <>
       {/* <FiAlignJustify onClick={handleClick}/> */}{' '}
       {/* Comment following line and uncomment this line in order to toggle menu on desktop screens as well */}
-      {isBreakpointReached && <FiAlignJustify onClick={handleClick} />}
+      {isBreakpointReached && <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />}
     </>
   )
 }

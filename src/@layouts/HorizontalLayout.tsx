@@ -19,7 +19,9 @@ const HorizontalLayout = ({ children }: ChildrenType) => {
         <PageContent>
           <Header>
             <Navbar />
-            <Navigation />
+            <div style={{ paddingBlock: 9.5 }}>
+              <Navigation />
+            </div>
           </Header>
           {/* Content */}
           <div>{children}</div>

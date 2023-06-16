@@ -10,15 +10,15 @@ type StyledMenuSectionLabelProps = RootStylesType & {
 }
 
 const StyledMenuSectionLabel = styled.span<StyledMenuSectionLabelProps>`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   ${({ isCollapsed, isHovered }) =>
     !isCollapsed || (isCollapsed && isHovered)
       ? `
 flex-grow: 1;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
 `
-      : 'display: none;'}
+      : ''}
   ${({ rootStyles }) => rootStyles};
 `
 

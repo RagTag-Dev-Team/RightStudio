@@ -26,7 +26,7 @@ import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 // Default Config Imports
-import { breakpoints } from '../../defaultConfigs'
+import { defaultBreakpoints } from '../../defaultConfigs'
 
 // Define Types
 export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
@@ -62,7 +62,9 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   const { updateIsBreakpointReached } = useHorizontalNav()
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakPoint ?? (breakPoint ? breakpoints[breakPoint] : breakPoint))
+  const breakpointReached = useMediaQuery(
+    customBreakPoint ?? (breakPoint ? defaultBreakpoints[breakPoint] : breakPoint)
+  )
 
   const horizontalMenuClasses = classNames(horizontalNavClasses.root, className)
 

@@ -5,7 +5,7 @@ import type { ChildrenType } from '../../../@menu-package/types'
 import { horizontalLayoutClasses } from '../../utils/utilityClasses'
 
 const headerStyles = {
-  backgroundColor: '#f4f4f4'
+  borderBlockEnd: '1px solid #efefef'
 }
 
 const Header = ({ children }: ChildrenType) => {

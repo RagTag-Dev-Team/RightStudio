@@ -8,13 +8,15 @@ import { useRouter } from 'next/navigation'
 
 // Third-party Imports
 import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useKBar } from 'kbar'
-import { FiSearch } from 'react-icons/fi'
 
 // Component Imports
 import SearchResults from '../../../@layouts/components/search/SearchResults'
 
 // Data
 import data from '../../../data/SearchData'
+
+// Icon Imports
+import Search from '../../../@layouts/svg/Search'
 
 // Styles
 const searchStyle: CSSProperties = {
@@ -51,13 +53,13 @@ const SearchIcon = () => {
   const { query } = useKBar()
 
   return (
-    <FiSearch
+    <Search
       className='ts-nav-search-icon'
       role='button'
       aria-label='search'
       onClick={query.toggle}
       style={{ cursor: 'pointer', margin: '0 16px' }}
-      size={20}
+      fontSize='1.25rem'
     />
   )
 }

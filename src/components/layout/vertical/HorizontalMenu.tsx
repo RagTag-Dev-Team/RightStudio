@@ -15,7 +15,7 @@ const HorizontalMenu = () => {
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
-        <Menu>
+        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           {/* This is how you can use a custom component */}
           <MenuItem component={<RouterLink href='/' />}>Home</MenuItem>
           {/* This is how you can use a custom Element */}

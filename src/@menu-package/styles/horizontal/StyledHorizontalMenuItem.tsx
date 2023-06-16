@@ -19,6 +19,7 @@ type StyledHorizontalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'disable
 
 const StyledHorizontalMenuItem = styled.li<StyledHorizontalMenuItemProps>`
   position: relative;
+  ${({ level }) => level === 0 && { borderRadius: '6px', overflow: 'hidden' }}
   ${({ menuItemStyles }) => menuItemStyles};
   ${({ rootStyles }) => rootStyles};
 

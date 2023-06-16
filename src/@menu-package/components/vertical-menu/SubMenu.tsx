@@ -61,6 +61,9 @@ import StyledVerticalNavExpandIcon, {
   StyledVerticalNavExpandIconWrapper
 } from '../../styles/vertical/StyledVerticalNavExpandIcon'
 
+// Icon Imports
+import ChevronRight from '../../svg/ChevronRight'
+
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
   Partial<ChildrenType> & {
@@ -85,22 +88,29 @@ type StyledSubMenuProps = Pick<SubMenuProps, 'rootStyles' | 'disabled'> & {
   active?: boolean
   menuItemStyles?: CSSObject
   isPopoutWhenCollapsed?: boolean
+  isCollapsed?: boolean
   buttonStyles?: CSSObject
 }
 
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
   position: relative;
   inline-size: 100%;
+  margin-block-start: 4px;
   ${({ menuItemStyles }) => menuItemStyles};
   ${({ rootStyles }) => rootStyles};
 
+  &.${menuClasses.open} > .${menuClasses.button} {
+    background-color: #f3f3f3;
+  }
+
   > .${menuClasses.button} {
-    ${({ level, disabled, active, children, isPopoutWhenCollapsed }) =>
+    ${({ level, disabled, active, children, isCollapsed, isPopoutWhenCollapsed }) =>
       menuButtonStyles({
         level,
-        disabled,
         active,
+        disabled,
         children,
+        isCollapsed,
         isPopoutWhenCollapsed
       })};
     ${({ buttonStyles }) => buttonStyles};
@@ -339,6 +349,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
       disabled={disabled}
       active={active}
+      isCollapsed={isCollapsed}
       buttonStyles={getSubMenuItemStyles('button')}
       rootStyles={rootStyles}
     >
@@ -396,26 +407,27 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         )}
 
         {/* Sub Menu Toggle Icon Wrapper */}
-        <StyledVerticalNavExpandIconWrapper
-          className={menuClasses.subMenuExpandIcon}
-          isCollapsed={isCollapsed}
-          level={level}
-          isHovered={isHovered}
-          rootStyles={getSubMenuItemStyles('subMenuExpandIcon')}
-        >
-          {renderExpandIcon ? (
-            renderExpandIcon({
-              level,
-              disabled,
-              active,
-              open: isSubMenuOpen
-            })
-          ) : isCollapsed && !isHovered && level === 0 ? null : (
-            // eslint-disable-next-line lines-around-comment
-            /* Expanded Arrow Icon */
-            <StyledVerticalNavExpandIcon open={isSubMenuOpen} />
-          )}
-        </StyledVerticalNavExpandIconWrapper>
+        {isCollapsed && !isHovered && level === 0 ? null : (
+          <StyledVerticalNavExpandIconWrapper
+            className={menuClasses.subMenuExpandIcon}
+            rootStyles={getSubMenuItemStyles('subMenuExpandIcon')}
+          >
+            {renderExpandIcon ? (
+              renderExpandIcon({
+                level,
+                disabled,
+                active,
+                open: isSubMenuOpen
+              })
+            ) : (
+              // eslint-disable-next-line lines-around-comment
+              /* Expanded Arrow Icon */
+              <StyledVerticalNavExpandIcon open={isSubMenuOpen} transitionDuration={transitionDuration}>
+                <ChevronRight fontSize='1rem' />
+              </StyledVerticalNavExpandIcon>
+            )}
+          </StyledVerticalNavExpandIconWrapper>
+        )}
       </MenuButton>
 
       {/* Sub Menu Content */}

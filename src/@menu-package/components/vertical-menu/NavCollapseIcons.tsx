@@ -3,11 +3,13 @@
 // React Imports
 import type { ReactElement } from 'react'
 
-// Third-party Imports
-import { FiDisc, FiCircle, FiX } from 'react-icons/fi'
-
 // Hook Imports
-import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '../../hooks/useVerticalNav'
+
+// Icon Imports
+import CloseIcon from '../../svg/Close'
+import RadioCircleIcon from '../../svg/RadioCircle'
+import RadioCircleMarkedIcon from '../../svg/RadioCircleMarked'
 
 type NavCollapseIconsProps = {
   closeIcon?: ReactElement
@@ -40,16 +42,16 @@ const NavCollapseIcons = (props: NavCollapseIconsProps) => {
   return (
     <>
       {isBreakpointReached ? (
-        <span role='button' onClick={handleClose}>
-          {closeIcon ?? <FiX />}
+        <span role='button' tabIndex={0} style={{ display: 'flex' }} onClick={handleClose}>
+          {closeIcon ?? <CloseIcon />}
         </span>
       ) : isCollapsed ? (
-        <span role='button' onClick={() => handleClick('lock')}>
-          {unlockedIcon ?? <FiCircle />}
+        <span role='button' tabIndex={0} style={{ display: 'flex' }} onClick={() => handleClick('lock')}>
+          {unlockedIcon ?? <RadioCircleIcon />}
         </span>
       ) : (
-        <span role='button' onClick={() => handleClick('unlock')}>
-          {lockedIcon ?? <FiDisc />}
+        <span role='button' tabIndex={0} style={{ display: 'flex' }} onClick={() => handleClick('unlock')}>
+          {lockedIcon ?? <RadioCircleMarkedIcon />}
         </span>
       )}
     </>

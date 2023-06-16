@@ -23,6 +23,7 @@ export const verticalNavClasses = {
   root: 'ts-vertical-nav-root',
   container: 'ts-vertical-nav-container',
   bgColorContainer: 'ts-vertical-nav-bg-color-container',
+  header: 'ts-vertical-nav-header',
   image: 'ts-vertical-nav-image',
   backdrop: 'ts-vertical-nav-backdrop',
   collapsed: 'ts-collapsed',
