@@ -14,10 +14,7 @@ const StyledHorizontalSubMenuContent = styled.div<SubMenuContentProps>`
   overflow: hidden;
 
   ${({ browserScroll, top }) =>
-    browserScroll && `overflow-y: auto; max-block-size: calc((var(--vh, 1vh) * 100) - ${top}px - 4rem);`}
-  ${({ strategy }) => strategy && `position: ${strategy};`}
-  inset-block-start: ${({ top }) => top}px;
-  inset-inline-start: ${({ left }) => left}px;
+    browserScroll && `overflow-y: auto; max-block-size: calc((var(--vh, 1vh) * 100) - ${top}px);`}
   ${({ rootStyles }) => rootStyles};
 `
 

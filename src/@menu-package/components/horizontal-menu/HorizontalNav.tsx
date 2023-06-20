@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { BreakPointType, ChildrenType } from '../../types'
+import type { BreakpointType, ChildrenType } from '../../types'
 import type { VerticalNavProps } from '../vertical-menu/VerticalNav'
 
 // Component Imports
@@ -32,8 +32,9 @@ import { defaultBreakpoints } from '../../defaultConfigs'
 export type HorizontalNavProps = HTMLAttributes<HTMLDivElement> & {
   switchToVertical?: boolean
   hideMenu?: boolean
-  breakPoint?: BreakPointType
-  customBreakPoint?: string
+  breakpoint?: BreakpointType
+  customBreakpoint?: string
+  breakpoints?: Partial<typeof defaultBreakpoints>
   customStyles?: CSSObject
   verticalNavProps?: Pick<VerticalNavProps, 'width' | 'backgroundColor' | 'backgroundImage' | 'customStyles'>
   verticalNavContent?: ({ children }: ChildrenType) => JSX.Element
@@ -49,8 +50,9 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   const {
     switchToVertical = false,
     hideMenu = false,
-    breakPoint = 'lg',
-    customBreakPoint,
+    breakpoint = 'lg',
+    customBreakpoint,
+    breakpoints,
     customStyles,
     className,
     children,
@@ -58,13 +60,13 @@ const HorizontalNav = (props: HorizontalNavProps) => {
     verticalNavContent: VerticalNavContent
   } = props
 
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
+
   // Hooks
   const { updateIsBreakpointReached } = useHorizontalNav()
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(
-    customBreakPoint ?? (breakPoint ? defaultBreakpoints[breakPoint] : breakPoint)
-  )
+  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
 
   const horizontalMenuClasses = classNames(horizontalNavClasses.root, className)
 
@@ -77,9 +79,9 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   if (switchToVertical && breakpointReached) {
     return (
       <VerticalNavInHorizontal
-        breakPoint={breakPoint}
+        breakpoint={breakpoint}
         className={horizontalMenuClasses}
-        customBreakPoint={customBreakPoint}
+        customBreakpoint={customBreakpoint}
         verticalNavProps={verticalNavProps}
       >
         {VerticalNavContent && <VerticalNavContent>{children}</VerticalNavContent>}

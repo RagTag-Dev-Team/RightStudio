@@ -9,7 +9,7 @@ import classnames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
-import type { BreakPointType } from '../../types'
+import type { BreakpointType } from '../../types'
 
 // Context Imports
 import type { VerticalNavState } from '../../contexts/verticalNavContext'
@@ -36,8 +36,9 @@ export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   defaultCollapsed?: boolean
   backgroundColor?: string
   backgroundImage?: string
-  breakPoint?: BreakPointType
-  customBreakPoint?: string
+  breakpoint?: BreakpointType
+  customBreakpoint?: string
+  breakpoints?: Partial<typeof defaultBreakpoints>
   transitionDuration?: VerticalNavState['transitionDuration']
   backdropColor?: string
   scrollWithContent?: boolean
@@ -53,8 +54,9 @@ const VerticalNav = (props: VerticalNavProps) => {
     defaultCollapsed = false,
     backgroundColor = 'white',
     backgroundImage,
-    breakPoint = 'lg',
-    customBreakPoint,
+    breakpoint = 'lg',
+    customBreakpoint,
+    breakpoints,
     transitionDuration = verticalNavToggleDuration,
     backdropColor,
     scrollWithContent = false,
@@ -64,10 +66,10 @@ const VerticalNav = (props: VerticalNavProps) => {
     ...rest
   } = props
 
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
+
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(
-    customBreakPoint ?? (breakPoint ? defaultBreakpoints[breakPoint] : breakPoint)
-  )
+  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
 
   // Hooks
   const {
@@ -98,6 +100,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
     if (!breakpointReached) {
       updateVerticalNavState({ isToggled: false })
+      defaultCollapsed && updateVerticalNavState({ isCollapsed: true })
     } else {
       isCollapsedContext && updateVerticalNavState({ isCollapsed: false })
       isHoveredContext && updateVerticalNavState({ isHovered: false })

@@ -8,9 +8,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Type Imports
 import type { ChildrenType, RootStylesType } from '../../types'
 
-// Hook Imports
-import useHorizontalMenu from '../../hooks/useHorizontalMenu'
-
 // Styled Component Imports
 import StyledUl from '../../styles/StyledUl'
 import StyledHorizontalSubMenuContent from '../../styles/horizontal/StyledHorizontalSubMenuContent'
@@ -21,24 +18,18 @@ export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
     open?: boolean
     browserScroll?: boolean
     firstLevel?: boolean
-    strategy?: string
     top?: number
-    left?: number
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
-  const { children, open, firstLevel, strategy, top, left, ...rest } = props
-
-  const { browserScroll } = useHorizontalMenu()
+  const { children, open, firstLevel, top, browserScroll, ...rest } = props
 
   return (
     <StyledHorizontalSubMenuContent
       ref={ref}
       firstLevel={firstLevel}
       open={open}
-      strategy={strategy}
       top={top}
-      left={left}
       browserScroll={browserScroll}
       {...rest}
     >
@@ -46,7 +37,7 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
       {!browserScroll ? (
         <PerfectScrollbar
           options={{ wheelPropagation: false }}
-          style={{ maxBlockSize: `calc((var(--vh, 1vh) * 100) - ${top}px - 4rem)` }}
+          style={{ maxBlockSize: `calc((var(--vh, 1vh) * 100) - ${top}px)` }}
         >
           <StyledUl>{children}</StyledUl>
         </PerfectScrollbar>

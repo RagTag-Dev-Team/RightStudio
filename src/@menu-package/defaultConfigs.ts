@@ -1,7 +1,7 @@
 // Type Imports
-import type { BreakPointType } from './types'
+import type { BreakpointType } from './types'
 
-export const defaultBreakpoints: Record<BreakPointType, string> = {
+export const defaultBreakpoints: Record<BreakpointType, string> = {
   xs: '480px',
   sm: '600px',
   md: '900px',

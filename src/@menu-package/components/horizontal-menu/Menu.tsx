@@ -34,6 +34,10 @@ export type HorizontalMenuContextProps = {
   renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
   renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
   transitionDuration?: number
+  popoutMenuOffset?: {
+    mainAxis?: number | ((params: { level?: number }) => number)
+    alignmentAxis?: number | ((params: { level?: number }) => number)
+  }
 }
 
 export type MenuProps = HorizontalMenuContextProps &
@@ -54,6 +58,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     transitionDuration = horizontalSubMenuToggleDuration,
     renderExpandIcon,
     renderExpandedMenuItemIcon,
+    popoutMenuOffset,
     ...rest
   } = props
 
@@ -64,9 +69,18 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       menuItemStyles,
       renderExpandIcon,
       renderExpandedMenuItemIcon,
-      transitionDuration
+      transitionDuration,
+      popoutMenuOffset
     }),
-    [triggerPopout, browserScroll, menuItemStyles, renderExpandIcon, renderExpandedMenuItemIcon, transitionDuration]
+    [
+      triggerPopout,
+      browserScroll,
+      menuItemStyles,
+      renderExpandIcon,
+      renderExpandedMenuItemIcon,
+      transitionDuration,
+      popoutMenuOffset
+    ]
   )
 
   return (

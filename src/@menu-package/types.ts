@@ -20,7 +20,7 @@ export type ChildrenType = {
 }
 
 // Breakpoints
-export type BreakPointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
+export type BreakpointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
 
 // Menu Item Elements for styling
 export type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'

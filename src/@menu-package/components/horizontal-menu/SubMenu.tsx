@@ -161,21 +161,36 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     menuItemStyles,
     browserScroll,
     transitionDuration,
-    renderExpandedMenuItemIcon
+    renderExpandedMenuItemIcon,
+    popoutMenuOffset
   } = useHorizontalMenu()
 
   useEffect(() => {
     dir.current = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
   }, [])
 
-  const { x, y, strategy, refs, context } = useFloating({
+  const mainAxisOffset =
+    popoutMenuOffset &&
+    popoutMenuOffset.mainAxis &&
+    (typeof popoutMenuOffset.mainAxis === 'function' ? popoutMenuOffset.mainAxis({ level }) : popoutMenuOffset.mainAxis)
+  const alignmentAxisOffset =
+    popoutMenuOffset &&
+    popoutMenuOffset.alignmentAxis &&
+    (typeof popoutMenuOffset.alignmentAxis === 'function'
+      ? popoutMenuOffset.alignmentAxis({ level })
+      : popoutMenuOffset.alignmentAxis)
+
+  const { y, refs, floatingStyles, context } = useFloating({
     open,
     nodeId,
     onOpenChange: setOpen,
     placement: level > 0 ? (dir.current !== 'rtl' ? 'right-start' : 'left-start') : 'bottom-start',
     middleware: [
-      offset({ mainAxis: level > 0 ? (browserScroll ? 20 : 10) : 8, alignmentAxis: level > 0 ? -5 : 0 }),
-      flip(),
+      offset({
+        mainAxis: mainAxisOffset,
+        alignmentAxis: alignmentAxisOffset
+      }),
+      flip({ crossAxis: false }),
       shift()
     ],
     whileElementsMounted: autoUpdate
@@ -398,36 +413,34 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         <HorizontalSubMenuContext.Provider value={{ getItemProps }}>
           <FloatingPortal>
             {isMounted && (
-              <SubMenuContent
-                ref={refs.setFloating}
-                {...getFloatingProps()}
-                strategy={strategy}
-                top={y ?? 0}
-                left={x ?? 0}
-                open={open}
-                firstLevel={level === 0}
-                className={classnames(menuClasses.subMenuContent, contentClassName)}
-                rootStyles={getSubMenuItemStyles('subMenuContent')}
-                style={{ ...styles }}
-              >
-                {childNodes.map((node, index) =>
-                  cloneElement(node, {
-                    ...getItemProps({
-                      ref(node: HTMLButtonElement) {
-                        listItemsRef.current[index] = node
-                      },
-
-                      onClick(event: MouseEvent<HTMLAnchorElement>) {
-                        if (node.props.children && !Array.isArray(node.props.children)) {
-                          node.props.onClick?.(event)
-                          tree?.events.emit('click')
+              <div ref={refs.setFloating} {...getFloatingProps()} style={floatingStyles}>
+                <SubMenuContent
+                  open={open}
+                  top={y ?? 0}
+                  firstLevel={level === 0}
+                  browserScroll={browserScroll}
+                  className={classnames(menuClasses.subMenuContent, contentClassName)}
+                  rootStyles={getSubMenuItemStyles('subMenuContent')}
+                  style={{ ...styles }}
+                >
+                  {childNodes.map((node, index) =>
+                    cloneElement(node, {
+                      ...getItemProps({
+                        ref(node: HTMLButtonElement) {
+                          listItemsRef.current[index] = node
+                        },
+                        onClick(event: MouseEvent<HTMLAnchorElement>) {
+                          if (node.props.children && !Array.isArray(node.props.children)) {
+                            node.props.onClick?.(event)
+                            tree?.events.emit('click')
+                          }
                         }
-                      }
-                    }),
-                    level: level + 1
-                  })
-                )}
-              </SubMenuContent>
+                      }),
+                      level: level + 1
+                    })
+                  )}
+                </SubMenuContent>
+              </div>
             )}
           </FloatingPortal>
         </HorizontalSubMenuContext.Provider>

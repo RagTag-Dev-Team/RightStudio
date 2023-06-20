@@ -1,3 +1,5 @@
+'use client'
+
 // Component Imports
 import { RouterLink } from '../../../@menu-package/components/RouterLink'
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
@@ -15,7 +17,13 @@ const HorizontalMenu = () => {
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu
+          menuItemStyles={{ button: { paddingBlock: '12px' } }}
+          popoutMenuOffset={{
+            mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+            alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+          }}
+        >
           {/* This is how you can use a custom component */}
           <MenuItem component={<RouterLink href='/' />}>Home</MenuItem>
           {/* This is how you can use a custom Element */}

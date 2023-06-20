@@ -60,6 +60,10 @@ export type VerticalMenuContextProps = {
   renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
   renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
   collapsedMenuSectionLabel?: ReactNode
+  popoutMenuOffset?: {
+    mainAxis?: number | ((params: { level?: number }) => number)
+    alignmentAxis?: number | ((params: { level?: number }) => number)
+  }
 
   /**
    * @ignore
@@ -101,6 +105,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     subMenuOpenBehavior = 'accordion', // accordion, collapse
     transitionDuration = verticalSubMenuToggleDuration,
     collapsedMenuSectionLabel = '-',
+    popoutMenuOffset,
     ...rest
   } = props
 
@@ -180,7 +185,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       openSubmenusRef,
       toggleOpenSubmenu,
       subMenuOpenBehavior,
-      collapsedMenuSectionLabel
+      collapsedMenuSectionLabel,
+      popoutMenuOffset
     }),
     [
       browserScroll,
@@ -194,7 +200,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       openSubmenusRef,
       toggleOpenSubmenu,
       subMenuOpenBehavior,
-      collapsedMenuSectionLabel
+      collapsedMenuSectionLabel,
+      popoutMenuOffset
     ]
   )
 

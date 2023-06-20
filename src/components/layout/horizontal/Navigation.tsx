@@ -1,4 +1,4 @@
-// Do not remove this following 'use client' else SubMenu in rendered in vertical menu on smaller screen will not work.
+// Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
 'use client'
 
 // Third-party Imports
@@ -23,7 +23,13 @@ const Navigation = () => {
 
   return (
     <HorizontalNav switchToVertical verticalNavContent={VerticalNavContent}>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <Menu
+        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        popoutMenuOffset={{
+          mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+          alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+        }}
+      >
         {/* This is how you will normally render submenu */}
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>

@@ -149,7 +149,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     openSubmenu,
     toggleOpenSubmenu,
     transitionDuration,
-    openSubmenusRef
+    openSubmenusRef,
+    popoutMenuOffset
   } = useVerticalMenu()
 
   // Hook
@@ -171,12 +172,31 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Refs
   const contentRef = useRef<HTMLDivElement>(null)
 
+  const mainAxisOffset =
+    popoutMenuOffset &&
+    popoutMenuOffset.mainAxis &&
+    (typeof popoutMenuOffset.mainAxis === 'function' ? popoutMenuOffset.mainAxis({ level }) : popoutMenuOffset.mainAxis)
+  const alignmentAxisOffset =
+    popoutMenuOffset &&
+    popoutMenuOffset.alignmentAxis &&
+    (typeof popoutMenuOffset.alignmentAxis === 'function'
+      ? popoutMenuOffset.alignmentAxis({ level })
+      : popoutMenuOffset.alignmentAxis)
+
   const { refs, floatingStyles, context } = useFloating({
     strategy: 'fixed',
     open: openWhenCollapsed,
     onOpenChange: setOpenWhenCollapsed,
     placement: 'right-start',
-    middleware: [offset(10), flip({ crossAxis: false }), shift(), hide()],
+    middleware: [
+      offset({
+        mainAxis: mainAxisOffset,
+        alignmentAxis: alignmentAxisOffset
+      }),
+      flip({ crossAxis: false }),
+      shift(),
+      hide()
+    ],
     whileElementsMounted: autoUpdate
   })
 
