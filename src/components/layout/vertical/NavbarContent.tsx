@@ -13,7 +13,8 @@ import { verticalLayoutClasses } from '../../../@layouts/utils/utilityClasses'
 
 const commonStyles: CSSProperties = {
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
+  gap: '16px'
 }
 
 const NavbarContent = () => {

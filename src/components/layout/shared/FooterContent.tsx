@@ -16,7 +16,8 @@ import { layoutClasses } from '../../../@layouts/utils/utilityClasses'
 
 const commonStyles: CSSProperties = {
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
+  gap: '16px'
 }
 
 const FooterContent = () => {
@@ -27,7 +28,10 @@ const FooterContent = () => {
   const isBreakpointReached = layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
 
   return (
-    <div className={layoutClasses.footerContent} style={{ ...commonStyles, justifyContent: 'space-between' }}>
+    <div
+      className={layoutClasses.footerContent}
+      style={{ ...commonStyles, justifyContent: 'space-between', flexWrap: 'wrap' }}
+    >
       <p>
         <span>{`© ${new Date().getFullYear()}, Made with `}</span>
         <span>{`❤️`}</span>
@@ -38,17 +42,13 @@ const FooterContent = () => {
       </p>
       {!isBreakpointReached && (
         <div style={{ ...commonStyles }}>
-          <Link
-            href='https://themeselection.com/license'
-            target='_blank'
-            style={{ color: '#765feb', marginInlineEnd: 16 }}
-          >
+          <Link href='https://themeselection.com/license' target='_blank' style={{ color: '#765feb' }}>
             License
           </Link>
-          <Link href='https://themeselection.com' target='_blank' style={{ color: '#765feb', marginInlineEnd: 16 }}>
+          <Link href='https://themeselection.com' target='_blank' style={{ color: '#765feb' }}>
             More Themes
           </Link>
-          <Link href='/' target='_blank' style={{ color: '#765feb', marginInlineEnd: 16 }}>
+          <Link href='/' target='_blank' style={{ color: '#765feb' }}>
             Documentation
           </Link>
           <Link href='https://themeselection.com/support' target='_blank' style={{ color: '#765feb' }}>

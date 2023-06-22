@@ -24,7 +24,7 @@ const Translation = () => {
   }, [i18n.language])
 
   return (
-    <div style={{ marginInlineEnd: '10px', display: 'flex' }}>
+    <div style={{ display: 'flex' }}>
       <a onClick={() => handleLangItemClick('en')}>English</a>
       <a onClick={() => handleLangItemClick('fr')}>French</a>
       <a onClick={() => handleLangItemClick('ar')}>Arabic</a>

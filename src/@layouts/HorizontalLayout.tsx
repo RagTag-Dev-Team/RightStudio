@@ -4,6 +4,10 @@ import type { CSSProperties } from 'react'
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
 
+// Context Imports
+import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
+import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
+
 // Component Imports
 import LayoutContentWrapper from './components/horizontal/LayoutContentWrapper'
 import Header from './components/horizontal/Header'
@@ -14,12 +18,13 @@ import LayoutContent from './components/horizontal/LayoutContent'
 import Footer from './components/Footer'
 import FooterContent from '../components/layout/shared/FooterContent'
 
-// Context Imports
-import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
-import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
-
 // Util Imports
 import { horizontalLayoutClasses } from './utils/utilityClasses'
+
+type HorizontalLayoutProps = ChildrenType & {
+  renderNavigation?: boolean
+  renderFooter?: boolean
+}
 
 // Styles
 const horizontalLayoutStyles: CSSProperties = {
@@ -27,7 +32,10 @@ const horizontalLayoutStyles: CSSProperties = {
   flex: '1 1 auto'
 }
 
-const HorizontalLayout = ({ children }: ChildrenType) => {
+const HorizontalLayout = (props: HorizontalLayoutProps) => {
+  // Props
+  const { renderNavigation = true, renderFooter = true, children } = props
+
   return (
     <div className={horizontalLayoutClasses.root} style={horizontalLayoutStyles}>
       <HorizontalNavProvider>
@@ -37,13 +45,15 @@ const HorizontalLayout = ({ children }: ChildrenType) => {
               <Navbar>
                 <NavbarContent />
               </Navbar>
-              <Navigation />
+              {renderNavigation && <Navigation />}
             </Header>
             {/* Content */}
             <LayoutContent>{children}</LayoutContent>
-            <Footer>
-              <FooterContent />
-            </Footer>
+            {renderFooter && (
+              <Footer>
+                <FooterContent />
+              </Footer>
+            )}
           </LayoutContentWrapper>
         </VerticalNavProvider>
       </HorizontalNavProvider>

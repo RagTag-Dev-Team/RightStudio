@@ -19,26 +19,38 @@ import FooterContent from '../components/layout/shared/FooterContent'
 // Util Imports
 import { verticalLayoutClasses } from './utils/utilityClasses'
 
+type VerticalLayoutProps = ChildrenType & {
+  renderNavbar?: boolean
+  renderFooter?: boolean
+}
+
 // Styles
 const verticalLayoutStyles: CSSProperties = {
   display: 'flex',
   flex: '1 1 auto'
 }
 
-const VerticalLayout = ({ children }: ChildrenType) => {
+const VerticalLayout = (props: VerticalLayoutProps) => {
+  // Props
+  const { renderNavbar = true, renderFooter = true, children } = props
+
   return (
     <VerticalNavProvider>
       <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
         <Navigation />
         <LayoutContentWrapper>
-          <Navbar>
-            <NavbarContent />
-          </Navbar>
+          {renderNavbar && (
+            <Navbar>
+              <NavbarContent />
+            </Navbar>
+          )}
           {/* Content */}
           <LayoutContent>{children}</LayoutContent>
-          <Footer>
-            <FooterContent />
-          </Footer>
+          {renderFooter && (
+            <Footer>
+              <FooterContent />
+            </Footer>
+          )}
         </LayoutContentWrapper>
       </div>
     </VerticalNavProvider>

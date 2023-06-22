@@ -19,9 +19,15 @@ const NavToggle = () => {
 
   return (
     <>
-      {/* <FiAlignJustify onClick={handleClick}/> */}{' '}
+      {/* <span style={{ display: 'flex' }}>
+        <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />
+      </span> */}
       {/* Comment following line and uncomment this line in order to toggle menu on desktop screens as well */}
-      {isBreakpointReached && <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />}
+      {isBreakpointReached && (
+        <span style={{ display: 'flex' }}>
+          <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />
+        </span>
+      )}
     </>
   )
 }

@@ -53,14 +53,16 @@ const SearchIcon = () => {
   const { query } = useKBar()
 
   return (
-    <Search
-      className='ts-nav-search-icon'
-      role='button'
-      aria-label='search'
-      onClick={query.toggle}
-      style={{ cursor: 'pointer', marginInlineEnd: '16px' }}
-      fontSize='1.25rem'
-    />
+    <span style={{ display: 'flex' }}>
+      <Search
+        className='ts-nav-search-icon'
+        role='button'
+        aria-label='search'
+        onClick={query.toggle}
+        style={{ cursor: 'pointer' }}
+        fontSize='1.25rem'
+      />
+    </span>
   )
 }
 

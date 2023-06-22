@@ -15,18 +15,14 @@ const NavToggle = () => {
 
   return (
     <>
-      {/* <HamburgerMenuIcon
-        fontSize='1.25rem'
-        onClick={handleClick}
-        style={{ cursor: 'pointer', marginInlineEnd: '16px' }}
-      /> */}
+      {/* <span style={{ display: 'flex' }}>
+        <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} style={{ cursor: 'pointer' }} />
+      </span> */}
       {/* Comment following line and uncomment above line in order to toggle menu on desktop screens as well */}
       {isBreakpointReached && (
-        <HamburgerMenuIcon
-          fontSize='1.25rem'
-          onClick={handleClick}
-          style={{ cursor: 'pointer', marginInlineEnd: '16px' }}
-        />
+        <span style={{ display: 'flex' }}>
+          <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} style={{ cursor: 'pointer' }} />
+        </span>
       )}
     </>
   )
