@@ -1,5 +1,5 @@
 // React Imports
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
@@ -10,18 +10,14 @@ import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContex
 // Component Imports
 import Navigation from '../components/layout/vertical/Navigation'
 import LayoutContentWrapper from './components/vertical/LayoutContentWrapper'
-import Navbar from './components/vertical/Navbar'
-import NavbarContent from '../components/layout/vertical/NavbarContent'
 import LayoutContent from './components/vertical/LayoutContent'
-import Footer from './components/Footer'
-import FooterContent from '../components/layout/shared/FooterContent'
 
 // Util Imports
 import { verticalLayoutClasses } from './utils/utilityClasses'
 
 type VerticalLayoutProps = ChildrenType & {
-  renderNavbar?: boolean
-  renderFooter?: boolean
+  navbar?: ReactNode
+  footer?: ReactNode
 }
 
 // Styles
@@ -32,25 +28,17 @@ const verticalLayoutStyles: CSSProperties = {
 
 const VerticalLayout = (props: VerticalLayoutProps) => {
   // Props
-  const { renderNavbar = true, renderFooter = true, children } = props
+  const { navbar, footer, children } = props
 
   return (
     <VerticalNavProvider>
       <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
         <Navigation />
         <LayoutContentWrapper>
-          {renderNavbar && (
-            <Navbar>
-              <NavbarContent />
-            </Navbar>
-          )}
+          {navbar || null}
           {/* Content */}
           <LayoutContent>{children}</LayoutContent>
-          {renderFooter && (
-            <Footer>
-              <FooterContent />
-            </Footer>
-          )}
+          {footer || null}
         </LayoutContentWrapper>
       </div>
     </VerticalNavProvider>

@@ -7,7 +7,7 @@ import type { CSSProperties } from 'react'
 import HorizontalMenu from './HorizontalMenu'
 
 // Config Imports
-import themeConfig from '../../../configs/themeConfig'
+import config from '../../../@layouts/config'
 
 // Hook Imports
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
@@ -18,7 +18,7 @@ import { horizontalLayoutClasses } from '../../../@layouts/utils/utilityClasses'
 const styles: CSSProperties = {
   minBlockSize: '64px',
   paddingBlock: '9px',
-  paddingInline: `${themeConfig.layoutPadding}px`,
+  paddingInline: `${config.layoutPadding}px`,
   borderBlockStart: '1px solid #efefef'
 }
 

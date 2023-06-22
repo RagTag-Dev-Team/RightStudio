@@ -4,7 +4,7 @@
 import styled from '@emotion/styled'
 
 // Config Imports
-import themeConfig from '../../configs/themeConfig'
+import config from '../config'
 
 const StyledFooter = styled.footer`
   position: sticky;
@@ -12,7 +12,7 @@ const StyledFooter = styled.footer`
   inline-size: 100%;
   background-color: white;
   padding-block: 15px;
-  padding-inline: ${themeConfig.layoutPadding}px;
+  padding-inline: ${config.layoutPadding}px;
   border-block-start: 1px solid #efefef;
 `
 

@@ -4,7 +4,7 @@
 import styled from '@emotion/styled'
 
 // Config Imports
-import themeConfig from '../../configs/themeConfig'
+import config from '../config'
 
 const StyledVerticalNavbar = styled.header`
   min-block-size: 64px;
@@ -15,7 +15,7 @@ const StyledVerticalNavbar = styled.header`
   inset-block-start: 0;
   background-color: white;
   padding-block: 10px;
-  padding-inline: ${themeConfig.layoutPadding}px;
+  padding-inline: ${config.layoutPadding}px;
   border-block-end: 1px solid #efefef;
 `
 

@@ -1,5 +1,5 @@
 // React Imports
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
@@ -10,20 +10,14 @@ import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavCo
 
 // Component Imports
 import LayoutContentWrapper from './components/horizontal/LayoutContentWrapper'
-import Header from './components/horizontal/Header'
-import Navbar from './components/horizontal/Navbar'
-import NavbarContent from '../components/layout/horizontal/NavbarContent'
-import Navigation from '../components/layout/horizontal/Navigation'
 import LayoutContent from './components/horizontal/LayoutContent'
-import Footer from './components/Footer'
-import FooterContent from '../components/layout/shared/FooterContent'
 
 // Util Imports
 import { horizontalLayoutClasses } from './utils/utilityClasses'
 
 type HorizontalLayoutProps = ChildrenType & {
-  renderNavigation?: boolean
-  renderFooter?: boolean
+  header?: ReactNode
+  footer?: ReactNode
 }
 
 // Styles
@@ -34,26 +28,16 @@ const horizontalLayoutStyles: CSSProperties = {
 
 const HorizontalLayout = (props: HorizontalLayoutProps) => {
   // Props
-  const { renderNavigation = true, renderFooter = true, children } = props
+  const { header, footer, children } = props
 
   return (
     <div className={horizontalLayoutClasses.root} style={horizontalLayoutStyles}>
       <HorizontalNavProvider>
         <VerticalNavProvider>
           <LayoutContentWrapper>
-            <Header>
-              <Navbar>
-                <NavbarContent />
-              </Navbar>
-              {renderNavigation && <Navigation />}
-            </Header>
-            {/* Content */}
+            {header || null}
             <LayoutContent>{children}</LayoutContent>
-            {renderFooter && (
-              <Footer>
-                <FooterContent />
-              </Footer>
-            )}
+            {footer || null}
           </LayoutContentWrapper>
         </VerticalNavProvider>
       </HorizontalNavProvider>
