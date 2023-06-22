@@ -23,7 +23,7 @@ export default function RootLayout({ children }: ChildrenType) {
     <html lang='en'>
       <body className={inter.className}>
         <I18n />
-        <div id='root'>{children}</div>
+        {children}
       </body>
     </html>
   )

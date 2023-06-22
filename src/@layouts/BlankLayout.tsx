@@ -1,15 +1,14 @@
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
 
-// Component Imports
-import PageContent from './components/PageContent'
+// Util Imports
+import { blankLayoutClasses } from './utils/utilityClasses'
 
 const BlankLayout = ({ children }: ChildrenType) => {
   return (
-    <PageContent>
-      {/* Content */}
-      <div>{children}</div>
-    </PageContent>
+    <div className={blankLayoutClasses.root} style={{ inlineSize: '100%' }}>
+      {children}
+    </div>
   )
 }
 

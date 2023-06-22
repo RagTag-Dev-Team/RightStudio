@@ -58,7 +58,7 @@ const SearchIcon = () => {
       role='button'
       aria-label='search'
       onClick={query.toggle}
-      style={{ cursor: 'pointer', margin: '0 16px' }}
+      style={{ cursor: 'pointer', marginInlineEnd: '16px' }}
       fontSize='1.25rem'
     />
   )

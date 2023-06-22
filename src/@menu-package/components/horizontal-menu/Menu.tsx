@@ -58,7 +58,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     transitionDuration = horizontalSubMenuToggleDuration,
     renderExpandIcon,
     renderExpandedMenuItemIcon,
-    popoutMenuOffset,
+    popoutMenuOffset = { mainAxis: 0 },
     ...rest
   } = props
 

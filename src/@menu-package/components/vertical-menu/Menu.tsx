@@ -105,7 +105,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     subMenuOpenBehavior = 'accordion', // accordion, collapse
     transitionDuration = verticalSubMenuToggleDuration,
     collapsedMenuSectionLabel = '-',
-    popoutMenuOffset,
+    popoutMenuOffset = { mainAxis: 0 },
     ...rest
   } = props
 

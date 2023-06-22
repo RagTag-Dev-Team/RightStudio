@@ -6,8 +6,13 @@
 
 html,
 body {
-  max-inline-size: 100vw;
-  overflow-x: hidden;
+  inline-size: 100%;
+  min-block-size: 100%;
+  display: flex;
+}
+
+body {
+  flex: 1 1 auto;
 }
 
 a {
@@ -20,10 +25,6 @@ a {
     color-scheme: dark;
   }
 } */
-
-#root {
-  display: flex;
-}
 
 /*! Do note remove following style */
 /* Fix the popout / submenu closing issue when using hover trigger to open the menu and using perfectscrollbar where the bridge create with safe polygon by floating ui was not working */

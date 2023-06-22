@@ -10,9 +10,9 @@ const headerStyles = {
 
 const Header = ({ children }: ChildrenType) => {
   return (
-    <div className={horizontalLayoutClasses.header} style={headerStyles}>
+    <header className={horizontalLayoutClasses.header} style={headerStyles}>
       {children}
-    </div>
+    </header>
   )
 }
 

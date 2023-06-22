@@ -1,20 +1,28 @@
+export const layoutClasses = {
+  footer: 'ts-layout-footer',
+  footerContentWrapper: 'ts-layout-footer-content-wrapper',
+  footerContent: 'ts-layout-footer-content'
+}
+
 export const verticalLayoutClasses = {
-  root: 'ts-vertical-layout-root',
-  container: 'ts-vertical-layout-container',
-  sidebar: 'ts-vertical-layout-sidebar',
-  content: 'ts-vertical-layout-content',
+  root: 'ts-vertical-layout',
+  contentWrapper: 'ts-vertical-layout-content-wrapper',
   header: 'ts-vertical-layout-header',
   navbar: 'ts-vertical-layout-navbar',
-  mainContent: 'ts-vertical-layout-main-content',
-  footer: 'ts-vertical-layout-footer'
+  navbarContent: 'ts-vertical-layout-navbar-content',
+  content: 'ts-vertical-layout-content'
 }
 
 export const horizontalLayoutClasses = {
-  root: 'ts-horizontal-layout-root',
-  container: 'ts-horizontal-layout-container',
-  content: 'ts-horizontal-layout-content',
+  root: 'ts-horizontal-layout',
+  contentWrapper: 'ts-horizontal-layout-content-wrapper',
   header: 'ts-horizontal-layout-header',
   navbar: 'ts-horizontal-layout-navbar',
-  mainContent: 'ts-horizontal-layout-main-content',
-  footer: 'ts-horizontal-layout-footer'
+  navbarContent: 'ts-horizontal-layout-navbar-content',
+  navigation: 'ts-horizontal-layout-navigation',
+  content: 'ts-horizontal-layout-content'
+}
+
+export const blankLayoutClasses = {
+  root: 'ts-blank-layout'
 }

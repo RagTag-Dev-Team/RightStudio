@@ -1,10 +1,20 @@
-//* This is User Component (Not a core component)
+// Type Imports
+import type { ChildrenType } from '../../@menu-package/types'
 
 // Styled Component Imports
-import StyledFooter from '../../styles/StyledFooter'
+import StyledFooter from '../styles/StyledFooter'
 
-const Footer = () => {
-  return <StyledFooter>Footer</StyledFooter>
+// Util Imports
+import { layoutClasses } from '../utils/utilityClasses'
+
+const Footer = ({ children }: ChildrenType) => {
+  return (
+    <StyledFooter className={layoutClasses.footer}>
+      <div className={layoutClasses.footerContentWrapper} style={{ width: '100%' }}>
+        {children}
+      </div>
+    </StyledFooter>
+  )
 }
 
 export default Footer
