@@ -30,7 +30,6 @@
   ],
   "eslint.format.enable": true,
   // Package manager Configs
-  "eslint.packageManager": "yarn",
   "npm.packageManager": "yarn",
   // Stylelint
   "css.validate": false,

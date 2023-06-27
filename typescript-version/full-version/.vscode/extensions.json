@@ -2,7 +2,6 @@
   "recommendations": [
     "formulahendry.auto-close-tag",
     "steoates.autoimport",
-    "formulahendry.auto-rename-tag",
     "mgmcdermott.vscode-language-babel",
     "aaron-bond.better-comments",
     "MohammadBaqer.better-folding",

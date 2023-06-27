@@ -101,7 +101,7 @@
   "nextImport": {
     "prefix": "impn",
     "body": [
-      "// ** Next Import",
+      "// Next Import",
       "import ${2:second} from '${1:first}'",
       ""
     ]

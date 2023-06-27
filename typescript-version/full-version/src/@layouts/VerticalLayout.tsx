@@ -8,7 +8,6 @@ import type { ChildrenType } from '../@menu-package/types'
 import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
 
 // Component Imports
-import Navigation from '../components/layout/vertical/Navigation'
 import LayoutContentWrapper from './components/vertical/LayoutContentWrapper'
 import LayoutContent from './components/vertical/LayoutContent'
 
@@ -16,6 +15,7 @@ import LayoutContent from './components/vertical/LayoutContent'
 import { verticalLayoutClasses } from './utils/utilityClasses'
 
 type VerticalLayoutProps = ChildrenType & {
+  navigation?: ReactNode
   navbar?: ReactNode
   footer?: ReactNode
 }
@@ -28,12 +28,12 @@ const verticalLayoutStyles: CSSProperties = {
 
 const VerticalLayout = (props: VerticalLayoutProps) => {
   // Props
-  const { navbar, footer, children } = props
+  const { navbar, footer, navigation, children } = props
 
   return (
     <VerticalNavProvider>
       <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
-        <Navigation />
+        {navigation || null}
         <LayoutContentWrapper>
           {navbar || null}
           {/* Content */}

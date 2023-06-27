@@ -10,16 +10,17 @@ import LayoutWrapper from '../../@layouts/LayoutWrapper'
 // Layout Imports
 import VerticalLayout from '../../@layouts/VerticalLayout'
 import HorizontalLayout from '../../@layouts/HorizontalLayout'
-import Header from '../../components/layout/horizontal/Header'
+import Navigation from '../../components/layout/vertical/Navigation'
 import Navbar from '../../components/layout/vertical/Navbar'
 import Footer from '../../components/layout/shared/Footer'
+import Header from '../../components/layout/horizontal/Header'
 
 const Layout = ({ children }: ChildrenType) => {
   return (
     <LayoutProvider>
       <LayoutWrapper
         verticalLayout={
-          <VerticalLayout navbar={<Navbar />} footer={<Footer />}>
+          <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<Footer />}>
             {children}
           </VerticalLayout>
         }
