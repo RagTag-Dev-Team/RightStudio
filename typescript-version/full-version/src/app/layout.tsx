@@ -6,6 +6,7 @@ import type { ChildrenType } from '../@menu-package/types'
 
 // Component Imports
 import I18n from '../components/i18n'
+import ThemeProvider from '../components/theme'
 
 // Style Imports
 import './globals.css'
@@ -22,8 +23,10 @@ export default function RootLayout({ children }: ChildrenType) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <I18n />
-        {children}
+        <ThemeProvider>
+          <I18n />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
