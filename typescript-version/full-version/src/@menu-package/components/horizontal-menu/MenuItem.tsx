@@ -78,7 +78,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   const pathname = usePathname()
   const { toggleVerticalNav, isToggled } = useVerticalNav()
   const { getItemProps } = useContext(HorizontalSubMenuContext)
-  const { menuItemStyles, renderExpandedMenuItemIcon } = useHorizontalMenu()
+  const { menuItemStyles, renderExpandedMenuItemIcon, textTruncate } = useHorizontalMenu()
 
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
     // If the menuItemStyles prop is provided, get the styles for the
@@ -175,7 +175,11 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         )}
 
         {/* Menu Item Label */}
-        <StyledMenuLabel className={menuClasses.label} rootStyles={getMenuItemStyles('label')}>
+        <StyledMenuLabel
+          className={menuClasses.label}
+          rootStyles={getMenuItemStyles('label')}
+          textTruncate={textTruncate}
+        >
           {children}
         </StyledMenuLabel>
 

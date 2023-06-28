@@ -4,11 +4,19 @@ import styled from '@emotion/styled'
 // Type Imports
 import type { RootStylesType } from '../types'
 
-const StyledMenuLabel = styled.span<RootStylesType>`
+type StyledMenuLabelProps = RootStylesType & {
+  textTruncate?: boolean
+}
+
+const StyledMenuLabel = styled.span<StyledMenuLabelProps>`
   flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  ${({ textTruncate }) =>
+    textTruncate &&
+    `
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    `};
   ${({ rootStyles }) => rootStyles};
 `
 

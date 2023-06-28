@@ -150,7 +150,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     toggleOpenSubmenu,
     transitionDuration,
     openSubmenusRef,
-    popoutMenuOffset
+    popoutMenuOffset,
+    textTruncate
   } = useVerticalMenu()
 
   // Hook
@@ -409,7 +410,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         )}
 
         {/* Sub Menu Label */}
-        <StyledMenuLabel className={menuClasses.label} rootStyles={getSubMenuItemStyles('label')}>
+        <StyledMenuLabel
+          className={menuClasses.label}
+          rootStyles={getSubMenuItemStyles('label')}
+          textTruncate={textTruncate}
+        >
           {label} {rendersCount}
         </StyledMenuLabel>
 

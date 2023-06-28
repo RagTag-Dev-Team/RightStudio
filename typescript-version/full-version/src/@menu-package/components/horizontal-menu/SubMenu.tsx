@@ -162,7 +162,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     browserScroll,
     transitionDuration,
     renderExpandedMenuItemIcon,
-    popoutMenuOffset
+    popoutMenuOffset,
+    textTruncate
   } = useHorizontalMenu()
 
   useEffect(() => {
@@ -373,7 +374,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           )}
 
           {/* Sub Menu Label */}
-          <StyledMenuLabel className={menuClasses.label} rootStyles={getSubMenuItemStyles('label')}>
+          <StyledMenuLabel
+            className={menuClasses.label}
+            rootStyles={getSubMenuItemStyles('label')}
+            textTruncate={textTruncate}
+          >
             {label}
           </StyledMenuLabel>
 

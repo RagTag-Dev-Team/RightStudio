@@ -69,7 +69,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
 
   // Hooks
   const pathname = usePathname()
-  const { menuItemStyles, renderExpandedMenuItemIcon } = useVerticalMenu()
+  const { menuItemStyles, renderExpandedMenuItemIcon, textTruncate } = useVerticalMenu()
   const { isCollapsed, isHovered, isPopoutWhenCollapsed, toggleVerticalNav, isToggled } = useVerticalNav()
   const rendersCount = useRendersCount()
 
@@ -168,7 +168,11 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         )}
 
         {/* Menu Item Label */}
-        <StyledMenuLabel className={menuClasses.label} rootStyles={getMenuItemStyles('label')}>
+        <StyledMenuLabel
+          className={menuClasses.label}
+          rootStyles={getMenuItemStyles('label')}
+          textTruncate={textTruncate}
+        >
           {children} {rendersCount}
         </StyledMenuLabel>
 

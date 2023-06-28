@@ -69,7 +69,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
 
   // Hooks
   const { isCollapsed, isHovered } = useVerticalNav()
-  const { menuSectionStyles, collapsedMenuSectionLabel } = useVerticalMenu()
+  const { menuSectionStyles, collapsedMenuSectionLabel, textTruncate } = useVerticalMenu()
   const rendersCount = useRendersCount()
 
   const getMenuSectionStyles = (element: MenuSectionElement): CSSObject | undefined => {
@@ -113,6 +113,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
               isHovered={isHovered}
               className={menuClasses.menuSectionLabel}
               rootStyles={getMenuSectionStyles('label')}
+              textTruncate={textTruncate}
             >
               {collapsedMenuSectionLabel}
             </StyledMenuSectionLabel>
@@ -123,6 +124,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
                 isHovered={isHovered}
                 className={menuClasses.menuSectionLabel}
                 rootStyles={getMenuSectionStyles('label')}
+                textTruncate={textTruncate}
               >
                 {label} {rendersCount}
               </StyledMenuSectionLabel>

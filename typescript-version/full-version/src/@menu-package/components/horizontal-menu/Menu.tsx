@@ -38,6 +38,7 @@ export type HorizontalMenuContextProps = {
     mainAxis?: number | ((params: { level?: number }) => number)
     alignmentAxis?: number | ((params: { level?: number }) => number)
   }
+  textTruncate?: boolean
 }
 
 export type MenuProps = HorizontalMenuContextProps &
@@ -59,6 +60,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     renderExpandIcon,
     renderExpandedMenuItemIcon,
     popoutMenuOffset = { mainAxis: 0 },
+    textTruncate = true,
     ...rest
   } = props
 
@@ -70,7 +72,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       renderExpandIcon,
       renderExpandedMenuItemIcon,
       transitionDuration,
-      popoutMenuOffset
+      popoutMenuOffset,
+      textTruncate
     }),
     [
       triggerPopout,
@@ -79,7 +82,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       renderExpandIcon,
       renderExpandedMenuItemIcon,
       transitionDuration,
-      popoutMenuOffset
+      popoutMenuOffset,
+      textTruncate
     ]
   )
 

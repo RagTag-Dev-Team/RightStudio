@@ -64,6 +64,7 @@ export type VerticalMenuContextProps = {
     mainAxis?: number | ((params: { level?: number }) => number)
     alignmentAxis?: number | ((params: { level?: number }) => number)
   }
+  textTruncate?: boolean
 
   /**
    * @ignore
@@ -106,6 +107,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     transitionDuration = verticalSubMenuToggleDuration,
     collapsedMenuSectionLabel = '-',
     popoutMenuOffset = { mainAxis: 0 },
+    textTruncate = true,
     ...rest
   } = props
 
@@ -186,7 +188,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       toggleOpenSubmenu,
       subMenuOpenBehavior,
       collapsedMenuSectionLabel,
-      popoutMenuOffset
+      popoutMenuOffset,
+      textTruncate
     }),
     [
       browserScroll,
@@ -201,7 +204,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       toggleOpenSubmenu,
       subMenuOpenBehavior,
       collapsedMenuSectionLabel,
-      popoutMenuOffset
+      popoutMenuOffset,
+      textTruncate
     ]
   )
 
