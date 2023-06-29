@@ -33,13 +33,11 @@ const HorizontalLayout = (props: HorizontalLayoutProps) => {
   return (
     <div className={horizontalLayoutClasses.root} style={horizontalLayoutStyles}>
       <HorizontalNavProvider>
-        <VerticalNavProvider>
-          <LayoutContentWrapper>
-            {header || null}
-            <LayoutContent>{children}</LayoutContent>
-            {footer || null}
-          </LayoutContentWrapper>
-        </VerticalNavProvider>
+        <LayoutContentWrapper>
+          {header || null}
+          <LayoutContent>{children}</LayoutContent>
+          {footer || null}
+        </LayoutContentWrapper>
       </HorizontalNavProvider>
     </div>
   )

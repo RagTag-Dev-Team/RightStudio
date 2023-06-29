@@ -1,5 +1,5 @@
 // Type Imports
-import type { ChildrenType } from '../../@menu-package/types'
+import type { ChildrenType } from '../../@core/types'
 
 // Blank Layout Import
 import BlankLayout from '../../@layouts/BlankLayout'

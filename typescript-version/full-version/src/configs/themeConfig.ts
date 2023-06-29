@@ -1,9 +1,29 @@
-type Config = {
+import type { Mode, Skin, Direction, Layout, NavbarPosition, FooterPosition, ContentWidth } from '../@core/types'
+
+export type Config = {
+  mode: Mode
+  skin: Skin
+  direction: Direction
+  layout: Layout
   layoutPadding: number
+  navbar: NavbarPosition
+  navbarBlur: boolean
+  footer: FooterPosition
+  contentWidth: ContentWidth
+  templateName: string
 }
 
 const themeConfig: Config = {
-  layoutPadding: 24 // Common padding for header, content, footer layout components (in px)
+  templateName: 'Master Admin',
+  mode: 'light',
+  skin: 'default',
+  direction: 'ltr',
+  layout: 'vertical',
+  layoutPadding: 24, // Common padding for header, content, footer layout components (in px)
+  navbar: 'fixed',
+  navbarBlur: false,
+  footer: 'static',
+  contentWidth: 'compact'
 }
 
 export default themeConfig

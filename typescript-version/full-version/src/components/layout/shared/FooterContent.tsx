@@ -7,9 +7,9 @@ import type { CSSProperties } from 'react'
 import Link from 'next/link'
 
 // Hook Imports
-import useLayout from '../../../@layouts/hooks/useLayout'
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
 import { layoutClasses } from '../../../@layouts/utils/utilityClasses'
@@ -21,11 +21,12 @@ const commonStyles: CSSProperties = {
 }
 
 const FooterContent = () => {
-  const { layout } = useLayout()
+  const { settings } = useSettings()
   const { isBreakpointReached: isVerticalBreakpointReached } = useVerticalNav()
   const { isBreakpointReached: isHorizontalBreakpointReached } = useHorizontalNav()
 
-  const isBreakpointReached = layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
+  const isBreakpointReached =
+    settings.layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
 
   return (
     <div

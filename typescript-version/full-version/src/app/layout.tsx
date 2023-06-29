@@ -2,7 +2,7 @@
 import { Inter } from 'next/font/google'
 
 // Type Imports
-import type { ChildrenType } from '../@menu-package/types'
+import type { ChildrenType } from '../@core/types'
 
 // Component Imports
 import I18n from '../components/i18n'

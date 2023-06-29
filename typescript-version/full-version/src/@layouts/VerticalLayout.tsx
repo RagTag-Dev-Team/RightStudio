@@ -4,9 +4,6 @@ import type { CSSProperties, ReactNode } from 'react'
 // Type Imports
 import type { ChildrenType } from '../@menu-package/types'
 
-// Context Imports
-import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
-
 // Component Imports
 import LayoutContentWrapper from './components/vertical/LayoutContentWrapper'
 import LayoutContent from './components/vertical/LayoutContent'
@@ -31,17 +28,15 @@ const VerticalLayout = (props: VerticalLayoutProps) => {
   const { navbar, footer, navigation, children } = props
 
   return (
-    <VerticalNavProvider>
-      <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
-        {navigation || null}
-        <LayoutContentWrapper>
-          {navbar || null}
-          {/* Content */}
-          <LayoutContent>{children}</LayoutContent>
-          {footer || null}
-        </LayoutContentWrapper>
-      </div>
-    </VerticalNavProvider>
+    <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
+      {navigation || null}
+      <LayoutContentWrapper>
+        {navbar || null}
+        {/* Content */}
+        <LayoutContent>{children}</LayoutContent>
+        {footer || null}
+      </LayoutContentWrapper>
+    </div>
   )
 }
 
