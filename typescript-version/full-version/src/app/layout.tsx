@@ -12,6 +12,9 @@ import ThemeProvider from '../components/theme'
 import './globals.css'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
+// Generated Icon Imports
+import '../assets/iconify-icons/generated-icons'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {

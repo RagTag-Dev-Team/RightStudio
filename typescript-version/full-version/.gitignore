@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# icon generated file
+src/assets/iconify-icons/generated-icons.js
