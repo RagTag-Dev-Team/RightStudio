@@ -1,3 +1,4 @@
+// Type Imports
 import type { Mode, Skin, Direction, Layout, NavbarPosition, FooterPosition, ContentWidth } from '../@core/types'
 
 export type Config = {

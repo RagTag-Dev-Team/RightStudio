@@ -1,0 +1,38 @@
+.itemButton {
+  padding-block: 12px;
+  padding-inline: 16px;
+  background-color: transparent;
+}
+
+.activeItemButton {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.itemContentWrapper {
+  font-size: 14px;
+}
+
+.itemSubtitle {
+  font-size: 12px;
+}
+
+.shortcutWrapper {
+  display: grid;
+  gap: 4px;
+}
+
+.kbd {
+  padding-block: 4px;
+  padding-inline: 6px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.groupName {
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}

@@ -6,8 +6,6 @@ import type { HorizontalNavProps } from '../../components/horizontal-menu/Horizo
 
 const StyledHorizontalNav = styled.div<Pick<HorizontalNavProps, 'customStyles'>>`
   inline-size: 100%;
-  /* The below line is commented as it takes much more height than its children */
-  /* block-size: 100%; */
   overflow: hidden;
   position: relative;
   ${({ customStyles }) => customStyles}

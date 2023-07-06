@@ -3,7 +3,7 @@ import type { BreakpointType, ChildrenType } from '../../types'
 import type { VerticalNavProps } from '../vertical-menu/VerticalNav'
 
 // Component Imports
-import VerticalNav from '../vertical-menu'
+import VerticalNav from '../../vertical-menu'
 
 // Type
 type VerticalNavInHorizontalProps = ChildrenType & {
@@ -14,6 +14,7 @@ type VerticalNavInHorizontalProps = ChildrenType & {
 }
 
 const VerticalNavInHorizontal = (props: VerticalNavInHorizontalProps) => {
+  // Props
   const { children, className, breakpoint, customBreakpoint, verticalNavProps } = props
 
   return (

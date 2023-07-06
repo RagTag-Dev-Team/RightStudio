@@ -1,15 +1,14 @@
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
-import type { ChildrenType } from '../@menu-package/types'
+import type { ChildrenType } from '../@core/types'
 
 // Util Imports
-import { blankLayoutClasses } from './utils/utilityClasses'
+import { blankLayoutClasses } from './utils/layoutClasses'
 
 const BlankLayout = ({ children }: ChildrenType) => {
-  return (
-    <div className={blankLayoutClasses.root} style={{ inlineSize: '100%' }}>
-      {children}
-    </div>
-  )
+  return <div className={classnames(blankLayoutClasses.root, 'width-100')}>{children}</div>
 }
 
 export default BlankLayout

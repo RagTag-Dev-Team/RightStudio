@@ -1,11 +1,11 @@
 'use client'
 
+// Icon Imports
+import HamburgerMenuIcon from '../../../@layouts/svg/HamburgerMenu'
+
 // Hook Imports
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
-
-// Icon Imports
-import HamburgerMenuIcon from '../../../@layouts/svg/HamburgerMenu'
 
 const NavToggle = () => {
   // Hooks
@@ -19,12 +19,12 @@ const NavToggle = () => {
 
   return (
     <>
-      {/* <span style={{ display: 'flex' }}>
+      {/* <span className='d-flex'>
         <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />
       </span> */}
       {/* Comment following line and uncomment this line in order to toggle menu on desktop screens as well */}
       {isBreakpointReached && (
-        <span style={{ display: 'flex' }}>
+        <span className='d-flex'>
           <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} />
         </span>
       )}

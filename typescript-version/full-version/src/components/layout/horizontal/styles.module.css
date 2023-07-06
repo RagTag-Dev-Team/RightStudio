@@ -1,0 +1,5 @@
+.navigation {
+  min-block-size: 64px;
+  padding-block: 9px;
+  border-block-start: 1px solid #efefef;
+}

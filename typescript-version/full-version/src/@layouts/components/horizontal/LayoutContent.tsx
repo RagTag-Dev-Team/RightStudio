@@ -1,15 +1,21 @@
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
-import type { ChildrenType } from '../../../@menu-package/types'
+import type { ChildrenType } from '../../../@core/types'
 
 // Config Imports
-import config from '../../config'
+import themeConfig from '../../../configs/themeConfig'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../utils/utilityClasses'
+import { horizontalLayoutClasses } from '../../utils/layoutClasses'
 
 const LayoutContent = ({ children }: ChildrenType) => {
   return (
-    <main className={horizontalLayoutClasses.content} style={{ flex: '1 1 auto', padding: config.layoutPadding }}>
+    <main
+      className={classnames(horizontalLayoutClasses.content, 'flex-auto')}
+      style={{ padding: themeConfig.layoutPadding }}
+    >
       {children}
     </main>
   )

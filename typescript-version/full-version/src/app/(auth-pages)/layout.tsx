@@ -1,7 +1,7 @@
 // Type Imports
 import type { ChildrenType } from '../../@core/types'
 
-// Blank Layout Import
+// Layout Imports
 import BlankLayout from '../../@layouts/BlankLayout'
 
 const Layout = ({ children }: ChildrenType) => {

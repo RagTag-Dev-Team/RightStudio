@@ -5,10 +5,10 @@ import DesktopIcon from '../../../@layouts/svg/Desktop'
 
 const ModeSwitcher = () => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <MoonIcon fontSize='1.25rem' style={{ cursor: 'pointer' }} />
-      <SunIcon fontSize='1.25rem' style={{ cursor: 'pointer' }} />
-      <DesktopIcon fontSize='1.25rem' style={{ cursor: 'pointer' }} />
+    <div className='d-flex align-items-center'>
+      <MoonIcon fontSize='1.25rem' className='cursor-pointer' />
+      <SunIcon fontSize='1.25rem' className='cursor-pointer' />
+      <DesktopIcon fontSize='1.25rem' className='cursor-pointer' />
     </div>
   )
 }

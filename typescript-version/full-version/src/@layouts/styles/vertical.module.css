@@ -1,0 +1,6 @@
+.header {
+  min-block-size: 64px;
+  background-color: white;
+  padding-block: 10px;
+  border-block-end: 1px solid #efefef;
+}

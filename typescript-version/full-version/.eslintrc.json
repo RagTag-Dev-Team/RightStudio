@@ -21,8 +21,6 @@
     "@typescript-eslint/no-unused-vars": "error",
     // Do not Allow non-null assertion
     "@typescript-eslint/no-non-null-assertion": "off",
-    // Do not Allow console.log
-    "no-console": "error",
     // add new line above comment
     "lines-around-comment": [
       "error",

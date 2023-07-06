@@ -23,16 +23,16 @@ import {
   SubMenu as HorizontalSubMenu,
   MenuItem as HorizontalMenuItem,
   Menu as HorizontalMenu
-} from '../components/horizontal-menu'
+} from '../horizontal-menu'
 import {
   SubMenu as VerticalSubMenu,
   MenuItem as VerticalMenuItem,
   MenuSection,
   Menu as VerticalMenu
-} from '../components/vertical-menu'
+} from '../vertical-menu'
 
 // Util Imports
-import { menuClasses } from './utilityClasses'
+import { menuClasses } from './menuClasses'
 
 // Styled Component Imports
 import StyledMenuIcon from '../styles/StyledMenuIcon'
@@ -56,8 +56,7 @@ export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {
 
     // Check if the current item is a section
     if (menuSectionItem.isSection) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { children, isSection, ...rest } = menuSectionItem
+      const { children, ...rest } = menuSectionItem
 
       // If it is, return a MenuSection component and call generateVerticalMenu with the current menuSectionItem's children
       return (

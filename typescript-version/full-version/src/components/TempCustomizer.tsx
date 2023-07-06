@@ -18,8 +18,7 @@ const TempCustomizer = () => {
   return (
     <div>
       <form>
-        <label htmlFor='mode'>Mode:</label>
-        <br />
+        <p>Mode:</p>
         <input
           type='radio'
           id='dark'
@@ -53,8 +52,7 @@ const TempCustomizer = () => {
 
         <br />
 
-        <label htmlFor='skin'>Skin:</label>
-        <br />
+        <p>Skin:</p>
         <input
           type='radio'
           id='default'
@@ -88,8 +86,7 @@ const TempCustomizer = () => {
 
         <br />
 
-        <label htmlFor='layout'>Layout:</label>
-        <br />
+        <p>Layout:</p>
         <input
           type='radio'
           id='vertical'
@@ -123,8 +120,7 @@ const TempCustomizer = () => {
 
         <br />
 
-        <label htmlFor='content'>Content:</label>
-        <br />
+        <p>Content:</p>
         <input
           type='radio'
           id='compact'
@@ -148,8 +144,7 @@ const TempCustomizer = () => {
 
         <br />
 
-        <label htmlFor='direction'>Direction:</label>
-        <br />
+        <p>Direction:</p>
         <input
           type='radio'
           id='ltr'
@@ -172,8 +167,7 @@ const TempCustomizer = () => {
         <br />
         <br />
 
-        <label htmlFor='navbarBlur'>Navbar Blur</label>
-        <br />
+        <p>Navbar Blur</p>
         <input
           type='radio'
           id='yes'

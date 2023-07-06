@@ -1,65 +1,35 @@
 'use client'
 
-// React Imports
-import type { CSSProperties } from 'react'
-
 // Next Imports
 import { useRouter } from 'next/navigation'
 
 // Third-party Imports
+import classnames from 'classnames'
 import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useKBar } from 'kbar'
 
 // Component Imports
 import SearchResults from '../../../@layouts/components/search/SearchResults'
 
-// Data
-import data from '../../../data/SearchData'
-
 // Icon Imports
 import Search from '../../../@layouts/svg/Search'
 
-// Styles
-const searchStyle: CSSProperties = {
-  padding: '12px 16px',
-  fontSize: '16px',
-  inlineSize: '100%',
-  boxSizing: 'border-box',
-  outline: 'none',
-  border: 'none',
-  background: 'white'
-}
+// Style Imports
+import styles from './styles.module.css'
 
-const animatorStyle: CSSProperties = {
-  maxInlineSize: '600px',
-  inlineSize: '100%',
-  background: 'white',
-  borderRadius: '8px',
-  overflow: 'hidden',
-  boxShadow: '0px 6px 20px rgb(0 0 0 / 20%)'
-}
-
-const BackdropStyle: CSSProperties = {
-  position: 'fixed',
-  insetInlineStart: 0,
-  insetBlockStart: 0,
-  insetInlineEnd: 0,
-  insetBlockEnd: 0,
-  zIndex: 9,
-  backgroundColor: 'rgba(0, 0, 0, 0.3)'
-}
+// Data Imports
+import data from '../../../data/SearchData'
 
 // Search Icon Component
 const SearchIcon = () => {
   const { query } = useKBar()
 
   return (
-    <span style={{ display: 'flex' }}>
+    <span className='d-flex'>
       <Search
-        className='ts-nav-search-icon'
+        className='ts-nav-search-icon cursor-pointer'
         role='button'
         aria-label='search'
         onClick={query.toggle}
-        style={{ cursor: 'pointer' }}
         fontSize='1.25rem'
       />
     </span>
@@ -83,12 +53,16 @@ const NavSearch = () => {
       <SearchIcon />
       <KBarPortal>
         <KBarPositioner style={{ zIndex: 10 }}>
-          <KBarAnimator style={animatorStyle}>
-            <KBarSearch style={searchStyle} />
+          <KBarAnimator className={classnames(styles.searchDialog, 'width-100 overflow-hidden')}>
+            <KBarSearch className={classnames(styles.searchInput, 'width-100')} />
             <SearchResults />
           </KBarAnimator>
         </KBarPositioner>
-        <div className='ts-nav-search-backdrop' style={BackdropStyle} role='button' aria-label='backdrop' />
+        <div
+          className={classnames('ts-nav-search-backdrop', styles.searchBackdrop)}
+          role='button'
+          aria-label='backdrop'
+        />
       </KBarPortal>
     </KBarProvider>
   )

@@ -6,14 +6,13 @@ import type { CSSObject } from '@emotion/styled'
 import type { MenuItemProps } from '../../components/vertical-menu/MenuItem'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Style Imports
 import { menuButtonStyles } from '../../components/vertical-menu/MenuButton'
 
 type StyledVerticalMenuItemProps = Pick<MenuItemProps, 'rootStyles' | 'disabled'> & {
   level: number
-  active?: boolean
   menuItemStyles?: CSSObject
   isCollapsed?: boolean
   isPopoutWhenCollapsed?: boolean
@@ -27,10 +26,9 @@ const StyledVerticalMenuItem = styled.li<StyledVerticalMenuItemProps>`
   ${({ rootStyles }) => rootStyles};
 
   > .${menuClasses.button} {
-    ${({ level, active, disabled, isCollapsed, isPopoutWhenCollapsed }) =>
+    ${({ level, disabled, isCollapsed, isPopoutWhenCollapsed }) =>
       menuButtonStyles({
         level,
-        active,
         disabled,
         isCollapsed,
         isPopoutWhenCollapsed

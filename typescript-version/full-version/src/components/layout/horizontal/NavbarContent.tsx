@@ -1,7 +1,7 @@
 'use client'
 
-// React Imports
-import type { CSSProperties } from 'react'
+// Third-party Imports
+import classnames from 'classnames'
 
 // Components Imports
 import Logo from '../shared/Logo'
@@ -14,13 +14,7 @@ import ModeSwitcher from '../shared/ModeSwitcher'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../../@layouts/utils/utilityClasses'
-
-const commonStyles: CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '16px'
-}
+import { horizontalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
 
 const NavbarContent = () => {
   // Hooks
@@ -28,16 +22,18 @@ const NavbarContent = () => {
 
   return (
     <div
-      className={horizontalLayoutClasses.navbarContent}
-      style={{ ...commonStyles, justifyContent: 'space-between', inlineSize: '100%' }}
+      className={classnames(
+        horizontalLayoutClasses.navbarContent,
+        'd-flex align-items-center justify-content-between gap-4 width-100'
+      )}
     >
-      <div style={commonStyles}>
+      <div className='d-flex align-items-center gap-4'>
         <NavToggle />
         {/* Hide Logo on Smaller screens */}
         {!isBreakpointReached && <Logo />}
       </div>
 
-      <div style={commonStyles}>
+      <div className='d-flex align-items-center gap-4'>
         <NavSearch />
         <Translation />
         <ModeSwitcher />

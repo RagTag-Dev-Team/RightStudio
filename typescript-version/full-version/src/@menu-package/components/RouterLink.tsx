@@ -16,6 +16,7 @@ type RouterLinkProps = LinkProps &
   }
 
 export const RouterLink = forwardRef((props: RouterLinkProps, ref: any) => {
+  // Props
   const { href, className, ...other } = props
 
   return (

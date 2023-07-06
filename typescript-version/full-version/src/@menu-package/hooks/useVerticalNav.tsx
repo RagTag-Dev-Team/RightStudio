@@ -5,7 +5,14 @@ import { useContext } from 'react'
 import VerticalNavContext from '../contexts/verticalNavContext'
 
 const useVerticalNav = () => {
-  return useContext(VerticalNavContext)
+  const context = useContext(VerticalNavContext)
+
+  if (context === undefined) {
+    //TODO: set better error message
+    throw new Error('VerticalNav Component is required!')
+  }
+
+  return context
 }
 
 export default useVerticalNav

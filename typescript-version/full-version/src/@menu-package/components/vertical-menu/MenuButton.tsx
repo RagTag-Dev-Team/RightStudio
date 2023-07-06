@@ -13,7 +13,7 @@ import type { ChildrenType, MenuButtonProps } from '../../types'
 import { RouterLink } from '../RouterLink'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 type MenuButtonStylesProps = Partial<ChildrenType> & {
   level: number

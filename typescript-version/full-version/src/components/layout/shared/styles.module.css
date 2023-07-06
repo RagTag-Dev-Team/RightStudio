@@ -1,0 +1,27 @@
+.primaryColor {
+  color: #765feb;
+}
+
+.searchDialog {
+  max-inline-size: 600px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);
+}
+
+.searchInput {
+  padding-block: 12px;
+  padding-inline: 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  background: white;
+}
+
+.searchBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.3);
+}

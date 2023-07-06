@@ -5,16 +5,16 @@ import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Component Imports from @menu-package
-import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/components/vertical-menu'
+import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/vertical-menu'
+
+// Icon Imports
+import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 // Util Imports
 // import { generateVerticalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
 // import menuData from '../../../data/navigation/VerticalMenuData'
-
-// Icon Imports
-import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 const VerticalMenu = () => {
   // Hooks

@@ -1,33 +1,34 @@
 'use client'
 
-// React Imports
-import type { CSSProperties } from 'react'
+// Third-party Imports
+import classnames from 'classnames'
 
 // Component Imports
 import HorizontalMenu from './HorizontalMenu'
 
 // Config Imports
-import config from '../../../@layouts/config'
+import themeConfig from '../../../configs/themeConfig'
 
 // Hook Imports
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../../@layouts/utils/utilityClasses'
+import { horizontalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
 
-const styles: CSSProperties = {
-  minBlockSize: '64px',
-  paddingBlock: '9px',
-  paddingInline: `${config.layoutPadding}px`,
-  borderBlockStart: '1px solid #efefef'
-}
+// Style Imports
+import styles from './styles.module.css'
 
 const Navigation = () => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
   return (
-    <div {...(!isBreakpointReached && { className: horizontalLayoutClasses.navigation, style: styles })}>
+    <div
+      {...(!isBreakpointReached && {
+        className: classnames(horizontalLayoutClasses.navigation, styles.navigation),
+        style: { paddingInline: themeConfig.layoutPadding }
+      })}
+    >
       <HorizontalMenu />
     </div>
   )

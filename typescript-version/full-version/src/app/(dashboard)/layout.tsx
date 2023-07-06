@@ -5,12 +5,12 @@ import type { ChildrenType } from '../../@core/types'
 import { VerticalNavProvider } from '../../@menu-package/contexts/verticalNavContext'
 import { SettingsProvider } from '../../@core/contexts/settingsContext'
 
-// Component Imports
-import LayoutWrapper from '../../@layouts/LayoutWrapper'
-
 // Layout Imports
+import LayoutWrapper from '../../@layouts/LayoutWrapper'
 import VerticalLayout from '../../@layouts/VerticalLayout'
 import HorizontalLayout from '../../@layouts/HorizontalLayout'
+
+// Component Imports
 import Navigation from '../../components/layout/vertical/Navigation'
 import Navbar from '../../components/layout/vertical/Navbar'
 import Footer from '../../components/layout/shared/Footer'

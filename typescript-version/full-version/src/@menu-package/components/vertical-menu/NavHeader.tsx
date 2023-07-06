@@ -9,7 +9,7 @@ import type { VerticalNavContextProps } from '../../contexts/verticalNavContext'
 import useVerticalNav from '../../hooks/useVerticalNav'
 
 // Util Imports
-import { verticalNavClasses } from '../../utils/utilityClasses'
+import { verticalNavClasses } from '../../utils/menuClasses'
 
 type StyledNavHeaderProps = {
   isHovered?: VerticalNavContextProps['isHovered']

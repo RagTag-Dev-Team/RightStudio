@@ -4,18 +4,6 @@
   margin: 0;
 }
 
-html,
-body {
-  inline-size: 100%;
-  min-block-size: 100%;
-  display: flex;
-}
-
-body {
-  flex: 1 1 auto;
-  flex-direction: column;
-}
-
 a {
   color: inherit;
   text-decoration: none;

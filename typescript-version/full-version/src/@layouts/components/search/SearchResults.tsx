@@ -1,19 +1,11 @@
-// React Imports
-import type { CSSProperties } from 'react'
-
 // Third-party Imports
 import { KBarResults, useMatches } from 'kbar'
 
 // Component Imports
 import SearchResultItem from './SearchResultItem'
 
-// Styles
-const groupNameStyle: CSSProperties = {
-  padding: '8px 16px',
-  fontSize: '10px',
-  textTransform: 'uppercase' as const,
-  opacity: 0.5
-}
+// Style Imports
+import styles from '../../styles/search.module.css'
 
 const SearchResults = () => {
   // Hooks
@@ -24,7 +16,7 @@ const SearchResults = () => {
       items={results}
       onRender={({ item, active }) =>
         typeof item === 'string' ? (
-          <div style={groupNameStyle}>{item}</div>
+          <div className={styles.groupName}>{item}</div>
         ) : (
           <SearchResultItem action={item} active={active} currentRootActionId={rootActionId} />
         )
