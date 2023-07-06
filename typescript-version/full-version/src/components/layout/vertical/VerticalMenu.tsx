@@ -193,7 +193,9 @@ const VerticalMenu = () => {
           </SubMenu>
         </MenuSection>
       </Menu>
-      {/* <Menu>{generateVerticalMenu(menuData())}</Menu> */}
+      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        {generateVerticalMenu(menuData())}
+      </Menu> */}
     </PerfectScrollbar>
   )
 }
