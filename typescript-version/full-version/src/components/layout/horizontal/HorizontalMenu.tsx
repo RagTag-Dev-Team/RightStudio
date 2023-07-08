@@ -5,7 +5,8 @@
 import { useTranslation } from 'react-i18next'
 
 // Component Imports from @menu-package
-import { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
+import VerticalNavContent from './VerticalNavContent'
 
 // Icon Imports
 import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
@@ -21,7 +22,11 @@ const HorizontalMenu = () => {
   const { t } = useTranslation()
 
   return (
-    <>
+    <HorizontalNav
+      switchToVertical
+      verticalNavContent={VerticalNavContent}
+      verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
+    >
       <Menu
         menuItemStyles={{ button: { paddingBlock: '12px' } }}
         popoutMenuOffset={{
@@ -201,7 +206,7 @@ const HorizontalMenu = () => {
       >
         {generateHorizontalMenu(menuData())}
       </Menu> */}
-    </>
+    </HorizontalNav>
   )
 }
 

@@ -4,8 +4,6 @@
 import classnames from 'classnames'
 
 // Component Imports
-import HorizontalNav from '../../../@menu-package/horizontal-menu'
-import VerticalNavContent from './VerticalNavContent'
 import HorizontalMenu from './HorizontalMenu'
 
 // Config Imports
@@ -31,13 +29,7 @@ const Navigation = () => {
         style: { paddingInline: themeConfig.layoutPadding }
       })}
     >
-      <HorizontalNav
-        switchToVertical
-        verticalNavContent={VerticalNavContent}
-        verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
-      >
-        <HorizontalMenu />
-      </HorizontalNav>
+      <HorizontalMenu />
     </div>
   )
 }
