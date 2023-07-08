@@ -21,9 +21,9 @@ import type { Mode, Skin, Direction, Layout, ContentWidth, ChildrenType } from '
 export type Settings = {
   mode?: Mode
   skin?: Skin
+  semiDark?: boolean
   direction?: Direction
   layout?: Layout
-  navbarBlur?: boolean
   contentWidth?: ContentWidth
 }
 
@@ -31,15 +31,17 @@ type SettingsContextProps = {
   settings: Settings
   saveSettings: (value: Settings) => void
   updateSettings: (value: Settings) => void
+  isSettingsChanged: boolean
+  resetSettings: () => void
 }
 
 // Initial Settings
 const initialSettings: Settings = {
   mode: themeConfig.mode,
   skin: themeConfig.skin,
+  semiDark: themeConfig.semiDark,
   direction: themeConfig.direction,
   layout: themeConfig.layout,
-  navbarBlur: themeConfig.navbarBlur,
   contentWidth: themeConfig.contentWidth
 }
 
@@ -51,6 +53,7 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
   const pathname = usePathname()
   const { isCollapsed, collapseVerticalNav, isBreakpointReached } = useVerticalNav()
   const [value, setValue] = useLocalStorage('settings', initialSettings)
+  const [isSettingsChanged, setIsSettingsChanged] = useState(false)
   let initSettings = useMemo(() => ({ ...initialSettings, ...(value as Settings) }), [value])
   const prevSettings = useRef<Settings | null>(null)
   const updatedSettingsRef = useRef(false)
@@ -90,6 +93,9 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const resetSettings = useCallback(() => saveSettings(initialSettings), [])
+
   // Update state only
   const updateSettings = useCallback((values: Settings) => {
     // If its initial render then merge initial settings with provided values usually from individual page
@@ -105,9 +111,15 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
 
     // Update settings in state
     setSettings(prevState => ({ ...prevState, ...values }))
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (JSON.stringify(initialSettings) !== JSON.stringify(settings)) {
+      setIsSettingsChanged(true)
+    } else {
+      setIsSettingsChanged(false)
+    }
+  }, [settings])
 
   // Set initial settings in state for the first time
   useEffectOnce(() => {
@@ -144,9 +156,11 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
     () => ({
       settings,
       saveSettings,
-      updateSettings
+      updateSettings,
+      isSettingsChanged,
+      resetSettings
     }),
-    [settings, saveSettings, updateSettings]
+    [settings, saveSettings, updateSettings, isSettingsChanged, resetSettings]
   )
 
   return <SettingsContext.Provider value={SettingsProviderValue}>{children}</SettingsContext.Provider>

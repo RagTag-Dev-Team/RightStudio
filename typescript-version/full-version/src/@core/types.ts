@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 
 export type Layout = 'vertical' | 'horizontal' | 'collapsed'
 
-export type Skin = 'default' | 'bordered' | 'semi-dark'
+export type Skin = 'default' | 'bordered'
 
 export type Mode = 'light' | 'dark' | 'system'
 

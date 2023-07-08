@@ -4,6 +4,7 @@ import type { Mode, Skin, Direction, Layout, NavbarPosition, FooterPosition, Con
 export type Config = {
   mode: Mode
   skin: Skin
+  semiDark: boolean
   direction: Direction
   layout: Layout
   layoutPadding: number
@@ -18,6 +19,7 @@ const themeConfig: Config = {
   templateName: 'Master Admin',
   mode: 'light',
   skin: 'default',
+  semiDark: false,
   direction: 'ltr',
   layout: 'vertical',
   layoutPadding: 24, // Common padding for header, content, footer layout components (in px)

@@ -1,0 +1,135 @@
+.customizer {
+  inline-size: 400px;
+  background-color: #fff;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-end: -400px;
+  border-inline-start: 1px solid #efefef;
+  box-shadow: none;
+  z-index: 9999;
+  transition-property: inset-inline-end, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+
+  &.show {
+    inset-inline-end: 0 !important;
+    box-shadow: 0 -2px 20px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &.smallScreen {
+    inline-size: 375px;
+    inset-inline-end: -375px;
+
+    &.show .toggler {
+      display: none;
+    }
+
+    .header,
+    .customizerBody {
+      padding-inline: 10px;
+    }
+  }
+}
+
+.toggler {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 100%;
+  transform: translateY(-50%);
+  padding: 8px;
+  background-color: #765feb;
+  color: #fff;
+  border-start-start-radius: 6px;
+  border-end-start-radius: 6px;
+}
+
+.header {
+  padding-block: 16px;
+  padding-inline: 24px;
+  border-block-end: 1px solid #efefef;
+}
+
+.customizerTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.refreshWrapper {
+  position: relative;
+}
+
+.dotStyles {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: -5px;
+  block-size: 8px;
+  inline-size: 8px;
+  border-radius: 50%;
+  background-color: red;
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+.dotStyles.show {
+  transform: scale(1);
+}
+
+.customizerBody {
+  padding-block: 20px;
+  padding-inline: 24px;
+}
+
+.itemTitle {
+  font-weight: 500;
+}
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #efefef;
+  border-radius: 6px;
+  outline: 1px solid transparent;
+  min-inline-size: 106px;
+  min-block-size: 68px;
+  cursor: pointer;
+}
+.itemWrapper.active {
+  border-color: #765feb;
+  outline: 1px solid #765feb;
+}
+
+.itemLabel {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.primaryColorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #efefef;
+  border-radius: 6px;
+  block-size: 48px;
+  inline-size: 48px;
+  cursor: pointer;
+}
+
+.primaryColor {
+  block-size: 30px;
+  inline-size: 30px;
+  border-radius: 6px;
+}
+
+.modeWrapper {
+  min-block-size: 54px;
+}
+
+.hr {
+  border: 0;
+  border-block-start: 1px solid #efefef;
+}

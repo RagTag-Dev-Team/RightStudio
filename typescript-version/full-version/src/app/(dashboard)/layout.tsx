@@ -15,7 +15,7 @@ import Navigation from '../../components/layout/vertical/Navigation'
 import Navbar from '../../components/layout/vertical/Navbar'
 import Footer from '../../components/layout/shared/Footer'
 import Header from '../../components/layout/horizontal/Header'
-import TempCustomizer from '../../components/TempCustomizer'
+import Customizer from '../../@core/components/customizer'
 
 const Layout = ({ children }: ChildrenType) => {
   return (
@@ -24,17 +24,16 @@ const Layout = ({ children }: ChildrenType) => {
         <LayoutWrapper
           verticalLayout={
             <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<Footer />}>
-              <TempCustomizer />
               {children}
             </VerticalLayout>
           }
           horizontalLayout={
             <HorizontalLayout header={<Header />} footer={<Footer />}>
-              <TempCustomizer />
               {children}
             </HorizontalLayout>
           }
         />
+        <Customizer breakpoint='1200px' />
       </SettingsProvider>
     </VerticalNavProvider>
   )
