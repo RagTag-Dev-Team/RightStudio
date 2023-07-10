@@ -1,11 +1,7 @@
 'use client'
 
 // Component Imports from @menu-package
-import VerticalNav from '../../../@menu-package/components/vertical-menu'
-
-// Component Imports from @layouts
-import NavHeader from '../../../@menu-package/components/vertical-menu/NavHeader'
-import NavCollapseIcons from '../../../@menu-package/components/vertical-menu/NavCollapseIcons'
+import VerticalNav, { NavHeader, NavCollapseIcons } from '../../../@menu-package/vertical-menu'
 
 // Component Imports
 import Logo from '../shared/Logo'

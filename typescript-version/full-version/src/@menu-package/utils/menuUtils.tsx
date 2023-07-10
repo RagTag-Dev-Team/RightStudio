@@ -23,16 +23,16 @@ import {
   SubMenu as HorizontalSubMenu,
   MenuItem as HorizontalMenuItem,
   Menu as HorizontalMenu
-} from '../components/horizontal-menu'
+} from '../horizontal-menu'
 import {
   SubMenu as VerticalSubMenu,
   MenuItem as VerticalMenuItem,
   MenuSection,
   Menu as VerticalMenu
-} from '../components/vertical-menu'
+} from '../vertical-menu'
 
 // Util Imports
-import { menuClasses } from './utilityClasses'
+import { menuClasses } from './menuClasses'
 
 // Styled Component Imports
 import StyledMenuIcon from '../styles/StyledMenuIcon'

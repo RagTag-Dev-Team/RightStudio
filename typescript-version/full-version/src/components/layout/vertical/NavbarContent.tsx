@@ -1,5 +1,5 @@
-// React Imports
-import type { CSSProperties } from 'react'
+// Third-party Imports
+import classnames from 'classnames'
 
 // Components Imports
 import NavToggle from './NavToggle'
@@ -9,23 +9,22 @@ import Translation from '../shared/Translation'
 import ModeSwitcher from '../shared/ModeSwitcher'
 
 // Util Imports
-import { verticalLayoutClasses } from '../../../@layouts/utils/utilityClasses'
-
-const commonStyles: CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '16px'
-}
+import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
 
 const NavbarContent = () => {
   return (
-    <div className={verticalLayoutClasses.navbarContent} style={{ ...commonStyles, justifyContent: 'space-between' }}>
-      <div style={commonStyles}>
+    <div
+      className={classnames(
+        verticalLayoutClasses.navbarContent,
+        'd-flex align-items-center gap-4 justify-content-between'
+      )}
+    >
+      <div className='d-flex align-items-center gap-4'>
         <NavToggle />
         <NavSearch />
         <HorizontalMenu />
       </div>
-      <div style={commonStyles}>
+      <div className='d-flex align-items-center gap-4'>
         <Translation />
         <ModeSwitcher />
       </div>

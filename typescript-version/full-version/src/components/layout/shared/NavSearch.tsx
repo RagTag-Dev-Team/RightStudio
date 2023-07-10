@@ -1,96 +1,69 @@
 'use client'
 
-// React Imports
-import type { CSSProperties } from 'react'
-
-// Next Imports
-import { useRouter } from 'next/navigation'
-
-// Third-party Imports
-import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useKBar } from 'kbar'
-
 // Component Imports
-import SearchResults from '../../../@layouts/components/search/SearchResults'
-
-// Data
-import data from '../../../data/SearchData'
-
-// Icon Imports
-import Search from '../../../@layouts/svg/Search'
-
-// Styles
-const searchStyle: CSSProperties = {
-  padding: '12px 16px',
-  fontSize: '16px',
-  inlineSize: '100%',
-  boxSizing: 'border-box',
-  outline: 'none',
-  border: 'none',
-  background: 'white'
-}
-
-const animatorStyle: CSSProperties = {
-  maxInlineSize: '600px',
-  inlineSize: '100%',
-  background: 'white',
-  borderRadius: '8px',
-  overflow: 'hidden',
-  boxShadow: '0px 6px 20px rgb(0 0 0 / 20%)'
-}
-
-const BackdropStyle: CSSProperties = {
-  position: 'fixed',
-  insetInlineStart: 0,
-  insetBlockStart: 0,
-  insetInlineEnd: 0,
-  insetBlockEnd: 0,
-  zIndex: 9,
-  backgroundColor: 'rgba(0, 0, 0, 0.3)'
-}
-
-// Search Icon Component
-const SearchIcon = () => {
-  const { query } = useKBar()
-
-  return (
-    <span style={{ display: 'flex' }}>
-      <Search
-        className='ts-nav-search-icon'
-        role='button'
-        aria-label='search'
-        onClick={query.toggle}
-        style={{ cursor: 'pointer' }}
-        fontSize='1.25rem'
-      />
-    </span>
-  )
-}
+import { Autocomplete } from '../../../@layouts/components/search/Autocomplete'
+import { AutocompleteItem } from '../../../@layouts/components/search/AutocompleteItem'
 
 // NavSearch Component
 const NavSearch = () => {
-  // Hooks
-  const router = useRouter()
-
-  // Search Actions Data with 'perform' method
-  const searchActions = data.map(item => ({
-    ...item,
-    url: undefined, // Remove the 'url' key
-    perform: () => router.push(`/${item.url}`) // Add 'perform' method
-  }))
+  const data = [
+    {
+      name: 'Apple - MacBook Air® (Latest Model) - 13.3" Display - Intel Core i5 - 4GB Memory - 128GB Flash Storage - Silver',
+      description:
+        "MacBook Air features fifth-generation Intel Core processors with stunning graphics, all-day battery life*, ultrafast flash storage, and great built-in apps. It's thin, light and durable enough to take everywhere you go &#8212; and powerful enough to do everything once you get there.",
+      image: 'https://cdn-demo.algolia.com/bestbuy/1581921_sb.jpg',
+      url: 'http://www.bestbuy.com/site/apple-macbook-air-latest-model-13-3-display-intel-core-i5-4gb-memory-128gb-flash-storage-silver/1581921.p?id=1219056464137&skuId=1581921&cmp=RMX&ky=1uWSHMdQqBeVJB9cXgEke60s5EjfS6M1W',
+      objectID: '1581921'
+    },
+    {
+      name: 'Moto Edge 40',
+      description:
+        'Moto edge 40 is the latest android smartphone from Motorola. It has a 6.7-inch display with a 120Hz refresh rate, a 108MP camera, and a 5000mAh battery.',
+      image: 'https://cdn-demo.algolia.com/bestbuy/1581921_sb.jpg',
+      url: 'http://www.bestbuy.com/site/apple-macbook-air-latest-model-13-3-display-intel-core-i5-4gb-memory-128gb-flash-storage-silver/1581921.p?id=1219056464137&skuId=1581921&cmp=RMX&ky=1uWSHMdQqBeVJB9cXgEke60s5EjfS6M1W',
+      objectID: '16894564'
+    },
+    {
+      name: 'iPhone 14 Pro Max',
+      description:
+        'iPhone 14 Pro Max is the latest iPhone from Apple. It has a 6.7-inch display with a 120Hz refresh rate, a 108MP camera, and a 5000mAh battery.',
+      image: 'https://cdn-demo.algolia.com/bestbuy/1581921_sb.jpg',
+      url: 'http://www.bestbuy.com/site/apple-macbook-air-latest-model-13-3-display-intel-core-i5-4gb-memory-128gb-flash-storage-silver/1581921.p?id=1219056464137&skuId=1581921&cmp=RMX&ky=1uWSHMdQqBeVJB9cXgEke60s5EjfS6M1W',
+      objectID: '16949894'
+    }
+  ]
 
   return (
-    <KBarProvider actions={searchActions}>
-      <SearchIcon />
-      <KBarPortal>
-        <KBarPositioner style={{ zIndex: 10 }}>
-          <KBarAnimator style={animatorStyle}>
-            <KBarSearch style={searchStyle} />
-            <SearchResults />
-          </KBarAnimator>
-        </KBarPositioner>
-        <div className='ts-nav-search-backdrop' style={BackdropStyle} role='button' aria-label='backdrop' />
-      </KBarPortal>
-    </KBarProvider>
+    <Autocomplete
+      openOnFocus={true}
+      getSources={({ query }) => [
+        {
+          sourceId: 'products',
+          getItems({ query }) {
+            return data.filter(({ name }) => name.toLowerCase().includes(query.toLowerCase()))
+          },
+          getItemUrl({ item }) {
+            return item.url
+          },
+          templates: {
+            item({ item, components, html, state }) {
+              return state.query ? (
+                <AutocompleteItem item={item} components={components} html={html} />
+              ) : (
+                'Initial Screen when nothing is searched'
+              )
+            },
+            noResults() {
+              return (
+                <div className='aa-no-results'>
+                  <p>No products matching your query.</p>
+                </div>
+              )
+            }
+          }
+        }
+      ]}
+    />
   )
 }
 

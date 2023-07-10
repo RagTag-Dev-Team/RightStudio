@@ -9,11 +9,11 @@ import type {
   SubMenuProps as VerticalSubMenuProps,
   MenuItemProps as VerticalMenuItemProps,
   MenuSectionProps as VerticalMenuSectionProps
-} from './components/vertical-menu'
+} from './vertical-menu'
 import type {
   SubMenuProps as HorizontalSubMenuProps,
   MenuItemProps as HorizontalMenuItemProps
-} from './components/horizontal-menu'
+} from './horizontal-menu'
 
 export type ChildrenType = {
   children: ReactNode

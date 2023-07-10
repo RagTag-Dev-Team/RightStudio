@@ -5,17 +5,17 @@
 import { useTranslation } from 'react-i18next'
 
 // Component Imports from @menu-package
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
+
+// Icon Imports
+import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 // Util Imports
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
 
 // Menu Data Imports
-// import menuData from '../../../navigation-data/HorizontalMenuData'
-
-// Icon Imports
-import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
+// import menuData from '../../../data/navigation/HorizontalMenuData'
 
 const HorizontalMenu = () => {
   // Hooks
@@ -66,7 +66,7 @@ const HorizontalMenu = () => {
             <MenuItem>{t('navigation.permissions')}</MenuItem>
           </SubMenu>
         </SubMenu>
-        <SubMenu label={t('navigation.uI')}>
+        <SubMenu label={t('navigation.ui')}>
           <MenuItem>{t('navigation.typography')}</MenuItem>
           <MenuItem>{t('navigation.icons')}</MenuItem>
           <SubMenu label={t('navigation.cards')}>
@@ -197,7 +197,15 @@ const HorizontalMenu = () => {
           <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.documentation')}</MenuItem>
         </SubMenu>
       </Menu>
-      {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}
+      {/* <Menu
+        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        popoutMenuOffset={{
+          mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+          alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+        }}
+      >
+        {generateHorizontalMenu(menuData())}
+      </Menu> */}
     </HorizontalNav>
   )
 }

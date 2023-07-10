@@ -104,7 +104,7 @@ const HorizontalMenuData = (): HorizontalMenuDataType[] => {
       ]
     },
     {
-      label: t('navigation.uI'),
+      label: t('navigation.ui'),
       children: [
         {
           label: t('navigation.typography')

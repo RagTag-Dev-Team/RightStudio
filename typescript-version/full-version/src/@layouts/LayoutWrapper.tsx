@@ -4,7 +4,7 @@
 import type { ReactElement } from 'react'
 
 // Hook Imports
-import useLayout from './hooks/useLayout'
+import useSettings from '../@core/hooks/useSettings'
 
 // Type
 type LayoutWrapperProps = {
@@ -14,10 +14,10 @@ type LayoutWrapperProps = {
 
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   const { verticalLayout, horizontalLayout } = props
-  const { layout } = useLayout()
+  const { settings } = useSettings()
 
   // Return the layout based on the layout context
-  return layout === 'horizontal' ? horizontalLayout : verticalLayout
+  return settings.layout === 'horizontal' ? horizontalLayout : verticalLayout
 }
 
 export default LayoutWrapper

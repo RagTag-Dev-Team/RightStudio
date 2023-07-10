@@ -1,8 +1,8 @@
 'use client'
 
 // React Imports
-import type { HTMLAttributes } from 'react'
 import { useEffect } from 'react'
+import type { HTMLAttributes } from 'react'
 
 // Third-party Imports
 import classNames from 'classnames'
@@ -16,14 +16,14 @@ import type { VerticalNavProps } from '../vertical-menu/VerticalNav'
 import VerticalNavInHorizontal from './VerticalNavInHorizontal'
 
 // Hook Imports
-import { useMediaQuery } from '../../hooks/useMediaQuery'
+import useMediaQuery from '../../hooks/useMediaQuery'
+import useHorizontalNav from '../../hooks/useHorizontalNav'
 
 // Util Imports
-import { horizontalNavClasses } from '../../utils/utilityClasses'
+import { horizontalNavClasses } from '../../utils/menuClasses'
 
 // Styled Component Imports
 import StyledHorizontalNav from '../../styles/horizontal/StyledHorizontalNav'
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 // Default Config Imports
 import { defaultBreakpoints } from '../../defaultConfigs'
@@ -60,10 +60,10 @@ const HorizontalNav = (props: HorizontalNavProps) => {
     verticalNavContent: VerticalNavContent
   } = props
 
-  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
-
   // Hooks
   const { updateIsBreakpointReached } = useHorizontalNav()
+
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
@@ -73,7 +73,8 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   // Set the breakpointReached value in the state
   useEffect(() => {
     updateIsBreakpointReached(breakpointReached)
-  }, [breakpointReached]) // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [breakpointReached])
 
   // If switchToVertical is true, then render the VerticalNav component if breakpoint is reached
   if (switchToVertical && breakpointReached) {

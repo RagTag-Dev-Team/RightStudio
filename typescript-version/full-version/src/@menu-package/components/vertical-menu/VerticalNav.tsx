@@ -15,16 +15,20 @@ import type { BreakpointType } from '../../types'
 import type { VerticalNavState } from '../../contexts/verticalNavContext'
 
 // Hook Imports
+import useMediaQuery from '../../hooks/useMediaQuery'
 import useVerticalNav from '../../hooks/useVerticalNav'
-import { useMediaQuery } from '../../hooks/useMediaQuery'
-import { verticalNavClasses } from '../../utils/utilityClasses'
+
+// Util Imports
+import { verticalNavClasses } from '../../utils/menuClasses'
 
 // Styled Component Imports
 import StyledBackdrop from '../../styles/StyledBackdrop'
 import StyledVerticalNav from '../../styles/vertical/StyledVerticalNav'
-import StyledVerticalNavBgImage from '../../styles/vertical/StyledVerticalNavBgImage'
 import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer'
 import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
+
+// Style Imports
+import styles from '../../styles/vertical/verticalNavBgImage.module.css'
 
 // Default Config Imports
 import { defaultBreakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
@@ -66,11 +70,6 @@ const VerticalNav = (props: VerticalNavProps) => {
     ...rest
   } = props
 
-  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
-
-  // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
-
   // Hooks
   const {
     updateVerticalNavState,
@@ -87,6 +86,11 @@ const VerticalNav = (props: VerticalNavProps) => {
     transitionDuration: transitionDurationContext,
     isPopoutWhenCollapsed: isPopoutWhenCollapsedContext
   } = useVerticalNav()
+
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
+
+  // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
+  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
 
   // UseEffect, update verticalNav state to set initial values and update values on change
   useEffect(() => {
@@ -201,8 +205,8 @@ const VerticalNav = (props: VerticalNavProps) => {
         {backgroundImage && (
           // eslint-disable-next-line lines-around-comment
           /* VerticalNav Background Image */
-          <StyledVerticalNavBgImage
-            className={verticalNavClasses.image}
+          <img
+            className={classnames(verticalNavClasses.image, styles.root)}
             src={backgroundImage}
             alt='verticalNav background'
           />

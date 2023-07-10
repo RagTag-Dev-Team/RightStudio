@@ -50,7 +50,7 @@ import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 import { confirmUrlInChildren, renderMenuIcon } from '../../utils/menuUtils'
 
 // Styled Component Imports
@@ -118,6 +118,7 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
 `
 
 const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
+  // Props
   const {
     children,
     className,
@@ -132,13 +133,22 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     disabled = false,
     rootStyles,
     component,
-
-    // open: openSubmenu,
     onOpenChange,
     onClick,
     onKeyUp,
     ...rest
   } = props
+
+  // States
+  const [openWhenCollapsed, setOpenWhenCollapsed] = useState<boolean>(false)
+  const [active, setActive] = useState<boolean>(false)
+
+  // Refs
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  // Hooks
+  const id = useId()
+  const pathname = usePathname()
   const { isCollapsed, isPopoutWhenCollapsed, isHovered } = useVerticalNav()
   const {
     browserScroll,
@@ -153,25 +163,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     popoutMenuOffset,
     textTruncate
   } = useVerticalMenu()
-
-  // Hook
   const rendersCount = useRendersCount()
-
-  // State
-  const [openWhenCollapsed, setOpenWhenCollapsed] = useState<boolean>(false)
-  const [active, setActive] = useState<boolean>(false)
-
-  // Hooks
-  const id = useId()
-  const pathname = usePathname()
 
   // Floating UI Hooks
   const tree = useFloatingTree()
 
   const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
-
-  // Refs
-  const contentRef = useRef<HTMLDivElement>(null)
 
   const mainAxisOffset =
     popoutMenuOffset &&
@@ -243,8 +240,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   }
 
   const getSubMenuItemStyles = (element: SubMenuItemElement): CSSObject | undefined => {
-    // If the menuItemStyles prop is provided, get the styles for the
-    // specified element.
+    // If the menuItemStyles prop is provided, get the styles for the specified element.
     if (menuItemStyles) {
       // Define the parameters that are passed to the style functions.
       const params = {
@@ -267,8 +263,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   }
 
   // Event emitter allows you to communicate across tree components.
-  // This effect closes all menus when an item gets clicked anywhere
-  // in the tree.
+  // This effect closes all menus when an item gets clicked anywhere in the tree.
   useEffect(() => {
     function handleTreeClick() {
       setOpenWhenCollapsed(false)
@@ -295,7 +290,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         openSubmenusRef?.current.push({ level, label, active: false, id })
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -338,7 +332,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     >
       {childNodes.map(node =>
         cloneElement(node, {
-          // ...node.props,
           ...getItemProps({
             onClick(event: MouseEvent<HTMLAnchorElement>) {
               if (node.props.children && !Array.isArray(node.props.children)) {

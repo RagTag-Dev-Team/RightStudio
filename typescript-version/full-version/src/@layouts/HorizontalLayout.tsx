@@ -1,11 +1,13 @@
 // React Imports
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../@menu-package/types'
+import type { ChildrenType } from '../@core/types'
 
 // Context Imports
-import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
 import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
 
 // Component Imports
@@ -13,17 +15,11 @@ import LayoutContentWrapper from './components/horizontal/LayoutContentWrapper'
 import LayoutContent from './components/horizontal/LayoutContent'
 
 // Util Imports
-import { horizontalLayoutClasses } from './utils/utilityClasses'
+import { horizontalLayoutClasses } from './utils/layoutClasses'
 
 type HorizontalLayoutProps = ChildrenType & {
   header?: ReactNode
   footer?: ReactNode
-}
-
-// Styles
-const horizontalLayoutStyles: CSSProperties = {
-  display: 'flex',
-  flex: '1 1 auto'
 }
 
 const HorizontalLayout = (props: HorizontalLayoutProps) => {
@@ -31,15 +27,13 @@ const HorizontalLayout = (props: HorizontalLayoutProps) => {
   const { header, footer, children } = props
 
   return (
-    <div className={horizontalLayoutClasses.root} style={horizontalLayoutStyles}>
+    <div className={classnames(horizontalLayoutClasses.root, 'd-flex flex-auto')}>
       <HorizontalNavProvider>
-        <VerticalNavProvider>
-          <LayoutContentWrapper>
-            {header || null}
-            <LayoutContent>{children}</LayoutContent>
-            {footer || null}
-          </LayoutContentWrapper>
-        </VerticalNavProvider>
+        <LayoutContentWrapper>
+          {header || null}
+          <LayoutContent>{children}</LayoutContent>
+          {footer || null}
+        </LayoutContentWrapper>
       </HorizontalNavProvider>
     </div>
   )

@@ -1,9 +1,11 @@
+// Common classes for layout components
 export const layoutClasses = {
   footer: 'ts-layout-footer',
   footerContentWrapper: 'ts-layout-footer-content-wrapper',
   footerContent: 'ts-layout-footer-content'
 }
 
+// Classes for vertical layout
 export const verticalLayoutClasses = {
   root: 'ts-vertical-layout',
   contentWrapper: 'ts-vertical-layout-content-wrapper',
@@ -13,6 +15,7 @@ export const verticalLayoutClasses = {
   content: 'ts-vertical-layout-content'
 }
 
+// Classes for horizontal layout
 export const horizontalLayoutClasses = {
   root: 'ts-horizontal-layout',
   contentWrapper: 'ts-horizontal-layout-content-wrapper',
@@ -23,6 +26,7 @@ export const horizontalLayoutClasses = {
   content: 'ts-horizontal-layout-content'
 }
 
+// Classes for blank layout
 export const blankLayoutClasses = {
   root: 'ts-blank-layout'
 }

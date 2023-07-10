@@ -30,18 +30,9 @@ export type VerticalNavContextProps = VerticalNavState & {
 const VerticalNavContext = createContext({} as VerticalNavContextProps)
 
 export const VerticalNavProvider = ({ children }: ChildrenType) => {
+  // States
   const [verticalNavState, setVerticalNavState] = useState<VerticalNavState>()
 
-  /* const updateVerticalNavState = useCallback((values: Partial<VerticalNavState>) => {
-    if (values.isCollapsed !== undefined) {
-      if (values.isCollapsed === true) {
-        setVerticalNavState(prevState => ({ ...prevState, ...values, collapsing: true }))
-      } else {
-        setVerticalNavState(prevState => ({ ...prevState, ...values, expanding: true }))
-      }
-    }
-    setVerticalNavState(prevState => ({ ...prevState, ...values }))
-  }, []) */
   const updateVerticalNavState = useCallback((values: Partial<VerticalNavState>) => {
     setVerticalNavState(prevState => ({
       ...prevState,
@@ -51,24 +42,6 @@ export const VerticalNavProvider = ({ children }: ChildrenType) => {
     }))
   }, [])
 
-  /* const collapseVerticalNav = useCallback((value?: boolean) => {
-    if (value === true) {
-      setVerticalNavState(prevState => ({
-        ...prevState,
-        collapsing: true
-      }))
-    } else {
-      setVerticalNavState(prevState => ({
-        ...prevState,
-        expanding: true
-      }))
-    }
-    setVerticalNavState(prevState => ({
-      ...prevState,
-      isHovered: value !== undefined && false,
-      isCollapsed: value !== undefined ? Boolean(value) : !Boolean(prevState?.isCollapsed)
-    }))
-  }, []) */
   const collapseVerticalNav = useCallback((value?: boolean) => {
     setVerticalNavState(prevState => ({
       ...prevState,

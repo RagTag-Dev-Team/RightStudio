@@ -14,6 +14,7 @@ export type HorizontalNavContextProps = {
 const HorizontalNavContext = createContext({} as HorizontalNavContextProps)
 
 export const HorizontalNavProvider = ({ children }: ChildrenType) => {
+  // States
   const [isBreakpointReached, setIsBreakpointReached] = useState(false)
 
   // update isBreakpointReached value

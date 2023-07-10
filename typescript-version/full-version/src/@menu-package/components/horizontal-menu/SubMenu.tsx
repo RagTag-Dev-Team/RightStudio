@@ -51,7 +51,7 @@ import SubMenuContent from './SubMenuContent'
 import useHorizontalMenu from '../../hooks/useHorizontalMenu'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 import { confirmUrlInChildren, renderMenuIcon } from '../../utils/menuUtils'
 
 // Styled Component Imports
@@ -62,6 +62,9 @@ import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledHorizontalNavExpandIcon, {
   StyledHorizontalNavExpandIconWrapper
 } from '../../styles/horizontal/StyledHorizontalNavExpandIcon'
+
+// Style Imports
+import ulStyles from '../../styles/horizontal/horizontalUl.module.css'
 
 // Icon Imports
 import ChevronRight from '../../svg/ChevronRight'
@@ -118,6 +121,7 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
 export const HorizontalSubMenuContext = createContext<HorizontalSubMenuContextProps>({ getItemProps: () => ({}) })
 
 const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, ref) => {
+  // Props
   const {
     children,
     className,
@@ -137,21 +141,13 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     ...rest
   } = props
 
-  // State
+  // States
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(false)
 
   // Refs
   const dir = useRef('ltr')
   const listItemsRef = useRef<Array<HTMLButtonElement | null>>([])
-
-  // Filter out falsy values from children
-  const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
-
-  // Floating UI Hooks
-  const tree = useFloatingTree()
-  const nodeId = useFloatingNodeId()
-  const parentId = useFloatingParentNodeId()
 
   // Hooks
   const pathname = usePathname()
@@ -165,6 +161,14 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     popoutMenuOffset,
     textTruncate
   } = useHorizontalMenu()
+
+  // Floating UI Hooks
+  const tree = useFloatingTree()
+  const nodeId = useFloatingNodeId()
+  const parentId = useFloatingParentNodeId()
+
+  // Filter out falsy values from children
+  const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
 
   useEffect(() => {
     dir.current = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
@@ -233,14 +237,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const role = useRole(context, { role: 'menu' })
 
   // Merge all the interactions into prop getters
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    hover,
-    click,
-    dismiss,
-    role
-
-    // listNavigation
-  ])
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([hover, click, dismiss, role])
 
   const handleOnClick = (event: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>) => {
     onClick?.(event)
@@ -255,8 +252,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   }
 
   const getSubMenuItemStyles = (element: SubMenuItemElement): CSSObject | undefined => {
-    // If the menuItemStyles prop is provided, get the styles for the
-    // specified element.
+    // If the menuItemStyles prop is provided, get the styles for the specified element.
     if (menuItemStyles) {
       // Define the parameters that are passed to the style functions.
       const params = { level, disabled, active, isSubmenu: true, open: open }
@@ -273,8 +269,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   }
 
   // Event emitter allows you to communicate across tree components.
-  // This effect closes all menus when an item gets clicked anywhere
-  // in the tree.
+  // This effect closes all menus when an item gets clicked anywhere in the tree.
   useEffect(() => {
     function handleTreeClick() {
       setOpen(false)
@@ -334,6 +329,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           { [menuClasses.active]: active },
           { [menuClasses.disabled]: disabled },
           { [menuClasses.open]: open },
+          ulStyles.li,
           className
         )}
         menuItemStyles={getSubMenuItemStyles('root')}

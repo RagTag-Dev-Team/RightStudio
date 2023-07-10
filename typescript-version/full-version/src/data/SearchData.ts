@@ -1,12 +1,10 @@
 // Third-party Imports
 import type { Action } from 'kbar'
 
-// Type Defs
 type SearchData = Action & {
   url: string
 }
 
-// Data
 const data: SearchData[] = [
   {
     id: 'email',

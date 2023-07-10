@@ -1,22 +1,15 @@
-// React Imports
-import type { CSSProperties } from 'react'
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../../../@menu-package/types'
+import type { ChildrenType } from '../../../@core/types'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../utils/utilityClasses'
-
-const contentAreaStyles: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  inlineSize: '100%',
-  overflow: 'hidden'
-}
+import { horizontalLayoutClasses } from '../../utils/layoutClasses'
 
 const LayoutContentWrapper = ({ children }: ChildrenType) => {
   return (
-    <div className={horizontalLayoutClasses.contentWrapper} style={contentAreaStyles}>
+    <div className={classnames(horizontalLayoutClasses.contentWrapper, 'd-flex flex-column width-100 overflow-hidden')}>
       {children}
     </div>
   )

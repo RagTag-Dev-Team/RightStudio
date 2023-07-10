@@ -2,7 +2,7 @@
 
 // Component Imports
 import { RouterLink } from '../../../@menu-package/components/RouterLink'
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/components/horizontal-menu'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
 
 // Context Imports
 import { HorizontalNavProvider } from '../../../@menu-package/contexts/horizontalNavContext'

@@ -6,7 +6,7 @@ import type { CSSObject } from '@emotion/styled'
 import type { MenuItemProps } from '../../components/horizontal-menu/MenuItem'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Style Imports
 import { menuButtonStyles } from '../../components/horizontal-menu/MenuButton'

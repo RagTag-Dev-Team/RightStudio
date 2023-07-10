@@ -2,7 +2,7 @@
 import { forwardRef, useEffect, useState } from 'react'
 import type { ForwardRefRenderFunction, HTMLAttributes, MutableRefObject } from 'react'
 
-// Third Party Imports
+// Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
@@ -10,8 +10,10 @@ import type { VerticalMenuContextProps } from './Menu'
 import type { ChildrenType, RootStylesType } from '../../types'
 
 // Styled Components
-import StyledUl from '../../styles/StyledUl'
 import StyledSubMenuContent from '../../styles/StyledSubMenuContent'
+
+// Style Imports
+import styles from '../../styles/styles.module.css'
 
 export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
   RootStylesType &
@@ -28,6 +30,7 @@ export type SubMenuContentProps = HTMLAttributes<HTMLDivElement> &
   }
 
 const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentProps> = (props, ref) => {
+  // Props
   const {
     children,
     open,
@@ -41,9 +44,11 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
     ...rest
   } = props
 
-  const SubMenuContentRef = ref as MutableRefObject<HTMLDivElement>
-
+  // States
   const [mounted, setMounted] = useState(false)
+
+  // Refs
+  const SubMenuContentRef = ref as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
     if (mounted) {
@@ -108,10 +113,10 @@ const SubMenuContent: ForwardRefRenderFunction<HTMLDivElement, SubMenuContentPro
           options={{ wheelPropagation: false }}
           style={{ maxBlockSize: `calc((var(--vh, 1vh) * 100))` }}
         >
-          <StyledUl>{children}</StyledUl>
+          <ul className={styles.ul}>{children}</ul>
         </PerfectScrollbar>
       ) : (
-        <StyledUl>{children}</StyledUl>
+        <ul className={styles.ul}>{children}</ul>
       )}
     </StyledSubMenuContent>
   )

@@ -15,16 +15,18 @@ import type { CSSObject } from '@emotion/react'
 // Type Imports
 import type { ChildrenType, MenuItemElement, RootStylesType } from '../../types'
 
+// Component Imports
+import MenuButton from './MenuButton'
+
 // Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
 import { renderMenuIcon } from '../../utils/menuUtils'
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Styled Component Imports
-import MenuButton from './MenuButton'
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
@@ -64,7 +66,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     ...rest
   } = props
 
-  // State
+  // States
   const [active, setActive] = useState(false)
 
   // Hooks
@@ -75,8 +77,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
 
   // Get the styles for the specified element.
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
-    // If the menuItemStyles prop is provided, get the styles for the
-    // specified element.
+    // If the menuItemStyles prop is provided, get the styles for the specified element.
     if (menuItemStyles) {
       // Define the parameters that are passed to the style functions.
       const params = { level, disabled, active, isSubmenu: false }
@@ -132,7 +133,6 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       isCollapsed={isCollapsed}
       isPopoutWhenCollapsed={isPopoutWhenCollapsed}
       disabled={disabled}
-      active={active}
       buttonStyles={getMenuItemStyles('button')}
       menuItemStyles={getMenuItemStyles('root')}
       rootStyles={rootStyles}

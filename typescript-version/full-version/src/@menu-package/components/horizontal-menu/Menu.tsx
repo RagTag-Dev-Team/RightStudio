@@ -18,11 +18,13 @@ import type {
 } from '../../types'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Styled Component Imports
-import StyledHorizontalUl from '../../styles/horizontal/StyledHorizontalUl'
 import StyledHorizontalMenu from '../../styles/horizontal/StyledHorizontalMenu'
+
+// Style Imports
+import styles from '../../styles/horizontal/horizontalUl.module.css'
 
 // Default Config Imports
 import { horizontalSubMenuToggleDuration } from '../../defaultConfigs'
@@ -96,7 +98,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
           rootStyles={rootStyles}
           {...rest}
         >
-          <StyledHorizontalUl>{children}</StyledHorizontalUl>
+          <ul className={styles.root}>{children}</ul>
         </StyledHorizontalMenu>
       </FloatingTree>
     </HorizontalMenuContext.Provider>

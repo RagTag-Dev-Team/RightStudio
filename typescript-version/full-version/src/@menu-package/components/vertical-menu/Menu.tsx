@@ -25,11 +25,13 @@ import type {
 import useVerticalNav from '../../hooks/useVerticalNav'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Styled Component Imports
-import StyledUl from '../../styles/StyledUl'
 import StyledVerticalMenu from '../../styles/vertical/StyledVerticalMenu'
+
+// Styles
+import styles from '../../styles/styles.module.css'
 
 // Default Config Imports
 import { verticalSubMenuToggleDuration } from '../../defaultConfigs'
@@ -92,6 +94,7 @@ export type MenuProps = VerticalMenuContextProps &
 export const VerticalMenuContext = createContext({} as VerticalMenuContextProps)
 
 const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) => {
+  // Props
   const {
     children,
     className,
@@ -111,8 +114,11 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     ...rest
   } = props
 
-  const openSubmenusRef = useRef<OpenSubmenu[]>([])
+  // States
   const [openSubmenu, setOpenSubmenu] = useState<OpenSubmenu[]>([])
+
+  // Refs
+  const openSubmenusRef = useRef<OpenSubmenu[]>([])
 
   // Hooks
   const pathname = usePathname()
@@ -129,7 +135,6 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
         const submenuExists = submenuIndex >= 0
         const isAccordion = subMenuOpenBehavior === 'accordion'
 
-        // const activeSubmenuIndex = openSubmenuCopy.findIndex(submenu => submenu.active && submenu.level === 0)
         const inactiveSubmenuIndex = openSubmenuCopy.findIndex(submenu => !submenu.active && submenu.level === 0)
 
         // Delete submenu if it exists
@@ -160,11 +165,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
   )
 
   useEffect(() => {
-    // if (openSubmenusRef.current.length) {
     setOpenSubmenu([...openSubmenusRef.current])
     openSubmenusRef.current = []
-
-    // }
   }, [pathname])
 
   // UseEffect, update verticalNav state to set initial values and update values on change
@@ -218,7 +220,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
           rootStyles={rootStyles}
           {...rest}
         >
-          <StyledUl>{children}</StyledUl>
+          <ul className={styles.ul}>{children}</ul>
         </StyledVerticalMenu>
       </FloatingTree>
     </VerticalMenuContext.Provider>

@@ -1,16 +1,21 @@
 // Next Imports
 import { Inter } from 'next/font/google'
 
+// Third-party Imports
+import classnames from 'classnames'
+import 'react-perfect-scrollbar/dist/css/styles.css'
+
 // Type Imports
-import type { ChildrenType } from '../@menu-package/types'
+import type { ChildrenType } from '../@core/types'
 
 // Component Imports
 import I18n from '../components/i18n'
 import ThemeProvider from '../components/theme'
 
 // Style Imports
+//! Do not remove the `utils.css` import below otherwise it will break the template styling
+import '../@core/styles/utils.css' // Common Utility Classes
 import './globals.css'
-import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Generated Icon Imports
 import '../assets/iconify-icons/generated-icons'
@@ -24,8 +29,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: ChildrenType) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
+    <html lang='en' className='d-flex width-100 min-height-100'>
+      <body className={classnames(inter.className, 'd-flex width-100 min-height-100 flex-auto flex-column')}>
         <ThemeProvider>
           <I18n />
           {children}

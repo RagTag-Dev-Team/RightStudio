@@ -18,7 +18,7 @@ import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
-import { menuClasses } from '../../utils/utilityClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 // Styled Components
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
@@ -73,8 +73,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   const rendersCount = useRendersCount()
 
   const getMenuSectionStyles = (element: MenuSectionElement): CSSObject | undefined => {
-    // If the menuSectionStyles prop is provided, get the styles for the
-    // element from the prop
+    // If the menuSectionStyles prop is provided, get the styles for the element from the prop
     if (menuSectionStyles) {
       return menuSectionStyles[element]
     }

@@ -1,19 +1,17 @@
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
-import type { ChildrenType } from '../../../@menu-package/types'
+import type { ChildrenType } from '../../../@core/types'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../utils/utilityClasses'
+import { horizontalLayoutClasses } from '../../utils/layoutClasses'
 
-const headerStyles = {
-  borderBlockEnd: '1px solid #efefef'
-}
+// Style Imports
+import styles from '../../styles/horizontal.module.css'
 
 const Header = ({ children }: ChildrenType) => {
-  return (
-    <header className={horizontalLayoutClasses.header} style={headerStyles}>
-      {children}
-    </header>
-  )
+  return <header className={classnames(horizontalLayoutClasses.header, styles.header)}>{children}</header>
 }
 
 export default Header

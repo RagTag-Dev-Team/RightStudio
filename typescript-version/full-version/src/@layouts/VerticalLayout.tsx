@@ -1,18 +1,18 @@
 // React Imports
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../@menu-package/types'
-
-// Context Imports
-import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'
+import type { ChildrenType } from '../@core/types'
 
 // Component Imports
 import LayoutContentWrapper from './components/vertical/LayoutContentWrapper'
 import LayoutContent from './components/vertical/LayoutContent'
 
 // Util Imports
-import { verticalLayoutClasses } from './utils/utilityClasses'
+import { verticalLayoutClasses } from './utils/layoutClasses'
 
 type VerticalLayoutProps = ChildrenType & {
   navigation?: ReactNode
@@ -20,28 +20,20 @@ type VerticalLayoutProps = ChildrenType & {
   footer?: ReactNode
 }
 
-// Styles
-const verticalLayoutStyles: CSSProperties = {
-  display: 'flex',
-  flex: '1 1 auto'
-}
-
 const VerticalLayout = (props: VerticalLayoutProps) => {
   // Props
   const { navbar, footer, navigation, children } = props
 
   return (
-    <VerticalNavProvider>
-      <div className={verticalLayoutClasses.root} style={verticalLayoutStyles}>
-        {navigation || null}
-        <LayoutContentWrapper>
-          {navbar || null}
-          {/* Content */}
-          <LayoutContent>{children}</LayoutContent>
-          {footer || null}
-        </LayoutContentWrapper>
-      </div>
-    </VerticalNavProvider>
+    <div className={classnames(verticalLayoutClasses.root, 'd-flex flex-auto')}>
+      {navigation || null}
+      <LayoutContentWrapper>
+        {navbar || null}
+        {/* Content */}
+        <LayoutContent>{children}</LayoutContent>
+        {footer || null}
+      </LayoutContentWrapper>
+    </div>
   )
 }
 

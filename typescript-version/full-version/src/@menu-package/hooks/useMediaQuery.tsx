@@ -3,7 +3,8 @@
 // React Imports
 import { useEffect, useState } from 'react'
 
-export const useMediaQuery = (breakpoint?: string): boolean => {
+const useMediaQuery = (breakpoint?: string): boolean => {
+  // States
   const [matches, setMatches] = useState(breakpoint === 'always')
 
   useEffect(() => {
@@ -23,3 +24,5 @@ export const useMediaQuery = (breakpoint?: string): boolean => {
 
   return matches
 }
+
+export default useMediaQuery

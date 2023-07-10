@@ -1,57 +1,57 @@
 'use client'
 
-// React Imports
-import type { CSSProperties } from 'react'
-
 // Next Imports
 import Link from 'next/link'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Hook Imports
-import useLayout from '../../../@layouts/hooks/useLayout'
 import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
-import { layoutClasses } from '../../../@layouts/utils/utilityClasses'
+import { layoutClasses } from '../../../@layouts/utils/layoutClasses'
 
-const commonStyles: CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '16px'
-}
+// Style Imports
+import styles from './styles.module.css'
 
 const FooterContent = () => {
-  const { layout } = useLayout()
+  const { settings } = useSettings()
   const { isBreakpointReached: isVerticalBreakpointReached } = useVerticalNav()
   const { isBreakpointReached: isHorizontalBreakpointReached } = useHorizontalNav()
 
-  const isBreakpointReached = layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
+  const isBreakpointReached =
+    settings.layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
 
   return (
     <div
-      className={layoutClasses.footerContent}
-      style={{ ...commonStyles, justifyContent: 'space-between', flexWrap: 'wrap' }}
+      className={classnames(
+        layoutClasses.footerContent,
+        'd-flex align-items-center justify-content-between flex-wrap gap-4'
+      )}
     >
       <p>
         <span>{`© ${new Date().getFullYear()}, Made with `}</span>
         <span>{`❤️`}</span>
         <span>{` by `}</span>
-        <Link href='https://themeselection.com' target='_blank' style={{ color: '#765feb' }}>
+        <Link href='https://themeselection.com' target='_blank' className={styles.primaryColor}>
           ThemeSelection
         </Link>
       </p>
       {!isBreakpointReached && (
-        <div style={{ ...commonStyles }}>
-          <Link href='https://themeselection.com/license' target='_blank' style={{ color: '#765feb' }}>
+        <div className='d-flex align-items-center gap-4'>
+          <Link href='https://themeselection.com/license' target='_blank' className={styles.primaryColor}>
             License
           </Link>
-          <Link href='https://themeselection.com' target='_blank' style={{ color: '#765feb' }}>
+          <Link href='https://themeselection.com' target='_blank' className={styles.primaryColor}>
             More Themes
           </Link>
-          <Link href='/' target='_blank' style={{ color: '#765feb' }}>
+          <Link href='/' target='_blank' className={styles.primaryColor}>
             Documentation
           </Link>
-          <Link href='https://themeselection.com/support' target='_blank' style={{ color: '#765feb' }}>
+          <Link href='https://themeselection.com/support' target='_blank' className={styles.primaryColor}>
             Support
           </Link>
         </div>
