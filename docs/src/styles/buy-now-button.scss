@@ -1,0 +1,32 @@
+.buy-now-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  line-height: 1.2;
+  font-size: 0.9375rem;
+  letter-spacing: 0.43px;
+  font-weight: 500;
+  border-radius: 6px;
+  color: white;
+  min-inline-size: 50px;
+  text-transform: none;
+  padding-block: 0.625rem;
+  padding-inline: 1.25rem;
+  background-color: rgb(255, 62, 29);
+  box-shadow: rgb(255, 62, 29) 0px 1px 20px 1px;
+  &:hover {
+    color: white;
+    box-shadow: none;
+    text-decoration: none;
+    background-color: rgb(230, 56, 26);
+  }
+}

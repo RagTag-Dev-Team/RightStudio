@@ -1,0 +1,54 @@
+.card-snippet {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  box-shadow: none;
+  margin-block-end: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-header {
+  padding: 24px;
+}
+
+.title {
+  margin: 0;
+}
+
+.code-toggle {
+  cursor: pointer;
+  position: absolute;
+  inset-inline-end: 24px;
+  inset-block-start: 24px;
+}
+
+.card-content {
+  padding: 24px;
+  position: 'relative';
+  & > .tabs-container {
+    margin-block-end: 0px;
+  }
+}
+
+.tabs__item {
+  padding-block: 6px;
+  padding-inline: 12px;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+pre {
+  margin: '0 !important';
+  max-block-size: 500px;
+}
+
+.divider-line {
+  margin: 0px !important;
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.card-code {
+  min-block-size: 0;
+  block-size: 0;
+}
