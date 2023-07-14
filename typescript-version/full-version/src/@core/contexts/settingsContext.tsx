@@ -16,7 +16,7 @@ import themeConfig from '../../configs/themeConfig'
 import useVerticalNav from '../../@menu-package/hooks/useVerticalNav'
 
 // Type Imports
-import type { Mode, Skin, Direction, Layout, ContentWidth, ChildrenType } from '../types'
+import type { Mode, Skin, Direction, Layout, LayoutComponentWidth, ChildrenType } from '../types'
 
 export type Settings = {
   mode?: Mode
@@ -24,7 +24,9 @@ export type Settings = {
   semiDark?: boolean
   direction?: Direction
   layout?: Layout
-  contentWidth?: ContentWidth
+  navbarContentWidth?: LayoutComponentWidth
+  contentWidth?: LayoutComponentWidth
+  footerContentWidth?: LayoutComponentWidth
 }
 
 type SettingsContextProps = {
@@ -42,7 +44,9 @@ const initialSettings: Settings = {
   semiDark: themeConfig.semiDark,
   direction: themeConfig.direction,
   layout: themeConfig.layout,
-  contentWidth: themeConfig.contentWidth
+  navbarContentWidth: themeConfig.navbar.contentWidth,
+  contentWidth: themeConfig.contentWidth,
+  footerContentWidth: themeConfig.footer.contentWidth
 }
 
 // Create Settings Context

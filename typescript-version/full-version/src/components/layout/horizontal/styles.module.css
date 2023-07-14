@@ -1,5 +1,13 @@
 .navigation {
-  min-block-size: 64px;
-  padding-block: 9px;
-  border-block-start: 1px solid #efefef;
+  min-block-size: var(--header-height);
+  border-block-start: 1px solid var(--border-color);
+}
+
+.headerContentCompact {
+  margin-inline: auto;
+  max-inline-size: 1440px;
+}
+
+.primaryColor {
+  color: var(--primary-color);
 }

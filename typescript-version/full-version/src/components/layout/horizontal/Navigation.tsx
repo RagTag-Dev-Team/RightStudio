@@ -10,6 +10,7 @@ import HorizontalMenu from './HorizontalMenu'
 import themeConfig from '../../../configs/themeConfig'
 
 // Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
 // Util Imports
@@ -20,16 +21,29 @@ import styles from './styles.module.css'
 
 const Navigation = () => {
   // Hooks
+  const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
+
+  const headerContentCompact = settings.navbarContentWidth === 'compact'
 
   return (
     <div
       {...(!isBreakpointReached && {
-        className: classnames(horizontalLayoutClasses.navigation, styles.navigation),
-        style: { paddingInline: themeConfig.layoutPadding }
+        className: classnames(horizontalLayoutClasses.navigation, 'd-flex', styles.navigation)
       })}
     >
-      <HorizontalMenu />
+      <div
+        {...(!isBreakpointReached && {
+          className: classnames(
+            horizontalLayoutClasses.navigationContentWrapper,
+            'd-flex align-items-center width-100',
+            { [styles.headerContentCompact]: headerContentCompact }
+          ),
+          style: { paddingInline: themeConfig.layoutPadding }
+        })}
+      >
+        <HorizontalMenu />
+      </div>
     </div>
   )
 }
