@@ -8,7 +8,6 @@ import classnames from 'classnames'
 import type { ChildrenType } from '../@core/types'
 
 // Component Imports
-import LayoutContentWrapper from './components/vertical/LayoutContentWrapper'
 import LayoutContent from './components/vertical/LayoutContent'
 
 // Util Imports
@@ -27,12 +26,12 @@ const VerticalLayout = (props: VerticalLayoutProps) => {
   return (
     <div className={classnames(verticalLayoutClasses.root, 'd-flex flex-auto')}>
       {navigation || null}
-      <LayoutContentWrapper>
+      <div className={classnames(verticalLayoutClasses.contentWrapper, 'd-flex flex-column width-100')}>
         {navbar || null}
         {/* Content */}
         <LayoutContent>{children}</LayoutContent>
         {footer || null}
-      </LayoutContentWrapper>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,15 @@
+.contentWrapper {
+  padding-block: 15px;
+}
+
+.footerFixed {
+  position: sticky;
+  inset-block-end: 0;
+  background-color: var(--background-color);
+  border-block-start: 1px solid var(--border-color);
+}
+
+.footerContentCompact .contentWrapper {
+  margin-inline: auto;
+  max-inline-size: 1440px;
+}

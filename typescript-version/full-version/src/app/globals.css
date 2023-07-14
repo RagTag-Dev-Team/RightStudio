@@ -1,3 +1,12 @@
+:root {
+  --border-radius: 6px;
+  --border-color: #efefef;
+  --primary-color: #765feb;
+  --background-color: #fff;
+  --background-color-rgb: 255, 255, 255;
+  --header-height: 64px;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

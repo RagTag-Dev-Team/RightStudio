@@ -12,9 +12,10 @@ import HorizontalLayout from '../../@layouts/HorizontalLayout'
 
 // Component Imports
 import Navigation from '../../components/layout/vertical/Navigation'
-import Navbar from '../../components/layout/vertical/Navbar'
-import Footer from '../../components/layout/shared/Footer'
 import Header from '../../components/layout/horizontal/Header'
+import Navbar from '../../components/layout/vertical/Navbar'
+import VerticalFooter from '../../components/layout/vertical/Footer'
+import HorizontalFooter from '../../components/layout/horizontal/Footer'
 import Customizer from '../../@core/components/customizer'
 
 const Layout = ({ children }: ChildrenType) => {
@@ -23,12 +24,12 @@ const Layout = ({ children }: ChildrenType) => {
       <SettingsProvider>
         <LayoutWrapper
           verticalLayout={
-            <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<Footer />}>
+            <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<VerticalFooter />}>
               {children}
             </VerticalLayout>
           }
           horizontalLayout={
-            <HorizontalLayout header={<Header />} footer={<Footer />}>
+            <HorizontalLayout header={<Header />} footer={<HorizontalFooter />}>
               {children}
             </HorizontalLayout>
           }

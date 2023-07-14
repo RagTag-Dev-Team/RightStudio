@@ -1,10 +1,10 @@
 .customizer {
   inline-size: 400px;
-  background-color: #fff;
+  background-color: var(--background-color);
   position: fixed;
   inset-block-start: 0;
   inset-inline-end: -400px;
-  border-inline-start: 1px solid #efefef;
+  border-inline-start: 1px solid var(--border-color);
   box-shadow: none;
   z-index: 9999;
   transition-property: inset-inline-end, box-shadow;
@@ -37,16 +37,16 @@
   inset-inline-end: 100%;
   transform: translateY(-50%);
   padding: 8px;
-  background-color: #765feb;
-  color: #fff;
-  border-start-start-radius: 6px;
-  border-end-start-radius: 6px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border-start-start-radius: var(--border-radius);
+  border-end-start-radius: var(--border-radius);
 }
 
 .header {
   padding-block: 16px;
   padding-inline: 24px;
-  border-block-end: 1px solid #efefef;
+  border-block-end: 1px solid var(--border-color);
 }
 
 .customizerTitle {
@@ -90,16 +90,16 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid #efefef;
-  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   outline: 1px solid transparent;
   min-inline-size: 106px;
   min-block-size: 68px;
   cursor: pointer;
 }
 .itemWrapper.active {
-  border-color: #765feb;
-  outline: 1px solid #765feb;
+  border-color: var(--primary-color);
+  outline: 1px solid var(--primary-color);
 }
 
 .itemLabel {
@@ -112,8 +112,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid #efefef;
-  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   block-size: 48px;
   inline-size: 48px;
   cursor: pointer;
@@ -122,7 +122,7 @@
 .primaryColor {
   block-size: 30px;
   inline-size: 30px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
 }
 
 .modeWrapper {
@@ -131,5 +131,5 @@
 
 .hr {
   border: 0;
-  border-block-start: 1px solid #efefef;
+  border-block-start: 1px solid var(--border-color);
 }

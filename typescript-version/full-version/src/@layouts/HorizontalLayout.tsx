@@ -11,7 +11,6 @@ import type { ChildrenType } from '../@core/types'
 import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
 
 // Component Imports
-import LayoutContentWrapper from './components/horizontal/LayoutContentWrapper'
 import LayoutContent from './components/horizontal/LayoutContent'
 
 // Util Imports
@@ -29,11 +28,11 @@ const HorizontalLayout = (props: HorizontalLayoutProps) => {
   return (
     <div className={classnames(horizontalLayoutClasses.root, 'd-flex flex-auto')}>
       <HorizontalNavProvider>
-        <LayoutContentWrapper>
+        <div className={classnames(horizontalLayoutClasses.contentWrapper, 'd-flex flex-column width-100')}>
           {header || null}
           <LayoutContent>{children}</LayoutContent>
           {footer || null}
-        </LayoutContentWrapper>
+        </div>
       </HorizontalNavProvider>
     </div>
   )

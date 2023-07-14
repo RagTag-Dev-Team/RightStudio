@@ -255,22 +255,44 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.contentWidth === 'compact'
                       })}
-                      onClick={() => handleChange('contentWidth', 'compact')}
+                      onClick={() =>
+                        saveSettings({
+                          navbarContentWidth: 'compact',
+                          contentWidth: 'compact',
+                          footerContentWidth: 'compact'
+                        })
+                      }
                     >
                       <ContentCompact />
                     </div>
-                    <p className={styles.itemLabel} onClick={() => handleChange('contentWidth', 'compact')}>
+                    <p
+                      className={styles.itemLabel}
+                      onClick={() =>
+                        saveSettings({
+                          navbarContentWidth: 'compact',
+                          contentWidth: 'compact',
+                          footerContentWidth: 'compact'
+                        })
+                      }
+                    >
                       Compact
                     </p>
                   </div>
                   <div className='d-flex flex-column align-items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.contentWidth === 'wide' })}
-                      onClick={() => handleChange('contentWidth', 'wide')}
+                      onClick={() =>
+                        saveSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
+                      }
                     >
                       <ContentWide />
                     </div>
-                    <p className={styles.itemLabel} onClick={() => handleChange('contentWidth', 'wide')}>
+                    <p
+                      className={styles.itemLabel}
+                      onClick={() =>
+                        saveSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
+                      }
+                    >
                       Wide
                     </p>
                   </div>

@@ -1862,9 +1862,9 @@
     "@iconify/types" "^2.0.0"
 
 "@iconify/json@^2.2.89":
-  version "2.2.89"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.89.tgz#54ff205a7676b6dad219a9c0ad98539c8e805b14"
-  integrity sha512-6WXiyhK4gfDSDbvHeQrt1aXtTksRtLLsmloYr46H/7tACmtnLX+q5EdWOuHhsZ7I798zLysloOflvTPHrZryoA==
+  version "2.2.90"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.90.tgz#516cd8a632b20b25ea1595b0f18298a0c1e5a79f"
+  integrity sha512-2wHH43WJLukGwCHc1p/WiGzy1ohRZBXxyNGx2Qd6g944MmIz2O4dsvbdWYeTTAutIiXXkP8vZbwyA2OOsfjKSA==
   dependencies:
     "@iconify/types" "*"
     pathe "^1.1.0"
@@ -2497,9 +2497,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "18.2.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.14.tgz#fa7a6fecf1ce35ca94e74874f70c56ce88f7a127"
-  integrity sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==
+  version "18.2.15"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.15.tgz#14792b35df676c20ec3cf595b262f8c615a73066"
+  integrity sha512-oEjE7TQt1fFTFSbf8kkNuc798ahTUzn3Le67/PWjE8MAfYAD/qB7O8hSTcromLFqHCt9bcdOg5GXMokzTjJ5SA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3283,6 +3283,11 @@ ci-info@^3.2.0:
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.8.0.tgz#81408265a5380c929f0bc665d62256628ce9ef91"
   integrity sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==
 
+classnames@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
+
 clean-css@^5.2.2, clean-css@^5.3.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.3.2.tgz#70ecc7d4d4114921f5d298349ff86a31a9975224"
@@ -3984,9 +3989,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.431:
-  version "1.4.459"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.459.tgz#25a23370f4ae8aaa8f77aaf00133aa4994f4148e"
-  integrity sha512-XXRS5NFv8nCrBL74Rm3qhJjA2VCsRFx0OjHKBMPI0otij56aun8UWiKTDABmd5/7GTR021pA4wivs+Ri6XCElg==
+  version "1.4.460"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.460.tgz#f360a5059c039c4a5fb4dfa99680ad8129dd9f84"
+  integrity sha512-kKiHnbrHME7z8E6AYaw0ehyxY5+hdaRmeUbjBO22LZMdqTYCO29EvF0T1cQ3pJ1RN5fyMcHl1Lmcsdt9WWJpJQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -6437,9 +6442,9 @@ postcss-zindex@^5.1.0:
   integrity sha512-fgFMf0OtVSBR1va1JNHYgMxYk73yhn/qb4uQDq1DLGYolz8gHCyr/sesEuGUaYs58E3ZJRcpoGuPVoB7Meiq9A==
 
 postcss@^8.3.11, postcss@^8.4.14, postcss@^8.4.17, postcss@^8.4.21:
-  version "8.4.25"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.25.tgz#4a133f5e379eda7f61e906c3b1aaa9b81292726f"
-  integrity sha512-7taJ/8t2av0Z+sQEvNzCkpDynl0tX3uJMCODi6nT3PfASC7dYCWV9aQ+uiCf+KBD4SEFcu+GvJdGdwzQ6OSjCw==
+  version "8.4.26"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.26.tgz#1bc62ab19f8e1e5463d98cf74af39702a00a9e94"
+  integrity sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==
   dependencies:
     nanoid "^3.3.6"
     picocolors "^1.0.0"

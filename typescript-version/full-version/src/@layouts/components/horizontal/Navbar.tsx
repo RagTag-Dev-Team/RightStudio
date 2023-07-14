@@ -11,15 +11,15 @@ import themeConfig from '../../../configs/themeConfig'
 import { horizontalLayoutClasses } from '../../utils/layoutClasses'
 
 // Style Imports
-import styles from '../../styles/horizontal.module.css'
+import styles from './header.module.css'
 
 const Navbar = ({ children }: ChildrenType) => {
   return (
     <div
       className={classnames(
         horizontalLayoutClasses.navbar,
-        styles.navbar,
-        'd-flex align-items-center justify-content-between width-100'
+        'd-flex align-items-center justify-content-between width-100',
+        styles.navbar
       )}
       style={{ paddingInline: themeConfig.layoutPadding }}
     >

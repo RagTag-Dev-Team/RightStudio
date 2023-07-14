@@ -12,7 +12,7 @@ import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
-import { layoutClasses } from '../../../@layouts/utils/layoutClasses'
+import { horizontalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -28,7 +28,7 @@ const FooterContent = () => {
   return (
     <div
       className={classnames(
-        layoutClasses.footerContent,
+        horizontalLayoutClasses.footerContent,
         'd-flex align-items-center justify-content-between flex-wrap gap-4'
       )}
     >
