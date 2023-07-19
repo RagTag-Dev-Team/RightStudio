@@ -10,7 +10,6 @@ import type { ChildrenType } from '../@core/types'
 
 // Component Imports
 import I18n from '../components/i18n'
-import ThemeProvider from '../components/theme'
 
 // Style Imports
 //! Do not remove the `utils.css` import below otherwise it will break the template styling
@@ -31,10 +30,8 @@ export default function RootLayout({ children }: ChildrenType) {
   return (
     <html lang='en' className='d-flex width-100 min-height-100'>
       <body className={classnames(inter.className, 'd-flex width-100 min-height-100 flex-auto flex-column')}>
-        <ThemeProvider>
-          <I18n />
-          {children}
-        </ThemeProvider>
+        <I18n />
+        {children}
       </body>
     </html>
   )

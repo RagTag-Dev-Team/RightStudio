@@ -1,0 +1,23 @@
+/*
+ * We do not recommend using your own custom theme built from scratch.
+ * Instead, we recommend using the merged theme and customizing it as per your needs.
+ * If you still want to use your own custom theme, you must be aware about the MUI theme structure.
+ * Export this file and import it in the `src/components/theme/index.tsx` file to use only this theme.
+ */
+
+// MUI Imports
+import type { CssVarsTheme, Theme } from '@mui/material/styles'
+
+// Type Imports
+/* Enable following line and the `settings` parameter in the below `userTheme`
+   function in order to access `settings` context value in your custom theme object
+ */
+// import type { Settings } from '../../@core/contexts/settingsContext'
+
+const userTheme = (/* settings: Settings */): Omit<Theme, 'palette'> & CssVarsTheme => {
+  return {
+    // Write your custom theme object here.
+  } as Omit<Theme, 'palette'> & CssVarsTheme
+}
+
+export default userTheme

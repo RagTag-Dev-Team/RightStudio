@@ -1,10 +1,10 @@
 // Override Imports
-import FabButton from './fab'
+import Avatar from './avatar'
 
 const Overrides = () => {
-  const fabButton = FabButton()
+  const avatar = Avatar()
 
-  return Object.assign(fabButton)
+  return Object.assign(avatar)
 }
 
 export default Overrides

@@ -49,7 +49,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'Master Admin',
-  mode: 'light', // 'light', 'dark', 'system'
+  mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
   direction: 'ltr', // 'ltr', 'rtl'

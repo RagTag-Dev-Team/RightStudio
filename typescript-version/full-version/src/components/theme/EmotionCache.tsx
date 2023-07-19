@@ -1,8 +1,8 @@
 'use client'
 
 // React Imports
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
-import { useState } from 'react'
 
 // Next Imports
 import { useServerInsertedHTML } from 'next/navigation'
@@ -10,10 +10,13 @@ import { useServerInsertedHTML } from 'next/navigation'
 // Third-party Imports
 import createCache from '@emotion/cache'
 import { CacheProvider as DefaultCacheProvider } from '@emotion/react'
+import stylisRTLPlugin from 'stylis-plugin-rtl'
 import type { EmotionCache, Options as OptionsOfCreateCache } from '@emotion/cache'
+import type { Direction } from '@mui/material/styles'
 
 export type EmotionCacheProviderProps = {
-  // eslint-disable-next-line lines-around-comment
+  direction: Direction
+
   /* This is the options passed to createCache() from "import createCache from '@emotion/cache'" */
   options: Omit<OptionsOfCreateCache, 'insertionPoint'>
 
@@ -23,11 +26,18 @@ export type EmotionCacheProviderProps = {
 }
 
 const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
-  const { options, CacheProvider = DefaultCacheProvider, children } = props
+  const { options, direction, CacheProvider = DefaultCacheProvider, children } = props
 
   const [{ cache, flush }] = useState(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const cache = createCache(options)
+    const cache = createCache({
+      ...options,
+      ...(direction === 'rtl' && {
+        key: 'rtl',
+        prepend: true,
+        stylisPlugins: [stylisRTLPlugin]
+      })
+    })
 
     cache.compat = true
     const prevInsert = cache.insert
@@ -79,6 +89,10 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
       />
     )
   })
+
+  useEffect(() => {
+    document.dir = direction
+  }, [direction])
 
   return <CacheProvider value={cache}>{children}</CacheProvider>
 }

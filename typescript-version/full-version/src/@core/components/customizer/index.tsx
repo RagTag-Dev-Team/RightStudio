@@ -1,11 +1,20 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+
+// MUI Imports
+import Grow from '@mui/material/Grow'
+import Paper from '@mui/material/Paper'
+import Popper from '@mui/material/Popper'
+import { useTheme } from '@mui/material/styles'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
+import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useMedia } from 'react-use'
+import { useMedia, useDebounce, useEffectOnce } from 'react-use'
+import { HexColorPicker, HexColorInput } from 'react-colorful'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
@@ -15,6 +24,7 @@ import type { Settings } from '../../contexts/settingsContext'
 import Cog from '../../svg/Cog'
 import Refresh from '../../svg/Refresh'
 import Close from '../../../@menu-package/svg/Close'
+import EyeDropper from '../../svg/EyeDropper'
 import ModeDark from '../../svg/ModeDark'
 import ModeLight from '../../svg/ModeLight'
 import ModeSystem from '../../svg/ModeSystem'
@@ -28,6 +38,9 @@ import ContentWide from '../../svg/ContentWide'
 import DirectionLtr from '../../svg/DirectionLtr'
 import DirectionRtl from '../../svg/DirectionRtl'
 
+// Config Imports
+import primaryColorConfig from '@/configs/primaryColorConfig'
+
 // Hook Imports
 import useSettings from '../../hooks/useSettings'
 
@@ -35,18 +48,49 @@ import useSettings from '../../hooks/useSettings'
 import styles from './styles.module.css'
 
 type CustomizerProps = {
-  breakpoint: string
+  breakpoint: Breakpoint | 'xxl' | string
 }
 
 const Customizer = ({ breakpoint }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Refs
+  const anchorRef = useRef<HTMLDivElement | null>(null)
+  const initialRender = useRef(true)
 
   // Hooks
+  const theme = useTheme()
   const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
-  const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
+  const breakpointValue =
+    breakpoint === 'xxl'
+      ? '1920px'
+      : breakpoint === 'xl'
+      ? `${theme.breakpoints.values.xl}px`
+      : breakpoint === 'lg'
+      ? `${theme.breakpoints.values.lg}px`
+      : breakpoint === 'md'
+      ? `${theme.breakpoints.values.md}px`
+      : breakpoint === 'sm'
+      ? `${theme.breakpoints.values.sm}px`
+      : breakpoint === 'xs'
+      ? `${theme.breakpoints.values.xs}px`
+      : breakpoint
+
+  const breakpointReached = useMedia(`(max-width: ${breakpointValue})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
+
+  const getPrimaryColor = () => {
+    if (primaryColorConfig.find(item => item.name === settings.primaryColor)) {
+      return primaryColorConfig.find(item => item.name === settings.primaryColor)?.main
+    } else {
+      return settings.primaryColor
+    }
+  }
+
+  const [color, setColor] = useState(() => getPrimaryColor())
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -57,6 +101,29 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
       [field]: value
     })
   }
+
+  const handleMenuClose = (event: MouseEvent | TouchEvent): void => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+      return
+    }
+    setIsMenuOpen(false)
+  }
+
+  useDebounce(
+    () => {
+      if (!initialRender.current) {
+        handleChange('primaryColor', color)
+      }
+    },
+    200,
+    [color]
+  )
+
+  useEffectOnce(() => {
+    setTimeout(() => {
+      initialRender.current = false
+    }, 201)
+  })
 
   return (
     !breakpointReached && (
@@ -97,28 +164,73 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
             <div className='theming-section d-flex flex-column gap-5'>
               <p>Theming</p>
               <div className='d-flex flex-column gap-3'>
+                {/* Primary Color */}
                 <p className={styles.itemTitle}>Primary Color</p>
                 <div className='d-flex align-items-center justify-content-between'>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#765feb' }} />
+                  {primaryColorConfig.map(item => (
+                    <div
+                      key={item.name}
+                      className={classnames(styles.primaryColorWrapper, {
+                        [styles.active]: settings.primaryColor === item.name
+                      })}
+                      onClick={() => handleChange('primaryColor', item.name)}
+                    >
+                      <div className={styles.primaryColor} style={{ backgroundColor: item.main }} />
+                    </div>
+                  ))}
+                  <div
+                    ref={anchorRef}
+                    className={classnames(styles.primaryColorWrapper, {
+                      [styles.active]: settings.primaryColor?.includes('#')
+                    })}
+                    onClick={() => setIsMenuOpen(prev => !prev)}
+                  >
+                    <div
+                      className={classnames(styles.primaryColor, 'd-flex align-items-center justify-content-center')}
+                      style={{
+                        backgroundColor:
+                          settings.primaryColor === color && primaryColorConfig.some(item => item.name !== color)
+                            ? color
+                            : 'var(--mui-palette-action-selected)',
+                        color:
+                          settings.primaryColor === color && primaryColorConfig.some(item => item.name !== color)
+                            ? 'var(--mui-palette-primary-contrastText)'
+                            : 'var(--mui-palette-text-primary)'
+                      }}
+                    >
+                      <EyeDropper fontSize='1.25rem' />
+                    </div>
                   </div>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#0d9394' }} />
-                  </div>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#ffab1d' }} />
-                  </div>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#eb3d63' }} />
-                  </div>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#2092ec' }} />
-                  </div>
-                  <div className={styles.primaryColorWrapper}>
-                    <div className={styles.primaryColor} style={{ backgroundColor: '#d4d4d4' }} />
-                  </div>
+                  <Popper
+                    transition
+                    open={isMenuOpen}
+                    disablePortal
+                    anchorEl={anchorRef.current}
+                    placement='bottom-end'
+                  >
+                    {({ TransitionProps }) => (
+                      <Grow {...TransitionProps} style={{ transformOrigin: 'right top' }}>
+                        <Paper elevation={6} className={styles.colorPopup}>
+                          <ClickAwayListener onClickAway={handleMenuClose}>
+                            <div>
+                              <HexColorPicker color={color} onChange={setColor} />
+                              <HexColorInput
+                                className={styles.colorInput}
+                                color={color}
+                                onChange={setColor}
+                                prefixed
+                                placeholder='Type a color'
+                              />
+                            </div>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
                 </div>
               </div>
+
+              {/* Mode */}
               <div className='d-flex flex-column gap-3'>
                 <p className={styles.itemTitle}>Mode</p>
                 <div className='d-flex align-items-center justify-content-between'>
@@ -163,6 +275,8 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
+
+              {/* Skin */}
               <div className='d-flex flex-column gap-3'>
                 <p className={styles.itemTitle}>Skin</p>
                 <div className='d-flex align-items-center gap-4'>
@@ -190,6 +304,8 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
+
+              {/* Semi Dark */}
               {settings.mode === 'dark' ||
               (settings.mode === 'system' && isSystemDark) ||
               settings.layout === 'horizontal' ? null : (
@@ -206,10 +322,13 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                 </div>
               )}
             </div>
+
             <hr className={styles.hr} />
+
             <div className='layout-section d-flex flex-column gap-5'>
               <p>Layout</p>
               <div className='d-flex flex-column gap-3'>
+                {/* Layouts */}
                 <p className={styles.itemTitle}>Layouts</p>
                 <div className='d-flex align-items-center justify-content-between'>
                   <div className='d-flex flex-column align-items-start gap-1'>
@@ -247,6 +366,8 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
+
+              {/* Content Width */}
               <div className='d-flex flex-column gap-3'>
                 <p className={styles.itemTitle}>Content</p>
                 <div className='d-flex align-items-center gap-4'>
@@ -298,6 +419,8 @@ const Customizer = ({ breakpoint }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
+
+              {/* Direction */}
               <div className='d-flex flex-column gap-3'>
                 <p className={styles.itemTitle}>Direction</p>
                 <div className='d-flex align-items-center gap-4'>

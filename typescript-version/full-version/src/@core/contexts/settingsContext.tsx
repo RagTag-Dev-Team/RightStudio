@@ -27,6 +27,7 @@ export type Settings = {
   navbarContentWidth?: LayoutComponentWidth
   contentWidth?: LayoutComponentWidth
   footerContentWidth?: LayoutComponentWidth
+  primaryColor?: 'primary-1' | 'primary-2' | 'primary-3' | 'primary-4' | 'primary-5' | string
 }
 
 type SettingsContextProps = {
@@ -46,7 +47,8 @@ const initialSettings: Settings = {
   layout: themeConfig.layout,
   navbarContentWidth: themeConfig.navbar.contentWidth,
   contentWidth: themeConfig.contentWidth,
-  footerContentWidth: themeConfig.footer.contentWidth
+  footerContentWidth: themeConfig.footer.contentWidth,
+  primaryColor: 'primary-1'
 }
 
 // Create Settings Context
