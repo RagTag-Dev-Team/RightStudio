@@ -30,7 +30,7 @@ const Layout = ({ children }: ChildrenType) => {
           </HorizontalLayout>
         }
       />
-      <Customizer breakpoint='1200px' />
+      <Customizer />
     </Providers>
   )
 }

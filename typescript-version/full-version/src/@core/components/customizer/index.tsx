@@ -35,10 +35,10 @@ import useSettings from '../../hooks/useSettings'
 import styles from './styles.module.css'
 
 type CustomizerProps = {
-  breakpoint: string
+  breakpoint?: string
 }
 
-const Customizer = ({ breakpoint }: CustomizerProps) => {
+const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
 

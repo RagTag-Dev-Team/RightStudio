@@ -96,12 +96,13 @@ const StyledSubMenu = styled.li<StyledSubMenuProps>`
   position: relative;
   inline-size: 100%;
   margin-block-start: 4px;
-  ${({ menuItemStyles }) => menuItemStyles};
-  ${({ rootStyles }) => rootStyles};
 
   &.${menuClasses.open} > .${menuClasses.button} {
     background-color: #f3f3f3;
   }
+
+  ${({ menuItemStyles }) => menuItemStyles};
+  ${({ rootStyles }) => rootStyles};
 
   > .${menuClasses.button} {
     ${({ level, disabled, active, children, isCollapsed, isPopoutWhenCollapsed }) =>

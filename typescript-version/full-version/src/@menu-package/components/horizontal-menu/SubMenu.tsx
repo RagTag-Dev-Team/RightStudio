@@ -100,12 +100,13 @@ type HorizontalSubMenuContextProps = {
 
 const StyledSubMenu = styled.li<StyledSubMenuProps>`
   ${({ level }) => level === 0 && { borderRadius: '6px', overflow: 'hidden' }}
-  ${({ menuItemStyles }) => menuItemStyles};
-  ${({ rootStyles }) => rootStyles};
 
   &.${menuClasses.open} > .${menuClasses.button} {
     background-color: #f3f3f3;
   }
+
+  ${({ menuItemStyles }) => menuItemStyles};
+  ${({ rootStyles }) => rootStyles};
 
   > .${menuClasses.button} {
     ${({ level, disabled, children }) =>

@@ -5,7 +5,7 @@ export type Layout = 'vertical' | 'collapsed' | 'horizontal'
 
 export type Skin = 'default' | 'bordered'
 
-export type Mode = 'light' | 'dark' | 'system'
+export type Mode = 'system' | 'light' | 'dark'
 
 export type Direction = 'ltr' | 'rtl'
 
