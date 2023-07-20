@@ -1,6 +1,9 @@
 // Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
 'use client'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import { useTranslation } from 'react-i18next'
 
@@ -11,24 +14,36 @@ import VerticalNavContent from './VerticalNavContent'
 // Icon Imports
 import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
+// Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
+
 // Util Imports
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
+
+// Style Imports
+import menuItemStyles from '../../../@core/styles/horizontal/menuItemStyles'
+import verticalNavigationCustomStyles from '../../../@core/styles/vertical/navigationCustomStyles'
 
 // Menu Data Imports
 // import menuData from '../../../data/navigation/HorizontalMenuData'
 
 const HorizontalMenu = () => {
   // Hooks
+  const theme = useTheme()
   const { t } = useTranslation()
+  const { settings } = useSettings()
 
   return (
     <HorizontalNav
       switchToVertical
       verticalNavContent={VerticalNavContent}
-      verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
+      verticalNavProps={{
+        customStyles: verticalNavigationCustomStyles(),
+        backgroundColor: 'var(--mui-palette-background-paper)'
+      }}
     >
       <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        menuItemStyles={menuItemStyles(settings, theme)}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)

@@ -14,6 +14,9 @@ import VerticalMenu from './VerticalMenu'
 import useSettings from '../../../@core/hooks/useSettings'
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
 
+// Style Imports
+import navigationCustomStyles from '../../../@core/styles/vertical/navigationCustomStyles'
+
 const Navigation = () => {
   // Hooks
   const { settings } = useSettings()
@@ -24,14 +27,14 @@ const Navigation = () => {
     // eslint-disable-next-line lines-around-comment
     // Sidebar Vertical Menu
     <VerticalNav
+      customStyles={navigationCustomStyles()}
       backgroundColor='var(--mui-palette-background-paper)'
       // eslint-disable-next-line lines-around-comment
       // The following condition adds the data-mui-color-scheme='dark' attribute to the VerticalNav component
       // when semiDark is enabled and the mode or systemMode is light
       {...(settings.semiDark &&
         (mode === 'light' || systemMode === 'light') && {
-          'data-mui-color-scheme': 'dark',
-          customStyles: { color: 'var(--mui-palette-text-primary)' }
+          'data-mui-color-scheme': 'dark'
         })}
     >
       {/* Nav Header including Logo & nav toggle icons  */}

@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Component Imports
 import { RouterLink } from '../../../@menu-package/components/RouterLink'
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
@@ -7,18 +10,28 @@ import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/h
 // Context Imports
 import { HorizontalNavProvider } from '../../../@menu-package/contexts/horizontalNavContext'
 
+// Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
+
 // Util Imports
 // import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
+
+// Style Imports
+import menuItemStyles from '../../../@core/styles/horizontal/menuItemStyles'
 
 // Menu Data Imports
 // import menuData from '../../../navigation-data/HorizontalMenuData'
 
 const HorizontalMenu = () => {
+  // Hooks
+  const theme = useTheme()
+  const { settings } = useSettings()
+
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
         <Menu
-          menuItemStyles={{ button: { paddingBlock: '12px' } }}
+          menuItemStyles={menuItemStyles(settings, theme)}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
             alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)

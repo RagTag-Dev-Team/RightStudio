@@ -10,6 +10,7 @@ import {
 } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import type { Direction } from '@mui/material/styles'
+import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
 
 // Component Imports
 import EmotionCacheProvider from './EmotionCache'

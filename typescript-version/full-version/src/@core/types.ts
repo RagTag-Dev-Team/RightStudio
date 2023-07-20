@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react'
 
 // MUI Imports
-import type { ComponentsPropsList, CssVarsTheme } from '@mui/material/styles'
+import type { ComponentsPropsList, Theme } from '@mui/material/styles'
 
 export type Layout = 'vertical' | 'collapsed' | 'horizontal'
 
@@ -21,6 +21,6 @@ export type ChildrenType = {
 }
 
 export type ThemeAndOwnerState = {
-  theme: CssVarsTheme
+  theme: Theme
   ownerState: ComponentsPropsList[keyof ComponentsPropsList] & Record<string, unknown>
 }

@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -10,15 +13,23 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/ver
 // Icon Imports
 import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
+// Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
+
 // Util Imports
 // import { generateVerticalMenu } from '../../../@menu-package/utils/menuUtils'
+
+// Style Imports
+import menuItemStyles from '../../../@core/styles/vertical/menuItemStyles'
 
 // Menu Data Imports
 // import menuData from '../../../data/navigation/VerticalMenuData'
 
 const VerticalMenu = () => {
   // Hooks
+  const theme = useTheme()
   const { t } = useTranslation()
+  const { settings } = useSettings()
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -26,7 +37,7 @@ const VerticalMenu = () => {
     <PerfectScrollbar options={{ wheelPropagation: false }}>
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ ...menuItemStyles(settings, theme) }}>
         {/* This is how you will normally render submenu */}
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>
@@ -193,7 +204,7 @@ const VerticalMenu = () => {
           </SubMenu>
         </MenuSection>
       </Menu>
-      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ ...menuItemStyles(settings, theme) }}>
         {generateVerticalMenu(menuData())}
       </Menu> */}
     </PerfectScrollbar>

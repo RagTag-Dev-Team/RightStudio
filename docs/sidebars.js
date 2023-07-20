@@ -18,6 +18,7 @@ const sidebars = {
     'intro',
     'tags',
     'button',
+    'customizer',
     {
       type: 'category',
       label: 'Tutorial - Basics',

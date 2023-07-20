@@ -8,7 +8,7 @@
 
 // MUI Imports
 import { deepmerge } from '@mui/utils'
-import type { CssVarsTheme, Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles'
 
 // Type Imports
 import type { Settings } from '../../@core/contexts/settingsContext'
@@ -17,9 +17,9 @@ import type { Settings } from '../../@core/contexts/settingsContext'
 import coreTheme from '../../@core/theme'
 
 const mergedTheme = (settings: Settings) => {
-  const userTheme: Omit<Theme, 'palette'> & CssVarsTheme = {
+  const userTheme: Theme = {
     // Write your overrides here.
-  } as Omit<Theme, 'palette'> & CssVarsTheme
+  } as Theme
 
   return deepmerge(coreTheme(settings), userTheme)
 }

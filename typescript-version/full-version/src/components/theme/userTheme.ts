@@ -6,7 +6,7 @@
  */
 
 // MUI Imports
-import type { CssVarsTheme, Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles'
 
 // Type Imports
 /* Enable following line and the `settings` parameter in the below `userTheme`
@@ -14,10 +14,10 @@ import type { CssVarsTheme, Theme } from '@mui/material/styles'
  */
 // import type { Settings } from '../../@core/contexts/settingsContext'
 
-const userTheme = (/* settings: Settings */): Omit<Theme, 'palette'> & CssVarsTheme => {
+const userTheme = (/* settings: Settings */): Theme => {
   return {
     // Write your custom theme object here.
-  } as Omit<Theme, 'palette'> & CssVarsTheme
+  } as Theme
 }
 
 export default userTheme
