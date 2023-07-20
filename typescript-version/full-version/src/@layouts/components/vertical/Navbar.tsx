@@ -50,7 +50,7 @@ const Navbar = ({ children }: ChildrenType) => {
       )}
     >
       <div
-        className={classnames(verticalLayoutClasses.navbar, styles.navbar)}
+        className={classnames(verticalLayoutClasses.navbar, 'd-flex height-100', styles.navbar)}
         style={{
           paddingInline: themeConfig.layoutPadding,
           width:

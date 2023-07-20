@@ -48,10 +48,10 @@ import useSettings from '../../hooks/useSettings'
 import styles from './styles.module.css'
 
 type CustomizerProps = {
-  breakpoint: Breakpoint | 'xxl' | string
+  breakpoint?: Breakpoint | 'xxl' | string
 }
 
-const Customizer = ({ breakpoint }: CustomizerProps) => {
+const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
