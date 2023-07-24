@@ -177,9 +177,9 @@ const VerticalMenu = () => {
             <MenuItem>{t('navigation.slider')}</MenuItem>
             <MenuItem>{t('navigation.inputMask')}</MenuItem>
           </SubMenu>
-          <MenuItem>{t('navigation.formLayouts')}</MenuItem>
-          <MenuItem>{t('navigation.formValidation')}</MenuItem>
-          <MenuItem>{t('navigation.formWizard')}</MenuItem>
+          <MenuItem href='/forms/form-layouts'>{t('navigation.formLayouts')}</MenuItem>
+          <MenuItem href='/forms/form-validation'>{t('navigation.formValidation')}</MenuItem>
+          <MenuItem href='/forms/form-wizard'>{t('navigation.formWizard')}</MenuItem>
           <MenuItem>{t('navigation.table')}</MenuItem>
           <MenuItem>{t('navigation.muiDataGrid')}</MenuItem>
         </MenuSection>

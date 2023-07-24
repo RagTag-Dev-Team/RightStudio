@@ -1,0 +1,57 @@
+.primaryColor {
+  color: var(--primary-color);
+}
+
+.optionWrapper {
+  display: flex;
+  cursor: pointer;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+}
+.optionWrapper:first-of-type {
+  border-start-end-radius: var(--mui-shape-borderRadius);
+  border-start-start-radius: var(--mui-shape-borderRadius);
+}
+.optionWrapper:last-of-type {
+  border-end-end-radius: var(--mui-shape-borderRadius);
+  border-end-start-radius: var(--mui-shape-borderRadius);
+}
+
+.activeOption {
+  border-color: var(--primary-color);
+}
+
+.radioStyles {
+  margin-block-start: -0.625rem !important;
+  margin-inline: -0.625rem 0.5rem !important;
+  align-items: flex-start !important;
+}
+
+.deliveryOption {
+  display: flex;
+  margin-block-end: 8px;
+  justify-content: space-between;
+}
+
+.formAlignment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  block-size: 500px;
+}
+
+.formWrapper {
+  border: 1px solid var(--border-color);
+  max-inline-size: 400px;
+  padding: 3rem;
+}
+
+.tabBorder {
+  border-block-end: 1;
+  border-color: 'divider';
+}
+
+.radioStyles {
+  align-items: flex-start;
+}
