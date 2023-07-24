@@ -8,7 +8,7 @@ import Logo from '../shared/Logo'
 import NavToggle from './NavToggle'
 import NavSearch from '../shared/NavSearch'
 import Translation from '../shared/Translation'
-import ModeSwitcher from '../shared/ModeSwitcher'
+import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
 
 // Hook Imports
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'

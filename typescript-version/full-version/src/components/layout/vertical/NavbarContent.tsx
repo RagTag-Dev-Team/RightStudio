@@ -6,7 +6,7 @@ import NavToggle from './NavToggle'
 import NavSearch from '../shared/NavSearch'
 import HorizontalMenu from './HorizontalMenu'
 import Translation from '../shared/Translation'
-import ModeSwitcher from '../shared/ModeSwitcher'
+import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
 
 // Util Imports
 import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
