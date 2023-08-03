@@ -29,7 +29,7 @@ const FooterContent = () => {
     <div
       className={classnames(
         verticalLayoutClasses.footerContent,
-        'd-flex align-items-center justify-content-between flex-wrap gap-4'
+        'd-flex align-items-center justify-content-between flex-wrap gap-16px'
       )}
     >
       <p>
@@ -41,7 +41,7 @@ const FooterContent = () => {
         </Link>
       </p>
       {!isBreakpointReached && (
-        <div className='d-flex align-items-center gap-4'>
+        <div className='d-flex align-items-center gap-16px'>
           <Link href='https://themeselection.com/license' target='_blank' className={styles.primaryColor}>
             License
           </Link>

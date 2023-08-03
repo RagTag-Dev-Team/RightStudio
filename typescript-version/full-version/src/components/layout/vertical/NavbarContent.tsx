@@ -16,15 +16,15 @@ const NavbarContent = () => {
     <div
       className={classnames(
         verticalLayoutClasses.navbarContent,
-        'd-flex align-items-center gap-4 justify-content-between width-100'
+        'd-flex align-items-center justify-content-between gap-16px width-100'
       )}
     >
-      <div className='d-flex align-items-center gap-4'>
+      <div className='d-flex align-items-center gap-16px'>
         <NavToggle />
-        <NavSearch />
+        {/* <NavSearch /> */}
         <HorizontalMenu />
       </div>
-      <div className='d-flex align-items-center gap-4'>
+      <div className='d-flex align-items-center gap-16px'>
         <Translation />
         <ModeSwitcher />
       </div>

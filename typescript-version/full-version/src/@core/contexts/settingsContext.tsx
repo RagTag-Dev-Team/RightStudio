@@ -42,7 +42,7 @@ const initialSettings: Settings = {
   mode: themeConfig.mode,
   skin: themeConfig.skin,
   semiDark: themeConfig.semiDark,
-  direction: themeConfig.direction,
+  direction: 'ltr',
   layout: themeConfig.layout,
   navbarContentWidth: themeConfig.navbar.contentWidth,
   contentWidth: themeConfig.contentWidth,
@@ -129,6 +129,10 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
   useEffectOnce(() => {
     setSettings(initSettings)
   })
+
+  useUpdateEffect(() => {
+    document.documentElement.setAttribute('dir', settings.direction || 'ltr')
+  }, [settings.direction])
 
   // When layout is vertical and it's collapsed or expanded using customizer or menu lock/unlock we handle the vertical nav collapse
   useUpdateEffect(() => {

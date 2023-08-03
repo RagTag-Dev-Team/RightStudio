@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import type { HTMLAttributes } from 'react'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
@@ -68,7 +68,7 @@ const HorizontalNav = (props: HorizontalNavProps) => {
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
 
-  const horizontalMenuClasses = classNames(horizontalNavClasses.root, className)
+  const horizontalMenuClasses = classnames(horizontalNavClasses.root, className)
 
   // Set the breakpointReached value in the state
   useEffect(() => {

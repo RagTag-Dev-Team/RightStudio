@@ -18,7 +18,7 @@
  */
 
 // Type Imports
-import type { Mode, Skin, Direction, Layout, LayoutComponentPosition, LayoutComponentWidth } from '../@core/types'
+import type { Mode, Skin, Layout, LayoutComponentPosition, LayoutComponentWidth } from '../@core/types'
 
 type Navbar = {
   type: LayoutComponentPosition
@@ -39,7 +39,6 @@ export type Config = {
   mode: Mode
   skin: Skin
   semiDark: boolean
-  direction: Direction
   layout: Layout
   layoutPadding: number
   navbar: Navbar
@@ -52,7 +51,6 @@ const themeConfig: Config = {
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
-  direction: 'ltr', // 'ltr', 'rtl'
   layout: 'vertical', // 'vertical', 'collapsed', 'horizontal'
   layoutPadding: 24, // Common padding for header, content, footer layout components (in px)
   navbar: {

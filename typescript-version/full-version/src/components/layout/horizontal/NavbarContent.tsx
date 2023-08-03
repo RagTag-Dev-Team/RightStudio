@@ -24,17 +24,17 @@ const NavbarContent = () => {
     <div
       className={classnames(
         horizontalLayoutClasses.navbarContent,
-        'd-flex align-items-center justify-content-between gap-4 width-100'
+        'd-flex align-items-center justify-content-between gap-16px width-100'
       )}
     >
-      <div className='d-flex align-items-center gap-4'>
+      <div className='d-flex align-items-center gap-16px'>
         <NavToggle />
         {/* Hide Logo on Smaller screens */}
         {!isBreakpointReached && <Logo />}
       </div>
 
-      <div className='d-flex align-items-center gap-4'>
-        <NavSearch />
+      <div className='d-flex align-items-center gap-16px'>
+        {/* <NavSearch /> */}
         <Translation />
         <ModeSwitcher />
         {/* Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}

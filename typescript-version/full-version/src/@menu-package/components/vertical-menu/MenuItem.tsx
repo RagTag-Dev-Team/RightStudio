@@ -8,7 +8,7 @@ import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, Reac
 import { usePathname } from 'next/navigation'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { useRendersCount, useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
@@ -123,7 +123,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   return (
     <StyledVerticalMenuItem
       ref={ref}
-      className={classNames(
+      className={classnames(
         menuClasses.menuItemRoot,
         { [menuClasses.disabled]: disabled },
         { [menuClasses.active]: active },
@@ -138,7 +138,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       rootStyles={rootStyles}
     >
       <MenuButton
-        className={classNames(menuClasses.button, { [menuClasses.active]: active })}
+        className={classnames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
         tabIndex={disabled ? -1 : 0}
         onClick={handleClick}

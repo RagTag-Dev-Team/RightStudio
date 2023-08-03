@@ -8,7 +8,7 @@ import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, Mous
 import { usePathname } from 'next/navigation'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 import { useFloatingTree } from '@floating-ui/react'
@@ -130,7 +130,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   return (
     <StyledHorizontalMenuItem
       ref={ref}
-      className={classNames(
+      className={classnames(
         { [menuClasses.menuItemRoot]: level === 0 },
         { [menuClasses.active]: active },
         { [menuClasses.disabled]: disabled },
@@ -144,7 +144,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
       rootStyles={rootStyles}
     >
       <MenuButton
-        className={classNames(menuClasses.button, { [menuClasses.active]: active })}
+        className={classnames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
         tabIndex={disabled ? -1 : 0}
         onClick={handleClick}
