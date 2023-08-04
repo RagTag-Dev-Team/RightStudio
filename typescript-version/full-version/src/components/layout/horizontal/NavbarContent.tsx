@@ -6,7 +6,7 @@ import classnames from 'classnames'
 // Components Imports
 import Logo from '../shared/Logo'
 import NavToggle from './NavToggle'
-import NavSearch from '../shared/NavSearch'
+import NavSearch from '../shared/search'
 import Translation from '../shared/Translation'
 import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
 
@@ -34,7 +34,7 @@ const NavbarContent = () => {
       </div>
 
       <div className='d-flex align-items-center gap-16px'>
-        {/* <NavSearch /> */}
+        <NavSearch />
         <Translation />
         <ModeSwitcher />
         {/* Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}

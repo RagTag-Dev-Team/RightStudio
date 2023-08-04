@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 // Components Imports
 import NavToggle from './NavToggle'
-import NavSearch from '../shared/NavSearch'
+import NavSearch from '../shared/search'
 import HorizontalMenu from './HorizontalMenu'
 import Translation from '../shared/Translation'
 import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
@@ -21,7 +21,7 @@ const NavbarContent = () => {
     >
       <div className='d-flex align-items-center gap-16px'>
         <NavToggle />
-        {/* <NavSearch /> */}
+        <NavSearch />
         <HorizontalMenu />
       </div>
       <div className='d-flex align-items-center gap-16px'>
