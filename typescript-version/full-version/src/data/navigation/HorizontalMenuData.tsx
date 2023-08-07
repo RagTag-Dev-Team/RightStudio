@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next'
 
 // Type Imports
-import type { HorizontalMenuDataType } from '../../@menu-package/types'
+import type { HorizontalMenuDataType } from '../../types/menuTypes'
 
 // Icon Imports
 import LinkExternalIcon from '../../@layouts/svg/LinkExternal'
