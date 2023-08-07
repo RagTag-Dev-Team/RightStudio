@@ -12,7 +12,7 @@ import classnames from 'classnames'
 import { KBarProvider, KBarPortal, KBarPositioner, KBarSearch, useKBar } from 'kbar'
 
 // Type Imports
-import type { ChildrenType } from '@/@core/types'
+import type { ChildrenType } from '../../../../@core/types'
 
 // Component Imports
 import SearchResults from './SearchResults'
@@ -22,7 +22,7 @@ import Search from '../../../../@layouts/svg/Search'
 import Close from '../../../../@menu-package/svg/Close'
 
 // Config Imports
-import themeConfig from '@/configs/themeConfig'
+import themeConfig from '../../../../configs/themeConfig'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -73,26 +73,22 @@ const NavSearch = () => {
     <KBarProvider actions={searchActions}>
       <ComponentWithUseKBar
         triggerClick
-        className='ts-nav-search-icon d-flex cursor-pointer'
+        className='ts-nav-search-icon flex cursor-pointer'
         icon={<Search fontSize='1.25rem' />}
       />
       <KBarPortal>
         <KBarPositioner className={styles.positioner}>
           <StyledKBarAnimator
-            className={classnames('width-100 height-100 overflow-hidden', { smallScreen: isSmallScreen })}
+            className={classnames('is-full bs-full overflow-hidden', { smallScreen: isSmallScreen })}
             {...(!isSmallScreen && { style: { margin: themeConfig.layoutPadding } })}
           >
-            <div className={classnames('d-flex align-items-center gap-10px', styles.inputWrapper)}>
-              <div className='d-flex'>
+            <div className={classnames('flex items-center gap-2.5', styles.inputWrapper)}>
+              <div className='flex'>
                 <Search />
               </div>
-              <KBarSearch defaultPlaceholder='' className={classnames(styles.searchInput, 'flex-grow-1')} />
+              <KBarSearch defaultPlaceholder='' className={classnames(styles.searchInput, 'grow')} />
               <ComponentWithUseKBar className={styles.escape}>{`[esc]`}</ComponentWithUseKBar>
-              <ComponentWithUseKBar
-                triggerClick
-                className='d-flex cursor-pointer'
-                icon={<Close fontSize='1.75rem' />}
-              />
+              <ComponentWithUseKBar triggerClick className='flex cursor-pointer' icon={<Close fontSize='1.75rem' />} />
             </div>
             <SearchResults />
           </StyledKBarAnimator>

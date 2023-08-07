@@ -135,23 +135,20 @@ const DefaultSuggestions = () => {
       {defaultSuggestions.map((section, index) => (
         <div
           key={index}
-          className={classnames('d-flex flex-column justify-content-center overflow-x-hidden', styles.section, {
-            'flex-shrink-0': isSmallScreen
+          className={classnames('flex flex-col justify-center overflow-x-hidden', styles.section, {
+            'shrink-0': isSmallScreen
           })}
         >
           <p className={styles.sectionLabel}>{section.sectionLabel}</p>
-          <ul className='d-flex flex-column gap-16px'>
+          <ul className='flex flex-col gap-4'>
             {section.items.map((item, i) => (
-              <li key={i} className='d-flex'>
+              <li key={i} className='flex'>
                 <Link
                   href={item.href}
                   onClick={query.toggle}
-                  className={classnames(
-                    'd-flex align-items-center overflow-x-hidden cursor-pointer',
-                    commonStyles.itemLink
-                  )}
+                  className={classnames('flex items-center overflow-x-hidden cursor-pointer', commonStyles.itemLink)}
                 >
-                  {item.icon && <div className={classnames('d-flex', commonStyles.itemIcon)}>{item.icon}</div>}
+                  {item.icon && <div className={classnames('flex', commonStyles.itemIcon)}>{item.icon}</div>}
                   <p className={commonStyles.itemLabel}>{item.label}</p>
                 </Link>
               </li>

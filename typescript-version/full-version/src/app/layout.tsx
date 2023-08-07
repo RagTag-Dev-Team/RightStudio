@@ -25,8 +25,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: ChildrenType) {
   return (
-    <html lang='en' className='d-flex width-100 min-height-100'>
-      <body className={classnames(inter.className, 'd-flex width-100 min-height-100 flex-auto flex-column')}>
+    <html lang='en' className='flex is-full min-bs-full'>
+      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
         <I18n />
         {children}
       </body>

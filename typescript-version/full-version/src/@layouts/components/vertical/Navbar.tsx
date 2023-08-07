@@ -33,24 +33,19 @@ const Navbar = ({ children }: ChildrenType) => {
 
   return (
     <header
-      className={classnames(
-        verticalLayoutClasses.header,
-        'd-flex align-items-center justify-content-center width-100',
-        styles.header,
-        {
-          [`${verticalLayoutClasses.headerFixed} ${styles.headerFixed}`]: headerFixed,
-          [verticalLayoutClasses.headerStatic]: headerStatic,
-          [`${verticalLayoutClasses.headerFloating} ${styles.headerFloating}`]: headerFloating,
-          [`${verticalLayoutClasses.headerDetached} ${styles.headerDetached}`]: !headerFloating && headerDetached,
-          [`${verticalLayoutClasses.headerAttached} ${styles.headerAttached}`]: !headerFloating && headerAttached,
-          [`${verticalLayoutClasses.headerBlur} ${styles.headerBlur}`]: headerBlur,
-          [`${verticalLayoutClasses.headerContentCompact} ${styles.headerContentCompact}`]: headerContentCompact,
-          [verticalLayoutClasses.headerContentWide]: headerContentWide
-        }
-      )}
+      className={classnames(verticalLayoutClasses.header, 'flex items-center justify-center is-full', styles.header, {
+        [`${verticalLayoutClasses.headerFixed} ${styles.headerFixed}`]: headerFixed,
+        [verticalLayoutClasses.headerStatic]: headerStatic,
+        [`${verticalLayoutClasses.headerFloating} ${styles.headerFloating}`]: headerFloating,
+        [`${verticalLayoutClasses.headerDetached} ${styles.headerDetached}`]: !headerFloating && headerDetached,
+        [`${verticalLayoutClasses.headerAttached} ${styles.headerAttached}`]: !headerFloating && headerAttached,
+        [`${verticalLayoutClasses.headerBlur} ${styles.headerBlur}`]: headerBlur,
+        [`${verticalLayoutClasses.headerContentCompact} ${styles.headerContentCompact}`]: headerContentCompact,
+        [verticalLayoutClasses.headerContentWide]: headerContentWide
+      })}
     >
       <div
-        className={classnames(verticalLayoutClasses.navbar, 'd-flex height-100', styles.navbar)}
+        className={classnames(verticalLayoutClasses.navbar, 'flex bs-full', styles.navbar)}
         style={{
           paddingInline: themeConfig.layoutPadding,
           width:

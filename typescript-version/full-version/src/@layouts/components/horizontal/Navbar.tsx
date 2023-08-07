@@ -16,11 +16,7 @@ import styles from './header.module.css'
 const Navbar = ({ children }: ChildrenType) => {
   return (
     <div
-      className={classnames(
-        horizontalLayoutClasses.navbar,
-        'd-flex align-items-center justify-content-between width-100',
-        styles.navbar
-      )}
+      className={classnames(horizontalLayoutClasses.navbar, 'flex items-center justify-between is-full', styles.navbar)}
       style={{ paddingInline: themeConfig.layoutPadding }}
     >
       {children}

@@ -7,14 +7,14 @@ import classnames from 'classnames'
 import type { ActionId, ActionImpl } from 'kbar'
 
 // Icon Imports
-import SubdirectoryLeft from '@/assets/svg/SubdirectoryLeft'
+import SubdirectoryLeft from '../../../../assets/svg/SubdirectoryLeft'
 
 // Style Imports
 import styles from './styles.module.css'
 
 const Title = ({ title, flexGrow = false }: { title: string; flexGrow?: boolean }) => {
   return flexGrow ? (
-    <span className={classnames('flex-grow-1', styles.itemLabel)}>{title}</span>
+    <span className={classnames('grow', styles.itemLabel)}>{title}</span>
   ) : (
     <span className={styles.itemLabel}>{title}</span>
   )
@@ -32,7 +32,7 @@ const TitleWithAncestors = ({
   if (ancestors.length === 0) return <Title title={title} flexGrow={flexGrow} />
 
   return (
-    <div className='d-flex align-items-center flex-grow-1 gap-8px'>
+    <div className='flex items-center grow gap-2'>
       {ancestors.map((ancestor: ActionImpl) => (
         <Fragment key={ancestor.id}>
           <span style={{ opacity: 0.5 }}>{ancestor.name}</span>
@@ -47,9 +47,9 @@ const TitleWithAncestors = ({
 const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
   if (shortcut.length > 1) {
     return (
-      <div className='d-flex align-items-center gap-6px'>
+      <div className='flex items-center gap-1.5'>
         {shortcut.map(sc => (
-          <kbd key={sc} className={classnames('d-flex align-items-center justify-content-center', styles.kbd)}>
+          <kbd key={sc} className={classnames('flex items-center justify-center', styles.kbd)}>
             {sc}
           </kbd>
         ))}
@@ -57,13 +57,13 @@ const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
     )
   }
 
-  return <kbd className={classnames('d-flex align-items-center justify-content-center', styles.kbd)}>{shortcut[0]}</kbd>
+  return <kbd className={classnames('flex items-center justify-center', styles.kbd)}>{shortcut[0]}</kbd>
 }
 
 const EnterComponent = ({ active }: { active: boolean }) => {
   return (
     active && (
-      <div className='d-flex'>
+      <div className='flex'>
         <SubdirectoryLeft fontSize='1.25rem' />
       </div>
     )
@@ -97,14 +97,14 @@ const SearchResultItem = forwardRef(
         className={classnames(
           styles.itemButton,
           { [styles.activeItemButton]: active },
-          'd-flex align-items-center justify-content-between gap-16px cursor-pointer'
+          'flex items-center justify-between gap-4 cursor-pointer'
         )}
       >
-        <div className={classnames(styles.itemContentWrapper, 'd-flex align-items-center flex-grow-1 gap-10px')}>
-          {action.icon && <div className={classnames('d-flex', styles.itemIcon)}>{action.icon}</div>}
+        <div className={classnames(styles.itemContentWrapper, 'flex items-center grow gap-2.5')}>
+          {action.icon && <div className={classnames('flex', styles.itemIcon)}>{action.icon}</div>}
           {action.name &&
             (action.subtitle ? (
-              <div className={classnames('d-flex flex-column flex-grow-1', styles.nameSubtitleWrapper)}>
+              <div className={classnames('flex flex-col grow', styles.nameSubtitleWrapper)}>
                 <TitleWithAncestors title={action.name} ancestors={ancestors} />
                 {action.subtitle && <span className={styles.itemSubtitle}>{action.subtitle}</span>}
               </div>

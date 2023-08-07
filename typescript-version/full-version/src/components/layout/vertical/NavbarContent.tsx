@@ -13,18 +13,13 @@ import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
 
 const NavbarContent = () => {
   return (
-    <div
-      className={classnames(
-        verticalLayoutClasses.navbarContent,
-        'd-flex align-items-center justify-content-between gap-16px width-100'
-      )}
-    >
-      <div className='d-flex align-items-center gap-16px'>
+    <div className={classnames(verticalLayoutClasses.navbarContent, 'flex items-center justify-between gap-4 is-full')}>
+      <div className='flex items-center gap-4'>
         <NavToggle />
         <NavSearch />
         <HorizontalMenu />
       </div>
-      <div className='d-flex align-items-center gap-16px'>
+      <div className='flex items-center gap-4'>
         <Translation />
         <ModeSwitcher />
       </div>

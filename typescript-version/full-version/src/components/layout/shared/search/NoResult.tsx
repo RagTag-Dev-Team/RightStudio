@@ -44,16 +44,16 @@ const NoResult = (props: NoResultProps) => {
   const { query } = props
 
   return (
-    <div className={classnames('d-flex align-items-center justify-content-center height-100', styles.wrapper)}>
-      <div className='d-flex flex-column align-items-center'>
-        <span className={classnames('d-flex', styles.noResultIcon)}>Icon</span>
+    <div className={classnames('flex items-center justify-center bs-full', styles.wrapper)}>
+      <div className='flex flex-col items-center'>
+        <span className={classnames('flex', styles.noResultIcon)}>Icon</span>
         <p className={styles.noResultText}>{`No result for "${query}"`}</p>
         <p className={styles.noResultSubText}>Try searching for</p>
-        <ul className='d-flex flex-column gap-16px'>
+        <ul className='flex flex-col gap-4'>
           {noResultData.map((item, index) => (
-            <li key={index} className='d-flex align-items-center'>
-              <Link href={item.href} className={classnames('d-flex align-items-center', commonStyles.itemLink)}>
-                <div className={classnames('d-flex', commonStyles.itemIcon)}>{item.icon}</div>
+            <li key={index} className='flex items-center'>
+              <Link href={item.href} className={classnames('flex items-center', commonStyles.itemLink)}>
+                <div className={classnames('flex', commonStyles.itemIcon)}>{item.icon}</div>
                 <p className={commonStyles.itemLabel}>{item.label}</p>
               </Link>
             </li>

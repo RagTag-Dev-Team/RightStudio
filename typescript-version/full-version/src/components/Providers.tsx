@@ -1,5 +1,5 @@
 // Type Imports
-import type { ChildrenType } from '@/@core/types'
+import type { ChildrenType } from '../@core/types'
 
 // Context Imports
 import { VerticalNavProvider } from '../@menu-package/contexts/verticalNavContext'

@@ -27,7 +27,7 @@ const LayoutContent = ({ children }: ChildrenType) => {
   return (
     <main
       className={classnames(horizontalLayoutClasses.content, 'flex-auto', {
-        [`${horizontalLayoutClasses.contentCompact} width-100 ${styles.contentCompact}`]: contentCompact,
+        [`${horizontalLayoutClasses.contentCompact} is-full ${styles.contentCompact}`]: contentCompact,
         [horizontalLayoutClasses.contentWide]: contentWide
       })}
       style={{ padding: themeConfig.layoutPadding }}

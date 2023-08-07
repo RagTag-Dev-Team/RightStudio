@@ -71,15 +71,6 @@
 .flex-column-reverse {
   flex-direction: column-reverse;
 }
-.flex-wrap {
-  flex-wrap: wrap;
-}
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-.flex-wrap-reverse {
-  flex-wrap: wrap-reverse;
-}
 .align-items-start {
   align-items: flex-start;
 }
@@ -161,12 +152,6 @@
 .flex-shrink-1 {
   flex-shrink: 1;
 }
-.flex-auto {
-  flex: 1 1 auto;
-}
-.gap-0 {
-  gap: 0;
-}
 .gap-4px {
   gap: 4px;
 }
@@ -217,29 +202,4 @@
 }
 .column-gap-16px {
   column-gap: 16px;
-}
-
-/** Overflow Styles */
-.overflow-auto {
-  overflow: auto;
-}
-.overflow-hidden {
-  overflow: hidden;
-}
-.overflow-visible {
-  overflow: visible;
-}
-.overflow-scroll {
-  overflow: scroll;
-}
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
-.overflow-y-hidden {
-  overflow-y: hidden;
-}
-
-/** Cursor */
-.cursor-pointer {
-  cursor: pointer;
 }

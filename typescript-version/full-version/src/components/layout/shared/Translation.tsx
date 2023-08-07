@@ -46,7 +46,7 @@ const Translation = () => {
   }, [i18n.language]) */
 
   return (
-    <div className='d-flex'>
+    <div className='flex'>
       <a onClick={() => handleLangItemClick('en')}>English</a>
       <a onClick={() => handleLangItemClick('fr')}>French</a>
       <a onClick={() => handleLangItemClick('ar')}>Arabic</a>

@@ -29,16 +29,14 @@ const Navigation = () => {
   return (
     <div
       {...(!isBreakpointReached && {
-        className: classnames(horizontalLayoutClasses.navigation, 'd-flex', styles.navigation)
+        className: classnames(horizontalLayoutClasses.navigation, 'flex', styles.navigation)
       })}
     >
       <div
         {...(!isBreakpointReached && {
-          className: classnames(
-            horizontalLayoutClasses.navigationContentWrapper,
-            'd-flex align-items-center width-100',
-            { [styles.headerContentCompact]: headerContentCompact }
-          ),
+          className: classnames(horizontalLayoutClasses.navigationContentWrapper, 'flex items-center is-full', {
+            [styles.headerContentCompact]: headerContentCompact
+          }),
           style: { paddingInline: themeConfig.layoutPadding }
         })}
       >

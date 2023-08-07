@@ -65,27 +65,22 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
           'customizer',
           styles.customizer,
           { [styles.show]: isOpen, [styles.smallScreen]: isMobileScreen },
-          'height-100 d-flex flex-column'
+          'bs-full flex flex-col'
         )}
       >
         <div
-          className={classnames(
-            'customizer-toggler d-flex align-items-center justify-content-center cursor-pointer',
-            styles.toggler
-          )}
+          className={classnames('customizer-toggler flex items-center justify-center cursor-pointer', styles.toggler)}
           onClick={handleToggle}
         >
           <Cog />
         </div>
-        <div
-          className={classnames('customizer-header d-flex align-items-center justify-content-between', styles.header)}
-        >
-          <div className='d-flex flex-column gap-8px'>
+        <div className={classnames('customizer-header flex items-center justify-between', styles.header)}>
+          <div className='flex flex-col gap-2'>
             <h4 className={styles.customizerTitle}>Theme Customizer</h4>
             <p>Customize & Preview in Real Time</p>
           </div>
-          <div className='d-flex gap-16px'>
-            <div onClick={resetSettings} className={classnames('d-flex cursor-pointer', styles.refreshWrapper)}>
+          <div className='flex gap-4'>
+            <div onClick={resetSettings} className={classnames('flex cursor-pointer', styles.refreshWrapper)}>
               <Refresh />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
@@ -93,12 +88,12 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
           </div>
         </div>
         <PerfectScrollbar options={{ wheelPropagation: false }}>
-          <div className={classnames('customizer-body d-flex flex-column', styles.customizerBody)}>
-            <div className={classnames('theming-section d-flex flex-column', styles.section)}>
+          <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
+            <div className={classnames('theming-section flex flex-col', styles.section)}>
               <p>Theming</p>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Primary Color</p>
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='flex items-center justify-between'>
                   <div className={styles.primaryColorWrapper}>
                     <div className={styles.primaryColor} style={{ backgroundColor: '#765feb' }} />
                   </div>
@@ -119,10 +114,10 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Mode</p>
-                <div className='d-flex align-items-center justify-content-between'>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'light'
@@ -135,7 +130,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Light
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'dark'
@@ -148,7 +143,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Dark
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'system'
@@ -163,10 +158,10 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Skin</p>
-                <div className='d-flex align-items-center gap-16px'>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'default' })}
                       onClick={() => handleChange('skin', 'default')}
@@ -177,7 +172,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Default
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'bordered' })}
                       onClick={() => handleChange('skin', 'bordered')}
@@ -193,7 +188,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
               {settings.mode === 'dark' ||
               (settings.mode === 'system' && isSystemDark) ||
               settings.layout === 'horizontal' ? null : (
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='flex items-center justify-between'>
                   <label className={classnames(styles.itemTitle, 'cursor-pointer')} htmlFor='customizer-semi-dark'>
                     Semi Dark
                   </label>
@@ -207,12 +202,12 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
               )}
             </div>
             <hr className={styles.hr} />
-            <div className={classnames('layout-section d-flex flex-column', styles.section)}>
+            <div className={classnames('layout-section flex flex-col', styles.section)}>
               <p>Layout</p>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Layouts</p>
-                <div className='d-flex align-items-center justify-content-between'>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'vertical' })}
                       onClick={() => handleChange('layout', 'vertical')}
@@ -223,7 +218,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Vertical
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'collapsed' })}
                       onClick={() => handleChange('layout', 'collapsed')}
@@ -234,7 +229,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Collapsed
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'horizontal' })}
                       onClick={() => handleChange('layout', 'horizontal')}
@@ -247,10 +242,10 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Content</p>
-                <div className='d-flex align-items-center gap-16px'>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.contentWidth === 'compact'
@@ -278,7 +273,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Compact
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.contentWidth === 'wide' })}
                       onClick={() =>
@@ -298,10 +293,10 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column gap-10px'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Direction</p>
-                <div className='d-flex align-items-center gap-16px'>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.direction === 'ltr'
@@ -314,7 +309,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                       Left to Right
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-4px'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.direction === 'rtl'
