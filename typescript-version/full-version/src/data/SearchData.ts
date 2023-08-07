@@ -100,21 +100,21 @@ const data: SearchData[] = [
   {
     id: '14',
     name: 'User View - Billing & Plans',
-    url: '/apps/user/view/billing-plan',
+    url: '/apps/user/view/billing-plans',
     icon: 'Icon',
     section: 'apps'
   },
   {
     id: '15',
-    name: 'User View - Notification',
-    url: '/apps/user/view/notification',
+    name: 'User View - Notifications',
+    url: '/apps/user/view/notifications',
     icon: 'Icon',
     section: 'apps'
   },
   {
     id: '16',
-    name: 'User View - Connection',
-    url: '/apps/user/view/connection',
+    name: 'User View - Connections',
+    url: '/apps/user/view/connections',
     icon: 'Icon',
     section: 'apps'
   },
@@ -176,8 +176,8 @@ const data: SearchData[] = [
   },
   {
     id: '25',
-    name: 'Account Settings - Billing',
-    url: '/pages/account-settings/billing',
+    name: 'Account Settings - Billing & Plans',
+    url: '/pages/account-settings/billing-plans',
     icon: 'Icon',
     section: 'pages'
   },
