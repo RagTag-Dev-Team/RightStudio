@@ -7,6 +7,7 @@ import NavSearch from '../shared/search'
 import HorizontalMenu from './HorizontalMenu'
 import Translation from '../shared/Translation'
 import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
+import UserDetails from '../../../@layouts/components/UserDetails'
 
 // Util Imports
 import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
@@ -22,6 +23,7 @@ const NavbarContent = () => {
       <div className='flex items-center gap-4'>
         <Translation />
         <ModeSwitcher />
+        <UserDetails />
       </div>
     </div>
   )

@@ -9,6 +9,7 @@ import NavToggle from './NavToggle'
 import NavSearch from '../shared/search'
 import Translation from '../shared/Translation'
 import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
+import UserDetails from '../../../@layouts/components/UserDetails'
 
 // Hook Imports
 import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
@@ -34,6 +35,7 @@ const NavbarContent = () => {
         <NavSearch />
         <Translation />
         <ModeSwitcher />
+        <UserDetails />
         {/* Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}
       </div>
     </div>
