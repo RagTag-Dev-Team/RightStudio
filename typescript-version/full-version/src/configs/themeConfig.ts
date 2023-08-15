@@ -4,11 +4,10 @@
  * 1. mode
  * 2. skin
  * 3. semiDark
- * 4. direction
- * 5. layout
- * 6. navbar.contentWidth
- * 7. contentWidth
- * 8. footer.contentWidth
+ * 4. layout
+ * 5. navbar.contentWidth
+ * 6. contentWidth
+ * 7. footer.contentWidth
  *
  * To see the effect of the above items, you can click on the reset button from the Customizer
  * which is on the top-right corner of the customizer besides the close button.

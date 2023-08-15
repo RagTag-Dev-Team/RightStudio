@@ -1,5 +1,6 @@
 // Next Imports
 import { Inter } from 'next/font/google'
+import { cookies } from 'next/headers'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -9,7 +10,10 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import type { ChildrenType } from '../@core/types'
 
 // Component Imports
-import I18n from '../components/i18n'
+import I18n from '../configs/i18n'
+
+// Data Imports
+import { langDirection } from '../data/translation/langDirection'
 
 // Style Imports
 //! Do not remove the `utils.css` import below otherwise it will break the template styling
@@ -24,10 +28,13 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: ChildrenType) {
+  const lang = cookies().get('lang')
+  const direction = langDirection[lang?.value || 'en']
+
   return (
-    <html lang='en' className='flex is-full min-bs-full'>
+    <html lang='en' dir={direction} className='flex is-full min-bs-full'>
       <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
-        <I18n />
+        <I18n lang={lang} />
         {children}
       </body>
     </html>

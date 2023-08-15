@@ -1,15 +1,16 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useMedia } from 'react-use'
+import { useMedia, useUpdateEffect } from 'react-use'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { Settings } from '../../contexts/settingsContext'
+import type { Direction } from '../../../@core/types'
 
 // Icon Imports
 import Cog from '../../svg/Cog'
@@ -31,32 +32,57 @@ import DirectionRtl from '../../svg/DirectionRtl'
 // Hook Imports
 import useSettings from '../../hooks/useSettings'
 
+// Data Imports
+import { langDirection } from '../../../data/translation/langDirection'
+
 // Style Imports
 import styles from './styles.module.css'
+import { useTranslation } from 'react-i18next'
 
 type CustomizerProps = {
   breakpoint?: string
+  dir: Direction
 }
 
-const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
+const Customizer = ({ breakpoint = '1200px', dir }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
+  const [direction, setDirection] = useState(dir)
 
   // Hooks
   const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
+  const { i18n } = useTranslation()
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
 
-  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
-    saveSettings({
-      [field]: value
-    })
+  // Update Settings
+  const handleChange = (field: keyof Settings | 'direction', value: Settings[keyof Settings] | Direction) => {
+    // Update direction state
+    if (field === 'direction') {
+      setDirection(value as Direction)
+    } else {
+      // Update settings in local storage
+      saveSettings({
+        [field]: value
+      })
+    }
   }
+
+  // Update html `dir` attribute when changing direction
+  useUpdateEffect(() => {
+    document.documentElement.setAttribute('dir', direction)
+  }, [direction])
+
+  // Update direction state when changing language
+  useEffect(() => {
+    const dir = langDirection[i18n.language]
+    setDirection(dir)
+  }, [i18n.language])
 
   return (
     !breakpointReached && (
@@ -299,7 +325,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
-                        [styles.active]: settings.direction === 'ltr'
+                        [styles.active]: direction === 'ltr'
                       })}
                       onClick={() => handleChange('direction', 'ltr')}
                     >
@@ -312,7 +338,7 @@ const Customizer = ({ breakpoint = '1200px' }: CustomizerProps) => {
                   <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
-                        [styles.active]: settings.direction === 'rtl'
+                        [styles.active]: direction === 'rtl'
                       })}
                       onClick={() => handleChange('direction', 'rtl')}
                     >
