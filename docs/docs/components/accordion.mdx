@@ -1,0 +1,91 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Accordion
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import AccordionBasic from '@site/src/pages/components/accordion/AccordionBasic'
+import SourceCodeAccordionBasic from '!!raw-loader!@site/src/pages/components/accordion/AccordionBasic.tsx'
+import AccordionActions from '@site/src/pages/components/accordion/AccordionActions'
+import SourceCodeAccordionActions from '!!raw-loader!@site/src/pages/components/accordion/AccordionActions.tsx'
+import AccordionControlled from '@site/src/pages/components/accordion/AccordionControlled'
+import SourceCodeAccordionControlled from '!!raw-loader!@site/src/pages/components/accordion/AccordionControlled.tsx'
+import AccordionCustomized from '@site/src/pages/components/accordion/AccordionCustomized'
+import SourceCodeAccordionCustomized from '!!raw-loader!@site/src/pages/components/accordion/AccordionCustomized.tsx'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader
+    title='Accordion'
+    subtitle='The accordion component allows the user to show and hide sections of related content on a page.'
+    href='https://mui.com/material-ui/react-accordion/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Basic Accordion"
+      code={SourceCodeAccordionBasic}
+      sx={{
+        boxShadow: "none",
+        backgroundColor: "transparent",
+        border: (theme) => `1px solid ${theme.palette.divider}`,
+      }}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>Accordion</code>, <code>AccordionSummary</code> and <code>AccordionDetails</code> components to make a simple accordion.
+      </Typography>
+      <AccordionBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Controlled Accordion"
+      code={SourceCodeAccordionControlled}
+      sx={{
+        boxShadow: "none",
+        backgroundColor: "transparent",
+        border: (theme) => `1px solid ${theme.palette.divider}`,
+      }}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>expanded</code> prop with the help of a state.
+      </Typography>
+      <AccordionControlled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Customized Accordion"
+      code={SourceCodeAccordionCustomized}
+      sx={{
+        boxShadow: "none",
+        backgroundColor: "transparent",
+        border: (theme) => `1px solid ${theme.palette.divider}`,
+      }}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>styled</code> hook to customize the component the way you want it.
+      </Typography>
+      <AccordionCustomized />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Additional Actions"
+      code={SourceCodeAccordionActions}
+      sx={{
+        boxShadow: "none",
+        backgroundColor: "transparent",
+        border: (theme) => `1px solid ${theme.palette.divider}`,
+      }}
+    >
+      <Typography sx={{ mb: 4 }}>
+        In order to put an action such as a Checkbox or a button inside <code>AccordionSummary</code>, you need to stop the propagation of the focus and click events to prevent the accordion from expanding/collapsing when using the action.
+      </Typography>
+      <AccordionActions />
+    </CardSnippet>
+  </Grid>
+</Grid>

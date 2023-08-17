@@ -20,6 +20,8 @@ export type ChildrenType = {
   children: ReactNode
 }
 
+export type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+
 export type ThemeAndOwnerState = {
   theme: Theme
   ownerState: ComponentsPropsList[keyof ComponentsPropsList] & Record<string, unknown>

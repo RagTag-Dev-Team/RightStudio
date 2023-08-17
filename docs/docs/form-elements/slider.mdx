@@ -1,0 +1,243 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Slider
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import SliderBasic from '@site/src/pages/form-elements/slider/SliderBasic'
+import SourceCodeSliderBasic from '!!raw-loader!@site/src/pages/form-elements/slider/SliderBasic'
+import SliderRange from '@site/src/pages/form-elements/slider/SliderRange'
+import SourceCodeSliderRange from '!!raw-loader!@site/src/pages/form-elements/slider/SliderRange'
+import SliderSizes from '@site/src/pages/form-elements/slider/SliderSizes'
+import SourceCodeSliderSizes from '!!raw-loader!@site/src/pages/form-elements/slider/SliderSizes'
+import SliderColors from '@site/src/pages/form-elements/slider/SliderColors'
+import SourceCodeSliderColors from '!!raw-loader!@site/src/pages/form-elements/slider/SliderColors'
+import SliderDiscrete from '@site/src/pages/form-elements/slider/SliderDiscrete'
+import SourceCodeSliderDiscrete from '!!raw-loader!@site/src/pages/form-elements/slider/SliderDiscrete'
+import SliderVertical from '@site/src/pages/form-elements/slider/SliderVertical'
+import SourceCodeSliderVertical from '!!raw-loader!@site/src/pages/form-elements/slider/SliderVertical'
+import SliderSmallSteps from '@site/src/pages/form-elements/slider/SliderSmallSteps'
+import SourceCodeSliderSmallSteps from '!!raw-loader!@site/src/pages/form-elements/slider/SliderSmallSteps'
+import SliderCustomized from '@site/src/pages/form-elements/slider/SliderCustomized'
+import SourceCodeSliderCustomized from '!!raw-loader!@site/src/pages/form-elements/slider/SliderCustomized'
+import SliderCustomColors from '@site/src/pages/form-elements/slider/SliderCustomColors'
+import SourceCodeSliderCustomColors from '!!raw-loader!@site/src/pages/form-elements/slider/SliderCustomColors'
+import SliderCustomMarks from '@site/src/pages/form-elements/slider/SliderCustomMarks'
+import SourceCodeSliderCustomMarks from '!!raw-loader!@site/src/pages/form-elements/slider/SliderCustomMarks'
+import SliderRemovedTrack from '@site/src/pages/form-elements/slider/SliderRemovedTrack'
+import SourceCodeSliderRemovedTrack from '!!raw-loader!@site/src/pages/form-elements/slider/SliderRemovedTrack'
+import SliderInvertedTrack from '@site/src/pages/form-elements/slider/SliderInvertedTrack'
+import SourceCodeSliderInvertedTrack from '!!raw-loader!@site/src/pages/form-elements/slider/SliderInvertedTrack'
+import SliderMinimumDistance from '@site/src/pages/form-elements/slider/SliderMinimumDistance'
+import SourceCodeSliderMinimumDistance from '!!raw-loader!@site/src/pages/form-elements/slider/SliderMinimumDistance'
+import SliderRestrictedValues from '@site/src/pages/form-elements/slider/SliderRestrictedValues'
+import SourceCodeSliderRestrictedValues from '!!raw-loader!@site/src/pages/form-elements/slider/SliderRestrictedValues'
+import SliderLabelAlwaysVisible from '@site/src/pages/form-elements/slider/SliderLabelAlwaysVisible'
+import SourceCodeSliderLabelAlwaysVisible from '!!raw-loader!@site/src/pages/form-elements/slider/SliderLabelAlwaysVisible'
+import SliderControlledUncontrolled from '@site/src/pages/form-elements/slider/SliderControlledUncontrolled'
+import SourceCodeSliderControlledUncontrolled from '!!raw-loader!@site/src/pages/form-elements/slider/SliderControlledUncontrolled'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader
+    title='Slider'
+    subtitle='Sliders allow users to make selections from a range of values.'
+    href='https://mui.com/material-ui/react-slider/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Basic Slider'
+      code={SourceCodeSliderBasic}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>defaultValue</code> prop for default slider value and <code>disabled</code> prop for disabled slider.
+      </Typography>
+      <SliderBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Controlled and Uncontrolled'
+      code={SourceCodeSliderControlledUncontrolled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>value</code> prop with the help of a state for controlled slider and use <code>defaultValue</code> prop for uncontrolled slider.
+      </Typography>
+      <SliderControlledUncontrolled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Discrete Slider'
+      code={SourceCodeSliderDiscrete}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can generate a mark for each step with <code>marks</code> prop.
+      </Typography>
+      <SliderDiscrete />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Small Steps'
+      code={SourceCodeSliderSmallSteps}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can change the default step increment with <code>step</code> prop.
+      </Typography>
+      <SliderSmallSteps />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Custom Marks'
+      code={SourceCodeSliderCustomMarks}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can have custom marks by providing a rich array to the <code>marks</code> prop.
+      </Typography>
+      <SliderCustomMarks />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Restricted Values'
+      code={SourceCodeSliderRestrictedValues}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can restrict the selectable values to those provided with the <code>marks</code> prop with <code>step={`{${null}}`}</code>.
+      </Typography>
+      <SliderRestrictedValues />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Label Always Visible'
+      code={SourceCodeSliderLabelAlwaysVisible}
+    >
+      <Typography sx={{ mb: 9 }}>
+        You can force the thumb label to be always visible with <code>valueLabelDisplay='on'</code>.
+      </Typography>
+      <SliderLabelAlwaysVisible />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Colors'
+      code={SourceCodeSliderColors}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>color</code> prop for different colored slider.
+      </Typography>
+      <SliderColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Range Slider'
+      code={SourceCodeSliderRange}
+    >
+      <Typography sx={{ mb: 4 }}>
+        The slider can be used to set the start and end of a range by supplying an array of values to the <code>value</code> or <code>defaultValue</code> prop.
+      </Typography>
+      <SliderRange />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Customized Slider'
+      code={SourceCodeSliderCustomized}
+    >
+      <Typography sx={{ mb: 6 }}>
+        Use <code>styled</code> hook to customize your slider.
+      </Typography>
+      <SliderCustomized />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Custom Colors'
+      code={SourceCodeSliderCustomColors}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>styled</code> hook to customize your slider.
+      </Typography>
+      <SliderCustomColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Vertical Sliders'
+      code={SourceCodeSliderVertical}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>orientation='vertical'</code> prop for vertical slider.
+      </Typography>
+      <SliderVertical />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Removed Track'
+      code={SourceCodeSliderRemovedTrack}
+    >
+      <Typography sx={{ mb: 4 }}>
+        The track can be turned off with <code>track={`{false}`}</code> prop.
+      </Typography>
+      <SliderRemovedTrack />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Inverted Track'
+      code={SourceCodeSliderInvertedTrack}
+    >
+      <Typography sx={{ mb: 4 }}>
+        The track can be inverted with <code>track='inverted'</code> prop.
+      </Typography>
+      <SliderInvertedTrack />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Sizes'
+      code={SourceCodeSliderSizes}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>size</code> prop for different sizes of slider.
+      </Typography>
+      <SliderSizes />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      sx={{ px: 2 }}
+      title='Minimum Distance'
+      code={SourceCodeSliderMinimumDistance}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can enforce a minimum distance between values in the <code>onChange</code> event handler.
+      </Typography>
+      <SliderMinimumDistance />
+    </CardSnippet>
+  </Grid>
+</Grid>

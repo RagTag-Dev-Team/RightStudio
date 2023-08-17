@@ -1,0 +1,39 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Editor
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import EditorControlled from '@site/src/pages/form-elements/editor/EditorControlled' 
+import SourceCodeEditorControlled from '!!raw-loader!../../../typescript-version/full-version/src/examples/editor/EditorControlled'
+import EditorUncontrolled from '@site/src/pages/form-elements/editor/EditorUncontrolled'
+import SourceCodeEditorUncontrolled from '!!raw-loader!../../../typescript-version/full-version/src/examples/editor/EditorUncontrolled'
+import EditorWrapper from '@site/src/components/styled-components/react-draft-wysiwyg'
+
+import PageHeader from '@site/src/components/page-header'
+
+<EditorWrapper>
+  <Grid container spacing={6}>
+    <PageHeader title='React Draft Wysiwyg' subtitle='A Wysiwyg Built on ReactJS and DraftJS' href='https://jpuri.github.io/react-draft-wysiwyg/#/' />
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Controlled Editor'
+        code={SourceCodeEditorControlled}
+        sx={{ overflow: 'visible'}}
+      >
+        <EditorControlled />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Uncontrolled Wysiwyg Editor'
+        code={SourceCodeEditorUncontrolled}
+        sx={{ overflow: 'visible'}}
+      >
+        <EditorUncontrolled />
+      </CardSnippet>
+    </Grid>
+  </Grid>
+</EditorWrapper>

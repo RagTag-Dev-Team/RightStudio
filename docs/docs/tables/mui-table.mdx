@@ -1,0 +1,69 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: MUI
+---
+
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardSnippet from '@site/src/components/card-snippet/index';
+import TableBasic from '@site/src/pages/tables/mui/TableBasic';
+import TableDense from '@site/src/pages/tables/mui/TableDense';
+import TableSpanning from '@site/src/pages/tables/mui/TableSpanning';
+import TableCustomized from '@site/src/pages/tables/mui/TableCustomized';
+import TableSortSelect from '@site/src/pages/tables/mui/TableSortSelect';
+import TableCollapsible from '@site/src/pages/tables/mui/TableCollapsible';
+import TableStickyHeader from '@site/src/pages/tables/mui/TableStickyHeader';
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader
+    title='MUI Table'
+    subtitle='Tables display sets of data. They can be fully customized.'
+    href='https://mui.com/material-ui/react-table/'
+  />
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Basic Table' />
+      <TableBasic />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Dense Table' />
+      <TableDense />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Sticky Header' />
+      <TableStickyHeader />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Collapsible Table' />
+      <TableCollapsible />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Spanning Table' />
+      <TableSpanning />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <CardHeader title='Customized Table' />
+      <TableCustomized />
+    </Card>
+  </Grid>
+  <Grid item xs={12}>
+    <Card>
+      <TableSortSelect />
+    </Card>
+  </Grid>
+</Grid>

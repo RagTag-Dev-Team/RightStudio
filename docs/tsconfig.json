@@ -4,5 +4,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "moduleResolution": "node",
+    "downlevelIteration": true,
   },
 }

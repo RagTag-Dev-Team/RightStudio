@@ -1,0 +1,169 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Progress
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import ProgressLinearBuffer from '@site/src/pages/components/progress/ProgressLinearBuffer'
+import SourceCodeProgressLinearBuffer from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearBuffer'
+import ProgressLinearColors from '@site/src/pages/components/progress/ProgressLinearColors'
+import SourceCodeProgressLinearColors from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearColors'
+import ProgressCircularColors from '@site/src/pages/components/progress/ProgressCircularColors'
+import SourceCodeProgressCircularColors from '!!raw-loader!@site/src/pages/components/progress/ProgressCircularColors'
+import ProgressLinearWithLabel from '@site/src/pages/components/progress/ProgressLinearWithLabel'
+import SourceCodeProgressLinearWithLabel from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearWithLabel'
+import ProgressCustomization from '@site/src/pages/components/progress/ProgressCircularCustomization'
+import SourceCodeProgressCustomization from '!!raw-loader!@site/src/pages/components/progress/ProgressCircularCustomization'
+import ProgressCircularWithLabel from '@site/src/pages/components/progress/ProgressCircularWithLabel'
+import SourceCodeProgressCircularWithLabel from '!!raw-loader!@site/src/pages/components/progress/ProgressCircularWithLabel'
+import ProgressLinearCustomization from '@site/src/pages/components/progress/ProgressLinearCustomization'
+import SourceCodeProgressLinearCustomization from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearCustomization'
+import ProgressLinearIndeterminate from '@site/src/pages/components/progress/ProgressLinearIndeterminate'
+import SourceCodeProgressLinearIndeterminate from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearIndeterminate'
+import ProgressCircularIndeterminate from '@site/src/pages/components/progress/ProgressCircularIndeterminate'
+import SourceCodeProgressCircularIndeterminate from '!!raw-loader!@site/src/pages/components/progress/ProgressCircularIndeterminate'
+import ProgressLinearControlledUncontrolled from '@site/src/pages/components/progress/ProgressLinearControlledUncontrolled'
+import SourceCodeProgressLinearControlledUncontrolled from '!!raw-loader!@site/src/pages/components/progress/ProgressLinearControlledUncontrolled'
+import ProgressCircularControlledUncontrolled from '@site/src/pages/components/progress/ProgressCircularControlledUncontrolled'
+import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@site/src/pages/components/progress/ProgressCircularControlledUncontrolled'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader 
+    title='Progress'
+    subtitle='Progress indicators commonly known as spinners, express an unspecified wait time or display the length
+    of a process.'
+    href='https://mui.com/material-ui/react-progress/'
+  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Circular</Typography>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Indeterminate'
+      code={SourceCodeProgressCircularIndeterminate}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>CircularProgress</code> component for simple circular progress.
+      </Typography>
+      <ProgressCircularIndeterminate />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Colors'
+      code={SourceCodeProgressCircularColors}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>color</code> prop for different colored circular progress.
+      </Typography>
+      <ProgressCircularColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='With label'
+      code={SourceCodeProgressCircularWithLabel}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for circular progress with label.
+      </Typography>
+      <ProgressCircularWithLabel />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Customization'
+      code={SourceCodeProgressCustomization}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>styled</code> hook to customize your circular progress.
+      </Typography>
+      <ProgressCustomization />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Controlled and Uncontrolled'
+      code={SourceCodeProgressCircularControlledUncontrolled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>value</code> prop with the help of a state for controlled circular progress.
+      </Typography>
+      <ProgressCircularControlledUncontrolled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <Typography variant='h5'>Linear</Typography>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Indeterminate'
+      code={SourceCodeProgressLinearIndeterminate}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>LinearProgress</code> component for simple linear progress.
+      </Typography>
+      <ProgressLinearIndeterminate />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Buffer'
+      code={SourceCodeProgressLinearBuffer}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant='buffer'</code> and <code>valueBuffer</code> props with the help of a state for linear progress with buffer.
+      </Typography>
+      <ProgressLinearBuffer />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Colors'
+      code={SourceCodeProgressLinearColors}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>color</code> prop for different colored linear progress.
+      </Typography>
+      <ProgressLinearColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Controlled and Uncontrolled'
+      code={SourceCodeProgressLinearControlledUncontrolled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>value</code> prop with the help of a state for controlled linear progress.
+      </Typography>
+      <ProgressLinearControlledUncontrolled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='With Label'
+      code={SourceCodeProgressLinearWithLabel}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for linear progress with label.
+      </Typography>
+      <ProgressLinearWithLabel />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet
+      title='Customization'
+      code={SourceCodeProgressLinearCustomization}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>styled</code> hook to customize your Linear progress.
+      </Typography>
+      <ProgressLinearCustomization />
+    </CardSnippet>
+  </Grid>
+</Grid>

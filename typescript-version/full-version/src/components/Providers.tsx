@@ -1,3 +1,7 @@
+// Third-party Imports
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 // Type Imports
 import type { ChildrenType } from '@/@core/types'
 
@@ -10,7 +14,10 @@ const Providers = ({ children }: ChildrenType) => {
   return (
     <VerticalNavProvider>
       <SettingsProvider>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <ToastContainer />
+        </ThemeProvider>
       </SettingsProvider>
     </VerticalNavProvider>
   )

@@ -1,0 +1,136 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Chips
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import ChipsIcon from '@site/src/pages/components/chips/ChipsIcon'
+import SourceCodeChipsIcon from '!!raw-loader!@site/src/pages/components/chips/ChipsIcon'
+import ChipsSizes from '@site/src/pages/components/chips/ChipsSizes'
+import SourceCodeChipsSizes from '!!raw-loader!@site/src/pages/components/chips/ChipsSizes'
+import ChipsArray from '@site/src/pages/components/chips/ChipsArray'
+import SourceCodeChipsArray from '!!raw-loader!@site/src/pages/components/chips/ChipsArray'
+import ChipsColors from '@site/src/pages/components/chips/ChipsColors'
+import SourceCodeChipsColors from '!!raw-loader!@site/src/pages/components/chips/ChipsColors'
+import ChipsAvatar from '@site/src/pages/components/chips/ChipsAvatar'
+import SourceCodeChipsAvatar from '!!raw-loader!@site/src/pages/components/chips/ChipsAvatar'
+import ChipsVariants from '@site/src/pages/components/chips/ChipsVariants'
+import SourceCodeChipsVariants from '!!raw-loader!@site/src/pages/components/chips/ChipsVariants'
+import ChipsDisabled from '@site/src/pages/components/chips/ChipsDisabled'
+import SourceCodeChipsDisabled from '!!raw-loader!@site/src/pages/components/chips/ChipsDisabled'
+import ChipsOnDelete from '@site/src/pages/components/chips/ChipsOnDelete'
+import SourceCodeChipsOnDelete from '!!raw-loader!@site/src/pages/components/chips/ChipsOnDelete'
+import ChipsClickable from '@site/src/pages/components/chips/ChipsClickable'
+import SourceCodeChipsClickable from '!!raw-loader!@site/src/pages/components/chips/ChipsClickable'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader 
+    title='Chips'
+    subtitle='Chips are compact elements that represent an input, attribute, or action.'
+    href='https://mui.com/material-ui/react-chip/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Chip Variants"
+      code={SourceCodeChipsVariants}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant='outlined'</code> prop with <code>Chip</code> component for outlined chip.
+      </Typography>
+      <ChipsVariants />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Disabled Chips"
+      code={SourceCodeChipsDisabled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>disabled</code> prop for disabled chip.
+      </Typography>
+      <ChipsDisabled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Colors"
+      code={SourceCodeChipsColors}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>color</code> prop for different colored chips.
+      </Typography>
+      <ChipsColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="onDelete"
+      code={SourceCodeChipsOnDelete}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>onDelete</code> prop for delete icon in a chip. Use <code>deleteIcon</code> prop to change the default delete icon.
+      </Typography>
+      <ChipsOnDelete />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Chip Sizes"
+      code={SourceCodeChipsSizes}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>size='small'</code> prop for small chip.
+      </Typography>
+      <ChipsSizes />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Clickable Chip"
+      code={SourceCodeChipsClickable}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can make any chip clickable by adding <code>clickable</code> prop and use <code>component='a'</code> to make it a link.
+      </Typography>
+      <ChipsClickable />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Chip with Avatar"
+      code={SourceCodeChipsAvatar}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>Avatar</code> component inside <code>avatar</code> prop for a chip with avatar.
+      </Typography>
+      <ChipsAvatar />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title="Icon Chip"
+      code={SourceCodeChipsIcon}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>icon</code> prop for an icon inside a chip.
+      </Typography>
+      <ChipsIcon />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title="Chips Array"
+      code={SourceCodeChipsArray}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can make a list of chips that can make some or all chips deletable.
+      </Typography>
+      <ChipsArray />
+    </CardSnippet>
+  </Grid>
+</Grid>

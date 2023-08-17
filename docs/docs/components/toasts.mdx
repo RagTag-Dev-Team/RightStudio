@@ -1,0 +1,126 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Toasts
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import ToastsBlank from '@site/src/pages/components/toasts/ToastsBlank'
+import SourceCodeToastsBlank from '!!raw-loader!@site/src/pages/components/toasts/ToastsBlank'
+import ToastsError from '@site/src/pages/components/toasts/ToastsError'
+import SourceCodeToastsError from '!!raw-loader!@site/src/pages/components/toasts/ToastsError'
+import ToastsEmoji from '@site/src/pages/components/toasts/ToastsEmoji'
+import SourceCodeToastsEmoji from '!!raw-loader!@site/src/pages/components/toasts/ToastsEmoji'
+import ToastsThemed from '@site/src/pages/components/toasts/ToastsThemed'
+import SourceCodeToastsThemed from '!!raw-loader!@site/src/pages/components/toasts/ToastsThemed'
+import ToastsCustom from '@site/src/pages/components/toasts/ToastsCustom'
+import SourceCodeToastsCustom from '!!raw-loader!@site/src/pages/components/toasts/ToastsCustom'
+import ToastsSuccess from '@site/src/pages/components/toasts/ToastsSuccess'
+import SourceCodeToastsSuccess from '!!raw-loader!@site/src/pages/components/toasts/ToastsSuccess'
+import ToastsPromise from '@site/src/pages/components/toasts/ToastsPromise'
+import SourceCodeToastsPromise from '!!raw-loader!@site/src/pages/components/toasts/ToastsPromise'
+import ToastsMultiLine from '@site/src/pages/components/toasts/ToastsMultiLine'
+import SourceCodeToastsMultiLine from '!!raw-loader!@site/src/pages/components/toasts/ToastsMultiLine'
+import ToastsCustomPosition from '@site/src/pages/components/toasts/ToastsCustomPosition'
+import SourceCodeToastsCustomPosition from '!!raw-loader!@site/src/pages/components/toasts/ToastsCustomPosition'
+import ToastsProgrammatically from '@site/src/pages/components/toasts/ToastsProgrammatically'
+import SourceCodeToastsProgrammatically from '!!raw-loader!@site/src/pages/components/toasts/ToastsProgrammatically'
+import ToastsPreventDuplicate from '@site/src/pages/components/toasts/ToastsPreventDuplicate'
+import SourceCodeToastsPreventDuplicate from '!!raw-loader!@site/src/pages/components/toasts/ToastsPreventDuplicate'
+import ToastsFlip from '@site/src/pages/components/toasts/ToastsFlip'
+import SourceCodeToastsFlip from '!!raw-loader!@site/src/pages/components/toasts/ToastsFlip'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader 
+    title='Toasts'
+    subtitle='Smoking tostify notifications.'
+    href='https://github.com/fkhadra/react-toastify'
+  />
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsBlank}
+    >
+      <ToastsBlank />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsMultiLine}
+    >
+      <ToastsMultiLine />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsSuccess}
+    >
+      <ToastsSuccess />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsError}
+    >
+      <ToastsError />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsPromise}
+    >
+      <ToastsPromise />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsEmoji}
+    >
+      <ToastsEmoji />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsThemed}
+    >
+      <ToastsThemed />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsCustom}
+    >
+      <ToastsCustom />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsCustomPosition}
+    >
+      <ToastsCustomPosition />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsProgrammatically}
+    >
+      <ToastsProgrammatically />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+      code={SourceCodeToastsPreventDuplicate}
+    >
+      <ToastsPreventDuplicate />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <CardSnippet
+        code={SourceCodeToastsFlip}
+    >
+      <ToastsFlip />
+    </CardSnippet>
+  </Grid>
+</Grid>

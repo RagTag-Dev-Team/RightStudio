@@ -1,0 +1,222 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Autocomplete
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import AutocompleteProps from '@site/src/pages/form-elements/autocomplete/AutocompleteProps'
+import SourceCodeAutocompleteProps from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteProps'
+import AutocompleteCountry from '@site/src/pages/form-elements/autocomplete/AutocompleteCountry'
+import SourceCodeAutocompleteCountry from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteCountry'
+import AutocompleteGrouped from '@site/src/pages/form-elements/autocomplete/AutocompleteGrouped'
+import SourceCodeAutocompleteGrouped from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteGrouped'
+import AutocompleteVariants from '@site/src/pages/form-elements/autocomplete/AutocompleteVariants'
+import SourceCodeAutocompleteVariants from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteVariants'
+import AutocompleteFreeSolo from '@site/src/pages/form-elements/autocomplete/AutocompleteFreeSolo'
+import SourceCodeAutocompleteFreeSolo from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteFreeSolo'
+import AutocompleteCreatable from '@site/src/pages/form-elements/autocomplete/AutocompleteCreatable'
+import SourceCodeAutocompleteCreatable from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteCreatable'
+import AutocompleteLimitTags from '@site/src/pages/form-elements/autocomplete/AutocompleteLimitTags'
+import SourceCodeAutocompleteLimitTags from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteLimitTags'
+import AutocompleteSmallSize from '@site/src/pages/form-elements/autocomplete/AutocompleteSmallSize'
+import SourceCodeAutocompleteSmallSize from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteSmallSize'
+import AutocompleteCheckboxes from '@site/src/pages/form-elements/autocomplete/AutocompleteCheckboxes'
+import SourceCodeAutocompleteCheckboxes from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteCheckboxes'
+import AutocompleteCustomInput from '@site/src/pages/form-elements/autocomplete/AutocompleteCustomInput'
+import SourceCodeAutocompleteCustomInput from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteCustomInput'
+import AutocompleteFixedOptions from '@site/src/pages/form-elements/autocomplete/AutocompleteFixedOptions'
+import SourceCodeAutocompleteFixedOptions from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteFixedOptions'
+import AutocompleteCustomFilter from '@site/src/pages/form-elements/autocomplete/AutocompleteCustomFilter'
+import SourceCodeAutocompleteCustomFilter from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteCustomFilter'
+import AutocompleteMultipleValues from '@site/src/pages/form-elements/autocomplete/AutocompleteMultipleValues'
+import SourceCodeAutocompleteMultipleValues from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteMultipleValues'
+import AutocompleteDisabledOptions from '@site/src/pages/form-elements/autocomplete/AutocompleteDisabledOptions'
+import SourceCodeAutocompleteDisabledOptions from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteDisabledOptions'
+import AutocompleteControlledUncontrolled from '@site/src/pages/form-elements/autocomplete/AutocompleteControlledUncontrolled'
+import SourceCodeAutocompleteControlledUncontrolled from '!!raw-loader!@site/src/pages/form-elements/autocomplete/AutocompleteControlledUncontrolled'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader
+    title='Autocomplete'
+    subtitle='The autocomplete is a normal text input enhanced by a panel of suggested options.'
+    href='https://mui.com/material-ui/react-autocomplete/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Variants'
+      code={SourceCodeAutocompleteVariants}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant={`{'filled' | 'standard'}`}</code> prop with <code>TextField</code> component in <code>renderInput</code> prop with <code>Autocomplete</code> component for different variants of input. Use <code>disabled</code> prop with <code>Autocomplete</code> component for disabled autocomplete.
+      </Typography>
+      <AutocompleteVariants />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <CardSnippet
+        title='Controlled and Uncontrolled'
+        code={SourceCodeAutocompleteControlledUncontrolled}
+        >
+          <Typography sx={{ mb: 4 }}>
+            Use <code>value</code> prop with <code>Autocomplete</code> component for controlled autocomplete input.
+          </Typography>
+          <AutocompleteControlledUncontrolled />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12}>
+        <CardSnippet
+        title='Free Solo'
+        code={SourceCodeAutocompleteFreeSolo}
+        >
+          <Typography sx={{ mb: 4 }}>
+            Use <code>freeSolo</code> prop so the textbox can contain any arbitrary value.
+          </Typography>
+          <AutocompleteFreeSolo />
+        </CardSnippet>
+      </Grid>
+    </Grid>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Autocomplete Props'
+      code={SourceCodeAutocompleteProps}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Each of the following examples demonstrate one feature of <code>Autocomplete</code> component.
+      </Typography>
+      <AutocompleteProps />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <CardSnippet
+          title='Country Select'
+          code={SourceCodeAutocompleteCountry}
+        >
+          <Typography sx={{ mb: 4 }}>
+            Choose one of the countries.
+          </Typography>
+          <AutocompleteCountry />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12}>
+        <CardSnippet
+          title='Creatable'
+          code={SourceCodeAutocompleteCreatable}
+        >
+          <Typography sx={{ mb: 4 }}>
+            You can create an option other than from the list.
+          </Typography>
+          <AutocompleteCreatable />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12}>
+        <CardSnippet
+          title='Multiple Values'
+          code={SourceCodeAutocompleteMultipleValues}
+        >
+          <Typography sx={{ mb: 4 }}>
+            Use <code>multiple</code> prop to select multiple options from the list.
+          </Typography>
+          <AutocompleteMultipleValues />
+        </CardSnippet>
+      </Grid>
+    </Grid>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Disabled Options'
+      code={SourceCodeAutocompleteDisabledOptions}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>getOptionDisabled</code> prop to disable some options from the list.
+      </Typography>
+      <AutocompleteDisabledOptions />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Grouped'
+      code={SourceCodeAutocompleteGrouped}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>groupBy</code> prop to group the list according to your needs.
+      </Typography>
+      <AutocompleteGrouped />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Checkboxes'
+      code={SourceCodeAutocompleteCheckboxes}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>Checkbox</code> component in <code>renderOption</code> prop to render checkbox in options.
+      </Typography>
+      <AutocompleteCheckboxes />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Fixed Options'
+      code={SourceCodeAutocompleteFixedOptions}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can fix an option in the input and add any other option as well.
+      </Typography>
+      <AutocompleteFixedOptions />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Small Size'
+      code={SourceCodeAutocompleteSmallSize}
+    >
+      <Typography sx={{ mb: 5 }}>
+        Use <code>size='small'</code> prop for small sized input.
+      </Typography>
+      <AutocompleteSmallSize />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Limit Tags'
+      code={SourceCodeAutocompleteLimitTags}
+    >
+      <Typography sx={{ mb: 6 }}>
+        Use <code>limitTags</code> prop to limit tags in the input.
+      </Typography>
+      <AutocompleteLimitTags />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Custom Filter'
+      code={SourceCodeAutocompleteCustomFilter}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>filterOptions</code> prop to filter the search according to your needs.
+      </Typography>
+      <AutocompleteCustomFilter />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Custom Input'
+      code={SourceCodeAutocompleteCustomInput}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>renderInput</code> prop to customize the rendered input.
+      </Typography>
+      <AutocompleteCustomInput />
+    </CardSnippet>
+  </Grid>
+</Grid>

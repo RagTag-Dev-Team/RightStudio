@@ -1,0 +1,38 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Timeline
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import TimelineFilled from '@site/src/pages/components/timeline/TimelineFilled'
+import SourceCodeTimelineFilled from '!!raw-loader!@site/src/pages/components/timeline/TimelineFilled'
+import TimelineOutlined from '@site/src/pages/components/timeline/TimelineOutlined'
+import SourceCodeTimelineOutlined from '!!raw-loader!@site/src/pages/components/timeline/TimelineOutlined'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader 
+    title='Timeline'
+    subtitle='The timeline displays a list of events in chronological order.'
+    href='https://mui.com/material-ui/react-timeline/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Timeline Filled'
+      code={SourceCodeTimelineFilled}
+    >
+      <TimelineFilled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Timeline Outlined'
+      code={SourceCodeTimelineOutlined}
+    >
+      <TimelineOutlined />
+    </CardSnippet>
+  </Grid>
+</Grid>

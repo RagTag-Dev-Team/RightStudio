@@ -1,0 +1,108 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Picker
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import PickersTime from '@site/src/pages/form-elements/pickers/PickersTime'
+import SourceCodePickersTime from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersTime'
+import PickersBasic from '@site/src/pages/form-elements/pickers/PickersBasic'
+import SourceCodePickersBasic from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersBasic'
+import PickersRange from '@site/src/pages/form-elements/pickers/PickersRange'
+import SourceCodePickersRange from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersRange'
+import PickersMinMax from '@site/src/pages/form-elements/pickers/PickersMinMax'
+import SourceCodePickersMinMax from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersMinMax'
+import PickersOptions from '@site/src/pages/form-elements/pickers/PickersOptions'
+import SourceCodePickersOptions from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersOptions'
+import PickersCallbacks from '@site/src/pages/form-elements/pickers/PickersCallbacks'
+import SourceCodePickersCallbacks from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersCallbacks'
+import PickersSpecificRange from '@site/src/pages/form-elements/pickers/PickersSpecificRange'
+import SourceCodePickersSpecificRange from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersSpecificRange'
+import PickersCustomization from '@site/src/pages/form-elements/pickers/PickersCustomization'
+import SourceCodePickersCustomization from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersCustomization'
+import PickersIncludeExclude from '@site/src/pages/form-elements/pickers/PickersIncludeExclude'
+import SourceCodePickersIncludeExclude from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersIncludeExclude'
+import PickersMonthYearQuarter from '@site/src/pages/form-elements/pickers/PickersMonthYearQuarter'
+import SourceCodePickersMonthYearQuarter from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersMonthYearQuarter'
+import PickersMonthYearDropdowns from '@site/src/pages/form-elements/pickers/PickersMonthYearDropdowns'
+import SourceCodePickersMonthYearDropdowns from '!!raw-loader!@site/src/pages/form-elements/pickers/PickersMonthYearDropdowns'
+
+import DatePickerWrapper from '@site/src/components/styled-components/react-datepicker'
+
+import PageHeader from '@site/src/components/page-header'
+
+<DatePickerWrapper>
+  <Grid container spacing={6}>
+  <PageHeader
+    title='Date Picker'
+    subtitle='The Date Picker component lets the user select a date.'
+    href='https://mui.com/x/react-date-pickers/date-picker/'
+  />
+    <Grid item xs={12}>
+      <CardSnippet title='Date Picker' code={SourceCodePickersBasic}>
+        <PickersBasic />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Time Pickers' code={SourceCodePickersTime}>
+        <PickersTime />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Min & Max Pickers' code={SourceCodePickersMinMax}>
+        <PickersMinMax />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Date Range Pickers' code={SourceCodePickersRange}>
+        <PickersRange />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Specific Range' code={SourceCodePickersSpecificRange}>
+        <PickersSpecificRange />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Include & Exclude'
+        code={SourceCodePickersIncludeExclude}
+      >
+        <PickersIncludeExclude />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet
+        title='Month & Year Dropdowns'
+        code={SourceCodePickersMonthYearDropdowns}
+      >
+        <PickersMonthYearDropdowns />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet
+        title='Month, Year & Quarter'
+        code={SourceCodePickersMonthYearQuarter}
+      >
+        <PickersMonthYearQuarter />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet title='Options' code={SourceCodePickersOptions}>
+        <PickersOptions />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Callbacks' code={SourceCodePickersCallbacks}>
+        <PickersCallbacks />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <CardSnippet title='Customization' code={SourceCodePickersCustomization}>
+        <PickersCustomization />
+      </CardSnippet>
+    </Grid>
+  </Grid>
+</DatePickerWrapper>

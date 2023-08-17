@@ -1,0 +1,124 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: List
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import ListUsers from '@site/src/pages/components/list/ListUsers'
+import SourceCodeListUsers from '!!raw-loader!@site/src/pages/components/list/ListUsers'
+import ListDense from '@site/src/pages/components/list/ListDense'
+import SourceCodeListDense from '!!raw-loader!@site/src/pages/components/list/ListDense'
+import ListBasic from '@site/src/pages/components/list/ListBasic'
+import SourceCodeListBasic from '!!raw-loader!@site/src/pages/components/list/ListBasic'
+import ListNested from '@site/src/pages/components/list/ListNested'
+import SourceCodeListNested from '!!raw-loader!@site/src/pages/components/list/ListNested'
+import ListSecondary from '@site/src/pages/components/list/ListSecondary'
+import SourceCodeListSecondary from '!!raw-loader!@site/src/pages/components/list/ListSecondary'
+import ListWithSwitch from '@site/src/pages/components/list/ListWithSwitch'
+import SourceCodeListWithSwitch from '!!raw-loader!@site/src/pages/components/list/ListWithSwitch'
+import ListItemSelected from '@site/src/pages/components/list/ListItemSelected'
+import SourceCodeListItemSelected from '!!raw-loader!@site/src/pages/components/list/ListItemSelected'
+import ListWithCheckbox from '@site/src/pages/components/list/ListWithCheckbox'
+import SourceCodeListWithCheckbox from '!!raw-loader!@site/src/pages/components/list/ListWithCheckbox'
+import ListStickySubheader from '@site/src/pages/components/list/ListStickySubheader'
+import SourceCodeListStickySubheader from '!!raw-loader!@site/src/pages/components/list/ListStickySubheader'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader
+    title='List'
+    subtitle='List are continuous, vertical indexes of text or images.'
+    href='https://mui.com/material-ui/react-list/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Basic List'
+      code={SourceCodeListBasic}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Lists are a continuous group of text or images.
+      </Typography>
+      <ListBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Nested List'
+      code={SourceCodeListNested}
+    >
+      <ListNested />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Dense List'
+      code={SourceCodeListDense}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>dense</code> prop with <code>&lt;List&gt;</code> component for dense list.
+      </Typography>
+      <ListDense />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='List with Secondary Text'
+      code={SourceCodeListSecondary}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>secondary</code> prop with <code>&lt;ListItemText&gt;</code> component for secondary text.
+      </Typography>
+      <ListSecondary />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Selected List Item'
+      code={SourceCodeListItemSelected}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>selected</code> prop with the help of a state.
+      </Typography>
+      <ListItemSelected />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='List with Checkbox'
+      code={SourceCodeListWithCheckbox}
+    >
+      <ListWithCheckbox />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='List with Switch'
+      code={SourceCodeListWithSwitch}
+    >
+      <ListWithSwitch />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Sticky Subheader'
+      code={SourceCodeListStickySubheader}
+    >
+      <Typography sx={{ mb: 4 }}>
+        <code>&lt;ListSubheader&gt;</code> is by default sticky.
+      </Typography>
+      <ListStickySubheader />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Users List'
+      code={SourceCodeListUsers}
+    >
+      <ListUsers />
+    </CardSnippet>
+  </Grid>
+</Grid>

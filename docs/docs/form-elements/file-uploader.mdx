@@ -1,0 +1,51 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: File Uploader
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import DropzoneWrapper from '@site/src/components/styled-components/react-dropzone'
+import FileUploaderSingle from '@site/src/pages/form-elements/file-uploader/FileUploaderSingle'
+import SourceCodeFileUploaderSingle from '!!raw-loader!@site/src/pages/form-elements/file-uploader/FileUploaderSingle'
+import FileUploaderMultiple from '@site/src/pages/form-elements/file-uploader/FileUploaderMultiple'
+import SourceCodeFileUploaderMultiple from '!!raw-loader!@site/src/pages/form-elements/file-uploader/FileUploaderMultiple'
+import FileUploaderRestrictions from '@site/src/pages/form-elements/file-uploader/FileUploaderRestrictions'
+import SourceCodeFileUploaderRestrictions from '!!raw-loader!@site/src/pages/form-elements/file-uploader/FileUploaderRestrictions'
+
+import PageHeader from '@site/src/components/page-header'
+
+<DropzoneWrapper>
+  <Grid container spacing={6}>
+    <PageHeader 
+      title='React Dropzone'
+      subtitle='Simple HTML5 drag-drop zone with React.js'
+      href='https://github.com/react-dropzone/react-dropzone/'
+    />
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Upload Multiple Files'
+        code={SourceCodeFileUploaderMultiple}
+      >
+        <FileUploaderMultiple />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Upload Single Files'
+        code={SourceCodeFileUploaderSingle}
+      >
+        <FileUploaderSingle />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Upload Files with Restrictions'
+        code={SourceCodeFileUploaderRestrictions}
+      >
+        <FileUploaderRestrictions />
+      </CardSnippet>
+    </Grid>
+  </Grid>
+</DropzoneWrapper>

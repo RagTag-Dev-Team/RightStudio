@@ -1,0 +1,70 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Custom Inputs
+---
+
+import Grid from '@mui/material/Grid'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import CustomRadioWithImage from '@site/src/pages/form-elements/custom-inputs/CustomRadioWithImage'
+import SourceCodeCustomRadioWithImage from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomRadioWithImage'
+import CustomHorizontalRadio from '@site/src/pages/form-elements/custom-inputs/CustomHorizontalRadio'
+import SourceCodeCustomHorizontalRadio from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomHorizontalRadio'
+import CustomVerticalRadioIcon from '@site/src/pages/form-elements/custom-inputs/CustomVerticalRadioIcon'
+import SourceCodeCustomVerticalRadioIcon from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalRadioIcon'
+import CustomCheckboxWithImage from '@site/src/pages/form-elements/custom-inputs/CustomCheckboxWithImage'
+import SourceCodeCustomCheckboxWithImage from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomCheckboxWithImage'
+import CustomHorizontalCheckbox from '@site/src/pages/form-elements/custom-inputs/CustomHorizontalCheckbox'
+import SourceCodeCustomHorizontalCheckbox from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomHorizontalCheckbox'
+import CustomVerticalCheckboxIcon from '@site/src/pages/form-elements/custom-inputs/CustomVerticalCheckboxIcon'
+import SourceCodeCustomVerticalCheckboxIcon from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalCheckboxIcon'
+import CustomVerticalCheckboxSVG from '@site/src/pages/form-elements/custom-inputs/CustomVerticalCheckboxSVG'
+import SourceCodeCustomVerticalCheckboxSVG from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalCheckboxSVG'
+import CustomVerticalRadioSVG from '@site/src/pages/form-elements/custom-inputs/CustomVerticalRadioSVG'
+import SourceCodeCustomVerticalRadioSVG from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalRadioSVG'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader title='Custom Inputs'/>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Horizontal Radios' code={SourceCodeCustomHorizontalRadio}>
+      <CustomHorizontalRadio />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Horizontal Checkboxes' code={SourceCodeCustomHorizontalCheckbox}>
+      <CustomHorizontalCheckbox />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Vertical Radios With Icon' code={SourceCodeCustomVerticalRadioIcon}>
+      <CustomVerticalRadioIcon />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Vertical Checkboxes With Icon' code={SourceCodeCustomVerticalCheckboxIcon}>
+      <CustomVerticalCheckboxIcon />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Vertical Radio With SVG' code={SourceCodeCustomVerticalRadioSVG}>
+      <CustomVerticalRadioSVG />
+    </CardSnippet>
+  </Grid>
+   <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Vertical Checkboxes With SVG' code={SourceCodeCustomVerticalCheckboxSVG}>
+      <CustomVerticalCheckboxSVG />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Radios with Images' code={SourceCodeCustomRadioWithImage}>
+      <CustomRadioWithImage />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} lg={6}>
+    <CardSnippet title='Custom Checkboxes with Images' code={SourceCodeCustomCheckboxWithImage}>
+      <CustomCheckboxWithImage />
+    </CardSnippet>
+  </Grid>
+</Grid>

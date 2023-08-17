@@ -1,0 +1,152 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Swiper
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import KeenSliderWrapper from '@site/src/components/styled-components/keen-slider'
+import SwiperLoop from '@site/src/pages/components/swiper/SwiperLoop'
+import SourceCodeSwiperLoop from '!!raw-loader!@site/src/pages/components/swiper/SwiperLoop'
+import SwiperZoom from '@site/src/pages/components/swiper/SwiperZoom'
+import SourceCodeSwiperZoom from '!!raw-loader!@site/src/pages/components/swiper/SwiperZoom'
+import SwiperFader from '@site/src/pages/components/swiper/SwiperFader'
+import SourceCodeSwiperFader from '!!raw-loader!@site/src/pages/components/swiper/SwiperFader'
+import SwiperDefault from '@site/src/pages/components/swiper/SwiperDefault'
+import SourceCodeSwiperDefault from '!!raw-loader!@site/src/pages/components/swiper/SwiperDefault'
+import SwiperSpacing from '@site/src/pages/components/swiper/SwiperSpacing'
+import SourceCodeSwiperSpacing from '!!raw-loader!@site/src/pages/components/swiper/SwiperSpacing'
+import SwiperFreeMode from '@site/src/pages/components/swiper/SwiperFreeMode'
+import SourceCodeSwiperFreeMode from '!!raw-loader!@site/src/pages/components/swiper/SwiperFreeMode'
+import SwiperCentered from '@site/src/pages/components/swiper/SwiperCentered'
+import SourceCodeSwiperCentered from '!!raw-loader!@site/src/pages/components/swiper/SwiperCentered'
+import SwiperVertical from '@site/src/pages/components/swiper/SwiperVertical'
+import SourceCodeSwiperVertical from '!!raw-loader!@site/src/pages/components/swiper/SwiperVertical'
+import SwiperControls from '@site/src/pages/components/swiper/SwiperControls'
+import SourceCodeSwiperControls from '!!raw-loader!@site/src/pages/components/swiper/SwiperControls'
+import SwiperThumbnails from '@site/src/pages/components/swiper/SwiperThumbnails'
+import SourceCodeSwiperThumbnails from '!!raw-loader!@site/src/pages/components/swiper/SwiperThumbnails'
+import SwiperAutoSwitch from '@site/src/pages/components/swiper/SwiperAutoSwitch'
+import SourceCodeSwiperAutoSwitch from '!!raw-loader!@site/src/pages/components/swiper/SwiperAutoSwitch'
+import SwiperMultipleSlides from '@site/src/pages/components/swiper/SwiperMultipleSlides'
+import SourceCodeSwiperMultipleSlides from '!!raw-loader!@site/src/pages/components/swiper/SwiperMultipleSlides'
+import SwiperMutationObserver from '@site/src/pages/components/swiper/SwiperMutationObserver'
+import SourceCodeSwiperMutationObserver from '!!raw-loader!@site/src/pages/components/swiper/SwiperMutationObserver'
+
+import PageHeader from '@site/src/components/page-header'
+
+<KeenSliderWrapper>
+  <Grid container spacing={6}>
+  <PageHeader
+    title='Keen Slider'
+    subtitle='Easily create sliders, carousels and much more'
+    href='https://github.com/rcbyr/keen-slider'
+  />
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Default'
+        code={SourceCodeSwiperDefault}
+      >
+        <SwiperDefault />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Loop'
+        code={SourceCodeSwiperLoop}
+      >
+        <SwiperLoop />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Multiple Slides'
+        code={SourceCodeSwiperMultipleSlides}
+      >
+        <SwiperMultipleSlides />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Spacing'
+        code={SourceCodeSwiperSpacing}
+      >
+        <SwiperSpacing />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='FreeMode'
+        code={SourceCodeSwiperFreeMode}
+      >
+        <SwiperFreeMode />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Centered'
+        code={SourceCodeSwiperCentered}
+      >
+        <SwiperCentered />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Vertical'
+        code={SourceCodeSwiperVertical}
+      >
+        <SwiperVertical />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Controls'
+        code={SourceCodeSwiperControls}
+      >
+        <SwiperControls />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Thumbnails'
+        code={SourceCodeSwiperThumbnails}
+      >
+        <SwiperThumbnails />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Fader'
+        code={SourceCodeSwiperFader}
+      >
+        <SwiperFader />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Zoom'
+        code={SourceCodeSwiperZoom}
+      >
+        <SwiperZoom />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Auto Switch'
+        code={SourceCodeSwiperAutoSwitch}
+      >
+        <SwiperAutoSwitch />
+      </CardSnippet>
+    </Grid>
+    <Grid item xs={12}>
+      <CardSnippet
+        title='Mutation Observer'
+        code={SourceCodeSwiperMutationObserver}
+      >
+        <SwiperMutationObserver />
+      </CardSnippet>
+    </Grid>
+  </Grid>
+</KeenSliderWrapper>

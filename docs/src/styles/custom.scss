@@ -8,10 +8,11 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-link-color: var(--mui-palette-primary-main);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-html[data-theme='dark'] {
+[data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -22,6 +23,27 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.theme-back-to-top-button {
+  bottom: 2.2rem !important
+}
+
+.markdown li + li {
+  margin-top: 0;
+}
+.markdown li:not([class]) + li {
+  margin-top: var(--ifm-list-item-margin)
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+p:not([class]) {
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+}
 
 @import './buy-now-button.scss';
-@import './card-snippet.scss';
+@import './table.scss';

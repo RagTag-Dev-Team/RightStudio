@@ -1,0 +1,123 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Pagination
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import CardSnippet from '@site/src/components/card-snippet/index'
+import PaginationSizes from '@site/src/pages/components/pagination/PaginationSizes'
+import SourceCodePaginationSizes from '!!raw-loader!@site/src/pages/components/pagination/PaginationSizes'
+import PaginationBasic from '@site/src/pages/components/pagination/PaginationBasic'
+import SourceCodePaginationBasic from '!!raw-loader!@site/src/pages/components/pagination/PaginationBasic'
+import PaginationRanges from '@site/src/pages/components/pagination/PaginationRanges'
+import SourceCodePaginationRanges from '!!raw-loader!@site/src/pages/components/pagination/PaginationRanges'
+import PaginationRounded from '@site/src/pages/components/pagination/PaginationRounded'
+import SourceCodePaginationRounded from '!!raw-loader!@site/src/pages/components/pagination/PaginationRounded'
+import PaginationButtons from '@site/src/pages/components/pagination/PaginationButtons' 
+import SourceCodePaginationButtons from '!!raw-loader!@site/src/pages/components/pagination/PaginationButtons' 
+import PaginationOutlined from '@site/src/pages/components/pagination/PaginationOutlined'    
+import SourceCodePaginationOutlined from '!!raw-loader!@site/src/pages/components/pagination/PaginationOutlined'    
+import PaginationDisabled from '@site/src/pages/components/pagination/PaginationDisabled'
+import SourceCodePaginationDisabled from '!!raw-loader!@site/src/pages/components/pagination/PaginationDisabled'
+import PaginationControlled from '@site/src/pages/components/pagination/PaginationControlled'
+import SourceCodePaginationControlled from '!!raw-loader!@site/src/pages/components/pagination/PaginationControlled'
+
+import PageHeader from '@site/src/components/page-header'
+
+<Grid container spacing={6}>
+  <PageHeader 
+    title='Pagination'
+    subtitle='The Pagination component enables the user to select a specific page from a range of pages.'
+    href='https://mui.com/material-ui/react-pagination/'
+  />
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Basic Pagination'
+      code={SourceCodePaginationBasic}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use the following props with <code>Pagination</code> component: <code>count</code> prop for number of page items and <code>color</code> prop for different colored pagination.
+      </Typography>
+      <PaginationBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Outlined Pagination'
+      code={SourceCodePaginationOutlined}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>variant='outlined'</code> prop for outlined pagination.
+      </Typography>
+      <PaginationOutlined />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Disabled Pagination'
+      code={SourceCodePaginationDisabled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>disabled</code> prop with <code>Pagination</code> component to disable the whole pagination.
+      </Typography>
+      <PaginationDisabled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Rounded Pagination'
+      code={SourceCodePaginationRounded}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>shape='rounded'</code> prop for rounded pagination.
+      </Typography>
+      <PaginationRounded />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Sizes'
+      code={SourceCodePaginationSizes}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>size={`{'small' | 'large'}`}</code> prop for different sizes of pagination.
+      </Typography>
+      <PaginationSizes />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Buttons'
+      code={SourceCodePaginationButtons}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Use <code>showFirstButton</code> & <code>showLastButton</code> props to show first-page and last-page buttons and <code>hidePrevButton</code> & <code>hideNextButton</code> props to hide previous-page and next-page buttons.
+      </Typography>
+      <PaginationButtons />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Controlled Pagination'
+      code={SourceCodePaginationControlled}
+    >
+      <Typography sx={{ mb: 4 }}>
+        Manage <code>page</code> and <code>onChange</code> props with the help of a state.
+      </Typography>
+      <PaginationControlled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Pagination Ranges'
+      code={SourceCodePaginationRanges}
+    >
+      <Typography sx={{ mb: 4 }}>
+        You can specify how many digits to display either side of current page with the <code>siblingRange</code> prop, and adjacent to the start and end page number with the <code>boundaryRange</code> prop.
+      </Typography>
+      <PaginationRanges />
+    </CardSnippet>
+  </Grid>
+</Grid>
