@@ -5,16 +5,16 @@ import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Component Imports from @menu-package
-import { Menu /* SubMenu, MenuItem, MenuSection */ } from '../../../@menu-package/vertical-menu'
+import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/vertical-menu'
 
 // Icon Imports
-// import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
+import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
 
 // Util Imports
-import { generateVerticalMenu } from '../../../utils/menuUtils'
+// import { generateVerticalMenu } from '../../../utils/menuUtils'
 
 // Menu Data Imports
-import menuData from '../../../data/navigation/VerticalMenuData'
+// import menuData from '../../../data/navigation/VerticalMenuData'
 
 const VerticalMenu = () => {
   // Hooks
@@ -26,7 +26,7 @@ const VerticalMenu = () => {
     <PerfectScrollbar options={{ wheelPropagation: false }}>
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>
           <MenuItem>{t('navigation.eCommerce')}</MenuItem>
@@ -146,10 +146,10 @@ const VerticalMenu = () => {
             <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />}>{t('navigation.documentation')}</MenuItem>
           </SubMenu>
         </MenuSection>
-      </Menu> */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
-        {generateVerticalMenu(menuData())}
       </Menu>
+      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        {generateVerticalMenu(menuData())}
+      </Menu> */}
     </PerfectScrollbar>
   )
 }

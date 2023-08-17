@@ -1,23 +1,23 @@
 'use client'
 
 // Component Imports
-// import { RouterLink } from '../../../@menu-package/components/RouterLink'
-import HorizontalNav, { Menu /* SubMenu, MenuItem */ } from '../../../@menu-package/horizontal-menu'
+import { RouterLink } from '../../../@menu-package/components/RouterLink'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
 
 // Context Imports
 import { HorizontalNavProvider } from '../../../@menu-package/contexts/horizontalNavContext'
 
 // Util Imports
-import { generateHorizontalMenu } from '../../../utils/menuUtils'
+// import { generateHorizontalMenu } from '../../../utils/menuUtils'
 
 // Menu Data Imports
-import menuData from '../../../data/navigation/HorizontalMenuData'
+// import menuData from '../../../data/navigation/HorizontalMenuData'
 
 const HorizontalMenu = () => {
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
-        {/* <Menu
+        <Menu
           menuItemStyles={{ button: { paddingBlock: '12px' } }}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
@@ -39,8 +39,8 @@ const HorizontalMenu = () => {
             <MenuItem href='/user-list'>User List</MenuItem>
             <MenuItem href='/user-details'>User Details</MenuItem>
           </SubMenu>
-        </Menu> */}
-        <Menu>{generateHorizontalMenu(menuData())}</Menu>
+        </Menu>
+        {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}
       </HorizontalNav>
     </HorizontalNavProvider>
   )

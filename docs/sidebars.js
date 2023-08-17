@@ -17,12 +17,12 @@ const sidebars = {
   tutorialSidebar: [
     'intro',
     'tags',
-    'button',
     {
       type: 'category',
       label: 'Authentication',
       items: ['authentication/intro', 'authentication/credentials-provider', 'authentication/google-prisma', 'authentication/remove-auth', 'authentication/add-auth']
     },
+    'content-scroll-lock',
     {
       type: 'category',
       label: 'Tutorial - Basics',
