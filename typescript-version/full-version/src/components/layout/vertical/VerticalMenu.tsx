@@ -133,9 +133,9 @@ const VerticalMenu = () => {
           </SubMenu>
         </MenuSection>
         <MenuSection label={t('navigation.forms')}>
-          <MenuItem>{t('navigation.formLayouts')}</MenuItem>
-          <MenuItem>{t('navigation.formValidation')}</MenuItem>
-          <MenuItem>{t('navigation.formWizard')}</MenuItem>
+          <MenuItem href='/forms/form-layouts'>{t('navigation.formLayouts')}</MenuItem>
+          <MenuItem href='/forms/form-validation'>{t('navigation.formValidation')}</MenuItem>
+          <MenuItem href='/forms/form-wizard'>{t('navigation.formWizard')}</MenuItem>
         </MenuSection>
         <MenuSection label={t('navigation.chartsMisc')}>
           <SubMenu label={t('navigation.charts')}>

@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 
 // Third-party Imports
 import classnames from 'classnames'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: ChildrenType) {
       <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
         <I18n lang={lang} />
         {children}
+        <ToastContainer />
       </body>
     </html>
   )
