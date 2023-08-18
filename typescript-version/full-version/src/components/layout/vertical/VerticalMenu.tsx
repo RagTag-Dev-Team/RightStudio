@@ -185,9 +185,10 @@ const VerticalMenu = () => {
         </MenuSection>
         <MenuSection label={t('navigation.chartsMisc')}>
           <SubMenu label={t('navigation.charts')}>
-            <MenuItem>{t('navigation.apex')}</MenuItem>
-            <MenuItem>{t('navigation.recharts')}</MenuItem>
-            <MenuItem>{t('navigation.chartJS')}</MenuItem>
+            <MenuItem href='/charts/apex-charts'>{t('navigation.apex')}</MenuItem>
+            <MenuItem href='/charts/recharts'>{t('navigation.recharts')}</MenuItem>
+            <MenuItem href='/charts/echarts'>{t('navigation.echarts')}</MenuItem>
+            <MenuItem href='/charts/echarts-advance'>Echarts Advance</MenuItem>
           </SubMenu>
           <MenuItem>{t('navigation.accessControl')}</MenuItem>
           <SubMenu label={t('navigation.others')}>
