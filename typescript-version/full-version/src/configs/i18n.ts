@@ -1,7 +1,7 @@
 'use client'
 
 // Next Imports
-import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
+import type { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
 // Third-party Imports
 import { use } from 'i18next'

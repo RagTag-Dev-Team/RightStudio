@@ -1,6 +1,3 @@
-// Next Imports
-import { cookies } from 'next/headers'
-
 // Type Imports
 import type { ChildrenType } from '../../@core/types'
 
@@ -18,13 +15,11 @@ import VerticalFooter from '../../components/layout/vertical/Footer'
 import HorizontalFooter from '../../components/layout/horizontal/Footer'
 import Customizer from '../../@core/components/customizer'
 
-// Data Imports
-import { langDirection } from '../../data/translation/langDirection'
+// Util Imports
+import { getDirection } from '../../utils/commonUtils'
 
 const Layout = ({ children }: ChildrenType) => {
-  // Read Cookie
-  const lang = cookies().get('lang')
-  const dir = langDirection[lang?.value || 'en']
+  const dir = getDirection()
 
   return (
     <Providers>

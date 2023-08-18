@@ -1,6 +1,4 @@
 // Next Imports
-import { headers } from 'next/headers'
-
 import type { Metadata } from 'next'
 
 // Components Imports

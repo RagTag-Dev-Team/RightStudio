@@ -7,12 +7,17 @@ import { useCallback, useEffect } from 'react'
 import { useCookie } from 'react-use'
 import { useTranslation } from 'react-i18next'
 
+// Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
+
 // Data Imports
 import { langDirection } from '../../../data/translation/langDirection'
 
 const Translation = () => {
   // Hooks
   const { i18n } = useTranslation()
+  const { updateSettings } = useSettings()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, updateCookie] = useCookie('lang')
 
   const direction = langDirection[i18n.language]
@@ -29,6 +34,7 @@ const Translation = () => {
     document.documentElement.setAttribute('lang', i18n.language)
     document.documentElement.setAttribute('dir', direction || 'ltr')
     updateCookie(i18n.language)
+    updateSettings({ languageForCustomizer: i18n.language })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language])
 

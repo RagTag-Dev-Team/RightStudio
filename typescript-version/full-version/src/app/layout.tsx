@@ -1,6 +1,5 @@
 // Next Imports
 import { Inter } from 'next/font/google'
-import { cookies } from 'next/headers'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -12,8 +11,8 @@ import type { ChildrenType } from '../@core/types'
 // Component Imports
 import I18n from '../configs/i18n'
 
-// Data Imports
-import { langDirection } from '../data/translation/langDirection'
+// Util Imports
+import { getLanguage, getDirection } from '../utils/commonUtils'
 
 // Style Imports
 //! Do not remove the `utils.css` import below otherwise it will break the template styling
@@ -28,8 +27,8 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: ChildrenType) {
-  const lang = cookies().get('lang')
-  const direction = langDirection[lang?.value || 'en']
+  const lang = getLanguage()
+  const direction = getDirection()
 
   return (
     <html lang='en' dir={direction} className='flex is-full min-bs-full'>

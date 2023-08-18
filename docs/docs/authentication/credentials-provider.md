@@ -55,13 +55,13 @@ The implementation of the authentication logic should be performed within the `s
   ```tsx
   // Third-party Imports
   import type { NextAuthOptions } from 'next-auth'
-  import CredentialsProvider from 'next-auth/providers/credentials'
+  import CredentialProvider from 'next-auth/providers/credentials'
 
   export const authOptions: NextAuthOptions = {
     // ** Configure one or more authentication providers
     // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
     providers: [
-      CredentialsProvider({
+      CredentialProvider({
         // ** The name to display on the sign in form (e.g. 'Sign in with...')
         // ** For more details on Credentials Provider, visit https://next-auth.js.org/providers/credentials
         name: 'Credentials',
@@ -173,13 +173,13 @@ The implementation of the authentication logic should be performed within the `s
 
   ```js
   // Third-party Imports
-  import CredentialsProvider from 'next-auth/providers/credentials'
+  import CredentialProvider from 'next-auth/providers/credentials'
 
   export const authOptions = {
     // ** Configure one or more authentication providers
     // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
     providers: [
-      CredentialsProvider({
+      CredentialProvider({
         // ** The name to display on the sign in form (e.g. 'Sign in with...')
         // ** For more details on Credentials Provider, visit https://next-auth.js.org/providers/credentials
         name: 'Credentials',

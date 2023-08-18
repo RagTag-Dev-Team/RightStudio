@@ -37,7 +37,6 @@ import { langDirection } from '../../../data/translation/langDirection'
 
 // Style Imports
 import styles from './styles.module.css'
-import { useTranslation } from 'react-i18next'
 
 type CustomizerProps = {
   breakpoint?: string
@@ -54,7 +53,6 @@ const Customizer = ({ breakpoint = '1200px', dir }: CustomizerProps) => {
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
-  const { i18n } = useTranslation()
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -80,9 +78,10 @@ const Customizer = ({ breakpoint = '1200px', dir }: CustomizerProps) => {
 
   // Update direction state when changing language
   useEffect(() => {
-    const dir = langDirection[i18n.language]
+    const dir = langDirection[settings.languageForCustomizer || 'en']
+
     setDirection(dir)
-  }, [i18n.language])
+  }, [settings.languageForCustomizer])
 
   return (
     !breakpointReached && (

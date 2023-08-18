@@ -1,7 +1,7 @@
 // Third-party Imports
 import type { NextAuthOptions } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
-import CredentialsProvider from 'next-auth/providers/credentials'
+import CredentialProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
   // ** Configure one or more authentication providers
   // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
   providers: [
-    CredentialsProvider({
+    CredentialProvider({
       // ** The name to display on the sign in form (e.g. 'Sign in with...')
       // ** For more details on Credentials Provider, visit https://next-auth.js.org/providers/credentials
       name: 'Credentials',
