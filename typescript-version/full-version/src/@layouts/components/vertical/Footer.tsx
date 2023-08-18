@@ -31,7 +31,7 @@ const Footer = ({ children }: ChildrenType) => {
 
   return (
     <footer
-      className={classnames(verticalLayoutClasses.footer, 'width-100', {
+      className={classnames(verticalLayoutClasses.footer, 'is-full', {
         [`${verticalLayoutClasses.footerDetached} ${styles.footerDetached}`]: footerDetached,
         [`${verticalLayoutClasses.footerAttached} ${styles.footerAttached}`]: footerAttached,
         [verticalLayoutClasses.footerStatic]: footerStatic,

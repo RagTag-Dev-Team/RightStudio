@@ -5,7 +5,7 @@ import { forwardRef } from 'react'
 import type { ForwardRefRenderFunction, CSSProperties, ReactElement, ReactNode } from 'react'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { useRendersCount } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
@@ -86,7 +86,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
       ref={ref}
       rootStyles={rootStyles}
       menuSectionStyles={getMenuSectionStyles('root')}
-      className={classNames(menuClasses.menuSectionRoot, className)}
+      className={classnames(menuClasses.menuSectionRoot, className)}
     >
       {/* Menu Section Content Wrapper */}
       <ul className={menuClasses.menuSectionWrapper} {...rest} style={menuSectionWrapperStyles}>

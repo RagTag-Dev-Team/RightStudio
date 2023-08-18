@@ -5,7 +5,7 @@ import { createContext, forwardRef, useMemo } from 'react'
 import type { ForwardRefRenderFunction, MenuHTMLAttributes, ReactElement } from 'react'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { FloatingTree } from '@floating-ui/react'
 
 // Type Imports
@@ -94,7 +94,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       <FloatingTree>
         <StyledHorizontalMenu
           ref={ref}
-          className={classNames(menuClasses.root, className)}
+          className={classnames(menuClasses.root, className)}
           rootStyles={rootStyles}
           {...rest}
         >

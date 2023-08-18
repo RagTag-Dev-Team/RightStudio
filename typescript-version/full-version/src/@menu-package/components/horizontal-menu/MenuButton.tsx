@@ -3,7 +3,7 @@ import { cloneElement, createElement, forwardRef } from 'react'
 import type { ForwardRefRenderFunction } from 'react'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { css } from '@emotion/react'
 
 // Type Imports
@@ -72,7 +72,7 @@ const MenuButton: ForwardRefRenderFunction<HTMLAnchorElement, MenuButtonProps> =
       return createElement(
         component,
         {
-          className: classNames(className),
+          className: classnames(className),
           ...rest,
           ref
         },
@@ -85,7 +85,7 @@ const MenuButton: ForwardRefRenderFunction<HTMLAnchorElement, MenuButtonProps> =
       return cloneElement(
         component,
         {
-          className: classNames(className, classNameProp),
+          className: classnames(className, classNameProp),
           ...rest,
           ...props,
           ref

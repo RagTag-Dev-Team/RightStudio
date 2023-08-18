@@ -73,7 +73,7 @@ const HorizontalMenu = () => {
               <MenuItem>{t('navigation.security')}</MenuItem>
               <MenuItem>{t('navigation.billingPlans')}</MenuItem>
               <MenuItem>{t('navigation.notifications')}</MenuItem>
-              <MenuItem>{t('navigation.connection')}</MenuItem>
+              <MenuItem>{t('navigation.connections')}</MenuItem>
             </SubMenu>
           </SubMenu>
           <SubMenu label={t('navigation.rolesPermissions')}>
@@ -86,30 +86,7 @@ const HorizontalMenu = () => {
           <MenuItem>{t('navigation.icons')}</MenuItem>
           <SubMenu label={t('navigation.cards')}>
             <MenuItem>{t('navigation.basic')}</MenuItem>
-            <MenuItem>{t('navigation.advanced')}</MenuItem>
             <MenuItem>{t('navigation.actions')}</MenuItem>
-          </SubMenu>
-          <SubMenu label={t('navigation.components')}>
-            <MenuItem>{t('navigation.accordion')}</MenuItem>
-            <MenuItem>{t('navigation.alerts')}</MenuItem>
-            <MenuItem>{t('navigation.avatars')}</MenuItem>
-            <MenuItem>{t('navigation.badges')}</MenuItem>
-            <MenuItem>{t('navigation.buttons')}</MenuItem>
-            <MenuItem>{t('navigation.buttonGroup')}</MenuItem>
-            <MenuItem>{t('navigation.chips')}</MenuItem>
-            <MenuItem>{t('navigation.dialogs')}</MenuItem>
-            <MenuItem>{t('navigation.list')}</MenuItem>
-            <MenuItem>{t('navigation.menu')}</MenuItem>
-            <MenuItem>{t('navigation.pagination')}</MenuItem>
-            <MenuItem>{t('navigation.progress')}</MenuItem>
-            <MenuItem>{t('navigation.ratings')}</MenuItem>
-            <MenuItem>{t('navigation.snackbar')}</MenuItem>
-            <MenuItem>{t('navigation.swiper')}</MenuItem>
-            <MenuItem>{t('navigation.tabs')}</MenuItem>
-            <MenuItem>{t('navigation.timeline')}</MenuItem>
-            <MenuItem>{t('navigation.toasts')}</MenuItem>
-            <MenuItem>{t('navigation.treeView')}</MenuItem>
-            <MenuItem>{t('navigation.more')}</MenuItem>
           </SubMenu>
         </SubMenu>
         <SubMenu label={t('navigation.pages')}>
@@ -122,25 +99,22 @@ const HorizontalMenu = () => {
           <SubMenu label={t('navigation.accountSettings')}>
             <MenuItem>{t('navigation.account')}</MenuItem>
             <MenuItem>{t('navigation.security')}</MenuItem>
-            <MenuItem>{t('navigation.billing')}</MenuItem>
+            <MenuItem>{t('navigation.billingPlans')}</MenuItem>
             <MenuItem>{t('navigation.notifications')}</MenuItem>
             <MenuItem>{t('navigation.connections')}</MenuItem>
           </SubMenu>
           <MenuItem>{t('navigation.faq')}</MenuItem>
-          <MenuItem>{t('navigation.helpCenter')}</MenuItem>
           <MenuItem>{t('navigation.pricing')}</MenuItem>
           <SubMenu label={t('navigation.miscellaneous')}>
             <MenuItem>{t('navigation.comingSoon')}</MenuItem>
             <MenuItem>{t('navigation.underMaintenance')}</MenuItem>
             <MenuItem>{t('navigation.pageNotFound404')}</MenuItem>
             <MenuItem>{t('navigation.notAuthorized401')}</MenuItem>
-            <MenuItem>{t('navigation.serverError500')}</MenuItem>
           </SubMenu>
           <SubMenu label={t('navigation.authPages')}>
             <SubMenu label={t('navigation.login')}>
               <MenuItem href='/login-v1'>{t('navigation.loginV1')}</MenuItem>
               <MenuItem href='/login-v2'>{t('navigation.loginV2')}</MenuItem>
-              <MenuItem>{t('navigation.loginWithAppBar')}</MenuItem>
             </SubMenu>
             <SubMenu label={t('navigation.register')}>
               <MenuItem>{t('navigation.registerV1')}</MenuItem>
@@ -171,27 +145,10 @@ const HorizontalMenu = () => {
           </SubMenu>
           <MenuItem>{t('navigation.dialogExamples')}</MenuItem>
         </SubMenu>
-        <SubMenu label={t('navigation.formsTables')}>
-          <SubMenu label={t('navigation.formElements')}>
-            <MenuItem>{t('navigation.textField')}</MenuItem>
-            <MenuItem>{t('navigation.select')}</MenuItem>
-            <MenuItem>{t('navigation.checkbox')}</MenuItem>
-            <MenuItem>{t('navigation.radio')}</MenuItem>
-            <MenuItem>{t('navigation.customInputs')}</MenuItem>
-            <MenuItem>{t('navigation.textarea')}</MenuItem>
-            <MenuItem>{t('navigation.autocomplete')}</MenuItem>
-            <MenuItem>{t('navigation.datePickers')}</MenuItem>
-            <MenuItem>{t('navigation.switch')}</MenuItem>
-            <MenuItem>{t('navigation.fileUploader')}</MenuItem>
-            <MenuItem>{t('navigation.editor')}</MenuItem>
-            <MenuItem>{t('navigation.slider')}</MenuItem>
-            <MenuItem>{t('navigation.inputMask')}</MenuItem>
-          </SubMenu>
+        <SubMenu label={t('navigation.forms')}>
           <MenuItem>{t('navigation.formLayouts')}</MenuItem>
           <MenuItem>{t('navigation.formValidation')}</MenuItem>
           <MenuItem>{t('navigation.formWizard')}</MenuItem>
-          <MenuItem>{t('navigation.table')}</MenuItem>
-          <MenuItem>{t('navigation.muiDataGrid')}</MenuItem>
         </SubMenu>
         <SubMenu label={t('navigation.charts')}>
           <MenuItem>{t('navigation.apex')}</MenuItem>

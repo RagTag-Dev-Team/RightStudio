@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next'
 
 // Type Imports
-import type { VerticalMenuDataType } from '../../@menu-package/types'
+import type { VerticalMenuDataType } from '../../types/menuTypes'
 
 // Icon Imports
 import LinkExternalIcon from '../../@layouts/svg/LinkExternal'
@@ -74,7 +74,7 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
               label: t('navigation.view'),
               children: [
                 {
-                  label: t('navigation.overview'),
+                  label: t('navigation.account'),
                   href: '/user-details'
                 },
                 {
@@ -87,7 +87,7 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
                   label: t('navigation.notifications')
                 },
                 {
-                  label: t('navigation.connection')
+                  label: t('navigation.connections')
                 }
               ]
             }
@@ -134,7 +134,7 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
                   label: t('navigation.security')
                 },
                 {
-                  label: t('navigation.billing')
+                  label: t('navigation.billingPlans')
                 },
                 {
                   label: t('navigation.notifications')
@@ -147,9 +147,6 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
             },
             {
               label: t('navigation.faq')
-            },
-            {
-              label: t('navigation.helpCenter')
             },
             {
               label: t('navigation.pricing')
@@ -168,9 +165,6 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
                 },
                 {
                   label: t('navigation.notAuthorized401')
-                },
-                {
-                  label: t('navigation.serverError500')
                 }
               ]
             }
@@ -189,9 +183,6 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
                 {
                   label: t('navigation.loginV2'),
                   href: 'login-v2'
-                },
-                {
-                  label: t('navigation.loginWithAppBar')
                 }
               ]
             },
@@ -291,128 +282,16 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
               label: t('navigation.basic')
             },
             {
-              label: t('navigation.advanced')
-            },
-            {
               label: t('navigation.actions')
-            }
-          ]
-        },
-        {
-          label: t('navigation.components'),
-          children: [
-            {
-              label: t('navigation.accordion')
-            },
-            {
-              label: t('navigation.alerts')
-            },
-            {
-              label: t('navigation.avatars')
-            },
-            {
-              label: t('navigation.badges')
-            },
-            {
-              label: t('navigation.buttons')
-            },
-            {
-              label: t('navigation.buttonGroup')
-            },
-            {
-              label: t('navigation.chips')
-            },
-            {
-              label: t('navigation.dialogs')
-            },
-            {
-              label: t('navigation.list')
-            },
-            {
-              label: t('navigation.menu')
-            },
-            {
-              label: t('navigation.pagination')
-            },
-            {
-              label: t('navigation.progress')
-            },
-            {
-              label: t('navigation.ratings')
-            },
-            {
-              label: t('navigation.snackbar')
-            },
-            {
-              label: t('navigation.swiper')
-            },
-            {
-              label: t('navigation.tabs')
-            },
-            {
-              label: t('navigation.timeline')
-            },
-            {
-              label: t('navigation.toasts')
-            },
-            {
-              label: t('navigation.treeView')
-            },
-            {
-              label: t('navigation.more')
             }
           ]
         }
       ]
     },
     {
-      label: t('navigation.formsTables'),
+      label: t('navigation.forms'),
       isSection: true,
       children: [
-        {
-          label: t('navigation.formElements'),
-          children: [
-            {
-              label: t('navigation.textField')
-            },
-            {
-              label: t('navigation.select')
-            },
-            {
-              label: t('navigation.checkbox')
-            },
-            {
-              label: t('navigation.radio')
-            },
-            {
-              label: t('navigation.customInputs')
-            },
-            {
-              label: t('navigation.textarea')
-            },
-            {
-              label: t('navigation.autocomplete')
-            },
-            {
-              label: t('navigation.datePickers')
-            },
-            {
-              label: t('navigation.switch')
-            },
-            {
-              label: t('navigation.fileUploader')
-            },
-            {
-              label: t('navigation.editor')
-            },
-            {
-              label: t('navigation.slider')
-            },
-            {
-              label: t('navigation.inputMask')
-            }
-          ]
-        },
         {
           label: t('navigation.formLayouts')
         },
@@ -421,12 +300,6 @@ const VerticalMenuData = (): VerticalMenuDataType[] => {
         },
         {
           label: t('navigation.formWizard')
-        },
-        {
-          label: t('navigation.table')
-        },
-        {
-          label: t('navigation.muiDataGrid')
         }
       ]
     },

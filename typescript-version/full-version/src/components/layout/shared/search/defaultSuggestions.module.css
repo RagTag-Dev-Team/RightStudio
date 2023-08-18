@@ -1,0 +1,26 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 45px;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-block: 56px;
+  padding-inline: 64px;
+
+  &.smallScreen {
+    display: flex;
+    flex-direction: column;
+    block-size: auto;
+    overflow: auto;
+  }
+}
+
+.section {
+  gap: 1.125rem;
+}
+
+/* Section Title */
+.sectionLabel {
+  text-transform: uppercase;
+  font-size: 12px;
+}

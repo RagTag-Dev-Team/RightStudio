@@ -16,17 +16,17 @@ import themeConfig from '../../configs/themeConfig'
 import useVerticalNav from '../../@menu-package/hooks/useVerticalNav'
 
 // Type Imports
-import type { Mode, Skin, Direction, Layout, LayoutComponentWidth, ChildrenType } from '../types'
+import type { Mode, Skin, Layout, LayoutComponentWidth, ChildrenType } from '../types'
 
 export type Settings = {
   mode?: Mode
   skin?: Skin
   semiDark?: boolean
-  direction?: Direction
   layout?: Layout
   navbarContentWidth?: LayoutComponentWidth
   contentWidth?: LayoutComponentWidth
   footerContentWidth?: LayoutComponentWidth
+  languageForCustomizer?: string
   primaryColor?: 'primary-1' | 'primary-2' | 'primary-3' | 'primary-4' | 'primary-5' | string
 }
 
@@ -43,11 +43,11 @@ const initialSettings: Settings = {
   mode: themeConfig.mode,
   skin: themeConfig.skin,
   semiDark: themeConfig.semiDark,
-  direction: themeConfig.direction,
   layout: themeConfig.layout,
   navbarContentWidth: themeConfig.navbar.contentWidth,
   contentWidth: themeConfig.contentWidth,
   footerContentWidth: themeConfig.footer.contentWidth,
+  languageForCustomizer: 'en',
   primaryColor: 'primary-1'
 }
 

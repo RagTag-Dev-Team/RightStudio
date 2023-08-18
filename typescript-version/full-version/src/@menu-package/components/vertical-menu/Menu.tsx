@@ -8,7 +8,7 @@ import type { ForwardRefRenderFunction, MenuHTMLAttributes, MutableRefObject, Re
 import { usePathname } from 'next/navigation'
 
 // Third-party Imports
-import classNames from 'classnames'
+import classnames from 'classnames'
 import type { CSSObject } from '@emotion/react'
 import { FloatingTree } from '@floating-ui/react'
 
@@ -216,7 +216,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       <FloatingTree>
         <StyledVerticalMenu
           ref={ref}
-          className={classNames(menuClasses.root, className)}
+          className={classnames(menuClasses.root, className)}
           rootStyles={rootStyles}
           {...rest}
         >

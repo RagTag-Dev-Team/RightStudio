@@ -10,18 +10,15 @@
 import { deepmerge } from '@mui/utils'
 import type { Theme } from '@mui/material/styles'
 
-// Type Imports
-import type { Settings } from '../../@core/contexts/settingsContext'
-
 // Core Theme Imports
 import coreTheme from '../../@core/theme'
 
-const mergedTheme = (settings: Settings) => {
+const mergedTheme = (direction: Theme['direction']) => {
   const userTheme: Theme = {
     // Write your overrides here.
   } as Theme
 
-  return deepmerge(coreTheme(settings), userTheme)
+  return deepmerge(coreTheme(direction), userTheme)
 }
 
 export default mergedTheme

@@ -27,7 +27,7 @@ const LayoutContent = ({ children }: ChildrenType) => {
   return (
     <main
       className={classnames(verticalLayoutClasses.content, 'flex-auto', {
-        [`${verticalLayoutClasses.contentCompact} width-100 ${styles.contentCompact}`]: contentCompact,
+        [`${verticalLayoutClasses.contentCompact} is-full ${styles.contentCompact}`]: contentCompact,
         [verticalLayoutClasses.contentWide]: contentWide
       })}
       style={{ padding: themeConfig.layoutPadding }}

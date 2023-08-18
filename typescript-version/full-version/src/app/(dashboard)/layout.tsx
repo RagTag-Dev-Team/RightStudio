@@ -15,7 +15,12 @@ import VerticalFooter from '../../components/layout/vertical/Footer'
 import HorizontalFooter from '../../components/layout/horizontal/Footer'
 import Customizer from '../../@core/components/customizer'
 
+// Util Imports
+import { getDirection } from '../../utils/commonUtils'
+
 const Layout = ({ children }: ChildrenType) => {
+  const dir = getDirection()
+
   return (
     <Providers>
       <LayoutWrapper
@@ -30,7 +35,7 @@ const Layout = ({ children }: ChildrenType) => {
           </HorizontalLayout>
         }
       />
-      <Customizer />
+      <Customizer dir={dir} />
     </Providers>
   )
 }

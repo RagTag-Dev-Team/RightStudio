@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // MUI Imports
 import Grow from '@mui/material/Grow'
@@ -13,12 +13,13 @@ import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useMedia, useDebounce, useEffectOnce } from 'react-use'
+import { useMedia, useDebounce, useEffectOnce, useUpdateEffect } from 'react-use'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { Settings } from '../../contexts/settingsContext'
+import type { Direction } from '../../../@core/types'
 
 // Icon Imports
 import Cog from '../../svg/Cog'
@@ -44,16 +45,21 @@ import primaryColorConfig from '@/configs/primaryColorConfig'
 // Hook Imports
 import useSettings from '../../hooks/useSettings'
 
+// Data Imports
+import { langDirection } from '../../../data/translation/langDirection'
+
 // Style Imports
 import styles from './styles.module.css'
 
 type CustomizerProps = {
   breakpoint?: Breakpoint | 'xxl' | string
+  dir: Direction
 }
 
-const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
+const Customizer = ({ breakpoint = 'lg', dir }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
+  const [direction, setDirection] = useState(dir)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Refs
@@ -96,10 +102,17 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
     setIsOpen(!isOpen)
   }
 
-  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
-    saveSettings({
-      [field]: value
-    })
+  // Update Settings
+  const handleChange = (field: keyof Settings | 'direction', value: Settings[keyof Settings] | Direction) => {
+    // Update direction state
+    if (field === 'direction') {
+      setDirection(value as Direction)
+    } else {
+      // Update settings in local storage
+      saveSettings({
+        [field]: value
+      })
+    }
   }
 
   const handleMenuClose = (event: MouseEvent | TouchEvent): void => {
@@ -125,6 +138,18 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
     }, 201)
   })
 
+  // Update html `dir` attribute when changing direction
+  useUpdateEffect(() => {
+    document.documentElement.setAttribute('dir', direction)
+  }, [direction])
+
+  // Update direction state when changing language
+  useEffect(() => {
+    const dir = langDirection[settings.languageForCustomizer || 'en']
+
+    setDirection(dir)
+  }, [settings.languageForCustomizer])
+
   return (
     !breakpointReached && (
       <div
@@ -132,27 +157,22 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
           'customizer',
           styles.customizer,
           { [styles.show]: isOpen, [styles.smallScreen]: isMobileScreen },
-          'height-100 d-flex flex-column'
+          'bs-full flex flex-col'
         )}
       >
         <div
-          className={classnames(
-            'customizer-toggler d-flex align-items-center justify-content-center cursor-pointer',
-            styles.toggler
-          )}
+          className={classnames('customizer-toggler flex items-center justify-center cursor-pointer', styles.toggler)}
           onClick={handleToggle}
         >
           <Cog />
         </div>
-        <div
-          className={classnames('customizer-header d-flex align-items-center justify-content-between', styles.header)}
-        >
-          <div className='d-flex flex-column gap-2'>
+        <div className={classnames('customizer-header flex items-center justify-between', styles.header)}>
+          <div className='flex flex-col gap-2'>
             <h4 className={styles.customizerTitle}>Theme Customizer</h4>
             <p>Customize & Preview in Real Time</p>
           </div>
-          <div className='d-flex gap-4'>
-            <div onClick={resetSettings} className={classnames('d-flex cursor-pointer', styles.refreshWrapper)}>
+          <div className='flex gap-4'>
+            <div onClick={resetSettings} className={classnames('flex cursor-pointer', styles.refreshWrapper)}>
               <Refresh />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
@@ -160,13 +180,12 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
           </div>
         </div>
         <PerfectScrollbar options={{ wheelPropagation: false }}>
-          <div className={classnames('customizer-body d-flex flex-column gap-6', styles.customizerBody)}>
-            <div className='theming-section d-flex flex-column gap-5'>
+          <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
+            <div className={classnames('theming-section flex flex-col', styles.section)}>
               <p>Theming</p>
-              <div className='d-flex flex-column gap-3'>
-                {/* Primary Color */}
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Primary Color</p>
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='flex items-center justify-between'>
                   {primaryColorConfig.map(item => (
                     <div
                       key={item.name}
@@ -229,12 +248,10 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                   </Popper>
                 </div>
               </div>
-
-              {/* Mode */}
-              <div className='d-flex flex-column gap-3'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Mode</p>
-                <div className='d-flex align-items-center justify-content-between'>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'light'
@@ -247,7 +264,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Light
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'dark'
@@ -260,7 +277,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Dark
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'system'
@@ -275,12 +292,10 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-
-              {/* Skin */}
-              <div className='d-flex flex-column gap-3'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Skin</p>
-                <div className='d-flex align-items-center gap-4'>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'default' })}
                       onClick={() => handleChange('skin', 'default')}
@@ -291,7 +306,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Default
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'bordered' })}
                       onClick={() => handleChange('skin', 'bordered')}
@@ -304,12 +319,10 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-
-              {/* Semi Dark */}
               {settings.mode === 'dark' ||
               (settings.mode === 'system' && isSystemDark) ||
               settings.layout === 'horizontal' ? null : (
-                <div className='d-flex align-items-center justify-content-between'>
+                <div className='flex items-center justify-between'>
                   <label className={classnames(styles.itemTitle, 'cursor-pointer')} htmlFor='customizer-semi-dark'>
                     Semi Dark
                   </label>
@@ -322,16 +335,13 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                 </div>
               )}
             </div>
-
             <hr className={styles.hr} />
-
-            <div className='layout-section d-flex flex-column gap-5'>
+            <div className={classnames('layout-section flex flex-col', styles.section)}>
               <p>Layout</p>
-              <div className='d-flex flex-column gap-3'>
-                {/* Layouts */}
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Layouts</p>
-                <div className='d-flex align-items-center justify-content-between'>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'vertical' })}
                       onClick={() => handleChange('layout', 'vertical')}
@@ -342,7 +352,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Vertical
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'collapsed' })}
                       onClick={() => handleChange('layout', 'collapsed')}
@@ -353,7 +363,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Collapsed
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'horizontal' })}
                       onClick={() => handleChange('layout', 'horizontal')}
@@ -366,12 +376,10 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-
-              {/* Content Width */}
-              <div className='d-flex flex-column gap-3'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Content</p>
-                <div className='d-flex align-items-center gap-4'>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.contentWidth === 'compact'
@@ -399,7 +407,7 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Compact
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.contentWidth === 'wide' })}
                       onClick={() =>
@@ -419,15 +427,13 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                   </div>
                 </div>
               </div>
-
-              {/* Direction */}
-              <div className='d-flex flex-column gap-3'>
+              <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Direction</p>
-                <div className='d-flex align-items-center gap-4'>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                <div className='flex items-center gap-4'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
                       className={classnames(styles.itemWrapper, {
-                        [styles.active]: settings.direction === 'ltr'
+                        [styles.active]: direction === 'ltr'
                       })}
                       onClick={() => handleChange('direction', 'ltr')}
                     >
@@ -437,9 +443,11 @@ const Customizer = ({ breakpoint = 'lg' }: CustomizerProps) => {
                       Left to Right
                     </p>
                   </div>
-                  <div className='d-flex flex-column align-items-start gap-1'>
+                  <div className='flex flex-col items-start gap-1'>
                     <div
-                      className={classnames(styles.itemWrapper, { [styles.active]: settings.direction === 'rtl' })}
+                      className={classnames(styles.itemWrapper, {
+                        [styles.active]: direction === 'rtl'
+                      })}
                       onClick={() => handleChange('direction', 'rtl')}
                     >
                       <DirectionRtl />

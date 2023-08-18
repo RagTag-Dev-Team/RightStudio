@@ -4,17 +4,6 @@ import type { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react'
 // Third-party Imports
 import type { CSSObject } from '@emotion/react'
 
-// Type Imports
-import type {
-  SubMenuProps as VerticalSubMenuProps,
-  MenuItemProps as VerticalMenuItemProps,
-  MenuSectionProps as VerticalMenuSectionProps
-} from './vertical-menu'
-import type {
-  SubMenuProps as HorizontalSubMenuProps,
-  MenuItemProps as HorizontalMenuItemProps
-} from './horizontal-menu'
-
 export type ChildrenType = {
   children: ReactNode
 }
@@ -87,19 +76,3 @@ export type RenderExpandedMenuItemIcon = {
 export type RootStylesType = {
   rootStyles?: CSSObject
 }
-
-// Vertical Menu Data
-export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & { label: ReactNode }
-export type VerticalSubMenuDataType = Omit<VerticalSubMenuProps, 'children'> & { children: VerticalMenuDataType[] }
-export type VerticalSectionDataType = Omit<VerticalMenuSectionProps, 'children'> & {
-  isSection: boolean
-  children: VerticalMenuDataType[]
-}
-export type VerticalMenuDataType = VerticalMenuItemDataType | VerticalSubMenuDataType | VerticalSectionDataType
-
-// Horizontal Menu Data
-export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children'> & { label: ReactNode }
-export type HorizontalSubMenuDataType = Omit<HorizontalSubMenuProps, 'children'> & {
-  children: HorizontalMenuDataType[]
-}
-export type HorizontalMenuDataType = HorizontalMenuItemDataType | HorizontalSubMenuDataType

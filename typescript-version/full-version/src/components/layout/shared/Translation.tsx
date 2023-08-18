@@ -4,11 +4,23 @@
 import { useCallback, useEffect } from 'react'
 
 // Third-party Imports
+import { useCookie } from 'react-use'
 import { useTranslation } from 'react-i18next'
+
+// Hook Imports
+import useSettings from '../../../@core/hooks/useSettings'
+
+// Data Imports
+import { langDirection } from '../../../data/translation/langDirection'
 
 const Translation = () => {
   // Hooks
   const { i18n } = useTranslation()
+  const { updateSettings } = useSettings()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [value, updateCookie] = useCookie('lang')
+
+  const direction = langDirection[i18n.language]
 
   const handleLangItemClick = useCallback(
     async (language: 'en' | 'fr' | 'ar'): Promise<void> => {
@@ -20,11 +32,14 @@ const Translation = () => {
   // Change html `lang` attribute when changing locale
   useEffect(() => {
     document.documentElement.setAttribute('lang', i18n.language)
-    document.documentElement.setAttribute('dir', i18n.language === 'ar' ? 'rtl' : 'ltr')
+    document.documentElement.setAttribute('dir', direction || 'ltr')
+    updateCookie(i18n.language)
+    updateSettings({ languageForCustomizer: i18n.language })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language])
 
   return (
-    <div className='d-flex'>
+    <div className='flex'>
       <a onClick={() => handleLangItemClick('en')}>English</a>
       <a onClick={() => handleLangItemClick('fr')}>French</a>
       <a onClick={() => handleLangItemClick('ar')}>Arabic</a>

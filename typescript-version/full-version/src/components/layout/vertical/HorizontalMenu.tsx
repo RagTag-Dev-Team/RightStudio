@@ -14,13 +14,13 @@ import { HorizontalNavProvider } from '../../../@menu-package/contexts/horizonta
 import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
-// import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
+// import { generateHorizontalMenu } from '../../../utils/menuUtils'
 
 // Style Imports
 import menuItemStyles from '../../../@core/styles/horizontal/menuItemStyles'
 
 // Menu Data Imports
-// import menuData from '../../../navigation-data/HorizontalMenuData'
+// import menuData from '../../../data/navigation/HorizontalMenuData'
 
 const HorizontalMenu = () => {
   // Hooks
@@ -37,11 +37,8 @@ const HorizontalMenu = () => {
             alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
           }}
         >
-          {/* This is how you can use a custom component */}
           <MenuItem component={<RouterLink href='/' />}>Home</MenuItem>
-          {/* This is how you can use a custom Element */}
           <MenuItem component='div'>About</MenuItem>
-          {/* This is how you will normally render menu item */}
           <MenuItem href='/about'>About</MenuItem>
           <MenuItem href='/email'>Email</MenuItem>
           <MenuItem href='/chat'>Chat</MenuItem>
@@ -56,7 +53,7 @@ const HorizontalMenu = () => {
             <MenuItem href='/user-details'>User Details</MenuItem>
           </SubMenu>
         </Menu>
-        {/* <Menu>{generateHorizontalMenu(menuData)}</Menu> */}
+        {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}
       </HorizontalNav>
     </HorizontalNavProvider>
   )

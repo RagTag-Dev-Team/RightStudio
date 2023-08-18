@@ -1,0 +1,18 @@
+.wrapper {
+  padding-block: 56px;
+  padding-inline: 64px;
+}
+
+.noResultIcon {
+  margin-block-end: 10px;
+}
+
+.noResultText {
+  margin-block-end: 46px;
+  font-size: 20px;
+}
+
+.noResultSubText {
+  margin-block-end: 18px;
+  font-size: 14px;
+}

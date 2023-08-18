@@ -26,9 +26,9 @@ const HorizontalLayout = (props: HorizontalLayoutProps) => {
   const { header, footer, children } = props
 
   return (
-    <div className={classnames(horizontalLayoutClasses.root, 'd-flex flex-auto')}>
+    <div className={classnames(horizontalLayoutClasses.root, 'flex flex-auto')}>
       <HorizontalNavProvider>
-        <div className={classnames(horizontalLayoutClasses.contentWrapper, 'd-flex flex-column width-100')}>
+        <div className={classnames(horizontalLayoutClasses.contentWrapper, 'flex flex-col is-full')}>
           {header || null}
           <LayoutContent>{children}</LayoutContent>
           {footer || null}

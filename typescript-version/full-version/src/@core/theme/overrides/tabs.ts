@@ -4,9 +4,10 @@ const Tabs = () => {
       styleOverrides: {
         vertical: {
           minWidth: 130,
-          '& .MuiTab-root': {
-            minWidth: 130
-          }
+
+          // '& .MuiTab-root': {
+          //   minWidth: 130
+          // }
         }
       }
     }

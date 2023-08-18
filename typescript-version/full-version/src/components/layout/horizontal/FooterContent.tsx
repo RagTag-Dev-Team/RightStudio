@@ -27,10 +27,7 @@ const FooterContent = () => {
 
   return (
     <div
-      className={classnames(
-        horizontalLayoutClasses.footerContent,
-        'd-flex align-items-center justify-content-between flex-wrap gap-4'
-      )}
+      className={classnames(horizontalLayoutClasses.footerContent, 'flex items-center justify-between flex-wrap gap-4')}
     >
       <p>
         <span>{`© ${new Date().getFullYear()}, Made with `}</span>
@@ -41,7 +38,7 @@ const FooterContent = () => {
         </Link>
       </p>
       {!isBreakpointReached && (
-        <div className='d-flex align-items-center gap-4'>
+        <div className='flex items-center gap-4'>
           <Link href='https://themeselection.com/license' target='_blank' className={styles.primaryColor}>
             License
           </Link>
