@@ -7,7 +7,6 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import * as echarts from 'echarts'
 import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
 
@@ -46,16 +45,25 @@ const TotalSales = () => {
         type: 'line',
         smooth: true,
         itemStyle: {
-          color: new echarts.graphic.LinearGradient(1, 1, 0, 1, [
-            {
-              offset: 0,
-              color: theme.palette.background.paper
-            },
-            {
-              offset: 1,
-              color: theme.palette.success.main
-            }
-          ])
+          color: {
+            type: 'linear',
+            x: 1,
+            y: 1,
+            x2: 0,
+            y2: 1,
+
+            colorStops: [
+              {
+                offset: 0,
+                color: theme.palette.background.paper
+              },
+              {
+                offset: 1,
+                color: theme.palette.success.main
+              }
+            ],
+            global: false // false by default
+          }
         },
         showSymbol: false,
         lineStyle: {

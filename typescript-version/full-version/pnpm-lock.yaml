@@ -50,9 +50,6 @@ dependencies:
   '@prisma/client':
     specifier: ^5.1.1
     version: 5.1.1(prisma@5.1.1)
-  '@types/echarts':
-    specifier: ^4.9.18
-    version: 4.9.18
   '@types/node':
     specifier: ^20.5.1
     version: 20.5.1
@@ -1400,12 +1397,6 @@ packages:
       immutable: 3.7.6
     dev: false
 
-  /@types/echarts@4.9.18:
-    resolution: {integrity: sha512-Qav4M1i1qmPemMywMnDGIbvIBB/9pdrDKLI1dyMho4Yz/ldCB3ry2zGeH0UhAhgmaoPgwYrCDo8xd1UeByz+rw==}
-    dependencies:
-      '@types/zrender': 4.0.3
-    dev: false
-
   /@types/js-cookie@2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
     dev: false
@@ -1509,10 +1500,6 @@ packages:
       '@types/node': 20.5.1
     dev: false
     optional: true
-
-  /@types/zrender@4.0.3:
-    resolution: {integrity: sha512-EPI269lkHNsObwILJ1k1z7znLjKyePuWRy/XKK0shSGpBb9cIX307arcwJV4+2NeZj5wEjN06r4D8yFv7sI06g==}
-    dev: false
 
   /@typescript-eslint/eslint-plugin@6.4.0(@typescript-eslint/parser@6.4.0)(eslint@8.47.0)(typescript@5.1.6):
     resolution: {integrity: sha512-62o2Hmc7Gs3p8SLfbXcipjWAa6qk2wZGChXG2JbBtYpwSRmti/9KHLqfbLs9uDigOexG+3PaQ9G2g3201FWLKg==}

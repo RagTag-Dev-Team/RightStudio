@@ -10,9 +10,6 @@ import CardContent from '@mui/material/CardContent'
 import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
 
-// Component Imports
-import { echarts } from '../../../components/charts/echarts'
-
 const AreaChart = () => {
   const theme = useTheme()
 
@@ -83,16 +80,24 @@ const AreaChart = () => {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              offset: 0,
-              color: theme.palette.primary.main
-            },
-            {
-              offset: 1,
-              color: theme.palette.background.paper
-            }
-          ])
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+
+            colorStops: [
+              {
+                offset: 0,
+                color: theme.palette.primary.main // color at 0% position
+              },
+              {
+                offset: 1,
+                color: theme.palette.background.paper // color at 100% position
+              }
+            ]
+          }
         },
         emphasis: {
           focus: 'series'
@@ -110,16 +115,24 @@ const AreaChart = () => {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              offset: 0,
-              color: theme.palette.success.main
-            },
-            {
-              offset: 1,
-              color: theme.palette.background.paper
-            }
-          ])
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+
+            colorStops: [
+              {
+                offset: 0,
+                color: theme.palette.success.main // color at 0% position
+              },
+              {
+                offset: 1,
+                color: theme.palette.background.paper // color at 100% position
+              }
+            ]
+          }
         },
         emphasis: {
           focus: 'series'

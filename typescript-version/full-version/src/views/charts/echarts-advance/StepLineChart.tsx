@@ -7,7 +7,6 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import * as echarts from 'echarts'
 import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
 
@@ -44,16 +43,24 @@ const StepLineChart = () => {
         type: 'line',
         showSymbol: false,
         areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              offset: 0,
-              color: theme.palette.warning.main
-            },
-            {
-              offset: 1,
-              color: theme.palette.background.paper
-            }
-          ]),
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+
+            colorStops: [
+              {
+                offset: 0,
+                color: theme.palette.warning.main
+              },
+              {
+                offset: 1,
+                color: theme.palette.background.paper
+              }
+            ]
+          },
           opacity: 0.2
         },
 

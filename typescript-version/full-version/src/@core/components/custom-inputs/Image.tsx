@@ -43,16 +43,16 @@ const Root = styled('div', {
 const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomImage',
   slot: 'Input'
-})(({ theme }) => ({
+})({
   top: 0,
   right: 0,
   position: 'absolute'
-}))
+})
 
 const Image = styled('img', {
   name: 'MuiCustomImage',
   slot: 'Image'
-})(({ theme }) => ({}))
+})({})
 
 const CustomCheckboxImg = (props: CustomInputImgProps) => {
   // Props

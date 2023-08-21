@@ -63,12 +63,12 @@ const Content = styled(Typography, {
 const RadioInput = styled(Radio, {
   name: 'MuiCustomInputHorizontal',
   slot: 'input'
-})(({ theme }) => ({}))
+})({})
 
 const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomInputHorizontal',
   slot: 'input'
-})(({ theme }) => ({}))
+})({})
 
 const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   // Props

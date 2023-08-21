@@ -2,7 +2,6 @@
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -11,8 +10,6 @@ import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
 
 const RadarChart = () => {
-  const theme = useTheme()
-
   const echartOptions: EChartsOption = {
     style: {
       height: 400

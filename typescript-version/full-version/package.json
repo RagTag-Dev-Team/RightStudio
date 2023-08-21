@@ -27,7 +27,6 @@
     "@mui/lab": "5.0.0-alpha.140",
     "@mui/material": "^5.14.5",
     "@prisma/client": "^5.1.1",
-    "@types/echarts": "^4.9.18",
     "@types/node": "^20.5.1",
     "@types/payment": "^2.1.4",
     "@types/react": "^18.2.20",
