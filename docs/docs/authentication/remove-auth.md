@@ -41,6 +41,13 @@ To remove authentication from the full-version, you'll need to remove the follow
 
 - remove `NextRequestWithAuth` and `withAuth` imports and usage from `src/middleware.ts`, also remove `callbacks` and guestRoutes, sharedRoutes, and privateRoutes and its logical conditions from `src/middleware.ts`
 
+- replace the `dev` and `build` scripts in `package.json` with the following:
+
+  ```json
+  "dev": "next dev",
+  "build": "next build",
+  ```
+
 ## Remove Dependencies
 
 To remove authentication from the full-version, you'll need to remove the following dependencies:
