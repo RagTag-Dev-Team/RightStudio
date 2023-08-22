@@ -13,7 +13,7 @@ import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '../../../comp
 // Icon Imports
 // import Icon from 'src/@core/components/icon'
 
-interface LabelProp {
+type LabelProp = {
   cx: number
   cy: number
   percent: number

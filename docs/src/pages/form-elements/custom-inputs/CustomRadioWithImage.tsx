@@ -14,15 +14,15 @@ const data: CustomInputImgData[] = [
   {
     value: 'clock',
     isSelected: true,
-    img: '/img/banners/27.jpg',
+    img: '/images/banners/27.jpg',
   },
   {
     value: 'donuts',
-    img: '/img/banners/26.jpg',
+    img: '/images/banners/26.jpg',
   },
   {
     value: 'flowers',
-    img: '/img/banners/22.jpg',
+    img: '/images/banners/22.jpg',
   },
 ]
 

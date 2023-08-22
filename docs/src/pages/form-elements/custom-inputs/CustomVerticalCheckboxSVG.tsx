@@ -11,7 +11,7 @@ import { CustomInputVerticalData } from '@site/src/components/custom-inputs/type
 import CustomInputVertical from '@site/src/components/custom-inputs/Vertical'
 
 // Icons Imports
-import Logo from '@site/static/img/logo.svg'
+import Logo from '@site/static/images/logo.svg'
 
 type Data = Omit<CustomInputVerticalData, 'asset'>
 

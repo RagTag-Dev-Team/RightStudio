@@ -71,37 +71,37 @@ const SwiperThumbnails = () => {
     <>
       <Box ref={sliderRef} className='keen-slider'>
         <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
-          <img src='/img/banners/1.jpg' alt='swiper 1' />
+          <img src='/images/banners/1.jpg' alt='swiper 1' />
         </Box>
         <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
-          <img src='/img/banners/2.jpg' alt='swiper 2' />
+          <img src='/images/banners/2.jpg' alt='swiper 2' />
         </Box>
         <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
-          <img src='/img/banners/3.jpg' alt='swiper 3' />
+          <img src='/images/banners/3.jpg' alt='swiper 3' />
         </Box>
         <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
-          <img src='/img/banners/4.jpg' alt='swiper 4' />
+          <img src='/images/banners/4.jpg' alt='swiper 4' />
         </Box>
         <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
-          <img src='/img/banners/5.jpg' alt='swiper 5' />
+          <img src='/images/banners/5.jpg' alt='swiper 5' />
         </Box>
       </Box>
 
       <Box sx={{ mt: 4 }} ref={thumbnailRef} className='keen-slider thumbnail'>
         <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
-          <img src='/img/banners/1.jpg' alt='swiper 1' />
+          <img src='/images/banners/1.jpg' alt='swiper 1' />
         </Box>
         <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
-          <img src='/img/banners/2.jpg' alt='swiper 2' />
+          <img src='/images/banners/2.jpg' alt='swiper 2' />
         </Box>
         <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
-          <img src='/img/banners/3.jpg' alt='swiper 3' />
+          <img src='/images/banners/3.jpg' alt='swiper 3' />
         </Box>
         <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
-          <img src='/img/banners/4.jpg' alt='swiper 4' />
+          <img src='/images/banners/4.jpg' alt='swiper 4' />
         </Box>
         <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
-          <img src='/img/banners/5.jpg' alt='swiper 5' />
+          <img src='/images/banners/5.jpg' alt='swiper 5' />
         </Box>
       </Box>
     </>

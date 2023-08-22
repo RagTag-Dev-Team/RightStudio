@@ -632,7 +632,7 @@ The first stop on our customization tour is the `next-auth.d.ts` file. This Type
 
 Let's say your user objects have a charming `role` field that you'd like to include in the NextAuth types. This field adds a touch of distinction to your users. To achieve this, follow these simple steps:
 
-1. Open your `next-auth.d.ts` file.
+1. Create file named `next-auth.d.ts` in the root of your project.
 2. Your declaration should look something like this:
 
   ```ts
@@ -640,19 +640,19 @@ Let's say your user objects have a charming `role` field that you'd like to incl
   import { DefaultSession } from 'next-auth'
 
   declare module 'next-auth/jwt' {
-    interface JWT {
+    type JWT = {
       role: string
     }
   }
 
   declare module 'next-auth' {
-    interface Session {
+    type Session = {
       user: {
         role: string
       } & DefaultSession['user']
     }
 
-    interface User {
+    type User = {
       role: string
     }
   }

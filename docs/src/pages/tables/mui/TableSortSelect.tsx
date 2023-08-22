@@ -7,7 +7,6 @@ import Table from '@mui/material/Table'
 import Toolbar from '@mui/material/Toolbar'
 import Tooltip from '@mui/material/Tooltip'
 import { visuallyHidden } from '@mui/utils'
-import { alpha } from '@mui/material/styles'
 import Checkbox from '@mui/material/Checkbox'
 import TableRow from '@mui/material/TableRow'
 import TableBody from '@mui/material/TableBody'
@@ -189,7 +188,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       sx={{
         px: theme => `${theme.spacing(5)} !important`,
         ...(numSelected > 0 && {
-          bgcolor: theme => alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)
+          bgcolor: theme => `rgb(${theme.palette.primary.main, theme.palette.action.activatedOpacity})`
         })
       }}
     >

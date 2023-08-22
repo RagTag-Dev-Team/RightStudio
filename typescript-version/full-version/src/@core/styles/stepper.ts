@@ -1,6 +1,6 @@
 // MUI imports
 import Box from '@mui/material/Box'
-import { styled, alpha } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
 
 const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
@@ -51,7 +51,7 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         }
       },
       '&.Mui-disabled .MuiStepConnector-line': {
-        borderColor: alpha(theme.palette.primary.main, 0.12)
+        borderColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.12)`
       }
     },
     '& .MuiStepper-alternativeLabel': {

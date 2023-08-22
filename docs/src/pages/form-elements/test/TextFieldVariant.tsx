@@ -11,7 +11,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import CardContent from "@mui/material/CardContent";
-import { alpha, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import MuiInputBase from "@mui/material/InputBase";
 import type { InputBaseProps } from "@mui/material/InputBase";
 
@@ -43,7 +43,7 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
     ].join(","),
     "&:focus": {
       borderColor: theme.palette.primary.main,
-      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+      boxShadow: `rgb(${theme.vars.palette.primary.mainChannel} / 0.25) 0 0 0 0.2rem`,
     },
   },
 }));

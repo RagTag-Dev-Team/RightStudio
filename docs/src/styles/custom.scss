@@ -45,5 +45,12 @@ p:not([class]) {
   margin-bottom: var(--ifm-paragraph-margin-bottom);
 }
 
+.markdown li > p {
+  margin-top: 0;
+}
+.markdown li > p:not([class]) {
+  margin-bottom: var(--ifm-list-paragraph-margin)
+}
+
 @import './buy-now-button.scss';
 @import './table.scss';

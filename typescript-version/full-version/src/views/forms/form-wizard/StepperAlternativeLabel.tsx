@@ -223,7 +223,7 @@ const StepperAlternativeLabel = () => {
           {activeStep === steps.length ? (
             <Fragment>
               <Typography className={styles.completedText}>All steps are completed!</Typography>
-              <Box className='d-flex justify-content-end'>
+              <Box className='flex justify-end'>
                 <Button onClick={handleReset}>Reset</Button>
               </Box>
             </Fragment>
@@ -238,7 +238,7 @@ const StepperAlternativeLabel = () => {
                     </Typography>
                   </Grid>
                   {renderStepContent(activeStep)}
-                  <Grid item xs={12} className='d-flex justify-content-between'>
+                  <Grid item xs={12} className='flex justify-between'>
                     <Button variant='outlined' disabled={activeStep === 0} onClick={handleBack}>
                       Back
                     </Button>

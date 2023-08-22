@@ -30,7 +30,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
-interface FormValues {
+type FormValues = {
   firstName: string
   lastName: string
   email: string

@@ -130,7 +130,7 @@ const FormLayoutsCollapsible = () => {
               checked={option === 'standard'}
               className={styles.radioStyles}
             />
-            <Box className='width-100'>
+            <Box className='w-full'>
               <Box className={styles.deliveryOption}>
                 <Typography>Standard 3-5 Days</Typography>
                 <Typography>Free</Typography>
@@ -148,7 +148,7 @@ const FormLayoutsCollapsible = () => {
               checked={option === 'express'}
               className={styles.radioStyles}
             />
-            <Box className='width-100'>
+            <Box className='w-full'>
               <Box className={styles.deliveryOption}>
                 <Typography>Express</Typography>
                 <Typography>$5.00</Typography>
@@ -166,7 +166,7 @@ const FormLayoutsCollapsible = () => {
               checked={option === 'overnight'}
               className={styles.radioStyles}
             />
-            <Box className='width-100'>
+            <Box className='w-full'>
               <Box className={styles.deliveryOption}>
                 <Typography>Overnight</Typography>
                 <Typography>$10.00</Typography>

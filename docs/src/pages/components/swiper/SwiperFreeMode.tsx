@@ -21,19 +21,19 @@ const SwiperFreeMode = () => {
   return (
     <Box ref={ref} className='keen-slider'>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/21.jpg' alt='swiper 21' />
+        <img src='/images/banners/21.jpg' alt='swiper 21' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/22.jpg' alt='swiper 22' />
+        <img src='/images/banners/22.jpg' alt='swiper 22' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/23.jpg' alt='swiper 23' />
+        <img src='/images/banners/23.jpg' alt='swiper 23' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/24.jpg' alt='swiper 24' />
+        <img src='/images/banners/24.jpg' alt='swiper 24' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/25.jpg' alt='swiper 25' />
+        <img src='/images/banners/25.jpg' alt='swiper 25' />
       </Box>
     </Box>
   )

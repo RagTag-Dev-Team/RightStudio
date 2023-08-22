@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MuiInputBase from '@mui/material/InputBase'
 import FormControl from '@mui/material/FormControl'
-import { alpha, styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import type { InputBaseProps } from '@mui/material/InputBase'
 
 // Styled InputBase component
@@ -34,7 +34,7 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
     ].join(','),
     '&:focus': {
       borderColor: theme.palette.primary.main,
-      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`
+      boxShadow: `rgb(${theme.vars.palette.primary.mainChannel} / 0.25) 0 0 0 0.2rem`
     }
   }
 }))

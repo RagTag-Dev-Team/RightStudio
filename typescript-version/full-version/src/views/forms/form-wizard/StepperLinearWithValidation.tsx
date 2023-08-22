@@ -255,7 +255,7 @@ const StepperLinearWithValidation = () => {
                   )}
                 />
               </Grid>
-              <Grid item xs={12} className='d-flex justify-content-between'>
+              <Grid item xs={12} className='flex justify-between'>
                 <Button variant='outlined' onClick={handleBack} disabled>
                   Back
                 </Button>
@@ -353,7 +353,7 @@ const StepperLinearWithValidation = () => {
                   {personalErrors.language && <FormHelperText error>This field is required</FormHelperText>}
                 </FormControl>
               </Grid>
-              <Grid item xs={12} className='d-flex justify-content-between'>
+              <Grid item xs={12} className='flex justify-between'>
                 <Button variant='outlined' onClick={handleBack}>
                   Back
                 </Button>
@@ -440,7 +440,7 @@ const StepperLinearWithValidation = () => {
                   )}
                 />
               </Grid>
-              <Grid item xs={12} className='d-flex justify-content-between'>
+              <Grid item xs={12} className='flex justify-between'>
                 <Button variant='outlined' onClick={handleBack}>
                   Back
                 </Button>
@@ -517,7 +517,7 @@ const StepperLinearWithValidation = () => {
         {activeStep === steps.length ? (
           <Fragment>
             <Typography className={styles.completedText}>All steps are completed!</Typography>
-            <Box className='d-flex justify-content-end'>
+            <Box className='flex justify-end'>
               <Button onClick={handleReset}>Reset</Button>
             </Box>
           </Fragment>

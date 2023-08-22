@@ -7,7 +7,7 @@ import Chip from '@mui/material/Chip'
 
 const ChipsSizes = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
       <Chip label='Default' />
       <Chip label='Small' size='small' />
     </Box>

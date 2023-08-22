@@ -1,9 +1,9 @@
-interface MonthYear {
+type MonthYear = {
   year: number
   month: number
 }
 
-interface Fns {
+type Fns = {
   cardType(cardNumber: string): string
   formatCardNumber(cardNumber: string): string
   validateCardNumber(cardNumber: string): boolean

@@ -12,7 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Component Imports
 import ReactApexcharts from '../../../components/charts/apexchart'
 
-interface YRange {
+type YRange = {
   min: number
   max: number
 }

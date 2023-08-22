@@ -42,7 +42,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='min-height-100 d-flex justify-content-center align-items-center'>
+    <div className='min-h-full flex justify-center items-center'>
       <form onSubmit={handleSubmit}>
         <label>
           Email:
@@ -56,7 +56,7 @@ const LoginForm = () => {
         <br />
         <button type='submit'>Submit</button>
       </form>
-      <button className='d-block' onClick={() => signIn('google')}>
+      <button className='block' onClick={() => signIn('google')}>
         Login with google
       </button>
     </div>

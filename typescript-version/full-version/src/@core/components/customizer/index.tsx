@@ -205,7 +205,7 @@ const Customizer = ({ breakpoint = 'lg', dir }: CustomizerProps) => {
                     onClick={() => setIsMenuOpen(prev => !prev)}
                   >
                     <div
-                      className={classnames(styles.primaryColor, 'd-flex align-items-center justify-content-center')}
+                      className={classnames(styles.primaryColor, 'flex items-center justify-center')}
                       style={{
                         backgroundColor:
                           settings.primaryColor === color && primaryColorConfig.some(item => item.name !== color)

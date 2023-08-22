@@ -9,11 +9,11 @@ import { useKeenSlider } from 'keen-slider/react'
 import type { TrackDetails } from 'keen-slider/react'
 
 const images = [
-  '/img/banners/6.jpg',
-  '/img/banners/7.jpg',
-  '/img/banners/8.jpg',
-  '/img/banners/9.jpg',
-  '/img/banners/10.jpg'
+  '/images/banners/6.jpg',
+  '/images/banners/7.jpg',
+  '/images/banners/8.jpg',
+  '/images/banners/9.jpg',
+  '/images/banners/10.jpg'
 ]
 
 const SwiperZoom = () => {

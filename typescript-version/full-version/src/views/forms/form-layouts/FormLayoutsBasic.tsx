@@ -99,9 +99,9 @@ const FormLayoutsBasic = () => {
               </FormHelperText>
             </Grid>
             <Grid item xs={12}>
-              <Box className='d-flex align-items-center justify-content-between'>
+              <Box className='flex items-center justify-between'>
                 <Button variant='contained'>get started!</Button>
-                <Box className='d-flex align-items-center justify-content-center'>
+                <Box className='flex items-center justify-center'>
                   <Typography variant='body1'>Already have an account?</Typography>
                   <Link href='/' onClick={e => e.preventDefault()} className={styles.primaryColor}>
                     Log in

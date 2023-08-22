@@ -5,7 +5,7 @@
 const config = {
   title: 'Master',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -62,12 +62,12 @@ const config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'images/docusaurus-social-card.jpg',
     navbar: {
       title: 'Master',
       logo: {
         alt: 'Master Logo',
-        src: 'img/logo.svg',
+        src: 'images/logo.svg',
       },
       items: [
         {

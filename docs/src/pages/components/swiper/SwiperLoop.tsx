@@ -16,16 +16,16 @@ const SwiperLoop = () => {
   return (
     <Box ref={ref} className='keen-slider'>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/7.jpg' alt='swiper 7' />
+        <img src='/images/banners/7.jpg' alt='swiper 7' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/8.jpg' alt='swiper 8' />
+        <img src='/images/banners/8.jpg' alt='swiper 8' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/9.jpg' alt='swiper 9' />
+        <img src='/images/banners/9.jpg' alt='swiper 9' />
       </Box>
       <Box className='keen-slider__slide'>
-        <img src='/img/banners/10.jpg' alt='swiper 10' />
+        <img src='/images/banners/10.jpg' alt='swiper 10' />
       </Box>
     </Box>
   )

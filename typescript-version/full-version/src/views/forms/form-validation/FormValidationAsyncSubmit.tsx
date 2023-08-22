@@ -19,7 +19,7 @@ import { useForm, Controller } from 'react-hook-form'
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
-interface FormValues {
+type FormValues = {
   firstName: string
   lastName: string
   email: string

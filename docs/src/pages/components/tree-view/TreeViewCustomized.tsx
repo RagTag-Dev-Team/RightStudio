@@ -4,7 +4,7 @@ import React from 'react'
 // MUI Imports
 import TreeItem from '@mui/lab/TreeItem'
 import MuiTreeView from '@mui/lab/TreeView'
-import { alpha, styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import type { TreeViewProps } from '@mui/lab/TreeView'
 
 // Icon Imports
@@ -19,7 +19,7 @@ const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
   '& .MuiTreeItem-group': {
     marginLeft: 15,
     paddingLeft: 18,
-    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`
+    borderLeft: `1px dashed rgb(${theme.vars.palette.text.primaryChannel} / 0.4)`
   }
 }))
 
