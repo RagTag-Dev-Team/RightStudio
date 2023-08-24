@@ -135,6 +135,7 @@ const HorizontalMenu = () => {
           <MenuItem>{t('navigation.formValidation')}</MenuItem>
           <MenuItem>{t('navigation.formWizard')}</MenuItem>
         </SubMenu>
+        <MenuItem href='/tables'>Tables</MenuItem>
         <SubMenu label={t('navigation.charts')}>
           <MenuItem>{t('navigation.apex')}</MenuItem>
           <MenuItem>{t('navigation.recharts')}</MenuItem>
