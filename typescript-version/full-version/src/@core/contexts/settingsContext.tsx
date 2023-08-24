@@ -10,13 +10,13 @@ import { usePathname } from 'next/navigation'
 import { useLatest, useUpdateEffect, useEffectOnce, useLocalStorage } from 'react-use'
 
 // Config Imports
-import themeConfig from '../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useVerticalNav from '../../@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // Type Imports
-import type { Mode, Skin, Layout, LayoutComponentWidth, ChildrenType } from '../types'
+import type { Mode, Skin, Layout, LayoutComponentWidth, ChildrenType } from '@core/types'
 
 export type Settings = {
   mode?: Mode

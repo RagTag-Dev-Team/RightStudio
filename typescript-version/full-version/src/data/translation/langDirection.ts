@@ -1,5 +1,5 @@
 // Type Imports
-import type { Direction } from '../../@core/types'
+import type { Direction } from '@core/types'
 
 export const langDirection: { [key: string]: Direction } = {
   en: 'ltr',

@@ -104,7 +104,7 @@ You can initialize NextAuth.js with a Route Handler too, very similar to API Rou
 import NextAuth from 'next-auth'
 
 // Lib Imports
-import { authOptions } from '../../../../lib/auth'
+import { authOptions } from '@/lib/auth'
 
 const handler = NextAuth(authOptions)
 
@@ -409,19 +409,19 @@ Let's say your user objects have a charming `role` field that you'd like to incl
   import { DefaultSession } from 'next-auth'
 
   declare module 'next-auth/jwt' {
-    interface JWT {
+    type JWT = {
       role: string
     }
   }
 
   declare module 'next-auth' {
-    interface Session {
+    type Session = {
       user: {
         role: string
       } & DefaultSession['user']
     }
 
-    interface User {
+    type User = {
       role: string
     }
   }

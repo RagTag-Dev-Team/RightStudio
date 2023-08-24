@@ -8,10 +8,10 @@ import { useCookie } from 'react-use'
 import { useTranslation } from 'react-i18next'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Data Imports
-import { langDirection } from '../../../data/translation/langDirection'
+import { langDirection } from '@/data/translation/langDirection'
 
 const Translation = () => {
   // Hooks

@@ -9,41 +9,39 @@ import { useMedia, useUpdateEffect } from 'react-use'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { Settings } from '../../contexts/settingsContext'
-import type { Direction } from '../../../@core/types'
+import type { Settings } from '@core/contexts/settingsContext'
+import type { Direction } from '@core/types'
 
 // Icon Imports
-import Cog from '../../svg/Cog'
-import Refresh from '../../svg/Refresh'
-import Close from '../../../@menu-package/svg/Close'
-import ModeDark from '../../svg/ModeDark'
-import ModeLight from '../../svg/ModeLight'
-import ModeSystem from '../../svg/ModeSystem'
-import SkinDefault from '../../svg/SkinDefault'
-import SkinBordered from '../../svg/SkinBordered'
-import LayoutVertical from '../../svg/LayoutVertical'
-import LayoutCollapsed from '../../svg/LayoutCollapsed'
-import LayoutHorizontal from '../../svg/LayoutHorizontal'
-import ContentCompact from '../../svg/ContentCompact'
-import ContentWide from '../../svg/ContentWide'
-import DirectionLtr from '../../svg/DirectionLtr'
-import DirectionRtl from '../../svg/DirectionRtl'
+import Cog from '@core/svg/Cog'
+import Refresh from '@core/svg/Refresh'
+import Close from '@menu-package/svg/Close'
+import ModeDark from '@core/svg/ModeDark'
+import ModeLight from '@core/svg/ModeLight'
+import ModeSystem from '@core/svg/ModeSystem'
+import SkinDefault from '@core/svg/SkinDefault'
+import SkinBordered from '@core/svg/SkinBordered'
+import LayoutVertical from '@core/svg/LayoutVertical'
+import LayoutCollapsed from '@core/svg/LayoutCollapsed'
+import LayoutHorizontal from '@core/svg/LayoutHorizontal'
+import ContentCompact from '@core/svg/ContentCompact'
+import ContentWide from '@core/svg/ContentWide'
+import DirectionLtr from '@core/svg/DirectionLtr'
+import DirectionRtl from '@core/svg/DirectionRtl'
 
 // Hook Imports
-import useSettings from '../../hooks/useSettings'
-
-// Data Imports
-import { langDirection } from '../../../data/translation/langDirection'
+import useSettings from '@core/hooks/useSettings'
 
 // Style Imports
 import styles from './styles.module.css'
 
 type CustomizerProps = {
   breakpoint?: string
-  dir: Direction
+  dir?: Direction
+  langDirection?: { [key: string]: Direction }
 }
 
-const Customizer = ({ breakpoint = '1200px', dir }: CustomizerProps) => {
+const Customizer = ({ breakpoint = '1200px', dir = 'ltr', langDirection }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
   const [direction, setDirection] = useState(dir)
@@ -78,9 +76,10 @@ const Customizer = ({ breakpoint = '1200px', dir }: CustomizerProps) => {
 
   // Update direction state when changing language
   useEffect(() => {
-    const dir = langDirection[settings.languageForCustomizer || 'en']
+    const dir = langDirection?.[settings.languageForCustomizer || 'en'] || 'ltr'
 
     setDirection(dir)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.languageForCustomizer])
 
   return (

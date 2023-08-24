@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 
 // Component Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 const AboutPage = () => {
   const { updateSettings } = useSettings()

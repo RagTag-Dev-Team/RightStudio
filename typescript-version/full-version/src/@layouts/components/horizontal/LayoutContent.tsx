@@ -4,19 +4,19 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../../../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Config Imports
-import themeConfig from '../../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../utils/layoutClasses'
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Style Imports
-import styles from '../../styles/content.module.css'
+import styles from '@layouts/styles/content.module.css'
 
 const LayoutContent = ({ children }: ChildrenType) => {
   const { settings } = useSettings()

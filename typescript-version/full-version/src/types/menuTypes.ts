@@ -6,11 +6,11 @@ import type {
   SubMenuProps as VerticalSubMenuProps,
   MenuItemProps as VerticalMenuItemProps,
   MenuSectionProps as VerticalMenuSectionProps
-} from '../@menu-package/vertical-menu'
+} from '@menu-package/vertical-menu'
 import type {
   SubMenuProps as HorizontalSubMenuProps,
   MenuItemProps as HorizontalMenuItemProps
-} from '../@menu-package/horizontal-menu'
+} from '@menu-package/horizontal-menu'
 
 // Vertical Menu Data
 export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & { label: ReactNode }

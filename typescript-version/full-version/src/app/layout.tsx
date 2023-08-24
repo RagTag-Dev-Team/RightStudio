@@ -6,17 +6,17 @@ import classnames from 'classnames'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
-import type { ChildrenType } from '../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Component Imports
-import I18n from '../configs/i18n'
+import I18n from '@configs/i18n'
 
 // Util Imports
-import { getLanguage, getDirection } from '../utils/commonUtils'
+import { getLanguage, getDirection } from '@/utils/commonUtils'
 
 // Style Imports
 //! Do not remove the `utils.css` import below otherwise it will break the template styling
-import '../@core/styles/utils.css' // Common Utility Classes
+import '@core/styles/utils.css' // Common Utility Classes
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })

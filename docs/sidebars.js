@@ -23,6 +23,7 @@ const sidebars = {
       items: ['authentication/intro', 'authentication/credentials-provider', 'authentication/google-prisma', 'authentication/remove-auth', 'authentication/add-auth']
     },
     'content-scroll-lock',
+    'translation',
     {
       type: 'category',
       label: 'Tutorial - Basics',

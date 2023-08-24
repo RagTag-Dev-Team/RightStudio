@@ -3,14 +3,14 @@ import classnames from 'classnames'
 
 // Components Imports
 import NavToggle from './NavToggle'
-import NavSearch from '../shared/search'
+import NavSearch from '@components/layout/shared/search'
 import HorizontalMenu from './HorizontalMenu'
-import Translation from '../shared/Translation'
-import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
-import UserDetails from '../../../@layouts/components/UserDetails'
+import Translation from '@components/layout/shared/Translation'
+import ModeSwitcher from '@layouts/components/ModeSwitcher'
+import UserDetails from '@layouts/components/UserDetails'
 
 // Util Imports
-import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 const NavbarContent = () => {
   return (

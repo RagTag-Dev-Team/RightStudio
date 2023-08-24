@@ -1,14 +1,14 @@
 'use client'
 
 // Component Imports from @menu-package
-import VerticalNav, { NavHeader, NavCollapseIcons } from '../../../@menu-package/vertical-menu'
+import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'
 
 // Component Imports
-import Logo from '../shared/Logo'
+import Logo from '@components/layout/shared/Logo'
 import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 const Navigation = () => {
   const { isBreakpointReached } = useHorizontalNav()

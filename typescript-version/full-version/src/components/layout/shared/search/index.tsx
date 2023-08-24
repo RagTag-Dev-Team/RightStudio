@@ -12,17 +12,17 @@ import classnames from 'classnames'
 import { KBarProvider, KBarPortal, KBarPositioner, KBarSearch, useKBar } from 'kbar'
 
 // Type Imports
-import type { ChildrenType } from '../../../../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Component Imports
 import SearchResults from './SearchResults'
 
 // Icon Imports
-import Search from '../../../../@layouts/svg/Search'
-import Close from '../../../../@menu-package/svg/Close'
+import Search from '@layouts/svg/Search'
+import Close from '@menu-package/svg/Close'
 
 // Config Imports
-import themeConfig from '../../../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -31,7 +31,7 @@ import StyledKBarAnimator from './StyledKBarAnimator'
 import styles from './styles.module.css'
 
 // Data Imports
-import data from '../../../../data/searchData'
+import data from '@/data/searchData'
 
 type ComponentWithUseKBarProps = Partial<ChildrenType> & {
   className?: string

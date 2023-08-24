@@ -2,13 +2,13 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../../../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Config Imports
-import themeConfig from '../../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../utils/layoutClasses'
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Style Imports
 import styles from './header.module.css'

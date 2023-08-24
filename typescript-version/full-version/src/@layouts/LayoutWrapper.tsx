@@ -4,7 +4,7 @@
 import type { ReactElement } from 'react'
 
 // Hook Imports
-import useSettings from '../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Type
 type LayoutWrapperProps = {

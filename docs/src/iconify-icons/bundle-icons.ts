@@ -20,7 +20,7 @@ import { getIcons, stringToIcon, minifyIconSet } from '@iconify/utils'
 import type { IconifyJSON, IconifyMetaData } from '@iconify/types'
 
 /* eslint-disable */
-interface BundleScriptCustomSVGConfig {
+type BundleScriptCustomSVGConfig = {
   // Path to SVG files
   dir: string
 
@@ -31,7 +31,7 @@ interface BundleScriptCustomSVGConfig {
   prefix: string
 }
 
-interface BundleScriptCustomJSONConfig {
+type BundleScriptCustomJSONConfig = {
   // Path to JSON file
   filename: string
 
@@ -39,7 +39,7 @@ interface BundleScriptCustomJSONConfig {
   icons?: string[]
 }
 
-interface BundleScriptConfig {
+type BundleScriptConfig = {
   // Custom SVG to import and bundle
   svg?: BundleScriptCustomSVGConfig[]
 
@@ -79,12 +79,12 @@ const sources: BundleScriptConfig = {
 
   svg: [
     /* {
-      dir: 'src/iconify-bundle/svg',
+      dir: './svg',
       monotone: false,
       prefix: 'custom'
     }, */
     /* {
-      dir: 'src/iconify-bundle/emojis',
+      dir: './emojis',
       monotone: false,
       prefix: 'emoji'
     } */

@@ -5,10 +5,10 @@ import type { ReactNode } from 'react'
 import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Context Imports
-import { HorizontalNavProvider } from '../@menu-package/contexts/horizontalNavContext'
+import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
 
 // Component Imports
 import LayoutContent from './components/horizontal/LayoutContent'

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -11,7 +15,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-html[data-theme='dark'] {
+[data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -22,5 +26,18 @@ html[data-theme='dark'] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.medium-zoom-overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+  z-index: var(--ifm-z-index-fixed);
+
+  [data-theme='dark'] & {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+  }
+
+  & + .medium-zoom-image {
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
+  }
+}
 
 @import './buy-now-button.scss';

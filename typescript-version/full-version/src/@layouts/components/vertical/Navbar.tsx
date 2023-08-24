@@ -4,16 +4,16 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '../../../@core/types'
+import type { ChildrenType } from '@core/types'
 
 // Config Imports
-import themeConfig from '../../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
-import { verticalLayoutClasses } from '../../utils/layoutClasses'
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Style Imports
 import styles from './header.module.css'

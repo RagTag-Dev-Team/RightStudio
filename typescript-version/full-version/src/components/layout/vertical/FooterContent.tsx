@@ -7,12 +7,12 @@ import Link from 'next/link'
 import classnames from 'classnames'
 
 // Hook Imports
-import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
-import useSettings from '../../../@core/hooks/useSettings'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
-import { verticalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Style Imports
 import styles from './styles.module.css'

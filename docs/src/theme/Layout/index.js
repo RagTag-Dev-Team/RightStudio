@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme-original/Layout';
-import BuyNowButton from '@site/src/components/buy-now-button';
+import BuyNowButton from '@docComponents/buy-now-button';
 
 const LayoutWrapper = (props) => {
   return (
