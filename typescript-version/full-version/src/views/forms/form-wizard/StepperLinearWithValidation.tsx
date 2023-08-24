@@ -1,8 +1,7 @@
 // React Imports
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
@@ -24,8 +23,8 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { valibotResolver } from '@hookform/resolvers/valibot'
+import { email, object, minLength, string, array, ValiError } from 'valibot'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
@@ -52,29 +51,66 @@ const steps = [
   }
 ]
 
-const accountSchema = yup.object({
-  username: yup.string().required(),
-  email: yup.string().required().email(),
-  password: yup.string().required().min(6),
-  'confirm-password': yup
-    .string()
-    .required()
-    .oneOf([yup.ref('password'), ''], 'Passwords must match')
+type AccountSchemaData = {
+  username: string
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+const accountSchema = object(
+  {
+    username: string([minLength(1, 'This field is required')]),
+    email: string([minLength(1, 'This field is required'), email()]),
+    password: string([
+      minLength(1, 'This field is required'),
+      minLength(8, 'Password must be at least 8 characters long')
+    ]),
+    confirmPassword: string([minLength(1, 'This field is required')])
+  },
+  [
+    (input: AccountSchemaData) => {
+      if (input.password !== input.confirmPassword) {
+        throw new ValiError([
+          {
+            reason: 'string',
+            validation: 'custom',
+            origin: 'value',
+            message: 'Passwords do not match.',
+            input: input.confirmPassword,
+            path: [
+              {
+                schema: 'object',
+                input: input,
+                key: 'confirmPassword',
+                value: input.confirmPassword
+              }
+            ]
+          }
+        ])
+      }
+
+      return { output: input }
+    }
+  ]
+)
+
+const personalSchema = object({
+  'first-name': string([minLength(1, 'This field is required')]),
+  'last-name': string([minLength(1, 'This field is required')]),
+  country: string([minLength(1, 'This field is required')]),
+  language: array(string(), [minLength(1, 'This field is required')])
 })
-const personalSchema = yup.object().shape({
-  'first-name': yup.string().required(),
-  'last-name': yup.string().required(),
-  country: yup.string().required(),
-  language: yup.array().required().min(1)
-})
-const socialSchema = yup.object().shape({
-  twitter: yup.string().required(),
-  facebook: yup.string().required(),
-  google: yup.string().required(),
-  linkedIn: yup.string().required()
+
+const socialSchema = object({
+  twitter: string([minLength(1, 'This field is required')]),
+  facebook: string([minLength(1, 'This field is required')]),
+  google: string([minLength(1, 'This field is required')]),
+  linkedIn: string([minLength(1, 'This field is required')])
 })
 
 const StepperLinearWithValidation = () => {
+  // States
   const [activeStep, setActiveStep] = useState(0)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -89,12 +125,12 @@ const StepperLinearWithValidation = () => {
     handleSubmit: handleAccountSubmit,
     formState: { errors: accountErrors }
   } = useForm({
-    resolver: yupResolver(accountSchema),
+    resolver: valibotResolver(accountSchema),
     defaultValues: {
       username: '',
       email: '',
       password: '',
-      'confirm-password': ''
+      confirmPassword: ''
     }
   })
   const {
@@ -103,7 +139,7 @@ const StepperLinearWithValidation = () => {
     handleSubmit: handlePersonalSubmit,
     formState: { errors: personalErrors }
   } = useForm({
-    resolver: yupResolver(personalSchema),
+    resolver: valibotResolver(personalSchema),
     defaultValues: {
       'first-name': '',
       'last-name': '',
@@ -117,7 +153,7 @@ const StepperLinearWithValidation = () => {
     handleSubmit: handleSocialSubmit,
     formState: { errors: socialErrors }
   } = useForm({
-    resolver: yupResolver(socialSchema),
+    resolver: valibotResolver(socialSchema),
     defaultValues: {
       twitter: '',
       facebook: '',
@@ -139,9 +175,11 @@ const StepperLinearWithValidation = () => {
 
   const handleReset = () => {
     setActiveStep(0)
-    accountReset({ email: '', username: '', password: '', 'confirm-password': '' })
-    personalReset({ country: '', language: [], 'last-name': '', 'first-name': '' })
-    socialReset({ google: '', twitter: '', facebook: '', linkedIn: '' })
+    accountReset({ email: '', username: '', password: '', confirmPassword: '' })
+    personalReset({ 'last-name': '', 'first-name': '', country: '', language: [] })
+    socialReset({ twitter: '', facebook: '', google: '', linkedIn: '' })
+    setShowPassword(false)
+    setShowConfirmPassword(false)
   }
 
   const Languages = ['English', 'French', 'Spanish', 'Portuguese', 'Italian', 'German', 'Arabic']
@@ -150,15 +188,13 @@ const StepperLinearWithValidation = () => {
     switch (activeStep) {
       case 0:
         return (
-          <form key={0} onSubmit={handleAccountSubmit(onSubmit)}>
+          <form onSubmit={handleAccountSubmit(onSubmit)}>
             <Grid container spacing={5}>
               <Grid item xs={12}>
-                <Typography variant='body2'>{steps[0].title}</Typography>
-                <Typography component='p' variant='caption'>
-                  {steps[0].subtitle}
-                </Typography>
+                <Typography className={styles['fw-500']}>{steps[0].title}</Typography>
+                <Typography variant='body2'>{steps[0].subtitle}</Typography>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='username'
                   control={accountControl}
@@ -169,12 +205,12 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='Username'
                       placeholder='johnDoe'
-                      {...(accountErrors.username && { error: true, helperText: 'This field is required' })}
+                      {...(accountErrors.username && { error: true, helperText: accountErrors.username.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='email'
                   control={accountControl}
@@ -183,14 +219,15 @@ const StepperLinearWithValidation = () => {
                     <TextField
                       {...field}
                       fullWidth
+                      type='email'
                       label='Email'
                       placeholder='johndoe@gmail.com'
-                      {...(accountErrors.email && { error: true, helperText: `${accountErrors.email.message}` })}
+                      {...(accountErrors.email && { error: true, helperText: accountErrors.email.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='password'
                   control={accountControl}
@@ -200,7 +237,8 @@ const StepperLinearWithValidation = () => {
                       {...field}
                       fullWidth
                       label='Password'
-                      id='outlined-adornment-password'
+                      placeholder='············'
+                      id='stepper-linear-validation-password'
                       type={showPassword ? 'text' : 'password'}
                       InputProps={{
                         endAdornment: (
@@ -216,14 +254,14 @@ const StepperLinearWithValidation = () => {
                           </InputAdornment>
                         )
                       }}
-                      {...(accountErrors.password && { error: true, helperText: `${accountErrors.password.message}` })}
+                      {...(accountErrors.password && { error: true, helperText: accountErrors.password.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
-                  name='confirm-password'
+                  name='confirmPassword'
                   control={accountControl}
                   rules={{ required: true }}
                   render={({ field }) => (
@@ -231,7 +269,8 @@ const StepperLinearWithValidation = () => {
                       {...field}
                       fullWidth
                       label='Confirm Password'
-                      id='outlined-adornment-password'
+                      placeholder='············'
+                      id='stepper-linear-confirmPassword'
                       type={showConfirmPassword ? 'text' : 'password'}
                       InputProps={{
                         endAdornment: (
@@ -247,16 +286,16 @@ const StepperLinearWithValidation = () => {
                           </InputAdornment>
                         )
                       }}
-                      {...(accountErrors['confirm-password'] && {
+                      {...(accountErrors['confirmPassword'] && {
                         error: true,
-                        helperText: `${accountErrors['confirm-password'].message}`
+                        helperText: accountErrors['confirmPassword'].message
                       })}
                     />
                   )}
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' onClick={handleBack} disabled>
+                <Button variant='outlined' disabled color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -271,12 +310,10 @@ const StepperLinearWithValidation = () => {
           <form onSubmit={handlePersonalSubmit(onSubmit)}>
             <Grid container spacing={5}>
               <Grid item xs={12}>
-                <Typography variant='body2'>{steps[1].title}</Typography>
-                <Typography component='p' variant='caption'>
-                  {steps[1].subtitle}
-                </Typography>
+                <Typography className={styles['fw-500']}>{steps[1].title}</Typography>
+                <Typography variant='body2'>{steps[1].subtitle}</Typography>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='first-name'
                   control={personalControl}
@@ -287,12 +324,15 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='First Name'
                       placeholder='John'
-                      {...(personalErrors['first-name'] && { error: true, helperText: 'This field is required' })}
+                      {...(personalErrors['first-name'] && {
+                        error: true,
+                        helperText: personalErrors['first-name'].message
+                      })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='last-name'
                   control={personalControl}
@@ -303,7 +343,10 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='Last Name'
                       placeholder='Doe'
-                      {...(personalErrors['last-name'] && { error: true, helperText: 'This field is required' })}
+                      {...(personalErrors['last-name'] && {
+                        error: true,
+                        helperText: personalErrors['last-name'].message
+                      })}
                     />
                   )}
                 />
@@ -324,10 +367,10 @@ const StepperLinearWithValidation = () => {
                       </Select>
                     )}
                   />
-                  {personalErrors.country && <FormHelperText error>This field is required</FormHelperText>}
+                  {personalErrors.country && <FormHelperText error>country is a required field</FormHelperText>}
                 </FormControl>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <InputLabel error={Boolean(personalErrors.language)}>Language</InputLabel>
                   <Controller
@@ -336,8 +379,8 @@ const StepperLinearWithValidation = () => {
                     rules={{ required: true }}
                     render={({ field: { value, onChange } }) => (
                       <Select
-                        label='Language'
                         multiple
+                        label='Language'
                         value={Array.isArray(value) ? value : []}
                         onChange={onChange}
                         error={Boolean(personalErrors.language)}
@@ -350,11 +393,11 @@ const StepperLinearWithValidation = () => {
                       </Select>
                     )}
                   />
-                  {personalErrors.language && <FormHelperText error>This field is required</FormHelperText>}
+                  {personalErrors.language && <FormHelperText error>language is a required field</FormHelperText>}
                 </FormControl>
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' onClick={handleBack}>
+                <Button variant='outlined' onClick={handleBack} color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -369,12 +412,10 @@ const StepperLinearWithValidation = () => {
           <form onSubmit={handleSocialSubmit(onSubmit)}>
             <Grid container spacing={5}>
               <Grid item xs={12}>
-                <Typography variant='body2'>{steps[2].title}</Typography>
-                <Typography component='p' variant='caption'>
-                  {steps[2].subtitle}
-                </Typography>
+                <Typography className={styles['fw-500']}>{steps[2].title}</Typography>
+                <Typography variant='body2'>{steps[2].subtitle}</Typography>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='twitter'
                   control={socialControl}
@@ -386,12 +427,12 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='Twitter'
                       placeholder='https://twitter.com/johndoe'
-                      {...(socialErrors.twitter && { error: true, helperText: 'This field is required' })}
+                      {...(socialErrors.twitter && { error: true, helperText: socialErrors.twitter.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='facebook'
                   control={socialControl}
@@ -403,12 +444,12 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='Facebook'
                       placeholder='https://facebook.com/johndoe'
-                      {...(socialErrors.facebook && { error: true, helperText: 'This field is required' })}
+                      {...(socialErrors.facebook && { error: true, helperText: socialErrors.facebook.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='google'
                   control={socialControl}
@@ -419,12 +460,12 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='Google'
                       placeholder='https://google.com/johndoe'
-                      {...(socialErrors.google && { error: true, helperText: 'This field is required' })}
+                      {...(socialErrors.google && { error: true, helperText: socialErrors.google.message })}
                     />
                   )}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 <Controller
                   name='linkedIn'
                   control={socialControl}
@@ -435,13 +476,13 @@ const StepperLinearWithValidation = () => {
                       fullWidth
                       label='LinkedIn'
                       placeholder='https://linkedin.com/johndoe'
-                      {...(socialErrors.linkedIn && { error: true, helperText: 'This field is required' })}
+                      {...(socialErrors.linkedIn && { error: true, helperText: socialErrors.linkedIn.message })}
                     />
                   )}
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' onClick={handleBack}>
+                <Button variant='outlined' onClick={handleBack} color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -462,7 +503,6 @@ const StepperLinearWithValidation = () => {
         <StepperWrapper>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
-              const stepProps: { completed?: boolean } = {}
               const labelProps: {
                 error?: boolean
               } = {}
@@ -473,7 +513,7 @@ const StepperLinearWithValidation = () => {
                   (accountErrors.email ||
                     accountErrors.username ||
                     accountErrors.password ||
-                    accountErrors['confirm-password']) &&
+                    accountErrors['confirmPassword']) &&
                   activeStep === 0
                 ) {
                   labelProps.error = true
@@ -496,7 +536,7 @@ const StepperLinearWithValidation = () => {
               }
 
               return (
-                <Step key={index} {...stepProps}>
+                <Step key={index}>
                   <StepLabel {...labelProps} StepIconComponent={StepperCustomDot}>
                     <div className='step-label'>
                       <Typography className='step-number'>{`0${index + 1}`}</Typography>
@@ -515,12 +555,14 @@ const StepperLinearWithValidation = () => {
       <Divider />
       <CardContent>
         {activeStep === steps.length ? (
-          <Fragment>
+          <>
             <Typography className={styles.completedText}>All steps are completed!</Typography>
-            <Box className='flex justify-end'>
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </Fragment>
+            <div className='flex justify-end mt-4'>
+              <Button variant='contained' onClick={handleReset}>
+                Reset
+              </Button>
+            </div>
+          </>
         ) : (
           renderStepContent(activeStep)
         )}

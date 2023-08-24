@@ -18,16 +18,16 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         justifyContent: 'center'
       },
       '& .step-number': {
+        ...theme.typography.h4,
         fontWeight: 'bold',
-        marginRight: theme.spacing(2.5),
-        color: theme.vars.palette.text.primary
+        marginRight: theme.spacing(2.5)
       },
       '& .step-title': {
-        fontWeight: 500,
-        color: theme.vars.palette.text.primary
+        ...theme.typography.body1,
+        fontWeight: 500
       },
       '& .step-subtitle': {
-        color: theme.vars.palette.text.secondary
+        ...theme.typography.body2
       },
       '& .MuiStepLabel-root.Mui-disabled': {
         '& .step-number': {

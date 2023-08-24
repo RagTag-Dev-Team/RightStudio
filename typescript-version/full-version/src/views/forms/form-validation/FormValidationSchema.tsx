@@ -14,34 +14,42 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { valibotResolver } from '@hookform/resolvers/valibot'
+import { email, object, minLength, string } from 'valibot'
+import type { Input } from 'valibot'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
-const schema = yup
-  .object({
-    firstName: yup.string().required().min(3),
-    lastName: yup.string().required().min(3),
-    email: yup.string().required().email(),
-    password: yup.string().required().min(8)
-  })
-  .required()
+const schema = object({
+  firstName: string([
+    minLength(1, 'This field is required'),
+    minLength(3, 'First Name must be at least 3 characters long')
+  ]),
+  lastName: string([
+    minLength(1, 'This field is required'),
+    minLength(3, 'Last Name must be at least 3 characters long')
+  ]),
+  email: string([minLength(1, 'This field is required'), email('Please enter a valid email address')]),
+  password: string([
+    minLength(1, 'This field is required'),
+    minLength(8, 'Password must be at least 8 characters long')
+  ])
+})
 
-type FormData = yup.InferType<typeof schema>
+type FormData = Input<typeof schema>
 
 const FormValidationOnScheme = () => {
+  // States
   const [showPassword, setShowPassword] = useState(false)
-
-  const handleClickShowPassword = () => setShowPassword(show => !show)
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors }
   } = useForm<FormData>({
-    resolver: yupResolver(schema),
+    resolver: valibotResolver(schema),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -49,6 +57,8 @@ const FormValidationOnScheme = () => {
       password: ''
     }
   })
+
+  const handleClickShowPassword = () => setShowPassword(show => !show)
 
   const onSubmit = () => toast.success('Form Submitted')
 
@@ -68,8 +78,8 @@ const FormValidationOnScheme = () => {
                     {...field}
                     fullWidth
                     label='First Name'
-                    placeholder='Leonard'
-                    {...(errors.firstName && { error: true, helperText: `${errors.firstName.message}` })}
+                    placeholder='John'
+                    {...(errors.firstName && { error: true, helperText: errors.firstName.message })}
                   />
                 )}
               />
@@ -84,8 +94,8 @@ const FormValidationOnScheme = () => {
                     {...field}
                     fullWidth
                     label='Last Name'
-                    placeholder='Carter'
-                    {...(errors.lastName && { error: true, helperText: `${errors.lastName.message}` })}
+                    placeholder='Doe'
+                    {...(errors.lastName && { error: true, helperText: errors.lastName.message })}
                   />
                 )}
               />
@@ -99,9 +109,10 @@ const FormValidationOnScheme = () => {
                   <TextField
                     {...field}
                     fullWidth
+                    type='email'
                     label='Email'
-                    placeholder='carterleonard@gmail.com'
-                    {...(errors.email && { error: true, helperText: `${errors.email.message}` })}
+                    placeholder='johndoe@gmail.com'
+                    {...(errors.email && { error: true, helperText: errors.email.message })}
                   />
                 )}
               />
@@ -116,7 +127,8 @@ const FormValidationOnScheme = () => {
                     {...field}
                     fullWidth
                     label='Password'
-                    id='outlined-adornment-password'
+                    placeholder='············'
+                    id='form-validation-scheme-password'
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
@@ -132,14 +144,17 @@ const FormValidationOnScheme = () => {
                         </InputAdornment>
                       )
                     }}
-                    {...(errors.password && { error: true, helperText: `${errors.password.message}` })}
+                    {...(errors.password && { error: true, helperText: errors.password.message })}
                   />
                 )}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className='flex gap-4'>
               <Button variant='contained' type='submit'>
-                submit
+                Submit
+              </Button>
+              <Button variant='outlined' type='reset' onClick={() => reset()}>
+                Reset
               </Button>
             </Grid>
           </Grid>

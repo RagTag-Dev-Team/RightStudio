@@ -40,7 +40,7 @@ import DirectionLtr from '../../svg/DirectionLtr'
 import DirectionRtl from '../../svg/DirectionRtl'
 
 // Config Imports
-import primaryColorConfig from '@/configs/primaryColorConfig'
+import primaryColorConfig from '../../../configs/primaryColorConfig'
 
 // Hook Imports
 import useSettings from '../../hooks/useSettings'

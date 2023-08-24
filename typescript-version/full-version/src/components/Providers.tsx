@@ -1,5 +1,4 @@
 // Third-party Imports
-import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 // Type Imports
@@ -16,11 +15,8 @@ const Providers = ({ children }: ChildrenType) => {
     <NextAuthProvider basePath={process.env.BASEPATH}>
       <VerticalNavProvider>
         <SettingsProvider>
-        <ThemeProvider>
-          {children}
-          <ToastContainer />
-        </ThemeProvider>
-      </SettingsProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </SettingsProvider>
       </VerticalNavProvider>
     </NextAuthProvider>
   )

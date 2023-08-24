@@ -11,34 +11,38 @@ import FormLayoutsTabs from '../../../../views/forms/form-layouts/FormLayoutsTab
 import FormLayoutsCollapsible from '../../../../views/forms/form-layouts/FormLayoutsCollapsible'
 import FormLayoutsAlignment from '../../../../views/forms/form-layouts/FormLayoutsAlignment'
 
+import DatePickerWrapper from '../../../../@core/styles/libs/react-datepicker'
+
 const FormLayouts = () => {
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12} md={6}>
-        <FormLayoutsBasic />
+    <DatePickerWrapper>
+      <Grid container spacing={6}>
+        <Grid item xs={12} md={6}>
+          <FormLayoutsBasic />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <FormLayoutsIcon />
+        </Grid>
+        <Grid item xs={12}>
+          <FormLayoutsSeparator />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant='h6'>Form with Tabs</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <FormLayoutsTabs />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant='h6'>Collapsible Sections</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <FormLayoutsCollapsible />
+        </Grid>
+        <Grid item xs={12}>
+          <FormLayoutsAlignment />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <FormLayoutsIcon />
-      </Grid>
-      <Grid item xs={12}>
-        <FormLayoutsSeparator />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant='h6'>Form with Tabs</Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <FormLayoutsTabs />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant='h6'>Collapsible Sections</Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <FormLayoutsCollapsible />
-      </Grid>
-      <Grid item xs={12}>
-        <FormLayoutsAlignment />
-      </Grid>
-    </Grid>
+    </DatePickerWrapper>
   )
 }
 

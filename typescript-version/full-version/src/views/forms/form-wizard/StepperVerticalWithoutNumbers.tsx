@@ -2,7 +2,6 @@
 import { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Step from '@mui/material/Step'
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
@@ -42,6 +41,7 @@ const steps = [
   }
 ]
 const StepperVerticalWithoutNumbers = () => {
+  // States
   const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
@@ -77,27 +77,33 @@ const StepperVerticalWithoutNumbers = () => {
                 </StepLabel>
                 <StepContent>
                   <Typography>{step.description}</Typography>
-                  <Box>
-                    <Button variant='contained' onClick={handleNext}>
+                  <div className='flex gap-4 mt-4'>
+                    <Button variant='contained' onClick={handleNext} size='small'>
                       {index === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>
-                    <Button disabled={index === 0} onClick={handleBack}>
+                    <Button
+                      size='small'
+                      color='secondary'
+                      variant='outlined'
+                      onClick={handleBack}
+                      disabled={index === 0}
+                    >
                       Back
                     </Button>
-                  </Box>
+                  </div>
                 </StepContent>
               </Step>
             ))}
           </Stepper>
-          {activeStep === steps.length && (
-            <Box>
-              <Typography>All steps are completed!</Typography>
-              <Button variant='contained' onClick={handleReset}>
-                Reset
-              </Button>
-            </Box>
-          )}
         </StepperWrapper>
+        {activeStep === steps.length && (
+          <div className='mt-2'>
+            <Typography>All steps are completed!</Typography>
+            <Button variant='contained' onClick={handleReset} sx={{ marginTop: '0.5rem' }} size='small'>
+              Reset
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   )

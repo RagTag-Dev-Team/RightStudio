@@ -15,25 +15,68 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 
 // Third-party Imports
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
+type FormDataType = {
+  username: string
+  email: string
+  password: string
+  showPassword: boolean
+  confirmPassword: string
+  showConfirmPassword: boolean
+  firstName: string
+  lastName: string
+  country: string
+  language: string[]
+  date: Date | null
+  phoneNumber: string
+}
+
 const FormLayoutsSeparator = () => {
-  const [date, setDate] = useState<Date | null>(null)
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  // States
+  const [formData, setFormData] = useState<FormDataType>({
+    username: '',
+    email: '',
+    password: '',
+    showPassword: false,
+    confirmPassword: '',
+    showConfirmPassword: false,
+    firstName: '',
+    lastName: '',
+    country: '',
+    language: [],
+    date: null,
+    phoneNumber: ''
+  })
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setFormData(show => ({ ...show, showPassword: !show.showPassword }))
 
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(show => !show)
+  const handleClickShowConfirmPassword = () =>
+    setFormData(show => ({ ...show, showConfirmPassword: !show.showConfirmPassword }))
+
+  const handleReset = () => {
+    setFormData({
+      username: '',
+      email: '',
+      password: '',
+      showPassword: false,
+      confirmPassword: '',
+      showConfirmPassword: false,
+      firstName: '',
+      lastName: '',
+      country: '',
+      language: [],
+      date: null,
+      phoneNumber: ''
+    })
+  }
 
   return (
     <Card>
@@ -43,22 +86,40 @@ const FormLayoutsSeparator = () => {
         <CardContent>
           <Grid container spacing={6}>
             <Grid item xs={12}>
-              <Typography variant='body2'>1. Account Details</Typography>
+              <Typography variant='body2' sx={{ fontWeight: 500 }}>
+                1. Account Details
+              </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField fullWidth label='UserName' placeholder='johnDoe ' />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='UserName'
+                placeholder='johnDoe '
+                value={formData.username}
+                onChange={e => setFormData({ ...formData, username: e.target.value })}
+              />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField fullWidth label='Email' placeholder='johndoe@gmail.com ' />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                type='email'
+                label='Email'
+                value={formData.email}
+                placeholder='johndoe@gmail.com'
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+              />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <FormControl fullWidth>
-                <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
-                <OutlinedInput
-                  label='Password'
-                  id='outlined-adornment-password'
-                  type={showPassword ? 'text' : 'password'}
-                  endAdornment={
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='Password'
+                placeholder='············'
+                id='form-layout-separator-password'
+                type={formData.showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={e => setFormData({ ...formData, password: e.target.value })}
+                InputProps={{
+                  endAdornment: (
                     <InputAdornment position='end'>
                       <IconButton
                         edge='end'
@@ -66,21 +127,24 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
                       </IconButton>
                     </InputAdornment>
-                  }
-                />
-              </FormControl>
+                  )
+                }}
+              />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <FormControl fullWidth>
-                <InputLabel htmlFor='outlined-confirm-password'>Confirm Password</InputLabel>
-                <OutlinedInput
-                  label='Confirm Password'
-                  id='outlined-confirm-password'
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  endAdornment={
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='Confirm Password'
+                placeholder='············'
+                id='form-layout-separator-confirm-password'
+                type={formData.showConfirmPassword ? 'text' : 'password'}
+                value={formData.confirmPassword}
+                onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
+                InputProps={{
+                  endAdornment: (
                     <InputAdornment position='end'>
                       <IconButton
                         edge='end'
@@ -88,29 +152,47 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
                       </IconButton>
                     </InputAdornment>
-                  }
-                />
-              </FormControl>
+                  )
+                }}
+              />
             </Grid>
             <Grid item xs={12}>
               <Divider />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='body2'>2. Personal Info</Typography>
+              <Typography variant='body2' sx={{ fontWeight: 500 }}>
+                2. Personal Info
+              </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField fullWidth label='First Name' placeholder='John' />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='First Name'
+                placeholder='John'
+                value={formData.firstName}
+                onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+              />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField fullWidth label='Last Name' placeholder='Doe' />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='Last Name'
+                placeholder='Doe'
+                value={formData.lastName}
+                onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+              />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Country</InputLabel>
-                <Select label='Country'>
+                <Select
+                  label='Country'
+                  value={formData.country}
+                  onChange={e => setFormData({ ...formData, country: e.target.value })}
+                >
                   <MenuItem value='UK'>UK</MenuItem>
                   <MenuItem value='USA'>USA</MenuItem>
                   <MenuItem value='Australia'>Australia</MenuItem>
@@ -118,10 +200,15 @@ const FormLayoutsSeparator = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Language</InputLabel>
-                <Select label='Language'>
+                <Select
+                  multiple
+                  label='Language'
+                  value={formData.language}
+                  onChange={e => setFormData({ ...formData, language: e.target.value as string[] })}
+                >
                   <MenuItem value='English'>English</MenuItem>
                   <MenuItem value='French'>French</MenuItem>
                   <MenuItem value='Spanish'>Spanish</MenuItem>
@@ -132,27 +219,40 @@ const FormLayoutsSeparator = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <DatePicker
-                selected={date}
+                selected={formData.date}
                 showYearDropdown
                 showMonthDropdown
-                onChange={date => setDate(date)}
+                onChange={date => setFormData({ ...formData, date })}
                 placeholderText='MM/DD/YYYY'
                 customInput={<TextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField fullWidth label='Phone Number' type='number' placeholder='123-456-7890' />
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label='Phone Number'
+                type='number'
+                placeholder='123-456-7890'
+                value={formData.phoneNumber}
+                onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
+              />
             </Grid>
           </Grid>
         </CardContent>
         <Divider />
         <CardActions>
-          <Button type='submit' variant='contained'>
+          <Button type='submit' variant='contained' sx={{ marginInlineEnd: 2 }}>
             Submit
           </Button>
-          <Button type='reset' variant='outlined'>
+          <Button
+            type='reset'
+            variant='outlined'
+            onClick={() => {
+              handleReset()
+            }}
+          >
             Reset
           </Button>
         </CardActions>

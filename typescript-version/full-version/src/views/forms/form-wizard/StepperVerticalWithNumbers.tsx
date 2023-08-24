@@ -2,7 +2,6 @@
 import { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Step from '@mui/material/Step'
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
@@ -42,6 +41,7 @@ const steps = [
   }
 ]
 const StepperVerticalWithNumbers = () => {
+  // States
   const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
@@ -78,26 +78,32 @@ const StepperVerticalWithNumbers = () => {
                 </StepLabel>
                 <StepContent>
                   <Typography>{step.description}</Typography>
-                  <Box>
-                    <Button variant='contained' onClick={handleNext}>
+                  <div className='flex gap-4 mt-4'>
+                    <Button variant='contained' onClick={handleNext} size='small'>
                       {index === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>
-                    <Button disabled={index === 0} onClick={handleBack}>
+                    <Button
+                      size='small'
+                      color='secondary'
+                      variant='outlined'
+                      onClick={handleBack}
+                      disabled={index === 0}
+                    >
                       Back
                     </Button>
-                  </Box>
+                  </div>
                 </StepContent>
               </Step>
             ))}
           </Stepper>
         </StepperWrapper>
         {activeStep === steps.length && (
-          <Box>
+          <div className='mt-2'>
             <Typography>All steps are completed!</Typography>
-            <Button variant='contained' onClick={handleReset}>
+            <Button variant='contained' onClick={handleReset} size='small' sx={{ marginTop: '0.5rem' }}>
               Reset
             </Button>
-          </Box>
+          </div>
         )}
       </CardContent>
     </Card>

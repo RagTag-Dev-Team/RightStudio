@@ -4,7 +4,6 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Accordion from '@mui/material/Accordion'
@@ -21,53 +20,111 @@ import Typography from '@mui/material/Typography'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
-// Third-party Imports
-import Payment from 'payment'
-import Cards from 'react-credit-cards-2'
-import type { Focused } from 'react-credit-cards-2'
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
+// Type Imports
+import type { CustomInputHorizontalData } from '../../../@core/components/custom-inputs/types'
+
+// Component Imports
+import CustomInputHorizontal from '../../../@core/components/custom-inputs/Horizontal'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
-// Util Imports
-import { formatCVC, formatExpirationDate, formatCreditCardNumber } from '../../../@core/utils/format'
-
 // Style Imports
 import styles from './styles.module.css'
 
+type FormData = {
+  fullName: string
+  phone: string
+  address: string
+  zipCode: string
+  landmark: string
+  city: string
+  country: string
+  addressType: string
+  number: string
+  name: string
+  expiry: string
+  cvc: string
+}
+
+const data: CustomInputHorizontalData[] = [
+  {
+    title: 'Standard 3-5 Days',
+    meta: 'Free',
+    content: 'Friday, 15 Nov - Monday, 18 Nov',
+    isSelected: true,
+    value: 'standard'
+  },
+  {
+    title: 'Express',
+    meta: '$5.00',
+    content: 'Friday, 15 Nov - Sunday, 17 Nov',
+    value: 'express'
+  },
+  {
+    title: 'Overnight',
+    meta: '$10.00',
+    content: 'Friday, 15 Nov - Saturday, 16 Nov',
+    value: 'overnight'
+  }
+]
+
 const FormLayoutsCollapsible = () => {
-  const [cvc, setCvc] = useState<string>('')
-  const [name, setName] = useState<string>('')
-  const [focus, setFocus] = useState<string>('')
-  const [expiry, setExpiry] = useState<string>('')
-  const [cardNumber, setCardNumber] = useState<string>('')
+  const initialSelectedOption: string = data.filter(item => item.isSelected)[
+    data.filter(item => item.isSelected).length - 1
+  ].value
+
+  // States
   const [expanded, setExpanded] = useState<string | false>('panel1')
   const [paymentMethod, setPaymentMethod] = useState('credit')
-  const [option, setOption] = useState('standard')
+  const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
+  const [cardData, setCardData] = useState<FormData>({
+    fullName: '',
+    phone: '',
+    address: '',
+    zipCode: '',
+    landmark: '',
+    city: '',
+    country: '',
+    addressType: '',
+    number: '',
+    name: '',
+    expiry: '',
+    cvc: ''
+  })
 
-  const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+  const handleExpandChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
   }
 
-  const handleBlur = () => setFocus('')
-
-  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (target.name === 'number') {
-      target.value = formatCreditCardNumber(target.value, Payment)
-      setCardNumber(target.value)
-    } else if (target.name === 'expiry') {
-      target.value = formatExpirationDate(target.value)
-      setExpiry(target.value)
-    } else if (target.name === 'cvc') {
-      target.value = formatCVC(target.value, cardNumber, Payment)
-      setCvc(target.value)
+  const handleOptionChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
+    if (typeof prop === 'string') {
+      setSelectedOption(prop)
+    } else {
+      setSelectedOption((prop.target as HTMLInputElement).value)
     }
+  }
+
+  const handleReset = () => {
+    setCardData({
+      fullName: '',
+      phone: '',
+      address: '',
+      zipCode: '',
+      landmark: '',
+      city: '',
+      country: '',
+      addressType: '',
+      number: '',
+      name: '',
+      expiry: '',
+      cvc: ''
+    })
   }
 
   return (
     <form onSubmit={e => e.preventDefault()}>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleExpandChange('panel1')}>
         <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
           <Typography>Delivery Address</Typography>
         </AccordionSummary>
@@ -75,27 +132,70 @@ const FormLayoutsCollapsible = () => {
         <AccordionDetails>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Full Name' placeholder='John Doe' />
+              <TextField
+                fullWidth
+                label='Full Name'
+                placeholder='John Doe'
+                value={cardData.fullName}
+                onChange={e => setCardData({ ...cardData, fullName: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Phone No.' placeholder='123-456-7890' />
+              <TextField
+                fullWidth
+                label='Phone No.'
+                placeholder='123-456-7890'
+                value={cardData.phone}
+                onChange={e => setCardData({ ...cardData, phone: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth rows={4} multiline label='Address' placeholder='1456, Liberty Street' />
+              <TextField
+                fullWidth
+                rows={4}
+                multiline
+                label='Address'
+                placeholder='1456, Liberty Street'
+                value={cardData.address}
+                onChange={e => setCardData({ ...cardData, address: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth type='number' label='ZIP Code' placeholder='10005' />
+              <TextField
+                fullWidth
+                type='number'
+                label='ZIP Code'
+                placeholder='10005'
+                value={cardData.zipCode}
+                onChange={e => setCardData({ ...cardData, zipCode: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Landmark' placeholder='Nr Wall Street' />
+              <TextField
+                fullWidth
+                label='Landmark'
+                placeholder='Nr Wall Street'
+                value={cardData.landmark}
+                onChange={e => setCardData({ ...cardData, landmark: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='City' placeholder='New York' />
+              <TextField
+                fullWidth
+                label='City'
+                placeholder='New York'
+                value={cardData.city}
+                onChange={e => setCardData({ ...cardData, city: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Country</InputLabel>
-                <Select label='Country'>
+                <Select
+                  label='Country'
+                  value={cardData.country}
+                  onChange={e => setCardData({ ...cardData, country: e.target.value })}
+                >
                   <MenuItem value='UK'>UK</MenuItem>
                   <MenuItem value='USA'>USA</MenuItem>
                   <MenuItem value='Australia'>Australia</MenuItem>
@@ -105,7 +205,12 @@ const FormLayoutsCollapsible = () => {
             </Grid>
             <Grid item xs={12}>
               <FormLabel>Address Type</FormLabel>
-              <RadioGroup row name='radio-buttons-group'>
+              <RadioGroup
+                row
+                name='radio-buttons-group'
+                value={cardData.addressType}
+                onChange={e => setCardData({ ...cardData, addressType: e.target.value })}
+              >
                 <FormControlLabel value='home' control={<Radio />} label='Home (All day delivery)' />
                 <FormControlLabel value='office' control={<Radio />} label='Office (Delivery between 10 AM - 5 PM)' />
               </RadioGroup>
@@ -114,70 +219,29 @@ const FormLayoutsCollapsible = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+      <Accordion expanded={expanded === 'panel2'} onChange={handleExpandChange('panel2')}>
         <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
           <Typography>Delivery Options</Typography>
         </AccordionSummary>
         <Divider />
         <AccordionDetails>
-          <Box
-            className={`${styles.optionWrapper} ${option === 'standard' ? styles.activeOption : ''}`}
-            onClick={() => setOption('standard')}
-          >
-            <Radio
-              value='standard'
-              name='collapsible-options-radio'
-              checked={option === 'standard'}
-              className={styles.radioStyles}
-            />
-            <Box className='w-full'>
-              <Box className={styles.deliveryOption}>
-                <Typography>Standard 3-5 Days</Typography>
-                <Typography>Free</Typography>
-              </Box>
-              <Typography variant='body2'>Friday, 15 Nov - Monday, 18 Nov</Typography>
-            </Box>
-          </Box>
-          <Box
-            className={`${styles.optionWrapper} ${option === 'express' ? styles.activeOption : ''}`}
-            onClick={() => setOption('express')}
-          >
-            <Radio
-              value='express'
-              name='collapsible-options-radio'
-              checked={option === 'express'}
-              className={styles.radioStyles}
-            />
-            <Box className='w-full'>
-              <Box className={styles.deliveryOption}>
-                <Typography>Express</Typography>
-                <Typography>$5.00</Typography>
-              </Box>
-              <Typography variant='body2'>Friday, 15 Nov - Sunday, 17 Nov</Typography>
-            </Box>
-          </Box>
-          <Box
-            className={`${styles.optionWrapper} ${option === 'overnight' ? styles.activeOption : ''}`}
-            onClick={() => setOption('overnight')}
-          >
-            <Radio
-              value='overnight'
-              name='collapsible-options-radio'
-              checked={option === 'overnight'}
-              className={styles.radioStyles}
-            />
-            <Box className='w-full'>
-              <Box className={styles.deliveryOption}>
-                <Typography>Overnight</Typography>
-                <Typography>$10.00</Typography>
-              </Box>
-              <Typography variant='body2'>Friday, 15 Nov - Saturday, 16 Nov</Typography>
-            </Box>
-          </Box>
+          <Grid container>
+            {data.map((item, index) => (
+              <CustomInputHorizontal
+                type='radio'
+                key={index}
+                data={item}
+                gridProps={{ xs: 12, className: styles.customRadioOption }}
+                selected={selectedOption}
+                name='custom-radios-basic'
+                handleChange={handleOptionChange}
+              />
+            ))}
+          </Grid>
         </AccordionDetails>
       </Accordion>
 
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+      <Accordion expanded={expanded === 'panel3'} onChange={handleExpandChange('panel3')}>
         <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
           <Typography>Payment Method</Typography>
         </AccordionSummary>
@@ -201,64 +265,48 @@ const FormLayoutsCollapsible = () => {
                   <Grid item xs={12}>
                     <Grid container spacing={6}>
                       <Grid item xs={12}>
-                        <Cards cvc={cvc} focused={focus as Focused} expiry={expiry} name={name} number={cardNumber} />
+                        <TextField
+                          fullWidth
+                          name='number'
+                          autoComplete='off'
+                          label='Card Number'
+                          placeholder='0000 0000 0000 0000'
+                          value={cardData.number}
+                          onChange={e => setCardData({ ...cardData, number: e.target.value })}
+                        />
                       </Grid>
                       <Grid item xs={12}>
-                        <Grid container spacing={6}>
-                          <Grid item xs={12}>
-                            <TextField
-                              fullWidth
-                              name='number'
-                              value={cardNumber}
-                              autoComplete='off'
-                              label='Card Number'
-                              onBlur={handleBlur}
-                              onChange={handleInputChange}
-                              placeholder='0000 0000 0000 0000'
-                              onFocus={e => setFocus(e.target.name)}
-                            />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <TextField
-                              fullWidth
-                              name='name'
-                              value={name}
-                              label='Name'
-                              autoComplete='off'
-                              onBlur={handleBlur}
-                              placeholder='John Doe'
-                              onFocus={e => setFocus(e.target.name)}
-                              onChange={e => setName(e.target.value)}
-                            />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <TextField
-                              fullWidth
-                              name='expiry'
-                              value={expiry}
-                              autoComplete='off'
-                              label='Expiry Date'
-                              placeholder='MM/YY'
-                              onBlur={handleBlur}
-                              onChange={handleInputChange}
-                              inputProps={{ maxLength: '5' }}
-                              onFocus={e => setFocus(e.target.name)}
-                            />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <TextField
-                              fullWidth
-                              name='cvc'
-                              value={cvc}
-                              label='CVC Code'
-                              autoComplete='off'
-                              onBlur={handleBlur}
-                              onChange={handleInputChange}
-                              onFocus={e => setFocus(e.target.name)}
-                              placeholder={Payment.fns.cardType(cardNumber) === 'amex' ? '1234' : '123'}
-                            />
-                          </Grid>
-                        </Grid>
+                        <TextField
+                          fullWidth
+                          name='name'
+                          label='Name'
+                          autoComplete='off'
+                          placeholder='John Doe'
+                          value={cardData.name}
+                          onChange={e => setCardData({ ...cardData, name: e.target.value })}
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <TextField
+                          fullWidth
+                          name='expiry'
+                          autoComplete='off'
+                          label='Expiry Date'
+                          placeholder='MM/YY'
+                          value={cardData.expiry}
+                          onChange={e => setCardData({ ...cardData, expiry: e.target.value })}
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <TextField
+                          fullWidth
+                          name='cvc'
+                          label='CVC Code'
+                          autoComplete='off'
+                          placeholder='123'
+                          value={cardData.cvc}
+                          onChange={e => setCardData({ ...cardData, cvc: e.target.value })}
+                        />
                       </Grid>
                     </Grid>
                   </Grid>
@@ -268,11 +316,11 @@ const FormLayoutsCollapsible = () => {
           </Grid>
         </AccordionDetails>
         <Divider />
-        <AccordionDetails>
+        <AccordionDetails className='flex gap-4'>
           <Button type='submit' variant='contained'>
             Place Order
           </Button>
-          <Button type='reset' variant='outlined'>
+          <Button type='reset' variant='outlined' onClick={() => handleReset()}>
             Reset
           </Button>
         </AccordionDetails>

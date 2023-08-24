@@ -25,7 +25,6 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
@@ -43,12 +42,12 @@ type FormValues = {
 }
 
 const FormValidationBasic = () => {
+  // States
   const [showPassword, setShowPassword] = useState(false)
-
-  const handleClickShowPassword = () => setShowPassword(show => !show)
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>({
@@ -65,6 +64,8 @@ const FormValidationBasic = () => {
     }
   })
 
+  const handleClickShowPassword = () => setShowPassword(show => !show)
+
   const onSubmit = () => toast.success('Form Submitted')
 
   return (
@@ -73,7 +74,7 @@ const FormValidationBasic = () => {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={6}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='firstName'
                 control={control}
@@ -83,13 +84,13 @@ const FormValidationBasic = () => {
                     {...field}
                     fullWidth
                     label='First Name'
-                    placeholder='Leonard'
+                    placeholder='John'
                     {...(errors.firstName && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='lastName'
                 control={control}
@@ -99,13 +100,13 @@ const FormValidationBasic = () => {
                     {...field}
                     fullWidth
                     label='Last Name'
-                    placeholder='Carter'
+                    placeholder='Doe'
                     {...(errors.lastName && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='email'
                 control={control}
@@ -116,13 +117,13 @@ const FormValidationBasic = () => {
                     fullWidth
                     type='email'
                     label='Email'
-                    placeholder='carterleonard@gmail.com'
+                    placeholder='johndoe@gmail.com'
                     {...(errors.email && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='password'
                 control={control}
@@ -132,7 +133,8 @@ const FormValidationBasic = () => {
                     {...field}
                     fullWidth
                     label='Password'
-                    id='outlined-adornment-password'
+                    placeholder='············'
+                    id='form-validation-basic-password'
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
@@ -153,7 +155,7 @@ const FormValidationBasic = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <Controller
                 name='dob'
                 control={control}
@@ -178,7 +180,7 @@ const FormValidationBasic = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel error={Boolean(errors.select)}>Country</InputLabel>
                 <Controller
@@ -245,9 +247,12 @@ const FormValidationBasic = () => {
                 {errors.checkbox && <FormHelperText error>This field is required.</FormHelperText>}
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className='flex gap-4'>
               <Button variant='contained' type='submit'>
-                submit
+                Submit
+              </Button>
+              <Button variant='outlined' type='reset' onClick={() => reset()}>
+                Reset
               </Button>
             </Grid>
           </Grid>

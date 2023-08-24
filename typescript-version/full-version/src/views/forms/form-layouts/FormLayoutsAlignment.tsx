@@ -21,7 +21,9 @@ import styles from './styles.module.css'
 import Icon from '../../../@core/components/IconifyIcon'
 
 const FormLayoutsAlignment = () => {
+  // States
   const [showPassword, setShowPassword] = useState(false)
+
   const handleClickShowPassword = () => setShowPassword(show => !show)
 
   return (
@@ -40,7 +42,8 @@ const FormLayoutsAlignment = () => {
               <TextField
                 fullWidth
                 label='Password'
-                id='outlined-adornment-password'
+                placeholder='············'
+                id='form-layout-alignment-password'
                 type={showPassword ? 'text' : 'password'}
                 InputProps={{
                   endAdornment: (
@@ -58,10 +61,10 @@ const FormLayoutsAlignment = () => {
                 }}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={styles.paddingTop}>
               <FormControlLabel control={<Checkbox />} label='Remember me' />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={styles.paddingTop}>
               <Button variant='contained' type='submit' fullWidth>
                 Log In
               </Button>

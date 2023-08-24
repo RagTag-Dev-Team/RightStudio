@@ -2,7 +2,6 @@
 import { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
@@ -23,49 +22,128 @@ import IconButton from '@mui/material/IconButton'
 
 // Third-party Imports
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
 // Icon Imports
 import Icon from '../../../@core/components/IconifyIcon'
 
+// Style Imports
+import styles from './styles.module.css'
+
+type FormDataType = {
+  firstName: string
+  lastName: string
+  country: string
+  language: string[]
+  date: Date | null
+  phoneNumber: string
+  username: string
+  email: string
+  password: string
+  showPassword: boolean
+  confirmPassword: string
+  showConfirmPassword: boolean
+  twitter: string
+  facebook: string
+  google: string
+  linkedin: string
+  instagram: string
+  quora: string
+}
+
 const FormLayoutsWithTabs = () => {
+  // States
   const [value, setValue] = useState('personal_info')
-  const [date, setDate] = useState<Date | null>(null)
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [formData, setFormData] = useState<FormDataType>({
+    firstName: '',
+    lastName: '',
+    country: '',
+    language: [],
+    date: null,
+    phoneNumber: '',
+    username: '',
+    email: '',
+    password: '',
+    showPassword: false,
+    confirmPassword: '',
+    showConfirmPassword: false,
+    twitter: '',
+    facebook: '',
+    google: '',
+    linkedin: '',
+    instagram: '',
+    quora: ''
+  })
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setFormData(show => ({ ...show, showPassword: !show.showPassword }))
 
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(show => !show)
+  const handleClickShowConfirmPassword = () =>
+    setFormData(show => ({ ...show, showConfirmPassword: !show.showConfirmPassword }))
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
+  }
+
+  const handleReset = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      country: '',
+      language: [],
+      date: null,
+      phoneNumber: '',
+      username: '',
+      email: '',
+      password: '',
+      showPassword: false,
+      confirmPassword: '',
+      showConfirmPassword: false,
+      twitter: '',
+      facebook: '',
+      google: '',
+      linkedin: '',
+      instagram: '',
+      quora: ''
+    })
   }
 
   return (
     <Card>
       <TabContext value={value}>
-        <Box className='tabBorder'>
-          <TabList onChange={handleChange}>
-            <Tab label='Personal Info' value='personal_info' />
-            <Tab label='Account Details' value='account_details' />
-            <Tab label='SOCIAL LINKS' value='social_links' />
-          </TabList>
-        </Box>
+        <TabList variant='scrollable' onChange={handleTabChange} className={styles.tabBorder}>
+          <Tab label='Personal Info' value='personal_info' />
+          <Tab label='Account Details' value='account_details' />
+          <Tab label='SOCIAL LINKS' value='social_links' />
+        </TabList>
         <form onSubmit={e => e.preventDefault()}>
           <CardContent>
             <TabPanel value='personal_info'>
               <Grid container spacing={6}>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='First Name' placeholder='John' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='First Name'
+                    placeholder='John'
+                    value={formData.firstName}
+                    onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Last Name' placeholder='Doe' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Last Name'
+                    placeholder='Doe'
+                    value={formData.lastName}
+                    onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel>Country</InputLabel>
-                    <Select label='Country'>
+                    <Select
+                      label='Country'
+                      value={formData.country}
+                      onChange={e => setFormData({ ...formData, country: e.target.value })}
+                    >
                       <MenuItem value='UK'>UK</MenuItem>
                       <MenuItem value='USA'>USA</MenuItem>
                       <MenuItem value='Australia'>Australia</MenuItem>
@@ -73,10 +151,15 @@ const FormLayoutsWithTabs = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel>Language</InputLabel>
-                    <Select label='Language'>
+                    <Select
+                      multiple
+                      label='Language'
+                      value={formData.language}
+                      onChange={e => setFormData({ ...formData, language: e.target.value as string[] })}
+                    >
                       <MenuItem value='English'>English</MenuItem>
                       <MenuItem value='French'>French</MenuItem>
                       <MenuItem value='Spanish'>Spanish</MenuItem>
@@ -87,35 +170,58 @@ const FormLayoutsWithTabs = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                   <DatePicker
-                    selected={date}
+                    selected={formData.date}
                     showYearDropdown
                     showMonthDropdown
-                    onChange={date => setDate(date)}
+                    onChange={date => setFormData({ ...formData, date })}
                     placeholderText='MM/DD/YYYY'
                     customInput={<TextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Phone Number' type='number' placeholder='123-456-7890' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Phone Number'
+                    type='number'
+                    placeholder='123-456-7890'
+                    value={formData.phoneNumber}
+                    onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
+                  />
                 </Grid>
               </Grid>
             </TabPanel>
             <TabPanel value='account_details'>
               <Grid container spacing={6}>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Username' placeholder='johnDoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Username'
+                    placeholder='johnDoe'
+                    value={formData.username}
+                    onChange={e => setFormData({ ...formData, username: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Email' placeholder='johndoe@gmail.com ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    type='email'
+                    label='Email'
+                    placeholder='johndoe@gmail.com'
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
                     label='Password'
-                    id='outlined-adornment-password'
-                    type={showPassword ? 'text' : 'password'}
+                    placeholder='············'
+                    id='form-layout-tabs-password'
+                    type={formData.showPassword ? 'text' : 'password'}
+                    value={formData.password}
+                    onChange={e => setFormData({ ...formData, password: e.target.value })}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position='end'>
@@ -125,19 +231,22 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={formData.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
                     label='Confirm Password'
-                    id='outlined-adornment-password'
-                    type={showConfirmPassword ? 'text' : 'password'}
+                    placeholder='············'
+                    id='form-layout-tabs-confirm-password'
+                    type={formData.showConfirmPassword ? 'text' : 'password'}
+                    value={formData.confirmPassword}
+                    onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position='end'>
@@ -147,7 +256,7 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={formData.showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -158,33 +267,69 @@ const FormLayoutsWithTabs = () => {
             </TabPanel>
             <TabPanel value='social_links'>
               <Grid container spacing={6}>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Twitter' placeholder='https://twitter.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Twitter'
+                    placeholder='https://twitter.com/johndoe'
+                    value={formData.twitter}
+                    onChange={e => setFormData({ ...formData, twitter: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Facebook' placeholder='https://facebook.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Facebook'
+                    placeholder='https://facebook.com/johndoe'
+                    value={formData.facebook}
+                    onChange={e => setFormData({ ...formData, facebook: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Google+' placeholder='https://plus.google.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Google+'
+                    placeholder='https://plus.google.com/johndoe'
+                    value={formData.google}
+                    onChange={e => setFormData({ ...formData, google: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='LinkedIn' placeholder='https://linkedin.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='LinkedIn'
+                    placeholder='https://linkedin.com/johndoe'
+                    value={formData.linkedin}
+                    onChange={e => setFormData({ ...formData, linkedin: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Instagram' placeholder='https://instagram.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Instagram'
+                    placeholder='https://instagram.com/johndoe'
+                    value={formData.instagram}
+                    onChange={e => setFormData({ ...formData, instagram: e.target.value })}
+                  />
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField fullWidth label='Quora' placeholder='https://quora.com/johndoe ' />
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label='Quora'
+                    placeholder='https://quora.com/johndoe'
+                    value={formData.quora}
+                    onChange={e => setFormData({ ...formData, quora: e.target.value })}
+                  />
                 </Grid>
               </Grid>
             </TabPanel>
           </CardContent>
           <Divider />
           <CardActions>
-            <Button type='submit' variant='contained'>
+            <Button type='submit' variant='contained' sx={{ marginInlineEnd: 2 }}>
               Submit
             </Button>
-            <Button type='reset' variant='outlined'>
+            <Button type='reset' variant='outlined' onClick={() => handleReset()}>
               Reset
             </Button>
           </CardActions>

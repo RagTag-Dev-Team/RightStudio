@@ -27,12 +27,13 @@ type FormValues = {
 }
 
 const FormValidationAsyncSubmit = () => {
+  // States
+  const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
-
-  const handleClickShowPassword = () => setShowPassword(show => !show)
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>({
@@ -44,13 +45,13 @@ const FormValidationAsyncSubmit = () => {
     }
   })
 
-  const [loading, setLoading] = useState(false)
+  const handleClickShowPassword = () => setShowPassword(show => !show)
 
   const onSubmit = async () => {
     setLoading(true)
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-    await sleep(3000)
+    await sleep(2000)
     setLoading(false)
     toast.success('Form Submitted')
   }
@@ -69,9 +70,9 @@ const FormValidationAsyncSubmit = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label='First Name'
-                    placeholder='Leonard'
                     fullWidth
+                    label='First Name'
+                    placeholder='John'
                     {...(errors.firstName && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
@@ -85,9 +86,9 @@ const FormValidationAsyncSubmit = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label='Last Name'
-                    placeholder='Carter'
                     fullWidth
+                    label='Last Name'
+                    placeholder='Doe'
                     {...(errors.lastName && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
@@ -104,7 +105,7 @@ const FormValidationAsyncSubmit = () => {
                     fullWidth
                     type='email'
                     label='Email'
-                    placeholder='carterleonard@gmail.com'
+                    placeholder='johndoe@gmail.com'
                     {...(errors.email && { error: true, helperText: 'This field is required.' })}
                   />
                 )}
@@ -121,6 +122,7 @@ const FormValidationAsyncSubmit = () => {
                     fullWidth
                     label='Password'
                     id='outlined-password'
+                    placeholder='············'
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
@@ -141,10 +143,13 @@ const FormValidationAsyncSubmit = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className='flex gap-4'>
               <Button variant='contained' type='submit' className='gap-2'>
                 {loading && <CircularProgress size={20} color='inherit' />}
                 Submit
+              </Button>
+              <Button variant='outlined' type='reset' onClick={() => reset()}>
+                Reset
               </Button>
             </Grid>
           </Grid>

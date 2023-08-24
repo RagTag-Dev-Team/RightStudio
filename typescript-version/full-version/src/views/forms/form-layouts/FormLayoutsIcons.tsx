@@ -21,7 +21,7 @@ const FormLayoutsWithIcon = () => {
               <TextField
                 fullWidth
                 label='Name'
-                placeholder='Leonard Carter'
+                placeholder='John Doe'
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -34,8 +34,9 @@ const FormLayoutsWithIcon = () => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
+                type='email'
                 label='Email'
-                placeholder='carterleonard@gmail.com'
+                placeholder='johndoe@gmail.com'
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -66,11 +67,7 @@ const FormLayoutsWithIcon = () => {
                 multiline
                 label='Message'
                 placeholder='Bio...'
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    alignItems: 'baseline'
-                  }
-                }}
+                sx={{ '& .MuiOutlinedInput-root': { alignItems: 'baseline' } }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -81,7 +78,9 @@ const FormLayoutsWithIcon = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button variant='contained'>submit</Button>
+              <Button variant='contained' type='submit'>
+                Submit
+              </Button>
             </Grid>
           </Grid>
         </form>
