@@ -77,7 +77,7 @@ module.exports = {
           }
         ],
         pathGroupsExcludedImportTypes: ['react', 'type'],
-        newlinesBetween: 'always-and-inside-groups'
+        'newlines-between': 'always-and-inside-groups'
       }
     ],
     '@typescript-eslint/ban-types': [

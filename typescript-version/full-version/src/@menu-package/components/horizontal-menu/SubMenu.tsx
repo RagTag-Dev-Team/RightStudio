@@ -272,11 +272,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Event emitter allows you to communicate across tree components.
   // This effect closes all menus when an item gets clicked anywhere in the tree.
   useEffect(() => {
-    function handleTreeClick() {
+    const handleTreeClick = () => {
       setOpen(false)
     }
 
-    function onSubMenuOpen(event: { nodeId: string; parentId: string }) {
+    const onSubMenuOpen = (event: { nodeId: string; parentId: string }) => {
       if (event.nodeId !== nodeId && event.parentId === parentId) {
         setOpen(false)
       }

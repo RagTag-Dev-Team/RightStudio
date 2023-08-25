@@ -1,21 +1,28 @@
 'use client'
 
 // React Imports
-import type { HTMLProps } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { HTMLProps } from 'react'
 
 // Third-party Imports
-import type { ColumnDef } from '@tanstack/react-table'
+import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import type { ColumnDef } from '@tanstack/react-table'
 
+// Type Imports
 import type { DataType } from './data'
+
+// Style Imports
+import styles from '@core/styles/libs/reactTables.module.css'
+
+// Data Imports
 import defaultData from './data'
 
-function IndeterminateCheckbox({
+const IndeterminateCheckbox = ({
   indeterminate,
   className = '',
   ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {
+}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
   const ref = useRef<HTMLInputElement>(null!)
 
   useEffect(() => {
@@ -47,16 +54,14 @@ const RowSelection = () => {
           />
         ),
         cell: ({ row }) => (
-          <div className='px-1'>
-            <IndeterminateCheckbox
-              {...{
-                checked: row.getIsSelected(),
-                disabled: !row.getCanSelect(),
-                indeterminate: row.getIsSomeSelected(),
-                onChange: row.getToggleSelectedHandler()
-              }}
-            />
-          </div>
+          <IndeterminateCheckbox
+            {...{
+              checked: row.getIsSelected(),
+              disabled: !row.getCanSelect(),
+              indeterminate: row.getIsSomeSelected(),
+              onChange: row.getToggleSelectedHandler()
+            }}
+          />
         )
       },
       columnHelper.accessor('full_name', {
@@ -100,35 +105,33 @@ const RowSelection = () => {
   })
 
   return (
-    <div className='p-2'>
-      <table className='w-full'>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table
-            .getRowModel()
-            .rows.slice(0, 10)
-            .map(row => {
-              return (
-                <tr key={row.id} className={row.getIsSelected() ? 'selected' : ''}>
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  ))}
-                </tr>
-              )
-            })}
-        </tbody>
-      </table>
-    </div>
+    <table className={styles.table}>
+      <thead>
+        {table.getHeaderGroups().map(headerGroup => (
+          <tr key={headerGroup.id} className={styles.tr}>
+            {headerGroup.headers.map(header => (
+              <th key={header.id} className={styles.th}>
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody>
+        {table
+          .getRowModel()
+          .rows.slice(0, 10)
+          .map(row => {
+            return (
+              <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
+                {row.getVisibleCells().map(cell => (
+                  <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                ))}
+              </tr>
+            )
+          })}
+      </tbody>
+    </table>
   )
 }
 

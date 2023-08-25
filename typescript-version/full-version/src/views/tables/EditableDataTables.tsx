@@ -4,11 +4,17 @@
 import { useEffect, useState } from 'react'
 
 // Third-party Imports
-import type { ColumnDef, Row, RowData, Column, Table } from '@tanstack/react-table'
+import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import type { ColumnDef, Row, RowData, Column, Table } from '@tanstack/react-table'
+
+// Type Imports
+import type { DataType } from './data'
+
+// Style Imports
+import styles from '@core/styles/libs/reactTables.module.css'
 
 // Data Imports
-import type { DataType } from './data'
 import defaultData from './data'
 
 // Column Definitions
@@ -98,36 +104,37 @@ const EditableDataTables = () => {
   })
 
   return (
-    <div className='p-2'>
-      <div className='h-2' />
-      <table className='w-full'>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table
-            .getRowModel()
-            .rows.slice(0, 10)
-            .map(row => {
-              return (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map(cell => {
-                    return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  })}
-                </tr>
-              )
-            })}
-        </tbody>
-      </table>
-    </div>
+    <table className={styles.table}>
+      <thead>
+        {table.getHeaderGroups().map(headerGroup => (
+          <tr key={headerGroup.id} className={styles.tr}>
+            {headerGroup.headers.map(header => (
+              <th key={header.id} className={styles.th}>
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody>
+        {table
+          .getRowModel()
+          .rows.slice(0, 10)
+          .map(row => {
+            return (
+              <tr key={row.id} className={styles.tr}>
+                {row.getVisibleCells().map(cell => {
+                  return (
+                    <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+      </tbody>
+    </table>
   )
 }
 
