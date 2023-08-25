@@ -1,14 +1,14 @@
-import React from 'react';
-import classnames from 'classnames';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import React from 'react'
+import Link from '@docusaurus/Link'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Layout from '@theme/Layout'
+import classnames from 'classnames'
+import HomepageFeatures from '@docViews/home-page-features'
 
-import styles from './index.module.css';
+import styles from './index.module.css'
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+const HomepageHeader = () => {
+  const {siteConfig} = useDocusaurusContext()
   return (
     <header className={classnames('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -16,26 +16,30 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            className="button button--secondary button--lg flex items-center gap-2"
+            to="/docs/intro"
+          >
+            Get Started →
           </Link>
         </div>
       </div>
     </header>
-  );
+  )
 }
 
-export default function Home(): JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
+const Home = (): JSX.Element => {
+  const {siteConfig} = useDocusaurusContext()
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Description will go into a meta tag in <head />"
+    >
       <HomepageHeader />
       <main>
         <HomepageFeatures />
       </main>
     </Layout>
-  );
+  )
 }
+
+export default Home

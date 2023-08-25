@@ -26,7 +26,7 @@ You can initialize NextAuth.js with a Route Handler too, very similar to API Rou
 import NextAuth from 'next-auth'
 
 // Lib Imports
-import { authOptions } from '../../../../lib/auth'
+import { authOptions } from '@/lib/auth'
 
 const handler = NextAuth(authOptions)
 

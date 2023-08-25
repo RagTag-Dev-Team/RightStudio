@@ -16,11 +16,11 @@ import { useEffect } from 'react'
 import { useLockBodyScroll, useToggle } from 'react-use'
 
 // Icon Imports
-import HamburgerMenuIcon from '../../../@layouts/svg/HamburgerMenu'
+import HamburgerMenuIcon from '@layouts/svg/HamburgerMenu'
 
 // Hook Imports
-import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 const NavToggle = () => {
   // Hooks

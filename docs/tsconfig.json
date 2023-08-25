@@ -5,5 +5,42 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "downlevelIteration": true,
+    "paths": {
+      // Docs
+      "@site/*": [
+        "./*"
+      ],
+      "@docViews/*": [
+        "./src/views/*"
+      ],
+      "@docComponents/*": [
+        "./src/components/*"
+      ],
+      // Template
+      "@/*": [
+        "../typescript-version/full-version/src/*"
+      ],
+      "@core/*": [
+        "../typescript-version/full-version/src/@core/*"
+      ],
+      "@layouts/*": [
+        "../typescript-version/full-version/src/@layouts/*"
+      ],
+      "@menu-package/*": [
+        "../typescript-version/full-version/src/@menu-package/*"
+      ],
+      "@assets/*": [
+        "../typescript-version/full-version/src/assets/*"
+      ],
+      "@components/*": [
+        "../typescript-version/full-version/src/components/*"
+      ],
+      "@configs/*": [
+        "../typescript-version/full-version/src/configs/*"
+      ],
+      "@views/*": [
+        "../typescript-version/full-version/src/views/*"
+      ],
+    }
   },
 }

@@ -8,22 +8,22 @@ import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Component Imports from @menu-package
-import { Menu, SubMenu, MenuItem, MenuSection } from '../../../@menu-package/vertical-menu'
+import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
 
 // Icon Imports
-import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
 import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
-// import { generateVerticalMenu } from '../../../utils/menuUtils'
+// import { generateVerticalMenu } from '@/utils/menuUtils'
 
 // Style Imports
 import menuItemStyles from '../../../@core/styles/vertical/menuItemStyles'
 
 // Menu Data Imports
-// import menuData from '../../../data/navigation/VerticalMenuData'
+// import menuData from '@/data/navigation/VerticalMenuData'
 
 const VerticalMenu = () => {
   // Hooks
@@ -92,8 +92,8 @@ const VerticalMenu = () => {
           </SubMenu>
           <SubMenu label={t('navigation.authPages')}>
             <SubMenu label={t('navigation.login')}>
-              <MenuItem href='/login-v1'>{t('navigation.loginV1')}</MenuItem>
-              <MenuItem href='/login-v2'>{t('navigation.loginV2')}</MenuItem>
+              <MenuItem href='/pages/auth/login-v1'>{t('navigation.loginV1')}</MenuItem>
+              <MenuItem href='/pages/auth/login-v2'>{t('navigation.loginV2')}</MenuItem>
             </SubMenu>
             <SubMenu label={t('navigation.register')}>
               <MenuItem>{t('navigation.registerV1')}</MenuItem>
@@ -137,6 +137,7 @@ const VerticalMenu = () => {
           <MenuItem href='/forms/form-validation'>{t('navigation.formValidation')}</MenuItem>
           <MenuItem href='/forms/form-wizard'>{t('navigation.formWizard')}</MenuItem>
         </MenuSection>
+        <MenuItem href='/tables'>Tables</MenuItem>
         <MenuSection label={t('navigation.chartsMisc')}>
           <SubMenu label={t('navigation.charts')}>
             <MenuItem href='/charts/apex-charts'>{t('navigation.apex')}</MenuItem>

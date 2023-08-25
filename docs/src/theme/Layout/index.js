@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 // Component Imports
-import BuyNowButton from '@site/src/components/buy-now-button';
+import BuyNowButton from '@docComponents/buy-now-button';
 
 // MUI's Customized Theme Import
 import ThemeProvider from '../../mui-theme/ThemeProvider';

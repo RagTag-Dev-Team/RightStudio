@@ -4,18 +4,18 @@
 import classnames from 'classnames'
 
 // Components Imports
-import Logo from '../shared/Logo'
 import NavToggle from './NavToggle'
-import NavSearch from '../shared/search'
-import Translation from '../shared/Translation'
-import ModeSwitcher from '../../../@layouts/components/ModeSwitcher'
-import UserDetails from '../../../@layouts/components/UserDetails'
+import Logo from '@components/layout/shared/Logo'
+import NavSearch from '@components/layout/shared/search'
+import Translation from '@components/layout/shared/Translation'
+import ModeSwitcher from '@layouts/components/ModeSwitcher'
+import UserDetails from '@layouts/components/UserDetails'
 
 // Hook Imports
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 const NavbarContent = () => {
   // Hooks

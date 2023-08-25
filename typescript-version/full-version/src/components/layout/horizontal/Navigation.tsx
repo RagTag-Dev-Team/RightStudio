@@ -7,14 +7,14 @@ import classnames from 'classnames'
 import HorizontalMenu from './HorizontalMenu'
 
 // Config Imports
-import themeConfig from '../../../configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useSettings from '@core/hooks/useSettings'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Util Imports
-import { horizontalLayoutClasses } from '../../../@layouts/utils/layoutClasses'
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Style Imports
 import styles from './styles.module.css'

@@ -42,7 +42,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='min-h-full flex justify-center items-center'>
+    <div className='min-bs-full flex justify-center items-center'>
       <form onSubmit={handleSubmit}>
         <label>
           Email:

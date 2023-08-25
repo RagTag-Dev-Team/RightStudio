@@ -8,24 +8,24 @@ import { useTheme } from '@mui/material/styles'
 import { useTranslation } from 'react-i18next'
 
 // Component Imports from @menu-package
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '../../../@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
 
 // Icon Imports
-import LinkExternalIcon from '../../../@layouts/svg/LinkExternal'
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
 import useSettings from '../../../@core/hooks/useSettings'
 
 // Util Imports
-// import { generateHorizontalMenu } from '../../../@menu-package/utils/menuUtils'
+// import { generateHorizontalMenu } from '@/utils/menuUtils'
 
 // Style Imports
 import menuItemStyles from '../../../@core/styles/horizontal/menuItemStyles'
 import verticalNavigationCustomStyles from '../../../@core/styles/vertical/navigationCustomStyles'
 
 // Menu Data Imports
-// import menuData from '../../../data/navigation/HorizontalMenuData'
+// import menuData from '@/data/navigation/HorizontalMenuData'
 
 const HorizontalMenu = () => {
   // Hooks
@@ -113,8 +113,8 @@ const HorizontalMenu = () => {
           </SubMenu>
           <SubMenu label={t('navigation.authPages')}>
             <SubMenu label={t('navigation.login')}>
-              <MenuItem href='/login-v1'>{t('navigation.loginV1')}</MenuItem>
-              <MenuItem href='/login-v2'>{t('navigation.loginV2')}</MenuItem>
+              <MenuItem href='/pages/auth/login-v1'>{t('navigation.loginV1')}</MenuItem>
+              <MenuItem href='/pages/auth/login-v2'>{t('navigation.loginV2')}</MenuItem>
             </SubMenu>
             <SubMenu label={t('navigation.register')}>
               <MenuItem>{t('navigation.registerV1')}</MenuItem>
@@ -150,6 +150,7 @@ const HorizontalMenu = () => {
           <MenuItem>{t('navigation.formValidation')}</MenuItem>
           <MenuItem>{t('navigation.formWizard')}</MenuItem>
         </SubMenu>
+        <MenuItem href='/tables'>Tables</MenuItem>
         <SubMenu label={t('navigation.charts')}>
           <MenuItem>{t('navigation.apex')}</MenuItem>
           <MenuItem>{t('navigation.recharts')}</MenuItem>

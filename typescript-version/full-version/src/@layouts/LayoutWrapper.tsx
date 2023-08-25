@@ -11,7 +11,7 @@ import { useColorScheme } from '@mui/material/styles'
 import type { Mode } from '../@core/types'
 
 // Hook Imports
-import useSettings from '../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Type
 type LayoutWrapperProps = {

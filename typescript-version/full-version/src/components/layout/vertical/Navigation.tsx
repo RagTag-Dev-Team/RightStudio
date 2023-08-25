@@ -4,18 +4,18 @@
 import { useColorScheme } from '@mui/material'
 
 // Component Imports from @menu-package
-import VerticalNav, { NavHeader, NavCollapseIcons } from '../../../@menu-package/vertical-menu'
+import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'
 
 // Component Imports
-import Logo from '../shared/Logo'
+import Logo from '@components/layout/shared/Logo'
 import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
-import useHorizontalNav from '../../../@menu-package/hooks/useHorizontalNav'
+import useSettings from '@core/hooks/useSettings'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Style Imports
-import navigationCustomStyles from '../../../@core/styles/vertical/navigationCustomStyles'
+import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 const Navigation = () => {
   // Hooks

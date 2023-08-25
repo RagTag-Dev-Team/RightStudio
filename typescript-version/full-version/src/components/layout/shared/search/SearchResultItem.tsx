@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import type { ActionId, ActionImpl } from 'kbar'
 
 // Icon Imports
-import SubdirectoryLeft from '../../../../assets/svg/SubdirectoryLeft'
+import SubdirectoryLeft from '@assets/svg/SubdirectoryLeft'
 
 // Style Imports
 import styles from './styles.module.css'

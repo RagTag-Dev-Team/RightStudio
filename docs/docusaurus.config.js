@@ -1,10 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const path = require('path');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Master',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'MUI React Next.Js Admin Template',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
@@ -13,23 +15,32 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'themeselection', // Usually your GitHub org/user name.
-  projectName: 'master-nextjs-framework-independent', // Usually your repo name.
-
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  onDuplicateRoutes: 'throw',
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
-
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+    'plugin-image-zoom',
+    'docusaurus-tailwindcss',
+    [
+      'docusaurus-plugin-module-alias',
+      {
+        alias: {
+          '@docComponents': path.resolve(__dirname, './src/components'),
+          '@docViews': path.resolve(__dirname, './src/views'),
+          '@': path.resolve(__dirname, '../typescript-version/full-version/src'),
+          '@core': path.resolve(__dirname, '../typescript-version/full-version/src/@core'),
+          '@layouts': path.resolve(__dirname, '../typescript-version/full-version/src/@layouts'),
+          '@menu-package': path.resolve(__dirname, '../typescript-version/full-version/src/@menu-package'),
+          '@assets': path.resolve(__dirname, '../typescript-version/full-version/src/assets'),
+          '@components': path.resolve(__dirname, '../typescript-version/full-version/src/components'),
+          '@configs': path.resolve(__dirname, '../typescript-version/full-version/src/configs'),
+          '@views': path.resolve(__dirname, '../typescript-version/full-version/src/views'),
+        }
+      }
+    ]
+  ],
 
   presets: [
     [
@@ -66,7 +77,7 @@ const config = {
     navbar: {
       title: 'Master',
       logo: {
-        alt: 'Master Logo',
+        alt: 'Logo',
         src: 'images/logo.svg',
       },
       items: [
@@ -102,6 +113,12 @@ const config = {
       theme: require('prism-react-renderer/themes/dracula'),
       darkTheme: require('prism-react-renderer/themes/dracula'),
     },
+    imageZoom: {
+      selector: '.markdown img',
+      options: {
+        background: '#fff',
+      }
+    }
   },
 };
 

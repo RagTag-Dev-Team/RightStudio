@@ -2,10 +2,10 @@
 import { useTranslation } from 'react-i18next'
 
 // Type Imports
-import type { HorizontalMenuDataType } from '../../types/menuTypes'
+import type { HorizontalMenuDataType } from '@/types/menuTypes'
 
 // Icon Imports
-import LinkExternalIcon from '../../@layouts/svg/LinkExternal'
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 const HorizontalMenuData = (): HorizontalMenuDataType[] => {
   // Hooks
@@ -197,11 +197,11 @@ const HorizontalMenuData = (): HorizontalMenuDataType[] => {
               children: [
                 {
                   label: t('navigation.loginV1'),
-                  href: 'login-v1'
+                  href: '/pages/auth/login-v1'
                 },
                 {
                   label: t('navigation.loginV2'),
-                  href: 'login-v2'
+                  href: '/pages/auth/login-v2'
                 }
               ]
             },

@@ -23,6 +23,7 @@ const sidebars = {
       items: ['authentication/intro', 'authentication/credentials-provider', 'authentication/google-prisma', 'authentication/remove-auth', 'authentication/add-auth']
     },
     'content-scroll-lock',
+    'translation',
     'custom-inputs',
     {
       type: 'category',

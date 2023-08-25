@@ -4,10 +4,10 @@
 import styled from '@emotion/styled'
 
 // Type Imports
-import type { VerticalNavContextProps } from '../../../@menu-package/contexts/verticalNavContext'
+import type { VerticalNavContextProps } from '@menu-package/contexts/verticalNavContext'
 
 // Hook Imports
-import useVerticalNav from '../../../@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 type LogoTextProps = {
   isHovered?: VerticalNavContextProps['isHovered']

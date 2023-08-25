@@ -1,7 +1,7 @@
 // Icon Imports
-import MoonIcon from '../svg/Moon'
-import SunIcon from '../svg/Sun'
-import DesktopIcon from '../svg/Desktop'
+import MoonIcon from '@layouts/svg/Moon'
+import SunIcon from '@layouts/svg/Sun'
+import DesktopIcon from '@layouts/svg/Desktop'
 
 const ModeSwitcher = () => {
   return (

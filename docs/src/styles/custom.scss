@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -21,6 +25,20 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.medium-zoom-overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+  z-index: var(--ifm-z-index-fixed);
+
+  [data-theme='dark'] & {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+  }
+
+  & + .medium-zoom-image {
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
+  }
 }
 
 .theme-back-to-top-button {

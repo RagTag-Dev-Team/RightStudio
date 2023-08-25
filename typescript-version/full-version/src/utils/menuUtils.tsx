@@ -7,11 +7,11 @@ import type {
   HorizontalMenuDataType,
   HorizontalSubMenuDataType,
   HorizontalMenuItemDataType
-} from '../types/menuTypes'
+} from '@/types/menuTypes'
 
 // Component Imports
-import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '../@menu-package/horizontal-menu'
-import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '../@menu-package/vertical-menu'
+import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu-package/horizontal-menu'
+import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu-package/vertical-menu'
 
 // Generate a menu from the menu data array
 export const generateVerticalMenu = (menuData: VerticalMenuDataType[]) => {

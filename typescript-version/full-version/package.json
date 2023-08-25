@@ -27,6 +27,8 @@
     "@mui/lab": "5.0.0-alpha.140",
     "@mui/material": "^5.14.5",
     "@prisma/client": "^5.1.1",
+    "@tanstack/match-sorter-utils": "^8.8.4",
+    "@tanstack/react-table": "^8.9.3",
     "@types/node": "^20.5.1",
     "@types/react": "^18.2.20",
     "@types/react-datepicker": "^4.15.0",
