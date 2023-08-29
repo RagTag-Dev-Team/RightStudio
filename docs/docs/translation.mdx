@@ -63,7 +63,7 @@ If you are using the full version, then you don't need to add i18n as it is alre
 
 5. If you want to add the language dropdown in the navbar, then add the following as it is the full version:
     - `src/components/layout/shared/Translation.tsx` file
-    - `import Translation from '@/components/layout/shared/Translation'` import statement in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
+    - `import Translation from '@components/layout/shared/Translation'` import statement in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
     - `<Translation />` component in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
 
 That's it! Now you can use i18n in your project. You may refer to the [usage](#usage) section to use it.
@@ -162,7 +162,7 @@ Please make sure that you have i18n configured in your project before using it. 
   // according to the language, then consider importing the following:
   import { useEffect } from 'react'
   import { useCookie } from 'react-use'
-  import useSettings from '@/@core/hooks/useSettings'
+  import useSettings from '@core/hooks/useSettings'
   import { langDirection } from '@/data/translation/langDirection'
 
   const SomeComponent = () => {
@@ -332,7 +332,7 @@ If you are using the starter-kit, then you don't need to remove i18n as it is no
     - `<Customizer dir={dir} langDirection={langDirection} />` component
 5. If you have the language dropdown in the navbar, then remove the following:
     - `src/components/layout/shared/Translation.tsx` file
-    - `import Translation from '@/components/layout/shared/Translation'` import statement in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
+    - `import Translation from '@components/layout/shared/Translation'` import statement in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
     - `<Translation />` component in the `src/components/layout/horizontal/NavbarContent.tsx` and `src/components/layout/vertical/NavbarContent.tsx` files
 6. Make sure that you have removed all the imports related to the `i18next` libraries from your project and also their usages
 

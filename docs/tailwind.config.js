@@ -8,8 +8,8 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
+  plugins: [require('tailwindcss-logical')],
   theme: {
     extend: {},
-  },
-  plugins: [require('tailwindcss-logical')]
+  }
 }

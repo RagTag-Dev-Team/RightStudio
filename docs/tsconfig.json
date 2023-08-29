@@ -1,22 +1,22 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "moduleResolution": "node",
     "downlevelIteration": true,
     "paths": {
-      // Docs
       "@site/*": [
         "./*"
-      ],
-      "@docViews/*": [
-        "./src/views/*"
       ],
       "@docComponents/*": [
         "./src/components/*"
       ],
-      // Template
+      "@docPages/*": [
+        "./src/pages/*"
+      ],
+      "@docViews/*": [
+        "./src/views/*"
+      ],
       "@/*": [
         "../typescript-version/full-version/src/*"
       ],
@@ -40,7 +40,7 @@
       ],
       "@views/*": [
         "../typescript-version/full-version/src/views/*"
-      ],
+      ]
     }
-  },
+  }
 }
