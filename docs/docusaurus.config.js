@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const path = require('path');
+const path = require('path')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -22,12 +22,25 @@ const config = {
   plugins: [
     'docusaurus-plugin-sass',
     'plugin-image-zoom',
-    'docusaurus-tailwindcss',
+    async function tailwind() {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss: (postcssOptions) => {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require('tailwindcss'))
+          postcssOptions.plugins.push(require('autoprefixer'))
+          postcssOptions.plugins.push(require('tailwindcss/nesting'))
+
+          return postcssOptions
+        },
+      }
+    },
     [
       'docusaurus-plugin-module-alias',
       {
         alias: {
           '@docComponents': path.resolve(__dirname, './src/components'),
+          '@docPages': path.resolve(__dirname, './src/pages'),
           '@docViews': path.resolve(__dirname, './src/views'),
           '@': path.resolve(__dirname, '../typescript-version/full-version/src'),
           '@core': path.resolve(__dirname, '../typescript-version/full-version/src/@core'),
@@ -130,6 +143,6 @@ const config = {
       }
     }
   },
-};
+}
 
-module.exports = config;
+module.exports = config
