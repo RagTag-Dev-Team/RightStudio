@@ -6,7 +6,7 @@ import TreeView from '@mui/lab/TreeView'
 import TreeItem from '@mui/lab/TreeItem'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type RenderTree = {
   id: string

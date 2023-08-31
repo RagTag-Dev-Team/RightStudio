@@ -18,8 +18,8 @@ import ChangeMuiMode from "./ChangeMuiMode";
 import globalStyling from "./globalStyles";
 
 // Theme Overrides Imports
-import spacing from "../../../typescript-version/full-version/src/@core/theme/spacing";
-import overrides from "../../../typescript-version/full-version/src/@core/theme/overrides";
+import spacing from "@core/theme/spacing";
+import overrides from "@core/theme/overrides";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
 

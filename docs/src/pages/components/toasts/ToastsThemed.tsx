@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography'
 import { toast } from 'react-toastify'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ToastsThemed = () => {
   // Hooks

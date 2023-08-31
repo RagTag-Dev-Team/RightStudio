@@ -22,7 +22,7 @@ import '@core/styles/utils.css' // Common Utility Classes
 import './globals.css'
 
 // Generated Icon Imports
-import '../assets/iconify-icons/generated-icons'
+import '@assets/iconify-icons/generated-icons'
 
 const inter = Inter({ subsets: ['latin'] })
 

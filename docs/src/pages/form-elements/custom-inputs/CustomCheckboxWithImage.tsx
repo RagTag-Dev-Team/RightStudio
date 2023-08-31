@@ -5,10 +5,10 @@ import React, { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputImgData } from '@site/src/components/custom-inputs/types'
+import { CustomInputImgData } from '@docComponents/custom-inputs/types'
 
 // Components Imports
-import CustomInputImg from '@site/src/components/custom-inputs/Image'
+import CustomInputImg from '@docComponents/custom-inputs/Image'
 
 const data: CustomInputImgData[] = [
   {

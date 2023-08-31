@@ -9,7 +9,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const AccordionControlled = () => {
   // States

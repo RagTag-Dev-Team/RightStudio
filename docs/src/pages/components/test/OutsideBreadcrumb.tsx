@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const OutsideBreadcrumb = () => {
   const handleClick = (event: MouseEvent<HTMLElement>) => {

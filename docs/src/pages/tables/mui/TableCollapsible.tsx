@@ -14,7 +14,7 @@ import IconButton from '@mui/material/IconButton'
 import TableContainer from '@mui/material/TableContainer'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const createData = (name: string, calories: number, fat: number, carbs: number, protein: number, price: number) => {
   return {

@@ -3,12 +3,12 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-import FormValidationBasic from '../../../../views/forms/form-validation/FormValidationBasic'
-import FormValidationOnSchema from '../../../../views/forms/form-validation/FormValidationSchema'
-import FormValidationAsyncSubmit from '../../../../views/forms/form-validation/FormValidationAsyncSubmit'
+import FormValidationBasic from '@views/forms/form-validation/FormValidationBasic'
+import FormValidationOnSchema from '@views/forms/form-validation/FormValidationSchema'
+import FormValidationAsyncSubmit from '@views/forms/form-validation/FormValidationAsyncSubmit'
 
-import PageHeader from '../../../../@core/components/PageHeader'
-import DatePickerWrapper from '../../../../@core/styles/libs/react-datepicker'
+import PageHeader from '@core/components/PageHeader'
+import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 const FormValidation = () => {
   return (

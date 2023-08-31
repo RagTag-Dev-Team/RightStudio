@@ -7,7 +7,7 @@ import Fab from '@mui/material/Fab'
 import Typography from '@mui/material/Typography'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ButtonsFab = () => {
   return (

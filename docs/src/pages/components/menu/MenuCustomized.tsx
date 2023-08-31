@@ -13,7 +13,7 @@ import type { MenuProps } from '@mui/material/Menu'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled Menu component
 const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({

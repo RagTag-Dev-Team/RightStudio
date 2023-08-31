@@ -10,7 +10,7 @@ import TreeItem from '@mui/lab/TreeItem'
 import type { TreeItemProps } from '@mui/lab/TreeItem'
 
 // Custom Icon Import
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type StyledTreeItemProps = TreeItemProps & {
   labelText: string

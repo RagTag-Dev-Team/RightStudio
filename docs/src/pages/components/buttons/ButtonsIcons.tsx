@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ButtonsIcons = () => {
   return (

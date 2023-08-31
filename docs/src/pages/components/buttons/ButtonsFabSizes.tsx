@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ButtonsFabSizes = () => {
   return (

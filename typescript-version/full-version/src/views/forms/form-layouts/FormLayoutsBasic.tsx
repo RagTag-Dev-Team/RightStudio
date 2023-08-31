@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
 import styles from './styles.module.css'

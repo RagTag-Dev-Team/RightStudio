@@ -8,7 +8,7 @@ import type { ReactElement } from 'react'
 import { useColorScheme } from '@mui/material/styles'
 
 // Type Imports
-import type { Mode } from '../@core/types'
+import type { Mode } from '@core/types'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'

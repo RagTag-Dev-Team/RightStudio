@@ -5,10 +5,10 @@ import React, { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Imports
-import { CustomInputVerticalData } from '@site/src/components/custom-inputs/types'
+import { CustomInputVerticalData } from '@docComponents/custom-inputs/types'
 
 // Components Imports
-import CustomInputVertical from '@site/src/components/custom-inputs/Vertical'
+import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
 
 // Icons Imports
 import Logo from '@site/static/images/logo.svg'

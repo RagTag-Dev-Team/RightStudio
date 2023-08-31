@@ -17,7 +17,7 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 import TsToJsCodeSnippet from "../ts-js-code"
 
 // Icon Imports
-import Icon from "../iconify-icon"
+import Icon from '@core/components/IconifyIcon'
 
 export type CardSnippetProps = CardProps & {
   title: string

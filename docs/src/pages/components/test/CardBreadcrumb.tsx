@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const CardBreadcrumb = () => {
   const handleClick = (event: MouseEvent<HTMLElement>) => {

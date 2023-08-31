@@ -17,11 +17,11 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   ResponsiveContainer
-} from '../../../components/charts/recharts'
-import type { TooltipProps } from '../../../components/charts/recharts'
+} from '@components/charts/recharts'
+import type { TooltipProps } from '@components/charts/recharts'
 
 // Icon Imports
-// import Icon from 'src/@core/components/icon'
+// import Icon from '@core/components/IconifyIcon'
 
 const data = [
   {

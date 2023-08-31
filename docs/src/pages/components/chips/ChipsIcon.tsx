@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ChipsIcon = () => {
   return (

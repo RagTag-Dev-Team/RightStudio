@@ -17,7 +17,7 @@ import { toast } from 'react-toastify'
 import classNames from 'classnames'
 
 // Component Imports
-import StepperWrapper from '../../../@core/styles/stepper'
+import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
 const steps = [

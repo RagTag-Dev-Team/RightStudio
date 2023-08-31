@@ -11,7 +11,7 @@ import MuiToggleButton from '@mui/material/ToggleButton'
 import type { ToggleButtonProps } from '@mui/material/ToggleButton'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled ToggleButton component
 const ToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(({ theme }) => ({

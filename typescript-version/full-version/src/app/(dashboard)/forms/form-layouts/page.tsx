@@ -4,14 +4,14 @@
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-import FormLayoutsBasic from '../../../../views/forms/form-layouts/FormLayoutsBasic'
-import FormLayoutsIcon from '../../../../views/forms/form-layouts/FormLayoutsIcons'
-import FormLayoutsSeparator from '../../../../views/forms/form-layouts/FormLayoutsSeparator'
-import FormLayoutsTabs from '../../../../views/forms/form-layouts/FormLayoutsTabs'
-import FormLayoutsCollapsible from '../../../../views/forms/form-layouts/FormLayoutsCollapsible'
-import FormLayoutsAlignment from '../../../../views/forms/form-layouts/FormLayoutsAlignment'
+import FormLayoutsBasic from '@views/forms/form-layouts/FormLayoutsBasic'
+import FormLayoutsIcon from '@views/forms/form-layouts/FormLayoutsIcons'
+import FormLayoutsSeparator from '@views/forms/form-layouts/FormLayoutsSeparator'
+import FormLayoutsTabs from '@views/forms/form-layouts/FormLayoutsTabs'
+import FormLayoutsCollapsible from '@views/forms/form-layouts/FormLayoutsCollapsible'
+import FormLayoutsAlignment from '@views/forms/form-layouts/FormLayoutsAlignment'
 
-import DatePickerWrapper from '../../../../@core/styles/libs/react-datepicker'
+import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 const FormLayouts = () => {
   return (

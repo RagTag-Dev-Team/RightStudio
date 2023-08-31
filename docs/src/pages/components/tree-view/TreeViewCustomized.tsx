@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles'
 import type { TreeViewProps } from '@mui/lab/TreeView'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled TreeView component
 const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({

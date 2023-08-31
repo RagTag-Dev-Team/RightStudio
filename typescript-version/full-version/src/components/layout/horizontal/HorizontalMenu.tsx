@@ -15,14 +15,14 @@ import VerticalNavContent from './VerticalNavContent'
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
 // import { generateHorizontalMenu } from '@/utils/menuUtils'
 
 // Style Imports
-import menuItemStyles from '../../../@core/styles/horizontal/menuItemStyles'
-import verticalNavigationCustomStyles from '../../../@core/styles/vertical/navigationCustomStyles'
+import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
+import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/HorizontalMenuData'

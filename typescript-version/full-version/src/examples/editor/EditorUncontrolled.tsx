@@ -1,7 +1,7 @@
 'use client'
 
 // Component Import
-import ReactDraftWysiwyg from '../../@core/components/ReactDraftWysiwyg'
+import ReactDraftWysiwyg from '@core/components/ReactDraftWysiwyg'
 
 const EditorUncontrolled = () => <ReactDraftWysiwyg />
 

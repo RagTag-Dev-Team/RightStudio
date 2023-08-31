@@ -27,7 +27,7 @@ import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 type FormValues = {
   firstName: string

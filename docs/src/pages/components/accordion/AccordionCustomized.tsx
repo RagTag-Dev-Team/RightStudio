@@ -13,7 +13,7 @@ import type { AccordionSummaryProps } from '@mui/material/AccordionSummary'
 import type { AccordionDetailsProps } from '@mui/material/AccordionDetails'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled component for Accordion component
 const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({

@@ -11,7 +11,7 @@ import ListSubheader from '@mui/material/ListSubheader'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ListWithSwitch = () => {
   // States

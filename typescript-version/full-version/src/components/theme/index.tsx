@@ -18,16 +18,16 @@ import { useCookie } from 'react-use'
 import EmotionCacheProvider from './EmotionCache'
 
 // Config Imports
-import { getPrimaryColorScheme } from '../../configs/primaryColorConfig'
+import { getPrimaryColorScheme } from '@configs/primaryColorConfig'
 
 // Hook Imports
-import useSettings from '../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Core Theme Imports
-import defaultCoreTheme from '../../@core/theme'
+import defaultCoreTheme from '@core/theme'
 
 // Data Imports
-import { langDirection } from '../../data/translation/langDirection'
+import { langDirection } from '@/data/translation/langDirection'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Hooks

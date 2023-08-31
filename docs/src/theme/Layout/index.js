@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import BuyNowButton from '@docComponents/buy-now-button';
 
 // MUI's Customized Theme Import
-import ThemeProvider from '../../mui-theme/ThemeProvider';
+import ThemeProvider from '@site/src/mui-theme/ThemeProvider';
 
 const LayoutWrapper = (props) => {
   return (

@@ -27,10 +27,10 @@ import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string, array, ValiError } from 'valibot'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 // Component Imports
-import StepperWrapper from '../../../@core/styles/stepper'
+import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
 // Style Imports

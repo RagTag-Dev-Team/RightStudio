@@ -14,13 +14,13 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-men
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
-import useSettings from '../../../@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
 // import { generateVerticalMenu } from '@/utils/menuUtils'
 
 // Style Imports
-import menuItemStyles from '../../../@core/styles/vertical/menuItemStyles'
+import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/VerticalMenuData'

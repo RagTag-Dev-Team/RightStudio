@@ -3,13 +3,13 @@
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
-import TsToJsCodeSnippet from '@site/src/components/ts-js-code'
-import CustomHorizontalRadio from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomHorizontalRadio'
-import CustomHorizontalCheckbox from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomHorizontalCheckbox'
-import CustomVerticalRadioIcon from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalRadioIcon'
-import CustomVerticalCheckboxIcon from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomVerticalCheckboxIcon'
-import CustomRadioWithImage from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomRadioWithImage'
-import CustomCheckboxWithImage from '!!raw-loader!@site/src/pages/form-elements/custom-inputs/CustomCheckboxWithImage'
+import TsToJsCodeSnippet from '@docComponents/ts-js-code'
+import CustomHorizontalRadio from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomHorizontalRadio'
+import CustomHorizontalCheckbox from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomHorizontalCheckbox'
+import CustomVerticalRadioIcon from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomVerticalRadioIcon'
+import CustomVerticalCheckboxIcon from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomVerticalCheckboxIcon'
+import CustomRadioWithImage from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomRadioWithImage'
+import CustomCheckboxWithImage from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomCheckboxWithImage'
 
 ## Overview
 
@@ -154,7 +154,7 @@ To override or customized the components, follow these steps:
 
 Let us say you want to customize the `CustomInputHorizontal` component.(you can customize other custom input components as well by following the same steps).
 
-1. You need to create a new file (you can name the file whichever you want; let us say that you have named `src/components/custom-inputs/UserHorizontal.tsx` file). Copy the code from `src/@core/components/custom-inputs/horizontal.tsx` file, paste it into the new file. Also copy the related types from `src/@core/components/custom-inputs/types.ts` file and paste it into the `src/components/custom-inputs/types.ts` file.  
+1. You need to create a new file (you can name the file whichever you want; let us say that you have named `src/components/custom-inputs/UserHorizontal.tsx` file). Copy the code from `src/@core/components/custom-inputs/horizontal.tsx` file, paste it into the new file. Also copy the related types from `src/@core/components/custom-inputs/types.ts` file and paste it into the `src/components/custom-inputs/types.ts` file.
 2. Now, you can make changes as per your requirements in the `UserHorizontal.tsx` file.
 3. We have already added the `CustomInputHorizontal` component in the `MUI` components. You may refer to the `src/compponents/theme/type.ts` file on how to add a custom component in the `MUI` components. 
 
@@ -166,7 +166,7 @@ To override or customized the styles, follow these steps:
 
 Let us say you want to customize the `CustomInputHorizontal` component.(you can customize other custom input components as well by following the same steps).
 
-You can override the styles in both the `src/compoonents/theme/Theme.ts` or `src/components/theme/MergedTheme.ts` file.
+You can override the styles in both the `src/components/theme/Theme.ts` or `src/components/theme/MergedTheme.ts` file.
 
 You may refer to the following code snippet:
 

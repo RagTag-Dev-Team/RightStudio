@@ -6,9 +6,7 @@ import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
-// import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-
-// Third-party <Imports></Imports>
+// Third-party Imports
 import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
 

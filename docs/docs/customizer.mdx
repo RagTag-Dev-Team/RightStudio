@@ -40,7 +40,7 @@ Follow these steps to add customizer in your starter-kit:
     <TabItem value="TSX">
 
     ```diff
-    +import Customizer from 'src/@core/components/customizer'
+    +import Customizer from '@core/components/customizer'
 
     const Layout = ({ children }: ChildrenType) => {
       return (
@@ -56,7 +56,7 @@ Follow these steps to add customizer in your starter-kit:
     <TabItem value="JS">
 
     ```diff
-    +import Customizer from 'src/@core/components/customizer'
+    +import Customizer from '@core/components/customizer'
 
     const Layout = ({ children }) => {
       return (
@@ -81,14 +81,14 @@ Only for those who are using the `full-version`
 
 To remove the customizer from your full-version, follow these steps:
 
-1. Search for `src/@core/components/customizer` in the whole template
+1. Search for `@core/components/customizer` in the whole template
 2. Open the files where the above text is found and remove the following code:
 
     <Tabs>
     <TabItem value="TSX">
 
     ```diff
-    -import Customizer from 'src/@core/components/customizer'
+    -import Customizer from '@core/components/customizer'
 
     const Layout = ({ children }: ChildrenType) => {
       return (
@@ -104,7 +104,7 @@ To remove the customizer from your full-version, follow these steps:
     <TabItem value="JS">
 
     ```diff
-    -import Customizer from 'src/@core/components/customizer'
+    -import Customizer from '@core/components/customizer'
 
     const Layout = ({ children }) => {
       return (
@@ -127,7 +127,7 @@ To override or customize the template's customizer, follow these steps:
 
 1. Copy the `src/@core/components/customizer` folder and paste it into the `src/components` directory of your project
 2. Open the `src/components/customizer/index.tsx` and/or `src/components/customizer/styles.module.css` files and customize them according to your needs
-3. Search for `src/@core/components/customizer` in the whole template and replace it with `src/components/customizer`
+3. Search for `@core/components/customizer` in the whole template and replace it with `@components/customizer`
 
 That's it! Now you can see the customizer is overridden or customized according to your needs.
 

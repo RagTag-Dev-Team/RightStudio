@@ -2,7 +2,7 @@
 import type { Theme, ComponentsOverrides } from '@mui/material/styles'
 
 // Type Imports
-import type { CustomInputHorizontalProps, CustomInputVerticalProps, CustomInputImgProps } from '../components/custom-inputs/types'
+import type { CustomInputHorizontalProps, CustomInputVerticalProps, CustomInputImgProps } from '@docComponents/custom-inputs/types'
 
 declare module '@mui/material/styles' {
   interface ComponentNameToClassKey {

@@ -22,7 +22,7 @@ import IconButton from '@mui/material/IconButton'
 import DatePicker from 'react-datepicker'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 type FormDataType = {
   username: string

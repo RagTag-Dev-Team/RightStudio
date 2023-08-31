@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '../../../components/charts/apexchart'
+import ReactApexcharts from '@components/charts/apexchart'
 
 const areaColors = {
   series1: '#ab7efd',
@@ -34,7 +34,7 @@ const series = [
 ]
 
 const ApexAreaChart = () => {
-  // ** Hook
+  // Hooks
   const theme = useTheme()
 
   const options: ApexOptions = {

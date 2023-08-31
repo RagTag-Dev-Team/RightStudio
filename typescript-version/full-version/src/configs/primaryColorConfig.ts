@@ -1,5 +1,5 @@
 // Type Imports
-import type { Settings } from '../@core/contexts/settingsContext'
+import type { Settings } from '@core/contexts/settingsContext'
 
 export type PrimaryColorConfig = {
   name?: string

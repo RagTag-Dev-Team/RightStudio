@@ -15,7 +15,7 @@ import type { TypographyProps } from '@mui/material/Typography'
 import { useDropzone } from 'react-dropzone'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type FileProp = {
   name: string

@@ -17,7 +17,7 @@ import { toast } from 'react-toastify'
 // Icon Imports
 import { useDropzone } from 'react-dropzone'
 
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type FileProp = {
   name: string

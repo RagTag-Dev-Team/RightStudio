@@ -21,13 +21,13 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
 // Type Imports
-import type { CustomInputHorizontalData } from '../../../@core/components/custom-inputs/types'
+import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
-import CustomInputHorizontal from '../../../@core/components/custom-inputs/Horizontal'
+import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
 import styles from './styles.module.css'

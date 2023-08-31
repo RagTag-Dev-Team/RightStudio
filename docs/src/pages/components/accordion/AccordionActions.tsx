@@ -11,7 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const AccordionActions = () => {
   // States

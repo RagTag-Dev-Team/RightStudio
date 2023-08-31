@@ -19,7 +19,7 @@ import { email, object, minLength, string } from 'valibot'
 import type { Input } from 'valibot'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 const schema = object({
   firstName: string([

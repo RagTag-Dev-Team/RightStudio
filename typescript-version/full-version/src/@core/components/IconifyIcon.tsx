@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 // Third-party Imports
 import { Icon as IconifyIcon } from '@iconify/react'
 import type { IconProps } from '@iconify/react'

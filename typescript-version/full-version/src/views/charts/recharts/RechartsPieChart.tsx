@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '../../../components/charts/recharts'
+import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@components/charts/recharts'
 
 // Icon Imports
-// import Icon from 'src/@core/components/icon'
+// import Icon from '@core/components/IconifyIcon'
 
 type LabelProp = {
   cx: number
@@ -31,7 +31,7 @@ const data = [
 
 const RADIAN = Math.PI / 180
 const renderCustomizedLabel = (props: LabelProp) => {
-  // ** Props
+  // Props
   const { cx, cy, midAngle, innerRadius, outerRadius, percent } = props
 
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5

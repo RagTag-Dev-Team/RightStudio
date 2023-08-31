@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { EditorState } from 'draft-js'
 
 // Component Import
-import ReactDraftWysiwyg from '../../@core/components/ReactDraftWysiwyg'
+import ReactDraftWysiwyg from '@core/components/ReactDraftWysiwyg'
 
 const EditorControlled = () => {
   // State

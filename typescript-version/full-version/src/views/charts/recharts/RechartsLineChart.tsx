@@ -8,19 +8,11 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer
-} from '../../../components/charts/recharts'
-import type { TooltipProps } from '../../../components/charts/recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
+import type { TooltipProps } from '@components/charts/recharts'
 
 // Type Imports
-import type { Direction } from '../../../@core/types'
+import type { Direction } from '@core/types'
 
 const data = [
   { pv: 280, name: '7/12' },
@@ -41,7 +33,7 @@ const data = [
 ]
 
 const CustomTooltip = (props: TooltipProps<any, any>) => {
-  // ** Props
+  // Props
   const { active, payload } = props
 
   if (active && payload) {

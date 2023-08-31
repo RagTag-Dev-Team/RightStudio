@@ -7,7 +7,7 @@ import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ChipsOnDelete = () => {
   const handleDelete = () => {

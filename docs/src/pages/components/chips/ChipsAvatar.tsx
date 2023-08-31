@@ -7,7 +7,7 @@ import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const ChipsAvatar = () => {
   return (

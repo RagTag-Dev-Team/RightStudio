@@ -5,13 +5,13 @@ import React, { ChangeEvent, useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputVerticalData } from '@site/src/components/custom-inputs/types'
+import { CustomInputVerticalData } from '@docComponents/custom-inputs/types'
 
 // Components Imports
-import CustomInputVertical from '@site/src/components/custom-inputs/Vertical'
+import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
 
 // Icon Imports
-import Icon from '@site/src/components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type Data = Omit<CustomInputVerticalData, 'asset'> & { asset?: string }
 

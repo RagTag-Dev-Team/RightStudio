@@ -10,10 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '../../../components/charts/apexchart'
-
-// Util Imports
-// import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import ReactApexcharts from '@components/charts/apexchart'
 
 const radialBarColors = {
   series1: '#fdd835',
@@ -24,7 +21,7 @@ const radialBarColors = {
 }
 
 const ApexRadialBarChart = () => {
-  // ** Hook
+  // Hooks
   const theme = useTheme()
 
   const options: ApexOptions = {

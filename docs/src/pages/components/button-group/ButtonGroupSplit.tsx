@@ -16,7 +16,7 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge']
 

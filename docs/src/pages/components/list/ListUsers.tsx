@@ -15,7 +15,7 @@ import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import type { ListProps } from '@mui/material/List'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-container': {

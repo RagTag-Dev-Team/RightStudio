@@ -1,6 +1,6 @@
 'use client'
 
-// ** MUI imports
+// MUI Imports
 import { styled } from '@mui/material/styles'
 
 const ApexChartWrapper = styled('div')(({ theme }) => ({

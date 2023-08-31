@@ -4,12 +4,12 @@
 import Grid from '@mui/material/Grid'
 
 // Components Imports
-import LineChart from '../../../../views/charts/echarts/LineChart'
-import AreaChart from '../../../../views/charts/echarts/AreaChart'
-import ColumnChart from '../../../../views/charts/echarts/ColumnChart'
-import ScatterChart from '../../../../views/charts/echarts/ScatterChart'
-import RadarChart from '../../../../views/charts/echarts/RadarChart'
-import PieChart from '../../../../views/charts/echarts/PieChart'
+import LineChart from '@views/charts/echarts/LineChart'
+import AreaChart from '@views/charts/echarts/AreaChart'
+import ColumnChart from '@views/charts/echarts/ColumnChart'
+import ScatterChart from '@views/charts/echarts/ScatterChart'
+import RadarChart from '@views/charts/echarts/RadarChart'
+import PieChart from '@views/charts/echarts/PieChart'
 
 const ECharts = () => {
   return (

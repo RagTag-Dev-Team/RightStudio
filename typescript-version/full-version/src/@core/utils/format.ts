@@ -8,7 +8,7 @@ import type { PaymentTypes } from './types'
  * @param {Object} formatting Intl object to format with
  */
 
-// ** Checks if the passed date is today
+// Checks if the passed date is today
 const isToday = (date: Date | string) => {
   const today = new Date()
 
@@ -28,7 +28,7 @@ export const formatDate = (
   return new Intl.DateTimeFormat('en-US', formatting).format(new Date(value))
 }
 
-// ** Returns short month of passed date
+// Returns short month of passed date
 export const formatDateToMonthShort = (value: Date | string, toTimeForCurrentDay = true) => {
   const date = new Date(value)
   let formatting: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' }

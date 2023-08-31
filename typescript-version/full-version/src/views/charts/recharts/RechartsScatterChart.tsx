@@ -9,20 +9,13 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  ResponsiveContainer
-} from '../../../components/charts/recharts'
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
 
 // Type Imports
-import type { Direction } from '../../../@core/types'
+import type { Direction } from '@core/types'
 
 // Icon Imports
-// import Icon from 'src/@core/components/icon
+// import Icon from '@core/components/IconifyIcon'
 
 const angularData = [
   { x: 5.4, y: 170 },
@@ -73,7 +66,7 @@ const reactData = [
 ]
 
 const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
-  // ** Hooks
+  // Hooks
   const theme = useTheme()
 
   return (

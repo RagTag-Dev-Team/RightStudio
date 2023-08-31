@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '../../../components/charts/apexchart'
+import ReactApexcharts from '@components/charts/apexchart'
 
 const scatterColors = {
   series1: '#ff9f43',
@@ -73,7 +73,7 @@ const series = [
 ]
 
 const ApexScatterChart = () => {
-  // ** Hook
+  // Hooks
   const theme = useTheme()
 
   const options: ApexOptions = {

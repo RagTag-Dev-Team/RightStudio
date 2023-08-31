@@ -17,7 +17,7 @@ import MuiTimeline from '@mui/lab/Timeline'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({

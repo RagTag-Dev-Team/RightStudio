@@ -22,10 +22,10 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 // Styled Component Imports
-import StepperWrapper from '../../../@core/styles/stepper'
+import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
 // Style Imports

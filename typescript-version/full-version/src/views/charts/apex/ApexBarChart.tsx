@@ -10,10 +10,10 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '../../../components/charts/apexchart'
+import ReactApexcharts from '@components/charts/apexchart'
 
 const ApexBarChart = () => {
-  // ** Hook
+  // Hooks
   const theme = useTheme()
 
   const options: ApexOptions = {

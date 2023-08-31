@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import styles from './styles.module.css'
 
 // Custom Icon Import
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 const StepperCustomDot = (props: StepIconProps) => {
   // Props

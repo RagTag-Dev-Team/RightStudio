@@ -18,7 +18,7 @@ import IconButton from '@mui/material/IconButton'
 import styles from './styles.module.css'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 const FormLayoutsAlignment = () => {
   // States

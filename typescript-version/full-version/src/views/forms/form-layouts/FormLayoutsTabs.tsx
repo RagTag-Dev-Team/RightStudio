@@ -24,7 +24,7 @@ import IconButton from '@mui/material/IconButton'
 import DatePicker from 'react-datepicker'
 
 // Icon Imports
-import Icon from '../../../@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
 import styles from './styles.module.css'

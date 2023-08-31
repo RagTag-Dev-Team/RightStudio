@@ -10,7 +10,7 @@ import classnames from 'classnames'
 import { useKeenSlider } from 'keen-slider/react'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 const SwiperControls = () => {
   // States

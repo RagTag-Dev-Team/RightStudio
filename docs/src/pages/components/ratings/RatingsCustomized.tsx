@@ -8,7 +8,7 @@ import Rating from '@mui/material/Rating'
 import type { IconContainerProps } from '@mui/material/Rating'
 
 // Icon Imports
-import Icon from '../../../components/iconify-icon'
+import Icon from '@core/components/IconifyIcon'
 
 type CustomIcons = {
   [index: string]: { icon: string; label: string }
