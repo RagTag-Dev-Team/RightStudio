@@ -1,10 +1,8 @@
-const Avatar = () => {
-  return {
-    MuiAvatarGroup: {
-      styleOverrides: {
-        root: {
-          justifyContent: 'flex-end'
-        }
+const Avatar = {
+  MuiAvatarGroup: {
+    styleOverrides: {
+      root: {
+        justifyContent: 'flex-end'
       }
     }
   }

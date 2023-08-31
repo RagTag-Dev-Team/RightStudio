@@ -16,6 +16,9 @@
  * Another way is to clear the localStorage from the browser's Application/Storage tab and then reload the page.
  */
 
+// Third-party Imports
+import type { ToastPosition } from 'react-toastify'
+
 // Type Imports
 import type { Mode, Skin, Layout, LayoutComponentPosition, LayoutComponentWidth } from '@core/types'
 
@@ -43,6 +46,9 @@ export type Config = {
   navbar: Navbar
   contentWidth: LayoutComponentWidth
   footer: Footer
+  responsiveFontSizes: boolean
+  disableRipple: boolean
+  toastPosition: ToastPosition
 }
 
 const themeConfig: Config = {
@@ -64,7 +70,10 @@ const themeConfig: Config = {
     type: 'static', // 'fixed', 'static'
     contentWidth: 'compact', // 'compact', 'wide'
     detached: true //! true, false (This will not work in the Horizontal Layout)
-  }
+  },
+  responsiveFontSizes: true, // true, false
+  disableRipple: false, // true, false
+  toastPosition: 'top-right' // 'top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left'
 }
 
 export default themeConfig

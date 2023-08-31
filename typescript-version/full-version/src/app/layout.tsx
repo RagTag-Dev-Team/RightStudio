@@ -13,6 +13,9 @@ import type { ChildrenType } from '@core/types'
 // Component Imports
 import I18n from '@configs/i18n'
 
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
 // Util Imports
 import { getLanguage, getDirection } from '@/utils/commonUtils'
 
@@ -40,7 +43,7 @@ const RootLayout = ({ children }: ChildrenType) => {
       <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
         <I18n lang={lang} />
         {children}
-        <ToastContainer />
+        <ToastContainer position={themeConfig.toastPosition} />
       </body>
     </html>
   )

@@ -1,12 +1,10 @@
 // Override Imports
-import Avatar from './avatar'
-import Tabs from './tabs'
+import avatar from './avatar'
+import button from './button'
+import tabs from './tabs'
 
 const Overrides = () => {
-  const avatar = Avatar()
-  const tabs = Tabs()
-
-  return Object.assign(avatar, tabs)
+  return Object.assign(avatar, button, tabs)
 }
 
 export default Overrides
