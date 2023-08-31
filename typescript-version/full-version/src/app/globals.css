@@ -9,6 +9,10 @@
   --background-color: #fff;
   --background-color-rgb: 255, 255, 255;
   --header-height: 64px;
+  --header-z-index: 10;
+  --footer-z-index: 10;
+  --customizer-z-index: 20;
+  --search-z-index: 30;
 }
 
 * {

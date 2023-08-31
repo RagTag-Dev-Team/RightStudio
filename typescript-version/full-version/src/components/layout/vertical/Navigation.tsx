@@ -16,7 +16,7 @@ const Navigation = () => {
   return (
     // eslint-disable-next-line lines-around-comment
     // Sidebar Vertical Menu
-    <VerticalNav>
+    <VerticalNav customStyles={{ zIndex: 'calc(var(--header-z-index) + 1)' }}>
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         {/* Hide Logo on Smaller screens */}

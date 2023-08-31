@@ -5,6 +5,7 @@
 .footerFixed {
   position: sticky;
   inset-block-end: 0;
+  z-index: var(--footer-z-index);
   background-color: var(--background-color);
   border-block-start: 1px solid var(--border-color);
 }

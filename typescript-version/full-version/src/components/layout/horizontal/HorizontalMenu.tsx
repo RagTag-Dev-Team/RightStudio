@@ -28,7 +28,10 @@ const HorizontalMenu = () => {
       verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
     >
       <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        menuItemStyles={{
+          button: { paddingBlock: '12px' },
+          subMenuContent: { zIndex: 'calc(var(--header-z-index) + 1)' }
+        }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)

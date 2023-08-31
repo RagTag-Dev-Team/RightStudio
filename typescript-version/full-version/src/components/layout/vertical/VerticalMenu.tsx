@@ -26,7 +26,13 @@ const VerticalMenu = () => {
     <PerfectScrollbar options={{ wheelPropagation: false }}>
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <Menu
+        popoutMenuOffset={{ mainAxis: 10 }}
+        menuItemStyles={{
+          button: { paddingBlock: '12px' },
+          subMenuContent: { zIndex: 'calc(var(--header-z-index) + 1)' }
+        }}
+      >
         <SubMenu label={t('navigation.dashboards')}>
           <MenuItem>{t('navigation.analytics')}</MenuItem>
           <MenuItem>{t('navigation.eCommerce')}</MenuItem>
