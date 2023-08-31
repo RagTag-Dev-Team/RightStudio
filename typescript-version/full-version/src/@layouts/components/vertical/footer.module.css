@@ -17,17 +17,23 @@
 .footerFixed {
   position: sticky;
   inset-block-end: 0;
+  z-index: var(--footer-z-index);
 
   &.footerAttached,
   &.footerDetached .contentWrapper {
     background-color: var(--background-color);
   }
 
-  &.footerDetached .contentWrapper {
-    border-inline: 1px solid var(--border-color);
-    border-block-start: 1px solid var(--border-color);
-    border-start-start-radius: var(--border-radius);
-    border-start-end-radius: var(--border-radius);
+  &.footerDetached {
+    pointer-events: none;
+
+    & .contentWrapper {
+      pointer-events: auto;
+      border-inline: 1px solid var(--border-color);
+      border-block-start: 1px solid var(--border-color);
+      border-start-start-radius: var(--border-radius);
+      border-start-end-radius: var(--border-radius);
+    }
   }
 
   &.footerAttached {

@@ -6,7 +6,7 @@
   inset-inline-end: -400px;
   border-inline-start: 1px solid var(--border-color);
   box-shadow: none;
-  z-index: 9999;
+  z-index: var(--customizer-z-index);
   transition-property: inset-inline-end, box-shadow;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;

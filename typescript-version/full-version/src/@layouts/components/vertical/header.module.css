@@ -13,6 +13,7 @@
 .headerFixed {
   position: sticky;
   inset-block-start: 0;
+  z-index: var(--header-z-index);
 
   &.headerAttached:not(.headerBlur),
   &.headerDetached:not(.headerBlur) .navbar {
@@ -24,6 +25,15 @@
     border-block-end: 1px solid var(--border-color);
     border-end-start-radius: var(--border-radius);
     border-end-end-radius: var(--border-radius);
+  }
+
+  &.headerDetached,
+  &.headerFloating {
+    pointer-events: none;
+
+    & .navbar {
+      pointer-events: auto;
+    }
   }
 
   &.headerBlur {

@@ -8,6 +8,7 @@
   &.headerFixed {
     position: sticky;
     inset-block-start: 0;
+    z-index: var(--header-z-index);
 
     &.headerBlur {
       backdrop-filter: blur(6px);

@@ -2,7 +2,7 @@
 .positioner {
   align-items: center !important;
   padding: 0 !important;
-  z-index: 10;
+  z-index: var(--search-z-index);
 }
 
 .inputWrapper {
@@ -30,7 +30,7 @@
 .searchBackdrop {
   position: fixed;
   inset: 0;
-  z-index: 9;
+  z-index: calc(var(--search-z-index) - 1);
   background-color: rgba(0, 0, 0, 0.3);
 }
 
