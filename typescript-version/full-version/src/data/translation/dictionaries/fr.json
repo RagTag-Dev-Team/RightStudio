@@ -80,10 +80,8 @@
     "accessControl": "Contrôle d'accès",
     "others": "Les autres",
     "menuLevels": "Niveaux de menus",
-    "menuLevel2.1": "Niveau menu 2.1",
-    "menuLevel2.2": "Niveau menu 2.2",
-    "menuLevel3.1": "Niveau menu 3.1",
-    "menuLevel3.2": "Niveau menu 3.2",
+    "menuLevel2": "Niveau menu 2",
+    "menuLevel3": "Niveau menu 3",
     "disabledMenu": "Menu désactivé",
     "raiseSupport": "Augmenter le soutien",
     "documentation": "Documentation"

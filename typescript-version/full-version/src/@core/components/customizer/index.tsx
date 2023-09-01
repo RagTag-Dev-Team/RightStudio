@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -38,10 +38,9 @@ import styles from './styles.module.css'
 type CustomizerProps = {
   breakpoint?: string
   dir?: Direction
-  langDirection?: { [key: string]: Direction }
 }
 
-const Customizer = ({ breakpoint = '1200px', dir = 'ltr', langDirection }: CustomizerProps) => {
+const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
   const [direction, setDirection] = useState(dir)
@@ -73,14 +72,6 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', langDirection }: Custo
   useUpdateEffect(() => {
     document.documentElement.setAttribute('dir', direction)
   }, [direction])
-
-  // Update direction state when changing language
-  useEffect(() => {
-    const dir = langDirection?.[settings.languageForCustomizer || 'en'] || 'ltr'
-
-    setDirection(dir)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.languageForCustomizer])
 
   return (
     !breakpointReached && (

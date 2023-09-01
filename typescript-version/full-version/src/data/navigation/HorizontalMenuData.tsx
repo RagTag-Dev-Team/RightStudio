@@ -1,27 +1,29 @@
-// Third-party Imports
-import { useTranslation } from 'react-i18next'
-
 // Type Imports
 import type { HorizontalMenuDataType } from '@/types/menuTypes'
+
+// Config Imports
+import type { Locale } from '@/configs/i18n'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-const HorizontalMenuData = (): HorizontalMenuDataType[] => {
-  // Hooks
-  const { t } = useTranslation()
+// Util Imports
+import { getDictionary } from '@/utils/get-dictionary'
+
+const HorizontalMenuData = (lang: Locale): HorizontalMenuDataType[] => {
+  const dictionary = getDictionary(lang)
 
   return [
     // This is how you will normally render submenu
     {
-      label: t('navigation.dashboards'),
+      label: dictionary['navigation'].dashboards,
       children: [
         // This is how you will normally render menu item
         {
-          label: t('navigation.analytics')
+          label: dictionary['navigation'].analytics
         },
         {
-          label: t('navigation.eCommerce')
+          label: dictionary['navigation'].eCommerce
         }
       ]
     },
@@ -30,323 +32,323 @@ const HorizontalMenuData = (): HorizontalMenuDataType[] => {
       href: '/about'
     },
     {
-      label: t('navigation.apps'),
+      label: dictionary['navigation'].apps,
       children: [
         {
-          label: t('navigation.email'),
+          label: dictionary['navigation'].email,
           href: '/email'
         },
         {
-          label: t('navigation.chat'),
+          label: dictionary['navigation'].chat,
           href: '/chat'
         },
         {
-          label: t('navigation.calendar')
+          label: dictionary['navigation'].calendar
         },
         {
-          label: t('navigation.invoice'),
+          label: dictionary['navigation'].invoice,
           children: [
             {
-              label: t('navigation.list')
+              label: dictionary['navigation'].list
             },
             {
-              label: t('navigation.preview')
+              label: dictionary['navigation'].preview
             },
             {
-              label: t('navigation.edit')
+              label: dictionary['navigation'].edit
             },
             {
-              label: t('navigation.add')
+              label: dictionary['navigation'].add
             }
           ]
         },
         {
-          label: t('navigation.user'),
+          label: dictionary['navigation'].user,
           children: [
             {
-              label: t('navigation.list'),
+              label: dictionary['navigation'].list,
               href: '/user-list'
             },
             {
-              label: t('navigation.view'),
+              label: dictionary['navigation'].view,
               children: [
                 {
-                  label: t('navigation.account'),
+                  label: dictionary['navigation'].account,
                   href: '/user-details'
                 },
                 {
-                  label: t('navigation.security')
+                  label: dictionary['navigation'].security
                 },
                 {
-                  label: t('navigation.billingPlans')
+                  label: dictionary['navigation'].billingPlans
                 },
                 {
-                  label: t('navigation.notifications')
+                  label: dictionary['navigation'].notifications
                 },
                 {
-                  label: t('navigation.connections')
+                  label: dictionary['navigation'].connections
                 }
               ]
             }
           ]
         },
         {
-          label: t('navigation.rolesPermissions'),
+          label: dictionary['navigation'].rolesPermissions,
           children: [
             {
-              label: t('navigation.roles')
+              label: dictionary['navigation'].roles
             },
             {
-              label: t('navigation.permissions')
+              label: dictionary['navigation'].permissions
             }
           ]
         }
       ]
     },
     {
-      label: t('navigation.ui'),
+      label: dictionary['navigation'].ui,
       children: [
         {
-          label: t('navigation.typography')
+          label: dictionary['navigation'].typography
         },
         {
-          label: t('navigation.icons')
+          label: dictionary['navigation'].icons
         },
         {
-          label: t('navigation.cards'),
+          label: dictionary['navigation'].cards,
           children: [
             {
-              label: t('navigation.basic')
+              label: dictionary['navigation'].basic
             },
             {
-              label: t('navigation.actions')
+              label: dictionary['navigation'].actions
             }
           ]
         }
       ]
     },
     {
-      label: t('navigation.pages'),
+      label: dictionary['navigation'].pages,
       children: [
         {
-          label: t('navigation.userProfile'),
+          label: dictionary['navigation'].userProfile,
           children: [
             {
-              label: t('navigation.profile')
+              label: dictionary['navigation'].profile
             },
             {
-              label: t('navigation.teams')
+              label: dictionary['navigation'].teams
             },
             {
-              label: t('navigation.projects')
+              label: dictionary['navigation'].projects
             },
             {
-              label: t('navigation.connections')
+              label: dictionary['navigation'].connections
             }
           ]
         },
         {
-          label: t('navigation.accountSettings'),
+          label: dictionary['navigation'].accountSettings,
           children: [
             {
-              label: t('navigation.account')
+              label: dictionary['navigation'].account
             },
             {
-              label: t('navigation.security')
+              label: dictionary['navigation'].security
             },
             {
-              label: t('navigation.billingPlans')
+              label: dictionary['navigation'].billingPlans
             },
             {
-              label: t('navigation.notifications')
+              label: dictionary['navigation'].notifications
             },
 
             {
-              label: t('navigation.connections')
+              label: dictionary['navigation'].connections
             }
           ]
         },
         {
-          label: t('navigation.faq')
+          label: dictionary['navigation'].faq
         },
         {
-          label: t('navigation.pricing')
+          label: dictionary['navigation'].pricing
         },
         {
-          label: t('navigation.miscellaneous'),
+          label: dictionary['navigation'].miscellaneous,
           children: [
             {
-              label: t('navigation.comingSoon')
+              label: dictionary['navigation'].comingSoon
             },
             {
-              label: t('navigation.underMaintenance')
+              label: dictionary['navigation'].underMaintenance
             },
             {
-              label: t('navigation.pageNotFound404')
+              label: dictionary['navigation'].pageNotFound404
             },
             {
-              label: t('navigation.notAuthorized401')
+              label: dictionary['navigation'].notAuthorized401
             }
           ]
         },
         {
-          label: t('navigation.authPages'),
+          label: dictionary['navigation'].authPages,
           children: [
             {
-              label: t('navigation.login'),
+              label: dictionary['navigation'].login,
               children: [
                 {
-                  label: t('navigation.loginV1'),
+                  label: dictionary['navigation'].loginV1,
                   href: '/pages/auth/login-v1'
                 },
                 {
-                  label: t('navigation.loginV2'),
+                  label: dictionary['navigation'].loginV2,
                   href: '/pages/auth/login-v2'
                 }
               ]
             },
             {
-              label: t('navigation.register'),
+              label: dictionary['navigation'].register,
               children: [
                 {
-                  label: t('navigation.registerV1')
+                  label: dictionary['navigation'].registerV1
                 },
                 {
-                  label: t('navigation.registerV2')
+                  label: dictionary['navigation'].registerV2
                 },
                 {
-                  label: t('navigation.registerMultiSteps')
+                  label: dictionary['navigation'].registerMultiSteps
                 }
               ]
             },
             {
-              label: t('navigation.verifyEmail'),
+              label: dictionary['navigation'].verifyEmail,
               children: [
                 {
-                  label: t('navigation.verifyEmailV1')
+                  label: dictionary['navigation'].verifyEmailV1
                 },
                 {
-                  label: t('navigation.verifyEmailV2')
+                  label: dictionary['navigation'].verifyEmailV2
                 }
               ]
             },
             {
-              label: t('navigation.forgotPassword'),
+              label: dictionary['navigation'].forgotPassword,
               children: [
                 {
-                  label: t('navigation.forgotPasswordV1')
+                  label: dictionary['navigation'].forgotPasswordV1
                 },
                 {
-                  label: t('navigation.forgotPasswordV2')
+                  label: dictionary['navigation'].forgotPasswordV2
                 }
               ]
             },
             {
-              label: t('navigation.resetPassword'),
+              label: dictionary['navigation'].resetPassword,
               children: [
                 {
-                  label: t('navigation.resetPasswordV1')
+                  label: dictionary['navigation'].resetPasswordV1
                 },
                 {
-                  label: t('navigation.resetPasswordV2')
+                  label: dictionary['navigation'].resetPasswordV2
                 }
               ]
             },
             {
-              label: t('navigation.twoSteps'),
+              label: dictionary['navigation'].twoSteps,
               children: [
                 {
-                  label: t('navigation.twoStepsV1')
+                  label: dictionary['navigation'].twoStepsV1
                 },
                 {
-                  label: t('navigation.twoStepsV2')
+                  label: dictionary['navigation'].twoStepsV2
                 }
               ]
             }
           ]
         },
         {
-          label: t('navigation.wizardExamples'),
+          label: dictionary['navigation'].wizardExamples,
           children: [
             {
-              label: t('navigation.checkout')
+              label: dictionary['navigation'].checkout
             },
             {
-              label: t('navigation.propertyListing')
+              label: dictionary['navigation'].propertyListing
             },
             {
-              label: t('navigation.createDeal')
+              label: dictionary['navigation'].createDeal
             }
           ]
         },
         {
-          label: t('navigation.dialogExamples')
+          label: dictionary['navigation'].dialogExamples
         }
       ]
     },
     {
-      label: t('navigation.forms'),
+      label: dictionary['navigation'].forms,
       children: [
         {
-          label: t('navigation.formLayouts')
+          label: dictionary['navigation'].formLayouts
         },
         {
-          label: t('navigation.formValidation')
+          label: dictionary['navigation'].formValidation
         },
         {
-          label: t('navigation.formWizard')
+          label: dictionary['navigation'].formWizard
         }
       ]
     },
     {
-      label: t('navigation.charts'),
+      label: dictionary['navigation'].charts,
       children: [
         {
-          label: t('navigation.apex')
+          label: dictionary['navigation'].apex
         },
         {
-          label: t('navigation.recharts')
+          label: dictionary['navigation'].recharts
         },
         {
-          label: t('navigation.chartJS')
+          label: dictionary['navigation'].chartJS
         }
       ]
     },
     {
-      label: t('navigation.others'),
+      label: dictionary['navigation'].others,
       children: [
         {
-          label: t('navigation.accessControl')
+          label: dictionary['navigation'].accessControl
         },
         {
-          label: t('navigation.menuLevels'),
+          label: dictionary['navigation'].menuLevels,
           children: [
             {
-              label: t('navigation.menuLevel2.1')
+              label: dictionary['navigation'].menuLevel2
             },
             {
-              label: t('navigation.menuLevel2.2'),
+              label: dictionary['navigation'].menuLevel2,
               children: [
                 {
-                  label: t('navigation.menuLevel3.1')
+                  label: dictionary['navigation'].menuLevel3
                 },
                 {
-                  label: t('navigation.menuLevel3.2')
+                  label: dictionary['navigation'].menuLevel3
                 }
               ]
             }
           ]
         },
         {
-          label: t('navigation.disabledMenu'),
+          label: dictionary['navigation'].disabledMenu,
           disabled: true
         },
         {
-          label: t('navigation.raiseSupport'),
+          label: dictionary['navigation'].raiseSupport,
           suffix: <LinkExternalIcon fontSize='1.125rem' />
         },
         {
-          label: t('navigation.documentation'),
+          label: dictionary['navigation'].documentation,
           suffix: <LinkExternalIcon fontSize='1.125rem' />
         }
       ]

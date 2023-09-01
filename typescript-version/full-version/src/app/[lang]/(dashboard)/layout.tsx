@@ -15,14 +15,19 @@ import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
 
+// Config Imports
+import type { Locale } from '@/configs/i18n'
+import { i18n } from '@/configs/i18n'
+
 // Util Imports
-import { getDirection } from '@/utils/commonUtils'
+import { getDirection } from '@/utils/get-direction'
 
-// Data Imports
-import { langDirection } from '@/data/translation/langDirection'
+export async function generateStaticParams() {
+  return i18n.locales.map(locale => ({ lang: locale }))
+}
 
-const Layout = ({ children }: ChildrenType) => {
-  const dir = getDirection()
+const Layout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
+  const direction = getDirection(params.lang)
 
   return (
     <Providers>
@@ -38,7 +43,7 @@ const Layout = ({ children }: ChildrenType) => {
           </HorizontalLayout>
         }
       />
-      <Customizer dir={dir} langDirection={langDirection} />
+      <Customizer dir={direction} />
     </Providers>
   )
 }

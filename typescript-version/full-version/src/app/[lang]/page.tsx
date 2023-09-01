@@ -9,14 +9,14 @@ import { authOptions } from '@/lib/auth'
 
 export default async function Page() {
   // Default redirect URL
-  let redirectURL = '/login'
+  let redirectURL = `/login`
 
   // Get the session from the server
   const session = await getServerSession(authOptions)
 
   // If session exists, get the redirect URL
   if (session) {
-    redirectURL = '/about'
+    redirectURL = `/about`
   }
 
   // Redirect user to respective home page
