@@ -1,48 +1,34 @@
 'use client'
 
-// React Imports
-import { useCallback, useEffect } from 'react'
+// Next Imports
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-// Third-party Imports
-import { useCookie } from 'react-use'
-import { useTranslation } from 'react-i18next'
-
-// Hook Imports
-import useSettings from '@core/hooks/useSettings'
-
-// Data Imports
-import { langDirection } from '@/data/translation/langDirection'
+// Config Imports
+import { i18n } from '@configs/i18n'
 
 const Translation = () => {
-  // Hooks
-  const { i18n } = useTranslation()
-  const { updateSettings } = useSettings()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [value, updateCookie] = useCookie('lang')
+  const pathName = usePathname()
+  const redirectedPathName = (locale: string) => {
+    if (!pathName) return '/'
+    const segments = pathName.split('/')
 
-  const direction = langDirection[i18n.language]
+    segments[1] = locale
 
-  const handleLangItemClick = useCallback(
-    async (language: 'en' | 'fr' | 'ar'): Promise<void> => {
-      await i18n.changeLanguage(language)
-    },
-    [i18n]
-  )
-
-  // Change html `lang` attribute when changing locale
-  useEffect(() => {
-    document.documentElement.setAttribute('lang', i18n.language)
-    document.documentElement.setAttribute('dir', direction || 'ltr')
-    updateCookie(i18n.language)
-    updateSettings({ languageForCustomizer: i18n.language })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.language])
+    return segments.join('/')
+  }
 
   return (
     <div className='flex'>
-      <a onClick={() => handleLangItemClick('en')}>English</a>
-      <a onClick={() => handleLangItemClick('fr')}>French</a>
-      <a onClick={() => handleLangItemClick('ar')}>Arabic</a>
+      <ul>
+        {i18n.locales.map(locale => {
+          return (
+            <li key={locale}>
+              <Link href={redirectedPathName(locale)}>{locale}</Link>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

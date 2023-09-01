@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 // MUI Imports
 import Grow from '@mui/material/Grow'
@@ -51,10 +51,9 @@ import styles from './styles.module.css'
 type CustomizerProps = {
   breakpoint?: Breakpoint | 'xxl' | string
   dir?: Direction
-  langDirection?: { [key: string]: Direction }
 }
 
-const Customizer = ({ breakpoint = 'lg', dir = 'ltr', langDirection }: CustomizerProps) => {
+const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
   const [direction, setDirection] = useState(dir)
@@ -140,14 +139,6 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', langDirection }: Customize
   useUpdateEffect(() => {
     document.documentElement.setAttribute('dir', direction)
   }, [direction])
-
-  // Update direction state when changing language
-  useEffect(() => {
-    const dir = langDirection?.[settings.languageForCustomizer || 'en'] || 'ltr'
-
-    setDirection(dir)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.languageForCustomizer])
 
   return (
     !breakpointReached && (

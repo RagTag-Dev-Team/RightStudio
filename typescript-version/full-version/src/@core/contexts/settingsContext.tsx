@@ -26,7 +26,6 @@ export type Settings = {
   navbarContentWidth?: LayoutComponentWidth
   contentWidth?: LayoutComponentWidth
   footerContentWidth?: LayoutComponentWidth
-  languageForCustomizer?: string
   primaryColor?: 'primary-1' | 'primary-2' | 'primary-3' | 'primary-4' | 'primary-5' | string
 }
 
@@ -47,7 +46,6 @@ const initialSettings: Settings = {
   navbarContentWidth: themeConfig.navbar.contentWidth,
   contentWidth: themeConfig.contentWidth,
   footerContentWidth: themeConfig.footer.contentWidth,
-  languageForCustomizer: 'en',
   primaryColor: 'primary-1'
 }
 
