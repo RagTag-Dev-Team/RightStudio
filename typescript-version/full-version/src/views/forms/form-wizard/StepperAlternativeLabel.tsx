@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -332,7 +334,7 @@ const StepperAlternativeLabel = () => {
           ) : (
             <>
               <form onSubmit={e => e.preventDefault()}>
-                <Grid container spacing={5}>
+                <Grid container>
                   <Grid item xs={12}>
                     <Typography className={styles['fw-500']}>{steps[activeStep].title}</Typography>
                     <Typography variant='body2'>{steps[activeStep].subtitle}</Typography>

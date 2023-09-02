@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
@@ -130,7 +132,7 @@ const FormLayoutsCollapsible = () => {
         </AccordionSummary>
         <Divider />
         <AccordionDetails>
-          <Grid container spacing={5}>
+          <Grid container>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
@@ -247,9 +249,9 @@ const FormLayoutsCollapsible = () => {
         </AccordionSummary>
         <Divider />
         <AccordionDetails>
-          <Grid container spacing={5}>
+          <Grid container>
             <Grid item xs={12} md={6}>
-              <Grid container spacing={6}>
+              <Grid container>
                 <Grid item xs={12}>
                   <RadioGroup
                     row
@@ -263,7 +265,7 @@ const FormLayoutsCollapsible = () => {
                 </Grid>
                 {paymentMethod === 'credit' ? (
                   <Grid item xs={12}>
-                    <Grid container spacing={6}>
+                    <Grid container>
                       <Grid item xs={12}>
                         <TextField
                           fullWidth

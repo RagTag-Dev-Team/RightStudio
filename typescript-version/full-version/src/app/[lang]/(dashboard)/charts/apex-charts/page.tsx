@@ -19,7 +19,7 @@ import ApexChartWrapper from '@core/styles/libs/ReactApexCharts'
 const ApexCharts = () => {
   return (
     <ApexChartWrapper>
-      <Grid container spacing={6} className='match-height'>
+      <Grid container className='match-height'>
         <Grid item xs={12}>
           <ApexAreaChart />
         </Grid>

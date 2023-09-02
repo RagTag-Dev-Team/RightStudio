@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
@@ -13,7 +11,7 @@ import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 const FormValidation = () => {
   return (
     <DatePickerWrapper>
-      <Grid container spacing={6}>
+      <Grid container>
         <PageHeader
           title='React Hook Form'
           subtitle='React Hooks for forms validation (Web + React Native)'

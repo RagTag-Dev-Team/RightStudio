@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
@@ -13,7 +11,7 @@ import PieChart from '@views/charts/echarts/PieChart'
 
 const ECharts = () => {
   return (
-    <Grid container spacing={6} className='match-height'>
+    <Grid container className='match-height'>
       <Grid item xs={12}>
         <LineChart />
       </Grid>

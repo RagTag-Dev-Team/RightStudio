@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -73,7 +75,7 @@ const FormValidationBasic = () => {
       <CardHeader title='Basic' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12} sm={6}>
               <Controller
                 name='firstName'

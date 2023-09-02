@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -117,7 +119,7 @@ const FormLayoutsWithTabs = () => {
         <form onSubmit={e => e.preventDefault()}>
           <CardContent>
             <TabPanel value='personal_info'>
-              <Grid container spacing={6}>
+              <Grid container>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
@@ -193,7 +195,7 @@ const FormLayoutsWithTabs = () => {
               </Grid>
             </TabPanel>
             <TabPanel value='account_details'>
-              <Grid container spacing={6}>
+              <Grid container>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
@@ -266,7 +268,7 @@ const FormLayoutsWithTabs = () => {
               </Grid>
             </TabPanel>
             <TabPanel value='social_links'>
-              <Grid container spacing={6}>
+              <Grid container>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth

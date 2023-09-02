@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -35,7 +37,7 @@ const FormLayoutsBasic = () => {
       <CardHeader title='Basic' />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <TextField fullWidth label='Name' placeholder='John Doe' />
             </Grid>

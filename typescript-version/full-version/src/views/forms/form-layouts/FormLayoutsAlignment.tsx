@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -31,7 +33,7 @@ const FormLayoutsAlignment = () => {
       <CardHeader title='Form Alignment' />
       <CardContent className={styles.formAlignment}>
         <form onSubmit={e => e.preventDefault()} className={styles.formWrapper}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <Typography variant='h5'>Sign In</Typography>
             </Grid>

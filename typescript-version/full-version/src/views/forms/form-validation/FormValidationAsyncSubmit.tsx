@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -61,7 +63,7 @@ const FormValidationAsyncSubmit = () => {
       <CardHeader title='Async Submit' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <Controller
                 name='firstName'

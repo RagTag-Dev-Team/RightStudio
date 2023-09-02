@@ -13,9 +13,7 @@ import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
-type Data = Omit<CustomInputVerticalData, 'asset'> & { asset?: string }
-
-const data: Data[] = [
+const data: CustomInputVerticalData[] = [
   {
     value: 'backup',
     title: 'Backup',
@@ -59,7 +57,7 @@ const CustomVerticalCheckboxIcon = () => {
       {data.map((item, index) => {
         let asset
 
-        if (item.asset) {
+        if (item.asset && typeof item.asset === 'string') {
           asset = <Icon icon={item.asset} />
         }
 

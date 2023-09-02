@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -189,7 +191,7 @@ const StepperLinearWithValidation = () => {
       case 0:
         return (
           <form onSubmit={handleAccountSubmit(onSubmit)}>
-            <Grid container spacing={5}>
+            <Grid container>
               <Grid item xs={12}>
                 <Typography className={styles['fw-500']}>{steps[0].title}</Typography>
                 <Typography variant='body2'>{steps[0].subtitle}</Typography>
@@ -308,7 +310,7 @@ const StepperLinearWithValidation = () => {
       case 1:
         return (
           <form onSubmit={handlePersonalSubmit(onSubmit)}>
-            <Grid container spacing={5}>
+            <Grid container>
               <Grid item xs={12}>
                 <Typography className={styles['fw-500']}>{steps[1].title}</Typography>
                 <Typography variant='body2'>{steps[1].subtitle}</Typography>
@@ -410,7 +412,7 @@ const StepperLinearWithValidation = () => {
       case 2:
         return (
           <form onSubmit={handleSocialSubmit(onSubmit)}>
-            <Grid container spacing={5}>
+            <Grid container>
               <Grid item xs={12}>
                 <Typography className={styles['fw-500']}>{steps[2].title}</Typography>
                 <Typography variant='body2'>{steps[2].subtitle}</Typography>

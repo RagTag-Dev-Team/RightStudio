@@ -10,7 +10,7 @@ import RechartsRadarChart from '@views/charts/recharts/RechartsRadarChart'
 import RechartsScatterChart from '@views/charts/recharts/RechartsScatterChart'
 
 // Util Imports
-import { getDirection } from '@/utils/commonUtils'
+import { getDirection } from '@/utils/get-direction'
 
 // Style Imports
 import RechartsWrapper from '@core/styles/libs/Recharts'
@@ -20,7 +20,7 @@ const Recharts = () => {
 
   return (
     <RechartsWrapper>
-      <Grid container spacing={6}>
+      <Grid container>
         <Grid item xs={12}>
           <RechartsLineChart direction={direction} />
         </Grid>

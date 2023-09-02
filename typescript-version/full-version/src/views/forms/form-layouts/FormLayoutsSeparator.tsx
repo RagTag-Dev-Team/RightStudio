@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -84,7 +86,7 @@ const FormLayoutsSeparator = () => {
       <Divider />
       <form onSubmit={e => e.preventDefault()}>
         <CardContent>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 500 }}>
                 1. Account Details

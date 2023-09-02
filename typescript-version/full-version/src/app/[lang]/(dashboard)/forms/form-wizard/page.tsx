@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
@@ -11,7 +9,7 @@ import StepperVerticalWithoutNumbers from '@views/forms/form-wizard/StepperVerti
 
 const FormWizard = () => {
   return (
-    <Grid container spacing={6}>
+    <Grid container>
       <Grid item xs={12}>
         <Typography variant='h6'>Linear Stepper with Validation</Typography>
       </Grid>

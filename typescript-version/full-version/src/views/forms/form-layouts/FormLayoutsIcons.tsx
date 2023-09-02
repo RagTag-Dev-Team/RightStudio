@@ -1,3 +1,5 @@
+'use client'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -16,7 +18,7 @@ const FormLayoutsWithIcon = () => {
       <CardHeader title='Basic with Icons' />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <TextField
                 fullWidth

@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -67,7 +69,7 @@ const FormValidationOnScheme = () => {
       <CardHeader title='Validation Schema With OnChange' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12}>
               <Controller
                 name='firstName'
