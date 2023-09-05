@@ -1,5 +1,5 @@
-// Config Imports
-import type { Locale } from '@/configs/i18n'
+// Type Imports
+import type { Locale } from '@configs/i18n'
 
 export const getLocale = (pathName: string) => {
   if (!pathName) return 'en'

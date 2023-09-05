@@ -1,6 +1,8 @@
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Config Imports
-import type { Locale } from '@/configs/i18n'
-import { i18n } from '@/configs/i18n'
+import { i18n } from '@configs/i18n'
 
 // Type Imports
 import type {

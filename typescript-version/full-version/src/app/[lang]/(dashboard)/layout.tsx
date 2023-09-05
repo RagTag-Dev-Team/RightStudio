@@ -1,5 +1,6 @@
 // Type Imports
 import type { ChildrenType } from '@core/types'
+import type { Locale } from '@configs/i18n'
 
 // Layout Imports
 import LayoutWrapper from '@layouts/LayoutWrapper'
@@ -16,8 +17,7 @@ import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
 
 // Config Imports
-import type { Locale } from '@/configs/i18n'
-import { i18n } from '@/configs/i18n'
+import { i18n } from '@configs/i18n'
 
 // Util Imports
 import { getDirection } from '@/utils/get-direction'

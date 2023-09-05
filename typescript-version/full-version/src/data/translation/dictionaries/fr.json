@@ -79,6 +79,8 @@
     "echarts": "Graphiques",
     "accessControl": "Contrôle d'accès",
     "others": "Les autres",
+    "itemWithBadge": "Article avec badge",
+    "externalLink": "Lien Externe",
     "menuLevels": "Niveaux de menus",
     "menuLevel2": "Niveau menu 2",
     "menuLevel3": "Niveau menu 3",

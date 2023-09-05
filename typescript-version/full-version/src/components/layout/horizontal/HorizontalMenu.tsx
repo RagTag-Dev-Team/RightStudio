@@ -62,10 +62,10 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem>{dictionary['navigation'].eCommerce}</MenuItem>
         </SubMenu>
-        <MenuItem href='/about'>About</MenuItem>
+        <MenuItem href={`${locale}/about`}>About</MenuItem>
         <SubMenu label={dictionary['navigation'].apps}>
-          <MenuItem href='/email'>{dictionary['navigation'].email}</MenuItem>
-          <MenuItem href='/chat'>{dictionary['navigation'].chat}</MenuItem>
+          <MenuItem href={`${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem>{dictionary['navigation'].list}</MenuItem>
@@ -74,9 +74,9 @@ const HorizontalMenu = () => {
             <MenuItem>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
-            <MenuItem href='/user-list'>{dictionary['navigation'].list}</MenuItem>
+            <MenuItem href={`${locale}/user-list`}>{dictionary['navigation'].list}</MenuItem>
             <SubMenu label={dictionary['navigation'].view}>
-              <MenuItem href='/user-details'>{dictionary['navigation'].account}</MenuItem>
+              <MenuItem href={`${locale}/user-details`}>{dictionary['navigation'].account}</MenuItem>
               <MenuItem>{dictionary['navigation'].security}</MenuItem>
               <MenuItem>{dictionary['navigation'].billingPlans}</MenuItem>
               <MenuItem>{dictionary['navigation'].notifications}</MenuItem>
@@ -91,6 +91,7 @@ const HorizontalMenu = () => {
         <SubMenu label={dictionary['navigation'].ui}>
           <MenuItem>{dictionary['navigation'].typography}</MenuItem>
           <MenuItem>{dictionary['navigation'].icons}</MenuItem>
+          <MenuItem>Icons Test</MenuItem>
           <SubMenu label={dictionary['navigation'].cards}>
             <MenuItem>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem>{dictionary['navigation'].actions}</MenuItem>
@@ -120,8 +121,8 @@ const HorizontalMenu = () => {
           </SubMenu>
           <SubMenu label={dictionary['navigation'].authPages}>
             <SubMenu label={dictionary['navigation'].login}>
-              <MenuItem href='/pages/auth/login-v1'>{dictionary['navigation'].loginV1}</MenuItem>
-              <MenuItem href='/pages/auth/login-v2'>{dictionary['navigation'].loginV2}</MenuItem>
+              <MenuItem href={`${locale}/pages/auth/login-v1`}>{dictionary['navigation'].loginV1}</MenuItem>
+              <MenuItem href={`${locale}/pages/auth/login-v2`}>{dictionary['navigation'].loginV2}</MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].register}>
               <MenuItem>{dictionary['navigation'].registerV1}</MenuItem>
@@ -157,7 +158,7 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].formValidation}</MenuItem>
           <MenuItem>{dictionary['navigation'].formWizard}</MenuItem>
         </SubMenu>
-        <MenuItem href='/tables'>Tables</MenuItem>
+        <MenuItem href={`${locale}/tables`}>Tables</MenuItem>
         <SubMenu label={dictionary['navigation'].charts}>
           <MenuItem>{dictionary['navigation'].apex}</MenuItem>
           <MenuItem>{dictionary['navigation'].recharts}</MenuItem>
@@ -165,6 +166,14 @@ const HorizontalMenu = () => {
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
+          <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
+          <MenuItem
+            href='https://themeselection.com/'
+            target='_blank'
+            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+          >
+            {dictionary['navigation'].externalLink}
+          </MenuItem>
           <SubMenu label={dictionary['navigation'].menuLevels}>
             <MenuItem>{dictionary['navigation'].menuLevel2}</MenuItem>
             <SubMenu label={dictionary['navigation'].menuLevel2}>

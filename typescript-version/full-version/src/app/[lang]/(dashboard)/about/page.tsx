@@ -15,12 +15,7 @@ const AboutPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return (
-    <div>
-      <h1>About Page</h1>
-      <br />
-    </div>
-  )
+  return <h1>About Page</h1>
 }
 
 export default AboutPage
