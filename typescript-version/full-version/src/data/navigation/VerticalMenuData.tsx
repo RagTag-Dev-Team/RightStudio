@@ -1,8 +1,6 @@
 // Type Imports
 import type { VerticalMenuDataType } from '@/types/menuTypes'
-
-// Config Imports
-import type { Locale } from '@/configs/i18n'
+import type { Locale } from '@configs/i18n'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
@@ -10,8 +8,9 @@ import LinkExternalIcon from '@layouts/svg/LinkExternal'
 // Util Imports
 import { getDictionary } from '@/utils/get-dictionary'
 
-const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
-  const dictionary = getDictionary(lang)
+const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
+  // Get dictionary based on locale
+  const dictionary = getDictionary(locale)
 
   return [
     // This is how you will normally render submenu
@@ -29,7 +28,7 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
     },
     {
       label: 'About',
-      href: '/about'
+      href: `/${locale}/about`
     },
 
     // This is how you will normally render menu section
@@ -39,11 +38,11 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
       children: [
         {
           label: dictionary['navigation'].email,
-          href: '/email'
+          href: `/${locale}/email`
         },
         {
           label: dictionary['navigation'].chat,
-          href: '/chat'
+          href: `/${locale}/chat`
         },
         {
           label: dictionary['navigation'].calendar
@@ -70,14 +69,14 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].list,
-              href: '/user-list'
+              href: `/${locale}/user-list`
             },
             {
               label: dictionary['navigation'].view,
               children: [
                 {
                   label: dictionary['navigation'].account,
-                  href: '/user-details'
+                  href: `/${locale}/user-details`
                 },
                 {
                   label: dictionary['navigation'].security
@@ -180,11 +179,11 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].loginV1,
-                  href: '/pages/auth/login-v1'
+                  href: `/${locale}/pages/auth/login-v1`
                 },
                 {
                   label: dictionary['navigation'].loginV2,
-                  href: '/pages/auth/login-v2'
+                  href: `/${locale}/pages/auth/login-v2`
                 }
               ]
             },
@@ -278,6 +277,9 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
           label: dictionary['navigation'].icons
         },
         {
+          label: 'Icons Test'
+        },
+        {
           label: dictionary['navigation'].cards,
           children: [
             {
@@ -329,6 +331,15 @@ const VerticalMenuData = (lang: Locale): VerticalMenuDataType[] => {
         {
           label: dictionary['navigation'].others,
           children: [
+            {
+              label: dictionary['navigation'].itemWithBadge
+            },
+            {
+              label: dictionary['navigation'].externalLink,
+              href: 'https://themeselection.com/',
+              target: '_blank',
+              suffix: <LinkExternalIcon fontSize='1.125rem' />
+            },
             {
               label: dictionary['navigation'].menuLevels,
               children: [

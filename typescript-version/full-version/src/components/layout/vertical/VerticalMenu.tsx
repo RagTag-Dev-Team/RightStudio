@@ -22,6 +22,7 @@ import { getDictionary } from '@/utils/get-dictionary'
 // import menuData from '@/data/navigation/VerticalMenuData'
 
 const VerticalMenu = () => {
+  // Hooks
   const pathName = usePathname()
 
   // Get locale from pathname
@@ -132,6 +133,7 @@ const VerticalMenu = () => {
         <MenuSection label={dictionary['navigation'].userInterface}>
           <MenuItem>{dictionary['navigation'].typography}</MenuItem>
           <MenuItem>{dictionary['navigation'].icons}</MenuItem>
+          <MenuItem>Icons Test</MenuItem>
           <SubMenu label={dictionary['navigation'].cards}>
             <MenuItem>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem>{dictionary['navigation'].actions}</MenuItem>
@@ -151,6 +153,14 @@ const VerticalMenu = () => {
           </SubMenu>
           <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <SubMenu label={dictionary['navigation'].others}>
+            <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
+            <MenuItem
+              href='https://themeselection.com/'
+              target='_blank'
+              suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            >
+              {dictionary['navigation'].externalLink}
+            </MenuItem>
             <SubMenu label={dictionary['navigation'].menuLevels}>
               <MenuItem>{dictionary['navigation'].menuLevel2}</MenuItem>
               <SubMenu label={dictionary['navigation'].menuLevel2}>

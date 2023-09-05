@@ -101,8 +101,8 @@ const config = {
           label: 'Guide',
         },
         {
-          href: 'https://themeselection.com/components',
-          label: 'Components',
+          href: 'https://themeselection.com/ui-components',
+          label: 'UI & Components',
           position: 'left',
         },
         {
