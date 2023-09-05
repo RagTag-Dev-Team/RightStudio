@@ -50,10 +50,10 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem>{dictionary['navigation'].eCommerce}</MenuItem>
         </SubMenu>
-        <MenuItem href={`${locale}/about`}>About</MenuItem>
+        <MenuItem href={`/${locale}/about`}>About</MenuItem>
         <SubMenu label={dictionary['navigation'].apps}>
-          <MenuItem href={`${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
-          <MenuItem href={`${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
+          <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem>{dictionary['navigation'].list}</MenuItem>
@@ -62,9 +62,9 @@ const HorizontalMenu = () => {
             <MenuItem>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
-            <MenuItem href={`${locale}/user-list`}>{dictionary['navigation'].list}</MenuItem>
+            <MenuItem href={`/${locale}/user-list`}>{dictionary['navigation'].list}</MenuItem>
             <SubMenu label={dictionary['navigation'].view}>
-              <MenuItem href={`${locale}/user-details`}>{dictionary['navigation'].account}</MenuItem>
+              <MenuItem href={`/${locale}/user-details`}>{dictionary['navigation'].account}</MenuItem>
               <MenuItem>{dictionary['navigation'].security}</MenuItem>
               <MenuItem>{dictionary['navigation'].billingPlans}</MenuItem>
               <MenuItem>{dictionary['navigation'].notifications}</MenuItem>
@@ -109,8 +109,8 @@ const HorizontalMenu = () => {
           </SubMenu>
           <SubMenu label={dictionary['navigation'].authPages}>
             <SubMenu label={dictionary['navigation'].login}>
-              <MenuItem href={`${locale}/pages/auth/login-v1`}>{dictionary['navigation'].loginV1}</MenuItem>
-              <MenuItem href={`${locale}/pages/auth/login-v2`}>{dictionary['navigation'].loginV2}</MenuItem>
+              <MenuItem href={`/${locale}/pages/auth/login-v1`}>{dictionary['navigation'].loginV1}</MenuItem>
+              <MenuItem href={`/${locale}/pages/auth/login-v2`}>{dictionary['navigation'].loginV2}</MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].register}>
               <MenuItem>{dictionary['navigation'].registerV1}</MenuItem>
@@ -146,7 +146,7 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].formValidation}</MenuItem>
           <MenuItem>{dictionary['navigation'].formWizard}</MenuItem>
         </SubMenu>
-        <MenuItem href={`${locale}/tables`}>Tables</MenuItem>
+        <MenuItem href={`/${locale}/tables`}>Tables</MenuItem>
         <SubMenu label={dictionary['navigation'].charts}>
           <MenuItem>{dictionary['navigation'].apex}</MenuItem>
           <MenuItem>{dictionary['navigation'].recharts}</MenuItem>
