@@ -321,7 +321,7 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               label: dictionary['navigation'].recharts
             },
             {
-              label: dictionary['navigation'].chartJS
+              label: dictionary['navigation'].echarts
             }
           ]
         },

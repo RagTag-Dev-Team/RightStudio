@@ -60,14 +60,7 @@ const ColumnVisibility = () => {
   return (
     <div>
       <div className='inline-block border border-black shadow rounded'>
-        <button
-          onClick={() => {
-            console.log(table.getAllLeafColumns()[1])
-            table.getAllLeafColumns()[1].toggleVisibility()
-          }}
-        >
-          Toggle Name Column Visibility
-        </button>
+        <button onClick={() => table.getAllLeafColumns()[1].toggleVisibility()}>Toggle Email Column Visibility</button>
       </div>
       <table className={styles.table}>
         <thead>
