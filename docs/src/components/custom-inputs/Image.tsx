@@ -10,59 +10,51 @@ import { styled } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Type Imports
-import { CustomInputImgProps } from './types'
+import type { CustomInputImgProps } from './types'
 
 const Root = styled('div', {
   name: 'MuiCustomImage',
-  slot: 'Root',
-})(({ theme }) => ({
+  slot: 'Root'
+})({
   blockSize: '100%',
 	display: 'flex',
-	borderRadius: theme.vars.shape.borderRadius,
+	borderRadius: 'var(--mui-shape-borderRadius)',
 	cursor: 'pointer',
 	overflow: 'hidden',
 	position: 'relative',
 	alignItems: 'center',
 	flexDirection: 'column',
 	justifyContent: 'center',
-	border: `2px solid ${theme.vars.palette.divider}`,
+	border: '2px solid var(--mui-palette-divider)',
 
   '&:hover': {
-    borderColor: `rgb(${theme.vars.palette.text.primaryChannel} / 0.25)`
+    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
   },
   '&.active': {
-    borderColor: theme.vars.palette.primary.main,
+    borderColor: 'var(--mui-palette-primary-main)'
   },
   '&:not(.active):not(:hover) .MuiCheckbox-root': {
     display: 'none'
   }
-})) 
+})
 
 const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomImage',
-  slot: 'Input',
-})(({ theme }) => ({
+  slot: 'Input'
+})({
   top: 0,
 	right: 0,
 	position: 'absolute'
-}))
+})
 
 const Image = styled('img', {
   name: 'MuiCustomImage',
-  slot: 'Image',
-})(({ theme }) => ({}))
+  slot: 'Image'
+})({})
 
 const CustomCheckboxImg = (props: CustomInputImgProps) => {
   // Props
-  const {
-    type,
-    data,
-    name,
-    selected,
-    gridProps,
-    handleChange,
-    color = 'primary',
-  } = props
+  const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
 
   const { alt, img, value } = data
 
@@ -70,7 +62,7 @@ const CustomCheckboxImg = (props: CustomInputImgProps) => {
     return (
       <Grid item {...gridProps}>
         <Root className={classnames({ active: selected.includes(value) })} onClick={() => handleChange(value)}>
-          {typeof img === 'string' ? <Image src={img} alt={alt ?? `checkbox-image-${value}`} /> : img }
+          {typeof img === 'string' ? <Image src={img} alt={alt ?? `checkbox-image-${value}`} /> : img}
             {type === 'radio' ? null : (
             <CheckboxInput
               size='small'

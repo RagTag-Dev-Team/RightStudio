@@ -56,35 +56,36 @@ type BundleScriptConfig = {
 const sources: BundleScriptConfig = {
   json: [
     // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
-    require.resolve('@iconify/json/json/mdi.json')
+    require.resolve('@iconify/json/json/mdi.json'),
 
     // Custom file with only few icons
-    // {
-    //   filename: require.resolve('@iconify/json/json/line-md.json'),
-    //   icons: ['home-twotone-alt', 'github', 'document-list', 'document-code', 'image-twotone']
-    // }
+    {
+      filename: require.resolve('@iconify/json/json/line-md.json'),
+      icons: ['home-twotone-alt', 'github', 'document-list', 'document-code', 'image-twotone']
+    }
 
     // Custom JSON file
     // 'json/gg.json'
   ],
 
   icons: [
-    // 'bx:basket',
-    // 'bi:airplane-engines',
-    // 'tabler:anchor',
-    // 'uit:adobe-alt',
-    // 'fa6-regular:comment',
-    // 'twemoji:auto-rickshaw'
+    'bx:basket',
+    'bi:airplane-engines',
+    'tabler:anchor',
+    'uit:adobe-alt',
+    'fa6-regular:comment',
+    'twemoji:auto-rickshaw'
   ],
 
   svg: [
-    /* {
-      dir: './svg',
+    {
+      dir: 'src/assets/iconify-icons/svg',
       monotone: false,
       prefix: 'custom'
-    }, */
+    }
+
     /* {
-      dir: './emojis',
+      dir: 'src/assets/iconify-icons/emojis',
       monotone: false,
       prefix: 'emoji'
     } */

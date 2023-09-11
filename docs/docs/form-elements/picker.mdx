@@ -5,6 +5,9 @@ sidebar_label: Picker
 ---
 
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import PickersTime from '@docPages/form-elements/pickers/PickersTime'
 import SourceCodePickersTime from '!!raw-loader!@docPages/form-elements/pickers/PickersTime'
@@ -31,15 +34,18 @@ import SourceCodePickersMonthYearDropdowns from '!!raw-loader!@docPages/form-ele
 
 import DatePickerWrapper from '@docComponents/styled-components/react-datepicker'
 
-import PageHeader from '@docComponents/page-header'
-
 <DatePickerWrapper>
   <Grid container spacing={6}>
-  <PageHeader
-    title='Date Picker'
-    subtitle='The Date Picker component lets the user select a date.'
-    href='https://mui.com/x/react-date-pickers/date-picker/'
-  />
+    <Grid item xs={12}>
+      <Typography variant='h5'>React Datepicker</Typography>
+      <Typography variant='body2'>
+        <code>react-datepicker</code> is a third-party library. Please refer to its{' '}
+        <Link href='https://reactdatepicker.com/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+          official documentation
+        </Link>{' '}
+        for more details.
+      </Typography>
+    </Grid>
     <Grid item xs={12}>
       <CardSnippet title='Date Picker' code={SourceCodePickersBasic}>
         <PickersBasic />

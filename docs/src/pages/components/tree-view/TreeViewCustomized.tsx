@@ -11,7 +11,7 @@ import type { TreeViewProps } from '@mui/lab/TreeView'
 import Icon from '@core/components/IconifyIcon'
 
 // Styled TreeView component
-const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
+const TreeView = styled(MuiTreeView)<TreeViewProps>({
   minHeight: 264,
   '& .MuiTreeItem-iconContainer .close-icon': {
     opacity: 0.3
@@ -19,9 +19,9 @@ const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
   '& .MuiTreeItem-group': {
     marginLeft: 15,
     paddingLeft: 18,
-    borderLeft: `1px dashed rgb(${theme.vars.palette.text.primaryChannel} / 0.4)`
+    borderLeft: `1px dashed rgb(var(--mui-palette-text-primaryChannel) / 0.4)`
   }
-}))
+})
 
 const TreeViewCustomized = () => {
   return (

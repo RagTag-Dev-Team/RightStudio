@@ -3,6 +3,11 @@
 // React Imports
 import { useEffect, useState } from 'react'
 
+// MUI Imports
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+
 // Third-party Imports
 import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
@@ -104,37 +109,42 @@ const EditableDataTables = () => {
   })
 
   return (
-    <table className={styles.table}>
-      <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id} className={styles.tr}>
-            {headerGroup.headers.map(header => (
-              <th key={header.id} className={styles.th}>
-                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table
-          .getRowModel()
-          .rows.slice(0, 10)
-          .map(row => {
-            return (
-              <tr key={row.id} className={styles.tr}>
-                {row.getVisibleCells().map(cell => {
-                  return (
-                    <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  )
-                })}
+    <Card>
+      <CardHeader title='Editable Table' />
+      <CardContent>
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className={styles.tr}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id} className={styles.th}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
+                ))}
               </tr>
-            )
-          })}
-      </tbody>
-    </table>
+            ))}
+          </thead>
+          <tbody>
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map(row => {
+                return (
+                  <tr key={row.id} className={styles.tr}>
+                    {row.getVisibleCells().map(cell => {
+                      return (
+                        <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </CardContent>
+    </Card>
   )
 }
 

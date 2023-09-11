@@ -138,24 +138,24 @@ const VerticalMenu = () => {
         <MenuSection label={dictionary['navigation'].userInterface}>
           <MenuItem>{dictionary['navigation'].typography}</MenuItem>
           <MenuItem>{dictionary['navigation'].icons}</MenuItem>
-          <MenuItem>Icons Test</MenuItem>
+          <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
           <SubMenu label={dictionary['navigation'].cards}>
             <MenuItem>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
         </MenuSection>
         <MenuSection label={dictionary['navigation'].forms}>
-          <MenuItem href='/forms/form-layouts'>{dictionary['navigation'].formLayouts}</MenuItem>
-          <MenuItem href='/forms/form-validation'>{dictionary['navigation'].formValidation}</MenuItem>
-          <MenuItem href='/forms/form-wizard'>{dictionary['navigation'].formWizard}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-layouts`}>{dictionary['navigation'].formLayouts}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-validation`}>{dictionary['navigation'].formValidation}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
         </MenuSection>
         <MenuItem href={`/${locale}/tables`}>Tables</MenuItem>
         <MenuSection label={dictionary['navigation'].chartsMisc}>
           <SubMenu label={dictionary['navigation'].charts}>
-            <MenuItem href='/charts/apex-charts'>{dictionary['navigation'].apex}</MenuItem>
-            <MenuItem href='/charts/recharts'>{dictionary['navigation'].recharts}</MenuItem>
-            <MenuItem href='/charts/echarts'>{dictionary['navigation'].echarts}</MenuItem>
-            <MenuItem href='/charts/echarts-advance'>Echarts Advance</MenuItem>
+            <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
+            <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
+            <MenuItem href={`/${locale}/charts/echarts`}>{dictionary['navigation'].echarts}</MenuItem>
+            <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
           </SubMenu>
           <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <SubMenu label={dictionary['navigation'].others}>

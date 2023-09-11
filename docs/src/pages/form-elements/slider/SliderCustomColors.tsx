@@ -10,7 +10,7 @@ import MuiSlider, { SliderProps } from '@mui/material/Slider'
 const SliderSuccess = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   color: theme.palette.success.main,
   '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-    boxShadow: `0 0 0 8px rgb(${theme.vars.palette.success.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 8px rgb(var(--mui-palette-success-mainChannel) / 0.16)'
   },
   '@media(hover:none)': {
     '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
@@ -18,7 +18,7 @@ const SliderSuccess = styled(MuiSlider)<SliderProps>(({ theme }) => ({
     }
   },
   '& .MuiSlider-thumb.Mui-focusVisible.Mui-active': {
-    boxShadow: `0 0 0 14px rgb(${theme.vars.palette.success.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 14px rgb(var(--mui-palette-success-mainChannel) / 0.16)'
   }
 }))
 
@@ -26,7 +26,7 @@ const SliderSuccess = styled(MuiSlider)<SliderProps>(({ theme }) => ({
 const SliderError = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   color: theme.palette.error.main,
   '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-    boxShadow: `0 0 0 8px rgb(${theme.vars.palette.error.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 8px rgb(var(--mui-palette-error-mainChannel) / 0.16)'
   },
   '@media(hover:none)': {
     '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
@@ -34,7 +34,7 @@ const SliderError = styled(MuiSlider)<SliderProps>(({ theme }) => ({
     }
   },
   '& .MuiSlider-thumb.Mui-focusVisible.Mui-active': {
-    boxShadow: `0 0 0 14px rgb(${theme.vars.palette.error.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 14px rgb(var(--mui-palette-error-mainChannel) / 0.16)'
   }
 }))
 
@@ -42,7 +42,7 @@ const SliderError = styled(MuiSlider)<SliderProps>(({ theme }) => ({
 const SliderWarning = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   color: theme.palette.warning.main,
   '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-    boxShadow: `0 0 0 8px rgb(${theme.vars.palette.warning.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 8px rgb(var(--mui-palette-warning-mainChannel) / 0.16)'
   },
   '@media(hover:none)': {
     '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
@@ -50,7 +50,7 @@ const SliderWarning = styled(MuiSlider)<SliderProps>(({ theme }) => ({
     }
   },
   '& .MuiSlider-thumb.Mui-focusVisible.Mui-active': {
-    boxShadow: `0 0 0 14px rgb(${theme.vars.palette.warning.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 14px rgb(var(--mui-palette-warning-mainChannel) / 0.16)'
   }
 }))
 
@@ -58,7 +58,7 @@ const SliderWarning = styled(MuiSlider)<SliderProps>(({ theme }) => ({
 const SliderInfo = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   color: theme.palette.info.main,
   '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-    boxShadow: `0 0 0 8px rgb(${theme.vars.palette.info.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 8px rgb(var(--mui-palette-info-mainChannel) / 0.16)'
   },
   '@media(hover:none)': {
     '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
@@ -66,7 +66,7 @@ const SliderInfo = styled(MuiSlider)<SliderProps>(({ theme }) => ({
     }
   },
   '& .MuiSlider-thumb.Mui-focusVisible.Mui-active': {
-    boxShadow: `0 0 0 14px rgb(${theme.vars.palette.info.mainChannel} / 0.16)`
+    boxShadow: '0 0 0 14px rgb(var(--mui-palette-info-mainChannel) / 0.16)'
   }
 }))
 

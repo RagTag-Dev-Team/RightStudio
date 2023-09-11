@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Checkbox from '@mui/material/Checkbox'
@@ -17,28 +14,28 @@ import type { CustomInputImgProps } from './types'
 const Root = styled('div', {
   name: 'MuiCustomImage',
   slot: 'Root'
-})(({ theme }) => ({
+})({
   blockSize: '100%',
   display: 'flex',
-  borderRadius: theme.vars.shape.borderRadius,
+  borderRadius: 'var(--mui-shape-borderRadius)',
   cursor: 'pointer',
   overflow: 'hidden',
   position: 'relative',
   alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
-  border: `2px solid ${theme.vars.palette.divider}`,
+  border: '2px solid var(--mui-palette-divider)',
 
   '&:hover': {
-    borderColor: `rgb(${theme.vars.palette.text.primaryChannel} / 0.25)`
+    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
   },
   '&.active': {
-    borderColor: theme.vars.palette.primary.main
+    borderColor: 'var(--mui-palette-primary-main)'
   },
   '&:not(.active):not(:hover) .MuiCheckbox-root': {
     display: 'none'
   }
-}))
+})
 
 const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomImage',

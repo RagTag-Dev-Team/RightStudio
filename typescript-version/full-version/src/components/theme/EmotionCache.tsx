@@ -32,9 +32,9 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const cache = createCache({
       ...options,
+      prepend: true,
       ...(direction === 'rtl' && {
         key: 'rtl',
-        prepend: true,
         stylisPlugins: [stylisRTLPlugin]
       })
     })

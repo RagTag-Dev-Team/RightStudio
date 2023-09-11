@@ -6,6 +6,8 @@ sidebar_label: Dialogs
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import DialogsForm from '@docPages/components/dialogs/DialogsForm'
 import SourceCodeDialogsForm from '!!raw-loader!@docPages/components/dialogs/DialogsForm'
@@ -26,15 +28,21 @@ import SourceCodeDialogsConfirmation from '!!raw-loader!@docPages/components/dia
 import DialogsRespoFullScreen from '@docPages/components/dialogs/DialogsRespoFullScreen'
 import SourceCodeDialogsRespoFullScreen from '!!raw-loader!@docPages/components/dialogs/DialogsRespoFullScreen'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader 
-    title='Dialogs'
-    subtitle='Dialogs inform users about a task and can contain critical information, require decisions, or involve
-    multiple tasks.'
-    href='https://mui.com/material-ui/react-dialog/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Dialogs</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-dialog/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-dialog/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Alerts'

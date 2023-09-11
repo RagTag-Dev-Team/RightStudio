@@ -1,11 +1,11 @@
 ---
 hide_table_of_contents: true
+title: ''
 sidebar_label: More
 ---
 
-# More Components
-
 import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
 import Card from "@mui/material/Card"
 import Alert from "@mui/material/Alert"
 import Table from "@mui/material/Table"
@@ -18,9 +18,12 @@ import CardHeader from "@mui/material/CardHeader"
 import CardContent from "@mui/material/CardContent"
 import TableContainer from "@mui/material/TableContainer"
 
-import componentData from "../../src/data/muiMoreComponents.ts"
+import componentData from "@site/src/data/muiMoreComponents.ts"
 
-<Grid container spacing={6} className="match-height">
+<Grid container spacing={6}>
+  <Grid item xs={12}>
+    <Typography variant='h5'>More Components</Typography>
+  </Grid>
   <Grid item xs={12}>
     <Alert severity="info" sx={{ mb: 4 }}>
       We have themed each of the MUI components but we have skipped the demos of

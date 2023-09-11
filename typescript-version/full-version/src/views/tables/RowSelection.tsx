@@ -4,6 +4,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { HTMLProps } from 'react'
 
+// MUI Imports
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+
 // Third-party Imports
 import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
@@ -105,33 +110,38 @@ const RowSelection = () => {
   })
 
   return (
-    <table className={styles.table}>
-      <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id} className={styles.tr}>
-            {headerGroup.headers.map(header => (
-              <th key={header.id} className={styles.th}>
-                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table
-          .getRowModel()
-          .rows.slice(0, 10)
-          .map(row => {
-            return (
-              <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+    <Card>
+      <CardHeader title='Row Selection' />
+      <CardContent>
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className={styles.tr}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id} className={styles.th}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
                 ))}
               </tr>
-            )
-          })}
-      </tbody>
-    </table>
+            ))}
+          </thead>
+          <tbody>
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map(row => {
+                return (
+                  <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
+                    {row.getVisibleCells().map(cell => (
+                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                    ))}
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </CardContent>
+    </Card>
   )
 }
 

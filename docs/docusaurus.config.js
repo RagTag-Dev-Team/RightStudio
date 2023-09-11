@@ -100,7 +100,7 @@ const config = {
           position: 'left',
           label: 'Guide',
         },
-        { type: 'docSidebar', sidebarId: 'componentSidebar', label: 'Components', position: 'left', },
+        { type: 'docSidebar', sidebarId: 'uiComponentsSidebar', label: 'UI & Components', position: 'left', },
         { type: 'docSidebar', sidebarId: 'formsTablesSidebar', label: 'Forms & Tables', position: 'left', },
         {
           href: 'https://themeselection.com/menu-examples',
@@ -127,7 +127,7 @@ const config = {
       darkTheme: require('prism-react-renderer/themes/dracula'),
     },
     imageZoom: {
-      selector: '.markdown img',
+      selector: '.markdown > img, .markdown > p > img',
       options: {
         background: '#fff',
       }

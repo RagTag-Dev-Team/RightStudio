@@ -104,8 +104,11 @@ export const config = {
      * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
+     * - all items inside the public folder
+     *    - images (public images)
+     *    - next.svg (Next.js logo)
+     *    - vercel.svg (Vercel logo)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    '/((?!api|_next/static|_next/image|images|next.svg|vercel.svg).*)'
   ]
 }

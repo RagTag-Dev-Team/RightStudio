@@ -277,7 +277,8 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           label: dictionary['navigation'].icons
         },
         {
-          label: 'Icons Test'
+          label: 'Icons Test',
+          href: `/${locale}/icons-test`
         },
         {
           label: dictionary['navigation'].cards,
@@ -297,13 +298,16 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
       isSection: true,
       children: [
         {
-          label: dictionary['navigation'].formLayouts
+          label: dictionary['navigation'].formLayouts,
+          href: `/${locale}/forms/form-layouts`
         },
         {
-          label: dictionary['navigation'].formValidation
+          label: dictionary['navigation'].formValidation,
+          href: `/${locale}/forms/form-validation`
         },
         {
-          label: dictionary['navigation'].formWizard
+          label: dictionary['navigation'].formWizard,
+          href: `/${locale}/forms/form-wizard`
         }
       ]
     },
@@ -315,13 +319,20 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           label: dictionary['navigation'].charts,
           children: [
             {
-              label: dictionary['navigation'].apex
+              label: dictionary['navigation'].apex,
+              href: `/${locale}/charts/apex-charts`
             },
             {
-              label: dictionary['navigation'].recharts
+              label: dictionary['navigation'].recharts,
+              href: `/${locale}/charts/recharts`
             },
             {
-              label: dictionary['navigation'].echarts
+              label: dictionary['navigation'].echarts,
+              href: `/${locale}/charts/echarts`
+            },
+            {
+              label: 'Echarts Advance',
+              href: `/${locale}/charts/echarts-advance`
             }
           ]
         },

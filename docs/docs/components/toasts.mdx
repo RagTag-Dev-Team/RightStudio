@@ -5,6 +5,9 @@ sidebar_label: Toasts
 ---
 
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import ToastsBlank from '@docPages/components/toasts/ToastsBlank'
 import SourceCodeToastsBlank from '!!raw-loader!@docPages/components/toasts/ToastsBlank'
@@ -31,14 +34,17 @@ import SourceCodeToastsPreventDuplicate from '!!raw-loader!@docPages/components/
 import ToastsFlip from '@docPages/components/toasts/ToastsFlip'
 import SourceCodeToastsFlip from '!!raw-loader!@docPages/components/toasts/ToastsFlip'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader 
-    title='Toasts'
-    subtitle='Smoking tostify notifications.'
-    href='https://github.com/fkhadra/react-toastify'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>React Toastify</Typography>
+    <Typography variant='body2'>
+      <code>react-toastify</code> is a third-party library. Please refer to its{' '}
+      <Link href='https://fkhadra.github.io/react-toastify/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        official documentation
+      </Link>{' '}
+      for more details.
+    </Typography>
+  </Grid>
   <Grid item xs={12} sm={6} md={4}>
     <CardSnippet
       code={SourceCodeToastsBlank}

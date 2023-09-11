@@ -6,6 +6,8 @@ sidebar_label: Autocomplete
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import AutocompleteProps from '@docPages/form-elements/autocomplete/AutocompleteProps'
 import SourceCodeAutocompleteProps from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteProps'
@@ -38,14 +40,21 @@ import SourceCodeAutocompleteDisabledOptions from '!!raw-loader!@docPages/form-e
 import AutocompleteControlledUncontrolled from '@docPages/form-elements/autocomplete/AutocompleteControlledUncontrolled'
 import SourceCodeAutocompleteControlledUncontrolled from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteControlledUncontrolled'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='Autocomplete'
-    subtitle='The autocomplete is a normal text input enhanced by a panel of suggested options.'
-    href='https://mui.com/material-ui/react-autocomplete/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Autocomplete</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-autocomplete/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/api/autocomplete/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Variants'

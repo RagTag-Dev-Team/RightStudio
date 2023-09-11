@@ -6,6 +6,8 @@ sidebar_label: Button Groups
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import ButtonGroupBasic from '@docPages/components/button-group/ButtonGroupBasic'
 import SourceCodeButtonGroupBasic from '!!raw-loader!@docPages/components/button-group/ButtonGroupBasic'
@@ -32,16 +34,20 @@ import SourceCodeButtonToggleCustomized from '!!raw-loader!@docPages/components/
 import ButtonToggleEnforceValue from '@docPages/components/button-group/ButtonToggleEnforceValue'
 import SourceCodeButtonToggleEnforceValue from '!!raw-loader!@docPages/components/button-group/ButtonToggleEnforceValue'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader 
-    title='Button Group'
-    subtitle='The ButtonGroup component can be used to group related buttons.'
-    href='https://mui.com/material-ui/react-button-group/'
-  />
   <Grid item xs={12}>
-    <Typography variant='h2'>Button Group</Typography>
+    <Typography variant='h5'>Button Group</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-button-group/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/api/button-group/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
@@ -99,7 +105,18 @@ import PageHeader from '@docComponents/page-header'
     </CardSnippet>
   </Grid>
   <Grid item xs={12}>
-    <Typography variant='h2'>Toggle Button</Typography>
+    <Typography variant='h5'>Toggle Button</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-toggle-button/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-toggle-button/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet

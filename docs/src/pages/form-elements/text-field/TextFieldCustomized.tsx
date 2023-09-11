@@ -17,9 +17,9 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
     borderRadius: 4,
     padding: '10px 12px',
     position: 'relative',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'var(--mui-palette-background-paper)',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
-    border: theme.palette.mode === 'light' ? '1px solid #ced4da' : `1px solid ${theme.palette.divider}`,
+    border: theme.palette.mode === 'light' ? '1px solid #ced4da' : '1px solid var(--mui-palette-divider)',
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -33,8 +33,8 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
       '"Segoe UI Symbol"'
     ].join(','),
     '&:focus': {
-      borderColor: theme.palette.primary.main,
-      boxShadow: `rgb(${theme.vars.palette.primary.mainChannel} / 0.25) 0 0 0 0.2rem`
+      borderColor: 'var(--mui-palette-primary-main)',
+      boxShadow: '0 0 0 0.2rem rgb(var(--mui-palette-primary-mainChannel) / 0.25)'
     }
   }
 }))

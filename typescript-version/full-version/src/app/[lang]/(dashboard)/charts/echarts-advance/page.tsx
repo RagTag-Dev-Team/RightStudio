@@ -25,7 +25,7 @@ import BarWithColorOpacity from '@views/charts/echarts-advance/BarWithColorOpaci
 
 const ECharts = () => {
   return (
-    <Grid container className='match-height'>
+    <Grid container>
       <Grid item xs={12} md={6}>
         <SimpleBarChart />
       </Grid>

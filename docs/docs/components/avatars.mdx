@@ -6,6 +6,8 @@ sidebar_label: Avatars
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import AvatarsIcon from '@docPages/components/avatars/AvatarsIcon'
 import SourceCodeAvatarsIcon from '!!raw-loader!@docPages/components/avatars/AvatarsIcon'
@@ -24,14 +26,21 @@ import SourceCodeAvatarsGroupedPullUp from '!!raw-loader!@docPages/components/av
 import AvatarsGroupedPullUpWithTooltip from '@docPages/components/avatars/AvatarsGroupedPullUpWithTooltip'
 import SourceCodeAvatarsGroupedPullUpWithTooltip from '!!raw-loader!@docPages/components/avatars/AvatarsGroupedPullUpWithTooltip'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='Avatars'
-    subtitle='Avatars are found throughout material design with uses in everything from tables to dialog menus.'
-    href='https://mui.com/material-ui/react-avatar/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Avatars</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-avatar/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-avatar/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title="Image Avatars"

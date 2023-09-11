@@ -6,6 +6,8 @@ sidebar_label: List
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link' 
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import ListUsers from '@docPages/components/list/ListUsers'
 import SourceCodeListUsers from '!!raw-loader!@docPages/components/list/ListUsers'
@@ -26,14 +28,21 @@ import SourceCodeListWithCheckbox from '!!raw-loader!@docPages/components/list/L
 import ListStickySubheader from '@docPages/components/list/ListStickySubheader'
 import SourceCodeListStickySubheader from '!!raw-loader!@docPages/components/list/ListStickySubheader'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='List'
-    subtitle='List are continuous, vertical indexes of text or images.'
-    href='https://mui.com/material-ui/react-list/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>List</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-list/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-list/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Basic List'

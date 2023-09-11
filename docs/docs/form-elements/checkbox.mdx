@@ -6,6 +6,8 @@ sidebar_label: Checkbox
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import CheckboxBasic from '@docPages/form-elements/checkbox/CheckboxBasic'
 import SourceCodeCheckboxBasic from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxBasic'
@@ -24,14 +26,21 @@ import SourceCodeCheckboxLabelPlacement from '!!raw-loader!@docPages/form-elemen
 import CheckboxControlledUncontrolled from '@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
 import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='Checkbox'
-    subtitle='Checkboxes allow the user to select one or more items from a set.'
-    href='https://mui.com/material-ui/react-checkbox/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Checkbox</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-checkbox/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-checkbox/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12}>
     <CardSnippet
       title='Basic Checkboxes'

@@ -6,6 +6,8 @@ sidebar_label: Snackbar
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import SnackbarBasic from '@docPages/components/snackbar/SnackbarBasic'
 import SourceCodeSnackbarBasic from '!!raw-loader!@docPages/components/snackbar/SnackbarBasic'
@@ -20,14 +22,21 @@ import SourceCodeSnackbarConsecutive from '!!raw-loader!@docPages/components/sna
 import SnackbarControlSlideDirection from '@docPages/components/snackbar/SnackbarControlSlideDirection'
 import SourceCodeSnackbarControlSlideDirection from '!!raw-loader!@docPages/components/snackbar/SnackbarControlSlideDirection'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='Snackbar'
-    subtitle='Snackbars provide brief notifications. The component is also known as a toast.'
-    href='https://mui.com/material-ui/react-snackbar/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Snackbar</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-snackbar/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-snackbar/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Basic Snackbar'

@@ -91,7 +91,7 @@ const HorizontalMenu = () => {
         <SubMenu label={dictionary['navigation'].ui}>
           <MenuItem>{dictionary['navigation'].typography}</MenuItem>
           <MenuItem>{dictionary['navigation'].icons}</MenuItem>
-          <MenuItem>Icons Test</MenuItem>
+          <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
           <SubMenu label={dictionary['navigation'].cards}>
             <MenuItem>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem>{dictionary['navigation'].actions}</MenuItem>
@@ -154,15 +154,16 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].dialogExamples}</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].forms}>
-          <MenuItem>{dictionary['navigation'].formLayouts}</MenuItem>
-          <MenuItem>{dictionary['navigation'].formValidation}</MenuItem>
-          <MenuItem>{dictionary['navigation'].formWizard}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-layouts`}>{dictionary['navigation'].formLayouts}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-validation`}>{dictionary['navigation'].formValidation}</MenuItem>
+          <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
         </SubMenu>
         <MenuItem href={`/${locale}/tables`}>Tables</MenuItem>
         <SubMenu label={dictionary['navigation'].charts}>
-          <MenuItem>{dictionary['navigation'].apex}</MenuItem>
-          <MenuItem>{dictionary['navigation'].recharts}</MenuItem>
-          <MenuItem>{dictionary['navigation'].echarts}</MenuItem>
+          <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
+          <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
+          <MenuItem href={`/${locale}/charts/echarts`}>{dictionary['navigation'].echarts}</MenuItem>
+          <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>

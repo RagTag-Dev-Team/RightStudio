@@ -5,9 +5,11 @@ sidebar_label: MUI
 ---
 
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
+
 import CardSnippet from '@docComponents/card-snippet/index';
 import TableBasic from '@docPages/tables/mui/TableBasic';
 import TableDense from '@docPages/tables/mui/TableDense';
@@ -17,14 +19,21 @@ import TableSortSelect from '@docPages/tables/mui/TableSortSelect';
 import TableCollapsible from '@docPages/tables/mui/TableCollapsible';
 import TableStickyHeader from '@docPages/tables/mui/TableStickyHeader';
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader
-    title='MUI Table'
-    subtitle='Tables display sets of data. They can be fully customized.'
-    href='https://mui.com/material-ui/react-table/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>MUI Table</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-table/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-table/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12}>
     <Card>
       <CardHeader title='Basic Table' />

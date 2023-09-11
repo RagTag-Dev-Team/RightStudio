@@ -3,6 +3,12 @@
 // React Imports
 import { useState } from 'react'
 
+// MUI Imports
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import Button from '@mui/material/Button'
+import CardContent from '@mui/material/CardContent'
+
 // Third-party Imports
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 
@@ -58,36 +64,43 @@ const ColumnVisibility = () => {
   })
 
   return (
-    <div>
-      <div className='inline-block border border-black shadow rounded'>
-        <button onClick={() => table.getAllLeafColumns()[1].toggleVisibility()}>Toggle Email Column Visibility</button>
-      </div>
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id} className={styles.tr}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id} className={styles.th}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table
-            .getRowModel()
-            .rows.slice(0, 10)
-            .map(row => (
-              <tr key={row.id} className={styles.tr}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+    <Card>
+      <CardHeader
+        title='Toggle Column Visibility'
+        action={
+          <Button variant='contained' onClick={() => table.getAllLeafColumns()[1].toggleVisibility()}>
+            Toggle Email Column Visibility
+          </Button>
+        }
+      />
+      <CardContent>
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className={styles.tr}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id} className={styles.th}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
                 ))}
               </tr>
             ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map(row => (
+                <tr key={row.id} className={styles.tr}>
+                  {row.getVisibleCells().map(cell => (
+                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                  ))}
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </CardContent>
+    </Card>
   )
 }
 

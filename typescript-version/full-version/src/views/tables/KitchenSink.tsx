@@ -4,6 +4,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { InputHTMLAttributes } from 'react'
 
+// MUI Imports
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+
 // Third-party Imports
 import classnames from 'classnames'
 import {
@@ -201,105 +206,112 @@ const KitchenSink = () => {
   }, [table.getState().columnFilters[0]?.id])
 
   return (
-    <div>
-      <DebouncedInput
-        value={globalFilter ?? ''}
-        onChange={value => setGlobalFilter(String(value))}
-        placeholder='Search all columns...'
+    <Card>
+      <CardHeader
+        title='Kitchen Sink'
+        action={
+          <DebouncedInput
+            value={globalFilter ?? ''}
+            onChange={value => setGlobalFilter(String(value))}
+            placeholder='Search all columns...'
+          />
+        }
       />
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id} className={styles.tr}>
-              {headerGroup.headers.map(header => {
-                return (
-                  <th key={header.id} className={classnames(styles.th, styles.cellWithInput)}>
-                    {header.isPlaceholder ? null : (
-                      <>
-                        <div
-                          className={classnames({
-                            'flex items-center': header.column.getIsSorted(),
-                            'cursor-pointer select-none': header.column.getCanSort()
-                          })}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {{
-                            asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
-                            desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
-                          }[header.column.getIsSorted()] ?? null}
-                        </div>
-                        {header.column.getCanFilter() ? (
-                          <div>
-                            <Filter column={header.column} table={table} />
+      <CardContent>
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className={styles.tr}>
+                {headerGroup.headers.map(header => {
+                  return (
+                    <th key={header.id} className={classnames(styles.th, styles.cellWithInput)}>
+                      {header.isPlaceholder ? null : (
+                        <>
+                          <div
+                            className={classnames({
+                              'flex items-center': header.column.getIsSorted(),
+                              'cursor-pointer select-none': header.column.getCanSort()
+                            })}
+                            onClick={header.column.getToggleSortingHandler()}
+                          >
+                            {flexRender(header.column.columnDef.header, header.getContext())}
+                            {{
+                              asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
+                              desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
+                            }[header.column.getIsSorted()] ?? null}
                           </div>
-                        ) : null}
-                      </>
-                    )}
-                  </th>
-                )
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => {
-            return (
-              <tr key={row.id} className={styles.tr}>
-                {row.getVisibleCells().map(cell => {
-                  return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                          {header.column.getCanFilter() ? (
+                            <div>
+                              <Filter column={header.column} table={table} />
+                            </div>
+                          ) : null}
+                        </>
+                      )}
+                    </th>
+                  )
                 })}
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      <div className='flex items-center gap-3'>
-        <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-          {'<<'}
-        </button>
-        <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-          {'<'}
-        </button>
-        <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-          {'>'}
-        </button>
-        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-          {'>>'}
-        </button>
-        <div className='flex items-center gap-1'>
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-          </strong>
-        </div>
-        <span>|</span>
-        <div className='flex items-center gap-1'>
-          Go to page:
-          <input
-            type='number'
-            defaultValue={table.getState().pagination.pageIndex + 1}
-            onChange={e => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => {
+              return (
+                <tr key={row.id} className={styles.tr}>
+                  {row.getVisibleCells().map(cell => {
+                    return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+        <div className='flex items-center gap-3'>
+          <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
+            {'<<'}
+          </button>
+          <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+            {'<'}
+          </button>
+          <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+            {'>'}
+          </button>
+          <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
+            {'>>'}
+          </button>
+          <div className='flex items-center gap-1'>
+            <div>Page</div>
+            <strong>
+              {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            </strong>
+          </div>
+          <span>|</span>
+          <div className='flex items-center gap-1'>
+            Go to page:
+            <input
+              type='number'
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              onChange={e => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0
 
-              table.setPageIndex(page)
+                table.setPageIndex(page)
+              }}
+            />
+          </div>
+          <select
+            value={table.getState().pagination.pageSize}
+            onChange={e => {
+              table.setPageSize(Number(e.target.value))
             }}
-          />
+          >
+            {[10, 20, 30, 40, 50].map(pageSize => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
         </div>
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={e => {
-            table.setPageSize(Number(e.target.value))
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }
 

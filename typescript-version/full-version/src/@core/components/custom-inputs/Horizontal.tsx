@@ -22,18 +22,18 @@ const Root = styled('div', {
 })(({ theme }) => ({
   blockSize: '100%',
   display: 'flex',
-  borderRadius: theme.vars.shape.borderRadius,
+  borderRadius: 'var(--mui-shape-borderRadius)',
   cursor: 'pointer',
   position: 'relative',
   alignItems: 'flex-start',
-  border: `1px solid ${theme.vars.palette.divider}`,
+  border: '1px solid var(--mui-palette-divider)',
   transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
 
   '&:hover': {
-    borderColor: `rgb(${theme.vars.palette.text.primaryChannel} / 0.25)`
+    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
   },
   '&.active': {
-    borderColor: theme.vars.palette.primary.main
+    borderColor: 'var(--mui-palette-primary-main)'
   }
 }))
 
@@ -50,7 +50,7 @@ const Meta = styled(Typography, {
   slot: 'meta'
 })(({ theme }) => ({
   ...theme.typography.body2,
-  color: theme.vars.palette.text.disabled
+  color: 'var(--mui-palette-text-disabled)'
 }))
 
 const Content = styled(Typography, {

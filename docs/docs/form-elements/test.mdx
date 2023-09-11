@@ -1,11 +1,13 @@
 ---
 hide_table_of_contents: true
+title: ''
+sidebar_label: Test
 ---
-
-# Test
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+
 import Textarea from '@docPages/form-elements/test/TextArea'
 import TextFieldIcons from '@docPages/form-elements/test/TextFieldIcons'
 import SelectVariants from '@docPages/form-elements/test/SelectVariants'
@@ -18,7 +20,11 @@ import SelectCustomizedAndGrouping from '@docPages/form-elements/test/SelectCust
 
 <Grid container spacing={6}>
   <Grid item xs={12}>
-    <Typography variant='h5'>TextField</Typography>
+    <Typography variant='h5'>Test</Typography>
+  </Grid>
+  <Grid item xs={12}>
+    <Typography variant='h6'>TextField</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12}>
     <TextFieldVariant />
@@ -33,13 +39,15 @@ import SelectCustomizedAndGrouping from '@docPages/form-elements/test/SelectCust
     <TextFieldComponents />
   </Grid>
   <Grid item xs={12}>
-    <Typography variant='h5'>Textarea</Typography>
+    <Typography variant='h6'>Textarea</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12}>
     <Textarea />
   </Grid>
   <Grid item xs={12}>
-    <Typography variant='h5'>Select</Typography>
+    <Typography variant='h6'>Select</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12} md={6}>
     <SelectVariants />
@@ -51,7 +59,8 @@ import SelectCustomizedAndGrouping from '@docPages/form-elements/test/SelectCust
     <SelectMultiple />
   </Grid>
   <Grid item xs={12}>
-    <Typography variant='h5'>Autocomplete</Typography>
+    <Typography variant='h6'>Autocomplete</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12}>
     <AutocompleteVariants />

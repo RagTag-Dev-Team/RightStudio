@@ -9,10 +9,10 @@
   --background-color: var(--mui-palette-background-default);
   --background-color-rgb: var(--mui-palette-background-defaultChannel);
   --header-height: 64px;
-  --header-z-index: 1100;
+  --header-z-index: var(--mui-zIndex-appBar);
   --footer-z-index: 10;
-  --customizer-z-index: 1200;
-  --search-z-index: 1501;
+  --customizer-z-index: var(--mui-zIndex-drawer);
+  --search-z-index: var(--mui-zIndex-tooltip);
 }
 
 * {

@@ -79,12 +79,12 @@ const sources: BundleScriptConfig = {
 
   svg: [
     /* {
-      dir: './svg',
+      dir: 'src/iconify-icons/svg',
       monotone: false,
       prefix: 'custom'
     }, */
     /* {
-      dir: './emojis',
+      dir: 'src/iconify-icons/emojis',
       monotone: false,
       prefix: 'emoji'
     } */

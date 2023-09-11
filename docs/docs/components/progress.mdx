@@ -6,6 +6,9 @@ sidebar_label: Progress
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+import Divider from '@mui/material/Divider'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import ProgressLinearBuffer from '@docPages/components/progress/ProgressLinearBuffer'
 import SourceCodeProgressLinearBuffer from '!!raw-loader!@docPages/components/progress/ProgressLinearBuffer'
@@ -30,17 +33,24 @@ import SourceCodeProgressLinearControlledUncontrolled from '!!raw-loader!@docPag
 import ProgressCircularControlledUncontrolled from '@docPages/components/progress/ProgressCircularControlledUncontrolled'
 import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docPages/components/progress/ProgressCircularControlledUncontrolled'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader 
-    title='Progress'
-    subtitle='Progress indicators commonly known as spinners, express an unspecified wait time or display the length
-    of a process.'
-    href='https://mui.com/material-ui/react-progress/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Progress</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-progress/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-progress/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12}>
     <Typography variant='h5'>Circular</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12} lg={6}>
     <CardSnippet
@@ -99,6 +109,7 @@ import PageHeader from '@docComponents/page-header'
   </Grid>
   <Grid item xs={12}>
     <Typography variant='h5'>Linear</Typography>
+    <Divider />
   </Grid>
   <Grid item xs={12} lg={6}>
     <CardSnippet

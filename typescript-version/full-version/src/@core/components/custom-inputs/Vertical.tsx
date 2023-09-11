@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'
@@ -18,23 +15,23 @@ import type { CustomInputVerticalProps } from './types'
 
 const Root = styled('div', {
   name: 'MuiCustomInputVertical',
-  slot: 'root',
+  slot: 'root'
 })(({ theme }) => ({
   blockSize: '100%',
   display: 'flex',
-  borderRadius: theme.vars.shape.borderRadius,
-	cursor: 'pointer',
-	position: 'relative',
-	alignItems: 'center',
-	flexDirection: 'column',
-	border: `1px solid ${theme.vars.palette.divider}`,
+  borderRadius: 'var(--mui-shape-borderRadius)',
+  cursor: 'pointer',
+  position: 'relative',
+  alignItems: 'center',
+  flexDirection: 'column',
+  border: '1px solid var(--mui-palette-divider)',
   transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
 
   '&:hover': {
-    borderColor: `rgb(${theme.vars.palette.text.primaryChannel} / 0.25)`
+    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
   },
   '&.active': {
-    borderColor: theme.vars.palette.primary.main
+    borderColor: 'var(--mui-palette-primary-main)'
   },
   '&.radio-only .MuiRadio-root': {
     marginTop: theme.spacing(-2)
@@ -76,15 +73,7 @@ const CheckboxInput = styled(Checkbox, {
 
 const CustomInputVertical = (props: CustomInputVerticalProps) => {
   // Props
-  const {
-    type,
-    data,
-    name,
-    selected,
-    gridProps,
-    handleChange,
-    color = 'primary',
-  } = props
+  const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
 
   const { title, value, content, asset } = data
 
@@ -100,8 +89,8 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
           })}
         >
           {asset || null}
-          {title ? ( typeof title === 'string' ? <Title>{title}</Title> : title  ) : null}
-          {content ? (typeof content === 'string' ? <Content>{content}</Content> : content) : null}
+          {title ? typeof title === 'string' ? <Title>{title}</Title> : title : null}
+          {content ? typeof content === 'string' ? <Content>{content}</Content> : content : null}
           {type === 'radio' ? (
             <RadioInput
               name={name}

@@ -21,30 +21,27 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
   "& .MuiInputBase-input": {
     fontSize: 16,
     borderRadius: 4,
-    padding: "10px 12px",
-    position: "relative",
-    backgroundColor: theme.palette.background.paper,
-    transition: theme.transitions.create(["border-color", "box-shadow"]),
-    border:
-      theme.palette.mode === "light"
-        ? "1px solid #ced4da"
-        : `1px solid ${theme.palette.divider}`,
+    padding: '10px 12px',
+    position: 'relative',
+    backgroundColor: 'var(--mui-palette-background-paper)',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    border: theme.palette.mode === 'light' ? '1px solid #ced4da' : '1px solid var(--mui-palette-divider)',
     fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
+      '-apple-system',
+      'BlinkMacSystemFont',
       '"Segoe UI"',
-      "Roboto",
+      'Roboto',
       '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
+      'Arial',
+      'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-    "&:focus": {
-      borderColor: theme.palette.primary.main,
-      boxShadow: `rgb(${theme.vars.palette.primary.mainChannel} / 0.25) 0 0 0 0.2rem`,
-    },
+      '"Segoe UI Symbol"'
+    ].join(','),
+    '&:focus': {
+      borderColor: 'var(--mui-palette-primary-main)',
+      boxShadow: '0 0 0 0.2rem rgb(var(--mui-palette-primary-mainChannel) / 0.25)'
+    }
   },
 }));
 

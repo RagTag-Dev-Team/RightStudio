@@ -5,6 +5,9 @@ sidebar_label: Custom Inputs
 ---
 
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import CustomRadioWithImage from '@docPages/form-elements/custom-inputs/CustomRadioWithImage'
 import SourceCodeCustomRadioWithImage from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomRadioWithImage'
@@ -23,10 +26,17 @@ import SourceCodeCustomVerticalCheckboxSVG from '!!raw-loader!@docPages/form-ele
 import CustomVerticalRadioSVG from '@docPages/form-elements/custom-inputs/CustomVerticalRadioSVG'
 import SourceCodeCustomVerticalRadioSVG from '!!raw-loader!@docPages/form-elements/custom-inputs/CustomVerticalRadioSVG'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader title='Custom Inputs'/>
+  <Grid item xs={12}>
+    <Typography variant='h5'>Custom Inputs</Typography>
+    <Typography variant='body2'>
+      Here are the examples of custom inputs made with the help of MUI&#39;s Radio and Checkbox. Please refer to{' '}
+      <Link href='/docs/custom-inputs' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        our docs
+      </Link>{' '}
+      for more details.
+    </Typography>
+  </Grid>
   <Grid item xs={12} lg={6}>
     <CardSnippet title='Custom Horizontal Radios' code={SourceCodeCustomHorizontalRadio}>
       <CustomHorizontalRadio />

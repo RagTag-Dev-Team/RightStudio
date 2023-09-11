@@ -6,6 +6,8 @@ sidebar_label: Radio
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import RadioGroup from '@docPages/form-elements/radio/RadioGroup'
 import SourceCodeRadioGroup from '!!raw-loader!@docPages/form-elements/radio/RadioGroup'
@@ -24,14 +26,21 @@ import SourceCodeRadioLabelPlacement from '!!raw-loader!@docPages/form-elements/
 import RadioControlledUncontrolled from '@docPages/form-elements/radio/RadioControlledUncontrolled'
 import SourceCodeRadioControlledUncontrolled from '!!raw-loader!@docPages/form-elements/radio/RadioControlledUncontrolled'
 
-import PageHeader from '@docComponents/page-header'
-
 <Grid container spacing={6}>
-  <PageHeader 
-    title='Radio'
-    subtitle='The Radio Group allows the user to select one option from a set.'
-    href='https://mui.com/material-ui/react-radio-button/'
-  />
+  <Grid item xs={12}>
+    <Typography variant='h5'>Typography</Typography>
+    <Typography variant='body2'>
+      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
+      <Link href='https://mui.com/material-ui/react-radio-button/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        usage guide
+      </Link>{' '}
+      and{' '}
+      <Link href='https://mui.com/material-ui/react-radio-button/#api-2' target='_blank' rel='noopener noreferrer' className='no-underline'>
+        API documentation
+      </Link>
+      .
+    </Typography>
+  </Grid>
   <Grid item xs={12}>
     <CardSnippet
       title='RadioGroup'

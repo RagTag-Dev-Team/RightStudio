@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
   experimental_extendTheme as extendTheme,
+  StyledEngineProvider
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -29,12 +30,14 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   });
 
   return (
-    <CssVarsProvider theme={theme}>
-      <GlobalStyles styles={() => globalStyling(theme)} />
-      <CssBaseline />
-      <ChangeMuiMode />
-      {children}
-    </CssVarsProvider>
+    <StyledEngineProvider injectFirst>
+      <CssVarsProvider theme={theme}>
+        <GlobalStyles styles={() => globalStyling(theme)} />
+        <CssBaseline />
+        <ChangeMuiMode />
+        {children}
+      </CssVarsProvider>
+    </StyledEngineProvider>
   );
 };
 

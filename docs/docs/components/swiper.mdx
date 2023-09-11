@@ -6,6 +6,8 @@ sidebar_label: Swiper
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import KeenSliderWrapper from '@docComponents/styled-components/keen-slider'
 import SwiperLoop from '@docPages/components/swiper/SwiperLoop'
@@ -35,15 +37,18 @@ import SourceCodeSwiperMultipleSlides from '!!raw-loader!@docPages/components/sw
 import SwiperMutationObserver from '@docPages/components/swiper/SwiperMutationObserver'
 import SourceCodeSwiperMutationObserver from '!!raw-loader!@docPages/components/swiper/SwiperMutationObserver'
 
-import PageHeader from '@docComponents/page-header'
-
 <KeenSliderWrapper>
   <Grid container spacing={6}>
-  <PageHeader
-    title='Keen Slider'
-    subtitle='Easily create sliders, carousels and much more'
-    href='https://github.com/rcbyr/keen-slider'
-  />
+    <Grid item xs={12}>
+      <Typography variant='h5'>Keen Slider</Typography>
+      <Typography variant='body2'>
+        <code>keen-slider</code> is a third-party library. Please refer to its{' '}
+        <Link href='https://keen-slider.io/' target='_blank' rel='noopener noreferrer' className='no-underline'>
+          official documentation
+        </Link>{' '}
+        for more details.
+      </Typography>
+    </Grid>
     <Grid item xs={12}>
       <CardSnippet
         title='Default'

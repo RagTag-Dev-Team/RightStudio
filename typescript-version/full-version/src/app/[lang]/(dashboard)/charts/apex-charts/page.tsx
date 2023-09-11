@@ -1,5 +1,9 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
 // Component Imports
 import ApexBarChart from '@views/charts/apex/ApexBarChart'
@@ -15,11 +19,22 @@ import ApexCandlestickChart from '@views/charts/apex/ApexCandlestickChart'
 
 // Style Imports
 import ApexChartWrapper from '@core/styles/libs/ReactApexCharts'
+import styles from '@/styles/link.module.css'
 
 const ApexCharts = () => {
   return (
     <ApexChartWrapper>
-      <Grid container className='match-height'>
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography variant='h5'>ApexCharts</Typography>
+          <Typography variant='body2'>
+            <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
+            <Link href='https://apexcharts.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+              official documentation
+            </Link>{' '}
+            for more details.
+          </Typography>
+        </Grid>
         <Grid item xs={12}>
           <ApexAreaChart />
         </Grid>

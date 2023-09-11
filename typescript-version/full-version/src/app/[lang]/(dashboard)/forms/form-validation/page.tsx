@@ -1,22 +1,33 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
+// Component Imports
 import FormValidationBasic from '@views/forms/form-validation/FormValidationBasic'
 import FormValidationOnSchema from '@views/forms/form-validation/FormValidationSchema'
 import FormValidationAsyncSubmit from '@views/forms/form-validation/FormValidationAsyncSubmit'
 
-import PageHeader from '@core/components/PageHeader'
+// Style Imports
 import DatePickerWrapper from '@core/styles/libs/react-datepicker'
+import styles from '@/styles/link.module.css'
 
 const FormValidation = () => {
   return (
     <DatePickerWrapper>
       <Grid container>
-        <PageHeader
-          title='React Hook Form'
-          subtitle='React Hooks for forms validation (Web + React Native)'
-          href='https://github.com/react-hook-form/react-hook-form'
-        />
+        <Grid item xs={12}>
+          <Typography variant='h5'>React Hook Form</Typography>
+          <Typography variant='body2'>
+            <code>react-hook-form</code> is a third-party library. Please refer to its{' '}
+            <Link href='https://react-hook-form.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+              official documentation
+            </Link>{' '}
+            for more details.
+          </Typography>
+        </Grid>
         <Grid item xs={12}>
           <FormValidationBasic />
         </Grid>
