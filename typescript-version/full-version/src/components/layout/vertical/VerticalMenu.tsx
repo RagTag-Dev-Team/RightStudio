@@ -149,7 +149,7 @@ const VerticalMenu = () => {
           <SubMenu label={dictionary['navigation'].charts}>
             <MenuItem>{dictionary['navigation'].apex}</MenuItem>
             <MenuItem>{dictionary['navigation'].recharts}</MenuItem>
-            <MenuItem>{dictionary['navigation'].chartJS}</MenuItem>
+            <MenuItem>{dictionary['navigation'].echarts}</MenuItem>
           </SubMenu>
           <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <SubMenu label={dictionary['navigation'].others}>

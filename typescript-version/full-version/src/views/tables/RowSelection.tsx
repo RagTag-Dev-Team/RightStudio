@@ -32,7 +32,7 @@ const IndeterminateCheckbox = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, indeterminate])
 
-  return <input type='checkbox' ref={ref} className={className + ' cursor-pointer'} {...rest} />
+  return <input type='checkbox' ref={ref} className={classnames(className, 'cursor-pointer')} {...rest} />
 }
 
 const RowSelection = () => {

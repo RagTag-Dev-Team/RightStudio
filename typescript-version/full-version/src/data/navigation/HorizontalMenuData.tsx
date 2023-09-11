@@ -312,7 +312,7 @@ const HorizontalMenuData = (locale: Locale): HorizontalMenuDataType[] => {
           label: dictionary['navigation'].recharts
         },
         {
-          label: dictionary['navigation'].chartJS
+          label: dictionary['navigation'].echarts
         }
       ]
     },
