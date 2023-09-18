@@ -49,6 +49,9 @@
       "@views/*": [
         "./src/views/*"
       ],
+      "@reducers/*": [
+        "./src/reducers/*"
+      ],
     }
   },
   "include": [

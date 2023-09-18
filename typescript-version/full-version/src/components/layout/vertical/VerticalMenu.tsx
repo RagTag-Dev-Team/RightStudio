@@ -57,7 +57,7 @@ const VerticalMenu = () => {
         <MenuSection label={dictionary['navigation'].appsPages}>
           <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
           <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
-          <MenuItem>{dictionary['navigation'].calendar}</MenuItem>
+          <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem>{dictionary['navigation'].list}</MenuItem>
             <MenuItem>{dictionary['navigation'].preview}</MenuItem>
