@@ -227,7 +227,7 @@ const KitchenSink = () => {
                           {{
                             asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
                             desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
-                          }[header.column.getIsSorted()] ?? null}
+                          }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                         {header.column.getCanFilter() ? (
                           <div>

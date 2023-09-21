@@ -1,4 +1,6 @@
+// Next Imports
 // import Img from 'next/image'
+import Link from 'next/link'
 
 // Third-party Imports
 import styled from '@emotion/styled'
@@ -29,7 +31,7 @@ const Logo = () => {
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
   return (
-    <div className='flex items-center'>
+    <Link href='/' className='flex items-center'>
       <svg width={22} height={24} viewBox='0 0 22.236 23.8' xmlns='http://www.w3.org/2000/svg' color='#765feb'>
         <g
           fontSize='9pt'
@@ -51,7 +53,7 @@ const Logo = () => {
       <LogoText isHovered={isHovered} isCollapsed={isCollapsed} transitionDuration={transitionDuration}>
         Master
       </LogoText>
-    </div>
+    </Link>
   )
 }
 

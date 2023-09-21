@@ -115,9 +115,6 @@ const config = {
           label: 'Menu Examples',
           position: 'left',
         },
-        // { type: 'docSidebar', sidebarId: '', label: 'Components', position: 'left', },
-        // { type: 'docSidebar', sidebarId: '', label: 'Forms & Tables', position: 'left', },
-        // { type: 'docSidebar', sidebarId: '', label: 'Menu Examples', position: 'left', },
         { type: 'docSidebar', sidebarId: 'faqSidebar', label: 'FAQs', position: 'right', },
         { to: '/articles', label: 'Articles', position: 'right' },
         {

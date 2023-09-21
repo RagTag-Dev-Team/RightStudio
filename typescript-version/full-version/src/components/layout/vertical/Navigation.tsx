@@ -8,20 +8,31 @@ import Logo from '@components/layout/shared/Logo'
 import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useSettings from '@core/hooks/useSettings'
 
 const Navigation = () => {
-  const { isBreakpointReached } = useHorizontalNav()
+  // Hooks
+  const { isCollapsed } = useVerticalNav()
+  const { saveSettings } = useSettings()
+
+  const handleClick = () => {
+    if (isCollapsed) {
+      saveSettings({ layout: 'vertical' })
+    } else {
+      saveSettings({ layout: 'collapsed' })
+    }
+  }
 
   return (
     // eslint-disable-next-line lines-around-comment
     // Sidebar Vertical Menu
-    <VerticalNav customStyles={{ zIndex: 'calc(var(--header-z-index) + 1)' }}>
+    <VerticalNav customStyles={{ zIndex: 'var(--drawer-z-index)' }}>
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         {/* Hide Logo on Smaller screens */}
-        {!isBreakpointReached && <Logo />}
-        <NavCollapseIcons />
+        <Logo />
+        <NavCollapseIcons onClick={handleClick} />
       </NavHeader>
       <VerticalMenu />
     </VerticalNav>

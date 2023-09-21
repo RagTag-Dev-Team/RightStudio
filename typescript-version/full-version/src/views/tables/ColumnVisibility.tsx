@@ -54,7 +54,10 @@ const ColumnVisibility = () => {
       columnVisibility
     },
     onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
+    filterFns: {
+      fuzzy: () => false
+    }
   })
 
   return (

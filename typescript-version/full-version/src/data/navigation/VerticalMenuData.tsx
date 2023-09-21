@@ -326,9 +326,6 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           ]
         },
         {
-          label: dictionary['navigation'].accessControl
-        },
-        {
           label: dictionary['navigation'].others,
           children: [
             {

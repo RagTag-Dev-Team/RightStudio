@@ -1,3 +1,6 @@
+// Next Imports
+import { cookies } from 'next/headers'
+
 // Type Imports
 import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
@@ -28,10 +31,14 @@ export async function generateStaticParams() {
 
 const Layout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   const direction = getDirection(params.lang)
+  const cookieStore = cookies()
+
+  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
 
   return (
-    <Providers>
+    <Providers settingsCookie={settingsCookie}>
       <LayoutWrapper
+        settingsCookie={settingsCookie}
         verticalLayout={
           <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<VerticalFooter />}>
             {children}

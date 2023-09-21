@@ -41,7 +41,7 @@ const VerticalMenu = () => {
         popoutMenuOffset={{ mainAxis: 10 }}
         menuItemStyles={{
           button: { paddingBlock: '12px' },
-          subMenuContent: { zIndex: 'calc(var(--header-z-index) + 1)' }
+          subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
         }}
       >
         <SubMenu label={dictionary['navigation'].dashboards}>
@@ -151,7 +151,6 @@ const VerticalMenu = () => {
             <MenuItem>{dictionary['navigation'].recharts}</MenuItem>
             <MenuItem>{dictionary['navigation'].echarts}</MenuItem>
           </SubMenu>
-          <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <SubMenu label={dictionary['navigation'].others}>
             <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
             <MenuItem

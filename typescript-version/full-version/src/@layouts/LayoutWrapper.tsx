@@ -3,21 +3,39 @@
 // React Imports
 import type { ReactElement } from 'react'
 
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
+import type { Settings } from '@core/contexts/settingsContext'
 
 // Type
 type LayoutWrapperProps = {
   verticalLayout: ReactElement
   horizontalLayout: ReactElement
+  settingsCookie: Settings
 }
 
 const LayoutWrapper = (props: LayoutWrapperProps) => {
-  const { verticalLayout, horizontalLayout } = props
+  // Props
+  const { verticalLayout, horizontalLayout, settingsCookie } = props
+
+  // Hooks
   const { settings } = useSettings()
 
+  let layout = themeConfig.layout
+
+  if (settings.layout === undefined) {
+    if (JSON.stringify(settingsCookie) !== '{}' && settingsCookie.layout !== undefined) {
+      layout = settingsCookie.layout
+    }
+  } else {
+    layout = settings.layout
+  }
+
   // Return the layout based on the layout context
-  return settings.layout === 'horizontal' ? horizontalLayout : verticalLayout
+  return layout === 'horizontal' ? horizontalLayout : verticalLayout
 }
 
 export default LayoutWrapper

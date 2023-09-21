@@ -39,7 +39,7 @@ const HorizontalMenu = () => {
       <Menu
         menuItemStyles={{
           button: { paddingBlock: '12px' },
-          subMenuContent: { zIndex: 'calc(var(--header-z-index) + 1)' }
+          subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
         }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
@@ -153,7 +153,6 @@ const HorizontalMenu = () => {
           <MenuItem>{dictionary['navigation'].echarts}</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
-          <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
           <MenuItem
             href='https://themeselection.com/'

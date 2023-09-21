@@ -83,6 +83,9 @@ const EditableDataTables = () => {
     columns,
     defaultColumn,
     getCoreRowModel: getCoreRowModel(),
+    filterFns: {
+      fuzzy: () => false
+    },
 
     // Provide our updateData function to our table meta
     meta: {

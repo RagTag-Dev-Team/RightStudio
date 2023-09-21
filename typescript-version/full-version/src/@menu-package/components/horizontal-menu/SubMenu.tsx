@@ -62,6 +62,7 @@ import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledHorizontalNavExpandIcon, {
   StyledHorizontalNavExpandIconWrapper
 } from '../../styles/horizontal/StyledHorizontalNavExpandIcon'
+import StyledSubMenuContentWrapper from '../../styles/horizontal/StyledHorizontalSubMenuContentWrapper'
 
 // Style Imports
 import ulStyles from '../../styles/horizontal/horizontalUl.module.css'
@@ -415,7 +416,12 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
         <HorizontalSubMenuContext.Provider value={{ getItemProps }}>
           <FloatingPortal>
             {isMounted && (
-              <div ref={refs.setFloating} {...getFloatingProps()} style={floatingStyles}>
+              <StyledSubMenuContentWrapper
+                ref={refs.setFloating}
+                {...getFloatingProps()}
+                style={floatingStyles}
+                rootStyles={getSubMenuItemStyles('subMenuStyles')}
+              >
                 <SubMenuContent
                   open={open}
                   top={y ?? 0}
@@ -442,7 +448,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
                     })
                   )}
                 </SubMenuContent>
-              </div>
+              </StyledSubMenuContentWrapper>
             )}
           </FloatingPortal>
         </HorizontalSubMenuContext.Provider>

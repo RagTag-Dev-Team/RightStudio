@@ -28,72 +28,72 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
     items: [
       {
         label: 'Analytics',
-        href: '/analytics',
+        href: '/dashboards/analytics',
         icon: 'Icon'
       },
       {
         label: 'CRM',
-        href: '/crm',
+        href: '/dashboards/crm',
         icon: 'Icon'
       },
       {
         label: 'eCommerce',
-        href: '/ecommerce',
+        href: '/dashboards/ecommerce',
         icon: 'Icon'
       },
       {
         label: 'User List',
-        href: '/user-list',
+        href: '/apps/user/list',
         icon: 'Icon'
       }
     ]
   },
   {
-    sectionLabel: 'Apps & Pages',
+    sectionLabel: 'Apps',
     items: [
       {
         label: 'Calendar',
-        href: '/calendar',
+        href: '/apps/calendar',
         icon: 'Icon'
       },
       {
         label: 'Invoice List',
-        href: '/invoice-list',
+        href: '/apps/invoice/list',
         icon: 'Icon'
       },
       {
-        label: 'Account Settings',
-        href: '/account-settings',
+        label: 'User List',
+        href: '/apps/user/list',
         icon: 'Icon'
       },
       {
-        label: 'Dialog Examples',
-        href: '/dialog-examples',
+        label: 'Roles & Permissions',
+        href: '/apps/roles',
         icon: 'Icon'
       }
     ]
   },
   {
-    sectionLabel: 'User Interface',
+    sectionLabel: 'Pages',
     items: [
       {
-        label: 'Typography',
-        href: '/typography',
+        label: 'User Profile',
+        href: '/pages/user-profile/profile',
         icon: 'Icon'
       },
       {
-        label: 'Advanced Cards',
-        href: '/advanced-cards',
+        label: 'Account Settings',
+        href: '/pages/account-settings/account',
         icon: 'Icon'
       },
       {
-        label: 'Icons',
-        href: '/icons',
+        label: 'Pricing',
+        href: '/pages/pricing',
         icon: 'Icon'
       },
       {
-        label: 'Widget Cards',
-        href: '/widget-cards',
+        label: 'FAQ',
+        href: '/pages/faq',
         icon: 'Icon'
       }
     ]
@@ -103,22 +103,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
     items: [
       {
         label: 'Form Layouts',
-        href: '/form-layouts',
+        href: '/forms/form-layouts',
         icon: 'Icon'
       },
       {
         label: 'Form Validation',
-        href: '/form-validation',
+        href: '/forms/form-validation',
         icon: 'Icon'
       },
       {
         label: 'Form Wizard',
-        href: '/form-wizard',
+        href: '/forms/form-wizard',
         icon: 'Icon'
       },
       {
         label: 'E-Charts',
-        href: '/e-charts',
+        href: '/charts/echarts',
         icon: 'Icon'
       }
     ]

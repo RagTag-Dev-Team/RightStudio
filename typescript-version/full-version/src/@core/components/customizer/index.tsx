@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -31,6 +31,7 @@ import DirectionRtl from '@core/svg/DirectionRtl'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -47,6 +48,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
 
   // Hooks
   const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
+  const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
@@ -61,12 +63,19 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
     if (field === 'direction') {
       setDirection(value as Direction)
     } else {
-      // Update settings in local storage
-      saveSettings({
-        [field]: value
-      })
+      // Update settings in cookie
+      saveSettings({ [field]: value })
     }
   }
+
+  useEffect(() => {
+    if (settings.layout === 'collapsed') {
+      collapseVerticalNav(true)
+    } else {
+      collapseVerticalNav(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings.layout])
 
   // Update html `dir` attribute when changing direction
   useUpdateEffect(() => {
