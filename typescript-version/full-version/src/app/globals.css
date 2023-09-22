@@ -13,6 +13,7 @@
   --footer-z-index: 10;
   --customizer-z-index: var(--mui-zIndex-drawer);
   --search-z-index: var(--mui-zIndex-tooltip);
+  --drawer-z-index: var(--mui-zIndex-drawer);
 }
 
 * {

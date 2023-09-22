@@ -10,22 +10,37 @@ import { useColorScheme } from '@mui/material/styles'
 // Type Imports
 import type { Mode } from '@core/types'
 
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
+import type { Settings } from '@core/contexts/settingsContext'
 
 // Type
 type LayoutWrapperProps = {
   verticalLayout: ReactElement
   horizontalLayout: ReactElement
+  settingsCookie: Settings
 }
 
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   // Props
-  const { verticalLayout, horizontalLayout } = props
+  const { verticalLayout, horizontalLayout, settingsCookie } = props
 
   // Hooks
   const { settings } = useSettings()
   const { mode, setMode } = useColorScheme()
+
+  let layout = themeConfig.layout
+
+  if (settings.layout === undefined) {
+    if (JSON.stringify(settingsCookie) !== '{}' && settingsCookie.layout !== undefined) {
+      layout = settingsCookie.layout
+    }
+  } else {
+    layout = settings.layout
+  }
 
   useEffect(() => {
     if (settings.mode !== mode) {
@@ -35,7 +50,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
   }, [settings.mode])
 
   // Return the layout based on the layout context
-  return settings.layout === 'horizontal' ? horizontalLayout : verticalLayout
+  return layout === 'horizontal' ? horizontalLayout : verticalLayout
 }
 
 export default LayoutWrapper

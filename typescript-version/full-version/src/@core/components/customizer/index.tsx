@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // MUI Imports
 import Grow from '@mui/material/Grow'
@@ -44,6 +44,7 @@ import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -66,6 +67,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   // Hooks
   const theme = useTheme()
   const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
+  const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointValue =
     breakpoint === 'xxl'
@@ -105,10 +107,8 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
     if (field === 'direction') {
       setDirection(value as Direction)
     } else {
-      // Update settings in local storage
-      saveSettings({
-        [field]: value
-      })
+      // Update settings in cookie
+      saveSettings({ [field]: value })
     }
   }
 
@@ -134,6 +134,15 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
       initialRender.current = false
     }, 201)
   })
+
+  useEffect(() => {
+    if (settings.layout === 'collapsed') {
+      collapseVerticalNav(true)
+    } else {
+      collapseVerticalNav(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings.layout])
 
   // Update html `dir` attribute when changing direction
   useUpdateEffect(() => {

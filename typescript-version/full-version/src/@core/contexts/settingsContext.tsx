@@ -7,7 +7,7 @@ import { createContext, useCallback, useEffect, useMemo, useRef, useState } from
 import { usePathname } from 'next/navigation'
 
 // Third-party Imports
-import { useLatest, useUpdateEffect, useEffectOnce, useLocalStorage } from 'react-use'
+import { useLatest, useEffectOnce, useCookie } from 'react-use'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -37,6 +37,10 @@ type SettingsContextProps = {
   resetSettings: () => void
 }
 
+type Props = ChildrenType & {
+  settingsCookie: Settings
+}
+
 // Initial Settings
 const initialSettings: Settings = {
   mode: themeConfig.mode,
@@ -52,36 +56,48 @@ const initialSettings: Settings = {
 // Create Settings Context
 const SettingsContext = createContext({} as SettingsContextProps)
 
-export const SettingsProvider = ({ children }: ChildrenType) => {
-  // Hooks
-  const pathname = usePathname()
-  const { isCollapsed, collapseVerticalNav, isBreakpointReached } = useVerticalNav()
-  const [value, setValue] = useLocalStorage('settings', initialSettings)
+export const SettingsProvider = (props: Props) => {
+  // Props
+  const { children, settingsCookie } = props
+
+  // Cookies
+  const [value, updateCookie] = useCookie('settings')
+
+  const cookieValue = useMemo(() => {
+    return value ? JSON.parse(value) : JSON.stringify(settingsCookie) !== '{}' ? settingsCookie : initialSettings
+  }, [value, settingsCookie])
+
+  let initSettings = useMemo(() => ({ ...initialSettings, ...cookieValue }), [cookieValue])
+
+  // States
+  const [settings, setSettings] = useState<Settings>(initSettings)
   const [isSettingsChanged, setIsSettingsChanged] = useState(false)
-  let initSettings = useMemo(() => ({ ...initialSettings, ...(value as Settings) }), [value])
+
+  // Refs
   const prevSettings = useRef<Settings | null>(null)
   const updatedSettingsRef = useRef(false)
   const initialRenderRef = useRef(true)
 
-  // State
-  const [settings, setSettings] = useState<Settings>({})
+  // Hooks
+  const pathname = usePathname()
+  const { collapseVerticalNav } = useVerticalNav()
   const latestSettings = useLatest(settings)
 
-  // Compare settings from localStorage with the current settings in state
-  // If there is a difference then store localstorage settings in prevSettings ref
-  prevSettings.current = JSON.stringify(settings) !== value ? (value as Settings) : null
+  // Compare settings from cookie with the current settings in state
+  // If there is a difference then store cookie settings in prevSettings ref
+  prevSettings.current = JSON.stringify(settings) !== cookieValue ? (cookieValue as Settings) : null
 
   // Store Settings
   const storeSettings = (settings: Settings) => {
     // delete initSettings.footer
 
-    // Update settings in localStorage
-    setValue(settings)
+    // Update settings in cookie
+    updateCookie(JSON.stringify(settings))
   }
 
-  // Save settings in localStorage and also update the state
+  // Save settings in cookie and also update the state
   const saveSettings = useCallback((values: Settings) => {
-    // Update settings in localStorage
+    // Update settings in cookie
     storeSettings({
       // Settings are updated from any individual page, we store the previous settings in ref
       // So when the new page is visited we can merge the previous settings with the new settings
@@ -127,26 +143,20 @@ export const SettingsProvider = ({ children }: ChildrenType) => {
 
   // Set initial settings in state for the first time
   useEffectOnce(() => {
+    updateCookie(JSON.stringify(initialSettings))
     setSettings(initSettings)
+
+    if (settings.layout === 'collapsed') {
+      collapseVerticalNav(true)
+    }
   })
 
-  // When layout is vertical and it's collapsed or expanded using customizer or menu lock/unlock we handle the vertical nav collapse
-  useUpdateEffect(() => {
-    if (settings.layout === 'collapsed' && !isCollapsed && !isBreakpointReached) {
-      collapseVerticalNav(true)
-    } else {
-      isCollapsed && collapseVerticalNav(false)
-    }
-    updatedSettingsRef.current = false
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.layout])
-
-  // This effect will run on page change and will update the settings in localStorage and state
+  // This effect will run on page change and will update the settings in cookie and state
   useEffect(() => {
-    // If settings state and settings value in localStorage are different and there are no settings updates from any individual page
-    // Then update the settings in localStorage and settings state with the previous settings stored in localStorage
-    if (JSON.stringify(settings) !== value && !updatedSettingsRef.current) {
-      saveSettings(value as Settings)
+    // If settings state and settings value in cookie are different and there are no settings updates from any individual page
+    // Then update the settings in cookie and settings state with the previous settings stored in cookie
+    if (JSON.stringify(settings) !== cookieValue && !updatedSettingsRef.current) {
+      saveSettings(cookieValue as Settings)
     }
 
     // Change updatedSettingsRef to false, so it will allow other individual pages to update the settings

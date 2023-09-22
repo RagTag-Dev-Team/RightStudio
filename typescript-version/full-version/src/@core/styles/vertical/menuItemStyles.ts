@@ -24,7 +24,7 @@ const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
     }
   },
   subMenuContent: {
-    zIndex: 'calc(var(--header-z-index) + 1)',
+    zIndex: 'calc(var(--drawer-z-index) + 1)',
     backgroundColor: 'var(--mui-palette-background-paper)'
   }
 })

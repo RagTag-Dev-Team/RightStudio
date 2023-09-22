@@ -48,7 +48,7 @@ const VerticalMenu = () => {
     <PerfectScrollbar options={{ wheelPropagation: false }}>
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ ...menuItemStyles(settings, theme) }}>
+      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
         <SubMenu label={dictionary['navigation'].dashboards}>
           <MenuItem>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem>{dictionary['navigation'].eCommerce}</MenuItem>
@@ -157,7 +157,6 @@ const VerticalMenu = () => {
             <MenuItem href={`/${locale}/charts/echarts`}>{dictionary['navigation'].echarts}</MenuItem>
             <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
           </SubMenu>
-          <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <SubMenu label={dictionary['navigation'].others}>
             <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
             <MenuItem

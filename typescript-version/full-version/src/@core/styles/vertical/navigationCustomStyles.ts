@@ -3,7 +3,7 @@ import { menuClasses, verticalNavClasses } from '@menu-package/utils/menuClasses
 
 const navigationCustomStyles = () => ({
   color: 'var(--mui-palette-text-primary)',
-  zIndex: 'calc(var(--header-z-index) + 1)',
+  zIndex: 'var(--drawer-z-index)',
   [`& .${verticalNavClasses.container}`]: {
     borderColor: 'var(--mui-palette-divider)'
   },

@@ -11,17 +11,25 @@ import Logo from '@components/layout/shared/Logo'
 import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 import useSettings from '@core/hooks/useSettings'
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Style Imports
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 const Navigation = () => {
   // Hooks
-  const { settings } = useSettings()
+  const { isCollapsed } = useVerticalNav()
+  const { settings, saveSettings } = useSettings()
   const { mode, systemMode } = useColorScheme()
-  const { isBreakpointReached } = useHorizontalNav()
+
+  const handleClick = () => {
+    if (isCollapsed) {
+      saveSettings({ layout: 'vertical' })
+    } else {
+      saveSettings({ layout: 'collapsed' })
+    }
+  }
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -40,8 +48,8 @@ const Navigation = () => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         {/* Hide Logo on Smaller screens */}
-        {!isBreakpointReached && <Logo />}
-        <NavCollapseIcons />
+        <Logo />
+        <NavCollapseIcons onClick={handleClick} />
       </NavHeader>
       <VerticalMenu />
     </VerticalNav>

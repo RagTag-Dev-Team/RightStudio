@@ -22,6 +22,7 @@ export type SubMenuItemElement =
   | 'prefix'
   | 'suffix'
   | 'icon'
+  | 'subMenuStyles'
   | 'subMenuContent'
   | 'subMenuExpandIcon'
 
@@ -51,6 +52,7 @@ export type MenuItemStyles = {
   prefix?: ElementStyles
   suffix?: ElementStyles
   icon?: ElementStyles
+  subMenuStyles?: ElementStyles
   subMenuContent?: ElementStyles
   subMenuExpandIcon?: ElementStyles
 }

@@ -23,8 +23,10 @@ const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
       backgroundColor: theme.vars.palette.action.hover
     }
   },
+  subMenuStyles: {
+    zIndex: 'calc(var(--header-z-index) + 1)'
+  },
   subMenuContent: {
-    zIndex: 'calc(var(--header-z-index) + 1)',
     backgroundColor: 'var(--mui-palette-background-paper)'
   }
 })

@@ -331,9 +331,6 @@ const HorizontalMenuData = (locale: Locale): HorizontalMenuDataType[] => {
       label: dictionary['navigation'].others,
       children: [
         {
-          label: dictionary['navigation'].accessControl
-        },
-        {
           label: dictionary['navigation'].itemWithBadge
         },
         {

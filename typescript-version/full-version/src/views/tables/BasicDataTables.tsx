@@ -57,7 +57,10 @@ const BasicDataTables = () => {
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
+    filterFns: {
+      fuzzy: () => false
+    }
   })
 
   return (

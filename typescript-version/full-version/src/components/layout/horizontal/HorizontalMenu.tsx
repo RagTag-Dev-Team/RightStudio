@@ -166,7 +166,6 @@ const HorizontalMenu = () => {
           <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
-          <MenuItem>{dictionary['navigation'].accessControl}</MenuItem>
           <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
           <MenuItem
             href='https://themeselection.com/'

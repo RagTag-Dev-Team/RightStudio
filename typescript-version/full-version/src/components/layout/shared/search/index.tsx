@@ -24,6 +24,9 @@ import Close from '@menu-package/svg/Close'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
+// Hook Imports
+import useVerticalNav from '@/@menu-package/hooks/useVerticalNav'
+
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
 
@@ -45,7 +48,12 @@ const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
   const { children, className, icon, tag, triggerClick = false } = props
 
   // Hooks
-  const { query } = useKBar()
+  const { isBreakpointReached, isToggled, toggleVerticalNav } = useVerticalNav()
+  const { query } = useKBar(state => {
+    if (isBreakpointReached && isToggled && state.visualState === 'showing') {
+      toggleVerticalNav(false)
+    }
+  })
 
   const Tag = tag || 'div'
 
@@ -86,7 +94,7 @@ const NavSearch = () => {
               <div className='flex'>
                 <Search />
               </div>
-              <KBarSearch defaultPlaceholder='' className={classnames(styles.searchInput, 'grow')} />
+              <KBarSearch defaultPlaceholder='' className={classnames('grow min-is-0', styles.searchInput)} />
               <ComponentWithUseKBar className={styles.escape}>{`[esc]`}</ComponentWithUseKBar>
               <ComponentWithUseKBar triggerClick className='flex cursor-pointer' icon={<Close fontSize='1.75rem' />} />
             </div>
