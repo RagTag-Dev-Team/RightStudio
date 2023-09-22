@@ -1,0 +1,13 @@
+.plan {
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: var(--mui-shape-borderRadius);
+}
+
+.active {
+  border-color: var(--mui-palette-primary-main);
+}
+
+.popularPlan {
+  inset-block-start: -30px;
+  transform: translateX(35%);
+}
