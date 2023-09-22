@@ -1,0 +1,13 @@
+.leftCardContent {
+  min-inline-size: 300px;
+  border-inline-end: 1px solid var(--mui-palette-divider);
+}
+
+.topCardContent {
+  border-block-end: 1px solid var(--mui-palette-divider);
+}
+
+.border {
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: var(--mui-shape-borderRadius);
+}
