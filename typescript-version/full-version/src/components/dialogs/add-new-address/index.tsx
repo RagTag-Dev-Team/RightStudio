@@ -4,6 +4,7 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
@@ -17,6 +18,11 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
@@ -27,12 +33,15 @@ import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Style Imports
+import styles from '@components/dialogs/styles.module.css'
+
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-const country = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
+const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
 
 const customInputData: CustomInputVerticalData[] = [
   {
@@ -56,6 +65,9 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
   // States
   const [selected, setSelected] = useState<string>(initialSelected)
 
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   const handleChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
       setSelected(prop)
@@ -65,17 +77,35 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
   }
 
   return (
-    <Dialog open={open} maxWidth='md' scroll='body' onClose={() => setOpen(false)}>
-      <DialogContent>
-        <IconButton onClick={() => setOpen(false)} className='!absolute top-4 right-4'>
-          <Icon icon='mdi:close' />
-        </IconButton>
-        <div className='flex flex-col items-center'>
-          <Typography>Add New Address</Typography>
-          <Typography>Add new address for future billing</Typography>
-        </div>
-        <form>
-          <Grid container>
+    <Dialog
+      open={open}
+      maxWidth='md'
+      scroll='body'
+      onClose={() => {
+        setOpen(false)
+        setSelected(initialSelected)
+      }}
+    >
+      <DialogTitle
+        className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {
+          [styles.smDialogTitle]: isBelowSmScreen
+        })}
+      >
+        Add New Address
+        <Typography component='span' className='flex flex-col text-center'>
+          Add address for billing address
+        </Typography>
+      </DialogTitle>
+      <form onSubmit={e => e.preventDefault()}>
+        <DialogContent
+          className={classnames(styles.dialogContent, {
+            [styles.smDialogContent]: isBelowSmScreen
+          })}
+        >
+          <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+            <Icon icon='mdi:close' />
+          </IconButton>
+          <Grid container spacing={5}>
             {customInputData.map((item, index) => {
               let asset
 
@@ -84,7 +114,7 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
               }
 
               return (
-                <Grid item xs={12} md={6} key={index}>
+                <Grid item xs={12} sm={6} key={index}>
                   <CustomInputVertical
                     key={index}
                     type='radio'
@@ -96,17 +126,17 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
                 </Grid>
               )
             })}
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField fullWidth label='First Name' name='firstName' variant='outlined' placeholder='John' />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField fullWidth label='Last Name' name='lastName' variant='outlined' placeholder='Doe' />
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel>Country</InputLabel>
-                <Select label='Country' name='country' variant='outlined' defaultValue='us'>
-                  {country.map((item, index) => (
+                <Select label='Country' name='country' variant='outlined' defaultValue=''>
+                  {countries.map((item, index) => (
                     <MenuItem key={index} value={item.toLowerCase().replace(/\s+/g, '-')}>
                       {item}
                     </MenuItem>
@@ -126,7 +156,7 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
             <Grid item xs={12}>
               <TextField fullWidth label='Address Line 2' name='address1' variant='outlined' placeholder='Mall Road' />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label='Landmark'
@@ -135,13 +165,13 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
                 placeholder='Nr. Hard Rock Cafe'
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField fullWidth label='City' name='city' variant='outlined' placeholder='Los Angeles' />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField fullWidth label='State' name='state' variant='outlined' placeholder='California' />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label='Zip Code'
@@ -152,19 +182,31 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel control={<Switch defaultChecked />} label='Use as a billing address' />
+              <FormControlLabel control={<Switch defaultChecked />} label='Make this default shipping address' />
             </Grid>
           </Grid>
-        </form>
-      </DialogContent>
-      <DialogActions className='gap-2 justify-center'>
-        <Button variant='contained' onClick={() => setOpen(false)}>
-          Submit
-        </Button>
-        <Button variant='outlined' color='secondary' onClick={() => setOpen(false)}>
-          Cancel
-        </Button>
-      </DialogActions>
+        </DialogContent>
+        <DialogActions
+          className={classnames('gap-2 justify-center', styles.dialogActions, {
+            [styles.smDialogAction]: isBelowSmScreen
+          })}
+        >
+          <Button variant='contained' onClick={() => setOpen(false)} type='submit'>
+            Submit
+          </Button>
+          <Button
+            variant='outlined'
+            color='secondary'
+            onClick={() => {
+              setOpen(false)
+              setSelected(initialSelected)
+            }}
+            type='reset'
+          >
+            Cancel
+          </Button>
+        </DialogActions>
+      </form>
     </Dialog>
   )
 }

@@ -7,13 +7,13 @@ import IconButton from '@mui/material/IconButton'
 import type { PricingPlanType } from '@/app/api/pages/pricing/route'
 
 // Component Imports
-import Pricing from '@/components/pricing'
+import Pricing from '@components/pricing'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
-import styles from './styles.module.css'
+import styles from '@components/dialogs/styles.module.css'
 
 type Props = {
   open: boolean

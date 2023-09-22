@@ -1,16 +1,24 @@
-.active {
-  color: var(--mui-palette-primary-main);
-  background-color: rgb(var(--mui-palette-primary-mainChannel) / 0.12);
-  border: 1px solid var(--mui-palette-primary-main);
+.border {
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: var(--mui-shape-borderRadius);
 }
 
-.inactive {
-  background-color: var(--mui-palette-action-hover);
-  border: 1px solid var(--mui-palette-divider);
+.active {
+  color: var(--mui-palette-primary-main);
+  border-color: var(--mui-palette-primary-main);
+
+  .text {
+    color: var(--mui-palette-primary-main);
+  }
 }
 
 .closeIcon {
   position: absolute !important;
   inset-inline-end: 1rem;
   inset-block-start: 1rem;
+}
+
+.authMethod {
+  padding-block: 16px;
+  padding-inline: 20px;
 }

@@ -11,8 +11,13 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import DialogContentText from '@mui/material/DialogContentText'
+import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
@@ -21,31 +26,40 @@ import type { ThemeColor } from '@core/types'
 import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
-import styles from '../styles.module.css'
+import styles from '@components/dialogs/styles.module.css'
 
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
   data?: {
-    cardCvc?: string
+    cardNumber?: string
     name?: string
     expiryDate?: string
-    imgAlt?: string
-    badgeColor?: ThemeColor
-    cardStatus?: string
-    cardNumber?: string
+    cardCvc?: string
     imgSrc?: string
+    imgAlt?: string
+    cardStatus?: string
+    badgeColor?: ThemeColor
   }
+}
+
+const initialCardData: Props['data'] = {
+  cardNumber: '',
+  name: '',
+  expiryDate: '',
+  cardCvc: '',
+  imgSrc: '',
+  imgAlt: '',
+  cardStatus: '',
+  badgeColor: 'primary'
 }
 
 const BillingCard = ({ open, setOpen, data }: Props) => {
   // States
-  const [cardData, setCardData] = useState<Props['data']>({
-    cardNumber: '',
-    name: '',
-    expiryDate: '',
-    cardCvc: ''
-  })
+  const [cardData, setCardData] = useState(Object.assign(initialCardData, data))
+
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   const handleClose = () => {
     setOpen(false)
@@ -59,16 +73,26 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle className='text-center'>{data ? 'Edit Card' : 'Add Card'}</DialogTitle>
-      <DialogContent>
-        <IconButton onClick={handleClose} className={styles.closeIcon}>
-          <Icon icon='mdi:close' />
-        </IconButton>
-        <DialogContentText className='text-center'>
+      <DialogTitle
+        className={classnames('flex flex-col gap-2 text-center', styles.dialogTitle, {
+          [styles.smDialogTitle]: isBelowSmScreen
+        })}
+      >
+        {data ? 'Edit Card' : 'Add Card'}
+        <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit your saved card details' : 'Add card for future billing'}
-        </DialogContentText>
-        <form>
-          <Grid container>
+        </Typography>
+      </DialogTitle>
+      <form onSubmit={e => e.preventDefault()}>
+        <DialogContent
+          className={classnames('overflow-visible', styles.dialogContent, {
+            [styles.smDialogContent]: isBelowSmScreen
+          })}
+        >
+          <IconButton onClick={handleClose} className={styles.closeIcon}>
+            <Icon icon='mdi:close' />
+          </IconButton>
+          <Grid container spacing={5}>
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -76,40 +100,40 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
                 autoComplete='off'
                 label='Card Number'
                 placeholder='0000 0000 0000 0000'
-                value={data ? data.cardNumber : cardData?.cardNumber}
+                value={cardData.cardNumber}
                 onChange={e => setCardData({ ...cardData, cardNumber: e.target.value })}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 name='name'
-                label='Name'
+                label='Name on Card'
                 autoComplete='off'
                 placeholder='John Doe'
-                value={data ? data.name : cardData?.name}
+                value={cardData.name}
                 onChange={e => setCardData({ ...cardData, name: e.target.value })}
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <TextField
                 fullWidth
                 name='expiry'
                 autoComplete='off'
-                label='Expiry Date'
+                label='Expiry'
                 placeholder='MM/YY'
-                value={data ? data.expiryDate : cardData?.expiryDate}
+                value={cardData.expiryDate}
                 onChange={e => setCardData({ ...cardData, expiryDate: e.target.value })}
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={3}>
               <TextField
                 fullWidth
                 name='cvc'
-                label='CVC Code'
+                label='CVC'
                 autoComplete='off'
                 placeholder='123'
-                value={data ? data.cardCvc : cardData?.cardCvc}
+                value={cardData.cardCvc}
                 onChange={e => setCardData({ ...cardData, cardCvc: e.target.value })}
               />
             </Grid>
@@ -117,16 +141,20 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
               <FormControlLabel control={<Switch defaultChecked />} label='Save Card for future billing?' />
             </Grid>
           </Grid>
-        </form>
-      </DialogContent>
-      <DialogActions className='gap-2 justify-center'>
-        <Button variant='contained' type='submit' onClick={handleClose}>
-          {data ? 'Update' : 'Submit'}
-        </Button>
-        <Button variant='outlined' type='reset' color='secondary' onClick={handleClose}>
-          Cancel
-        </Button>
-      </DialogActions>
+        </DialogContent>
+        <DialogActions
+          className={classnames('gap-2 justify-center', styles.dialogActions, {
+            [styles.smDialogAction]: isBelowSmScreen
+          })}
+        >
+          <Button variant='contained' type='submit' onClick={handleClose}>
+            {data ? 'Update' : 'Submit'}
+          </Button>
+          <Button variant='outlined' type='reset' color='secondary' onClick={handleClose}>
+            Cancel
+          </Button>
+        </DialogActions>
+      </form>
     </Dialog>
   )
 }

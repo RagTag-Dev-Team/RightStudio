@@ -12,6 +12,9 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
       }
     },
     '& .MuiStep-root': {
+      '& .MuiStepLabel-iconContainer:empty': {
+        display: 'none'
+      },
       '& .step-label': {
         display: 'flex',
         alignItems: 'center',
