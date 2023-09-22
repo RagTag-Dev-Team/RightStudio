@@ -1,0 +1,16 @@
+.active {
+  color: var(--mui-palette-primary-main);
+  background-color: rgb(var(--mui-palette-primary-mainChannel) / 0.12);
+  border: 1px solid var(--mui-palette-primary-main);
+}
+
+.inactive {
+  background-color: var(--mui-palette-action-hover);
+  border: 1px solid var(--mui-palette-divider);
+}
+
+.closeIcon {
+  position: absolute !important;
+  inset-inline-end: 1rem;
+  inset-block-start: 1rem;
+}

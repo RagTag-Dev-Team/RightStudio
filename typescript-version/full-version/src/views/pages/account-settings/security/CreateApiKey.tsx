@@ -1,0 +1,47 @@
+// MUI Imports
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+
+const CreateApiKey = () => {
+  return (
+    <Card>
+      <CardHeader title='Create an API Key' />
+      <CardContent className='!pb-0'>
+        <Grid container>
+          <Grid item xs={12} md={6}>
+            <form className='flex justify-end items-end h-full flex-col'>
+              <FormControl fullWidth>
+                <InputLabel>Choose the API key type you want to create</InputLabel>
+                <Select label='Choose the API key type you want to create' defaultValue=''>
+                  <MenuItem value='full-control'>Full Control</MenuItem>
+                  <MenuItem value='modify'>Modify</MenuItem>
+                  <MenuItem value='read-execute'>Read & Execute</MenuItem>
+                  <MenuItem value='list-folder-contents'>List Folder Contents</MenuItem>
+                  <MenuItem value='read-only'>Read Only</MenuItem>
+                  <MenuItem value='read-write'>Read & Write</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField label='Name the API key' fullWidth />
+              <Button variant='contained' fullWidth>
+                Create Key
+              </Button>
+            </form>
+          </Grid>
+          <Grid item xs={12} md={6} className='flex items-end justify-center '>
+            <img src='' alt='api illustration' />
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default CreateApiKey

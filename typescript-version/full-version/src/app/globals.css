@@ -27,6 +27,11 @@ a {
   text-decoration: none;
 }
 
+ul:not([class]) {
+  margin-block: 1rem;
+  padding-inline-start: 40px;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
