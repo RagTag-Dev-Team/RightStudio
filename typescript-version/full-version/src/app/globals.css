@@ -12,6 +12,7 @@
   --header-z-index: 10;
   --footer-z-index: 10;
   --customizer-z-index: 20;
+  --search-z-index: 100;
   --drawer-z-index: 100;
 }
 
