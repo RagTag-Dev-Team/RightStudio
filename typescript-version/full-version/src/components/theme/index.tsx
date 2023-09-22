@@ -3,6 +3,9 @@
 // React Imports
 import type { ReactNode } from 'react'
 
+// Next Imports
+import { usePathname } from 'next/navigation'
+
 // MUI Imports
 import { deepmerge } from '@mui/utils'
 import {
@@ -12,9 +15,6 @@ import {
 } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
-
-// Third-party Imports
-import { useCookie } from 'react-use'
 
 // Component Imports
 import EmotionCacheProvider from './EmotionCache'
@@ -26,18 +26,19 @@ import themeConfig from '@configs/themeConfig'
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
 
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
+import { getDirection } from '@/utils/get-direction'
+
 // Core Theme Imports
 import defaultCoreTheme from '@core/theme'
 
-// Data Imports
-import { langDirection } from '@/data/translation/langDirection'
-
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Hooks
-  const [lang] = useCookie('lang')
   const { settings } = useSettings()
-
-  const direction = langDirection[lang || 'en']
+  const pathname = usePathname()
+  const locale = getLocale(pathname)
+  const direction = getDirection(locale)
 
   if (Object.keys(settings).length === 0) {
     return
