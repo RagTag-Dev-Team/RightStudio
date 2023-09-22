@@ -1,0 +1,25 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/submenu/icon/page'
+
+# Icon
+
+The `icon` prop allows you to add an icon to the submenu. The icon prop accepts a React element, which can be any valid JSX or component that represents the desired icon. This gives you the flexibility to use popular icon libraries, custom SVG icons, or any other icon implementation you prefer.
+
+### Props
+
+```ts noCopy
+icon?: ReactElement
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/submenu/icon' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

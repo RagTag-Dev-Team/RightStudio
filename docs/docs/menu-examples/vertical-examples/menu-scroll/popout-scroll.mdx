@@ -1,0 +1,50 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCodeBrowserScroll from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll/page'
+import SourceCodePerfectScroll from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll/page'
+
+# Popout Scroll
+
+This feature is specifically designed for a collapsed navigation sidebar where the menu items exceed the available vertical space, requiring scrolling functionality. The popout scroll feature allows you to scroll through the menu items when the menu is collapsed.
+
+The `popoutWhenCollapsed` prop controls the behavior of the navigation sidebar when it is collapsed. It enables the popout functionality, allowing the menu items to be displayed in a popout menu when the available space is insufficient.
+
+The `triggerPopout` prop specifies the event that triggers the popout menu. It can be set to either "hover" or "click" to define how the popout menu is triggered. 
+
+## Browser scroll
+
+The `browserScroll` prop is used to enable or disable the use of the browser's default scroll bar.
+
+### Props
+
+```ts noCopy
+browserScroll?: boolean
+```
+
+```ts noCopy title='Default Value'
+browserScroll={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+
+## Perfect Scroll
+
+The perfect scroll is the default scroll behavior for the vertical popout menu. When the menu items exceed the available vertical space, the perfect scrollbar is used to scroll through the menu content. This scroll behavior is automatically enabled without any additional configuration.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>

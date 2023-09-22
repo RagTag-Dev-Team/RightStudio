@@ -1,0 +1,25 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/background-image/page'
+
+# Background Image
+
+The `backgroundImage` prop is used to set the background image of the navigation sidebar. To make the background image visible, you also need to provide the `backgroundColor` prop. The `backgroundImage` prop accepts a string value that can be a URL or a relative path to the image.
+
+### Props
+
+```ts noCopy
+backgroundImage?: string
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/background-image' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

@@ -1,0 +1,122 @@
+# useVerticalNav
+
+## Overview
+
+The `useVerticalNav()` hook is a custom hook specifically designed to handle the functionality and state management of a navigation sidebar within a web application. Its purpose is to provide a comprehensive set of variables that can be utilized to customize the behavior of the navigation sidebar.This documentation has explained how to use the hook and described the variables for configuring and customizing the menu.
+
+## Values
+
+The `useVerticalNav()` hook provides the following variables that can be used to customize the behavior and appearance of the navigation sidebar:
+
+| Value                  | Type                                                | Description                                                                        |
+| ---------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| width                  | `number`, `string`                                  | Determines the width of the navigation sidebar.                                    |
+| collapsedWidth         | `number`, `string`                                  | Specifies the width of the navigation sidebar when it is collapsed.                |
+| isCollapsed            | `boolean`                                           | Indicates whether the navigation sidebar is currently collapsed.                   |
+| isHovered              | `boolean`                                           | Indicates whether the navigation sidebar is currently being hovered over.          |
+| isToggled              | `boolean`                                           | Indicates whether the navigation sidebar is currently toggled.                     |
+| isScrollWithContent    | `boolean`                                           | Determines whether the navigation sidebar scrolls with the content.                |
+| isPopoutWhenCollapsed  | `boolean`                                           | Determines whether the navigation sidebar pops out when it is collapsed.           |
+| isBreakpointReached    | `boolean`                                           | Indicates whether the specified breakpoint has been reached.                       |
+| transitionDuration     | `number`                                            | Specifies the duration (in `ms`) of the transition for the entire navigation menu. |
+| updateVerticalNavState | `(values: VerticalNavState) => void`                | A function used to update the state of the navigation sidebar .                    |
+| collapseVerticalNav    | `(value?: VerticalNavState['isCollapsed']) => void` | A function used to collapse the navigation sidebar .                               |
+| hoverVerticalNav       | `(value?: VerticalNavState['isHovered']) => void`   | A function used to apply a hover effect to the navigation sidebar .                |
+| toggleVerticalNav      | `(value?: VerticalNavState['isToggled']) => void`   | A function used to toggle the visibility of the navigation sidebar .               |
+
+## Usage
+
+To utilize the `useVerticalNav()` hook, please refer to the following examples:
+
+import TsToJsCodeSnippet from "../../src/components/ts-js-code";
+import IframeWindow from "../../src/components/browser-window/IframeWindow.tsx";
+
+### toggleVerticalNav
+
+import SourceCodeToggleFunction from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/toggle-function/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/toggle-function" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeToggleFunction}</TsToJsCodeSnippet>
+
+### isToggled
+
+import SourceCodeIsToggled from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-toggled/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-toggled" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsToggled}</TsToJsCodeSnippet>
+
+### collapseVerticalNav
+
+import SourceCodeCollapsedFunction from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/collapsed-function/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/collapsed-function" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeCollapsedFunction}</TsToJsCodeSnippet>
+
+### isCollapsed
+
+import SourceCodeIsCollapsed from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-collapsed/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-collapsed" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsCollapsed}</TsToJsCodeSnippet>
+
+### hoverVerticalNav
+
+import SourceCodeHoverFunction from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/hover-function/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/hover-function" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeHoverFunction}</TsToJsCodeSnippet>
+
+### isHovered
+
+import SourceCodeIsHovered from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-hovered/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-hovered" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsHovered}</TsToJsCodeSnippet>
+
+### isScrollWithContent
+
+import SourceCodeIsScrollWithContent from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-scroll-with-content/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-scroll-with-content" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsScrollWithContent}</TsToJsCodeSnippet>
+
+### isPopoutWhenCollapsed
+
+import SourceCodeIsPopoutWhenCollapsed from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-popout-when-collapsed/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-popout-when-collapsed" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsPopoutWhenCollapsed}</TsToJsCodeSnippet>
+
+### isBreakpointReached
+
+import SourceCodeIsBreakpointReached from "!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-vertical-nav/is-breakpoint-reached/page";
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-vertical-nav/is-breakpoint-reached" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeIsBreakpointReached}</TsToJsCodeSnippet>

@@ -1,0 +1,58 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCodeWithParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/expand-icon/with-params/page'
+import SourceCodeWithoutParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/expand-icon/without-params/page'
+
+# Expand Menu icon
+
+The `renderExpandIcon` prop allows you to customize the icon used for expanding the menu. The `renderExpandIcon` prop takes a `RenderExpandIconParams` object as a parameter. This function allows you to fully customize the expand menu icon based on different conditions or states.
+
+### Props
+
+The `RenderExpandIconParams` object passed to the renderExpandIcon function contains the following properties:
+
+```ts noCopy
+type renderExpandIcon?: (params: RenderExpandIconParams) => ReactElement
+
+type RenderExpandIconParams = {
+  open: boolean
+  level: number
+  active: boolean
+  disabled: boolean
+}
+```
+
+| Property | Description                                               |
+| -------- | --------------------------------------------------------- |
+| open     | Whether the menu section is open or closed.               |
+| level    | Representing the depth level of the menu section.         |
+| active   | Whether the menu section is currently active or selected. |
+| disabled | Whether the menu item is disabled or not                  |
+
+## With Parameter
+
+The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` object as a parameter.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/expand-icon/with-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+
+## Without Parameter
+
+The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the expand menu icon without any parameters.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/expand-icon/without-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>

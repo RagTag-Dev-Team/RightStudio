@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/background-color/page'
+
+# Background Color
+
+The `backgroundColor` prop allows you to add a custom background color for the navigation sidebar. The value of this prop can be any valid CSS value for background-color.
+
+### Props
+
+```ts noCopy
+backgroundColor?: string
+```
+
+```ts noCopy title='Default Value'
+backgroundColor='white'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/background-color' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

@@ -1,0 +1,19 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/overlay/page'
+
+# Overlay Menu
+
+The overlay menu is a navigation sidebar that slides in from the left side of the screen. It is a full screen menu that covers the entire page along with a backdrop. The backdrop is a semi-transparent layer that covers the entire page and prevents the user from interacting with the page while the menu is open. The backdrop is also clickable and will close the menu when clicked. This is a great option for mobile devices. To make the overlay menu visible on all screen sizes, you can set the `breakpoint` prop to `always`.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/overlay' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

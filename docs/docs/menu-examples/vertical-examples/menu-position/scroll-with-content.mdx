@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-position/scroll-with-content/page'
+
+# Scroll With Content
+
+The `scrollWithContent` prop enables the navigation sidebar to be scrolled along with the page content. By default, the sidebar remains fixed and does not move when the page content is scrolled. However, when the `scrollWithContent` prop is set to `true`, the sidebar will scroll with the page content.
+
+### Props
+
+```ts noCopy
+scrollWithContent?: boolean
+```
+
+```ts noCopy title='Default Value'
+scrollWithContent={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-position/scroll-with-content' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

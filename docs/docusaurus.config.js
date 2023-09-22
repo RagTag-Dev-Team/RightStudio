@@ -102,11 +102,7 @@ const config = {
         },
         { type: 'docSidebar', sidebarId: 'uiComponentsSidebar', label: 'UI & Components', position: 'left', },
         { type: 'docSidebar', sidebarId: 'formsTablesSidebar', label: 'Forms & Tables', position: 'left', },
-        {
-          href: 'https://themeselection.com/menu-examples',
-          label: 'Menu Examples',
-          position: 'left',
-        },
+        { type: 'docSidebar', sidebarId: 'menuExamplesSidebar', label: 'Menu Examples', position: 'left', },
         { type: 'docSidebar', sidebarId: 'faqSidebar', label: 'FAQs', position: 'right', },
         { to: '/articles', label: 'Articles', position: 'right' },
         {

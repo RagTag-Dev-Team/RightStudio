@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/popout-collapsed/page'
+
+# Popout When Collapsed
+
+When the navigation sidebar is collapsed, the `popoutCollapsed` prop allows submenus to pop out and be displayed on hover or click. This is useful when the menu is collapsed and you want to display the submenu items. If you want to toggle the submenu items on click (default is hover), please refer to [this](/docs/menu-examples/vertical-examples/menu/trigger-popout) example.
+
+### Props
+
+```ts noCopy
+popoutWhenCollapsed?: boolean
+```
+
+```ts noCopy title='Default Value'
+defaultCollapsed={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/popout-collapsed' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

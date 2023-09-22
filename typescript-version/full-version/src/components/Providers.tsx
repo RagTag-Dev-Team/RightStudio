@@ -15,7 +15,10 @@ type Props = ChildrenType & {
   settingsCookie: Settings
 }
 
-const Providers = ({ children, settingsCookie }: Props) => {
+const Providers = (props: Props) => {
+  // Props
+  const { children, settingsCookie } = props
+
   return (
     <NextAuthProvider basePath={process.env.BASEPATH}>
       <VerticalNavProvider>

@@ -1,0 +1,42 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCodeBrowserScroll from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/browser-scroll/page'
+import SourceCodePerfectScroll from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll/page'
+
+# Full Menu Scroll
+
+## Browser scroll
+
+The browser scroll is the default scroll behavior for the vertical menu. When the menu items exceed the available vertical space, the browser's built-in scrollbar is used to scroll through the menu content. This scroll behavior is automatically enabled without any additional configuration.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-scroll/full/browser-scroll' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+
+## PerfectScrollBar
+
+The perfect scrollbar is a custom scrollbar implementation that provides a more customizable and visually appealing scrolling experience for the vertical menu.
+
+You need to import the `PerfectScrollbar` component and wrap the menu component with it. Also import the associated CSS styles into the file where you want to use the perfect scrollbar. To import the CSS styles, you can use the following import statement:
+
+```ts
+import 'react-perfect-scrollbar/dist/css/styles.css'
+```
+
+This will replace the default browser scrollbar with the custom perfect scrollbar.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>

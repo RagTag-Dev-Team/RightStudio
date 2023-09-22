@@ -1,0 +1,42 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCodeWithParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-item/on-active-change/with-params/page'
+import SourceCodeWithoutParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-item/on-active-change/without-params/page'
+
+# On Active Changes
+
+The `onActiveChange` event is triggered when the active state of the menu item changes.
+
+### Props
+
+```ts noCopy
+onActiveChange?: (active: boolean) => void
+```
+
+## With Parameter
+
+This example demonstrates the `onActiveChange` event with a boolean parameter. When the active state of the menu item changes, the `onActiveChange` event is fired, and the provided function is called with a boolean parameter indicating the new active state.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-item/on-active-change/with-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+
+## Without Parameter
+
+This example illustrates the `onActiveChange` event without any parameter.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-item/on-active-change/without-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>

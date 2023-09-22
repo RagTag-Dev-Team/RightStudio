@@ -1,0 +1,45 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/breakpoints/page'
+
+# Breakpoints
+
+The `breakpoints` prop is used to override the default breakpoints by providing your own custom object. Users can pass in an object that only includes specific breakpoints they want to customize, while the rest will be the default values. You can also override all the breakpoints by passing in an object with all the breakpoints.
+
+### Props
+
+```ts noCopy
+breakpoints?: {
+  xs?: string
+  sm?: string
+  md?: string
+  lg?: string
+  xl?: string
+  xxl?: string
+  always?: string
+}
+```
+
+```ts noCopy title='Default Value'
+breakpoints = {
+  xs='480px'
+  sm='600px'
+  md='900px'
+  lg='1200px'
+  xl='1536px'
+  xxl='1920px'
+  always='always'
+}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/breakpoints' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

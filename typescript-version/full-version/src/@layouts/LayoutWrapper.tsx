@@ -8,6 +8,7 @@ import type { ReactElement } from 'react'
 import { useColorScheme } from '@mui/material/styles'
 
 // Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
 import type { Mode } from '@core/types'
 
 // Config Imports
@@ -15,7 +16,6 @@ import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
-import type { Settings } from '@core/contexts/settingsContext'
 
 // Type
 type LayoutWrapperProps = {

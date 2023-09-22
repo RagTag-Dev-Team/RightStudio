@@ -1,0 +1,32 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/switch-to-vertical/page'
+
+# Switch To Vertical
+
+The "Switch To Vertical" feature allows you to switch the navigation menu from horizontal to vertical mode. To enable the vertical navigation menu mode, you can use the `switchToVertical` prop. You need to provide the content for the vertical navigation menu using the `verticalNavContent` prop. This prop allows you to specify the components or data that will be rendered within the vertical menu.
+
+By using the `switchToVertical` and `verticalNavContent` props, you can easily switch between horizontal and vertical menu layouts and provide a flexible and responsive menu design for your application.
+
+### Props
+
+```ts noCopy
+switchToVertical?: boolean
+verticalNavContent?: ({ children }: ChildrenType) => JSX.Element
+```
+
+```ts noCopy title='Default Value'
+switchToVertical={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/horizontal-menu/horizontal-nav/switch-to-vertical' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

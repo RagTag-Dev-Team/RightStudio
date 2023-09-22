@@ -1,0 +1,25 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/custom-breakpoint/page'
+
+# Custom Breakpoint
+
+The `customBreakpoint` prop is used to set a custom breakpoint value for the navigation sidebar which will override the default breakpoint value (lg screen size - 1200px). This is useful when you want a custom breakpoint value and not from the default breakpoint values given [here](/docs/menu-examples/vertical-examples/vertical-nav/breakpoint).
+
+### Props
+
+```ts noCopy
+customBreakpoint?: string
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/custom-breakpoint' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

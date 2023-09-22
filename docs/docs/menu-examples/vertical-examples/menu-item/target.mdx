@@ -1,0 +1,39 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-item/target/page'
+
+# Target
+
+The `target` prop is used to specify the target of a link within a menu item. It determines how the link will be opened when clicked. Additionally, you can use the `rel` prop to set the rel attribute of the link, which specifies the relationship between the current document and the linked document.
+
+The `target` prop accepts a string value that represents the target option for the link. The most commonly used target options are:
+
+| target    | Description                                                   |
+| --------- | ------------------------------------------------------------- |
+| `_self`   | Opens the link in the same browsing context                   |
+| `_blank`  | Opens the link in a new tab or window.                        |
+| `_parent` | Opens the link in the parent browsing context (if available). |
+| `_top`    | Opens the link in the top-level browsing context.             |
+
+### Props
+
+```ts noCopy
+target?: string
+rel?: string
+```
+
+```ts noCopy title='Default Value'
+target='_self'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-item/target' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

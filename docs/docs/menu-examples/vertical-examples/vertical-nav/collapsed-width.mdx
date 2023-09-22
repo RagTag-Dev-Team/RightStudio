@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/collapsed-width/page'
+
+# Collapsed Width
+
+The `collapsedWidth` prop is used to set the width of the navigation sidebar when it is in the collapsed state. The prop can accept either a number or a string as its value. If a number is provided, it represents the width in pixels. If a string is provided, you have the freedom to use any valid CSS value for the width.
+
+### Props
+
+```ts noCopy
+collapsedWidth?: number | string
+```
+
+```ts noCopy title='Default Value'
+collapsedWidth='80px'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/collapsed-width' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/backdrop-color/page'
+
+# Backdrop Color
+
+The backdrop color is the background color of the overlay that appears behind the navigation sidebar when it is open. The backdrop color can be changed by setting the `backdropColor` prop to any valid CSS value for background-color.
+
+### Props
+
+```ts noCopy
+backdropColor?: string
+```
+
+```ts noCopy title='Default Value'
+backdropColor='rgba(0, 0, 0, 0.3)'
+```
+
+### Examples
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/backdrop-color' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

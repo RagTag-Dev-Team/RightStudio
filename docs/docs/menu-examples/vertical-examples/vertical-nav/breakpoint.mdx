@@ -1,0 +1,39 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/breakpoint/page'
+
+# Breakpoint
+
+The `breakpoint` prop is used to determine when the navigation sidebar should trigger responsive behavior. The responsive behavior typically involves hiding the navigation sidebar and showing a hamburger menu button instead. When the hamburger menu button is clicked, the navigation sidebar is shown as an overlay. The default value for the `breakpoint` prop is `lg`, which means that the navigation sidebar will be hidden when the screen size is less than 1200px. The `breakpoint` prop can be set to `always` to always show the hamburger menu button, regardless of the screen size.
+
+### Props
+
+```ts noCopy
+breakpoint? : 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
+```
+
+```ts noCopy title='Default Value'
+breakpoint='lg'
+```
+
+| Value  | Description                                                                        |
+| ------ | ---------------------------------------------------------------------------------- |
+| xs     | < 480px                                                                            |
+| sm     | < 600px                                                                            |
+| md     | < 900px                                                                            |
+| lg     | < 1200px                                                                           |
+| xl     | < 1536px                                                                           |
+| xxl    | < 1920px                                                                           |
+| always | Vertical navigation is always hidden and the hamburger menu button is always shown |
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/breakpoint' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

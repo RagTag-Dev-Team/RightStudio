@@ -1,0 +1,88 @@
+.menu {
+  font-weight: var(--ifm-font-weight-normal);
+}
+
+.menu__list {
+  &:not(.theme-doc-sidebar-menu) {
+    margin-inline-start: 12px;
+    padding-inline-start: 12px;
+    border-inline-start: 1px solid rgb(229, 231, 235);
+    [data-theme='dark'] & {
+      border-inline-start: 1px solid var(--ifm-color-emphasis-200);
+    }
+  }
+}
+
+// Remove default arrows
+.menu__caret:before,
+.menu__link--sublist-caret:after {
+  display: none;
+}
+// Menu link which is active
+.menu__link--active,
+.menu__link--active:hover {
+  color: inherit;
+}
+
+// Active Submenu with arrow button
+.menu__list-item-collapsible--active .menu__caret:hover {
+  background-color: var(--ifm-menu-color-background-active);
+}
+
+// Sub menu with button
+.menu__list-item-collapsible:not(.menu__list-item-collapsible--active) {
+  color: var(--ifm-menu-color);
+  &:hover {
+    color: #111827;
+    [data-theme='dark'] & {
+      color: #f9fafb;
+    }
+  }
+}
+
+// Submenu with arrow and not button
+.menu__link--sublist-caret:hover {
+  color: #111827;
+}
+.menu__link {
+  font-size: 15px;
+  line-height: 1.5;
+  --ifm-menu-link-padding-horizontal: 0.5rem;
+  // Menu link which is not active and not a button
+  &:not(.menu__link--sublist):not(.menu__link--active) {
+    color: var(--ifm-menu-color);
+    &:hover {
+      color: #111827;
+      [data-theme='dark'] & {
+        color: #f9fafb;
+      }
+    }
+  }
+  // Menu link before submenu button
+  &.menu__link--sublist {
+    color: inherit;
+  }
+  // Menu link which is active and not a button
+  &.menu__link--active:not(.menu__link--sublist) {
+    font-weight: 600;
+    color: var(--ifm-color-primary);
+  }
+}
+
+// Submenu button
+.menu__list-item-collapsible.menu__list-item-collapsible--active {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-menu-color-background-active);
+}
+
+// Submenu button with arrow
+.sidebar-collapse-icon {
+  transform: rotate(90deg);
+  transition: transform var(--ifm-transition-fast) linear;
+}
+
+// Submenu button with arrow when collapsed
+.menu__list-item--collapsed .sidebar-collapse-icon {
+  transform: rotate(0deg);
+}

@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/horizontal-menu/menu-item/component/page'
+
+# Component
+
+The `component` prop allows you to change the wrapper component of a menu item. The `component` prop accepts either a string or a ReactElement. If you pass a string, it will be used as the HTML tag for the wrapping component. If you pass a ReactElement, it will be rendered as the wrapping component itself; for example, `<Link>` component from a routing library.
+
+### Props
+
+```ts noCopy
+component?: string | ReactElement
+```
+
+```ts noCopy title='Default Value'
+component=<a></a>
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/horizontal-menu/menu-item/component' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

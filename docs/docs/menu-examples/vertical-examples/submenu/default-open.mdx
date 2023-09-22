@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/submenu/default-open/page'
+
+# Default Open
+
+The `defaultOpen` prop is used to specify whether a submenu should be open by default when the page loads. By setting the `defaultOpen` prop to true, you can indicate that a specific submenu should be initially open.
+
+### Props
+
+```ts noCopy
+defaultOpen?: boolean
+```
+
+```ts noCopy title='Default Value'
+defaultOpen={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/submenu/default-open' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
