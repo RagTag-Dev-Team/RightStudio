@@ -3,12 +3,14 @@
 // React Imports
 import type { ReactElement } from 'react'
 
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
-import type { Settings } from '@core/contexts/settingsContext'
 
 // Type
 type LayoutWrapperProps = {

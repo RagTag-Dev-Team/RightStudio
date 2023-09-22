@@ -1,0 +1,29 @@
+.toggle {
+  inline-size: 2rem;
+  block-size: 2rem;
+}
+
+.toggleButton {
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: 50%;
+  color: var(--ifm-menu-color);
+  transition: background var(--ifm-transition-fast);
+}
+
+.toggleButton:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='light'] .darkToggleIcon,
+[data-theme='dark'] .lightToggleIcon {
+  display: none;
+}
+
+.toggleButtonDisabled {
+  cursor: not-allowed;
+}

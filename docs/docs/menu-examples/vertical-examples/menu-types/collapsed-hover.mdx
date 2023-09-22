@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-types/collapsed-hover/page'
+
+# Collapsed + Hover
+
+The `defaultCollapsed` prop is used to set the menu to be collapsed by default, and it will expand on hover.
+
+### Props
+
+```ts noCopy
+defaultCollapsed?: boolean
+```
+
+```ts noCopy title='Default Value'
+defaultCollapsed={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-types/collapsed-hover' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/transition-duration/page'
+
+# Transition Duration
+
+The `transitionDuration` prop allows you to set the duration of the animation when the navigation sidebar is being collapsed, expanded or toggled. The value is in milliseconds (ms).
+
+### Props
+
+```ts noCopy
+transitionDuration?: number
+```
+
+```ts noCopy title='Default Props'
+transitionDuration = 300 // milliseconds
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/transition-duration' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

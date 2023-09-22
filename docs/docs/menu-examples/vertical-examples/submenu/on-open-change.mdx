@@ -1,0 +1,42 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCodeWithParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/submenu/on-open-change/with-params/page'
+import SourceCodeWithoutParams from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/submenu/on-open-change/without-params/page'
+
+# On Open Change
+
+The `onOpenChange` prop is used to handle the changes when a submenu is opened or closed.
+
+### Props
+
+```ts noCopy
+onOpenChange?: (open: boolean) => void
+```
+
+## With Parameter
+
+This example demonstrates the `onOpenChange` prop with a boolean parameter. When the submenu is opened or closed, the `onOpenChange` function is called with a boolean parameter indicating the new state of the submenu.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/submenu/on-open-change/with-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+
+## Without Parameter
+
+This example illustrates the `onOpenChange` prop without any parameters.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/submenu/on-open-change/without-params' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>

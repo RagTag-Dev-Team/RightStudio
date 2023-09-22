@@ -1,0 +1,43 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/menu-section-styles/page'
+
+# Menu Section Style
+
+The Menu Section Style feature provides the flexibility to apply custom styling to the navigation sidebar. With the `menuSectionStyle` prop, you can pass a set of CSS properties to customize different elements within the menu section according to your design preferences. 
+
+### Props
+
+```ts noCopy
+type MenuSectionStyles = {
+  root?: CSSObject
+  label?: CSSObject
+  prefix?: CSSObject
+  suffix?: CSSObject
+  icon?: CSSObject
+}
+```
+
+The `menuSectionStyle` prop accepts an object with multiple properties, each representing a specific element within the menu. These properties include:
+
+| Property | Description                                                                         |
+| -------- | ----------------------------------------------------------------------------------- |
+| root     | This property allows you to style the root element of the menu section.             |
+| label    | This property allows you to style the label of all the menu sections.               |
+| prefix   | This property allows you to style any prefix elements within all the menu sections. |
+| suffix   | This property allows you to style any suffix elements within all the menu sections. |
+| icon     | This property allows you to style the icon associated with all the menu sections.   |
+
+These properties can be customized by providing CSS objects with appropriate styles.
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/menu-section-styles' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

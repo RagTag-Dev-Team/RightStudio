@@ -1,0 +1,38 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/trigger-popout/page'
+
+# Trigger Pop Out
+
+The `triggerPopout` prop is used to define whether submenus should pop out on hover or click when the navigation sidebar is collapsed.
+
+To enable this feature, you also need to set the `popoutWhenCollapsed` prop to `true`, indicating that submenus should pop out when the navigation sidebar is collapsed.
+
+The `triggerPopout` prop accepts two values:
+
+| Behavior | Description                                                                                                             |
+| -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| hover    | The submenu will pop out when the user hovers over the corresponding submenu while the navigation sidebar is collapsed. |
+| click    | The submenu will pop out when the user clicks on the corresponding submenu while the navigation sidebar is collapsed.   |
+
+### Props
+
+```ts noCopy
+triggerPopout?: 'hover' | 'click'
+```
+
+```ts noCopy title='Default Value'
+triggerPopout='hover'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/trigger-popout' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

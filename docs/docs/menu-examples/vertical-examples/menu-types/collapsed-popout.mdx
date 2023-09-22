@@ -1,0 +1,35 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-types/collapsed-popout/page'
+
+# Collpased + Popout
+
+The combination of the `defaultCollapsed`, `popoutCollapsed`, and `triggerPopout` props allows you to create a menu that is initially collapsed, and submenus can pop out when the sidebar is collapsed. Additionally, you can trigger the opening and closing of submenus when the corresponding menu item is hovered over or clicked.
+
+To achieve this behavior, you need to set the following props:
+
+- `defaultCollapsed`: true: This prop sets the default state of the menu to be collapsed when the page loads.
+
+- `popoutCollapsed`: true: This prop enables the popout behavior for submenus when the sidebar is collapsed. When a submenu item is hovered over or clicked, the submenu will pop out and display its content.
+
+- `triggerPopout`: 'hover' | 'click': This prop determines how the submenu is triggered to open or close. When set to `hover`, the submenu will pop out when the corresponding menu item is hovered over. When set to `click`, the submenu will pop out when the menu item is clicked.
+
+### Props
+
+```ts noCopy
+defaultCollapsed?: boolean
+popoutWhenCollapsed?: boolean
+triggerPopout?: 'hover' | 'click'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-types/collapsed-popout' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

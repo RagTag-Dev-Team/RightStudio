@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/horizontal-menu/menu/text-truncate/page'
+
+# Text Truncate
+
+The textTruncate functionality is a feature within a menu item and submenu that allows for the truncation of text that exceeds the available space. The `textTruncate` prop is used to truncate the text. By default the text is truncated with an ellipsis. `textTruncate` prop provides the flexibility to disable the truncation by setting it to false.
+
+### Props
+
+```ts
+textTruncat?: boolean
+```
+
+```ts title='Default Value'
+textTruncate={true}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/horizontal-menu/menu/text-truncate' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/default-collapsed/page'
+
+# Default Collapsed
+
+The `defaultCollapsed` prop allows you to set the default state of the navigation sidebar to be collapsed. In this state, the width of the navigation sidebar becomes smaller, and the user will need to hover over the navigation sidebar to expand and reveal the whole menu.
+
+### Props
+
+```ts noCopy
+defaultCollapsed?: boolean
+```
+
+```ts noCopy title='Default Value'
+defaultCollapsed={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/default-collapsed' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

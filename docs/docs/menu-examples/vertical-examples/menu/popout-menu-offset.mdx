@@ -1,0 +1,35 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/popout-menu-offset/page'
+
+# Popout Menu Offset
+
+The `popoutMenuOffset` prop used to adjust the distance or position at which the pop-out menu is displayed or positioned in relation to its trigger or parent element.
+
+### Props
+
+```ts noCopy
+popoutMenuOffset?: {
+  mainAxis?: number | ((params: { level?: number }) => number)
+  alignmentAxis?: number | ((params: { level?: number }) => number)
+}
+```
+
+The `popoutMenuOffset` prop accepts an object with two optional properties:
+
+| Property        | Description                                                                      |
+| --------------- | -------------------------------------------------------------------------------- |
+| `mainAxis`      | This property controls the offset distance along the main axis of the menu.      |
+| `alignmentAxis` | This property controls the offset distance along the alignment axis of the menu. |
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/popout-menu-offset' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

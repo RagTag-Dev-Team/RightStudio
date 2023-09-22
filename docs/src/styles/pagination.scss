@@ -1,0 +1,55 @@
+// Previous and Next buttons styles
+.pagination-nav__link {
+  color: #3e3d3d;
+  [data-theme='dark'] & {
+    color: #f9fafb;
+  }
+  padding-inline: 2rem;
+  border-radius: 0.375rem;
+  border-color: var(--ifm-color-emphasis-200);
+  transition-duration: 0.2s;
+  transition-property: color, border-color, box-shadow, transform;
+  &:hover {
+    color: var(--ifm-color-primary);
+    border-color: var(--ifm-color-emphasis-300);
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 13px rgba(0, 0, 0, 0.04);
+    .pagination-nav__icon {
+      color: var(--ifm-color-primary);
+    }
+  }
+}
+
+.pagination-nav__icon {
+  color: #8899ad;
+  transition-duration: 0.2s;
+  transition-property: color;
+}
+
+.pagination-nav__label {
+  font-weight: var(--ifm-font-weight-semibold);
+  font-size: var(--ifm-h5-font-size);
+}
+
+.pagination-nav__sublabel {
+  font-size: 13px;
+  color: rgba(136, 153, 168, 1);
+  [data-theme='dark'] & {
+    color: #a2a9b9;
+  }
+  font-weight: var(--ifm-font-weight-normal);
+}
+
+.pagination-nav__link--next {
+  text-align: start;
+  & .pagination-nav__label:after {
+    content: '';
+  }
+}
+
+.pagination-nav__link--prev {
+  text-align: end;
+  & .pagination-nav__label:before {
+    content: '';
+  }
+}

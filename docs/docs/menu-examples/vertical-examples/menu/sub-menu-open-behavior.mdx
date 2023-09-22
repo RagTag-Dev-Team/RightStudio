@@ -1,0 +1,34 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu/sub-menu-open-behavior/page'
+
+# Sub Menu Open Behavior
+
+The `subMenuOpenBehavior` prop allows you to control how submenus behave when opened. It provides two options for controlling the behavior of submenus: `accordion` and `collapse`.
+
+| Behavior  | Description                                                                                                                        |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| accordion | Only one submenu can be open at a time. When a submenu is opened, any other open submenus will automatically close.                |
+| collapse  | Multiple submenus can be open simultaneously. Each submenu operates independently, and opening one submenu does not affect others. |
+
+### Props
+
+```ts noCopy
+subMenuOpenBehavior?: 'accordion' | 'collapse'
+```
+
+```ts noCopy title='Default Value'
+subMenuOpenBehavior='accordion'
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu/sub-menu-open-behavior' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

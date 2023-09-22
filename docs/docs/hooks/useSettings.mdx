@@ -1,0 +1,127 @@
+# useSettings
+
+## Overview
+
+The `useSettings()` hook is a React hook that allows you to access the settings of your app. This hook enables you to modify the settings of your app and also update distinct settings to different pages within it.
+
+## Values
+
+The `useSettings()` hook provides the following variables, allowing you to customize the settings of your app.
+
+| Value          | Type                        | Description                                       |
+| -------------- | --------------------------- | ------------------------------------------------- |
+| settings       | `Settings`                  | The settings of your app.                         |
+| saveSettings   | `(value: Settings) => void` | A function that saves the settings of your app.   |
+| updateSettings | `(value: Settings) => void` | A function that updates the settings of specific page. |
+
+```ts noCopy
+export type Settings = {
+  mode?: Mode
+  skin?: Skin
+  semiDark?: boolean
+  layout?: Layout
+  navbarContentWidth?: LayoutComponentWidth
+  contentWidth?: LayoutComponentWidth
+  footerContentWidth?: LayoutComponentWidth
+}
+```
+
+## Usage
+
+To utilize the `useSettings()` hook, please refer to the following examples:
+
+import TsToJsCodeSnippet from '../../src/components/ts-js-code';
+import IframeWindow from '../../src/components/browser-window/IframeWindow.tsx';
+
+### Mode
+
+import SourceCodeMode from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-mode/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-mode" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeMode}</TsToJsCodeSnippet>
+
+### Skin
+
+import SourceCodeSkin from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-skin/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-skin" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeSkin}</TsToJsCodeSnippet>
+
+### SemiDark
+
+import SourceCodeSemiDark from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-semi-dark/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-semi-dark" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeSemiDark}</TsToJsCodeSnippet>
+
+### Layout
+
+import SourceCodeLayout from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-layout/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-layout" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeLayout}</TsToJsCodeSnippet>
+
+### navbarContentWidth
+
+import SourceCodeNavbarContentWidth from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-navbar-content-width/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-navbar-content-width" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeNavbarContentWidth}</TsToJsCodeSnippet>
+
+### ContentWidth
+
+import SourceCodeContentWidth from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-content-width/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-content-width" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeContentWidth}</TsToJsCodeSnippet>
+
+### footerContentWidth
+
+import SourceCodeFooterContentWidth from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-footer-content-width/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-footer-content-width" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeFooterContentWidth}</TsToJsCodeSnippet>
+
+### updateSettingsMode
+
+The `updateSettings` allows you to update the settings of specific page within your app. Here we have just changed to `mode` of the app  to `dark` on the specific page and the rest of the app remains unchanged. You can use the other `settings` values in the same way. 
+
+import SourceCodeUpdateSettingsMode from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/update-settings-mode/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/update-settings-mode" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeUpdateSettingsMode}</TsToJsCodeSnippet>
+
+### Change/Reset SettingsMode
+
+import SourceCodeChangeSettingsMode from '!!raw-loader!../../../typescript-version/full-version/src/app/[lang]/hook-examples/use-settings/settings-changed/page'
+
+<IframeWindow url="http://localhost:3000/hook-examples/use-settings/settings-changed" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeChangeSettingsMode}</TsToJsCodeSnippet>
+

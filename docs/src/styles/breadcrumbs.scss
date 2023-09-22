@@ -1,0 +1,15 @@
+.breadcrumbs__link {
+  color: #6b7280;
+  [data-theme='dark'] & {
+    color: #a3a3a3;
+  }
+  border-radius: 4px;
+  &:any-link:hover {
+    background: none;
+  }
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  font-size: 14px;
+  background-color: transparent;
+}

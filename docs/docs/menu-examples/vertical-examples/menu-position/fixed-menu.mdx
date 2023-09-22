@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-position/fixed-menu/page'
+
+# Fixed Menu
+
+By default, the navigation sidebar is fixed and does not scroll with the content of the page. This means that as you scroll the page, the navigation sidebar remains in a fixed position. However, you can customize this behavior by using the `scrollWithContent` prop.
+
+### Props
+
+```ts noCopy
+scrollWithContent?: boolean
+```
+
+```ts noCopy title='Default Value'
+scrollWithContent={false}
+```
+
+### Examples
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-position/fixed-menu' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

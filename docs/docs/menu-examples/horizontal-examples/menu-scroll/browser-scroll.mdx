@@ -1,0 +1,29 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/horizontal-menu/menu-scroll/browser-scroll/page'
+
+# Browser Scroll
+
+The `browserScroll` prop allows you to use the browser scroll bar. When the menu items of submenu exceed the available vertical space, the browser's scrollbar is used to scroll through the menu content.
+
+### Props
+
+```ts noCopy
+browserScroll?: boolean
+```
+
+```ts noCopy title='Default Value'
+browserScroll={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/horizontal-menu/menu-scroll/browser-scroll' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

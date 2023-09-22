@@ -1,0 +1,31 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
+import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/menu-item/disable/page'
+
+# Disabled
+
+The Disabled feature allows you to disable a menu item, preventing user interaction and indicating that the item is currently inactive or unavailable. The `disabled` prop is used to control the disabled state of a menu item.
+
+By setting the `disabled` prop to true, the corresponding menu item will be visually disabled and user interactions, such as clicks or hover effects, will be prevented.
+
+### Props
+
+```ts noCopy
+disabled?: boolean
+```
+
+```ts noCopy title='Default Value'
+disabled={false}
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/menu-item/disable' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
