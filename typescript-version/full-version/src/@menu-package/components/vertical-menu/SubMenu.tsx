@@ -17,7 +17,6 @@ import { usePathname } from 'next/navigation'
 // Third-party Imports
 import classnames from 'classnames'
 import styled from '@emotion/styled'
-import { useRendersCount } from 'react-use'
 import {
   useFloating,
   autoUpdate,
@@ -164,7 +163,6 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     popoutMenuOffset,
     textTruncate
   } = useVerticalMenu()
-  const rendersCount = useRendersCount()
 
   // Floating UI Hooks
   const tree = useFloatingTree()
@@ -409,7 +407,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           rootStyles={getSubMenuItemStyles('label')}
           textTruncate={textTruncate}
         >
-          {label} {rendersCount}
+          {label}
         </StyledMenuLabel>
 
         {/* Sub Menu Suffix */}

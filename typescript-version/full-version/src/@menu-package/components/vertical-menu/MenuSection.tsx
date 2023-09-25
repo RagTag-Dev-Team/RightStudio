@@ -6,7 +6,6 @@ import type { ForwardRefRenderFunction, CSSProperties, ReactElement, ReactNode }
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useRendersCount } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
@@ -70,7 +69,6 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
   // Hooks
   const { isCollapsed, isHovered } = useVerticalNav()
   const { menuSectionStyles, collapsedMenuSectionLabel, textTruncate } = useVerticalMenu()
-  const rendersCount = useRendersCount()
 
   const getMenuSectionStyles = (element: MenuSectionElement): CSSObject | undefined => {
     // If the menuSectionStyles prop is provided, get the styles for the element from the prop
@@ -125,7 +123,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
                 rootStyles={getMenuSectionStyles('label')}
                 textTruncate={textTruncate}
               >
-                {label} {rendersCount}
+                {label}
               </StyledMenuSectionLabel>
             )
           )}
