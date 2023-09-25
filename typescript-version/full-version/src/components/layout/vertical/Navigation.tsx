@@ -1,7 +1,7 @@
 'use client'
 
 // MUI Imports
-import { useColorScheme } from '@mui/material'
+import { useColorScheme } from '@mui/material/styles'
 
 // Component Imports from @menu-package
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'

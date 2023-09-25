@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useRendersCount, useUpdateEffect } from 'react-use'
+import { useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/react'
 
 // Type Imports
@@ -73,7 +73,6 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   const pathname = usePathname()
   const { menuItemStyles, renderExpandedMenuItemIcon, textTruncate } = useVerticalMenu()
   const { isCollapsed, isHovered, isPopoutWhenCollapsed, toggleVerticalNav, isToggled } = useVerticalNav()
-  const rendersCount = useRendersCount()
 
   // Get the styles for the specified element.
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
@@ -173,7 +172,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
           rootStyles={getMenuItemStyles('label')}
           textTruncate={textTruncate}
         >
-          {children} {rendersCount}
+          {children}
         </StyledMenuLabel>
 
         {/* Menu Item Suffix */}
