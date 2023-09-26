@@ -19,14 +19,13 @@ import ChangeMuiMode from "./ChangeMuiMode";
 import globalStyling from "./globalStyles";
 
 // Theme Overrides Imports
-import spacing from "@core/theme/spacing";
 import overrides from "@core/theme/overrides";
+import spacing from "@core/theme/spacing";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-
   const theme = extendTheme({
-    ...spacing,
-    components: overrides()
+    components: overrides(),
+    ...spacing
   });
 
   return (

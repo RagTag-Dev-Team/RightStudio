@@ -1,4 +1,7 @@
-const Avatar = {
+// MUI Imports
+import type { Theme } from '@mui/material/styles'
+
+const avatar: Theme['components'] = {
   MuiAvatarGroup: {
     styleOverrides: {
       root: {
@@ -8,4 +11,4 @@ const Avatar = {
   }
 }
 
-export default Avatar
+export default avatar

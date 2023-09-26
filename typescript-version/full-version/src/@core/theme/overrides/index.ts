@@ -5,7 +5,7 @@ import tabs from './tabs'
 import typography from './typography'
 
 const Overrides = () => {
-  return Object.assign(avatar, button, tabs, typography)
+  return Object.assign({}, avatar, button, tabs, typography)
 }
 
 export default Overrides

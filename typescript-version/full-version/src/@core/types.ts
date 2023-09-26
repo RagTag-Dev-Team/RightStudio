@@ -1,9 +1,6 @@
 // React Imports
 import type { ReactNode } from 'react'
 
-// MUI Imports
-import type { ComponentsPropsList, Theme } from '@mui/material/styles'
-
 export type Layout = 'vertical' | 'collapsed' | 'horizontal'
 
 export type Skin = 'default' | 'bordered'
@@ -21,8 +18,3 @@ export type ChildrenType = {
 }
 
 export type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-
-export type ThemeAndOwnerState = {
-  theme: Theme
-  ownerState: ComponentsPropsList[keyof ComponentsPropsList] & Record<string, unknown>
-}
