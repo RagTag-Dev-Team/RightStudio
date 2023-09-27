@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import type { HTMLAttributes } from 'react'
 
 // Third-party Imports
@@ -87,6 +87,9 @@ const VerticalNav = (props: VerticalNavProps) => {
     isPopoutWhenCollapsed: isPopoutWhenCollapsedContext
   } = useVerticalNav()
 
+  // Refs
+  const verticalNavCollapsedRef = useRef(false)
+
   const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
@@ -104,8 +107,11 @@ const VerticalNav = (props: VerticalNavProps) => {
 
     if (!breakpointReached) {
       updateVerticalNavState({ isToggled: false })
-      defaultCollapsed && updateVerticalNavState({ isCollapsed: true })
+      verticalNavCollapsedRef.current && updateVerticalNavState({ isCollapsed: true })
     } else {
+      if (isCollapsedContext && !verticalNavCollapsedRef.current) {
+        verticalNavCollapsedRef.current = true
+      }
       isCollapsedContext && updateVerticalNavState({ isCollapsed: false })
       isHoveredContext && updateVerticalNavState({ isHovered: false })
     }
@@ -127,6 +133,10 @@ const VerticalNav = (props: VerticalNavProps) => {
         collapsing: false
       })
     }, transitionDuration)
+
+    if (!isCollapsedContext && !breakpointReached && verticalNavCollapsedRef.current) {
+      verticalNavCollapsedRef.current = false
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCollapsedContext])
 
@@ -176,15 +186,6 @@ const VerticalNav = (props: VerticalNavProps) => {
         },
         className
       )}
-      {
-        // eslint-disable-next-line lines-around-comment
-        /* Toggle verticalNav on hover only when isPopoutWhenCollapsedContext(default false) is false */
-        ...(!isPopoutWhenCollapsedContext &&
-          isCollapsedContext && {
-            onMouseEnter: handleVerticalNavHover,
-            onMouseLeave: handleVerticalNavHoverOut
-          })
-      }
       {...rest}
     >
       {/* VerticalNav Container for hover effect when verticalNav is collapsed */}
@@ -192,6 +193,16 @@ const VerticalNav = (props: VerticalNavProps) => {
         width={widthContext}
         className={verticalNavClasses.container}
         transitionDuration={transitionDurationContext}
+        {
+          // eslint-disable-next-line lines-around-comment
+          /* Toggle verticalNav on hover only when isPopoutWhenCollapsedContext(default false) is false */
+          ...(!isPopoutWhenCollapsedContext &&
+            isCollapsedContext &&
+            !breakpointReached && {
+              onMouseEnter: handleVerticalNavHover,
+              onMouseLeave: handleVerticalNavHoverOut
+            })
+        }
       >
         {/* VerticalNav Container to apply styling like background */}
         <StyledVerticalNavBgColorContainer
