@@ -1,0 +1,13 @@
+.appBarColor {
+    color: var(--mui-palette-common-white);
+}
+.dividerHeight {
+    height: 100px;
+}
+.drawerWidth {
+    width: 260px;
+}
+.transferList {
+    width: 200px;
+    height: 265px;
+}

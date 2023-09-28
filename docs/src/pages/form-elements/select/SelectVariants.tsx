@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputLabel from '@mui/material/InputLabel'
@@ -10,7 +9,7 @@ import FormControl from '@mui/material/FormControl'
 
 const SelectVariants = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel id='demo-basic-select-outlined-label'>Age</InputLabel>
         <Select
@@ -46,7 +45,7 @@ const SelectVariants = () => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

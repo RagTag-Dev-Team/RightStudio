@@ -2,7 +2,6 @@
 import React, { Fragment, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Button from '@mui/material/Button'
 import ListItem from '@mui/material/ListItem'
@@ -10,12 +9,17 @@ import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
-
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import { useDropzone } from 'react-dropzone'
+import classnames from 'classnames'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports 
+import styles from './styles.module.css'
 
 type FileProp = {
   name: string
@@ -93,23 +97,31 @@ const FileUploaderMultiple = () => {
     setFiles([])
   }
 
+  // Hooks
+  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+
   return (
     <Fragment>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <Box sx={{ display: 'flex', flexDirection: ['column', 'column', 'row'], alignItems: 'center' }}>
+        <div className={classnames('flex gap-3 items-center', {'flex-col': isBelowMdScreen})}>
           <Img alt='Upload img' src='/assets/upload.png' />
-          <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: ['center', 'center', 'inherit'] }}>
+          <div className={classnames('flex flex-col', {
+            'text-center': isBelowMdScreen,
+            [styles.dropZoneTextAlign]: isAboveMdScreen
+          })}
+          >
             <HeadingTypography variant='h5'>Drop files here or click to upload.</HeadingTypography>
-            <Typography color='textSecondary' sx={{ '& a': { color: 'primary.main', textDecoration: 'none' } }}>
+            <Typography color='textSecondary'>
               Drop files here or click{' '}
-              <a href='/' onClick={e => e.preventDefault()}>
+              <a href='/' onClick={e => e.preventDefault()} className={styles.dropZone}>
                 browse
               </a>{' '}
               thorough your machine
             </Typography>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </div>
       {files.length ? (
         <Fragment>

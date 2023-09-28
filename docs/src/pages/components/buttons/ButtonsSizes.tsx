@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 
@@ -11,8 +10,8 @@ import Icon from '@core/components/IconifyIcon'
 
 const ButtonsSizes = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4 flex-col'>
+      <div className='flex gap-4'>
         <Button variant='text' size='small'>
           Small
         </Button>
@@ -22,8 +21,8 @@ const ButtonsSizes = () => {
         <Button variant='text' size='large'>
           Large
         </Button>
-      </Box>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      </div>
+      <div className='flex gap-4'>
         <Button variant='outlined' size='small'>
           Small
         </Button>
@@ -33,8 +32,8 @@ const ButtonsSizes = () => {
         <Button variant='outlined' size='large'>
           Large
         </Button>
-      </Box>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      </div>
+      <div className='flex gap-4'>
         <Button variant='contained' size='small'>
           Small
         </Button>
@@ -44,8 +43,8 @@ const ButtonsSizes = () => {
         <Button variant='contained' size='large'>
           Large
         </Button>
-      </Box>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      </div>
+      <div className='flex gap-4'>
         <IconButton aria-label='capture screenshot' color='secondary' size='small'>
           <Icon icon='mdi:camera-iris' fontSize='inherit' />
         </IconButton>
@@ -58,8 +57,8 @@ const ButtonsSizes = () => {
         <IconButton aria-label='capture screenshot' color='secondary' size='large'>
           <Icon icon='mdi:camera-iris' fontSize='2.1875rem' />
         </IconButton>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

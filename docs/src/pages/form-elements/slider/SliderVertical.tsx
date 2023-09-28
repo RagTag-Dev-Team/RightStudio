@@ -2,8 +2,10 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const marks = [
   {
@@ -30,14 +32,14 @@ const valuetext = (value: number) => {
 
 const SliderVertical = () => {
   return (
-    <Box sx={{ height: 250, '& > :not(:last-child)': { mr: 8 }, '& > :last-child': { mr: 0 } }}>
-      <Slider orientation='vertical' getAriaValueText={valuetext} defaultValue={30} aria-labelledby='vertical-slider' />
+    <div className={styles.sliderVertical}>
+      <Slider orientation='vertical' getAriaValueText={valuetext} defaultValue={30} aria-labelledby='vertical-slider' className='mie-8'/>
       <Slider
         disabled
         defaultValue={30}
         orientation='vertical'
         getAriaValueText={valuetext}
-        aria-labelledby='vertical-disabled-slider'
+        aria-labelledby='vertical-disabled-slider' className='mie-8'
       />
       <Slider
         marks={marks}
@@ -45,8 +47,9 @@ const SliderVertical = () => {
         defaultValue={[20, 37]}
         getAriaValueText={valuetext}
         aria-labelledby='vertical-marks-slider'
+        className='mie-0'
       />
-    </Box>
+    </div>
   )
 }
 

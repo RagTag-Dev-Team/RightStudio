@@ -20,7 +20,7 @@ const AutocompleteCheckboxes = () => {
       renderInput={params => <TextField {...params} key={params.id} label='Checkboxes' placeholder='Favorites' />}
       renderOption={(props, option, { selected }) => (
         <li {...props} key={option.title}>
-          <Checkbox checked={selected} sx={{ mr: 2 }} />
+          <Checkbox checked={selected} className='mie-2' />
           {option.title}
         </li>
       )}

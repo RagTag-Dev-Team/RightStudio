@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
@@ -18,18 +17,18 @@ const ToastsCustom = () => {
   const handleClick = () => {
     return toast(
       t => (
-        <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Avatar alt='Victor Anderson' src='/assets/avatars/3.png' sx={{ mr: 3, width: 40, height: 40 }} />
+        <div className='w-full flex items-center justify-between'>
+          <div className='flex items-center'>
+            <Avatar alt='Victor Anderson' src='/assets/avatars/3.png' className='mie-3 w-10 h-10'/>
             <div>
               <Typography>John Doe</Typography>
               <Typography variant='caption'>Sure! 8:30pm works great!</Typography>
             </div>
-          </Box>
+          </div>
           <IconButton onClick={() => toast.dismiss(t.toastProps.toastId)}>
             <Icon icon='mdi:close' fontSize='1.25rem' />
           </IconButton>
-        </Box>
+        </div>
       ),
       {
         style: {
@@ -41,16 +40,15 @@ const ToastsCustom = () => {
   }
 
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:pencil-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Custom</Typography>
-      <Typography sx={{ mb: 3 }}>Make a toast using any custom content</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={handleClick}>
+      <Icon icon='mdi:pencil-outline' fontSize='2rem' className='mbe-2' />
+      <Typography className='mbe-4 font-medium'>Custom</Typography>
+      <Typography className='mbe-3'>Make a toast using any custom content</Typography>
+      <Button className='mbe-8' variant='contained' onClick={handleClick}>
         Custom
       </Button>
-    </Box>
+    </div>
   )
 }
 

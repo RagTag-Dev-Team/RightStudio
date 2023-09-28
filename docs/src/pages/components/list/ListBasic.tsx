@@ -12,6 +12,9 @@ import ListItemButton from '@mui/material/ListItemButton'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 const ListBasic = () => {
   return (
     <>
@@ -33,7 +36,7 @@ const ListBasic = () => {
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider sx={{ m: 0 }} />
+      <Divider className='m-0' />
       <List component='nav' aria-label='secondary mailbox'>
         <ListItem disablePadding>
           <ListItemButton>
@@ -44,7 +47,7 @@ const ListBasic = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component='a' href='#simple-list' sx={{ '&:hover': { color: 'inherit' }}}>
+          <ListItemButton component='a' href='#simple-list' className={styles.listItemButton}>
             <ListItemIcon>
               <Icon icon='mdi:alert-circle-outline' fontSize='1.25rem' />
             </ListItemIcon>

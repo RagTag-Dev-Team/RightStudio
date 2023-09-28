@@ -10,6 +10,9 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 type Column = {
   id: 'name' | 'code' | 'population' | 'size' | 'density'
   label: string
@@ -92,7 +95,7 @@ const TableStickyHeader = () => {
 
   return (
     <>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer className={styles.tableStickyMaxHeight}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
@@ -130,7 +133,7 @@ const TableStickyHeader = () => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        sx={{ '&.MuiTablePagination-root' : { borderTop: '1px solid var(--ifm-table-border-color)'} }}
+        className={styles.tablePagination}
       />
     </>
   )

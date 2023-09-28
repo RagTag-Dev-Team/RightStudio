@@ -2,12 +2,11 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 
 const AlertsOutlined = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div className='flex flex-col gap-4'>
       <Alert variant='outlined' severity='error'>
         This is an error alert — check it out!
       </Alert>
@@ -20,7 +19,7 @@ const AlertsOutlined = () => {
       <Alert variant='outlined' severity='success'>
         This is a success alert — check it out!
       </Alert>
-    </Box>
+    </div>
   )
 }
 

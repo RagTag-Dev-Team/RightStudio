@@ -2,13 +2,12 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 
 const BadgesBasic = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <Badge badgeContent={4} color='primary'>
         <Avatar src='/assets/avatars/1.png' alt='User Avatar' />
       </Badge>
@@ -27,7 +26,7 @@ const BadgesBasic = () => {
       <Badge badgeContent={4} color='info'>
         <Avatar src='/assets/avatars/1.png' alt='User Avatar' />
       </Badge>
-    </Box>
+    </div>
   )
 }
 

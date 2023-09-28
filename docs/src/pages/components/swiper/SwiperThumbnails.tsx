@@ -3,7 +3,6 @@ import React from 'react'
 import type { MutableRefObject } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import { useTheme } from '@mui/material/styles'
 
 // Third-party Components
@@ -69,41 +68,41 @@ const SwiperThumbnails = () => {
 
   return (
     <>
-      <Box ref={sliderRef} className='keen-slider'>
-        <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
+      <div ref={sliderRef} className='keen-slider'>
+        <div className='flex keen-slider__slide'>
           <img src='/images/banners/1.jpg' alt='swiper 1' />
-        </Box>
-        <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
+        </div>
+        <div className='flex keen-slider__slide'>
           <img src='/images/banners/2.jpg' alt='swiper 2' />
-        </Box>
-        <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
+        </div>
+        <div className='flex keen-slider__slide'>
           <img src='/images/banners/3.jpg' alt='swiper 3' />
-        </Box>
-        <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
+        </div>
+        <div className='flex keen-slider__slide'>
           <img src='/images/banners/4.jpg' alt='swiper 4' />
-        </Box>
-        <Box sx={{ display: 'flex' }} className='keen-slider__slide'>
+        </div>
+        <div className='flex keen-slider__slide'>
           <img src='/images/banners/5.jpg' alt='swiper 5' />
-        </Box>
-      </Box>
+        </div>
+      </div>
 
-      <Box sx={{ mt: 4 }} ref={thumbnailRef} className='keen-slider thumbnail'>
-        <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
+      <div ref={thumbnailRef} className='mbs-4 keen-slider thumbnail'>
+        <div className='keen-slider__slide cursor-pointer'>
           <img src='/images/banners/1.jpg' alt='swiper 1' />
-        </Box>
-        <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
+        </div>
+        <div className='keen-slider__slide cursor-pointer'>
           <img src='/images/banners/2.jpg' alt='swiper 2' />
-        </Box>
-        <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
+        </div>
+        <div className='keen-slider__slide cursor-pointer'>
           <img src='/images/banners/3.jpg' alt='swiper 3' />
-        </Box>
-        <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
+        </div>
+        <div className='keen-slider__slide cursor-pointer'>
           <img src='/images/banners/4.jpg' alt='swiper 4' />
-        </Box>
-        <Box className='keen-slider__slide' sx={{ display: 'flex', cursor: 'pointer' }}>
+        </div>
+        <div className='keen-slider__slide cursor-pointer'>
           <img src='/images/banners/5.jpg' alt='swiper 5' />
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   )
 }

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import TextField from '@mui/material/TextField'

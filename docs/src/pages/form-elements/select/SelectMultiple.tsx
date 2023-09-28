@@ -60,9 +60,9 @@ const SelectMultiple = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div className='flex gap-4 flex-col'>
       <div>
-        <Typography sx={{ mb: 2, fontWeight: 500 }}>Default</Typography>
+        <Typography className='mbe-2 font-medium'>Default</Typography>
         <FormControl fullWidth>
           <InputLabel id='demo-multiple-name-label'>Name</InputLabel>
           <Select
@@ -83,7 +83,7 @@ const SelectMultiple = () => {
         </FormControl>
       </div>
       <div>
-        <Typography sx={{ mb: 2, fontWeight: 500 }}>Checkmarks</Typography>
+        <Typography className='mbe-2 font-medium'>Checkmarks</Typography>
         <FormControl fullWidth>
           <InputLabel id='demo-multiple-checkbox-label'>Tag</InputLabel>
           <Select
@@ -106,7 +106,7 @@ const SelectMultiple = () => {
         </FormControl>
       </div>
       <div>
-        <Typography sx={{ mb: 2, fontWeight: 500 }}>Chip</Typography>
+        <Typography className='mbe-2 font-medium'>Chip</Typography>
         <FormControl fullWidth>
           <InputLabel id='demo-multiple-chip-label'>Chip</InputLabel>
           <Select
@@ -118,11 +118,11 @@ const SelectMultiple = () => {
             onChange={handleChange}
             labelId='demo-multiple-chip-label'
             renderValue={selected => (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+              <div className='flex flex-wrap gap-1'>
                 {(selected as unknown as string[]).map(value => (
-                  <Chip key={value} label={value} sx={{ m: 0.75 }} />
+                  <Chip key={value} label={value} size='small' />
                 ))}
-              </Box>
+              </div>
             )}
           >
             {names.map(name => (
@@ -134,7 +134,7 @@ const SelectMultiple = () => {
         </FormControl>
       </div>
       <div>
-        <Typography sx={{ mb: 2, fontWeight: 500 }}>Placeholder</Typography>
+        <Typography className='mbe-2 font-medium'>Placeholder</Typography>
         <FormControl fullWidth>
           <Select
             multiple
@@ -163,7 +163,7 @@ const SelectMultiple = () => {
         </FormControl>
       </div>
       <div>
-        <Typography sx={{ mb: 2, fontWeight: 500 }}>Native</Typography>
+        <Typography className='mbe-2 font-medium'>Native</Typography>
         <FormControl fullWidth>
           <InputLabel shrink htmlFor='select-multiple-native'>
             Native
@@ -184,7 +184,7 @@ const SelectMultiple = () => {
           </Select>
         </FormControl>
       </div>
-    </Box>
+    </div>
   )
 }
 

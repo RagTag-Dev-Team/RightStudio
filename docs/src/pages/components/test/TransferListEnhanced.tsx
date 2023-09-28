@@ -14,6 +14,12 @@ import CardHeader from '@mui/material/CardHeader'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
+
 const not = (a: readonly number[], b: readonly number[]) => {
   return a.filter(value => b.indexOf(value) === -1)
 }
@@ -73,9 +79,9 @@ const TransferListEnhanced = () => {
     <Card>
       <CardHeader
         title={title}
-        sx={{ px: 4, py: 2 }}
+        className='pli-4 plb-2'
         subheader={`${numberOfChecked(items)}/${items.length} selected`}
-        titleTypographyProps={{ sx: { fontSize: '1rem !important', lineHeight: '1.5 !important' } }}
+        titleTypographyProps={{ className : 'text-base'}}
         avatar={
           <Checkbox
             disabled={items.length === 0}
@@ -86,8 +92,8 @@ const TransferListEnhanced = () => {
           />
         }
       />
-      <Divider sx={{ m: 0 }} />
-      <List role='list' component='div' sx={{ width: 200, height: 265, overflow: 'auto' }}>
+      <Divider className='m-0' />
+      <List role='list' component='div' className={classnames('overflow-auto', styles.transferList)}>
         {items.map((value: number) => {
           const labelId = `transfer-list-all-item-${value}-label`
 
@@ -111,13 +117,13 @@ const TransferListEnhanced = () => {
   )
 
   return (
-    <Grid container spacing={4} sx={{ alignItems: 'center', justifyContent: 'center'}}>
+    <Grid container spacing={4} className='items-center justify-center'>
       <Grid item>{customList('Choices', left)}</Grid>
       <Grid item>
-        <Grid container direction='column' sx={{ alignItems: 'center'}}>
+        <Grid container direction='column' className='items-center'>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleCheckedRight}
             aria-label='move selected right'
@@ -127,7 +133,7 @@ const TransferListEnhanced = () => {
           </Button>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleCheckedLeft}
             aria-label='move selected left'

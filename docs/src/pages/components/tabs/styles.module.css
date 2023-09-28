@@ -1,0 +1,4 @@
+.tabHoverColor:hover{
+    text-decoration: none;
+    color: var(--mui-palette-text-secondary);
+}

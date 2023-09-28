@@ -1,0 +1,7 @@
+.autocompleteInput input {
+    background-color: var(--mui-palette-background-paper);
+}
+
+.autocompleteCustomInput input {
+    width: 12.5rem;
+}

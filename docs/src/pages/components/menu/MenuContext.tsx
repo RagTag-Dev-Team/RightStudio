@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
@@ -35,7 +34,7 @@ const MenuContext = () => {
   }
 
   return (
-    <Box onContextMenu={handleClick} sx={{ cursor: 'context-menu' }}>
+    <div onContextMenu={handleClick} className='cursor-context-menu'>
       <Typography>
         Apple pie bonbon sweet brownie cake lemon drops carrot cake danish carrot cake. Marzipan jujubes cupcake cake
         bear claw jujubes. Macaroon candy canes jelly-o sugar plum biscuit. Cupcake cupcake oat cake cookie donut candy
@@ -57,7 +56,7 @@ const MenuContext = () => {
         <MenuItem onClick={handleClose}>Email</MenuItem>
         <MenuItem onClick={handleClose}>Highlight</MenuItem>
       </Menu>
-    </Box>
+    </div>
   )
 }
 

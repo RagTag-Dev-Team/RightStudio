@@ -2,7 +2,6 @@
 import React, { useState, Fragment } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
 import Collapse from '@mui/material/Collapse'
 import TableRow from '@mui/material/TableRow'
@@ -15,6 +14,9 @@ import TableContainer from '@mui/material/TableContainer'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const createData = (name: string, calories: number, fat: number, carbs: number, protein: number, price: number) => {
   return {
@@ -48,22 +50,22 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
 
   return (
     <Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell>
+      <TableRow >
+        <TableCell className={styles.tableCollapseBorder}>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
             <Icon icon={open ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
           </IconButton>
         </TableCell>
-        <TableCell component='th' scope='row'>{row.name}</TableCell>
-        <TableCell align='right'>{row.calories}</TableCell>
-        <TableCell align='right'>{row.fat}</TableCell>
-        <TableCell align='right'>{row.carbs}</TableCell>
-        <TableCell align='right'>{row.protein}</TableCell>
+        <TableCell className={styles.tableCollapseBorder} component='th' scope='row'>{row.name}</TableCell>
+        <TableCell className={styles.tableCollapseBorder} align='right'>{row.calories}</TableCell>
+        <TableCell className={styles.tableCollapseBorder} align='right'>{row.fat}</TableCell>
+        <TableCell className={styles.tableCollapseBorder} align='right'>{row.carbs}</TableCell>
+        <TableCell className={styles.tableCollapseBorder} align='right'>{row.protein}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell colSpan={6} sx={{ py: '0 !important' }}>
+        <TableCell colSpan={6} className='plb-0'>
           <Collapse in={open} timeout='auto' unmountOnExit>
-            <Box sx={{ m: 2 }}>
+            <div className='m-2'>
               <Typography variant='h6' gutterBottom component='div'>History</Typography>
               <Table size='small' aria-label='purchases'>
                 <TableHead>
@@ -85,7 +87,7 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
                   ))}
                 </TableBody>
               </Table>
-            </Box>
+            </div>
           </Collapse>
         </TableCell>
       </TableRow>

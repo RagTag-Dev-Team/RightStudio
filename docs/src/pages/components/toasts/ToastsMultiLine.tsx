@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
@@ -20,16 +19,16 @@ const ToastsMultiLine = () => {
   }
 
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:text-box-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Multi Line</Typography>
-      <Typography sx={{ mb: 3 }}>The most basic variant with longer texts</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={handleClick}>
+      <Icon icon='mdi:text-div-outline' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Multi Line</Typography>
+      <Typography className='mbe-3'>The most basic variant with longer texts</Typography>
+      <Button className='mbe-8'variant='contained' onClick={handleClick}>
         Multi Line
       </Button>
-    </Box>
+    </div>
   )
 }
 

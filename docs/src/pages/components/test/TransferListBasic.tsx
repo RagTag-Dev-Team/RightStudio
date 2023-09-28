@@ -11,6 +11,12 @@ import Checkbox from '@mui/material/Checkbox'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
+
 const not = (a: readonly number[], b: readonly number[]) => {
   return a.filter(value => b.indexOf(value) === -1)
 }
@@ -64,7 +70,7 @@ const TransferListBasic = () => {
 
   const customList = (items: readonly number[]) => (
     <Card>
-      <List component='div' role='list' sx={{ width: 200, height: 265, overflow: 'auto' }}>
+      <List component='div' role='list' className={classnames('overflow-auto', styles.transferList)}>
         {items.map((value: number) => {
           const labelId = `transfer-list-item-${value}-label`
 
@@ -88,13 +94,13 @@ const TransferListBasic = () => {
   )
 
   return (
-    <Grid container spacing={4} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+    <Grid container spacing={4} className='items-center justify-center'>
       <Grid item>{customList(left)}</Grid>
       <Grid item>
-        <Grid container direction='column' sx={{ alignItems: 'center'}}>
+        <Grid container direction='column' className='items-center'>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleAllRight}
             aria-label='move all right'
@@ -104,7 +110,7 @@ const TransferListBasic = () => {
           </Button>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleCheckedRight}
             aria-label='move selected right'
@@ -114,7 +120,7 @@ const TransferListBasic = () => {
           </Button>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleCheckedLeft}
             aria-label='move selected left'
@@ -124,7 +130,7 @@ const TransferListBasic = () => {
           </Button>
           <Button
             size='small'
-            sx={{ my: 1 }}
+            className='mlb-1'
             variant='outlined'
             onClick={handleAllLeft}
             aria-label='move all left'

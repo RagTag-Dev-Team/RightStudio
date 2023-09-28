@@ -2,14 +2,13 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 
 const SelectNative = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel htmlFor='outlined-age-native-basic'>Age</InputLabel>
         <Select
@@ -61,7 +60,7 @@ const SelectNative = () => {
           <option value={30}>Thirty</option>
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

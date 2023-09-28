@@ -18,8 +18,14 @@ import TableContainer from '@mui/material/TableContainer'
 import TableSortLabel from '@mui/material/TableSortLabel'
 import TablePagination from '@mui/material/TablePagination'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 type Order = 'asc' | 'desc'
 
@@ -185,25 +191,20 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
 
   return (
     <Toolbar
-      sx={{
-        px: theme => `${theme.spacing(5)} !important`,
-        ...(numSelected > 0 && {
-          bgcolor: theme => `rgb(${theme.palette.primary.main, theme.palette.action.activatedOpacity})`
-        })
-      }}
+      className={classnames('pli-5', { [styles.tableSortBackground]: numSelected > 0})}
     >
       {numSelected > 0 ? (
-        <Typography sx={{ flex: '1 1 100%' }} color='inherit' variant='subtitle1' component='div'>
+        <Typography className='flex-auto' color='inherit' variant='subtitle1' component='div'>
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography sx={{ flex: '1 1 100%' }} variant='h6' id='tableTitle' component='div'>
+        <Typography className='flex-auto' variant='h6' id='tableTitle' component='div'>
           Sorting & Selecting
         </Typography>
       )}
       {numSelected > 0 ? (
         <Tooltip title='Delete'>
-          <IconButton sx={{ color: 'text.secondary' }}>
+          <IconButton className={styles.tableSortIcon}>
             <Icon icon='mdi:delete-outline' />
           </IconButton>
         </Tooltip>
@@ -271,7 +272,7 @@ const EnhancedTable = () => {
     <>
       <EnhancedTableToolbar numSelected={selected.length} />
       <TableContainer>
-        <Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
+        <Table className={styles.tableSortSelectMinWidth} aria-labelledby='tableTitle'>
           <EnhancedTableHead
             order={order}
             orderBy={orderBy}
@@ -312,11 +313,7 @@ const EnhancedTable = () => {
                 )
               })}
             {emptyRows > 0 && (
-              <TableRow
-                sx={{
-                  height: 53 * emptyRows
-                }}
-              >
+              <TableRow sx={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={6} />
               </TableRow>
             )}

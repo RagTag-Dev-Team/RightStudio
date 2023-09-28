@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -50,23 +49,23 @@ const SwiperMutationObserver = () => {
 
   return (
     <>
-      <Box ref={ref} className='keen-slider'>
+      <div ref={ref} className='keen-slider'>
         {slides.map(slide => {
           return (
-            <Box key={slide} className='keen-slider__slide default-slide'>
+            <div key={slide} className='keen-slider__slide default-slide'>
               <Typography variant='h1'>{slide}</Typography>
-            </Box>
+            </div>
           )
         })}
-      </Box>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      </div>
+      <div className='flex gap-4'>
         <Button variant='contained' onClick={() => setSlides([...slides, slides.length + 1])}>
           Add
         </Button>
         <Button variant='contained' color='error' onClick={() => setSlides(slides.slice(0, -1))}>
           Remove
         </Button>
-      </Box>
+      </div>
     </>
   )
 }

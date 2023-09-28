@@ -33,7 +33,7 @@ const ListDense = () => {
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider sx={{ m: 0 }} />
+      <Divider className='m-0' />
       <List dense>
         <ListItem disablePadding>
           <ListItemButton>

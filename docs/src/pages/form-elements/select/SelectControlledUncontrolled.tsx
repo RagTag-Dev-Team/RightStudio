@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import MenuItem from '@mui/material/MenuItem'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
@@ -18,7 +17,7 @@ const SelectControlledUncontrolled = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel id='controlled-select-label'>Controlled</InputLabel>
         <Select
@@ -47,7 +46,7 @@ const SelectControlledUncontrolled = () => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

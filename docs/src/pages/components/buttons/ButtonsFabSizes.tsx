@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 
 // Icon Imports
@@ -10,8 +9,8 @@ import Icon from '@core/components/IconifyIcon'
 
 const ButtonsFabSizes = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 5, flexDirection: 'column' }}>
-      <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+    <div className='flex gap-5 flex-col'>
+      <div className='flex gap-4 items-center'>
         <Fab color='primary' aria-label='add' size='small'>
           <Icon icon='mdi:plus' />
         </Fab>
@@ -21,22 +20,22 @@ const ButtonsFabSizes = () => {
         <Fab color='primary' aria-label='add' size='large'>
           <Icon icon='mdi:plus' />
         </Fab>
-      </Box>
-      <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-        <Fab variant='extended' size='small' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:navigation-outline' />
+      </div>
+      <div className='flex gap-4 items-center'>
+        <Fab variant='extended' size='small'>
+          <Icon icon='mdi:navigation-outline' className="mie-1"/>
           Navigate
         </Fab>
-        <Fab variant='extended' size='medium' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:navigation-outline' />
+        <Fab variant='extended' size='medium'>
+          <Icon icon='mdi:navigation-outline' className='mie-1' />
           Navigate
         </Fab>
-        <Fab variant='extended' size='large' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:navigation-outline' />
+        <Fab variant='extended' size='large'>
+          <Icon icon='mdi:navigation-outline' className='mie-1'/>
           Navigate
         </Fab>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

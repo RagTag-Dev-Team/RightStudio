@@ -2,10 +2,12 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 import { styled } from '@mui/material/styles'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 // Styled component for badge content area
 const BadgeContentSpan = styled('span')(({ theme }) => ({
@@ -18,7 +20,7 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 
 const AvatarsWithBadge = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <Badge
         overlap='circular'
         badgeContent={<BadgeContentSpan />}
@@ -39,13 +41,13 @@ const AvatarsWithBadge = () => {
           <Avatar
             alt='Marie Garza'
             src='/assets/avatars/2.png'
-            sx={{ width: 22, height: 22, border: theme => `2px solid ${theme.palette.background.paper}` }}
+            className={styles.avatarBadge}
           />
         }
       >
         <Avatar alt='Olivia Sparks' src='/assets/avatars/4.png' />
       </Badge>
-    </Box>
+    </div>
   )
 }
 

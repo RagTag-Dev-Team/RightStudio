@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
@@ -37,18 +36,18 @@ const CardLifetimeMembership = () => {
             <Divider className='mbs-7 mbe-7' />
             <Grid container>
               <Grid item xs={12} sm={6} className={classnames('flex flex-col pie-5', styles.memberGridGap)}>
-                <Box className={classnames('flex items-center', styles.memberFeatureGap)}>
+                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
                     <Icon icon='mdi:lock-open-outline' fontSize='1.25rem' />
                   </div>
                   <Typography variant='body2'>Full Access</Typography>
-                </Box>
-                <Box className={classnames('flex items-center', styles.memberFeatureGap)}>
+                </div>
+                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
                     <Icon icon='mdi:account-outline' fontSize='1.25rem' />
                   </div>
                   <Typography variant='body2'>15 Members</Typography>
-                </Box>
+                </div>
               </Grid>
               <Grid
                 item
@@ -56,18 +55,18 @@ const CardLifetimeMembership = () => {
                 sm={6}
                 className={classnames('flex flex-col pis-5', styles.memberGridGap, styles.borderLeft)}
               >
-                <Box className={classnames('flex items-center', styles.memberFeatureGap)}>
+                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
                     <Icon icon='mdi:lock-open-outline' fontSize='1.25rem' />
                   </div>
                   <Typography variant='body2'>Access all Features</Typography>
-                </Box>
-                <Box className={classnames('flex items-center', styles.memberFeatureGap)}>
+                </div>
+                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
                     <Icon icon='mdi:account-outline' fontSize='1.25rem' />
                   </div>
                   <Typography variant='body2'>Lifetime Free Update</Typography>
-                </Box>
+                </div>
               </Grid>
             </Grid>
           </CardContent>

@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -34,16 +33,16 @@ const ToastsThemed = () => {
   }
 
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:palette-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Themed</Typography>
-      <Typography sx={{ mb: 3 }}>Customize the default styles the way you want.</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={handleClick}>
+      <Icon icon='mdi:palette-outline' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Themed</Typography>
+      <Typography className='mbe-3'>Customize the default styles the way you want.</Typography>
+      <Button className='mbe-8'variant='contained' onClick={handleClick}>
         Themed
       </Button>
-    </Box>
+    </div>
   )
 }
 

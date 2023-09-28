@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -40,7 +39,7 @@ const TabsCustomizedVertical = () => {
 
   return (
     <TabContext value={value}>
-      <Box sx={{ display: 'flex' }}>
+      <div className='flex'>
         <TabList orientation='vertical' onChange={handleChange} aria-label='customized vertical tabs example'>
           <Tab value='1' label='Tab 1' />
           <Tab value='2' label='Tab 2' />
@@ -64,7 +63,7 @@ const TabsCustomizedVertical = () => {
             carrot cake gummi bears.
           </Typography>
         </TabPanel>
-      </Box>
+      </div>
     </TabContext>
   )
 }

@@ -8,11 +8,14 @@ import TreeItem from '@mui/lab/TreeItem'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 const TreeViewMultiSelection = () => {
   return (
     <TreeView
       multiSelect
-      sx={{ minHeight: 240 }}
+      className={styles.treeViewMinHeight}
       defaultExpandIcon={<Icon icon='mdi:chevron-right' />}
       defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}
     >

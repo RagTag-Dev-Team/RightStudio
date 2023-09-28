@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
@@ -12,7 +11,7 @@ import { top100Films } from '../../../data/top100films'
 
 const AutocompleteMultipleValues = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <Autocomplete
         multiple
         options={top100Films}
@@ -45,7 +44,7 @@ const AutocompleteMultipleValues = () => {
           <TextField {...params} label='Multiple values' placeholder='Favorites' variant='standard' />
         )}
       />
-    </Box>
+    </div>
   )
 }
 

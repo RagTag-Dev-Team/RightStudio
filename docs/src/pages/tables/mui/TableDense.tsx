@@ -9,6 +9,9 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 const createData = (name: string, calories: number, fat: number, carbs: number, protein: number) => {
   return { name, calories, fat, carbs, protein }
 }
@@ -24,7 +27,7 @@ const rows = [
 const TableDense = () => {
   return (
     <TableContainer>
-      <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
+      <Table className={styles.tableDenseMinWidth} size='small' aria-label='a dense table'>
         <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
@@ -35,13 +38,13 @@ const TableDense = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
-              <TableCell component='th' scope='row'>{row.name}</TableCell>
-              <TableCell align='right'>{row.calories}</TableCell>
-              <TableCell align='right'>{row.fat}</TableCell>
-              <TableCell align='right'>{row.carbs}</TableCell>
-              <TableCell align='right'>{row.protein}</TableCell>
+          {rows.map(row => ( 
+            <TableRow key={row.name} className={styles.tableRow}>
+              <TableCell className={styles.tableCell} component='th' scope='row'>{row.name}</TableCell>
+              <TableCell className={styles.tableCell} align='right'>{row.calories}</TableCell>
+              <TableCell className={styles.tableCell} align='right'>{row.fat}</TableCell>
+              <TableCell className={styles.tableCell} align='right'>{row.carbs}</TableCell>
+              <TableCell className={styles.tableCell} align='right'>{row.protein}</TableCell>
             </TableRow>
           ))}
         </TableBody>

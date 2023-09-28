@@ -15,6 +15,9 @@ import { styled } from "@mui/material/styles";
 import MuiInputBase from "@mui/material/InputBase";
 import type { InputBaseProps } from "@mui/material/InputBase";
 
+// Styles Imports
+import styles from "./styles.module.css";
+
 // Styled InputBase component
 const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -81,7 +84,7 @@ const TextFieldVariant = () => {
         </Grid>
       </CardContent>
       <CardContent>
-        <Typography variant="h6" sx={{ mb: 2 }}>
+        <Typography variant="h6" className='mbe-2'>
           Customized
         </Typography>
         <Box component="form" noValidate autoComplete="off" >
@@ -89,7 +92,7 @@ const TextFieldVariant = () => {
             <InputLabel
               shrink
               htmlFor="bootstrap-input"
-              sx={{ transform: "translate(0, -4px) scale(0.75)" }}
+              className={styles.textFieldTranslate}
             >
               Bootstrap
             </InputLabel>

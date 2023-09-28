@@ -22,7 +22,7 @@ const AutocompleteSmallSize = () => {
       <Autocomplete
         multiple
         size='small'
-        sx={{ mt: 5 }}
+        className='mbs-5'
         options={top100Films}
         defaultValue={[top100Films[13]]}
         id='autocomplete-size-small-multi'

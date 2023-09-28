@@ -23,8 +23,9 @@ const AutocompleteCountry = () => {
       options={countries as CountryType[]}
       getOptionLabel={option => option.label || ''}
       renderOption={(props, option) => (
-        <Box component='li' sx={{ '& > img': { mr: 4, flexShrink: 0 } }} {...props} key={option.label}>
+        <Box component='li' {...props} key={option.label}>
           <img
+          className='mie-4 flex-shrink-0'
             alt=''
             width='20'
             loading='lazy'

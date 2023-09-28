@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography'
 const SliderSizes = () => {
   return (
     <div>
-      <Typography sx={{ fontWeight: 500 }}>Small</Typography>
+      <Typography className='font-medium'>Small</Typography>
       <Slider size='small' defaultValue={30} aria-labelledby='small-slider' />
-      <Typography sx={{ fontWeight: 500 }}>Normal</Typography>
+      <Typography className='font-medium'>Normal</Typography>
       <Slider defaultValue={30} aria-labelledby='normal-slider' />
     </div>
   )

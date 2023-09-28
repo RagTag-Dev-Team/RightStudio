@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Badge from '@mui/material/Badge'
 
 // Third-party Components
@@ -29,24 +28,24 @@ const SwiperControls = () => {
 
   return (
     <>
-      <Box className='navigation-wrapper'>
-        <Box ref={sliderRef} className='keen-slider'>
-          <Box className='keen-slider__slide'>
+      <div className='navigation-wrapper'>
+        <div ref={sliderRef} className='keen-slider'>
+          <div className='keen-slider__slide'>
             <img src='/images/banners/1.jpg' alt='swiper 1' />
-          </Box>
-          <Box className='keen-slider__slide'>
+          </div>
+          <div className='keen-slider__slide'>
             <img src='/images/banners/2.jpg' alt='swiper 2' />
-          </Box>
-          <Box className='keen-slider__slide'>
+          </div>
+          <div className='keen-slider__slide'>
             <img src='/images/banners/3.jpg' alt='swiper 3' />
-          </Box>
-          <Box className='keen-slider__slide'>
+          </div>
+          <div className='keen-slider__slide'>
             <img src='/images/banners/4.jpg' alt='swiper 4' />
-          </Box>
-          <Box className='keen-slider__slide'>
+          </div>
+          <div className='keen-slider__slide'>
             <img src='/images/banners/5.jpg' alt='swiper 5' />
-          </Box>
-        </Box>
+          </div>
+        </div>
         {loaded && instanceRef.current && (
           <>
             <Icon
@@ -66,9 +65,9 @@ const SwiperControls = () => {
             />
           </>
         )}
-      </Box>
+      </div>
       {loaded && instanceRef.current && (
-        <Box className='swiper-dots'>
+        <div className='swiper-dots'>
           {[...Array(instanceRef.current.track.details.slides.length).keys()].map(idx => {
             return (
               <Badge
@@ -84,7 +83,7 @@ const SwiperControls = () => {
               ></Badge>
             )
           })}
-        </Box>
+        </div>
       )}
     </>
   )

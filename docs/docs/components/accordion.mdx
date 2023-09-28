@@ -8,6 +8,8 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 
+import classnames from 'classnames'
+
 import CardSnippet from '@docComponents/card-snippet/index'
 import AccordionBasic from '@docPages/components/accordion/AccordionBasic'
 import SourceCodeAccordionBasic from '!!raw-loader!@docPages/components/accordion/AccordionBasic.tsx'
@@ -17,6 +19,8 @@ import AccordionControlled from '@docPages/components/accordion/AccordionControl
 import SourceCodeAccordionControlled from '!!raw-loader!@docPages/components/accordion/AccordionControlled.tsx'
 import AccordionCustomized from '@docPages/components/accordion/AccordionCustomized'
 import SourceCodeAccordionCustomized from '!!raw-loader!@docPages/components/accordion/AccordionCustomized.tsx'
+
+import styles from '@site/src/styles/styles.module.css'
 
 <Grid container spacing={6}>
   <Grid item xs={12}>
@@ -37,13 +41,9 @@ import SourceCodeAccordionCustomized from '!!raw-loader!@docPages/components/acc
     <CardSnippet
       title="Basic Accordion"
       code={SourceCodeAccordionBasic}
-      sx={{
-        boxShadow: "none",
-        backgroundColor: "transparent",
-        border: (theme) => `1px solid ${theme.palette.divider}`,
-      }}
+      className={classnames('bg-transparent', styles.accordion)}
     >
-      <Typography sx={{ mb: 4 }}>
+      <Typography className='mbe-4'>
         Use <code>Accordion</code>, <code>AccordionSummary</code> and <code>AccordionDetails</code> components to make a simple accordion.
       </Typography>
       <AccordionBasic />
@@ -53,13 +53,9 @@ import SourceCodeAccordionCustomized from '!!raw-loader!@docPages/components/acc
     <CardSnippet
       title="Controlled Accordion"
       code={SourceCodeAccordionControlled}
-      sx={{
-        boxShadow: "none",
-        backgroundColor: "transparent",
-        border: (theme) => `1px solid ${theme.palette.divider}`,
-      }}
+      className={classnames('bg-transparent', styles.accordion)}
     >
-      <Typography sx={{ mb: 4 }}>
+      <Typography className='mbe-4'>
         Manage <code>expanded</code> prop with the help of a state.
       </Typography>
       <AccordionControlled />
@@ -69,13 +65,9 @@ import SourceCodeAccordionCustomized from '!!raw-loader!@docPages/components/acc
     <CardSnippet
       title="Customized Accordion"
       code={SourceCodeAccordionCustomized}
-      sx={{
-        boxShadow: "none",
-        backgroundColor: "transparent",
-        border: (theme) => `1px solid ${theme.palette.divider}`,
-      }}
+      className={classnames('bg-transparent', styles.accordion)}
     >
-      <Typography sx={{ mb: 4 }}>
+      <Typography className='mbe-4'>
         Use <code>styled</code> hook to customize the component the way you want it.
       </Typography>
       <AccordionCustomized />
@@ -85,13 +77,9 @@ import SourceCodeAccordionCustomized from '!!raw-loader!@docPages/components/acc
     <CardSnippet
       title="Additional Actions"
       code={SourceCodeAccordionActions}
-      sx={{
-        boxShadow: "none",
-        backgroundColor: "transparent",
-        border: (theme) => `1px solid ${theme.palette.divider}`,
-      }}
+      className={classnames('bg-transparent', styles.accordion)}
     >
-      <Typography sx={{ mb: 4 }}>
+      <Typography className='mbe-4'>
         In order to put an action such as a Checkbox or a button inside <code>AccordionSummary</code>, you need to stop the propagation of the focus and click events to prevent the accordion from expanding/collapsing when using the action.
       </Typography>
       <AccordionActions />

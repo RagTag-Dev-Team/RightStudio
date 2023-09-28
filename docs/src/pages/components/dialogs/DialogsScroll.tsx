@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -37,7 +36,7 @@ const DialogsScroll = () => {
   }, [open])
 
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <Button variant='outlined' onClick={handleClickOpen('paper')}>
         scroll=paper
       </Button>
@@ -62,12 +61,12 @@ const DialogsScroll = () => {
             )}
           </DialogContentText>
         </DialogContent>
-        <DialogActions sx={{ p: theme => `${theme.spacing(2.5)} !important` }}>
+        <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose}>Subscribe</Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </div>
   )
 }
 

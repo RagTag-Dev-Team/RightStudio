@@ -48,7 +48,7 @@ const RadioShowError = () => {
           <FormControlLabel value='worst' control={<Radio />} label='The worst.' />
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
-        <Button type='submit' variant='outlined' sx={{ mt: 3 }}>
+        <Button type='submit' variant='outlined' className='mbs-3'>
           Check Answer
         </Button>
       </FormControl>

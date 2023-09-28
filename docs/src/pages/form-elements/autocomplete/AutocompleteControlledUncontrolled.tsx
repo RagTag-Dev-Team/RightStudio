@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 
@@ -24,7 +23,7 @@ const AutocompleteControlledUncontrolled = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <Autocomplete
         value={value}
         options={top100Films}
@@ -39,7 +38,7 @@ const AutocompleteControlledUncontrolled = () => {
         getOptionLabel={option => option.title || ''}
         renderInput={params => <TextField {...params} label='Uncontrolled' />}
       />
-    </Box>
+    </div>
   )
 }
 

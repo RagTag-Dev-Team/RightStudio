@@ -2,12 +2,14 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const ButtonsContained = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <Button variant='contained'>Primary</Button>
       <Button variant='contained' color='secondary'>
         Secondary
@@ -15,10 +17,10 @@ const ButtonsContained = () => {
       <Button variant='contained' disabled>
         Disabled
       </Button>
-      <Button variant='contained' href='#' sx={{ '&:hover': { color: 'primary.contrastText' } }}>
+      <Button variant='contained' href='#' className={styles.linkButton}>
         Link
       </Button>
-    </Box>
+    </div>
   )
 }
 

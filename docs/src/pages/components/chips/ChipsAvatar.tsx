@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 
@@ -11,7 +10,7 @@ import Icon from '@core/components/IconifyIcon'
 
 const ChipsAvatar = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+    <div className='flex gap-4 flex-wrap'>
       <Chip label='Default' avatar={<Avatar />} />
       <Chip label='Howard Paul' avatar={<Avatar src='/assets/avatars/7.png' alt='User Avatar' />} />
       <Chip label='Maurice Bell' avatar={<Avatar>M</Avatar>} />
@@ -23,7 +22,7 @@ const ChipsAvatar = () => {
           </Avatar>
         }
       />
-    </Box>
+    </div>
   )
 }
 

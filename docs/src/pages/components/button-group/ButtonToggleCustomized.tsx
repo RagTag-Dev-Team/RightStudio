@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import { styled } from '@mui/material/styles'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
@@ -40,7 +39,7 @@ const ButtonToggleCustomized = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div className='flex flex-wrap'>
       <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
         <ToggleButton value='left' aria-label='left aligned'>
           <Icon icon='mdi:format-align-left' />
@@ -55,7 +54,7 @@ const ButtonToggleCustomized = () => {
           <Icon icon='mdi:format-align-justify' />
         </ToggleButton>
       </ToggleButtonGroup>
-      <Divider flexItem orientation='vertical' sx={{ m: 1 }} />
+      <Divider flexItem orientation='vertical' className='m-1'/>
       <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='text alignment'>
         <ToggleButton value='bold' aria-label='bold'>
           <Icon icon='mdi:format-bold' />
@@ -70,7 +69,7 @@ const ButtonToggleCustomized = () => {
           <Icon icon='mdi:format-color-fill' />
         </ToggleButton>
       </ToggleButtonGroup>
-    </Box>
+    </div>
   )
 }
 

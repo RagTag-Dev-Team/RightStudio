@@ -2,32 +2,21 @@
 import React, { useEffect, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
 import type { CircularProgressProps } from '@mui/material/CircularProgress'
 
 const Progress = (props: CircularProgressProps) => {
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+    <div className='relative inline-flex'>
       <CircularProgress variant='determinate' {...props} size={50} />
-      <Box
-        sx={{
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          position: 'absolute',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
+      <div className='flex absolute top-0 left-0 right-0 bottom-0 items-center justify-center'
       >
         <Typography variant='caption' component='div' color='text.secondary'>
           {`${Math.round(props.value as number)}%`}
         </Typography>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

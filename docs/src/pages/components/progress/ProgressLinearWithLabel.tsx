@@ -2,19 +2,18 @@
 import React, { useEffect, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import type { LinearProgressProps } from '@mui/material/LinearProgress'
 
 const LinearProgressWithLabel = (props: LinearProgressProps & { value: number }) => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-      <Box sx={{ width: '100%' }}>
+    <div className='flex items-center gap-3'>
+      <div className='w-full'>
         <LinearProgress variant='determinate' {...props} />
-      </Box>
+      </div>
       <Typography variant='body2' color='text.secondary'>{`${Math.round(props.value)}%`}</Typography>
-    </Box>
+    </div>
   )
 }
 

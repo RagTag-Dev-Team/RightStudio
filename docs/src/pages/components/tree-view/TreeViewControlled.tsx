@@ -9,6 +9,9 @@ import TreeItem from '@mui/lab/TreeItem'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 const TreeViewControlled = () => {
   // States
   const [expanded, setExpanded] = useState<string[]>([])
@@ -26,7 +29,7 @@ const TreeViewControlled = () => {
     <TreeView
       expanded={expanded}
       selected={selected}
-      sx={{ minHeight: 240 }}
+      className={styles.treeViewMinHeight}
       onNodeToggle={handleToggle}
       onNodeSelect={handleSelect}
       defaultExpandIcon={<Icon icon='mdi:chevron-right' />}

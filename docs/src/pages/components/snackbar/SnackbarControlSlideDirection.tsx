@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { ComponentType } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar'
 import Slide from '@mui/material/Slide'
@@ -43,7 +42,7 @@ const SnackbarControlSlideDirection = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      <div className='flex gap-3'>
         <Button variant='outlined' onClick={handleClick(TransitionLeft)}>
           Right
         </Button>
@@ -56,7 +55,7 @@ const SnackbarControlSlideDirection = () => {
         <Button variant='outlined' onClick={handleClick(TransitionDown)}>
           Down
         </Button>
-      </Box>
+      </div>
       <Snackbar
         open={open}
         onClose={handleClose}

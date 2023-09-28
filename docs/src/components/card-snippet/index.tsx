@@ -56,11 +56,11 @@ const CardSnippet = (props: CardSnippetProps) => {
       <CardContent>{children}</CardContent>
       {hidden ? null : (
         <Collapse in={showCode}>
-          <Divider sx={{ my: 0 }} />
+          <Divider className='mlb-0' />
           <CardContent
+          className='relative'
             sx={{
-              position: "relative",
-              "& > :first-of-type": { mb: 0  },
+              "& > :first-of-type": { marginBlockEnd: 0 },
               "& pre": { m: "0 !important", maxHeight: 500 },
               ".tabs__item": {
                 paddingBlock: '6px',

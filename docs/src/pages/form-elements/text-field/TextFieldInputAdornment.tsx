@@ -38,7 +38,7 @@ const TextFieldInputAdornment = () => {
   }
 
   return (
-    <Box component='form' noValidate autoComplete='off' sx={{ display: 'flex', gap: 4, flexWrap: 'wrap', flexDirection: 'column' }}>
+    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-wrap flex-col'>
       <TextField
         id='icons-start-adornment'
         label='With normal TextField'

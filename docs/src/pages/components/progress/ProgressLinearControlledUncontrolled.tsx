@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 
@@ -29,12 +28,12 @@ const ProgressLinearControlledUncontrolled = () => {
 
   return (
     <>
-      <Box sx={{ mb: 4 }}>
-        <Typography sx={{ fontWeight: 500, mb: 1.5 }}>Uncontrolled Progress</Typography>
+      <div className='mbe-4'>
+        <Typography className='font-medium mbe-1.5'>Uncontrolled Progress</Typography>
         <LinearProgress variant='determinate' value={40} />
-      </Box>
+      </div>
       <>
-        <Typography sx={{ fontWeight: 500, mb: 1.5 }}>Controlled Progress</Typography>
+        <Typography className='font-medium mbe-1.5'>Controlled Progress</Typography>
         <LinearProgress variant='determinate' value={progress} />
       </>
     </>

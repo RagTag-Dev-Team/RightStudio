@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import type { MouseEvent } from "react";
 
 // MUI Imports
-import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -22,7 +21,7 @@ const ButtonToggleSizes = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", gap: 4, flexDirection: "column", alignItems: 'flex-start' }}>
+    <div className='flex flex-col gap-4 items-start'>
       <ToggleButtonGroup
         exclusive
         size="small"
@@ -82,7 +81,7 @@ const ButtonToggleSizes = () => {
           <Icon icon="mdi:format-align-justify" />
         </ToggleButton>
       </ToggleButtonGroup>
-    </Box>
+    </div>
   );
 };
 

@@ -17,6 +17,12 @@ import InputAdornment from '@mui/material/InputAdornment'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Third Party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
+
 const TextFieldIcons = () => {
   return (
     <Card>
@@ -50,9 +56,9 @@ const TextFieldIcons = () => {
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container sx={{ alignItems: 'center'}}>
-              <Grid item xs={1} sx={{ '& svg': { color: 'action.active' } }}>
-                <Icon icon='mdi:account-circle-outline' />
+            <Grid container className='items-center'>
+              <Grid item xs={1}>
+                <Icon icon='mdi:account-circle-outline' className={styles.textFieldIconColor}/>
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth label='With a grid' />
@@ -86,9 +92,9 @@ const TextFieldIcons = () => {
           />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container sx={{ alignItems: 'center'}}>
-              <Grid item xs={1} sx={{ '& svg': { color: 'action.active' } }}>
-                <Icon icon='mdi:account-circle-outline' />
+            <Grid container className='items-center'>
+              <Grid item xs={1}>
+                <Icon icon='mdi:account-circle-outline' className={styles.textFieldIconColor}/>
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='filled' label='With a grid' />
@@ -122,9 +128,9 @@ const TextFieldIcons = () => {
           />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container sx={{ alignItems: 'center'}}>
-              <Grid item xs={1} sx={{ '& svg': { mt: 3, color: 'action.active' } }}>
-                <Icon icon='mdi:account-circle-outline' />
+            <Grid container className='items-center'>
+              <Grid item xs={1}>
+                <Icon icon='mdi:account-circle-outline' className={classnames('mbs-3' ,styles.textFieldIconColor)}/>
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='standard' label='With a grid' />

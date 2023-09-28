@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputLabel from '@mui/material/InputLabel'
@@ -11,7 +10,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 
 const SelectProps = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel id='demo-basic-select-helper-label'>Age</InputLabel>
         <Select label='Age' defaultValue='' id='demo-basic-select-helper' labelId='demo-basic-select-helper-label'>
@@ -123,7 +122,7 @@ const SelectProps = () => {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

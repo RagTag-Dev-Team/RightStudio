@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar'
@@ -46,14 +45,14 @@ const SnackbarConsecutive = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      <div className='flex gap-4'>
         <Button variant='outlined' onClick={handleClick('success')}>
           Success Alert
         </Button>
         <Button variant='outlined' onClick={handleClick('error')}>
           Error Alert
         </Button>
-      </Box>
+      </div>
       <Snackbar
         open={open}
         onClose={handleClose}
@@ -66,7 +65,7 @@ const SnackbarConsecutive = () => {
           elevation={3}
           variant='filled'
           onClose={handleClose}
-          sx={{ width: '100%' }}
+          className='w-full'
           severity={messageInfo?.message === 'success' ? 'success' : 'error'}
         >
           This is {messageInfo?.message === 'success' ? 'a success' : 'an error'} message!

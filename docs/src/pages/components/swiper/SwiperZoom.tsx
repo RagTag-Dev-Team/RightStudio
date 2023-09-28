@@ -3,10 +3,18 @@ import React, { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
 
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 import type { TrackDetails } from 'keen-slider/react'
+
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const images = [
   '/images/banners/6.jpg',
@@ -40,16 +48,22 @@ const SwiperZoom = () => {
     }
   }
 
+  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   return (
-    <Box ref={sliderRef} className='keen-slider zoom-out' sx={{ height: [200, 250, 395] }}>
+    <div ref={sliderRef} className={classnames('keen-slider zoom-out', {[styles.swiperCommonHeight395]: isAboveMdScreen,
+      [styles.swiperCommonHeight250]: isBelowMdScreen, 
+      [styles.swiperCommonHeight200]: isBelowSmScreen})}>
       {images.map((src, idx) => (
-        <Box key={idx} className='keen-slider__slide zoom-out__slide'>
+        <div key={idx} className='keen-slider__slide zoom-out__slide'>
           <Box className='slider-content-wrapper' sx={{ ...scaleStyle(idx) }}>
             <img src={src} alt={`slider ${idx}`} />
           </Box>
-        </Box>
+        </div>
       ))}
-    </Box>
+    </div>
   )
 }
 

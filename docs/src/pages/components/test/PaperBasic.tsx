@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import MuiPaper from '@mui/material/Paper'
@@ -23,26 +22,26 @@ const PaperBasic = () => {
   return (
     <>
       <Typography variant='h6'>Simple Paper</Typography>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div className='flex flex-wrap'>
         <Paper elevation={0}>
-          <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <div className='flex flex-col items-center'>
             <Typography>elevation</Typography>
             <Typography variant='h6'>0</Typography>
-          </Box>
+          </div>
         </Paper>
         <Paper>
-          <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <div className='flex flex-col items-center'>
             <Typography>elevation</Typography>
             <Typography variant='h6'>Default</Typography>
-          </Box>
+          </div>
         </Paper>
         <Paper elevation={3}>
-          <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <div className='flex flex-col items-center'>
             <Typography>elevation</Typography>
             <Typography variant='h6'>3</Typography>
-          </Box>
+          </div>
         </Paper>
-      </Box>
+      </div>
     </>
   )
 }

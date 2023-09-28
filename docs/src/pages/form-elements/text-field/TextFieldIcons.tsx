@@ -12,6 +12,9 @@ import InputAdornment from '@mui/material/InputAdornment'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
+// Styles Imports
+import styles from './styles.module.css'
+
 const TextFieldIcons = () => {
   return (
     <Grid container spacing={6}>
@@ -44,9 +47,9 @@ const TextFieldIcons = () => {
       />
       </Grid>
       <Grid item xs={12}>
-        <Grid container spacing={2} sx={{ alignItems: 'flex-end' }}>
-          <Grid item xs={1} sx={{ display: 'flex', justifyContent: 'center' , '& svg': { color: 'action.active' } }}>
-            <Icon icon='mdi:account-circle-outline' />
+        <Grid container spacing={2} className='items-end'>
+          <Grid item xs={1} className='flex justify-center'>
+            <Icon icon='mdi:account-circle-outline' className={styles.textFiledIconColor} />
           </Grid>
           <Grid item xs={11}>
             <TextField fullWidth variant='standard' id='input-with-icon-grid' label='With a grid' />

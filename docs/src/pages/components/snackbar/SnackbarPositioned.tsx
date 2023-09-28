@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar'
 import type { SnackbarOrigin } from '@mui/material/Snackbar'
@@ -30,7 +29,7 @@ const SnackbarPositioned = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+      <div className='flex items-center gap-4 flex-wrap'>
         <Button variant='outlined' onClick={handleClick({ vertical: 'top', horizontal: 'center' })}>
           Top Center
         </Button>
@@ -49,7 +48,7 @@ const SnackbarPositioned = () => {
         <Button variant='outlined' onClick={handleClick({ vertical: 'top', horizontal: 'left' })}>
           Top Left
         </Button>
-      </Box>
+      </div>
       <Snackbar
         open={open}
         onClose={handleClose}

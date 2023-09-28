@@ -1,0 +1,8 @@
+.dropZoneTextAlign {
+    text-align: inherit;
+}
+
+.dropZone {
+    color: var(--mui-palette-text-primary);
+    text-decoration: none;
+}

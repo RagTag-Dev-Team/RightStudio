@@ -148,7 +148,7 @@ const TextFieldInputAdornment = () => {
           />
           </Grid>
           <Grid item xs={12} md={4}>
-          <FormControl variant='standard' sx={{ mt: 3 }} fullWidth>
+          <FormControl variant='standard' className='mbs-3' fullWidth>
             <Input
               value={values.weight}
               onChange={handleChange('weight')}

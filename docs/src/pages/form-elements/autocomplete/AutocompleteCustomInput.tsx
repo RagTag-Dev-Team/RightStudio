@@ -16,6 +16,7 @@ const AutocompleteCustomInput = () => {
           <input type='text' {...params.inputProps} />
         </div>
       )}
+      // className={classnames('inline-block', styles.autocompleteCustomInput)}
       sx={{
         display: 'inline-block',
         '& input': {

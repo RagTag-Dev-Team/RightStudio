@@ -1,0 +1,6 @@
+.textFieldIconColor {
+    color: var(--mui-palette-action-active);
+}
+.textFieldTranslate {
+    transform: translate(0, -0.25rem) scale(0.75);
+}

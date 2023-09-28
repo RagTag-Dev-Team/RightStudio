@@ -1,9 +1,6 @@
 // React Imports
 import React from 'react'
 
-// MUI Imports
-import Box from '@mui/material/Box'
-
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 
@@ -16,23 +13,23 @@ const SwiperMultipleSlides = () => {
   })
 
   return (
-    <Box ref={ref} className='keen-slider'>
-      <Box className='keen-slider__slide'>
+    <div ref={ref} className='keen-slider'>
+      <div className='keen-slider__slide'>
         <img src='/images/banners/11.jpg' alt='swiper 11' />
-      </Box>
-      <Box className='keen-slider__slide'>
+      </div>
+      <div className='keen-slider__slide'>
         <img src='/images/banners/12.jpg' alt='swiper 12' />
-      </Box>
-      <Box className='keen-slider__slide'>
+      </div>
+      <div className='keen-slider__slide'>
         <img src='/images/banners/13.jpg' alt='swiper 13' />
-      </Box>
-      <Box className='keen-slider__slide'>
+      </div>
+      <div className='keen-slider__slide'>
         <img src='/images/banners/14.jpg' alt='swiper 14' />
-      </Box>
-      <Box className='keen-slider__slide'>
+      </div>
+      <div className='keen-slider__slide'>
         <img src='/images/banners/15.jpg' alt='swiper 15' />
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

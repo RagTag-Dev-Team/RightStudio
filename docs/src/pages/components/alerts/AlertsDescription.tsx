@@ -2,13 +2,12 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
 const AlertsDescription = () => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div className='flex flex-col gap-4'>
       <Alert severity='error'>
         <AlertTitle>Error</AlertTitle>
         This is an error alert — <strong>check it out!</strong>
@@ -25,7 +24,7 @@ const AlertsDescription = () => {
         <AlertTitle>Success</AlertTitle>
         This is a success alert — <strong>check it out!</strong>
       </Alert>
-    </Box>
+    </div>
   )
 }
 

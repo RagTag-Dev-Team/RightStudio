@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
 
@@ -12,20 +11,20 @@ const RatingsBasic = () => {
 
   return (
     <>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>Controlled</Typography>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>Controlled</Typography>
         <Rating value={value} name='basic-controlled' onChange={(event, newValue) => setValue(newValue)} />
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>Read only</Typography>
+      </div>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>Read only</Typography>
         <Rating readOnly value={value} name='read-only' />
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>Disabled</Typography>
+      </div>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>Disabled</Typography>
         <Rating disabled value={value} name='disabled' />
-      </Box>
+      </div>
       <div>
-        <Typography sx={{ fontWeight: 500 }}>No rating given</Typography>
+        <Typography className='font-medium'>No rating given</Typography>
         <Rating value={null} name='no-value' />
       </div>
     </>

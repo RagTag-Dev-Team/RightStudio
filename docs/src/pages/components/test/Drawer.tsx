@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { KeyboardEvent, MouseEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Drawer from '@mui/material/Drawer'
 import Button from '@mui/material/Button'
@@ -15,6 +14,9 @@ import ListItemButton from '@mui/material/ListItemButton'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const DrawerComponent = () => {
   // States
@@ -37,7 +39,7 @@ const DrawerComponent = () => {
         Left
       </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
-        <Box role='presentation' sx={{ width: 260 }} onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+        <div role='presentation' className={styles.drawerWidth} onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <List>
             <ListItem disablePadding>
               <ListItemButton>
@@ -75,7 +77,7 @@ const DrawerComponent = () => {
               </ListItemButton>
             </ListItem>
           </List>
-        </Box>
+        </div>
       </Drawer>
     </>
   )

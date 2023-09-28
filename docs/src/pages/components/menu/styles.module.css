@@ -1,0 +1,3 @@
+.menuZIndex + div {
+ z-index: var(--mui-zIndex-modal);   
+}

@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 
@@ -11,7 +10,7 @@ import { top100Films } from '../../../data/top100films'
 
 const AutocompleteProps = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <Autocomplete
         disableCloseOnSelect
         options={top100Films}
@@ -68,7 +67,7 @@ const AutocompleteProps = () => {
         getOptionLabel={option => option.title || ''}
         renderInput={params => <TextField {...params} label='clearOnBlur' />}
       />
-    </Box>
+    </div>
   )
 }
 

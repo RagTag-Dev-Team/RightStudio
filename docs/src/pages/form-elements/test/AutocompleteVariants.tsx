@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
@@ -22,8 +21,8 @@ const AutocompleteVariants = () => {
       <CardContent>
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, flexDirection: 'column' }}>
+            <div className='flex gap-4 flex-col'>
+              <div className='flex gap-4 flex-wrap flex-col'>
                 <Autocomplete
                   options={top100Films}
                   getOptionLabel={option => option.title || ''}
@@ -39,8 +38,8 @@ const AutocompleteVariants = () => {
                   getOptionLabel={option => option.title || ''}
                   renderInput={params => <TextField {...params} label='Combo box' variant='standard' />}
                 />
-              </Box>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, flexDirection: 'column'  }}>
+              </div>
+              <div className='flex gap-4 flex-col flex-wrap'>
                 <Autocomplete
                   disabled
                   options={top100Films}
@@ -59,19 +58,19 @@ const AutocompleteVariants = () => {
                   getOptionLabel={option => option.title || ''}
                   renderInput={params => <TextField {...params} label='Disabled' variant='standard' />}
                 />
-              </Box>
-            </Box>
+              </div>
+            </div>
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography variant='h6'>Multiple Values</Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', gap: 5 }}>
+              <div className='flex gap-5 flex-col flex-wrap'>
                 <Autocomplete
                   multiple
                   options={top100Films}
                   filterSelectedOptions
                   defaultValue={[top100Films[13]]}
                   getOptionLabel={option => option.title || ''}
-                  sx={{ mt: 5}}
+                  className='mbs-5'
                   renderInput={params => <TextField {...params} label='filterSelectedOptions' placeholder='Favorites' />}
                 />
                 <Autocomplete
@@ -95,10 +94,10 @@ const AutocompleteVariants = () => {
                     <TextField {...params} label='Multiple values' placeholder='Favorites' variant='standard' />
                   )}
                 />
-              </Box>
+              </div>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant='h6' sx={{ mb: 4 }}>
+            <Typography variant='h6' className='mbe-4'>
             Small Size
             </Typography>
           </Grid>
@@ -113,7 +112,7 @@ const AutocompleteVariants = () => {
               <Autocomplete
                 multiple
                 size='small'
-                sx={{ mt: 5 }}
+                className='mbs-5'
                 options={top100Films}
                 defaultValue={[top100Films[13]]}
                 getOptionLabel={option => option.title || ''}
@@ -133,7 +132,7 @@ const AutocompleteVariants = () => {
             <Autocomplete
               multiple
               size='small'
-              sx={{ mt: 5 }}
+              className='mbs-5'
               defaultValue={[top100Films[13].title]}
               options={top100Films.map(option => option.title || '')}
               renderInput={params => (
@@ -159,7 +158,7 @@ const AutocompleteVariants = () => {
             <Autocomplete
               multiple
               size='small'
-              sx={{ mt: 5 }}
+              className='mbs-5'
               options={top100Films}
               defaultValue={[top100Films[13]]}
               getOptionLabel={option => option.title || ''}

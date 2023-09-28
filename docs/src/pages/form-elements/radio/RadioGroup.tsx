@@ -10,7 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 const RadioGroupComponent = () => {
 
   return (
-    <FormControl sx={{ flexWrap: 'wrap', flexDirection: 'row' }}>
+    <FormControl className='flex-wrap flex-row'>
       <RadioGroup row defaultValue='checked' name='basic-radio' aria-label='basic-radio'>
         <FormControlLabel value='checked' control={<Radio />} label='Checked' />
         <FormControlLabel value='unchecked' control={<Radio />} label='Unchecked' />

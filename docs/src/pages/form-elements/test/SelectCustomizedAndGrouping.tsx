@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
@@ -72,7 +71,7 @@ const SelectCustomizedAndGrouping = () => {
     <Card>
       <CardHeader title='Customized' />
       <CardContent>
-        <CustomFormControl sx={{ mr: 4, mb: 4 }} fullWidth>
+        <CustomFormControl className='mie-4 mbe-4' fullWidth>
           <InputLabel id='demo-customized-select-label'>Age</InputLabel>
           <Select
             value={value}
@@ -101,8 +100,8 @@ const SelectCustomizedAndGrouping = () => {
       </CardContent>
 
       <CardContent>
-        <Typography variant='h6' sx={{ mb: 4 }}>Grouping</Typography>
-        <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+        <Typography variant='h6' className='mbe-4'>Grouping</Typography>
+        <div className='flex gap-4 flex-col'>
           <FormControl fullWidth>
             <InputLabel htmlFor='grouped-select'>Grouping</InputLabel>
             <Select label='Grouping' defaultValue='' id='grouped-select'>
@@ -131,7 +130,7 @@ const SelectCustomizedAndGrouping = () => {
               </optgroup>
             </Select>
           </FormControl>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

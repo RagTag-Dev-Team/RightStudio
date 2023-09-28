@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField'
 
 const TextFieldValidation = () => {
   return (
-    <Box component='form' noValidate autoComplete='off' sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-col'>
       <TextField error id='validation-error' label='Error' defaultValue='Hello World' />
       <TextField
         error

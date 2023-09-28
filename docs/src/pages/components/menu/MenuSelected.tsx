@@ -37,7 +37,7 @@ const MenuSelected = () => {
 
   return (
     <>
-      <List component='nav' sx={{ p: 0 }} aria-label='Device settings'>
+      <List component='nav' className='p-0' aria-label='Device settings'>
         <ListItem
           disablePadding
           aria-haspopup='true'

@@ -1,11 +1,12 @@
 // React Imports
 import React from 'react'
 
-// MUI Imports
-import Box from '@mui/material/Box'
-
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const SwiperVertical = () => {
   // Hooks
@@ -18,13 +19,13 @@ const SwiperVertical = () => {
   })
 
   return (
-    <Box ref={ref} className='keen-slider vertical' sx={{ maxHeight: 300 }}>
+    <div ref={ref} className={classnames('keen-slider vertical', styles.swiperMaxHeight)}>
       {[...Array(10).keys()].map((num: number) => (
-        <Box key={num} className='keen-slider__slide default-slide'>
+        <div key={num} className='keen-slider__slide default-slide'>
           {num + 1}
-        </Box>
+        </div>
       ))}
-    </Box>
+    </div>
   )
 }
 

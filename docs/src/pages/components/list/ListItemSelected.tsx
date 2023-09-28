@@ -31,7 +31,7 @@ const ListItemSelected = () => {
       }>
         <ListItemButton selected={selectedIndex === 0} onClick={() => handleListItemClick(0)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/2.png' alt='Caroline Black' sx={{ height: 32, width: 32 }} />
+            <Avatar src='/assets/avatars/2.png' alt='Caroline Black' className='h-8 w-8' />
           </ListItemAvatar>
           <ListItemText primary='Caroline Black' />
         </ListItemButton>
@@ -43,7 +43,7 @@ const ListItemSelected = () => {
       }>
         <ListItemButton selected={selectedIndex === 1} onClick={() => handleListItemClick(1)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/1.png' alt='Alfred Copeland' sx={{ height: 32, width: 32 }} />
+            <Avatar src='/assets/avatars/1.png' alt='Alfred Copeland' className='h-8 w-8' />
           </ListItemAvatar>
           <ListItemText primary='Alfred Copeland' />
         </ListItemButton>
@@ -55,7 +55,7 @@ const ListItemSelected = () => {
       }>
         <ListItemButton selected={selectedIndex === 2} onClick={() => handleListItemClick(2)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/8.png' alt='Celia Schneider' sx={{ height: 32, width: 32 }} />
+            <Avatar src='/assets/avatars/8.png' alt='Celia Schneider' className='h-8 w-8' />
           </ListItemAvatar>
           <ListItemText primary='Celia Schneider' />
         </ListItemButton>

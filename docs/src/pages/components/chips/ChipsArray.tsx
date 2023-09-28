@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 
@@ -30,7 +29,7 @@ const ChipsArray = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+    <div className='flex gap-4 flex-wrap'>
       {chipData.map(data => (
         <Chip
           key={data.key}
@@ -39,7 +38,7 @@ const ChipsArray = () => {
           onDelete={data.key === 2 ? undefined : handleDelete(data)}
         />
       ))}
-    </Box>
+    </div>
   )
 }
 

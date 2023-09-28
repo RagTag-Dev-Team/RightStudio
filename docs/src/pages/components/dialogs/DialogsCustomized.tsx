@@ -10,8 +10,14 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const DialogsCustomized = () => {
   // States
@@ -27,25 +33,25 @@ const DialogsCustomized = () => {
         Open dialog
       </Button>
       <Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
-        <DialogTitle id='customized-dialog-title' sx={{ p: 4 }}>
+        <DialogTitle id='customized-dialog-title' className='p-4'>
           <Typography variant='h6' component='span'>
             Modal title
           </Typography>
           <IconButton
             aria-label='close'
             onClick={handleClose}
-            sx={{ top: 10, right: 10, position: 'absolute', color: 'grey.500' }}
+            className={classnames('absolute top-2.5 right-2.5', styles.closeButton)}
           >
             <Icon icon='mdi:close' />
           </IconButton>
         </DialogTitle>
-        <DialogContent dividers sx={{ p: 4 }}>
-          <Typography sx={{ mb: 4 }}>
+        <DialogContent dividers className='p-4'>
+          <Typography className='mbe-4'>
             Chupa chups jelly-o candy sweet roll wafer cake chocolate bar. Brownie sweet roll topping cake chocolate
             cake cheesecake tiramisu chocolate cake. Jujubes liquorice chocolate bar pastry. Chocolate jujubes caramels
             pastry.
           </Typography>
-          <Typography sx={{ mb: 4 }}>
+          <Typography className='mbe-4'>
             Ice cream marshmallow dragée bonbon croissant. Carrot cake sweet donut ice cream bonbon oat cake danish
             sugar plum. Gingerbread gummies marzipan gingerbread.
           </Typography>
@@ -54,7 +60,7 @@ const DialogsCustomized = () => {
             chocolate bar chocolate marzipan candy fruitcake jujubes.
           </Typography>
         </DialogContent>
-        <DialogActions sx={{ p: theme => `${theme.spacing(3)} !important` }}>
+        <DialogActions className='p-4'>
           <Button onClick={handleClose}>Save changes</Button>
         </DialogActions>
       </Dialog>

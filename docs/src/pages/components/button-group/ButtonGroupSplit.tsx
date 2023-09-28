@@ -50,8 +50,7 @@ const ButtonGroupSplit = () => {
     <>
       <ButtonGroup variant='contained' ref={anchorRef} aria-label='split button'>
         <Button onClick={handleClick}>{options[selectedIndex]}</Button>
-        <Button
-          sx={{ px: '0' }}
+        <Button className='pli-0'
           aria-haspopup='menu'
           onClick={handleToggle}
           aria-label='select merge strategy'
@@ -61,7 +60,7 @@ const ButtonGroupSplit = () => {
           <Icon icon='mdi:menu-down' />
         </Button>
       </ButtonGroup>
-      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition sx={{ zIndex: 1}} placement='bottom-end'>
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}

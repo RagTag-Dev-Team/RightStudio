@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
@@ -20,16 +19,15 @@ const ToastsCustomPosition = () => {
   }
 
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:view-grid-plus-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Custom Position</Typography>
-      <Typography sx={{ mb: 3 }}>You can change the toast's position as you like.</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={handleClick}>
+      <Icon icon='mdi:view-grid-plus-outline' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Custom Position</Typography>
+      <Typography className='mbe-3'>You can change the toast's position as you like.</Typography>
+      <Button className='mbe-8' variant='contained' onClick={handleClick}>
         Position
       </Button>
-    </Box>
+    </div>
   )
 }
 

@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import TreeView from '@mui/lab/TreeView'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -11,6 +10,12 @@ import type { TreeItemProps } from '@mui/lab/TreeItem'
 
 // Custom Icon Import
 import Icon from '@core/components/IconifyIcon'
+
+// Third-party Imports
+import classnames from 'classnames'
+
+// Style Imports
+import styles from './styles.module.css'
 
 type StyledTreeItemProps = TreeItemProps & {
   labelText: string
@@ -50,9 +55,9 @@ const StyledTreeItem = (props: StyledTreeItemProps) => {
     <StyledTreeItemRoot
       {...other}
       label={
-        <Box sx={{ py: 1, display: 'flex', alignItems: 'center', '& svg': { mr: 1 } }}>
-          <Icon icon={labelIcon} color='inherit' />
-          <Typography variant='body2' sx={{ flexGrow: 1, fontWeight: 'inherit' }}>
+        <div className='plb-1 flex items-center' >
+          <Icon icon={labelIcon} color='inherit' className='mie-1' />
+          <Typography variant='body2' className={classnames('flex-grow', styles.treeViewFontWeight)}>
             {labelText}
           </Typography>
           {labelInfo ? (
@@ -60,7 +65,7 @@ const StyledTreeItem = (props: StyledTreeItemProps) => {
               {labelInfo}
             </Typography>
           ) : null}
-        </Box>
+        </div>
       }
     />
   )
@@ -70,7 +75,7 @@ const TreeViewGmailClone = () => {
 
   return (
     <TreeView
-      sx={{ minHeight: 240 }}
+      className={styles.treeViewMinHeight}
       defaultExpanded={['3']}
       defaultExpandIcon={<Icon icon='mdi:chevron-right' />}
       defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}

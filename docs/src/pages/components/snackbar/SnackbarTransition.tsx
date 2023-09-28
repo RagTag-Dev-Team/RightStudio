@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { ComponentType, ReactElement } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Grow from '@mui/material/Grow'
 import Fade from '@mui/material/Fade'
 import Slide from '@mui/material/Slide'
@@ -59,7 +58,7 @@ const SnackbarTransition = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
+      <div className='flex items-center gap-4 flex-wrap'>
         <Button variant='outlined' onClick={handleClick(GrowTransition)}>
           Grow Transition
         </Button>
@@ -69,7 +68,7 @@ const SnackbarTransition = () => {
         <Button variant='outlined' onClick={handleClick(SlideTransition)}>
           Slide Transition
         </Button>
-      </Box>
+      </div>
       <Snackbar
         open={state.open}
         onClose={handleClose}

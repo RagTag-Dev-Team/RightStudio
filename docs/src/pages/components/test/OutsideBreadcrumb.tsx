@@ -48,16 +48,16 @@ const OutsideBreadcrumb = () => {
         <Typography>Breadcrumb</Typography>
       </Breadcrumbs>
 
-      <Breadcrumbs aria-label='breadcrumb' sx={{ mt: 2, '& a': { display: 'flex', alignItems: 'center' } }}>
-        <a href='/' onClick={handleClick}>
+      <Breadcrumbs aria-label='breadcrumb' className='mbs-2'>
+        <a href='/' onClick={handleClick} className='flex items-center'>
           <Icon icon='mdi:home-outline' fontSize='1.25rem' />
           MUI
         </a>
-        <a href='/' onClick={handleClick}>
+        <a href='/' onClick={handleClick} className='flex items-center'>
           <Icon icon='mdi:bookmark-outline' fontSize='1.25rem' />
           Core
         </a>
-        <Typography sx={{ display: 'flex', alignItems: 'center' }}>
+        <Typography className='flex items-center'>
           <Icon icon='mdi:file-outline' fontSize='1.25rem' />
           Breadcrumb
         </Typography>

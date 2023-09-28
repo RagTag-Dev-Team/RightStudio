@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 
 // MUI Imports
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
@@ -22,14 +21,14 @@ const ToastsPreventDuplicate = () => {
     }
 
   return (
-    <Box
-     sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+    className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:clipboard-off-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Prevent Duplicate</Typography>
-      <Typography sx={{ mb: 3 }}>Prevent duplicate toasts from being created.</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={notify}>Notify</Button>
-    </Box>
+      <Icon icon='mdi:clipboard-off-outline' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Prevent Duplicate</Typography>
+      <Typography className='mbe-3'>Prevent duplicate toasts from being created.</Typography>
+      <Button className='mbe-8'variant='contained' onClick={notify}>Notify</Button>
+    </div>
   );
 };
 

@@ -1,0 +1,4 @@
+.accordion {
+    box-shadow: none;
+    border: 1px solid var(--mui-palette-divider);
+}

@@ -36,8 +36,8 @@ const ListNested = () => {
         <Collapse in={open} timeout='auto' unmountOnExit>
           <List component='div' disablePadding>
             <ListItem disablePadding>
-              <ListItemButton sx={{ pl: 8 }}>
-                <ListItemIcon sx={{ mr: 4 }}>
+              <ListItemButton className='pis-8'>
+                <ListItemIcon className='mie-4'>
                   <Icon icon='mdi:send-clock' fontSize='1.25rem' />
                 </ListItemIcon>
                 <ListItemText primary='Scheduled' />
@@ -54,7 +54,7 @@ const ListNested = () => {
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider sx={{ m: 0 }} />
+      <Divider className='m-0' />
       <List component='nav' aria-label='secondary mailbox'>
         <ListItem disablePadding>
           <ListItemButton>

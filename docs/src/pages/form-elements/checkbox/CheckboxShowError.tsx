@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Checkbox from '@mui/material/Checkbox'
 import FormGroup from '@mui/material/FormGroup'
 import FormLabel from '@mui/material/FormLabel'
@@ -32,8 +31,8 @@ const CheckboxShowError = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-      <FormControl sx={{ mt: 4, mr: 4 }}>
+    <div className='flex flex-wrap'>
+      <FormControl className='mbs-4 mie-4'>
         <FormLabel>Assign responsibility</FormLabel>
         <FormGroup>
           <FormControlLabel
@@ -51,7 +50,7 @@ const CheckboxShowError = () => {
         </FormGroup>
         <FormHelperText>Be careful</FormHelperText>
       </FormControl>
-      <FormControl required error={error} sx={{ mt: 4 }}>
+      <FormControl required error={error} className='mbs-4'>
         <FormLabel>Pick two</FormLabel>
         <FormGroup>
           <FormControlLabel
@@ -69,7 +68,7 @@ const CheckboxShowError = () => {
         </FormGroup>
         <FormHelperText>You can display an error</FormHelperText>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

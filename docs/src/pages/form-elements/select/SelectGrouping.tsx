@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputLabel from '@mui/material/InputLabel'
@@ -11,7 +10,7 @@ import ListSubheader from '@mui/material/ListSubheader'
 
 const SelectGrouping = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel htmlFor='grouped-select'>Grouping</InputLabel>
         <Select label='Grouping' defaultValue='' id='grouped-select'>
@@ -40,7 +39,7 @@ const SelectGrouping = () => {
           </optgroup>
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

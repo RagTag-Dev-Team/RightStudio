@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
@@ -17,8 +16,8 @@ const SelectVariants = () => {
     <Card>
       <CardHeader title='Select Variants' />
       <CardContent>
-        <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-          <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+        <div className='flex gap-4 flex-col'>
+          <div className='flex gap-4 flex-wrap'>
             <FormControl fullWidth>
               <InputLabel>Age</InputLabel>
               <Select label='Age' defaultValue=''>
@@ -49,8 +48,8 @@ const SelectVariants = () => {
                 <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+          </div>
+          <div className='flex gap-4 flex-wrap'>
             <FormControl fullWidth>
               <InputLabel>Disabled</InputLabel>
               <Select disabled label='Disabled' defaultValue=''>
@@ -81,8 +80,8 @@ const SelectVariants = () => {
                 <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+          </div>
+          <div className='flex gap-4 flex-wrap'>
             <FormControl size='small' fullWidth>
               <InputLabel>Small</InputLabel>
               <Select label='Small' defaultValue=''>
@@ -113,13 +112,13 @@ const SelectVariants = () => {
                 <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </CardContent>
 
       <CardContent>
         <Typography variant='h6'>Native</Typography>
-        <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+        <div className='flex gap-4 flex-wrap'>
           <FormControl fullWidth>
             <InputLabel>Age</InputLabel>
             <Select native label='Age' defaultValue=''>
@@ -147,7 +146,7 @@ const SelectVariants = () => {
               <option value={30}>Thirty</option>
             </Select>
           </FormControl>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

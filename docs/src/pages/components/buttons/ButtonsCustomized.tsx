@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { purple } from '@mui/material/colors'
 import { styled } from '@mui/material/styles'
@@ -56,12 +55,12 @@ const BootstrapButton = styled(Button)<ButtonProps>({
 
 const ButtonsCustomized = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <CustomButton variant='contained'>Custom Color</CustomButton>
       <BootstrapButton variant='contained' disableRipple>
         Bootstrap
       </BootstrapButton>
-    </Box>
+    </div>
   )
 }
 

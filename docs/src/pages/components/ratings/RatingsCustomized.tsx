@@ -2,13 +2,18 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'
 import type { IconContainerProps } from '@mui/material/Rating'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 type CustomIcons = {
   [index: string]: { icon: string; label: string }
@@ -46,29 +51,26 @@ const IconContainer = (props: IconContainerProps) => {
 const RatingsCustomized = () => {
   return (
     <>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>Custom empty icon</Typography>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>Custom empty icon</Typography>
         <Rating name='customized-empty' defaultValue={2} precision={0.5} emptyIcon={<Icon icon='mdi:star' />} />
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>Custom icon and color</Typography>
+      </div>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>Custom icon and color</Typography>
         <Rating
           precision={0.5}
           defaultValue={3}
           name='customized-color'
-          sx={{ color: 'error.main', '& svg': {
-            flexShrink: 0
-          } }}
-          icon={<Icon icon='mdi:heart' />}
+          icon={<Icon icon='mdi:heart' className={classnames('flex-shrink-0', styles.errorIconColor)}/>}
           emptyIcon={<Icon icon='mdi:heart' />}
         />
-      </Box>
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontWeight: 500 }}>10 stars</Typography>
+      </div>
+      <div className='mbe-3'>
+        <Typography className='font-medium'>10 stars</Typography>
         <Rating name='customized-10' defaultValue={7} max={10} />
-      </Box>
+      </div>
       <>
-        <Typography sx={{ fontWeight: 500 }}>Custom icon set</Typography>
+        <Typography className='font-medium'>Custom icon set</Typography>
         <Rating name='customized-icons' defaultValue={2} max={4} IconContainerComponent={IconContainer} />
       </>
     </>

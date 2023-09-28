@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
@@ -14,16 +13,16 @@ import Icon from '@core/components/IconifyIcon'
 
 const ToastsSuccess = () => {
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:check-circle-outline' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Success</Typography>
-      <Typography sx={{ mb: 3 }}>Indicate that an action was completed successfully.</Typography>
-      <Button sx={{ mb: 8 }} color='success' variant='contained' onClick={() => toast.success('Successfully toasted!')}>
+      <Icon icon='mdi:check-circle-outline' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Success</Typography>
+      <Typography className='mbe-3'>Indicate that an action was completed successfully.</Typography>
+      <Button className='mbe-8'color='success' variant='contained' onClick={() => toast.success('Successfully toasted!')}>
         Success
       </Button>
-    </Box>
+    </div>
   )
 }
 

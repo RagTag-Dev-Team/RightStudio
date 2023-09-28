@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
@@ -16,7 +15,7 @@ const ButtonToggleColors = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+    <div className='flex gap-4 flex-wrap'>
       <ToggleButtonGroup exclusive color='primary' value={alignment} onChange={handleAlignment}>
         <ToggleButton value='web'>Web</ToggleButton>
         <ToggleButton value='android'>Android</ToggleButton>
@@ -52,7 +51,7 @@ const ButtonToggleColors = () => {
         <ToggleButton value='android'>Android</ToggleButton>
         <ToggleButton value='ios'>iOS</ToggleButton>
       </ToggleButtonGroup>
-    </Box>
+    </div>
   )
 }
 

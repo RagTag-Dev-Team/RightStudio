@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
 
@@ -25,17 +24,17 @@ const RatingsHoverFeedback = () => {
   const [value, setValue] = useState<number | null>(2)
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <div className='flex items-center'>
       <Rating
         value={value}
         precision={0.5}
         name='hover-feedback'
-        sx={{ mr: 4 }}
+        className='mie-4'
         onChange={(event, newValue) => setValue(newValue)}
         onChangeActive={(event, newHover) => setHover(newHover)}
       />
       {value !== null && <Typography>{labels[hover !== -1 ? hover : value]}</Typography>}
-    </Box>
+    </div>
   )
 }
 

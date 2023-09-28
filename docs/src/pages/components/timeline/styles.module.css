@@ -1,0 +1,12 @@
+.textPrimary {
+    color: var(--mui-palette-text-primary);
+}
+
+.textSecondary {
+    color: var(--mui-palette-text-secondary);
+}
+
+.timelineIcon svg {
+  vertical-align: middle;
+  margin-inline: 1rem;
+}

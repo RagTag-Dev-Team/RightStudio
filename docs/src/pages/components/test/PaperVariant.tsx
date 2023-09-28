@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import MuiPaper from '@mui/material/Paper'
@@ -23,12 +22,12 @@ const PaperVariant = () => {
   return (
     <>
       <Typography variant='h6'>Paper Variants</Typography>
-      <Box sx={{ display: 'flex' }}>
+      <div className='flex'>
         <Paper variant='outlined'>Default</Paper>
         <Paper variant='outlined' square>
           Square
         </Paper>
-      </Box>
+      </div>
     </>
   )
 }

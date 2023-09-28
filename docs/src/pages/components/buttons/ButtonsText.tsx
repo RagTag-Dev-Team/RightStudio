@@ -2,12 +2,11 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 
 const ButtonsText = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <div className='flex gap-4'>
       <Button variant='text'>Primary</Button>
       <Button variant='text' color='secondary'>
         Secondary
@@ -18,7 +17,7 @@ const ButtonsText = () => {
       <Button variant='text' href='#'>
         Link
       </Button>
-    </Box>
+    </div>
   )
 }
 

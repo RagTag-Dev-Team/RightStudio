@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import MenuItem from '@mui/material/MenuItem'
 import { styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
@@ -64,7 +63,7 @@ const SelectCustomized = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
+    <div className='flex gap-4 flex-col'>
       <FormControl fullWidth>
         <InputLabel id='demo-customized-select-label'>Age</InputLabel>
         <Select
@@ -91,7 +90,7 @@ const SelectCustomized = () => {
           <option value={30}>Thirty</option>
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
 

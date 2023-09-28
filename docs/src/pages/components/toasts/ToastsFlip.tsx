@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
@@ -14,18 +13,18 @@ import Icon from '@core/components/IconifyIcon'
 
 const ToastsFlip = () => {
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:horizontal-rotate-counterclockwise' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Flip</Typography>
-      <Typography sx={{ mb: 3 }}>Change the default transition as per your needs</Typography>
-      <Button sx={{ mb: 8 }} variant='contained' onClick={() => toast('Blank Toast', {
+      <Icon icon='mdi:horizontal-rotate-counterclockwise' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Flip</Typography>
+      <Typography className='mbe-3'>Change the default transition as per your needs</Typography>
+      <Button className='mbe-8'variant='contained' onClick={() => toast('Blank Toast', {
         transition: Flip
       })}>
         Blank
       </Button>
-    </Box>
+    </div>
   )
 }
 

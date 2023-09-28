@@ -73,13 +73,13 @@ const SliderInfo = styled(MuiSlider)<SliderProps>(({ theme }) => ({
 const SliderCustomColors = () => {
   return (
     <div>
-      <Typography sx={{ fontWeight: 500 }}>Success Slider</Typography>
+      <Typography className='font-medium'>Success Slider</Typography>
       <SliderSuccess defaultValue={30} aria-labelledby='success-slider' />
-      <Typography sx={{ fontWeight: 500 }}>Error Slider</Typography>
+      <Typography className='font-medium'>Error Slider</Typography>
       <SliderError defaultValue={30} aria-labelledby='error-slider' />
-      <Typography sx={{ fontWeight: 500 }}>Warning Slider</Typography>
+      <Typography className='font-medium'>Warning Slider</Typography>
       <SliderWarning defaultValue={30} aria-labelledby='warning-slider' />
-      <Typography sx={{ fontWeight: 500 }}>Info Slider</Typography>
+      <Typography className='font-medium'>Info Slider</Typography>
       <SliderInfo defaultValue={30} aria-labelledby='info-slider' />
     </div>
   )

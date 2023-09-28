@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
@@ -116,11 +115,11 @@ const SelectMultiple = () => {
                   MenuProps={MenuProps}
                   onChange={handleChange}
                   renderValue={selected => (
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className='flex flex-wrap gap-2'>
                       {(selected as string[]).map(value => (
-                        <Chip key={value} label={value} sx={{ m: 0.75 }} />
+                        <Chip key={value} label={value} />
                       ))}
-                    </Box>
+                    </div>
                   )}
                 >
                   {names.map(name => (
@@ -217,11 +216,11 @@ const SelectMultiple = () => {
                   MenuProps={MenuProps}
                   onChange={handleChange}
                   renderValue={selected => (
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className='flex flex-wrap gap-2'>
                       {(selected as string[]).map(value => (
-                        <Chip key={value} label={value} sx={{ m: 0.75 }} />
+                        <Chip key={value} label={value}/>
                       ))}
-                    </Box>
+                    </div>
                   )}
                 >
                   {names.map(name => (
@@ -318,11 +317,11 @@ const SelectMultiple = () => {
                   MenuProps={MenuProps}
                   onChange={handleChange}
                   renderValue={selected => (
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className='flex flex-wrap gap-2'>
                       {(selected as string[]).map(value => (
-                        <Chip key={value} label={value} sx={{ m: 0.75 }} />
+                        <Chip key={value} label={value} />
                       ))}
-                    </Box>
+                    </div>
                   )}
                 >
                   {names.map(name => (

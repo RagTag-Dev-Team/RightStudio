@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 import Typography from '@mui/material/Typography'
 
@@ -11,9 +10,9 @@ import Icon from '@core/components/IconifyIcon'
 
 const ButtonsFab = () => {
   return (
-    <Box sx={{ display: 'flex', gap: 4, flexDirection: 'column' }}>
-      <Typography sx={{ fontWeight: 500 }}>Circular Variant</Typography>
-      <Box sx={{ mb: 6, display: 'flex', gap: 4 }}>
+    <div className='flex gap-4 flex-col'>
+      <Typography className='font-medium'>Circular Variant</Typography>
+      <div className='flex gap-4 mbe-6'>
         <Fab aria-label='edit'>
           <Icon icon='mdi:pencil' />
         </Fab>
@@ -38,43 +37,43 @@ const ButtonsFab = () => {
         <Fab disabled aria-label='edit'>
           <Icon icon='mdi:pencil' />
         </Fab>
-      </Box>
-      <Typography sx={{ fontWeight: 500 }}>Extended Variant</Typography>
-      <Box sx={{ display: 'flex', gap: 4 }}>
-        <Fab variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+      </div>
+      <Typography className='font-medium'>Extended Variant</Typography>
+      <div className='flex gap-4'>
+        <Fab variant='extended'>
+          <Icon icon='mdi:plus'  className='mie-1'/>
           Add
         </Fab>
-        <Fab color='primary' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='primary' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab color='secondary' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='secondary' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab color='success' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='success' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab color='error' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='error' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab color='warning' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='warning' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab color='info' variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab color='info' variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-        <Fab disabled variant='extended' sx={{ '& svg': { mr: 1 } }}>
-          <Icon icon='mdi:plus' />
+        <Fab disabled variant='extended'>
+          <Icon icon='mdi:plus' className='mie-1'/>
           Add
         </Fab>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }
 

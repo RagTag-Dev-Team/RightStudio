@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Badge from '@mui/material/Badge'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
@@ -24,7 +23,7 @@ const BadgesVisibility = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', mb: 4, gap: '1.5rem', alignItems: 'center' }}>
+      <div className='flex mbe-4 gap-6 items-center'>
         <Badge badgeContent={count} color='primary'>
           <Avatar src='/assets/avatars/1.png' alt='User Avatar' />
         </Badge>
@@ -36,9 +35,9 @@ const BadgesVisibility = () => {
             <Icon icon='mdi:plus' fontSize='1.25rem' />
           </Button>
         </ButtonGroup>
-      </Box>
+      </div>
 
-      <Box sx={{ display: 'flex', gap: '1.5rem' }}>
+      <div className='flex gap-6'>
         <Badge variant='dot' color='primary' invisible={invisible}>
           <Avatar src='/assets/avatars/1.png' alt='User Avatar' />
         </Badge>
@@ -46,7 +45,7 @@ const BadgesVisibility = () => {
           label='Show Badge'
           control={<Switch color='primary' checked={!invisible} onChange={handleBadgeVisibility} />}
         />
-      </Box>
+      </div>
     </>
   )
 }

@@ -15,7 +15,7 @@ const TextFieldControlledUncontrolled = () => {
   }
 
   return (
-    <Box component='form' noValidate autoComplete='off' sx={{ display: 'flex', gap: 4, flexWrap: 'wrap', flexDirection: 'column' }}>
+    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-wrap flex-col'>
       <TextField value={name} label='Controlled' onChange={handleChange} id='controlled-text-field' />
       <TextField id='uncontrolled-text-field' label='Uncontrolled' defaultValue='foo' />
     </Box>

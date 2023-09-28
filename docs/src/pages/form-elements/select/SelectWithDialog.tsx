@@ -32,9 +32,9 @@ const SelectWithDialog = () => {
       </Button>
       <Dialog maxWidth='xs' fullWidth open={open} onClose={handleClose}>
         <DialogTitle>Fill the form</DialogTitle>
-        <DialogContent sx={{ pt: theme => `${theme.spacing(2)} !important` }}>
-          <Box component='form' sx={{ disply: 'flex', gap: 4 }}>
-            <FormControl sx={{ mr: 4, mb: 4 }} fullWidth>
+        <DialogContent className='!pbs-2'>
+          <Box component='form' className='flex gap-4'>
+            <FormControl className='mie-4 mbe-4' fullWidth>
               <InputLabel id='demo-dialog-select-label'>Age</InputLabel>
               <Select label='Age' labelId='demo-dialog-select-label' id='demo-dialog-select' defaultValue=''>
                 <MenuItem value=''>

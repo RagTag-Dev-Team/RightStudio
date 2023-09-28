@@ -6,7 +6,6 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import AvatarGroup from '@mui/material/AvatarGroup'
@@ -23,7 +22,7 @@ const CardUser = () => {
       <CardMedia image='/images/cards/2.png' className={styles.userBgImg} />
       <CardContent className='relative'>
         <Avatar src='/images/avatars/3.png' alt='Robert Meyer' className={styles.userAvatar} />
-        <Box
+        <div
           className={classnames(
             'flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mbe-5',
             styles.userDetails
@@ -34,7 +33,7 @@ const CardUser = () => {
             <Typography variant='caption'>London, UK</Typography>
           </div>
           <Button variant='contained'>Send Request</Button>
-        </Box>
+        </div>
         <div className='flex justify-between items-center flex-wrap gap-x-4 gap-y-2'>
           <Typography variant='subtitle2'>18 mutual friends</Typography>
           <AvatarGroup max={4}>

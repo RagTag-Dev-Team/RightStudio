@@ -13,14 +13,14 @@ const TextFieldLayout = () => {
           fullWidth
           label="Full width"
           id="outlined-full-width"
-          sx={{ mb: 4 }}
+          className='mbe-4'
         />
       </Grid>
       <Grid item xs={12} md={4}>
         <TextField
           fullWidth
           label="None"
-          sx={{ mr: 4 }}
+          className='mie-4'
           id="outlined-margin-none"
           defaultValue="Margin None"
           helperText="Some important text"
@@ -31,7 +31,7 @@ const TextFieldLayout = () => {
         fullWidth
         label="Dense"
         margin="dense"
-        sx={{ mr: 4 }}
+        className='mie'
         id="outlined-margin-dense"
         defaultValue="Margin Dense"
         helperText="Some important text"

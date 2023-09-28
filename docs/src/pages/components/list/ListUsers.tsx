@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import ListItem from '@mui/material/ListItem'
-import { styled } from '@mui/material/styles'
+import { Theme, styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItemText from '@mui/material/ListItemText'
@@ -16,6 +16,9 @@ import type { ListProps } from '@mui/material/List'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-container': {
@@ -86,22 +89,24 @@ const userList: User[] = [
 const ListUsers = () => {
   return (
     <StyledList disablePadding>
-    {userList.map((user, index) => (
+    {userList.map((user, index) => {
+      console.log(user.statusColor)
+      return (
         <ListItem key={index}>
           <ListItemAvatar>
             <Avatar src={user.avatarSrc} alt={user.name} />
           </ListItemAvatar>
           <div>
             <ListItemText primary={user.name} />
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Box sx={{ mr: 3, display: 'flex', alignItems: 'center', '& svg': { mr: 1, color: user.statusColor } }}>
+            <div className='flex items-center flex-wrap'>
+              <Box className='mie-3 flex items-center gap-1' sx={{ '& svg': { color: user.statusColor } }}>
                 <Icon icon='mdi:circle' fontSize='0.625rem' />
                 <Typography variant='caption'>{user.status}</Typography>
               </Box>
-              <Typography variant='caption' sx={{ color: 'text.disabled' }}>
+              <Typography variant='caption' className={styles.listTextDisabled}>
                 {user.lastActive}
               </Typography>
-            </Box>
+            </div>
           </div>
           <ListItemSecondaryAction>
             <Button variant='contained' size='small'>
@@ -109,7 +114,7 @@ const ListUsers = () => {
             </Button>
           </ListItemSecondaryAction>
         </ListItem>
-      ))}
+      )})}
     </StyledList>
   )
 }

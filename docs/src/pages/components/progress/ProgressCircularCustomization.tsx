@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import CircularProgress from '@mui/material/CircularProgress'
 import type { CircularProgressProps } from '@mui/material/CircularProgress'
@@ -20,10 +19,10 @@ const CircularProgressIndeterminate = styled(CircularProgress)<CircularProgressP
 
 const ProgressCircularCustomization = () => {
   return (
-    <Box sx={{ position: 'relative' }}>
+    <div className='relative'>
       <CircularProgressDeterminate variant='determinate' size={50} thickness={5} value={100} />
       <CircularProgressIndeterminate variant='indeterminate' disableShrink size={50} thickness={5} />
-    </Box>
+    </div>
   )
 }
 

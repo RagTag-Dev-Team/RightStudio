@@ -19,6 +19,12 @@ import DialogContentText from '@mui/material/DialogContentText'
 import type { SelectChangeEvent } from '@mui/material/Select'
 import type { Breakpoint } from '@mui/material/styles'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import styles from './styles.module.css'
+
 // Styled component for the form
 const Form = styled('form')({
   margin: 'auto',
@@ -59,11 +65,11 @@ const DialogsSizes = () => {
       >
         <DialogTitle id='max-width-dialog-title'>Optional sizes</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ mb: 4 }}>
+          <DialogContentText className='mbe-4'>
             You can set my maximum width and whether to adapt or not.
           </DialogContentText>
           <Form noValidate>
-            <FormControl sx={{ mt: 2, minWidth: 120 }}>
+            <FormControl className={classnames('mbs-2', styles.dialogMinWidth)}>
               <InputLabel htmlFor='max-width'>maxWidth</InputLabel>
               <Select
                 label='maxWidth'
@@ -83,8 +89,7 @@ const DialogsSizes = () => {
               </Select>
             </FormControl>
             <FormControlLabel
-              label='Full width'
-              sx={{ mt: 2 }}
+              label='Full width' className='mbs-2'
               control={<Switch checked={fullWidth} onChange={handleFullWidthChange} />}
             />
           </Form>

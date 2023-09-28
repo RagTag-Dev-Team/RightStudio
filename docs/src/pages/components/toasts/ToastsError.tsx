@@ -2,7 +2,6 @@
 import React from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
@@ -14,16 +13,16 @@ import Icon from '@core/components/IconifyIcon'
 
 const ToastError = () => {
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
+    <div
+     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:close' fontSize='2rem' />
-      <Typography sx={{ mb: 4, fontWeight: 500 }}>Error</Typography>
-      <Typography sx={{ mb: 3 }}>Indicate that an error occurred.</Typography>
-      <Button sx={{ mb: 8 }} color='error' variant='contained' onClick={() => toast.error("This didn't work.")}>
+      <Icon icon='mdi:close' fontSize='2rem' className='mbe-2'/>
+      <Typography className='mbe-4 font-medium'>Error</Typography>
+      <Typography className='mbe-3'>Indicate that an error occurred.</Typography>
+      <Button className='mbe-8'color='error' variant='contained' onClick={() => toast.error("This didn't work.")}>
         Error
       </Button>
-    </Box>
+    </div>
   )
 }
 
