@@ -26,9 +26,6 @@ import Icon from '@core/components/IconifyIcon'
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const steps = [
   {
     title: 'Cart',
@@ -142,10 +139,7 @@ const CheckoutWizard = () => {
     <Card>
       <CardContent>
         <StepperWrapper>
-          <Stepper
-            activeStep={activeStep}
-            connector={<Icon icon='mdi:chevron-right' className={styles.connectorIcon} />}
-          >
+          <Stepper activeStep={activeStep} connector={<Icon icon='mdi:chevron-right' className='mli-12' />}>
             {steps.map((step, index) => {
               return (
                 <Step key={index} onClick={() => setActiveStep(index)}>

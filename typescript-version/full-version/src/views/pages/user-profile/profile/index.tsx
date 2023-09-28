@@ -2,7 +2,7 @@
 import Grid from '@mui/material/Grid'
 
 // Type Imports
-import type { ProfileTabType } from '@/app/api/pages/profile/types'
+import type { ProfileTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import AboutOverview from './AboutOverview'

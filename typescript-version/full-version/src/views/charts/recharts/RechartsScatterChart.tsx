@@ -1,7 +1,6 @@
 'use client'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
@@ -9,13 +8,19 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
+import classnames from 'classnames'
 
 // Type Imports
 import type { Direction } from '@core/types'
 
+// Component Imports
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
+
 // Icon Imports
-// import Icon from '@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
+
+// Style Imports
+import styles from './styles.module.css'
 
 const angularData = [
   { x: 5.4, y: 170 },
@@ -81,21 +86,21 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
         }}
       />
       <CardContent>
-        <Box sx={{ display: 'flex', mb: 4 }}>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'primary.main' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+        <div className='flex mbe-4 gap-6'>
+          <div className='flex items-center'>
+            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.reactIcon)} />
             <Typography variant='body2'>React</Typography>
-          </Box>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'success.main' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          </div>
+          <div className='flex items-center'>
+            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.vueIcon)} />
             <Typography variant='body2'>Vue</Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: 'error.main' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          </div>
+          <div className='flex items-center'>
+            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.angularIcon)} />
             <Typography variant='body2'>Angular</Typography>
-          </Box>
-        </Box>
-        <Box sx={{ height: 350 }}>
+          </div>
+        </div>
+        <div className={styles.chartHeight}>
           <ResponsiveContainer>
             <ScatterChart height={350} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />
@@ -106,7 +111,7 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
               <Scatter name='React' data={reactData} fill={theme.palette.primary.main} />
             </ScatterChart>
           </ResponsiveContainer>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

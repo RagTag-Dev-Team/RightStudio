@@ -1,9 +1,0 @@
-.active {
-  border: 1px solid var(--mui-palette-primary-main);
-  border-radius: var(--mui-shape-borderRadius);
-}
-
-.inactive {
-  border: 1px solid var(--mui-palette-divider);
-  border-radius: var(--mui-shape-borderRadius);
-}

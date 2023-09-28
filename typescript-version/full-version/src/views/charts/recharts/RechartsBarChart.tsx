@@ -9,14 +9,17 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import type { TooltipProps } from '@components/charts/recharts'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
+import type { TooltipProps } from '@components/charts/recharts'
 
 // Type Imports
 import type { Direction } from '@core/types'
 
 // Icon Imports
-// import Icon from '@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
+
+// Style Imports
+import styles from './styles.module.css'
 
 const data = [
   {
@@ -103,8 +106,8 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload &&
           data.payload.map((i: any) => {
             return (
-              <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { color: i.fill, mr: 2.5 } }} key={i.dataKey}>
-                {/* <Icon icon='mdi:circle' fontSize='0.6rem' /> */}
+              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& svg': { color: i.fill } }}>
+                <Icon icon='mdi:circle' fontSize='0.6rem' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -129,25 +132,25 @@ const RechartsBarChart = ({ direction }: { direction: Direction }) => {
         }}
       />
       <CardContent>
-        <Box sx={{ mb: 4, display: 'flex', flexWrap: 'wrap' }}>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#826af9' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+        <div className='flex flex-wrap mbe-4'>
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#826af9' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Apple</Typography>
           </Box>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#9f87ff' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#9f87ff' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Samsung</Typography>
           </Box>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#d2b0ff' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#d2b0ff' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Oneplus</Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#f8d3ff' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#f8d3ff' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Motorola</Typography>
           </Box>
-        </Box>
-        <Box sx={{ height: 350 }}>
+        </div>
+        <div className={styles.chartHeight}>
           <ResponsiveContainer>
             <BarChart height={350} data={data} barSize={15} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid strokeDasharray='3 3' />
@@ -160,7 +163,7 @@ const RechartsBarChart = ({ direction }: { direction: Direction }) => {
               <Bar dataKey='Motorola' stackId='a' fill='#f8d3ff' radius={[15, 15, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

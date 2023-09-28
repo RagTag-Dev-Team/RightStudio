@@ -43,7 +43,7 @@ type FormData = Input<typeof schema>
 
 const FormValidationOnScheme = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const {
     control,
@@ -60,7 +60,7 @@ const FormValidationOnScheme = () => {
     }
   })
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const onSubmit = () => toast.success('Form Submitted')
 
@@ -131,7 +131,7 @@ const FormValidationOnScheme = () => {
                     label='Password'
                     placeholder='············'
                     id='form-validation-scheme-password'
-                    type={showPassword ? 'text' : 'password'}
+                    type={isPasswordShown ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position='end'>
@@ -141,7 +141,7 @@ const FormValidationOnScheme = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

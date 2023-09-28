@@ -14,13 +14,12 @@ import TabContext from '@mui/lab/TabContext'
 import MuiTabList from '@mui/lab/TabList'
 import { styled } from '@mui/material/styles'
 import TabPanel from '@mui/lab/TabPanel'
-
-// import Typography from '@mui/material/Typography'
-// import CircularProgress from '@mui/material/CircularProgress'
+import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
 import type { TabListProps } from '@mui/lab/TabList'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
@@ -59,21 +58,22 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
   // States
   const [activeTab, setActiveTab] = useState(tab)
 
-  // const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(true)
 
-  // Hook
+  // Hooks
   const router = useRouter()
 
   const handleChange = (event: SyntheticEvent, value: string) => {
-    // setLoading(true)
+    setLoading(true)
     const pathname = `/pages/account-settings/${value.toLowerCase()}`
 
     router.push(pathname)
-
-    // setLoading(false)
   }
 
   useEffect(() => {
+    if (data) {
+      setLoading(false)
+    }
     if (tab && tab !== activeTab) {
       setActiveTab(tab)
     }
@@ -132,15 +132,16 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             />
           </TabList>
           <Grid item xs={12}>
-            {/* {loading ? (
+            {loading ? (
               <div className='d-flex align-items-center flex-column'>
                 <CircularProgress />
                 <Typography>Loading...</Typography>
               </div>
-            ) : ( */}
-            <TabPanel value={activeTab} className='p-0'>
-              {tabContentList(data)[activeTab]}
-            </TabPanel>
+            ) : (
+              <TabPanel value={activeTab} className='p-0'>
+                {tabContentList(data)[activeTab]}
+              </TabPanel>
+            )}
           </Grid>
         </TabContext>
       </Grid>

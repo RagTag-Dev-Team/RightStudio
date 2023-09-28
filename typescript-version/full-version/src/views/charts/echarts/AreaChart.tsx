@@ -7,8 +7,8 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
-import type { EChartsOption } from 'echarts'
 import { EChart } from '@hcorta/react-echarts'
+import type { EChartsOption } from 'echarts'
 
 const areaColors = {
   series1: '#ab7efd',

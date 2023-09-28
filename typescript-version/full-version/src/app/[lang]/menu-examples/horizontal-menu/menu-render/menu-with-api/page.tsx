@@ -27,8 +27,8 @@ const MenuWithAPI = () => {
 
   useEffect(() => {
     const fetchMenuData = async () => {
-      const response = await fetch('https://mocki.io/v1/ea08dba9-a940-4388-9789-2d0b8fa9a475')
-      const data = await response.json()
+      const res = await fetch('https://mocki.io/v1/ea08dba9-a940-4388-9789-2d0b8fa9a475')
+      const data = await res.json()
 
       setSidebarMenuData(data)
       setIsLoading(false)

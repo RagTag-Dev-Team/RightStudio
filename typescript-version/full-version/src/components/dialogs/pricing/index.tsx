@@ -2,9 +2,14 @@
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import IconButton from '@mui/material/IconButton'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import Pricing from '@components/pricing'
@@ -22,9 +27,16 @@ type Props = {
 }
 
 const PricingDialog = ({ open, setOpen, data }: Props) => {
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   return (
     <Dialog fullWidth maxWidth='lg' open={open} onClose={() => setOpen(false)}>
-      <DialogContent>
+      <DialogContent
+        className={classnames(styles.dialogContentAlone, {
+          [styles.smDialogContentAlone]: isBelowSmScreen
+        })}
+      >
         <IconButton className={styles.closeIcon} onClick={() => setOpen(false)}>
           <Icon icon='mdi:close' />
         </IconButton>

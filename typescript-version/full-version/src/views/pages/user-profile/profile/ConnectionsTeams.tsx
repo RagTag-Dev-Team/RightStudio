@@ -15,7 +15,10 @@ import Chip from '@mui/material/Chip'
 import Icon from '@core/components/IconifyIcon'
 
 // Type Imports
-import type { ProfileTeamsTechType, ProfileConnectionsType } from '@/app/api/pages/profile/types'
+import type { ProfileTeamsTechType, ProfileConnectionsType } from '@/types/pages/profileTypes'
+
+// Component Imports
+import OptionMenu from '@core/components/option-menu'
 
 type Props = {
   teamsTech?: ProfileTeamsTechType[]
@@ -30,7 +33,10 @@ const ConnectionsTeams = (props: Props) => {
     <>
       <Grid item xs={12} md={6}>
         <Card>
-          <CardHeader title='Connections' />
+          <CardHeader
+            title='Connections'
+            action={<OptionMenu options={['Share Connections', 'Suggest Edits', { divider: true }, 'Report Bug']} />}
+          />
           <CardContent>
             {connections &&
               connections.map((connection, index) => (
@@ -57,7 +63,10 @@ const ConnectionsTeams = (props: Props) => {
       </Grid>
       <Grid item xs={12} md={6}>
         <Card>
-          <CardHeader title='Teams' />
+          <CardHeader
+            title='Teams'
+            action={<OptionMenu options={['Share Teams', 'Suggest Edits', { divider: true }, 'Report Bug']} />}
+          />
           <CardContent>
             {teamsTech &&
               teamsTech.map((team: ProfileTeamsTechType, index) => (

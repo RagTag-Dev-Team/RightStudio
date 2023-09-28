@@ -2,6 +2,9 @@
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
@@ -10,9 +13,10 @@ type Props = {
   isLastStep: boolean
   handleNext: () => void
   handlePrev: () => void
+  direction: Direction
 }
 
-const Submit = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
+const Submit = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: Props) => {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col items-center gap-4'>
@@ -28,7 +32,7 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<Icon icon='mdi:arrow-left' />}
+          startIcon={<Icon icon={direction === 'rtl' ? 'mdi:arrow-right' : 'mdi:arrow-left'} />}
         >
           Previous
         </Button>
@@ -36,7 +40,9 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           variant='contained'
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
-          endIcon={<Icon icon={isLastStep ? 'mdi:check' : 'mdi:arrow-right'} />}
+          endIcon={
+            <Icon icon={isLastStep ? 'mdi:check' : direction === 'rtl' ? 'mdi:arrow-left' : 'mdi:arrow-right'} />
+          }
         >
           {isLastStep ? 'Submit' : 'Next'}
         </Button>

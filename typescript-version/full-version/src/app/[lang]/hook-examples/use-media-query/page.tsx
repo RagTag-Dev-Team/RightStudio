@@ -4,6 +4,7 @@
 import useMediaQuery from '@menu-package/hooks/useMediaQuery'
 
 const MediaQuery = () => {
+  // Hooks
   const isSmallerThan800 = useMediaQuery('800px')
 
   return (

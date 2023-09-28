@@ -43,7 +43,7 @@ const cardList: CardList[] = [
         width: '30px'
       },
       {
-        src: '/images/logos/master-card.png',
+        src: '/images/logos/mastercard.png',
         width: '30px'
       },
       {
@@ -93,7 +93,7 @@ const cardList: CardList[] = [
         width: '36px'
       },
       {
-        src: '/images/logos/master-card.png',
+        src: '/images/logos/mastercard.png',
         width: '30px'
       },
       {
@@ -123,7 +123,7 @@ const cardList: CardList[] = [
   {
     images: [
       {
-        src: '/images/logos/master-card.png',
+        src: '/images/logos/mastercard.png',
         width: '30px'
       },
       {
@@ -144,7 +144,7 @@ const cardList: CardList[] = [
         width: '30px'
       },
       {
-        src: '/images/logos/master-card.png',
+        src: '/images/logos/mastercard.png',
         width: '30px'
       },
       {
@@ -190,7 +190,7 @@ const cardList: CardList[] = [
         width: '30px'
       },
       {
-        src: '/images/logos/master-card.png',
+        src: '/images/logos/mastercard.png',
         width: '30px'
       }
     ],
@@ -215,8 +215,8 @@ const PaymentProviders = ({ open, setOpen }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent
-        className={classnames(globalDialogStyles.dialogContentAlone, {
-          [globalDialogStyles.smDialogContentAlone]: isBelowSmScreen
+        className={classnames(globalDialogStyles.dialogContentWithActions, {
+          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>

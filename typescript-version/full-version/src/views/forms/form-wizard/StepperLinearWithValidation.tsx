@@ -114,12 +114,12 @@ const socialSchema = object({
 const StepperLinearWithValidation = () => {
   // States
   const [activeStep, setActiveStep] = useState(0)
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(show => !show)
+  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   const {
     reset: accountReset,
@@ -180,8 +180,8 @@ const StepperLinearWithValidation = () => {
     accountReset({ email: '', username: '', password: '', confirmPassword: '' })
     personalReset({ 'last-name': '', 'first-name': '', country: '', language: [] })
     socialReset({ twitter: '', facebook: '', google: '', linkedIn: '' })
-    setShowPassword(false)
-    setShowConfirmPassword(false)
+    setIsPasswordShown(false)
+    setIsConfirmPasswordShown(false)
   }
 
   const Languages = ['English', 'French', 'Spanish', 'Portuguese', 'Italian', 'German', 'Arabic']
@@ -193,7 +193,7 @@ const StepperLinearWithValidation = () => {
           <form onSubmit={handleAccountSubmit(onSubmit)}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography className={styles['fw-500']}>{steps[0].title}</Typography>
+                <Typography className='font-medium'>{steps[0].title}</Typography>
                 <Typography variant='body2'>{steps[0].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -241,7 +241,7 @@ const StepperLinearWithValidation = () => {
                       label='Password'
                       placeholder='············'
                       id='stepper-linear-validation-password'
-                      type={showPassword ? 'text' : 'password'}
+                      type={isPasswordShown ? 'text' : 'password'}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position='end'>
@@ -251,7 +251,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                              <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                             </IconButton>
                           </InputAdornment>
                         )
@@ -273,7 +273,7 @@ const StepperLinearWithValidation = () => {
                       label='Confirm Password'
                       placeholder='············'
                       id='stepper-linear-confirmPassword'
-                      type={showConfirmPassword ? 'text' : 'password'}
+                      type={isConfirmPasswordShown ? 'text' : 'password'}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position='end'>
@@ -283,7 +283,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                              <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                             </IconButton>
                           </InputAdornment>
                         )
@@ -312,7 +312,7 @@ const StepperLinearWithValidation = () => {
           <form onSubmit={handlePersonalSubmit(onSubmit)}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography className={styles['fw-500']}>{steps[1].title}</Typography>
+                <Typography className='font-medium'>{steps[1].title}</Typography>
                 <Typography variant='body2'>{steps[1].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -414,7 +414,7 @@ const StepperLinearWithValidation = () => {
           <form onSubmit={handleSocialSubmit(onSubmit)}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography className={styles['fw-500']}>{steps[2].title}</Typography>
+                <Typography className='font-medium'>{steps[2].title}</Typography>
                 <Typography variant='body2'>{steps[2].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>

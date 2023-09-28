@@ -1,17 +1,8 @@
+// Next Imports
 import { NextResponse } from 'next/server'
 
-export type QuestionAnswer = {
-  id: string
-  question: string
-  answer: string
-}
-export type FaqType = {
-  id: string
-  title: string
-  subtitle: string
-  icon: string
-  questionsAnswers: QuestionAnswer[]
-}
+// Type Imports
+import type { FaqType } from '@/types/pages/faqTypes'
 
 const data: FaqType[] = [
   {

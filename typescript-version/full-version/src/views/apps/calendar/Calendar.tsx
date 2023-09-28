@@ -14,7 +14,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
 // Type Imports
-import type { AddEventType, CalendarColors, CalendarType } from '@/types/calendarTypes'
+import type { AddEventType, CalendarColors, CalendarType } from '@/types/apps/calendarTypes'
 
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
@@ -72,7 +72,7 @@ const Calendar = (props: CalenderProps) => {
     }
   }, [calendarApi, setCalendarApi])
 
-  // ** calendarOptions(Props)
+  // calendarOptions(Props)
   const calendarOptions = {
     events: calendars.events,
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],

@@ -35,7 +35,7 @@ type Props = {
     cardNumber?: string
     name?: string
     expiryDate?: string
-    cardCvc?: string
+    cardCvv?: string
     imgSrc?: string
     imgAlt?: string
     cardStatus?: string
@@ -47,7 +47,7 @@ const initialCardData: Props['data'] = {
   cardNumber: '',
   name: '',
   expiryDate: '',
-  cardCvc: '',
+  cardCvv: '',
   imgSrc: '',
   imgAlt: '',
   cardStatus: '',
@@ -63,12 +63,7 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
 
   const handleClose = () => {
     setOpen(false)
-    setCardData({
-      cardNumber: '',
-      name: '',
-      expiryDate: '',
-      cardCvc: ''
-    })
+    setCardData(initialCardData)
   }
 
   return (
@@ -129,12 +124,12 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
             <Grid item xs={6} sm={3}>
               <TextField
                 fullWidth
-                name='cvc'
-                label='CVC'
+                name='cvv'
+                label='CVV'
                 autoComplete='off'
                 placeholder='123'
-                value={cardData.cardCvc}
-                onChange={e => setCardData({ ...cardData, cardCvc: e.target.value })}
+                value={cardData.cardCvv}
+                onChange={e => setCardData({ ...cardData, cardCvv: e.target.value })}
               />
             </Grid>
             <Grid item xs={12}>

@@ -29,9 +29,9 @@ import styles from './register.module.css'
 
 const RegisterV1 = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
     <Card className={classnames('flex flex-col', styles.card)}>
@@ -45,12 +45,12 @@ const RegisterV1 = () => {
           <TextField
             fullWidth
             label='Password'
-            type={showPassword ? 'text' : 'password'}
+            type={isPasswordShown ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                    <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )

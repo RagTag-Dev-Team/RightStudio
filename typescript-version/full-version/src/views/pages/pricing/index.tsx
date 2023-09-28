@@ -5,7 +5,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import Pricing from '@components/pricing'

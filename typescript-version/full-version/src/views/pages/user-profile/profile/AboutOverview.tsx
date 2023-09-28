@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // Type Imports
-import type { ProfileTeamsType, ProfileCommonType, ProfileTabType } from '@/app/api/pages/profile/types'
+import type { ProfileTeamsType, ProfileCommonType, ProfileTabType } from '@/types/pages/profileTypes'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'

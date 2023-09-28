@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup'
 import Button from '@mui/material/Button'
 import Autocomplete from '@mui/material/Autocomplete'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import Chip from '@mui/material/Chip'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
@@ -73,8 +74,13 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
           id='select-furnishing-details'
           options={furnishingArray}
           defaultValue={furnishingDetails}
-          getOptionLabel={option => option}
+          getOptionLabel={option => option || ''}
           renderInput={params => <TextField {...params} label='Furnishing Details' />}
+          renderTags={(value: string[], getTagProps) =>
+            value.map((option: string, index: number) => (
+              <Chip key={index} size='small' label={option} {...(getTagProps({ index }) as {})} />
+            ))
+          }
         />
       </Grid>
       <Grid item xs={12} md={6}>

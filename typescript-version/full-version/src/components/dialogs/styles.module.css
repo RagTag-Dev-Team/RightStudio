@@ -14,9 +14,12 @@
   padding-inline: 64px;
 }
 
-.dialogContentAlone {
+.dialogContentWithActions {
   padding-block: 0px 64px;
   padding-inline: 64px;
+}
+.dialogContentAlone {
+  padding: 64px;
 }
 
 .dialogActions {
@@ -37,7 +40,10 @@
   padding-block: 0px 24px;
   padding-inline: 40px;
 }
-.smDialogContentAlone {
+.smDialogContentWithActions {
   padding-block: 0px 40px;
   padding-inline: 40px;
+}
+.smDialogContentAlone {
+  padding: 40px;
 }

@@ -1,0 +1,19 @@
+.addEventSidebar {
+  padding-block: 0.75rem;
+  padding-inline: 1.31375rem 0.81375rem;
+  background-color: var(--mui-palette-background-default);
+}
+
+.primaryTextColor {
+  color: var(--mui-palette-text-primary);
+}
+
+.errorColor {
+  color: var(--mui-palette-error-main);
+}
+
+.calendarSidebar {
+  box-shadow: none;
+  background-color: var(--mui-palette-background-default);
+  border-radius: var(--mui-shape-borderRadius);
+}

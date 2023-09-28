@@ -2,13 +2,13 @@
 import AccountSettings from '@views/pages/account-settings'
 
 const getPricingData = async () => {
-  const pricingData = await fetch(`${process.env.API_URL}/pages/pricing`)
+  const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
-  if (!pricingData.ok) {
+  if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
 
-  return pricingData.json()
+  return res.json()
 }
 
 export async function generateStaticParams() {

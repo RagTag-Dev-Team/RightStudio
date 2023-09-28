@@ -101,7 +101,7 @@ const StepperVerticalWithoutNumbers = () => {
         {activeStep === steps.length && (
           <div className='mt-2'>
             <Typography>All steps are completed!</Typography>
-            <Button variant='contained' onClick={handleReset} sx={{ marginTop: '0.5rem' }} size='small'>
+            <Button variant='contained' onClick={handleReset} className='mt-2' size='small'>
               Reset
             </Button>
           </div>

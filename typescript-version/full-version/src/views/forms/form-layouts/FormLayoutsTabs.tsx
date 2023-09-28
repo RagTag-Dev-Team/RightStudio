@@ -2,6 +2,7 @@
 
 // React Imports
 import { useState } from 'react'
+import type { SyntheticEvent } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -41,9 +42,9 @@ type FormDataType = {
   username: string
   email: string
   password: string
-  showPassword: boolean
+  isPasswordShown: boolean
   confirmPassword: string
-  showConfirmPassword: boolean
+  setIsConfirmPasswordShown: boolean
   twitter: string
   facebook: string
   google: string
@@ -65,9 +66,9 @@ const FormLayoutsWithTabs = () => {
     username: '',
     email: '',
     password: '',
-    showPassword: false,
+    isPasswordShown: false,
     confirmPassword: '',
-    showConfirmPassword: false,
+    setIsConfirmPasswordShown: false,
     twitter: '',
     facebook: '',
     google: '',
@@ -76,12 +77,12 @@ const FormLayoutsWithTabs = () => {
     quora: ''
   })
 
-  const handleClickShowPassword = () => setFormData(show => ({ ...show, showPassword: !show.showPassword }))
+  const handleClickShowPassword = () => setFormData(show => ({ ...show, isPasswordShown: !show.isPasswordShown }))
 
   const handleClickShowConfirmPassword = () =>
-    setFormData(show => ({ ...show, showConfirmPassword: !show.showConfirmPassword }))
+    setFormData(show => ({ ...show, setIsConfirmPasswordShown: !show.setIsConfirmPasswordShown }))
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabChange = (event: SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
 
@@ -96,9 +97,9 @@ const FormLayoutsWithTabs = () => {
       username: '',
       email: '',
       password: '',
-      showPassword: false,
+      isPasswordShown: false,
       confirmPassword: '',
-      showConfirmPassword: false,
+      setIsConfirmPasswordShown: false,
       twitter: '',
       facebook: '',
       google: '',
@@ -221,7 +222,7 @@ const FormLayoutsWithTabs = () => {
                     label='Password'
                     placeholder='············'
                     id='form-layout-tabs-password'
-                    type={formData.showPassword ? 'text' : 'password'}
+                    type={formData.isPasswordShown ? 'text' : 'password'}
                     value={formData.password}
                     onChange={e => setFormData({ ...formData, password: e.target.value })}
                     InputProps={{
@@ -233,7 +234,7 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={formData.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -246,7 +247,7 @@ const FormLayoutsWithTabs = () => {
                     label='Confirm Password'
                     placeholder='············'
                     id='form-layout-tabs-confirm-password'
-                    type={formData.showConfirmPassword ? 'text' : 'password'}
+                    type={formData.setIsConfirmPasswordShown ? 'text' : 'password'}
                     value={formData.confirmPassword}
                     onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
                     InputProps={{
@@ -258,7 +259,9 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={formData.showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon
+                              icon={formData.setIsConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'}
+                            />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -328,7 +331,7 @@ const FormLayoutsWithTabs = () => {
           </CardContent>
           <Divider />
           <CardActions>
-            <Button type='submit' variant='contained' sx={{ marginInlineEnd: 2 }}>
+            <Button type='submit' variant='contained' className='mie-2'>
               Submit
             </Button>
             <Button type='reset' variant='outlined' onClick={() => handleReset()}>

@@ -11,10 +11,16 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
 // Type Imports
-import type { ConnectionsTabType } from '@/app/api/pages/profile/types'
+import type { ConnectionsTabType } from '@/types/pages/profileTypes'
+
+// Component Imports
+import OptionMenu from '@core/components/option-menu'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
+
+// Style Imports
+import commonStyles from '@views/pages/user-profile/styles.module.css'
 
 const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
   return (
@@ -23,7 +29,16 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
         data.map((item, index) => {
           return (
             <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card>
+              <Card className='relative'>
+                <OptionMenu
+                  options={[
+                    'Share Connection',
+                    'Block Connection',
+                    { divider: true },
+                    { text: 'Delete', menuItemProps: { className: commonStyles.errorColor } }
+                  ]}
+                  iconButtonProps={{ className: 'absolute' }}
+                />
                 <CardContent className='flex items-center flex-col'>
                   <Avatar src={item.avatar} />
                   <Typography>{item.name}</Typography>

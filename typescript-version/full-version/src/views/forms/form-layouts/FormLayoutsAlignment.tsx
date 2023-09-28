@@ -16,6 +16,9 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Style Imports
 import styles from './styles.module.css'
 
@@ -24,15 +27,15 @@ import Icon from '@core/components/IconifyIcon'
 
 const FormLayoutsAlignment = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
     <Card>
       <CardHeader title='Form Alignment' />
-      <CardContent className={styles.formAlignment}>
-        <form onSubmit={e => e.preventDefault()} className={styles.formWrapper}>
+      <CardContent className={classnames('flex flex-col items-center justify-center', styles.formAlignment)}>
+        <form onSubmit={e => e.preventDefault()} className={classnames('p-12', styles.formWrapper)}>
           <Grid container>
             <Grid item xs={12}>
               <Typography variant='h5'>Sign In</Typography>
@@ -46,7 +49,7 @@ const FormLayoutsAlignment = () => {
                 label='Password'
                 placeholder='············'
                 id='form-layout-alignment-password'
-                type={showPassword ? 'text' : 'password'}
+                type={isPasswordShown ? 'text' : 'password'}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
@@ -56,17 +59,17 @@ const FormLayoutsAlignment = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
                 }}
               />
             </Grid>
-            <Grid item xs={12} className={styles.paddingTop}>
+            <Grid item xs={12} className='pbs-2'>
               <FormControlLabel control={<Checkbox />} label='Remember me' />
             </Grid>
-            <Grid item xs={12} className={styles.paddingTop}>
+            <Grid item xs={12} className='pbs-2'>
               <Button variant='contained' type='submit' fullWidth>
                 Log In
               </Button>

@@ -48,7 +48,7 @@ const cardList: CardList[] = [
     cardType: 'Credit Card'
   },
   {
-    image: '/images/logos/master-card.png',
+    image: '/images/logos/mastercard.png',
     imgWidth: '30px',
     alt: 'Mastercard',
     cardName: 'Mastercard',
@@ -87,8 +87,8 @@ const PaymentMethod = ({ open, setOpen }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent
-        className={classnames(globalDialogStyles.dialogContentAlone, {
-          [globalDialogStyles.smDialogContentAlone]: isBelowSmScreen
+        className={classnames(globalDialogStyles.dialogContentWithActions, {
+          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>

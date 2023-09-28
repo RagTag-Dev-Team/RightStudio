@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import React from 'react'
 
@@ -17,15 +19,15 @@ const Root = styled('div', {
   slot: 'Root'
 })({
   blockSize: '100%',
-	display: 'flex',
-	borderRadius: 'var(--mui-shape-borderRadius)',
-	cursor: 'pointer',
-	overflow: 'hidden',
-	position: 'relative',
-	alignItems: 'center',
-	flexDirection: 'column',
-	justifyContent: 'center',
-	border: '2px solid var(--mui-palette-divider)',
+  display: 'flex',
+  borderRadius: 'var(--mui-shape-borderRadius)',
+  cursor: 'pointer',
+  overflow: 'hidden',
+  position: 'relative',
+  alignItems: 'center',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  border: '2px solid var(--mui-palette-divider)',
 
   '&:hover': {
     borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
@@ -43,8 +45,8 @@ const CheckboxInput = styled(Checkbox, {
   slot: 'Input'
 })({
   top: 0,
-	right: 0,
-	position: 'absolute'
+  right: 0,
+  position: 'absolute'
 })
 
 const Image = styled('img', {
@@ -63,7 +65,7 @@ const CustomCheckboxImg = (props: CustomInputImgProps) => {
       <Grid item {...gridProps}>
         <Root className={classnames({ active: selected.includes(value) })} onClick={() => handleChange(value)}>
           {typeof img === 'string' ? <Image src={img} alt={alt ?? `checkbox-image-${value}`} /> : img}
-            {type === 'radio' ? null : (
+          {type === 'radio' ? null : (
             <CheckboxInput
               size='small'
               color={color}

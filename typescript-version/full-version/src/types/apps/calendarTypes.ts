@@ -1,5 +1,5 @@
 // Type Imports
-import type { ThemeColor } from '@/@core/types'
+import type { ThemeColor } from '@core/types'
 
 export type CalendarFiltersType = 'Personal' | 'Business' | 'Family' | 'Holiday' | 'ETC'
 

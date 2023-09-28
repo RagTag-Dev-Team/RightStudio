@@ -13,9 +13,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { CustomInputHorizontalProps } from './types'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const Root = styled('div', {
   name: 'MuiCustomInputHorizontal',
   slot: 'root'
@@ -79,8 +76,8 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   const renderData = () => {
     if (meta && title && content) {
       return (
-        <div className={styles.contentWrapper}>
-          <div className={styles.header}>
+        <div className='flex flex-col h-full w-full'>
+          <div className='flex items-start justify-between w-full'>
             {typeof title === 'string' ? <Title>{title}</Title> : title}
             {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
           </div>
@@ -89,14 +86,14 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
       )
     } else if (meta && title && !content) {
       return (
-        <div className={styles.header}>
+        <div className='flex items-start justify-between w-full'>
           {typeof title === 'string' ? <Title>{title}</Title> : title}
           {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
         </div>
       )
     } else if (!meta && title && content) {
       return (
-        <div className={styles.contentHeader}>
+        <div className='flex flex-col h-full'>
           {typeof title === 'string' ? <Title>{title}</Title> : title}
           {typeof content === 'string' ? <Content>{content}</Content> : content}
         </div>

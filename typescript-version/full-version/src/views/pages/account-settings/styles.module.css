@@ -2,10 +2,6 @@
   border-radius: var(--mui-shape-borderRadius);
 }
 
-.marginTop {
-  margin-block-start: 0px !important;
-}
-
 .apiKeyItem {
   background-color: var(--mui-palette-action-hover);
   border-radius: var(--mui-shape-borderRadius);
@@ -13,8 +9,4 @@
 
 .linkColor {
   color: var(--primary-color);
-}
-
-.justifyCenter {
-  justify-content: center !important;
 }

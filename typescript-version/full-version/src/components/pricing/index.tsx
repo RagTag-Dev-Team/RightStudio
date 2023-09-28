@@ -17,7 +17,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import PlanDetails from './PlanDetails'

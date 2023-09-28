@@ -8,6 +8,9 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
@@ -16,15 +19,16 @@ type Props = {
   isLastStep: boolean
   handleNext: () => void
   handlePrev: () => void
+  direction: Direction
 }
 
-const Billing = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
+const Billing = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: Props) => {
   // States
   const [cardData, setCardData] = useState({
     number: '',
     name: '',
     expiry: '',
-    cvc: ''
+    cvv: ''
   })
 
   return (
@@ -65,12 +69,12 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
       <Grid item xs={3}>
         <TextField
           fullWidth
-          name='cvc'
-          label='CVC'
+          name='cvv'
+          label='CVV'
           autoComplete='off'
           placeholder='123'
-          value={cardData.cvc}
-          onChange={e => setCardData({ ...cardData, cvc: e.target.value })}
+          value={cardData.cvv}
+          onChange={e => setCardData({ ...cardData, cvv: e.target.value })}
         />
       </Grid>
       <Grid item xs={12}>
@@ -82,7 +86,7 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<Icon icon='mdi:arrow-left' />}
+          startIcon={<Icon icon={direction === 'rtl' ? 'mdi:arrow-right' : 'mdi:arrow-left'} />}
         >
           Previous
         </Button>
@@ -90,7 +94,9 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           variant='contained'
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
-          endIcon={<Icon icon={isLastStep ? 'mdi:check' : 'mdi:arrow-right'} />}
+          endIcon={
+            <Icon icon={isLastStep ? 'mdi:check' : direction === 'rtl' ? 'mdi:arrow-left' : 'mdi:arrow-right'} />
+          }
         >
           {isLastStep ? 'Submit' : 'Next'}
         </Button>

@@ -26,15 +26,15 @@ import styles from './resetPassword.module.css'
 
 const ResetPasswordV2 = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
 
   // Hooks
   const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(show => !show)
+  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   return (
     <div className='flex h-full justify-center'>
@@ -49,12 +49,12 @@ const ResetPasswordV2 = () => {
               autoFocus
               fullWidth
               label='Password'
-              type={showPassword ? 'text' : 'password'}
+              type={isPasswordShown ? 'text' : 'password'}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='end'>
                     <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                      <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                      <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                     </IconButton>
                   </InputAdornment>
                 )
@@ -63,7 +63,7 @@ const ResetPasswordV2 = () => {
             <TextField
               fullWidth
               label='Confirm Password'
-              type={showConfirmPassword ? 'text' : 'password'}
+              type={isConfirmPasswordShown ? 'text' : 'password'}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='end'>
@@ -72,7 +72,7 @@ const ResetPasswordV2 = () => {
                       onClick={handleClickShowConfirmPassword}
                       onMouseDown={e => e.preventDefault()}
                     >
-                      <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                      <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                     </IconButton>
                   </InputAdornment>
                 )

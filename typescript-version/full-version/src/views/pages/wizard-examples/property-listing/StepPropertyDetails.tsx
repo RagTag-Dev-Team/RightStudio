@@ -57,11 +57,9 @@ const data: CustomInputVerticalData[] = [
     title: 'Rent the property',
     content: (
       <Content>
-        <Typography>
-          Post your property for sale.
-          <br />
-          Unlimited free listing.
-        </Typography>
+        Post your property for sale.
+        <br />
+        Unlimited free listing.
       </Content>
     ),
     asset: 'mdi:home-variant-outline'
@@ -107,7 +105,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
       })}
       <Grid item xs={12} md={6}>
         <FormControl fullWidth>
-          <InputLabel htmlFor='validation-property-select'>Property Type</InputLabel>
+          <InputLabel id='validation-property-select'>Property Type</InputLabel>
           <Select label='Property Type' labelId='validation-property-select' defaultValue=''>
             <MenuItem value='residential'>Residential</MenuItem>
             <MenuItem value='commercial'>Commercial</MenuItem>
@@ -119,7 +117,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
       </Grid>
       <Grid item xs={12} md={6}>
         <FormControl fullWidth>
-          <InputLabel htmlFor='country-select'>Country</InputLabel>
+          <InputLabel id='country-select'>Country</InputLabel>
           <Select label='Country' labelId='country-select' aria-describedby='country-select' defaultValue=''>
             <MenuItem value='UK'>UK</MenuItem>
             <MenuItem value='USA'>USA</MenuItem>

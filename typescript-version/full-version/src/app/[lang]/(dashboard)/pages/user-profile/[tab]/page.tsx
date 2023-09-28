@@ -12,12 +12,12 @@ const getData = async () => {
 }
 
 export async function generateStaticParams() {
-  const data = await fetch(`${process.env.API_URL}/pages/profile`).then(res => res.json())
+  const res = await fetch(`${process.env.API_URL}/pages/profile`).then(res => res.json())
 
   let tabs: { tab: string }[] = []
 
-  if (data?.users) {
-    tabs = Object.keys(data.users).map(key => ({
+  if (res?.users) {
+    tabs = Object.keys(res.users).map(key => ({
       tab: key
     }))
   }

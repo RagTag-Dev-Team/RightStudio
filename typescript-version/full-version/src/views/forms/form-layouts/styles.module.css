@@ -15,10 +15,6 @@
 }
 
 .formAlignment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   block-size: 500px;
 }
 
@@ -26,13 +22,8 @@
   border: 1px solid var(--border-color);
   border-radius: var(--mui-shape-borderRadius);
   max-inline-size: 400px;
-  padding: 3rem;
 }
 
 .tabBorder {
   border-block-end: 1px solid var(--mui-palette-divider);
-}
-
-.paddingTop {
-  padding-block-start: 0.5rem !important;
 }

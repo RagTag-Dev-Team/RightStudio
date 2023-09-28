@@ -30,19 +30,19 @@ import BillingCard from '@components/dialogs/billing-card'
 import styles from './styles.module.css'
 
 type DataType = {
-  cardCvc?: string
+  cardNumber?: string
   name?: string
   expiryDate?: string
-  imgAlt?: string
-  badgeColor?: ThemeColor
-  cardStatus?: string
-  cardNumber?: string
+  cardCvv?: string
   imgSrc?: string
+  imgAlt?: string
+  cardStatus?: string
+  badgeColor?: ThemeColor
 }
 
 const data: DataType[] = [
   {
-    cardCvc: '587',
+    cardCvv: '587',
     name: 'Tom McBride',
     expiryDate: '12/24',
     imgAlt: 'Mastercard',
@@ -52,7 +52,7 @@ const data: DataType[] = [
     imgSrc: '/images/logos/mastercard.png'
   },
   {
-    cardCvc: '681',
+    cardCvv: '681',
     name: 'Mildred Wagner',
     expiryDate: '02/24',
     imgAlt: 'Visa card',
@@ -64,19 +64,21 @@ const data: DataType[] = [
 const PaymentMethod = () => {
   // States
   const [open, setOpen] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState<string>('credit')
+  const [paymentMethod, setPaymentMethod] = useState<'credit' | 'cod'>('credit')
+  const [creditCard, setCreditCard] = useState(0)
   const [cardData, setCardData] = useState({
     cardNumber: '',
     name: '',
     expiryDate: '',
-    cardCvc: ''
+    cardCvv: ''
   })
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (index: number) => {
     setOpen(true)
+    setCreditCard(index)
   }
 
   const handleReset = () => {
@@ -84,7 +86,7 @@ const PaymentMethod = () => {
       cardNumber: '',
       name: '',
       expiryDate: '',
-      cardCvc: ''
+      cardCvv: ''
     })
   }
 
@@ -100,7 +102,7 @@ const PaymentMethod = () => {
                   row
                   name='payment-method-radio'
                   value={paymentMethod}
-                  onChange={e => setPaymentMethod(e.target.value)}
+                  onChange={e => setPaymentMethod(e.target.value as 'credit' | 'cod')}
                 >
                   <FormControlLabel value='credit' control={<Radio />} label='Credit/Debit/ATM Card' />
                   <FormControlLabel value='cash' control={<Radio />} label='COD/Cheque' />
@@ -148,8 +150,8 @@ const PaymentMethod = () => {
                       label='CVV Code'
                       autoComplete='off'
                       placeholder='123'
-                      value={cardData.cardCvc}
-                      onChange={e => setCardData({ ...cardData, cardCvc: e.target.value })}
+                      value={cardData.cardCvv}
+                      onChange={e => setCardData({ ...cardData, cardCvv: e.target.value })}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -189,8 +191,8 @@ const PaymentMethod = () => {
                     {item.cardNumber && item.cardNumber.slice(0, -4).replace(/[0-9]/g, '*') + item.cardNumber.slice(-4)}
                   </Typography>
                 </div>
-                <div className=''>
-                  <Button variant='outlined' onClick={handleClickOpen}>
+                <div>
+                  <Button variant='outlined' onClick={() => handleClickOpen(index)}>
                     Edit
                   </Button>
                   <Button variant='outlined' color='secondary'>
@@ -200,7 +202,7 @@ const PaymentMethod = () => {
                 </div>
               </div>
             ))}
-            <BillingCard open={open} setOpen={setOpen} />
+            <BillingCard open={open} setOpen={setOpen} data={data[creditCard]} />
           </Grid>
 
           <Grid item xs={12} className='flex gap-4 flex-wrap'>

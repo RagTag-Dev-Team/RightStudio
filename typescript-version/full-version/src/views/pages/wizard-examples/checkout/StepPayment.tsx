@@ -122,7 +122,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
                       <TextField fullWidth label='Expiry Date' placeholder='MM/YY' />
                     </Grid>
                     <Grid item xs={6} sm={3}>
-                      <TextField fullWidth label='CVC' placeholder='123' />
+                      <TextField fullWidth label='CVV' placeholder='123' />
                     </Grid>
                     <Grid item xs={12}>
                       <FormControlLabel control={<Switch defaultChecked />} label='Save Card for future billing?' />

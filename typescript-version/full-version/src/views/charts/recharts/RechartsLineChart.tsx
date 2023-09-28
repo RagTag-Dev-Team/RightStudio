@@ -1,7 +1,6 @@
 'use client'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
@@ -13,6 +12,9 @@ import type { TooltipProps } from '@components/charts/recharts'
 
 // Type Imports
 import type { Direction } from '@core/types'
+
+// Style Imports
+import styles from './styles.module.css'
 
 const data = [
   { pv: 280, name: '7/12' },
@@ -39,7 +41,7 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
   if (active && payload) {
     return (
       <div className='recharts-custom-tooltip'>
-        <Typography sx={{ fontSize: '0.875rem' }}>{`${payload[0].value}%`}</Typography>
+        <Typography fontSize='0.875rem'>{`${payload[0].value}%`}</Typography>
       </div>
     )
   }
@@ -62,7 +64,7 @@ const RechartsLineChart = ({ direction }: { direction: Direction }) => {
         }}
       />
       <CardContent>
-        <Box sx={{ height: 350 }}>
+        <div className={styles.chartHeight}>
           <ResponsiveContainer>
             <LineChart height={350} data={data} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />
@@ -72,7 +74,7 @@ const RechartsLineChart = ({ direction }: { direction: Direction }) => {
               <Line dataKey='pv' stroke='#ff9f43' strokeWidth={3} />
             </LineChart>
           </ResponsiveContainer>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

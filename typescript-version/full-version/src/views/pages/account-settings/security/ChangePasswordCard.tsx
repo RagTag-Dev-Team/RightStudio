@@ -15,17 +15,14 @@ import Button from '@mui/material/Button'
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
-// Styles Imports
-import styles from '../styles.module.css'
-
 const ChangePasswordCard = () => {
   // States
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [showNewPassword, setShowNewPassword] = useState(false)
+  const [isCurrentPasswordShown, setIsCurrentPasswordShown] = useState(false)
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
+  const [isNewPasswordShown, setIsNewPasswordShown] = useState(false)
 
   const handleClickShowCurrentPassword = () => {
-    setShowCurrentPassword(!showCurrentPassword)
+    setIsCurrentPasswordShown(!isCurrentPasswordShown)
   }
 
   return (
@@ -38,7 +35,7 @@ const ChangePasswordCard = () => {
               <TextField
                 fullWidth
                 label='Current Password'
-                type={showCurrentPassword ? 'text' : 'password'}
+                type={isCurrentPasswordShown ? 'text' : 'password'}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
@@ -47,7 +44,7 @@ const ChangePasswordCard = () => {
                         onClick={handleClickShowCurrentPassword}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={showCurrentPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isCurrentPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -55,21 +52,21 @@ const ChangePasswordCard = () => {
               />
             </Grid>
           </Grid>
-          <Grid container className={styles.marginTop}>
+          <Grid container className='mbs-0'>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label='New Password'
-                type={showNewPassword ? 'text' : 'password'}
+                type={isNewPasswordShown ? 'text' : 'password'}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
                       <IconButton
                         edge='end'
-                        onClick={() => setShowNewPassword(!showNewPassword)}
+                        onClick={() => setIsNewPasswordShown(!isNewPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={showNewPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isNewPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -80,16 +77,16 @@ const ChangePasswordCard = () => {
               <TextField
                 fullWidth
                 label='Confirm New Password'
-                type={showConfirmPassword ? 'text' : 'password'}
+                type={isConfirmPasswordShown ? 'text' : 'password'}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
                       <IconButton
                         edge='end'
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        onClick={() => setIsConfirmPasswordShown(!isConfirmPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )

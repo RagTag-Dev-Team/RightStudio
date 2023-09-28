@@ -31,7 +31,7 @@ type FormValues = {
 const FormValidationAsyncSubmit = () => {
   // States
   const [loading, setLoading] = useState(false)
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const {
     control,
@@ -47,7 +47,7 @@ const FormValidationAsyncSubmit = () => {
     }
   })
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const onSubmit = async () => {
     setLoading(true)
@@ -125,7 +125,7 @@ const FormValidationAsyncSubmit = () => {
                     label='Password'
                     id='outlined-password'
                     placeholder='············'
-                    type={showPassword ? 'text' : 'password'}
+                    type={isPasswordShown ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position='end'>
@@ -135,7 +135,7 @@ const FormValidationAsyncSubmit = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

@@ -13,7 +13,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Type Imports
-import type { ProfileHeaderType } from '@/app/api/pages/profile/types'
+import type { ProfileHeaderType } from '@/types/pages/profileTypes'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'

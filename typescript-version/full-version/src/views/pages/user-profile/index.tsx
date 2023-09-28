@@ -19,7 +19,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import type { TabListProps } from '@mui/lab/TabList'
 
 // Type Imports
-import type { Data } from '@/app/api/pages/profile/types'
+import type { Data } from '@/types/pages/profileTypes'
 
 // Component Imports
 import ProfileTab from './profile/index'

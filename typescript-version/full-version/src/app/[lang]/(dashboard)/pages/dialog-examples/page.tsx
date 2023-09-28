@@ -15,13 +15,13 @@ import DialogCreateApp from '@views/pages/dialog-examples/DialogCreateApp'
 import DialogPricing from '@views/pages/dialog-examples/DialogPricing'
 
 const getPricingData = async () => {
-  const pricingData = await fetch(`${process.env.API_URL}/pages/pricing`)
+  const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
-  if (!pricingData.ok) {
+  if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
 
-  return pricingData.json()
+  return res.json()
 }
 
 const DialogExamples = async () => {

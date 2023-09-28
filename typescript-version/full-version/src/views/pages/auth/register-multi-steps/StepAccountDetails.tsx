@@ -14,14 +14,14 @@ import Icon from '@core/components/IconifyIcon'
 
 const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
   // States
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
+  const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false)
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState<boolean>(false)
 
   const handleClickShowPassword = () => {
-    setShowPassword(!showPassword)
+    setIsPasswordShown(!isPasswordShown)
   }
   const handleClickShowConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword)
+    setIsConfirmPasswordShown(!isConfirmPasswordShown)
   }
 
   return (
@@ -41,7 +41,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
             label='Password'
             placeholder='············'
             id='outlined-adornment-password'
-            type={showPassword ? 'text' : 'password'}
+            type={isPasswordShown ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
@@ -51,7 +51,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -64,7 +64,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
             label='Confirm Password'
             placeholder='············'
             id='outlined-confirm-password'
-            type={showConfirmPassword ? 'text' : 'password'}
+            type={isConfirmPasswordShown ? 'text' : 'password'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
@@ -74,7 +74,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle confirm password visibility'
                   >
-                    <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )

@@ -14,7 +14,7 @@ import AlertTitle from '@mui/material/AlertTitle'
 import LinearProgress from '@mui/material/LinearProgress'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'

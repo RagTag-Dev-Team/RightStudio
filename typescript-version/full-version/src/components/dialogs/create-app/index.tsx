@@ -1,6 +1,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import { usePathname } from 'next/navigation'
+
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -17,14 +20,22 @@ import type { Theme } from '@mui/material/styles'
 // Third-Party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
+// Type Imports
+import type { Direction } from '@core/types'
 
 // Component Imports
 import Details from './Details'
 import FrameWork from './FrameWork'
 import Database from './Database'
 import Billing from './Billing'
+import Submit from './Submit'
+
+// Icon Imports
+import Icon from '@core/components/IconifyIcon'
+
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
+import { getDirection } from '@/utils/get-direction'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
@@ -32,7 +43,6 @@ import StepperWrapper from '@core/styles/stepper'
 // Style Imports
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
-import Submit from './Submit'
 
 type Props = {
   open: boolean
@@ -75,22 +85,64 @@ const steps: stepperProps[] = [
   }
 ]
 
-const renderStepCount = (activeStep: number, isLastStep: boolean, handleNext: () => void, handlePrev: () => void) => {
+const renderStepCount = (
+  activeStep: number,
+  isLastStep: boolean,
+  handleNext: () => void,
+  handlePrev: () => void,
+  direction: Direction
+) => {
   switch (activeStep) {
     case 0:
-      return <Details activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
+      return (
+        <Details
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isLastStep={isLastStep}
+          direction={direction}
+        />
+      )
     case 1:
       return (
-        <FrameWork activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
+        <FrameWork
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isLastStep={isLastStep}
+          direction={direction}
+        />
       )
     case 2:
       return (
-        <Database activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
+        <Database
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isLastStep={isLastStep}
+          direction={direction}
+        />
       )
     case 3:
-      return <Billing activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
+      return (
+        <Billing
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isLastStep={isLastStep}
+          direction={direction}
+        />
+      )
     case 4:
-      return <Submit activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
+      return (
+        <Submit
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          isLastStep={isLastStep}
+          direction={direction}
+        />
+      )
     default:
       return null
   }
@@ -103,6 +155,9 @@ const CreateApp = ({ open, setOpen }: Props) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const pathname = usePathname()
+  const locale = getLocale(pathname)
+  const direction = getDirection(locale)
 
   const handleClose = () => {
     setOpen(false)
@@ -140,8 +195,8 @@ const CreateApp = ({ open, setOpen }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent
-        className={classnames('overflow-visible', globalDialogStyles.dialogContentAlone, {
-          [globalDialogStyles.smDialogContentAlone]: isBelowSmScreen
+        className={classnames('overflow-visible', globalDialogStyles.dialogContentWithActions, {
+          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
         })}
       >
         <IconButton onClick={handleClose} className={styles.closeIcon}>
@@ -175,7 +230,7 @@ const CreateApp = ({ open, setOpen }: Props) => {
               })}
             </Stepper>
           </StepperWrapper>
-          <div className='flex-1'>{renderStepCount(activeStep, isLastStep, handleNext, handlePrev)}</div>
+          <div className='flex-1'>{renderStepCount(activeStep, isLastStep, handleNext, handlePrev, direction)}</div>
         </div>
       </DialogContent>
     </Dialog>

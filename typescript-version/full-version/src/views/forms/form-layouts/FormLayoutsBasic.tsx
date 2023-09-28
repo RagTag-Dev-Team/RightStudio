@@ -25,12 +25,12 @@ import styles from './styles.module.css'
 
 const FormLayoutsBasic = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(show => !show)
+  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   return (
     <Card>
@@ -56,7 +56,7 @@ const FormLayoutsBasic = () => {
                 label='Password'
                 placeholder='············'
                 id='form-layout-basic-password'
-                type={showPassword ? 'text' : 'password'}
+                type={isPasswordShown ? 'text' : 'password'}
                 helperText='Use 8 or more characters with a mix of letters, numbers & symbols'
                 InputProps={{
                   endAdornment: (
@@ -67,7 +67,7 @@ const FormLayoutsBasic = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -80,7 +80,7 @@ const FormLayoutsBasic = () => {
                 label='Confirm Password'
                 placeholder='············'
                 id='form-layout-basic-confirm-password'
-                type={showConfirmPassword ? 'text' : 'password'}
+                type={isConfirmPasswordShown ? 'text' : 'password'}
                 helperText='Make sure to type the same password as above'
                 InputProps={{
                   endAdornment: (
@@ -91,7 +91,7 @@ const FormLayoutsBasic = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )

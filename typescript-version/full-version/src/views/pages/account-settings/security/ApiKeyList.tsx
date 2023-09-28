@@ -9,7 +9,7 @@ import Chip from '@mui/material/Chip'
 import Icon from '@core/components/IconifyIcon'
 
 // Styles Imports
-import styles from '../styles.module.css'
+import styles from '@views/pages/account-settings/styles.module.css'
 
 type ApiKeyListType = {
   title: string

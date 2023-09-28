@@ -1,5 +1,5 @@
 // Component Imports
-import NotFound from '@/app/[lang]/not-found'
+import NotFound from '@/app/[lang]/(blank-layout-pages)/not-found'
 
 const Error = () => {
   return <NotFound />

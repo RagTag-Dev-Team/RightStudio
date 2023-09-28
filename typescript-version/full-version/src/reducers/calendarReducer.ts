@@ -1,7 +1,7 @@
 import { events } from './../app/api/fake-db/calendar/index'
 
 // Type Imports
-import type { CalendarActionType, CalendarFiltersType, CalendarType, EventType } from '@/types/calendarTypes'
+import type { CalendarActionType, CalendarFiltersType, CalendarType, EventType } from '@/types/apps/calendarTypes'
 
 export default function calendarReducer(calendars: CalendarType, action: CalendarActionType): CalendarType {
   switch (action.type) {

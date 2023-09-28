@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import React from 'react'
 
@@ -21,11 +23,11 @@ const Root = styled('div', {
   blockSize: '100%',
   display: 'flex',
   borderRadius: 'var(--mui-shape-borderRadius)',
-	cursor: 'pointer',
-	position: 'relative',
-	alignItems: 'center',
-	flexDirection: 'column',
-	border: '1px solid var(--mui-palette-divider)',
+  cursor: 'pointer',
+  position: 'relative',
+  alignItems: 'center',
+  flexDirection: 'column',
+  border: '1px solid var(--mui-palette-divider)',
   transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
 
   '&:hover': {
@@ -81,7 +83,7 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
   const renderComponent = () => {
     return (
       <Grid item {...gridProps}>
-        <Root 
+        <Root
           onClick={() => handleChange(value)}
           className={classnames({
             'radio-only': type === 'radio' && !asset && !title && !content,

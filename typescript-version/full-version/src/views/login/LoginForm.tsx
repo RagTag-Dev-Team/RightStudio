@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 const LoginForm = () => {
-  // State
+  // States
   const [email, setEmail] = useState('admin@admin.com')
   const [password, setPassword] = useState('admin')
 

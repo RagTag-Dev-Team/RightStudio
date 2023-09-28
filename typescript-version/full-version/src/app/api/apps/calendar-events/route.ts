@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 // Type Imports
-import type { CalendarFiltersType } from '@/types/calendarTypes'
+import type { CalendarFiltersType } from '@/types/apps/calendarTypes'
 
 // Import Data
 import { events } from '@/app/api/fake-db/calendar'

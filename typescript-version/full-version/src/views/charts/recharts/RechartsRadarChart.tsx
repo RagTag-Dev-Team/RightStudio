@@ -21,7 +21,10 @@ import {
 import type { TooltipProps } from '@components/charts/recharts'
 
 // Icon Imports
-// import Icon from '@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
+
+// Style Imports
+import styles from './styles.module.css'
 
 const data = [
   {
@@ -78,8 +81,8 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload &&
           data.payload.map((i: any) => {
             return (
-              <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { color: i.fill, mr: 2.5 } }} key={i.dataKey}>
-                {/* <Icon icon='mdi:circle' fontSize='0.6rem' /> */}
+              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& svg': { color: i.fill } }}>
+                <Icon icon='mdi:circle' fontSize='0.6rem' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -96,7 +99,7 @@ const RechartsRadarChart = () => {
     <Card>
       <CardHeader title='Mobile Comparison' />
       <CardContent>
-        <Box sx={{ height: 350 }}>
+        <div className={styles.chartHeight}>
           <ResponsiveContainer>
             <RadarChart cx='50%' cy='50%' height={350} data={data} style={{ direction: 'ltr' }}>
               <PolarGrid />
@@ -107,17 +110,17 @@ const RechartsRadarChart = () => {
               <Radar dataKey='Samsung s20' stroke='#9b88fa' fill='#9b88fa' fillOpacity={0.8} />
             </RadarChart>
           </ResponsiveContainer>
-        </Box>
-        <Box sx={{ display: 'flex', mb: 4, justifyContent: 'center' }}>
-          <Box sx={{ mr: 6, display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#fde802' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+        </div>
+        <div className='flex justify-center mbe-4'>
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#fde802' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>iPhone 11</Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#9b88fa' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#9b88fa' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Samsung s20</Typography>
           </Box>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

@@ -20,7 +20,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Style Imports
-import styles from '../styles.module.css'
+import styles from '@views/pages/account-settings/styles.module.css'
 
 type Data = {
   firstName: string

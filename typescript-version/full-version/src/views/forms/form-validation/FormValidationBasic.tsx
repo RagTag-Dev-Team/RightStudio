@@ -45,7 +45,7 @@ type FormValues = {
 
 const FormValidationBasic = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const {
     control,
@@ -66,7 +66,7 @@ const FormValidationBasic = () => {
     }
   })
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const onSubmit = () => toast.success('Form Submitted')
 
@@ -137,7 +137,7 @@ const FormValidationBasic = () => {
                     label='Password'
                     placeholder='············'
                     id='form-validation-basic-password'
-                    type={showPassword ? 'text' : 'password'}
+                    type={isPasswordShown ? 'text' : 'password'}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position='end'>
@@ -147,7 +147,7 @@ const FormValidationBasic = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

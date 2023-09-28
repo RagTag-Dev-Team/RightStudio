@@ -54,9 +54,9 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
 
   // States
   const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false)
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const handleOptionChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
@@ -102,7 +102,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           label='Password'
           placeholder='············'
           id='personal-details-password'
-          type={showPassword ? 'text' : 'password'}
+          type={isPasswordShown ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
@@ -112,7 +112,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
                   onMouseDown={e => e.preventDefault()}
                   aria-label='toggle password visibility'
                 >
-                  <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                  <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                 </IconButton>
               </InputAdornment>
             )

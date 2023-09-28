@@ -1,7 +1,6 @@
 'use client'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import Divider from '@mui/material/Divider'
@@ -13,8 +12,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import DatePicker from 'react-datepicker'
 
 // Types Imports
-import type { SidebarLeftProps, CalendarFiltersType } from '@/types/calendarTypes'
-import type { ThemeColor } from '@/@core/types'
+import type { SidebarLeftProps, CalendarFiltersType } from '@/types/apps/calendarTypes'
+import type { ThemeColor } from '@core/types'
 
 // Style Imports
 import DatePickerWrapper from '@core/styles/libs/react-datepicker'
@@ -91,28 +90,24 @@ const SidebarLeft = (props: SidebarLeftProps) => {
           }
         }}
       >
-        <Box sx={{ pb: 6, width: '100%' }}>
+        <div className='w-full pbe-6'>
           <Button fullWidth variant='contained' onClick={handleSidebarToggleSidebar}>
             Add Event
           </Button>
-        </Box>
+        </div>
 
-        <Divider sx={{ width: '100%', m: '0 !important' }} />
+        <Divider className='w-full' />
 
         <DatePickerWrapper
-          sx={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' }
-          }}
+          className='flex justify-center w-full'
+          sx={{ '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' } }}
         >
           <DatePicker inline onChange={date => calendarApi.gotoDate(date)} />
         </DatePickerWrapper>
 
-        <Divider sx={{ width: '100%', m: '0 !important' }} />
+        <Divider className='w-full' />
 
-        <Typography variant='caption' sx={{ mt: 7, mb: 2, textTransform: 'uppercase' }}>
+        <Typography variant='caption' className='uppercase mbs-7 mbe-2'>
           Calendars
         </Typography>
         <FormControlLabel

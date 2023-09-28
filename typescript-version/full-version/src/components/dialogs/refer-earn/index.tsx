@@ -78,8 +78,8 @@ const ReferEarn = ({ open, setOpen }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent
-        className={classnames('flex flex-col gap-6', globalDialogStyles.dialogContentAlone, {
-          [globalDialogStyles.smDialogContentAlone]: isBelowSmScreen
+        className={classnames('flex flex-col gap-6', globalDialogStyles.dialogContentWithActions, {
+          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>

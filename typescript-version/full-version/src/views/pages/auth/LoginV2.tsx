@@ -29,12 +29,12 @@ import styles from './login.module.css'
 
 const LoginV2 = () => {
   // States
-  const [showPassword, setShowPassword] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   // Hooks
   const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
-  const handleClickShowPassword = () => setShowPassword(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
     <div className='flex h-full justify-center'>
@@ -49,12 +49,12 @@ const LoginV2 = () => {
             <TextField
               fullWidth
               label='Password'
-              type={showPassword ? 'text' : 'password'}
+              type={isPasswordShown ? 'text' : 'password'}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='end'>
                     <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                      <Icon icon={showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                      <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                     </IconButton>
                   </InputAdornment>
                 )

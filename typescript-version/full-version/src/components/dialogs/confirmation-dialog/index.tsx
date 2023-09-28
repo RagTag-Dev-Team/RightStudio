@@ -44,7 +44,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
               : 'Are you sure to cancel your subscription?'}
           </Typography>
         </DialogContent>
-        <DialogActions className='justify-center'>
+        <DialogActions className='gap-2 justify-center'>
           <Button variant='contained' onClick={() => handleConfirmation(true)}>
             Yes
           </Button>

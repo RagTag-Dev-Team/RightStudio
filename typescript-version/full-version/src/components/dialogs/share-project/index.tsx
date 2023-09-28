@@ -154,8 +154,8 @@ const ShareProject = ({ open, setOpen }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent
-        className={classnames('flex flex-col gap-6', styles.dialogContentAlone, {
-          [styles.smDialogContentAlone]: isBelowSmScreen
+        className={classnames('flex flex-col gap-6', styles.dialogContentWithActions, {
+          [styles.smDialogContentWithActions]: isBelowSmScreen
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
@@ -184,7 +184,7 @@ const ShareProject = ({ open, setOpen }: Props) => {
         </div>
         <div className='flex flex-col gap-3'>
           <Typography>{`${data.length} Members`}</Typography>
-          <div className='flex flex-col flex-wrap'>
+          <div className='flex flex-col flex-wrap gap-4'>
             {data.map((member, index) => (
               <div key={index} className='flex items-center w-full gap-4'>
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />

@@ -1,6 +1,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import { usePathname } from 'next/navigation'
+
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -14,12 +17,15 @@ import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import InputAdornment from '@mui/material/InputAdornment'
-import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
+
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
+import { getDirection } from '@/utils/get-direction'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
@@ -151,8 +157,10 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
   const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)
 
   // Hooks
-  const theme = useTheme()
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const pathname = usePathname()
+  const locale = getLocale(pathname)
+  const direction = getDirection(locale)
 
   const handleClose = () => {
     setOpen(false)
@@ -171,7 +179,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
     }
   }
 
-  const arrowIcon = theme.direction === 'ltr' ? 'mdi:arrow-right' : 'mdi:arrow-left'
+  const arrowIcon = direction === 'ltr' ? 'mdi:arrow-right' : 'mdi:arrow-left'
 
   return (
     <>

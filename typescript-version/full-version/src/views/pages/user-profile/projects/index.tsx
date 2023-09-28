@@ -14,13 +14,17 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import Tooltip from '@mui/material/Tooltip'
 
 // Type Imports
-import type { ProjectsTabType } from '@/app/api/pages/profile/types'
+import type { ProjectsTabType } from '@/types/pages/profileTypes'
+
+// Component Imports
+import OptionMenu from '@core/components/option-menu'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@views/pages/user-profile/styles.module.css'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
@@ -31,7 +35,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
             <Grid item key={index} xs={12} md={6} lg={4}>
               <Card>
                 <CardContent>
-                  <div className='flex items-center'>
+                  <div className='flex items-center justify-between'>
                     <div className='flex items-center'>
                       <Avatar src={item.avatar} />
                       <div>
@@ -49,6 +53,15 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                         </Typography>
                       </div>
                     </div>
+                    <OptionMenu
+                      options={[
+                        'Rename Project',
+                        'View Details',
+                        'Add to Favorite',
+                        { divider: true },
+                        { text: 'Leave Project', menuItemProps: { className: commonStyles.errorColor } }
+                      ]}
+                    />
                   </div>
                   <div className='flex items-center justify-between flex-wrap'>
                     <div className={styles.budget}>

@@ -1,9 +1,9 @@
 'use client'
 
-// ** React Imports
-import { useState, useEffect, forwardRef, useCallback, Fragment } from 'react'
+// React Imports
+import { useState, useEffect, forwardRef, useCallback } from 'react'
 
-// ** MUI Imports
+// MUI Imports
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Select from '@mui/material/Select'
@@ -18,18 +18,22 @@ import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-// ** Third Party Imports
+// Third-party Imports
+import classnames from 'classnames'
 import DatePicker from 'react-datepicker'
 import { useForm, Controller } from 'react-hook-form'
 
-// ** Icon Imports
+// Types
+import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
+
+// Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
-// ** Styled Components
+// Styled Components
 import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
-// ** Types
-import type { EventDateType, AddEventSidebarType } from '@/types/calendarTypes'
+// Style Imports
+import styles from './styles.module.css'
 
 interface PickerProps {
   label?: string
@@ -62,7 +66,7 @@ const defaultState: DefaultStateType = {
 }
 
 const AddEventSidebar = (props: AddEventSidebarType) => {
-  // ** Props
+  // Props
   const {
     calendars,
     calendarApi,
@@ -74,7 +78,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     handleAddEventSidebarToggle
   } = props
 
-  // ** States
+  // States
   const [values, setValues] = useState<DefaultStateType>(defaultState)
 
   const {
@@ -167,39 +171,32 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
 
   const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
     return (
-      <TextField
-        inputRef={ref}
-        fullWidth
-        {...props}
-        label={props.label || ''}
-        sx={{ width: '100%' }}
-        error={props.error}
-      />
+      <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} className='w-full' error={props.error} />
     )
   })
 
   const RenderSidebarFooter = () => {
     if (calendars.selectedEvent === null || (calendars.selectedEvent && !calendars.selectedEvent.title.length)) {
       return (
-        <Fragment>
-          <Button size='large' type='submit' variant='contained' sx={{ mr: 4 }}>
+        <div className='flex gap-4'>
+          <Button size='large' type='submit' variant='contained'>
             Add
           </Button>
           <Button size='large' variant='outlined' color='secondary' onClick={resetToEmptyValues}>
             Reset
           </Button>
-        </Fragment>
+        </div>
       )
     } else {
       return (
-        <Fragment>
-          <Button size='large' type='submit' variant='contained' sx={{ mr: 4 }}>
+        <div className='flex gap-4'>
+          <Button size='large' type='submit' variant='contained'>
             Update
           </Button>
           <Button size='large' variant='outlined' color='secondary' onClick={resetToStoredValues}>
             Reset
           </Button>
-        </Fragment>
+        </div>
       )
     }
   }
@@ -212,37 +209,29 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: ['100%', 400] } }}
     >
-      <Box
-        className='sidebar-header'
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          backgroundColor: 'background.default',
-          p: theme => theme.spacing(3, 3.255, 3, 5.255)
-        }}
-      >
+      <Box className={classnames('flex justify-between sidebar-header', styles.addEventSidebar)}>
         <Typography variant='h6'>
           {calendars.selectedEvent && calendars.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
-            <IconButton
-              size='small'
-              onClick={handleDeleteButtonClick}
-              sx={{ color: 'text.primary', mr: calendars.selectedEvent !== null ? 1 : 0 }}
-            >
+        {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
+          <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
+            <IconButton size='small' onClick={handleDeleteButtonClick} className={styles.primaryTextColor}>
               <Icon icon='mdi:delete-outline' fontSize={20} />
             </IconButton>
-          ) : null}
-          <IconButton size='small' onClick={handleSidebarClose} sx={{ color: 'text.primary' }}>
+            <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
+              <Icon icon='mdi:close' fontSize={20} />
+            </IconButton>
+          </Box>
+        ) : (
+          <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
             <Icon icon='mdi:close' fontSize={20} />
           </IconButton>
-        </Box>
+        )}
       </Box>
-      <Box className='sidebar-body' sx={{ p: theme => theme.spacing(5, 6) }}>
+      <Box className='sidebar-body plb-5 pli-6'>
         <DatePickerWrapper>
           <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-            <FormControl fullWidth sx={{ mb: 6 }}>
+            <FormControl fullWidth className='mbe-6'>
               <Controller
                 name='title'
                 control={control}
@@ -252,12 +241,12 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 )}
               />
               {errors.title && (
-                <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
+                <FormHelperText className={styles.errorColor} id='event-title-error'>
                   This field is required
                 </FormHelperText>
               )}
             </FormControl>
-            <FormControl fullWidth sx={{ mb: 6 }}>
+            <FormControl fullWidth className='mbe-6'>
               <InputLabel id='event-calendar'>Calendar</InputLabel>
               <Select
                 label='Calendar'
@@ -272,7 +261,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 <MenuItem value='ETC'>ETC</MenuItem>
               </Select>
             </FormControl>
-            <Box sx={{ mb: 6 }}>
+            <div className='mbe-6'>
               <DatePicker
                 selectsStart
                 id='event-start-date'
@@ -285,8 +274,8 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 onChange={(date: Date) => setValues({ ...values, startDate: new Date(date) })}
                 onSelect={handleStartDate}
               />
-            </Box>
-            <Box sx={{ mb: 6 }}>
+            </div>
+            <div className='mbe-6'>
               <DatePicker
                 selectsEnd
                 id='event-end-date'
@@ -299,8 +288,8 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 customInput={<PickersComponent label='End Date' registername='endDate' />}
                 onChange={(date: Date) => setValues({ ...values, endDate: new Date(date) })}
               />
-            </Box>
-            <FormControl sx={{ mb: 6 }}>
+            </div>
+            <FormControl className='mbe-6'>
               <FormControlLabel
                 label='All Day'
                 control={
@@ -312,12 +301,12 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               fullWidth
               type='url'
               id='event-url'
-              sx={{ mb: 6 }}
+              className='mbe-6'
               label='Event URL'
               value={values.url}
               onChange={e => setValues({ ...values, url: e.target.value })}
             />
-            <FormControl fullWidth sx={{ mb: 6 }}>
+            <FormControl fullWidth className='mbe-6'>
               <InputLabel id='event-guests'>Guests</InputLabel>
               <Select
                 multiple
@@ -338,15 +327,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               rows={4}
               multiline
               fullWidth
-              sx={{ mb: 6 }}
+              className='mbe-6'
               label='Description'
               id='event-description'
               value={values.description}
               onChange={e => setValues({ ...values, description: e.target.value })}
             />
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <div className='flex items-center'>
               <RenderSidebarFooter />
-            </Box>
+            </div>
           </form>
         </DatePickerWrapper>
       </Box>

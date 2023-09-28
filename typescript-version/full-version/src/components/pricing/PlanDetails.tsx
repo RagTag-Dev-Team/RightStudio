@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import classnames from 'classnames'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'

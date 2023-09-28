@@ -4,7 +4,7 @@
 import Grid from '@mui/material/Grid'
 
 // Type Imports
-import type { PricingPlanType } from '@/app/api/pages/pricing/route'
+import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import CurrentPlan from './CurrentPlan'

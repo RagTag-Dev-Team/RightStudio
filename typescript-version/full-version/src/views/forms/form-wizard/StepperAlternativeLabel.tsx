@@ -37,9 +37,9 @@ type FormDataType = {
   username: string
   email: string
   password: string
-  showPassword: boolean
+  isPasswordShown: boolean
   confirmPassword: string
-  showConfirmPassword: boolean
+  isConfirmPasswordShown: boolean
   firstName: string
   lastName: string
   country: string
@@ -72,9 +72,9 @@ const StepperAlternativeLabel = () => {
     username: '',
     email: '',
     password: '',
-    showPassword: false,
+    isPasswordShown: false,
     confirmPassword: '',
-    showConfirmPassword: false,
+    isConfirmPasswordShown: false,
     firstName: '',
     lastName: '',
     country: '',
@@ -85,10 +85,10 @@ const StepperAlternativeLabel = () => {
     github: ''
   })
 
-  const handleClickShowPassword = () => setFormData(show => ({ ...show, showPassword: !show.showPassword }))
+  const handleClickShowPassword = () => setFormData(show => ({ ...show, isPasswordShown: !show.isPasswordShown }))
 
   const handleClickShowConfirmPassword = () =>
-    setFormData(show => ({ ...show, showConfirmPassword: !show.showConfirmPassword }))
+    setFormData(show => ({ ...show, isConfirmPasswordShown: !show.isConfirmPasswordShown }))
 
   const handleReset = () => {
     setActiveStep(0)
@@ -96,9 +96,9 @@ const StepperAlternativeLabel = () => {
       username: '',
       email: '',
       password: '',
-      showPassword: false,
+      isPasswordShown: false,
       confirmPassword: '',
-      showConfirmPassword: false,
+      isConfirmPasswordShown: false,
       firstName: '',
       lastName: '',
       country: '',
@@ -151,7 +151,7 @@ const StepperAlternativeLabel = () => {
                 label='Password'
                 placeholder='············'
                 id='stepper-alternative-password'
-                type={formData.showPassword ? 'text' : 'password'}
+                type={formData.isPasswordShown ? 'text' : 'password'}
                 value={formData.password}
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
                 InputProps={{
@@ -163,7 +163,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={formData.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -176,7 +176,7 @@ const StepperAlternativeLabel = () => {
                 label='Confirm Password'
                 placeholder='············'
                 id='stepper-alternative-confirm-password'
-                type={formData.showConfirmPassword ? 'text' : 'password'}
+                type={formData.isConfirmPasswordShown ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
                 InputProps={{
@@ -188,7 +188,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={formData.showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -336,7 +336,7 @@ const StepperAlternativeLabel = () => {
               <form onSubmit={e => e.preventDefault()}>
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography className={styles['fw-500']}>{steps[activeStep].title}</Typography>
+                    <Typography className='font-medium'>{steps[activeStep].title}</Typography>
                     <Typography variant='body2'>{steps[activeStep].subtitle}</Typography>
                   </Grid>
                   {renderStepContent(activeStep)}

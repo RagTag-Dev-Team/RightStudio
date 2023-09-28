@@ -11,7 +11,10 @@ import CardContent from '@mui/material/CardContent'
 import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@components/charts/recharts'
 
 // Icon Imports
-// import Icon from '@core/components/IconifyIcon'
+import Icon from '@core/components/IconifyIcon'
+
+// Style Imports
+import styles from './styles.module.css'
 
 type LabelProp = {
   cx: number
@@ -54,7 +57,7 @@ const RechartsPieChart = () => {
         subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <Box sx={{ height: 350 }}>
+        <div className={styles.chartHeight}>
           <ResponsiveContainer>
             <PieChart height={350} style={{ direction: 'ltr' }}>
               <Pie data={data} innerRadius={80} dataKey='value' label={renderCustomizedLabel} labelLine={false}>
@@ -65,46 +68,25 @@ const RechartsPieChart = () => {
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
-        </Box>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', mb: 4, justifyContent: 'center' }}>
-          <Box
-            sx={{
-              mr: 6,
-              display: 'flex',
-              alignItems: 'center',
-              '& svg': { mr: 1.5, color: '#00d4bd' }
-            }}
-          >
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+        </div>
+        <div className='flex justify-center flex-wrap mbe-4'>
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#00d4bd' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>R&D</Typography>
           </Box>
-          <Box
-            sx={{
-              mr: 6,
-              display: 'flex',
-              alignItems: 'center',
-              '& svg': { mr: 1.5, color: '#ffe700' }
-            }}
-          >
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#ffe700' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Operational</Typography>
           </Box>
-          <Box
-            sx={{
-              mr: 6,
-              display: 'flex',
-              alignItems: 'center',
-              '& svg': { mr: 1.5, color: '#FFA1A1' }
-            }}
-          >
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#FFA1A1' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Networking</Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.5, color: '#826bf8' } }}>
-            {/* <Icon icon='mdi:circle' fontSize='0.75rem' /> */}
+          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#826bf8' } }}>
+            <Icon icon='mdi:circle' fontSize='0.75rem' />
             <Typography variant='body2'>Hiring</Typography>
           </Box>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   )

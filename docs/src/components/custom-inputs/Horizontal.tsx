@@ -1,4 +1,5 @@
-// React Imports
+'use client'
+
 import React from 'react'
 
 // MUI Imports
@@ -14,20 +15,17 @@ import classnames from 'classnames'
 // Type Imports
 import type { CustomInputHorizontalProps } from './types'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const Root = styled('div', {
   name: 'MuiCustomInputHorizontal',
   slot: 'root'
 })(({ theme }) => ({
   blockSize: '100%',
-	display: 'flex',
-	borderRadius: 'var(--mui-shape-borderRadius)',
-	cursor: 'pointer',
-	position: 'relative',
-	alignItems: 'flex-start',
-	border: '1px solid var(--mui-palette-divider)',
+  display: 'flex',
+  borderRadius: 'var(--mui-shape-borderRadius)',
+  cursor: 'pointer',
+  position: 'relative',
+  alignItems: 'flex-start',
+  border: '1px solid var(--mui-palette-divider)',
   transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
 
   '&:hover': {
@@ -80,8 +78,8 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   const renderData = () => {
     if (meta && title && content) {
       return (
-        <div className={styles.contentWrapper}>
-          <div className={styles.header}>
+        <div className='flex flex-col h-full w-full'>
+          <div className='flex items-start justify-between w-full'>
             {typeof title === 'string' ? <Title>{title}</Title> : title}
             {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
           </div>
@@ -90,14 +88,14 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
       )
     } else if (meta && title && !content) {
       return (
-        <div className={styles.header}>
+        <div className='flex items-start justify-between w-full'>
           {typeof title === 'string' ? <Title>{title}</Title> : title}
           {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
         </div>
       )
     } else if (!meta && title && content) {
       return (
-        <div className={styles.contentHeader}>
+        <div className='flex flex-col h-full'>
           {typeof title === 'string' ? <Title>{title}</Title> : title}
           {typeof content === 'string' ? <Content>{content}</Content> : content}
         </div>

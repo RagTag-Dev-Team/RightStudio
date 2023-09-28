@@ -30,11 +30,16 @@ import {
 import type { ColumnDef, FilterFn } from '@tanstack/react-table'
 import type { RankingInfo } from '@tanstack/match-sorter-utils'
 
+// Component Imports
+import OptionMenu from '@core/components/option-menu'
+
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'
 
 // Style Imports
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from './styles.module.css'
+import tableStyles from '@core/styles/libs/reactTables.module.css'
+import commonStyles from '@views/pages/user-profile/styles.module.css'
 
 type DataType = {
   id: number
@@ -44,6 +49,7 @@ type DataType = {
   avatar?: string
   avatarGroup: string[]
   status: number
+  actions?: string
 }
 
 declare module '@tanstack/table-core' {
@@ -181,6 +187,9 @@ const DebouncedInput = ({
 const ProjectTables = () => {
   // States
   const [rowSelection, setRowSelection] = useState({})
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [data, setData] = useState(...[projectTable])
+  const [globalFilter, setGlobalFilter] = useState('')
 
   const columnHelper = createColumnHelper<DataType>()
 
@@ -190,6 +199,7 @@ const ProjectTables = () => {
         id: 'select',
         header: ({ table }) => (
           <IndeterminateCheckbox
+            className={styles.selectColumn}
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -199,6 +209,7 @@ const ProjectTables = () => {
         ),
         cell: ({ row }) => (
           <IndeterminateCheckbox
+            className={styles.selectColumn}
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -211,7 +222,7 @@ const ProjectTables = () => {
       columnHelper.accessor('title', {
         header: () => <span>Name</span>,
         cell: ({ row }) => (
-          <div className='flex items-center'>
+          <div className={classnames('flex items-center', styles.nameColumn)}>
             <Avatar src={row.original.avatar} />
             <div className='flex flex-col'>
               <Typography>{row.original.title}</Typography>
@@ -221,11 +232,11 @@ const ProjectTables = () => {
         )
       }),
       columnHelper.accessor('leader', {
-        header: () => <span>Leader</span>,
+        header: () => <div className={styles.leaderColumn}>Leader</div>,
         cell: ({ row }) => <Typography>{row.original.leader}</Typography>
       }),
       columnHelper.accessor('avatarGroup', {
-        header: () => <span>Team</span>,
+        header: () => <div className={styles.teamColumn}>Team</div>,
         cell: ({ row }) => (
           <AvatarGroup max={4} className='flex items-center'>
             {row.original.avatarGroup.map((avatar, index) => (
@@ -236,21 +247,32 @@ const ProjectTables = () => {
         enableSorting: false
       }),
       columnHelper.accessor('status', {
-        header: () => <span>Progress</span>,
+        header: () => <div className={styles.progressColumn}>Progress</div>,
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <LinearProgress color='primary' value={row.original.status} variant='determinate' className='w-full' />
             <Typography>{`${row.original.status}%`}</Typography>
           </div>
         )
+      }),
+      columnHelper.accessor('actions', {
+        header: () => <div>Actions</div>,
+        cell: () => (
+          <OptionMenu
+            options={[
+              'Details',
+              'Archive',
+              { divider: true },
+              { text: 'Delete', menuItemProps: { className: commonStyles.errorColor } }
+            ]}
+          />
+        ),
+        enableSorting: false
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
-
-  const [data, setData] = useState(...[projectTable])
-  const [globalFilter, setGlobalFilter] = useState('')
 
   const table = useReactTable({
     data,
@@ -294,49 +316,51 @@ const ProjectTables = () => {
         }
       />
 
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id} className={styles.tr}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id} className={styles.th}>
-                  {header.isPlaceholder ? null : (
-                    <>
-                      <div
-                        className={classnames({
-                          'flex items-center': header.column.getIsSorted(),
-                          'cursor-pointer select-none': header.column.getCanSort()
-                        })}
-                        onClick={header.column.getToggleSortingHandler()}
-                      >
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                        {{
-                          asc: <Icon icon='mdi:chevron-up' fontSize='1.25rem' />,
-                          desc: <Icon icon='mdi:chevron-down' fontSize='1.25rem' />
-                        }[header.column.getIsSorted()] ?? null}
-                      </div>
-                    </>
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table
-            .getRowModel()
-            .rows.slice(0, table.getState().pagination.pageSize)
-            .map(row => {
-              return (
-                <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  ))}
-                </tr>
-              )
-            })}
-        </tbody>
-      </table>
+      <div className='overflow-x-auto'>
+        <table className={tableStyles.table}>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className={tableStyles.tr}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id} className={tableStyles.th}>
+                    {header.isPlaceholder ? null : (
+                      <>
+                        <div
+                          className={classnames({
+                            'flex items-center': header.column.getIsSorted(),
+                            'cursor-pointer select-none': header.column.getCanSort()
+                          })}
+                          onClick={header.column.getToggleSortingHandler()}
+                        >
+                          {flexRender(header.column.columnDef.header, header.getContext())}
+                          {{
+                            asc: <Icon icon='mdi:chevron-up' fontSize='1.25rem' />,
+                            desc: <Icon icon='mdi:chevron-down' fontSize='1.25rem' />
+                          }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
+                        </div>
+                      </>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table
+              .getRowModel()
+              .rows.slice(0, table.getState().pagination.pageSize)
+              .map(row => {
+                return (
+                  <tr key={row.id} className={classnames(tableStyles.tr, { selected: row.getIsSelected() })}>
+                    {row.getVisibleCells().map(cell => (
+                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                    ))}
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </div>
       <div className='flex items-center gap-3'>
         <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
           {'<<'}

@@ -1,0 +1,15 @@
+.typeColumn {
+  min-inline-size: 250px;
+}
+
+.emailColumn {
+  min-inline-size: 65px;
+}
+
+.browserColumn {
+  min-inline-size: 80px;
+}
+
+.appColumn {
+  min-inline-size: 65px;
+}

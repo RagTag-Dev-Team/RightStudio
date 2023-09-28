@@ -30,9 +30,9 @@ type FormDataType = {
   username: string
   email: string
   password: string
-  showPassword: boolean
+  isPasswordShown: boolean
   confirmPassword: string
-  showConfirmPassword: boolean
+  isConfirmPasswordShown: boolean
   firstName: string
   lastName: string
   country: string
@@ -47,9 +47,9 @@ const FormLayoutsSeparator = () => {
     username: '',
     email: '',
     password: '',
-    showPassword: false,
+    isPasswordShown: false,
     confirmPassword: '',
-    showConfirmPassword: false,
+    isConfirmPasswordShown: false,
     firstName: '',
     lastName: '',
     country: '',
@@ -58,19 +58,19 @@ const FormLayoutsSeparator = () => {
     phoneNumber: ''
   })
 
-  const handleClickShowPassword = () => setFormData(show => ({ ...show, showPassword: !show.showPassword }))
+  const handleClickShowPassword = () => setFormData(show => ({ ...show, isPasswordShown: !show.isPasswordShown }))
 
   const handleClickShowConfirmPassword = () =>
-    setFormData(show => ({ ...show, showConfirmPassword: !show.showConfirmPassword }))
+    setFormData(show => ({ ...show, isConfirmPasswordShown: !show.isConfirmPasswordShown }))
 
   const handleReset = () => {
     setFormData({
       username: '',
       email: '',
       password: '',
-      showPassword: false,
+      isPasswordShown: false,
       confirmPassword: '',
-      showConfirmPassword: false,
+      isConfirmPasswordShown: false,
       firstName: '',
       lastName: '',
       country: '',
@@ -88,7 +88,7 @@ const FormLayoutsSeparator = () => {
         <CardContent>
           <Grid container>
             <Grid item xs={12}>
-              <Typography variant='body2' sx={{ fontWeight: 500 }}>
+              <Typography variant='body2' className='font-medium'>
                 1. Account Details
               </Typography>
             </Grid>
@@ -117,7 +117,7 @@ const FormLayoutsSeparator = () => {
                 label='Password'
                 placeholder='············'
                 id='form-layout-separator-password'
-                type={formData.showPassword ? 'text' : 'password'}
+                type={formData.isPasswordShown ? 'text' : 'password'}
                 value={formData.password}
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
                 InputProps={{
@@ -129,7 +129,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={formData.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -142,7 +142,7 @@ const FormLayoutsSeparator = () => {
                 label='Confirm Password'
                 placeholder='············'
                 id='form-layout-separator-confirm-password'
-                type={formData.showConfirmPassword ? 'text' : 'password'}
+                type={formData.isConfirmPasswordShown ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
                 InputProps={{
@@ -154,7 +154,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={formData.showConfirmPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                        <Icon icon={formData.isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -165,7 +165,7 @@ const FormLayoutsSeparator = () => {
               <Divider />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='body2' sx={{ fontWeight: 500 }}>
+              <Typography variant='body2' className='font-medium'>
                 2. Personal Info
               </Typography>
             </Grid>
@@ -245,7 +245,7 @@ const FormLayoutsSeparator = () => {
         </CardContent>
         <Divider />
         <CardActions>
-          <Button type='submit' variant='contained' sx={{ marginInlineEnd: 2 }}>
+          <Button type='submit' variant='contained' className='mie-2'>
             Submit
           </Button>
           <Button

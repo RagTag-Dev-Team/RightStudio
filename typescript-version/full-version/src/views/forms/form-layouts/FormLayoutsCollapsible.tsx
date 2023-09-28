@@ -2,7 +2,7 @@
 
 // React Imports
 import { useState } from 'react'
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, SyntheticEvent } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
@@ -46,7 +46,7 @@ type FormData = {
   number: string
   name: string
   expiry: string
-  cvc: string
+  cvv: string
 }
 
 const data: CustomInputHorizontalData[] = [
@@ -92,10 +92,10 @@ const FormLayoutsCollapsible = () => {
     number: '',
     name: '',
     expiry: '',
-    cvc: ''
+    cvv: ''
   })
 
-  const handleExpandChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+  const handleExpandChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
   }
 
@@ -120,7 +120,7 @@ const FormLayoutsCollapsible = () => {
       number: '',
       name: '',
       expiry: '',
-      cvc: ''
+      cvv: ''
     })
   }
 
@@ -302,12 +302,12 @@ const FormLayoutsCollapsible = () => {
                       <Grid item xs={6}>
                         <TextField
                           fullWidth
-                          name='cvc'
-                          label='CVC Code'
+                          name='cvv'
+                          label='CVV Code'
                           autoComplete='off'
                           placeholder='123'
-                          value={cardData.cvc}
-                          onChange={e => setCardData({ ...cardData, cvc: e.target.value })}
+                          value={cardData.cvv}
+                          onChange={e => setCardData({ ...cardData, cvv: e.target.value })}
                         />
                       </Grid>
                     </Grid>

@@ -19,7 +19,7 @@ import type { TabListProps } from '@mui/lab/TabList'
 import type { Theme } from '@mui/material/styles'
 
 // Type Imports
-import type { FaqType } from '@/app/api/pages/faq/route'
+import type { FaqType } from '@/types/pages/faqTypes'
 
 // Icon Imports
 import Icon from '@core/components/IconifyIcon'

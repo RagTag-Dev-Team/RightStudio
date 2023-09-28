@@ -1,8 +1,10 @@
+'use client'
+
 // React Imports
-import { ChangeEvent, ReactNode } from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 
 // MUI Imports
-import { GridProps } from '@mui/material/Grid'
+import type { GridProps } from '@mui/material/Grid'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
@@ -31,15 +33,18 @@ export type CustomInputHorizontalProps = {
   color?: ThemeColor
   gridProps?: GridProps
   data: CustomInputHorizontalData
-} & ({
-  type: 'checkbox'
-  selected: string[]
-  handleChange: (value: string) => void
-} | {
-  type: 'radio'
-  selected: string
-  handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
-})
+} & (
+  | {
+      type: 'checkbox'
+      selected: string[]
+      handleChange: (value: string) => void
+    }
+  | {
+      type: 'radio'
+      selected: string
+      handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
+    }
+)
 
 // Types of Vertical Custom Inputs
 export type CustomInputVerticalData = {
@@ -54,15 +59,18 @@ export type CustomInputVerticalProps = {
   color?: ThemeColor
   gridProps?: GridProps
   data: CustomInputVerticalData
-} & ({
-  type: 'checkbox'
-  selected: string[]
-  handleChange: (value: string) => void
-} | {
-  type: 'radio'
-  selected: string
-  handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
-})
+} & (
+  | {
+      type: 'checkbox'
+      selected: string[]
+      handleChange: (value: string) => void
+    }
+  | {
+      type: 'radio'
+      selected: string
+      handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
+    }
+)
 
 // Types of Custom Inputs with Images
 export type CustomInputImgData = {
@@ -76,12 +84,15 @@ export type CustomInputImgProps = {
   color?: ThemeColor
   gridProps: GridProps
   data: CustomInputImgData
-} & ({
-  type: 'checkbox'
-  selected: string[]
-  handleChange: (value: string) => void
-} | {
-  type: 'radio'
-  selected: string
-  handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
-})
+} & (
+  | {
+      type: 'checkbox'
+      selected: string[]
+      handleChange: (value: string) => void
+    }
+  | {
+      type: 'radio'
+      selected: string
+      handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
+    }
+)

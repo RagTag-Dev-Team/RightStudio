@@ -4,12 +4,23 @@
 import { useReducer, useState } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import { useMediaQuery } from '@mui/material'
 import type { Theme } from '@mui/material/styles'
 
+// Third-party Imports
+import classNames from 'classnames'
+
 // Type Imports
-import type { AddEventType, CalendarColors, CalendarFiltersType, CalendarType, EventType } from '@/types/calendarTypes'
+import type {
+  AddEventType,
+  CalendarColors,
+  CalendarFiltersType,
+  CalendarType,
+  EventType
+} from '@/types/apps/calendarTypes'
+
+// Styles Imports
+import styles from './styles.module.css'
 
 // Reducer Imports
 import calendarReducer from '@reducers/calendarReducer'
@@ -29,7 +40,7 @@ const calendarsColor: CalendarColors = {
 }
 
 const AppCalendar = ({ events }: { events: EventType[] }) => {
-  // ** States
+  // States
   const [calendarApi, setCalendarApi] = useState<null | any>(null)
   const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false)
   const [addEventSidebarOpen, setAddEventSidebarOpen] = useState<boolean>(false)
@@ -43,7 +54,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   // Hooks
   const [calendars, dispatch] = useReducer(calendarReducer, initialState)
 
-  // ** Vars
+  // Vars
   // const { skin, direction } = settings
   const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
@@ -127,17 +138,10 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
         handleLeftSidebarToggle={handleLeftSidebarToggle}
         handleAddEventSidebarToggle={handleAddEventSidebarToggle}
       />
-      <Box
-        sx={{
-          p: 5,
-          pb: 0,
-          flexGrow: 1,
-          borderRadius: 1,
-          boxShadow: 'none',
-          backgroundColor: 'background.paper'
+      <div
+        className={classNames('p-5 pbe-0 flex-grow', styles.calendarSidebar)}
 
-          // ...(mdAbove ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : {})
-        }}
+        // ...(mdAbove ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : {})
       >
         <Calendar
           mdAbove={mdAbove}
@@ -150,7 +154,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
           handleLeftSidebarToggle={handleLeftSidebarToggle}
           handleAddEventSidebarToggle={handleAddEventSidebarToggle}
         />
-      </Box>
+      </div>
       <AddEventSidebar
         calendars={calendars}
         calendarApi={calendarApi}

@@ -18,6 +18,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { DataType } from './data'
 
 // Style Imports
+import commonStyles from './styles.module.css'
 import styles from '@core/styles/libs/reactTables.module.css'
 
 // Data Imports
@@ -41,6 +42,7 @@ const IndeterminateCheckbox = ({
 }
 
 const RowSelection = () => {
+  // States
   const [rowSelection, setRowSelection] = useState({})
 
   const columnHelper = createColumnHelper<DataType>()
@@ -51,6 +53,7 @@ const RowSelection = () => {
         id: 'select',
         header: ({ table }) => (
           <IndeterminateCheckbox
+            className={commonStyles.selectColumn}
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -60,6 +63,7 @@ const RowSelection = () => {
         ),
         cell: ({ row }) => (
           <IndeterminateCheckbox
+            className={commonStyles.selectColumn}
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -71,23 +75,23 @@ const RowSelection = () => {
       },
       columnHelper.accessor('full_name', {
         cell: info => info.getValue(),
-        header: () => <span>Name</span>
+        header: () => <div className={commonStyles.nameColumn}>Name</div>
       }),
       columnHelper.accessor('email', {
         cell: info => info.getValue(),
-        header: () => <span>Email</span>
+        header: () => <div className={commonStyles.emailColumn}>Email</div>
       }),
       columnHelper.accessor('start_date', {
         cell: info => info.getValue(),
-        header: () => <span>Date</span>
+        header: () => <div className={commonStyles.dateColumn}>Date</div>
       }),
       columnHelper.accessor('experience', {
         cell: info => info.getValue(),
-        header: () => <span>Experience</span>
+        header: () => <div className={commonStyles.experienceColumn}>Experience</div>
       }),
       columnHelper.accessor('age', {
         cell: info => info.getValue(),
-        header: () => <span>Age</span>
+        header: () => <div className={commonStyles.ageColumn}>Age</div>
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,33 +120,35 @@ const RowSelection = () => {
     <Card>
       <CardHeader title='Row Selection' />
       <CardContent>
-        <table className={styles.table}>
-          <thead>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className={styles.tr}>
-                {headerGroup.headers.map(header => (
-                  <th key={header.id} className={styles.th}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table
-              .getRowModel()
-              .rows.slice(0, 10)
-              .map(row => {
-                return (
-                  <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
-                    {row.getVisibleCells().map(cell => (
-                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                    ))}
-                  </tr>
-                )
-              })}
-          </tbody>
-        </table>
+        <div className='overflow-x-auto'>
+          <table className={styles.table}>
+            <thead>
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id} className={styles.tr}>
+                  {headerGroup.headers.map(header => (
+                    <th key={header.id} className={styles.th}>
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table
+                .getRowModel()
+                .rows.slice(0, 10)
+                .map(row => {
+                  return (
+                    <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
+                      {row.getVisibleCells().map(cell => (
+                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                      ))}
+                    </tr>
+                  )
+                })}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   )

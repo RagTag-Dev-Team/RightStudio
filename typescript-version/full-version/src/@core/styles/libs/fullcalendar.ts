@@ -15,7 +15,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       width: '100% !important'
     },
 
-    // ** Toolbar
+    // Toolbar
     '& .fc-toolbar': {
       flexWrap: 'wrap',
       flexDirection: 'row !important',
@@ -127,7 +127,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** Calendar head & body common
+    // Calendar head & body common
     '& tbody td, & thead th': {
       borderColor: theme.palette.divider,
       '&.fc-col-header-cell': {
@@ -138,7 +138,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** Event Colors
+    // Event Colors
     '& .fc-event': {
       '&:not(.fc-list-event)': {
         '&.bg-primary': {
@@ -249,7 +249,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       width: `calc(100% + ${theme.spacing(5.25 * 2)})`
     },
 
-    // ** Calendar Head
+    // Calendar Head
     '& .fc-col-header': {
       '& .fc-col-header-cell': {
         fontSize: '.875rem',
@@ -261,7 +261,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** Daygrid
+    // Daygrid
     '& .fc-scrollgrid-section-liquid > td': {
       borderBottom: 0
     },
@@ -293,7 +293,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** All Views Event
+    // All Views Event
     '& .fc-daygrid-day-number': {
       padding: theme.spacing(2, 4)
     },
@@ -305,7 +305,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       // backgroundColor: `rgba(${theme.palette.customColors.main}, 0.04) !important`
     },
 
-    // ** WeekView
+    // WeekView
     '& .fc-timegrid': {
       '& .fc-scrollgrid-section': {
         '& .fc-col-header-cell, & .fc-timegrid-axis': {
@@ -353,7 +353,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** List View
+    // List View
     '& .fc-list': {
       border: 'none',
       '& th[colspan="3"]': {
@@ -396,7 +396,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** Popover
+    // Popover
     '& .fc-popover': {
       zIndex: 20,
       boxShadow: 1,
@@ -416,7 +416,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
 
-    // ** Media Queries
+    // Media Queries
     [theme.breakpoints.up('md')]: {
       '& .fc-sidebarToggle-button': {
         display: 'none'

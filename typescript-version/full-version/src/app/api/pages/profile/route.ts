@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server'
 
 // Type Imports
-import type { ProfileHeaderType, DataType } from './types'
+import type { ProfileHeaderType, DataType } from '@/types/pages/profileTypes'
 
 const data: DataType = {
   profile: {
