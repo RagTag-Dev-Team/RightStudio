@@ -83,7 +83,7 @@ export const SettingsProvider = (props: Props) => {
 
   // Compare settings from cookie with the current settings in state
   // If there is a difference then store cookie settings in prevSettings ref
-  prevSettings.current = JSON.stringify(settings) !== cookieValue ? (cookieValue as Settings) : null
+  prevSettings.current = JSON.stringify(settings) !== JSON.stringify(cookieValue) ? (cookieValue as Settings) : null
 
   // Store Settings
   const storeSettings = (settings: Settings) => {
@@ -134,6 +134,7 @@ export const SettingsProvider = (props: Props) => {
   useEffect(() => {
     if (JSON.stringify(initialSettings) !== JSON.stringify(settings)) {
       setIsSettingsChanged(true)
+      updatedSettingsRef.current = false
     } else {
       setIsSettingsChanged(false)
     }
@@ -141,8 +142,10 @@ export const SettingsProvider = (props: Props) => {
 
   // Set initial settings in state for the first time
   useEffectOnce(() => {
-    updateCookie(JSON.stringify(initialSettings))
-    setSettings(initSettings)
+    if (JSON.stringify(settingsCookie) === '{}') {
+      updateCookie(JSON.stringify(initialSettings))
+      setSettings(initSettings)
+    }
 
     if (settings.layout === 'collapsed') {
       collapseVerticalNav(true)
@@ -153,7 +156,7 @@ export const SettingsProvider = (props: Props) => {
   useEffect(() => {
     // If settings state and settings value in cookie are different and there are no settings updates from any individual page
     // Then update the settings in cookie and settings state with the previous settings stored in cookie
-    if (JSON.stringify(settings) !== cookieValue && !updatedSettingsRef.current) {
+    if (JSON.stringify(settings) !== JSON.stringify(cookieValue) && !updatedSettingsRef.current) {
       saveSettings(cookieValue as Settings)
     }
 
