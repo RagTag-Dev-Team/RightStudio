@@ -7,7 +7,7 @@
     "build": "na prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "build:icons": "tsx src/assets/iconify-icons/bundle-icons.ts",
+    "build:icons": "tsx src/assets/iconify-icons/bundle-icons-css.ts",
     "postinstall": "npm run build:icons",
     "migrate": "dotenv -e .env -- npx prisma migrate dev"
   },
