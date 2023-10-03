@@ -70,7 +70,7 @@ export const SettingsProvider = (props: Props) => {
   let initSettings = useMemo(() => ({ ...initialSettings, ...cookieValue }), [cookieValue])
 
   // States
-  const [settings, setSettings] = useState<Settings>(initSettings)
+  const [settings, setSettings] = useState<Settings>({})
   const [isSettingsChanged, setIsSettingsChanged] = useState(false)
 
   // Refs

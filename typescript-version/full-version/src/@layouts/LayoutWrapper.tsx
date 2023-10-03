@@ -7,6 +7,9 @@ import type { ReactElement } from 'react'
 // MUI Imports
 import { useColorScheme } from '@mui/material/styles'
 
+// Third-party Imports
+import { useCookie } from 'react-use'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 import type { Mode } from '@core/types'
@@ -30,7 +33,12 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
 
   // Hooks
   const { settings } = useSettings()
-  const { mode, setMode } = useColorScheme()
+
+  const { mode, systemMode, setMode } = useColorScheme()
+
+  // Cookies
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [value, updateCookie] = useCookie('colorPref')
 
   let layout = themeConfig.layout
 
@@ -46,8 +54,18 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
     if (settings.mode !== mode) {
       setMode(settings.mode as Mode)
     }
+    if (settings.mode === 'system' && systemMode !== undefined) {
+      updateCookie(systemMode)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.mode])
+
+  useEffect(() => {
+    if (systemMode !== undefined) {
+      updateCookie(systemMode)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [systemMode])
 
   // Return the layout based on the layout context
   return layout === 'horizontal' ? horizontalLayout : verticalLayout

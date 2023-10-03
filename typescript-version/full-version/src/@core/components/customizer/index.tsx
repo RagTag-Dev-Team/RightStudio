@@ -132,7 +132,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   useEffectOnce(() => {
     setTimeout(() => {
       initialRender.current = false
-    }, 201)
+    }, 210)
   })
 
   useEffect(() => {
