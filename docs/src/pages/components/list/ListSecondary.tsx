@@ -18,7 +18,7 @@ const ListSecondary = () => {
     <List>
       <ListItem>
         <ListItemAvatar>
-          <Avatar src='/assets/avatars/2.png' alt='Caroline Black'  className='h-8 w-8' />
+          <Avatar src='/assets/avatars/2.png' alt='Caroline Black' />
         </ListItemAvatar>
         <ListItemText primary='Caroline Black' secondary='Sweet dessert brownie.' />
         <ListItemSecondaryAction>
@@ -29,7 +29,7 @@ const ListSecondary = () => {
       </ListItem>
       <ListItem>
         <ListItemAvatar>
-          <Avatar src='/assets/avatars/1.png' alt='Alfred Copeland'  className='h-8 w-8' />
+          <Avatar src='/assets/avatars/1.png' alt='Alfred Copeland' />
         </ListItemAvatar>
         <ListItemText primary='Alfred Copeland' secondary='Pudding pie tiramisu.' />
         <ListItemSecondaryAction>
@@ -40,7 +40,7 @@ const ListSecondary = () => {
       </ListItem>
       <ListItem>
         <ListItemAvatar>
-          <Avatar src='/assets/avatars/8.png' alt='Celia Schneider'  className='h-8 w-8' />
+          <Avatar src='/assets/avatars/8.png' alt='Celia Schneider' />
         </ListItemAvatar>
         <ListItemText primary='Celia Schneider' secondary='Muffin pie chupa chups.' />
         <ListItemSecondaryAction>

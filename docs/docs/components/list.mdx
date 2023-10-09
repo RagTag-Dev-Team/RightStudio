@@ -11,6 +11,8 @@ import Link from '@mui/material/Link'
 import CardSnippet from '@docComponents/card-snippet/index'
 import ListUsers from '@docPages/components/list/ListUsers'
 import SourceCodeListUsers from '!!raw-loader!@docPages/components/list/ListUsers'
+import ListProgress from '@docPages/components/list/ListProgress'
+import SourceCodeListProgress from '!!raw-loader!@docPages/components/list/ListProgress'
 import ListDense from '@docPages/components/list/ListDense'
 import SourceCodeListDense from '!!raw-loader!@docPages/components/list/ListDense'
 import ListBasic from '@docPages/components/list/ListBasic'
@@ -128,6 +130,14 @@ import SourceCodeListStickySubheader from '!!raw-loader!@docPages/components/lis
       code={SourceCodeListUsers}
     >
       <ListUsers />
+    </CardSnippet>
+  </Grid>
+   <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Progress List'
+      code={SourceCodeListProgress}
+    >
+      <ListProgress />
     </CardSnippet>
   </Grid>
 </Grid>

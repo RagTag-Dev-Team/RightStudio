@@ -39,6 +39,7 @@ const AutocompleteFixedOptions = () => {
             {...(getTagProps({ index }) as {})}
             disabled={fixedOptions.indexOf(option) !== -1}
             key={index}
+            size='small'
           />
         ))
       }

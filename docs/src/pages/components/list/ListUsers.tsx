@@ -89,9 +89,7 @@ const userList: User[] = [
 const ListUsers = () => {
   return (
     <StyledList disablePadding>
-    {userList.map((user, index) => {
-      console.log(user.statusColor)
-      return (
+      {userList.map((user, index) => (
         <ListItem key={index}>
           <ListItemAvatar>
             <Avatar src={user.avatarSrc} alt={user.name} />
@@ -101,9 +99,9 @@ const ListUsers = () => {
             <div className='flex items-center flex-wrap'>
               <Box className='mie-3 flex items-center gap-1' sx={{ '& svg': { color: user.statusColor } }}>
                 <Icon icon='mdi:circle' fontSize='0.625rem' />
-                <Typography variant='caption'>{user.status}</Typography>
+                <Typography variant='body2'>{user.status}</Typography>
               </Box>
-              <Typography variant='caption' className={styles.listTextDisabled}>
+              <Typography variant='body2' className={styles.listTextDisabled}>
                 {user.lastActive}
               </Typography>
             </div>
@@ -114,7 +112,7 @@ const ListUsers = () => {
             </Button>
           </ListItemSecondaryAction>
         </ListItem>
-      )})}
+      ))}
     </StyledList>
   )
 }
