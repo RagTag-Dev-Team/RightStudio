@@ -2,6 +2,7 @@
 
 // React Imports
 import { useState } from 'react'
+import type { FormEvent } from 'react'
 
 // Next Imports
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -19,7 +20,7 @@ const LoginForm = () => {
   const searchParams = useSearchParams()
 
   // Handlers
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const res = await signIn('credentials', { email, password, redirect: false })

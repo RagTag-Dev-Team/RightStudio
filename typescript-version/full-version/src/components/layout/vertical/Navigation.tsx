@@ -30,7 +30,6 @@ const Navigation = () => {
     <VerticalNav customStyles={{ zIndex: 'var(--drawer-z-index)' }}>
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
-        {/* Hide Logo on Smaller screens */}
         <Logo />
         <NavCollapseIcons onClick={handleClick} />
       </NavHeader>

@@ -18,7 +18,7 @@ import { getDirection } from '@/utils/get-direction'
 // Style Imports
 //! Do not remove the `utils.css` import below otherwise it will break the template styling
 import '@core/styles/utils.css' // Common Utility Classes
-import '../globals.css'
+import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 

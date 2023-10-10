@@ -328,34 +328,36 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
               <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Direction</p>
                 <div className='flex items-center gap-4'>
-                  <div className='flex flex-col items-start gap-1'>
-                    <Link
-                      className={classnames(styles.itemWrapper, {
-                        [styles.active]: direction === 'ltr'
-                      })}
-                      href={getLocalePath(pathName, 'en')}
-                    >
-                      <DirectionLtr />
-                    </Link>
-                    <p className={styles.itemLabel} onClick={() => handleChange('direction', 'ltr')}>
-                      Left to Right <br />
-                      (English)
-                    </p>
-                  </div>
-                  <div className='flex flex-col items-start gap-1'>
-                    <Link
-                      className={classnames(styles.itemWrapper, {
-                        [styles.active]: direction === 'rtl'
-                      })}
-                      href={getLocalePath(pathName, 'ar')}
-                    >
-                      <DirectionRtl />
-                    </Link>
-                    <p className={styles.itemLabel} onClick={() => handleChange('direction', 'rtl')}>
-                      Right to Left <br />
-                      (Arabic)
-                    </p>
-                  </div>
+                  <Link href={getLocalePath(pathName, 'en')}>
+                    <div className='flex flex-col items-start gap-1'>
+                      <div
+                        className={classnames(styles.itemWrapper, {
+                          [styles.active]: direction === 'ltr'
+                        })}
+                      >
+                        <DirectionLtr />
+                      </div>
+                      <p className={styles.itemLabel}>
+                        Left to Right <br />
+                        (English)
+                      </p>
+                    </div>
+                  </Link>
+                  <Link href={getLocalePath(pathName, 'ar')}>
+                    <div className='flex flex-col items-start gap-1'>
+                      <div
+                        className={classnames(styles.itemWrapper, {
+                          [styles.active]: direction === 'rtl'
+                        })}
+                      >
+                        <DirectionRtl />
+                      </div>
+                      <p className={styles.itemLabel}>
+                        Right to Left <br />
+                        (Arabic)
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
