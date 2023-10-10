@@ -56,19 +56,18 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                   </div>
                   <Typography>{item.description}</Typography>
                   <div className='flex items-center justify-between flex-wrap'>
-                    <AvatarGroup className='items-center'>
+                    <AvatarGroup
+                      total={item.extraMembers ? item.extraMembers + 3 : 3}
+                      sx={{ '& .MuiAvatar-root': { width: '2rem', height: '2rem', fontSize: '1rem' } }}
+                      className='items-center pull-up'
+                    >
                       {item.avatarGroup.map((person, index) => {
                         return (
                           <Tooltip key={index} title={person.name}>
-                            <Avatar src={person.avatar} alt={person.name} className='h-8 w-8' />
+                            <Avatar src={person.avatar} alt={person.name} />
                           </Tooltip>
                         )
                       })}
-                      {item.extraMembers && (
-                        <Tooltip title={`${item.extraMembers} more`}>
-                          <Avatar className='h-8 w-8'>+{item.extraMembers}</Avatar>
-                        </Tooltip>
-                      )}
                     </AvatarGroup>
                     <div className='flex items-center'>
                       {item.chips.map((chip, index) => (

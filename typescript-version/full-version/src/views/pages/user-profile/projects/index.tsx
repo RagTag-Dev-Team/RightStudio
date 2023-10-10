@@ -104,7 +104,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                   />
                   <div className='flex items-center justify-between'>
                     <div className='flex items-center flex-grow'>
-                      <AvatarGroup className='items-center'>
+                      <AvatarGroup className='items-center pull-up'>
                         {item.avatarGroup.map((person, index) => {
                           return (
                             <Tooltip key={index} title={person.name}>

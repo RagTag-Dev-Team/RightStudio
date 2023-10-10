@@ -13,6 +13,8 @@ import TimelineFilled from '@docPages/components/timeline/TimelineFilled'
 import SourceCodeTimelineFilled from '!!raw-loader!@docPages/components/timeline/TimelineFilled'
 import TimelineOutlined from '@docPages/components/timeline/TimelineOutlined'
 import SourceCodeTimelineOutlined from '!!raw-loader!@docPages/components/timeline/TimelineOutlined'
+import TimeLineCenter from '@docPages/components/timeline/TimelineCenter'
+import SourceCodeTimeLineCenter from '!!raw-loader!@docPages/components/timeline/TimelineCenter'
 
 <Grid container spacing={6}>
   <Grid item xs={12}>
@@ -31,18 +33,28 @@ import SourceCodeTimelineOutlined from '!!raw-loader!@docPages/components/timeli
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
-      title='Timeline Filled'
-      code={SourceCodeTimelineFilled}
-    >
+     title='Timeline Filled' 
+     code={SourceCodeTimelineFilled}
+     >
       <TimelineFilled />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
-      title='Timeline Outlined'
-      code={SourceCodeTimelineOutlined}
-    >
+     title='Timeline Outlined'
+     code={SourceCodeTimelineOutlined}
+      >
       <TimelineOutlined />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      className='bg-transparent'
+      sx={{ boxShadow: 'none' }}
+      title='Timeline Center With Icons'
+      code={SourceCodeTimeLineCenter}
+    >
+      <TimeLineCenter />
     </CardSnippet>
   </Grid>
 </Grid>

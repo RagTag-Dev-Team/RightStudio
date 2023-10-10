@@ -1,12 +1,34 @@
 .textPrimary {
-    color: var(--mui-palette-text-primary);
+  color: var(--mui-palette-text-primary);
 }
 
 .textSecondary {
-    color: var(--mui-palette-text-secondary);
+  color: var(--mui-palette-text-secondary);
+}
+
+.textSuccess {
+  color: var(--mui-palette-success-main);
 }
 
 .timelineIcon svg {
   vertical-align: middle;
   margin-inline: 1rem;
+}
+
+.textDisabled {
+  color: var(--mui-palette-text-disabled);
+}
+
+.imageWrapper {
+  padding: 5px 10px;
+  background-color: var(--mui-palette-action-hover);
+}
+
+.borderRadius {
+  border-radius: var(--mui-shape-borderRadius)
+}
+
+.avatarSize {
+  inline-size: 38px;
+  block-size: 38px;
 }

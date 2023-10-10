@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 
 import CardSnippet from '@docComponents/card-snippet/index'
+import DialogsBasic from '@docPages/components/dialogs/DialogsBasic'
+import SourceCodeDialogsBasic from '!!raw-loader!@docPages/components/dialogs/DialogsBasic'
 import DialogsForm from '@docPages/components/dialogs/DialogsForm'
 import SourceCodeDialogsForm from '!!raw-loader!@docPages/components/dialogs/DialogsForm'
 import DialogsAlert from '@docPages/components/dialogs/DialogsAlert'
@@ -42,6 +44,17 @@ import SourceCodeDialogsRespoFullScreen from '!!raw-loader!@docPages/components/
       </Link>
       .
     </Typography>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Basic'
+      code={SourceCodeDialogsBasic}
+    >
+      <Typography className='mbe-4'>
+        Manage <code>open</code> prop with the help of a state.
+      </Typography>
+      <DialogsBasic />
+    </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet

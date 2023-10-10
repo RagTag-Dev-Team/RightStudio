@@ -58,7 +58,7 @@ const data: DataType[] = [
   },
   {
     avatar: '2.png',
-    value: 'owner',
+    value: 'Owner',
     name: 'Mittie Blair',
     email: 'mittie.blair@gmail.com'
   },

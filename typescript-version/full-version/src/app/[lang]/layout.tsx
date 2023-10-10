@@ -4,8 +4,6 @@ import { cookies } from 'next/headers'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
@@ -14,9 +12,6 @@ import type { ChildrenType } from '@core/types'
 // Component Imports
 import type { Locale } from '@configs/i18n'
 import { i18n } from '@configs/i18n'
-
-// Config Imports
-import themeConfig from '@configs/themeConfig'
 
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
@@ -63,10 +58,7 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
 
   return (
     <html lang={params.lang} dir={direction} className='flex is-full min-bs-full' data-mui-color-scheme={mode}>
-      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
-        {children}
-        <ToastContainer position={themeConfig.toastPosition} />
-      </body>
+      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>{children}</body>
     </html>
   )
 }
