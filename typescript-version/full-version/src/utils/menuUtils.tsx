@@ -53,7 +53,7 @@ export const generateVerticalMenu = (menuData: VerticalMenuDataType[], locale: L
     }
 
     // Localize the href
-    const href = localizeUrl(menuItem, locale)
+    const href = menuItem.href?.startsWith('http') ? menuItem.href : localizeUrl(menuItem, locale)
 
     delete menuItem.href
 
@@ -86,7 +86,7 @@ export const generateHorizontalMenu = (menuData: HorizontalMenuDataType[], local
     }
 
     // Localize the href
-    const href = localizeUrl(menuItem, locale)
+    const href = menuItem.href?.startsWith('http') ? menuItem.href : localizeUrl(menuItem, locale)
 
     delete menuItem.href
 

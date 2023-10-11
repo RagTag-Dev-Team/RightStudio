@@ -47,7 +47,6 @@ const Navigation = () => {
     >
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
-        {/* Hide Logo on Smaller screens */}
         <Logo />
         <NavCollapseIcons onClick={handleClick} />
       </NavHeader>

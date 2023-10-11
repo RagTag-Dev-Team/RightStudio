@@ -8,7 +8,7 @@ const StyledKBarAnimator = styled(KBarAnimator)`
   max-block-size: 580px;
   background: var(--background-color);
   border-radius: var(--border-radius);
-  box-shadow: 0px 6px 20px rgb(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 
   &.smallScreen {
     min-block-size: 100vh;

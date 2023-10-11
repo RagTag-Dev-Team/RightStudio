@@ -79,14 +79,14 @@ const data: SearchData[] = [
   {
     id: '11',
     name: 'User List',
-    url: '/user-list',
+    url: '/apps/user/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
     id: '12',
-    name: 'User View - Account',
-    url: '/user-details',
+    name: 'User View - Overview',
+    url: '/apps/user/view/overview',
     icon: 'Icon',
     section: 'Apps'
   },
@@ -358,57 +358,78 @@ const data: SearchData[] = [
   },
   {
     id: '51',
-    name: 'Icons Test',
-    url: '/icons-test',
+    name: 'Widget - Advanced',
+    url: '/pages/widget-examples/advanced',
     icon: 'Icon',
-    section: 'User Interface'
+    section: 'Pages'
   },
   {
     id: '52',
+    name: 'Widget - Statistics',
+    url: '/pages/widget-examples/statistics',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '53',
+    name: 'Widget - Charts',
+    url: '/pages/widget-examples/charts',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '54',
+    name: 'Icons Test',
+    url: '/icons-test',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '55',
     name: 'Form Layouts',
     url: '/forms/form-layouts',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '53',
+    id: '56',
     name: 'Form Validation',
     url: '/forms/form-validation',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '54',
+    id: '57',
     name: 'Form Wizard',
     url: '/forms/form-wizard',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '55',
-    name: 'Tables',
-    url: '/tables',
+    id: '58',
+    name: 'React Table',
+    url: '/react-table',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '56',
-    name: 'Apex Charts',
-    url: '/charts/apex-charts',
+    id: '59',
+    name: 'ECharts',
+    url: '/charts/echarts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '57',
+    id: '60',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '58',
-    name: 'ECharts',
-    url: '/charts/echarts',
+    id: '61',
+    name: 'Apex Charts',
+    url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   }

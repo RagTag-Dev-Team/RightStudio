@@ -74,7 +74,7 @@ const NavSearch = () => {
   const searchActions = data.map(item => ({
     ...item,
     url: undefined, // Remove the 'url' key
-    perform: () => router.push(item.url) // Add 'perform' method
+    perform: () => (item.url.includes('http') ? window.open(item.url, '_blank') : router.push(item.url)) // Add 'perform' method
   }))
 
   return (

@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import type { HTMLAttributes } from 'react'
 
 // Third-party Imports
@@ -60,6 +60,9 @@ const HorizontalNav = (props: HorizontalNavProps) => {
     verticalNavContent: VerticalNavContent
   } = props
 
+  // Refs
+  const prevBreakpoint = useRef(false)
+
   // Hooks
   const { updateIsBreakpointReached } = useHorizontalNav()
 
@@ -72,7 +75,9 @@ const HorizontalNav = (props: HorizontalNavProps) => {
 
   // Set the breakpointReached value in the state
   useEffect(() => {
+    if (prevBreakpoint.current === breakpointReached) return
     updateIsBreakpointReached(breakpointReached)
+    prevBreakpoint.current = breakpointReached
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breakpointReached])
 

@@ -3,6 +3,10 @@
 // React Imports
 import { useEffect, useRef, useState } from 'react'
 
+// Next Imports
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+
 // MUI Imports
 import Grow from '@mui/material/Grow'
 import Paper from '@mui/material/Paper'
@@ -46,6 +50,9 @@ import primaryColorConfig from '@configs/primaryColorConfig'
 import useSettings from '@core/hooks/useSettings'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
+// Util Imports
+import { getLocalePath } from '@/utils/get-locale-path'
+
 // Style Imports
 import styles from './styles.module.css'
 
@@ -66,6 +73,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
 
   // Hooks
   const theme = useTheme()
+  const pathName = usePathname()
   const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
   const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
@@ -429,32 +437,36 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
               <div className='flex flex-col gap-2.5'>
                 <p className={styles.itemTitle}>Direction</p>
                 <div className='flex items-center gap-4'>
-                  <div className='flex flex-col items-start gap-1'>
-                    <div
-                      className={classnames(styles.itemWrapper, {
-                        [styles.active]: direction === 'ltr'
-                      })}
-                      onClick={() => handleChange('direction', 'ltr')}
-                    >
-                      <DirectionLtr />
+                  <Link href={getLocalePath(pathName, 'en')}>
+                    <div className='flex flex-col items-start gap-1'>
+                      <div
+                        className={classnames(styles.itemWrapper, {
+                          [styles.active]: direction === 'ltr'
+                        })}
+                      >
+                        <DirectionLtr />
+                      </div>
+                      <p className={styles.itemLabel}>
+                        Left to Right <br />
+                        (English)
+                      </p>
                     </div>
-                    <p className={styles.itemLabel} onClick={() => handleChange('direction', 'ltr')}>
-                      Left to Right
-                    </p>
-                  </div>
-                  <div className='flex flex-col items-start gap-1'>
-                    <div
-                      className={classnames(styles.itemWrapper, {
-                        [styles.active]: direction === 'rtl'
-                      })}
-                      onClick={() => handleChange('direction', 'rtl')}
-                    >
-                      <DirectionRtl />
+                  </Link>
+                  <Link href={getLocalePath(pathName, 'ar')}>
+                    <div className='flex flex-col items-start gap-1'>
+                      <div
+                        className={classnames(styles.itemWrapper, {
+                          [styles.active]: direction === 'rtl'
+                        })}
+                      >
+                        <DirectionRtl />
+                      </div>
+                      <p className={styles.itemLabel}>
+                        Right to Left <br />
+                        (Arabic)
+                      </p>
                     </div>
-                    <p className={styles.itemLabel} onClick={() => handleChange('direction', 'rtl')}>
-                      Right to Left
-                    </p>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
