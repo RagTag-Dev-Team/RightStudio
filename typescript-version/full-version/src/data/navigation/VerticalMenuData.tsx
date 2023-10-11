@@ -20,25 +20,25 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
         // This is how you will normally render menu item
         {
           label: dictionary['navigation'].analytics,
-          href: `/${locale}/dashboards/analytics`
+          href: '/dashboards/analytics'
         },
         {
           label: dictionary['navigation'].eCommerce,
-          href: `/${locale}/dashboards/ecommerce`
+          href: '/dashboards/ecommerce'
         }
       ]
     },
     {
       label: 'About',
-      href: `/${locale}/about`
+      href: `/about`
     },
     {
       label: 'User List',
-      href: `/${locale}/user-list`
+      href: '/user-list'
     },
     {
       label: 'User Details',
-      href: `/${locale}/user-details`
+      href: '/user-details'
     },
 
     // This is how you will normally render menu section
@@ -48,11 +48,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
       children: [
         {
           label: dictionary['navigation'].email,
-          href: `/${locale}/email`
+          href: '/email'
         },
         {
           label: dictionary['navigation'].chat,
-          href: `/${locale}/chat`
+          href: '/chat'
         },
         {
           label: dictionary['navigation'].calendar
@@ -62,19 +62,19 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].list,
-              href: `/${locale}/app/invoice/list`
+              href: '/app/invoice/list'
             },
             {
               label: dictionary['navigation'].preview,
-              href: `/${locale}/app/invoice/preview`
+              href: '/app/invoice/preview'
             },
             {
               label: dictionary['navigation'].edit,
-              href: `/${locale}/app/invoice/edit`
+              href: '/app/invoice/edit'
             },
             {
               label: dictionary['navigation'].add,
-              href: `/${locale}/app/invoice/add`
+              href: '/app/invoice/add'
             }
           ]
         },
@@ -83,30 +83,30 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].list,
-              href: `/${locale}/apps/user/list`
+              href: '/apps/user/list'
             },
             {
               label: dictionary['navigation'].view,
               children: [
                 {
                   label: dictionary['navigation'].overview,
-                  href: `/${locale}/apps/user/view/overview`
+                  href: '/apps/user/view/overview'
                 },
                 {
                   label: dictionary['navigation'].security,
-                  href: `/${locale}/apps/user/view/security`
+                  href: '/apps/user/view/security'
                 },
                 {
                   label: dictionary['navigation'].billingPlans,
-                  href: `/${locale}/apps/user/view/billing`
+                  href: '/apps/user/view/billing'
                 },
                 {
                   label: dictionary['navigation'].notifications,
-                  href: `/${locale}/apps/user/view/notifications`
+                  href: '/apps/user/view/notifications'
                 },
                 {
                   label: dictionary['navigation'].connections,
-                  href: `/${locale}/apps/user/view/connections`
+                  href: '/apps/user/view/connections'
                 }
               ]
             }
@@ -117,11 +117,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].roles,
-              href: `/${locale}/apps/roles`
+              href: '/apps/roles'
             },
             {
               label: dictionary['navigation'].permissions,
-              href: `/${locale}/apps/permissions`
+              href: '/apps/permissions'
             }
           ]
         },
@@ -133,19 +133,19 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].profile,
-                  href: `/${locale}/pages/user-profile/profile`
+                  href: '/pages/user-profile/profile'
                 },
                 {
                   label: dictionary['navigation'].teams,
-                  href: `/${locale}/pages/user-profile/teams`
+                  href: '/pages/user-profile/teams'
                 },
                 {
                   label: dictionary['navigation'].projects,
-                  href: `/${locale}/pages/user-profile/projects`
+                  href: '/pages/user-profile/projects'
                 },
                 {
                   label: dictionary['navigation'].connections,
-                  href: `/${locale}/pages/user-profile/connections`
+                  href: '/pages/user-profile/connections'
                 }
               ]
             },
@@ -154,53 +154,53 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].account,
-                  href: `/${locale}/pages/account-settings/account`
+                  href: '/pages/account-settings/account'
                 },
                 {
                   label: dictionary['navigation'].security,
-                  href: `/${locale}/pages/account-settings/security`
+                  href: '/pages/account-settings/security'
                 },
                 {
                   label: dictionary['navigation'].billingPlans,
-                  href: `/${locale}/pages/account-settings/billing-plans`
+                  href: '/pages/account-settings/billing-plans'
                 },
                 {
                   label: dictionary['navigation'].notifications,
-                  href: `/${locale}/pages/account-settings/notifications`
+                  href: '/pages/account-settings/notifications'
                 },
 
                 {
                   label: dictionary['navigation'].connections,
-                  href: `/${locale}/pages/account-settings/connections`
+                  href: '/pages/account-settings/connections'
                 }
               ]
             },
             {
               label: dictionary['navigation'].faq,
-              href: `/${locale}/pages/faq`
+              href: '/pages/faq'
             },
             {
               label: dictionary['navigation'].pricing,
-              href: `/${locale}/pages/pricing`
+              href: '/pages/pricing'
             },
             {
               label: dictionary['navigation'].miscellaneous,
               children: [
                 {
                   label: dictionary['navigation'].comingSoon,
-                  href: `/${locale}/pages/misc/coming-soon`
+                  href: '/pages/misc/coming-soon'
                 },
                 {
                   label: dictionary['navigation'].underMaintenance,
-                  href: `/${locale}/pages/misc/under-maintenance`
+                  href: '/pages/misc/under-maintenance'
                 },
                 {
                   label: dictionary['navigation'].pageNotFound404,
-                  href: `/${locale}/pages/misc/404-not-found`
+                  href: '/pages/misc/404-not-found'
                 },
                 {
                   label: dictionary['navigation'].notAuthorized401,
-                  href: `/${locale}/pages/misc/401-not-authorized`
+                  href: '/pages/misc/401-not-authorized'
                 }
               ]
             }
@@ -214,11 +214,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].loginV1,
-                  href: `/${locale}/pages/auth/login-v1`
+                  href: '/pages/auth/login-v1'
                 },
                 {
                   label: dictionary['navigation'].loginV2,
-                  href: `/${locale}/pages/auth/login-v2`
+                  href: '/pages/auth/login-v2'
                 }
               ]
             },
@@ -227,15 +227,15 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].registerV1,
-                  href: `/${locale}/pages/auth/register-v1`
+                  href: '/pages/auth/register-v1'
                 },
                 {
                   label: dictionary['navigation'].registerV2,
-                  href: `/${locale}/pages/auth/register-v2`
+                  href: '/pages/auth/register-v2'
                 },
                 {
                   label: dictionary['navigation'].registerMultiSteps,
-                  href: `/${locale}/pages/auth/register-multi-steps`
+                  href: '/pages/auth/register-multi-steps'
                 }
               ]
             },
@@ -244,11 +244,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].verifyEmailV1,
-                  href: `/${locale}/pages/auth/verify-email-v1`
+                  href: '/pages/auth/verify-email-v1'
                 },
                 {
                   label: dictionary['navigation'].verifyEmailV2,
-                  href: `/${locale}/pages/auth/verify-email-v2`
+                  href: '/pages/auth/verify-email-v2'
                 }
               ]
             },
@@ -257,11 +257,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].forgotPasswordV1,
-                  href: `/${locale}/pages/auth/forgot-password-v1`
+                  href: '/pages/auth/forgot-password-v1'
                 },
                 {
                   label: dictionary['navigation'].forgotPasswordV2,
-                  href: `/${locale}/pages/auth/forgot-password-v2`
+                  href: '/pages/auth/forgot-password-v2'
                 }
               ]
             },
@@ -270,11 +270,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].resetPasswordV1,
-                  href: `/${locale}/pages/auth/reset-password-v1`
+                  href: '/pages/auth/reset-password-v1'
                 },
                 {
                   label: dictionary['navigation'].resetPasswordV2,
-                  href: `/${locale}/pages/auth/reset-password-v2`
+                  href: '/pages/auth/reset-password-v2'
                 }
               ]
             },
@@ -283,11 +283,11 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
               children: [
                 {
                   label: dictionary['navigation'].twoStepsV1,
-                  href: `/${locale}/pages/auth/two-steps-v1`
+                  href: '/pages/auth/two-steps-v1'
                 },
                 {
                   label: dictionary['navigation'].twoStepsV2,
-                  href: `/${locale}/pages/auth/two-steps-v2`
+                  href: '/pages/auth/two-steps-v2'
                 }
               ]
             }
@@ -298,42 +298,42 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].checkout,
-              href: `/${locale}/pages/wizard-examples/checkout`
+              href: '/pages/wizard-examples/checkout'
             },
             {
               label: dictionary['navigation'].propertyListing,
-              href: `/${locale}/pages/wizard-examples/property-listing`
+              href: '/pages/wizard-examples/property-listing'
             },
             {
               label: dictionary['navigation'].createDeal,
-              href: `/${locale}/pages/wizard-examples/create-deal`
+              href: '/pages/wizard-examples/create-deal'
             }
           ]
         },
         {
           label: dictionary['navigation'].dialogExamples,
-          href: `/${locale}/pages/dialog-examples`
+          href: '/pages/dialog-examples'
         },
         {
           label: dictionary['navigation'].widgetExamples,
           children: [
             {
               label: dictionary['navigation'].advanced,
-              href: `/${locale}/pages/widget-examples/advanced`
+              href: '/pages/widget-examples/advanced'
             },
             {
               label: dictionary['navigation'].statistics,
-              href: `/${locale}/pages/widget-examples/statistics`
+              href: '/pages/widget-examples/statistics'
             },
             {
               label: dictionary['navigation'].charts,
-              href: `/${locale}/pages/widget-examples/charts`
+              href: '/pages/widget-examples/charts'
             }
           ]
         },
         {
           label: 'Icons Test',
-          href: `/${locale}/icons-test`
+          href: '/icons-test'
         }
       ]
     },
@@ -343,19 +343,19 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
       children: [
         {
           label: dictionary['navigation'].formLayouts,
-          href: `/${locale}/forms/form-layouts`
+          href: '/forms/form-layouts'
         },
         {
           label: dictionary['navigation'].formValidation,
-          href: `/${locale}/forms/form-validation`
+          href: '/forms/form-validation'
         },
         {
           label: dictionary['navigation'].formWizard,
-          href: `/${locale}/forms/form-wizard`
+          href: '/forms/form-wizard'
         },
         {
           label: dictionary['navigation'].reactTable,
-          href: `/${locale}/react-table`
+          href: '/react-table'
         },
         {
           label: dictionary['navigation'].formELements,
@@ -380,15 +380,15 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
           children: [
             {
               label: dictionary['navigation'].echarts,
-              href: `/${locale}/charts/echarts`
+              href: '/charts/echarts'
             },
             {
               label: dictionary['navigation'].recharts,
-              href: `/${locale}/charts/recharts`
+              href: '/charts/recharts'
             },
             {
               label: dictionary['navigation'].apex,
-              href: `/${locale}/charts/apex-charts`
+              href: '/charts/apex-charts'
             }
           ]
         },
