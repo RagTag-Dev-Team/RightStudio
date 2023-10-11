@@ -50,6 +50,15 @@ const sidebars = {
       ]
     }
   ],
+  userInterfaceSidebar: [
+    'user-interface/intro'
+  ],
+  componentsSidebar: [
+    'components/intro'
+  ],
+  formsTablesSidebar: [
+    'forms-tables/intro'
+  ],
   menuExamplesSidebar: [
     'menu-examples/menu-examples-intro',
     {
