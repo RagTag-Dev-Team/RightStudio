@@ -25,7 +25,16 @@ import spacing from "@core/theme/spacing";
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const theme = extendTheme({
     components: overrides(),
-    ...spacing
+    ...spacing,
+    shape: {
+      customBorderRadius: {
+        xs: 2,
+        sm: 5,
+        md: 6,
+        lg: 8,
+        xl: 10
+      }
+    }
   });
 
   return (

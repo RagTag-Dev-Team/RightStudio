@@ -6,26 +6,10 @@ import type { SyntheticEvent } from 'react'
 import Tab from '@mui/material/Tab'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
-import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import MuiTabList from '@mui/lab/TabList'
-import type { TabListProps } from '@mui/lab/TabList'
 
-// Styled TabList component
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 38,
-    minWidth: 130,
-    borderRadius: theme.shape.borderRadius
-  }
-}))
+// Component Imports
+import CustomTabList from '@site/src/components/mui/TabList'
 
 const TabsCustomized = () => {
   // States
@@ -37,11 +21,11 @@ const TabsCustomized = () => {
 
   return (
     <TabContext value={value}>
-      <TabList onChange={handleChange} aria-label='customized tabs example'>
+      <CustomTabList pill='true' onChange={handleChange} aria-label='customized tabs example'>
         <Tab value='1' label='Tab 1' />
         <Tab value='2' label='Tab 2' />
         <Tab value='3' label='Tab 3' />
-      </TabList>
+      </CustomTabList>
       <TabPanel value='1'>
         <Typography>
           Cake apple pie chupa chups biscuit liquorice tootsie roll liquorice sugar plum. Cotton candy wafer wafer jelly

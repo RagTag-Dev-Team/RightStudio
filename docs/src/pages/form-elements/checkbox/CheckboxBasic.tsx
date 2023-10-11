@@ -17,6 +17,7 @@ const CheckboxBasic = () => {
         control={<Checkbox defaultChecked name='basic-disabled-checked' />}
       />
       <FormControlLabel disabled label='Disabled Unchecked' control={<Checkbox name='basic-disabled-unchecked' />} />
+      <FormControlLabel label='Indeterminate' control={<Checkbox indeterminate name='basic-indeterminate' />} />
     </FormGroup>
   )
 }

@@ -21,7 +21,7 @@ type PrimaryColorSchemeOverride = {
   }
 }
 
-const primaryColorConfig = [
+const primaryColorConfig: PrimaryColorConfig[] = [
   {
     name: 'primary-1',
     light: '#42a5f5',

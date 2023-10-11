@@ -115,7 +115,7 @@ const FormLayoutsWithTabs = () => {
         <TabList variant='scrollable' onChange={handleTabChange} className={styles.tabBorder}>
           <Tab label='Personal Info' value='personal_info' />
           <Tab label='Account Details' value='account_details' />
-          <Tab label='SOCIAL LINKS' value='social_links' />
+          <Tab label='Social Links' value='social_links' />
         </TabList>
         <form onSubmit={e => e.preventDefault()}>
           <CardContent>

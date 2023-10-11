@@ -4,30 +4,12 @@ import type { SyntheticEvent } from 'react'
 
 // MUI Imports
 import Tab from '@mui/material/Tab'
-import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import TabPanel from '@mui/lab/TabPanel'
-import MuiTabList from '@mui/lab/TabList'
 import TabContext from '@mui/lab/TabContext'
-import type { TabListProps } from '@mui/lab/TabList'
 
-// Styled TabList component
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  borderRight: 0,
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 38,
-    minWidth: 130,
-    margin: theme.spacing(1, 0),
-    borderRadius: theme.shape.borderRadius
-  }
-}))
+// Component Imports
+import CustomTabList from '@site/src/components/mui/TabList'
 
 const TabsCustomizedVertical = () => {
   // States
@@ -40,11 +22,16 @@ const TabsCustomizedVertical = () => {
   return (
     <TabContext value={value}>
       <div className='flex'>
-        <TabList orientation='vertical' onChange={handleChange} aria-label='customized vertical tabs example'>
+        <CustomTabList
+          pill='true'
+          orientation='vertical'
+          onChange={handleChange}
+          aria-label='customized vertical tabs example'
+        >
           <Tab value='1' label='Tab 1' />
           <Tab value='2' label='Tab 2' />
           <Tab value='3' label='Tab 3' />
-        </TabList>
+        </CustomTabList>
         <TabPanel value='1'>
           <Typography>
             Cake apple pie chupa chups biscuit liquorice tootsie roll liquorice sugar plum. Cotton candy wafer wafer

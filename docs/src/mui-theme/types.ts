@@ -5,6 +5,32 @@ import type { Theme, ComponentsOverrides } from '@mui/material/styles'
 import type { CustomInputHorizontalProps, CustomInputVerticalProps, CustomInputImgProps } from '@docComponents/custom-inputs/types'
 
 declare module '@mui/material/styles' {
+  // Theme
+  interface Theme {
+    shape: {
+      borderRadius: number
+      customBorderRadius: {
+        xs: number
+        sm: number
+        md: number
+        lg: number
+        xl: number
+      }
+    }
+  }
+  interface ThemeOptions {
+    shape?: {
+      borderRadius?: number
+      customBorderRadius?: {
+        xs?: number
+        sm?: number
+        md?: number
+        lg?: number
+        xl?: number
+      }
+    }
+  }
+
   interface ComponentNameToClassKey {
     MuiCustomInputHorizontal: 'root' | 'title' | 'meta' | 'content' | 'input'
     MuiCustomInputVertical: 'root' | 'title' | 'content' | 'input'

@@ -9,7 +9,16 @@ const theme = (direction: Theme['direction']): Theme => {
   return {
     direction,
     components: overrides(),
-    ...spacing
+    ...spacing,
+    shape: {
+      customBorderRadius: {
+        xs: 2,
+        sm: 5,
+        md: 6,
+        lg: 8,
+        xl: 10
+      }
+    }
   } as Theme
 }
 
