@@ -360,12 +360,12 @@ const VerticalMenuData = (locale: Locale): VerticalMenuDataType[] => {
         {
           label: dictionary['navigation'].formELements,
           suffix: <LinkExternalIcon fontSize='1.125rem' />,
-          href: 'http://localhost:3001/docs/forms-and-tables/intro#form-elements',
+          href: 'http://localhost:3001/docs/forms-tables/intro#form-elements',
           target: '_blank'
         },
         {
-          label: dictionary['navigation'].tables,
-          href: 'http://localhost:3001/docs/forms-and-tables/intro#tables',
+          label: dictionary['navigation'].muiTables,
+          href: 'http://localhost:3001/docs/tables/mui-table',
           suffix: <LinkExternalIcon fontSize='1.125rem' />,
           target: '_blank'
         }

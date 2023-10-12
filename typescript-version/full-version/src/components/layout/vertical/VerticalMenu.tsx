@@ -196,11 +196,11 @@ const VerticalMenu = () => {
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-tables/intro#tables'
+            href='http://localhost:3001/docs/tables/mui-table'
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
-            {dictionary['navigation'].tables}
+            {dictionary['navigation'].muiTables}
           </MenuItem>
         </MenuSection>
         <MenuSection label={dictionary['navigation'].chartsMisc}>

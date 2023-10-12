@@ -194,18 +194,18 @@ const HorizontalMenu = () => {
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-and-tables/intro#form-elements'
+            href='http://localhost:3001/docs/forms-tables/intro#form-elements'
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-and-tables/intro#tables'
+            href='http://localhost:3001/docs/tables/mui-table'
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
-            {dictionary['navigation'].tables}
+            {dictionary['navigation'].muiTables}
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].charts}>
