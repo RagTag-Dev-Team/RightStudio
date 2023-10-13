@@ -1,5 +1,8 @@
 'use client'
 
+// Type Imports
+import type { Dictionary } from '@/@core/types'
+
 // Component Imports from @menu-package
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'
 
@@ -11,7 +14,7 @@ import VerticalMenu from './VerticalMenu'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 import useSettings from '@core/hooks/useSettings'
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isCollapsed } = useVerticalNav()
   const { saveSettings } = useSettings()
@@ -33,7 +36,7 @@ const Navigation = () => {
         <Logo />
         <NavCollapseIcons onClick={handleClick} />
       </NavHeader>
-      <VerticalMenu />
+      <VerticalMenu dictionary={dictionary} />
     </VerticalNav>
   )
 }

@@ -19,18 +19,13 @@ import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
 
-// Config Imports
-import { i18n } from '@configs/i18n'
-
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
+import { getDictionary } from '@/utils/get-dictionary'
 
-export async function generateStaticParams() {
-  return i18n.locales.map(locale => ({ lang: locale }))
-}
-
-const Layout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
+const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   const direction = getDirection(params.lang)
+  const dictionary = await getDictionary(params.lang)
   const cookieStore = cookies()
 
   const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
@@ -40,12 +35,16 @@ const Layout = ({ children, params }: ChildrenType & { params: { lang: Locale } 
       <LayoutWrapper
         settingsCookie={settingsCookie}
         verticalLayout={
-          <VerticalLayout navigation={<Navigation />} navbar={<Navbar />} footer={<VerticalFooter />}>
+          <VerticalLayout
+            navigation={<Navigation dictionary={dictionary} />}
+            navbar={<Navbar />}
+            footer={<VerticalFooter />}
+          >
             {children}
           </VerticalLayout>
         }
         horizontalLayout={
-          <HorizontalLayout header={<Header />} footer={<HorizontalFooter />}>
+          <HorizontalLayout header={<Header dictionary={dictionary} />} footer={<HorizontalFooter />}>
             {children}
           </HorizontalLayout>
         }

@@ -6,6 +6,9 @@ import { usePathname } from 'next/navigation'
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
+// Type Imports
+import type { Dictionary } from '@/@core/types'
+
 // Component Imports from @menu-package
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
 
@@ -14,22 +17,18 @@ import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
-import { getDictionary } from '@/utils/get-dictionary'
 
 // import { generateVerticalMenu } from '@/utils/menuUtils'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/VerticalMenuData'
 
-const VerticalMenu = () => {
+const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const pathName = usePathname()
 
   // Get locale from pathname
   const locale = getLocale(pathName)
-
-  // Get dictionary based on locale
-  const dictionary = getDictionary(locale)
 
   return (
     // eslint-disable-next-line lines-around-comment

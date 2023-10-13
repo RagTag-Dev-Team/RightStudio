@@ -1,11 +1,10 @@
-// Config Imports
+import 'server-only'
 import type { Locale } from '@configs/i18n'
 
-import en from '@/data/translation/dictionaries/en.json'
-import fr from '@/data/translation/dictionaries/fr.json'
-import ar from '@/data/translation/dictionaries/ar.json'
+const dictionaries = {
+  en: () => import('@/data/translation/dictionaries/en.json').then(module => module.default),
+  fr: () => import('@/data/translation/dictionaries/fr.json').then(module => module.default),
+  ar: () => import('@/data/translation/dictionaries/ar.json').then(module => module.default)
+}
 
-// We enumerate all dictionaries here for better linting and typescript support
-const dictionaries = { en, fr, ar }
-
-export const getDictionary = (locale: Locale) => dictionaries[locale] ?? dictionaries.en
+export const getDictionary = async (locale: Locale) => dictionaries[locale]()

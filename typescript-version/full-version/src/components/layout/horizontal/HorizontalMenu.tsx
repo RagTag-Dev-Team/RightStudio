@@ -4,6 +4,9 @@
 // Next Imports
 import { usePathname } from 'next/navigation'
 
+// Type Imports
+import type { Dictionary } from '@/@core/types'
+
 // Component Imports from @menu-package
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
@@ -13,22 +16,18 @@ import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
-import { getDictionary } from '@/utils/get-dictionary'
 
 // import { generateHorizontalMenu } from '@/utils/menuUtils'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/HorizontalMenuData'
 
-const HorizontalMenu = () => {
+const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const pathName = usePathname()
 
   // Get locale from pathname
   const locale = getLocale(pathName)
-
-  // Get dictionary based on locale
-  const dictionary = getDictionary(locale)
 
   return (
     <HorizontalNav
