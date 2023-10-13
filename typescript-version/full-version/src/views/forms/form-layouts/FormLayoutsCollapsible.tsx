@@ -28,9 +28,6 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -127,7 +124,7 @@ const FormLayoutsCollapsible = () => {
   return (
     <form onSubmit={e => e.preventDefault()}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleExpandChange('panel1')}>
-        <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
           <Typography>Delivery Address</Typography>
         </AccordionSummary>
         <Divider />
@@ -222,7 +219,7 @@ const FormLayoutsCollapsible = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel2'} onChange={handleExpandChange('panel2')}>
-        <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
           <Typography>Delivery Options</Typography>
         </AccordionSummary>
         <Divider />
@@ -244,7 +241,7 @@ const FormLayoutsCollapsible = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel3'} onChange={handleExpandChange('panel3')}>
-        <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
           <Typography>Payment Method</Typography>
         </AccordionSummary>
         <Divider />

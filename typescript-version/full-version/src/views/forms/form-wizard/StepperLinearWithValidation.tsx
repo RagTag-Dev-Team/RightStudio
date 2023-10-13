@@ -28,9 +28,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string, array, ValiError } from 'valibot'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
@@ -251,7 +248,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                              <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                             </IconButton>
                           </InputAdornment>
                         )
@@ -283,7 +280,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                              <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                             </IconButton>
                           </InputAdornment>
                         )

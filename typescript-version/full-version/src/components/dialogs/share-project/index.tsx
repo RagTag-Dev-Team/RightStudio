@@ -25,9 +25,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 import themeConfig from '@configs/themeConfig'
@@ -159,7 +156,7 @@ const ShareProject = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <div className='flex flex-col gap-2'>
           <InputLabel htmlFor='add-member' className='inline-flex'>
@@ -195,13 +192,13 @@ const ShareProject = ({ open, setOpen }: Props) => {
                   </div>
                   {isBelowSmScreen ? (
                     <IconButton size='small' onClick={handleClick}>
-                      <Icon icon='mdi:chevron-down' fontSize='1.25rem' />
+                      <i className='mdi-chevron-down text-xl' />
                     </IconButton>
                   ) : (
                     <Button
                       color='secondary'
                       onClick={handleClick}
-                      endIcon={<Icon icon='mdi:chevron-down' fontSize='1.25rem' />}
+                      endIcon={<i className='mdi-chevron-down text-xl' />}
                     >
                       {member.value}
                     </Button>
@@ -234,11 +231,11 @@ const ShareProject = ({ open, setOpen }: Props) => {
         </div>
         <div className='flex items-center justify-between flex-wrap'>
           <div className='flex items-center flex-grow gap-2'>
-            <Icon icon='mdi:account-multiple-outline' fontSize='1.25rem' />
+            <i className='mdi-account-multiple-outline text-xl' />
             <Typography>{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
           <Button variant='outlined' className='flex'>
-            <Icon icon='mdi:link-variant' fontSize='1.25rem' />
+            <i className='mdi-link-variant text-xl' />
             Copy Project Link
           </Button>
         </div>

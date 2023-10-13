@@ -22,9 +22,6 @@ import classnames from 'classnames'
 // Style Imports
 import styles from './styles.module.css'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const FormLayoutsAlignment = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
@@ -59,7 +56,7 @@ const FormLayoutsAlignment = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )

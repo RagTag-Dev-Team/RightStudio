@@ -10,9 +10,6 @@ import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type ConnectedAccountsType = {
   title: string
   logo: string
@@ -133,7 +130,7 @@ const Connections = () => {
                   </div>
                 </div>
                 <Button variant='outlined' color='secondary'>
-                  <Icon icon={item.isConnected ? 'mdi:delete-outline' : 'mdi:link-variant'} />
+                  <i className={item.isConnected ? 'mdi-delete-outline' : 'mdi-link-variant'} />
                 </Button>
               </div>
             ))}

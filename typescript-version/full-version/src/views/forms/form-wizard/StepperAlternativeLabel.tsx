@@ -23,9 +23,6 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
@@ -163,7 +160,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={formData.isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -188,7 +185,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={formData.isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={formData.isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )

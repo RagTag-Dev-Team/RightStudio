@@ -5,9 +5,6 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from '@views/pages/account-settings/styles.module.css'
 
@@ -58,7 +55,7 @@ const ApiKeyList = () => {
             <div className='flex items-center'>
               <Typography>{item.key}</Typography>
               <div className='flex'>
-                <Icon icon='mdi:content-copy' />
+                <i className='mdi-content-copy' />
               </div>
             </div>
             <Typography>{`Created on ${item.date}`}</Typography>

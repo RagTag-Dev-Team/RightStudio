@@ -20,9 +20,6 @@ import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string } from 'valibot'
 import type { Input } from 'valibot'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const schema = object({
   firstName: string([
     minLength(1, 'This field is required'),
@@ -141,7 +138,7 @@ const FormValidationOnScheme = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                            <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

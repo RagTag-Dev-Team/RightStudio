@@ -13,9 +13,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -59,7 +56,7 @@ const StepConfirmation = () => {
             </Typography>
           </div>
           <div className='flex items-center'>
-            <Icon icon='mdi:clock-time-five-outline' fontSize={20} />
+            <i className='mdi-clock-time-five-outline text-xl' />
             <Typography>Time placed: 25/05/2020 13:35pm</Typography>
           </div>
         </div>
@@ -74,7 +71,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <Icon icon='mdi:map-marker-outline' />
+              <i className='mdi-map-marker-outline' />
               <Typography className='font-medium'>Shipping</Typography>
             </div>
             <Typography>John Doe</Typography>
@@ -91,7 +88,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <Icon icon='mdi:credit-card-outline' />
+              <i className='mdi-credit-card-outline' />
               <Typography className='font-medium'>Billing Address</Typography>
             </div>
             <Typography>John Doe</Typography>
@@ -107,7 +104,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <Icon icon='mdi:archive-outline' />
+              <i className='mdi-archive-outline' />
               <Typography className='font-medium'>Shipping Method</Typography>
             </div>
             <Typography>Preferred Method:</Typography>

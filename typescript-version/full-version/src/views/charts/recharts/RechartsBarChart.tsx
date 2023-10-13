@@ -15,9 +15,6 @@ import type { TooltipProps } from '@components/charts/recharts'
 // Type Imports
 import type { Direction } from '@core/types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -106,8 +103,8 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload &&
           data.payload.map((i: any) => {
             return (
-              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& svg': { color: i.fill } }}>
-                <Icon icon='mdi:circle' fontSize='0.6rem' />
+              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
+                <i className='mdi-circle text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -133,20 +130,20 @@ const RechartsBarChart = ({ direction }: { direction: Direction }) => {
       />
       <CardContent>
         <div className='flex flex-wrap mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#826af9' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#826af9' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Apple</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#9f87ff' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#9f87ff' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Samsung</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#d2b0ff' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#d2b0ff' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Oneplus</Typography>
           </Box>
-          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#f8d3ff' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#f8d3ff' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Motorola</Typography>
           </Box>
         </div>

@@ -12,9 +12,6 @@ import Typography from '@mui/material/Typography'
 // Component Imports
 import CreateApp from '@components/dialogs/create-app'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const DialogCreateApp = () => {
   // States
   const [open, setOpen] = useState(false)
@@ -23,7 +20,7 @@ const DialogCreateApp = () => {
     <>
       <Card>
         <CardContent className='flex flex-col items-center text-center gap-4'>
-          <Icon icon='mdi:cube-outline' fontSize='2rem' />
+          <i className='mdi-cube-outline text-[32px]' />
           <Typography>Create App</Typography>
           <Typography>
             Provide application data with this form to create the app dialog popup example, easy to use in any page.

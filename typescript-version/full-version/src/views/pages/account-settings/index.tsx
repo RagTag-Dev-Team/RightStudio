@@ -21,9 +21,6 @@ import type { TabListProps } from '@mui/lab/TabList'
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Component Imports
 import AccountTab from './account'
 import SecurityTab from './security'
@@ -88,7 +85,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <Icon icon='mdi:account-outline' />
+                  <i className='mdi-account-outline' />
                   Account
                 </div>
               }
@@ -97,7 +94,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <Icon icon='mdi:lock-open-outline' />
+                  <i className='mdi-lock-open-outline' />
                   Security
                 </div>
               }
@@ -106,7 +103,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <Icon icon='mdi:bookmark-outline' />
+                  <i className='mdi-bookmark-outline' />
                   Billing & Plans
                 </div>
               }
@@ -115,7 +112,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <Icon icon='mdi:bell-outline' />
+                  <i className='mdi-bell-outline' />
                   Notifications
                 </div>
               }
@@ -124,7 +121,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <Icon icon='mdi:link' />
+                  <i className='mdi-link' />
                   Connections
                 </div>
               }

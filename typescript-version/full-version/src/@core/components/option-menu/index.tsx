@@ -20,9 +20,6 @@ import Divider from '@mui/material/Divider'
 // Type Imports
 import type { OptionsMenuType, OptionType, OptionMenuItemType } from './types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
 import { getDirection } from '@/utils/get-direction'
@@ -41,7 +38,7 @@ const MenuItemWrapper = ({ children, option }: { children: ReactNode; option: Op
 
 const OptionMenu = (props: OptionsMenuType) => {
   // Props
-  const { icon, options, iconProps, leftAlignMenu, iconButtonProps } = props
+  const { icon, options, leftAlignMenu, iconButtonProps } = props
 
   // States
   const [open, setOpen] = useState(false)
@@ -67,7 +64,13 @@ const OptionMenu = (props: OptionsMenuType) => {
   return (
     <>
       <IconButton ref={anchorRef} onClick={handleToggle} {...iconButtonProps}>
-        {icon ? icon : <Icon icon='mdi:dots-vertical' {...iconProps} />}
+        {typeof icon === 'string' ? (
+          <i className={icon} />
+        ) : (icon as ReactNode) ? (
+          icon
+        ) : (
+          <i className='mdi-dots-vertical' />
+        )}
       </IconButton>
       <Popper
         open={open}
@@ -125,7 +128,7 @@ const OptionMenu = (props: OptionsMenuType) => {
                           }}
                         >
                           <MenuItemWrapper option={option}>
-                            {option.icon ? option.icon : null}
+                            {(typeof option.icon === 'string' ? <i className={option.icon} /> : option.icon) || null}
                             {option.text}
                           </MenuItemWrapper>
                         </MenuItem>

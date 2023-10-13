@@ -5,9 +5,6 @@ import Button from '@mui/material/Button'
 // Type Imports
 import type { Direction } from '@core/types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   isLastStep: boolean
@@ -32,7 +29,7 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: P
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<Icon icon={direction === 'rtl' ? 'mdi:arrow-right' : 'mdi:arrow-left'} />}
+          startIcon={<i className={direction === 'rtl' ? 'mdi-arrow-right' : 'mdi-arrow-left'} />}
         >
           Previous
         </Button>
@@ -41,7 +38,7 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: P
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <Icon icon={isLastStep ? 'mdi:check' : direction === 'rtl' ? 'mdi:arrow-left' : 'mdi:arrow-right'} />
+            <i className={isLastStep ? 'mdi-check' : direction === 'rtl' ? 'mdi-arrow-left' : 'mdi-arrow-right'} />
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

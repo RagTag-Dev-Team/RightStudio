@@ -1,0 +1,14 @@
+.iconColor {
+  color: #09a6eb;
+  font-size: large;
+}
+.iconScale {
+  transform: scale(2, 2);
+}
+
+.primaryMain {
+  color: var(--mui-palette-primary-main);
+}
+.successMain {
+  color: var(--mui-palette-success-main);
+}

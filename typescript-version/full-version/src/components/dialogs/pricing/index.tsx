@@ -14,9 +14,6 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 // Component Imports
 import Pricing from '@components/pricing'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
@@ -38,7 +35,7 @@ const PricingDialog = ({ open, setOpen, data }: Props) => {
         })}
       >
         <IconButton className={styles.closeIcon} onClick={() => setOpen(false)}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <Pricing data={data} />
       </DialogContent>

@@ -22,9 +22,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
@@ -85,7 +82,7 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
           })}
         >
           <IconButton onClick={handleClose} className={styles.closeIcon}>
-            <Icon icon='mdi:close' />
+            <i className='mdi-close' />
           </IconButton>
           <Grid container spacing={5}>
             <Grid item xs={12}>

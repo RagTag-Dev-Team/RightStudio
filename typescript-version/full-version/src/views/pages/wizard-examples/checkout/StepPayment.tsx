@@ -30,9 +30,6 @@ import type { TabListProps } from '@mui/lab/TabList'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -76,7 +73,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
         <Collapse in={openCollapse}>
           <Fade in={openFade} timeout={{ exit: 300 }}>
             <Alert
-              icon={<Icon icon='mdi:percent-outline' />}
+              icon={<i className='mdi-percent-outline' />}
               action={
                 <IconButton
                   aria-label='close'
@@ -86,7 +83,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
                     setOpenFade(false)
                   }}
                 >
-                  <Icon icon='mdi:close' />
+                  <i className='mdi-close' />
                 </IconButton>
               }
             >

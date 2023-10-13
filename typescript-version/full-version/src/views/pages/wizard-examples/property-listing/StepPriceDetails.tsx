@@ -13,9 +13,6 @@ import RadioGroup from '@mui/material/RadioGroup'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   handleNext: () => void
@@ -35,7 +32,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <Icon icon='mdi:currency-usd' />
+                <i className='mdi-currency-usd' />
               </InputAdornment>
             )
           }}
@@ -50,7 +47,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <Icon icon='mdi:currency-usd' />
+                <i className='mdi-currency-usd' />
               </InputAdornment>
             )
           }}
@@ -65,7 +62,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <Icon icon='mdi:currency-usd' />
+                <i className='mdi-currency-usd' />
               </InputAdornment>
             )
           }}
@@ -93,7 +90,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <Icon icon='mdi:currency-usd' />
+                <i className='mdi-currency-usd' />
               </InputAdornment>
             )
           }}
@@ -108,7 +105,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <Icon icon='mdi:currency-usd' />
+                <i className='mdi-currency-usd' />
               </InputAdornment>
             )
           }}
@@ -137,7 +134,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:arrow-left' />}
+            startIcon={<i className='mdi-arrow-left' />}
           >
             Previous
           </Button>
@@ -145,7 +142,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<Icon icon={activeStep === steps.length - 1 ? 'mdi:check' : 'mdi:arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

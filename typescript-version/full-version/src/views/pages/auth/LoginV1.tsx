@@ -21,9 +21,6 @@ import Divider from '@mui/material/Divider'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './login.module.css'
 
@@ -50,7 +47,7 @@ const LoginV1 = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                    <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                    <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -78,16 +75,16 @@ const LoginV1 = () => {
           <Divider className='gap-2'>Or</Divider>
           <div className='flex justify-center items-center'>
             <IconButton href='/' component={Link} onClick={e => e.preventDefault()}>
-              <Icon icon='mdi:facebook' />
+              <i className='mdi-facebook' />
             </IconButton>
             <IconButton href='/' component={Link} onClick={e => e.preventDefault()}>
-              <Icon icon='mdi:twitter' />
+              <i className='mdi-twitter' />
             </IconButton>
             <IconButton href='/' component={Link} onClick={e => e.preventDefault()}>
-              <Icon icon='mdi:github' />
+              <i className='mdi-github' />
             </IconButton>
             <IconButton href='/' component={Link} onClick={e => e.preventDefault()}>
-              <Icon icon='mdi:google' />
+              <i className='mdi-google' />
             </IconButton>
           </div>
         </form>

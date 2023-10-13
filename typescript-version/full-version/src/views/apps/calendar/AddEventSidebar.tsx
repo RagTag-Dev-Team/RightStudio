@@ -26,9 +26,6 @@ import { useForm, Controller } from 'react-hook-form'
 // Types
 import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled Components
 import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
@@ -216,15 +213,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick} className={styles.primaryTextColor}>
-              <Icon icon='mdi:delete-outline' fontSize={20} />
+              <i className='mdi-delete-outline text-xl' />
             </IconButton>
             <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
-              <Icon icon='mdi:close' fontSize={20} />
+              <i className='mdi-close text-xl' />
             </IconButton>
           </Box>
         ) : (
           <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
-            <Icon icon='mdi:close' fontSize={20} />
+            <i className='mdi-close text-xl' />
           </IconButton>
         )}
       </Box>

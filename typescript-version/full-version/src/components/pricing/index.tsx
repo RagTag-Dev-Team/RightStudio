@@ -22,9 +22,6 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 // Component Imports
 import PlanDetails from './PlanDetails'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -61,7 +58,7 @@ const Pricing = ({ data }: { data: PricingPlanType[] }) => {
           </InputLabel>
           {isAboveSmScreen && (
             <div className={classnames('flex items-center absolute left-1/2', styles.popularPlan)}>
-              <Icon icon='mdi:arrow-down-left' className='mt-2 mr-1' />
+              <i className='mdi-arrow-down-left mbs-2 mie-1' />
               <Chip label='Save up to 10%' size='small' />
             </div>
           )}

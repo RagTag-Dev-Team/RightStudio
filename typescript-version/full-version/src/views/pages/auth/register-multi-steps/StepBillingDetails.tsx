@@ -10,9 +10,6 @@ import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
@@ -135,7 +132,7 @@ const StepBillingDetails = ({ handlePrev }: { handlePrev: () => void }) => {
             variant='contained'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:chevron-left' />}
+            startIcon={<i className='mdi-chevron-left' />}
           >
             Previous
           </Button>

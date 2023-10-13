@@ -23,9 +23,6 @@ import type { Theme } from '@mui/material'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
@@ -71,7 +68,7 @@ const EditUserInfo = ({ open, setOpen }: Props) => {
           })}
         >
           <IconButton onClick={handleClose} className={styles.closeIcon}>
-            <Icon icon='mdi:close' />
+            <i className='mdi-close' />
           </IconButton>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={6}>

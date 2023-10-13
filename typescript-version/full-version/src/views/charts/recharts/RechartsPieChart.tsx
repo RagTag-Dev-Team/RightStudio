@@ -10,9 +10,6 @@ import CardContent from '@mui/material/CardContent'
 // Third-party Imports
 import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@components/charts/recharts'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -70,20 +67,20 @@ const RechartsPieChart = () => {
           </ResponsiveContainer>
         </div>
         <div className='flex justify-center flex-wrap mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#00d4bd' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#00d4bd' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>R&D</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#ffe700' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#ffe700' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Operational</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#FFA1A1' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#FFA1A1' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Networking</Typography>
           </Box>
-          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#826bf8' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#826bf8' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Hiring</Typography>
           </Box>
         </div>

@@ -16,9 +16,6 @@ import type { ConnectionsTabType } from '@/types/pages/profileTypes'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import commonStyles from '@views/pages/user-profile/styles.module.css'
 
@@ -68,13 +65,13 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                     <Button
                       variant={item.isConnected ? 'contained' : 'outlined'}
                       startIcon={
-                        <Icon icon={item.isConnected ? 'mdi:account-check-outline' : 'mdi:account-plus-outline'} />
+                        <i className={item.isConnected ? 'mdi-account-check-outline' : 'mdi-account-plus-outline'} />
                       }
                     >
                       {item.isConnected ? 'connected' : 'connect'}
                     </Button>
                     <Button variant='outlined' color='secondary'>
-                      <Icon icon='mdi:email-outline' />
+                      <i className='mdi-email-outline' />
                     </Button>
                   </div>
                 </CardContent>

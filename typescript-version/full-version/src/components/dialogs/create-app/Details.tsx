@@ -15,9 +15,6 @@ import type { Direction } from '@core/types'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   isLastStep: boolean
@@ -42,7 +39,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('crm')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <Icon icon='mdi:briefcase-outline' />
+              <i className='mdi-briefcase-outline' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>CRM Application</Typography>
@@ -54,7 +51,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('eCommerce')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <Icon icon='mdi:cart-outline' />
+              <i className='mdi-cart-outline' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>eCommerce Platforms</Typography>
@@ -66,7 +63,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('learning')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <Icon icon='mdi:license' />
+              <i className='mdi-license' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>Online Learning platform</Typography>
@@ -82,7 +79,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<Icon icon={direction === 'rtl' ? 'mdi:arrow-right' : 'mdi:arrow-left'} />}
+          startIcon={<i className={direction === 'rtl' ? 'mdi-arrow-right' : 'mdi-arrow-left'} />}
         >
           Previous
         </Button>
@@ -91,7 +88,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <Icon icon={isLastStep ? 'mdi:check' : direction === 'rtl' ? 'mdi:arrow-left' : 'mdi:arrow-right'} />
+            <i className={isLastStep ? 'mdi-check' : direction === 'rtl' ? 'mdi-arrow-left' : 'mdi-arrow-right'} />
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

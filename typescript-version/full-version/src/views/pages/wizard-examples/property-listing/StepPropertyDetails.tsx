@@ -20,9 +20,6 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   handleNext: () => void
@@ -49,7 +46,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'mdi:currency-usd',
+    asset: 'mdi-currency-usd',
     isSelected: true
   },
   {
@@ -62,7 +59,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'mdi:home-variant-outline'
+    asset: 'mdi-home-variant-outline'
   }
 ]
 
@@ -88,7 +85,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <Icon icon={item.asset} />
+          asset = <i className={item.asset} />
         }
 
         return (
@@ -146,7 +143,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:arrow-left' />}
+            startIcon={<i className='mdi-arrow-left' />}
           >
             Previous
           </Button>
@@ -154,7 +151,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<Icon icon={activeStep === steps.length - 1 ? 'mdi:check' : 'mdi:arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

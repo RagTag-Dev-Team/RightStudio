@@ -21,9 +21,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Config Imports
 import themeConfig from '@/configs/themeConfig'
 
@@ -44,17 +41,17 @@ type Options = {
 
 const options: Options[] = [
   {
-    icon: 'mdi:send-variant-outline',
+    icon: 'mdi-send-variant-outline',
     title: 'Send Invitation 👍🏻',
     subtitle: 'Send your referral link to your friend'
   },
   {
-    icon: 'mdi:clipboard-text',
+    icon: 'mdi-clipboard-text',
     title: 'Registration 😎',
     subtitle: 'Let them register to our services'
   },
   {
-    icon: 'mdi:gift-outline',
+    icon: 'mdi-gift-outline',
     title: 'Free Trial  🎉',
     subtitle: 'Your friend will get 30 days free trial'
   }
@@ -83,7 +80,7 @@ const ReferEarn = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <Grid container spacing={6}>
           {options?.map((option, index) => (
@@ -91,7 +88,12 @@ const ReferEarn = ({ open, setOpen }: Props) => {
               <div className='flex items-center flex-col gap-4'>
                 <Avatar className={classnames(styles.avatarIcon, { [styles.smAvatarIcon]: isBelowSmScreen })}>
                   {typeof option.icon === 'string' ? (
-                    <Icon icon={option.icon} fontSize={isBelowSmScreen ? '2rem' : '2.5rem'} />
+                    <i
+                      className={classnames(option.icon, {
+                        'text-[32px]': isBelowSmScreen,
+                        'text-[40px]': !isBelowSmScreen
+                      })}
+                    />
                   ) : (
                     option.icon
                   )}
@@ -143,13 +145,13 @@ const ReferEarn = ({ open, setOpen }: Props) => {
               />
               <div className='flex items-center'>
                 <Button className={styles.facebookIcon}>
-                  <Icon icon='mdi:facebook' />
+                  <i className='mdi-facebook' />
                 </Button>
                 <Button className={styles.twitterIcon}>
-                  <Icon icon='mdi:twitter' />
+                  <i className='mdi-twitter' />
                 </Button>
                 <Button className={styles.linkedinIcon}>
-                  <Icon icon='mdi:linkedin' />
+                  <i className='mdi-linkedin' />
                 </Button>
               </div>
             </div>

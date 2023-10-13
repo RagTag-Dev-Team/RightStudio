@@ -50,7 +50,6 @@ const steps = [
   },
   {
     title: 'Price Details',
-    icon: 'mdi:currency-usd',
     subtitle: 'Expected Price'
   }
 ]

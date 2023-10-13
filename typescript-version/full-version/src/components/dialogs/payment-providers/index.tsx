@@ -11,9 +11,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
@@ -220,7 +217,7 @@ const PaymentProviders = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <div>
           {cardList?.map((card, index) => (

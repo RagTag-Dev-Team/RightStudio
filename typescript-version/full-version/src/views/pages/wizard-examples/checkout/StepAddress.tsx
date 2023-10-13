@@ -22,9 +22,6 @@ import type { CustomInputHorizontalData, CustomInputVerticalData } from '@core/c
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 import AddNewAddress from '@components/dialogs/add-new-address'
@@ -84,7 +81,7 @@ const dataIcons: CustomInputVerticalData[] = [
     isSelected: true,
     value: 'standard',
     title: 'Standard',
-    asset: 'mdi:account-outline',
+    asset: 'mdi-account-outline',
     content: (
       <>
         <Chip size='small' label='Free' color='success' className='absolute inline-end-0' />
@@ -97,7 +94,7 @@ const dataIcons: CustomInputVerticalData[] = [
   {
     value: 'express',
     title: 'Express',
-    asset: 'mdi:crown-outline',
+    asset: 'mdi-crown-outline',
     content: (
       <>
         <Chip label='$10' size='small' color='secondary' className='absolute inline-end-0' />
@@ -110,7 +107,7 @@ const dataIcons: CustomInputVerticalData[] = [
   {
     value: 'overnight',
     title: 'Overnight',
-    asset: 'mdi:rocket-launch-outline',
+    asset: 'mdi-rocket-launch-outline',
     content: (
       <>
         <Chip label='$15' size='small' color='secondary' className='absolute inline-end-0' />
@@ -181,7 +178,7 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
               let asset
 
               if (item.asset && typeof item.asset === 'string') {
-                asset = <Icon icon={item.asset} />
+                asset = <i className={item.asset} />
               }
 
               return (

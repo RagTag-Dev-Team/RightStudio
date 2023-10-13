@@ -9,9 +9,6 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false)
@@ -51,7 +48,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                    <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -74,7 +71,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle confirm password visibility'
                   >
-                    <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                    <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -85,10 +82,10 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
           <TextField fullWidth label='Profile Link' placeholder='johndoe/profile' />
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
-          <Button disabled variant='contained' startIcon={<Icon icon='mdi:chevron-left' />}>
+          <Button disabled variant='contained' startIcon={<i className='mdi-chevron-left' />}>
             Previous
           </Button>
-          <Button variant='contained' onClick={handleNext} endIcon={<Icon icon='mdi:chevron-right' />}>
+          <Button variant='contained' onClick={handleNext} endIcon={<i className='mdi-chevron-right' />}>
             Next
           </Button>
         </Grid>

@@ -10,25 +10,25 @@ export const db: DB = {
   users: {
     profile: {
       about: [
-        { property: 'Full Name', value: 'John Doe', icon: 'mdi:account-outline' },
-        { property: 'Status', value: 'active', icon: 'mdi:check' },
-        { property: 'Role', value: 'Developer', icon: 'mdi:star-outline' },
-        { property: 'Country', value: 'USA', icon: 'mdi:flag-outline' },
-        { property: 'Language', value: 'English', icon: 'mdi:translate' }
+        { property: 'Full Name', value: 'John Doe', icon: 'mdi-account-outline' },
+        { property: 'Status', value: 'active', icon: 'mdi-check' },
+        { property: 'Role', value: 'Developer', icon: 'mdi-star-outline' },
+        { property: 'Country', value: 'USA', icon: 'mdi-flag-outline' },
+        { property: 'Language', value: 'English', icon: 'mdi-translate' }
       ],
       contacts: [
-        { property: 'Contact', value: '(123) 456-7890', icon: 'mdi:phone-outline' },
-        { property: 'Skype', value: 'john.doe', icon: 'mdi:message-outline' },
-        { property: 'Email', value: 'john.doe@example.com', icon: 'mdi:email-outline' }
+        { property: 'Contact', value: '(123) 456-7890', icon: 'mdi-phone-outline' },
+        { property: 'Skype', value: 'john.doe', icon: 'mdi-message-outline' },
+        { property: 'Email', value: 'john.doe@example.com', icon: 'mdi-email-outline' }
       ],
       teams: [
         { property: 'Backend Developer', value: '(126 Members)' },
         { property: 'React Developer', value: '(98 Members)' }
       ],
       overview: [
-        { property: 'Task Compiled', value: '13.5k', icon: 'mdi:check' },
-        { property: 'Connections', value: '897', icon: 'mdi:account-outline' },
-        { property: 'Projects Compiled', value: '146', icon: 'mdi:view-grid-plus-outline' }
+        { property: 'Task Compiled', value: '13.5k', icon: 'mdi-check' },
+        { property: 'Connections', value: '897', icon: 'mdi-account-outline' },
+        { property: 'Projects Compiled', value: '146', icon: 'mdi-view-grid-plus-outline' }
       ],
       connections: [
         {
@@ -691,7 +691,7 @@ export const db: DB = {
     joiningDate: 'April 2021',
     designation: 'UX Designer',
     profileImg: '/images/avatars/1.png',
-    designationIcon: 'mdi:fountain-pen-tip',
+    designationIcon: 'mdi-fountain-pen-tip',
     coverImg: '/images/pages/profile-banner.png'
   }
 }

@@ -12,9 +12,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -46,7 +43,7 @@ const FaqHeader = ({ searchValue, setSearchValue }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <Icon icon='mdi:magnify' />
+                <i className='mdi-magnify' />
               </InputAdornment>
             )
           }}

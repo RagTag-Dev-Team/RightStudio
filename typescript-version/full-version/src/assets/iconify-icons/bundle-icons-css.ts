@@ -65,37 +65,33 @@ const sources: BundleScriptConfig = {
     {
       filename: require.resolve('@iconify/json/json/line-md.json'),
       icons: ['home-twotone-alt', 'github', 'document-list', 'document-code', 'image-twotone']
-    },
-    {
-      filename: require.resolve('@iconify/json/json/mdi.json'),
-      icons: ['star', 'heart', 'circle', 'github', 'google', 'twitter', 'facebook', 'star-outline', 'heart-outline']
     }
 
     // Custom JSON file
     // 'json/gg.json'
   ],
 
+  icons: [
+    'bx-basket',
+    'bi-airplane-engines',
+    'tabler-anchor',
+    'uit-adobe-alt',
+    'fa6-regular-comment',
+    'twemoji-auto-rickshaw'
+  ],
+
   svg: [
     {
       dir: 'src/assets/iconify-icons/svg',
-      monotone: true,
+      monotone: false,
       prefix: 'custom'
     }
 
-    // {
-    //   dir: 'emojis',
-    //   monotone: false,
-    //   prefix: 'emoji',
-    // },
-  ],
-
-  icons: [
-    // 'mdi:home',
-    // 'mdi:account',
-    // 'mdi:login',
-    // 'mdi:logout',
-    // 'octicon:book-24',
-    // 'octicon:code-square-24',
+    /* {
+      dir: 'src/assets/iconify-icons/emojis',
+      monotone: false,
+      prefix: 'emoji'
+    } */
   ]
 }
 

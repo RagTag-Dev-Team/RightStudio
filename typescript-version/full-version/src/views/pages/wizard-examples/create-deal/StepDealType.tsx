@@ -24,9 +24,6 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // style Imports
 import styles from './styles.module.css'
 
@@ -42,20 +39,20 @@ const data: CustomInputVerticalData[] = [
     title: 'Percentage',
     value: 'percentage',
     content: 'Create a deal which offer uses some % off (i.e 5% OFF) on total.',
-    asset: 'mdi:tag-outline',
+    asset: 'mdi-tag-outline',
     isSelected: true
   },
   {
     title: 'Flat Amount',
     value: 'flat-amount',
     content: 'Create a deal which offer uses flat $ off (i.e $5 OFF) on the total.',
-    asset: 'mdi:currency-usd'
+    asset: 'mdi-currency-usd'
   },
   {
     title: 'Prime Member',
     value: 'prime member',
     content: 'Create prime member only deal to encourage the prime members.',
-    asset: 'mdi:account-outline'
+    asset: 'mdi-account-outline'
   }
 ]
 
@@ -93,7 +90,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <Icon icon={item.asset} />
+          asset = <i className={item.asset} />
         }
 
         return (
@@ -150,7 +147,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:arrow-left' />}
+            startIcon={<i className='mdi-arrow-left' />}
           >
             Previous
           </Button>
@@ -158,7 +155,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<Icon icon={activeStep === steps.length - 1 ? 'mdi:check' : 'mdi:arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

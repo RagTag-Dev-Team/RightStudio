@@ -33,9 +33,6 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 import tableStyles from '@core/styles/libs/reactTables.module.css'
@@ -334,8 +331,8 @@ const ProjectTables = () => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <Icon icon='mdi:chevron-up' fontSize='1.25rem' />,
-                            desc: <Icon icon='mdi:chevron-down' fontSize='1.25rem' />
+                            asc: <i className='mdi-chevron-up text-xl' />,
+                            desc: <i className='mdi-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>

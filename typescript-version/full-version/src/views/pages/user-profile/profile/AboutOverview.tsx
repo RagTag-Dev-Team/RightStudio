@@ -7,16 +7,13 @@ import CardContent from '@mui/material/CardContent'
 // Type Imports
 import type { ProfileTeamsType, ProfileCommonType, ProfileTabType } from '@/types/pages/profileTypes'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const renderList = (list: ProfileCommonType[]) => {
   return (
     list.length > 0 &&
     list.map((item, index) => {
       return (
         <div key={index} className='flex items-center'>
-          <Icon icon={item.icon} />
+          <i className={item.icon} />
           <div className='flex items-center flex-wrap'>
             <Typography> {`${item.property.charAt(0).toUpperCase() + item.property.slice(1)}:`}</Typography>
             <Typography> {item.value.charAt(0).toUpperCase() + item.value.slice(1)}</Typography>

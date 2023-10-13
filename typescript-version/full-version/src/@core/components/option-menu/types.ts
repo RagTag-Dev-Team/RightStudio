@@ -9,9 +9,6 @@ import type { IconButtonProps } from '@mui/material/IconButton'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 import type { DividerProps } from '@mui/material/Divider'
 
-// Third-party Imports
-import type { IconProps } from '@iconify/react'
-
 export type OptionDividerType = {
   divider: boolean
   dividerProps?: DividerProps
@@ -38,5 +35,4 @@ export type OptionsMenuType = {
   options: OptionType[]
   leftAlignMenu?: boolean
   iconButtonProps?: IconButtonProps
-  iconProps?: Omit<IconProps, 'icon'>
 }

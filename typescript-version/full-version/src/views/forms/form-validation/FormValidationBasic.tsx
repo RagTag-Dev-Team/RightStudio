@@ -28,9 +28,6 @@ import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type FormValues = {
   firstName: string
   lastName: string
@@ -147,7 +144,7 @@ const FormValidationBasic = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                            <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

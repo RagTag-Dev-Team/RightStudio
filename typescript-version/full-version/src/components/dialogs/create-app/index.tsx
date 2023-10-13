@@ -30,9 +30,6 @@ import Database from './Database'
 import Billing from './Billing'
 import Submit from './Submit'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
 import { getDirection } from '@/utils/get-direction'
@@ -58,28 +55,28 @@ type stepperProps = {
 
 const steps: stepperProps[] = [
   {
-    icon: 'mdi:file-document-outline',
+    icon: 'mdi-file-document-outline',
     title: 'Details',
     subtitle: 'Enter Details'
   },
   {
-    icon: 'mdi:cube-outline',
+    icon: 'mdi-cube-outline',
     title: 'FrameWorks',
     subtitle: 'Select Framework',
     active: true
   },
   {
-    icon: 'mdi:database-outline',
+    icon: 'mdi-database-outline',
     title: 'Database',
     subtitle: 'Select Database'
   },
   {
-    icon: 'mdi:credit-card-outline',
+    icon: 'mdi-credit-card-outline',
     title: 'Billing',
     subtitle: 'Payment Details'
   },
   {
-    icon: 'mdi:check',
+    icon: 'mdi-check',
     title: 'Submit',
     subtitle: 'Submit'
   }
@@ -200,7 +197,7 @@ const CreateApp = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={handleClose} className={styles.closeIcon}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <div className={classnames('flex gap-y-6', { 'flex-col': isBelowMdScreen })}>
           <StepperWrapper>
@@ -217,7 +214,7 @@ const CreateApp = ({ open, setOpen }: Props) => {
                     <StepLabel icon={<></>} className='p-0 cursor-pointer'>
                       <div className='step-label gap-4'>
                         <Avatar variant='rounded' className={classnames({ [styles.activeStep]: activeStep === index })}>
-                          <Icon icon={label.icon as string} />
+                          <i className={label.icon as string} />
                         </Avatar>
                         <div className='flex flex-col'>
                           <Typography className='step-title'>{label.title}</Typography>

@@ -19,9 +19,6 @@ import type { ProjectsTabType } from '@/types/pages/profileTypes'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@views/pages/user-profile/styles.module.css'
@@ -116,7 +113,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                       <Typography className='flex-grow'>{item.members}</Typography>
                     </div>
                     <div className='flex items-center'>
-                      <Icon icon='mdi:message-outline' />
+                      <i className='mdi-message-outline' />
                       <Typography>{item.comments}</Typography>
                     </div>
                   </div>

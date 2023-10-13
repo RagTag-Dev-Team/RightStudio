@@ -14,9 +14,6 @@ import { styled } from '@mui/material/styles'
 import MuiTimeline from '@mui/lab/Timeline'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const Timeline = styled(MuiTimeline)<TimelineProps>({
   '& .MuiTimelineItem-root': {
     '&:before': {
@@ -28,7 +25,7 @@ const Timeline = styled(MuiTimeline)<TimelineProps>({
 const ActivityTimeline = () => {
   return (
     <Card>
-      <CardHeader title='Activity Timeline' avatar={<Icon icon='mdi:chart-timeline-variant' />} />
+      <CardHeader title='Activity Timeline' avatar={<i className='mdi-chart-timeline-variant' />} />
       <CardContent>
         <Timeline>
           <TimelineItem>

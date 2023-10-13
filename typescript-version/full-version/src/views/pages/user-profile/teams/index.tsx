@@ -18,9 +18,6 @@ import type { TeamsTabType } from '@/types/pages/profileTypes'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Import
 import styles from './styles.module.css'
 import commonStyles from '@views/pages/user-profile/styles.module.css'
@@ -41,7 +38,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                     </div>
                     <div className='flex items-center'>
                       <IconButton size='small'>
-                        <Icon icon='mdi:star-outline' />
+                        <i className='mdi-star-outline' />
                       </IconButton>
                       <OptionMenu
                         options={[

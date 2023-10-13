@@ -15,9 +15,6 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 // Component Imports
 import PricingDialog from '@components/dialogs/pricing'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const DialogPricing = ({ data }: { data: PricingPlanType[] }) => {
   // States
   const [open, setOpen] = useState(false)
@@ -26,7 +23,7 @@ const DialogPricing = ({ data }: { data: PricingPlanType[] }) => {
     <>
       <Card>
         <CardContent className='flex flex-col items-center text-center gap-4'>
-          <Icon icon='mdi:currency-usd' fontSize='2rem' />
+          <i className='mdi-currency-usd text-[32px]' />
           <Typography>Pricing</Typography>
           <Typography>Elegant pricing options dialog popup example, easy to use in any page.</Typography>
           <Button variant='contained' onClick={() => setOpen(true)}>

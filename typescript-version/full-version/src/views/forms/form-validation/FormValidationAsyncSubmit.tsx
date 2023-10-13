@@ -18,9 +18,6 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type FormValues = {
   firstName: string
   lastName: string
@@ -135,7 +132,7 @@ const FormValidationAsyncSubmit = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                            <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )

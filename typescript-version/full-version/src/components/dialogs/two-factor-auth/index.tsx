@@ -27,9 +27,6 @@ import classnames from 'classnames'
 import { getLocale } from '@/utils/get-locale'
 import { getDirection } from '@/utils/get-direction'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
@@ -58,7 +55,7 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
         })}
       >
         <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
 
         <TextField
@@ -83,7 +80,7 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<Icon icon='mdi:check' />}
+          endIcon={<i className='mdi-check' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -109,7 +106,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
         })}
       >
         <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
-          <Icon icon='mdi:close' />
+          <i className='mdi-close' />
         </IconButton>
         <div className='flex flex-col gap-2'>
           <Typography>Authenticator Apps</Typography>
@@ -141,7 +138,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<Icon icon='mdi:check' />}
+          endIcon={<i className='mdi-check' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -179,7 +176,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
     }
   }
 
-  const arrowIcon = direction === 'ltr' ? 'mdi:arrow-right' : 'mdi:arrow-left'
+  const arrowIcon = direction === 'ltr' ? 'mdi-arrow-right' : 'mdi-arrow-left'
 
   return (
     <>
@@ -200,7 +197,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
           })}
         >
           <IconButton onClick={handleClose} className={styles.closeIcon}>
-            <Icon icon='mdi:close' />
+            <i className='mdi-close' />
           </IconButton>
           <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -219,7 +216,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
                     'flex-col !text-center': isBelowSmScreen
                   })}
                 >
-                  <Icon icon='mdi:cog-outline' fontSize='2.375rem' />
+                  <i className='mdi-cog-outline text-[38px]' />
                   <div className='flex flex-col gap-2'>
                     <Typography className={styles.text}>Authenticator Apps</Typography>
                     <Typography className={styles.text}>
@@ -241,7 +238,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
                     'flex-col !text-center': isBelowSmScreen
                   })}
                 >
-                  <Icon icon='mdi:message-outline' fontSize='2.375rem' />
+                  <i className='mdi-message-outline text-[38px]' />
                   <div className='flex flex-col gap-2'>
                     <Typography className={styles.text}>SMS</Typography>
                     <Typography className={styles.text}>
@@ -260,7 +257,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
         >
           <Button
             variant='contained'
-            endIcon={<Icon icon={arrowIcon} />}
+            endIcon={<i className={arrowIcon} />}
             onClick={() => {
               setOpen(false)
               setShowAuthDialog(true)

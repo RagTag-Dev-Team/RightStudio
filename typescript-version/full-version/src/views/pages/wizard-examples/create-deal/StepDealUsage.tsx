@@ -9,9 +9,6 @@ import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   handleNext: () => void
@@ -74,7 +71,7 @@ const StepDealUsage = ({ activeStep, handleNext, handlePrev, steps }: Props) => 
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:arrow-left' />}
+            startIcon={<i className='mdi-arrow-left' />}
           >
             Previous
           </Button>
@@ -82,7 +79,7 @@ const StepDealUsage = ({ activeStep, handleNext, handlePrev, steps }: Props) => 
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<Icon icon={activeStep === steps.length - 1 ? 'mdi:check' : 'mdi:arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

@@ -8,8 +8,8 @@ import DialogActions from '@mui/material/DialogActions'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
+// Third-party Imports
+import classnames from 'classnames'
 
 type Props = {
   open: boolean
@@ -37,7 +37,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
     <>
       <Dialog fullWidth maxWidth='xs' open={open} onClose={() => setOpen(false)}>
         <DialogContent className='flex items-center flex-col text-center'>
-          <Icon icon='mdi:alert-circle-outline' fontSize='5.5rem' />
+          <i className='mdi-alert-circle-outline text-[88px]' />
           <Typography>
             {type === 'delete-account'
               ? 'Are you sure you want to deactivate your account?'
@@ -63,7 +63,9 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
       {/* Delete Account Dialog */}
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
         <DialogContent className='flex items-center flex-col text-center'>
-          <Icon icon={userInput ? 'mdi:check-circle-outline' : 'mdi:close-circle-outline'} fontSize='5.5rem' />
+          <i
+            className={classnames(userInput ? 'mdi-check-circle-outline' : 'mdi-close-circle-outline', 'text-[88px]')}
+          />
           <Typography>
             {userInput ? `${type === 'delete-account' ? 'Deactivated' : 'Unsubscribed'}` : 'Cancelled'}
           </Typography>

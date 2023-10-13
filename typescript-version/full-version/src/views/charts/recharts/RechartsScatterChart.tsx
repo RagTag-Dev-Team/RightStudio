@@ -16,9 +16,6 @@ import type { Direction } from '@core/types'
 // Component Imports
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -88,15 +85,15 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
       <CardContent>
         <div className='flex mbe-4 gap-6'>
           <div className='flex items-center'>
-            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.reactIcon)} />
+            <i className={classnames('mdi-circle text-xs mie-1.5', styles.reactIcon)} />
             <Typography variant='body2'>React</Typography>
           </div>
           <div className='flex items-center'>
-            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.vueIcon)} />
+            <i className={classnames('mdi-circle text-xs mie-1.5', styles.vueIcon)} />
             <Typography variant='body2'>Vue</Typography>
           </div>
           <div className='flex items-center'>
-            <Icon icon='mdi:circle' fontSize='0.75rem' className={classnames('mie-1.5', styles.angularIcon)} />
+            <i className={classnames('mdi-circle text-xs mie-1.5', styles.angularIcon)} />
             <Typography variant='body2'>Angular</Typography>
           </div>
         </div>

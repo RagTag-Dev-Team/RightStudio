@@ -20,9 +20,6 @@ import {
 } from '@components/charts/recharts'
 import type { TooltipProps } from '@components/charts/recharts'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -81,8 +78,8 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload &&
           data.payload.map((i: any) => {
             return (
-              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& svg': { color: i.fill } }}>
-                <Icon icon='mdi:circle' fontSize='0.6rem' />
+              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
+                <i className='mdi-circle text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -112,12 +109,12 @@ const RechartsRadarChart = () => {
           </ResponsiveContainer>
         </div>
         <div className='flex justify-center mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: '#fde802' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#fde802' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>iPhone 11</Typography>
           </Box>
-          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: '#9b88fa' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#9b88fa' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Samsung s20</Typography>
           </Box>
         </div>

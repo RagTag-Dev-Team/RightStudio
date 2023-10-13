@@ -15,9 +15,6 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type Props = {
   activeStep: number
   handleNext: () => void
@@ -30,20 +27,20 @@ const data: CustomInputVerticalData[] = [
     title: 'I am the Builder',
     value: 'builder',
     content: 'List property as Builder, list your project and get highest reach.',
-    asset: 'mdi:home-variant-outline',
+    asset: 'mdi-home-variant-outline',
     isSelected: true
   },
   {
     title: 'I am the Owner',
     value: 'owner',
     content: 'Submit property as an Individual. Lease, Rent or Sell at the best price.',
-    asset: 'mdi:account-outline'
+    asset: 'mdi-account-outline'
   },
   {
     title: 'I am the broker',
     value: 'broker',
     content: 'Earn highest commission by listing your clients properties at the best price.',
-    asset: 'mdi:currency-usd'
+    asset: 'mdi-currency-usd'
   }
 ]
 
@@ -72,7 +69,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <Icon icon={item.asset} />
+          asset = <i className={item.asset} />
         }
 
         return (
@@ -112,7 +109,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
                   onMouseDown={e => e.preventDefault()}
                   aria-label='toggle password visibility'
                 >
-                  <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                  <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                 </IconButton>
               </InputAdornment>
             )
@@ -139,7 +136,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<Icon icon='mdi:arrow-left' />}
+            startIcon={<i className='mdi-arrow-left' />}
           >
             Previous
           </Button>
@@ -147,7 +144,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<Icon icon={activeStep === steps.length - 1 ? 'mdi:check' : 'mdi:arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

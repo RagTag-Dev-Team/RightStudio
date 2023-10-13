@@ -24,9 +24,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -78,7 +75,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
         <Collapse in={openCollapse}>
           <Fade in={openFade} timeout={{ exit: 300 }}>
             <Alert
-              icon={<Icon icon='mdi:percent-outline' />}
+              icon={<i className='mdi-percent-outline' />}
               action={
                 <IconButton
                   aria-label='close'
@@ -88,7 +85,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                     setOpenFade(false)
                   }}
                 >
-                  <Icon icon='mdi:close' />
+                  <i className='mdi-close' />
                 </IconButton>
               }
             >
@@ -109,7 +106,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
             >
               <img height={140} width={140} src={product.imgSrc} alt={product.imgAlt} />
               <IconButton size='small' className={styles.closeIcon}>
-                <Icon icon='mdi:close' fontSize={20} />
+                <i className='mdi-close text-xl' />
               </IconButton>
               <div className={classnames('flex justify-between w-full', { 'flex-col items-center': isBelowSmScreen })}>
                 <div className={classnames('flex flex-col', { 'items-center': isBelowSmScreen })}>
@@ -157,7 +154,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           className={classnames('flex items-center justify-between gap-4', styles.border, styles.primary)}
         >
           Add more products from wishlist
-          <Icon icon='mdi:chevron-right' />
+          <i className='mdi-chevron-right' />
         </Typography>
       </Grid>
       <Grid item xs={12} lg={4}>

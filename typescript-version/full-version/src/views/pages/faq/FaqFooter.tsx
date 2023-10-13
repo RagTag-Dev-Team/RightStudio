@@ -7,9 +7,6 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -27,7 +24,7 @@ const FaqFooter = () => {
         <Grid item xs={12} md={6}>
           <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
             <Avatar variant='rounded'>
-              <Icon icon='mdi:phone' />
+              <i className='mdi-phone' />
             </Avatar>
             <Typography>+ (810) 2548 2568</Typography>
             <Typography>We are always happy to help!</Typography>
@@ -36,7 +33,7 @@ const FaqFooter = () => {
         <Grid item xs={12} md={6}>
           <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
             <Avatar variant='rounded'>
-              <Icon icon='mdi:email-outline' />
+              <i className='mdi-email-outline' />
             </Avatar>
             <Typography>hello@help.com</Typography>
             <Typography>Best way to get answer faster!</Typography>

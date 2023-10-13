@@ -26,9 +26,6 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import DatePicker from 'react-datepicker'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -234,7 +231,7 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                            <i className={formData.isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -259,8 +256,8 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <Icon
-                              icon={formData.setIsConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'}
+                            <i
+                              className={formData.setIsConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'}
                             />
                           </IconButton>
                         </InputAdornment>

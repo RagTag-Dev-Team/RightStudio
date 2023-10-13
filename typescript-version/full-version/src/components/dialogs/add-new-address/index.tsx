@@ -30,9 +30,6 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Custom Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
@@ -47,14 +44,14 @@ const customInputData: CustomInputVerticalData[] = [
   {
     title: 'Home',
     content: 'Delivery Time (7am - 9pm)',
-    asset: 'mdi:home-outline',
+    asset: 'mdi-home-outline',
     value: 'home',
     isSelected: true
   },
   {
     title: 'Office',
     content: 'Delivery Time (10am - 6pm)',
-    asset: 'mdi:office-building',
+    asset: 'mdi-office-building',
     value: 'office'
   }
 ]
@@ -103,14 +100,14 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
           })}
         >
           <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-            <Icon icon='mdi:close' />
+            <i className='mdi-close' />
           </IconButton>
           <Grid container spacing={5}>
             {customInputData.map((item, index) => {
               let asset
 
               if (item.asset && typeof item.asset === 'string') {
-                asset = <Icon icon={item.asset} />
+                asset = <i className={item.asset} />
               }
 
               return (

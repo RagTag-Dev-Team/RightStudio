@@ -28,9 +28,6 @@ import ProjectsTab from './projects/index'
 import ConnectionsTab from './connections/index'
 import UserProfileHeader from './UserProfileHeader'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
   '& .MuiTabs-indicator': {
     display: 'none'
@@ -93,7 +90,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <Icon icon='mdi:account-outline' />
+                    <i className='mdi-account-outline' />
                     Profile
                   </div>
                 }
@@ -102,7 +99,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <Icon icon='mdi:account-multiple-outline' />
+                    <i className='mdi-account-multiple-outline' />
                     Teams
                   </div>
                 }
@@ -111,7 +108,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <Icon icon='mdi:view-grid-outline' />
+                    <i className='mdi-view-grid-outline' />
                     Projects
                   </div>
                 }
@@ -120,7 +117,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <Icon icon='mdi:link-variant' />
+                    <i className='mdi-link-variant' />
                     Connections
                   </div>
                 }

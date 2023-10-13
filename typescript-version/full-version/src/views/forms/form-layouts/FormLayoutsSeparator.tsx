@@ -23,9 +23,6 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import DatePicker from 'react-datepicker'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 type FormDataType = {
   username: string
   email: string
@@ -129,7 +126,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <Icon icon={formData.isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={formData.isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -154,7 +151,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <Icon icon={formData.isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={formData.isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )

@@ -18,9 +18,6 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './resetPassword.module.css'
 
@@ -49,7 +46,7 @@ const ResetPasswordV1 = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                    <Icon icon={isPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                    <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -63,7 +60,7 @@ const ResetPasswordV1 = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowConfirmPassword} onMouseDown={e => e.preventDefault()}>
-                    <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                    <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -74,7 +71,7 @@ const ResetPasswordV1 = () => {
           </Button>
           <Typography className={classnames('flex justify-center items-center', styles.primaryColor)}>
             <Link href='/pages/auth/login-v1' onClick={e => e.preventDefault()} className='flex items-center'>
-              <Icon icon='mdi:chevron-left' />
+              <i className='mdi-chevron-left' />
               <span>Back to Login</span>
             </Link>
           </Typography>

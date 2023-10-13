@@ -12,9 +12,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ChangePasswordCard = () => {
   // States
   const [isCurrentPasswordShown, setIsCurrentPasswordShown] = useState(false)
@@ -44,7 +41,7 @@ const ChangePasswordCard = () => {
                         onClick={handleClickShowCurrentPassword}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={isCurrentPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={isCurrentPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -66,7 +63,7 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsNewPasswordShown(!isNewPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={isNewPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={isNewPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -86,7 +83,7 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsConfirmPasswordShown(!isConfirmPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <Icon icon={isConfirmPasswordShown ? 'mdi:eye-off-outline' : 'mdi:eye-outline'} />
+                        <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -97,15 +94,15 @@ const ChangePasswordCard = () => {
               <Typography>Password Requirements:</Typography>
               <div>
                 <div className='flex items-center'>
-                  <Icon icon='mdi:checkbox-blank-circle' height={8} width={8} />
+                  <i className='mdi-checkbox-blank-circle text-[8px]' />
                   Minimum 8 characters long - the more, the better
                 </div>
                 <div className='flex items-center'>
-                  <Icon icon='mdi:checkbox-blank-circle' height={8} width={8} />
+                  <i className='mdi-checkbox-blank-circle text-[8px]' />
                   At least one lowercase & one uppercase character
                 </div>
                 <div className='flex items-center'>
-                  <Icon icon='mdi:checkbox-blank-circle' height={8} width={8} />
+                  <i className='mdi-checkbox-blank-circle text-[8px]' />
                   At least one number, symbol, or whitespace character
                 </div>
               </div>

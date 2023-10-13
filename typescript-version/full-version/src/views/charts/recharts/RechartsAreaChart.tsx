@@ -15,9 +15,6 @@ import type { Direction } from '@core/types'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
 import type { TooltipProps } from '@components/charts/recharts'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -114,8 +111,8 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload &&
           data.payload.map((i: any) => {
             return (
-              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& svg': { color: i.fill } }}>
-                <Icon icon='mdi:circle' fontSize='0.6rem' />
+              <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
+                <i className='mdi-circle text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -141,16 +138,16 @@ const RechartsAreaChart = ({ direction }: { direction: Direction }) => {
       />
       <CardContent>
         <div className='flex mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: 'rgb(115, 103, 240)' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgb(115, 103, 240)' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Click</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& svg': { color: 'rgba(115, 103, 240, .5)' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .5)' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Sales</Typography>
           </Box>
-          <Box className='flex items-center gap-1.5' sx={{ '& svg': { color: 'rgba(115, 103, 240, .2)' } }}>
-            <Icon icon='mdi:circle' fontSize='0.75rem' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .2)' } }}>
+            <i className='mdi-circle text-xs' />
             <Typography variant='body2'>Visits</Typography>
           </Box>
         </div>

@@ -20,9 +20,6 @@ import StepAddress from './StepAddress'
 import StepPayment from './StepPayment'
 import StepConfirmation from './StepConfirmation'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 
@@ -139,7 +136,7 @@ const CheckoutWizard = () => {
     <Card>
       <CardContent>
         <StepperWrapper>
-          <Stepper activeStep={activeStep} connector={<Icon icon='mdi:chevron-right' className='mli-12' />}>
+          <Stepper activeStep={activeStep} connector={<i className='mdi-chevron-right mli-12' />}>
             {steps.map((step, index) => {
               return (
                 <Step key={index} onClick={() => setActiveStep(index)}>

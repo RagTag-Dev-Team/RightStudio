@@ -12,9 +12,6 @@ import Typography from '@mui/material/Typography'
 // Component Imports
 import ReferEarn from '@components/dialogs/refer-earn'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const DialogReferEarn = () => {
   // States
   const [show, setShow] = useState(false)
@@ -22,7 +19,7 @@ const DialogReferEarn = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <Icon icon='mdi:gift-outline' fontSize='2rem' />
+        <i className='mdi-gift-outline text-[32px]' />
         <Typography>Refer & Earn</Typography>
         <Typography>
           Use Refer & Earn modal to encourage your exiting customers refer their friends & colleague.

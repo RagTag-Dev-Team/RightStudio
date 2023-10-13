@@ -18,11 +18,11 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import type { TabListProps } from '@mui/lab/TabList'
 import type { Theme } from '@mui/material/styles'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { FaqType } from '@/types/pages/faqTypes'
-
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
 
 const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
   borderRight: 0,
@@ -90,7 +90,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
                 key={index}
                 label={faq.title}
                 value={faq.id}
-                icon={<Icon icon={faq.icon} className='!mbe-0' />}
+                icon={<i className={classnames(faq.icon, '!mbe-0')} />}
                 className='flex-row justify-start'
               />
             ))}
@@ -102,7 +102,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
             <TabPanel key={index} value={faq.id} className='p-0'>
               <div className='flex items-center gap-4'>
                 <Avatar variant='rounded'>
-                  <Icon icon={faq.icon} />
+                  <i className={faq.icon} />
                 </Avatar>
                 <div>
                   <Typography>{faq.title}</Typography>
@@ -112,7 +112,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
               <div>
                 {faq.questionsAnswers.map((items, index) => (
                   <Accordion key={index}>
-                    <AccordionSummary expandIcon={<Icon icon='mdi:chevron-down' />} aria-controls='panel1a-content'>
+                    <AccordionSummary expandIcon={<i className='mdi-chevron-down' />} aria-controls='panel1a-content'>
                       <Typography>{items.question}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -128,7 +128,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
     </TabContext>
   ) : (
     <div className='flex justify-center items-center'>
-      <Icon icon='mdi:alert-circle-outline' />
+      <i className='mdi-alert-circle-outline' />
       <Typography>No results found</Typography>
     </div>
   )
