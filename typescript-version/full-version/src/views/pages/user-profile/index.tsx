@@ -90,7 +90,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <i className='mdi-account-outline' />
+                    <i className='ri-user-3-line' />
                     Profile
                   </div>
                 }
@@ -99,7 +99,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <i className='mdi-account-multiple-outline' />
+                    <i className='ri-group-line' />
                     Teams
                   </div>
                 }
@@ -108,7 +108,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <i className='mdi-view-grid-outline' />
+                    <i className='ri-layout-grid-line' />
                     Projects
                   </div>
                 }
@@ -117,7 +117,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
               <Tab
                 label={
                   <div className='flex items-center'>
-                    <i className='mdi-link-variant' />
+                    <i className='ri-links-line' />
                     Connections
                   </div>
                 }

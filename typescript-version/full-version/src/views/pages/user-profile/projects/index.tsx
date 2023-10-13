@@ -113,7 +113,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                       <Typography className='flex-grow'>{item.members}</Typography>
                     </div>
                     <div className='flex items-center'>
-                      <i className='mdi-message-outline' />
+                      <i className='ri-message-2-line' />
                       <Typography>{item.comments}</Typography>
                     </div>
                   </div>

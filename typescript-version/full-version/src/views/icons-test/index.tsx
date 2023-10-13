@@ -26,10 +26,10 @@ const IconsTest = ({ data }: { data: string[] }) => {
       </Typography>
 
       <Typography variant='h5' className='mlb-4'>
-        FakeDB MDI icons but offline
+        FakeDB Remix icons but offline
       </Typography>
       <Typography className='mbe-4'>
-        MDI icons coming from our API (Next.js API) and SVGs are from the Iconify Bundle
+        Remix icons coming from our API (Next.js API) and SVGs are from the Iconify Bundle
       </Typography>
       {data.map((icon: string, index: number) => (
         <i key={index} className={classnames(icon, 'text-4xl')} />
@@ -57,86 +57,86 @@ const IconsTest = ({ data }: { data: string[] }) => {
       <i className='line-md-document-code text-4xl' />
       <i className='line-md-image-twotone text-4xl' />
 
-      <Typography className='mbs-4 font-medium'>MDI Icons</Typography>
+      <Typography className='mbs-4 font-medium'>Remix Icons</Typography>
       <Typography>
-        Simple MDI Icon
-        <i className='mdi-airplane-alert' />
+        Simple Remix Icon
+        <i className='ri-bike-line' />
       </Typography>
       <Typography className='flex items-center'>
-        MDI Icon wrapped with <code>Box</code> component
+        Remix Icon wrapped with <code>Box</code> component
         <Box component='span' className={classnames(styles.successMain, 'mis-5 inline-flex')}>
-          <i className='mdi-airplane-alert' />
+          <i className='ri-bike-line' />
         </Box>
       </Typography>
       <Typography>
-        MDI Icon with font-size
-        <i className='mdi-airplane-alert text-5xl' />
+        Remix Icon with font-size
+        <i className='ri-bike-line text-5xl' />
       </Typography>
       <Typography>
-        MDI Icon with color and passed color-name
-        <i className='mdi-airplane-alert text-red-500' />
+        Remix Icon with color and passed color-name
+        <i className='ri-bike-line text-red-500' />
       </Typography>
       <Typography>
-        MDI Icon with color using CSS modules
-        <i className={classnames(styles.iconColor, 'mdi-airplane-alert')} />
+        Remix Icon with color using CSS modules
+        <i className={classnames(styles.iconColor, 'ri-bike-line')} />
       </Typography>
       <Typography>
-        MDI Icon with style
-        <i className='mdi-airplane-alert' style={{ color: '#00f' }} />
+        Remix Icon with style
+        <i className='ri-bike-line' style={{ color: '#00f' }} />
       </Typography>
       <Typography>
-        MDI Icon with horizontal flip
-        <i className='mdi-airplane-alert -scale-x-100 scale-y-100' />
+        Remix Icon with horizontal flip
+        <i className='ri-bike-line -scale-x-100 scale-y-100' />
       </Typography>
       <Typography>
-        MDI Icon with vertical flip
-        <i className='mdi-airplane-alert scale-x-100 -scale-y-100' />
+        Remix Icon with vertical flip
+        <i className='ri-bike-line scale-x-100 -scale-y-100' />
       </Typography>
       <Typography>
-        MDI Icon with vertical & horizontal flips
-        <i className='mdi-airplane-alert -scale-x-100 -scale-y-100' />
+        Remix Icon with vertical & horizontal flips
+        <i className='ri-bike-line -scale-x-100 -scale-y-100' />
       </Typography>
       <Typography>
-        MDI Icon with rotate 90 degree
-        <i className='mdi-airplane-alert rotate-90' />
+        Remix Icon with rotate 90 degree
+        <i className='ri-bike-line rotate-90' />
       </Typography>
       <Typography>
-        MDI Icon with rotate 270 degree
-        <i className='mdi-airplane-alert -rotate-90' />
+        Remix Icon with rotate 270 degree
+        <i className='ri-bike-line -rotate-90' />
       </Typography>
       <Typography>
-        MDI Icon with width
-        <i className='mdi-airplane-alert w-24' />
+        Remix Icon with width
+        <i className='ri-bike-line w-24' />
       </Typography>
       <Typography>
-        MDI Icon with height
-        <i className='mdi-airplane-alert h-20' />
+        Remix Icon with height
+        <i className='ri-bike-line h-20' />
       </Typography>
       <Typography>
-        MDI Icon with cursor pointer
-        <i className='mdi-airplane-alert cursor-pointer' />
+        Remix Icon with cursor pointer
+        <i className='ri-bike-line cursor-pointer' />
       </Typography>
       <Typography>
-        MDI Icon with display flex
-        <i className='mdi-airplane-alert flex' />
+        Remix Icon with display flex
+        <i className='ri-bike-line flex' />
       </Typography>
       <Typography>
-        MDI Icon with onClick. It has all props for <code>on</code>
-        <i className='mdi-airplane-alert' onClick={() => alert('Clicked on the icon')} />
+        Remix Icon with onClick. It has all props for <code>on</code>
+        <i className='ri-bike-line' onClick={() => alert('Clicked on the icon')} />
       </Typography>
       <Typography>
-        MDI Icon with opacity using string
-        <i className='mdi-airplane-alert opacity-60' />
-        MDI Icon with opacity using number
-        <i className='mdi-airplane-alert opacity-30' />
+        Remix Icon with opacity using string
+        <i className='ri-bike-line opacity-60' />
+        Remix Icon with opacity using number
+        <i className='ri-bike-line opacity-30' />
       </Typography>
       <Typography>
-        MDI Icon with transform scale
-        <i className={classnames(styles.iconScale, 'mdi-airplane-alert')} />
+        Remix Icon with transform scale
+        <i className={classnames(styles.iconScale, 'ri-bike-line')} />
       </Typography>
       <Typography>
-        MDI Icon with visibility hidden
-        <i className='mdi-airplane-alert invisible' />
+        Remix Icon with visibility hidden
+        <i className='ri-bike-line invisible' />
       </Typography>
 
       <Typography variant='h5' className='mbs-4'>

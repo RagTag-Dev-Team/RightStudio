@@ -55,28 +55,28 @@ type stepperProps = {
 
 const steps: stepperProps[] = [
   {
-    icon: 'mdi-file-document-outline',
+    icon: 'ri-file-list-2-line',
     title: 'Details',
     subtitle: 'Enter Details'
   },
   {
-    icon: 'mdi-cube-outline',
+    icon: 'ri-box-3-line',
     title: 'FrameWorks',
     subtitle: 'Select Framework',
     active: true
   },
   {
-    icon: 'mdi-database-outline',
+    icon: 'ri-database-2-line',
     title: 'Database',
     subtitle: 'Select Database'
   },
   {
-    icon: 'mdi-credit-card-outline',
+    icon: 'ri-bank-card-2-line',
     title: 'Billing',
     subtitle: 'Payment Details'
   },
   {
-    icon: 'mdi-check',
+    icon: 'ri-check-line',
     title: 'Submit',
     subtitle: 'Submit'
   }
@@ -197,7 +197,7 @@ const CreateApp = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={handleClose} className={styles.closeIcon}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <div className={classnames('flex gap-y-6', { 'flex-col': isBelowMdScreen })}>
           <StepperWrapper>

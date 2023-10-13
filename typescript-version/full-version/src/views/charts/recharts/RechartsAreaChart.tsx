@@ -112,7 +112,7 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload.map((i: any) => {
             return (
               <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
-                <i className='mdi-circle text-[10px]' />
+                <i className='ri-circle-fill text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -139,15 +139,15 @@ const RechartsAreaChart = ({ direction }: { direction: Direction }) => {
       <CardContent>
         <div className='flex mbe-4'>
           <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgb(115, 103, 240)' } }}>
-            <i className='mdi-circle text-xs' />
+            <i className='ri-circle-fill text-xs' />
             <Typography variant='body2'>Click</Typography>
           </Box>
           <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .5)' } }}>
-            <i className='mdi-circle text-xs' />
+            <i className='ri-circle-fill text-xs' />
             <Typography variant='body2'>Sales</Typography>
           </Box>
           <Box className='flex items-center gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .2)' } }}>
-            <i className='mdi-circle text-xs' />
+            <i className='ri-circle-fill text-xs' />
             <Typography variant='body2'>Visits</Typography>
           </Box>
         </div>

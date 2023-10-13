@@ -81,7 +81,7 @@ const dataIcons: CustomInputVerticalData[] = [
     isSelected: true,
     value: 'standard',
     title: 'Standard',
-    asset: 'mdi-account-outline',
+    asset: 'ri-user-3-line',
     content: (
       <>
         <Chip size='small' label='Free' color='success' className='absolute inline-end-0' />
@@ -94,7 +94,7 @@ const dataIcons: CustomInputVerticalData[] = [
   {
     value: 'express',
     title: 'Express',
-    asset: 'mdi-crown-outline',
+    asset: 'ri-vip-crown-line',
     content: (
       <>
         <Chip label='$10' size='small' color='secondary' className='absolute inline-end-0' />
@@ -107,7 +107,7 @@ const dataIcons: CustomInputVerticalData[] = [
   {
     value: 'overnight',
     title: 'Overnight',
-    asset: 'mdi-rocket-launch-outline',
+    asset: 'ri-rocket-2-line',
     content: (
       <>
         <Chip label='$15' size='small' color='secondary' className='absolute inline-end-0' />

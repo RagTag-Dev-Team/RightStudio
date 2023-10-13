@@ -130,7 +130,7 @@ const Connections = () => {
                   </div>
                 </div>
                 <Button variant='outlined' color='secondary'>
-                  <i className={item.isConnected ? 'mdi-delete-outline' : 'mdi-link-variant'} />
+                  <i className={item.isConnected ? 'ri-delete-bin-7-line' : 'ri-links-line'} />
                 </Button>
               </div>
             ))}

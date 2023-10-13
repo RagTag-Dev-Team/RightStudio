@@ -331,8 +331,8 @@ const ProjectTables = () => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='mdi-chevron-up text-xl' />,
-                            desc: <i className='mdi-chevron-down text-xl' />
+                            asc: <i className='ri-arrow-up-s-line text-xl' />,
+                            desc: <i className='ri-arrow-down-s-line text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>

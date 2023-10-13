@@ -85,7 +85,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <i className='mdi-account-outline' />
+                  <i className='ri-user-3-line' />
                   Account
                 </div>
               }
@@ -94,7 +94,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <i className='mdi-lock-open-outline' />
+                  <i className='ri-lock-unlock-line' />
                   Security
                 </div>
               }
@@ -103,7 +103,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <i className='mdi-bookmark-outline' />
+                  <i className='ri-bookmark-line' />
                   Billing & Plans
                 </div>
               }
@@ -112,7 +112,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <i className='mdi-bell-outline' />
+                  <i className='ri-notification-3-line' />
                   Notifications
                 </div>
               }
@@ -121,7 +121,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             <Tab
               label={
                 <div className='flex items-center'>
-                  <i className='mdi-link' />
+                  <i className='ri-link' />
                   Connections
                 </div>
               }

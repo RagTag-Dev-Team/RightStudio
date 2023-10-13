@@ -105,7 +105,7 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='mdi-arrow-left' />}
+            startIcon={<i className='ri-arrow-left-line' />}
           >
             Previous
           </Button>
@@ -113,7 +113,7 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

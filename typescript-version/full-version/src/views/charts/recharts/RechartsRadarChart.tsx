@@ -79,7 +79,7 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
           data.payload.map((i: any) => {
             return (
               <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
-                <i className='mdi-circle text-[10px]' />
+                <i className='ri-circle-fill text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -110,11 +110,11 @@ const RechartsRadarChart = () => {
         </div>
         <div className='flex justify-center mbe-4'>
           <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#fde802' } }}>
-            <i className='mdi-circle text-xs' />
+            <i className='ri-circle-fill text-xs' />
             <Typography variant='body2'>iPhone 11</Typography>
           </Box>
           <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#9b88fa' } }}>
-            <i className='mdi-circle text-xs' />
+            <i className='ri-circle-fill text-xs' />
             <Typography variant='body2'>Samsung s20</Typography>
           </Box>
         </div>

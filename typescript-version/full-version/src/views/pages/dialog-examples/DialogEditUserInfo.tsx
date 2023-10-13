@@ -20,7 +20,7 @@ const DialogEditUserInfo = () => {
     <>
       <Card>
         <CardContent className='flex flex-col items-center text-center gap-4'>
-          <i className='mdi-account-outline text-[32px]' />
+          <i className='ri-user-3-line text-[32px]' />
           <Typography>Edit User Info</Typography>
           <Typography>Use this modal to modify the existing user&#39;s current information.</Typography>
           <Button variant='contained' onClick={() => setOpen(true)}>

@@ -27,20 +27,20 @@ const data: CustomInputVerticalData[] = [
     title: 'I am the Builder',
     value: 'builder',
     content: 'List property as Builder, list your project and get highest reach.',
-    asset: 'mdi-home-variant-outline',
+    asset: 'ri-home-5-line',
     isSelected: true
   },
   {
     title: 'I am the Owner',
     value: 'owner',
     content: 'Submit property as an Individual. Lease, Rent or Sell at the best price.',
-    asset: 'mdi-account-outline'
+    asset: 'ri-user-3-line'
   },
   {
     title: 'I am the broker',
     value: 'broker',
     content: 'Earn highest commission by listing your clients properties at the best price.',
-    asset: 'mdi-currency-usd'
+    asset: 'ri-money-dollar-circle-line'
   }
 ]
 
@@ -109,7 +109,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
                   onMouseDown={e => e.preventDefault()}
                   aria-label='toggle password visibility'
                 >
-                  <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                  <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                 </IconButton>
               </InputAdornment>
             )
@@ -136,7 +136,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='mdi-arrow-left' />}
+            startIcon={<i className='ri-arrow-left-line' />}
           >
             Previous
           </Button>
@@ -144,7 +144,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

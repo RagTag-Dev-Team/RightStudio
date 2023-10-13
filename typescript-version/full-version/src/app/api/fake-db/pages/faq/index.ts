@@ -5,7 +5,7 @@ export const db: FaqType[] = [
   {
     id: 'payment',
     title: 'Payment',
-    icon: 'mdi-credit-card-outline',
+    icon: 'ri-bank-card-2-line',
     subtitle: 'Get help with payment',
     questionsAnswers: [
       {
@@ -45,7 +45,7 @@ export const db: FaqType[] = [
   {
     id: 'delivery',
     title: 'Delivery',
-    icon: 'mdi-cart-outline',
+    icon: 'ri-shopping-cart-2-line',
     subtitle: 'Get help with delivery',
     questionsAnswers: [
       {
@@ -71,7 +71,7 @@ export const db: FaqType[] = [
 
   // cancellation and return
   {
-    icon: 'mdi-rotate-right',
+    icon: 'ri-refresh-line',
     id: 'cancellation-return',
     title: 'Cancellation & Return',
     subtitle: 'Get help with cancellation & return',
@@ -100,7 +100,7 @@ export const db: FaqType[] = [
   {
     id: 'my-orders',
     title: 'My Orders',
-    icon: 'mdi-archive-outline',
+    icon: 'ri-archive-line',
     subtitle: 'Order details',
     questionsAnswers: [
       {
@@ -125,7 +125,7 @@ export const db: FaqType[] = [
 
   // product and services
   {
-    icon: 'mdi-camera-outline',
+    icon: 'ri-camera-3-line',
     id: 'product-services',
     title: 'Product & Services',
     subtitle: 'Get help with product & services',

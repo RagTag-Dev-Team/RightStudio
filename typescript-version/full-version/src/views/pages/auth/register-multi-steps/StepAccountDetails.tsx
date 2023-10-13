@@ -48,7 +48,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                    <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -71,7 +71,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle confirm password visibility'
                   >
-                    <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                    <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -82,10 +82,10 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
           <TextField fullWidth label='Profile Link' placeholder='johndoe/profile' />
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
-          <Button disabled variant='contained' startIcon={<i className='mdi-chevron-left' />}>
+          <Button disabled variant='contained' startIcon={<i className='ri-arrow-left-s-line' />}>
             Previous
           </Button>
-          <Button variant='contained' onClick={handleNext} endIcon={<i className='mdi-chevron-right' />}>
+          <Button variant='contained' onClick={handleNext} endIcon={<i className='ri-arrow-right-s-line' />}>
             Next
           </Button>
         </Grid>

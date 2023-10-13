@@ -24,7 +24,7 @@ const FormLayoutsWithIcon = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='mdi-account-outline' />
+                      <i className='ri-user-3-line' />
                     </InputAdornment>
                   )
                 }}
@@ -39,7 +39,7 @@ const FormLayoutsWithIcon = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='mdi-email-outline' />
+                      <i className='ri-mail-line' />
                     </InputAdornment>
                   )
                 }}
@@ -53,7 +53,7 @@ const FormLayoutsWithIcon = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='mdi-phone' />
+                      <i className='ri-phone-fill' />
                     </InputAdornment>
                   )
                 }}
@@ -70,7 +70,7 @@ const FormLayoutsWithIcon = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='mdi-message-outline' />
+                      <i className='ri-message-2-line' />
                     </InputAdornment>
                   )
                 }}

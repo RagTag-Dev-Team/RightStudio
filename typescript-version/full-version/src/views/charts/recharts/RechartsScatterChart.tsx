@@ -85,15 +85,15 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
       <CardContent>
         <div className='flex mbe-4 gap-6'>
           <div className='flex items-center'>
-            <i className={classnames('mdi-circle text-xs mie-1.5', styles.reactIcon)} />
+            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.reactIcon)} />
             <Typography variant='body2'>React</Typography>
           </div>
           <div className='flex items-center'>
-            <i className={classnames('mdi-circle text-xs mie-1.5', styles.vueIcon)} />
+            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.vueIcon)} />
             <Typography variant='body2'>Vue</Typography>
           </div>
           <div className='flex items-center'>
-            <i className={classnames('mdi-circle text-xs mie-1.5', styles.angularIcon)} />
+            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.angularIcon)} />
             <Typography variant='body2'>Angular</Typography>
           </div>
         </div>

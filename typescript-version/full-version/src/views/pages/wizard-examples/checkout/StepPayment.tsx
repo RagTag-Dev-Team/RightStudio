@@ -73,7 +73,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
         <Collapse in={openCollapse}>
           <Fade in={openFade} timeout={{ exit: 300 }}>
             <Alert
-              icon={<i className='mdi-percent-outline' />}
+              icon={<i className='ri-percent-line' />}
               action={
                 <IconButton
                   aria-label='close'
@@ -83,7 +83,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
                     setOpenFade(false)
                   }}
                 >
-                  <i className='mdi-close' />
+                  <i className='ri-close-line' />
                 </IconButton>
               }
             >

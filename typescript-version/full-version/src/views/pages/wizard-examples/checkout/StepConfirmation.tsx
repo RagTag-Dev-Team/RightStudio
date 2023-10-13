@@ -56,7 +56,7 @@ const StepConfirmation = () => {
             </Typography>
           </div>
           <div className='flex items-center'>
-            <i className='mdi-clock-time-five-outline text-xl' />
+            <i className='ri-time-line text-xl' />
             <Typography>Time placed: 25/05/2020 13:35pm</Typography>
           </div>
         </div>
@@ -71,7 +71,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <i className='mdi-map-marker-outline' />
+              <i className='ri-map-pin-2-line' />
               <Typography className='font-medium'>Shipping</Typography>
             </div>
             <Typography>John Doe</Typography>
@@ -88,7 +88,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <i className='mdi-credit-card-outline' />
+              <i className='ri-bank-card-2-line' />
               <Typography className='font-medium'>Billing Address</Typography>
             </div>
             <Typography>John Doe</Typography>
@@ -104,7 +104,7 @@ const StepConfirmation = () => {
             })}
           >
             <div className='flex items-center'>
-              <i className='mdi-archive-outline' />
+              <i className='ri-archive-line' />
               <Typography className='font-medium'>Shipping Method</Typography>
             </div>
             <Typography>Preferred Method:</Typography>

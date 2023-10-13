@@ -29,7 +29,7 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: P
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<i className={direction === 'rtl' ? 'mdi-arrow-right' : 'mdi-arrow-left'} />}
+          startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
         >
           Previous
         </Button>
@@ -38,7 +38,11 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: P
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <i className={isLastStep ? 'mdi-check' : direction === 'rtl' ? 'mdi-arrow-left' : 'mdi-arrow-right'} />
+            <i
+              className={
+                isLastStep ? 'ri-check-line' : direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'
+              }
+            />
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

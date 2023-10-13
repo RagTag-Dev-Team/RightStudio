@@ -23,7 +23,7 @@ const DialogPricing = ({ data }: { data: PricingPlanType[] }) => {
     <>
       <Card>
         <CardContent className='flex flex-col items-center text-center gap-4'>
-          <i className='mdi-currency-usd text-[32px]' />
+          <i className='ri-money-dollar-circle-line text-[32px]' />
           <Typography>Pricing</Typography>
           <Typography>Elegant pricing options dialog popup example, easy to use in any page.</Typography>
           <Button variant='contained' onClick={() => setOpen(true)}>

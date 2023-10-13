@@ -49,11 +49,11 @@ const UserProfileHeader = ({ data }: { data?: ProfileHeaderType }) => {
                 <Typography>{data?.designation}</Typography>
               </div>
               <div className='flex items-center'>
-                <i className='mdi-map-marker-outline' />
+                <i className='ri-map-pin-2-line' />
                 <Typography>{data?.location}</Typography>
               </div>
               <div className='flex items-center'>
-                <i className='mdi-calendar-blank-outline' />
+                <i className='ri-calendar-line' />
                 <Typography>{data?.joiningDate}</Typography>
               </div>
             </div>

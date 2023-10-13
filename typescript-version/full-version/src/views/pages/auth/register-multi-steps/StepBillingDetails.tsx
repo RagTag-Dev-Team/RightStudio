@@ -132,7 +132,7 @@ const StepBillingDetails = ({ handlePrev }: { handlePrev: () => void }) => {
             variant='contained'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<i className='mdi-chevron-left' />}
+            startIcon={<i className='ri-arrow-left-s-line' />}
           >
             Previous
           </Button>

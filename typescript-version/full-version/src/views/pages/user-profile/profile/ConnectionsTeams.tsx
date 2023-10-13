@@ -46,7 +46,7 @@ const ConnectionsTeams = (props: Props) => {
                     </div>
                   </div>
                   <Button variant={connection.isFriend ? 'contained' : 'outlined'}>
-                    <i className={connection.isFriend ? 'mdi-account-outline' : 'mdi-account-plus-outline'} />
+                    <i className={connection.isFriend ? 'ri-user-3-line' : 'ri-user-add-line'} />
                   </Button>
                 </div>
               ))}

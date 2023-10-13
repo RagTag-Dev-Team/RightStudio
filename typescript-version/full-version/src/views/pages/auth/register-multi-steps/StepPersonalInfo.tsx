@@ -61,11 +61,11 @@ const StepPersonalInfo = ({ handleNext, handlePrev }: { handleNext: () => void; 
             variant='contained'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<i className='mdi-chevron-left' />}
+            startIcon={<i className='ri-arrow-left-s-line' />}
           >
             Previous
           </Button>
-          <Button variant='contained' onClick={handleNext} endIcon={<i className='mdi-chevron-right' />}>
+          <Button variant='contained' onClick={handleNext} endIcon={<i className='ri-arrow-right-s-line' />}>
             Next
           </Button>
         </Grid>

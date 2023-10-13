@@ -46,7 +46,7 @@ const ResetPasswordV1 = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                    <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                    <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -60,7 +60,7 @@ const ResetPasswordV1 = () => {
               endAdornment: (
                 <InputAdornment position='end'>
                   <IconButton edge='end' onClick={handleClickShowConfirmPassword} onMouseDown={e => e.preventDefault()}>
-                    <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                    <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -71,7 +71,7 @@ const ResetPasswordV1 = () => {
           </Button>
           <Typography className={classnames('flex justify-center items-center', styles.primaryColor)}>
             <Link href='/pages/auth/login-v1' onClick={e => e.preventDefault()} className='flex items-center'>
-              <i className='mdi-chevron-left' />
+              <i className='ri-arrow-left-s-line' />
               <span>Back to Login</span>
             </Link>
           </Typography>

@@ -35,7 +35,7 @@ const PricingDialog = ({ open, setOpen, data }: Props) => {
         })}
       >
         <IconButton className={styles.closeIcon} onClick={() => setOpen(false)}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <Pricing data={data} />
       </DialogContent>

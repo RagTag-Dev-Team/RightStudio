@@ -24,7 +24,7 @@ const FaqFooter = () => {
         <Grid item xs={12} md={6}>
           <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
             <Avatar variant='rounded'>
-              <i className='mdi-phone' />
+              <i className='ri-phone-fill' />
             </Avatar>
             <Typography>+ (810) 2548 2568</Typography>
             <Typography>We are always happy to help!</Typography>
@@ -33,7 +33,7 @@ const FaqFooter = () => {
         <Grid item xs={12} md={6}>
           <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
             <Avatar variant='rounded'>
-              <i className='mdi-email-outline' />
+              <i className='ri-mail-line' />
             </Avatar>
             <Typography>hello@help.com</Typography>
             <Typography>Best way to get answer faster!</Typography>

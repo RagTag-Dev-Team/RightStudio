@@ -41,17 +41,17 @@ type Options = {
 
 const options: Options[] = [
   {
-    icon: 'mdi-send-variant-outline',
+    icon: 'ri-send-plane-2-line',
     title: 'Send Invitation 👍🏻',
     subtitle: 'Send your referral link to your friend'
   },
   {
-    icon: 'mdi-clipboard-text',
+    icon: 'ri-clipboard-line',
     title: 'Registration 😎',
     subtitle: 'Let them register to our services'
   },
   {
-    icon: 'mdi-gift-outline',
+    icon: 'ri-gift-line',
     title: 'Free Trial  🎉',
     subtitle: 'Your friend will get 30 days free trial'
   }
@@ -80,7 +80,7 @@ const ReferEarn = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <Grid container spacing={6}>
           {options?.map((option, index) => (
@@ -145,13 +145,13 @@ const ReferEarn = ({ open, setOpen }: Props) => {
               />
               <div className='flex items-center'>
                 <Button className={styles.facebookIcon}>
-                  <i className='mdi-facebook' />
+                  <i className='ri-facebook-circle-fill' />
                 </Button>
                 <Button className={styles.twitterIcon}>
-                  <i className='mdi-twitter' />
+                  <i className='ri-twitter-fill' />
                 </Button>
                 <Button className={styles.linkedinIcon}>
-                  <i className='mdi-linkedin' />
+                  <i className='ri-linkedin-box-fill' />
                 </Button>
               </div>
             </div>

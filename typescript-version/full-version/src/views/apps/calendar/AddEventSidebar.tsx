@@ -213,15 +213,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick} className={styles.primaryTextColor}>
-              <i className='mdi-delete-outline text-xl' />
+              <i className='ri-delete-bin-7-line text-xl' />
             </IconButton>
             <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
-              <i className='mdi-close text-xl' />
+              <i className='ri-close-line text-xl' />
             </IconButton>
           </Box>
         ) : (
           <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
-            <i className='mdi-close text-xl' />
+            <i className='ri-close-line text-xl' />
           </IconButton>
         )}
       </Box>

@@ -38,7 +38,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                     </div>
                     <div className='flex items-center'>
                       <IconButton size='small'>
-                        <i className='mdi-star-outline' />
+                        <i className='ri-star-line' />
                       </IconButton>
                       <OptionMenu
                         options={[

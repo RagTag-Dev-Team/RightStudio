@@ -43,7 +43,7 @@ const FaqHeader = ({ searchValue, setSearchValue }: Props) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <i className='mdi-magnify' />
+                <i className='ri-search-line' />
               </InputAdornment>
             )
           }}

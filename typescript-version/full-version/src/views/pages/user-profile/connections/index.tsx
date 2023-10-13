@@ -64,14 +64,12 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                   <div className='flex items-center gap-4'>
                     <Button
                       variant={item.isConnected ? 'contained' : 'outlined'}
-                      startIcon={
-                        <i className={item.isConnected ? 'mdi-account-check-outline' : 'mdi-account-plus-outline'} />
-                      }
+                      startIcon={<i className={item.isConnected ? 'ri-user-follow-line' : 'ri-user-add-line'} />}
                     >
                       {item.isConnected ? 'connected' : 'connect'}
                     </Button>
                     <Button variant='outlined' color='secondary'>
-                      <i className='mdi-email-outline' />
+                      <i className='ri-mail-line' />
                     </Button>
                   </div>
                 </CardContent>

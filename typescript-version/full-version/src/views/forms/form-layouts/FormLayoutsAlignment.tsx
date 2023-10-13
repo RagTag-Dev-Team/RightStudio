@@ -56,7 +56,7 @@ const FormLayoutsAlignment = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                        <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                       </IconButton>
                     </InputAdornment>
                   )

@@ -44,14 +44,14 @@ const customInputData: CustomInputVerticalData[] = [
   {
     title: 'Home',
     content: 'Delivery Time (7am - 9pm)',
-    asset: 'mdi-home-outline',
+    asset: 'ri-home-4-line',
     value: 'home',
     isSelected: true
   },
   {
     title: 'Office',
     content: 'Delivery Time (10am - 6pm)',
-    asset: 'mdi-office-building',
+    asset: 'ri-building-4-line',
     value: 'office'
   }
 ]
@@ -100,7 +100,7 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
           })}
         >
           <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-            <i className='mdi-close' />
+            <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>
             {customInputData.map((item, index) => {

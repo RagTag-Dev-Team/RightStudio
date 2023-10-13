@@ -156,7 +156,7 @@ const ShareProject = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <div className='flex flex-col gap-2'>
           <InputLabel htmlFor='add-member' className='inline-flex'>
@@ -192,13 +192,13 @@ const ShareProject = ({ open, setOpen }: Props) => {
                   </div>
                   {isBelowSmScreen ? (
                     <IconButton size='small' onClick={handleClick}>
-                      <i className='mdi-chevron-down text-xl' />
+                      <i className='ri-arrow-down-s-line text-xl' />
                     </IconButton>
                   ) : (
                     <Button
                       color='secondary'
                       onClick={handleClick}
-                      endIcon={<i className='mdi-chevron-down text-xl' />}
+                      endIcon={<i className='ri-arrow-down-s-line text-xl' />}
                     >
                       {member.value}
                     </Button>
@@ -231,11 +231,11 @@ const ShareProject = ({ open, setOpen }: Props) => {
         </div>
         <div className='flex items-center justify-between flex-wrap'>
           <div className='flex items-center flex-grow gap-2'>
-            <i className='mdi-account-multiple-outline text-xl' />
+            <i className='ri-group-line text-xl' />
             <Typography>{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
           <Button variant='outlined' className='flex'>
-            <i className='mdi-link-variant text-xl' />
+            <i className='ri-link text-xl' />
             Copy Project Link
           </Button>
         </div>

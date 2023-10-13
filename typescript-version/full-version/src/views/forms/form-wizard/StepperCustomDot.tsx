@@ -12,9 +12,9 @@ const StepperCustomDot = (props: StepIconProps) => {
   const { active, completed, error } = props
 
   if (error) {
-    return <i className={classnames(styles.errorColor, 'mdi-alert text-xl scale-125')} />
+    return <i className={classnames(styles.errorColor, 'ri-alert-fill text-xl scale-125')} />
   } else if (completed) {
-    return <i className={classnames(styles.completedColor, 'mdi-check-circle text-xl scale-125')} />
+    return <i className={classnames(styles.completedColor, 'ri-checkbox-circle-fill text-xl scale-125')} />
   } else {
     return <div className={classnames(styles.stepperCustomDot, { [styles.activeStepperCustomDot]: active })} />
   }

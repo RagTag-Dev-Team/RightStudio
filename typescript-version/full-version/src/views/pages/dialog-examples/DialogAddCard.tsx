@@ -20,7 +20,7 @@ const DialogAddCard = () => {
     <>
       <Card>
         <CardContent className='flex flex-col items-center text-center gap-4'>
-          <i className='mdi-credit-card-outline text-[32px]' />
+          <i className='ri-bank-card-2-line text-[32px]' />
           <Typography>Add New Card</Typography>
           <Typography>
             Quickly collect the credit card details, built in input mask and form validation support.

@@ -19,7 +19,7 @@ const DialogAuthentication = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='mdi-lock-outline text-[32px]' />
+        <i className='ri-lock-line text-[32px]' />
         <Typography>Two Factor Authentication</Typography>
         <Typography>Enhance your application security by enabling two factor authentication.</Typography>
         <Button variant='contained' onClick={() => setOpen(true)}>

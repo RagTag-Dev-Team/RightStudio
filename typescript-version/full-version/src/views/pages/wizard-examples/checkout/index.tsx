@@ -136,7 +136,7 @@ const CheckoutWizard = () => {
     <Card>
       <CardContent>
         <StepperWrapper>
-          <Stepper activeStep={activeStep} connector={<i className='mdi-chevron-right mli-12' />}>
+          <Stepper activeStep={activeStep} connector={<i className='ri-arrow-right-s-line mli-12' />}>
             {steps.map((step, index) => {
               return (
                 <Step key={index} onClick={() => setActiveStep(index)}>

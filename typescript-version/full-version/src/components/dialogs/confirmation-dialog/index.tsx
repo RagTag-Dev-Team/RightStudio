@@ -37,7 +37,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
     <>
       <Dialog fullWidth maxWidth='xs' open={open} onClose={() => setOpen(false)}>
         <DialogContent className='flex items-center flex-col text-center'>
-          <i className='mdi-alert-circle-outline text-[88px]' />
+          <i className='ri-error-warning-line text-[88px]' />
           <Typography>
             {type === 'delete-account'
               ? 'Are you sure you want to deactivate your account?'
@@ -63,9 +63,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
       {/* Delete Account Dialog */}
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
         <DialogContent className='flex items-center flex-col text-center'>
-          <i
-            className={classnames(userInput ? 'mdi-check-circle-outline' : 'mdi-close-circle-outline', 'text-[88px]')}
-          />
+          <i className={classnames(userInput ? 'ri-checkbox-circle-line' : 'ri-close-circle-line', 'text-[88px]')} />
           <Typography>
             {userInput ? `${type === 'delete-account' ? 'Deactivated' : 'Unsubscribed'}` : 'Cancelled'}
           </Typography>

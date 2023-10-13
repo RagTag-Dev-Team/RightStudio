@@ -25,7 +25,7 @@ const Timeline = styled(MuiTimeline)<TimelineProps>({
 const ActivityTimeline = () => {
   return (
     <Card>
-      <CardHeader title='Activity Timeline' avatar={<i className='mdi-chart-timeline-variant' />} />
+      <CardHeader title='Activity Timeline' avatar={<i className='ri-bar-chart-2-line' />} />
       <CardContent>
         <Timeline>
           <TimelineItem>

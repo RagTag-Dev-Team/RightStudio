@@ -39,7 +39,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('crm')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='mdi-briefcase-outline' />
+              <i className='ri-briefcase-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>CRM Application</Typography>
@@ -51,7 +51,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('eCommerce')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='mdi-cart-outline' />
+              <i className='ri-shopping-cart-2-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>eCommerce Platforms</Typography>
@@ -63,7 +63,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('learning')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='mdi-license' />
+              <i className='ri-award-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>Online Learning platform</Typography>
@@ -79,7 +79,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<i className={direction === 'rtl' ? 'mdi-arrow-right' : 'mdi-arrow-left'} />}
+          startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
         >
           Previous
         </Button>
@@ -88,7 +88,11 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <i className={isLastStep ? 'mdi-check' : direction === 'rtl' ? 'mdi-arrow-left' : 'mdi-arrow-right'} />
+            <i
+              className={
+                isLastStep ? 'ri-check-line' : direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'
+              }
+            />
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

@@ -19,7 +19,7 @@ const DialogPaymentProviders = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='mdi-credit-card-multiple-outline text-[32px]' />
+        <i className='ri-secure-payment-line text-[32px]' />
         <Typography>Payment providers</Typography>
         <Typography>Elegant payment options modal popup example, easy to use in any page.</Typography>
         <Button variant='contained' onClick={() => setShow(true)}>

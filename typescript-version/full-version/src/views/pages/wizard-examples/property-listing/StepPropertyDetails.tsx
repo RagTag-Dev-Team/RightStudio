@@ -46,7 +46,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'mdi-currency-usd',
+    asset: 'ri-money-dollar-circle-line',
     isSelected: true
   },
   {
@@ -59,7 +59,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'mdi-home-variant-outline'
+    asset: 'ri-home-5-line'
   }
 ]
 
@@ -143,7 +143,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='mdi-arrow-left' />}
+            startIcon={<i className='ri-arrow-left-line' />}
           >
             Previous
           </Button>
@@ -151,7 +151,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

@@ -89,7 +89,7 @@ const PaymentMethod = ({ open, setOpen }: Props) => {
         })}
       >
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <div>
           {cardList?.map((card, index) => (

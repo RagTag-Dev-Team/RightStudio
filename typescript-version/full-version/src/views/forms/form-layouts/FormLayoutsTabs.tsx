@@ -231,7 +231,7 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <i className={formData.isPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                            <i className={formData.isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -256,9 +256,7 @@ const FormLayoutsWithTabs = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <i
-                              className={formData.setIsConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'}
-                            />
+                            <i className={formData.setIsConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                           </IconButton>
                         </InputAdornment>
                       )

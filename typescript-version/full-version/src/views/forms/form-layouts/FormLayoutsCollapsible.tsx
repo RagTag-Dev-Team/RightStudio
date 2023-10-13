@@ -124,7 +124,7 @@ const FormLayoutsCollapsible = () => {
   return (
     <form onSubmit={e => e.preventDefault()}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleExpandChange('panel1')}>
-        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='ri-arrow-down-s-line' />}>
           <Typography>Delivery Address</Typography>
         </AccordionSummary>
         <Divider />
@@ -219,7 +219,7 @@ const FormLayoutsCollapsible = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel2'} onChange={handleExpandChange('panel2')}>
-        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='ri-arrow-down-s-line' />}>
           <Typography>Delivery Options</Typography>
         </AccordionSummary>
         <Divider />
@@ -241,7 +241,7 @@ const FormLayoutsCollapsible = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel3'} onChange={handleExpandChange('panel3')}>
-        <AccordionSummary expandIcon={<i className='mdi-chevron-down' />}>
+        <AccordionSummary expandIcon={<i className='ri-arrow-down-s-line' />}>
           <Typography>Payment Method</Typography>
         </AccordionSummary>
         <Divider />

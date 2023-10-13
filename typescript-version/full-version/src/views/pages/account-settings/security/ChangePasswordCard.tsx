@@ -41,7 +41,7 @@ const ChangePasswordCard = () => {
                         onClick={handleClickShowCurrentPassword}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isCurrentPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                        <i className={isCurrentPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -63,7 +63,7 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsNewPasswordShown(!isNewPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isNewPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                        <i className={isNewPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -83,7 +83,7 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsConfirmPasswordShown(!isConfirmPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isConfirmPasswordShown ? 'mdi-eye-off-outline' : 'mdi-eye-outline'} />
+                        <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -94,15 +94,15 @@ const ChangePasswordCard = () => {
               <Typography>Password Requirements:</Typography>
               <div>
                 <div className='flex items-center'>
-                  <i className='mdi-checkbox-blank-circle text-[8px]' />
+                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
                   Minimum 8 characters long - the more, the better
                 </div>
                 <div className='flex items-center'>
-                  <i className='mdi-checkbox-blank-circle text-[8px]' />
+                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
                   At least one lowercase & one uppercase character
                 </div>
                 <div className='flex items-center'>
-                  <i className='mdi-checkbox-blank-circle text-[8px]' />
+                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
                   At least one number, symbol, or whitespace character
                 </div>
               </div>

@@ -55,7 +55,7 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
         })}
       >
         <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
 
         <TextField
@@ -80,7 +80,7 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<i className='mdi-check' />}
+          endIcon={<i className='ri-check-line' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -106,7 +106,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
         })}
       >
         <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
-          <i className='mdi-close' />
+          <i className='ri-close-line' />
         </IconButton>
         <div className='flex flex-col gap-2'>
           <Typography>Authenticator Apps</Typography>
@@ -138,7 +138,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<i className='mdi-check' />}
+          endIcon={<i className='ri-check-line' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -176,7 +176,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
     }
   }
 
-  const arrowIcon = direction === 'ltr' ? 'mdi-arrow-right' : 'mdi-arrow-left'
+  const arrowIcon = direction === 'ltr' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'
 
   return (
     <>
@@ -197,7 +197,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
           })}
         >
           <IconButton onClick={handleClose} className={styles.closeIcon}>
-            <i className='mdi-close' />
+            <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -216,7 +216,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
                     'flex-col !text-center': isBelowSmScreen
                   })}
                 >
-                  <i className='mdi-cog-outline text-[38px]' />
+                  <i className='ri-settings-4-line text-[38px]' />
                   <div className='flex flex-col gap-2'>
                     <Typography className={styles.text}>Authenticator Apps</Typography>
                     <Typography className={styles.text}>
@@ -238,7 +238,7 @@ const TwoFactorAuth = ({ open, setOpen }: Props) => {
                     'flex-col !text-center': isBelowSmScreen
                   })}
                 >
-                  <i className='mdi-message-outline text-[38px]' />
+                  <i className='ri-message-2-line text-[38px]' />
                   <div className='flex flex-col gap-2'>
                     <Typography className={styles.text}>SMS</Typography>
                     <Typography className={styles.text}>

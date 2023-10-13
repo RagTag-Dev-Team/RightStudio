@@ -39,20 +39,20 @@ const data: CustomInputVerticalData[] = [
     title: 'Percentage',
     value: 'percentage',
     content: 'Create a deal which offer uses some % off (i.e 5% OFF) on total.',
-    asset: 'mdi-tag-outline',
+    asset: 'ri-price-tag-3-line',
     isSelected: true
   },
   {
     title: 'Flat Amount',
     value: 'flat-amount',
     content: 'Create a deal which offer uses flat $ off (i.e $5 OFF) on the total.',
-    asset: 'mdi-currency-usd'
+    asset: 'ri-money-dollar-circle-line'
   },
   {
     title: 'Prime Member',
     value: 'prime member',
     content: 'Create prime member only deal to encourage the prime members.',
-    asset: 'mdi-account-outline'
+    asset: 'ri-user-3-line'
   }
 ]
 
@@ -147,7 +147,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='mdi-arrow-left' />}
+            startIcon={<i className='ri-arrow-left-line' />}
           >
             Previous
           </Button>
@@ -155,7 +155,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'mdi-check' : 'mdi-arrow-right'} />}
+            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

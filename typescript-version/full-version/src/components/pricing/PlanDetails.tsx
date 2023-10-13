@@ -54,7 +54,7 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
         {data?.planBenefits.map((item: string, index: number) => (
           <div key={index} className='flex items-center'>
             <span className='inline-flex'>
-              <i className='mdi-circle-outline text-xs' />
+              <i className='ri-checkbox-blank-circle-line text-xs' />
             </span>
             <Typography>{item}</Typography>
           </div>

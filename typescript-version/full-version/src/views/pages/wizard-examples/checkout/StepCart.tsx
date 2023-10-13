@@ -75,7 +75,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
         <Collapse in={openCollapse}>
           <Fade in={openFade} timeout={{ exit: 300 }}>
             <Alert
-              icon={<i className='mdi-percent-outline' />}
+              icon={<i className='ri-percent-line' />}
               action={
                 <IconButton
                   aria-label='close'
@@ -85,7 +85,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                     setOpenFade(false)
                   }}
                 >
-                  <i className='mdi-close' />
+                  <i className='ri-close-line' />
                 </IconButton>
               }
             >
@@ -106,7 +106,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
             >
               <img height={140} width={140} src={product.imgSrc} alt={product.imgAlt} />
               <IconButton size='small' className={styles.closeIcon}>
-                <i className='mdi-close text-xl' />
+                <i className='ri-close-line text-xl' />
               </IconButton>
               <div className={classnames('flex justify-between w-full', { 'flex-col items-center': isBelowSmScreen })}>
                 <div className={classnames('flex flex-col', { 'items-center': isBelowSmScreen })}>
@@ -154,7 +154,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           className={classnames('flex items-center justify-between gap-4', styles.border, styles.primary)}
         >
           Add more products from wishlist
-          <i className='mdi-chevron-right' />
+          <i className='ri-arrow-right-s-line' />
         </Typography>
       </Grid>
       <Grid item xs={12} lg={4}>

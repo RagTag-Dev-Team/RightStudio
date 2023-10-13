@@ -55,7 +55,7 @@ const ApiKeyList = () => {
             <div className='flex items-center'>
               <Typography>{item.key}</Typography>
               <div className='flex'>
-                <i className='mdi-content-copy' />
+                <i className='ri-file-copy-line' />
               </div>
             </div>
             <Typography>{`Created on ${item.date}`}</Typography>

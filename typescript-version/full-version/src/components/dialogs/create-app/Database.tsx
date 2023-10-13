@@ -67,7 +67,7 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev, direction }:
         <div onClick={() => setValue('sql')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='mdi-database text-3xl' />
+              <i className='ri-database-2-line text-3xl' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>MySQL</Typography>
@@ -83,7 +83,7 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev, direction }:
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<i className={direction === 'rtl' ? 'mdi-arrow-right' : 'mdi-arrow-left'} />}
+          startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
         >
           Previous
         </Button>
@@ -92,7 +92,11 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev, direction }:
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <i className={isLastStep ? 'mdi-check' : direction === 'rtl' ? 'mdi-arrow-left' : 'mdi-arrow-right'} />
+            <i
+              className={
+                isLastStep ? 'ri-check-line' : direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'
+              }
+            />
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

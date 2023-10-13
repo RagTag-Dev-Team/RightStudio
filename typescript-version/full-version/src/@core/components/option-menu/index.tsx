@@ -69,7 +69,7 @@ const OptionMenu = (props: OptionsMenuType) => {
         ) : (icon as ReactNode) ? (
           icon
         ) : (
-          <i className='mdi-dots-vertical' />
+          <i className='ri-more-2-line' />
         )}
       </IconButton>
       <Popper

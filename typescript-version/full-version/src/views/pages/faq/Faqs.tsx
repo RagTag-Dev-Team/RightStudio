@@ -112,7 +112,10 @@ const FAQ = ({ faqData, searchValue }: props) => {
               <div>
                 {faq.questionsAnswers.map((items, index) => (
                   <Accordion key={index}>
-                    <AccordionSummary expandIcon={<i className='mdi-chevron-down' />} aria-controls='panel1a-content'>
+                    <AccordionSummary
+                      expandIcon={<i className='ri-arrow-down-s-line' />}
+                      aria-controls='panel1a-content'
+                    >
                       <Typography>{items.question}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -128,7 +131,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
     </TabContext>
   ) : (
     <div className='flex justify-center items-center'>
-      <i className='mdi-alert-circle-outline' />
+      <i className='ri-error-warning-line' />
       <Typography>No results found</Typography>
     </div>
   )

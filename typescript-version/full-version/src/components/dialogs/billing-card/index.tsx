@@ -82,7 +82,7 @@ const BillingCard = ({ open, setOpen, data }: Props) => {
           })}
         >
           <IconButton onClick={handleClose} className={styles.closeIcon}>
-            <i className='mdi-close' />
+            <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>
             <Grid item xs={12}>

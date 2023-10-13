@@ -58,7 +58,7 @@ const Pricing = ({ data }: { data: PricingPlanType[] }) => {
           </InputLabel>
           {isAboveSmScreen && (
             <div className={classnames('flex items-center absolute left-1/2', styles.popularPlan)}>
-              <i className='mdi-arrow-down-left mbs-2 mie-1' />
+              <i className='ri-corner-left-down-line mbs-2 mie-1' />
               <Chip label='Save up to 10%' size='small' />
             </div>
           )}
