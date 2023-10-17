@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { Dictionary } from '@/@core/types'
+import type { Dictionary } from '@core/types'
 
 // Component Imports from @menu-package
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'

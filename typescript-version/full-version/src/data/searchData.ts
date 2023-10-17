@@ -432,6 +432,20 @@ const data: SearchData[] = [
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
+  },
+  {
+    id: '62',
+    name: 'Raise Support',
+    url: '/support',
+    icon: 'Icon',
+    section: 'Others'
+  },
+  {
+    id: '63',
+    name: 'Documentation',
+    url: '/docs',
+    icon: 'Icon',
+    section: 'Others'
   }
 ]
 

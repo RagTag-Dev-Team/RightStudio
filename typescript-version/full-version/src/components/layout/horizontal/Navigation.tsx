@@ -4,7 +4,7 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { Dictionary } from '@/@core/types'
+import type { Dictionary } from '@core/types'
 
 // Component Imports
 import HorizontalMenu from './HorizontalMenu'

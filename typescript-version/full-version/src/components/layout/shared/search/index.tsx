@@ -25,7 +25,7 @@ import Close from '@menu-package/svg/Close'
 import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useVerticalNav from '@/@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'

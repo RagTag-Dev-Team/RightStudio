@@ -5,7 +5,7 @@
 import { usePathname } from 'next/navigation'
 
 // Type Imports
-import type { Dictionary } from '@/@core/types'
+import type { Dictionary } from '@core/types'
 
 // Component Imports from @menu-package
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
@@ -181,14 +181,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-and-tables/intro#form-elements'
+            href='http://localhost:3001/docs/forms-tables/intro#form-elements'
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-and-tables/intro#tables'
+            href='http://localhost:3001/docs/forms-tables/intro#tables'
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
