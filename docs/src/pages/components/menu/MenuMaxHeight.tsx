@@ -52,11 +52,7 @@ const MenuMaxHeight = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
         open={Boolean(anchorEl)}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5
-          }
-        }}
+        slotProps={{ paper: { style: { maxHeight: ITEM_HEIGHT * 4.5 } } }}
       >
         {options.map(option => (
           <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>

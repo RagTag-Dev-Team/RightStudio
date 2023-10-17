@@ -130,7 +130,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
           </TabList>
           <Grid item xs={12}>
             {loading ? (
-              <div className='d-flex align-items-center flex-column'>
+              <div className='flex flex-col items-center'>
                 <CircularProgress />
                 <Typography>Loading...</Typography>
               </div>

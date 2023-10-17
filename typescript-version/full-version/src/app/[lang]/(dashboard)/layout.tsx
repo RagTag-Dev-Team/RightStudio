@@ -1,6 +1,9 @@
 // Next Imports
 import { cookies } from 'next/headers'
 
+// MUI Imports
+import Button from '@mui/material/Button'
+
 // Type Imports
 import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
@@ -18,6 +21,7 @@ import Navbar from '@components/layout/vertical/Navbar'
 import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
+import ScrollToTop from '@core/components/scroll-to-top'
 
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
@@ -49,6 +53,14 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
           </HorizontalLayout>
         }
       />
+      <ScrollToTop className='mui-fixed'>
+        <Button
+          variant='contained'
+          className='w-10 h-10 rounded-full p-0 min-w-0 flex items-center justify-center cursor-pointer'
+        >
+          <i className='ri-arrow-up-line' />
+        </Button>
+      </ScrollToTop>
       <Customizer dir={direction} />
     </Providers>
   )
