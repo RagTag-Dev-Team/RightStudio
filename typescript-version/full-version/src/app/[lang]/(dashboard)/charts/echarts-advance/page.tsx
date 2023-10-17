@@ -1,7 +1,7 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-// Components Imports
+// Component Imports
 import HeatMap from '@views/charts/echarts-advance/HeatMap'
 import HalfPie from '@views/charts/echarts-advance/HalfPie'
 import PolarBar from '@views/charts/echarts-advance/PolarBar'

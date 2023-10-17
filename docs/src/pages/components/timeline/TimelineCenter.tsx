@@ -100,12 +100,12 @@ const TimelineCenter = () => {
         opposite side of the timeline on large screens and on the right side of the timeline
         on small screens. You may create components for this and use them instead. */}
         {/* <Typography variant='caption' component='div' className='mbs-3'>
-          2 month's ago
+          2 months ago
         </Typography> */}
         {!isBelowMdScreen && (
           <TimelineOppositeContent color='text.disabled'>
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 month's ago
+              2 months ago
             </Typography>
           </TimelineOppositeContent>
         )}
@@ -118,7 +118,7 @@ const TimelineCenter = () => {
         <TimelineContent>
           {isBelowMdScreen && (
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 month's ago
+              2 months ago
             </Typography>
           )}
           <Card>
@@ -144,7 +144,7 @@ const TimelineCenter = () => {
         {!isBelowMdScreen && (
           <TimelineOppositeContent color='text.disabled'>
             <Typography variant='caption' component='div' className='mbs-3'>
-              24 day's ago
+              24 days ago
             </Typography>
           </TimelineOppositeContent>
         )}
@@ -157,7 +157,7 @@ const TimelineCenter = () => {
         <TimelineContent>
           {isBelowMdScreen && (
             <Typography variant='caption' component='div' className='mbs-3'>
-              24 day's ago
+              24 days ago
             </Typography>
           )}
           <Card>
@@ -183,7 +183,7 @@ const TimelineCenter = () => {
         {!isBelowMdScreen && (
           <TimelineOppositeContent color='text.disabled'>
             <Typography variant='caption' component='div' className='mbs-3'>
-              6 day's ago
+              6 days ago
             </Typography>
           </TimelineOppositeContent>
         )}
@@ -195,7 +195,7 @@ const TimelineCenter = () => {
         </TimelineSeparator>
         <TimelineContent>
           <Typography variant='caption' component='div' className='mbs-3'>
-            6 day's ago
+            6 days ago
           </Typography>
           <Card>
             <CardContent>
@@ -235,7 +235,7 @@ const TimelineCenter = () => {
         {!isBelowMdScreen && (
           <TimelineOppositeContent color='text.disabled'>
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 day's ago
+              2 days ago
             </Typography>
           </TimelineOppositeContent>
         )}
@@ -248,7 +248,7 @@ const TimelineCenter = () => {
         <TimelineContent>
           {isBelowMdScreen && (
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 day's ago
+              2 days ago
             </Typography>
           )}
           <Card>
@@ -294,7 +294,7 @@ const TimelineCenter = () => {
         {!isBelowMdScreen && (
           <TimelineOppositeContent color='text.disabled'>
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 day's ago
+              2 days ago
             </Typography>
           </TimelineOppositeContent>
         )}
@@ -307,7 +307,7 @@ const TimelineCenter = () => {
         <TimelineContent>
           {isBelowMdScreen && (
             <Typography variant='caption' component='div' className='mbs-3'>
-              2 day's ago
+              2 days ago
             </Typography>
           )}
           <Card>

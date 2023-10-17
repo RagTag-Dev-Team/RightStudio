@@ -1,7 +1,7 @@
 // Third-party Imports
 import classnames from 'classnames'
 
-// Components Imports
+// Component Imports
 import NavToggle from './NavToggle'
 import NavSearch from '@components/layout/shared/search'
 import HorizontalMenu from './HorizontalMenu'

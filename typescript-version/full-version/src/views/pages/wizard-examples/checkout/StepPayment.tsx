@@ -20,34 +20,18 @@ import Switch from '@mui/material/Switch'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import CardContent from '@mui/material/CardContent'
-import { styled } from '@mui/material/styles'
-import MuiTabList from '@mui/lab/TabList'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import Fade from '@mui/material/Fade'
-import type { TabListProps } from '@mui/lab/TabList'
 
 // Third-party Imports
 import classnames from 'classnames'
 
+// Component Imports
+import CustomTabList from '@core/components/mui/TabList'
+
 // Style Imports
 import styles from './styles.module.css'
-
-// Styled TabList component
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 38,
-    minWidth: 130,
-    borderRadius: theme.shape.borderRadius
-  }
-}))
 
 const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
   // States
@@ -94,16 +78,17 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
           </Fade>
         </Collapse>
         <TabContext value={value}>
-          <TabList
+          <CustomTabList
             variant='scrollable'
             scrollButtons='auto'
             onChange={handleChange}
             aria-label='customized tabs example'
+            pill='true'
           >
             <Tab value='credit-card' label='Card' />
             <Tab value='cash-on-delivery' label='Cash On Delivery' />
             <Tab value='gift-card' label='Gift Card' />
-          </TabList>
+          </CustomTabList>
           <Grid container>
             <Grid item md={8} xs={12}>
               <TabPanel value='credit-card'>

@@ -11,12 +11,9 @@ import { useRouter } from 'next/navigation'
 import Grid from '@mui/material/Grid'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
-import MuiTabList from '@mui/lab/TabList'
-import { styled } from '@mui/material/styles'
 import TabPanel from '@mui/lab/TabPanel'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
-import type { TabListProps } from '@mui/lab/TabList'
 
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
@@ -27,21 +24,7 @@ import SecurityTab from './security'
 import BillingPlansTab from './billing-plans'
 import NotificationsTab from './notifications'
 import ConnectionsTab from './connections'
-
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 38,
-    minWidth: 130,
-    borderRadius: theme.shape.borderRadius
-  }
-}))
+import CustomTabList from '@core/components/mui/TabList'
 
 const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement } => ({
   account: <AccountTab />,
@@ -81,7 +64,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
     <Grid container>
       <Grid item xs={12}>
         <TabContext value={activeTab}>
-          <TabList onChange={handleChange} variant='scrollable'>
+          <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
             <Tab
               label={
                 <div className='flex items-center'>
@@ -127,7 +110,7 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
               }
               value='connections'
             />
-          </TabList>
+          </CustomTabList>
           <Grid item xs={12}>
             {loading ? (
               <div className='flex flex-col items-center'>

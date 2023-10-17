@@ -8,7 +8,7 @@ import NavToggle from '@components/layout/horizontal/NavToggle'
 import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu-package/horizontal-menu'
 
-// Styled Components Imports
+// Styled Component Imports
 import styles from '../../styles.module.css'
 
 const BreakPoint = () => {

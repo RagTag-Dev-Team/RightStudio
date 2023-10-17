@@ -9,10 +9,13 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import CreateApp from '@components/dialogs/create-app'
 
-const DialogCreateApp = () => {
+const DialogCreateApp = ({ direction }: { direction: Direction }) => {
   // States
   const [open, setOpen] = useState(false)
 
@@ -29,7 +32,7 @@ const DialogCreateApp = () => {
             Show
           </Button>
         </CardContent>
-        <CreateApp open={open} setOpen={setOpen} />
+        <CreateApp open={open} setOpen={setOpen} direction={direction} />
       </Card>
     </>
   )

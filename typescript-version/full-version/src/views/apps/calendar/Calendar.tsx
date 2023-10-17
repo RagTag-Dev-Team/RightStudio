@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react'
 
 // Third-party imports
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { usePathname } from 'next/navigation'
 
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
@@ -15,10 +14,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 
 // Type Imports
 import type { AddEventType, CalendarColors, CalendarType } from '@/types/apps/calendarTypes'
-
-// Util Imports
-import { getDirection } from '@/utils/get-direction'
-import { getLocale } from '@/utils/get-locale'
+import type { Direction } from '@core/types'
 
 const blankEvent: AddEventType = {
   title: '',
@@ -35,6 +31,7 @@ const blankEvent: AddEventType = {
 
 type CalenderProps = {
   mdAbove: boolean
+  direction: Direction
   calendars: CalendarType
   calendarApi: any
   setCalendarApi: (val: any) => void
@@ -47,6 +44,7 @@ type CalenderProps = {
 
 const Calendar = (props: CalenderProps) => {
   const {
+    direction,
     calendars,
     calendarApi,
     setCalendarApi,
@@ -59,11 +57,6 @@ const Calendar = (props: CalenderProps) => {
 
   // Refs
   const calendarRef = useRef()
-
-  // Get Direction
-  const pathName = usePathname()
-  const locale = getLocale(pathName)
-  const direction = getDirection(locale)
 
   useEffect(() => {
     if (calendarApi === null) {

@@ -9,10 +9,13 @@ import Button from '@mui/material/Button'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-// Custom Imports
+// Type Imports
+import type { Direction } from '@core/types'
+
+// Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 
-const DialogAuthentication = () => {
+const DialogAuthentication = ({ direction }: { direction: Direction }) => {
   // States
   const [open, setOpen] = useState(false)
 
@@ -25,7 +28,7 @@ const DialogAuthentication = () => {
         <Button variant='contained' onClick={() => setOpen(true)}>
           Show
         </Button>
-        <TwoFactorAuth open={open} setOpen={setOpen} />
+        <TwoFactorAuth open={open} setOpen={setOpen} direction={direction} />
       </CardContent>
     </Card>
   )

@@ -3,9 +3,6 @@
 // React Imports
 import type { ReactNode } from 'react'
 
-// Next Imports
-import { usePathname } from 'next/navigation'
-
 // MUI Imports
 import { deepmerge } from '@mui/utils'
 import {
@@ -15,6 +12,10 @@ import {
 } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
+import type {} from '@mui/lab/themeAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
+
+// Type Imports
+import type { Direction } from '@core/types'
 
 // Component Imports
 import EmotionCacheProvider from './EmotionCache'
@@ -26,19 +27,12 @@ import themeConfig from '@configs/themeConfig'
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
 
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
-import { getDirection } from '@/utils/get-direction'
-
 // Core Theme Imports
 import defaultCoreTheme from '@core/theme'
 
-const ThemeProvider = ({ children }: { children: ReactNode }) => {
+const ThemeProvider = ({ children, direction }: { children: ReactNode; direction: Direction }) => {
   // Hooks
   const { settings } = useSettings()
-  const pathname = usePathname()
-  const locale = getLocale(pathname)
-  const direction = getDirection(locale)
 
   if (Object.keys(settings).length === 0) {
     return

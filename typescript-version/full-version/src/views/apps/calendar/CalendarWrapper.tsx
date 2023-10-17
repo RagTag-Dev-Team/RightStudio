@@ -18,6 +18,7 @@ import type {
   CalendarType,
   EventType
 } from '@/types/apps/calendarTypes'
+import type { Direction } from '@core/types'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -39,7 +40,7 @@ const calendarsColor: CalendarColors = {
   ETC: 'info'
 }
 
-const AppCalendar = ({ events }: { events: EventType[] }) => {
+const AppCalendar = ({ events, direction }: { events: EventType[]; direction: Direction }) => {
   // States
   const [calendarApi, setCalendarApi] = useState<null | any>(null)
   const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false)
@@ -145,6 +146,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
       >
         <Calendar
           mdAbove={mdAbove}
+          direction={direction}
           calendars={calendars}
           calendarApi={calendarApi}
           setCalendarApi={setCalendarApi}

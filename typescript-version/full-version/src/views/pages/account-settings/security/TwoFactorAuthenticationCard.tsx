@@ -11,7 +11,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-// Custom Imports
+// Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 
 const TwoFactorAuthenticationCard = () => {

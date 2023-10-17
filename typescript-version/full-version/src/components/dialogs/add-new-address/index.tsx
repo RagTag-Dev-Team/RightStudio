@@ -27,7 +27,7 @@ import classnames from 'classnames'
 // Type Imports
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
-// Custom Imports
+// Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
 // Style Imports
@@ -36,6 +36,17 @@ import styles from '@components/dialogs/styles.module.css'
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
+  data?: {
+    firstName?: string
+    lastName?: string
+    country?: string
+    address1?: string
+    address2?: string
+    landmark?: string
+    city?: string
+    state?: string
+    zipCode?: string
+  }
 }
 
 const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
@@ -56,11 +67,12 @@ const customInputData: CustomInputVerticalData[] = [
   }
 ]
 
-const AddNewAddress = ({ open, setOpen }: Props) => {
+const AddNewAddress = ({ open, setOpen, data }: Props) => {
   const initialSelected: string = customInputData?.find(item => item.isSelected)?.value || ''
 
   // States
   const [selected, setSelected] = useState<string>(initialSelected)
+  const [addressData, setAddressData] = useState<Props['data']>(Object.assign({}, data))
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
@@ -84,13 +96,14 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
       }}
     >
       <DialogTitle
+        variant='h5'
         className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {
           [styles.smDialogTitle]: isBelowSmScreen
         })}
       >
-        Add New Address
-        <Typography component='span' className='flex flex-col text-center'>
-          Add address for billing address
+        {data ? 'Edit Address' : 'Add New Address'}
+        <Typography component='span' variant='body2' className='flex flex-col text-center'>
+          {data ? 'Edit Address for future billing' : 'Add address for billing address'}
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
@@ -124,15 +137,37 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
               )
             })}
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='First Name' name='firstName' variant='outlined' placeholder='John' />
+              <TextField
+                fullWidth
+                label='First Name'
+                name='firstName'
+                variant='outlined'
+                placeholder='John'
+                value={addressData?.firstName}
+                onChange={e => setAddressData({ ...addressData, firstName: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Last Name' name='lastName' variant='outlined' placeholder='Doe' />
+              <TextField
+                fullWidth
+                label='Last Name'
+                name='lastName'
+                variant='outlined'
+                placeholder='Doe'
+                value={addressData?.lastName}
+                onChange={e => setAddressData({ ...addressData, lastName: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel>Country</InputLabel>
-                <Select label='Country' name='country' variant='outlined' defaultValue=''>
+                <Select
+                  label='Country'
+                  name='country'
+                  variant='outlined'
+                  value={addressData?.country?.toLowerCase().replace(/\s+/g, '-') || ''}
+                  onChange={e => setAddressData({ ...addressData, country: e.target.value })}
+                >
                   {countries.map((item, index) => (
                     <MenuItem key={index} value={item.toLowerCase().replace(/\s+/g, '-')}>
                       {item}
@@ -148,10 +183,20 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
                 name='address1'
                 variant='outlined'
                 placeholder='12, Business Park'
+                value={addressData?.address1}
+                onChange={e => setAddressData({ ...addressData, address1: e.target.value })}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Address Line 2' name='address1' variant='outlined' placeholder='Mall Road' />
+              <TextField
+                fullWidth
+                label='Address Line 2'
+                name='address1'
+                variant='outlined'
+                placeholder='Mall Road'
+                value={addressData?.address2}
+                onChange={e => setAddressData({ ...addressData, address2: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -160,13 +205,31 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
                 name='landmark'
                 variant='outlined'
                 placeholder='Nr. Hard Rock Cafe'
+                value={addressData?.landmark}
+                onChange={e => setAddressData({ ...addressData, landmark: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='City' name='city' variant='outlined' placeholder='Los Angeles' />
+              <TextField
+                fullWidth
+                label='City'
+                name='city'
+                variant='outlined'
+                placeholder='Los Angeles'
+                value={addressData?.city}
+                onChange={e => setAddressData({ ...addressData, city: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='State' name='state' variant='outlined' placeholder='California' />
+              <TextField
+                fullWidth
+                label='State'
+                name='state'
+                variant='outlined'
+                placeholder='California'
+                value={addressData?.state}
+                onChange={e => setAddressData({ ...addressData, state: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -176,6 +239,8 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
                 name='zipCode'
                 variant='outlined'
                 placeholder='99950'
+                value={addressData?.zipCode}
+                onChange={e => setAddressData({ ...addressData, zipCode: e.target.value })}
               />
             </Grid>
             <Grid item xs={12}>
@@ -189,7 +254,7 @@ const AddNewAddress = ({ open, setOpen }: Props) => {
           })}
         >
           <Button variant='contained' onClick={() => setOpen(false)} type='submit'>
-            Submit
+            {data ? 'Update' : 'Submit'}
           </Button>
           <Button
             variant='outlined'

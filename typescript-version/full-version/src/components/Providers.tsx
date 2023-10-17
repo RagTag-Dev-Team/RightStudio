@@ -2,7 +2,7 @@
 import { ToastContainer } from 'react-toastify'
 
 // Type Imports
-import type { ChildrenType } from '@core/types'
+import type { ChildrenType, Direction } from '@core/types'
 import type { Settings } from '@core/contexts/settingsContext'
 
 // Context Imports
@@ -19,17 +19,18 @@ import ToastifyWrapper from '@core/styles/libs/react-toastify'
 
 type Props = ChildrenType & {
   settingsCookie: Settings
+  direction: Direction
 }
 
 const Providers = (props: Props) => {
   // Props
-  const { children, settingsCookie } = props
+  const { children, settingsCookie, direction } = props
 
   return (
     <NextAuthProvider basePath={process.env.BASEPATH}>
       <VerticalNavProvider>
         <SettingsProvider settingsCookie={settingsCookie}>
-          <ThemeProvider>
+          <ThemeProvider direction={direction}>
             {children}
             <ToastifyWrapper>
               <ToastContainer position={themeConfig.toastPosition} hideProgressBar />

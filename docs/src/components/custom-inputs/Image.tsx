@@ -27,10 +27,10 @@ const Root = styled('div', {
   alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
-  border: '2px solid var(--mui-palette-divider)',
+  border: '1px solid var(--mui-palette-divider)',
 
   '&:hover': {
-    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
+    borderColor: 'var(--mui-palette-action-active)'
   },
   '&.active': {
     borderColor: 'var(--mui-palette-primary-main)'
@@ -44,8 +44,8 @@ const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomImage',
   slot: 'Input'
 })({
-  top: 0,
-  right: 0,
+  top: 7,
+  right: 7,
   position: 'absolute'
 })
 
@@ -67,7 +67,6 @@ const CustomCheckboxImg = (props: CustomInputImgProps) => {
           {typeof img === 'string' ? <Image src={img} alt={alt ?? `checkbox-image-${value}`} /> : img}
           {type === 'radio' ? null : (
             <CheckboxInput
-              size='small'
               color={color}
               name={`${name}-${value}`}
               checked={selected.includes(value)}

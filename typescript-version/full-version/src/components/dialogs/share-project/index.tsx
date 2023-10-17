@@ -141,12 +141,13 @@ const ShareProject = ({ open, setOpen }: Props) => {
   return (
     <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
       <DialogTitle
+        variant='h5'
         className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {
           [styles.smDialogTitle]: isBelowSmScreen
         })}
       >
         Share Project
-        <Typography component='span' className='flex flex-col text-center'>
+        <Typography component='span' variant='body2' className='flex flex-col text-center'>
           Share project with the team members
         </Typography>
       </DialogTitle>
@@ -180,15 +181,19 @@ const ShareProject = ({ open, setOpen }: Props) => {
           />
         </div>
         <div className='flex flex-col gap-3'>
-          <Typography>{`${data.length} Members`}</Typography>
+          <Typography variant='h6'>{`${data.length} Members`}</Typography>
           <div className='flex flex-col flex-wrap gap-4'>
             {data.map((member, index) => (
               <div key={index} className='flex items-center w-full gap-4'>
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />
                 <div className='flex justify-between items-center w-full overflow-hidden'>
                   <div className='flex flex-col items-start overflow-hidden'>
-                    <Typography className='truncate w-full'>{member.name}</Typography>
-                    <Typography className='truncate w-full'>{member.email}</Typography>
+                    <Typography variant='body2' className={classnames('truncate w-full', styles.textPrimary)}>
+                      {member.name}
+                    </Typography>
+                    <Typography variant='body2' className='truncate w-full'>
+                      {member.email}
+                    </Typography>
                   </div>
                   {isBelowSmScreen ? (
                     <IconButton size='small' onClick={handleClick}>
@@ -232,7 +237,10 @@ const ShareProject = ({ open, setOpen }: Props) => {
         <div className='flex items-center justify-between flex-wrap'>
           <div className='flex items-center flex-grow gap-2'>
             <i className='ri-group-line text-xl' />
-            <Typography>{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
+            <Typography
+              variant='body2'
+              className={styles.textPrimary}
+            >{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
           <Button variant='outlined' className='flex'>
             <i className='ri-link text-xl' />

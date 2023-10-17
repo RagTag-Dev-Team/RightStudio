@@ -39,7 +39,7 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev, direction }:
         placeholder={`${themeConfig.templateName.toLowerCase().replace(/\s+/g, '_')}_database`}
       />
       <div className='flex flex-col gap-4'>
-        <Typography>Select Database Engine</Typography>
+        <Typography variant='h6'>Select Database Engine</Typography>
         <div onClick={() => setValue('firebase')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>

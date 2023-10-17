@@ -1,5 +1,5 @@
 // React Imports
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
@@ -14,7 +14,7 @@ import classnames from 'classnames'
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
-  type: 'delete-account' | 'unsubscribe'
+  type: 'delete-account' | 'unsubscribe' | 'suspend-account'
 }
 
 const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
@@ -33,20 +33,29 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
     setOpen(false)
   }
 
+  const Wrapper = type === 'suspend-account' ? 'div' : Fragment
+
   return (
     <>
       <Dialog fullWidth maxWidth='xs' open={open} onClose={() => setOpen(false)}>
         <DialogContent className='flex items-center flex-col text-center'>
           <i className='ri-error-warning-line text-[88px]' />
-          <Typography>
-            {type === 'delete-account'
-              ? 'Are you sure you want to deactivate your account?'
-              : 'Are you sure to cancel your subscription?'}
-          </Typography>
+          <Wrapper
+            {...(type === 'suspend-account' && {
+              className: 'flex flex-col items-center gap-5'
+            })}
+          >
+            <Typography>
+              {type === 'delete-account' && 'Are you sure you want to deactivate your account?'}
+              {type === 'unsubscribe' && 'Are you sure to cancel your subscription?'}
+              {type === 'suspend-account' && 'Are you sure?'}
+            </Typography>
+            {type === 'suspend-account' && <Typography>You won&#39;t be able to revert user!</Typography>}
+          </Wrapper>
         </DialogContent>
         <DialogActions className='gap-2 justify-center'>
           <Button variant='contained' onClick={() => handleConfirmation(true)}>
-            Yes
+            {type === 'suspend-account' ? 'Yes, Suspend User!' : 'Yes'}
           </Button>
           <Button
             variant='outlined'
@@ -63,18 +72,31 @@ const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
       {/* Delete Account Dialog */}
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
         <DialogContent className='flex items-center flex-col text-center'>
-          <i className={classnames(userInput ? 'ri-checkbox-circle-line' : 'ri-close-circle-line', 'text-[88px]')} />
-          <Typography>
-            {userInput ? `${type === 'delete-account' ? 'Deactivated' : 'Unsubscribed'}` : 'Cancelled'}
-          </Typography>
+          <i
+            className={classnames('text-[88px]', {
+              'ri-checkbox-circle-line': userInput,
+              'ri-close-circle-line': !userInput
+            })}
+          />
           <Typography>
             {userInput
-              ? `${
-                  type === 'delete-account'
-                    ? 'Your account has been deactivated successfully.'
-                    : 'Your subscription cancelled successfully.'
-                }`
-              : `${type === 'delete-account' ? 'Account Deactivation Cancelled!' : 'Unsubscription Cancelled!!'}`}
+              ? `${type === 'delete-account' ? 'Deactivated' : type === 'unsubscribe' ? 'Unsubscribed' : 'Suspended!'}`
+              : 'Cancelled'}
+          </Typography>
+          <Typography>
+            {userInput ? (
+              <>
+                {type === 'delete-account' && 'Your account has been deactivated successfully.'}
+                {type === 'unsubscribe' && 'Your subscription cancelled successfully.'}
+                {type === 'suspend-account' && 'User has been suspended.'}
+              </>
+            ) : (
+              <>
+                {type === 'delete-account' && 'Account Deactivation Cancelled!'}
+                {type === 'unsubscribe' && 'Unsubscription Cancelled!!'}
+                {type === 'suspend-account' && 'Cancelled Suspension :)'}
+              </>
+            )}
           </Typography>
         </DialogContent>
         <DialogActions className='justify-center'>

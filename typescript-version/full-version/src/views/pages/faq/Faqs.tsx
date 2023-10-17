@@ -6,16 +6,13 @@ import type { SyntheticEvent } from 'react'
 import Grid from '@mui/material/Grid'
 import Tab from '@mui/material/Tab'
 import TabPanel from '@mui/lab/TabPanel'
-import MuiTabList from '@mui/lab/TabList'
 import Avatar from '@mui/material/Avatar'
 import TabContext from '@mui/lab/TabContext'
 import Accordion from '@mui/material/Accordion'
 import Typography from '@mui/material/Typography'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
-import { styled } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import type { TabListProps } from '@mui/lab/TabList'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
@@ -24,24 +21,8 @@ import classnames from 'classnames'
 // Type Imports
 import type { FaqType } from '@/types/pages/faqTypes'
 
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  borderRight: 0,
-  '& .MuiTabs-flexContainer': {
-    flexDirection: 'column'
-  },
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 40,
-    borderRadius: theme.shape.borderRadius,
-    maxWidth: '100%'
-  }
-}))
+// Component Imports
+import CustomTabList from '@core/components/mui/TabList'
 
 type props = {
   faqData: FaqType[]
@@ -84,7 +65,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
     <TabContext value={activeTab}>
       <Grid container>
         <Grid item xs={12} md={4} xl={3} className='flex flex-col items-center'>
-          <TabList orientation='vertical' onChange={handleChange} className='w-full'>
+          <CustomTabList orientation='vertical' onChange={handleChange} className='w-full' pill='true'>
             {filteredData.map((faq, index) => (
               <Tab
                 key={index}
@@ -94,7 +75,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
                 className='flex-row justify-start'
               />
             ))}
-          </TabList>
+          </CustomTabList>
           {isAboveMdScreen && <img src='/illustration-john.png' alt='john image' />}
         </Grid>
         <Grid item xs={12} md={8} xl={9}>

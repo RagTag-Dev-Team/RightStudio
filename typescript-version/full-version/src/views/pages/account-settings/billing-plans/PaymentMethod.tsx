@@ -23,7 +23,7 @@ import classnames from 'classnames'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Custom Imports
+// Component Imports
 import BillingCard from '@components/dialogs/billing-card'
 
 // Styles Imports

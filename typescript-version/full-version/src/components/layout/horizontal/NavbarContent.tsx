@@ -3,7 +3,7 @@
 // Third-party Imports
 import classnames from 'classnames'
 
-// Components Imports
+// Component Imports
 import NavToggle from './NavToggle'
 import Logo from '@components/layout/shared/Logo'
 import NavSearch from '@components/layout/shared/search'

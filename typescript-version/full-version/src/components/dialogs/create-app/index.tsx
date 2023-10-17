@@ -1,9 +1,6 @@
 // React Imports
 import { useState } from 'react'
 
-// Next Imports
-import { usePathname } from 'next/navigation'
-
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -30,10 +27,6 @@ import Database from './Database'
 import Billing from './Billing'
 import Submit from './Submit'
 
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
-import { getDirection } from '@/utils/get-direction'
-
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 
@@ -44,6 +37,7 @@ import globalDialogStyles from '@components/dialogs/styles.module.css'
 type Props = {
   open: boolean
   setOpen: (open: boolean) => void
+  direction: Direction
 }
 
 type stepperProps = {
@@ -145,16 +139,13 @@ const renderStepCount = (
   }
 }
 
-const CreateApp = ({ open, setOpen }: Props) => {
+const CreateApp = ({ open, setOpen, direction }: Props) => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-  const pathname = usePathname()
-  const locale = getLocale(pathname)
-  const direction = getDirection(locale)
 
   const handleClose = () => {
     setOpen(false)
@@ -182,12 +173,13 @@ const CreateApp = ({ open, setOpen }: Props) => {
   return (
     <Dialog fullWidth maxWidth='md' open={open} onClose={handleClose}>
       <DialogTitle
+        variant='h5'
         className={classnames('flex gap-2 flex-col text-center', globalDialogStyles.dialogTitle, {
           [globalDialogStyles.smDialogTitle]: isBelowSmScreen
         })}
       >
         Create App
-        <Typography component='span' className='flex flex-col text-center'>
+        <Typography component='span' variant='body2' className='flex flex-col text-center'>
           Provide data with this form to create your app.
         </Typography>
       </DialogTitle>
@@ -217,8 +209,10 @@ const CreateApp = ({ open, setOpen }: Props) => {
                           <i className={label.icon as string} />
                         </Avatar>
                         <div className='flex flex-col'>
-                          <Typography className='step-title'>{label.title}</Typography>
-                          <Typography className='step-subtitle'>{label.subtitle}</Typography>
+                          <Typography variant='body2' className={styles.textPrimary}>
+                            {label.title}
+                          </Typography>
+                          <Typography variant='caption'>{label.subtitle}</Typography>
                         </div>
                       </div>
                     </StepLabel>

@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-// Custom Imports
+// Component Imports
 import EditUserInfo from '@components/dialogs/edit-user-info'
 
 const DialogEditUserInfo = () => {

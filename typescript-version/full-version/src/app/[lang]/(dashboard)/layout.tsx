@@ -35,7 +35,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
   const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
 
   return (
-    <Providers settingsCookie={settingsCookie}>
+    <Providers settingsCookie={settingsCookie} direction={direction}>
       <LayoutWrapper
         settingsCookie={settingsCookie}
         verticalLayout={

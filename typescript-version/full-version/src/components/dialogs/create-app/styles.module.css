@@ -12,3 +12,7 @@
 .stepperMinWidth {
   min-inline-size: 220px;
 }
+
+.textPrimary {
+  color: var(--mui-palette-text-primary);
+}

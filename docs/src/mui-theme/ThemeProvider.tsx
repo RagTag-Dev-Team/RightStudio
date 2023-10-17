@@ -11,6 +11,7 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import type {} from '@mui/material/themeCssVarsAugmentation'
+import type {} from '@mui/lab/themeAugmentation';
 
 // Component Imports
 import ChangeMuiMode from "./ChangeMuiMode";

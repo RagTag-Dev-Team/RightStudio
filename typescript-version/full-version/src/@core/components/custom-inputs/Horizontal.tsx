@@ -1,5 +1,8 @@
 'use client'
 
+// React Imports
+import React from 'react'
+
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'
@@ -19,15 +22,19 @@ const Root = styled('div', {
 })(({ theme }) => ({
   blockSize: '100%',
   display: 'flex',
+  gap: theme.spacing(1),
   borderRadius: 'var(--mui-shape-borderRadius)',
   cursor: 'pointer',
   position: 'relative',
   alignItems: 'flex-start',
   border: '1px solid var(--mui-palette-divider)',
-  transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
+  padding: theme.spacing(4),
+  transition: theme.transitions.create(['border-color'], {
+    duration: theme.transitions.duration.shorter
+  }),
 
   '&:hover': {
-    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
+    borderColor: 'var(--mui-palette-action-active)'
   },
   '&.active': {
     borderColor: 'var(--mui-palette-primary-main)'
@@ -38,34 +45,37 @@ const Title = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'title'
 })(({ theme }) => ({
-  ...theme.typography.body1,
+  letterSpacing: '0.15px',
   fontWeight: theme.typography.fontWeightMedium
 }))
 
 const Meta = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'meta'
-})(({ theme }) => ({
-  ...theme.typography.body2,
+})({
   color: 'var(--mui-palette-text-disabled)'
-}))
+})
 
 const Content = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'content'
-})(({ theme }) => ({
-  ...theme.typography.body2
-}))
+})({})
 
 const RadioInput = styled(Radio, {
   name: 'MuiCustomInputHorizontal',
   slot: 'input'
-})({})
+})(({ theme }) => ({
+  marginBlockStart: theme.spacing(-0.25),
+  marginInlineStart: theme.spacing(-0.25)
+}))
 
 const CheckboxInput = styled(Checkbox, {
   name: 'MuiCustomInputHorizontal',
   slot: 'input'
-})({})
+})(({ theme }) => ({
+  marginBlockStart: theme.spacing(-0.25),
+  marginInlineStart: theme.spacing(-0.25)
+}))
 
 const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   // Props
@@ -76,32 +86,44 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   const renderData = () => {
     if (meta && title && content) {
       return (
-        <div className='flex flex-col h-full w-full'>
-          <div className='flex items-start justify-between w-full'>
-            {typeof title === 'string' ? <Title>{title}</Title> : title}
-            {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
+        <div className='flex flex-col h-full w-full gap-1.5'>
+          <div className='flex items-start justify-between w-full mbs-1.5'>
+            {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
+            {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
           </div>
-          {typeof content === 'string' ? <Content>{content}</Content> : content}
+          {typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content}
         </div>
       )
     } else if (meta && title && !content) {
       return (
-        <div className='flex items-start justify-between w-full'>
-          {typeof title === 'string' ? <Title>{title}</Title> : title}
-          {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
+        <div className='flex items-start justify-between w-full mbs-1.5'>
+          {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
+          {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
         </div>
       )
     } else if (!meta && title && content) {
       return (
-        <div className='flex flex-col h-full'>
-          {typeof title === 'string' ? <Title>{title}</Title> : title}
-          {typeof content === 'string' ? <Content>{content}</Content> : content}
+        <div className='flex flex-col h-full gap-1 mbs-1.5'>
+          {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
+          {typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content}
         </div>
       )
     } else if (!meta && !title && content) {
-      return typeof content === 'string' ? <Content>{content}</Content> : content
+      return typeof content === 'string' ? (
+        <Content variant='body2' className='mbs-1.5'>
+          {content}
+        </Content>
+      ) : (
+        content
+      )
     } else if (!meta && title && !content) {
-      return typeof title === 'string' ? <Title>{title}</Title> : title
+      return typeof title === 'string' ? (
+        <Title variant='body1' className='mbs-1.5'>
+          {title}
+        </Title>
+      ) : (
+        title
+      )
     } else {
       return null
     }
@@ -111,20 +133,14 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
     <Grid item {...gridProps}>
       <Root
         onClick={() => handleChange(value)}
-        className={classnames({ active: type === 'radio' ? selected === value : selected.includes(value) })}
+        className={classnames({
+          active: type === 'radio' ? selected === value : selected.includes(value)
+        })}
       >
         {type === 'radio' ? (
-          <RadioInput
-            name={name}
-            size='small'
-            color={color}
-            value={value}
-            onChange={handleChange}
-            checked={selected === value}
-          />
+          <RadioInput name={name} color={color} value={value} onChange={handleChange} checked={selected === value} />
         ) : (
           <CheckboxInput
-            size='small'
             color={color}
             name={`${name}-${value}`}
             checked={selected.includes(value)}

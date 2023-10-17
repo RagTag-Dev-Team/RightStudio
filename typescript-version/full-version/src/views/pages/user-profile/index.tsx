@@ -11,12 +11,9 @@ import { useRouter } from 'next/navigation'
 import Grid from '@mui/material/Grid'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
-import MuiTabList from '@mui/lab/TabList'
-import { styled } from '@mui/material/styles'
 import TabPanel from '@mui/lab/TabPanel'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
-import type { TabListProps } from '@mui/lab/TabList'
 
 // Type Imports
 import type { Data } from '@/types/pages/profileTypes'
@@ -27,24 +24,7 @@ import TeamsTab from './teams/index'
 import ProjectsTab from './projects/index'
 import ConnectionsTab from './connections/index'
 import UserProfileHeader from './UserProfileHeader'
-
-const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
-  '& .MuiTabs-indicator': {
-    display: 'none'
-  },
-  '& .Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`
-  },
-  '& .MuiTab-root': {
-    minHeight: 38,
-    minWidth: 65,
-    borderRadius: theme.shape.borderRadius,
-    [theme.breakpoints.up('sm')]: {
-      minWidth: 130
-    }
-  }
-}))
+import CustomTabList from '@core/components/mui/TabList'
 
 const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({
   profile: <ProfileTab data={data?.users.profile} />,
@@ -86,7 +66,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
       {activeTab === undefined ? null : (
         <Grid item xs={12}>
           <TabContext value={activeTab}>
-            <TabList onChange={handleChange} variant='scrollable'>
+            <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
               <Tab
                 label={
                   <div className='flex items-center'>
@@ -123,7 +103,7 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
                 }
                 value='connections'
               />
-            </TabList>
+            </CustomTabList>
             {loading ? (
               <div className='flex items-center flex-col'>
                 <CircularProgress />

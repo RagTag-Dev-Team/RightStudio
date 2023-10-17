@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-// Components Imports
+// Component Imports
 import LineChart from '@views/charts/echarts/LineChart'
 import AreaChart from '@views/charts/echarts/AreaChart'
 import ColumnChart from '@views/charts/echarts/ColumnChart'

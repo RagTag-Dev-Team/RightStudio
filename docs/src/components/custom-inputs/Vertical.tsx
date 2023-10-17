@@ -20,21 +20,26 @@ const Root = styled('div', {
   name: 'MuiCustomInputVertical',
   slot: 'root'
 })(({ theme }) => ({
-  blockSize: '100%',
   display: 'flex',
-  borderRadius: 'var(--mui-shape-borderRadius)',
+  blockSize: '100%',
   cursor: 'pointer',
   position: 'relative',
   alignItems: 'center',
+  gap: theme.spacing(2),
   flexDirection: 'column',
+  padding: theme.spacing(4),
+  borderRadius: 'var(--mui-shape-borderRadius)',
   border: '1px solid var(--mui-palette-divider)',
   transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
 
   '&:hover': {
-    borderColor: 'rgb(var(--mui-palette-text-primaryChannel) / 0.25)'
+    borderColor: 'var(--mui-palette-action-active)'
   },
   '&.active': {
-    borderColor: 'var(--mui-palette-primary-main)'
+    borderColor: 'var(--mui-palette-primary-main)',
+    '& > svg, & > i': {
+      color: 'var(--mui-palette-primary-main)'
+    }
   },
   '&.radio-only .MuiRadio-root': {
     marginTop: theme.spacing(-2)
@@ -48,17 +53,16 @@ const Title = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'title'
 })(({ theme }) => ({
-  ...theme.typography.body1,
+  letterSpacing: '0.15px',
   fontWeight: theme.typography.fontWeightMedium
 }))
 
 const Content = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'content'
-})(({ theme }) => ({
-  ...theme.typography.body2,
+})({
   textAlign: 'center'
-}))
+})
 
 const RadioInput = styled(Radio, {
   name: 'MuiCustomInputVertical',
@@ -92,20 +96,12 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
           })}
         >
           {asset || null}
-          {title ? typeof title === 'string' ? <Title>{title}</Title> : title : null}
-          {content ? typeof content === 'string' ? <Content>{content}</Content> : content : null}
+          {title ? typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title : null}
+          {content ? typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content : null}
           {type === 'radio' ? (
-            <RadioInput
-              name={name}
-              size='small'
-              color={color}
-              value={value}
-              onChange={handleChange}
-              checked={selected === value}
-            />
+            <RadioInput name={name} color={color} value={value} onChange={handleChange} checked={selected === value} />
           ) : (
             <CheckboxInput
-              size='small'
               color={color}
               name={`${name}-${value}`}
               checked={selected.includes(value)}

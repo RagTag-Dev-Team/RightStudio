@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-// Custom Imports
+// Component Imports
 import AddNewAddress from '@components/dialogs/add-new-address'
 
 const DialogAddNewAddress = () => {

@@ -14,7 +14,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 
-// Custom Imports
+// Component Imports
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
 
 const AccountDelete = () => {

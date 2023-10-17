@@ -74,12 +74,13 @@ const PaymentMethod = ({ open, setOpen }: Props) => {
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='sm' scroll='body'>
       <DialogTitle
+        variant='h5'
         className={classnames('flex gap-2 flex-col text-center', globalDialogStyles.dialogTitle, {
           [globalDialogStyles.smDialogTitle]: isBelowSmScreen
         })}
       >
         Select Payment Methods
-        <Typography component='span' className='flex flex-col items-center'>
+        <Typography component='span' variant='body2' className='flex flex-col items-center'>
           Supported payment methods
         </Typography>
       </DialogTitle>

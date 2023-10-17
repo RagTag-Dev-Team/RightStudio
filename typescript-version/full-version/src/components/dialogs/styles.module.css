@@ -4,6 +4,10 @@
   inset-inline-end: 1rem;
 }
 
+.textPrimary {
+  color: var(--mui-palette-text-primary);
+}
+
 .dialogTitle {
   padding-block: 64px 24px;
   padding-inline: 64px;

@@ -38,7 +38,7 @@ const TimelineOutlined = () => {
       <TimelineItem>
         <TimelineSeparator>
           <TimelineDot color='primary' variant='outlined'/>
-          <TimelineConnector />
+          <TimelineConnector/>
         </TimelineSeparator>
         <TimelineContent className={styles.timelineIcon}>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
@@ -75,7 +75,7 @@ const TimelineOutlined = () => {
       <TimelineItem>
         <TimelineSeparator>
           <TimelineDot color='success' variant='outlined'/>
-          <TimelineConnector />
+          <TimelineConnector/>
         </TimelineSeparator>
         <TimelineContent>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
@@ -107,7 +107,7 @@ const TimelineOutlined = () => {
       <TimelineItem>
         <TimelineSeparator>
           <TimelineDot color='info' variant='outlined'/>
-          <TimelineConnector />
+          <TimelineConnector/>
         </TimelineSeparator>
         <TimelineContent>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
