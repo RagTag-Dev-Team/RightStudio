@@ -3,6 +3,9 @@
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Dictionary } from '@core/types'
+
 // Component Imports
 import HorizontalMenu from './HorizontalMenu'
 
@@ -19,7 +22,7 @@ import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 // Style Imports
 import styles from './styles.module.css'
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
@@ -40,7 +43,7 @@ const Navigation = () => {
           style: { paddingInline: themeConfig.layoutPadding }
         })}
       >
-        <HorizontalMenu />
+        <HorizontalMenu dictionary={dictionary} />
       </div>
     </div>
   )

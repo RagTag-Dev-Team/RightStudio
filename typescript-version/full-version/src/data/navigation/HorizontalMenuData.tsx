@@ -1,17 +1,11 @@
 // Type Imports
 import type { HorizontalMenuDataType } from '@/types/menuTypes'
-import type { Locale } from '@configs/i18n'
+import type { Dictionary } from '@core/types'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-// Util Imports
-import { getDictionary } from '@/utils/get-dictionary'
-
-const HorizontalMenuData = (locale: Locale): HorizontalMenuDataType[] => {
-  // Get dictionary based on locale
-  const dictionary = getDictionary(locale)
-
+const HorizontalMenuData = ({ dictionary }: { dictionary: Dictionary }): HorizontalMenuDataType[] => {
   return [
     // This is how you will normally render submenu
     {

@@ -3,6 +3,9 @@
 // MUI Imports
 import { useColorScheme } from '@mui/material/styles'
 
+// Type Imports
+import type { Dictionary } from '@core/types'
+
 // Component Imports from @menu-package
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'
 
@@ -17,7 +20,7 @@ import useSettings from '@core/hooks/useSettings'
 // Style Imports
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isCollapsed } = useVerticalNav()
   const { settings, saveSettings } = useSettings()
@@ -50,7 +53,7 @@ const Navigation = () => {
         <Logo />
         <NavCollapseIcons onClick={handleClick} />
       </NavHeader>
-      <VerticalMenu />
+      <VerticalMenu dictionary={dictionary} />
     </VerticalNav>
   )
 }

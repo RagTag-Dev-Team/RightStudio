@@ -13,6 +13,12 @@ export type LayoutComponentWidth = 'compact' | 'wide'
 
 export type LayoutComponentPosition = 'fixed' | 'static'
 
+export type Dictionary = {
+  [category: string]: {
+    [key: string]: string
+  }
+}
+
 export type ChildrenType = {
   children: ReactNode
 }

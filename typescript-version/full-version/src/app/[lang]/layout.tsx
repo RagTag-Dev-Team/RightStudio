@@ -17,8 +17,6 @@ import { i18n } from '@configs/i18n'
 import { getDirection } from '@/utils/get-direction'
 
 // Style Imports
-//! Do not remove the `utils.css` import below otherwise it will break the template styling
-import '@core/styles/utils.css' // Common Utility Classes
 import '@/app/globals.css'
 
 // Generated Icon CSS Imports

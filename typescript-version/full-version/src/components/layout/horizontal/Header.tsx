@@ -1,5 +1,8 @@
 'use client'
 
+// Type Imports
+import type { Dictionary } from '@core/types'
+
 // Component Imports
 import Navigation from './Navigation'
 import NavbarContent from './NavbarContent'
@@ -7,9 +10,9 @@ import Navbar from '@layouts/components/horizontal/Navbar'
 import LayoutHeader from '@layouts/components/horizontal/Header'
 
 // Hook Imports
-import useHorizontalNav from '@/@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
-const Header = () => {
+const Header = ({ dictionary }: { dictionary: Dictionary }) => {
   const { isBreakpointReached } = useHorizontalNav()
 
   return (
@@ -18,9 +21,9 @@ const Header = () => {
         <Navbar>
           <NavbarContent />
         </Navbar>
-        {!isBreakpointReached && <Navigation />}
+        {!isBreakpointReached && <Navigation dictionary={dictionary} />}
       </LayoutHeader>
-      {isBreakpointReached && <Navigation />}
+      {isBreakpointReached && <Navigation dictionary={dictionary} />}
     </>
   )
 }
