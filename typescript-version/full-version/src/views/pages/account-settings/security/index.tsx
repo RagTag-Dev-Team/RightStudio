@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
@@ -10,14 +8,17 @@ import CreateApiKey from './CreateApiKey'
 import ApiKeyList from './ApiKeyList'
 import RecentDevicesTable from './RecentDevicesTable'
 
-const Security = () => {
+// Type IMports
+import type { Direction } from '@core/types'
+
+const Security = ({ direction }: { direction: Direction }) => {
   return (
     <Grid container>
       <Grid item xs={12}>
         <ChangePasswordCard />
       </Grid>
       <Grid item xs={12}>
-        <TwoFactorAuthenticationCard />
+        <TwoFactorAuthenticationCard direction={direction} />
       </Grid>
       <Grid item xs={12}>
         <CreateApiKey />

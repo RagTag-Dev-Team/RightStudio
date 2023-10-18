@@ -1,64 +1,25 @@
 'use client'
 
 // React Imports
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import type { SyntheticEvent, ReactElement } from 'react'
-
-// Next Imports
-import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabPanel from '@mui/lab/TabPanel'
-import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
-
-// Type Imports
-import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
-import AccountTab from './account'
-import SecurityTab from './security'
-import BillingPlansTab from './billing-plans'
-import NotificationsTab from './notifications'
-import ConnectionsTab from './connections'
 import CustomTabList from '@core/components/mui/TabList'
 
-const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement } => ({
-  account: <AccountTab />,
-  security: <SecurityTab />,
-  'billing-plans': <BillingPlansTab data={data} />,
-  notifications: <NotificationsTab />,
-  connections: <ConnectionsTab />
-})
-
-const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }) => {
+const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: ReactElement } }) => {
   // States
-  const [activeTab, setActiveTab] = useState(tab)
-
-  const [loading, setLoading] = useState<boolean>(true)
-
-  // Hooks
-  const router = useRouter()
+  const [activeTab, setActiveTab] = useState('account')
 
   const handleChange = (event: SyntheticEvent, value: string) => {
-    setLoading(true)
-    const pathname = `/pages/account-settings/${value.toLowerCase()}`
-
-    router.push(pathname)
+    setActiveTab(value)
   }
-
-  useEffect(() => {
-    if (data) {
-      setLoading(false)
-    }
-    if (tab && tab !== activeTab) {
-      setActiveTab(tab)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab])
 
   return (
     <Grid container>
@@ -112,16 +73,9 @@ const AccountSettings = ({ tab, data }: { tab: string; data: PricingPlanType[] }
             />
           </CustomTabList>
           <Grid item xs={12}>
-            {loading ? (
-              <div className='flex flex-col items-center'>
-                <CircularProgress />
-                <Typography>Loading...</Typography>
-              </div>
-            ) : (
-              <TabPanel value={activeTab} className='p-0'>
-                {tabContentList(data)[activeTab]}
-              </TabPanel>
-            )}
+            <TabPanel value={activeTab} className='p-0'>
+              {tabContentList[activeTab]}
+            </TabPanel>
           </Grid>
         </TabContext>
       </Grid>

@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'

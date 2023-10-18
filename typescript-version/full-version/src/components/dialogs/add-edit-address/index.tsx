@@ -33,20 +33,22 @@ import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type AddEditAddressData = {
+  firstName?: string
+  lastName?: string
+  country?: string
+  address1?: string
+  address2?: string
+  landmark?: string
+  city?: string
+  state?: string
+  zipCode?: string
+}
+
+type AddEditAddressProps = {
   open: boolean
   setOpen: (open: boolean) => void
-  data?: {
-    firstName?: string
-    lastName?: string
-    country?: string
-    address1?: string
-    address2?: string
-    landmark?: string
-    city?: string
-    state?: string
-    zipCode?: string
-  }
+  data?: AddEditAddressData
 }
 
 const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
@@ -67,12 +69,12 @@ const customInputData: CustomInputVerticalData[] = [
   }
 ]
 
-const AddNewAddress = ({ open, setOpen, data }: Props) => {
+const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
   const initialSelected: string = customInputData?.find(item => item.isSelected)?.value || ''
 
   // States
   const [selected, setSelected] = useState<string>(initialSelected)
-  const [addressData, setAddressData] = useState<Props['data']>(Object.assign({}, data))
+  const [addressData, setAddressData] = useState<AddEditAddressProps['data']>(Object.assign({}, data))
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
@@ -273,4 +275,4 @@ const AddNewAddress = ({ open, setOpen, data }: Props) => {
   )
 }
 
-export default AddNewAddress
+export default AddEditAddress

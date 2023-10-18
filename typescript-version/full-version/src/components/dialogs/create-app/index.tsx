@@ -34,7 +34,7 @@ import StepperWrapper from '@core/styles/stepper'
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type CreateAppProps = {
   open: boolean
   setOpen: (open: boolean) => void
   direction: Direction
@@ -139,7 +139,7 @@ const renderStepCount = (
   }
 }
 
-const CreateApp = ({ open, setOpen, direction }: Props) => {
+const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 

@@ -15,7 +15,7 @@ import classnames from 'classnames'
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type PaymentMethodProps = {
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -67,7 +67,7 @@ const cardList: CardList[] = [
   }
 ]
 
-const PaymentMethod = ({ open, setOpen }: Props) => {
+const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 

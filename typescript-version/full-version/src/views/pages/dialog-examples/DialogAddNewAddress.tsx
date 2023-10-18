@@ -10,7 +10,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 // Component Imports
-import AddNewAddress from '@components/dialogs/add-new-address'
+import AddNewAddress from '@components/dialogs/add-edit-address'
 
 const DialogAddNewAddress = () => {
   // States

@@ -17,13 +17,13 @@ import Pricing from '@components/pricing'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type PricingProps = {
   open: boolean
   setOpen: (open: boolean) => void
   data: PricingPlanType[]
 }
 
-const PricingDialog = ({ open, setOpen, data }: Props) => {
+const PricingDialog = ({ open, setOpen, data }: PricingProps) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 

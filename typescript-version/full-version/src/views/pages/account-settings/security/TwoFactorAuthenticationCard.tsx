@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -11,10 +13,13 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 
-const TwoFactorAuthenticationCard = () => {
+const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) => {
   // States
   const [open, setOpen] = useState<boolean>(false)
 
@@ -40,7 +45,7 @@ const TwoFactorAuthenticationCard = () => {
           <Button variant='contained' onClick={handleClickOpen}>
             Enable two-factor authentication
           </Button>
-          <TwoFactorAuth open={open} setOpen={setOpen} />
+          <TwoFactorAuth open={open} setOpen={setOpen} direction={direction} />
         </CardContent>
       </Card>
     </>

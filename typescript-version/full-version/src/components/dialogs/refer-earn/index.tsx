@@ -28,7 +28,7 @@ import themeConfig from '@configs/themeConfig'
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type ReferEarnProps = {
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -57,7 +57,7 @@ const options: Options[] = [
   }
 ]
 
-const ReferEarn = ({ open, setOpen }: Props) => {
+const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 

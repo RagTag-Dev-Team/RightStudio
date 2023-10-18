@@ -27,7 +27,7 @@ import type { Direction } from '@core/types'
 import styles from './styles.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type TwoFactorAuthProps = {
   open: boolean
   setOpen: (open: boolean) => void
   direction: Direction
@@ -146,7 +146,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
   )
 }
 
-const TwoFactorAuth = ({ open, setOpen, direction }: Props) => {
+const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
   // States
   const [authType, setAuthType] = useState<'app' | 'sms'>('app')
   const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)

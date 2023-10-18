@@ -20,7 +20,7 @@ import classnames from 'classnames'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type PermissionDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
   data?: string
@@ -95,7 +95,7 @@ const EditContent = ({ handleClose, isBelowSmScreen, data }: EditProps) => {
   )
 }
 
-const PermissionDialog = ({ open, setOpen, data }: Props) => {
+const PermissionDialog = ({ open, setOpen, data }: PermissionDialogProps) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 

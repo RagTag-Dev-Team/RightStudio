@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useEffect, useState } from 'react'
 
@@ -25,22 +27,24 @@ import type { ThemeColor } from '@core/types'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
-  open: boolean
-  setOpen: (open: boolean) => void
-  data?: {
-    cardNumber?: string
-    name?: string
-    expiryDate?: string
-    cardCvv?: string
-    imgSrc?: string
-    imgAlt?: string
-    cardStatus?: string
-    badgeColor?: ThemeColor
-  }
+type BillingCardData = {
+  cardNumber?: string
+  name?: string
+  expiryDate?: string
+  cardCvv?: string
+  imgSrc?: string
+  imgAlt?: string
+  cardStatus?: string
+  badgeColor?: ThemeColor
 }
 
-const initialCardData: Props['data'] = {
+type BillingCardProps = {
+  open: boolean
+  setOpen: (open: boolean) => void
+  data?: BillingCardData
+}
+
+const initialCardData: BillingCardProps['data'] = {
   cardNumber: '',
   name: '',
   expiryDate: '',
@@ -51,7 +55,7 @@ const initialCardData: Props['data'] = {
   badgeColor: 'primary'
 }
 
-const BillingCard = ({ open, setOpen, data }: Props) => {
+const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
   // States
   const [cardData, setCardData] = useState(initialCardData)
 

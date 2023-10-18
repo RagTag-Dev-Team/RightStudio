@@ -22,12 +22,12 @@ import classnames from 'classnames'
 import styles from '@components/dialogs/styles.module.css'
 import ConfirmationDialog from '../confirmation-dialog'
 
-type Props = {
+type UpgradePlanProps = {
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-const UpgradePlan = ({ open, setOpen }: Props) => {
+const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
   // States
   const [openConfirmation, setOpenConfirmation] = useState(false)
 

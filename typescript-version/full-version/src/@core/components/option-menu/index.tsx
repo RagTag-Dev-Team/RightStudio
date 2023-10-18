@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useRef, useState } from 'react'
 import type { ReactNode, SyntheticEvent } from 'react'

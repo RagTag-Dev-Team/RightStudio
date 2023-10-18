@@ -29,7 +29,7 @@ import classnames from 'classnames'
 import styles from '@components/dialogs/styles.module.css'
 import themeConfig from '@configs/themeConfig'
 
-type Props = {
+type ShareProjectProps = {
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -124,7 +124,7 @@ const autocompleteOptions: OptionsType[] = [
   }
 ]
 
-const ShareProject = ({ open, setOpen }: Props) => {
+const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
   // States
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 

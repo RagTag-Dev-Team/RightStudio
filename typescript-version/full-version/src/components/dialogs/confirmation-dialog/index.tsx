@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { Fragment, useState } from 'react'
 
@@ -11,13 +13,15 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
-type Props = {
+type ConfirmationType = 'delete-account' | 'unsubscribe' | 'suspend-account'
+
+type ConfirmationDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
-  type: 'delete-account' | 'unsubscribe' | 'suspend-account'
+  type: ConfirmationType
 }
 
-const ConfirmationDialog = ({ open, setOpen, type }: Props) => {
+const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) => {
   // States
   const [secondDialog, setSecondDialog] = useState(false)
   const [userInput, setUserInput] = useState(false)

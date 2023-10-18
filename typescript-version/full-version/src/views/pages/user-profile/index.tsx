@@ -1,62 +1,29 @@
 'use client'
 
 // React Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { ReactElement, SyntheticEvent } from 'react'
-
-// Next Imports
-import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabPanel from '@mui/lab/TabPanel'
-import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
 
 // Type Imports
 import type { Data } from '@/types/pages/profileTypes'
 
 // Component Imports
-import ProfileTab from './profile/index'
-import TeamsTab from './teams/index'
-import ProjectsTab from './projects/index'
-import ConnectionsTab from './connections/index'
 import UserProfileHeader from './UserProfileHeader'
 import CustomTabList from '@core/components/mui/TabList'
 
-const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({
-  profile: <ProfileTab data={data?.users.profile} />,
-  teams: <TeamsTab data={data?.users.teams} />,
-  projects: <ProjectsTab data={data?.users.projects} />,
-  connections: <ConnectionsTab data={data?.users.connections} />
-})
-
-const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
+const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]: ReactElement }; data: Data }) => {
   // States
-  const [activeTab, setActiveTab] = useState(tab)
-  const [loading, setLoading] = useState<boolean>(true)
-
-  // Hooks
-  const router = useRouter()
+  const [activeTab, setActiveTab] = useState('profile')
 
   const handleChange = (event: SyntheticEvent, value: string) => {
-    setLoading(true)
-    const pathname = `/pages/user-profile/${value.toLowerCase()}`
-
-    router.push(pathname)
+    setActiveTab(value)
   }
-
-  useEffect(() => {
-    if (data) {
-      setLoading(false)
-    }
-    if (tab && tab !== activeTab) {
-      setActiveTab(tab)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab])
 
   return (
     <Grid container>
@@ -104,16 +71,10 @@ const UserProfile = ({ tab, data }: { tab: string; data?: Data }) => {
                 value='connections'
               />
             </CustomTabList>
-            {loading ? (
-              <div className='flex items-center flex-col'>
-                <CircularProgress />
-                <Typography>Loading...</Typography>
-              </div>
-            ) : (
-              <TabPanel value={activeTab} className='p-0'>
-                {tabContentList(data)[activeTab]}
-              </TabPanel>
-            )}
+
+            <TabPanel value={activeTab} className='p-0'>
+              {tabContentList[activeTab]}
+            </TabPanel>
           </TabContext>
         </Grid>
       )}

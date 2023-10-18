@@ -27,24 +27,26 @@ import classnames from 'classnames'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
-  open: boolean
-  setOpen: (open: boolean) => void
-  data?: {
-    firstName?: string
-    lastName?: string
-    userName?: string
-    billingEmail?: string
-    status?: string
-    taxId?: string
-    contact?: string
-    language?: string[]
-    country?: string
-    useAsBillingAddress?: boolean
-  }
+type EditUserInfoData = {
+  firstName?: string
+  lastName?: string
+  userName?: string
+  billingEmail?: string
+  status?: string
+  taxId?: string
+  contact?: string
+  language?: string[]
+  country?: string
+  useAsBillingAddress?: boolean
 }
 
-const initialData: Props['data'] = {
+type EditUserInfoProps = {
+  open: boolean
+  setOpen: (open: boolean) => void
+  data?: EditUserInfoData
+}
+
+const initialData: EditUserInfoProps['data'] = {
   firstName: 'Oliver',
   lastName: 'Queen',
   userName: 'oliverQueen',
@@ -63,9 +65,9 @@ const languages = ['English', 'Spanish', 'French', 'German', 'Hindi']
 
 const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
 
-const EditUserInfo = ({ open, setOpen, data }: Props) => {
+const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
   // States
-  const [userData, setUserData] = useState<Props['data']>(data || initialData)
+  const [userData, setUserData] = useState<EditUserInfoProps['data']>(data || initialData)
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))

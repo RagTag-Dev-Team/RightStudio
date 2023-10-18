@@ -24,7 +24,7 @@ import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
 // Style Imports
 import styles from './styles.module.css'
-import AddNewAddress from '@components/dialogs/add-new-address'
+import AddEditAddress from '@/components/dialogs/add-edit-address'
 
 const data: CustomInputHorizontalData[] = [
   {
@@ -169,7 +169,7 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
           <Button variant='outlined' onClick={() => setShow(true)}>
             Add new address
           </Button>
-          <AddNewAddress open={show} setOpen={setShow} />
+          <AddEditAddress open={show} setOpen={setShow} />
         </div>
         <div className='flex flex-col items-start gap-4'>
           <Typography>Choose Delivery Speed</Typography>

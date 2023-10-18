@@ -22,7 +22,7 @@ import classnames from 'classnames'
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
 
-type Props = {
+type RoleDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -48,7 +48,7 @@ const defaultData: DataType[] = [
   'Payroll'
 ]
 
-const RoleDialog = ({ open, setOpen }: Props) => {
+const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
   // States
   const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([])
   const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState<boolean>(false)
