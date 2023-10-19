@@ -12,6 +12,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
+import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -36,7 +37,6 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 import OptionMenu from '@core/components/option-menu'
 
 // Style Imports
-import styles from './styles.module.css'
 import tableStyles from '@core/styles/libs/reactTables.module.css'
 import commonStyles from '@views/pages/user-profile/styles.module.css'
 
@@ -198,7 +198,6 @@ const ProjectTables = () => {
         id: 'select',
         header: ({ table }) => (
           <IndeterminateCheckbox
-            className={styles.selectColumn}
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -208,7 +207,6 @@ const ProjectTables = () => {
         ),
         cell: ({ row }) => (
           <IndeterminateCheckbox
-            className={styles.selectColumn}
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -219,9 +217,9 @@ const ProjectTables = () => {
         )
       },
       columnHelper.accessor('title', {
-        header: () => <span>Name</span>,
+        header: 'Name',
         cell: ({ row }) => (
-          <div className={classnames('flex items-center', styles.nameColumn)}>
+          <div className='flex items-center'>
             <Avatar src={row.original.avatar} />
             <div className='flex flex-col'>
               <Typography>{row.original.title}</Typography>
@@ -231,11 +229,11 @@ const ProjectTables = () => {
         )
       }),
       columnHelper.accessor('leader', {
-        header: () => <div className={styles.leaderColumn}>Leader</div>,
+        header: 'Leader',
         cell: ({ row }) => <Typography>{row.original.leader}</Typography>
       }),
       columnHelper.accessor('avatarGroup', {
-        header: () => <div className={styles.teamColumn}>Team</div>,
+        header: 'Team',
         cell: ({ row }) => (
           <AvatarGroup max={4} className='flex items-center'>
             {row.original.avatarGroup.map((avatar, index) => (
@@ -246,16 +244,16 @@ const ProjectTables = () => {
         enableSorting: false
       }),
       columnHelper.accessor('status', {
-        header: () => <div className={styles.progressColumn}>Progress</div>,
+        header: 'Progress',
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
-            <LinearProgress color='primary' value={row.original.status} variant='determinate' className='w-full' />
+            <LinearProgress color='primary' value={row.original.status} variant='determinate' className='w-20' />
             <Typography>{`${row.original.status}%`}</Typography>
           </div>
         )
       }),
       columnHelper.accessor('actions', {
-        header: () => <div>Actions</div>,
+        header: 'Actions',
         cell: () => (
           <OptionMenu
             options={[
@@ -317,40 +315,38 @@ const ProjectTables = () => {
 
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead>
+          <thead className={tableStyles.thead}>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className={tableStyles.tr}>
+              <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
-                  <th key={header.id} className={tableStyles.th}>
+                  <th key={header.id}>
                     {header.isPlaceholder ? null : (
-                      <>
-                        <div
-                          className={classnames({
-                            'flex items-center': header.column.getIsSorted(),
-                            'cursor-pointer select-none': header.column.getCanSort()
-                          })}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
-                          }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
-                        </div>
-                      </>
+                      <div
+                        className={classnames({
+                          'flex items-center': header.column.getIsSorted(),
+                          'cursor-pointer select-none': header.column.getCanSort()
+                        })}
+                        onClick={header.column.getToggleSortingHandler()}
+                      >
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {{
+                          asc: <i className='ri-arrow-up-s-line text-xl' />,
+                          desc: <i className='ri-arrow-down-s-line text-xl' />
+                        }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
+                      </div>
                     )}
                   </th>
                 ))}
               </tr>
             ))}
           </thead>
-          <tbody>
+          <tbody className={tableStyles.tbody}>
             {table
               .getRowModel()
               .rows.slice(0, table.getState().pagination.pageSize)
               .map(row => {
                 return (
-                  <tr key={row.id} className={classnames(tableStyles.tr, { selected: row.getIsSelected() })}>
+                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                     {row.getVisibleCells().map(cell => (
                       <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                     ))}
@@ -360,36 +356,21 @@ const ProjectTables = () => {
           </tbody>
         </table>
       </div>
-      <div className='flex items-center gap-3'>
-        <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-          {'<<'}
-        </button>
-        <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-          {'<'}
-        </button>
-        <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-          {'>'}
-        </button>
-        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-          {'>>'}
-        </button>
-        <div className='flex items-center gap-1'>
-          <div>Page</div>
-          <strong>{`${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`}</strong>
-        </div>
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={e => {
-            table.setPageSize(Number(e.target.value))
-          }}
-        >
-          {[5, 7, 10].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+      <TablePagination
+        rowsPerPageOptions={[5, 7, 10]}
+        component='div'
+        className={tableStyles.paginationWrapper}
+        count={table.getFilteredRowModel().rows.length}
+        rowsPerPage={table.getState().pagination.pageSize}
+        page={table.getState().pagination.pageIndex}
+        SelectProps={{
+          inputProps: { 'aria-label': 'rows per page' }
+        }}
+        onPageChange={(_, page) => {
+          table.setPageIndex(page)
+        }}
+        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
+      />
     </Card>
   )
 }

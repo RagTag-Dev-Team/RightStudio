@@ -6,7 +6,8 @@ import type { ReactNode } from "react";
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
   experimental_extendTheme as extendTheme,
-  StyledEngineProvider
+  StyledEngineProvider,
+  responsiveFontSizes
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -24,19 +25,21 @@ import overrides from "@core/theme/overrides";
 import spacing from "@core/theme/spacing";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const theme = extendTheme({
+  let theme = extendTheme({
     components: overrides(),
     ...spacing,
     shape: {
       customBorderRadius: {
         xs: 2,
-        sm: 5,
+        sm: 4,
         md: 6,
         lg: 8,
         xl: 10
       }
     }
   });
+
+  theme = responsiveFontSizes(theme)
 
   return (
     <StyledEngineProvider injectFirst>

@@ -6,7 +6,6 @@ import { useState } from 'react'
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
@@ -68,35 +67,33 @@ const BasicDataTables = () => {
   return (
     <Card>
       <CardHeader title='Basic Table' />
-      <CardContent>
-        <div className='overflow-x-auto'>
-          <table className={styles.table}>
-            <thead className={styles.thead}>
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map(header => (
-                    <th key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
+      <div className='overflow-x-auto'>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody className={styles.tbody}>
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => (
+                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                   ))}
                 </tr>
               ))}
-            </thead>
-            <tbody className={styles.tbody}>
-              {table
-                .getRowModel()
-                .rows.slice(0, 10)
-                .map(row => (
-                  <tr key={row.id}>
-                    {row.getVisibleCells().map(cell => (
-                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                    ))}
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      </CardContent>
+          </tbody>
+        </table>
+      </div>
     </Card>
   )
 }

@@ -12,6 +12,9 @@
 }
 
 .thead {
+  text-transform: uppercase;
+  color: var(--mui-palette-text-primary);
+
   th {
     font-weight: 500;
     text-align: start;
@@ -19,6 +22,8 @@
 }
 
 .tbody {
+  color: var(--mui-palette-text-secondary);
+
   tr:not(:last-child) {
     border-block-end: 1px solid var(--border-color);
   }
@@ -29,11 +34,19 @@
   background-color: transparent;
   font-size: inherit;
   color: inherit;
+  border-radius: var(--mui-shape-customBorderRadius-sm);
+  padding-block: 6px;
+  padding-inline: 10px;
+  margin-inline: -10px;
+
+  &:focus-visible {
+    outline: 1px solid var(--mui-palette-primary-main);
+  }
 }
 .cellWithInput.input-border-0 input {
   border: 0;
 }
 
 .paginationWrapper {
-  border-block-start: 1px solid var(--border-color);
+  border-block-start: 1px solid var(--mui-palette-divider);
 }

@@ -1,13 +1,12 @@
 'use client'
 
 // React Imports
-import { useEffect, useMemo, useRef, useState } from 'react'
-import type { HTMLProps } from 'react'
+import { useMemo, useState } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Checkbox from '@mui/material/Checkbox'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -23,24 +22,6 @@ import styles from '@core/styles/table.module.css'
 // Data Imports
 import defaultData from './data'
 
-const IndeterminateCheckbox = ({
-  indeterminate,
-  className = '',
-  ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
-  // Refs
-  const ref = useRef<HTMLInputElement>(null!)
-
-  useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      ref.current.indeterminate = !rest.checked && indeterminate
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, indeterminate])
-
-  return <input type='checkbox' ref={ref} className={classnames(className, 'cursor-pointer')} {...rest} />
-}
-
 const RowSelection = () => {
   // States
   const [rowSelection, setRowSelection] = useState({})
@@ -54,23 +35,27 @@ const RowSelection = () => {
       {
         id: 'select',
         header: ({ table }) => (
-          <IndeterminateCheckbox
-            {...{
-              checked: table.getIsAllRowsSelected(),
-              indeterminate: table.getIsSomeRowsSelected(),
-              onChange: table.getToggleAllRowsSelectedHandler()
-            }}
-          />
+          <div className='flex items-center'>
+            <Checkbox
+              {...{
+                checked: table.getIsAllRowsSelected(),
+                indeterminate: table.getIsSomeRowsSelected(),
+                onChange: table.getToggleAllRowsSelectedHandler()
+              }}
+            />
+          </div>
         ),
         cell: ({ row }) => (
-          <IndeterminateCheckbox
-            {...{
-              checked: row.getIsSelected(),
-              disabled: !row.getCanSelect(),
-              indeterminate: row.getIsSomeSelected(),
-              onChange: row.getToggleSelectedHandler()
-            }}
-          />
+          <div className='flex items-center'>
+            <Checkbox
+              {...{
+                checked: row.getIsSelected(),
+                disabled: !row.getCanSelect(),
+                indeterminate: row.getIsSomeSelected(),
+                onChange: row.getToggleSelectedHandler()
+              }}
+            />
+          </div>
         )
       },
       columnHelper.accessor('fullName', {
@@ -117,37 +102,35 @@ const RowSelection = () => {
   return (
     <Card>
       <CardHeader title='Row Selection' />
-      <CardContent>
-        <div className='overflow-x-auto'>
-          <table className={styles.table}>
-            <thead className={styles.thead}>
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map(header => (
-                    <th key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody className={styles.tbody}>
-              {table
-                .getRowModel()
-                .rows.slice(0, 10)
-                .map(row => {
-                  return (
-                    <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
-                      {row.getVisibleCells().map(cell => (
-                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                      ))}
-                    </tr>
-                  )
-                })}
-            </tbody>
-          </table>
-        </div>
-      </CardContent>
+      <div className='overflow-x-auto'>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody className={styles.tbody}>
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map(row => {
+                return (
+                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                    {row.getVisibleCells().map(cell => (
+                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                    ))}
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      </div>
     </Card>
   )
 }

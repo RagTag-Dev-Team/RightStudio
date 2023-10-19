@@ -22,7 +22,7 @@ const LayoutWrapper = (props) => {
       <ThemeProvider>
         {props.children}
         <ToastifyWrapper>
-          <ToastContainer />
+          <ToastContainer hideProgressBar />
         </ToastifyWrapper>
         <BuyNowButton />
       </ThemeProvider>

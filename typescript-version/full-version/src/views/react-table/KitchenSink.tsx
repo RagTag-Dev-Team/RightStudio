@@ -2,12 +2,13 @@
 
 // React Imports
 import { useEffect, useMemo, useState } from 'react'
-import type { InputHTMLAttributes } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import TextField from '@mui/material/TextField'
+import TablePagination from '@mui/material/TablePagination'
+import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -71,7 +72,7 @@ const DebouncedInput = ({
   value: string | number
   onChange: (value: string | number) => void
   debounce?: number
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>) => {
+} & TextFieldProps) => {
   // States
   const [value, setValue] = useState(initialValue)
 
@@ -88,7 +89,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <input {...props} value={value} onChange={e => setValue(e.target.value)} />
+  return <TextField {...props} size='small' value={value} onChange={e => setValue(e.target.value)} />
 }
 
 const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<any> }) => {
@@ -96,45 +97,36 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
 
   const columnFilterValue = column.getFilterValue()
 
-  const sortedUniqueValues = useMemo(
-    () => (typeof firstValue === 'number' ? [] : Array.from(column.getFacetedUniqueValues().keys()).sort()),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [column.getFacetedUniqueValues()]
-  )
-
   return typeof firstValue === 'number' ? (
-    <div className='flex gap-x-3'>
-      <DebouncedInput
+    <div className='flex gap-x-2'>
+      <TextField
+        fullWidth
         type='number'
-        min={Number(column.getFacetedMinMaxValues()?.[0] ?? '')}
-        max={Number(column.getFacetedMinMaxValues()?.[1] ?? '')}
+        size='small'
+        sx={{ minWidth: 100 }}
         value={(columnFilterValue as [number, number])?.[0] ?? ''}
-        onChange={value => column.setFilterValue((old: [number, number]) => [value, old?.[1]])}
+        onChange={e => column.setFilterValue((old: [number, number]) => [e.target.value, old?.[1]])}
         placeholder={`Min ${column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : ''}`}
       />
-      <DebouncedInput
+      <TextField
+        fullWidth
         type='number'
-        min={Number(column.getFacetedMinMaxValues()?.[0] ?? '')}
-        max={Number(column.getFacetedMinMaxValues()?.[1] ?? '')}
+        size='small'
+        sx={{ minWidth: 100 }}
         value={(columnFilterValue as [number, number])?.[1] ?? ''}
-        onChange={value => column.setFilterValue((old: [number, number]) => [old?.[0], value])}
+        onChange={e => column.setFilterValue((old: [number, number]) => [old?.[0], e.target.value])}
         placeholder={`Max ${column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : ''}`}
       />
     </div>
   ) : (
-    <>
-      <datalist id={column.id + 'list'}>
-        {sortedUniqueValues.slice(0, 5000).map((value: any) => (
-          <option value={value} key={value} />
-        ))}
-      </datalist>
-      <DebouncedInput
-        type='text'
-        value={(columnFilterValue ?? '') as string}
-        onChange={value => column.setFilterValue(value)}
-        placeholder='Search...'
-      />
-    </>
+    <TextField
+      fullWidth
+      size='small'
+      sx={{ minWidth: 100 }}
+      value={(columnFilterValue ?? '') as string}
+      onChange={e => column.setFilterValue(e.target.value)}
+      placeholder='Search...'
+    />
   )
 }
 
@@ -218,102 +210,66 @@ const KitchenSink = () => {
           />
         }
       />
-      <CardContent>
-        <div className='overflow-x-auto'>
-          <table className={styles.table}>
-            <thead className={styles.thead}>
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id} className={styles.tr}>
-                  {headerGroup.headers.map(header => {
-                    return (
-                      <th key={header.id} className={classnames(styles.th, styles.cellWithInput)}>
-                        {header.isPlaceholder ? null : (
-                          <>
-                            <div
-                              className={classnames({
-                                'flex items-center': header.column.getIsSorted(),
-                                'cursor-pointer select-none': header.column.getCanSort()
-                              })}
-                              onClick={header.column.getToggleSortingHandler()}
-                            >
-                              {flexRender(header.column.columnDef.header, header.getContext())}
-                              {{
-                                asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
-                                desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
-                              }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
-                            </div>
-                            {header.column.getCanFilter() ? (
-                              <div>
-                                <Filter column={header.column} table={table} />
-                              </div>
-                            ) : null}
-                          </>
-                        )}
-                      </th>
-                    )
+      <div className='overflow-x-auto'>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => {
+                  return (
+                    <th key={header.id}>
+                      {header.isPlaceholder ? null : (
+                        <>
+                          <div
+                            className={classnames({
+                              'flex items-center': header.column.getIsSorted(),
+                              'cursor-pointer select-none': header.column.getCanSort()
+                            })}
+                            onClick={header.column.getToggleSortingHandler()}
+                          >
+                            {flexRender(header.column.columnDef.header, header.getContext())}
+                            {{
+                              asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
+                              desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
+                            }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
+                          </div>
+                          {header.column.getCanFilter() && <Filter column={header.column} table={table} />}
+                        </>
+                      )}
+                    </th>
+                  )
+                })}
+              </tr>
+            ))}
+          </thead>
+          <tbody className={styles.tbody}>
+            {table.getRowModel().rows.map(row => {
+              return (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => {
+                    return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                   })}
                 </tr>
-              ))}
-            </thead>
-            <tbody className={styles.tbody}>
-              {table.getRowModel().rows.map(row => {
-                return (
-                  <tr key={row.id} className={styles.tr}>
-                    {row.getVisibleCells().map(cell => {
-                      return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-        <div className='flex items-center gap-3'>
-          <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-            {'<<'}
-          </button>
-          <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-            {'<'}
-          </button>
-          <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-            {'>'}
-          </button>
-          <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-            {'>>'}
-          </button>
-          <div className='flex items-center gap-1'>
-            <div>Page</div>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-            </strong>
-          </div>
-          <span>|</span>
-          <div className='flex items-center gap-1'>
-            Go to page:
-            <input
-              type='number'
-              defaultValue={table.getState().pagination.pageIndex + 1}
-              onChange={e => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-
-                table.setPageIndex(page)
-              }}
-            />
-          </div>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={e => {
-              table.setPageSize(Number(e.target.value))
-            }}
-          >
-            {[10, 20, 30, 40, 50].map(pageSize => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-      </CardContent>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      <TablePagination
+        rowsPerPageOptions={[7, 10, 25, { label: 'All', value: data.length }]}
+        component='div'
+        className={styles.paginationWrapper}
+        count={table.getFilteredRowModel().rows.length}
+        rowsPerPage={table.getState().pagination.pageSize}
+        page={table.getState().pagination.pageIndex}
+        SelectProps={{
+          inputProps: { 'aria-label': 'rows per page' }
+        }}
+        onPageChange={(_, page) => {
+          table.setPageIndex(page)
+        }}
+        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
+      />
     </Card>
   )
 }

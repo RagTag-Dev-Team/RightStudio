@@ -13,7 +13,7 @@ const theme = (direction: Theme['direction']): Theme => {
     shape: {
       customBorderRadius: {
         xs: 2,
-        sm: 5,
+        sm: 4,
         md: 6,
         lg: 8,
         xl: 10
