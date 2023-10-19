@@ -1,0 +1,8 @@
+.cardBorder {
+  border: 2px solid var(--mui-palette-primary-main);
+  border-radius: var(--mui-shape-borderRadius);
+}
+
+.iconSize {
+  font-size: 24px;
+}

@@ -1,0 +1,39 @@
+.textSecondary {
+  color: var(--mui-palette-text-secondary);
+}
+
+.timelineIcon svg {
+  vertical-align: middle;
+  margin-inline: 1rem;
+}
+
+.textDisabled {
+  color: var(--mui-palette-text-disabled);
+}
+
+.imageWrapper {
+  padding-block: 5px;
+  padding-inline: 10px;
+  background-color: var(--mui-palette-action-hover);
+}
+
+.borderRadius {
+  border-radius: var(--mui-shape-borderRadius);
+}
+
+.avatarSize {
+  block-size: 34px;
+  inline-size: 34px;
+}
+
+.projectColumn {
+  min-inline-size: 220px;
+}
+
+.totalTaskColumn {
+  min-inline-size: 100px;
+}
+
+.progressColumn {
+  min-inline-size: 100px;
+}

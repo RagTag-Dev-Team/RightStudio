@@ -1,0 +1,23 @@
+.selectColumn {
+  min-inline-size: 20px;
+}
+
+.userColumn {
+  min-inline-size: 220px;
+}
+
+.emailColumn {
+  min-inline-size: 240px;
+}
+
+.roleColumn {
+  min-inline-size: 100px;
+}
+
+.planColumn {
+  min-inline-size: 100px;
+}
+
+.statusColumn {
+  min-inline-size: 80px;
+}

@@ -1,0 +1,12 @@
+.border {
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: var(--mui-shape-borderRadius);
+}
+
+.addressTable1 td:first-child {
+  inline-size: 150px;
+}
+
+.addressTable2 td:first-child {
+  inline-size: 120px;
+}
