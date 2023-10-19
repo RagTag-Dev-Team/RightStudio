@@ -12,7 +12,7 @@ import type { ColumnDef, Row, RowData, Column, Table } from '@tanstack/react-tab
 import type { DataType } from './data'
 
 // Style Imports
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 // Data Imports
 import defaultData from './data'
@@ -21,20 +21,20 @@ import defaultData from './data'
 const columnHelper = createColumnHelper<DataType>()
 
 const columns = [
-  columnHelper.accessor('full_name', {
-    header: () => <span>Name</span>
+  columnHelper.accessor('fullName', {
+    header: 'Name'
   }),
   columnHelper.accessor('email', {
-    header: () => <span>Email</span>
+    header: 'Email'
   }),
   columnHelper.accessor('start_date', {
-    header: () => <span>Date</span>
+    header: 'Date'
   }),
   columnHelper.accessor('experience', {
-    header: () => <span>Experience</span>
+    header: 'Experience'
   }),
   columnHelper.accessor('age', {
-    header: () => <span>Age</span>
+    header: 'Age'
   })
 ]
 
@@ -55,6 +55,8 @@ interface EditableCellProps<TData extends RowData> {
 
 const EditableCell = <TData extends RowData>({ getValue, row, column, table }: EditableCellProps<TData>) => {
   const initialValue = getValue()
+
+  // States
   const [value, setValue] = useState(initialValue)
 
   const onBlur = () => {
@@ -76,8 +78,10 @@ const defaultColumn: Partial<ColumnDef<DataType>> = {
 }
 
 const EditableDataTables = () => {
+  // States
   const [data, setData] = useState(() => defaultData)
 
+  // Hooks
   const table = useReactTable({
     data,
     columns,
@@ -107,37 +111,39 @@ const EditableDataTables = () => {
   })
 
   return (
-    <table className={styles.table}>
-      <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id} className={styles.tr}>
-            {headerGroup.headers.map(header => (
-              <th key={header.id} className={styles.th}>
-                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table
-          .getRowModel()
-          .rows.slice(0, 10)
-          .map(row => {
-            return (
-              <tr key={row.id} className={styles.tr}>
-                {row.getVisibleCells().map(cell => {
-                  return (
-                    <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  )
-                })}
-              </tr>
-            )
-          })}
-      </tbody>
-    </table>
+    <div className='overflow-x-auto'>
+      <table className={styles.table}>
+        <thead className={styles.thead}>
+          {table.getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <th key={header.id}>
+                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody className={styles.tbody}>
+          {table
+            .getRowModel()
+            .rows.slice(0, 10)
+            .map(row => {
+              return (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => {
+                    return (
+                      <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

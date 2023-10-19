@@ -29,7 +29,7 @@ import type { DataType } from './data'
 import ChevronRight from '@menu-package/svg/ChevronRight'
 
 // Style Imports
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 // Data Imports
 import defaultData from './data'
@@ -67,6 +67,7 @@ const DebouncedInput = ({
   onChange: (value: string | number) => void
   debounce?: number
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>) => {
+  // States
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
@@ -126,14 +127,14 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
         type='text'
         value={(columnFilterValue ?? '') as string}
         onChange={value => column.setFilterValue(value)}
-        placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
-        list={column.id + 'list'}
+        placeholder='Search...'
       />
     </>
   )
 }
 
 const KitchenSink = () => {
+  // States
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState('')
 
@@ -141,25 +142,25 @@ const KitchenSink = () => {
 
   const columns = useMemo<ColumnDef<DataType, any>[]>(
     () => [
-      columnHelper.accessor('full_name', {
+      columnHelper.accessor('fullName', {
         cell: info => info.getValue(),
-        header: () => <span>Name</span>
+        header: 'Name'
       }),
       columnHelper.accessor('email', {
         cell: info => info.getValue(),
-        header: () => <span>Email</span>
+        header: 'Email'
       }),
       columnHelper.accessor('start_date', {
         cell: info => info.getValue(),
-        header: () => <span>Date</span>
+        header: 'Date'
       }),
       columnHelper.accessor('experience', {
         cell: info => info.getValue(),
-        header: () => <span>Experience</span>
+        header: 'Experience'
       }),
       columnHelper.accessor('age', {
         cell: info => info.getValue(),
-        header: () => <span>Age</span>
+        header: 'Age'
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -201,60 +202,58 @@ const KitchenSink = () => {
   }, [table.getState().columnFilters[0]?.id])
 
   return (
-    <div>
+    <>
       <DebouncedInput
         value={globalFilter ?? ''}
         onChange={value => setGlobalFilter(String(value))}
         placeholder='Search all columns...'
       />
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id} className={styles.tr}>
-              {headerGroup.headers.map(header => {
-                return (
-                  <th key={header.id} className={classnames(styles.th, styles.cellWithInput)}>
-                    {header.isPlaceholder ? null : (
-                      <>
-                        <div
-                          className={classnames({
-                            'flex items-center': header.column.getIsSorted(),
-                            'cursor-pointer select-none': header.column.getCanSort()
-                          })}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {{
-                            asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
-                            desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
-                          }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
-                        </div>
-                        {header.column.getCanFilter() ? (
-                          <div>
-                            <Filter column={header.column} table={table} />
+      <div className='overflow-x-auto'>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => {
+                  return (
+                    <th key={header.id} className={styles.cellWithInput}>
+                      {header.isPlaceholder ? null : (
+                        <>
+                          <div
+                            className={classnames({
+                              'flex items-center': header.column.getIsSorted(),
+                              'cursor-pointer select-none': header.column.getCanSort()
+                            })}
+                            onClick={header.column.getToggleSortingHandler()}
+                          >
+                            {flexRender(header.column.columnDef.header, header.getContext())}
+                            {{
+                              asc: <ChevronRight fontSize='1.25rem' className='-rotate-90' />,
+                              desc: <ChevronRight fontSize='1.25rem' className='rotate-90' />
+                            }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
-                        ) : null}
-                      </>
-                    )}
-                  </th>
-                )
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => {
-            return (
-              <tr key={row.id} className={styles.tr}>
-                {row.getVisibleCells().map(cell => {
-                  return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                          {header.column.getCanFilter() && <Filter column={header.column} table={table} />}
+                        </>
+                      )}
+                    </th>
+                  )
                 })}
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      <div className='flex items-center gap-3'>
+            ))}
+          </thead>
+          <tbody className={styles.tbody}>
+            {table.getRowModel().rows.map(row => {
+              return (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => {
+                    return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className='flex items-center flex-wrap gap-3'>
         <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
           {'<<'}
         </button>
@@ -299,7 +298,7 @@ const KitchenSink = () => {
           ))}
         </select>
       </div>
-    </div>
+    </>
   )
 }
 

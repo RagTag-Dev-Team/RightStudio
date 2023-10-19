@@ -13,7 +13,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { DataType } from './data'
 
 // Style Imports
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 // Data Imports
 import defaultData from './data'
@@ -23,6 +23,7 @@ const IndeterminateCheckbox = ({
   className = '',
   ...rest
 }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
+  // Refs
   const ref = useRef<HTMLInputElement>(null!)
 
   useEffect(() => {
@@ -36,8 +37,6 @@ const IndeterminateCheckbox = ({
 }
 
 const RowSelection = () => {
-  const [rowSelection, setRowSelection] = useState({})
-
   const columnHelper = createColumnHelper<DataType>()
 
   const columns = useMemo<ColumnDef<DataType, any>[]>(
@@ -64,34 +63,37 @@ const RowSelection = () => {
           />
         )
       },
-      columnHelper.accessor('full_name', {
+      columnHelper.accessor('fullName', {
         cell: info => info.getValue(),
-        header: () => <span>Name</span>
+        header: 'Name'
       }),
       columnHelper.accessor('email', {
         cell: info => info.getValue(),
-        header: () => <span>Email</span>
+        header: 'Email'
       }),
       columnHelper.accessor('start_date', {
         cell: info => info.getValue(),
-        header: () => <span>Date</span>
+        header: 'Date'
       }),
       columnHelper.accessor('experience', {
         cell: info => info.getValue(),
-        header: () => <span>Experience</span>
+        header: 'Experience'
       }),
       columnHelper.accessor('age', {
         cell: info => info.getValue(),
-        header: () => <span>Age</span>
+        header: 'Age'
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
 
+  // States
+  const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(() => defaultData)
 
+  // Hooks
   const table = useReactTable({
     data,
     columns,
@@ -108,33 +110,35 @@ const RowSelection = () => {
   })
 
   return (
-    <table className={styles.table}>
-      <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id} className={styles.tr}>
-            {headerGroup.headers.map(header => (
-              <th key={header.id} className={styles.th}>
-                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table
-          .getRowModel()
-          .rows.slice(0, 10)
-          .map(row => {
-            return (
-              <tr key={row.id} className={classnames(styles.tr, { selected: row.getIsSelected() })}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                ))}
-              </tr>
-            )
-          })}
-      </tbody>
-    </table>
+    <div className='overflow-x-auto'>
+      <table className={styles.table}>
+        <thead className={styles.thead}>
+          {table.getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <th key={header.id}>
+                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody className={styles.tbody}>
+          {table
+            .getRowModel()
+            .rows.slice(0, 10)
+            .map(row => {
+              return (
+                <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                  {row.getVisibleCells().map(cell => (
+                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                  ))}
+                </tr>
+              )
+            })}
+        </tbody>
+      </table>
+    </div>
   )
 }
 
