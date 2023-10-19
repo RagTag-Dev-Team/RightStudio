@@ -67,46 +67,15 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
             <MenuItem href={`/${locale}/apps/user/list`}>{dictionary['navigation'].list}</MenuItem>
-            <SubMenu label={dictionary['navigation'].view}>
-              <MenuItem href={`/${locale}/apps/user/view/overview`}>{dictionary['navigation'].overview}</MenuItem>
-              <MenuItem href={`/${locale}/apps/user/view/security`}>{dictionary['navigation'].security}</MenuItem>
-              <MenuItem href={`/${locale}/apps/user/view/billing-plans`}>
-                {dictionary['navigation'].billingPlans}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/user/view/notifications`}>
-                {dictionary['navigation'].notifications}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/user/view/connections`}>{dictionary['navigation'].connections}</MenuItem>
-            </SubMenu>
+            <MenuItem href={`/${locale}/apps/user/view`}>{dictionary['navigation'].view}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].rolesPermissions}>
             <MenuItem href={`/${locale}/apps/roles`}>{dictionary['navigation'].roles}</MenuItem>
             <MenuItem href={`/${locale}/apps/permissions`}>{dictionary['navigation'].permissions}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].pages}>
-            <SubMenu label={dictionary['navigation'].userProfile}>
-              <MenuItem href={`/${locale}/pages/user-profile/profile`}>{dictionary['navigation'].profile}</MenuItem>
-              <MenuItem href={`/${locale}/pages/user-profile/teams`}>{dictionary['navigation'].teams}</MenuItem>
-              <MenuItem href={`/${locale}/pages/user-profile/projects`}>{dictionary['navigation'].projects}</MenuItem>
-              <MenuItem href={`/${locale}/pages/user-profile/connections`}>
-                {dictionary['navigation'].connections}
-              </MenuItem>
-            </SubMenu>
-            <SubMenu label={dictionary['navigation'].accountSettings}>
-              <MenuItem href={`/${locale}/pages/account-settings/account`}>{dictionary['navigation'].account}</MenuItem>
-              <MenuItem href={`/${locale}/pages/account-settings/security`}>
-                {dictionary['navigation'].security}
-              </MenuItem>
-              <MenuItem href={`/${locale}/pages/account-settings/billing-plans`}>
-                {dictionary['navigation'].billingPlans}
-              </MenuItem>
-              <MenuItem href={`/${locale}/pages/account-settings/notifications`}>
-                {dictionary['navigation'].notifications}
-              </MenuItem>
-              <MenuItem href={`/${locale}/pages/account-settings/connections`}>
-                {dictionary['navigation'].connections}
-              </MenuItem>
-            </SubMenu>
+            <MenuItem href={`/${locale}/pages/user-profile`}>{dictionary['navigation'].userProfile}</MenuItem>
+            <MenuItem href={`/${locale}/pages/account-settings`}>{dictionary['navigation'].accountSettings}</MenuItem>
             <MenuItem href={`/${locale}/pages/faq`}>{dictionary['navigation'].faq}</MenuItem>
             <MenuItem href={`/${locale}/pages/pricing`}>{dictionary['navigation'].pricing}</MenuItem>
             <SubMenu label={dictionary['navigation'].miscellaneous}>

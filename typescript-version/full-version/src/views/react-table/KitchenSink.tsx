@@ -34,8 +34,7 @@ import type { DataType } from './data'
 import ChevronRight from '@menu-package/svg/ChevronRight'
 
 // Style Imports
-import commonStyles from './styles.module.css'
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 // Data Imports
 import defaultData from './data'
@@ -133,8 +132,7 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
         type='text'
         value={(columnFilterValue ?? '') as string}
         onChange={value => column.setFilterValue(value)}
-        placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
-        list={column.id + 'list'}
+        placeholder='Search...'
       />
     </>
   )
@@ -149,25 +147,25 @@ const KitchenSink = () => {
 
   const columns = useMemo<ColumnDef<DataType, any>[]>(
     () => [
-      columnHelper.accessor('full_name', {
+      columnHelper.accessor('fullName', {
         cell: info => info.getValue(),
-        header: () => <div className={commonStyles.nameColumn}>Name</div>
+        header: 'Name'
       }),
       columnHelper.accessor('email', {
         cell: info => info.getValue(),
-        header: () => <div className={commonStyles.emailColumn}>Email</div>
+        header: 'Email'
       }),
       columnHelper.accessor('start_date', {
         cell: info => info.getValue(),
-        header: () => <div className={commonStyles.dateColumn}>Date</div>
+        header: 'Date'
       }),
       columnHelper.accessor('experience', {
         cell: info => info.getValue(),
-        header: () => <div className={commonStyles.experienceColumn}>Experience</div>
+        header: 'Experience'
       }),
       columnHelper.accessor('age', {
         cell: info => info.getValue(),
-        header: () => <div className={commonStyles.ageColumn}>Age</div>
+        header: 'Age'
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -223,7 +221,7 @@ const KitchenSink = () => {
       <CardContent>
         <div className='overflow-x-auto'>
           <table className={styles.table}>
-            <thead>
+            <thead className={styles.thead}>
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id} className={styles.tr}>
                   {headerGroup.headers.map(header => {
@@ -257,7 +255,7 @@ const KitchenSink = () => {
                 </tr>
               ))}
             </thead>
-            <tbody>
+            <tbody className={styles.tbody}>
               {table.getRowModel().rows.map(row => {
                 return (
                   <tr key={row.id} className={styles.tr}>

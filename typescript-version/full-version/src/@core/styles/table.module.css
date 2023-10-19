@@ -1,0 +1,39 @@
+.table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+
+  [align='right'] > * {
+    text-align: end;
+  }
+  [align='center'] > * {
+    text-align: center;
+  }
+}
+
+.thead {
+  th {
+    font-weight: 500;
+    text-align: start;
+  }
+}
+
+.tbody {
+  tr:not(:last-child) {
+    border-block-end: 1px solid var(--border-color);
+  }
+}
+
+.cellWithInput input {
+  inline-size: 100%;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+}
+.cellWithInput.input-border-0 input {
+  border: 0;
+}
+
+.paginationWrapper {
+  border-block-start: 1px solid var(--border-color);
+}

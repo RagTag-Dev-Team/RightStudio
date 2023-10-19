@@ -16,8 +16,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '
 import type { DataType } from './data'
 
 // Style Imports
-import commonStyles from './styles.module.css'
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 // Data Imports
 import defaultData from './data'
@@ -26,34 +25,36 @@ import defaultData from './data'
 const columnHelper = createColumnHelper<DataType>()
 
 const defaultColumns = [
-  columnHelper.accessor('full_name', {
+  columnHelper.accessor('fullName', {
     cell: info => info.getValue(),
-    header: () => <div className={commonStyles.nameColumn}>Name</div>
+    header: 'Name'
   }),
   columnHelper.accessor('email', {
     cell: info => info.getValue(),
-    header: () => <div className={commonStyles.emailColumn}>Email</div>
+    header: 'Email'
   }),
   columnHelper.accessor('start_date', {
     cell: info => info.getValue(),
-    header: () => <div className={commonStyles.dateColumn}>Date</div>
+    header: 'Date'
   }),
   columnHelper.accessor('experience', {
     cell: info => info.getValue(),
-    header: () => <div className={commonStyles.experienceColumn}>Experience</div>
+    header: 'Experience'
   }),
   columnHelper.accessor('age', {
     cell: info => info.getValue(),
-    header: () => <div className={commonStyles.ageColumn}>Age</div>
+    header: 'Age'
   })
 ]
 
 const ColumnVisibility = () => {
+  // States
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(() => defaultData)
   const [columns] = useState<typeof defaultColumns>(() => [...defaultColumns])
   const [columnVisibility, setColumnVisibility] = useState({})
 
+  // Hooks
   const table = useReactTable({
     data,
     columns,
@@ -80,7 +81,7 @@ const ColumnVisibility = () => {
       <CardContent>
         <div className='overflow-x-auto'>
           <table className={styles.table}>
-            <thead>
+            <thead className={styles.thead}>
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id} className={styles.tr}>
                   {headerGroup.headers.map(header => (
@@ -91,7 +92,7 @@ const ColumnVisibility = () => {
                 </tr>
               ))}
             </thead>
-            <tbody>
+            <tbody className={styles.tbody}>
               {table
                 .getRowModel()
                 .rows.slice(0, 10)
