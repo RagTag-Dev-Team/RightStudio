@@ -59,6 +59,10 @@ ul:not([class]) {
   }
 }
 
+:where([class^='ri-']) {
+  font-size: 1.5rem;
+}
+
 /*
   Hide Vertical & Horizontal navigation menus on screen size less than 1200px.
 
