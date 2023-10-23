@@ -9,9 +9,6 @@ import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const TabsForcedScroll = () => {
   // States
   const [value, setValue] = useState<string>('1')
@@ -23,11 +20,11 @@ const TabsForcedScroll = () => {
   return (
     <TabContext value={value}>
       <TabList scrollButtons variant='scrollable' onChange={handleChange} aria-label='forced scroll tabs example'>
-        <Tab value='1' label='Tab 1' icon={<Icon icon='mdi:phone' />} />
-        <Tab value='2' label='Tab 2' icon={<Icon icon='mdi:heart-outline' />} />
-        <Tab value='3' label='Tab 3' icon={<Icon icon='mdi:thumb-up-outline' />} />
-        <Tab value='4' label='Tab 4' icon={<Icon icon='mdi:account-circle-outline' />} />
-        <Tab value='5' label='Tab 5' icon={<Icon icon='mdi:thumb-down-outline' />} />
+        <Tab value='1' label='Tab 1' icon={<i className='ri-phone-line' />} />
+        <Tab value='2' label='Tab 2' icon={<i className='ri-heart-line' />} />
+        <Tab value='3' label='Tab 3' icon={<i className='ri-thumb-up-line' />} />
+        <Tab value='4' label='Tab 4' icon={<i className='ri-account-circle-line' />} />
+        <Tab value='5' label='Tab 5' icon={<i className='ri-thumb-down-line' />} />
       </TabList>
       <TabPanel value='1'>
         <Typography>

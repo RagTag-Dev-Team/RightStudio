@@ -11,9 +11,6 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ListItemSelected = () => {
   // States
   const [selectedIndex, setSelectedIndex] = useState<number>(1)
@@ -26,7 +23,7 @@ const ListItemSelected = () => {
     <List>
       <ListItem disablePadding secondaryAction={
         <IconButton edge='end' onClick={e => e.stopPropagation()}>
-         <Icon icon='mdi:message-text-outline' fontSize='1.25rem' />
+         <i className='ri-message-2-line text-xl' />
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 0} onClick={() => handleListItemClick(0)}>
@@ -38,7 +35,7 @@ const ListItemSelected = () => {
       </ListItem>
       <ListItem disablePadding secondaryAction={
         <IconButton edge='end' onClick={e => e.stopPropagation()}>
-          <Icon icon='mdi:message-text-outline' fontSize='1.25rem' />
+          <i className='ri-message-2-line text-xl'/>
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 1} onClick={() => handleListItemClick(1)}>
@@ -50,7 +47,7 @@ const ListItemSelected = () => {
       </ListItem>
       <ListItem disablePadding secondaryAction={
         <IconButton edge='end' onClick={e => e.stopPropagation()}>
-         <Icon icon='mdi:message-text-outline' fontSize='1.25rem' />
+         <i className='ri-message-2-line text-xl'/>
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 2} onClick={() => handleListItemClick(2)}>

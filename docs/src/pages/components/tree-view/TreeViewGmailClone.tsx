@@ -8,9 +8,6 @@ import Typography from '@mui/material/Typography'
 import TreeItem from '@mui/lab/TreeItem'
 import type { TreeItemProps } from '@mui/lab/TreeItem'
 
-// Custom Icon Import
-import Icon from '@core/components/IconifyIcon'
-
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -56,7 +53,7 @@ const StyledTreeItem = (props: StyledTreeItemProps) => {
       {...other}
       label={
         <div className='plb-1 flex items-center' >
-          <Icon icon={labelIcon} color='inherit' className='mie-1' />
+          <i className={classnames('mie-1',labelIcon)} />
           <Typography variant='body2' className={classnames('flex-grow', styles.treeViewFontWeight)}>
             {labelText}
           </Typography>
@@ -77,18 +74,18 @@ const TreeViewGmailClone = () => {
     <TreeView
       className={styles.treeViewMinHeight}
       defaultExpanded={['3']}
-      defaultExpandIcon={<Icon icon='mdi:chevron-right' />}
-      defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}
+      defaultExpandIcon={<i className='ri-arrow-right-s-line' />}
+      defaultCollapseIcon={<i className='ri-arrow-down-s-line' />}
     >
-      <StyledTreeItem nodeId='1' labelText='All Mail' labelIcon='mdi:email-outline' />
-      <StyledTreeItem nodeId='2' labelText='Trash' labelIcon='mdi:delete-outline' />
-      <StyledTreeItem nodeId='3' labelText='Categories' labelIcon='mdi:label-outline'>
-        <StyledTreeItem nodeId='5' labelInfo='90' labelText='Social' labelIcon='mdi:account-supervisor-outline' />
-        <StyledTreeItem nodeId='6' labelInfo='2,294' labelText='Updates' labelIcon='mdi:information-outline' />
-        <StyledTreeItem nodeId='7' labelInfo='3,566' labelText='Forums' labelIcon='mdi:forum-outline' />
-        <StyledTreeItem nodeId='8' labelInfo='733' labelText='Promotions' labelIcon='mdi:tag-outline' />
+      <StyledTreeItem nodeId='1' labelText='All Mail' labelIcon='ri-mail-line' />
+      <StyledTreeItem nodeId='2' labelText='Trash' labelIcon='ri-delete-bin-7-line' />
+      <StyledTreeItem nodeId='3' labelText='Categories' labelIcon='ri-price-tag-line'>
+        <StyledTreeItem nodeId='5' labelInfo='90' labelText='Social' labelIcon='ri-group-line' />
+        <StyledTreeItem nodeId='6' labelInfo='2,294' labelText='Updates' labelIcon='ri-information-line' />
+        <StyledTreeItem nodeId='7' labelInfo='3,566' labelText='Forums' labelIcon='ri-chat-4-line' />
+        <StyledTreeItem nodeId='8' labelInfo='733' labelText='Promotions' labelIcon='ri-price-tag-3-line' />
       </StyledTreeItem>
-      <StyledTreeItem nodeId='4' labelText='History' labelIcon='mdi:label-outline' />
+      <StyledTreeItem nodeId='4' labelText='History' labelIcon='ri-price-tag-line' />
     </TreeView>
   )
 }

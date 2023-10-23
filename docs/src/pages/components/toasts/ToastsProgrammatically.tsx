@@ -8,9 +8,6 @@ import Typography from "@mui/material/Typography";
 // Third-party Imports
 import { toast } from "react-toastify";
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsProgrammatically = () => {
   const toastId = useRef(null);
 
@@ -24,7 +21,7 @@ const ToastsProgrammatically = () => {
     <div
     className='flex text-center flex-col items-center'
     > 
-      <Icon icon='mdi:code-json' fontSize='2rem' className='mbe-2'/>
+      <i className='ri-braces-line mbe-2 text-[32px]'/>
       <Typography className='mbe-4 font-medium'>Remove Programmatically</Typography>
       <Typography className='mbe-3'>Remove last or all toast(s) programmatically</Typography>
       <div className='flex gap-4 mbe-8'>

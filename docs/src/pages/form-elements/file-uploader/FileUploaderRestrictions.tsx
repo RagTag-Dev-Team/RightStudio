@@ -22,8 +22,6 @@ import { useDropzone } from 'react-dropzone'
 // Styles Imports 
 import styles from './styles.module.css'
 
-import Icon from '@core/components/IconifyIcon'
-
 type FileProp = {
   name: string
   type: string
@@ -78,7 +76,7 @@ const FileUploaderRestrictions = () => {
     if (file.type.startsWith('image')) {
       return <img width={38} height={38} alt={file.name} src={URL.createObjectURL(file as any)} />
     } else {
-      return <Icon icon='mdi:file-document-outline' />
+      return <i className='ri-file-text-line' />
     }
   }
 
@@ -103,7 +101,7 @@ const FileUploaderRestrictions = () => {
         </div>
       </div>
       <IconButton onClick={() => handleRemoveFile(file)}>
-        <Icon icon='mdi:close' fontSize='1.25rem' />
+        <i className='ri-close-line text-xl' />
       </IconButton>
     </ListItem>
   ))

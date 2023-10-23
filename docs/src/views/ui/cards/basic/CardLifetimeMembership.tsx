@@ -12,9 +12,6 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -38,13 +35,13 @@ const CardLifetimeMembership = () => {
               <Grid item xs={12} sm={6} className={classnames('flex flex-col pie-5', styles.memberGridGap)}>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <Icon icon='mdi:lock-open-outline' fontSize='1.25rem' />
+                    <i className='ri-lock-unlock-line text-xl' />
                   </div>
                   <Typography variant='body2'>Full Access</Typography>
                 </div>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <Icon icon='mdi:account-outline' fontSize='1.25rem' />
+                    <i className='ri-user-3-line text-xl' />
                   </div>
                   <Typography variant='body2'>15 Members</Typography>
                 </div>
@@ -57,13 +54,13 @@ const CardLifetimeMembership = () => {
               >
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <Icon icon='mdi:lock-open-outline' fontSize='1.25rem' />
+                    <i className='ri-lock-unlock-line text-xl' />
                   </div>
                   <Typography variant='body2'>Access all Features</Typography>
                 </div>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <Icon icon='mdi:account-outline' fontSize='1.25rem' />
+                    <i className='ri-user-3-line text-xl' />
                   </div>
                   <Typography variant='body2'>Lifetime Free Update</Typography>
                 </div>

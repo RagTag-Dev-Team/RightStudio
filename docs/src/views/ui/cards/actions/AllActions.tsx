@@ -15,9 +15,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -43,13 +40,13 @@ const CardActionAll = () => {
           action={
             <div className='flex'>
               <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-                <Icon fontSize='1.25rem' icon={collapse ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
+                <i className={classnames(collapse ? 'ri-arrow-down-s-line' : 'ri-arrow-up-s-line', 'text-xl')} />
               </IconButton>
               <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-                <Icon fontSize='1.25rem' icon='mdi:refresh' />
+                <i className='ri-refresh-line' />
               </IconButton>
               <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-                <Icon fontSize='1.25rem' icon='mdi:close' />
+                <i className='ri-close-line' />
               </IconButton>
             </div>
           }

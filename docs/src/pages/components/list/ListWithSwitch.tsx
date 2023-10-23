@@ -10,9 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListSubheader from '@mui/material/ListSubheader'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ListWithSwitch = () => {
   // States
   const [checked, setChecked] = useState<string[]>(['wifi', 'location'])
@@ -34,7 +31,7 @@ const ListWithSwitch = () => {
     <List subheader={<ListSubheader>Settings</ListSubheader>}>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:wifi' fontSize='1.25rem' />
+          <i className='ri-wifi-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Wi-Fi' />
         <ListItemSecondaryAction>
@@ -43,7 +40,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:bluetooth' fontSize='1.25rem' />
+          <i className='ri-bluetooth-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Bluetooth' />
         <ListItemSecondaryAction>
@@ -52,7 +49,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:map-marker-outline' fontSize='1.25rem' />
+          <i className='ri-map-pin-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Location' />
         <ListItemSecondaryAction>
@@ -61,7 +58,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:airplane' fontSize='1.25rem' />
+          <i className='ri-plane-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Airplane Mode' />
         <ListItemSecondaryAction>
@@ -70,7 +67,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:broadcast' fontSize='1.25rem' />
+          <i className='ri-hotspot-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Hotspot' />
         <ListItemSecondaryAction>
@@ -79,7 +76,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <Icon icon='mdi:minus-circle-outline' fontSize='1.25rem' />
+          <i className='ri-indeterminate-circle-line text-xl' />
         </ListItemIcon>
         <ListItemText primary='Do not disturb' />
         <ListItemSecondaryAction>

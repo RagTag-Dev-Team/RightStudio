@@ -10,28 +10,25 @@ import { CustomInputVerticalData } from '@docComponents/custom-inputs/types'
 // Components Imports
 import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const data: CustomInputVerticalData[] = [
   {
     value: 'starter',
     title: 'Starter',
     isSelected: true,
     content: 'A simple start for everyone.',
-    asset: 'mdi:rocket-launch-outline',
+    asset: 'ri-rocket-line',
   },
   {
     value: 'standard',
     title: 'Standard',
     content: 'For small to medium businesses.',
-    asset: 'mdi:account-outline',
+    asset: 'ri-user-3-line',
   },
   {
     value: 'enterprise',
     title: 'Enterprise',
     content: 'Solution for big organizations.',
-    asset: 'mdi:crown-outline'
+    asset: 'ri-vip-crown-line'
   },
 ]
 
@@ -57,7 +54,7 @@ const CustomVerticalRadioIcon = () => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <Icon icon={item.asset} />
+          asset = <i className={item.asset} />
         }
 
         return (

@@ -10,9 +10,6 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ListSecondary = () => {
   return (
     <List>
@@ -23,7 +20,7 @@ const ListSecondary = () => {
         <ListItemText primary='Caroline Black' secondary='Sweet dessert brownie.' />
         <ListItemSecondaryAction>
           <IconButton edge='end'>
-            <Icon icon='mdi:plus' />
+            <i className='ri-add-line' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -34,7 +31,7 @@ const ListSecondary = () => {
         <ListItemText primary='Alfred Copeland' secondary='Pudding pie tiramisu.' />
         <ListItemSecondaryAction>
           <IconButton edge='end'>
-            <Icon icon='mdi:plus' />
+            <i className='ri-add-line' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -45,7 +42,7 @@ const ListSecondary = () => {
         <ListItemText primary='Celia Schneider' secondary='Muffin pie chupa chups.' />
         <ListItemSecondaryAction>
           <IconButton edge='end'>
-            <Icon icon='mdi:plus' />
+            <i className='ri-add-line' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

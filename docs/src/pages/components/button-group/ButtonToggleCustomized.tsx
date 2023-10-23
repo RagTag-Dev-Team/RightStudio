@@ -9,9 +9,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import MuiToggleButton from '@mui/material/ToggleButton'
 import type { ToggleButtonProps } from '@mui/material/ToggleButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled ToggleButton component
 const ToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(({ theme }) => ({
   margin: theme.spacing(1),
@@ -42,31 +39,31 @@ const ButtonToggleCustomized = () => {
     <div className='flex flex-wrap'>
       <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
         <ToggleButton value='left' aria-label='left aligned'>
-          <Icon icon='mdi:format-align-left' />
+          <i className='ri-align-left' />
         </ToggleButton>
         <ToggleButton value='center' aria-label='center aligned'>
-          <Icon icon='mdi:format-align-center' />
+          <i className='ri-align-center' />
         </ToggleButton>
         <ToggleButton value='right' aria-label='right aligned'>
-          <Icon icon='mdi:format-align-right' />
+          <i className='ri-align-right' />
         </ToggleButton>
         <ToggleButton value='justify' aria-label='justified' disabled>
-          <Icon icon='mdi:format-align-justify' />
+          <i className='ri-align-justify' />
         </ToggleButton>
       </ToggleButtonGroup>
       <Divider flexItem orientation='vertical' className='m-1'/>
       <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='text alignment'>
         <ToggleButton value='bold' aria-label='bold'>
-          <Icon icon='mdi:format-bold' />
+          <i className='ri-bold' />
         </ToggleButton>
         <ToggleButton value='italic' aria-label='italic'>
-          <Icon icon='mdi:format-italic' />
+          <i className='ri-italic' />
         </ToggleButton>
         <ToggleButton value='underlined' aria-label='underlined'>
-          <Icon icon='mdi:format-underline' />
+          <i className='ri-underline' />
         </ToggleButton>
         <ToggleButton value='color' aria-label='color' disabled>
-          <Icon icon='mdi:format-color-fill' />
+          <i className='ri-paint-fill' />
         </ToggleButton>
       </ToggleButtonGroup>
     </div>

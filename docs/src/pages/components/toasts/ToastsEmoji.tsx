@@ -8,14 +8,11 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { toast } from 'react-toastify'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsEmoji = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:sticker-emoji' fontSize='2rem' className='mbe-2'/>
+      <i className='ri-emoji-sticker-line mbe-2 text-[32px]' />
       <Typography className='mbe-4 font-medium'>Emoji</Typography>
       <Typography className='mbe-3'>Add any emoji instead of an icon</Typography>
       <Button className='mbe-8' variant='contained' onClick={() => toast('Good Job!', { icon: '👏' })}>

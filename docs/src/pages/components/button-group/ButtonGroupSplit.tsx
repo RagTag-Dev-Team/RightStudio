@@ -15,9 +15,6 @@ import MenuList from '@mui/material/MenuList'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge']
 
 const ButtonGroupSplit = () => {
@@ -57,7 +54,7 @@ const ButtonGroupSplit = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <Icon icon='mdi:menu-down' />
+          <i className='ri-arrow-down-s-fill' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>

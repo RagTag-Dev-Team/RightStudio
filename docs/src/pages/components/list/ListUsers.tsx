@@ -14,9 +14,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import type { ListProps } from '@mui/material/List'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -98,7 +95,7 @@ const ListUsers = () => {
             <ListItemText primary={user.name} />
             <div className='flex items-center flex-wrap'>
               <Box className='mie-3 flex items-center gap-1' sx={{ '& svg': { color: user.statusColor } }}>
-                <Icon icon='mdi:circle' fontSize='0.625rem' />
+                <i className='ri-circle-fill text-[10px]' />
                 <Typography variant='body2'>{user.status}</Typography>
               </Box>
               <Typography variant='body2' className={styles.listTextDisabled}>

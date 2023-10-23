@@ -9,9 +9,6 @@ import type { IconContainerProps } from '@mui/material/Rating'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -22,19 +19,19 @@ type CustomIcons = {
 const customIcons: CustomIcons = {
   1: {
     label: 'Very Dissatisfied',
-    icon: 'mdi:emoticon-sad-outline'
+    icon: 'ri-emotion-unhappy-line'
   },
   2: {
     label: 'Neutral',
-    icon: 'mdi:emoticon-neutral-outline'
+    icon: 'ri-emotion-normal-line'
   },
   3: {
     label: 'Satisfied',
-    icon: 'mdi:emoticon-happy-outline'
+    icon: 'ri-emotion-happy-line'
   },
   4: {
     label: 'Very Satisfied',
-    icon: 'mdi:emoticon-outline'
+    icon: 'ri-emotion-line'
   }
 }
 
@@ -43,7 +40,7 @@ const IconContainer = (props: IconContainerProps) => {
 
   return (
     <span {...props}>
-      <Icon icon={customIcons[value].icon} />
+      <i className={customIcons[value].icon} />
     </span>
   )
 }
@@ -53,7 +50,7 @@ const RatingsCustomized = () => {
     <>
       <div className='mbe-3'>
         <Typography className='font-medium'>Custom empty icon</Typography>
-        <Rating name='customized-empty' defaultValue={2} precision={0.5} emptyIcon={<Icon icon='mdi:star' />} />
+        <Rating name='customized-empty' defaultValue={2} precision={0.5} emptyIcon={<i className='ri-star-fill' />} />
       </div>
       <div className='mbe-3'>
         <Typography className='font-medium'>Custom icon and color</Typography>
@@ -61,8 +58,8 @@ const RatingsCustomized = () => {
           precision={0.5}
           defaultValue={3}
           name='customized-color'
-          icon={<Icon icon='mdi:heart' className={classnames('flex-shrink-0', styles.errorIconColor)}/>}
-          emptyIcon={<Icon icon='mdi:heart' />}
+          icon={<i className={classnames('ri-heart-fill flex-shrink-0', styles.errorIconColor)}/>}
+          emptyIcon={<i className='ri-heart-fill' />}
         />
       </div>
       <div className='mbe-3'>

@@ -6,9 +6,6 @@ import type { SyntheticEvent } from 'react'
 import TreeView from '@mui/lab/TreeView'
 import TreeItem from '@mui/lab/TreeItem'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -32,8 +29,8 @@ const TreeViewControlled = () => {
       className={styles.treeViewMinHeight}
       onNodeToggle={handleToggle}
       onNodeSelect={handleSelect}
-      defaultExpandIcon={<Icon icon='mdi:chevron-right' />}
-      defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}
+      defaultExpandIcon={<i className='ri-arrow-right-s-line' />}
+      defaultCollapseIcon={<i className='ri-arrow-down-s-line' />}
     >
       <TreeItem nodeId='1' label='Applications'>
         <TreeItem nodeId='2' label='Calendar' />

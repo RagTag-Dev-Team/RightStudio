@@ -6,9 +6,6 @@ import type { MouseEvent } from 'react'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ButtonToggleVertical = () => {
   // States
   const [view, setView] = useState<string | null>('left')
@@ -20,13 +17,13 @@ const ButtonToggleVertical = () => {
   return (
     <ToggleButtonGroup exclusive value={view} orientation='vertical' onChange={handleView} aria-label='text alignment'>
       <ToggleButton value='left' aria-label='left aligned'>
-        <Icon icon='mdi:view-list' />
+        <i className='ri-layout-column-fill' />
       </ToggleButton>
       <ToggleButton value='center' aria-label='center aligned'>
-        <Icon icon='mdi:view-module' />
+        <i className='ri-layout-5-fill' />
       </ToggleButton>
       <ToggleButton value='right' aria-label='right aligned'>
-        <Icon icon='mdi:view-quilt' />
+        <i className='ri-layout-masonry-fill' />
       </ToggleButton>
     </ToggleButtonGroup>
   )

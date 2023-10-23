@@ -13,9 +13,6 @@ import DialogActions from '@mui/material/DialogActions'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -42,7 +39,7 @@ const DialogsCustomized = () => {
             onClick={handleClose}
             className={classnames('absolute top-2.5 right-2.5', styles.closeButton)}
           >
-            <Icon icon='mdi:close' />
+            <i className='ri-close-line' />
           </IconButton>
         </DialogTitle>
         <DialogContent dividers className='p-4'>

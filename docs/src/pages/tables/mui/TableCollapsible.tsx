@@ -12,9 +12,6 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import TableContainer from '@mui/material/TableContainer'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -53,7 +50,7 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
       <TableRow >
         <TableCell className={styles.tableCollapseBorder}>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
-            <Icon icon={open ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
+            <i className={open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
           </IconButton>
         </TableCell>
         <TableCell className={styles.tableCollapseBorder} component='th' scope='row'>{row.name}</TableCell>

@@ -6,9 +6,6 @@ import type { MouseEvent } from 'react'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ButtonToggleMultiple = () => {
   // States
   const [formats, setFormats] = useState<string[]>(() => ['bold', 'italic'])
@@ -20,16 +17,16 @@ const ButtonToggleMultiple = () => {
   return (
     <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='text alignment'>
       <ToggleButton value='bold' aria-label='bold'>
-        <Icon icon='mdi:format-bold' />
+        <i className='ri-bold' />
       </ToggleButton>
       <ToggleButton value='italic' aria-label='italic'>
-        <Icon icon='mdi:format-italic' />
+        <i className='ri-italic' />
       </ToggleButton>
       <ToggleButton value='underlined' aria-label='underlined'>
-        <Icon icon='mdi:format-underline' />
+        <i className='ri-underline' />
       </ToggleButton>
       <ToggleButton value='color' aria-label='color' disabled>
-        <Icon icon='mdi:format-color-fill' />
+        <i className='ri-paint-fill' />
       </ToggleButton>
     </ToggleButtonGroup>
   )

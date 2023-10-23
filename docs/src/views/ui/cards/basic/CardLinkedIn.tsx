@@ -10,9 +10,6 @@ import Avatar from '@mui/material/Avatar'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -21,7 +18,7 @@ const CardLinkedIn = () => {
     <Card className={classnames(styles.solidCard, styles.linkedInCard)}>
       <CardContent>
         <div className='flex items-center gap-2 mbe-4'>
-          <Icon icon='mdi:linkedin' fontSize='1.875rem' className={styles.text} />
+          <i className={classnames('ri-linkedin-fill text-3xl', styles.text)} />
           <Typography variant='h6' className={styles.text}>
             LinkedIn Card
           </Typography>
@@ -38,11 +35,11 @@ const CardLinkedIn = () => {
             </Typography>
           </div>
           <div className={classnames('flex items-center', styles.solidCardActionsGap)}>
-            <Icon icon='mdi:thumb-up' fontSize='1.25rem' className={styles.text} />
+            <i className={classnames('ri-thumb-up-fill text-3xl', styles.text)} />
             <Typography variant='body2' className={styles.text}>
               1.2k
             </Typography>
-            <Icon icon='mdi:share-variant' fontSize='1.25rem' className={styles.text} />
+            <i className={classnames('ri-share-line text-3xl', styles.text)} />
             <Typography variant='body2' className={styles.text}>
               56
             </Typography>

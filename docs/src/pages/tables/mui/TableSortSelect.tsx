@@ -21,9 +21,6 @@ import TablePagination from '@mui/material/TablePagination'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -205,7 +202,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       {numSelected > 0 ? (
         <Tooltip title='Delete'>
           <IconButton className={styles.tableSortIcon}>
-            <Icon icon='mdi:delete-outline' />
+            <i className='ri-delete-bin-7-line' />
           </IconButton>
         </Tooltip>
       ) : null}

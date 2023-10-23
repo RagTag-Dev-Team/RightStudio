@@ -5,9 +5,6 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ButtonsSizes = () => {
   return (
     <div className='flex gap-4 flex-col'>
@@ -46,19 +43,19 @@ const ButtonsSizes = () => {
       </div>
       <div className='flex gap-4 items-center'>
         <IconButton aria-label='capture screenshot' color='secondary' size='small'>
-          <Icon icon='mdi:camera-iris' fontSize='1rem' />
+          <i className='ri-camera-lens-fill text-base' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='secondary' size='small'>
-          <Icon icon='mdi:camera-iris' fontSize='inherit' />
+          <i className='ri-camera-lens-fill' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='secondary'>
-          <Icon icon='mdi:camera-iris' />
+          <i className='ri-camera-lens-fill' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='secondary' size='large'>
-          <Icon icon='mdi:camera-iris' fontSize='inherit' />
+          <i className='ri-camera-lens-fill' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='secondary' size='large'>
-          <Icon icon='mdi:camera-iris' fontSize='2.5rem' />
+          <i className='ri-camera-lens-fill text-[40px]' />
         </IconButton>
       </div>
     </div>

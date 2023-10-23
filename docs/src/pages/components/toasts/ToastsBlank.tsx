@@ -8,14 +8,11 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { toast } from 'react-toastify'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsBlank = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:checkbox-blank-outline' fontSize='2rem' className='mbe-2'/>
+      <i className='ri-checkbox-blank-line mbe-2 text-[32px]' />
       <Typography className='font-medium mbe-4'>Blank</Typography>
       <Typography className='mbe-3'>The most basic variant does not have an icon.</Typography>
       <Button className='mbe-8' variant='contained' onClick={() => toast('Blank Toast')}>

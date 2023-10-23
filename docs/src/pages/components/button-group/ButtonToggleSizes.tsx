@@ -6,9 +6,6 @@ import type { MouseEvent } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon';
-
 const ButtonToggleSizes = () => {
   // States
   const [alignment, setAlignment] = useState<string | null>("left");
@@ -30,16 +27,16 @@ const ButtonToggleSizes = () => {
         aria-label="text alignment"
       >
         <ToggleButton value="left" aria-label="left aligned">
-          <Icon icon="mdi:format-align-left" />
+          <i className="ri-align-left" />
         </ToggleButton>
         <ToggleButton value="center" aria-label="center aligned">
-          <Icon icon="mdi:format-align-center" />
+          <i className="ri-align-center" />
         </ToggleButton>
         <ToggleButton value="right" aria-label="right aligned">
-          <Icon icon="mdi:format-align-right" />
+          <i className="ri-align-right" />
         </ToggleButton>
         <ToggleButton value="justify" aria-label="justified" disabled>
-          <Icon icon="mdi:format-align-justify" />
+          <i className="ri-align-justify" />
         </ToggleButton>
       </ToggleButtonGroup>
       <ToggleButtonGroup
@@ -49,16 +46,16 @@ const ButtonToggleSizes = () => {
         aria-label="text alignment"
       >
         <ToggleButton value="left" aria-label="left aligned">
-          <Icon icon="mdi:format-align-left" />
+          <i className="ri-align-left" />
         </ToggleButton>
         <ToggleButton value="center" aria-label="center aligned">
-          <Icon icon="mdi:format-align-center" />
+          <i className="ri-align-center" />
         </ToggleButton>
         <ToggleButton value="right" aria-label="right aligned">
-          <Icon icon="mdi:format-align-right" />
+          <i className="ri-align-right" />
         </ToggleButton>
         <ToggleButton value="justify" aria-label="justified" disabled>
-          <Icon icon="mdi:format-align-justify" />
+          <i className="ri-align-justify" />
         </ToggleButton>
       </ToggleButtonGroup>
       <ToggleButtonGroup
@@ -69,16 +66,16 @@ const ButtonToggleSizes = () => {
         aria-label="text alignment"
       >
         <ToggleButton value="left" aria-label="left aligned">
-          <Icon icon="mdi:format-align-left" />
+          <i className="ri-align-left" />
         </ToggleButton>
         <ToggleButton value="center" aria-label="center aligned">
-          <Icon icon="mdi:format-align-center" />
+          <i className="ri-align-center" />
         </ToggleButton>
         <ToggleButton value="right" aria-label="right aligned">
-          <Icon icon="mdi:format-align-right" />
+          <i className="ri-align-right" />
         </ToggleButton>
         <ToggleButton value="justify" aria-label="justified" disabled>
-          <Icon icon="mdi:format-align-justify" />
+          <i className="ri-align-justify" />
         </ToggleButton>
       </ToggleButtonGroup>
     </div>

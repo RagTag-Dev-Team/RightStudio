@@ -6,9 +6,6 @@ import type { MouseEvent } from 'react'
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const OutsideBreadcrumb = () => {
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault()
@@ -38,7 +35,7 @@ const OutsideBreadcrumb = () => {
         <Typography>Breadcrumb</Typography>
       </Breadcrumbs>
 
-      <Breadcrumbs aria-label='breadcrumb' separator={<Icon icon='mdi:chevron-right' fontSize='1.25rem' />}>
+      <Breadcrumbs aria-label='breadcrumb' separator={<i className='ri-arrow-drop-right-line text-xl' />}>
         <a href='/' onClick={handleClick}>
           MUI
         </a>
@@ -50,15 +47,15 @@ const OutsideBreadcrumb = () => {
 
       <Breadcrumbs aria-label='breadcrumb' className='mbs-2'>
         <a href='/' onClick={handleClick} className='flex items-center'>
-          <Icon icon='mdi:home-outline' fontSize='1.25rem' />
+          <i className='ri-home-8-line text-xl' />
           MUI
         </a>
         <a href='/' onClick={handleClick} className='flex items-center'>
-          <Icon icon='mdi:bookmark-outline' fontSize='1.25rem' />
+          <i className='ri-bookmark-line text-xl' />
           Core
         </a>
         <Typography className='flex items-center'>
-          <Icon icon='mdi:file-outline' fontSize='1.25rem' />
+          <i className='ri-file-line text-xl' />
           Breadcrumb
         </Typography>
       </Breadcrumbs>

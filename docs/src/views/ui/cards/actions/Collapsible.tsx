@@ -9,8 +9,8 @@ import CardContent from '@mui/material/CardContent'
 import Collapse from '@mui/material/Collapse'
 import Typography from '@mui/material/Typography'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
+// Third-party Imports
+import classnames from 'classnames'
 
 const CardActionCollapsible = () => {
   // States
@@ -22,7 +22,7 @@ const CardActionCollapsible = () => {
         title='Collapsible'
         action={
           <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-            <Icon fontSize='1.25rem' icon={collapse ? 'mdi:chevron-down' : 'mdi:chevron-up'} />
+            <i className={classnames(collapse ? 'ri-arrow-down-s-line' : 'ri-arrow-up-s-line', 'text-xl')} />
           </IconButton>
         }
       />
@@ -31,7 +31,7 @@ const CardActionCollapsible = () => {
           <Typography variant='body2'>
             Click on{' '}
             <span className='align-top'>
-              <Icon fontSize='1.25rem' icon='mdi:chevron-up' />
+              <i className='ri-arrow-up-s-line text-xl' />
             </span>{' '}
             icon to see it in action
           </Typography>

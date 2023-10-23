@@ -14,9 +14,6 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Third Party Imports
 import classnames from 'classnames'
 
@@ -36,7 +33,7 @@ const TextFieldIcons = () => {
                 label='With a start adornment'
                 startAdornment={
                   <InputAdornment position='start'>
-                    <Icon icon='mdi:account-circle-outline' />
+                    <i className='ri-account-circle-line' />
                   </InputAdornment>
                 }
               />
@@ -49,7 +46,7 @@ const TextFieldIcons = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
-                    <Icon icon='mdi:account-circle-outline' />
+                    <i className='ri-account-circle-line' />
                   </InputAdornment>
                 )
               }}
@@ -58,7 +55,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <Icon icon='mdi:account-circle-outline' className={styles.textFieldIconColor}/>
+                <i className={classnames('ri-account-circle-line', styles.textFieldIconColor)} />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth label='With a grid' />
@@ -71,7 +68,7 @@ const TextFieldIcons = () => {
             <FilledInput
               startAdornment={
                 <InputAdornment position='start'>
-                  <Icon icon='mdi:account-circle-outline' />
+                  <i className='ri-account-circle-line' />
                 </InputAdornment>
               }
             />
@@ -85,7 +82,7 @@ const TextFieldIcons = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <Icon icon='mdi:account-circle-outline' />
+                  <i className='ri-account-circle-line' />
                 </InputAdornment>
               )
             }}
@@ -94,7 +91,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <Icon icon='mdi:account-circle-outline' className={styles.textFieldIconColor}/>
+                <i className={classnames('ri-account-circle-line', styles.textFieldIconColor)} />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='filled' label='With a grid' />
@@ -107,7 +104,7 @@ const TextFieldIcons = () => {
             <Input
               startAdornment={
                 <InputAdornment position='start'>
-                  <Icon icon='mdi:account-circle-outline' />
+                  <i className='ri-account-circle-line' />
                 </InputAdornment>
               }
             />
@@ -121,7 +118,7 @@ const TextFieldIcons = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <Icon icon='mdi:account-circle-outline' />
+                  <i className='ri-account-circle-line' />
                 </InputAdornment>
               )
             }}
@@ -130,7 +127,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <Icon icon='mdi:account-circle-outline' className={classnames('mbs-3' ,styles.textFieldIconColor)}/>
+                <i className={classnames('ri-account-circle-line mbs-3' ,styles.textFieldIconColor)}/>
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='standard' label='With a grid' />

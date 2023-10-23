@@ -14,9 +14,6 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const emails = ['username@gmail.com', 'user02@gmail.com']
 
 const DialogsBasic = () => {
@@ -49,7 +46,7 @@ const DialogsBasic = () => {
               <ListItemButton>
                 <ListItemAvatar>
                   <Avatar>
-                    <Icon icon='mdi:account-outline' />
+                    <i className='ri-user-3-line' />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={email} />
@@ -60,7 +57,7 @@ const DialogsBasic = () => {
             <ListItemButton>
               <ListItemAvatar>
                 <MuiAvatar>
-                  <Icon icon='mdi:plus' />
+                  <i className='ri-add-line' />
                 </MuiAvatar>
               </ListItemAvatar>
               <ListItemText primary='Add account' />

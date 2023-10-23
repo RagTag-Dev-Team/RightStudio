@@ -7,9 +7,6 @@ import Typography from '@mui/material/Typography'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const AccordionBasic = () => {
   return (
     <>
@@ -17,7 +14,7 @@ const AccordionBasic = () => {
         <AccordionSummary
           id='panel-header-1'
           aria-controls='panel-content-1'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <Typography>Accordion 1</Typography>
         </AccordionSummary>
@@ -33,7 +30,7 @@ const AccordionBasic = () => {
         <AccordionSummary
           id='panel-header-2'
           aria-controls='panel-content-2'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <Typography>Accordion 2</Typography>
         </AccordionSummary>
@@ -49,7 +46,7 @@ const AccordionBasic = () => {
         <AccordionSummary
           id='panel-header-3'
           aria-controls='panel-content-3'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <Typography>Accordion 3</Typography>
         </AccordionSummary>

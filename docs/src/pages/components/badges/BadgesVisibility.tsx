@@ -9,9 +9,6 @@ import Avatar from '@mui/material/Avatar'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const BadgesVisibility = () => {
   // States
   const [count, setCount] = useState<number>(1)
@@ -29,10 +26,10 @@ const BadgesVisibility = () => {
         </Badge>
         <ButtonGroup size='small'>
           <Button aria-label='reduce' onClick={() => setCount(Math.max(count - 1, 0))}>
-            <Icon icon='mdi:minus' fontSize='' />
+            <i className='ri-subtract-line text-xl'/>
           </Button>
           <Button aria-label='increase' onClick={() => setCount(count + 1)}>
-            <Icon icon='mdi:plus' fontSize='1.25rem' />
+            <i className='ri-add-line text-xl'/>
           </Button>
         </ButtonGroup>
       </div>

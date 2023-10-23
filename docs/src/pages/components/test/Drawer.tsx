@@ -12,9 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -44,7 +41,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon icon='mdi:inbox-arrow-down' />
+                  <i className='ri-inbox-archive-line' />
                 </ListItemIcon>
                 <ListItemText primary='Index' />
               </ListItemButton>
@@ -52,7 +49,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon icon='mdi:star-outline' />
+                  <i className='ri-star-line' />
                 </ListItemIcon>
                 <ListItemText primary='Starred' />
               </ListItemButton>
@@ -63,7 +60,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon icon='mdi:delete-outline' />
+                  <i className='ri-delete-bin-7-line' />
                 </ListItemIcon>
                 <ListItemText primary='Trash' />
               </ListItemButton>
@@ -71,7 +68,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon icon='mdi:information-outline' />
+                  <i className='ri-information-line' />
                 </ListItemIcon>
                 <ListItemText primary='Spam' />
               </ListItemButton>

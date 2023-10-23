@@ -5,9 +5,6 @@ import React from 'react'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ChipsOnDelete = () => {
   const handleDelete = () => {
     // eslint-disable-next-line no-console
@@ -24,13 +21,13 @@ const ChipsOnDelete = () => {
       </div>
       <Typography className='font-medium'>Custom</Typography>
       <div className='flex gap-4'>
-        <Chip label='Basic' onDelete={handleDelete} deleteIcon={<Icon icon='mdi:delete-outline' />} />
-        <Chip label='Primary' color='primary' onDelete={handleDelete} deleteIcon={<Icon icon='mdi:delete-outline' />} />
+        <Chip label='Basic' onDelete={handleDelete} deleteIcon={<i className='ri-delete-bin-7-line' />} />
+        <Chip label='Primary' color='primary' onDelete={handleDelete} deleteIcon={<i className='ri-delete-bin-7-line' />} />
         <Chip
           label='Secondary'
           color='secondary'
           onDelete={handleDelete}
-          deleteIcon={<Icon icon='mdi:delete-outline' />}
+          deleteIcon={<i className='ri-delete-bin-7-line' />}
         />
       </div>
     </div>

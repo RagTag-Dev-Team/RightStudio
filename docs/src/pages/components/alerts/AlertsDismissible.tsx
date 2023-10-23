@@ -10,9 +10,6 @@ import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
 import IconButton from '@mui/material/IconButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const AlertsDismissible = () => {
   // States
   const [open1, setOpen1] = useState<boolean>(true)
@@ -27,7 +24,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen1(false)}>
-                <Icon icon='mdi:close' fontSize='inherit' />
+                <i className='ri-close-line' />
               </IconButton>
             }
           >
@@ -44,7 +41,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen2(false)}>
-                <Icon icon='mdi:close' fontSize='inherit' />
+                <i className='ri-close-line'/>
               </IconButton>
             }
           >
@@ -61,7 +58,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen3(false)}>
-                <Icon icon='mdi:close' fontSize='inherit' />
+                <i className='ri-close-line'/>
               </IconButton>
             }
           >
@@ -78,7 +75,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen4(false)}>
-                <Icon icon='mdi:close' fontSize='inherit' />
+                <i className='ri-close-line'/>
               </IconButton>
             }
           >

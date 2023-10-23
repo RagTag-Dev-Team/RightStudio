@@ -18,9 +18,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -67,14 +64,14 @@ const CardMobile = () => {
             </div>
           </CardContent>
           <CardActions className='justify-between'>
-            <Button startIcon={<Icon icon='mdi:add-shopping-cart' />}>Add to Cart</Button>
+            <Button startIcon={<i className='ri-shopping-cart-2-line' />}>Add to Cart</Button>
             <IconButton
               id='share-button'
               aria-haspopup='true'
               {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
               onClick={handleClick}
             >
-              <Icon icon='mdi:share-variant' fontSize='1.25rem' />
+              <i className='ri-share-line text-xl' />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -83,16 +80,16 @@ const CardMobile = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <Icon icon='mdi:facebook' fontSize='1.25rem' />
+                <i className='ri-facebook-fill text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Icon icon='mdi:twitter' fontSize='1.25rem' />
+                <i className='ri-twitter-fill text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Icon icon='mdi:linkedin' fontSize='1.25rem' />
+                <i className='ri-linkedin-fill text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Icon icon='mdi:google-plus' fontSize='1.25rem' />
+                <i className='ri-google-line text-xl' />
               </MenuItem>
             </Menu>
           </CardActions>

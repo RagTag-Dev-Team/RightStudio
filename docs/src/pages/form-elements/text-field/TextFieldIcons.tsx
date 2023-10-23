@@ -9,8 +9,8 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
+// Third-party Imports
+import classnames from 'classnames'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -25,7 +25,7 @@ const TextFieldIcons = () => {
           id='input-with-icon-adornment'
           startAdornment={
             <InputAdornment position='start'>
-              <Icon icon='mdi:account-circle-outline' />
+              <i className='ri-account-circle-line' />
             </InputAdornment>
           }
         />
@@ -40,7 +40,7 @@ const TextFieldIcons = () => {
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
-              <Icon icon='mdi:account-circle-outline' />
+              <i className='ri-account-circle-line' />
             </InputAdornment>
           )
         }}
@@ -49,7 +49,7 @@ const TextFieldIcons = () => {
       <Grid item xs={12}>
         <Grid container spacing={2} className='items-end'>
           <Grid item xs={1} className='flex justify-center'>
-            <Icon icon='mdi:account-circle-outline' className={styles.textFiledIconColor} />
+            <i className={classnames('ri-account-circle-line', styles.textFiledIconColor)} />
           </Grid>
           <Grid item xs={11}>
             <TextField fullWidth variant='standard' id='input-with-icon-grid' label='With a grid' />

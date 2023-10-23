@@ -7,9 +7,6 @@ import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const SnackbarBasic = () => {
   // States
   const [open, setOpen] = useState<boolean>(false)
@@ -41,7 +38,7 @@ const SnackbarBasic = () => {
               Undo
             </Button>
             <IconButton size='small' aria-label='close' color='inherit' onClick={handleClose}>
-              <Icon icon='mdi:close' fontSize='1.25rem' />
+              <i className='ri-close-line text-xl' />
             </IconButton>
           </>
         }

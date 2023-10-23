@@ -10,9 +10,6 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const AccordionActions = () => {
   // States
   const [expanded, setExpanded] = useState<string | false>(false)
@@ -27,7 +24,7 @@ const AccordionActions = () => {
         <AccordionSummary
           id='actions-panel-header-1'
           aria-controls='actions-panel-content-1'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <FormControlLabel
             label='Accordion 1'
@@ -49,7 +46,7 @@ const AccordionActions = () => {
         <AccordionSummary
           id='actions-panel-header-2'
           aria-controls='actions-panel-content-2'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <FormControlLabel
             label='Accordion 2'
@@ -71,7 +68,7 @@ const AccordionActions = () => {
         <AccordionSummary
           id='actions-panel-header-3'
           aria-controls='actions-panel-content-3'
-          expandIcon={<Icon icon='mdi:chevron-down' />}
+          expandIcon={<i className='ri-arrow-down-s-line' />}
         >
           <FormControlLabel
             label='Accordion 3'

@@ -12,9 +12,6 @@ import type { AccordionProps } from '@mui/material/Accordion'
 import type { AccordionSummaryProps } from '@mui/material/AccordionSummary'
 import type { AccordionDetailsProps } from '@mui/material/AccordionDetails'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled component for Accordion component
 const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({
   boxShadow: 'none !important',
@@ -73,7 +70,7 @@ const AccordionCustomized = () => {
     setExpanded(isExpanded ? panel : false)
   }
 
-  const expandIcon = (value: string) => <Icon icon={expanded === value ? 'mdi:minus' : 'mdi:plus'} />
+  const expandIcon = (value: string) => <i className={expanded === value ? 'ri-subtract-line' : 'ri-add-line'} />
 
   return (
     <>

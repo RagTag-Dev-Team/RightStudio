@@ -8,9 +8,6 @@ import Typography from '@mui/material/Typography'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ButtonToggleEnforceValue = () => {
   // States
   const [formats, setFormats] = useState<string[]>(() => ['phone'])
@@ -34,16 +31,16 @@ const ButtonToggleEnforceValue = () => {
         <Typography className='font-medium mbe-2'>Exclusive Selection</Typography>
         <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
           <ToggleButton value='left' aria-label='left aligned'>
-            <Icon icon='mdi:format-align-left' />
+            <i className='ri-align-left' />
           </ToggleButton>
           <ToggleButton value='center' aria-label='center aligned'>
-            <Icon icon='mdi:format-align-center' />
+            <i className='ri-align-center' />
           </ToggleButton>
           <ToggleButton value='right' aria-label='right aligned'>
-            <Icon icon='mdi:format-align-right' />
+            <i className='ri-align-right' />
           </ToggleButton>
           <ToggleButton value='justify' aria-label='justified' disabled>
-            <Icon icon='mdi:format-align-justify' />
+            <i className='ri-align-justify' />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>
@@ -51,13 +48,13 @@ const ButtonToggleEnforceValue = () => {
         <Typography className='font-medium mbe-2'>Multiple Selection</Typography>
         <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='device'>
           <ToggleButton value='laptop' aria-label='laptop'>
-            <Icon icon='mdi:laptop' />
+            <i className='ri-macbook-line' />
           </ToggleButton>
           <ToggleButton value='desktop' aria-label='desktop'>
-            <Icon icon='mdi:monitor' />
+            <i className='ri-computer-line' />
           </ToggleButton>
           <ToggleButton value='phone' aria-label='phone'>
-            <Icon icon='mdi:cellphone' />
+            <i className='ri-smartphone-line' />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>

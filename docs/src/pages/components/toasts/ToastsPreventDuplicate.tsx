@@ -8,9 +8,6 @@ import Typography from "@mui/material/Typography";
 // Third-party Imports
 import { toast } from "react-toastify";
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsPreventDuplicate = () => {
     const toastId = useRef(null);
   
@@ -24,7 +21,7 @@ const ToastsPreventDuplicate = () => {
     <div
     className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:clipboard-off-outline' fontSize='2rem' className='mbe-2'/>
+      <i className='ri-clipboard-line'/>
       <Typography className='mbe-4 font-medium'>Prevent Duplicate</Typography>
       <Typography className='mbe-3'>Prevent duplicate toasts from being created.</Typography>
       <Button className='mbe-8'variant='contained' onClick={notify}>Notify</Button>

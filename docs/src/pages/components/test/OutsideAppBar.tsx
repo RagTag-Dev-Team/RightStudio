@@ -11,9 +11,6 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -22,7 +19,7 @@ const OutsideAppBar = () => {
     <AppBar position='static'>
       <Toolbar>
         <IconButton size='large' className='mie-2.5' color='inherit' aria-label='menu'>
-          <Icon icon='mdi:menu' />
+          <i className='ri-menu-line' />
         </IconButton>
         <Typography variant='h6' className={classnames('flex-grow', styles.appBarColor)}>
           News

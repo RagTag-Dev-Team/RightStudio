@@ -9,9 +9,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -22,7 +19,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:email-outline' fontSize='1.25rem' />
+              <i className='ri-mail-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Inbox' />
           </ListItemButton>
@@ -30,7 +27,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:content-copy' fontSize='1.25rem' />
+              <i className='ri-file-copy-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Draft' />
           </ListItemButton>
@@ -41,7 +38,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:clock-outline' fontSize='1.25rem' />
+              <i className='ri-time-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Snoozed' />
           </ListItemButton>
@@ -49,7 +46,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton component='a' href='#simple-list' className={styles.listItemButton}>
             <ListItemIcon>
-              <Icon icon='mdi:alert-circle-outline' fontSize='1.25rem' />
+              <i className='ri-spam-2-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItemButton>

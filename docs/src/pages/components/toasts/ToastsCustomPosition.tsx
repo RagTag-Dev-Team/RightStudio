@@ -8,9 +8,6 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { toast } from 'react-toastify'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsCustomPosition = () => {
   const handleClick = () => {
     return toast.success('Always at the bottom.', {
@@ -21,7 +18,7 @@ const ToastsCustomPosition = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:view-grid-plus-outline' fontSize='2rem' className='mbe-2'/>
+      <i className='ri-layout-grid-line mbe-2 text-[32px]'/>
       <Typography className='mbe-4 font-medium'>Custom Position</Typography>
       <Typography className='mbe-3'>You can change the toast's position as you like.</Typography>
       <Button className='mbe-8' variant='contained' onClick={handleClick}>

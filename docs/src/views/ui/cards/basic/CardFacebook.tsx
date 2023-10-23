@@ -10,9 +10,6 @@ import Avatar from '@mui/material/Avatar'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -21,7 +18,7 @@ const CardFacebook = () => {
     <Card className={classnames(styles.solidCard, styles.facebookCard)}>
       <CardContent>
         <div className='flex items-center gap-2 mbe-4'>
-          <Icon icon='mdi:facebook' fontSize='1.875rem' className={styles.text} />
+          <i className={classnames('ri-facebook-fill text-3xl', styles.text)} />
           <Typography variant='h6' className={styles.text}>
             Facebook Card
           </Typography>
@@ -38,11 +35,11 @@ const CardFacebook = () => {
             </Typography>
           </div>
           <div className={classnames('flex items-center', styles.solidCardActionsGap)}>
-            <Icon icon='mdi:thumb-up' fontSize='1.25rem' className={styles.text} />
+            <i className={classnames('ri-thumb-up-fill text-xl', styles.text)} />
             <Typography variant='body2' className={styles.text}>
               2.5k
             </Typography>
-            <Icon icon='mdi:share-variant' fontSize='1.25rem' className={styles.text} />
+            <i className={classnames('ri-share-line text-xl', styles.text)} />
             <Typography variant='body2' className={styles.text}>
               124
             </Typography>

@@ -5,9 +5,6 @@ import React from 'react'
 import TreeView from '@mui/lab/TreeView'
 import TreeItem from '@mui/lab/TreeItem'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -49,8 +46,8 @@ const TreeViewRichObject = () => {
     <TreeView
       className={styles.treeViewMinHeight}
       defaultExpanded={['root']}
-      defaultExpandIcon={<Icon icon='mdi:chevron-right' />}
-      defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}
+      defaultExpandIcon={<i className='ri-arrow-right-s-line' />}
+      defaultCollapseIcon={<i className='ri-arrow-down-s-line' />}
     >
       {renderTree(data)}
     </TreeView>

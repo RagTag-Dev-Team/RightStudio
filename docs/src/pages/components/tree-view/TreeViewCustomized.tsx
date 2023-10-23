@@ -7,9 +7,6 @@ import MuiTreeView from '@mui/lab/TreeView'
 import { styled } from '@mui/material/styles'
 import type { TreeViewProps } from '@mui/lab/TreeView'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled TreeView component
 const TreeView = styled(MuiTreeView)<TreeViewProps>({
   minHeight: 264,
@@ -27,9 +24,9 @@ const TreeViewCustomized = () => {
   return (
     <TreeView
       defaultExpanded={['1']}
-      defaultExpandIcon={<Icon icon='mdi:plus-box-outline' />}
-      defaultCollapseIcon={<Icon icon='mdi:minus-box-outline' />}
-      defaultEndIcon={<Icon icon='mdi:close-box-outline' className='close-icon' />}
+      defaultExpandIcon={<i className='ri-add-box-line' />}
+      defaultCollapseIcon={<i className='ri-checkbox-indeterminate-line' />}
+      defaultEndIcon={<i className='ri-close-line close-icon' />}
     >
       <TreeItem nodeId='1' label='Main'>
         <TreeItem nodeId='2' label='Hello' />

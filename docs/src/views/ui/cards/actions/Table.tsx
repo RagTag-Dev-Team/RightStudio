@@ -12,9 +12,6 @@ import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 import TableBody from '@mui/material/TableBody'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 const CardActionsTable = () => {
   return (
     <Card>
@@ -33,21 +30,21 @@ const CardActionsTable = () => {
               <TableRow>
                 <TableCell>Collapse</TableCell>
                 <TableCell>
-                  <Icon icon='mdi:chevron-up' />
+                  <i className='ri-arrow-up-s-line' />
                 </TableCell>
                 <TableCell>Collapse card content using collapse action</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Refresh Content</TableCell>
                 <TableCell>
-                  <Icon icon='mdi:refresh' />
+                  <i className='ri-refresh-line' />
                 </TableCell>
                 <TableCell>Refresh your card content using refresh action</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Remove Card</TableCell>
                 <TableCell>
-                  <Icon icon='mdi:close' />
+                  <i className='ri-close-line' />
                 </TableCell>
                 <TableCell>Remove card from page using remove card action</TableCell>
               </TableRow>

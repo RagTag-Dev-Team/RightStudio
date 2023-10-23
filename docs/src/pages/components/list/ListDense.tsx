@@ -9,9 +9,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ListDense = () => {
   return (
     <>
@@ -19,7 +16,7 @@ const ListDense = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:email-outline' fontSize='1.25rem' />
+              <i className='ri-mail-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Inbox' />
           </ListItemButton>
@@ -27,7 +24,7 @@ const ListDense = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:content-copy' fontSize='1.25rem' />
+              <i className='ri-file-copy-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Draft' />
           </ListItemButton>
@@ -38,7 +35,7 @@ const ListDense = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:clock-outline' fontSize='1.25rem' />
+              <i className='ri-time-line' />
             </ListItemIcon>
             <ListItemText primary='Snoozed' />
           </ListItemButton>
@@ -46,7 +43,7 @@ const ListDense = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:alert-circle-outline' fontSize='1.25rem' />
+              <i className='ri-spam-2-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItemButton>

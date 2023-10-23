@@ -17,8 +17,8 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import FormHelperText from '@mui/material/FormHelperText'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
+// Third-party Imports
+import classnames from 'classnames'
 
 type State = {
   weight: string
@@ -85,7 +85,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <Icon fontSize='1.25rem' icon={values.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }
@@ -130,7 +130,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <Icon fontSize='1.25rem' icon={values.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }
@@ -175,7 +175,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <Icon fontSize='1.25rem' icon={values.showPassword ? 'mdi:eye-outline' : 'mdi:eye-off-outline'} />
+                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }

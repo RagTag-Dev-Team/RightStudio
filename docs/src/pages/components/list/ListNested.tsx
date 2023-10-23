@@ -10,9 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ListNested = () => {
   // States
   const [open, setOpen] = useState<boolean>(true)
@@ -27,10 +24,10 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
-              <Icon icon='mdi:email-outline' fontSize='1.25rem' />
+              <i className='ri-mail-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Inbox' />
-            <Icon icon={open ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
+            <i className={open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
           </ListItemButton>
         </ListItem>
         <Collapse in={open} timeout='auto' unmountOnExit>
@@ -38,7 +35,7 @@ const ListNested = () => {
             <ListItem disablePadding>
               <ListItemButton className='pis-8'>
                 <ListItemIcon className='mie-4'>
-                  <Icon icon='mdi:send-clock' fontSize='1.25rem' />
+                  <i className='ri-time-line text-xl' />
                 </ListItemIcon>
                 <ListItemText primary='Scheduled' />
               </ListItemButton>
@@ -48,7 +45,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:content-copy' fontSize='1.25rem' />
+              <i className='ri-file-copy-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Draft' />
           </ListItemButton>
@@ -59,7 +56,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:clock-outline' fontSize='1.25rem' />
+              <i className='ri-time-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Snoozed' />
           </ListItemButton>
@@ -67,7 +64,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <Icon icon='mdi:alert-circle-outline' fontSize='1.25rem' />
+              <i className='ri-spam-2-line text-xl' />
             </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItemButton>

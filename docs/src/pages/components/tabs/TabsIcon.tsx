@@ -9,9 +9,6 @@ import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const TabsIcon = () => {
   // States
   const [value, setValue] = useState<string>('1')
@@ -23,9 +20,9 @@ const TabsIcon = () => {
   return (
     <TabContext value={value}>
       <TabList onChange={handleChange} aria-label='icon tabs example'>
-        <Tab value='1' label='Recent' icon={<Icon icon='mdi:phone' />} />
-        <Tab value='2' label='Favorites' icon={<Icon icon='mdi:heart-outline' />} />
-        <Tab value='3' label='Contacts' icon={<Icon icon='mdi:account-outline' />} />
+        <Tab value='1' label='Recent' icon={<i className='ri-phone-line' />} />
+        <Tab value='2' label='Favorites' icon={<i className='ri-heart-line' />} />
+        <Tab value='3' label='Contacts' icon={<i className='ri-account-circle-line' />} />
       </TabList>
       <TabPanel value='1'>
         <Typography>

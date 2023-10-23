@@ -12,9 +12,6 @@ import MuiMenuItem from '@mui/material/MenuItem'
 import type { MenuProps } from '@mui/material/Menu'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styled Menu component
 const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({
   '& .MuiMenu-paper': {
@@ -67,19 +64,19 @@ const MenuCustomized = () => {
       >
         <MenuItem>
           <ListItemIcon>
-            <Icon icon='mdi:send' fontSize='1.25rem' />
+            <i className='ri-send-plane-2-line text-xl' />
           </ListItemIcon>
           <ListItemText primary='Sent mail' />
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <Icon icon='mdi:email-open' fontSize='1.25rem' />
+            <i className='ri-mail-open-line text-xl' />
           </ListItemIcon>
           <ListItemText primary='Drafts' />
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <Icon icon='mdi:inbox-arrow-down' fontSize='1.25rem' />
+            <i className='ri-inbox-archive-line text-xl' />
           </ListItemIcon>
           <ListItemText primary='Inbox' />
         </MenuItem>

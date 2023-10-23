@@ -16,6 +16,9 @@ import ToastifyWrapper from '@docComponents/styled-components/react-toastify'
 // MUI's Customized Theme Import
 import ThemeProvider from '@site/src/mui-theme/ThemeProvider'
 
+// Generated Icon CSS Imports
+import '@/assets/iconify-icons/generated-icons.css'
+
 const LayoutWrapper = (props) => {
   return (
     <Layout {...props} >

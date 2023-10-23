@@ -16,9 +16,6 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 // Component Imports
 import TsToJsCodeSnippet from "../ts-js-code"
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 export type CardSnippetProps = CardProps & {
   title: string
   children: ReactNode
@@ -48,7 +45,7 @@ const CardSnippet = (props: CardSnippetProps) => {
           : {
               action: (
                 <IconButton onClick={() => setShowCode(!showCode)}>
-                  <Icon icon="mdi:code-tags" fontSize="1.25rem" />
+                  <i className="ri-code-line text-xl" />
                 </IconButton>
               ),
             })}

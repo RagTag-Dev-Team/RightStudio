@@ -5,9 +5,6 @@ import React from 'react'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ChipsAvatar = () => {
   return (
     <div className='flex gap-4 flex-wrap'>
@@ -18,7 +15,7 @@ const ChipsAvatar = () => {
         label='Archived'
         avatar={
           <Avatar>
-            <Icon icon='mdi:archive-outline' fontSize='1.25rem' />
+            <i className='ri-archive-line text-xl' />
           </Avatar>
         }
       />

@@ -7,9 +7,6 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const options = [
   'None',
   'Atria',
@@ -44,7 +41,7 @@ const MenuMaxHeight = () => {
   return (
     <>
       <IconButton aria-label='more' aria-controls='long-menu' aria-haspopup='true' onClick={handleClick}>
-        <Icon icon='mdi:dots-vertical' />
+        <i className='ri-more-2-line' />
       </IconButton>
       <Menu
         keepMounted

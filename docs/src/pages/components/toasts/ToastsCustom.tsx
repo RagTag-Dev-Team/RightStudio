@@ -10,9 +10,6 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { toast } from 'react-toastify'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const ToastsCustom = () => {
   const handleClick = () => {
     return toast(
@@ -26,7 +23,7 @@ const ToastsCustom = () => {
             </div>
           </div>
           <IconButton onClick={() => toast.dismiss(t.toastProps.toastId)}>
-            <Icon icon='mdi:close' fontSize='1.25rem' />
+            <i className='ri-close-line text-xl' />
           </IconButton>
         </div>
       ),
@@ -42,7 +39,7 @@ const ToastsCustom = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <Icon icon='mdi:pencil-outline' fontSize='2rem' className='mbe-2' />
+      <i className='ri-pencil-line mbe-2 text-[32px]' />
       <Typography className='mbe-4 font-medium'>Custom</Typography>
       <Typography className='mbe-3'>Make a toast using any custom content</Typography>
       <Button className='mbe-8' variant='contained' onClick={handleClick}>

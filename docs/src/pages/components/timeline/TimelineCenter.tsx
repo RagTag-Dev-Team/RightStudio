@@ -27,9 +27,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -111,7 +108,7 @@ const TimelineCenter = () => {
         )}
         <TimelineSeparator>
           <TimelineDot color='error'>
-            <Icon icon='mdi:file-word-outline' fontSize='1.25rem' />
+            <i className='ri-file-text-line text-xl' />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -150,7 +147,7 @@ const TimelineCenter = () => {
         )}
         <TimelineSeparator>
           <TimelineDot color='success'>
-            <Icon icon='mdi:image-outline' />
+            <i className='ri-image-line' />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -189,7 +186,7 @@ const TimelineCenter = () => {
         )}
         <TimelineSeparator>
           <TimelineDot color='warning'>
-            <Icon icon='mdi:star-outline' />
+            <i className='ri-star-line' />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -241,7 +238,7 @@ const TimelineCenter = () => {
         )}
         <TimelineSeparator>
           <TimelineDot color='info'>
-            <Icon icon='mdi:chart-pie-outline' />
+            <i className='ri-pie-chart-line' />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -258,7 +255,7 @@ const TimelineCenter = () => {
               </Typography>
               <div className='flex items-center gap-1'>
                 <Typography variant='h4'>$24,895</Typography>
-                <Icon icon='mdi:menu-up' fontSize='1.875rem' className={styles.textSuccess} />
+                <i className={classnames('ri-arrow-down-s-fill text-3xl', styles.textSuccess)} />
                 <Typography variant='body2' className={classnames('font-medium', styles.textSuccess)}>
                   10%
                 </Typography>
@@ -300,7 +297,7 @@ const TimelineCenter = () => {
         )}
         <TimelineSeparator>
           <TimelineDot color='primary'>
-            <Icon icon='mdi:folder-outline' />
+            <i className='ri-folder-line' />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>

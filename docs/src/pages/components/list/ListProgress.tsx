@@ -14,9 +14,6 @@ import type { ListProps } from '@mui/material/List'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-root': {
     border: `1px solid ${theme.palette.divider}`,
@@ -55,31 +52,31 @@ const courseList: CourseListType[] = [
     description: 'React is a JavaScript library for building user interfaces',
     progress: 90,
     variant: 'info',
-    icon: 'mdi:react'
+    icon: 'ri-reactjs-fill'
   },
   {
     description: 'Bootstrap is an open source toolkit',
     progress: 75,
     variant: 'primary',
-    icon: 'mdi:bootstrap'
+    icon: 'ri-bootstrap-fill'
   },
   {
     description: 'Vue.js is the Progressive JavaScript Framework',
     progress: 85,
     variant: 'success',
-    icon: 'mdi:vuejs'
+    icon: 'ri-vuejs-fill'
   },
   {
     description: 'Angular implements Functional Programming concepts',
     progress: 60,
     variant: 'error',
-    icon: 'mdi:angularjs'
+    icon: 'ri-angularjs-fill'
   },
   {
     description: 'JavaScript is the programming language of the Web',
     progress: 70,
     variant: 'warning',
-    icon: 'mdi:language-javascript'
+    icon: 'ri-javascript-fill'
   }
 ]
 
@@ -91,7 +88,7 @@ const ListProgress = () => {
           <ListItem key={index}>
             <ListItemAvatar className='flex gap-5 items-center w-full'>
               <Avatar variant='rounded' className='w-9 h-9'>
-                <Icon icon={course.icon} />
+                <i className={course.icon} />
               </Avatar>
               <div className='w-full'>
                 <ListItemText primary={course.description}></ListItemText>

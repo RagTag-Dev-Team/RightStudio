@@ -12,9 +12,6 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -35,7 +32,7 @@ const CardWithCollapse = () => {
       <CardActions className='justify-between'>
         <Button onClick={() => setExpanded(!expanded)}>Details</Button>
         <IconButton onClick={() => setExpanded(!expanded)}>
-          <Icon icon={expanded ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
+          <i className={expanded ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout={300}>

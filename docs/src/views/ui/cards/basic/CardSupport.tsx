@@ -11,9 +11,6 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -22,7 +19,7 @@ const CardSupport = () => {
     <Card>
       <CardContent className='flex flex-col items-center text-center'>
         <Avatar className={classnames('mbe-2', styles.supportAvatar)}>
-          <Icon icon='mdi:help-circle-outline' fontSize='2rem' />
+          <i className='ri-question-line text-[32px]' />
         </Avatar>
         <Typography variant='h6' className='mbe-2'>
           Support

@@ -10,28 +10,25 @@ import { CustomInputVerticalData } from '@docComponents/custom-inputs/types'
 // Components Imports
 import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const data: CustomInputVerticalData[] = [
   {
     value: 'backup',
     title: 'Backup',
     isSelected: true,
     content: 'Backup every file from your project.',
-    asset: 'mdi:server',
+    asset: 'ri-server-line',
   },
   {
     value: 'encrypt',
     title: 'Encrypt',
     content: 'Translate your data to encrypted text.',
-    asset: 'mdi:shield-outline',
+    asset: 'ri-shield-line',
   },
   {
     value: 'site-lock',
     title: 'Site Lock',
     content: 'Security tool to protect your website.',
-    asset: 'mdi:lock-outline',
+    asset: 'ri-lock-2-line',
   },
 ]
 
@@ -58,7 +55,7 @@ const CustomVerticalCheckboxIcon = () => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <Icon icon={item.asset} />
+          asset = <i className={item.asset} />
         }
 
         return (

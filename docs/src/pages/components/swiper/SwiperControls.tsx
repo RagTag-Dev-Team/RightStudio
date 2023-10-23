@@ -8,9 +8,6 @@ import Badge from '@mui/material/Badge'
 import classnames from 'classnames'
 import { useKeenSlider } from 'keen-slider/react'
 
-// Icon Imports
-import Icon from '@core/components/IconifyIcon'
-
 const SwiperControls = () => {
   // States
   const [loaded, setLoaded] = useState<boolean>(false)
@@ -48,17 +45,15 @@ const SwiperControls = () => {
         </div>
         {loaded && instanceRef.current && (
           <>
-            <Icon
-              icon='mdi:chevron-left'
-              className={classnames('arrow arrow-left', {
+            <i
+              className={classnames('ri-arrow-left-s-line arrow arrow-left', {
                 'arrow-disabled': currentSlide === 0
               })}
               onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
             />
 
-            <Icon
-              icon='mdi:chevron-right'
-              className={classnames('arrow arrow-right', {
+            <i
+              className={classnames('ri-arrow-right-s-line arrow arrow-right', {
                 'arrow-disabled': currentSlide === instanceRef.current.track.details.slides.length - 1
               })}
               onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
