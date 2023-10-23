@@ -15,6 +15,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './twoSteps.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const TwoStepsV2 = () => {
   // Hooks
@@ -45,7 +46,12 @@ const TwoStepsV2 = () => {
             </div>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>
-              <Typography className={styles.primaryColor} component={Link} href='/' onClick={e => e.preventDefault()}>
+              <Typography
+                className={commonStyles.primaryColor}
+                component={Link}
+                href='/'
+                onClick={e => e.preventDefault()}
+              >
                 Resend
               </Typography>
             </div>

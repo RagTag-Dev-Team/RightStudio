@@ -32,6 +32,7 @@ import CustomTabList from '@core/components/mui/TabList'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
   // States
@@ -187,7 +188,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
               href='/'
               component={Link}
               onClick={e => e.preventDefault()}
-              className={classnames('font-medium', styles.primary)}
+              className={classnames('font-medium', commonStyles.primary)}
             >
               Change address
             </Typography>

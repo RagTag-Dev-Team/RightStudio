@@ -1,7 +1,3 @@
 .cardMedia {
   block-size: 250px;
 }
-
-.errorColor {
-  color: var(--mui-palette-error-main);
-}

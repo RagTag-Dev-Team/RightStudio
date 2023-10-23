@@ -23,6 +23,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './login.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const LoginV1 = () => {
   // States
@@ -56,7 +57,7 @@ const LoginV1 = () => {
           <div className='flex justify-between items-center gap-x-3 gap-y-1 flex-wrap'>
             <FormControlLabel control={<Checkbox />} label='Remember me' />
             <Typography
-              className={classnames('text-end', styles.primaryColor)}
+              className={classnames('text-end', commonStyles.primaryColor)}
               component={Link}
               href='/pages/auth/forgot-password-v1'
             >
@@ -68,7 +69,7 @@ const LoginV1 = () => {
           </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>New on our platform?</Typography>
-            <Typography component={Link} href='/pages/auth/register-v1' className={styles.primaryColor}>
+            <Typography component={Link} href='/pages/auth/register-v1' className={commonStyles.primaryColor}>
               Create an account
             </Typography>
           </div>

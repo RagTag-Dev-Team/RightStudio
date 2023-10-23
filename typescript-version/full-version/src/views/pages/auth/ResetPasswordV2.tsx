@@ -20,6 +20,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './resetPassword.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const ResetPasswordV2 = () => {
   // States
@@ -78,7 +79,7 @@ const ResetPasswordV2 = () => {
             <Button fullWidth variant='contained' type='submit'>
               Set New Password
             </Button>
-            <Typography className={classnames('flex justify-center items-center', styles.primaryColor)}>
+            <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
               <Link href='/pages/auth/login-v2' onClick={e => e.preventDefault()} className='flex items-center'>
                 <i className='ri-arrow-left-s-line' />
                 <span>Back to Login</span>

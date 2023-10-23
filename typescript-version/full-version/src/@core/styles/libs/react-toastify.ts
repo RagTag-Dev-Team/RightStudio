@@ -4,7 +4,7 @@
 import { styled } from '@mui/material/styles'
 
 // Hook Imports
-import useSettings from '@/@core/hooks/useSettings'
+import useSettings from '@core/hooks/useSettings'
 
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -19,7 +19,7 @@ const ToastifyWrapper = styled('div')(({ theme }) => {
       padding: theme.spacing(1.5, 2.5),
       backgroundColor: 'var(--mui-palette-background-paper)',
       boxShadow: settings.skin === 'bordered' ? 'none' : 'var(--mui-customShadows-md)',
-      border: settings.skin === 'bordered' ? `1px solid ${theme.palette.divider}` : 'none',
+      border: settings.skin === 'bordered' && `1px solid ${theme.palette.divider}`,
       '&:not(.custom-toast)': {
         '& .Toastify__toast-body': {
           color: 'var(--mui-palette-text-primary)'

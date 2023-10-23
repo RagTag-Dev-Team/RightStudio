@@ -10,6 +10,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
+import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // THird-party Imports
@@ -35,7 +36,7 @@ import type { ThemeColor } from '@core/types'
 
 // Style Imports
 import styles from './styles.module.css'
-import tableStyles from '@core/styles/libs/reactTables.module.css'
+import tableStyles from '@core/styles/table.module.css'
 
 type ProjectListDataType = {
   id: number
@@ -183,9 +184,9 @@ const ProjectListTable = () => {
   const columns = useMemo<ColumnDef<ProjectListDataType, any>[]>(
     () => [
       columnHelper.accessor('projectTitle', {
-        header: () => <span>Project</span>,
+        header: 'Project',
         cell: ({ row }) => (
-          <div className={classnames('flex items-center', styles.projectColumn)}>
+          <div className='flex items-center'>
             <Avatar src={row.original.img} className={styles.avatarSize} />
             <div className='flex flex-col'>
               <Typography>{row.original.projectTitle}</Typography>
@@ -195,13 +196,13 @@ const ProjectListTable = () => {
         )
       }),
       columnHelper.accessor('totalTask', {
-        header: () => <span>Total Task</span>,
-        cell: ({ row }) => <Typography className={styles.totalTaskColumn}>{row.original.totalTask}</Typography>
+        header: 'Total Task',
+        cell: ({ row }) => <Typography>{row.original.totalTask}</Typography>
       }),
       columnHelper.accessor('progressValue', {
-        header: () => <span>Progress</span>,
+        header: 'Progress',
         cell: ({ row }) => (
-          <div className={styles.progressColumn}>
+          <>
             <Typography>{`${row.original.progressValue}%`}</Typography>
             <LinearProgress
               color='primary'
@@ -209,11 +210,11 @@ const ProjectListTable = () => {
               variant='determinate'
               className='w-full'
             />
-          </div>
+          </>
         )
       }),
       columnHelper.accessor('hours', {
-        header: () => <span>Hours</span>,
+        header: 'Hours',
         cell: ({ row }) => <Typography>{row.original.hours}</Typography>
       })
     ],
@@ -265,11 +266,11 @@ const ProjectListTable = () => {
 
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead>
+          <thead className={tableStyles.thead}>
             {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className={tableStyles.tr}>
+              <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
-                  <th key={header.id} className={tableStyles.th}>
+                  <th key={header.id}>
                     {header.isPlaceholder ? null : (
                       <>
                         <div
@@ -292,13 +293,13 @@ const ProjectListTable = () => {
               </tr>
             ))}
           </thead>
-          <tbody>
+          <tbody className={tableStyles.tbody}>
             {table
               .getRowModel()
               .rows.slice(0, table.getState().pagination.pageSize)
               .map(row => {
                 return (
-                  <tr key={row.id} className={classnames(tableStyles.tr, { selected: row.getIsSelected() })}>
+                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                     {row.getVisibleCells().map(cell => (
                       <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                     ))}
@@ -308,36 +309,21 @@ const ProjectListTable = () => {
           </tbody>
         </table>
       </div>
-      <div className='flex items-center gap-3'>
-        <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-          {'<<'}
-        </button>
-        <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-          {'<'}
-        </button>
-        <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-          {'>'}
-        </button>
-        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-          {'>>'}
-        </button>
-        <div className='flex items-center gap-1'>
-          <div>Page</div>
-          <strong>{`${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`}</strong>
-        </div>
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={e => {
-            table.setPageSize(Number(e.target.value))
-          }}
-        >
-          {[7, 10, 15].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+      <TablePagination
+        rowsPerPageOptions={[7, 10, 15]}
+        component='div'
+        className={tableStyles.paginationWrapper}
+        count={table.getFilteredRowModel().rows.length}
+        rowsPerPage={table.getState().pagination.pageSize}
+        page={table.getState().pagination.pageIndex}
+        SelectProps={{
+          inputProps: { 'aria-label': 'rows per page' }
+        }}
+        onPageChange={(_, page) => {
+          table.setPageIndex(page)
+        }}
+        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
+      />
     </Card>
   )
 }

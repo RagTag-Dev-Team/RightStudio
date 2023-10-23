@@ -17,10 +17,6 @@
   background-color: var(--mui-palette-background-default);
 }
 
-.errorColor {
-  color: var(--mui-palette-error-main);
-}
-
 .completedColor {
   color: var(--mui-palette-primary-main);
 }

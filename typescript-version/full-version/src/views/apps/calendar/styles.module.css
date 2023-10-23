@@ -4,14 +4,6 @@
   background-color: var(--mui-palette-background-default);
 }
 
-.primaryTextColor {
-  color: var(--mui-palette-text-primary);
-}
-
-.errorColor {
-  color: var(--mui-palette-error-main);
-}
-
 .calendarSidebar {
   box-shadow: none;
   background-color: var(--mui-palette-background-default);

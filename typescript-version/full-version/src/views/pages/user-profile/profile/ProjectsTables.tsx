@@ -33,23 +33,15 @@ import {
 import type { ColumnDef, FilterFn } from '@tanstack/react-table'
 import type { RankingInfo } from '@tanstack/match-sorter-utils'
 
+// Type Imports
+import type { ProjectTableRowType } from '@/types/pages/profileTypes'
+
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 
 // Style Imports
-import tableStyles from '@core/styles/libs/reactTables.module.css'
+import tableStyles from '@core/styles/table.module.css'
 import commonStyles from '@views/pages/user-profile/styles.module.css'
-
-type DataType = {
-  id: number
-  title: string
-  subtitle: string
-  leader: string
-  avatar?: string
-  avatarGroup: string[]
-  status: number
-  actions?: string
-}
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -59,71 +51,6 @@ declare module '@tanstack/table-core' {
     itemRank: RankingInfo
   }
 }
-
-const projectTable: DataType[] = [
-  {
-    id: 1,
-    title: 'BGC eCommerce App',
-    subtitle: 'React Project',
-    leader: 'Eileen',
-    avatarGroup: ['/images/avatars/1.png', '/images/avatars/2.png', '/images/avatars/3.png', '/images/avatars/4.png'],
-    status: 78
-  },
-  {
-    id: 2,
-    leader: 'Owen',
-    title: 'Falcon Logo Design',
-    subtitle: 'Figma Project',
-    avatar: '/images/icons/project-icons/social-label.png',
-    avatarGroup: ['/images/avatars/5.png', '/images/avatars/6.png'],
-    status: 18
-  },
-  {
-    id: 3,
-    title: 'Dashboard Design',
-    subtitle: 'VueJs Project',
-    leader: 'Keith',
-    avatar: '/images/icons/project-icons/sketch-label.png',
-    avatarGroup: ['/images/avatars/7.png', '/images/avatars/8.png', '/images/avatars/1.png', '/images/avatars/2.png'],
-    status: 62
-  },
-  {
-    id: 4,
-    title: 'Foodista Mobile App',
-    subtitle: 'Xamarin Project',
-    leader: 'Merline',
-    avatar: '/images/icons/project-icons/sketch-label.png',
-    avatarGroup: ['/images/avatars/3.png', '/images/avatars/4.png', '/images/avatars/5.png', '/images/avatars/6.png'],
-    status: 8
-  },
-  {
-    id: 5,
-    leader: 'Harmonia',
-    title: 'Dojo React Project',
-    subtitle: 'Python Project',
-    avatar: '/images/icons/project-icons/figma-label.png',
-    avatarGroup: ['/images/avatars/7.png', '/images/avatars/8.png', '/images/avatars/1.png'],
-    status: 36
-  },
-  {
-    id: 6,
-    leader: 'Allyson',
-    title: 'Blockchain Website',
-    subtitle: 'Sketch Project',
-    avatar: '/images/icons/project-icons/html-label.png',
-    avatarGroup: ['/images/avatars/2.png', '/images/avatars/3.png', '/images/avatars/4.png', '/images/avatars/5.png'],
-    status: 92
-  },
-  {
-    id: 7,
-    title: 'Hoffman Website',
-    subtitle: 'HTML Project',
-    leader: 'Georgie',
-    avatar: '/images/icons/project-icons/react-label.png',
-    avatarGroup: ['/images/avatars/6.png', '/images/avatars/7.png', '/images/avatars/8.png', '/images/avatars/1.png'],
-    status: 88
-  }
-]
 
 const IndeterminateCheckbox = ({
   indeterminate,
@@ -183,16 +110,16 @@ const DebouncedInput = ({
   return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
 }
 
-const ProjectTables = () => {
+const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[projectTable])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  const columnHelper = createColumnHelper<DataType>()
+  const columnHelper = createColumnHelper<ProjectTableRowType>()
 
-  const columns = useMemo<ColumnDef<DataType, any>[]>(
+  const columns = useMemo<ColumnDef<ProjectTableRowType, any>[]>(
     () => [
       {
         id: 'select',
@@ -272,7 +199,7 @@ const ProjectTables = () => {
   )
 
   const table = useReactTable({
-    data,
+    data: data as ProjectTableRowType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -283,7 +210,7 @@ const ProjectTables = () => {
     },
     initialState: {
       pagination: {
-        pageSize: 5
+        pageSize: 7
       }
     },
     enableRowSelection: true, //enable row selection for all rows

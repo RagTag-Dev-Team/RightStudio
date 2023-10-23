@@ -15,6 +15,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const products = [
   {
@@ -126,14 +127,19 @@ const StepConfirmation = () => {
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
-                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} className={styles.primary}>
+                    <Typography
+                      href='/'
+                      component={Link}
+                      onClick={e => e.preventDefault()}
+                      className={commonStyles.primary}
+                    >
                       {product.soldBy}
                     </Typography>
                     {product.inStock && <Chip size='small' color='success' label='In Stock' />}
                   </div>
                 </div>
                 <div className='flex items-center'>
-                  <Typography className={styles.primary}>{`$${product.price}`}</Typography>
+                  <Typography className={commonStyles.primary}>{`$${product.price}`}</Typography>
                   <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
                 </div>
               </div>

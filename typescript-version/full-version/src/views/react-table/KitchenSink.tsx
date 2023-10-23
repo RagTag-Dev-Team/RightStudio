@@ -103,7 +103,7 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
         fullWidth
         type='number'
         size='small'
-        sx={{ minWidth: 100 }}
+        sx={{ minInlineSize: 100, maxInlineSize: 125 }}
         value={(columnFilterValue as [number, number])?.[0] ?? ''}
         onChange={e => column.setFilterValue((old: [number, number]) => [e.target.value, old?.[1]])}
         placeholder={`Min ${column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : ''}`}
@@ -112,7 +112,7 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
         fullWidth
         type='number'
         size='small'
-        sx={{ minWidth: 100 }}
+        sx={{ minInlineSize: 100, maxInlineSize: 125 }}
         value={(columnFilterValue as [number, number])?.[1] ?? ''}
         onChange={e => column.setFilterValue((old: [number, number]) => [old?.[0], e.target.value])}
         placeholder={`Max ${column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : ''}`}
@@ -122,7 +122,7 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
     <TextField
       fullWidth
       size='small'
-      sx={{ minWidth: 100 }}
+      sx={{ minInlineSize: 100 }}
       value={(columnFilterValue ?? '') as string}
       onChange={e => column.setFilterValue(e.target.value)}
       placeholder='Search...'

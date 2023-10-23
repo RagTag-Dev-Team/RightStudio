@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import Link from 'next/link'
 
@@ -13,8 +11,12 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Component Imports
+import Form from '@components/Form'
+
 // Style Imports
 import styles from './forgotPassword.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const ForgotPasswordV1 = () => {
   return (
@@ -23,18 +25,18 @@ const ForgotPasswordV1 = () => {
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Forgot Password 🔒</Typography>
         <Typography>Enter your email and we&#39;ll send you instructions to reset your password</Typography>
-        <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
+        <Form noValidate autoComplete='off'>
           <TextField autoFocus fullWidth label='Email' />
           <Button fullWidth variant='contained' type='submit'>
             Send reset link
           </Button>
-          <Typography className={classnames('flex justify-center items-center', styles.primaryColor)}>
+          <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
             <Link href='/pages/auth/login-v1' className='flex items-center'>
               <i className='ri-arrow-left-s-line' />
               <span>Back to Login</span>
             </Link>
           </Typography>
-        </form>
+        </Form>
       </CardContent>
     </Card>
   )

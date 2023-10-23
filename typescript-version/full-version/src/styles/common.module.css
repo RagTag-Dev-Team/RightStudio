@@ -1,0 +1,30 @@
+.textPrimary {
+  color: var(--mui-palette-text-primary);
+}
+.textSecondary {
+  color: var(--mui-palette-text-secondary);
+}
+.textDisabled {
+  color: var(--mui-palette-text-disabled);
+}
+.primaryColor {
+  color: var(--mui-palette-primary-main);
+}
+.secondaryColor {
+  color: var(--mui-palette-secondary-main);
+}
+.errorColor {
+  color: var(--mui-palette-error-main);
+}
+.warningColor {
+  color: var(--mui-palette-warning-main);
+}
+.infoColor {
+  color: var(--mui-palette-info-main);
+}
+.successColor {
+  color: var(--mui-palette-success-main);
+}
+.border {
+  border: 1px solid var(--mui-palette-divider);
+}

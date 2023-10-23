@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
@@ -19,6 +14,7 @@ import type { TeamsTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import Link from '@components/Link'
 
 // Style Import
 import styles from './styles.module.css'
@@ -70,7 +66,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                     </AvatarGroup>
                     <div className='flex items-center'>
                       {item.chips.map((chip, index) => (
-                        <Link href='/' key={index} onClick={e => e.preventDefault()}>
+                        <Link key={index}>
                           <Chip size='small' label={chip.title} color={chip.color} />
                         </Link>
                       ))}

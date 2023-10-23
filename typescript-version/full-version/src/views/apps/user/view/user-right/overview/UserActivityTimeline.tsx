@@ -21,6 +21,7 @@ import classnames from 'classnames'
 
 // Styles Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -47,14 +48,12 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent className={styles.timelineIcon}>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography variant='body1' className='font-medium'>
-                  12 Invoices have been paid
-                </Typography>
-                <Typography variant='caption' className={styles.textDisabled}>
+                <Typography className='font-medium'>12 Invoices have been paid</Typography>
+                <Typography variant='caption' className={commonStyles.textDisabled}>
                   12 min ago
                 </Typography>
               </div>
-              <Typography variant='body1' className={classnames('mbe-2', styles.textSecondary)}>
+              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
                 Invoices have been paid to the company
               </Typography>
               <div
@@ -76,14 +75,12 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography variant='body1' className='font-medium'>
-                  Client Meeting
-                </Typography>
-                <Typography variant='caption' className={styles.textDisabled}>
+                <Typography className='font-medium'>Client Meeting</Typography>
+                <Typography variant='caption' className={commonStyles.textDisabled}>
                   45 min ago
                 </Typography>
               </div>
-              <Typography variant='body1' className={classnames('mbe-2', styles.textSecondary)}>
+              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
                 Project meeting with john @10:15am
               </Typography>
               <div className='flex items-center mbe-2.5 gap-2.5'>
@@ -104,14 +101,12 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography variant='body1' className='font-medium'>
-                  Create a new project for client
-                </Typography>
-                <Typography variant='caption' className={styles.textDisabled}>
+                <Typography className='font-medium'>Create a new project for client</Typography>
+                <Typography variant='caption' className={commonStyles.textDisabled}>
                   2 Day Ago
                 </Typography>
               </div>
-              <Typography variant='body1' className={classnames('mbe-2', styles.textSecondary)}>
+              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
                 6 team members in a project
               </Typography>
               <AvatarGroup total={6} className='pull-up'>

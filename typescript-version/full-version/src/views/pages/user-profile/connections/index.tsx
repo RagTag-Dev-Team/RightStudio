@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Avatar from '@mui/material/Avatar'
@@ -17,6 +12,7 @@ import type { ConnectionsTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import Link from '@components/Link'
 
 // Style Imports
 import commonStyles from '@views/pages/user-profile/styles.module.css'
@@ -44,7 +40,7 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                   <Typography>{item.designation}</Typography>
                   <div className='flex items-center'>
                     {item.chips.map((chip, index) => (
-                      <Link key={index} href='/' onClick={e => e.preventDefault()}>
+                      <Link key={index}>
                         <Chip label={chip.title} color={chip.color} size='small' />
                       </Link>
                     ))}

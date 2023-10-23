@@ -3,13 +3,13 @@ import type { ThemeColor } from '@core/types'
 
 export type ProjectTableRowType = {
   id: number
-  date: string
-  name: string
+  title: string
+  subtitle: string
   leader: string
-  status: number
   avatar?: string
   avatarGroup: string[]
-  avatarColor?: ThemeColor
+  status: number
+  actions?: string
 }
 export type ProfileHeaderType = {
   fullName: string

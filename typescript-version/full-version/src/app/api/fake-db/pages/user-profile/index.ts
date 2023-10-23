@@ -68,167 +68,162 @@ export const db: DB = {
           ChipColor: 'error',
           chipText: 'Developer',
           title: 'React Developers',
-          avatar: '/images/icons/project-icons/react-label.png'
+          avatar: '/images/logos/react-bg.png'
         },
         {
           members: 122,
           chipText: 'Support',
           ChipColor: 'primary',
           title: 'Support Team',
-          avatar: '/images/icons/project-icons/support-label.png'
+          avatar: '/images/icons/support-bg.png'
         },
         {
           members: 7,
           ChipColor: 'info',
           chipText: 'Designer',
           title: 'UI Designer',
-          avatar: '/images/icons/project-icons/figma-label.png'
+          avatar: '/images/logos/figma-bg.png'
         },
         {
           members: 289,
           ChipColor: 'error',
           chipText: 'Developer',
           title: 'Vue.js Developers',
-          avatar: '/images/icons/project-icons/vue-label.png'
+          avatar: '/images/logos/vue-bg.png'
         },
         {
           members: 24,
           chipText: 'Marketing',
           ChipColor: 'secondary',
           title: 'Digital Marketing',
-          avatar: '/images/icons/project-icons/twitter-label.png'
+          avatar: '/images/logos/twitter-bg.png'
         }
       ],
       projectTable: [
         {
           id: 1,
-          status: 38,
+          title: 'BGC eCommerce App',
+          subtitle: 'React Project',
           leader: 'Eileen',
-          name: 'Website SEO',
-          date: '10 may 2021',
-          avatarColor: 'success',
+          avatar: '/images/logos/react-bg.png',
           avatarGroup: [
             '/images/avatars/1.png',
             '/images/avatars/2.png',
             '/images/avatars/3.png',
             '/images/avatars/4.png'
-          ]
+          ],
+          status: 78
         },
         {
           id: 2,
-          status: 45,
           leader: 'Owen',
-          date: '03 Jan 2021',
-          name: 'Social Banners',
-          avatar: '/images/icons/project-icons/social-label.png',
-          avatarGroup: ['/images/avatars/5.png', '/images/avatars/6.png']
+          title: 'Falcon Logo Design',
+          subtitle: 'Figma Project',
+          avatar: '/images/logos/figma-bg.png',
+          avatarGroup: ['/images/avatars/5.png', '/images/avatars/6.png'],
+          status: 18
         },
         {
           id: 3,
-          status: 92,
+          title: 'Dashboard Design',
+          subtitle: 'VueJs Project',
           leader: 'Keith',
-          date: '12 Aug 2021',
-          name: 'Logo Designs',
-          avatar: '/images/icons/project-icons/sketch-label.png',
+          avatar: '/images/logos/vue-bg.png',
           avatarGroup: [
             '/images/avatars/7.png',
             '/images/avatars/8.png',
             '/images/avatars/1.png',
             '/images/avatars/2.png'
-          ]
+          ],
+          status: 62
         },
         {
           id: 4,
-          status: 56,
+          title: 'Foodista Mobile App',
+          subtitle: 'Xamarin Project',
           leader: 'Merline',
-          date: '19 Apr 2021',
-          name: 'IOS App Design',
-          avatar: '/images/icons/project-icons/sketch-label.png',
+          avatar: '/images/icons/mobile-bg.png',
           avatarGroup: [
             '/images/avatars/3.png',
             '/images/avatars/4.png',
             '/images/avatars/5.png',
             '/images/avatars/6.png'
-          ]
+          ],
+          status: 8
         },
         {
           id: 5,
-          status: 25,
           leader: 'Harmonia',
-          date: '08 Apr 2021',
-          name: 'Figma Dashboards',
-          avatar: '/images/icons/project-icons/figma-label.png',
-          avatarGroup: ['/images/avatars/7.png', '/images/avatars/8.png', '/images/avatars/1.png']
+          title: 'Dojo React Project',
+          subtitle: 'Python Project',
+          avatar: '/images/logos/python-bg.png',
+          avatarGroup: ['/images/avatars/7.png', '/images/avatars/8.png', '/images/avatars/1.png'],
+          status: 36
         },
         {
           id: 6,
-          status: 36,
           leader: 'Allyson',
-          date: '29 Sept 2021',
-          name: 'Crypto Admin',
-          avatar: '/images/icons/project-icons/html-label.png',
+          title: 'Blockchain Website',
+          subtitle: 'Sketch Project',
+          avatar: '/images/logos/sketch-bg.png',
           avatarGroup: [
             '/images/avatars/2.png',
             '/images/avatars/3.png',
             '/images/avatars/4.png',
             '/images/avatars/5.png'
-          ]
+          ],
+          status: 92
         },
         {
           id: 7,
-          status: 72,
+          title: 'Hoffman Website',
+          subtitle: 'HTML Project',
           leader: 'Georgie',
-          date: '20 Mar 2021',
-          name: 'Create Website',
-          avatar: '/images/icons/project-icons/react-label.png',
+          avatar: '/images/logos/html-bg.png',
           avatarGroup: [
             '/images/avatars/6.png',
             '/images/avatars/7.png',
             '/images/avatars/8.png',
             '/images/avatars/1.png'
-          ]
+          ],
+          status: 88
         },
         {
           id: 8,
-          status: 89,
-          leader: 'Fred',
-          date: '09 Feb 2021',
-          name: 'App Design',
-          avatar: '/images/icons/project-icons/xd-label.png',
+          title: 'eCommerce Website',
+          subtitle: 'React Project',
+          leader: 'Eileen',
+          avatar: '/images/logos/react-bg.png',
           avatarGroup: [
+            '/images/avatars/1.png',
             '/images/avatars/2.png',
             '/images/avatars/3.png',
-            '/images/avatars/4.png',
-            '/images/avatars/5.png'
-          ]
+            '/images/avatars/4.png'
+          ],
+          status: 78
         },
         {
           id: 9,
-          status: 77,
-          leader: 'Richardo',
-          date: '17 June 2021',
-          name: 'Angular APIs',
-          avatar: '/images/icons/project-icons/figma-label.png',
-          avatarGroup: [
-            '/images/avatars/6.png',
-            '/images/avatars/7.png',
-            '/images/avatars/8.png',
-            '/images/avatars/1.png'
-          ]
+          leader: 'Owen',
+          title: 'Retro Logo Design',
+          subtitle: 'Figma Project',
+          avatar: '/images/logos/figma-bg.png',
+          avatarGroup: ['/images/avatars/5.png', '/images/avatars/6.png'],
+          status: 18
         },
         {
           id: 10,
-          status: 100,
-          leader: 'Genevra',
-          date: '06 Oct 2021',
-          name: 'Admin Template',
-          avatar: '/images/icons/project-icons/vue-label.png',
+          title: 'Admin Dashboard',
+          subtitle: 'VueJs Project',
+          leader: 'Keith',
+          avatar: '/images/logos/vue-bg.png',
           avatarGroup: [
-            '/images/avatars/2.png',
-            '/images/avatars/3.png',
-            '/images/avatars/4.png',
-            '/images/avatars/5.png'
-          ]
+            '/images/avatars/7.png',
+            '/images/avatars/8.png',
+            '/images/avatars/1.png',
+            '/images/avatars/2.png'
+          ],
+          status: 62
         }
       ]
     },

@@ -23,7 +23,7 @@ const ProfileTab = ({ data }: { data?: ProfileTabType }) => {
           </Grid>
           <ConnectionsTeams connections={data?.connections} teamsTech={data?.teamsTech} />
           <Grid item xs={12}>
-            <ProjectsTable />
+            <ProjectsTable projectTable={data?.projectTable} />
           </Grid>
         </Grid>
       </Grid>

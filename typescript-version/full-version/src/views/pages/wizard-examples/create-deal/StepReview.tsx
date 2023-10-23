@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Style Imports
-import styles from '@core/styles/libs/reactTables.module.css'
+import styles from '@core/styles/table.module.css'
 
 type Props = {
   activeStep: number
@@ -23,7 +23,7 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
         <Typography className='mb-4'>Almost done! 🚀</Typography>
         <Typography className='mb-4'>Confirm your deal details information and submit to create it.</Typography>
         <table className={styles.table}>
-          <tbody>
+          <tbody className={styles.tbody}>
             <tr>
               <td>Deal Type</td>
               <td>Percentage</td>

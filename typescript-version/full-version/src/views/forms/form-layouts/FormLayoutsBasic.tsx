@@ -18,7 +18,7 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Style Imports
-import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const FormLayoutsBasic = () => {
   // States
@@ -101,8 +101,8 @@ const FormLayoutsBasic = () => {
                   Get Started!
                 </Button>
                 <div className='flex items-center justify-center gap-2'>
-                  <Typography variant='body1'>Already have an account?</Typography>
-                  <Link href='/' onClick={e => e.preventDefault()} className={styles.primaryColor}>
+                  <Typography>Already have an account?</Typography>
+                  <Link href='/' onClick={e => e.preventDefault()} className={commonStyles.primaryColor}>
                     Log In
                   </Link>
                 </div>

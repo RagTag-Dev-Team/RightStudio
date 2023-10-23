@@ -1,20 +1,14 @@
-'use client'
-
 // React Imports
-import { useState } from 'react'
 import type { ReactElement } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-
-// Third-party Imports
-import classnames from 'classnames'
-import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import Typography from '@mui/material/Typography'
 
 // Style Imports
-import styles from './styles.module.css'
-import tableStyles from '@core/styles/libs/reactTables.module.css'
+import commonStyles from '@/styles/common.module.css'
+import tableStyles from '@core/styles/table.module.css'
 
 type RecentDeviceDataType = {
   browserIcon: ReactElement
@@ -23,33 +17,6 @@ type RecentDeviceDataType = {
   location: string
   date: string
 }
-
-// Column Definitions
-const columnHelper = createColumnHelper<RecentDeviceDataType>()
-
-const columns = [
-  columnHelper.accessor('browserName', {
-    header: 'Browser',
-    cell: ({ row }) => (
-      <div className={classnames('flex items-center', styles.browserNameColumn)}>
-        <span className='flex'>{row.original.browserIcon}</span>
-        <span>{row.original.browserName}</span>
-      </div>
-    )
-  }),
-  columnHelper.accessor('device', {
-    cell: info => info.getValue(),
-    header: () => <div className={styles.deviceColumn}>Device</div>
-  }),
-  columnHelper.accessor('location', {
-    cell: info => info.getValue(),
-    header: () => <div className={styles.locationColumn}>Location</div>
-  }),
-  columnHelper.accessor('date', {
-    cell: info => info.getValue(),
-    header: () => <div className={styles.recentActivitiesColumn}>Recent Activities</div>
-  })
-]
 
 // Data
 const recentDeviceData: RecentDeviceDataType[] = [
@@ -98,46 +65,39 @@ const recentDeviceData: RecentDeviceDataType[] = [
 ]
 
 const RecentDevicesTable = () => {
-  // States
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setData] = useState(() => [...recentDeviceData])
-
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    filterFns: {
-      fuzzy: () => false
-    }
-  })
-
   return (
     <Card>
       <CardHeader title='Recent Devices' />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className={tableStyles.tr}>
-                {headerGroup.headers.map(header => (
-                  <th key={header.id} className={tableStyles.th}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </th>
-                ))}
+          <thead className={tableStyles.thead}>
+            <tr>
+              <th>Browser</th>
+              <th>Device</th>
+              <th>Location</th>
+              <th>Recent Activities</th>
+            </tr>
+          </thead>
+          <tbody className={tableStyles.tbody}>
+            {recentDeviceData.map((device, index) => (
+              <tr key={index}>
+                <td>
+                  <div className='flex items-center'>
+                    {device.browserIcon}
+                    <Typography>{device.browserName}</Typography>
+                  </div>
+                </td>
+                <td>
+                  <Typography className={commonStyles.textSecondary}>{device.device}</Typography>
+                </td>
+                <td>
+                  <Typography className={commonStyles.textSecondary}>{device.location}</Typography>
+                </td>
+                <td>
+                  <Typography className={commonStyles.textSecondary}>{device.date}</Typography>
+                </td>
               </tr>
             ))}
-          </thead>
-          <tbody>
-            {table
-              .getRowModel()
-              .rows.slice(0, 10)
-              .map(row => (
-                <tr key={row.id} className={tableStyles.tr}>
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  ))}
-                </tr>
-              ))}
           </tbody>
         </table>
       </div>

@@ -26,6 +26,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const products = [
   {
@@ -113,7 +114,12 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
-                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} className={styles.primary}>
+                    <Typography
+                      href='/'
+                      component={Link}
+                      onClick={e => e.preventDefault()}
+                      className={commonStyles.primary}
+                    >
                       {product.soldBy}
                     </Typography>
                     {product.inStock ? (
@@ -136,7 +142,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                   })}
                 >
                   <div className='flex'>
-                    <Typography className={styles.primary}>{`$${product.price}`}</Typography>
+                    <Typography className={commonStyles.primary}>{`$${product.price}`}</Typography>
                     <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
                   </div>
                   <Button variant='outlined' size='small'>
@@ -151,7 +157,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           href='/'
           component={Link}
           onClick={e => e.preventDefault()}
-          className={classnames('flex items-center justify-between gap-4', styles.border, styles.primary)}
+          className={classnames('flex items-center justify-between gap-4', styles.border, commonStyles.primary)}
         >
           Add more products from wishlist
           <i className='ri-arrow-right-s-line' />
@@ -174,7 +180,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                 href='/'
                 component={Link}
                 onClick={e => e.preventDefault()}
-                className={classnames('font-medium', styles.primary)}
+                className={classnames('font-medium', commonStyles.primary)}
               >
                 Add a gift wrap
               </Typography>
@@ -194,7 +200,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                   href='/'
                   component={Link}
                   onClick={e => e.preventDefault()}
-                  className={classnames('font-medium', styles.primary)}
+                  className={classnames('font-medium', commonStyles.primary)}
                 >
                   Apply Coupon
                 </Typography>

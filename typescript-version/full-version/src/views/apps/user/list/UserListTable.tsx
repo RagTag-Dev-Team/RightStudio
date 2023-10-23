@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
 import { styled } from '@mui/material/styles'
+import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -47,7 +48,7 @@ import AddUserDrawer from './AddUserDrawer'
 
 // Styles Imports
 import styles from './styles.module.css'
-import tableStyles from '@core/styles/libs/reactTables.module.css'
+import tableStyles from '@core/styles/table.module.css'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -160,7 +161,6 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         id: 'select',
         header: ({ table }) => (
           <IndeterminateCheckbox
-            className={styles.selectColumn}
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -170,7 +170,6 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         ),
         cell: ({ row }) => (
           <IndeterminateCheckbox
-            className={styles.selectColumn}
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -181,43 +180,43 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         )
       },
       columnHelper.accessor('fullName', {
-        header: () => <span>User</span>,
+        header: 'User',
         cell: ({ row }) => (
-          <div className={classnames('flex items-center', styles.userColumn)}>
+          <div className='flex items-center'>
             <Avatar src={row.original.avatar} />
             <div className='flex flex-col'>
-              <Typography>{row.original.fullName}</Typography>
+              <Typography component={Link} href='/apps/user/view' className={styles.title}>
+                {row.original.fullName}
+              </Typography>
               <Typography>{row.original.username}</Typography>
             </div>
           </div>
         )
       }),
       columnHelper.accessor('email', {
-        header: () => <span>Email</span>,
-        cell: ({ row }) => <Typography className={styles.emailColumn}>{row.original.email}</Typography>
+        header: 'Email',
+        cell: ({ row }) => <Typography>{row.original.email}</Typography>
       }),
       columnHelper.accessor('role', {
-        header: () => <span>Role</span>,
+        header: 'Role',
         cell: ({ row }) => (
           <div className='flex items-center'>
             <Icon
               className={userRoleObj[row.original.role].icon}
               sx={{ color: `var(--mui-palette-${userRoleObj[row.original.role].color}-main)` }}
             />
-            <Typography className={classnames('capitalize', styles.roleColumn)}>{row.original.role}</Typography>
+            <Typography className='capitalize'>{row.original.role}</Typography>
           </div>
         )
       }),
       columnHelper.accessor('currentPlan', {
-        header: () => <span>Plan</span>,
-        cell: ({ row }) => (
-          <Typography className={classnames('capitalize', styles.planColumn)}>{row.original.currentPlan}</Typography>
-        )
+        header: 'Plan',
+        cell: ({ row }) => <Typography className='capitalize'>{row.original.currentPlan}</Typography>
       }),
       columnHelper.accessor('status', {
-        header: () => <span>Status</span>,
+        header: 'Status',
         cell: ({ row }) => (
-          <div className={classnames('flex items-center gap-3', styles.statusColumn)}>
+          <div className='flex items-center gap-3'>
             <Chip
               className='capitalize'
               label={row.original.status}
@@ -228,7 +227,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         )
       }),
       columnHelper.accessor('action', {
-        header: () => <div>Actions</div>,
+        header: 'Action',
         cell: () => (
           <div className='flex items-center'>
             <i className='ri-delete-bin-7-line text-[22px]' />
@@ -297,11 +296,11 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         </div>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
-            <thead>
+            <thead className={tableStyles.thead}>
               {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id} className={tableStyles.tr}>
+                <tr key={headerGroup.id}>
                   {headerGroup.headers.map(header => (
-                    <th key={header.id} className={tableStyles.th}>
+                    <th key={header.id}>
                       {header.isPlaceholder ? null : (
                         <>
                           <div
@@ -324,13 +323,13 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
                 </tr>
               ))}
             </thead>
-            <tbody>
+            <tbody className={tableStyles.tbody}>
               {table
                 .getRowModel()
                 .rows.slice(0, table.getState().pagination.pageSize)
                 .map(row => {
                   return (
-                    <tr key={row.id} className={classnames(tableStyles.tr, { selected: row.getIsSelected() })}>
+                    <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                       {row.getVisibleCells().map(cell => (
                         <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                       ))}
@@ -340,36 +339,21 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
             </tbody>
           </table>
         </div>
-        <div className='flex items-center gap-3'>
-          <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-            {'<<'}
-          </button>
-          <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-            {'<'}
-          </button>
-          <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-            {'>'}
-          </button>
-          <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-            {'>>'}
-          </button>
-          <div className='flex items-center gap-1'>
-            <div>Page</div>
-            <strong>{`${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`}</strong>
-          </div>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={e => {
-              table.setPageSize(Number(e.target.value))
-            }}
-          >
-            {[10, 25, 50].map(pageSize => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 50]}
+          component='div'
+          className={tableStyles.paginationWrapper}
+          count={table.getFilteredRowModel().rows.length}
+          rowsPerPage={table.getState().pagination.pageSize}
+          page={table.getState().pagination.pageIndex}
+          SelectProps={{
+            inputProps: { 'aria-label': 'rows per page' }
+          }}
+          onPageChange={(_, page) => {
+            table.setPageIndex(page)
+          }}
+          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
+        />
       </Card>
       <AddUserDrawer open={addUserOpen} handleClose={() => setAddUserOpen(!addUserOpen)} />
     </>

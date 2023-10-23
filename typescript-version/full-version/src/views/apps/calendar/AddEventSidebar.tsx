@@ -15,7 +15,6 @@ import IconButton from '@mui/material/IconButton'
 import InputLabel from '@mui/material/InputLabel'
 import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
-import FormHelperText from '@mui/material/FormHelperText'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Third-party Imports
@@ -31,6 +30,7 @@ import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 interface PickerProps {
   label?: string
@@ -212,15 +212,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         </Typography>
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
-            <IconButton size='small' onClick={handleDeleteButtonClick} className={styles.primaryTextColor}>
+            <IconButton size='small' onClick={handleDeleteButtonClick} className={commonStyles.primaryTextColor}>
               <i className='ri-delete-bin-7-line text-xl' />
             </IconButton>
-            <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
+            <IconButton size='small' onClick={handleSidebarClose} className={commonStyles.primaryTextColor}>
               <i className='ri-close-line text-xl' />
             </IconButton>
           </Box>
         ) : (
-          <IconButton size='small' onClick={handleSidebarClose} className={styles.primaryTextColor}>
+          <IconButton size='small' onClick={handleSidebarClose} className={commonStyles.primaryTextColor}>
             <i className='ri-close-line text-xl' />
           </IconButton>
         )}
@@ -234,14 +234,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
-                  <TextField label='Title' value={value} onChange={onChange} error={Boolean(errors.title)} />
+                  <TextField
+                    label='Title'
+                    value={value}
+                    onChange={onChange}
+                    {...(errors.title && { error: true, helperText: 'This field is required' })}
+                  />
                 )}
               />
-              {errors.title && (
-                <FormHelperText className={styles.errorColor} id='event-title-error'>
-                  This field is required
-                </FormHelperText>
-              )}
             </FormControl>
             <FormControl fullWidth className='mbe-6'>
               <InputLabel id='event-calendar'>Calendar</InputLabel>

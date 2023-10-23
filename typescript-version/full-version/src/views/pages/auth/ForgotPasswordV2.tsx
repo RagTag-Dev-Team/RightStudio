@@ -15,6 +15,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './forgotPassword.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const ForgotPasswordV2 = () => {
   // Hooks
@@ -33,7 +34,7 @@ const ForgotPasswordV2 = () => {
             <Button fullWidth variant='contained' type='submit'>
               Send reset link
             </Button>
-            <Typography className={classnames('flex justify-center items-center', styles.primaryColor)}>
+            <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
               <Link href='/pages/auth/login-v2' className='flex items-center'>
                 <i className='ri-arrow-left-s-line' />
                 <span>Back to Login</span>

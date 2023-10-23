@@ -23,6 +23,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './register.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const RegisterV1 = () => {
   // States
@@ -58,7 +59,7 @@ const RegisterV1 = () => {
             label={
               <>
                 <span>I agree to </span>
-                <Link className={styles.primaryColor} href='/' onClick={e => e.preventDefault()}>
+                <Link className={commonStyles.primaryColor} href='/' onClick={e => e.preventDefault()}>
                   privacy policy & terms
                 </Link>
               </>
@@ -69,7 +70,7 @@ const RegisterV1 = () => {
           </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Already have an account?</Typography>
-            <Typography component={Link} href='/pages/auth/login-v1' className={styles.primaryColor}>
+            <Typography component={Link} href='/pages/auth/login-v1' className={commonStyles.primaryColor}>
               Sign in instead
             </Typography>
           </div>
