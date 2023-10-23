@@ -1,20 +1,19 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import AddNewAddress from '@components/dialogs/add-edit-address'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogAddNewAddress = () => {
-  // States
-  const [show, setShow] = useState(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Show'
+  }
 
   return (
     <Card>
@@ -24,11 +23,8 @@ const DialogAddNewAddress = () => {
         <Typography>
           Ready to use form to collect user address data with validation and custom input support.
         </Typography>
-        <Button variant='contained' onClick={() => setShow(true)}>
-          Show
-        </Button>
+        <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={AddNewAddress} />
       </CardContent>
-      <AddNewAddress open={show} setOpen={setShow} />
     </Card>
   )
 }

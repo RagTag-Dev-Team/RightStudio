@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -14,18 +11,23 @@ import Chip from '@mui/material/Chip'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import LinearProgress from '@mui/material/LinearProgress'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
+import type { ThemeColor } from '@core/types'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
 import PricingDialog from '@components/dialogs/pricing'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
-  // States
-  const [open, setOpen] = useState(false)
-  const [openPricing, setOpenPricing] = useState(false)
+  const buttonProps = (children: string, variant: ButtonProps['variant'], color: ThemeColor): ButtonProps => ({
+    children,
+    variant,
+    color
+  })
 
   return (
     <Card>
@@ -62,15 +64,20 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
             <Typography>Your plan requires update</Typography>
           </Grid>
           <div className='flex gap-4 flex-wrap'>
-            <Button variant='contained' onClick={() => setOpenPricing(true)}>
-              Upgrade plan
-            </Button>
-            <Button variant='outlined' color='secondary' type='reset' onClick={() => setOpen(true)}>
-              Cancel Subscription
-            </Button>
+            <OpenDialogOnElementClick
+              element={Button}
+              elementProps={buttonProps('upgrade plan', 'contained', 'primary')}
+              dialog={PricingDialog}
+              dialogProps={{ data: data }}
+            />
+            <OpenDialogOnElementClick
+              element={Button}
+              elementProps={buttonProps('Cancel Subscription', 'outlined', 'secondary')}
+              dialog={ConfirmationDialog}
+              dialogProps={{ type: 'unsubscribe' }}
+            />
           </div>
-          <ConfirmationDialog open={open} setOpen={setOpen} type='unsubscribe' />
-          <PricingDialog open={openPricing} setOpen={setOpenPricing} data={data} />
+          {/* <ConfirmationDialog open={open} setOpen={setOpen} type='unsubscribe' /> */}
         </Grid>
       </CardContent>
     </Card>

@@ -1,8 +1,3 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -11,13 +6,18 @@ import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { ThemeColor } from '@core/types'
+
 // Component Imports
 import EditUserInfo from '@components/dialogs/edit-user-info'
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -37,9 +37,11 @@ const userData = {
 }
 
 const UserDetails = () => {
-  // States
-  const [openEdit, setOpenEdit] = useState(false)
-  const [openConfirmation, setOpenConfirmation] = useState(false)
+  const buttonProps = (children: string, color: ThemeColor, variant: ButtonProps['variant']): ButtonProps => ({
+    children,
+    color,
+    variant
+  })
 
   return (
     <>
@@ -113,17 +115,21 @@ const UserDetails = () => {
             </div>
           </div>
           <div className='flex gap-4 justify-center'>
-            <Button variant='contained' onClick={() => setOpenEdit(true)}>
-              Edit
-            </Button>
-            <Button variant='outlined' color='error' onClick={() => setOpenConfirmation(true)}>
-              Suspend
-            </Button>
+            <OpenDialogOnElementClick
+              element={Button}
+              elementProps={buttonProps('Edit', 'primary', 'contained')}
+              dialog={EditUserInfo}
+              dialogProps={{ data: userData }}
+            />
+            <OpenDialogOnElementClick
+              element={Button}
+              elementProps={buttonProps('Suspend', 'error', 'outlined')}
+              dialog={ConfirmationDialog}
+              dialogProps={{ type: 'suspend-account' }}
+            />
           </div>
         </CardContent>
       </Card>
-      <EditUserInfo open={openEdit} setOpen={setOpenEdit} data={userData} />
-      <ConfirmationDialog open={openConfirmation} setOpen={setOpenConfirmation} type='suspend-account' />
     </>
   )
 }

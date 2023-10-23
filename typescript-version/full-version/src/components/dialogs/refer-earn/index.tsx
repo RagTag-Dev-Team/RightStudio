@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import type { ReactNode } from 'react'
 
@@ -100,7 +102,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                   )}
                 </Avatar>
                 <div className='flex flex-col gap-2 text-center'>
-                  <Typography variant='body1'>{option.title}</Typography>
+                  <Typography>{option.title}</Typography>
                   <Typography variant='body2'>{option.subtitle}</Typography>
                 </div>
               </div>

@@ -12,6 +12,7 @@ import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -21,6 +22,7 @@ import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -69,7 +71,6 @@ const data: DataType[] = [
 
 const PaymentMethod = () => {
   // States
-  const [open, setOpen] = useState(false)
   const [creditCard, setCreditCard] = useState(0)
 
   // Hooks
@@ -77,30 +78,33 @@ const PaymentMethod = () => {
 
   const handleAddCard = () => {
     setCreditCard(-1)
-    setOpen(true)
   }
 
   const handleClickOpen = (index: number) => {
-    setOpen(true)
     setCreditCard(index)
   }
+
+  const addButtonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Add Card',
+    size: 'small',
+    startIcon: <i className='ri-add-line' />,
+    onClick: handleAddCard
+  }
+
+  const editButtonProps = (index: number): ButtonProps => ({
+    variant: 'outlined',
+    children: 'Edit',
+    size: 'small',
+    onClick: () => handleClickOpen(index)
+  })
 
   return (
     <>
       <Card>
         <CardHeader
           title='Payment Methods'
-          action={
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={handleAddCard}
-              startIcon={<i className='ri-add-line' />}
-              size='small'
-            >
-              Add Card
-            </Button>
-          }
+          action={<OpenDialogOnElementClick element={Button} elementProps={addButtonProps} dialog={BillingCard} />}
         />
         <CardContent className='flex flex-col'>
           {data.map((item, index) => (
@@ -122,9 +126,12 @@ const PaymentMethod = () => {
               </div>
               <div className='flex flex-col'>
                 <div className='flex'>
-                  <Button variant='outlined' onClick={() => handleClickOpen(index)} size='small'>
-                    Edit
-                  </Button>
+                  <OpenDialogOnElementClick
+                    element={Button}
+                    elementProps={editButtonProps(index)}
+                    dialog={BillingCard}
+                    dialogProps={{ data: data[creditCard] }}
+                  />
                   <Button variant='outlined' color='secondary' size='small'>
                     Delete
                   </Button>
@@ -135,7 +142,6 @@ const PaymentMethod = () => {
           ))}
         </CardContent>
       </Card>
-      <BillingCard open={open} setOpen={setOpen} data={data[creditCard]} />
     </>
   )
 }

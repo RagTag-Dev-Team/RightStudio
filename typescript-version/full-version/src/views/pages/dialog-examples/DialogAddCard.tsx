@@ -1,20 +1,19 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogAddCard = () => {
-  // States
-  const [open, setOpen] = useState(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Show'
+  }
 
   return (
     <>
@@ -25,12 +24,9 @@ const DialogAddCard = () => {
           <Typography>
             Quickly collect the credit card details, built in input mask and form validation support.
           </Typography>
-          <Button variant='contained' onClick={() => setOpen(true)}>
-            Show
-          </Button>
+          <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={BillingCard} />
         </CardContent>
       </Card>
-      <BillingCard open={open} setOpen={setOpen} />
     </>
   )
 }

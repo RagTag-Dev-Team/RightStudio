@@ -1,30 +1,23 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
+import Link from '@components/Link'
 import type { Direction } from '@core/types'
 
 // Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) => {
-  // States
-  const [open, setOpen] = useState<boolean>(false)
-
-  const handleClickOpen = () => {
-    setOpen(true)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Enable two-factor authentication'
   }
 
   return (
@@ -37,15 +30,15 @@ const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) =>
             <Typography>
               Two-factor authentication adds an additional layer of security to your account by requiring more than just
               a password to log in.
-              <Link href='/' onClick={e => e.preventDefault()}>
-                Learn more.
-              </Link>
+              <Link>Learn more.</Link>
             </Typography>
           </div>
-          <Button variant='contained' onClick={handleClickOpen}>
-            Enable two-factor authentication
-          </Button>
-          <TwoFactorAuth open={open} setOpen={setOpen} direction={direction} />
+          <OpenDialogOnElementClick
+            element={Button}
+            elementProps={buttonProps}
+            dialog={TwoFactorAuth}
+            dialogProps={{ direction: direction }}
+          />
         </CardContent>
       </Card>
     </>

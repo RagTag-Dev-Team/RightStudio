@@ -10,7 +10,10 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
+import TablePagination from '@mui/material/TablePagination'
+import IconButton from '@mui/material/IconButton'
 import type { TextFieldProps } from '@mui/material/TextField'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -35,8 +38,9 @@ import type { ThemeColor } from '@core/types'
 import type { PermissionRowType } from '@/types/apps/permissionTypes'
 
 // Style Imports
-import tableStyles from '@core/styles/libs/reactTables.module.css'
-import PermissionDialog from '@/components/dialogs/permission-dialog'
+import tableStyles from '@core/styles/table.module.css'
+import PermissionDialog from '@components/dialogs/permission-dialog'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -119,7 +123,6 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   }
 
   const handleAddPermission = () => {
-    setOpen(true)
     setEditValue('')
   }
 
@@ -128,27 +131,30 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   const columns = useMemo<ColumnDef<PermissionsTypeWithAction, any>[]>(
     () => [
       columnHelper.accessor('name', {
-        header: () => <span>Name</span>,
+        header: 'Name',
         cell: ({ row }) => <Typography>{row.original.name}</Typography>
       }),
       columnHelper.accessor('assignedTo', {
-        header: () => <span>Assigned To</span>,
+        header: 'Assigned To',
         cell: ({ row }) =>
-          typeof row.original.assignedTo === 'string'
-            ? row.original.assignedTo
-            : row.original.assignedTo.map((item, index) => (
-                <Chip key={index} label={item} color={colors[item]} size='small' />
-              ))
+          typeof row.original.assignedTo === 'string' ? (
+            <Chip label={row.original.assignedTo} color={colors[row.original.assignedTo]} size='small' />
+          ) : (
+            row.original.assignedTo.map((item, index) => (
+              <Chip key={index} label={item} color={colors[item]} size='small' />
+            ))
+          )
       }),
       columnHelper.accessor('createdDate', {
-        header: () => <span>Created Date</span>,
+        header: 'Created Date',
         cell: ({ row }) => <Typography>{row.original.createdDate}</Typography>
       }),
       columnHelper.accessor('action', {
-        header: () => <div>Actions</div>,
+        header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
             <i className='ri-edit-box-line text-[22px]' onClick={() => handleEditPermission(row.original.name)} />
+            <OpenDialogOnElementClick element={IconButton} elementProps={iconButtonProps} dialog={PermissionDialog} />
             <i className='ri-delete-bin-7-line text-[22px]' />
           </div>
         ),
@@ -188,6 +194,17 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
     getFacetedMinMaxValues: getFacetedMinMaxValues()
   })
 
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Add Permission',
+    onClick: () => handleAddPermission()
+  }
+
+  const iconButtonProps: ButtonProps = {
+    children: <i className='ri-edit-box-line text-[22px]' onClick={() => handleEditPermission(editValue)} />,
+    onClick: () => handleEditPermission(editValue)
+  }
+
   return (
     <>
       <Card>
@@ -197,17 +214,20 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Permissions'
           />
-          <Button variant='contained' onClick={() => handleAddPermission()}>
-            Add Permission
-          </Button>
+          <OpenDialogOnElementClick
+            element={Button}
+            elementProps={buttonProps}
+            dialog={PermissionDialog}
+            dialogProps={{ editValue }}
+          />
         </CardContent>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
-            <thead>
+            <thead className={tableStyles.thead}>
               {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id} className={tableStyles.tr}>
+                <tr key={headerGroup.id}>
                   {headerGroup.headers.map(header => (
-                    <th key={header.id} className={tableStyles.th}>
+                    <th key={header.id}>
                       {header.isPlaceholder ? null : (
                         <>
                           <div
@@ -230,13 +250,13 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
                 </tr>
               ))}
             </thead>
-            <tbody>
+            <tbody className={tableStyles.tbody}>
               {table
                 .getRowModel()
                 .rows.slice(0, table.getState().pagination.pageSize)
                 .map(row => {
                   return (
-                    <tr key={row.id} className={classnames(tableStyles.tr, { selected: row.getIsSelected() })}>
+                    <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                       {row.getVisibleCells().map(cell => (
                         <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                       ))}
@@ -246,36 +266,21 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
             </tbody>
           </table>
         </div>
-        <div className='flex items-center gap-3'>
-          <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-            {'<<'}
-          </button>
-          <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-            {'<'}
-          </button>
-          <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-            {'>'}
-          </button>
-          <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-            {'>>'}
-          </button>
-          <div className='flex items-center gap-1'>
-            <div>Page</div>
-            <strong>{`${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`}</strong>
-          </div>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={e => {
-              table.setPageSize(Number(e.target.value))
-            }}
-          >
-            {[10, 25, 50].map(pageSize => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
+        <TablePagination
+          rowsPerPageOptions={[5, 7, 10]}
+          component='div'
+          className={tableStyles.paginationWrapper}
+          count={table.getFilteredRowModel().rows.length}
+          rowsPerPage={table.getState().pagination.pageSize}
+          page={table.getState().pagination.pageIndex}
+          SelectProps={{
+            inputProps: { 'aria-label': 'rows per page' }
+          }}
+          onPageChange={(_, page) => {
+            table.setPageIndex(page)
+          }}
+          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
+        />
       </Card>
       <PermissionDialog open={open} setOpen={setOpen} data={editValue} />
     </>

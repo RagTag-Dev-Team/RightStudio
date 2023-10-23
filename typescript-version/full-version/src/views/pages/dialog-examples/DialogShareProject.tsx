@@ -1,20 +1,19 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import ShareProject from '@components/dialogs/share-project'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogShareProject = () => {
-  // States
-  const [show, setShow] = useState(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Show'
+  }
 
   return (
     <Card>
@@ -22,11 +21,8 @@ const DialogShareProject = () => {
         <i className='ri-file-list-2-line text-[32px]' />
         <Typography>Share Project</Typography>
         <Typography>Elegant Share Project options modal popup example, easy to use in any page.</Typography>
-        <Button variant='contained' onClick={() => setShow(true)}>
-          Show
-        </Button>
+        <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={ShareProject} />
       </CardContent>
-      <ShareProject open={show} setOpen={setShow} />
     </Card>
   )
 }

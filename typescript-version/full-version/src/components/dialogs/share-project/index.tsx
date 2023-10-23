@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 import type { MouseEvent } from 'react'
@@ -26,6 +28,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Style Imports
+import commonStyles from '@/styles/common.module.css'
 import styles from '@components/dialogs/styles.module.css'
 import themeConfig from '@configs/themeConfig'
 
@@ -188,7 +191,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />
                 <div className='flex justify-between items-center w-full overflow-hidden'>
                   <div className='flex flex-col items-start overflow-hidden'>
-                    <Typography variant='body2' className={classnames('truncate w-full', styles.textPrimary)}>
+                    <Typography variant='body2' className={classnames('truncate w-full', commonStyles.textPrimary)}>
                       {member.name}
                     </Typography>
                     <Typography variant='body2' className='truncate w-full'>
@@ -239,7 +242,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
             <i className='ri-group-line text-xl' />
             <Typography
               variant='body2'
-              className={styles.textPrimary}
+              className={commonStyles.textPrimary}
             >{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
           <Button variant='outlined' className='flex'>

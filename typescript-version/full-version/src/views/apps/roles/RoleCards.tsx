@@ -1,11 +1,5 @@
 'use client'
 
-// React Imports
-import { useState } from 'react'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -15,12 +9,16 @@ import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
+import type { TypographyProps } from '@mui/material/Typography'
+import type { CardProps } from '@mui/material/Card'
 
 // Component Imports
 import RoleDialog from '@components/dialogs/role-dialog'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import Link from '@components/Link'
 
 // Style Imports
-import styles from './style.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type CardDataType = {
   title: string
@@ -37,8 +35,34 @@ const cardData: CardDataType[] = [
 ]
 
 const RoleCards = () => {
-  // States
-  const [open, setOpen] = useState(false)
+  const typographyProps: TypographyProps = {
+    children: 'Edit Role',
+    variant: 'body2',
+    component: Link,
+    className: commonStyles.primaryColor,
+    onClick: e => e.preventDefault()
+  }
+
+  const CardProps: CardProps = {
+    className: 'cursor-pointer h-full',
+    children: (
+      <Grid container className='h-full'>
+        <Grid item xs={5}>
+          <div className='flex items-end justify-center h-full'>
+            <img alt='add-role' src='/images/cards/pose_m1.png' />
+          </div>
+        </Grid>
+        <Grid item xs={7}>
+          <CardContent>
+            <div className='text-right'>
+              <Button variant='contained'>Add Role</Button>
+              <Typography>Add role, if it doesn&#39;t exist.</Typography>
+            </div>
+          </CardContent>
+        </Grid>
+      </Grid>
+    )
+  }
 
   return (
     <>
@@ -58,18 +82,7 @@ const RoleCards = () => {
                 <div className='flex justify-between items-center'>
                   <div className='flex flex-col items-start'>
                     <Typography variant='h6'>{item.title}</Typography>
-                    <Typography
-                      href='/'
-                      variant='body2'
-                      component={Link}
-                      className={styles.primaryColor}
-                      onClick={e => {
-                        e.preventDefault()
-                        setOpen(true)
-                      }}
-                    >
-                      Edit Role
-                    </Typography>
+                    <OpenDialogOnElementClick element={Typography} elementProps={typographyProps} dialog={RoleDialog} />
                   </div>
                   <IconButton>
                     <i className='ri-file-copy-line' />
@@ -80,28 +93,9 @@ const RoleCards = () => {
           </Grid>
         ))}
         <Grid item xs={12} sm={6} lg={4}>
-          <Card className='cursor-pointer h-full' onClick={() => setOpen(true)}>
-            <Grid container className='h-full'>
-              <Grid item xs={5}>
-                <div className='flex items-end justify-center h-full'>
-                  <img alt='add-role' src='/images/cards/pose_m1.png' />
-                </div>
-              </Grid>
-              <Grid item xs={7}>
-                <CardContent>
-                  <div className='text-right'>
-                    <Button variant='contained' onClick={() => setOpen(true)}>
-                      Add Role
-                    </Button>
-                    <Typography>Add role, if it doesn&#39;t exist.</Typography>
-                  </div>
-                </CardContent>
-              </Grid>
-            </Grid>
-          </Card>
+          <OpenDialogOnElementClick element={Card} elementProps={CardProps} dialog={RoleDialog} />
         </Grid>
       </Grid>
-      <RoleDialog open={open} setOpen={setOpen} />
     </>
   )
 }

@@ -18,6 +18,7 @@ import CardContent from '@mui/material/CardContent'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -27,6 +28,7 @@ import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -65,7 +67,6 @@ const data: DataType[] = [
 
 const PaymentMethod = () => {
   // States
-  const [open, setOpen] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState<'credit' | 'cod'>('credit')
   const [creditCard, setCreditCard] = useState(0)
   const [cardData, setCardData] = useState({
@@ -78,11 +79,6 @@ const PaymentMethod = () => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
-  const handleClickOpen = (index: number) => {
-    setOpen(true)
-    setCreditCard(index)
-  }
-
   const handleReset = () => {
     setCardData({
       cardNumber: '',
@@ -91,6 +87,12 @@ const PaymentMethod = () => {
       cardCvv: ''
     })
   }
+
+  const buttonProps = (index: number): ButtonProps => ({
+    variant: 'outlined',
+    children: 'Edit',
+    onClick: () => setCreditCard(index)
+  })
 
   return (
     <Card>
@@ -194,9 +196,12 @@ const PaymentMethod = () => {
                   </Typography>
                 </div>
                 <div>
-                  <Button variant='outlined' onClick={() => handleClickOpen(index)}>
-                    Edit
-                  </Button>
+                  <OpenDialogOnElementClick
+                    element={Button}
+                    elementProps={buttonProps(index)}
+                    dialog={BillingCard}
+                    dialogProps={{ data: data[creditCard] }}
+                  />
                   <Button variant='outlined' color='secondary'>
                     Delete
                   </Button>
@@ -204,7 +209,6 @@ const PaymentMethod = () => {
                 </div>
               </div>
             ))}
-            <BillingCard open={open} setOpen={setOpen} data={data[creditCard]} />
           </Grid>
 
           <Grid item xs={12} className='flex gap-4 flex-wrap'>

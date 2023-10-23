@@ -1,23 +1,22 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
 import type { Direction } from '@core/types'
 
 // Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogAuthentication = ({ direction }: { direction: Direction }) => {
-  // States
-  const [open, setOpen] = useState(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Show'
+  }
 
   return (
     <Card>
@@ -25,10 +24,12 @@ const DialogAuthentication = ({ direction }: { direction: Direction }) => {
         <i className='ri-lock-line text-[32px]' />
         <Typography>Two Factor Authentication</Typography>
         <Typography>Enhance your application security by enabling two factor authentication.</Typography>
-        <Button variant='contained' onClick={() => setOpen(true)}>
-          Show
-        </Button>
-        <TwoFactorAuth open={open} setOpen={setOpen} direction={direction} />
+        <OpenDialogOnElementClick
+          element={Button}
+          elementProps={buttonProps}
+          dialog={TwoFactorAuth}
+          dialogProps={{ direction }}
+        />
       </CardContent>
     </Card>
   )

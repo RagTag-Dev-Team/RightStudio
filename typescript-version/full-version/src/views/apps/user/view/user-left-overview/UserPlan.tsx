@@ -1,8 +1,3 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -10,16 +5,20 @@ import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import Button from '@mui/material/Button'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import UpgradePlan from '@components/dialogs/upgrade-plan'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Style Imports
 import styles from './styles.module.css'
 
 const UserPlan = () => {
-  // States
-  const [openUpgradePlan, setOpenUpgradePlan] = useState<boolean>(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Upgrade Plan'
+  }
 
   return (
     <>
@@ -59,12 +58,9 @@ const UserPlan = () => {
             <LinearProgress variant='determinate' value={65} />
             <Typography>4 days remaining</Typography>
           </div>
-          <Button variant='contained' onClick={() => setOpenUpgradePlan(true)}>
-            Upgrade Plan
-          </Button>
+          <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={UpgradePlan} />
         </CardContent>
       </Card>
-      <UpgradePlan open={openUpgradePlan} setOpen={setOpenUpgradePlan} />
     </>
   )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
 
@@ -32,6 +34,7 @@ import StepperWrapper from '@core/styles/stepper'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type CreateAppProps = {
@@ -209,7 +212,7 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
                           <i className={label.icon as string} />
                         </Avatar>
                         <div className='flex flex-col'>
-                          <Typography variant='body2' className={styles.textPrimary}>
+                          <Typography variant='body2' className={commonStyles.textPrimary}>
                             {label.title}
                           </Typography>
                           <Typography variant='caption'>{label.subtitle}</Typography>

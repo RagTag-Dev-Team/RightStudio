@@ -1,24 +1,21 @@
-'use client'
-
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Component Imports
 import AddNewAddress from '@components/dialogs/add-edit-address'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Style Imports
 import styles from './styles.module.css'
-import tableStyles from '@core/styles/libs/reactTables.module.css'
+import tableStyles from '@core/styles/table.module.css'
 
 const data = {
   firstName: 'John',
@@ -37,8 +34,12 @@ const data = {
 }
 
 const BillingAddress = () => {
-  // States
-  const [open, setOpen] = useState(false)
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Edit Address',
+    size: 'small',
+    startIcon: <i className='ri-add-line' />
+  }
 
   return (
     <>
@@ -46,38 +47,36 @@ const BillingAddress = () => {
         <CardHeader
           title='Billing Address'
           action={
-            <Button
-              variant='contained'
-              size='small'
-              startIcon={<i className='ri-add-line' />}
-              onClick={() => setOpen(true)}
-            >
-              Edit Address
-            </Button>
+            <OpenDialogOnElementClick
+              element={Button}
+              elementProps={buttonProps}
+              dialog={AddNewAddress}
+              dialogProps={{ data }}
+            />
           }
         />
         <CardContent>
           <Grid container>
             <Grid item xs={6}>
               <table className={classnames(styles.addressTable1, tableStyles.table)}>
-                <tbody>
-                  <tr className={tableStyles.tr}>
+                <tbody className={tableStyles.tbody}>
+                  <tr>
                     <td>Name:</td>
                     <td>{`${data.firstName} ${data.lastName}`}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Billing Email:</td>
                     <td>{data.email}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Tax ID:</td>
                     <td>{data.taxId}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>VAT Number:</td>
                     <td>{data.vatNumber}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Billing Address:</td>
                     <td>{`${data.address1} ${data.address2}`}</td>
                   </tr>
@@ -86,28 +85,28 @@ const BillingAddress = () => {
             </Grid>
             <Grid item xs={6}>
               <table className={classnames(styles.addressTable1, tableStyles.table)}>
-                <tbody>
-                  <tr className={tableStyles.tr}>
+                <tbody className={tableStyles.tbody}>
+                  <tr>
                     <td>Contact:</td>
                     <td>{data.contact}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Landmark:</td>
                     <td>{data.landmark}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Landmark:</td>
                     <td>{data.city}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Country:</td>
                     <td>{data.country}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>State:</td>
                     <td>{data.state}</td>
                   </tr>
-                  <tr className={tableStyles.tr}>
+                  <tr>
                     <td>Zip Code:</td>
                     <td>{data.zipCode}</td>
                   </tr>
@@ -117,7 +116,6 @@ const BillingAddress = () => {
           </Grid>
         </CardContent>
       </Card>
-      <AddNewAddress open={open} setOpen={setOpen} data={data} />
     </>
   )
 }
