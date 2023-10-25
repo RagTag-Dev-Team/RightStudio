@@ -1,3 +1,8 @@
+html, body {
+  height: auto !important;
+  min-height: 100dvh;
+}
+
 h1 {
   font-weight: 600;
 }

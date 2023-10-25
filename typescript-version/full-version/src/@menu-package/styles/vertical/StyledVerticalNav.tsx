@@ -17,7 +17,7 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     `
     position: sticky;
     inset-block-start: 0;
-    block-size: 100vh;
+    block-size: 100dvh;
   `}
   z-index: 9;
 

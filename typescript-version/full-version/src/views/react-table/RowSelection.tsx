@@ -9,7 +9,6 @@ import CardHeader from '@mui/material/CardHeader'
 import Checkbox from '@mui/material/Checkbox'
 
 // Third-party Imports
-import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 
@@ -121,7 +120,7 @@ const RowSelection = () => {
               .rows.slice(0, 10)
               .map(row => {
                 return (
-                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                  <tr key={row.id} {...(row.getIsSelected() && { className: 'selected' })}>
                     {row.getVisibleCells().map(cell => (
                       <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                     ))}
