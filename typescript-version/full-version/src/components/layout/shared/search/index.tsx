@@ -17,10 +17,6 @@ import type { ChildrenType } from '@core/types'
 // Component Imports
 import SearchResults from './SearchResults'
 
-// Icon Imports
-import Search from '@layouts/svg/Search'
-import Close from '@menu-package/svg/Close'
-
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
@@ -82,7 +78,7 @@ const NavSearch = () => {
       <ComponentWithUseKBar
         triggerClick
         className='ts-nav-search-icon flex cursor-pointer'
-        icon={<Search fontSize='1.25rem' />}
+        icon={<i className='ri-search-line text-xl' />}
       />
       <KBarPortal>
         <KBarPositioner className={styles.positioner}>
@@ -92,11 +88,15 @@ const NavSearch = () => {
           >
             <div className={classnames('flex items-center gap-2.5', styles.inputWrapper)}>
               <div className='flex'>
-                <Search />
+                <i className='ri-search-line' />
               </div>
               <KBarSearch defaultPlaceholder='' className={classnames('grow min-is-0', styles.searchInput)} />
               <ComponentWithUseKBar className={styles.escape}>{`[esc]`}</ComponentWithUseKBar>
-              <ComponentWithUseKBar triggerClick className='flex cursor-pointer' icon={<Close fontSize='1.75rem' />} />
+              <ComponentWithUseKBar
+                triggerClick
+                className='flex cursor-pointer'
+                icon={<i className='ri-close-line' />}
+              />
             </div>
             <SearchResults />
           </StyledKBarAnimator>

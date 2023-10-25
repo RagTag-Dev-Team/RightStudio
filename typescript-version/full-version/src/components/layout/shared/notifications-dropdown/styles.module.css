@@ -1,0 +1,20 @@
+.popperStyles {
+  margin-block-start: 1rem !important;
+}
+
+.maxHeight {
+  max-block-size: 420px;
+}
+
+.borderBottom {
+  border-block-end: 1px solid var(--mui-palette-divider);
+}
+
+.notificationItem:hover {
+  background-color: var(--mui-palette-action-hover);
+}
+
+.notificationItem:not(:hover) .notificationItemClose,
+.notificationItem:not(:hover) .unreadNotificationItemBadge {
+  visibility: hidden;
+}

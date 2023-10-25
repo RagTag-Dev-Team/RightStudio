@@ -1,0 +1,18 @@
+.popperStyles {
+  margin-block-start: 1rem !important;
+}
+
+.maxHeight {
+  max-block-size: 434px;
+}
+
+.gridItem:not(:last-of-type):not(:nth-last-of-type(2)) {
+  border-block-end: 1px solid var(--mui-palette-divider);
+}
+.gridItem:nth-of-type(odd) {
+  border-inline-end: 1px solid var(--mui-palette-divider);
+}
+
+.link:hover {
+  background-color: var(--mui-palette-action-hover);
+}
