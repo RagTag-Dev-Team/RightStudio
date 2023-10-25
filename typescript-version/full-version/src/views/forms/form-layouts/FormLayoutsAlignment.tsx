@@ -21,6 +21,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const FormLayoutsAlignment = () => {
   // States
@@ -32,7 +33,10 @@ const FormLayoutsAlignment = () => {
     <Card>
       <CardHeader title='Form Alignment' />
       <CardContent className={classnames('flex flex-col items-center justify-center', styles.formAlignment)}>
-        <form onSubmit={e => e.preventDefault()} className={classnames('p-12', styles.formWrapper)}>
+        <form
+          onSubmit={e => e.preventDefault()}
+          className={classnames('p-12', styles.formWrapper, commonStyles.border, commonStyles.borderRadius)}
+        >
           <Grid container>
             <Grid item xs={12}>
               <Typography variant='h5'>Sign In</Typography>

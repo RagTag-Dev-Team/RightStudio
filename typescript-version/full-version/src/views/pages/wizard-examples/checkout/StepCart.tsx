@@ -97,7 +97,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           </Fade>
         </Collapse>
         <Typography>My Shopping Bag (2 Items)</Typography>
-        <div className={styles.border}>
+        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           {products.map((product, index) => (
             <div
               key={index}
@@ -157,14 +157,19 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           href='/'
           component={Link}
           onClick={e => e.preventDefault()}
-          className={classnames('flex items-center justify-between gap-4', styles.border, commonStyles.primary)}
+          className={classnames(
+            'flex items-center justify-between gap-4',
+            commonStyles.border,
+            commonStyles.borderRadius,
+            commonStyles.primary
+          )}
         >
           Add more products from wishlist
           <i className='ri-arrow-right-s-line' />
         </Typography>
       </Grid>
       <Grid item xs={12} lg={4}>
-        <div className={styles.border}>
+        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           <CardContent>
             <Typography className='font-medium'>Offer</Typography>
             <div className='flex gap-4'>
@@ -173,7 +178,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                 Apply
               </Button>
             </div>
-            <div className={styles.giftWrap}>
+            <div className={classnames(styles.giftWrap, commonStyles.borderRadius)}>
               <Typography className='font-medium'>Buying gift for a loved one?</Typography>
               <Typography>Gift wrap and personalized message on card, Only for $2.</Typography>
               <Typography

@@ -25,7 +25,7 @@ import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Styles Imports
-import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type DataType = {
   name: string
@@ -110,9 +110,14 @@ const PaymentMethod = () => {
           {data.map((item, index) => (
             <div
               key={index}
-              className={classnames('flex justify-between items-center', styles.border, {
-                'flex-col !items-start': isBelowSmScreen
-              })}
+              className={classnames(
+                'flex justify-between items-center',
+                commonStyles.border,
+                commonStyles.borderRadius,
+                {
+                  'flex-col !items-start': isBelowSmScreen
+                }
+              )}
             >
               <div className='flex flex-col items-start'>
                 <img src={item.imgSrc} alt={item.imgAlt} />

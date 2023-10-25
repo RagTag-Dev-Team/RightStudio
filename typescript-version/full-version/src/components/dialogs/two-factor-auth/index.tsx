@@ -27,6 +27,7 @@ import type { Direction } from '@core/types'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type TwoFactorAuthProps = {
@@ -205,7 +206,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
                     setAuthType('app')
                   }
                 }}
-                className={classnames('cursor-pointer', styles.border, {
+                className={classnames('cursor-pointer', commonStyles.border, commonStyles.borderRadius, {
                   [styles.active]: authType === 'app'
                 })}
               >
@@ -227,7 +228,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
             <Grid item xs={12}>
               <div
                 onClick={() => setAuthType('sms')}
-                className={classnames('cursor-pointer', styles.border, {
+                className={classnames('cursor-pointer', commonStyles.border, commonStyles.borderRadius, {
                   [styles.active]: authType === 'sms'
                 })}
               >

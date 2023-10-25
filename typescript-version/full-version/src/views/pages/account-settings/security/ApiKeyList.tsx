@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 
 // Styles Imports
-import styles from '@views/pages/account-settings/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type ApiKeyListType = {
   title: string
@@ -47,7 +47,7 @@ const ApiKeyList = () => {
           billing.
         </Typography>
         {apiKeyList.map((item, index) => (
-          <div key={index} className={styles.apiKeyItem}>
+          <div key={index} className={commonStyles.borderRadius}>
             <div className='flex items-center'>
               <Typography>{item.title}</Typography>
               <Chip color='primary' label={item.access} size='small' />

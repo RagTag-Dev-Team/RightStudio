@@ -32,6 +32,7 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 
 // Styles Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type DataType = {
   cardNumber?: string
@@ -181,7 +182,7 @@ const PaymentMethod = () => {
             {data.map((item: DataType, index: number) => (
               <div
                 key={index}
-                className={classnames(styles.paymentCard, 'flex justify-between', {
+                className={classnames(styles.paymentCard, commonStyles.borderRadius, 'flex justify-between', {
                   'flex-col items-start': isBelowSmScreen
                 })}
               >

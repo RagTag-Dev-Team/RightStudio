@@ -31,7 +31,6 @@ import classnames from 'classnames'
 import CustomTabList from '@core/components/mui/TabList'
 
 // Style Imports
-import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
@@ -151,7 +150,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
         </TabContext>
       </Grid>
       <Grid item xs={12} lg={4}>
-        <div className={styles.border}>
+        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           <CardContent>
             <Typography className='font-medium'>Price Details</Typography>
             <div className='flex flex-col'>

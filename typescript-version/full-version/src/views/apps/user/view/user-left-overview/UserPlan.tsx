@@ -7,12 +7,16 @@ import LinearProgress from '@mui/material/LinearProgress'
 import Button from '@mui/material/Button'
 import type { ButtonProps } from '@mui/material/Button'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Component Imports
 import UpgradePlan from '@components/dialogs/upgrade-plan'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const UserPlan = () => {
   const buttonProps: ButtonProps = {
@@ -22,7 +26,7 @@ const UserPlan = () => {
 
   return (
     <>
-      <Card className={styles.cardBorder}>
+      <Card className={classnames(styles.cardBorder, commonStyles.borderRadius)}>
         <CardContent className='flex flex-col'>
           <div className='flex justify-between'>
             <Chip label='standard' size='small' color='primary' />

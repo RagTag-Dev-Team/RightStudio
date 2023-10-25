@@ -9,10 +9,6 @@
   background-color: var(--mui-palette-action-hover);
 }
 
-.borderRadius {
-  border-radius: var(--mui-shape-borderRadius);
-}
-
 .avatarSize {
   block-size: 34px;
   inline-size: 34px;

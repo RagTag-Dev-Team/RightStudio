@@ -4,7 +4,6 @@
 
 .footerCard {
   background-color: var(--mui-palette-action-hover);
-  border-radius: var(--mui-shape-borderRadius);
 }
 
 .inputWidth {

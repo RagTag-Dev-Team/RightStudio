@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Third-party imports
+import classnames from 'classnames'
 import DatePicker from 'react-datepicker'
 
 // Types Imports
@@ -17,6 +18,7 @@ import type { ThemeColor } from '@core/types'
 
 // Style Imports
 import DatePickerWrapper from '@core/styles/libs/react-datepicker'
+import commonStyles from '@/styles/common.module.css'
 
 const SidebarLeft = (props: SidebarLeftProps) => {
   const {
@@ -69,20 +71,19 @@ const SidebarLeft = (props: SidebarLeftProps) => {
           disableScrollLock: true,
           keepMounted: true // Better open performance on mobile.
         }}
+        className={classnames('block', { static: mdAbove, absolute: !mdAbove })}
+        PaperProps={{
+          className: classnames('items-start w-[280px]', commonStyles.borderRadius, commonStyles.boxShadowNone, {
+            static: mdAbove,
+            absolute: !mdAbove
+          })
+        }}
         sx={{
           zIndex: 3,
-          display: 'block',
-          position: mdAbove ? 'static' : 'absolute',
           '& .MuiDrawer-paper': {
-            borderRadius: 1,
-            boxShadow: 'none',
-            width: 280,
             borderTopRightRadius: 0,
-            alignItems: 'flex-start',
             borderBottomRightRadius: 0,
-            p: theme => theme.spacing(5),
-            zIndex: mdAbove ? 2 : 'drawer',
-            position: mdAbove ? 'static' : 'absolute'
+            zIndex: mdAbove ? 2 : 'drawer'
           },
           '& .MuiBackdrop-root': {
             borderRadius: 1,
@@ -90,37 +91,36 @@ const SidebarLeft = (props: SidebarLeftProps) => {
           }
         }}
       >
-        <div className='w-full pbe-6'>
+        <div className='w-full p-5'>
           <Button fullWidth variant='contained' onClick={handleSidebarToggleSidebar}>
             Add Event
           </Button>
         </div>
-
         <Divider className='w-full' />
-
         <DatePickerWrapper
           className='flex justify-center w-full'
           sx={{ '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' } }}
         >
           <DatePicker inline onChange={date => calendarApi.gotoDate(date)} />
         </DatePickerWrapper>
-
         <Divider className='w-full' />
 
-        <Typography variant='caption' className='uppercase mbs-7 mbe-2'>
-          Calendars
-        </Typography>
-        <FormControlLabel
-          label='View All'
-          control={
-            <Checkbox
-              color='secondary'
-              checked={calendars.selectedCalendars.length === colorsArr.length}
-              onChange={e => handleAllCalendars(e.target.checked)}
-            />
-          }
-        />
-        {renderFilters}
+        <div className='flex flex-col p-5 w-full'>
+          <Typography variant='caption' className='uppercase mbe-4'>
+            Event Filters
+          </Typography>
+          <FormControlLabel
+            label='View All'
+            control={
+              <Checkbox
+                color='secondary'
+                checked={calendars.selectedCalendars.length === colorsArr.length}
+                onChange={e => handleAllCalendars(e.target.checked)}
+              />
+            }
+          />
+          {renderFilters}
+        </div>
       </Drawer>
     )
   } else {

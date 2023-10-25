@@ -1,8 +1,3 @@
-.plan {
-  border: 1px solid var(--mui-palette-divider);
-  border-radius: var(--mui-shape-borderRadius);
-}
-
 .active {
   border-color: var(--mui-palette-primary-main);
 }

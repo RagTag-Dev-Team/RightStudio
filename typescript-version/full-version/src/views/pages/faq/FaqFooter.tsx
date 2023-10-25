@@ -9,6 +9,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const FaqFooter = () => {
   return (
@@ -22,7 +23,13 @@ const FaqFooter = () => {
       </div>
       <Grid container>
         <Grid item xs={12} md={6}>
-          <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
+          <div
+            className={classnames(
+              'flex justify-center items-center flex-col',
+              styles.footerCard,
+              commonStyles.borderRadius
+            )}
+          >
             <Avatar variant='rounded'>
               <i className='ri-phone-fill' />
             </Avatar>
@@ -31,7 +38,13 @@ const FaqFooter = () => {
           </div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <div className={classnames('flex justify-center items-center flex-col', styles.footerCard)}>
+          <div
+            className={classnames(
+              'flex justify-center items-center flex-col',
+              styles.footerCard,
+              commonStyles.borderRadius
+            )}
+          >
             <Avatar variant='rounded'>
               <i className='ri-mail-line' />
             </Avatar>

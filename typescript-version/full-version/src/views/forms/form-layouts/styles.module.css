@@ -15,8 +15,6 @@
 }
 
 .formWrapper {
-  border: 1px solid var(--border-color);
-  border-radius: var(--mui-shape-borderRadius);
   max-inline-size: 400px;
 }
 

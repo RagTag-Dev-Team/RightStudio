@@ -1,7 +1,3 @@
-.border {
-  border: 1px solid var(--mui-palette-divider);
-  border-radius: var(--mui-shape-borderRadius);
-}
 .borderBottom:not(:last-child) {
   border-block-end: 1px solid var(--mui-palette-divider);
 }
@@ -21,5 +17,4 @@
 
 .giftWrap {
   background-color: var(--mui-palette-action-hover);
-  border-radius: var(--mui-shape-borderRadius);
 }

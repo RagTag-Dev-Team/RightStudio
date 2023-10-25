@@ -20,24 +20,27 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       flexWrap: 'wrap',
       flexDirection: 'row !important',
       '&.fc-header-toolbar': {
-        marginBottom: theme.spacing(6)
+        marginBottom: theme.spacing(4.7)
+      },
+      '& .fc-sidebarToggle-button': {
+        marginInlineEnd: theme.spacing(2)
+      },
+      '& .fc-button-group:has(.fc-next-button)': {
+        marginInlineStart: theme.spacing(2)
       },
       '.fc-prev-button, & .fc-next-button': {
-        display: 'inline-block',
-        borderColor: 'transparent',
+        display: 'flex',
         backgroundColor: 'transparent',
+        border: '1px solid var(--mui-palette-divider)',
+        borderRadius: 'var(--mui-shape-borderRadius) !important',
         '& .fc-icon': {
           color: theme.palette.text.primary,
-          fontSize: theme.typography.h4.fontSize
+          fontSize: '1.25rem'
         },
         '&:hover, &:active, &:focus': {
           boxShadow: 'none !important',
-          borderColor: 'transparent !important',
           backgroundColor: 'transparent !important'
         }
-      },
-      '& .fc-prev-button': {
-        paddingLeft: '0 !important'
       },
       '& .fc-toolbar-chunk:first-of-type': {
         display: 'flex',
@@ -72,8 +75,6 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             '&.fc-button-active, &:hover': {
               color: theme.palette.primary.main,
               borderColor: theme.palette.divider,
-
-              // backgroundColor: bgColors.primaryLight.backgroundColor
               backgroundColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.16)`
             }
           }
@@ -118,8 +119,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       },
       '& .fc-toolbar-title': {
         fontWeight: 600,
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(4),
+        marginInline: theme.spacing(4),
         fontSize: theme.typography.h6.fontSize
       },
       '.fc-button:empty:not(.fc-sidebarToggle-button), & .fc-toolbar-chunk:empty': {
@@ -131,7 +131,8 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     '& tbody td, & thead th': {
       borderColor: theme.palette.divider,
       '&.fc-col-header-cell': {
-        borderLeft: 0
+        borderLeft: 0,
+        borderRight: 0
       },
       '&[role="presentation"]': {
         borderRightWidth: 0
@@ -302,7 +303,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       color: `${theme.palette.text.primary} !important`
     },
     '& .fc-day-today:not(.fc-popover)': {
-      // backgroundColor: `rgba(${theme.palette.customColors.main}, 0.04) !important`
+      backgroundColor: 'var(--mui-palette-action-hover)'
     },
 
     // WeekView
@@ -311,6 +312,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         '& .fc-col-header-cell, & .fc-timegrid-axis': {
           borderLeft: 0,
           borderRight: 0,
+          background: 'transparent',
           borderColor: theme.palette.divider
         },
         '& .fc-timegrid-axis': {
@@ -350,6 +352,9 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       },
       '& .fc-timegrid-event': {
         boxShadow: 'none'
+      },
+      '.fc-timegrid-col-events': {
+        margin: 0
       }
     },
 
@@ -360,7 +365,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         position: 'relative'
       },
       '& .fc-list-day-cushion': {
-        // background: `rgba(${theme.palette.customColors.main}, 0.04)`
+        background: 'transparent'
       },
       '.fc-list-event': {
         cursor: 'pointer',
@@ -374,7 +379,7 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         }
       },
       '& .fc-list-day': {
-        backgroundColor: theme.palette.action.hover,
+        backgroundColor: theme.vars.palette.action.hover,
 
         '& .fc-list-day-text, & .fc-list-day-side-text': {
           fontSize: '.875rem',
@@ -393,6 +398,12 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       '& .fc-list-event-time': {
         fontSize: '.875rem',
         color: theme.palette.text.disabled
+      },
+      '.fc-list-table tbody > tr:first-child th': {
+        borderTop: '1px solid var(--mui-palette-divider)'
+      },
+      '.fc-list-table': {
+        borderBottom: '1px solid var(--mui-palette-divider)'
       }
     },
 

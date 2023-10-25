@@ -22,7 +22,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Style Imports
-import styles from '@views/pages/account-settings/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type Data = {
   firstName: string
@@ -90,7 +90,7 @@ const AccountDetails = () => {
     <Card>
       <CardContent>
         <div className='flex items-center'>
-          <img height={120} width={120} className={styles.imgBorder} src={imgSrc} alt='Profile' />
+          <img height={120} width={120} className={commonStyles.borderRadius} src={imgSrc} alt='Profile' />
           <div className='flex flex-grow flex-col gap-4'>
             <div className={classnames('flex gap-4', { 'flex-col': isBelowSmScreen })}>
               <Button

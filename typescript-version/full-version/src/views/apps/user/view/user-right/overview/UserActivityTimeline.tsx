@@ -60,7 +60,7 @@ const UserActivityTimeLine = () => {
                 className={classnames(
                   'flex items-center gap-2.5 mbe-2.5 w-fit',
                   styles.imageWrapper,
-                  styles.borderRadius
+                  commonStyles.borderRadius
                 )}
               >
                 <img height={20} alt='invoice.pdf' src='/images/icons/pdf-document.png' />

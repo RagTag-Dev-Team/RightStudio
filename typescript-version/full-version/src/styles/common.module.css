@@ -28,3 +28,9 @@
 .border {
   border: 1px solid var(--mui-palette-divider);
 }
+.borderRadius {
+  border-radius: var(--mui-shape-borderRadius);
+}
+.boxShadowNone {
+  box-shadow: none;
+}

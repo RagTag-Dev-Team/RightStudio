@@ -63,7 +63,11 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12}>
-        <div className={classnames('flex', styles.border, { 'flex-col': isBelowMdScreen })}>
+        <div
+          className={classnames('flex', commonStyles.border, commonStyles.borderRadius, {
+            'flex-col': isBelowMdScreen
+          })}
+        >
           <div
             className={classnames('flex flex-col w-full', {
               [styles.borderBottom]: isBelowMdScreen,
@@ -115,7 +119,7 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12} md={8} xl={9}>
-        <div className={styles.border}>
+        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           {products.map((product, index) => (
             <div
               key={index}
@@ -148,7 +152,7 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12} md={4} xl={3}>
-        <div className={styles.border}>
+        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           <CardContent className='flex gap-4 flex-col'>
             <Typography className='font-medium'>Price Details</Typography>
             <div className='flex flex-col gap-4'>

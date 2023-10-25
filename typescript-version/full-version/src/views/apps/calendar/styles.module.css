@@ -4,8 +4,6 @@
   background-color: var(--mui-palette-background-default);
 }
 
-.calendarSidebar {
-  box-shadow: none;
-  background-color: var(--mui-palette-background-default);
-  border-radius: var(--mui-shape-borderRadius);
+.backgroundPaper {
+  background-color: var(--mui-palette-background-paper);
 }

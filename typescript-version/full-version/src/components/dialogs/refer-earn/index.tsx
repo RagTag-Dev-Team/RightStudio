@@ -28,6 +28,7 @@ import themeConfig from '@configs/themeConfig'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type ReferEarnProps = {
@@ -147,13 +148,13 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                 }
               />
               <div className='flex items-center'>
-                <Button className={styles.facebookIcon}>
+                <Button className={classnames(styles.facebookIcon, commonStyles.borderRadius)}>
                   <i className='ri-facebook-circle-fill' />
                 </Button>
-                <Button className={styles.twitterIcon}>
+                <Button className={classnames(styles.twitterIcon, commonStyles.borderRadius)}>
                   <i className='ri-twitter-fill' />
                 </Button>
-                <Button className={styles.linkedinIcon}>
+                <Button className={classnames(styles.linkedinIcon, commonStyles.borderRadius)}>
                   <i className='ri-linkedin-box-fill' />
                 </Button>
               </div>

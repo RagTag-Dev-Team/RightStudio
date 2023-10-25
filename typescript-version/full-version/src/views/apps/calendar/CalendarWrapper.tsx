@@ -7,8 +7,8 @@ import { useReducer, useState } from 'react'
 import { useMediaQuery } from '@mui/material'
 import type { Theme } from '@mui/material/styles'
 
-// Third-party Imports
-import classNames from 'classnames'
+// Third-party imports
+import classnames from 'classnames'
 
 // Type Imports
 import type {
@@ -20,9 +20,6 @@ import type {
 } from '@/types/apps/calendarTypes'
 import type { Direction } from '@core/types'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 // Reducer Imports
 import calendarReducer from '@reducers/calendarReducer'
 
@@ -30,6 +27,9 @@ import calendarReducer from '@reducers/calendarReducer'
 import Calendar from '@views/apps/calendar/Calendar'
 import SidebarLeft from '@views/apps/calendar/SidebarLeft'
 import AddEventSidebar from '@views/apps/calendar/AddEventSidebar'
+
+// Style Imports
+import styles from './styles.module.css'
 
 // CalendarColors Object
 const calendarsColor: CalendarColors = {
@@ -140,7 +140,7 @@ const AppCalendar = ({ events, direction }: { events: EventType[]; direction: Di
         handleAddEventSidebarToggle={handleAddEventSidebarToggle}
       />
       <div
-        className={classNames('p-5 pbe-0 flex-grow', styles.calendarSidebar)}
+        className={classnames('p-5 pbe-0 flex-grow overflow-x-auto', styles.backgroundPaper)}
 
         // ...(mdAbove ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : {})
       >
