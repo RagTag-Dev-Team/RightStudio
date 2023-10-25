@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import NavToggle from './NavToggle'
 import NavSearch from '@components/layout/shared/search'
 import HorizontalMenu from './HorizontalMenu'
-import Translation from '@components/layout/shared/Translation'
+import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
 import ModeSwitcher from '@layouts/components/ModeSwitcher'
 import UserDetails from '@layouts/components/UserDetails'
 
@@ -21,7 +21,7 @@ const NavbarContent = () => {
         <HorizontalMenu />
       </div>
       <div className='flex items-center gap-4'>
-        <Translation />
+        <LanguageDropdown />
         <ModeSwitcher />
         <UserDetails />
       </div>

@@ -11,8 +11,8 @@ const StyledKBarAnimator = styled(KBarAnimator)`
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 
   &.smallScreen {
-    min-block-size: 100vh;
-    max-block-size: 100vh;
+    min-block-size: 100dvh;
+    max-block-size: 100dvh;
     border-radius: 0;
   }
 

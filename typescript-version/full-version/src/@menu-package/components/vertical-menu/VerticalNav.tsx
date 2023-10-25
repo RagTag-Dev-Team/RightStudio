@@ -119,12 +119,14 @@ const VerticalNav = (props: VerticalNavProps) => {
   }, [width, collapsedWidth, scrollWithContent, breakpointReached, updateVerticalNavState])
 
   useEffect(() => {
-    updateVerticalNavState({
-      isCollapsed: defaultCollapsed,
-      isToggled: false
-    })
+    if (defaultCollapsed) {
+      updateVerticalNavState({
+        isCollapsed: defaultCollapsed,
+        isToggled: false
+      })
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultCollapsed, updateVerticalNavState])
+  }, [defaultCollapsed])
 
   useEffect(() => {
     setTimeout(() => {

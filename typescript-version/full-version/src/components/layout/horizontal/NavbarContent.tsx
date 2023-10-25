@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import NavToggle from './NavToggle'
 import Logo from '@components/layout/shared/Logo'
 import NavSearch from '@components/layout/shared/search'
-import Translation from '@components/layout/shared/Translation'
+import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
 import ModeSwitcher from '@layouts/components/ModeSwitcher'
 import UserDetails from '@layouts/components/UserDetails'
 
@@ -33,7 +33,7 @@ const NavbarContent = () => {
 
       <div className='flex items-center gap-4'>
         <NavSearch />
-        <Translation />
+        <LanguageDropdown />
         <ModeSwitcher />
         <UserDetails />
         {/* Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}

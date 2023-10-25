@@ -37,6 +37,11 @@ const IndeterminateCheckbox = ({
 }
 
 const RowSelection = () => {
+  // States
+  const [rowSelection, setRowSelection] = useState({})
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [data, setData] = useState(() => defaultData)
+
   const columnHelper = createColumnHelper<DataType>()
 
   const columns = useMemo<ColumnDef<DataType, any>[]>(
@@ -88,11 +93,6 @@ const RowSelection = () => {
     []
   )
 
-  // States
-  const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setData] = useState(() => defaultData)
-
   // Hooks
   const table = useReactTable({
     data,
@@ -129,7 +129,7 @@ const RowSelection = () => {
             .rows.slice(0, 10)
             .map(row => {
               return (
-                <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                <tr key={row.id} {...(row.getIsSelected() && { className: 'selected' })}>
                   {row.getVisibleCells().map(cell => (
                     <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                   ))}
