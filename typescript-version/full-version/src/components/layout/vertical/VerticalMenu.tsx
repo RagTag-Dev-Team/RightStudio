@@ -21,7 +21,7 @@ import { getLocale } from '@/utils/get-locale'
 // import { generateVerticalMenu } from '@/utils/menuUtils'
 
 // Menu Data Imports
-// import menuData from '@/data/navigation/VerticalMenuData'
+// import menuData from '@/data/navigation/verticalMenuData'
 
 const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks

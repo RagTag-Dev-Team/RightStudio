@@ -20,7 +20,7 @@ import { getLocale } from '@/utils/get-locale'
 // import { generateHorizontalMenu } from '@/utils/menuUtils'
 
 // Menu Data Imports
-// import menuData from '@/data/navigation/HorizontalMenuData'
+// import menuData from '@/data/navigation/horizontalMenuData'
 
 const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
