@@ -65,7 +65,16 @@ const AreaChart = () => {
           show: false
         },
         axisTick: {
-          show: false
+          show: true,
+          lineStyle: {
+            color: theme.palette.divider
+          }
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: theme.palette.divider
+          }
         }
       }
     ],
@@ -73,7 +82,7 @@ const AreaChart = () => {
       {
         position: theme.direction === 'rtl' ? 'right' : 'left',
         axisLabel: {
-          margin: theme.direction === 'rtl' ? 25 : 0
+          margin: theme.direction === 'rtl' ? 25 : 14
         },
         type: 'value',
         axisLine: {
@@ -90,7 +99,7 @@ const AreaChart = () => {
     ],
     series: [
       {
-        name: 'Area 1',
+        name: 'Sales',
         type: 'line',
         color: areaColors.series1,
         stack: 'Total',
@@ -107,7 +116,7 @@ const AreaChart = () => {
         data: [100, 120, 90, 170, 130, 160, 140, 240, 220, 180, 270, 280, 375]
       },
       {
-        name: 'Area 2',
+        name: 'Clicks',
         type: 'line',
         color: areaColors.series2,
         stack: 'Total',
@@ -124,7 +133,7 @@ const AreaChart = () => {
         data: [60, 80, 70, 110, 80, 100, 90, 180, 160, 140, 200, 220, 275]
       },
       {
-        name: 'Area 3',
+        name: 'Visits',
         type: 'line',
         color: areaColors.series3,
         stack: 'Total',

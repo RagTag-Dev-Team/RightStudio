@@ -25,8 +25,22 @@ const ColumnChart = () => {
       height: 400
     },
     color: [theme.palette.primary.main, theme.palette.success.main, theme.palette.error.main],
-    legend: {},
-    tooltip: {},
+    legend: {
+      icon: 'circle',
+      left: theme.direction === 'rtl' ? 'right' : 'left',
+      textStyle: {
+        color: theme.palette.text.secondary,
+        align: 'right',
+        baseline: 'middle'
+      }
+    },
+    tooltip: {
+      backgroundColor: theme.palette.background.paper,
+      borderColor: theme.palette.divider,
+      textStyle: {
+        color: theme.palette.text.primary
+      }
+    },
     dataset: {
       dimensions: ['category', 'Apple', 'Samsung', 'Oneplus', 'Motorola'],
       source: [
@@ -104,66 +118,74 @@ const ColumnChart = () => {
     },
     grid: {
       top: '10%',
-      bottom: '8%',
-      left: '8%',
+      bottom: '6%',
+      left: '3%',
       right: 0
     },
     xAxis: {
       type: 'category',
+      axisLabel: {
+        color: theme.palette.text.disabled
+      },
       axisTick: {
-        show: false
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
       },
       axisLine: {
         show: false
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
       }
     },
     yAxis: {
+      type: 'value',
       splitLine: {
-        show: false
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
+      },
+      axisLabel: {
+        color: theme.palette.text.disabled
       }
     },
     series: [
       {
         type: 'bar',
         stack: 'one',
-        barWidth: 30,
+        barWidth: 20,
         itemStyle: {
-          borderRadius: 6,
-          borderWidth: 8,
-          borderColor: 'transparent',
           color: productColors.apple
         }
       },
       {
         type: 'bar',
         stack: 'one',
-        barWidth: 30,
+        barWidth: 20,
         itemStyle: {
-          borderRadius: 6,
-          borderWidth: 8,
-          borderColor: 'transparent',
           color: productColors.samsung
         }
       },
       {
         type: 'bar',
         stack: 'one',
-        barWidth: 30,
+        barWidth: 20,
         itemStyle: {
-          borderRadius: 6,
-          borderWidth: 8,
-          borderColor: 'transparent',
           color: productColors.oneplus
         }
       },
       {
         type: 'bar',
         stack: 'one',
-        barWidth: 30,
+        barWidth: 20,
         itemStyle: {
-          borderRadius: 6,
-          borderWidth: 8,
-          borderColor: 'transparent',
+          borderRadius: [10, 10, 0, 0],
           color: productColors.motorola
         }
       }

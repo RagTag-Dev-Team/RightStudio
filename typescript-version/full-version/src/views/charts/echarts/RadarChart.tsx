@@ -4,22 +4,31 @@
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import { EChart } from '@hcorta/react-echarts'
 import type { EChartsOption } from 'echarts'
 
 const RadarChart = () => {
+  const theme = useTheme()
+
   const echartOptions: EChartsOption = {
     style: {
       height: 400
     },
     color: ['#fde802', '#9b88fa'],
     legend: {
-      data: ['Allocated Budget', 'Actual Spending']
+      icon: 'circle',
+      bottom: 0,
+      data: ['Allocated Budget', 'Actual Spending'],
+      textStyle: {
+        color: theme.palette.text.secondary,
+        align: 'right',
+        baseline: 'middle'
+      }
     },
     radar: {
-      // shape: 'circle',
       indicator: [
         { name: 'Sales', max: 6500 },
         { name: 'Administration', max: 16000 },
@@ -27,7 +36,20 @@ const RadarChart = () => {
         { name: 'Customer Support', max: 38000 },
         { name: 'Development', max: 52000 },
         { name: 'Marketing', max: 25000 }
-      ]
+      ],
+      axisLine: {
+        lineStyle: {
+          color: theme.palette.divider
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: theme.palette.divider
+        }
+      },
+      axisName: {
+        color: theme.palette.text.disabled
+      }
     },
     series: [
       {

@@ -19,9 +19,19 @@ const PieChart = () => {
     },
     tooltip: {
       trigger: 'item',
+      backgroundColor: theme.palette.background.paper,
       borderColor: theme.palette.divider,
       textStyle: {
         color: theme.palette.text.primary
+      }
+    },
+    legend: {
+      icon: 'circle',
+      bottom: 0,
+      textStyle: {
+        color: theme.palette.text.secondary,
+        align: 'right',
+        baseline: 'middle'
       }
     },
     title: {

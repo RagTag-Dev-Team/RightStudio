@@ -25,7 +25,7 @@ const Recharts = () => {
 
   return (
     <RechartsWrapper>
-      <Grid container>
+      <Grid container spacing={6}>
         <Grid item xs={12}>
           <Typography variant='h5'>Recharts</Typography>
           <Typography variant='body2'>

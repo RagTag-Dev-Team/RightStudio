@@ -18,7 +18,7 @@ import styles from '@/styles/link.module.css'
 
 const ECharts = () => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <Typography variant='h5'>ECharts</Typography>
         <Typography variant='body2'>

@@ -1,7 +1,7 @@
 'use client'
 
 // MUI Imports
-import { Card } from '@mui/material'
+import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
@@ -14,6 +14,9 @@ const LineChart = () => {
   const theme = useTheme()
 
   const echartOptions: EChartsOption = {
+    style: {
+      height: 400
+    },
     color: [theme.palette.primary.main],
     xAxis: {
       type: 'category',
@@ -41,8 +44,18 @@ const LineChart = () => {
         show: false
       },
       axisTick: {
-        show: false
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
       },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
+      },
+      boundaryGap: false,
       z: 10
     },
     yAxis: {
@@ -52,12 +65,19 @@ const LineChart = () => {
           color: theme.palette.text.disabled
         }
       },
-      splitLine: {
-        show: false,
+      axisTick: {
+        show: true,
         lineStyle: {
           color: theme.palette.divider
         }
-      }
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: theme.palette.divider
+        }
+      },
+      interval: 60
     },
     grid: {
       show: false,
@@ -68,8 +88,7 @@ const LineChart = () => {
     },
     tooltip: {
       trigger: 'axis',
-
-      // backgroundColor: theme.palette.customColors.bodyBg,
+      backgroundColor: theme.palette.background.paper,
       borderColor: theme.palette.divider,
       textStyle: {
         color: theme.palette.text.primary
