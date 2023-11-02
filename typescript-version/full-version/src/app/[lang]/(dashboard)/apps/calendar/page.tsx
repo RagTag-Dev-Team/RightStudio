@@ -1,5 +1,5 @@
 // MUI Imports
-import { Card } from '@mui/material'
+import Card from '@mui/material/Card'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'

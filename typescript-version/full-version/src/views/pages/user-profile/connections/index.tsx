@@ -15,7 +15,7 @@ import OptionMenu from '@core/components/option-menu'
 import Link from '@components/Link'
 
 // Style Imports
-import commonStyles from '@views/pages/user-profile/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
   return (

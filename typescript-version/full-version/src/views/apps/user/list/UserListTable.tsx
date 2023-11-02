@@ -1,8 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useRef, useState, useMemo } from 'react'
-import type { HTMLProps } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -16,6 +15,10 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
+import Checkbox from '@mui/material/Checkbox'
+import IconButton from '@mui/material/IconButton'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
 import { styled } from '@mui/material/styles'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
@@ -46,6 +49,9 @@ import type { UsersType } from '@/types/apps/userTypes'
 import TableFilters from './TableFilters'
 import AddUserDrawer from './AddUserDrawer'
 
+// Util Imports
+import { getInitials } from '@/utils/get-initials'
+
 // Styles Imports
 import styles from './styles.module.css'
 import tableStyles from '@core/styles/table.module.css'
@@ -72,23 +78,6 @@ type UserStatusType = {
 }
 
 const Icon = styled('i')({})
-
-const IndeterminateCheckbox = ({
-  indeterminate,
-  className = '',
-  ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
-  const ref = useRef<HTMLInputElement>(null!)
-
-  useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      ref.current.indeterminate = !rest.checked && indeterminate
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, indeterminate])
-
-  return <input type='checkbox' ref={ref} className={className + ' cursor-pointer'} {...rest} />
-}
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
@@ -153,6 +142,19 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
   const [data, setData] = useState(...[tableData])
   const [globalFilter, setGlobalFilter] = useState('')
 
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
+  const getAvatar = (params: Pick<UsersType, 'avatar' | 'fullName'>) => {
+    const { avatar, fullName } = params
+
+    if (avatar) {
+      return <Avatar src={avatar} />
+    } else {
+      return <Avatar>{getInitials(fullName as string)}</Avatar>
+    }
+  }
+
   const columnHelper = createColumnHelper<UsersTypeWithAction>()
 
   const columns = useMemo<ColumnDef<UsersTypeWithAction, any>[]>(
@@ -160,7 +162,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
       {
         id: 'select',
         header: ({ table }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -169,7 +171,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           />
         ),
         cell: ({ row }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -183,7 +185,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         header: 'User',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <Avatar src={row.original.avatar} />
+            {getAvatar({ avatar: row.original.avatar, fullName: row.original.fullName })}
             <div className='flex flex-col'>
               <Typography component={Link} href='/apps/user/view' className={styles.title}>
                 {row.original.fullName}
@@ -230,11 +232,17 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         header: 'Action',
         cell: () => (
           <div className='flex items-center'>
-            <i className='ri-delete-bin-7-line text-[22px]' />
-            <i className='ri-edit-box-line text-[22px]' />
-            <Link href='/apps/user/view/overview/' className='flex'>
-              <i className='ri-eye-line text-[22px]' />
-            </Link>
+            <IconButton>
+              <i className='ri-delete-bin-7-line text-[22px]' />
+            </IconButton>
+            <IconButton>
+              <i className='ri-edit-box-line text-[22px]' />
+            </IconButton>
+            <IconButton>
+              <Link href='/apps/user/view/overview/' className='flex'>
+                <i className='ri-eye-line text-[22px]' />
+              </Link>
+            </IconButton>
           </div>
         ),
         enableSorting: false
@@ -279,17 +287,36 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         <CardHeader title='Filters' />
         <TableFilters setData={setData} tableData={tableData} />
         <Divider />
-        <div className='flex items-center justify-between'>
-          <Button color='secondary' variant='outlined' startIcon={<i className='ri-upload-2-line text-xl' />}>
+        <div
+          className={classnames('flex justify-between', {
+            'flex-col items-start': isBelowSmScreen,
+            'items-center': !isBelowSmScreen
+          })}
+        >
+          <Button
+            color='secondary'
+            variant='outlined'
+            startIcon={<i className='ri-upload-2-line text-xl' />}
+            {...(isBelowSmScreen && { fullWidth: true })}
+          >
             Export
           </Button>
-          <div className='flex items-center gap-4'>
+          <div
+            className={classnames('flex items-center gap-x-4', {
+              'is-full flex-col': isBelowSmScreen
+            })}
+          >
             <DebouncedInput
               value={globalFilter ?? ''}
               onChange={value => setGlobalFilter(String(value))}
               placeholder='Search User'
+              {...(isBelowSmScreen && { fullWidth: true })}
             />
-            <Button variant='contained' onClick={() => setAddUserOpen(!addUserOpen)}>
+            <Button
+              variant='contained'
+              onClick={() => setAddUserOpen(!addUserOpen)}
+              {...(isBelowSmScreen && { fullWidth: true })}
+            >
               Add New User
             </Button>
           </div>

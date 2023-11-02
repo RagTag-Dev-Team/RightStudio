@@ -22,9 +22,9 @@ const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
   }
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <TabContext value={activeTab}>
+    <TabContext value={activeTab}>
+      <Grid container spacing={6}>
+        <Grid item xs={12}>
           <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
             <Tab
               label={
@@ -72,14 +72,14 @@ const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
               value='connections'
             />
           </CustomTabList>
-          <Grid item xs={12}>
-            <TabPanel value={activeTab} className='p-0'>
-              {tabContentList[activeTab]}
-            </TabPanel>
-          </Grid>
-        </TabContext>
+        </Grid>
+        <Grid item xs={12}>
+          <TabPanel value={activeTab} className='p-0'>
+            {tabContentList[activeTab]}
+          </TabPanel>
+        </Grid>
       </Grid>
-    </Grid>
+    </TabContext>
   )
 }
 

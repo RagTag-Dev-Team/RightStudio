@@ -52,28 +52,28 @@ type stepperProps = {
 
 const steps: stepperProps[] = [
   {
-    icon: 'ri-file-list-2-line',
+    icon: 'ri-file-text-line',
     title: 'Details',
     subtitle: 'Enter Details'
   },
   {
-    icon: 'ri-box-3-line',
+    icon: 'ri-star-smile-line',
     title: 'FrameWorks',
     subtitle: 'Select Framework',
     active: true
   },
   {
-    icon: 'ri-database-2-line',
+    icon: 'ri-pie-chart-line',
     title: 'Database',
     subtitle: 'Select Database'
   },
   {
-    icon: 'ri-bank-card-2-line',
+    icon: 'ri-pie-chart-line',
     title: 'Billing',
     subtitle: 'Payment Details'
   },
   {
-    icon: 'ri-check-line',
+    icon: 'ri-check-double-line',
     title: 'Submit',
     subtitle: 'Submit'
   }

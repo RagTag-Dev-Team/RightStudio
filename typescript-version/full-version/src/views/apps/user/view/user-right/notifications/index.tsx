@@ -53,9 +53,7 @@ const NotificationsTab = () => {
       <CardHeader title='Notifications' />
       <Divider />
       <CardContent>
-        <Typography sx={{ fontWeight: 500, fontSize: '0.875rem' }}>
-          You will receive notification for the below selected items.
-        </Typography>
+        <Typography>You will receive notification for the below selected items.</Typography>
       </CardContent>
       <Divider />
       <div className='overflow-x-auto'>

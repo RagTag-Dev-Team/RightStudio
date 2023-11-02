@@ -18,7 +18,7 @@ import Link from '@components/Link'
 
 // Style Import
 import styles from './styles.module.css'
-import commonStyles from '@views/pages/user-profile/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const Teams = ({ data }: { data?: TeamsTabType[] }) => {
   return (

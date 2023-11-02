@@ -91,9 +91,9 @@ const socialAccountsArr: SocialAccountsType[] = [
 
 const ConnectionsTab = () => {
   return (
-    <Card>
-      <Grid container>
-        <Grid item xs={12}>
+    <Grid container>
+      <Grid item xs={12}>
+        <Card>
           <CardHeader
             title='Connected Accounts'
             subheader='Display content from your connected accounts on your site'
@@ -112,8 +112,10 @@ const ConnectionsTab = () => {
               </div>
             ))}
           </CardContent>
-        </Grid>
-        <Grid item xs={12}>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <Card>
           <CardHeader title='Social Accounts' subheader='Display content from social accounts on your site' />
           <CardContent>
             {socialAccountsArr.map((item, index) => (
@@ -137,9 +139,9 @@ const ConnectionsTab = () => {
               </div>
             ))}
           </CardContent>
-        </Grid>
+        </Card>
       </Grid>
-    </Card>
+    </Grid>
   )
 }
 

@@ -80,7 +80,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
   }
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog fullWidth open={open} onClose={handleClose} maxWidth='md' scroll='body'>
       <DialogTitle
         variant='h5'
         className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {

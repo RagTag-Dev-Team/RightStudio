@@ -99,13 +99,14 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
   return (
     <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={handleClose}>
       <DialogTitle
+        variant='h5'
         className={classnames('flex flex-col gap-2 text-center', styles.dialogTitle, {
           [styles.smDialogTitle]: isBelowSmScreen
         })}
       >
-        Add Card
-        <Typography component='span' className='flex flex-col text-center'>
-          Add card for future billing
+        Upgrade Plan
+        <Typography component='span' variant='body2' className='flex flex-col text-center'>
+          Choose the best plan for user
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>

@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 import TablePagination from '@mui/material/TablePagination'
 import IconButton from '@mui/material/IconButton'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
 import type { TextFieldProps } from '@mui/material/TextField'
 import type { ButtonProps } from '@mui/material/Button'
 
@@ -117,6 +119,9 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   const [data, setData] = useState(...[permissionsData])
   const [globalFilter, setGlobalFilter] = useState('')
 
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   const handleEditPermission = (name: string) => {
     setOpen(true)
     setEditValue(name)
@@ -153,9 +158,12 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <i className='ri-edit-box-line text-[22px]' onClick={() => handleEditPermission(row.original.name)} />
-            <OpenDialogOnElementClick element={IconButton} elementProps={iconButtonProps} dialog={PermissionDialog} />
-            <i className='ri-delete-bin-7-line text-[22px]' />
+            <IconButton onClick={() => handleEditPermission(row.original.name)}>
+              <i className='ri-edit-box-line text-[22px]' />
+            </IconButton>
+            <IconButton>
+              <i className='ri-delete-bin-7-line text-[22px]' />
+            </IconButton>
           </div>
         ),
         enableSorting: false
@@ -197,22 +205,24 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Add Permission',
-    onClick: () => handleAddPermission()
-  }
-
-  const iconButtonProps: ButtonProps = {
-    children: <i className='ri-edit-box-line text-[22px]' onClick={() => handleEditPermission(editValue)} />,
-    onClick: () => handleEditPermission(editValue)
+    onClick: () => handleAddPermission(),
+    ...(isBelowSmScreen && { fullWidth: true })
   }
 
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between items-center'>
+        <CardContent
+          className={classnames('flex justify-between', {
+            'flex-col items-start': isBelowSmScreen,
+            'items-center': !isBelowSmScreen
+          })}
+        >
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Permissions'
+            {...(isBelowSmScreen && { fullWidth: true })}
           />
           <OpenDialogOnElementClick
             element={Button}

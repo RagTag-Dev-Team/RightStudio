@@ -234,7 +234,7 @@ const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
                 { 'flex-col !items-start': isBelowSmScreen }
               )}
             >
-              <Typography>{card.providerName}</Typography>
+              <Typography className='font-medium'>{card.providerName}</Typography>
               <div className='flex gap-x-4 gap-y-2 flex-wrap'>
                 {card.images.map((image, index) => (
                   <Avatar

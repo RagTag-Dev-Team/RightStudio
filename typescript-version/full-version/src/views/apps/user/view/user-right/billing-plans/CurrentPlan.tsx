@@ -19,7 +19,7 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 // Component Imports
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
-import PricingDialog from '@components/dialogs/pricing'
+import UpgradePlan from '@components/dialogs/upgrade-plan'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
@@ -66,18 +66,17 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
           <div className='flex gap-4 flex-wrap'>
             <OpenDialogOnElementClick
               element={Button}
-              elementProps={buttonProps('upgrade plan', 'contained', 'primary')}
-              dialog={PricingDialog}
+              elementProps={buttonProps('Upgrade plan', 'contained', 'primary')}
+              dialog={UpgradePlan}
               dialogProps={{ data: data }}
             />
             <OpenDialogOnElementClick
               element={Button}
-              elementProps={buttonProps('Cancel Subscription', 'outlined', 'secondary')}
+              elementProps={buttonProps('Cancel Subscription', 'outlined', 'error')}
               dialog={ConfirmationDialog}
               dialogProps={{ type: 'unsubscribe' }}
             />
           </div>
-          {/* <ConfirmationDialog open={open} setOpen={setOpen} type='unsubscribe' /> */}
         </Grid>
       </CardContent>
     </Card>

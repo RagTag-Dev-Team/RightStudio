@@ -8,6 +8,7 @@ import type { LinkProps } from 'next/link'
 import type { IconButtonProps } from '@mui/material/IconButton'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 import type { DividerProps } from '@mui/material/Divider'
+import type { BoxProps } from '@mui/material/Box'
 
 export type OptionDividerType = {
   divider: boolean
@@ -21,7 +22,7 @@ export type OptionDividerType = {
 export type OptionMenuItemType = {
   text: ReactNode
   icon?: ReactNode
-  linkProps?: LinkProps
+  linkProps?: BoxProps
   href?: LinkProps['href']
   menuItemProps?: MenuItemProps
   divider?: never

@@ -4,10 +4,8 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Component Imports
 import AddNewAddress from '@components/dialogs/add-edit-address'
@@ -15,7 +13,7 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 
 // Style Imports
 import styles from './styles.module.css'
-import tableStyles from '@core/styles/table.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const data = {
   firstName: 'John',
@@ -57,58 +55,124 @@ const BillingAddress = () => {
         />
         <CardContent>
           <Grid container>
-            <Grid item xs={6}>
-              <table className={classnames(styles.addressTable1, tableStyles.table)}>
-                <tbody className={tableStyles.tbody}>
+            <Grid item xs={12} md={6}>
+              <table className={styles.addressTable1}>
+                <tbody className='align-top'>
                   <tr>
-                    <td>Name:</td>
-                    <td>{`${data.firstName} ${data.lastName}`}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Name:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{`${data.firstName} ${data.lastName}`}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Billing Email:</td>
-                    <td>{data.email}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Billing Email:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.email}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Tax ID:</td>
-                    <td>{data.taxId}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Tax ID:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.taxId}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>VAT Number:</td>
-                    <td>{data.vatNumber}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        VAT Number:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.vatNumber}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Billing Address:</td>
-                    <td>{`${data.address1} ${data.address2}`}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Billing Address:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{`${data.address1} ${data.address2}`}</Typography>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </Grid>
-            <Grid item xs={6}>
-              <table className={classnames(styles.addressTable1, tableStyles.table)}>
-                <tbody className={tableStyles.tbody}>
+            <Grid item xs={12} md={6}>
+              <table className={styles.addressTable1}>
+                <tbody className='align-top'>
                   <tr>
-                    <td>Contact:</td>
-                    <td>{data.contact}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Contact:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.contact}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Landmark:</td>
-                    <td>{data.landmark}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Landmark:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.landmark}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Landmark:</td>
-                    <td>{data.city}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Landmark:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.city}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Country:</td>
-                    <td>{data.country}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Country:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.country}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>State:</td>
-                    <td>{data.state}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        State:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.state}</Typography>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Zip Code:</td>
-                    <td>{data.zipCode}</td>
+                    <td className='p-1 pis-0'>
+                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                        Zip Code:
+                      </Typography>
+                    </td>
+                    <td className='p-1'>
+                      <Typography variant='body2'>{data.zipCode}</Typography>
+                    </td>
                   </tr>
                 </tbody>
               </table>

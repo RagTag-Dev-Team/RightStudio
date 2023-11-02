@@ -39,7 +39,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('crm')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='ri-briefcase-line' />
+              <i className='ri-bar-chart-box-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>CRM Application</Typography>
@@ -51,7 +51,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('eCommerce')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='ri-shopping-cart-2-line' />
+              <i className='ri-shopping-cart-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>eCommerce Platforms</Typography>
@@ -63,7 +63,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
         <div onClick={() => setValue('learning')} className='flex items-center justify-between cursor-pointer gap-4'>
           <div className='flex items-center gap-4'>
             <Avatar variant='rounded'>
-              <i className='ri-award-line' />
+              <i className='ri-video-upload-line' />
             </Avatar>
             <div className='flex flex-col gap-1'>
               <Typography>Online Learning platform</Typography>

@@ -112,7 +112,7 @@ const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
                 <Avatar variant='rounded' className={classnames(styles.avatarIcon, commonStyles.actionHoverBackground)}>
                   <img src={card.image} alt={card.alt} height={card.imgHeight} width={card.imgWidth} />
                 </Avatar>
-                <Typography>{card.cardName}</Typography>
+                <Typography className='font-medium'>{card.cardName}</Typography>
               </div>
               <Typography>{card.cardType}</Typography>
             </div>

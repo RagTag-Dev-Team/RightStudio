@@ -1,8 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useMemo, useRef, useState } from 'react'
-import type { HTMLProps } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 // MUI Imports
 import Avatar from '@mui/material/Avatar'
@@ -11,6 +10,7 @@ import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
+import Checkbox from '@mui/material/Checkbox'
 import CardHeader from '@mui/material/CardHeader'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
@@ -41,7 +41,7 @@ import OptionMenu from '@core/components/option-menu'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
-import commonStyles from '@views/pages/user-profile/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -50,23 +50,6 @@ declare module '@tanstack/table-core' {
   interface FilterMeta {
     itemRank: RankingInfo
   }
-}
-
-const IndeterminateCheckbox = ({
-  indeterminate,
-  className = '',
-  ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
-  const ref = useRef<HTMLInputElement>(null!)
-
-  useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      ref.current.indeterminate = !rest.checked && indeterminate
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, indeterminate])
-
-  return <input type='checkbox' ref={ref} className={className + ' cursor-pointer'} {...rest} />
 }
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
@@ -124,7 +107,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
       {
         id: 'select',
         header: ({ table }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -133,7 +116,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
           />
         ),
         cell: ({ row }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),

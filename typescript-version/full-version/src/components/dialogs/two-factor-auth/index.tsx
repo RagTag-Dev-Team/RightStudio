@@ -15,7 +15,6 @@ import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
-import InputAdornment from '@mui/material/InputAdornment'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
@@ -24,10 +23,12 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { Direction } from '@core/types'
+import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
+
+// Component Imports
+import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
 // Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type TwoFactorAuthProps = {
@@ -36,12 +37,36 @@ type TwoFactorAuthProps = {
   direction: Direction
 }
 
+const data: CustomInputHorizontalData[] = [
+  {
+    title: (
+      <div className='flex items-center gap-1'>
+        <i className='ri-settings-3-line' />
+        <Typography className='font-medium'>Authenticator Apps</Typography>
+      </div>
+    ),
+    value: 'app',
+    isSelected: true,
+    content: 'Get code from an app like Google Authenticator or Microsoft Authenticator.'
+  },
+  {
+    title: (
+      <div className='flex items-center gap-1'>
+        <i className='ri-wechat-line' />
+        <Typography className='font-medium'>SMS</Typography>
+      </div>
+    ),
+    value: 'sms',
+    content: 'We will send a code via SMS if you need to use your backup login method.'
+  }
+]
+
 const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) => {
   return (
     <>
       <DialogTitle
         variant='h5'
-        className={classnames(globalDialogStyles.dialogTitle, {
+        className={classnames('flex flex-col gap-2', globalDialogStyles.dialogTitle, {
           [globalDialogStyles.smDialogTitle]: isBelowSmScreen
         })}
       >
@@ -55,19 +80,11 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           [globalDialogStyles.smDialogContent]: isBelowSmScreen
         })}
       >
-        <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
+        <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
 
-        <TextField
-          fullWidth
-          type='number'
-          label='Mobile Number'
-          placeholder='123 456 7890'
-          InputProps={{
-            startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment>
-          }}
-        />
+        <TextField fullWidth type='number' label='Mobile Number' placeholder='123 456 7890' />
       </DialogContent>
       <DialogActions
         className={classnames('gap-2', globalDialogStyles.dialogActions, {
@@ -95,6 +112,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
   return (
     <>
       <DialogTitle
+        variant='h5'
         className={classnames('text-center', globalDialogStyles.dialogTitle, {
           [globalDialogStyles.smDialogTitle]: isBelowSmScreen
         })}
@@ -106,7 +124,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           [globalDialogStyles.smDialogContent]: isBelowSmScreen
         })}
       >
-        <IconButton className={styles.closeIcon} onClick={handleAuthDialogClose}>
+        <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
         <div className='flex flex-col gap-2'>
@@ -150,8 +168,12 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
 }
 
 const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
+  const initialSelectedOption: string = data.filter(item => item.isSelected)[
+    data.filter(item => item.isSelected).length - 1
+  ].value
+
   // States
-  const [authType, setAuthType] = useState<'app' | 'sms'>('app')
+  const [authType, setAuthType] = useState<'app' | 'sms'>(initialSelectedOption as 'app')
   const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)
 
   // Hooks
@@ -176,6 +198,14 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
 
   const arrowIcon = direction === 'ltr' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'
 
+  const handleOptionChange = () => {
+    if (authType !== 'app') {
+      setAuthType('app')
+    } else {
+      setAuthType('sms')
+    }
+  }
+
   return (
     <>
       <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
@@ -195,58 +225,21 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
             [globalDialogStyles.smDialogContent]: isBelowSmScreen
           })}
         >
-          <IconButton onClick={handleClose} className={styles.closeIcon}>
+          <IconButton onClick={handleClose} className={globalDialogStyles.closeIcon}>
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={6}>
-            <Grid item xs={12}>
-              <div
-                onClick={() => {
-                  if (authType !== 'app') {
-                    setAuthType('app')
-                  }
-                }}
-                className={classnames('cursor-pointer', commonStyles.border, commonStyles.borderRadius, {
-                  [styles.active]: authType === 'app'
-                })}
-              >
-                <div
-                  className={classnames('flex items-center text-start gap-5', styles.authMethod, {
-                    'flex-col !text-center': isBelowSmScreen
-                  })}
-                >
-                  <i className='ri-settings-4-line text-[38px]' />
-                  <div className='flex flex-col gap-2'>
-                    <Typography className={styles.text}>Authenticator Apps</Typography>
-                    <Typography variant='body2' className={styles.text}>
-                      Get code from an app like Google Authenticator or Microsoft Authenticator.
-                    </Typography>
-                  </div>
-                </div>
-              </div>
-            </Grid>
-            <Grid item xs={12}>
-              <div
-                onClick={() => setAuthType('sms')}
-                className={classnames('cursor-pointer', commonStyles.border, commonStyles.borderRadius, {
-                  [styles.active]: authType === 'sms'
-                })}
-              >
-                <div
-                  className={classnames('flex items-center text-start gap-5', styles.authMethod, {
-                    'flex-col !text-center': isBelowSmScreen
-                  })}
-                >
-                  <i className='ri-message-2-line text-[38px]' />
-                  <div className='flex flex-col gap-2'>
-                    <Typography className={styles.text}>SMS</Typography>
-                    <Typography variant='body2' className={styles.text}>
-                      We will send a code via SMS if you need to use your backup login method.
-                    </Typography>
-                  </div>
-                </div>
-              </div>
-            </Grid>
+            {data.map((item, index) => (
+              <CustomInputHorizontal
+                key={index}
+                type='radio'
+                selected={authType}
+                handleChange={handleOptionChange}
+                data={item}
+                gridProps={{ xs: 12 }}
+                name='auth-method'
+              />
+            ))}
           </Grid>
         </DialogContent>
         <DialogActions
@@ -261,6 +254,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
               setOpen(false)
               setShowAuthDialog(true)
             }}
+            className='capitalize'
           >
             Continue
           </Button>

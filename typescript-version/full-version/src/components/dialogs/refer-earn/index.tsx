@@ -143,7 +143,9 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                 placeholder='http://referral.link'
                 endAdornment={
                   <InputAdornment position='end'>
-                    <Button size='small'>Copy Link</Button>
+                    <Button size='small' className='uppercase'>
+                      Copy Link
+                    </Button>
                   </InputAdornment>
                 }
               />

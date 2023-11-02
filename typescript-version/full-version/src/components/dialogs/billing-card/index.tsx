@@ -80,7 +80,7 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
           [styles.smDialogTitle]: isBelowSmScreen
         })}
       >
-        {data ? 'Edit Card' : 'Add Card'}
+        {data ? 'Edit Card' : 'Add New Card'}
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
           {data ? 'Edit your saved card details' : 'Add card for future billing'}
         </Typography>

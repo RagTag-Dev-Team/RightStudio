@@ -17,7 +17,7 @@ import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
-import PricingDialog from '@components/dialogs/pricing'
+import UpgradePlan from '@components/dialogs/upgrade-plan'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
@@ -61,11 +61,11 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
             <LinearProgress variant='determinate' value={40} />
             <Typography>18 days remaining until your plan requires update</Typography>
           </Grid>
-          <div className='flex gap-4 flex-wrap'>
+          <Grid item xs={12} className='flex gap-4 flex-wrap'>
             <OpenDialogOnElementClick
               element={Button}
               elementProps={buttonProps('Upgrade Plan', 'primary', 'contained')}
-              dialog={PricingDialog}
+              dialog={UpgradePlan}
               dialogProps={{ data: data }}
             />
             <OpenDialogOnElementClick
@@ -74,7 +74,7 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
               dialog={ConfirmationDialog}
               dialogProps={{ type: 'unsubscribe' }}
             />
-          </div>
+          </Grid>
         </Grid>
       </CardContent>
     </Card>

@@ -1,8 +1,7 @@
 'use client'
 
 // React Imports
-import { useState, useMemo, useEffect, useRef } from 'react'
-import type { HTMLProps } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -19,8 +18,12 @@ import InputLabel from '@mui/material/InputLabel'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
+import Checkbox from '@mui/material/Checkbox'
+import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/material/styles'
 import TablePagination from '@mui/material/TablePagination'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import type { Theme } from '@mui/material/styles'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -44,6 +47,9 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 import type { UsersType } from '@/types/apps/userTypes'
+
+// Util Imports
+import { getInitials } from '@/utils/get-initials'
 
 // Style Imports
 import styles from './style.module.css'
@@ -71,23 +77,6 @@ type UserStatusType = {
 }
 
 const Icon = styled('i')({})
-
-const IndeterminateCheckbox = ({
-  indeterminate,
-  className = '',
-  ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
-  const ref = useRef<HTMLInputElement>(null!)
-
-  useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      ref.current.indeterminate = !rest.checked && indeterminate
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, indeterminate])
-
-  return <input type='checkbox' ref={ref} className={className + ' cursor-pointer'} {...rest} />
-}
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
@@ -152,6 +141,9 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   const [data, setData] = useState(...[tableData])
   const [globalFilter, setGlobalFilter] = useState('')
 
+  // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   useEffect(() => {
     const filteredData = tableData?.filter(user => {
       if (role && user.role !== role) return false
@@ -162,6 +154,16 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
     setData(filteredData)
   }, [role, tableData, setData])
 
+  const getAvatar = (params: Pick<UsersType, 'avatar' | 'fullName'>) => {
+    const { avatar, fullName } = params
+
+    if (avatar) {
+      return <Avatar src={avatar} />
+    } else {
+      return <Avatar>{getInitials(fullName as string)}</Avatar>
+    }
+  }
+
   const columnHelper = createColumnHelper<UsersTypeWithAction>()
 
   const columns = useMemo<ColumnDef<UsersTypeWithAction, any>[]>(
@@ -169,7 +171,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
       {
         id: 'select',
         header: ({ table }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: table.getIsAllRowsSelected(),
               indeterminate: table.getIsSomeRowsSelected(),
@@ -178,7 +180,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
           />
         ),
         cell: ({ row }) => (
-          <IndeterminateCheckbox
+          <Checkbox
             {...{
               checked: row.getIsSelected(),
               disabled: !row.getCanSelect(),
@@ -192,7 +194,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
         header: 'User',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <Avatar src={row.original.avatar} />
+            {getAvatar({ avatar: row.original.avatar, fullName: row.original.fullName })}
             <div className='flex flex-col'>
               <Typography>{row.original.fullName}</Typography>
               <Typography>{row.original.username}</Typography>
@@ -237,11 +239,17 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
         header: 'Actions',
         cell: () => (
           <div className='flex items-center'>
-            <i className='ri-delete-bin-7-line text-[22px]' />
-            <i className='ri-edit-box-line text-[22px]' />
-            <Link href='/apps/user/view/overview/' className='flex'>
-              <i className='ri-eye-line text-[22px]' />
-            </Link>
+            <IconButton>
+              <i className='ri-delete-bin-7-line text-[22px]' />
+            </IconButton>
+            <IconButton>
+              <i className='ri-edit-box-line text-[22px]' />
+            </IconButton>
+            <IconButton>
+              <Link href='/apps/user/view/overview/' className='flex'>
+                <i className='ri-eye-line text-[22px]' />
+              </Link>
+            </IconButton>
           </div>
         ),
         enableSorting: false
@@ -282,18 +290,34 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex items-center justify-between'>
-        <Button variant='outlined' color='secondary' startIcon={<i className='ri-upload-2-line' />}>
+      <CardContent
+        className={classnames('flex justify-between', {
+          'flex-col items-start': isBelowSmScreen,
+          'items-center': !isBelowSmScreen
+        })}
+      >
+        <Button
+          variant='outlined'
+          color='secondary'
+          startIcon={<i className='ri-upload-2-line' />}
+          {...(isBelowSmScreen && { fullWidth: true })}
+        >
           Export
         </Button>
-        <div className='flex items-center'>
+        <div
+          className={classnames('flex', {
+            'flex-col !items-start is-full': isBelowSmScreen,
+            'items-center': !isBelowSmScreen
+          })}
+        >
           <DebouncedInput
             value={globalFilter ?? ''}
             className={styles.searchWidth}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search User'
+            {...(isBelowSmScreen && { fullWidth: true })}
           />
-          <FormControl size='small'>
+          <FormControl size='small' {...(isBelowSmScreen && { fullWidth: true })}>
             <InputLabel id='roles-app-role-select-label'>Select Role</InputLabel>
             <Select
               value={role}

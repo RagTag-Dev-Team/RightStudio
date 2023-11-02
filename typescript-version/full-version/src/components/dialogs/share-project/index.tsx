@@ -183,7 +183,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
             )}
           />
         </div>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-4'>
           <Typography variant='h6'>{`${data.length} Members`}</Typography>
           <div className='flex flex-col flex-wrap gap-4'>
             {data.map((member, index) => (
@@ -245,7 +245,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
               className={commonStyles.textPrimary}
             >{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
-          <Button variant='outlined' className='flex'>
+          <Button variant='outlined' className='flex' size='small'>
             <i className='ri-link text-xl' />
             Copy Project Link
           </Button>

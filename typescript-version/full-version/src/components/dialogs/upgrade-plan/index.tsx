@@ -44,12 +44,13 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
     <>
       <Dialog fullWidth open={open} onClose={handleClose}>
         <DialogTitle
+          variant='h5'
           className={classnames('flex flex-col gap-2 text-center', styles.dialogTitle, {
             [styles.smDialogTitle]: isBelowSmScreen
           })}
         >
           Upgrade Plan
-          <Typography component='span' className='flex flex-col text-center'>
+          <Typography component='span' variant='body2' className='flex flex-col text-center'>
             Choose the best plan for user
           </Typography>
         </DialogTitle>
