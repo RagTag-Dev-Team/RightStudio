@@ -2,6 +2,7 @@
 
 // Third-party Imports
 import classnames from 'classnames'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
@@ -15,34 +16,40 @@ import useSettings from '@core/hooks/useSettings'
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from './footer.module.css'
+// Styled Component Imports
+import StyledFooter from '@layouts/styles/horizontal/StyledFooter'
 
-const Footer = ({ children }: ChildrenType) => {
+type Props = ChildrenType & {
+  overrideStyles?: CSSObject
+}
+
+const Footer = (props: Props) => {
+  // Props
+  const { children, overrideStyles } = props
+
   // Hooks
   const { settings } = useSettings()
 
+  const { footerContentWidth, skin } = settings
+
   const footerStatic = themeConfig.footer.type === 'static'
   const footerFixed = themeConfig.footer.type === 'fixed'
-  const footerContentCompact = settings.footerContentWidth === 'compact'
-  const footerContentWide = settings.footerContentWidth === 'wide'
+  const footerContentCompact = footerContentWidth === 'compact'
+  const footerContentWide = footerContentWidth === 'wide'
 
   return (
-    <footer
+    <StyledFooter
+      skin={skin}
+      overrideStyles={overrideStyles}
       className={classnames(horizontalLayoutClasses.footer, {
         [horizontalLayoutClasses.footerStatic]: footerStatic,
-        [`${horizontalLayoutClasses.footerFixed} ${styles.footerFixed}`]: footerFixed,
-        [`${horizontalLayoutClasses.footerContentCompact} ${styles.footerContentCompact}`]: footerContentCompact,
-        [`${horizontalLayoutClasses.footerContentWide} ${styles.footerContentWide}`]: footerContentWide
+        [horizontalLayoutClasses.footerFixed]: footerFixed,
+        [horizontalLayoutClasses.footerContentCompact]: footerContentCompact,
+        [horizontalLayoutClasses.footerContentWide]: footerContentWide
       })}
     >
-      <div
-        className={classnames(horizontalLayoutClasses.footerContentWrapper, styles.contentWrapper)}
-        style={{ paddingInline: themeConfig.layoutPadding }}
-      >
-        {children}
-      </div>
-    </footer>
+      <div className={horizontalLayoutClasses.footerContentWrapper}>{children}</div>
+    </StyledFooter>
   )
 }
 

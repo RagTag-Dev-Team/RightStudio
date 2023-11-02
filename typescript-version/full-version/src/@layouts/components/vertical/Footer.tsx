@@ -2,6 +2,7 @@
 
 // Third-party Imports
 import classnames from 'classnames'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
@@ -15,39 +16,44 @@ import useSettings from '@core/hooks/useSettings'
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from './footer.module.css'
+// Styled Component Imports
+import StyledFooter from '@layouts/styles/vertical/StyledFooter'
 
-const Footer = ({ children }: ChildrenType) => {
+type Props = ChildrenType & {
+  overrideStyles?: CSSObject
+}
+
+const Footer = (props: Props) => {
+  // Props
+  const { children, overrideStyles } = props
+
   // Hooks
   const { settings } = useSettings()
+
+  const { footerContentWidth, skin } = settings
 
   const footerDetached = themeConfig.footer.detached === true
   const footerAttached = themeConfig.footer.detached === false
   const footerStatic = themeConfig.footer.type === 'static'
   const footerFixed = themeConfig.footer.type === 'fixed'
-  const footerContentCompact = settings.footerContentWidth === 'compact'
-  const footerContentWide = settings.footerContentWidth === 'wide'
+  const footerContentCompact = footerContentWidth === 'compact'
+  const footerContentWide = footerContentWidth === 'wide'
 
   return (
-    <footer
+    <StyledFooter
+      skin={skin}
+      overrideStyles={overrideStyles}
       className={classnames(verticalLayoutClasses.footer, 'is-full', {
-        [`${verticalLayoutClasses.footerDetached} ${styles.footerDetached}`]: footerDetached,
-        [`${verticalLayoutClasses.footerAttached} ${styles.footerAttached}`]: footerAttached,
+        [verticalLayoutClasses.footerDetached]: footerDetached,
+        [verticalLayoutClasses.footerAttached]: footerAttached,
         [verticalLayoutClasses.footerStatic]: footerStatic,
-        [`${verticalLayoutClasses.footerFixed} ${styles.footerFixed}`]: footerFixed,
-        [`${verticalLayoutClasses.footerContentCompact} ${styles.footerContentCompact}`]: footerContentCompact,
+        [verticalLayoutClasses.footerFixed]: footerFixed,
+        [verticalLayoutClasses.footerContentCompact]: footerContentCompact,
         [verticalLayoutClasses.footerContentWide]: footerContentWide
       })}
-      style={{ ...(footerFixed && footerDetached && { paddingInline: themeConfig.layoutPadding }) }}
     >
-      <div
-        className={classnames(verticalLayoutClasses.footerContentWrapper, styles.contentWrapper)}
-        style={{ paddingInline: themeConfig.layoutPadding }}
-      >
-        {children}
-      </div>
-    </footer>
+      <div className={verticalLayoutClasses.footerContentWrapper}>{children}</div>
+    </StyledFooter>
   )
 }
 
