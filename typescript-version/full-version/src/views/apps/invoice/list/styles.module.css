@@ -1,0 +1,9 @@
+.gridItemBelowMd:nth-of-type(odd) > div {
+  padding-inline-end: 1.5rem;
+  border-inline-end: 1px solid var(--mui-palette-divider);
+}
+
+.gridItemAboveMd:not(:last-child) > div {
+  padding-inline-end: 1.5rem;
+  border-inline-end: 1px solid var(--mui-palette-divider);
+}
