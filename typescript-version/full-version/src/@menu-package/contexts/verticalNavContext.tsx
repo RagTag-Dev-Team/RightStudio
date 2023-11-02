@@ -7,8 +7,8 @@ import { createContext, useCallback, useMemo, useState } from 'react'
 import type { ChildrenType } from '../types'
 
 export type VerticalNavState = {
-  width?: number | string
-  collapsedWidth?: number | string
+  width?: number
+  collapsedWidth?: number
   isCollapsed?: boolean
   isHovered?: boolean
   isToggled?: boolean

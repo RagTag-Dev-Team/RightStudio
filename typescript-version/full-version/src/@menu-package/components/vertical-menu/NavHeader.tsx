@@ -27,11 +27,7 @@ const StyledNavHeader = styled.div<StyledNavHeaderProps>`
   transition: ${({ transitionDuration }) => `padding-inline ${transitionDuration}ms ease-in-out`};
 
   ${({ isHovered, isCollapsed, collapsedWidth }) =>
-    isCollapsed &&
-    !isHovered &&
-    `padding-inline: calc((${
-      typeof collapsedWidth === 'number' ? `${collapsedWidth}px` : collapsedWidth
-    } - 1px - 22px) / 2);`}
+    isCollapsed && !isHovered && `padding-inline: calc((${collapsedWidth}px - 1px - 22px) / 2);`}
 `
 
 const NavHeader = ({ children }: ChildrenType) => {

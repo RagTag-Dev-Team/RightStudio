@@ -16,7 +16,7 @@ import useSettings from '@core/hooks/useSettings'
 
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
-  const { isCollapsed } = useVerticalNav()
+  const { isHovered, isCollapsed } = useVerticalNav()
   const { saveSettings } = useSettings()
 
   const handleClick = () => {
@@ -34,7 +34,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        <NavCollapseIcons onClick={handleClick} />
+        {!(isCollapsed && !isHovered) && <NavCollapseIcons onClick={handleClick} />}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>

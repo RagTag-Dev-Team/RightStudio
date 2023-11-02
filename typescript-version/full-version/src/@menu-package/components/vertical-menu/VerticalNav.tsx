@@ -6,7 +6,7 @@ import type { HTMLAttributes } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'
-import type { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { BreakpointType } from '../../types'

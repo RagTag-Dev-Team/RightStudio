@@ -6,7 +6,7 @@ import type { ForwardRefRenderFunction, CSSProperties, ReactElement, ReactNode }
 
 // Third-party Imports
 import classnames from 'classnames'
-import type { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { MenuSectionStyles } from './Menu'

@@ -19,11 +19,13 @@ export const StyledVerticalNavExpandIconWrapper = styled.span<RootStylesType>`
 const StyledVerticalNavExpandIcon = styled.span<StyledVerticalNavExpandIconProps>`
   display: flex;
 
+  & > i,
   & > svg {
     transition: ${({ transitionDuration }) => `transform ${transitionDuration}ms ease-in-out`};
     ${({ open }) => open && 'transform: rotate(90deg);'}
   }
 
+  [dir='rtl'] & > i,
   [dir='rtl'] & > svg {
     transform: rotate(180deg);
     ${({ open }) => open && 'transform: rotate(90deg);'}

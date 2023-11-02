@@ -3,7 +3,7 @@ import { Children, isValidElement } from 'react'
 import type { ReactElement, ReactNode } from 'react'
 
 // Third-party Imports
-import type { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { ChildrenType, RenderExpandedMenuItemIcon } from '../types'

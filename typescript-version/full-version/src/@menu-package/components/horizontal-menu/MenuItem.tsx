@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 // Third-party Imports
 import classnames from 'classnames'
 import { useUpdateEffect } from 'react-use'
-import type { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/styled'
 import { useFloatingTree } from '@floating-ui/react'
 
 // Type Imports

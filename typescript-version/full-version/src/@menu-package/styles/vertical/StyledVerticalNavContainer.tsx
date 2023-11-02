@@ -16,7 +16,7 @@ const StyledVerticalNavContainer = styled.div<StyledVerticalNavContainerProps>`
   border-inline-end: 1px solid #efefef;
   .${verticalNavClasses.hovered} &,
   .${verticalNavClasses.expanding} & {
-    inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};
+    inline-size: ${({ width }) => `${width}px`};
   }
 
   /* Transition */

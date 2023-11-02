@@ -1,3 +1,6 @@
+// React Imports
+import { useEffect, useRef } from 'react'
+
 // Next Imports
 // import Img from 'next/image'
 import Link from 'next/link'
@@ -8,8 +11,12 @@ import styled from '@emotion/styled'
 // Type Imports
 import type { VerticalNavContextProps } from '@menu-package/contexts/verticalNavContext'
 
+// Config Imports
+import themeConfig from '@/configs/themeConfig'
+
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useSettings from '@core/hooks/useSettings'
 
 type LogoTextProps = {
   isHovered?: VerticalNavContextProps['isHovered']
@@ -26,7 +33,31 @@ const LogoText = styled.span<LogoTextProps>`
 `
 
 const Logo = () => {
+  // Refs
+  const logoTextRef = useRef<HTMLSpanElement>(null)
+
+  // Hooks
   const { isHovered, isCollapsed, transitionDuration } = useVerticalNav()
+  const { settings } = useSettings()
+
+  const { layout } = settings
+
+  useEffect(() => {
+    if (layout === 'horizontal' || !isCollapsed) {
+      return
+    }
+
+    if (logoTextRef && logoTextRef.current) {
+      if (isCollapsed && !isHovered) {
+        setTimeout(() => {
+          logoTextRef.current?.classList.add('hidden')
+        }, transitionDuration)
+      } else {
+        logoTextRef.current.classList.remove('hidden')
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHovered, isCollapsed])
 
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
@@ -50,8 +81,13 @@ const Logo = () => {
           />
         </g>
       </svg>
-      <LogoText isHovered={isHovered} isCollapsed={isCollapsed} transitionDuration={transitionDuration}>
-        Master
+      <LogoText
+        ref={logoTextRef}
+        isHovered={isHovered}
+        isCollapsed={isCollapsed}
+        transitionDuration={transitionDuration}
+      >
+        {themeConfig.templateName}
       </LogoText>
     </Link>
   )
