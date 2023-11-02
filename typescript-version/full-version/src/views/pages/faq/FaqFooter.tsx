@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography'
 import classnames from 'classnames'
 
 // Style Imports
-import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const FaqFooter = () => {
@@ -26,7 +25,7 @@ const FaqFooter = () => {
           <div
             className={classnames(
               'flex justify-center items-center flex-col',
-              styles.footerCard,
+              commonStyles.actionHoverBackground,
               commonStyles.borderRadius
             )}
           >
@@ -41,7 +40,7 @@ const FaqFooter = () => {
           <div
             className={classnames(
               'flex justify-center items-center flex-col',
-              styles.footerCard,
+              commonStyles.actionHoverBackground,
               commonStyles.borderRadius
             )}
           >

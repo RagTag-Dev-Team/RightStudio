@@ -14,7 +14,3 @@
 .maxWidth {
   max-inline-size: 100px;
 }
-
-.giftWrap {
-  background-color: var(--mui-palette-action-hover);
-}

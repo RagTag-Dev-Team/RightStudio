@@ -5,6 +5,9 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Styles Imports
 import commonStyles from '@/styles/common.module.css'
 
@@ -47,7 +50,7 @@ const ApiKeyList = () => {
           billing.
         </Typography>
         {apiKeyList.map((item, index) => (
-          <div key={index} className={commonStyles.borderRadius}>
+          <div key={index} className={classnames(commonStyles.borderRadius, commonStyles.actionHoverBackground)}>
             <div className='flex items-center'>
               <Typography>{item.title}</Typography>
               <Chip color='primary' label={item.access} size='small' />

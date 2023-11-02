@@ -15,6 +15,9 @@ import LinearProgress from '@mui/material/LinearProgress'
 import AvatarGroup from '@mui/material/AvatarGroup'
 import Tooltip from '@mui/material/Tooltip'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { ProjectsTabType } from '@/types/pages/profileTypes'
 
@@ -23,7 +26,7 @@ import OptionMenu from '@core/components/option-menu'
 
 // Style Imports
 import styles from './styles.module.css'
-import commonStyles from '@views/pages/user-profile/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
@@ -63,7 +66,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                     />
                   </div>
                   <div className='flex items-center justify-between flex-wrap'>
-                    <div className={commonStyles.borderRadius}>
+                    <div className={classnames(commonStyles.borderRadius, commonStyles.actionHoverBackground)}>
                       <div className='flex'>
                         <Typography className='font-medium'>{item.budgetSpent}</Typography>
                         <Typography>{`/${item.budget}`}</Typography>

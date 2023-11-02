@@ -178,7 +178,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                 Apply
               </Button>
             </div>
-            <div className={classnames(styles.giftWrap, commonStyles.borderRadius)}>
+            <div className={classnames(commonStyles.actionHoverBackground, commonStyles.borderRadius)}>
               <Typography className='font-medium'>Buying gift for a loved one?</Typography>
               <Typography>Gift wrap and personalized message on card, Only for $2.</Typography>
               <Typography

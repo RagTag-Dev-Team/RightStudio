@@ -31,7 +31,6 @@ import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 // Styles Imports
-import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 type DataType = {
@@ -164,7 +163,7 @@ const PaymentMethod = () => {
                   </Grid>
                 </>
               ) : (
-                <>
+                <Grid item xs={12}>
                   <Typography>
                     Cash on delivery is a mode of payment where you make the payment after the goods/services are
                     received.
@@ -172,7 +171,7 @@ const PaymentMethod = () => {
                   <Typography>
                     You can pay cash or make the payment via debit/credit card directly to the delivery person.
                   </Typography>
-                </>
+                </Grid>
               )}
             </Grid>
           </Grid>
@@ -182,9 +181,14 @@ const PaymentMethod = () => {
             {data.map((item: DataType, index: number) => (
               <div
                 key={index}
-                className={classnames(styles.paymentCard, commonStyles.borderRadius, 'flex justify-between', {
-                  'flex-col items-start': isBelowSmScreen
-                })}
+                className={classnames(
+                  commonStyles.actionHoverBackground,
+                  commonStyles.borderRadius,
+                  'flex justify-between',
+                  {
+                    'flex-col items-start': isBelowSmScreen
+                  }
+                )}
               >
                 <div className='flex flex-col items-start gap-2.5'>
                   <img src={item.imgSrc} alt={item.imgAlt} />

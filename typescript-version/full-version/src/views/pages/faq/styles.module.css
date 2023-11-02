@@ -2,10 +2,6 @@
   max-inline-size: 600px;
 }
 
-.footerCard {
-  background-color: var(--mui-palette-action-hover);
-}
-
 .inputWidth {
   max-inline-size: 55%;
 }

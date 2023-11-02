@@ -6,7 +6,6 @@
 .imageWrapper {
   padding-block: 5px;
   padding-inline: 10px;
-  background-color: var(--mui-palette-action-hover);
 }
 
 .avatarSize {

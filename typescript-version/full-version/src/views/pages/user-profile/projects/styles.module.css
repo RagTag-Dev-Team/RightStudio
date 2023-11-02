@@ -1,7 +1,3 @@
-.budget {
-  background-color: var(--mui-palette-action-hover);
-}
-
 .title:hover {
   color: var(--mui-palette-primary-main);
 }

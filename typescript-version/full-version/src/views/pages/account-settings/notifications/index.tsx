@@ -14,7 +14,7 @@ import Link from '@components/Link'
 import Form from '@components/Form'
 
 // Styles Imports
-import commonStyles from '@views/pages/account-settings/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 type TableDataType = {
@@ -59,7 +59,7 @@ const Notifications = () => {
         subheader={
           <>
             We need permission from your browser to show notifications.
-            <Link className={commonStyles.linkColor}>Request Permission</Link>
+            <Link className={commonStyles.primaryColor}>Request Permission</Link>
           </>
         }
       />

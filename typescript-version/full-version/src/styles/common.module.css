@@ -34,3 +34,6 @@
 .boxShadowNone {
   box-shadow: none;
 }
+.actionHoverBackground {
+  background-color: var(--mui-palette-action-hover);
+}

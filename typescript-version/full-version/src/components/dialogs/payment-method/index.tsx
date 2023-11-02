@@ -15,6 +15,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type PaymentMethodProps = {
@@ -108,7 +109,7 @@ const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
               )}
             >
               <div className='flex items-center gap-4'>
-                <Avatar variant='rounded' className={styles.avatarIcon}>
+                <Avatar variant='rounded' className={classnames(styles.avatarIcon, commonStyles.actionHoverBackground)}>
                   <img src={card.image} alt={card.alt} height={card.imgHeight} width={card.imgWidth} />
                 </Avatar>
                 <Typography>{card.cardName}</Typography>
