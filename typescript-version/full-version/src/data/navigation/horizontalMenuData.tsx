@@ -1,11 +1,11 @@
 // Type Imports
 import type { HorizontalMenuDataType } from '@/types/menuTypes'
-import type { Dictionary } from '@core/types'
+import type { Dictionary, Params } from '@core/types'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] => [
+const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalMenuDataType[] => [
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,
@@ -52,19 +52,19 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
         children: [
           {
             label: dictionary['navigation'].list,
-            href: '/app/invoice/list'
+            href: '/apps/invoice/list'
           },
           {
             label: dictionary['navigation'].preview,
-            href: '/app/invoice/preview'
+            href: `/apps/invoice/preview/${params.id || '4987'}`
           },
           {
             label: dictionary['navigation'].edit,
-            href: '/app/invoice/edit'
+            href: `/apps/invoice/edit/${params.id || '4987'}`
           },
           {
             label: dictionary['navigation'].add,
-            href: '/app/invoice/add'
+            href: '/apps/invoice/add'
           }
         ]
       },
@@ -120,19 +120,23 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
         children: [
           {
             label: dictionary['navigation'].comingSoon,
-            href: '/pages/misc/coming-soon'
+            href: '/pages/misc/coming-soon',
+            target: '_blank'
           },
           {
             label: dictionary['navigation'].underMaintenance,
-            href: '/pages/misc/under-maintenance'
+            href: '/pages/misc/under-maintenance',
+            target: '_blank'
           },
           {
             label: dictionary['navigation'].pageNotFound404,
-            href: '/pages/misc/404-not-found'
+            href: '/pages/misc/404-not-found',
+            target: '_blank'
           },
           {
             label: dictionary['navigation'].notAuthorized401,
-            href: '/pages/misc/401-not-authorized'
+            href: '/pages/misc/401-not-authorized',
+            target: '_blank'
           }
         ]
       },
@@ -144,11 +148,13 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].loginV1,
-                href: '/pages/auth/login-v1'
+                href: '/pages/auth/login-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].loginV2,
-                href: '/pages/auth/login-v2'
+                href: '/pages/auth/login-v2',
+                target: '_blank'
               }
             ]
           },
@@ -157,15 +163,18 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].registerV1,
-                href: '/pages/auth/register-v1'
+                href: '/pages/auth/register-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].registerV2,
-                href: '/pages/auth/register-v2'
+                href: '/pages/auth/register-v2',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].registerMultiSteps,
-                href: '/pages/auth/register-multi-steps'
+                href: '/pages/auth/register-multi-steps',
+                target: '_blank'
               }
             ]
           },
@@ -174,11 +183,13 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].verifyEmailV1,
-                href: '/pages/auth/verify-email-v1'
+                href: '/pages/auth/verify-email-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].verifyEmailV2,
-                href: '/pages/auth/verify-email-v2'
+                href: '/pages/auth/verify-email-v2',
+                target: '_blank'
               }
             ]
           },
@@ -187,11 +198,13 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].forgotPasswordV1,
-                href: '/pages/auth/forgot-password-v1'
+                href: '/pages/auth/forgot-password-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].forgotPasswordV2,
-                href: '/pages/auth/forgot-password-v2'
+                href: '/pages/auth/forgot-password-v2',
+                target: '_blank'
               }
             ]
           },
@@ -200,11 +213,13 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].resetPasswordV1,
-                href: '/pages/auth/reset-password-v1'
+                href: '/pages/auth/reset-password-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].resetPasswordV2,
-                href: '/pages/auth/reset-password-v2'
+                href: '/pages/auth/reset-password-v2',
+                target: '_blank'
               }
             ]
           },
@@ -213,11 +228,13 @@ const horizontalMenuData = (dictionary: Dictionary): HorizontalMenuDataType[] =>
             children: [
               {
                 label: dictionary['navigation'].twoStepsV1,
-                href: '/pages/auth/two-steps-v1'
+                href: '/pages/auth/two-steps-v1',
+                target: '_blank'
               },
               {
                 label: dictionary['navigation'].twoStepsV2,
-                href: '/pages/auth/two-steps-v2'
+                href: '/pages/auth/two-steps-v2',
+                target: '_blank'
               }
             ]
           }
