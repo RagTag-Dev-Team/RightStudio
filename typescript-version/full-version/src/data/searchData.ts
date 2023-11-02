@@ -58,14 +58,14 @@ const data: SearchData[] = [
   {
     id: '8',
     name: 'Invoice Preview',
-    url: '/apps/invoice/preview',
+    url: '/apps/invoice/preview/4987',
     icon: 'Icon',
     section: 'Apps'
   },
   {
     id: '9',
     name: 'Invoice Edit',
-    url: '/apps/invoice/edit',
+    url: '/apps/invoice/edit/4987',
     icon: 'Icon',
     section: 'Apps'
   },

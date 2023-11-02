@@ -2,6 +2,7 @@
 
 // Third-party Imports
 import classnames from 'classnames'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
@@ -15,12 +16,21 @@ import useSettings from '@core/hooks/useSettings'
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from './header.module.css'
+// Styled Component Imports
+import StyledHeader from '@layouts/styles/vertical/StyledHeader'
 
-const Navbar = ({ children }: ChildrenType) => {
+type Props = ChildrenType & {
+  overrideStyles?: CSSObject
+}
+
+const Navbar = (props: Props) => {
+  // Props
+  const { children, overrideStyles } = props
+
   // Hooks
   const { settings } = useSettings()
+
+  const { navbarContentWidth, skin } = settings
 
   const headerFixed = themeConfig.navbar.type === 'fixed'
   const headerStatic = themeConfig.navbar.type === 'static'
@@ -28,43 +38,26 @@ const Navbar = ({ children }: ChildrenType) => {
   const headerDetached = themeConfig.navbar.detached === true
   const headerAttached = themeConfig.navbar.detached === false
   const headerBlur = themeConfig.navbar.blur === true
-  const headerContentCompact = settings.navbarContentWidth === 'compact'
-  const headerContentWide = settings.navbarContentWidth === 'wide'
+  const headerContentCompact = navbarContentWidth === 'compact'
+  const headerContentWide = navbarContentWidth === 'wide'
 
   return (
-    <header
-      className={classnames(verticalLayoutClasses.header, 'flex items-center justify-center is-full', styles.header, {
-        [`${verticalLayoutClasses.headerFixed} ${styles.headerFixed}`]: headerFixed,
+    <StyledHeader
+      skin={skin}
+      overrideStyles={overrideStyles}
+      className={classnames(verticalLayoutClasses.header, 'flex items-center justify-center is-full', {
+        [verticalLayoutClasses.headerFixed]: headerFixed,
         [verticalLayoutClasses.headerStatic]: headerStatic,
-        [`${verticalLayoutClasses.headerFloating} ${styles.headerFloating}`]: headerFloating,
-        [`${verticalLayoutClasses.headerDetached} ${styles.headerDetached}`]: !headerFloating && headerDetached,
-        [`${verticalLayoutClasses.headerAttached} ${styles.headerAttached}`]: !headerFloating && headerAttached,
-        [`${verticalLayoutClasses.headerBlur} ${styles.headerBlur}`]: headerBlur,
-        [`${verticalLayoutClasses.headerContentCompact} ${styles.headerContentCompact}`]: headerContentCompact,
+        [verticalLayoutClasses.headerFloating]: headerFloating,
+        [verticalLayoutClasses.headerDetached]: !headerFloating && headerDetached,
+        [verticalLayoutClasses.headerAttached]: !headerFloating && headerAttached,
+        [verticalLayoutClasses.headerBlur]: headerBlur,
+        [verticalLayoutClasses.headerContentCompact]: headerContentCompact,
         [verticalLayoutClasses.headerContentWide]: headerContentWide
       })}
     >
-      <div
-        className={classnames(verticalLayoutClasses.navbar, 'flex bs-full', styles.navbar)}
-        style={{
-          paddingInline: themeConfig.layoutPadding,
-          width:
-            headerFloating || (headerFixed && headerDetached)
-              ? `calc(100% - ${2 * themeConfig.layoutPadding}px)`
-              : '100%',
-          ...(headerContentCompact &&
-            (headerFloating || (headerFixed && headerDetached)
-              ? {
-                  maxInlineSize: `calc(1440px - ${2 * themeConfig.layoutPadding}px)`
-                }
-              : {
-                  maxInlineSize: '1440px'
-                }))
-        }}
-      >
-        {children}
-      </div>
-    </header>
+      <div className={classnames(verticalLayoutClasses.navbar, 'flex bs-full')}>{children}</div>
+    </StyledHeader>
   )
 }
 

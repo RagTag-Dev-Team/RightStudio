@@ -27,13 +27,11 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
   transition-timing-function: ease-in-out;
 
   /* Width & Min Width & Margin */
-  inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};
-  min-inline-size: ${({ width }) => `${typeof width === 'number' ? `${width}px` : width}`};
+  inline-size: ${({ width }) => `${width}px`};
+  min-inline-size: ${({ width }) => `${width}px`};
   &.${verticalNavClasses.collapsed} {
-    inline-size: ${({ collapsedWidth }) =>
-      `${typeof collapsedWidth === 'number' ? `${collapsedWidth}px` : collapsedWidth}`};
-    min-inline-size: ${({ collapsedWidth }) =>
-      `${typeof collapsedWidth === 'number' ? `${collapsedWidth}px` : collapsedWidth}`};
+    inline-size: ${({ collapsedWidth }) => `${collapsedWidth}px`};
+    min-inline-size: ${({ collapsedWidth }) => `${collapsedWidth}px`};
   }
 
   &.${verticalNavClasses.collapsing}, &.${verticalNavClasses.expanding} {
@@ -48,9 +46,9 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     inset-inline-start: 0;
     z-index: 100;
     margin: 0;
-    ${({ width }) => `inset-inline-start: ${typeof width === 'number' ? `-${width}px` : `-${width}`};`}
+    ${({ width }) => `inset-inline-start: -${width}px`}
     &.${verticalNavClasses.collapsed} {
-      inset-inline-start: -${({ collapsedWidth }) => `${typeof collapsedWidth === 'number' ? `${collapsedWidth}px` : collapsedWidth}`};
+      inset-inline-start: -${({ collapsedWidth }) => `${collapsedWidth}px`};
     }
     &.${verticalNavClasses.toggled} {
       inset-inline-start: 0;
@@ -61,7 +59,7 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     !isBreakpointReached &&
     `
     &.${verticalNavClasses.toggled} {
-      margin-inline-start: ${typeof width === 'number' ? `-${width}px` : `-${width}`};
+      margin-inline-start: -${width}px;
     }
   `}
 

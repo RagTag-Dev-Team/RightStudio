@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 // Third-party Imports
 import classnames from 'classnames'
 import { useUpdateEffect } from 'react-use'
-import type { CSSObject } from '@emotion/react'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { ChildrenType, MenuItemElement, RootStylesType } from '../../types'
@@ -140,8 +140,11 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         className={classnames(menuClasses.button, { [menuClasses.active]: active })}
         component={component}
         tabIndex={disabled ? -1 : 0}
-        onClick={handleClick}
         {...rest}
+        onClick={e => {
+          handleClick()
+          rest.onClick && rest.onClick(e)
+        }}
       >
         {/* Menu Item Icon */}
         {renderMenuIcon({

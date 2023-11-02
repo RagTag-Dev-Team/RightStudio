@@ -9,8 +9,8 @@ import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import classnames from 'classnames'
-import type { CSSObject } from '@emotion/react'
 import { FloatingTree } from '@floating-ui/react'
+import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type {

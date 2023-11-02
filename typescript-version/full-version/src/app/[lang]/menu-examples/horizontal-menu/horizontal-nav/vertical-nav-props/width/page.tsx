@@ -19,7 +19,7 @@ const Width = () => {
         switchToVertical
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
-        verticalNavProps={{ width: '350px', customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
+        verticalNavProps={{ width: 350, customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
       >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>

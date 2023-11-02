@@ -22,7 +22,7 @@ import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles
 
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
-  const { isCollapsed } = useVerticalNav()
+  const { isHovered, isCollapsed } = useVerticalNav()
   const { settings, saveSettings } = useSettings()
   const { mode, systemMode } = useColorScheme()
 
@@ -51,7 +51,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        <NavCollapseIcons onClick={handleClick} />
+        {!(isCollapsed && !isHovered) && <NavCollapseIcons onClick={handleClick} />}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>

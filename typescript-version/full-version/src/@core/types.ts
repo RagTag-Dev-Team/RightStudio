@@ -1,6 +1,10 @@
 // React Imports
 import type { ReactNode } from 'react'
 
+export type Params = {
+  [key: string]: string | string[]
+}
+
 export type Layout = 'vertical' | 'collapsed' | 'horizontal'
 
 export type Skin = 'default' | 'bordered'
