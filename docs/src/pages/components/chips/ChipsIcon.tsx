@@ -7,12 +7,12 @@ import Chip from '@mui/material/Chip'
 const ChipsIcon = () => {
   return (
     <div className='flex gap-4'>
-      <Chip label='Previous' icon={<i className='ri-arrow-left-circle-line text-xl' />} />
+      <Chip label='Low Battery' icon={<i className='ri-battery-line' />} />
       <Chip
-        label='Next'
+        label='Full Battery'
         color='primary'
         variant='outlined'
-        icon={<i className='ri-arrow-right-circle-line text-xl' />}
+        icon={<i className='ri-battery-fill' />}
       />
     </div>
   )

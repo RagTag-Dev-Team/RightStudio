@@ -64,35 +64,35 @@ const shortcuts: ShortcutsType[] = [
 
 const notifications: NotificationsType[] = [
   {
-    avatarImage: '/images/avatar-1.png',
-    title: 'Congratulation Lettie',
+    avatarImage: '/images/avatars/2.png',
+    title: 'Congratulations Flora 🎉',
     subtitle: 'Won the monthly bestseller gold badge',
     time: '1h ago',
     read: false
   },
   {
-    title: 'Charles Franklin',
+    title: 'Cecilia Becker',
     subtitle: 'Accepted your connection',
     time: '12h ago',
     read: false
   },
   {
-    avatarImage: '/images/avatar-2.png',
-    title: 'Bernard Lamb',
-    subtitle: 'You have new message from Bernard Lamb',
+    avatarImage: '/images/avatars/3.png',
+    title: 'Bernard Woods',
+    subtitle: 'You have new message from Bernard Woods',
     time: 'Feb 18, 8:26 AM',
     read: true
   },
   {
     avatarIcon: 'ri-bar-chart-line',
-    title: 'Estella Christensen',
+    title: 'Monthly report generated',
     subtitle: 'July month financial report is generated',
     time: 'Apr 24, 10:30 AM',
     read: true
   },
   {
     avatarText: 'MG',
-    title: 'Application has been approved',
+    title: 'Application has been approved 🚀',
     subtitle: 'Your Meta Gadgets project application has been approved.',
     time: '2 days ago',
     read: true
@@ -100,7 +100,7 @@ const notifications: NotificationsType[] = [
   {
     avatarIcon: 'ri-mail-line',
     title: 'New message from Harry',
-    subtitle: 'Your have new message from Harry',
+    subtitle: 'You have new message from Harry',
     time: '5 days ago',
     read: true
   }

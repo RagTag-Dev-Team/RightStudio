@@ -12,8 +12,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 
-import Icon from '@core/components/IconifyIcon'
-
 export const icons = [
   'ri-24-hours-fill',
   'ri-24-hours-line',
@@ -72,7 +70,7 @@ export const RenderIcons = () => {
         <Tooltip arrow title={icon} placement='top'>
           <Card>
             <CardContent className='flex'>
-              <Icon icon={icon} />
+              <i className={icon} />
             </CardContent>
           </Card>
         </Tooltip>

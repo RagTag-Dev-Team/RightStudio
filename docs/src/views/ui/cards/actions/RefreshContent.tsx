@@ -37,7 +37,7 @@ const CardActionRefreshContent = () => {
         title='Refresh Content'
         action={
           <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-            <Icon fontSize='1.25rem' icon='ri-refresh-line' />
+            <i className='ri-refresh-line text-xl' />
           </IconButton>
         }
       />
@@ -45,7 +45,7 @@ const CardActionRefreshContent = () => {
         <Typography variant='body2'>
           Click on{' '}
           <span className='align-top'>
-            <Icon fontSize='1.25rem' icon='ri-refresh-line' />
+            <i className='ri-refresh-line text-xl' />
           </span>{' '}
           icon to see it in action
         </Typography>

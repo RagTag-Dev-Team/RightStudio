@@ -13,6 +13,8 @@ import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
 import { useTheme } from '@mui/material/styles'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import InputLabel from '@mui/material/InputLabel'
+import Checkbox from '@mui/material/Checkbox'
 import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
@@ -330,11 +332,10 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
               (settings.mode === 'system' && isSystemDark) ||
               settings.layout === 'horizontal' ? null : (
                 <div className='flex items-center justify-between'>
-                  <label className={classnames(styles.itemTitle, 'cursor-pointer')} htmlFor='customizer-semi-dark'>
+                  <InputLabel className={classnames(styles.itemTitle, 'cursor-pointer')} htmlFor='customizer-semi-dark'>
                     Semi Dark
-                  </label>
-                  <input
-                    type='checkbox'
+                  </InputLabel>
+                  <Checkbox
                     id='customizer-semi-dark'
                     checked={settings.semiDark === true}
                     onChange={() => handleChange('semiDark', !settings.semiDark)}

@@ -108,7 +108,7 @@ const UserDropdown = () => {
             <Paper>
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
-                  <div className='flex items-center plb-1.5 pli-4 gap-2.5'>
+                  <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>
                     <Avatar alt={session?.user?.name || ''} />
                     <div className='flex items-start flex-col'>
                       <Typography>{session?.user?.name || ''}</Typography>

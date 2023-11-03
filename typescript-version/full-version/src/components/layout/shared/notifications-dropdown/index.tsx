@@ -223,7 +223,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                         >
                           {getAvatar({ avatarImage, avatarIcon, title, avatarText })}
                           <div className='flex flex-col flex-auto'>
-                            <Typography variant='body2' className={commonStyles.textPrimary}>
+                            <Typography variant='body2' className={classnames('font-medium', commonStyles.textPrimary)}>
                               {title}
                             </Typography>
                             <Typography variant='caption' className='mbe-1'>
