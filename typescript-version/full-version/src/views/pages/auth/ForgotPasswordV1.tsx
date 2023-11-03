@@ -15,7 +15,7 @@ import classnames from 'classnames'
 import Form from '@components/Form'
 
 // Style Imports
-import styles from './forgotPassword.module.css'
+import styles from './v1.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const ForgotPasswordV1 = () => {

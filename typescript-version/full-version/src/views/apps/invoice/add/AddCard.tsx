@@ -35,7 +35,7 @@ import Repeater from '@components/Repeater'
 import AddCustomerDrawer, { initialFormData } from './AddCustomerDrawer'
 
 // Config Imports
-import themeConfig from '@/configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Style Imports
 import styles from '@views/apps/invoice/styles.module.css'

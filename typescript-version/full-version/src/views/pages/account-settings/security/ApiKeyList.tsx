@@ -50,7 +50,7 @@ const ApiKeyList = () => {
           billing.
         </Typography>
         {apiKeyList.map((item, index) => (
-          <div key={index} className={classnames(commonStyles.borderRadius, commonStyles.actionHoverBackground)}>
+          <div key={index} className={classnames(commonStyles.borderRadius, commonStyles.actionHoverColor)}>
             <div className='flex items-center'>
               <Typography>{item.title}</Typography>
               <Chip color='primary' label={item.access} size='small' />

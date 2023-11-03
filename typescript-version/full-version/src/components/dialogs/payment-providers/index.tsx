@@ -240,7 +240,7 @@ const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
                   <Avatar
                     key={index}
                     variant='rounded'
-                    className={classnames(styles.avatarIcon, commonStyles.actionHoverBackground)}
+                    className={classnames(styles.avatarIcon, commonStyles.actionHoverColor)}
                   >
                     <img src={image.src} alt={image.alt} height={image.height} width={image.width} />
                   </Avatar>

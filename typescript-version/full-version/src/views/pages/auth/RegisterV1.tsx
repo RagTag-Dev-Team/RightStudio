@@ -22,7 +22,7 @@ import Divider from '@mui/material/Divider'
 import classnames from 'classnames'
 
 // Style Imports
-import styles from './register.module.css'
+import styles from './v1.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const RegisterV1 = () => {

@@ -66,7 +66,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                     />
                   </div>
                   <div className='flex items-center justify-between flex-wrap'>
-                    <div className={classnames(commonStyles.borderRadius, commonStyles.actionHoverBackground)}>
+                    <div className={classnames(commonStyles.borderRadius, commonStyles.actionHoverColor)}>
                       <div className='flex'>
                         <Typography className='font-medium'>{item.budgetSpent}</Typography>
                         <Typography>{`/${item.budget}`}</Typography>

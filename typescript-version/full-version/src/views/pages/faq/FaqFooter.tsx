@@ -25,7 +25,7 @@ const FaqFooter = () => {
           <div
             className={classnames(
               'flex justify-center items-center flex-col',
-              commonStyles.actionHoverBackground,
+              commonStyles.actionHoverColor,
               commonStyles.borderRadius
             )}
           >
@@ -40,7 +40,7 @@ const FaqFooter = () => {
           <div
             className={classnames(
               'flex justify-center items-center flex-col',
-              commonStyles.actionHoverBackground,
+              commonStyles.actionHoverColor,
               commonStyles.borderRadius
             )}
           >

@@ -20,7 +20,7 @@ import { getDirection } from '@/utils/get-direction'
 import '@/app/globals.css'
 
 // Generated Icon CSS Imports
-import '@/assets/iconify-icons/generated-icons.css'
+import '@assets/iconify-icons/generated-icons.css'
 
 // Generated Icon Imports
 import '@assets/iconify-icons/generated-icons'

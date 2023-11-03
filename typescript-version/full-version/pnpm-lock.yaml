@@ -51,8 +51,8 @@ dependencies:
     specifier: ^3.1.1
     version: 3.1.1
   '@iconify/json':
-    specifier: ^2.2.136
-    version: 2.2.136
+    specifier: ^2.2.137
+    version: 2.2.137
   '@iconify/react':
     specifier: ^4.1.1
     version: 4.1.1(react@18.2.0)
@@ -880,8 +880,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/json@2.2.136:
-    resolution: {integrity: sha512-ZQS66Pr5yrvX97kBDtxQI0tk7C32a84mFLalcrird8nDXZCayVDeAFpDPP2Cj6+D3qSJ6pfrL/Sgx42qWLGUag==}
+  /@iconify/json@2.2.137:
+    resolution: {integrity: sha512-3FGpECgBVywCUoYwGP192fo50QiNynUnVEKRiiIFTtMyY6bCFAJP/ra/uJeiqwXQm4qBDIuUqKBDe5odFCSUfg==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
@@ -1470,8 +1470,8 @@ packages:
       '@types/node': 20.8.10
     dev: false
 
-  /@types/d3-array@3.0.9:
-    resolution: {integrity: sha512-mZowFN3p64ajCJJ4riVYlOjNlBJv3hctgAY01pjw3qTnJePD8s9DZmYDzhHKvzfCYvdjwylkU38+Vdt7Cu2FDA==}
+  /@types/d3-array@3.2.0:
+    resolution: {integrity: sha512-tjU8juPSfhMnu6mJZPOCVVGba4rZoE0tjHDPb81PYwA8CzbaFscGjgkUM7juUJu6iWA1cCVWNEVwxZ5HN9Jj8Q==}
     dev: false
 
   /@types/d3-color@3.1.2:
@@ -4242,8 +4242,8 @@ packages:
       next: 14.0.1(react-dom@18.2.0)(react@18.2.0)
       oauth: 0.9.15
       openid-client: 5.6.1
-      preact: 10.18.1
-      preact-render-to-string: 5.2.6(preact@10.18.1)
+      preact: 10.18.2
+      preact-render-to-string: 5.2.6(preact@10.18.2)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
@@ -4707,12 +4707,12 @@ packages:
       pretty-format: 3.8.0
     dev: false
 
-  /preact-render-to-string@5.2.6(preact@10.18.1):
+  /preact-render-to-string@5.2.6(preact@10.18.2):
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
       preact: '>=10'
     dependencies:
-      preact: 10.18.1
+      preact: 10.18.2
       pretty-format: 3.8.0
     dev: false
 
@@ -4724,8 +4724,8 @@ packages:
     resolution: {integrity: sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==}
     dev: false
 
-  /preact@10.18.1:
-    resolution: {integrity: sha512-mKUD7RRkQQM6s7Rkmi7IFkoEHjuFqRQUaXamO61E6Nn7vqF/bo7EZCmSyrUnp2UWHw0O7XjZ2eeXis+m7tf4lg==}
+  /preact@10.18.2:
+    resolution: {integrity: sha512-X/K43vocUHDg0XhWVmTTMbec4LT/iBMh+csCEqJk+pJqegaXsvjdqN80ZZ3L+93azWCnWCZ+WGwYb8SplxeNjA==}
     dev: false
 
   /prelude-ls@1.2.1:
@@ -6069,7 +6069,7 @@ packages:
   /victory-vendor@36.6.12:
     resolution: {integrity: sha512-pJrTkNHln+D83vDCCSUf0ZfxBvIaVrFHmrBOsnnLAbdqfudRACAj51He2zU94/IWq9464oTADcPVkmWAfNMwgA==}
     dependencies:
-      '@types/d3-array': 3.0.9
+      '@types/d3-array': 3.2.0
       '@types/d3-ease': 3.0.1
       '@types/d3-interpolate': 3.0.3
       '@types/d3-scale': 4.0.6

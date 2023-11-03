@@ -12,8 +12,8 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 
 // Component Imports
-import AddPaymentDrawer from '@/views/apps/invoice/shared/AddPaymentDrawer'
-import SendInvoiceDrawer from '@/views/apps/invoice/shared/SendInvoiceDrawer'
+import AddPaymentDrawer from '@views/apps/invoice/shared/AddPaymentDrawer'
+import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
 
 const EditActions = ({ id }: { id: string }) => {
   const [paymentDrawerOpen, setPaymentDrawerOpen] = useState(false)

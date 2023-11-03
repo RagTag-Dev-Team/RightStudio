@@ -109,7 +109,7 @@ const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
               )}
             >
               <div className='flex items-center gap-4'>
-                <Avatar variant='rounded' className={classnames(styles.avatarIcon, commonStyles.actionHoverBackground)}>
+                <Avatar variant='rounded' className={classnames(styles.avatarIcon, commonStyles.actionHoverColor)}>
                   <img src={card.image} alt={card.alt} height={card.imgHeight} width={card.imgWidth} />
                 </Avatar>
                 <Typography className='font-medium'>{card.cardName}</Typography>

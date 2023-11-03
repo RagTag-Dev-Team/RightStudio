@@ -9,7 +9,7 @@ import type { InvoiceType } from '@/types/apps/invoiceTypes'
 
 // Component Imports
 import EditCard from '@views/apps/invoice/edit/EditCard'
-import EditActions from '@/views/apps/invoice/edit/EditActions'
+import EditActions from '@views/apps/invoice/edit/EditActions'
 
 const getData = async () => {
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)

@@ -22,7 +22,7 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Style Imports
-import styles from './login.module.css'
+import styles from './v2.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const LoginV2 = () => {

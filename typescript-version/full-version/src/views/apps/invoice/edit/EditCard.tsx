@@ -38,7 +38,7 @@ import themeConfig from '@configs/themeConfig'
 // Styles Imports
 import styles from '@views/apps/invoice/styles.module.css'
 import commonStyles from '@/styles/common.module.css'
-import DatePickerWrapper from '@/@core/styles/libs/react-datepicker'
+import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: string; data: InvoiceType[] }) => {
   // States

@@ -13,7 +13,7 @@ import Form from '@components/Form'
 import Link from '@components/Link'
 
 // Style Imports
-import styles from './twoSteps.module.css'
+import styles from './v1.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 const TwoStepsV1 = () => {

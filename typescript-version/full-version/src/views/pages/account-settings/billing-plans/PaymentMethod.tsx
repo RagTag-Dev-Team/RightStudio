@@ -182,7 +182,7 @@ const PaymentMethod = () => {
               <div
                 key={index}
                 className={classnames(
-                  commonStyles.actionHoverBackground,
+                  commonStyles.actionHoverColor,
                   commonStyles.borderRadius,
                   'flex justify-between',
                   {

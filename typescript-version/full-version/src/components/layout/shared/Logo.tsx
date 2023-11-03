@@ -12,7 +12,7 @@ import styled from '@emotion/styled'
 import type { VerticalNavContextProps } from '@menu-package/contexts/verticalNavContext'
 
 // Config Imports
-import themeConfig from '@/configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
