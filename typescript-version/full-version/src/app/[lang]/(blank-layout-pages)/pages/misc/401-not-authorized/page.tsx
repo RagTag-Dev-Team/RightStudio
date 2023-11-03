@@ -1,5 +1,5 @@
 // Component Imports
-import NotAuthorized from '@/app/[lang]/(blank-layout-pages)/not-authorized'
+import NotAuthorized from '@views/NotAuthorized'
 
 const Error401 = () => {
   return <NotAuthorized />

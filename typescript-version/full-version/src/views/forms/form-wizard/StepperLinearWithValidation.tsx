@@ -79,7 +79,7 @@ const accountSchema = object(
             input: input.confirmPassword,
             path: [
               {
-                schema: 'object',
+                type: 'object',
                 input: input,
                 key: 'confirmPassword',
                 value: input.confirmPassword
