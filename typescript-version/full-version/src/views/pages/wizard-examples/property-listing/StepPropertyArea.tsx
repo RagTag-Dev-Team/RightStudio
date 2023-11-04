@@ -15,14 +15,18 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 // Third-party Imports
 import DatePicker from 'react-datepicker'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 type Props = {
   activeStep: number
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
+  direction: Direction
 }
 
-const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
   // States
   const [date, setDate] = useState<Date | null | undefined>(null)
 
@@ -113,7 +117,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='ri-arrow-left-line' />}
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
           >
             Previous
           </Button>
@@ -121,7 +125,17 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
+            endIcon={
+              <i
+                className={
+                  activeStep === steps.length - 1
+                    ? 'ri-check-line'
+                    : direction === 'rtl'
+                    ? 'ri-arrow-left-line'
+                    : 'ri-arrow-right-line'
+                }
+              />
+            }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

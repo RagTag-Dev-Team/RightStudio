@@ -63,7 +63,7 @@ const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string
       <CardContent>
         <Grid container>
           <Grid item xs={12}>
-            <div className={classnames(commonStyles.actionHoverBackground, commonStyles.borderRadius)}>
+            <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
               <div
                 className={classnames('flex justify-between', {
                   'flex-col': isBelowSmScreen

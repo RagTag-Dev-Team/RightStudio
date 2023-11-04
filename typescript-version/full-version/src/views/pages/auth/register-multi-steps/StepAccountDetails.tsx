@@ -9,7 +9,10 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
-const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
+// Type Imports
+import type { Direction } from '@core/types'
+
+const StepAccountDetails = ({ handleNext, direction }: { handleNext: () => void; direction: Direction }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false)
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState<boolean>(false)
@@ -82,10 +85,18 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
           <TextField fullWidth label='Profile Link' placeholder='johndoe/profile' />
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
-          <Button disabled variant='contained' startIcon={<i className='ri-arrow-left-s-line' />}>
+          <Button
+            disabled
+            variant='contained'
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+          >
             Previous
           </Button>
-          <Button variant='contained' onClick={handleNext} endIcon={<i className='ri-arrow-right-s-line' />}>
+          <Button
+            variant='contained'
+            onClick={handleNext}
+            endIcon={<i className={direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'} />}
+          >
             Next
           </Button>
         </Grid>

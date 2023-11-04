@@ -19,6 +19,7 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import classnames from 'classnames'
 
 // Type Imports
+import type { Direction } from '@core/types'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
@@ -32,6 +33,7 @@ type Props = {
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
+  direction: Direction
 }
 
 const data: CustomInputVerticalData[] = [
@@ -58,7 +60,7 @@ const data: CustomInputVerticalData[] = [
 
 const regionArray = ['Asia', 'Europe', 'Africa', 'Australia', 'North America', 'South America']
 
-const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value
@@ -147,7 +149,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='ri-arrow-left-line' />}
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
           >
             Previous
           </Button>
@@ -155,7 +157,17 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
+            endIcon={
+              <i
+                className={
+                  activeStep === steps.length - 1
+                    ? 'ri-check-line'
+                    : direction === 'rtl'
+                    ? 'ri-arrow-left-line'
+                    : 'ri-arrow-right-line'
+                }
+              />
+            }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

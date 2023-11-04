@@ -22,6 +22,9 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import format from 'date-fns/format'
 import DatePicker from 'react-datepicker'
 
+// Type Imports
+import type { Direction } from '@/@core/types'
+
 type CustomInputProps = TextFieldProps & {
   label?: string
   end: Date | number
@@ -33,6 +36,7 @@ type Props = {
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
+  direction: Direction
 }
 
 const offeredItemsArray = [
@@ -53,7 +57,7 @@ const CustomInput = forwardRef((props: CustomInputProps, ref) => {
   return <TextField fullWidth inputRef={ref} label={props.label || ''} {...props} value={value} />
 })
 
-const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
   // States
   const [startDate, setStartDate] = useState<Date | undefined | null>(null)
   const [endDate, setEndDate] = useState<Date | undefined | null>(null)
@@ -156,7 +160,7 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='ri-arrow-left-line' />}
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
           >
             Previous
           </Button>
@@ -164,7 +168,17 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
+            endIcon={
+              <i
+                className={
+                  activeStep === steps.length - 1
+                    ? 'ri-check-line'
+                    : direction === 'rtl'
+                    ? 'ri-arrow-left-line'
+                    : 'ri-arrow-right-line'
+                }
+              />
+            }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

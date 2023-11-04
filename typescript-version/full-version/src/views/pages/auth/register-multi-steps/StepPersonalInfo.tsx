@@ -9,7 +9,18 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputAdornment from '@mui/material/InputAdornment'
 
-const StepPersonalInfo = ({ handleNext, handlePrev }: { handleNext: () => void; handlePrev: () => void }) => {
+// Type Imports
+import type { Direction } from '@core/types'
+
+const StepPersonalInfo = ({
+  handleNext,
+  handlePrev,
+  direction
+}: {
+  handleNext: () => void
+  handlePrev: () => void
+  direction: Direction
+}) => {
   return (
     <>
       <Typography>Personal Information</Typography>
@@ -61,11 +72,15 @@ const StepPersonalInfo = ({ handleNext, handlePrev }: { handleNext: () => void; 
             variant='contained'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<i className='ri-arrow-left-s-line' />}
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
           >
             Previous
           </Button>
-          <Button variant='contained' onClick={handleNext} endIcon={<i className='ri-arrow-right-s-line' />}>
+          <Button
+            variant='contained'
+            onClick={handleNext}
+            endIcon={<i className={direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'} />}
+          >
             Next
           </Button>
         </Grid>

@@ -16,6 +16,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import StepDealType from './StepDealType'
 
@@ -49,22 +52,54 @@ const steps = [
   }
 ]
 
-const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
+const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void, direction: Direction) => {
   switch (step) {
     case 0:
-      return <StepDealType activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepDealType
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 1:
-      return <StepDealDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepDealDetails
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 2:
-      return <StepDealUsage activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepDealUsage
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 3:
-      return <StepReview activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepReview
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     default:
       return null
   }
 }
 
-const CreateDeal = () => {
+const CreateDeal = ({ direction }: { direction: Direction }) => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
@@ -112,7 +147,7 @@ const CreateDeal = () => {
       </CardContent>
 
       <CardContent className='flex-1'>
-        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev)}</DatePickerWrapper>
+        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev, direction)}</DatePickerWrapper>
       </CardContent>
     </Card>
   )

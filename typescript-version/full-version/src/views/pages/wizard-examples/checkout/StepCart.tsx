@@ -24,6 +24,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
@@ -53,7 +56,7 @@ const products = [
   }
 ]
 
-const StepCart = ({ handleNext }: { handleNext: () => void }) => {
+const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction: Direction }) => {
   // States
   const [openCollapse, setOpenCollapse] = useState<boolean>(true)
   const [openFade, setOpenFade] = useState<boolean>(true)
@@ -165,7 +168,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           )}
         >
           Add more products from wishlist
-          <i className='ri-arrow-right-s-line' />
+          <i className={direction === 'rtl' ? 'ri-arrow-left-s-line' : 'ri-arrow-right-s-line'} />
         </Typography>
       </Grid>
       <Grid item xs={12} lg={4}>

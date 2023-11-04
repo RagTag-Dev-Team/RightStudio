@@ -304,6 +304,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
       >
         <Button
           variant='contained'
+          component={Link}
           startIcon={<i className='ri-add-line' />}
           href={`/apps/invoice/add/`}
           {...(isBelowSmScreen && { fullWidth: true })}

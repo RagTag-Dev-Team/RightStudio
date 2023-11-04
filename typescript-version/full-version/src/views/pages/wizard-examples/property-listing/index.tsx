@@ -16,6 +16,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import StepPersonalDetails from './StepPersonalDetails'
 import StepPropertyDetails from './StepPropertyDetails'
@@ -54,24 +57,64 @@ const steps = [
   }
 ]
 
-const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
+const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void, direction: Direction) => {
   switch (step) {
     case 0:
-      return <StepPersonalDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepPersonalDetails
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 1:
-      return <StepPropertyDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepPropertyDetails
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 2:
-      return <StepPropertyFeatures activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepPropertyFeatures
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 3:
-      return <StepPropertyArea activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepPropertyArea
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     case 4:
-      return <StepPriceDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
+      return (
+        <StepPriceDetails
+          activeStep={step}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          steps={steps}
+          direction={direction}
+        />
+      )
     default:
       return null
   }
 }
 
-const PropertyListingWizard = () => {
+const PropertyListingWizard = ({ direction }: { direction: Direction }) => {
   // States
   const [activeStep, setActiveStep] = useState<number>(0)
 
@@ -119,7 +162,7 @@ const PropertyListingWizard = () => {
       </CardContent>
 
       <CardContent className='flex-1'>
-        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev)}</DatePickerWrapper>
+        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev, direction)}</DatePickerWrapper>
       </CardContent>
     </Card>
   )

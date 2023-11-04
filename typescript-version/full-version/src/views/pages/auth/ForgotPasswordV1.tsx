@@ -11,6 +11,9 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import Form from '@components/Form'
 
@@ -18,7 +21,7 @@ import Form from '@components/Form'
 import styles from './v1.module.css'
 import commonStyles from '@/styles/common.module.css'
 
-const ForgotPasswordV1 = () => {
+const ForgotPasswordV1 = ({ direction }: { direction: Direction }) => {
   return (
     <Card className={classnames('flex flex-col', styles.card)}>
       <CardContent>
@@ -32,7 +35,7 @@ const ForgotPasswordV1 = () => {
           </Button>
           <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
             <Link href='/pages/auth/login-v1' className='flex items-center'>
-              <i className='ri-arrow-left-s-line' />
+              <i className={direction === 'rtl' ? 'ri-arrow-right-s-line' : 'ri-arrow-left-s-line'} />
               <span>Back to Login</span>
             </Link>
           </Typography>

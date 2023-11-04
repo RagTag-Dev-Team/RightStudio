@@ -15,7 +15,6 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
-import Collapse from '@mui/material/Collapse'
 import Tooltip from '@mui/material/Tooltip'
 import Divider from '@mui/material/Divider'
 import InputLabel from '@mui/material/InputLabel'
@@ -28,9 +27,6 @@ import DatePicker from 'react-datepicker'
 
 // Type Imports
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
-
-// Component Imports
-import Repeater from '@components/Repeater'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -55,7 +51,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
     e.preventDefault()
 
     // @ts-ignore
-    e.target.closest('.repeater-wrapper').remove()
+    e.target.closest('.repeater-item').remove()
   }
 
   return (
@@ -64,7 +60,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
         <CardContent>
           <Grid container>
             <Grid item xs={12}>
-              <div className={classnames(commonStyles.actionHoverBackground, commonStyles.borderRadius)}>
+              <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
                 <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
                   <div className='flex flex-col'>
                     <div className='flex items-center'>
@@ -168,121 +164,88 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
               <Divider className='border-dashed' />
             </Grid>
             <Grid item xs={12}>
-              <Repeater count={count}>
-                {(i: number) => {
-                  const Tag = i === 0 ? 'div' : Collapse
-
-                  return (
-                    <Tag key={i} className='repeater-wrapper' {...(i !== 0 ? { in: true } : {})}>
-                      <Grid container>
-                        <Grid
-                          item
-                          xs={12}
-                          className={classnames('flex relative', commonStyles.border, commonStyles.borderRadius)}
-                        >
-                          <Grid container>
-                            <Grid item lg={6} md={5} xs={12}>
-                              <Typography
-                                className={classnames({
-                                  static: isBelowMdScreen,
-                                  '-top-6 absolute': !isBelowMdScreen
-                                })}
-                              >
-                                Item
-                              </Typography>
-                              <Select fullWidth size='small' defaultValue='App Design'>
-                                <MenuItem value='App Design'>App Design</MenuItem>
-                                <MenuItem value='App Customization'>App Customization</MenuItem>
-                                <MenuItem value='ABC Template'>ABC Template</MenuItem>
-                                <MenuItem value='App Development'>App Development</MenuItem>
-                              </Select>
-                              <TextField
-                                rows={2}
-                                fullWidth
-                                multiline
-                                size='small'
-                                defaultValue='Customization & Bug Fixes'
-                              />
-                            </Grid>
-                            <Grid item lg={2} md={3} xs={12}>
-                              <Typography
-                                className={classnames({
-                                  static: isBelowMdScreen,
-                                  '-top-6 absolute': !isBelowMdScreen
-                                })}
-                              >
-                                Cost
-                              </Typography>
-                              <TextField
-                                size='small'
-                                type='number'
-                                placeholder='24'
-                                defaultValue='24'
-                                InputProps={{ inputProps: { min: 0 } }}
-                              />
-                              <div>
-                                <Typography component='span'>Discount:</Typography>{' '}
-                                <Typography component='span'>0%</Typography>
-                                <Tooltip title='Tax 1' placement='top'>
-                                  <Typography component='span'>0%</Typography>
-                                </Tooltip>
-                                <Tooltip title='Tax 2' placement='top'>
-                                  <Typography component='span'>0%</Typography>
-                                </Tooltip>
-                              </div>
-                            </Grid>
-                            <Grid item lg={2} md={2} xs={12}>
-                              <Typography
-                                className={classnames({
-                                  static: isBelowMdScreen,
-                                  '-top-6 absolute': !isBelowMdScreen
-                                })}
-                              >
-                                Hours
-                              </Typography>
-                              <TextField
-                                size='small'
-                                type='number'
-                                placeholder='1'
-                                defaultValue='1'
-                                InputProps={{ inputProps: { min: 0 } }}
-                              />
-                            </Grid>
-                            <Grid item lg={2} md={1} xs={12}>
-                              <Typography
-                                className={classnames({
-                                  static: isBelowMdScreen,
-                                  '-top-6 absolute': !isBelowMdScreen
-                                })}
-                              >
-                                Price
-                              </Typography>
-                              <Typography>$24.00</Typography>
-                            </Grid>
-                          </Grid>
-                          <div className={classnames('flex flex-col justify-start', styles.borderLeft)}>
-                            <IconButton size='small' onClick={deleteForm}>
-                              <i className='ri-close-line' />
-                            </IconButton>
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </Tag>
-                  )
-                }}
-              </Repeater>
-
-              <Grid container>
-                <Grid item xs={12}>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    onClick={() => setCount(count + 1)}
-                    startIcon={<i className='ri-add-line' />}
-                  >
-                    Add Item
-                  </Button>
-                </Grid>
+              {Array.from(Array(count).keys()).map((item, index) => (
+                <div
+                  key={index}
+                  className={classnames('repeater-item flex relative', commonStyles.border, commonStyles.borderRadius)}
+                >
+                  <Grid container>
+                    <Grid item lg={6} md={5} xs={12}>
+                      <Typography
+                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
+                      >
+                        Item
+                      </Typography>
+                      <Select fullWidth size='small' defaultValue='App Design'>
+                        <MenuItem value='App Design'>App Design</MenuItem>
+                        <MenuItem value='App Customization'>App Customization</MenuItem>
+                        <MenuItem value='ABC Template'>ABC Template</MenuItem>
+                        <MenuItem value='App Development'>App Development</MenuItem>
+                      </Select>
+                      <TextField rows={2} fullWidth multiline size='small' defaultValue='Customization & Bug Fixes' />
+                    </Grid>
+                    <Grid item lg={2} md={3} xs={12}>
+                      <Typography
+                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
+                      >
+                        Cost
+                      </Typography>
+                      <TextField
+                        size='small'
+                        type='number'
+                        placeholder='24'
+                        defaultValue='24'
+                        InputProps={{ inputProps: { min: 0 } }}
+                      />
+                      <div>
+                        <Typography component='span'>Discount:</Typography> <Typography component='span'>0%</Typography>
+                        <Tooltip title='Tax 1' placement='top'>
+                          <Typography component='span'>0%</Typography>
+                        </Tooltip>
+                        <Tooltip title='Tax 2' placement='top'>
+                          <Typography component='span'>0%</Typography>
+                        </Tooltip>
+                      </div>
+                    </Grid>
+                    <Grid item md={2} xs={12}>
+                      <Typography
+                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
+                      >
+                        Hours
+                      </Typography>
+                      <TextField
+                        size='small'
+                        type='number'
+                        placeholder='1'
+                        defaultValue='1'
+                        InputProps={{ inputProps: { min: 0 } }}
+                      />
+                    </Grid>
+                    <Grid item md={2} xs={12}>
+                      <Typography
+                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
+                      >
+                        Price
+                      </Typography>
+                      <Typography>$24.00</Typography>
+                    </Grid>
+                  </Grid>
+                  <div className={classnames('flex flex-col justify-start', styles.borderLeft)}>
+                    <IconButton size='small' onClick={deleteForm}>
+                      <i className='ri-close-line' />
+                    </IconButton>
+                  </div>
+                </div>
+              ))}
+              <Grid item xs={12}>
+                <Button
+                  size='small'
+                  variant='contained'
+                  onClick={() => setCount(count + 1)}
+                  startIcon={<i className='ri-add-line' />}
+                >
+                  Add Item
+                </Button>
               </Grid>
             </Grid>
             <Grid item xs={12}>

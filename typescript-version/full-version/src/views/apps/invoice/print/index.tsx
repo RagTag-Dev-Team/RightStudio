@@ -64,8 +64,6 @@ const PrintPage = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
-
-      console.log('hello')
       setTimeout(() => {
         window.print()
       }, 100)
@@ -75,7 +73,7 @@ const PrintPage = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }
   return (
     <Grid container>
       <Grid item xs={12}>
-        <div className={classnames(commonStyles.actionHoverBackground, commonStyles.borderRadius)}>
+        <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
           <div
             className={classnames('flex justify-between', {
               'flex-col': isBelowSmScreen

@@ -13,14 +13,18 @@ import RadioGroup from '@mui/material/RadioGroup'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Direction } from '@core/types'
+
 type Props = {
   activeStep: number
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
+  direction: Direction
 }
 
-const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
@@ -134,7 +138,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className='ri-arrow-left-line' />}
+            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
           >
             Previous
           </Button>
@@ -142,7 +146,17 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
             variant='contained'
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
-            endIcon={<i className={activeStep === steps.length - 1 ? 'ri-check-line' : 'ri-arrow-right-line'} />}
+            endIcon={
+              <i
+                className={
+                  activeStep === steps.length - 1
+                    ? 'ri-check-line'
+                    : direction === 'rtl'
+                    ? 'ri-arrow-left-line'
+                    : 'ri-arrow-right-line'
+                }
+              />
+            }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </Button>

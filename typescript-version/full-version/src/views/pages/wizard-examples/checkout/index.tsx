@@ -14,6 +14,12 @@ import MuiStepper from '@mui/material/Stepper'
 import styled from '@mui/material/styles/styled'
 import type { StepperProps } from '@mui/material/Stepper'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Type Imports
+import type { Direction } from '@core/types'
+
 // Component Imports
 import StepCart from './StepCart'
 import StepAddress from './StepAddress'
@@ -109,10 +115,10 @@ const Stepper = styled(MuiStepper)<StepperProps>(({ theme }) => ({
     }
   }
 }))
-const getStepContent = (step: number, handleNext: () => void) => {
+const getStepContent = (step: number, handleNext: () => void, direction: Direction) => {
   switch (step) {
     case 0:
-      return <StepCart handleNext={handleNext} />
+      return <StepCart handleNext={handleNext} direction={direction} />
     case 1:
       return <StepAddress handleNext={handleNext} />
     case 2:
@@ -124,7 +130,7 @@ const getStepContent = (step: number, handleNext: () => void) => {
   }
 }
 
-const CheckoutWizard = () => {
+const CheckoutWizard = ({ direction }: { direction: Direction }) => {
   // States
   const [activeStep, setActiveStep] = useState<number>(0)
 
@@ -136,7 +142,14 @@ const CheckoutWizard = () => {
     <Card>
       <CardContent>
         <StepperWrapper>
-          <Stepper activeStep={activeStep} connector={<i className='ri-arrow-right-s-line mli-12' />}>
+          <Stepper
+            activeStep={activeStep}
+            connector={
+              <i
+                className={classnames('mli-12', direction === 'rtl' ? 'ri-arrow-left-s-line' : 'ri-arrow-right-s-line')}
+              />
+            }
+          >
             {steps.map((step, index) => {
               return (
                 <Step key={index} onClick={() => setActiveStep(index)}>
@@ -152,7 +165,7 @@ const CheckoutWizard = () => {
       </CardContent>
       <Divider />
 
-      <CardContent>{getStepContent(activeStep, handleNext)}</CardContent>
+      <CardContent>{getStepContent(activeStep, handleNext, direction)}</CardContent>
     </Card>
   )
 }
