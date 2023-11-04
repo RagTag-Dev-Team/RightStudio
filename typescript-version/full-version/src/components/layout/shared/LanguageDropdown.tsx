@@ -16,6 +16,9 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
@@ -23,6 +26,7 @@ import type { Locale } from '@configs/i18n'
 import { getLocalePath } from '@/utils/get-locale-path'
 
 // Style Imports
+import commonDropdownStyles from '@components/layout/shared/styles.module.css'
 import commonStyles from '@/styles/common.module.css'
 
 type LanguageDataType = {
@@ -74,7 +78,7 @@ const LanguageDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[130px] !mbs-4'
+        className={classnames('min-w-[130px]', commonDropdownStyles.popperStyles)}
       >
         {({ TransitionProps, placement }) => (
           <Grow

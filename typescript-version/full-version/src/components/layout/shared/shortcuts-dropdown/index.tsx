@@ -31,6 +31,7 @@ import themeConfig from '@configs/themeConfig'
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
+import commonDropdownStyles from '@components/layout/shared/styles.module.css'
 
 export type ShortcutsType = {
   url: string
@@ -83,7 +84,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: classnames(styles.popperStyles, 'is-full'),
+              className: classnames(commonDropdownStyles.popperStyles, 'is-full'),
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -93,7 +94,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                 }
               ]
             }
-          : { className: classnames(styles.popperStyles, 'is-96') })}
+          : { className: classnames(commonDropdownStyles.popperStyles, 'is-96') })}
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>

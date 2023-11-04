@@ -17,13 +17,13 @@ export const users: UserTable[] = [
     name: 'John Doe',
     password: 'admin',
     email: 'admin@admin.com',
-    image: ''
+    image: '/images/avatars/1.png'
   },
   {
     id: 2,
     name: 'Jane Doe',
     password: 'client',
     email: 'client@client.com',
-    image: ''
+    image: '/images/avatars/2.png'
   }
 ]

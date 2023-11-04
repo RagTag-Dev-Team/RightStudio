@@ -68,7 +68,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
         &.${verticalLayoutClasses.headerFloating}
         .${verticalLayoutClasses.navbar} {
         backdrop-filter: blur(6px);
-        background-color: rgba(var(--background-color-rgb), 0.9);
+        background-color: rgb(var(--background-color-rgb) / 0.9);
       }
 
       &.${verticalLayoutClasses.headerFloating} {
@@ -81,9 +81,9 @@ const StyledHeader = styled.header<StyledHeaderProps>`
           block-size: 100%;
           background: linear-gradient(
             180deg,
-            rgba(var(--background-color-rgb), 0.7) 44%,
-            rgba(var(--background-color-rgb), 0.43) 73%,
-            rgba(var(--background-color-rgb), 0)
+            rgb(var(--background-color-rgb) / 0.7) 44%,
+            rgb(var(--background-color-rgb) / 0.43) 73%,
+            rgb(var(--background-color-rgb) / 0)
           );
           backdrop-filter: blur(10px);
           mask: linear-gradient(black, black 18%, transparent 100%);

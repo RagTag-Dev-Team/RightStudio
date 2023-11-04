@@ -33,6 +33,7 @@ import { getInitials } from '@/utils/get-initials'
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
+import commonDropdownStyles from '@components/layout/shared/styles.module.css'
 
 export type NotificationsType = {
   title: string
@@ -159,7 +160,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: classnames(styles.popperStyles, 'is-full'),
+              className: classnames(commonDropdownStyles.popperStyles, 'is-full'),
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -169,7 +170,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 }
               ]
             }
-          : { className: classnames(styles.popperStyles, 'is-96') })}
+          : { className: classnames(commonDropdownStyles.popperStyles, 'is-96') })}
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>

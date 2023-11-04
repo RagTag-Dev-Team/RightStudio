@@ -23,6 +23,10 @@ import Button from '@mui/material/Button'
 
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
+import classnames from 'classnames'
+
+// Style Imports
+import commonStyles from '@components/layout/shared/styles.module.css'
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -86,6 +90,7 @@ const UserDropdown = () => {
         <Avatar
           ref={anchorRef}
           alt={session?.user?.name || ''}
+          src={session?.user?.image || ''}
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-10 is-10'
         />
@@ -96,7 +101,7 @@ const UserDropdown = () => {
         disablePortal
         placement='bottom-end'
         anchorEl={anchorRef.current}
-        className='min-w-[240px] !mbs-4'
+        className={classnames('min-w-[240px]', commonStyles.popperStyles)}
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -109,7 +114,7 @@ const UserDropdown = () => {
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>
-                    <Avatar alt={session?.user?.name || ''} />
+                    <Avatar alt={session?.user?.name || ''} src={session?.user?.image || ''} />
                     <div className='flex items-start flex-col'>
                       <Typography>{session?.user?.name || ''}</Typography>
                       <Typography>{session?.user?.email || ''}</Typography>

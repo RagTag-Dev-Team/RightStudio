@@ -6,6 +6,9 @@ import type { ElementType, ReactNode } from 'react'
 // Next Imports
 import { useRouter } from 'next/navigation'
 
+// MUI Imports
+import { IconButton } from '@mui/material'
+
 // Third-party Imports
 import { useMedia } from 'react-use'
 import classnames from 'classnames'
@@ -28,6 +31,7 @@ import StyledKBarAnimator from './StyledKBarAnimator'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 // Data Imports
 import data from '@/data/searchData'
@@ -77,8 +81,9 @@ const NavSearch = () => {
     <KBarProvider actions={searchActions}>
       <ComponentWithUseKBar
         triggerClick
-        className='ts-nav-search-icon flex cursor-pointer'
-        icon={<i className='ri-search-line text-xl' />}
+        className={classnames('ts-nav-search-icon flex cursor-pointer', commonStyles.textPrimary)}
+        icon={<i className='ri-search-line' />}
+        tag={IconButton}
       />
       <KBarPortal>
         <KBarPositioner className={styles.positioner}>

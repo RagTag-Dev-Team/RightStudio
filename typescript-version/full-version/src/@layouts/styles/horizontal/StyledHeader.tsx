@@ -23,7 +23,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
   &.${horizontalLayoutClasses.headerBlur} {
     backdrop-filter: blur(6px);
-    background-color: rgba(var(--background-color-rgb), 0.9);
+    background-color: rgb(var(--background-color-rgb) / 0.9);
   }
 
   &.${horizontalLayoutClasses.headerFixed} {
