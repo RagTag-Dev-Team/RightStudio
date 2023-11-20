@@ -25,7 +25,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
 
   &.${horizontalLayoutClasses.footerContentCompact} .${horizontalLayoutClasses.footerContentWrapper} {
     margin-inline: auto;
-    max-inline-size: 1440px;
+    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   .${horizontalLayoutClasses.footerContentWrapper} {

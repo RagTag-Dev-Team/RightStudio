@@ -3,11 +3,6 @@
   border-block-start: 1px solid var(--border-color);
 }
 
-.headerContentCompact {
-  margin-inline: auto;
-  max-inline-size: 1440px;
-}
-
 .primaryColor {
   color: var(--primary-color);
 }

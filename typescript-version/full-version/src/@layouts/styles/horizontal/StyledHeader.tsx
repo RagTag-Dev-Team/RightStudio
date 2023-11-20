@@ -34,7 +34,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
   &.${horizontalLayoutClasses.headerContentCompact} .${horizontalLayoutClasses.navbar} {
     margin-inline: auto;
-    max-inline-size: 1440px;
+    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   .${horizontalLayoutClasses.navbar} {

@@ -18,12 +18,12 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   &.${verticalLayoutClasses.footerContentCompact} {
     &.${verticalLayoutClasses.footerDetached} {
       margin-inline: auto;
-      max-inline-size: 1440px;
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
 
     &.${verticalLayoutClasses.footerAttached} .${verticalLayoutClasses.footerContentWrapper} {
       margin-inline: auto;
-      max-inline-size: 1440px;
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
   }
 

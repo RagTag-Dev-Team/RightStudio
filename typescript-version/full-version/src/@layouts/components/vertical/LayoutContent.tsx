@@ -6,17 +6,14 @@ import classnames from 'classnames'
 // Type Imports
 import type { ChildrenType } from '@core/types'
 
-// Config Imports
-import themeConfig from '@configs/themeConfig'
-
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
 
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from '@layouts/styles/content.module.css'
+// Styled Component Imports
+import StyledMain from '@layouts/styles/shared/StyledMain'
 
 const LayoutContent = ({ children }: ChildrenType) => {
   const { settings } = useSettings()
@@ -25,15 +22,15 @@ const LayoutContent = ({ children }: ChildrenType) => {
   const contentWide = settings.contentWidth === 'wide'
 
   return (
-    <main
+    <StyledMain
+      isContentCompact={contentCompact}
       className={classnames(verticalLayoutClasses.content, 'flex-auto', {
-        [`${verticalLayoutClasses.contentCompact} is-full ${styles.contentCompact}`]: contentCompact,
+        [`${verticalLayoutClasses.contentCompact} is-full`]: contentCompact,
         [verticalLayoutClasses.contentWide]: contentWide
       })}
-      style={{ padding: themeConfig.layoutPadding }}
     >
       {children}
-    </main>
+    </StyledMain>
   )
 }
 

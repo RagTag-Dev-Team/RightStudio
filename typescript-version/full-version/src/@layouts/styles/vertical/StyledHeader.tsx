@@ -31,7 +31,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
       .${verticalLayoutClasses.navbar},
       &.${verticalLayoutClasses.headerFixed}.${verticalLayoutClasses.headerDetached}
       .${verticalLayoutClasses.navbar} {
-      max-inline-size: calc(1440px - ${2 * themeConfig.layoutPadding}px);
+      max-inline-size: calc(${themeConfig.compactContentWidth}px - ${2 * themeConfig.layoutPadding}px);
     }
   }
 
@@ -117,7 +117,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     padding-block: 10px;
     padding-inline: ${themeConfig.layoutPadding}px;
     inline-size: 100%;
-    max-inline-size: 1440px;
+    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   ${({ overrideStyles }) => overrideStyles}
