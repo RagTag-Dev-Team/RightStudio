@@ -1,9 +1,7 @@
 // Next Imports
-import { Inter } from 'next/font/google'
 import { cookies } from 'next/headers'
 
 // Third-party Imports
-import classnames from 'classnames'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
@@ -24,8 +22,6 @@ import '@assets/iconify-icons/generated-icons.css'
 
 // Generated Icon Imports
 import '@assets/iconify-icons/generated-icons'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Master Next.js Framework Independent ',
@@ -56,7 +52,7 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
 
   return (
     <html lang={params.lang} dir={direction} className='flex is-full min-bs-full' data-mui-color-scheme={mode}>
-      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>{children}</body>
+      <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
     </html>
   )
 }

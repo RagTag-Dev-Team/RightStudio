@@ -7,8 +7,7 @@ import type { ReactNode } from 'react'
 import { deepmerge } from '@mui/utils'
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
-  experimental_extendTheme as extendTheme,
-  responsiveFontSizes
+  experimental_extendTheme as extendTheme
 } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
@@ -22,7 +21,6 @@ import EmotionCacheProvider from './EmotionCache'
 
 // Config Imports
 import { getPrimaryColorScheme } from '@configs/primaryColorConfig'
-import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import useSettings from '@core/hooks/useSettings'
@@ -40,11 +38,7 @@ const ThemeProvider = ({ children, direction }: { children: ReactNode; direction
 
   // Merge the primary color scheme override with the core theme
   const coreTheme = deepmerge(defaultCoreTheme(direction), getPrimaryColorScheme(settings))
-  let theme = extendTheme(coreTheme)
-
-  if (themeConfig.responsiveFontSizes) {
-    theme = responsiveFontSizes(theme)
-  }
+  const theme = extendTheme(coreTheme)
 
   return (
     <EmotionCacheProvider options={{ key: 'mui' }} direction={theme.direction}>

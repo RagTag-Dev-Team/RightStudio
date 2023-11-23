@@ -6,8 +6,7 @@ import type { ReactNode } from "react";
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
   experimental_extendTheme as extendTheme,
-  StyledEngineProvider,
-  responsiveFontSizes
+  StyledEngineProvider
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
@@ -23,9 +22,10 @@ import globalStyling from "./globalStyles";
 // Theme Overrides Imports
 import overrides from "@core/theme/overrides";
 import spacing from "@core/theme/spacing";
+import typography from "@core/theme/typography";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  let theme = extendTheme({
+  const theme = extendTheme({
     components: overrides(),
     ...spacing,
     shape: {
@@ -36,10 +36,9 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         lg: 8,
         xl: 10
       }
-    }
+    },
+    typography: typography('')
   });
-
-  theme = responsiveFontSizes(theme)
 
   return (
     <StyledEngineProvider injectFirst>
