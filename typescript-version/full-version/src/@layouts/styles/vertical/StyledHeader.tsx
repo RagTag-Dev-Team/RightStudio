@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledHeaderProps = {
   skin: Settings['skin']
@@ -31,7 +33,11 @@ const StyledHeader = styled.header<StyledHeaderProps>`
       .${verticalLayoutClasses.navbar},
       &.${verticalLayoutClasses.headerFixed}.${verticalLayoutClasses.headerDetached}
       .${verticalLayoutClasses.navbar} {
-      max-inline-size: calc(1440px - ${2 * themeConfig.layoutPadding}px);
+      max-inline-size: calc(${themeConfig.compactContentWidth}px - ${2 * themeConfig.layoutPadding}px);
+    }
+
+    .${verticalLayoutClasses.navbar} {
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
   }
 
@@ -117,7 +123,6 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     padding-block: 10px;
     padding-inline: ${themeConfig.layoutPadding}px;
     inline-size: 100%;
-    max-inline-size: 1440px;
   }
 
   ${({ overrideStyles }) => overrideStyles}

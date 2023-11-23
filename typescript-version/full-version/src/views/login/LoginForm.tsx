@@ -12,7 +12,7 @@ import { signIn } from 'next-auth/react'
 
 const LoginForm = () => {
   // States
-  const [email, setEmail] = useState('admin@admin.com')
+  const [email, setEmail] = useState('admin@master.com')
   const [password, setPassword] = useState('admin')
 
   // Hooks

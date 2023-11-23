@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledHeaderProps = {
   skin: Settings['skin']
@@ -34,7 +36,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
   &.${horizontalLayoutClasses.headerContentCompact} .${horizontalLayoutClasses.navbar} {
     margin-inline: auto;
-    max-inline-size: 1440px;
+    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   .${horizontalLayoutClasses.navbar} {

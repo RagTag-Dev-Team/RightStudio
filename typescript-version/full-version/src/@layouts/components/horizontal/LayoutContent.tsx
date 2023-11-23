@@ -15,8 +15,8 @@ import useSettings from '@core/hooks/useSettings'
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from '@layouts/styles/content.module.css'
+// Styled Component Imports
+import StyledMain from '@layouts/styles/shared/StyledMain'
 
 const LayoutContent = ({ children }: ChildrenType) => {
   const { settings } = useSettings()
@@ -25,15 +25,16 @@ const LayoutContent = ({ children }: ChildrenType) => {
   const contentWide = settings.contentWidth === 'wide'
 
   return (
-    <main
+    <StyledMain
+      isContentCompact={contentCompact}
       className={classnames(horizontalLayoutClasses.content, 'flex-auto', {
-        [`${horizontalLayoutClasses.contentCompact} is-full ${styles.contentCompact}`]: contentCompact,
+        [`${horizontalLayoutClasses.contentCompact} is-full`]: contentCompact,
         [horizontalLayoutClasses.contentWide]: contentWide
       })}
       style={{ padding: themeConfig.layoutPadding }}
     >
       {children}
-    </main>
+    </StyledMain>
   )
 }
 

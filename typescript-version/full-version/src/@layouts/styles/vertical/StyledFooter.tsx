@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledFooterProps = {
   skin: Settings['skin']
@@ -18,12 +20,12 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   &.${verticalLayoutClasses.footerContentCompact} {
     &.${verticalLayoutClasses.footerDetached} {
       margin-inline: auto;
-      max-inline-size: 1440px;
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
 
     &.${verticalLayoutClasses.footerAttached} .${verticalLayoutClasses.footerContentWrapper} {
       margin-inline: auto;
-      max-inline-size: 1440px;
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
   }
 

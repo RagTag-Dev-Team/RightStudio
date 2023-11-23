@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledFooterProps = {
   skin: Settings['skin']
@@ -25,7 +27,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
 
   &.${horizontalLayoutClasses.footerContentCompact} .${horizontalLayoutClasses.footerContentWrapper} {
     margin-inline: auto;
-    max-inline-size: 1440px;
+    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   .${horizontalLayoutClasses.footerContentWrapper} {
