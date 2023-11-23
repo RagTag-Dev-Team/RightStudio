@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledFooterProps = {
   skin: Settings['skin']

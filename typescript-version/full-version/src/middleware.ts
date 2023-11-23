@@ -57,7 +57,7 @@ export default withAuth(
     const rootRoute = `/${locale}/`
 
     // Guest routes (Routes that can be accessed by guest users who are not logged in)
-    const guestRoutes = ['login', 'register', 'forgot-password', 'reset-password']
+    const guestRoutes = ['login', 'register', 'forgot-password']
 
     // Shared routes (Routes that can be accessed by both guest and logged in users)
     const sharedRoutes = ['shared-route']
@@ -106,6 +106,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    '/((?!api|_next/static|_next/image|favicon.ico|.+?/hook-examples|.+?/menu-examples).*)'
   ]
 }

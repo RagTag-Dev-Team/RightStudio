@@ -1,5 +1,4 @@
 .navigation {
-  min-block-size: var(--header-height);
   border-block-start: 1px solid var(--border-color);
 }
 

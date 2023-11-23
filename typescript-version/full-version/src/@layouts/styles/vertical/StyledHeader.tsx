@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledHeaderProps = {
   skin: Settings['skin']
@@ -32,6 +34,10 @@ const StyledHeader = styled.header<StyledHeaderProps>`
       &.${verticalLayoutClasses.headerFixed}.${verticalLayoutClasses.headerDetached}
       .${verticalLayoutClasses.navbar} {
       max-inline-size: calc(${themeConfig.compactContentWidth}px - ${2 * themeConfig.layoutPadding}px);
+    }
+
+    .${verticalLayoutClasses.navbar} {
+      max-inline-size: ${themeConfig.compactContentWidth}px;
     }
   }
 
@@ -68,7 +74,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
         &.${verticalLayoutClasses.headerFloating}
         .${verticalLayoutClasses.navbar} {
         backdrop-filter: blur(6px);
-        background-color: rgba(var(--background-color-rgb), 0.9);
+        background-color: rgb(var(--background-color-rgb) / 0.9);
       }
 
       &.${verticalLayoutClasses.headerFloating} {
@@ -81,9 +87,9 @@ const StyledHeader = styled.header<StyledHeaderProps>`
           block-size: 100%;
           background: linear-gradient(
             180deg,
-            rgba(var(--background-color-rgb), 0.7) 44%,
-            rgba(var(--background-color-rgb), 0.43) 73%,
-            rgba(var(--background-color-rgb), 0)
+            rgb(var(--background-color-rgb) / 0.7) 44%,
+            rgb(var(--background-color-rgb) / 0.43) 73%,
+            rgb(var(--background-color-rgb) / 0)
           );
           backdrop-filter: blur(10px);
           mask: linear-gradient(black, black 18%, transparent 100%);
@@ -117,7 +123,6 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     padding-block: 10px;
     padding-inline: ${themeConfig.layoutPadding}px;
     inline-size: 100%;
-    max-inline-size: ${themeConfig.compactContentWidth}px;
   }
 
   ${({ overrideStyles }) => overrideStyles}

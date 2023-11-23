@@ -4,10 +4,12 @@ import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
-import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledHeaderProps = {
   skin: Settings['skin']
@@ -23,7 +25,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
 
   &.${horizontalLayoutClasses.headerBlur} {
     backdrop-filter: blur(6px);
-    background-color: rgba(var(--background-color-rgb), 0.9);
+    background-color: rgb(var(--background-color-rgb) / 0.9);
   }
 
   &.${horizontalLayoutClasses.headerFixed} {

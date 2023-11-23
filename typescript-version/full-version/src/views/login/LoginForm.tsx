@@ -11,8 +11,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 const LoginForm = () => {
-  // State
-  const [email, setEmail] = useState('admin@admin.com')
+  // States
+  const [email, setEmail] = useState('admin@master.com')
   const [password, setPassword] = useState('admin')
 
   // Hooks
