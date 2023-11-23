@@ -54,10 +54,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
         }
       />
       <ScrollToTop className='mui-fixed'>
-        <Button
-          variant='contained'
-          className='w-10 h-10 rounded-full p-0 min-w-0 flex items-center justify-center cursor-pointer'
-        >
+        <Button variant='contained' className='w-10 h-10 rounded-full p-0 min-w-0 flex items-center justify-center'>
           <i className='ri-arrow-up-line' />
         </Button>
       </ScrollToTop>
