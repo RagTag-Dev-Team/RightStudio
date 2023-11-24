@@ -1,5 +1,3 @@
-import React from 'react';
-import styles from './styles.module.css';
-export default function IconExternalLink({width = 13.5, height = 13.5}) {
+export default function IconDarkMode(props) {
   return 'PUT ICON HERE';
 }

@@ -42,7 +42,7 @@ Next, Follow the [installation guide](/docs/guide/overview/installation) once yo
 
 ## Demo Configs
 
-You want your local template to look like one of the 6 demos you saw online then please follow [demo configs](/docs/guide/overview/demo-configs) documentation which will help you achieve your goal.
+You want your local template to look like one of the 6 demos you saw online then please follow [demo config](/docs/guide/development/demo-config) documentation which will help you achieve your goal.
 
 ## FAQs
 
@@ -51,5 +51,3 @@ If you face any difficulties with installation, or has any question on usage of 
 ## Search Docs
 
 Our template has large documentation and sometime it can be daunting to find what you are looking for in the docs. Fastest way to find anything is to search doc using search input in the Navigation bar. You can write keywords and it will filter out results and come up with the best possible match.
-
-

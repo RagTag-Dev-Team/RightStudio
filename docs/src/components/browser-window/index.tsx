@@ -1,5 +1,4 @@
 // React Imports
-import React from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 
 // Third-party Imports

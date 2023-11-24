@@ -8,7 +8,7 @@ Raising support ticket in support portal is as simple as commenting on post. How
 
 ### Finding existing solution
 
-There might be a case that your issue is already resolved and you are the one who is facing due to some issue. So before creating new support ticket please search your question / issue in our [FAQ page](/docs/faq) where we have listed most common questions / issues asked in our support portal.
+There might be a case that your issue is already resolved and you are the one who is facing due to some issue. So before creating new support ticket please search your question / issue in our [FAQ page](#) where we have listed most common questions / issues asked in our support portal.
 
 ### Ticket Type
 

@@ -2,9 +2,9 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '../../../../src/components/ts-js-code'
-import IframeWindow from '../../../../src/components/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!../../../../../typescript-version/full-version/src/app/[lang]/menu-examples/vertical-menu/vertical-nav/default-collapsed/page'
+import TsToJsCodeSnippet from '@docComponents//ts-js-code'
+import IframeWindow from '@docComponents//browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/default-collapsed/page'
 
 # Default Collapsed
 
@@ -12,17 +12,17 @@ The `defaultCollapsed` prop allows you to set the default state of the navigatio
 
 ### Props
 
-```ts noCopy
+```ts noCopy=true
 defaultCollapsed?: boolean
 ```
 
-```ts noCopy title='Default Value'
+```ts noCopy={true} title='Default Value'
 defaultCollapsed={false}
 ```
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/menu-examples/vertical-menu/vertical-nav/default-collapsed' />
+<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/default-collapsed' />
 
 ### Source Code
 
