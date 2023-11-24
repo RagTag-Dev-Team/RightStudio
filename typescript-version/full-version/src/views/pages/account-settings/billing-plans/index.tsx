@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid'
 import CurrentPlan from './CurrentPlan'
 import Address from './Address'
 import PaymentMethod from './PaymentMethod'
+import InvoiceListTable from './InvoiceListTable'
 
 const getPricingData = async () => {
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
@@ -16,8 +17,20 @@ const getPricingData = async () => {
   return res.json()
 }
 
+const getInvoiceData = async () => {
+  const res = await fetch(`${process.env.API_URL}/apps/invoice`)
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch invoice data')
+  }
+
+  return res.json()
+}
+
 const BillingPlans = async () => {
   const data = await getPricingData()
+
+  const invoiceData = await getInvoiceData()
 
   return (
     <Grid container>
@@ -29,6 +42,9 @@ const BillingPlans = async () => {
       </Grid>
       <Grid item xs={12}>
         <Address />
+      </Grid>
+      <Grid item xs={12}>
+        <InvoiceListTable invoiceData={invoiceData} />
       </Grid>
     </Grid>
   )
