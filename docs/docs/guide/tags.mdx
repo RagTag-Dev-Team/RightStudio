@@ -153,10 +153,10 @@ A paragraph starting with a JSX tag will be seen entirely as a JSX string:
   </TabItem>
 </Tabs>
 
-<img src={require('./assets/1.jpg').default} alt='Example banner' style={{ height: 300 }} />
+<img src={require('../assets/1.jpg').default} alt='Example banner' style={{ height: 300 }} />
 
-![Example banner](./assets/1.jpg)
+![Example banner](../assets/1.jpg)
 
-import myImageUrl from './assets/1.jpg'
+import myImageUrl from '../assets/1.jpg'
 
 <img src={myImageUrl} alt='Example banner' style={{ height: 300 }} />

@@ -14,9 +14,9 @@ We've successfully implemented authentication using NextAuth.js, ensuring a secu
 
 To demonstrate the capabilities of NextAuth.js, we've focused on two of the most widely used authentication methods:
 
-1. **[Credentials Provider](/docs/authentication/credentials-provider)** - The Credentials Provider method allows users to authenticate using traditional credentials like usernames and passwords. This is a fundamental authentication approach and is often used as a starting point for many applications.
+1. **[Credentials Provider](/docs/guide/authentication/credentials-provider)** - The Credentials Provider method allows users to authenticate using traditional credentials like usernames and passwords. This is a fundamental authentication approach and is often used as a starting point for many applications.
 
-2. **[Google Provider and Prisma Adapter](/docs/authentication/google-prisma)** - For those who prefer a more integrated approach, we've also integrated the Google Provider along with the Prisma Adapter. This offers users the convenience of signing in with their Google accounts while leveraging the power of Prisma for data management.
+2. **[Google Provider and Prisma Adapter](/docs/guide/authentication/google-prisma)** - For those who prefer a more integrated approach, we've also integrated the Google Provider along with the Prisma Adapter. This offers users the convenience of signing in with their Google accounts while leveraging the power of Prisma for data management.
 
 ## What's Next?
 
