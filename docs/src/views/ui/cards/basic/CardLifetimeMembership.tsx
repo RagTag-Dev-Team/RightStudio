@@ -11,6 +11,7 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 const CardLifetimeMembership = () => {
   return (
@@ -18,10 +19,10 @@ const CardLifetimeMembership = () => {
       <Grid container>
         <Grid item xs={12} sm={7}>
           <CardContent>
-            <Typography variant='h6' className='mbe-2'>
+            <Typography variant='h5' className='mbe-2'>
               Lifetime Membership
             </Typography>
-            <Typography variant='body2'>
+            <Typography color='text.secondary'>
               Here, I focus on a range of items and features that we use in life without giving them a second thought
               such as Coca Cola, body muscles and holding ones own breath. Though, most of these notes are not
               fundamentally necessary, they are such that you can use them for a good laugh, at a drinks party or for
@@ -32,15 +33,15 @@ const CardLifetimeMembership = () => {
               <Grid item xs={12} sm={6} className={classnames('flex flex-col pie-5', styles.memberGridGap)}>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <i className='ri-lock-unlock-line text-xl' />
+                    <i className={classnames('ri-lock-unlock-line text-xl', commonStyles.textSecondary)} />
                   </div>
-                  <Typography variant='body2'>Full Access</Typography>
+                  <Typography color='text.secondary'>Full Access</Typography>
                 </div>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <i className='ri-user-3-line text-xl' />
+                    <i className={classnames('ri-user-3-line text-xl', commonStyles.textSecondary)} />
                   </div>
-                  <Typography variant='body2'>15 Members</Typography>
+                  <Typography color='text.secondary'>15 Members</Typography>
                 </div>
               </Grid>
               <Grid
@@ -51,15 +52,15 @@ const CardLifetimeMembership = () => {
               >
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <i className='ri-lock-unlock-line text-xl' />
+                    <i className={classnames('ri-lock-unlock-line text-xl', commonStyles.textSecondary)} />
                   </div>
-                  <Typography variant='body2'>Access all Features</Typography>
+                  <Typography color='text.secondary'>Access all Features</Typography>
                 </div>
                 <div className={classnames('flex items-center', styles.memberFeatureGap)}>
                   <div className='flex'>
-                    <i className='ri-user-3-line text-xl' />
+                    <i className={classnames('ri-user-3-line text-xl', commonStyles.textSecondary)} />
                   </div>
-                  <Typography variant='body2'>Lifetime Free Update</Typography>
+                  <Typography color='text.secondary'>Lifetime Free Update</Typography>
                 </div>
               </Grid>
             </Grid>
@@ -69,11 +70,11 @@ const CardLifetimeMembership = () => {
           <CardContent className={classnames('flex items-center justify-center h-full', styles.memberContentBgColor)}>
             <div className='flex flex-col items-center justify-center gap-2'>
               <div className='flex items-end justify-center'>
-                <Typography variant='h6'>$</Typography>
-                <Typography variant='h3'>899</Typography>
-                <Typography variant='h6'>USD</Typography>
+                <Typography variant='h5'>$</Typography>
+                <Typography variant='h1'>899</Typography>
+                <Typography variant='h5'>USD</Typography>
               </div>
-              <Typography variant='body2' className='flex flex-col text-center'>
+              <Typography color='text.secondary' className='flex flex-col text-center'>
                 <span>5 Tips For Offshore</span>
                 <span>Software Development</span>
               </Typography>

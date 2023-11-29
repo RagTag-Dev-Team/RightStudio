@@ -43,17 +43,17 @@ const CardActionAll = () => {
                 <i className={classnames(collapse ? 'ri-arrow-down-s-line' : 'ri-arrow-up-s-line', 'text-xl')} />
               </IconButton>
               <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-                <i className='ri-refresh-line' />
+                <i className='ri-refresh-line text-xl' />
               </IconButton>
               <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-                <i className='ri-close-line' />
+                <i className='ri-close-line text-xl' />
               </IconButton>
             </div>
           }
         />
         <Collapse in={!collapse}>
           <CardContent>
-            <Typography variant='body2'>Click on the above icons to see them in action</Typography>
+            <Typography>Click on the above icons to see them in action</Typography>
           </CardContent>
 
           <Backdrop open={reload} className={classnames('absolute text-white', styles.backdropZIndex)}>

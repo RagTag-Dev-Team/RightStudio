@@ -52,10 +52,10 @@ const CardMobile = () => {
           className={classnames({ [styles.borderLeft]: !mdScreen, [styles.borderTop]: mdScreen })}
         >
           <CardContent>
-            <Typography variant='h6' className='mbe-2'>
+            <Typography variant='h5' className='mbe-2'>
               Apple iPhone 11 Pro
             </Typography>
-            <Typography variant='body2' className='mbe-2'>
+            <Typography className='mbe-2' color='text.secondary'>
               Apple iPhone 11 Pro smartphone. Announced Sep 2019. Features 5.8″ display Apple A13 Bionic
             </Typography>
             <div className='flex gap-1'>

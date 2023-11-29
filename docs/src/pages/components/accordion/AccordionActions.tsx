@@ -21,11 +21,7 @@ const AccordionActions = () => {
   return (
     <>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary
-          id='actions-panel-header-1'
-          aria-controls='actions-panel-content-1'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='actions-panel-header-1' aria-controls='actions-panel-content-1'>
           <FormControlLabel
             label='Accordion 1'
             aria-label='Acknowledge'
@@ -43,11 +39,7 @@ const AccordionActions = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary
-          id='actions-panel-header-2'
-          aria-controls='actions-panel-content-2'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='actions-panel-header-2' aria-controls='actions-panel-content-2'>
           <FormControlLabel
             label='Accordion 2'
             aria-label='Acknowledge'
@@ -65,11 +57,7 @@ const AccordionActions = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary
-          id='actions-panel-header-3'
-          aria-controls='actions-panel-content-3'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='actions-panel-header-3' aria-controls='actions-panel-content-3'>
           <FormControlLabel
             label='Accordion 3'
             aria-label='Acknowledge'

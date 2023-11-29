@@ -29,14 +29,14 @@ const CardHorizontalRatings = () => {
       <Grid container>
         <Grid item xs={12} md={6} lg={7}>
           <CardContent>
-            <Typography variant='h6' className='mbe-2'>
+            <Typography variant='h5' className='mbe-2'>
               Stumptown Roasters
             </Typography>
             <div className='flex flex-wrap gap-x-2 gap-y-1 mbe-2'>
               <Rating name='read-only' value={4} readOnly />
               <Typography>4 Star | 98 reviews</Typography>
             </div>
-            <Typography variant='body2'>
+            <Typography color='text.secondary'>
               Before there was a United States of America, there were coffee houses, because how are you supposed to
               build.
             </Typography>

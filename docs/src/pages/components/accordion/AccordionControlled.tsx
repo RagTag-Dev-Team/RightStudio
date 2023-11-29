@@ -19,11 +19,7 @@ const AccordionControlled = () => {
   return (
     <>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary
-          id='controlled-panel-header-1'
-          aria-controls='controlled-panel-content-1'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='controlled-panel-header-1' aria-controls='controlled-panel-content-1'>
           <Typography>Accordion 1</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -35,11 +31,7 @@ const AccordionControlled = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary
-          id='controlled-panel-header-2'
-          aria-controls='controlled-panel-content-2'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='controlled-panel-header-2' aria-controls='controlled-panel-content-2'>
           <Typography>Accordion 2</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -51,11 +43,7 @@ const AccordionControlled = () => {
       </Accordion>
 
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary
-          id='controlled-panel-header-3'
-          aria-controls='controlled-panel-content-3'
-          expandIcon={<i className='ri-arrow-down-s-line' />}
-        >
+        <AccordionSummary id='controlled-panel-header-3' aria-controls='controlled-panel-content-3'>
           <Typography>Accordion 3</Typography>
         </AccordionSummary>
         <AccordionDetails>

@@ -1,7 +1,3 @@
-.addressTable1 td:first-child {
+.addressTable td:first-child {
   inline-size: 150px;
-}
-
-.addressTable2 td:first-child {
-  inline-size: 120px;
 }

@@ -22,10 +22,10 @@ const CardWithCollapse = () => {
     <Card>
       <CardMedia image='/images/cards/3.png' className={styles.collapseBgImg} />
       <CardContent>
-        <Typography variant='h6' className='mbe-3'>
+        <Typography variant='h5' className='mbe-3'>
           Popular Uses Of The Internet
         </Typography>
-        <Typography variant='body2'>
+        <Typography color='text.secondary'>
           Although cards can support multiple actions, UI controls, and an overflow menu.
         </Typography>
       </CardContent>
@@ -38,7 +38,7 @@ const CardWithCollapse = () => {
       <Collapse in={expanded} timeout={300}>
         <Divider />
         <CardContent>
-          <Typography variant='body2'>
+          <Typography color='text.secondary'>
             I&#39;m a thing. But, like most politicians, he promised more than he could deliver. You won&#39;t have time
             for sleeping, soldier, not with all the bed making you&#39;ll be doing. Then we&#39;ll go with that data
             file! Hey, you add a one and two zeros to that or we walk! You&#39;re going to do his laundry? I&#39;ve got

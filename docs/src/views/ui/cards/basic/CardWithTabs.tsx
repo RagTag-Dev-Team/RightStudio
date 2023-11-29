@@ -28,30 +28,30 @@ const CardWithTabs = () => {
           <Tab value='3' label='Item Three' />
         </TabList>
         <TabPanel value='1'>
-          <Typography variant='h6' className='mbe-2'>
+          <Typography variant='h5' className='mbe-2'>
             Header One
           </Typography>
-          <Typography variant='body2' className='mbe-6'>
+          <Typography color='text.secondary' className='mbe-6'>
             Pudding tiramisu caramels. Gingerbread gummies danish chocolate bar toffee marzipan. Wafer wafer cake powder
             danish oat cake.
           </Typography>
           <Button variant='contained'>Button One</Button>
         </TabPanel>
         <TabPanel value='2'>
-          <Typography variant='h6' className='mbe-2'>
+          <Typography variant='h5' className='mbe-2'>
             Header Two
           </Typography>
-          <Typography variant='body2' className='mbe-6'>
+          <Typography color='text.secondary' className='mbe-6'>
             Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake marzipan. Carrot cake sweet roll gummi
             bears caramels jelly beans.
           </Typography>
           <Button variant='contained'>Button Two</Button>
         </TabPanel>
         <TabPanel value='3'>
-          <Typography variant='h6' className='mbe-2'>
+          <Typography variant='h5' className='mbe-2'>
             Header Three
           </Typography>
-          <Typography variant='body2' className='mbe-6'>
+          <Typography color='text.secondary' className='mbe-6'>
             Icing cake macaroon macaroon jelly chocolate bar. Chupa chups dessert dessert soufflé chocolate bar jujubes
             gummi bears lollipop.
           </Typography>

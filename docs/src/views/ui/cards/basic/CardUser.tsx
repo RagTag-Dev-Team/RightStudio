@@ -18,7 +18,7 @@ const CardUser = () => {
     <Card>
       <CardMedia image='/images/cards/2.png' className={styles.userBgImg} />
       <CardContent className='relative'>
-        <Avatar src='/images/avatars/3.png' alt='Robert Meyer' className={styles.userAvatar} />
+        <Avatar src='/assets/avatars/3.png' alt='Robert Meyer' className={styles.userAvatar} />
         <div
           className={classnames(
             'flex justify-between items-center flex-wrap gap-x-4 gap-y-2 mbe-5',
@@ -26,13 +26,13 @@ const CardUser = () => {
           )}
         >
           <div className='flex flex-col items-start'>
-            <Typography variant='h6'>Robert Meyer</Typography>
-            <Typography variant='caption'>London, UK</Typography>
+            <Typography variant='h5'>Robert Meyer</Typography>
+            <Typography variant='body2'>London, UK</Typography>
           </div>
           <Button variant='contained'>Send Request</Button>
         </div>
         <div className='flex justify-between items-center flex-wrap gap-x-4 gap-y-2'>
-          <Typography variant='subtitle2'>18 mutual friends</Typography>
+          <Typography variant='subtitle2' color='text.disabled'>18 mutual friends</Typography>
           <AvatarGroup max={4}>
             <Avatar src='/images/avatars/1.png' />
             <Avatar src='/images/avatars/5.png' />

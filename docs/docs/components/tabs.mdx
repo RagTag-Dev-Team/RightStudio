@@ -24,8 +24,6 @@ import TabsFullWidth from '@docPages/components/tabs/TabsFullWidth'
 import SourceCodeTabsFullWidth from '!!raw-loader!@docPages/components/tabs/TabsFullWidth'
 import TabsCustomized from '@docPages/components/tabs/TabsCustomized'
 import SourceCodeTabsCustomized from '!!raw-loader!@docPages/components/tabs/TabsCustomized'
-import TabsForcedScroll from '@docPages/components/tabs/TabsForcedScroll'
-import SourceCodeTabsForcedScroll from '!!raw-loader!@docPages/components/tabs/TabsForcedScroll'
 import TabsCustomizedVertical from '@docPages/components/tabs/TabsCustomizedVertical'
 import SourceCodeTabsCustomizedVertical from '!!raw-loader!@docPages/components/tabs/TabsCustomizedVertical'
 
@@ -149,19 +147,6 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <TabsNav />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Forced Scroll Buttons'
-      code={SourceCodeTabsForcedScroll}
-    >
-      {
-        <Typography className='mbe-4'>
-          Use <code>scrollButtons</code> and <code>variant='scrollable'</code> props with <code>TabList</code> component to have forced scrollable tabs.
-        </Typography>
-      }
-      <TabsForcedScroll />
     </CardSnippet>
   </Grid>
 </Grid>

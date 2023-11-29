@@ -18,10 +18,10 @@ const CardSupport = () => {
         <Avatar className={classnames('mbe-2', styles.supportAvatar)}>
           <i className='ri-question-line text-[32px]' />
         </Avatar>
-        <Typography variant='h6' className='mbe-2'>
+        <Typography variant='h5' className='mbe-2'>
           Support
         </Typography>
-        <Typography variant='body2' className='mbe-4'>
+        <Typography color='text.secondary' className='mbe-4'>
           According to us blisters are a very common thing and we come across them very often in our daily lives. It is
           a very common occurrence like cold or fever depending upon your lifestyle.
         </Typography>

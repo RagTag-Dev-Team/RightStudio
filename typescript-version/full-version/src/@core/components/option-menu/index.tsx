@@ -65,7 +65,7 @@ const OptionMenu = (props: OptionsMenuType) => {
 
   return (
     <>
-      <IconButton ref={anchorRef} onClick={handleToggle} {...iconButtonProps}>
+      <IconButton ref={anchorRef} size='small' onClick={handleToggle} {...iconButtonProps}>
         {typeof icon === 'string' ? (
           <i className={icon} />
         ) : (icon as ReactNode) ? (

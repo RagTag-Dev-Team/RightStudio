@@ -25,11 +25,9 @@ const CardActionRemoveCard = () => {
           }
         />
         <CardContent>
-          <Typography variant='body2'>
+          <Typography>
             Click on{' '}
-            <span className='align-top'>
-              <i className='ri-close-line text-xl' />
-            </span>{' '}
+            <i className='ri-close-line text-xl align-sub' />{' '}
             icon to see it in action
           </Typography>
         </CardContent>

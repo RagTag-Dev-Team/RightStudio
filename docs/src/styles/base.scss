@@ -43,6 +43,15 @@ hr:not([class]) {
   margin: var(--ifm-hr-margin-vertical) 0;
 }
 
+ul, ol {
+  margin: 0;
+  padding-left: 0;
+}
+ul:not([class]), ol:not([class]) {
+  margin: 0 0 var(--ifm-list-margin);
+  padding-left: var(--ifm-list-left-padding);
+}
+
 .markdown li + li {
   margin-top: 0;
 }
