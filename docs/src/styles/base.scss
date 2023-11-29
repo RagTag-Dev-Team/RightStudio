@@ -28,9 +28,9 @@ a:hover {
 p {
   margin: 0;
 }
-p:not([class]) {
-  margin-bottom: var(--ifm-paragraph-margin-bottom);
-}
+// p:not([class]) {
+//   margin-bottom: var(--ifm-paragraph-margin-bottom);
+// }
 
 hr {
   background-color: transparent;

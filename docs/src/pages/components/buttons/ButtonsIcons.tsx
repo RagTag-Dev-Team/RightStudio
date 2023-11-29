@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import IconButton from '@mui/material/IconButton'
 

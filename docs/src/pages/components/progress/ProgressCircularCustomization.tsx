@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import { styled } from '@mui/material/styles'
 import CircularProgress from '@mui/material/CircularProgress'

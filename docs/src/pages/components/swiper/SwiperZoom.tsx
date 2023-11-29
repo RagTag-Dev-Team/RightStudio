@@ -1,10 +1,10 @@
 // React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
@@ -47,10 +47,10 @@ const SwiperZoom = () => {
       WebkitTransform: `scale(${scale})`
     }
   }
-
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const theme = useTheme()
+  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
+  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const isBelowSmScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
     <div ref={sliderRef} className={classnames('keen-slider zoom-out', {[styles.swiperCommonHeight395]: isAboveMdScreen,

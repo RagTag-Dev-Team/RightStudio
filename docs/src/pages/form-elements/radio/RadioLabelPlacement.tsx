@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'

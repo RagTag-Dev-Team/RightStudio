@@ -1,6 +1,6 @@
 .toggle {
-  inline-size: 2rem;
-  block-size: 2rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .toggleButton {
@@ -8,10 +8,9 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  inline-size: 100%;
-  block-size: 100%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  color: var(--ifm-menu-color);
   transition: background var(--ifm-transition-fast);
 }
 

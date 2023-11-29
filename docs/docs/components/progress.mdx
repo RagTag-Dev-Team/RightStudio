@@ -6,7 +6,6 @@ sidebar_label: Progress
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 import Divider from '@mui/material/Divider'
 
 import CardSnippet from '@docComponents/card-snippet/index'
@@ -33,21 +32,11 @@ import SourceCodeProgressLinearControlledUncontrolled from '!!raw-loader!@docPag
 import ProgressCircularControlledUncontrolled from '@docPages/components/progress/ProgressCircularControlledUncontrolled'
 import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docPages/components/progress/ProgressCircularControlledUncontrolled'
 
+<h1 className='!m-0'>Progress</h1>
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-progress/) and [API documentation](https://mui.com/material-ui/react-progress/#api).
+
 <Grid container spacing={6}>
-  <Grid item xs={12}>
-    <Typography variant='h5'>Progress</Typography>
-    <Typography variant='body2'>
-      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
-      <Link href='https://mui.com/material-ui/react-progress/' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        usage guide
-      </Link>{' '}
-      and{' '}
-      <Link href='https://mui.com/material-ui/react-progress/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        API documentation
-      </Link>
-      .
-    </Typography>
-  </Grid>
   <Grid item xs={12}>
     <Typography variant='h5'>Circular</Typography>
     <Divider />
@@ -57,9 +46,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Indeterminate'
       code={SourceCodeProgressCircularIndeterminate}
     >
-      <Typography className='mbe-4'>
-        Use <code>CircularProgress</code> component for simple circular progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>CircularProgress</code> component for simple circular progress.
+        </Typography>
+      }
       <ProgressCircularIndeterminate />
     </CardSnippet>
   </Grid>
@@ -68,9 +59,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Colors'
       code={SourceCodeProgressCircularColors}
     >
-      <Typography className='mbe-4'>
-        Use <code>color</code> prop for different colored circular progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>color</code> prop for different colored circular progress.
+        </Typography>
+      }
       <ProgressCircularColors />
     </CardSnippet>
   </Grid>
@@ -79,9 +72,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='With label'
       code={SourceCodeProgressCircularWithLabel}
     >
-      <Typography className='mbe-4'>
-        Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for circular progress with label.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for circular progress with label.
+        </Typography>
+      }
       <ProgressCircularWithLabel />
     </CardSnippet>
   </Grid>
@@ -90,9 +85,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Customization'
       code={SourceCodeProgressCustomization}
     >
-      <Typography className='mbe-4'>
-        Use <code>styled</code> hook to customize your circular progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>styled</code> hook to customize your circular progress.
+        </Typography>
+      }
       <ProgressCustomization />
     </CardSnippet>
   </Grid>
@@ -101,9 +98,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Controlled and Uncontrolled'
       code={SourceCodeProgressCircularControlledUncontrolled}
     >
-      <Typography className='mbe-4'>
-        Manage <code>value</code> prop with the help of a state for controlled circular progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Manage <code>value</code> prop with the help of a state for controlled circular progress.
+        </Typography>
+      }
       <ProgressCircularControlledUncontrolled />
     </CardSnippet>
   </Grid>
@@ -116,9 +115,9 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Indeterminate'
       code={SourceCodeProgressLinearIndeterminate}
     >
-      <Typography className='mbe-4'>
+      {<Typography className='mbe-4'>
         Use <code>LinearProgress</code> component for simple linear progress.
-      </Typography>
+      </Typography>}
       <ProgressLinearIndeterminate />
     </CardSnippet>
   </Grid>
@@ -127,9 +126,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Buffer'
       code={SourceCodeProgressLinearBuffer}
     >
-      <Typography className='mbe-4'>
-        Use <code>variant='buffer'</code> and <code>valueBuffer</code> props with the help of a state for linear progress with buffer.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='buffer'</code> and <code>valueBuffer</code> props with the help of a state for linear progress with buffer.
+        </Typography>
+      }
       <ProgressLinearBuffer />
     </CardSnippet>
   </Grid>
@@ -138,9 +139,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Colors'
       code={SourceCodeProgressLinearColors}
     >
-      <Typography className='mbe-4'>
-        Use <code>color</code> prop for different colored linear progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>color</code> prop for different colored linear progress.
+        </Typography>
+      }
       <ProgressLinearColors />
     </CardSnippet>
   </Grid>
@@ -149,9 +152,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Controlled and Uncontrolled'
       code={SourceCodeProgressLinearControlledUncontrolled}
     >
-      <Typography className='mbe-4'>
-        Manage <code>value</code> prop with the help of a state for controlled linear progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Manage <code>value</code> prop with the help of a state for controlled linear progress.
+        </Typography>
+      }
       <ProgressLinearControlledUncontrolled />
     </CardSnippet>
   </Grid>
@@ -160,9 +165,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='With Label'
       code={SourceCodeProgressLinearWithLabel}
     >
-      <Typography className='mbe-4'>
-        Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for linear progress with label.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='determinate'</code> and <code>value</code> props with the help of a state for linear progress with label.
+        </Typography>
+      }
       <ProgressLinearWithLabel />
     </CardSnippet>
   </Grid>
@@ -171,9 +178,11 @@ import SourceCodeProgressCircularControlledUncontrolled from '!!raw-loader!@docP
       title='Customization'
       code={SourceCodeProgressLinearCustomization}
     >
-      <Typography className='mbe-4'>
-        Use <code>styled</code> hook to customize your Linear progress.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>styled</code> hook to customize your Linear progress.
+        </Typography>
+      }
       <ProgressLinearCustomization />
     </CardSnippet>
   </Grid>

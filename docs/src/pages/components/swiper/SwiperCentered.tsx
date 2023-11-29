@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 

@@ -6,7 +6,6 @@ sidebar_label: Switch
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 
 import CardSnippet from '@docComponents/card-snippet/index'
 import SwitchBasic from '@docPages/form-elements/switch/SwitchBasic'
@@ -24,21 +23,11 @@ import SourceCodeSwitchLabelPlacement from '!!raw-loader!@docPages/form-elements
 import SwitchControlledUncontrolled from '@docPages/form-elements/switch/SwitchControlledUncontrolled'
 import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-elements/switch/SwitchControlledUncontrolled'
 
+<h1 className='!m-0'>Switch</h1>
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-switch/) and [API documentation](https://mui.com/material-ui/react-switch/#api).
+
 <Grid container spacing={6}>
-  <Grid item xs={12}>
-    <Typography variant='h5'>Switch</Typography>
-    <Typography variant='body2'>
-      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
-      <Link href='https://mui.com/material-ui/react-switch/' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        usage guide
-      </Link>{' '}
-      and{' '}
-      <Link href='https://mui.com/material-ui/react-switch/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        API documentation
-      </Link>
-      .
-    </Typography>
-  </Grid>
   <Grid item xs={12}>
     <CardSnippet
       title='Basic Switches'
@@ -52,9 +41,11 @@ import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-
       title='Controlled and Uncontrolled'
       code={SourceCodeSwitchControlledUncontrolled}
     >
-      <Typography className='mbe-2'>
-        Manage <code>checked</code> prop with the help of a state for controlled <code>Switch</code> and use <code>defaultChecked</code> prop for uncontrolled <code>Switch</code>.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Manage <code>checked</code> prop with the help of a state for controlled <code>Switch</code> and use <code>defaultChecked</code> prop for uncontrolled <code>Switch</code>.
+        </Typography>
+      }
       <SwitchControlledUncontrolled />
     </CardSnippet>
   </Grid>
@@ -63,9 +54,11 @@ import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-
       title='Label Placement'
       code={SourceCodeSwitchLabelPlacement}
     >
-      <Typography className='mbe-2'>
-        Use <code>labelPlacement</code> prop with <code>FormControlLabel</code> component to change the placement of the label.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>labelPlacement</code> prop with <code>FormControlLabel</code> component to change the placement of the label.
+        </Typography>
+      }
       <SwitchLabelPlacement />
     </CardSnippet>
   </Grid>
@@ -74,9 +67,11 @@ import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-
       title='Colors'
       code={SourceCodeSwitchColors}
     >
-      <Typography className='mbe-2'>
-        Use <code>color</code> prop with <code>Switch</code> component for different colored switch.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>color</code> prop with <code>Switch</code> component for different colored switch.
+        </Typography>
+      }
       <SwitchColors />
     </CardSnippet>
   </Grid>
@@ -85,9 +80,11 @@ import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-
       title='Customized Switch'
       code={SourceCodeSwitchCustomized}
     >
-      <Typography className='mbe-4'>
-        Use <code>styled</code> hook to customize your switch.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>styled</code> hook to customize your switch.
+        </Typography>
+      }
       <SwitchCustomized />
     </CardSnippet>
   </Grid>
@@ -96,9 +93,11 @@ import SourceCodeSwitchControlledUncontrolled from '!!raw-loader!@docPages/form-
       title='Sizes'
       code={SourceCodeSwitchSizes}
     >
-      <Typography className='mbe-2'>
-        Use <code>size='small'</code> prop with <code>Switch</code> component for small switch.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>size='small'</code> prop with <code>Switch</code> component for small switch.
+        </Typography>
+      }
       <SwitchSizes />
     </CardSnippet>
   </Grid>

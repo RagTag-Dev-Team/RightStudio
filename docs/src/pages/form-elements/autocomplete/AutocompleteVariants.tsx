@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'

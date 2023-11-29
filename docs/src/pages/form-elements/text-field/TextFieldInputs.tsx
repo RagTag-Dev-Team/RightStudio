@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Input from '@mui/material/Input'

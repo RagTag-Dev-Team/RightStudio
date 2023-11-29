@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import Zoom from '@mui/material/Zoom'

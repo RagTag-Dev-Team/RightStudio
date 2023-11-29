@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import MuiSwitch from '@mui/material/Switch'
 import { styled } from '@mui/material/styles'

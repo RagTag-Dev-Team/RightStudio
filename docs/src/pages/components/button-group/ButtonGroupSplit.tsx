@@ -1,7 +1,4 @@
 // React Imports
-import React from 'react'
-
-// React Imports
 import { useRef, useState } from 'react'
 import type { SyntheticEvent } from 'react'
 

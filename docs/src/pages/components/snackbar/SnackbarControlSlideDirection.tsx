@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { ComponentType } from 'react'
 
 // MUI Imports

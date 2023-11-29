@@ -371,259 +371,252 @@ const data: SearchData[] = [
     section: 'Others'
   },
   {
-    id: '64',
+    id: '53',
     name: 'Typography',
     url: 'http://localhost:3001/docs/user-interface/typography',
     icon: 'Icon',
     section: 'User Interface'
   },
   {
-    id: '65',
+    id: '54',
     name: 'Icons',
     url: 'http://localhost:3001/docs/user-interface/icons',
     icon: 'Icon',
     section: 'User Interface'
   },
   {
-    id: '66',
+    id: '55',
     name: 'Card Basic',
     url: 'http://localhost:3001/docs/user-interface/cards-basic',
     icon: 'Icon',
     section: 'User Interface'
   },
   {
-    id: '67',
+    id: '56',
     name: 'Card Actions',
     url: 'http://localhost:3001/docs/user-interface/cards-actions',
     icon: 'Icon',
     section: 'User Interface'
   },
   {
-    id: '68',
+    id: '57',
     name: 'Accordion',
     url: 'http://localhost:3001/docs/components/accordion',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '69',
+    id: '58',
     name: 'Alerts',
     url: 'http://localhost:3001/docs/components/alerts',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '70',
+    id: '59',
     name: 'Avatars',
     url: 'http://localhost:3001/docs/components/avatars',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '71',
+    id: '60',
     name: 'Badges',
     url: 'http://localhost:3001/docs/components/badges',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '72',
+    id: '61',
     name: 'Buttons',
     url: 'http://localhost:3001/docs/components/buttons',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '73',
+    id: '62',
     name: 'Button Group',
     url: 'http://localhost:3001/docs/components/button-group',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '74',
+    id: '63',
     name: 'Chips',
     url: 'http://localhost:3001/docs/components/chips',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '75',
+    id: '64',
     name: 'Dialogs',
     url: 'http://localhost:3001/docs/components/dialogs',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '76',
+    id: '65',
     name: 'List',
     url: 'http://localhost:3001/docs/components/list',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '77',
+    id: '66',
     name: 'Menu',
     url: 'http://localhost:3001/docs/components/menu',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '78',
+    id: '67',
     name: 'Pagination',
     url: 'http://localhost:3001/docs/components/pagination',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '79',
+    id: '68',
     name: 'Progress',
     url: 'http://localhost:3001/docs/components/progress',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '80',
+    id: '69',
     name: 'Ratings',
     url: 'http://localhost:3001/docs/components/ratings',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '81',
+    id: '70',
     name: 'Snackbar',
     url: 'http://localhost:3001/docs/components/snackbar',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '82',
+    id: '71',
     name: 'Swiper',
     url: 'http://localhost:3001/docs/components/swiper',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '83',
+    id: '72',
     name: 'Tabs',
     url: 'http://localhost:3001/docs/components/tabs',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '84',
+    id: '73',
     name: 'Timeline',
     url: 'http://localhost:3001/docs/components/timeline',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '85',
+    id: '74',
     name: 'Toasts',
     url: 'http://localhost:3001/docs/components/toasts',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '86',
-    name: 'Tree View',
-    url: 'http://localhost:3001/docs/components/tree-view',
-    icon: 'Icon',
-    section: 'Components'
-  },
-  {
-    id: '87',
+    id: '75',
     name: 'More Components',
     url: 'http://localhost:3001/docs/components/more',
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '88',
+    id: '76',
     name: 'Text Field',
     url: 'http://localhost:3001/docs/form-elements/text-field',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '89',
+    id: '77',
     name: 'Select',
     url: 'http://localhost:3001/docs/form-elements/select',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '90',
+    id: '78',
     name: 'Checkbox',
     url: 'http://localhost:3001/docs/form-elements/checkbox',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '91',
+    id: '79',
     name: 'Radio',
     url: 'http://localhost:3001/docs/form-elements/radio',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '92',
+    id: '80',
     name: 'Custom Inputs',
     url: 'http://localhost:3001/docs/form-elements/custom-inputs',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '93',
+    id: '81',
     name: 'Textarea',
     url: 'http://localhost:3001/docs/form-elements/textarea',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '94',
+    id: '82',
     name: 'Autocomplete',
     url: 'http://localhost:3001/docs/form-elements/autocomplete',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '95',
+    id: '83',
     name: 'Picker',
     url: 'http://localhost:3001/docs/form-elements/picker',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '96',
+    id: '84',
     name: 'Switch',
     url: 'http://localhost:3001/docs/form-elements/switch',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '97',
+    id: '85',
     name: 'File Uploader',
     url: 'http://localhost:3001/docs/form-elements/file-uploader',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '98',
+    id: '86',
     name: 'Editor',
     url: 'http://localhost:3001/docs/form-elements/editor',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '99',
+    id: '87',
     name: 'Slider',
     url: 'http://localhost:3001/docs/form-elements/slider',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '100',
+    id: '88',
     name: 'MUI Tables',
     url: 'http://localhost:3001/docs/tables/mui-table',
     icon: 'Icon',

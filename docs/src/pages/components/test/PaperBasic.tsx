@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -21,7 +18,7 @@ const Paper = styled(MuiPaper)<PaperProps>(({ theme }) => ({
 const PaperBasic = () => {
   return (
     <>
-      <Typography variant='h6'>Simple Paper</Typography>
+      <Typography variant='h3'>Simple Paper</Typography>
       <div className='flex flex-wrap'>
         <Paper elevation={0}>
           <div className='flex flex-col items-center'>

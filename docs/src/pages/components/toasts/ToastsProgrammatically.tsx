@@ -1,5 +1,5 @@
 // React Imports
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 // MUI Imports
 import Button from "@mui/material/Button";

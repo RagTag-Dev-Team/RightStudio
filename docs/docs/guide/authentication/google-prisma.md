@@ -483,4 +483,4 @@ Please note that customization of NextAuth to meet specific requirements, such a
 
 * To implement NextAuth with PrismaAdapter (Planetscale), check out [this](https://youtu.be/zB7u1r0tc6o) video.
 
-* To implement NextAuth with [CredentialProvider](https://next-auth.js.org/configuration/providers/credentials), refer to [this](/docs/authentication/credentials-provider) article.
+* To implement NextAuth with [CredentialProvider](https://next-auth.js.org/configuration/providers/credentials), refer to [this](/docs/guide/authentication/credentials-provider) article.

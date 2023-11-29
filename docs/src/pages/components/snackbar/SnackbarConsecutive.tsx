@@ -1,5 +1,5 @@
 // React Imports
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports

@@ -1,5 +1,5 @@
 // React Imports
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // MUI Imports
 import Button from '@mui/material/Button'

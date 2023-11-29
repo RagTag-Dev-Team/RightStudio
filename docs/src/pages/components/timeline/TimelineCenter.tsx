@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -8,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import Chip from '@mui/material/Chip'
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 import MuiTimeline from '@mui/lab/Timeline'
 import TimelineDot from '@mui/lab/TimelineDot'
 import TimelineItem from '@mui/lab/TimelineItem'
@@ -19,7 +16,6 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import LinearProgress from '@mui/material/LinearProgress'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { TimelineProps } from '@mui/lab/Timeline'
-import type { Theme } from '@mui/material'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -88,7 +84,8 @@ const Data: DataProps[] = [
 
 const TimelineCenter = () => {
   // Hooks
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const theme = useTheme()
+  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
     <Timeline position={isBelowMdScreen ? 'right' : 'alternate'}>

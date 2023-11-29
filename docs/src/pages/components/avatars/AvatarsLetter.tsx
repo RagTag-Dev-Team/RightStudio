@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import MuiAvatar from '@mui/material/Avatar'
 

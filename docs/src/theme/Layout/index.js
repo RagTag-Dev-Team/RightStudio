@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // Docusaurus Imports
 import Layout from '@theme-original/Layout'
 

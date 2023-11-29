@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'

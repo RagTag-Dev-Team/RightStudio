@@ -1,5 +1,4 @@
-import React from 'react'
-
+// Docusaurus Imports
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'

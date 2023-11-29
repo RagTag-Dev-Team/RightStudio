@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'

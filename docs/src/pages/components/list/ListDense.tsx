@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'

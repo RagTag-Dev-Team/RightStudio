@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'

@@ -1,5 +1,4 @@
 // React Imports
-import React from 'react'
 import type { MouseEvent } from 'react'
 
 // MUI Imports

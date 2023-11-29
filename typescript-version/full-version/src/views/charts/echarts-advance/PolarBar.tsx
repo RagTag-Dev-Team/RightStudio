@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'

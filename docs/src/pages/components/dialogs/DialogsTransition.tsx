@@ -1,5 +1,5 @@
 // React Imports
-import React, { forwardRef, useState } from 'react'
+import { forwardRef, useState } from 'react'
 import type { ReactElement, Ref } from 'react'
 
 // MUI Imports

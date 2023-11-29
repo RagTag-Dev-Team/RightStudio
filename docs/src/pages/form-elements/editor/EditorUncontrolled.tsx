@@ -1,6 +1,3 @@
-// React Imports
-import React from "react";
-
 import BrowserOnly from "@docusaurus/BrowserOnly";
 
 const EditorUncontrolled = () => {

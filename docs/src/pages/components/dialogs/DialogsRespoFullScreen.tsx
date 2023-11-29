@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import Button from '@mui/material/Button'
@@ -9,14 +9,15 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
-import type { Theme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 const DialogsRespoFullScreen = () => {
   // States
   const [open, setOpen] = useState<boolean>(false)
 
   // Hooks
-  const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   const handleClickOpen = () => setOpen(true)
 

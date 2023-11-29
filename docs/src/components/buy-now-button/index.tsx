@@ -1,5 +1,3 @@
-import React from 'react'
-
 const BuyNowButton = () => {
   return (
     <div className='mui-fixed' style={{ position: 'fixed', right: '5.7rem', bottom: '2.5rem', zIndex: 11 }}>

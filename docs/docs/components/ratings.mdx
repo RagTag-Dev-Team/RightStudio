@@ -6,7 +6,6 @@ sidebar_label: Ratings
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 
 import CardSnippet from '@docComponents/card-snippet/index'
 import RatingsHalf from '@docPages/components/ratings/RatingsHalf'
@@ -20,29 +19,21 @@ import SourceCodeRatingsCustomized from '!!raw-loader!@docPages/components/ratin
 import RatingsHoverFeedback from '@docPages/components/ratings/RatingsHoverFeedback'
 import SourceCodeRatingsHoverFeedback from '!!raw-loader!@docPages/components/ratings/RatingsHoverFeedback'
 
+<h1 className='!m-0'>Ratings</h1>
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-rating/) and [API documentation](https://mui.com/material-ui/api/rating/).
+
 <Grid container spacing={6}>
-  <Grid item xs={12}>
-    <Typography variant='h5'>Ratings</Typography>
-    <Typography variant='body2'>
-      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
-      <Link href='https://mui.com/material-ui/react-rating/' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        usage guide
-      </Link>{' '}
-      and{' '}
-      <Link href='https://mui.com/material-ui/api/rating/' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        API documentation
-      </Link>
-      .
-    </Typography>
-  </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Basic Ratings'
       code={SourceCodeRatingsBasic}
     >
-      <Typography className='mbe-4'>
-        Use <code>name</code> prop to name the rating and use <code>value</code> or <code>defaultValue</code> prop to set any initial value to a rating.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>name</code> prop to name the rating and use <code>value</code> or <code>defaultValue</code> prop to set any initial value to a rating.
+        </Typography>
+      }
       <RatingsBasic />
     </CardSnippet>
   </Grid>
@@ -51,9 +42,11 @@ import SourceCodeRatingsHoverFeedback from '!!raw-loader!@docPages/components/ra
       title='Customized Ratings'
       code={SourceCodeRatingsCustomized}
     >
-      <Typography className='mbe-4'>
-        Use <code>icon</code> or <code>emptyIcon</code> prop to change default icon or empty icon respectively, <code>max</code> prop to set number of ratings and <code>IconContainerComponent</code> prop to change every icons in the ratings.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>icon</code> or <code>emptyIcon</code> prop to change default icon or empty icon respectively, <code>max</code> prop to set number of ratings and <code>IconContainerComponent</code> prop to change every icons in the ratings.
+        </Typography>
+      }
       <RatingsCustomized />
     </CardSnippet>
   </Grid>
@@ -62,9 +55,11 @@ import SourceCodeRatingsHoverFeedback from '!!raw-loader!@docPages/components/ra
       title='Half Ratings'
       code={SourceCodeRatingsHalf}
     >
-      <Typography className='mbe-4'>
-        Use <code>precision</code> prop to define the minimum increment value change allowed.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>precision</code> prop to define the minimum increment value change allowed.
+        </Typography>
+      }
       <RatingsHalf />
     </CardSnippet>
   </Grid>
@@ -73,9 +68,11 @@ import SourceCodeRatingsHoverFeedback from '!!raw-loader!@docPages/components/ra
       title='Sizes'
       code={SourceCodeRatingsSizes}
     >
-      <Typography className='mbe-4'>
-        Use <code>size={`{'small' | 'large'}`}</code> prop for different sizes of ratings.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          Use <code>size={`{'small' | 'large'}`}</code> prop for different sizes of ratings.
+        </Typography>
+      }
       <RatingsSizes />
     </CardSnippet>
   </Grid>
@@ -84,9 +81,11 @@ import SourceCodeRatingsHoverFeedback from '!!raw-loader!@docPages/components/ra
       title='Hover Feedback'
       code={SourceCodeRatingsHoverFeedback}
     >
-      <Typography className='mbe-4'>
-        You can display a label on hover to help users pick the correct rating value. The demo uses the <code>onChangeActive</code> prop.
-      </Typography>
+      {
+        <Typography className='mbe-4'>
+          You can display a label on hover to help users pick the correct rating value. The demo uses the <code>onChangeActive</code> prop.
+        </Typography>
+      }
       <RatingsHoverFeedback />
     </CardSnippet>
   </Grid>

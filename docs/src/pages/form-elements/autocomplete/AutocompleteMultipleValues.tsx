@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Chip from '@mui/material/Chip'
 import TextField from '@mui/material/TextField'

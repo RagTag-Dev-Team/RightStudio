@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'

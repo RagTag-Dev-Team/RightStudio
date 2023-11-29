@@ -1,5 +1,5 @@
 // React Imports
-import React, { ChangeEvent, MouseEvent, useState } from 'react'
+import { ChangeEvent, MouseEvent, useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
@@ -195,7 +195,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography className='flex-auto' variant='h6' id='tableTitle' component='div'>
+        <Typography className='flex-auto' variant='h5' id='tableTitle' component='div'>
           Sorting & Selecting
         </Typography>
       )}

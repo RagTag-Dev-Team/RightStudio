@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import MuiTabList from '@mui/lab/TabList'
 import { styled } from '@mui/material/styles'

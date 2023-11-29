@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import { useDropzone } from 'react-dropzone'
@@ -57,8 +57,9 @@ const FileUploaderSingle = () => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
     }
   })
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+  const theme = useTheme()
+  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   const img = files.map((file: FileProp) => (
     <img key={file.name} alt={file.name} className='single-file-image' src={URL.createObjectURL(file as any)} />

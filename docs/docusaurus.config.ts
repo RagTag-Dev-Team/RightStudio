@@ -1,10 +1,9 @@
-// @ts-check
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import * as path from 'path';
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const path = require('path')
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: 'Master',
   tagline: 'MUI React Next.Js Admin Template',
   favicon: 'images/favicon.ico',
@@ -58,10 +57,9 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js')
+          sidebarPath: './sidebars.ts'
         },
         blog: {
           showReadingTime: true,
@@ -69,9 +67,9 @@ const config = {
           routeBasePath: '/articles',
         },
         theme: {
-          customCss: require.resolve('./src/styles/custom.scss'),
+          customCss: './src/styles/custom.scss',
         },
-      }),
+      }
     ],
   ],
 
@@ -96,7 +94,7 @@ const config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'guideSidebar',
           position: 'left',
           label: 'Guide',
         },
@@ -134,8 +132,8 @@ const config = {
       ],
     },
     prism: {
-      theme: require('prism-react-renderer/themes/dracula'),
-      darkTheme: require('prism-react-renderer/themes/dracula'),
+      theme: prismThemes.dracula,
+      darkTheme: prismThemes.dracula,
     },
     imageZoom: {
       selector: '.markdown > img, .markdown > p > img',
@@ -146,4 +144,4 @@ const config = {
   },
 }
 
-module.exports = config
+export default config

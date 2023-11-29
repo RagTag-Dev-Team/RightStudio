@@ -1,5 +1,5 @@
 // React Imports
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 // MUI Imports
 import List from '@mui/material/List'
@@ -10,7 +10,8 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import { useDropzone } from 'react-dropzone'
 import classnames from 'classnames'
@@ -95,8 +96,9 @@ const FileUploaderMultiple = () => {
   }
 
   // Hooks
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+  const theme = useTheme()
+  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
     <Fragment>

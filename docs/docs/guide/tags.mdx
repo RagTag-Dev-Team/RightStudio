@@ -50,41 +50,11 @@ import TabItem from '@theme/TabItem'
 </html>
 ```
 
-<table>
-  <thead>
-    <tr>
-      <th>Column 1</th>
-      <th>Column 2</th>
-      <th>Column 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Row 1, Cell 1</td>
-      <td>Row 1, Cell 2</td>
-      <td>Row 1, Cell 3</td>
-    </tr>
-    <tr>
-      <td>Row 2, Cell 1</td>
-      <td>Row 2, Cell 2</td>
-      <td>Row 2, Cell 3</td>
-    </tr>
-    <tr>
-      <td>Row 3, Cell 1</td>
-      <td>Row 3, Cell 2</td>
-      <td>Row 3, Cell 3</td>
-    </tr>
-  </tbody>
-</table>
-
-<br />
-
 :::caution
 
 This feature is powered by [an `MDXProvider`](https://mdxjs.com/docs/using-mdx/#mdx-provider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
 
-```jsx title='src/pages/index.js'
-import React from 'react'
+```jsx title="src/pages/index.js"
 import FeatureDisplay from './_featureDisplay.mdx'
 // highlight-next-line
 import MDXContent from '@theme/MDXContent'
@@ -122,7 +92,7 @@ Below is just some dummy content to have more table of contents items available 
 Below is just some dummy content to have more table of contents items available on the current page.
 :::
 
-```jsx title='/src/components/HelloCodeTitle.js'
+```jsx title="/src/components/HelloCodeTitle.js"
 function HelloCodeTitle(props) {
   // highlight-next-line
   return <h1>Hello, {props.name}</h1> (Highlght next line)
@@ -151,15 +121,15 @@ function HighlightMoreText() {
 
 ```jsx
 // highlight-next-line
-<Tabs groupId='operating-systems'>
-  <TabItem value='win' label='Windows'>Use Ctrl + C to copy.</TabItem>
-  <TabItem value='mac' label='macOS'>Use Command + C to copy.</TabItem>
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">Use Ctrl + C to copy.</TabItem>
+  <TabItem value="mac" label="macOS">Use Command + C to copy.</TabItem>
 </Tabs>
 
 // highlight-next-line
-<Tabs groupId='operating-systems'>
-  <TabItem value='win' label='Windows'>Use Ctrl + V to paste.</TabItem>
-  <TabItem value='mac' label='macOS'>Use Command + V to paste.</TabItem>
+<Tabs groupId="operating-systems">
+  <TabItem value="win" label="Windows">Use Ctrl + V to paste.</TabItem>
+  <TabItem value="mac" label="macOS">Use Command + V to paste.</TabItem>
 </Tabs>
 ```
 
@@ -182,14 +152,10 @@ A paragraph starting with a JSX tag will be seen entirely as a JSX string:
   </TabItem>
 </Tabs>
 
-<img
-  src={require('/images/bg-image.jpg').default}
-  alt='Example banner'
-  style={{ height: 300 }}
-/>
+<img src={require('../assets/1.jpg').default} alt='Example banner' style={{ height: 300 }} />
 
-![Example banner](/images/bg-image.jpg)
+![Example banner](../assets/1.jpg)
 
-import myImageUrl from '/images/bg-image.jpg'
+import myImageUrl from '../assets/1.jpg'
 
 <img src={myImageUrl} alt='Example banner' style={{ height: 300 }} />

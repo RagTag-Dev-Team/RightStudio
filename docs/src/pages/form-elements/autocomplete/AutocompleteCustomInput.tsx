@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Autocomplete from '@mui/material/Autocomplete'
 

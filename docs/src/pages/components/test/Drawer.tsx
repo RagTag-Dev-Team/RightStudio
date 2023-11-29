@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { KeyboardEvent, MouseEvent } from 'react'
 
 // MUI Imports

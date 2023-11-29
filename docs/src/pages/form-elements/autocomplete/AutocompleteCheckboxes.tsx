@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Checkbox from '@mui/material/Checkbox'
 import TextField from '@mui/material/TextField'

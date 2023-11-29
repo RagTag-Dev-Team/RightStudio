@@ -43,10 +43,9 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     position: fixed;
     block-size: 100%;
     inset-block-start: 0;
-    inset-inline-start: 0;
+    inset-inline-start: ${({ width }) => `-${width}px`};
     z-index: 100;
     margin: 0;
-    ${({ width }) => `inset-inline-start: -${width}px`}
     &.${verticalNavClasses.collapsed} {
       inset-inline-start: -${({ collapsedWidth }) => `${collapsedWidth}px`};
     }

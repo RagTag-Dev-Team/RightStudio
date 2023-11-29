@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
@@ -15,7 +12,9 @@ const ToastsBlank = () => {
       <i className='ri-checkbox-blank-line mbe-2 text-[32px]' />
       <Typography className='font-medium mbe-4'>Blank</Typography>
       <Typography className='mbe-3'>The most basic variant does not have an icon.</Typography>
-      <Button className='mbe-8' variant='contained' onClick={() => toast('Blank Toast')}>
+      <Button className='mbe-8' variant='contained' onClick={() => toast('Blank Toast', {
+        hideProgressBar: false,
+      })}>
         Blank
       </Button>
     </div>

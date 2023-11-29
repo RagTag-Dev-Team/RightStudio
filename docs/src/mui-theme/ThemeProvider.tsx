@@ -1,5 +1,4 @@
 // React Imports
-import React from "react";
 import type { ReactNode } from "react";
 
 // MUI Imports

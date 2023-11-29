@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import AppBar from '@mui/material/AppBar'
 import Button from '@mui/material/Button'

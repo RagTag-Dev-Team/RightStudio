@@ -17,30 +17,34 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
       mode:
         value === 'dark'
           ? translate({
-            message: 'dark mode',
-            id: 'theme.colorToggle.ariaLabel.mode.dark',
-            description: 'The name for the dark color mode'
-          })
+              message: 'dark mode',
+              id: 'theme.colorToggle.ariaLabel.mode.dark',
+              description: 'The name for the dark color mode'
+            })
           : translate({
-            message: 'light mode',
-            id: 'theme.colorToggle.ariaLabel.mode.light',
-            description: 'The name for the light color mode'
-          })
+              message: 'light mode',
+              id: 'theme.colorToggle.ariaLabel.mode.light',
+              description: 'The name for the light color mode'
+            })
     }
   )
   return (
     <div className={clsx(styles.toggle, className)}>
       <button
-        className={clsx('clean-btn', styles.toggleButton, !isBrowser && styles.toggleButtonDisabled, buttonClassName)}
-        type='button'
+        className={clsx(
+          'clean-btn',
+          styles.toggleButton,
+          !isBrowser && styles.toggleButtonDisabled,
+          buttonClassName,
+        )}
+        type="button"
         onClick={() => onChange(value === 'dark' ? 'light' : 'dark')}
         disabled={!isBrowser}
         title={title}
         aria-label={title}
-        aria-live='polite'
-      >
-        <IconLightMode className={clsx(styles.toggleIcon, styles.darkToggleIcon)} />
-        <IconDarkMode className={clsx(styles.toggleIcon, styles.lightToggleIcon)} />
+        aria-live="polite">
+        <IconLightMode className={clsx(styles.toggleIcon, styles.darkToggleIcon)}/>
+        <IconDarkMode className={clsx(styles.toggleIcon, styles.lightToggleIcon)}/>
       </button>
     </div>
   )

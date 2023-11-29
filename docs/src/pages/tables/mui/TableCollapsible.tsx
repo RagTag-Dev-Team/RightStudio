@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState, Fragment } from 'react'
+import { useState, Fragment } from 'react'
 
 // MUI Imports
 import Table from '@mui/material/Table'

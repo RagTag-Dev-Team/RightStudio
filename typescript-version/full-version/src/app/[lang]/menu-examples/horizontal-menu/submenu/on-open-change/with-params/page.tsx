@@ -1,7 +1,7 @@
 'use client'
 
 // React imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'

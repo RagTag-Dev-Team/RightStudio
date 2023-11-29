@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -21,7 +18,7 @@ const Paper = styled(MuiPaper)<PaperProps>(({ theme }) => ({
 const PaperVariant = () => {
   return (
     <>
-      <Typography variant='h6'>Paper Variants</Typography>
+      <Typography variant='h3'>Paper Variants</Typography>
       <div className='flex'>
         <Paper variant='outlined'>Default</Paper>
         <Paper variant='outlined' square>

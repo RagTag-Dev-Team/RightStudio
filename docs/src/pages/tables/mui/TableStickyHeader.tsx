@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react'
 
 // MUI Imports
 import Table from '@mui/material/Table'

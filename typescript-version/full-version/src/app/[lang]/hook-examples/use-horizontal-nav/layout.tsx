@@ -1,15 +1,22 @@
+// Next Imports
+import { cookies } from 'next/headers'
+
 // Type Imports
 import type { ChildrenType } from '@menu-package/types'
 
-// Context Imports
-import { VerticalNavProvider } from '@menu-package/contexts/verticalNavContext'
-import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
+// Component Imports
+import Providers from '@components/Providers'
+import { HorizontalNavProvider } from '@/@menu-package/contexts/horizontalNavContext'
 
 const Layout = ({ children }: ChildrenType) => {
+  const cookieStore = cookies()
+
+  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
+
   return (
-    <VerticalNavProvider>
+    <Providers settingsCookie={settingsCookie} direction='ltr'>
       <HorizontalNavProvider>{children}</HorizontalNavProvider>
-    </VerticalNavProvider>
+    </Providers>
   )
 }
 

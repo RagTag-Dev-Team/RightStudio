@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'

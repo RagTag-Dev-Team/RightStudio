@@ -1,5 +1,5 @@
 // React Imports
-import React, { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 
 // MUI Imports
 import Alert from '@mui/material/Alert'

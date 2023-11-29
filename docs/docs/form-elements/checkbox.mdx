@@ -6,7 +6,6 @@ sidebar_label: Checkbox
 
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 
 import CardSnippet from '@docComponents/card-snippet/index'
 import CheckboxBasic from '@docPages/form-elements/checkbox/CheckboxBasic'
@@ -26,21 +25,11 @@ import SourceCodeCheckboxLabelPlacement from '!!raw-loader!@docPages/form-elemen
 import CheckboxControlledUncontrolled from '@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
 import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
 
+<h1 className='!m-0'>Checkbox</h1>
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-checkbox/) and [API documentation](https://mui.com/material-ui/react-checkbox/#api).
+
 <Grid container spacing={6}>
-  <Grid item xs={12}>
-    <Typography variant='h5'>Checkbox</Typography>
-    <Typography variant='body2'>
-      Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
-      <Link href='https://mui.com/material-ui/react-checkbox/' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        usage guide
-      </Link>{' '}
-      and{' '}
-      <Link href='https://mui.com/material-ui/react-checkbox/#api' target='_blank' rel='noopener noreferrer' className='no-underline'>
-        API documentation
-      </Link>
-      .
-    </Typography>
-  </Grid>
   <Grid item xs={12}>
     <CardSnippet
       title='Basic Checkboxes'
@@ -54,9 +43,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Controlled and Uncontrolled'
       code={SourceCodeCheckboxControlledUncontrolled}
     >
-      <Typography className='mbe-2'>
-        Manage <code>checked</code> prop with the help of a state for controlled <code>Checkbox</code> and <code>defaultChecked</code> prop for uncontrolled <code>Checkbox</code>.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Manage <code>checked</code> prop with the help of a state for controlled <code>Checkbox</code> and <code>defaultChecked</code> prop for uncontrolled <code>Checkbox</code>.
+        </Typography>
+      }
       <CheckboxControlledUncontrolled />
     </CardSnippet>
   </Grid>
@@ -65,9 +56,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Colors'
       code={SourceCodeCheckboxColors}
     >
-      <Typography className='mbe-2'>
-        Use <code>color</code> prop for different colored checkbox.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>color</code> prop for different colored checkbox.
+        </Typography>
+      }
       <CheckboxColors />
     </CardSnippet>
   </Grid>
@@ -76,9 +69,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Custom Icons'
       code={SourceCodeCheckboxCustomIcons}
     >
-      <Typography className='mbe-2'>
-        Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component to change default checkbox icons.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component to change default checkbox icons.
+        </Typography>
+      }
       <CheckboxCustomIcons />
     </CardSnippet>
   </Grid>
@@ -87,9 +82,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Customized'
       code={SourceCodeCheckboxCustomized}
     >
-      <Typography className='mbe-2'>
-        Use <code>styled</code> hook to customize your checkbox.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>styled</code> hook to customize your checkbox.
+        </Typography>
+      }
       <CheckboxCustomized />
     </CardSnippet>
   </Grid>
@@ -98,9 +95,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Label Placement'
       code={SourceCodeCheckboxLabelPlacement}
     >
-      <Typography className='mbe-2'>
-        Use <code>labelPlacement</code> prop with <code>FormControlLabel</code> component to change the placement of the label.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>labelPlacement</code> prop with <code>FormControlLabel</code> component to change the placement of the label.
+        </Typography>
+      }
       <CheckboxLabelPlacement />
     </CardSnippet>
   </Grid>
@@ -109,9 +108,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Show Error'
       code={SourceCodeCheckboxShowError}
     >
-      <Typography className='mbe-2'>
-        You can display error by managing <code>error</code> prop with <code>FormControl</code> component with the help of a state.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          You can display error by managing <code>error</code> prop with <code>FormControl</code> component with the help of a state.
+        </Typography>
+      }
       <CheckboxShowError />
     </CardSnippet>
   </Grid>
@@ -120,9 +121,11 @@ import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/for
       title='Sizes'
       code={SourceCodeCheckboxSizes}
     >
-      <Typography className='mbe-2'>
-        Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component and use <code>fontSize='small'</code> prop with the former props for small checkbox.
-      </Typography>
+      {
+        <Typography className='mbe-2'>
+          Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component and use <code>fontSize='small'</code> prop with the former props for small checkbox.
+        </Typography>
+      }
       <CheckboxSizes />
     </CardSnippet>
   </Grid>

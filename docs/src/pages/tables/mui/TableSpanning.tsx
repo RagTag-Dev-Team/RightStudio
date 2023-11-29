@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import Table from '@mui/material/Table'
 import TableRow from '@mui/material/TableRow'

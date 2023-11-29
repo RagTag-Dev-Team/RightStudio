@@ -62,24 +62,3 @@ ul:not([class]) {
 :where([class^='ri-']) {
   font-size: 1.5rem;
 }
-
-/*
-  Hide Vertical & Horizontal navigation menus on screen size less than 1200px.
-
-  If you are updating the `breakpoint`, `customBreakpoint` and/or `breakpoints` prop(s) from the `VerticalNav` and/or
-  `HorizontalNav` component(s), you will have to update the below `1200px` value to your updated value given in the prop.
-*/
-@media screen and (max-width: 1200px) {
-  /*
-    If you are updating the `width` prop of the `VerticalNav` component and/or `verticalNavProps={{ width: '' }}` prop of
-    the `HorizontalNav` component, you will have to update the below `-260px` value to your updated value given in the prop.
-  */
-  .ts-vertical-nav-root:not(.ts-toggled) {
-    position: fixed !important;
-    inset-inline-start: -260px !important;
-  }
-
-  .ts-horizontal-layout-navigation {
-    display: none !important;
-  }
-}

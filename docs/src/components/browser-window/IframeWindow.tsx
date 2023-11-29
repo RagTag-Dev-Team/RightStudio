@@ -1,6 +1,3 @@
-// React Imports
-import React from 'react'
-
 // Component Imports
 import BrowserWindow from './index'
 
