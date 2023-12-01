@@ -20,7 +20,7 @@ import classnames from 'classnames'
 import type { Mode } from '@core/types'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import commonDropdownStyles from '@components/layout/shared/styles.module.css'
@@ -32,7 +32,7 @@ const ModeDropdown = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false)
 
   // Hooks
-  const { settings, saveSettings } = useSettings()
+  const { settings, updateSettings } = useSettings()
 
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
@@ -49,7 +49,7 @@ const ModeDropdown = () => {
   const handleModeSwitch = (mode: Mode) => {
     handleClose()
     if (settings.mode !== mode) {
-      saveSettings({ mode: mode })
+      updateSettings({ mode: mode })
     }
   }
 

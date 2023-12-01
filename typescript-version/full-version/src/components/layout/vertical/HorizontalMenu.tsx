@@ -11,7 +11,7 @@ import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal
 import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 // import { generateHorizontalMenu } from '@/utils/menuUtils'

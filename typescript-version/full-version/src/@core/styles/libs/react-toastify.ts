@@ -4,7 +4,7 @@
 import { styled } from '@mui/material/styles'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 import 'react-toastify/dist/ReactToastify.css'
 

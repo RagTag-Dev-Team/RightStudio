@@ -18,7 +18,7 @@ import VerticalNavContent from './VerticalNavContent'
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { getLocale } from '@/utils/get-locale'

@@ -1,43 +1,22 @@
+// app/ThemeRegistry.tsx
 'use client'
-
-// React Imports
-import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
-// Next Imports
+import { useEffect, useState } from 'react'
+
 import { useServerInsertedHTML } from 'next/navigation'
 
-// Third-party Imports
+import type { Options as CacheOptions } from '@emotion/cache'
 import createCache from '@emotion/cache'
-import { CacheProvider as DefaultCacheProvider } from '@emotion/react'
-import stylisRTLPlugin from 'stylis-plugin-rtl'
-import type { EmotionCache, Options as OptionsOfCreateCache } from '@emotion/cache'
-import type { Direction } from '@mui/material/styles'
+import { CacheProvider } from '@emotion/react'
 
-export type EmotionCacheProviderProps = {
-  direction: Direction
+// This implementation is from emotion-js
+// https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
+export default function ThemeRegistry(props: { children: ReactNode; options: CacheOptions }) {
+  const { options, children } = props
 
-  /* This is the options passed to createCache() from "import createCache from '@emotion/cache'" */
-  options: Omit<OptionsOfCreateCache, 'insertionPoint'>
-
-  /* By default <CacheProvider /> from "import { CacheProvider } from '@emotion/react'" */
-  CacheProvider?: (props: { value: EmotionCache; children: ReactNode }) => JSX.Element | null
-  children: ReactNode
-}
-
-const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
-  const { options, direction, CacheProvider = DefaultCacheProvider, children } = props
-
-  const [{ cache, flush }] = useState(() => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const cache = createCache({
-      ...options,
-      prepend: true,
-      ...(direction === 'rtl' && {
-        key: 'rtl',
-        stylisPlugins: [stylisRTLPlugin]
-      })
-    })
+  const getCacheState = () => {
+    const cache = createCache(options)
 
     cache.compat = true
     const prevInsert = cache.insert
@@ -53,7 +32,6 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
       return prevInsert(...args)
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const flush = () => {
       const prevInserted = inserted
 
@@ -63,7 +41,14 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
     }
 
     return { cache, flush }
-  })
+  }
+
+  const [{ cache, flush }, setCacheState] = useState(getCacheState)
+
+  // ℹ️ Regenerate the cache when the options change
+  useEffect(() => {
+    setCacheState(getCacheState)
+  }, [options])
 
   useServerInsertedHTML(() => {
     const names = flush()
@@ -73,7 +58,6 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
     }
     let styles = ''
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const name of names) {
       styles += cache.inserted[name]
     }
@@ -82,19 +66,12 @@ const EmotionCacheProvider = (props: EmotionCacheProviderProps) => {
       <style
         key={cache.key}
         data-emotion={`${cache.key} ${names.join(' ')}`}
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: options.prepend ? `@layer emotion {${styles}}` : styles
+          __html: styles
         }}
       />
     )
   })
 
-  useEffect(() => {
-    document.dir = direction
-  }, [direction])
-
   return <CacheProvider value={cache}>{children}</CacheProvider>
 }
-
-export default EmotionCacheProvider

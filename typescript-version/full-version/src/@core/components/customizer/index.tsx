@@ -19,7 +19,7 @@ import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useMedia, useDebounce, useEffectOnce, useUpdateEffect } from 'react-use'
+import { useMedia, useUpdateEffect } from 'react-use'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -45,9 +45,6 @@ import ContentWide from '@core/svg/ContentWide'
 import DirectionLtr from '@core/svg/DirectionLtr'
 import DirectionRtl from '@core/svg/DirectionRtl'
 
-// Config Imports
-import primaryColorConfig from '@configs/primaryColorConfig'
-
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
@@ -63,6 +60,47 @@ type CustomizerProps = {
   dir?: Direction
 }
 
+export type PrimaryColorConfig = {
+  name?: string
+  light?: string
+  main: string
+  dark?: string
+}
+
+// Primary color config object
+export const primaryColorConfig: PrimaryColorConfig[] = [
+  {
+    name: 'primary-1',
+    light: '#42a5f5',
+    main: '#1976d2',
+    dark: '#1565c0'
+  },
+  {
+    name: 'primary-2',
+    light: '#ba68c8',
+    main: '#9c27b0',
+    dark: '#7b1fa2'
+  },
+  {
+    name: 'primary-3',
+    light: '#ef5350',
+    main: '#d32f2f',
+    dark: '#c62828'
+  },
+  {
+    name: 'primary-4',
+    light: '#ff9800',
+    main: '#ed6c02',
+    dark: '#e65100'
+  },
+  {
+    name: 'primary-5',
+    light: '#4caf50',
+    main: '#2e7d32',
+    dark: '#1b5e20'
+  }
+]
+
 const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
@@ -71,7 +109,6 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
 
   // Refs
   const anchorRef = useRef<HTMLDivElement | null>(null)
-  const initialRender = useRef(true)
 
   // Hooks
   const theme = useTheme()
@@ -83,29 +120,20 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
     breakpoint === 'xxl'
       ? '1920px'
       : breakpoint === 'xl'
-      ? `${theme.breakpoints.values.xl}px`
-      : breakpoint === 'lg'
-      ? `${theme.breakpoints.values.lg}px`
-      : breakpoint === 'md'
-      ? `${theme.breakpoints.values.md}px`
-      : breakpoint === 'sm'
-      ? `${theme.breakpoints.values.sm}px`
-      : breakpoint === 'xs'
-      ? `${theme.breakpoints.values.xs}px`
-      : breakpoint
+        ? `${theme.breakpoints.values.xl}px`
+        : breakpoint === 'lg'
+          ? `${theme.breakpoints.values.lg}px`
+          : breakpoint === 'md'
+            ? `${theme.breakpoints.values.md}px`
+            : breakpoint === 'sm'
+              ? `${theme.breakpoints.values.sm}px`
+              : breakpoint === 'xs'
+                ? `${theme.breakpoints.values.xs}px`
+                : breakpoint
 
   const breakpointReached = useMedia(`(max-width: ${breakpointValue})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
-
-  const getPrimaryColor = () => {
-    if (primaryColorConfig.find(item => item.name === settings.primaryColor)) {
-      return primaryColorConfig.find(item => item.name === settings.primaryColor)?.main
-    } else {
-      return settings.primaryColor
-    }
-  }
-
-  const [color, setColor] = useState(() => getPrimaryColor())
+  const isColorFromPrimaryConfig = primaryColorConfig.find(item => item.main === settings.primaryColor)
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -128,22 +156,6 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
     }
     setIsMenuOpen(false)
   }
-
-  useDebounce(
-    () => {
-      if (!initialRender.current) {
-        handleChange('primaryColor', color)
-      }
-    },
-    200,
-    [color]
-  )
-
-  useEffectOnce(() => {
-    setTimeout(() => {
-      initialRender.current = false
-    }, 210)
-  })
 
   useEffect(() => {
     if (settings.layout === 'collapsed') {
@@ -197,11 +209,11 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                 <div className='flex items-center justify-between'>
                   {primaryColorConfig.map(item => (
                     <div
-                      key={item.name}
+                      key={item.main}
                       className={classnames(styles.primaryColorWrapper, {
-                        [styles.active]: settings.primaryColor === item.name
+                        [styles.active]: settings.primaryColor === item.main
                       })}
-                      onClick={() => handleChange('primaryColor', item.name)}
+                      onClick={() => handleChange('primaryColor', item.main)}
                     >
                       <div className={styles.primaryColor} style={{ backgroundColor: item.main }} />
                     </div>
@@ -209,21 +221,19 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                   <div
                     ref={anchorRef}
                     className={classnames(styles.primaryColorWrapper, {
-                      [styles.active]: settings.primaryColor?.includes('#')
+                      [styles.active]: !isColorFromPrimaryConfig
                     })}
                     onClick={() => setIsMenuOpen(prev => !prev)}
                   >
                     <div
                       className={classnames(styles.primaryColor, 'flex items-center justify-center')}
                       style={{
-                        backgroundColor:
-                          settings.primaryColor === color && primaryColorConfig.some(item => item.name !== color)
-                            ? color
-                            : 'var(--mui-palette-action-selected)',
-                        color:
-                          settings.primaryColor === color && primaryColorConfig.some(item => item.name !== color)
-                            ? 'var(--mui-palette-primary-contrastText)'
-                            : 'var(--mui-palette-text-primary)'
+                        backgroundColor: !isColorFromPrimaryConfig
+                          ? settings.primaryColor
+                          : 'var(--mui-palette-action-selected)',
+                        color: isColorFromPrimaryConfig
+                          ? 'var(--mui-palette-text-primary)'
+                          : 'var(--mui-palette-primary-contrastText)'
                       }}
                     >
                       <EyeDropper fontSize='1.25rem' />
@@ -241,11 +251,22 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                         <Paper elevation={6} className={styles.colorPopup}>
                           <ClickAwayListener onClickAway={handleMenuClose}>
                             <div>
-                              <HexColorPicker color={color} onChange={setColor} />
+                              <HexColorPicker
+                                color={
+                                  !isColorFromPrimaryConfig
+                                    ? settings.primaryColor ?? primaryColorConfig[0].main
+                                    : '#eee'
+                                }
+                                onChange={newColor => handleChange('primaryColor', newColor)}
+                              />
                               <HexColorInput
                                 className={styles.colorInput}
-                                color={color}
-                                onChange={setColor}
+                                color={
+                                  !isColorFromPrimaryConfig
+                                    ? settings.primaryColor ?? primaryColorConfig[0].main
+                                    : '#eee'
+                                }
+                                onChange={newColor => handleChange('primaryColor', newColor)}
                                 prefixed
                                 placeholder='Type a color'
                               />
