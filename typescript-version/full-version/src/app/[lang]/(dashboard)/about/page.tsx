@@ -3,13 +3,13 @@
 import { useEffect } from 'react'
 
 // Component Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 const AboutPage = () => {
-  const { updateSettings } = useSettings()
+  const { updatePageSettings } = useSettings()
 
   useEffect(() => {
-    updateSettings({
+    updatePageSettings({
       mode: 'dark'
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

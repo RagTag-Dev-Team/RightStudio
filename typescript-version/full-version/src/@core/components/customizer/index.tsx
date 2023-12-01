@@ -49,7 +49,7 @@ import DirectionRtl from '@core/svg/DirectionRtl'
 import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // Util Imports
@@ -76,7 +76,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   // Hooks
   const theme = useTheme()
   const pathName = usePathname()
-  const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
+  const { settings, updateSettings, resetSettings, isSettingsChanged } = useSettings()
   const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointValue =
@@ -118,7 +118,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
       setDirection(value as Direction)
     } else {
       // Update settings in cookie
-      saveSettings({ [field]: value })
+      updateSettings({ [field]: value })
     }
   }
 
@@ -393,7 +393,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                         [styles.active]: settings.contentWidth === 'compact'
                       })}
                       onClick={() =>
-                        saveSettings({
+                        updateSettings({
                           navbarContentWidth: 'compact',
                           contentWidth: 'compact',
                           footerContentWidth: 'compact'
@@ -405,7 +405,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                     <p
                       className={styles.itemLabel}
                       onClick={() =>
-                        saveSettings({
+                        updateSettings({
                           navbarContentWidth: 'compact',
                           contentWidth: 'compact',
                           footerContentWidth: 'compact'
@@ -419,7 +419,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.contentWidth === 'wide' })}
                       onClick={() =>
-                        saveSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
+                        updateSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
                       }
                     >
                       <ContentWide />
@@ -427,7 +427,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                     <p
                       className={styles.itemLabel}
                       onClick={() =>
-                        saveSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
+                        updateSettings({ navbarContentWidth: 'wide', contentWidth: 'wide', footerContentWidth: 'wide' })
                       }
                     >
                       Wide

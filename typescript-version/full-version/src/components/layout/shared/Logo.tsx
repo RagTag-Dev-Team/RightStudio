@@ -16,7 +16,7 @@ import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 type LogoTextProps = {
   isHovered?: VerticalNavContextProps['isHovered']

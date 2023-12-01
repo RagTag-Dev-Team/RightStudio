@@ -14,7 +14,7 @@ import HorizontalMenu from './HorizontalMenu'
 import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Util Imports

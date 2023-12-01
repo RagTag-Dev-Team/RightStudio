@@ -15,7 +15,7 @@ import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
@@ -23,14 +23,14 @@ import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
-  const { settings, saveSettings } = useSettings()
+  const { settings, updateSettings } = useSettings()
   const { mode, systemMode } = useColorScheme()
 
   const handleClick = () => {
     if (isCollapsed) {
-      saveSettings({ layout: 'vertical' })
+      updateSettings({ layout: 'vertical' })
     } else {
-      saveSettings({ layout: 'collapsed' })
+      updateSettings({ layout: 'collapsed' })
     }
   }
 
