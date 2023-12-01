@@ -10,7 +10,7 @@ import type { Settings } from '@core/contexts/settingsContext'
 import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Type
 type LayoutWrapperProps = {

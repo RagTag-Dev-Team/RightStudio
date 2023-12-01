@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import type { ChildrenType } from '@core/types'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'

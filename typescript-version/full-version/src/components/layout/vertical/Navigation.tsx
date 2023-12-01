@@ -12,18 +12,18 @@ import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
-  const { saveSettings } = useSettings()
+  const { updateSettings } = useSettings()
 
   const handleClick = () => {
     if (isCollapsed) {
-      saveSettings({ layout: 'vertical' })
+      updateSettings({ layout: 'vertical' })
     } else {
-      saveSettings({ layout: 'collapsed' })
+      updateSettings({ layout: 'collapsed' })
     }
   }
 

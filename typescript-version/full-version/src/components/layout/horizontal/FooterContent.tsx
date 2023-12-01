@@ -9,7 +9,7 @@ import classnames from 'classnames'
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'

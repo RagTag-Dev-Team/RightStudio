@@ -4,14 +4,14 @@
 import type { Settings } from '@core/contexts/settingsContext'
 
 // Hook Imports
-import useSettings from '@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 const SettingsChanged = () => {
   // Hooks
-  const { settings, saveSettings, isSettingsChanged, resetSettings } = useSettings()
+  const { settings, updateSettings, isSettingsChanged, resetSettings } = useSettings()
 
   const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
-    saveSettings({
+    updateSettings({
       [field]: value
     })
   }
