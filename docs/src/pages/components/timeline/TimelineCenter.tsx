@@ -122,7 +122,7 @@ const TimelineCenter = () => {
                 You've uploaded doc pdf to the Themeselection project
               </Typography>
               <Typography variant='body1' className='mbe-3' color='text.secondary'>
-                he process of recording the key project details and producing the documents that are required to
+                The process of recording the key project details and producing the documents that are required to
                 implement it successfully. Simply put, it's an umbrella term which includes all the documents created
                 over the course of the project.
               </Typography>
@@ -253,7 +253,7 @@ const TimelineCenter = () => {
               </Typography>
               <div className='flex items-center gap-1'>
                 <Typography variant='h4'>$24,895</Typography>
-                <i className={classnames('ri-arrow-down-s-fill text-3xl', commonStyles.successColor)} />
+                <i className={classnames('ri-arrow-up-s-fill text-3xl', commonStyles.successColor)} />
                 <Typography variant='body2' className='font-medium' color='success'>
                   10%
                 </Typography>
@@ -308,7 +308,7 @@ const TimelineCenter = () => {
           <Card>
             <CardContent>
               <Typography variant='body1' className='font-medium mbe-4'>
-                josh johnson shared Next js project progress report
+                Josh Johnson shared Next js project progress report
               </Typography>
               <Typography variant='body1' className='mbe-3' color='text.secondary'>
                 The structure and process are defined in the project organization considering the attainment of the
@@ -318,7 +318,7 @@ const TimelineCenter = () => {
                 className={classnames('mbe-3 flex items-center gap-2 w-fit', styles.imageWrapper, styles.borderRadius)}
               >
                 <img height={20} alt='progress-report.xls.pdf' src='/images/icons/xls-document.png' />
-                <Typography className='font-medium'>xls-document.pdf</Typography>
+                <Typography className='font-medium'>progress-report.xls</Typography>
               </div>
               <div className='flex items-center gap-2'>
                 <LinearProgress variant='determinate' value={34} className='w-full' />

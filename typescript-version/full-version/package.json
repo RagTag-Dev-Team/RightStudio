@@ -87,7 +87,7 @@
     "tailwindcss-logical": "^3.0.1",
     "tsx": "^4.5.0",
     "typescript": "^5.3.2",
-    "valibot": "^0.20.1"
+    "valibot": "^0.22.0"
   },
   "prisma": {
     "schema": "./src/prisma/schema.prisma"

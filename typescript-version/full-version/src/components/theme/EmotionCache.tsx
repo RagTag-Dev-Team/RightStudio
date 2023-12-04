@@ -48,6 +48,7 @@ export default function ThemeRegistry(props: { children: ReactNode; options: Cac
   // ℹ️ Regenerate the cache when the options change
   useEffect(() => {
     setCacheState(getCacheState)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options])
 
   useServerInsertedHTML(() => {

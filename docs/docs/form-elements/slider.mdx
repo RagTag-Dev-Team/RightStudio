@@ -145,43 +145,27 @@ Please refer to MUI's official docs for more details on component's [usage guide
   <Grid item xs={12} md={6}>
     <CardSnippet
       className='pli-2'
-      title='Colors'
-      code={SourceCodeSliderColors}
-    >
-      {
-        <Typography className='mbe-4'>
-          Use <code>color</code> prop for different colored slider.
-        </Typography>
-      }
-      <SliderColors />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      className='pli-2'
       title='Range Slider'
       code={SourceCodeSliderRange}
     >
       {
         <Typography className='mbe-4'>
-          The slider can be used to set the start and end of a range by supplying an array of values to the <code>value</code> or <code>defaultValue</code> prop.
+          The slider can be used to set the start and end of a range by supplying
+          an array of values to the <code>value</code> or{' '}
+          <code>defaultValue</code> prop.
         </Typography>
       }
       <SliderRange />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
-    <CardSnippet
-      className='pli-2'
-      title='Customized Slider'
-      code={SourceCodeSliderCustomized}
-    >
+    <CardSnippet className='pli-2' title='Colors' code={SourceCodeSliderColors}>
       {
-        <Typography className='mbe-6'>
-          Use <code>styled</code> hook to customize your slider.
+        <Typography className='mbe-4'>
+          Use <code>color</code> prop for different colored slider.
         </Typography>
       }
-      <SliderCustomized />
+      <SliderColors />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
@@ -201,6 +185,20 @@ Please refer to MUI's official docs for more details on component's [usage guide
   <Grid item xs={12} md={6}>
     <CardSnippet
       className='pli-2'
+      title='Customized Slider'
+      code={SourceCodeSliderCustomized}
+    >
+      {
+        <Typography className='mbe-6'>
+          Use <code>styled</code> hook to customize your slider.
+        </Typography>
+      }
+      <SliderCustomized />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      className='pli-2'
       title='Removed Track'
       code={SourceCodeSliderRemovedTrack}
     >
@@ -213,25 +211,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
-    <CardSnippet
-      className='pli-2'
-      title='Inverted Track'
-      code={SourceCodeSliderInvertedTrack}
-    >
-      {
-        <Typography className='mbe-4'>
-          The track can be inverted with <code>track='inverted'</code> prop.
-        </Typography>
-      }
-      <SliderInvertedTrack />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      className='pli-2'
-      title='Sizes'
-      code={SourceCodeSliderSizes}
-    >
+    <CardSnippet className='pli-2' title='Sizes' code={SourceCodeSliderSizes}>
       {
         <Typography className='mbe-4'>
           Use <code>size</code> prop for different sizes of slider.
@@ -248,10 +228,25 @@ Please refer to MUI's official docs for more details on component's [usage guide
     >
       {
         <Typography className='mbe-4'>
-          You can enforce a minimum distance between values in the <code>onChange</code> event handler.
+          You can enforce a minimum distance between values in the{' '}
+          <code>onChange</code> event handler.
         </Typography>
       }
       <SliderMinimumDistance />
+    </CardSnippet>
+  </Grid>{' '}
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      className='pli-2'
+      title='Inverted Track'
+      code={SourceCodeSliderInvertedTrack}
+    >
+      {
+        <Typography className='mbe-4'>
+          The track can be inverted with <code>track='inverted'</code> prop.
+        </Typography>
+      }
+      <SliderInvertedTrack />
     </CardSnippet>
   </Grid>
 </Grid>

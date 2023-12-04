@@ -44,7 +44,7 @@ const data = [
     link: 'https://mui.com/material-ui/react-popper/'
   },
   {
-    component: 'Skeleteon',
+    component: 'Skeleton',
     link: 'https://mui.com/material-ui/react-skeleton/'
   },
   {

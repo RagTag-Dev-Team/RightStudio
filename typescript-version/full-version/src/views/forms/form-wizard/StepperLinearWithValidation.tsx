@@ -26,7 +26,7 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { email, object, minLength, string, array, ValiError } from 'valibot'
+import { email, object, minLength, string, array, forward, custom } from 'valibot'
 
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
@@ -50,13 +50,6 @@ const steps = [
   }
 ]
 
-type AccountSchemaData = {
-  username: string
-  email: string
-  password: string
-  confirmPassword: string
-}
-
 const accountSchema = object(
   {
     username: string([minLength(1, 'This field is required')]),
@@ -68,29 +61,10 @@ const accountSchema = object(
     confirmPassword: string([minLength(1, 'This field is required')])
   },
   [
-    (input: AccountSchemaData) => {
-      if (input.password !== input.confirmPassword) {
-        throw new ValiError([
-          {
-            reason: 'string',
-            validation: 'custom',
-            origin: 'value',
-            message: 'Passwords do not match.',
-            input: input.confirmPassword,
-            path: [
-              {
-                type: 'object',
-                input: input,
-                key: 'confirmPassword',
-                value: input.confirmPassword
-              }
-            ]
-          }
-        ])
-      }
-
-      return { output: input }
-    }
+    forward(
+      custom(input => input.password === input.confirmPassword, 'Passwords do not match.'),
+      ['confirmPassword']
+    )
   ]
 )
 
