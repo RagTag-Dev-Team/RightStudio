@@ -41,9 +41,6 @@ dependencies:
   '@fullcalendar/timegrid':
     specifier: ^6.1.9
     version: 6.1.10(@fullcalendar/core@6.1.10)
-  '@hcorta/react-echarts':
-    specifier: ^2.0.0
-    version: 2.0.0(echarts@5.4.3)(react@18.2.0)
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.2(react-hook-form@7.48.2)
@@ -52,7 +49,7 @@ dependencies:
     version: 3.1.1
   '@iconify/json':
     specifier: ^2.2.147
-    version: 2.2.151
+    version: 2.2.152
   '@iconify/react':
     specifier: ^4.1.1
     version: 4.1.1(react@18.2.0)
@@ -122,9 +119,6 @@ dependencies:
   draft-js:
     specifier: ^0.11.7
     version: 0.11.7(react-dom@18.2.0)(react@18.2.0)
-  echarts:
-    specifier: ^5.4.3
-    version: 5.4.3
   eslint:
     specifier: ^8.54.0
     version: 8.55.0
@@ -823,16 +817,6 @@ packages:
       '@fullcalendar/daygrid': 6.1.10(@fullcalendar/core@6.1.10)
     dev: false
 
-  /@hcorta/react-echarts@2.0.0(echarts@5.4.3)(react@18.2.0):
-    resolution: {integrity: sha512-STDhxgCAn7qesCUGAwnXgiH1+qFItkkII+fVpKue2CCfFWeMgoAk+EUxnbkeix/6qNRGcJN5UEfCOgr1uCCuXg==}
-    peerDependencies:
-      echarts: '>=5.0.0'
-      react: '>=16.0.0'
-    dependencies:
-      echarts: 5.4.3
-      react: 18.2.0
-    dev: false
-
   /@hookform/resolvers@3.3.2(react-hook-form@7.48.2):
     resolution: {integrity: sha512-Tw+GGPnBp+5DOsSg4ek3LCPgkBOuOgS5DsDV7qsWNH9LZc433kgsWICjlsh2J9p04H2K66hsXPPb9qn9ILdUtA==}
     peerDependencies:
@@ -867,8 +851,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/json@2.2.151:
-    resolution: {integrity: sha512-Un9kUOTob8Q6yIYykWR6LlyR3gA65q+OZYi/h2mcg0lOwJnE4M8fvmUdherdQ74Jrhtspj1B6UyjskugRkjoXw==}
+  /@iconify/json@2.2.152:
+    resolution: {integrity: sha512-CV1qk51ydDJ+dooir8/OBOZw9/mfzTx7GY7U9OmnlH3r5+ErTdGjhQ1b+PrB8nX/RQ5AVkC9n/9l7yw1qJZqtw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
@@ -2588,13 +2572,6 @@ packages:
     dependencies:
       draft-js: 0.11.7(react-dom@18.2.0)(react@18.2.0)
       immutable: 4.3.4
-    dev: false
-
-  /echarts@5.4.3:
-    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==}
-    dependencies:
-      tslib: 2.3.0
-      zrender: 5.4.4
     dev: false
 
   /electron-to-chromium@1.4.601:
@@ -5785,10 +5762,6 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
-  /tslib@2.3.0:
-    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
-    dev: false
-
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
@@ -6087,10 +6060,4 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-    dev: false
-
-  /zrender@5.4.4:
-    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==}
-    dependencies:
-      tslib: 2.3.0
     dev: false

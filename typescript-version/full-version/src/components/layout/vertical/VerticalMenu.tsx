@@ -194,7 +194,6 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <SubMenu label={dictionary['navigation'].charts}>
             <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
             <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
-            <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
           </SubMenu>
           <MenuItem
             href='http://localhost:3001/docs/user-interface/intro'

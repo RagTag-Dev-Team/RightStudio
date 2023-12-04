@@ -47,7 +47,6 @@
   "editor.linkedEditing": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
-    "echarts",
     "iconify",
     "tanstack",
     "customizer"
