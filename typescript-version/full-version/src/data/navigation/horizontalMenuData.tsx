@@ -320,10 +320,6 @@ const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalM
     label: dictionary['navigation'].charts,
     children: [
       {
-        label: dictionary['navigation'].echarts,
-        href: '/charts/echarts'
-      },
-      {
         label: dictionary['navigation'].recharts,
         href: '/charts/recharts'
       },

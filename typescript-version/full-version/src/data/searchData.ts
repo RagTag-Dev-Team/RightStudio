@@ -337,34 +337,27 @@ const data: SearchData[] = [
   },
   {
     id: '48',
-    name: 'ECharts',
-    url: '/charts/echarts',
-    icon: 'Icon',
-    section: 'Charts'
-  },
-  {
-    id: '49',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '50',
+    id: '49',
     name: 'Apex Charts',
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '51',
+    id: '50',
     name: 'Raise Support',
     url: '/support',
     icon: 'Icon',
     section: 'Others'
   },
   {
-    id: '52',
+    id: '51',
     name: 'Documentation',
     url: '/docs',
     icon: 'Icon',
