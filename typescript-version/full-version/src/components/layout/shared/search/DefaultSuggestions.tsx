@@ -117,8 +117,8 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
         icon: 'Icon'
       },
       {
-        label: 'E-Charts',
-        href: '/charts/echarts',
+        label: 'Apex Charts',
+        href: '/charts/apex-charts',
         icon: 'Icon'
       }
     ]

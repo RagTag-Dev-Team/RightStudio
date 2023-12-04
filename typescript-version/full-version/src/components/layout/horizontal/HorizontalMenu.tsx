@@ -200,7 +200,6 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].charts}>
-          <MenuItem href={`/${locale}/charts/echarts`}>{dictionary['navigation'].echarts}</MenuItem>
           <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
           <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
           <MenuItem href={`/${locale}/charts/echarts-advance`}>Echarts Advance</MenuItem>
