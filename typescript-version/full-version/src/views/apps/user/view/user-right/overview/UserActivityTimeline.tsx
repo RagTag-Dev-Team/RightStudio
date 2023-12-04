@@ -49,11 +49,11 @@ const UserActivityTimeLine = () => {
             <TimelineContent className={styles.timelineIcon}>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
                 <Typography className='font-medium'>12 Invoices have been paid</Typography>
-                <Typography variant='caption' className={commonStyles.textDisabled}>
+                <Typography variant='caption' color='text.disabled'>
                   12 min ago
                 </Typography>
               </div>
-              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
+              <Typography className='mbe-2' color='text.secondary'>
                 Invoices have been paid to the company
               </Typography>
               <div
@@ -77,11 +77,11 @@ const UserActivityTimeLine = () => {
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
                 <Typography className='font-medium'>Client Meeting</Typography>
-                <Typography variant='caption' className={commonStyles.textDisabled}>
+                <Typography variant='caption' color='text.disabled'>
                   45 min ago
                 </Typography>
               </div>
-              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
+              <Typography className='mbe-2' color='text.secondary'>
                 Project meeting with john @10:15am
               </Typography>
               <div className='flex items-center gap-2.5'>
@@ -103,11 +103,11 @@ const UserActivityTimeLine = () => {
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
                 <Typography className='font-medium'>Create a new project for client</Typography>
-                <Typography variant='caption' className={commonStyles.textDisabled}>
+                <Typography variant='caption' color='text.disabled'>
                   2 Day Ago
                 </Typography>
               </div>
-              <Typography className={classnames('mbe-2', commonStyles.textSecondary)}>
+              <Typography className='mbe-2' color='text.secondary'>
                 6 team members in a project
               </Typography>
               <AvatarGroup total={6} className='pull-up'>

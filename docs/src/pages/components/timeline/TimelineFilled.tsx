@@ -42,13 +42,13 @@ const TimelineFilled = () => {
             <Typography variant='body1' className='font-medium'>
               12 Invoices have been paid
             </Typography>
-            <Typography variant='caption' className={styles.textDisabled}>
+            <Typography variant='caption' color='text.disabled'>
               12 min ago
             </Typography>
           </div>
           <Typography
             variant='body1'
-            className={classnames('mbe-2', styles.textSecondary)}
+            className='mbe-2' color='text.secondary'
           >
             Invoices have been paid to the company
           </Typography>
@@ -79,13 +79,13 @@ const TimelineFilled = () => {
             <Typography variant='body1' className='font-medium'>
               Client Meeting
             </Typography>
-            <Typography variant='caption' className={styles.textDisabled}>
+            <Typography variant='caption' color='text.disabled'>
               45 min ago
             </Typography>
           </div>
           <Typography
             variant='body1'
-            className={classnames('mbe-2', styles.textSecondary)}
+            className='mbe-2' color='text.secondary'
           >
             Project meeting with john @10:15am
           </Typography>
@@ -111,11 +111,11 @@ const TimelineFilled = () => {
             <Typography variant='body1' className='font-medium'>
               Create a new project for client
             </Typography>
-            <Typography variant='caption' className={styles.textDisabled}>
+            <Typography variant='caption' color='text.disabled'>
               2 Day Ago
             </Typography>
           </div>
-          <Typography variant='body1' className={classnames('mbe-2',styles.textSecondary)}>
+          <Typography variant='body1' className='mbe-2' color='text.secondary'>
             6 team members in a project
           </Typography>
           <AvatarGroup total={6} className='pull-up'>

@@ -14,7 +14,6 @@ import Link from '@components/Link'
 
 // Style Imports
 import styles from './v1.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const TwoStepsV1 = () => {
   return (
@@ -40,7 +39,7 @@ const TwoStepsV1 = () => {
           </div>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Didn&#39;t get the code?</Typography>
-            <Typography className={commonStyles.primaryColor} component={Link}>
+            <Typography color='primary' component={Link}>
               Resend
             </Typography>
           </div>

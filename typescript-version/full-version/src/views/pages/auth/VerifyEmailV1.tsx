@@ -14,7 +14,6 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './v1.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const VerifyEmailV1 = () => {
   return (
@@ -31,7 +30,7 @@ const VerifyEmailV1 = () => {
         </Button>
         <div className='flex justify-center items-center flex-wrap gap-2'>
           <Typography>Didn&#39;t get the mail?</Typography>
-          <Typography className={commonStyles.primaryColor} component={Link} href='/' onClick={e => e.preventDefault()}>
+          <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
             Resend
           </Typography>
         </div>

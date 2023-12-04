@@ -77,7 +77,7 @@ const RegisterV2 = () => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Already have an account?</Typography>
-              <Typography component={Link} href='/pages/auth/login-v2' className={commonStyles.primaryColor}>
+              <Typography component={Link} href='/pages/auth/login-v2' color='primary'>
                 Sign in instead
               </Typography>
             </div>

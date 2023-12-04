@@ -117,12 +117,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
-                    <Typography
-                      href='/'
-                      component={Link}
-                      onClick={e => e.preventDefault()}
-                      className={commonStyles.primary}
-                    >
+                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='text.primary'>
                       {product.soldBy}
                     </Typography>
                     {product.inStock ? (
@@ -145,7 +140,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   })}
                 >
                   <div className='flex'>
-                    <Typography className={commonStyles.primary}>{`$${product.price}`}</Typography>
+                    <Typography color='text.primary'>{`$${product.price}`}</Typography>
                     <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
                   </div>
                   <Button variant='outlined' size='small'>
@@ -163,9 +158,9 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
           className={classnames(
             'flex items-center justify-between gap-4',
             commonStyles.border,
-            commonStyles.borderRadius,
-            commonStyles.primary
+            commonStyles.borderRadius
           )}
+          color='text.primary'
         >
           Add more products from wishlist
           <i className={direction === 'rtl' ? 'ri-arrow-left-s-line' : 'ri-arrow-right-s-line'} />
@@ -188,7 +183,8 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                 href='/'
                 component={Link}
                 onClick={e => e.preventDefault()}
-                className={classnames('font-medium', commonStyles.primary)}
+                color='text.primary'
+                className='font-medium'
               >
                 Add a gift wrap
               </Typography>
@@ -208,7 +204,8 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   href='/'
                   component={Link}
                   onClick={e => e.preventDefault()}
-                  className={classnames('font-medium', commonStyles.primary)}
+                  className='font-medium'
+                  color='text.primary'
                 >
                   Apply Coupon
                 </Typography>

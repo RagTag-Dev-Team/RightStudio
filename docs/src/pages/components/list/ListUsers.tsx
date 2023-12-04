@@ -95,7 +95,7 @@ const ListUsers = () => {
                 <i className='ri-circle-fill text-[10px]' />
                 <Typography variant='body2'>{user.status}</Typography>
               </Box>
-              <Typography variant='body2' className={styles.listTextDisabled}>
+              <Typography variant='body2' color='text.disabled'>
                 {user.lastActive}
               </Typography>
             </div>

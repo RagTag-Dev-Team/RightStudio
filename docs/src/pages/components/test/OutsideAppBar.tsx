@@ -18,7 +18,7 @@ const OutsideAppBar = () => {
         <IconButton size='large' className='mie-2.5' color='inherit' aria-label='menu'>
           <i className='ri-menu-line' />
         </IconButton>
-        <Typography variant='h6' className={classnames('flex-grow', styles.appBarColor)}>
+        <Typography variant='h6' className='flex-grow' color='white'>
           News
         </Typography>
         <Button color='inherit'>Login</Button>

@@ -25,6 +25,7 @@ import type { ThemeColor } from '@core/types'
 
 // Styles Imports
 import styles from './styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type DataProps = {
   image: string
@@ -120,7 +121,7 @@ const TimelineCenter = () => {
               <Typography variant='body1' className='font-medium mbe-4'>
                 You've uploaded doc pdf to the Themeselection project
               </Typography>
-              <Typography variant='body1' className={classnames('mbe-3', styles.textSecondary)}>
+              <Typography variant='body1' className='mbe-3' color='text.secondary'>
                 he process of recording the key project details and producing the documents that are required to
                 implement it successfully. Simply put, it's an umbrella term which includes all the documents created
                 over the course of the project.
@@ -159,7 +160,7 @@ const TimelineCenter = () => {
               <Typography variant='body1' className='font-medium mbe-4'>
                 Heather added 4 images to the Team album
               </Typography>
-              <Typography variant='body1' className={classnames('mbe-3', styles.textSecondary)}>
+              <Typography variant='body1' className='mbe-3' color='text.secondary'>
                 In the Select Image for Project dialog box, choose one of the following: Under the Upload New Image
                 section
               </Typography>
@@ -252,8 +253,8 @@ const TimelineCenter = () => {
               </Typography>
               <div className='flex items-center gap-1'>
                 <Typography variant='h4'>$24,895</Typography>
-                <i className={classnames('ri-arrow-down-s-fill text-3xl', styles.textSuccess)} />
-                <Typography variant='body2' className={classnames('font-medium', styles.textSuccess)}>
+                <i className={classnames('ri-arrow-down-s-fill text-3xl', commonStyles.successColor)} />
+                <Typography variant='body2' className='font-medium' color='success'>
                   10%
                 </Typography>
               </div>
@@ -272,7 +273,7 @@ const TimelineCenter = () => {
                     </div>
                   </div>
                   <div className='flex flex-col items-center gap-2'>
-                    <Typography variant='body2' className={classnames('font-medium', styles.textPrimary)}>
+                    <Typography variant='body2' className='font-medium' color='text.primary'>
                       ${item.progress}
                     </Typography>
                     <LinearProgress variant='determinate' value={75} color={item.progressColor} className='w-full' />
@@ -309,7 +310,7 @@ const TimelineCenter = () => {
               <Typography variant='body1' className='font-medium mbe-4'>
                 josh johnson shared Next js project progress report
               </Typography>
-              <Typography variant='body1' className={classnames('mbe-3', styles.textSecondary)}>
+              <Typography variant='body1' className='mbe-3' color='text.secondary'>
                 The structure and process are defined in the project organization considering the attainment of the
                 corporate objectives and therefore also project objectives. The components of the project process are
               </Typography>

@@ -13,7 +13,6 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 
 // Style Imports
 import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const data = {
   firstName: 'John',
@@ -60,7 +59,7 @@ const BillingAddress = () => {
                 <tbody className='align-top'>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Name:
                       </Typography>
                     </td>
@@ -70,7 +69,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Billing Email:
                       </Typography>
                     </td>
@@ -80,7 +79,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Tax ID:
                       </Typography>
                     </td>
@@ -90,7 +89,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         VAT Number:
                       </Typography>
                     </td>
@@ -100,7 +99,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Billing Address:
                       </Typography>
                     </td>
@@ -116,7 +115,7 @@ const BillingAddress = () => {
                 <tbody className='align-top'>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Contact:
                       </Typography>
                     </td>
@@ -126,7 +125,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Landmark:
                       </Typography>
                     </td>
@@ -136,7 +135,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Landmark:
                       </Typography>
                     </td>
@@ -146,7 +145,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Country:
                       </Typography>
                     </td>
@@ -156,7 +155,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         State:
                       </Typography>
                     </td>
@@ -166,7 +165,7 @@ const BillingAddress = () => {
                   </tr>
                   <tr>
                     <td className='p-1 pis-0'>
-                      <Typography variant='subtitle2' className={commonStyles.textPrimary}>
+                      <Typography variant='subtitle2' color='text.primary'>
                         Zip Code:
                       </Typography>
                     </td>

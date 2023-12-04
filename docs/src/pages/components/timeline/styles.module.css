@@ -1,22 +1,6 @@
-.textPrimary {
-  color: var(--mui-palette-text-primary);
-}
-
-.textSecondary {
-  color: var(--mui-palette-text-secondary);
-}
-
-.textSuccess {
-  color: var(--mui-palette-success-main);
-}
-
 .timelineIcon svg {
   vertical-align: middle;
   margin-inline: 1rem;
-}
-
-.textDisabled {
-  color: var(--mui-palette-text-disabled);
 }
 
 .imageWrapper {

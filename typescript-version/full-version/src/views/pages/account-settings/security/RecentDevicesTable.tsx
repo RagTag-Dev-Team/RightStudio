@@ -7,7 +7,6 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 
 // Style Imports
-import commonStyles from '@/styles/common.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 type RecentDeviceDataType = {
@@ -88,13 +87,13 @@ const RecentDevicesTable = () => {
                   </div>
                 </td>
                 <td>
-                  <Typography className={commonStyles.textSecondary}>{device.device}</Typography>
+                  <Typography color='text.secondary'>{device.device}</Typography>
                 </td>
                 <td>
-                  <Typography className={commonStyles.textSecondary}>{device.location}</Typography>
+                  <Typography color='text.secondary'>{device.location}</Typography>
                 </td>
                 <td>
-                  <Typography className={commonStyles.textSecondary}>{device.date}</Typography>
+                  <Typography color='text.secondary'>{device.date}</Typography>
                 </td>
               </tr>
             ))}

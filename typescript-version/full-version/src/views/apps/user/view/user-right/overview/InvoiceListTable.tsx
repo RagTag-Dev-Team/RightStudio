@@ -50,7 +50,6 @@ import OptionMenu from '@core/components/option-menu'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -153,7 +152,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
           <Typography
             component={Link}
             href={`/apps/invoice/preview/${row.original.id}`}
-            className={commonStyles.primaryColor}
+            color='primary'
           >{`#${row.original.id}`}</Typography>
         )
       }),

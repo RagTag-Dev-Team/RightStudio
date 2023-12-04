@@ -23,7 +23,6 @@ import type { Direction } from '@core/types'
 
 // Style Imports
 import styles from './v2.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const ResetPasswordV2 = ({ direction }: { direction: Direction }) => {
   // States
@@ -82,7 +81,7 @@ const ResetPasswordV2 = ({ direction }: { direction: Direction }) => {
             <Button fullWidth variant='contained' type='submit'>
               Set New Password
             </Button>
-            <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
+            <Typography className='flex justify-center items-center' color='primary'>
               <Link href='/pages/auth/login-v2' onClick={e => e.preventDefault()} className='flex items-center'>
                 <i className={direction === 'rtl' ? 'ri-arrow-right-s-line' : 'ri-arrow-left-s-line'} />
                 <span>Back to Login</span>

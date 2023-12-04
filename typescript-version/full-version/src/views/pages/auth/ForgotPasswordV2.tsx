@@ -18,7 +18,6 @@ import type { Direction } from '@core/types'
 
 // Style Imports
 import styles from './v2.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const ForgotPasswordV2 = ({ direction }: { direction: Direction }) => {
   // Hooks
@@ -37,7 +36,7 @@ const ForgotPasswordV2 = ({ direction }: { direction: Direction }) => {
             <Button fullWidth variant='contained' type='submit'>
               Send reset link
             </Button>
-            <Typography className={classnames('flex justify-center items-center', commonStyles.primaryColor)}>
+            <Typography className='flex justify-center items-center' color='primary'>
               <Link href='/pages/auth/login-v2' className='flex items-center'>
                 <i className={direction === 'rtl' ? 'ri-arrow-right-s-line' : 'ri-arrow-left-s-line'} />
                 <span>Back to Login</span>

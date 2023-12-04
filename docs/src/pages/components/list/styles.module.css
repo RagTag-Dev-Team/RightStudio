@@ -9,7 +9,3 @@
 .listBackground {
   background-color: var(--mui-palette-background-paper);
 }
-
-.listTextDisabled {
-    color: var(--mui-palette-text-disabled);
-}
