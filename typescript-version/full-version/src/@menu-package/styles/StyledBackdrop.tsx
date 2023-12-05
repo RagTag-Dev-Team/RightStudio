@@ -14,6 +14,7 @@ const StyledBackdrop = styled.div<StyledBackdropProps>`
   inset-block-end: 0;
   z-index: 1;
   background-color: ${({ backdropColor }) => backdropColor || 'rgba(0, 0, 0, 0.3)'};
+  touch-action: none;
 `
 
 export default StyledBackdrop
