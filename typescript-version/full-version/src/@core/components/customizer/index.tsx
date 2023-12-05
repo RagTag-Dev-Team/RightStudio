@@ -119,7 +119,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
             <Close onClick={handleToggle} className='cursor-pointer' />
           </div>
         </div>
-        <PerfectScrollbar options={{ wheelPropagation: false }}>
+        <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
             <div className={classnames('theming-section flex flex-col', styles.section)}>
               <p>Theming</p>

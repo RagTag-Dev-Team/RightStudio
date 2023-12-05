@@ -1,9 +1,7 @@
 'use client'
 
-//  Custom Component imports
-import PerfectScrollbar from 'react-perfect-scrollbar'
-
 // Third-party Imports
+import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Component Imports
@@ -12,7 +10,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu-package
 const FullMenuPerfectScroll = () => {
   return (
     <VerticalNav customBreakpoint='200px'>
-      <PerfectScrollbar options={{ wheelPropagation: false }}>
+      <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <MenuSection label='Dashboards'>
             <SubMenu label='Dashboards'>
