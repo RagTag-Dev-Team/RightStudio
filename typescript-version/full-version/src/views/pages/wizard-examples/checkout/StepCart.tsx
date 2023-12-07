@@ -117,7 +117,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
-                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='text.primary'>
+                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
                       {product.soldBy}
                     </Typography>
                     {product.inStock ? (
@@ -140,7 +140,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   })}
                 >
                   <div className='flex'>
-                    <Typography color='text.primary'>{`$${product.price}`}</Typography>
+                    <Typography color='primary'>{`$${product.price}`}</Typography>
                     <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
                   </div>
                   <Button variant='outlined' size='small'>
@@ -160,7 +160,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
             commonStyles.border,
             commonStyles.borderRadius
           )}
-          color='text.primary'
+          color='primary'
         >
           Add more products from wishlist
           <i className={direction === 'rtl' ? 'ri-arrow-left-s-line' : 'ri-arrow-right-s-line'} />
@@ -183,7 +183,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                 href='/'
                 component={Link}
                 onClick={e => e.preventDefault()}
-                color='text.primary'
+                color='primary'
                 className='font-medium'
               >
                 Add a gift wrap
@@ -205,7 +205,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                   component={Link}
                   onClick={e => e.preventDefault()}
                   className='font-medium'
-                  color='text.primary'
+                  color='primary'
                 >
                   Apply Coupon
                 </Typography>

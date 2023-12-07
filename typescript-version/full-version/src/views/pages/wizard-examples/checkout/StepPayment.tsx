@@ -188,7 +188,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
               component={Link}
               onClick={e => e.preventDefault()}
               className='font-medium'
-              color='text.primary'
+              color='primary'
             >
               Change address
             </Typography>

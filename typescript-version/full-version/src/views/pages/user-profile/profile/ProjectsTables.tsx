@@ -127,7 +127,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
         )
       },
       columnHelper.accessor('title', {
-        header: 'Name',
+        header: 'Project',
         cell: ({ row }) => (
           <div className='flex items-center'>
             <Avatar src={row.original.avatar} />

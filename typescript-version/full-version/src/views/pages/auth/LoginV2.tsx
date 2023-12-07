@@ -21,6 +21,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
 // Style Imports
 import styles from './v2.module.css'
 
@@ -39,7 +42,7 @@ const LoginV2 = () => {
       <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
         <div>
           <div className={classnames('absolute', styles.templateName)}>Logo</div>
-          <Typography>Welcome to Master! 👋🏻</Typography>
+          <Typography>{`Welcome to ${themeConfig.templateName}!👋🏻`}</Typography>
           <Typography>Please sign-in to your account and start the adventure</Typography>
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
             <TextField autoFocus fullWidth label='Email' />

@@ -16,7 +16,9 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import Chip from '@mui/material/Chip'
 import type { Theme } from '@mui/material/styles'
+import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -54,11 +56,22 @@ const initialData: Data = {
   currency: 'usd'
 }
 
+const languageData = ['English', 'Arabic', 'French', 'German', 'Portuguese']
+
 const AccountDetails = () => {
   // States
   const [formData, setFormData] = useState<Data>(initialData)
   const [fileInput, setFileInput] = useState<string>('')
   const [imgSrc, setImgSrc] = useState<string>('/images/avatars/1.png')
+  const [language, setLanguage] = useState<string[]>(['English'])
+
+  const handleDelete = (value: string) => {
+    setLanguage(current => current.filter(item => item !== value))
+  }
+
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    setLanguage(event.target.value as string[])
+  }
 
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
@@ -217,15 +230,32 @@ const AccountDetails = () => {
               <FormControl fullWidth>
                 <InputLabel>Language</InputLabel>
                 <Select
+                  multiple
                   label='Language'
-                  value={formData.language}
-                  onChange={e => handleFormChange('language', e.target.value)}
+                  value={language}
+                  onChange={handleChange}
+                  renderValue={selected => (
+                    <div className='flex flex-wrap gap-2'>
+                      {(selected as string[]).map(value => (
+                        <Chip
+                          key={value}
+                          clickable
+                          deleteIcon={
+                            <i className='ri-close-circle-fill' onMouseDown={event => event.stopPropagation()}></i>
+                          }
+                          size='small'
+                          label={value}
+                          onDelete={() => handleDelete(value)}
+                        />
+                      ))}
+                    </div>
+                  )}
                 >
-                  <MenuItem value='english'>English</MenuItem>
-                  <MenuItem value='arabic'>Arabic</MenuItem>
-                  <MenuItem value='french'>French</MenuItem>
-                  <MenuItem value='german'>German</MenuItem>
-                  <MenuItem value='portuguese'>Portuguese</MenuItem>
+                  {languageData.map(name => (
+                    <MenuItem key={name} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>

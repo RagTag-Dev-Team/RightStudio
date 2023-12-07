@@ -18,6 +18,7 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
+import type { Direction } from '@core/types'
 
 // Component Imports
 import PlanDetails from './PlanDetails'
@@ -25,7 +26,7 @@ import PlanDetails from './PlanDetails'
 // Style Imports
 import styles from './styles.module.css'
 
-const Pricing = ({ data }: { data: PricingPlanType[] }) => {
+const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Direction }) => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
 
@@ -57,8 +58,19 @@ const Pricing = ({ data }: { data: PricingPlanType[] }) => {
             Annually
           </InputLabel>
           {isAboveSmScreen && (
-            <div className={classnames('flex items-center absolute left-1/2', styles.popularPlan)}>
-              <i className='ri-corner-left-down-line mbs-2 mie-1' />
+            <div
+              className={classnames(
+                'flex absolute',
+                styles.popularPlan,
+                direction === 'rtl' ? 'right-full' : 'left-1/2'
+              )}
+            >
+              <i
+                className={classnames(
+                  direction === 'rtl' ? 'ri-corner-right-down-line' : 'ri-corner-left-down-line ',
+                  'mbs-2 mie-1'
+                )}
+              />
               <Chip label='Save up to 10%' size='small' />
             </div>
           )}

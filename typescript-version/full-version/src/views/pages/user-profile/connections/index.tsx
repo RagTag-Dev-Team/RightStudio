@@ -64,7 +64,7 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                       variant={item.isConnected ? 'contained' : 'outlined'}
                       startIcon={<i className={item.isConnected ? 'ri-user-follow-line' : 'ri-user-add-line'} />}
                     >
-                      {item.isConnected ? 'connected' : 'connect'}
+                      {item.isConnected ? 'Connected' : 'Connect'}
                     </Button>
                     <Button variant='outlined' color='secondary'>
                       <i className='ri-mail-line' />

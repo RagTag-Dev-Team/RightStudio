@@ -1,5 +1,11 @@
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Component Imports
 import Pricing from '@views/pages/pricing'
+
+// Util Imports
+import { getDirection } from '@/utils/get-direction'
 
 const getPricingData = async () => {
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
@@ -11,10 +17,12 @@ const getPricingData = async () => {
   return res.json()
 }
 
-const PricePage = async () => {
+const PricePage = async ({ params }: { params: { lang: Locale } }) => {
   const data = await getPricingData()
 
-  return <Pricing data={data} />
+  const direction = getDirection(params.lang)
+
+  return <Pricing data={data} direction={direction} />
 }
 
 export default PricePage
