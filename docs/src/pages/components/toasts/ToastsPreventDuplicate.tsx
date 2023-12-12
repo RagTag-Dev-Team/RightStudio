@@ -21,8 +21,8 @@ const ToastsPreventDuplicate = () => {
     <div
     className='flex text-center flex-col items-center'
     >
-      <i className='ri-clipboard-line'/>
-      <Typography className='mbe-4 font-medium'>Prevent Duplicate</Typography>
+      <i className='ri-clipboard-line text-[28px]'/>
+      <Typography className='mbe-4' variant='h6'>Prevent Duplicate</Typography>
       <Typography className='mbe-3'>Prevent duplicate toasts from being created.</Typography>
       <Button className='mbe-8'variant='contained' onClick={notify}>Notify</Button>
     </div>

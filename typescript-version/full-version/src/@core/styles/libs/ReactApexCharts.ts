@@ -63,8 +63,7 @@ const ApexChartWrapper = styled('div')(({ theme }) => ({
         fontFamily: `${theme.typography.fontFamily} !important`
       },
     '& .apexcharts-pie-label': {
-      filter: 'none',
-      fill: theme.palette.common.white
+      filter: 'none'
     },
     '& .apexcharts-marker': {
       boxShadow: 'none'

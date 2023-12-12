@@ -10,8 +10,8 @@ const ToastsSuccess = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-checkbox-circle-line mbe-2 text-[32px]' />
-      <Typography className='mbe-4 font-medium'>Success</Typography>
+      <i className='ri-checkbox-circle-line mbe-2 text-[28px]' />
+      <Typography className='mbe-4' variant='h6'>Success</Typography>
       <Typography className='mbe-3'>Indicate that an action was completed successfully.</Typography>
       <Button className='mbe-8'color='success' variant='contained' onClick={() => toast.success('Successfully toasted!')}>
         Success
