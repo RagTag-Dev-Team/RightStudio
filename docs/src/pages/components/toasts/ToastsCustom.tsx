@@ -36,8 +36,8 @@ const ToastsCustom = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <i className='ri-pencil-line mbe-2 text-[32px]' />
-      <Typography className='mbe-4 font-medium'>Custom</Typography>
+      <i className='ri-pencil-line mbe-2 text-[28px]' />
+      <Typography className='mbe-4' variant='h6'>Custom</Typography>
       <Typography className='mbe-3'>Make a toast using any custom content</Typography>
       <Button className='mbe-8' variant='contained' onClick={handleClick}>
         Custom

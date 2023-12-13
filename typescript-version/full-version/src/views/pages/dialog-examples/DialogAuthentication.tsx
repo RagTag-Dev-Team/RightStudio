@@ -21,8 +21,8 @@ const DialogAuthentication = ({ direction }: { direction: Direction }) => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='ri-lock-line text-[32px]' />
-        <Typography>Two Factor Authentication</Typography>
+        <i className='ri-lock-line text-[28px]' />
+        <Typography variant='h5'>Two Factor Authentication</Typography>
         <Typography>Enhance your application security by enabling two factor authentication.</Typography>
         <OpenDialogOnElementClick
           element={Button}

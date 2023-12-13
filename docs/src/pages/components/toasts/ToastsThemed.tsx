@@ -30,8 +30,8 @@ const ToastsThemed = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-palette-line mbe-2 text-[32px]' />
-      <Typography className='mbe-4 font-medium'>Themed</Typography>
+      <i className='ri-palette-line mbe-2 text-[28px]' />
+      <Typography className='mbe-4' variant='h6'>Themed</Typography>
       <Typography className='mbe-3'>Customize the default styles the way you want.</Typography>
       <Button className='mbe-8'variant='contained' onClick={handleClick}>
         Themed
