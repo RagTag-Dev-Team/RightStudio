@@ -2,24 +2,36 @@
 import styled from '@emotion/styled'
 import { KBarAnimator } from 'kbar'
 
-const StyledKBarAnimator = styled(KBarAnimator)`
-  max-inline-size: 600px;
-  min-block-size: 580px;
-  max-block-size: 580px;
-  background: var(--background-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
 
-  &.smallScreen {
-    min-block-size: 100dvh;
-    max-block-size: 100dvh;
-    border-radius: 0;
-  }
+type StyledKBarAnimatorProps = {
+  skin: Settings['skin']
+  isSmallScreen: boolean
+}
 
-  & > * {
+const StyledKBarAnimator = styled(KBarAnimator)<StyledKBarAnimatorProps>`
+  & > div {
+    inline-size: 600px;
+    max-inline-size: 90dvw;
+    block-size: 580px;
+    max-block-size: 90dvh;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    block-size: 100%;
+    overflow: hidden;
+
+    ${({ isSmallScreen }) =>
+      isSmallScreen &&
+      `
+      min-block-size: 100dvh;
+      max-block-size: 100dvh;
+      min-inline-size: 100dvw;
+      max-inline-size: 100dvw;
+      border-radius: 0;
+    `}
+    ${({ skin }) => skin !== 'bordered' && `box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);`}
   }
 `
 

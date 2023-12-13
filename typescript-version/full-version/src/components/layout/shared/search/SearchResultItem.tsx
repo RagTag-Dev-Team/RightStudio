@@ -100,7 +100,7 @@ const SearchResultItem = forwardRef(
           'flex items-center justify-between gap-4 cursor-pointer'
         )}
       >
-        <div className={classnames(styles.itemContentWrapper, 'flex items-center grow gap-2.5')}>
+        <div className={classnames(styles.itemContentWrapper, 'flex items-center grow gap-2')}>
           {action.icon && <div className={classnames('flex', styles.itemIcon)}>{action.icon}</div>}
           {action.name &&
             (action.subtitle ? (

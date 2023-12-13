@@ -3,35 +3,58 @@ import type { SVGAttributes } from 'react'
 
 const LayoutVertical = (props: SVGAttributes<SVGElement>) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='104' height='66' viewBox='0 0 104 66' fill='none' {...props}>
-      <rect y='0.284363' width='104' height='66' rx='4' fill='currentColor' fillOpacity='0.02' />
+    <svg width='104' height='66' viewBox='0 0 104 66' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <rect width='104' height='66' rx='4' fill='currentColor' fillOpacity='0.02' />
       <path
-        d='M0 4.28436C0 2.07522 1.79086 0.284363 4 0.284363H28V68.2844H4C1.79086 68.2844 0 66.4935 0 64.2844V4.28436Z'
+        d='M0 4C0 1.79086 1.79086 0 4 0H27.4717V66H4C1.79086 66 0 64.2091 0 62V4Z'
         fill='currentColor'
         fillOpacity='0.08'
       />
-      <rect x='5' y='24.8921' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5' y='24.8921' width='18' height='2.87399' rx='1.43699' stroke='#dbdade' />
-      <rect x='9' y='6.34387' width='10' height='10' rx='2' fill='currentColor' fillOpacity='0.16' />
-      <rect x='9' y='6.34387' width='10' height='10' rx='2' stroke='#dbdade' />
-      <rect x='5' y='35.7661' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5' y='35.7661' width='18' height='2.87399' rx='1.43699' stroke='#dbdade' />
-      <rect x='5' y='46.64' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5' y='46.64' width='18' height='2.87399' rx='1.43699' stroke='#dbdade' />
-      <rect x='5' y='57.514' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5' y='57.514' width='18' height='2.87399' rx='1.43699' stroke='#dbdade' />
-      <rect x='32.7715' y='5.09766' width='66' height='9.06667' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='35.752' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='35.752' y='7.36426' width='4' height='4.53333' rx='1' stroke='#dbdade' />
-      <rect x='79.752' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='79.752' y='7.36426' width='4' height='4.53333' rx='1' stroke='#dbdade' />
-      <rect x='85.752' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='85.752' y='7.36426' width='4' height='4.53333' rx='1' stroke='#dbdade' />
-      <rect x='91.752' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='91.752' y='7.36426' width='4' height='4.53333' rx='1' stroke='#dbdade' />
-      <rect x='58.1836' y='20.4922' width='41' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='32.7715' y='20.4922' width='19.4118' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='32.7715' y='44.0254' width='66.4121' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect
+        x='4.90625'
+        y='23.8839'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect x='8.83008' y='5.88135' width='9.81132' height='9.70588' rx='2' fill='currentColor' fillOpacity='0.3' />
+      <rect
+        x='4.90625'
+        y='34.4382'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect
+        x='4.90625'
+        y='44.9923'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect
+        x='4.90625'
+        y='55.5463'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect x='32.1523' y='4.67169' width='64.7547' height='8.8' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='35.0781' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='78.248' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='84.1348' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='90.0215' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='57.0859' y='19.6134' width='40.2264' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='32.1523' y='19.6134' width='19.0455' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='32.1523' y='42.4545' width='65.1591' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
     </svg>
   )
 }

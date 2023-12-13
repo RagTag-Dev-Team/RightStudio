@@ -3,21 +3,53 @@ import type { SVGAttributes } from 'react'
 
 const SkinDefault = (props: SVGAttributes<SVGElement>) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='104' height='66' viewBox='0 0 104 66' fill='none' {...props}>
-      <rect x='0.390625' y='0.284363' width='104' height='66' rx='4' fill='#3a3541' fillOpacity='0.02' />
-      <rect x='5.39062' y='24.8921' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='9.39062' y='6.34387' width='10' height='10' rx='2' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5.39062' y='35.7661' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5.39062' y='46.64' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='5.39062' y='57.514' width='18' height='2.87399' rx='1.43699' fill='currentColor' fillOpacity='0.16' />
-      <rect x='35.6621' y='5.59766' width='65' height='8.06667' rx='1.5' stroke='#dbdade' />
-      <rect x='38.1426' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='82.1426' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='88.1426' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='93.1426' y='7.36426' width='4' height='4.53333' rx='1' fill='currentColor' fillOpacity='0.16' />
-      <rect x='60.5' y='20.9922' width='40' height='17.1333' rx='1.5' stroke='#dbdade' />
-      <rect x='35.5' y='20.5' width='18.4118' height='17.1333' rx='1.5' stroke='#dbdade' />
-      <rect x='35.6621' y='44.5254' width='65' height='17.1333' rx='1.5' stroke='#dbdade' />
+    <svg width='104' height='66' viewBox='0 0 104 66' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <rect width='104' height='66' rx='4' fill='currentColor' fillOpacity='0.02' />
+      <rect
+        x='4.90625'
+        y='23.8839'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect x='8.83008' y='5.88135' width='9.81132' height='9.70588' rx='2' fill='currentColor' fillOpacity='0.3' />
+      <rect
+        x='4.90625'
+        y='34.4381'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect
+        x='4.90625'
+        y='44.9923'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect
+        x='4.90625'
+        y='55.5462'
+        width='17.6604'
+        height='2.78946'
+        rx='1.39473'
+        fill='currentColor'
+        fillOpacity='0.3'
+      />
+      <rect x='34.6152' y='5.17166' width='63.7547' height='7.8' rx='1.5' stroke='currentColor' strokeOpacity='0.12' />
+      <rect x='37.0391' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='80.21' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='86.0957' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='91.002' y='6.87158' width='3.92453' height='4.4' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='58.9844' y='20.1134' width='39.2264' height='16.6' rx='1.5' stroke='currentColor' strokeOpacity='0.12' />
+      <rect x='34.6152' y='20.1134' width='18.0455' height='16.6' rx='1.5' stroke='currentColor' strokeOpacity='0.12' />
+      <rect x='34.6152' y='42.9545' width='63.7547' height='16.6' rx='1.5' stroke='currentColor' strokeOpacity='0.12' />
     </svg>
   )
 }

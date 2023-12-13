@@ -1,6 +1,13 @@
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  flex-grow: 1;
   padding-block: 56px;
   padding-inline: 64px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .noResultIcon {
@@ -8,11 +15,11 @@
 }
 
 .noResultText {
-  margin-block-end: 46px;
   font-size: 20px;
+  margin-block-end: 46px;
 }
 
 .noResultSubText {
-  margin-block-end: 18px;
   font-size: 14px;
+  margin-block-end: 18px;
 }

@@ -78,12 +78,12 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
     items: [
       {
         label: 'User Profile',
-        href: '/pages/user-profile/profile',
+        href: '/pages/user-profile',
         icon: 'Icon'
       },
       {
         label: 'Account Settings',
-        href: '/pages/account-settings/account',
+        href: '/pages/account-settings',
         icon: 'Icon'
       },
       {
@@ -135,7 +135,7 @@ const DefaultSuggestions = () => {
       {defaultSuggestions.map((section, index) => (
         <div
           key={index}
-          className={classnames('flex flex-col justify-center overflow-x-hidden', styles.section, {
+          className={classnames('flex flex-col justify-center overflow-x-hidden gap-4', styles.suggestionGroup, {
             'shrink-0': isSmallScreen
           })}
         >
@@ -146,7 +146,10 @@ const DefaultSuggestions = () => {
                 <Link
                   href={item.href}
                   onClick={query.toggle}
-                  className={classnames('flex items-center overflow-x-hidden cursor-pointer', commonStyles.itemLink)}
+                  className={classnames(
+                    'flex items-center overflow-x-hidden cursor-pointer gap-2',
+                    commonStyles.itemLink
+                  )}
                 >
                   {item.icon && <div className={classnames('flex', commonStyles.itemIcon)}>{item.icon}</div>}
                   <p className={commonStyles.itemLabel}>{item.label}</p>

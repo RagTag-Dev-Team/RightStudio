@@ -93,12 +93,10 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
   return (
     !breakpointReached && (
       <div
-        className={classnames(
-          'customizer',
-          styles.customizer,
-          { [styles.show]: isOpen, [styles.smallScreen]: isMobileScreen },
-          'bs-full flex flex-col'
-        )}
+        className={classnames('customizer bs-full flex flex-col', styles.customizer, {
+          [styles.show]: isOpen,
+          [styles.smallScreen]: isMobileScreen
+        })}
       >
         <div
           className={classnames('customizer-toggler flex items-center justify-center cursor-pointer', styles.toggler)}
@@ -112,7 +110,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
             <p>Customize & Preview in Real Time</p>
           </div>
           <div className='flex gap-4'>
-            <div onClick={resetSettings} className={classnames('flex cursor-pointer', styles.refreshWrapper)}>
+            <div onClick={resetSettings} className='relative flex cursor-pointer'>
               <Refresh />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
@@ -121,10 +119,10 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
         </div>
         <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
-            <div className={classnames('theming-section flex flex-col', styles.section)}>
+            <div className='theming-section flex flex-col gap-6'>
               <p>Theming</p>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Primary Color</p>
+                <p className='font-medium'>Primary Color</p>
                 <div className='flex items-center justify-between'>
                   <div className={styles.primaryColorWrapper}>
                     <div className={styles.primaryColor} style={{ backgroundColor: '#765feb' }} />
@@ -147,9 +145,9 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                 </div>
               </div>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Mode</p>
+                <p className='font-medium'>Mode</p>
                 <div className='flex items-center justify-between'>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'light'
@@ -162,7 +160,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Light
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'dark'
@@ -175,7 +173,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Dark
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'system'
@@ -191,9 +189,9 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                 </div>
               </div>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Skin</p>
+                <p className='font-medium'>Skin</p>
                 <div className='flex items-center gap-4'>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'default' })}
                       onClick={() => handleChange('skin', 'default')}
@@ -204,7 +202,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Default
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.skin === 'bordered' })}
                       onClick={() => handleChange('skin', 'bordered')}
@@ -221,7 +219,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
               (settings.mode === 'system' && isSystemDark) ||
               settings.layout === 'horizontal' ? null : (
                 <div className='flex items-center justify-between'>
-                  <label className={classnames(styles.itemTitle, 'cursor-pointer')} htmlFor='customizer-semi-dark'>
+                  <label className='font-medium cursor-pointer' htmlFor='customizer-semi-dark'>
                     Semi Dark
                   </label>
                   <input
@@ -234,12 +232,12 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
               )}
             </div>
             <hr className={styles.hr} />
-            <div className={classnames('layout-section flex flex-col', styles.section)}>
+            <div className='layout-section flex flex-col gap-6'>
               <p>Layout</p>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Layouts</p>
+                <p className='font-medium'>Layouts</p>
                 <div className='flex items-center justify-between'>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'vertical' })}
                       onClick={() => handleChange('layout', 'vertical')}
@@ -250,7 +248,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Vertical
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'collapsed' })}
                       onClick={() => handleChange('layout', 'collapsed')}
@@ -261,7 +259,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Collapsed
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'horizontal' })}
                       onClick={() => handleChange('layout', 'horizontal')}
@@ -275,9 +273,9 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                 </div>
               </div>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Content</p>
+                <p className='font-medium'>Content</p>
                 <div className='flex items-center gap-4'>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, {
                         [styles.active]: settings.contentWidth === 'compact'
@@ -305,7 +303,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                       Compact
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-1'>
+                  <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, { [styles.active]: settings.contentWidth === 'wide' })}
                       onClick={() =>
@@ -326,10 +324,10 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                 </div>
               </div>
               <div className='flex flex-col gap-2.5'>
-                <p className={styles.itemTitle}>Direction</p>
+                <p className='font-medium'>Direction</p>
                 <div className='flex items-center gap-4'>
                   <Link href={getLocalePath(pathName, 'en')}>
-                    <div className='flex flex-col items-start gap-1'>
+                    <div className='flex flex-col items-start gap-0.5'>
                       <div
                         className={classnames(styles.itemWrapper, {
                           [styles.active]: direction === 'ltr'
@@ -344,7 +342,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
                     </div>
                   </Link>
                   <Link href={getLocalePath(pathName, 'ar')}>
-                    <div className='flex flex-col items-start gap-1'>
+                    <div className='flex flex-col items-start gap-0.5'>
                       <div
                         className={classnames(styles.itemWrapper, {
                           [styles.active]: direction === 'rtl'

@@ -4,47 +4,39 @@ import type { SVGAttributes } from 'react'
 const LayoutHorizontal = (props: SVGAttributes<SVGElement>) => {
   return (
     <svg width='104' height='66' viewBox='0 0 104 66' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
-      <rect x='0.609375' y='0.284363' width='104' height='66' rx='6' fill='currentColor' fillOpacity='0.02' />
-      <rect x='45.4619' y='20.4922' width='47.7216' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='15.8838' y='20.4922' width='22.5942' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='15.8838' y='44.0255' width='77.2998' height='18.1333' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='15.8213' y='5.11554' width='75.5766' height='9.28302' rx='2' fill='currentColor' fillOpacity='0.08' />
-      <rect x='21.0205' y='6.98547' width='6.11872' height='5.54323' rx='2' fill='currentColor' fillOpacity='0.16' />
+      <rect width='104' height='66' rx='4' fill='currentColor' fillOpacity='0.02' />
+      <rect x='44.0068' y='19.6136' width='46.8212' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='14.9854' y='19.6136' width='22.1679' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='14.9854' y='42.4547' width='75.8413' height='17.6' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='14.9248' y='4.68896' width='74.1506' height='9.00999' rx='2' fill='currentColor' fillOpacity='0.08' />
+      <rect x='20.0264' y='6.50403' width='6.00327' height='5.38019' rx='1' fill='currentColor' fillOpacity='0.3' />
+      <rect x='33.877' y='7.96356' width='6.6372' height='2.46129' rx='1.23064' fill='currentColor' fillOpacity='0.3' />
       <rect
-        x='35.1396'
-        y='8.48914'
-        width='6.76484'
-        height='2.53587'
-        rx='1.26794'
+        x='48.3652'
+        y='7.96356'
+        width='6.6372'
+        height='2.46129'
+        rx='1.23064'
         fill='currentColor'
-        fillOpacity='0.16'
+        fillOpacity='0.3'
       />
       <rect
-        x='49.9043'
-        y='8.48914'
-        width='6.76484'
-        height='2.53587'
-        rx='1.26794'
+        x='62.8506'
+        y='7.96356'
+        width='6.6372'
+        height='2.46129'
+        rx='1.23064'
         fill='currentColor'
-        fillOpacity='0.16'
+        fillOpacity='0.3'
       />
       <rect
-        x='64.6689'
-        y='8.48914'
-        width='6.76484'
-        height='2.53587'
-        rx='1.26794'
+        x='77.3379'
+        y='7.96356'
+        width='6.6372'
+        height='2.46129'
+        rx='1.23064'
         fill='currentColor'
-        fillOpacity='0.16'
-      />
-      <rect
-        x='79.4336'
-        y='8.48914'
-        width='6.76484'
-        height='2.53587'
-        rx='1.26794'
-        fill='currentColor'
-        fillOpacity='0.16'
+        fillOpacity='0.3'
       />
     </svg>
   )

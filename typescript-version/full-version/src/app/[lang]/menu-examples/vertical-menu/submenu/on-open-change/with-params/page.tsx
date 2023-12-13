@@ -1,7 +1,7 @@
 'use client'
 
 // React imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Component imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu-package/vertical-menu'

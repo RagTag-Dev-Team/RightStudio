@@ -29,7 +29,7 @@ const noResultData: NoResultData[] = [
   },
   {
     label: 'User Profile',
-    href: '/pages/user-profile/profile',
+    href: '/pages/user-profile',
     icon: 'Icon'
   },
   {
@@ -44,7 +44,7 @@ const NoResult = (props: NoResultProps) => {
   const { query } = props
 
   return (
-    <div className={classnames('flex items-center justify-center bs-full', styles.wrapper)}>
+    <div className={styles.wrapper}>
       <div className='flex flex-col items-center'>
         <span className={classnames('flex', styles.noResultIcon)}>Icon</span>
         <p className={styles.noResultText}>{`No result for "${query}"`}</p>
@@ -52,7 +52,7 @@ const NoResult = (props: NoResultProps) => {
         <ul className='flex flex-col gap-4'>
           {noResultData.map((item, index) => (
             <li key={index} className='flex items-center'>
-              <Link href={item.href} className={classnames('flex items-center', commonStyles.itemLink)}>
+              <Link href={item.href} className={classnames('flex items-center gap-2', commonStyles.itemLink)}>
                 <div className={classnames('flex', commonStyles.itemIcon)}>{item.icon}</div>
                 <p className={commonStyles.itemLabel}>{item.label}</p>
               </Link>
