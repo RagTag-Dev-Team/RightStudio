@@ -60,9 +60,6 @@
   font-size: 14px;
 }
 
-.itemLink {
-  gap: 10px;
-}
 .itemLink:hover {
   color: var(--primary-color);
 }

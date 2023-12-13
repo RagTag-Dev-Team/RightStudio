@@ -9,7 +9,7 @@ const AboutPage = () => {
   const { updatePageSettings } = useSettings()
 
   useEffect(() => {
-    updatePageSettings({
+    return updatePageSettings({
       mode: 'dark'
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

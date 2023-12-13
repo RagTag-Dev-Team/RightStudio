@@ -20,11 +20,9 @@ import type { ChildrenType } from '@core/types'
 // Component Imports
 import SearchResults from './SearchResults'
 
-// Config Imports
-import themeConfig from '@configs/themeConfig'
-
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -68,6 +66,7 @@ const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
 const NavSearch = () => {
   // Hooks
   const router = useRouter()
+  const { settings } = useSettings()
   const isSmallScreen = useMedia('(max-width: 600px)', false)
 
   // Search Actions Data with 'perform' method
@@ -87,11 +86,8 @@ const NavSearch = () => {
       />
       <KBarPortal>
         <KBarPositioner className={styles.positioner}>
-          <StyledKBarAnimator
-            className={classnames('is-full bs-full overflow-hidden', { smallScreen: isSmallScreen })}
-            {...(!isSmallScreen && { style: { margin: themeConfig.layoutPadding } })}
-          >
-            <div className={classnames('flex items-center gap-2.5', styles.inputWrapper)}>
+          <StyledKBarAnimator skin={settings.skin} isSmallScreen={isSmallScreen}>
+            <div className={classnames('flex items-center gap-2', styles.inputWrapper)}>
               <div className='flex'>
                 <i className='ri-search-line' />
               </div>

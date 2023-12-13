@@ -1,5 +1,6 @@
 // Docusaurus Imports
 import Layout from '@theme-original/Layout'
+import Head from '@docusaurus/Head';
 
 // Third-party Imports
 import { ToastContainer } from 'react-toastify'
@@ -18,7 +19,12 @@ import '@/assets/iconify-icons/generated-icons.css'
 
 const LayoutWrapper = (props) => {
   return (
-    <Layout {...props} >
+    <Layout {...props}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      </Head>
       <ThemeProvider>
         {props.children}
         <ToastifyWrapper>

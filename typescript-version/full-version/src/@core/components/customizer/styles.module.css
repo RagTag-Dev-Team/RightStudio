@@ -1,9 +1,9 @@
 .customizer {
-  inline-size: 400px;
+  inline-size: 401px;
   background-color: var(--mui-palette-background-paper);
   position: fixed;
   inset-block-start: 0;
-  inset-inline-end: -400px;
+  inset-inline-end: -401px;
   border-inline-start: 1px solid var(--border-color);
   box-shadow: none;
   z-index: var(--customizer-z-index);
@@ -55,10 +55,6 @@
   line-height: 24px;
 }
 
-.refreshWrapper {
-  position: relative;
-}
-
 .dotStyles {
   position: absolute;
   inset-block-start: 0;
@@ -80,15 +76,6 @@
   padding-block: 20px;
   padding-inline: 24px;
   gap: 32px;
-}
-
-.section {
-  gap: 1.5rem;
-}
-
-.itemTitle {
-  font-weight: 500;
-  color: var(--mui-palette-text-primary);
 }
 
 .itemWrapper {
@@ -120,23 +107,28 @@
   overflow: hidden;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  block-size: 48px;
-  inline-size: 48px;
+  outline: 1px solid transparent;
+  block-size: 50px;
+  inline-size: 50px;
+  padding: 8px;
   cursor: pointer;
   &.active {
     border-color: var(--primary-color);
     outline: 1px solid var(--primary-color);
   }
 }
-
 .primaryColor {
-  block-size: 30px;
-  inline-size: 30px;
+  block-size: 100%;
+  inline-size: 100%;
   border-radius: var(--border-radius);
 }
 
 .modeWrapper {
   min-block-size: 54px;
+
+  &.active {
+    color: var(--primary-color);
+  }
 }
 
 .hr {

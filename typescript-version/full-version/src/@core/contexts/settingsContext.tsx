@@ -59,7 +59,7 @@ export const SettingsProvider = (props: { children: ReactNode; settingsCookie: S
   // Cookies
   const [settingsCookie, updateSettingsCookie] = useObjectCookie<Settings>(
     'settings',
-    props.settingsCookie || initialSettings
+    JSON.stringify(props.settingsCookie) !== '{}' ? props.settingsCookie : initialSettings
   )
 
   // State

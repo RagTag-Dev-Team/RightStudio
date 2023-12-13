@@ -8,20 +8,21 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  // VSCode Editor
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never",
+    "source.fixAll.stylelint": "explicit"
+  },
   // Extension: Git
   "git.rebaseWhenSync": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   // Extension: Prettier
   "prettier.requireConfig": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
   // Extension: ESLint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false,
-    "source.fixAll.stylelint": true
-  },
   "eslint.validate": [
     "javascript",
     "typescript",
@@ -29,8 +30,6 @@
     "typescriptreact"
   ],
   "eslint.format.enable": true,
-  // Package manager Configs
-  "npm.packageManager": "yarn",
   // Stylelint
   "css.validate": false,
   "less.validate": false,

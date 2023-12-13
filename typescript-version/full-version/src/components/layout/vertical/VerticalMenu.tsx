@@ -23,6 +23,7 @@ import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // import { generateVerticalMenu } from '@/utils/menuUtils'
 
@@ -38,14 +39,25 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
   const pathName = usePathname()
   const { settings } = useSettings()
   const params = useParams()
+  const { isBreakpointReached } = useVerticalNav()
 
   // Get locale from pathname
   const locale = getLocale(pathName)
 
+  const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
+
   return (
     // eslint-disable-next-line lines-around-comment
     /* Custom scrollbar instead of browser scroll, remove if you want browser scroll only */
-    <PerfectScrollbar options={{ wheelPropagation: false }}>
+    <ScrollWrapper
+      {...(isBreakpointReached
+        ? {
+            className: 'bs-full overflow-y-auto overflow-x-hidden'
+          }
+        : {
+            options: { wheelPropagation: false, suppressScrollX: true }
+          })}
+    >
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
       <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
@@ -239,7 +251,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
       {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ ...menuItemStyles(settings, theme) }}>
         {generateVerticalMenu(menuData(locale, params), locale)}
       </Menu> */}
-    </PerfectScrollbar>
+    </ScrollWrapper>
   )
 }
 
