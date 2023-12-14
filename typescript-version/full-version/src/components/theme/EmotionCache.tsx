@@ -1,22 +1,47 @@
-// app/ThemeRegistry.tsx
 'use client'
+
+// React Imports
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
-import { useEffect, useState } from 'react'
-
+// Next Imports
 import { useServerInsertedHTML } from 'next/navigation'
 
-import type { Options as CacheOptions } from '@emotion/cache'
+// MUI Imports
+import type { Direction } from '@mui/material/styles'
+
+// Third-party Imports
 import createCache from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
+import { CacheProvider as DefaultCacheProvider } from '@emotion/react'
+import stylisRTLPlugin from 'stylis-plugin-rtl'
+import type { EmotionCache, Options as OptionsOfCreateCache } from '@emotion/cache'
+
+export type EmotionCacheProviderProps = {
+  direction: Direction
+
+  /* This is the options passed to createCache() from "import createCache from '@emotion/cache'" */
+  options: Omit<OptionsOfCreateCache, 'insertionPoint'>
+
+  /* By default <CacheProvider /> from "import { CacheProvider } from '@emotion/react'" */
+  CacheProvider?: (props: { value: EmotionCache; children: ReactNode }) => JSX.Element | null
+  children: ReactNode
+}
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
-export default function ThemeRegistry(props: { children: ReactNode; options: CacheOptions }) {
-  const { options, children } = props
+export default function ThemeRegistry(props: EmotionCacheProviderProps) {
+  // Props
+  const { options, direction, CacheProvider = DefaultCacheProvider, children } = props
 
   const getCacheState = () => {
-    const cache = createCache(options)
+    const cache = createCache({
+      ...options,
+      prepend: true,
+      ...(direction === 'rtl' && {
+        key: 'rtl',
+        stylisPlugins: [stylisRTLPlugin]
+      })
+    })
 
     cache.compat = true
     const prevInsert = cache.insert
@@ -73,6 +98,10 @@ export default function ThemeRegistry(props: { children: ReactNode; options: Cac
       />
     )
   })
+
+  useEffect(() => {
+    document.dir = direction
+  }, [direction])
 
   return <CacheProvider value={cache}>{children}</CacheProvider>
 }

@@ -55,6 +55,10 @@
   line-height: 24px;
 }
 
+.actionActiveColor {
+  color: var(--mui-palette-action-active);
+}
+
 .dotStyles {
   position: absolute;
   inset-block-start: 0;
@@ -76,6 +80,10 @@
   padding-block: 20px;
   padding-inline: 24px;
   gap: 32px;
+}
+
+.chip {
+  border-radius: 4px;
 }
 
 .itemWrapper {

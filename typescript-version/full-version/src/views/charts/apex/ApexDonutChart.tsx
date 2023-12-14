@@ -114,7 +114,7 @@ const ApexDonutChart = () => {
         subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <ReactApexcharts type='donut' height={400} options={options} series={[85, 16, 50, 50]} />
+        <ReactApexcharts type='donut' width='100%' height={400} options={options} series={[85, 16, 50, 50]} />
       </CardContent>
     </Card>
   )

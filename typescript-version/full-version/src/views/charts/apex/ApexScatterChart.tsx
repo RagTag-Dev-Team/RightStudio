@@ -133,7 +133,7 @@ const ApexScatterChart = () => {
         }}
       />
       <CardContent>
-        <ReactApexcharts type='scatter' height={400} options={options} series={series} />
+        <ReactApexcharts type='scatter' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

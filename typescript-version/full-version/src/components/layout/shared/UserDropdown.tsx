@@ -26,7 +26,7 @@ import { signOut, useSession } from 'next-auth/react'
 import classnames from 'classnames'
 
 // Style Imports
-import commonStyles from '@components/layout/shared/styles.module.css'
+import commonDropdownStyles from '@components/layout/shared/styles.module.css'
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -101,7 +101,7 @@ const UserDropdown = () => {
         disablePortal
         placement='bottom-end'
         anchorEl={anchorRef.current}
-        className={classnames('min-w-[240px]', commonStyles.popperStyles)}
+        className={classnames('min-w-[240px]', commonDropdownStyles.popperStyles)}
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -110,7 +110,7 @@ const UserDropdown = () => {
               transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top'
             }}
           >
-            <Paper>
+            <Paper className={commonDropdownStyles.paper}>
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>
@@ -121,31 +121,23 @@ const UserDropdown = () => {
                     </div>
                   </div>
                   <Divider className='mlb-1' />
-                  <MenuItem onClick={e => handleDropdownClose(e, '/pages/user-profile/profile')}>
-                    <div className='flex items-center gap-2'>
-                      <i className='ri-user-3-line' />
-                      <Typography>My Profile</Typography>
-                    </div>
+                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/user-profile')}>
+                    <i className='ri-user-3-line' />
+                    <Typography>My Profile</Typography>
                   </MenuItem>
-                  <MenuItem onClick={e => handleDropdownClose(e, '/pages/account-settings/account')}>
-                    <div className='flex items-center gap-2'>
-                      <i className='ri-settings-4-line' />
-                      <Typography>Settings</Typography>
-                    </div>
+                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/account-settings')}>
+                    <i className='ri-settings-4-line' />
+                    <Typography>Settings</Typography>
                   </MenuItem>
-                  <MenuItem onClick={e => handleDropdownClose(e, '/pages/pricing')}>
-                    <div className='flex items-center gap-2'>
-                      <i className='ri-money-dollar-circle-line' />
-                      <Typography>Pricing</Typography>
-                    </div>
+                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/pricing')}>
+                    <i className='ri-money-dollar-circle-line' />
+                    <Typography>Pricing</Typography>
                   </MenuItem>
-                  <MenuItem onClick={e => handleDropdownClose(e, '/pages/faq')}>
-                    <div className='flex items-center gap-2'>
-                      <i className='ri-question-line' />
-                      <Typography>FAQ</Typography>
-                    </div>
+                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/faq')}>
+                    <i className='ri-question-line' />
+                    <Typography>FAQ</Typography>
                   </MenuItem>
-                  <div className='flex items-center plb-1.5 pli-4 gap-2.5'>
+                  <div className='flex items-center plb-1.5 pli-4'>
                     <Button
                       fullWidth
                       variant='contained'

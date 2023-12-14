@@ -15,7 +15,7 @@ const TypographyHeadings = () => {
             <Typography>H1</Typography>
           </Grid>
           <Grid item xs={12} sm={10}>
-            <Typography variant='h1'>Heading 1</Typography>
+            <Typography variant='h1' className='!m-0'>Heading 1</Typography>
             <Typography variant='body2'>font-size: / line-height: / font-weight:</Typography>
           </Grid>
           <Grid item xs={12} sm={2}>

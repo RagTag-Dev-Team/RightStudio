@@ -53,9 +53,7 @@ const UserActivityTimeLine = () => {
                   12 min ago
                 </Typography>
               </div>
-              <Typography className='mbe-2' color='text.secondary'>
-                Invoices have been paid to the company
-              </Typography>
+              <Typography className='mbe-2'>Invoices have been paid to the company</Typography>
               <div
                 className={classnames(
                   'flex items-center gap-2.5 w-fit',
@@ -81,9 +79,7 @@ const UserActivityTimeLine = () => {
                   45 min ago
                 </Typography>
               </div>
-              <Typography className='mbe-2' color='text.secondary'>
-                Project meeting with john @10:15am
-              </Typography>
+              <Typography className='mbe-2'>Project meeting with john @10:15am</Typography>
               <div className='flex items-center gap-2.5'>
                 <Avatar src='/assets/avatars/2.png' className='w-8 h-8' />
                 <div className='flex flex-col flex-wrap'>
@@ -107,9 +103,7 @@ const UserActivityTimeLine = () => {
                   2 Day Ago
                 </Typography>
               </div>
-              <Typography className='mbe-2' color='text.secondary'>
-                6 team members in a project
-              </Typography>
+              <Typography className='mbe-2'>6 team members in a project</Typography>
               <AvatarGroup total={6} className='pull-up'>
                 <Avatar alt='Travis Howard' src='/images/avatars/2.jpg' />
                 <Avatar alt='Agnes Walker' src='/images/avatars/4.jpg' />

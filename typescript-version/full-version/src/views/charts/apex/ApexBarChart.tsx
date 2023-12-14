@@ -69,6 +69,7 @@ const ApexBarChart = () => {
       <CardContent>
         <ReactApexcharts
           type='bar'
+          width='100%'
           height={400}
           options={options}
           series={[{ data: [700, 350, 480, 600, 210, 550, 150] }]}

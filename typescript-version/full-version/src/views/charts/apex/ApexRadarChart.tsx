@@ -102,7 +102,7 @@ const ApexRadarChart = () => {
     <Card>
       <CardHeader title='Mobile Comparison' />
       <CardContent>
-        <ReactApexcharts type='radar' height={400} options={options} series={series} />
+        <ReactApexcharts type='radar' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

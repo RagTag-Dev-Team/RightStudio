@@ -16,7 +16,7 @@ const StyledKBarAnimator = styled(KBarAnimator)<StyledKBarAnimatorProps>`
     max-inline-size: 90dvw;
     block-size: 580px;
     max-block-size: 90dvh;
-    background: var(--background-color);
+    background: var(--mui-palette-background-paper);
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;

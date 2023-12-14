@@ -233,7 +233,8 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                         InputProps={{ inputProps: { min: 0 } }}
                       />
                       <div>
-                        <Typography component='span'>Discount:</Typography> <Typography component='span'>0%</Typography>
+                        <Typography component='span'>Discount:</Typography>
+                        <Typography component='span'>0%</Typography>
                         <Tooltip title='Tax 1' placement='top'>
                           <Typography component='span'>0%</Typography>
                         </Tooltip>

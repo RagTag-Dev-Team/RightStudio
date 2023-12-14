@@ -14,19 +14,19 @@ const SwiperCentered = () => {
   return (
     <div ref={ref} className='keen-slider'>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/26.jpg' alt='swiper 26' />
+        <img src='/images/banners/16.jpg' alt='swiper 16' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/27.jpg' alt='swiper 27' />
+        <img src='/images/banners/17.jpg' alt='swiper 17' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/28.jpg' alt='swiper 28' />
+        <img src='/images/banners/18.jpg' alt='swiper 18' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/29.jpg' alt='swiper 29' />
+        <img src='/images/banners/19.jpg' alt='swiper 19' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/30.jpg' alt='swiper 30' />
+        <img src='/images/banners/20.jpg' alt='swiper 20' />
       </div>
     </div>
   )

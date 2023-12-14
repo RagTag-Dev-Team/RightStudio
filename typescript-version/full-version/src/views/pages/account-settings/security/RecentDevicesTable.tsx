@@ -87,13 +87,13 @@ const RecentDevicesTable = () => {
                   </div>
                 </td>
                 <td>
-                  <Typography color='text.secondary'>{device.device}</Typography>
+                  <Typography>{device.device}</Typography>
                 </td>
                 <td>
-                  <Typography color='text.secondary'>{device.location}</Typography>
+                  <Typography>{device.location}</Typography>
                 </td>
                 <td>
-                  <Typography color='text.secondary'>{device.date}</Typography>
+                  <Typography>{device.date}</Typography>
                 </td>
               </tr>
             ))}

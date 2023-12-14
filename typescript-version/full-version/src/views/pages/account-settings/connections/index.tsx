@@ -1,8 +1,5 @@
 'use client'
 
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -121,9 +118,7 @@ const Connections = () => {
                 <div className='flex flex-grow items-center'>
                   <img height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
-                    <Typography href='/' component={Link} onClick={e => e.preventDefault()}>
-                      {item.title}
-                    </Typography>
+                    <Typography>{item.title}</Typography>
                     {item.isConnected ? (
                       <Typography>{item.username}</Typography>
                     ) : (

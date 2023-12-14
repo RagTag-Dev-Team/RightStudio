@@ -92,7 +92,7 @@ const ApexRadialBarChart = () => {
     <Card>
       <CardHeader title='Statistics' />
       <CardContent>
-        <ReactApexcharts type='radialBar' height={400} options={options} series={[80, 50, 35]} />
+        <ReactApexcharts type='radialBar' width='100%' height={400} options={options} series={[80, 50, 35]} />
       </CardContent>
     </Card>
   )

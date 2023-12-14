@@ -58,7 +58,7 @@ const SwiperMutationObserver = () => {
           )
         })}
       </div>
-      <div className='flex gap-4'>
+      <div className='flex mbs-4 gap-4'>
         <Button variant='contained' onClick={() => setSlides([...slides, slides.length + 1])}>
           Add
         </Button>

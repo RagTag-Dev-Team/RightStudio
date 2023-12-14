@@ -140,7 +140,7 @@ const ApexCandlestickChart = () => {
         }}
       />
       <CardContent>
-        <ReactApexcharts type='candlestick' height={400} options={options} series={series} />
+        <ReactApexcharts type='candlestick' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

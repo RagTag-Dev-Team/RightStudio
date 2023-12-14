@@ -23,7 +23,7 @@ import format from 'date-fns/format'
 import DatePicker from 'react-datepicker'
 
 // Type Imports
-import type { Direction } from '@/@core/types'
+import type { Direction } from '@core/types'
 
 type CustomInputProps = TextFieldProps & {
   label?: string
@@ -174,8 +174,8 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction 
                   activeStep === steps.length - 1
                     ? 'ri-check-line'
                     : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
+                      ? 'ri-arrow-left-line'
+                      : 'ri-arrow-right-line'
                 }
               />
             }

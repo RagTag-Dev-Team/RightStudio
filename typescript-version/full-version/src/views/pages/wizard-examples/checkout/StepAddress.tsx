@@ -13,6 +13,8 @@ import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import CardContent from '@mui/material/CardContent'
+import { styled } from '@mui/material/styles'
+import type { TypographyProps } from '@mui/material/Typography'
 import type { Theme } from '@mui/material/styles'
 import type { ButtonProps } from '@mui/material/Button'
 
@@ -31,6 +33,18 @@ import commonStyles from '@/styles/common.module.css'
 import AddEditAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
+const HorizontalContent = styled(Typography, {
+  name: 'MuiCustomInputHorizontal',
+  slot: 'content'
+})<TypographyProps>({})
+
+const VerticalContent = styled(Typography, {
+  name: 'MuiCustomInputVertical',
+  slot: 'content'
+})<TypographyProps>({
+  textAlign: 'center'
+})
+
 const data: CustomInputHorizontalData[] = [
   {
     title: 'John Doe (Default)',
@@ -38,7 +52,7 @@ const data: CustomInputHorizontalData[] = [
     value: 'home',
     isSelected: true,
     content: (
-      <div className='flex flex-col h-full'>
+      <HorizontalContent component='div' className='flex flex-col h-full'>
         <Typography>
           4135 Parkway Street, Los Angeles, CA, 90017.
           <br />
@@ -53,7 +67,7 @@ const data: CustomInputHorizontalData[] = [
             Remove
           </Typography>
         </div>
-      </div>
+      </HorizontalContent>
     )
   },
   {
@@ -61,7 +75,7 @@ const data: CustomInputHorizontalData[] = [
     meta: <Chip size='small' label='Office' color='success' />,
     value: 'office',
     content: (
-      <div className='flex flex-col h-full'>
+      <HorizontalContent component='div' className='flex flex-col h-full'>
         <Typography>
           87 Hoffman Avenue, New York, NY, 10016.
           <br />
@@ -76,7 +90,7 @@ const data: CustomInputHorizontalData[] = [
             Remove
           </Typography>
         </div>
-      </div>
+      </HorizontalContent>
     )
   }
 ]
@@ -90,9 +104,9 @@ const dataIcons: CustomInputVerticalData[] = [
     content: (
       <>
         <Chip size='small' label='Free' color='success' className='absolute inline-end-0' />
-        <Typography variant='body2' className='text-center my-auto'>
+        <VerticalContent variant='body2' className='my-auto'>
           Get your product in 1 Week.
-        </Typography>
+        </VerticalContent>
       </>
     )
   },
@@ -103,9 +117,9 @@ const dataIcons: CustomInputVerticalData[] = [
     content: (
       <>
         <Chip label='$10' size='small' color='secondary' className='absolute inline-end-0' />
-        <Typography variant='body2' className='text-center my-auto'>
+        <VerticalContent variant='body2' className='my-auto'>
           Get your product in 3-4 days.
-        </Typography>
+        </VerticalContent>
       </>
     )
   },
@@ -116,9 +130,9 @@ const dataIcons: CustomInputVerticalData[] = [
     content: (
       <>
         <Chip label='$15' size='small' color='secondary' className='absolute inline-end-0' />
-        <Typography variant='body2' className='text-center my-auto'>
+        <VerticalContent variant='body2' className='my-auto'>
           Get your product in 1 day.
-        </Typography>
+        </VerticalContent>
       </>
     )
   }

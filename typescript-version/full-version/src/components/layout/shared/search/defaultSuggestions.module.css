@@ -23,4 +23,5 @@
 .sectionLabel {
   font-size: 12px;
   text-transform: uppercase;
+  color: var(--mui-palette-text-disabled);
 }

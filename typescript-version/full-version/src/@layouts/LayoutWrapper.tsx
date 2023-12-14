@@ -68,7 +68,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
   }, [systemMode])
 
   // Return the layout based on the layout context
-  return layout === 'horizontal' ? horizontalLayout : verticalLayout
+  return <div data-skin={settings.skin}>{layout === 'horizontal' ? horizontalLayout : verticalLayout}</div>
 }
 
 export default LayoutWrapper

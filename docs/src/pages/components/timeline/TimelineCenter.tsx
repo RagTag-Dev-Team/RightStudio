@@ -118,10 +118,10 @@ const TimelineCenter = () => {
           )}
           <Card>
             <CardContent>
-              <Typography variant='body1' className='font-medium mbe-4'>
+              <Typography className='font-medium mbe-4'>
                 You've uploaded doc pdf to the Themeselection project
               </Typography>
-              <Typography variant='body1' className='mbe-3' color='text.secondary'>
+              <Typography className='mbe-3' color='text.secondary'>
                 The process of recording the key project details and producing the documents that are required to
                 implement it successfully. Simply put, it's an umbrella term which includes all the documents created
                 over the course of the project.
@@ -157,10 +157,10 @@ const TimelineCenter = () => {
           )}
           <Card>
             <CardContent>
-              <Typography variant='body1' className='font-medium mbe-4'>
+              <Typography className='font-medium mbe-4'>
                 Heather added 4 images to the Team album
               </Typography>
-              <Typography variant='body1' className='mbe-3' color='text.secondary'>
+              <Typography className='mbe-3' color='text.secondary'>
                 In the Select Image for Project dialog box, choose one of the following: Under the Upload New Image
                 section
               </Typography>
@@ -194,7 +194,7 @@ const TimelineCenter = () => {
           </Typography>
           <Card>
             <CardContent>
-              <Typography variant='body1' className='font-medium mbe-4'>
+              <Typography className='font-medium mbe-4'>
                 Loretta write a review on Themeselection
               </Typography>
               <div className='flex items-center gap-4 mbe-3'>
@@ -248,7 +248,7 @@ const TimelineCenter = () => {
           )}
           <Card>
             <CardContent>
-              <Typography variant='body1' className='font-medium mbe-4'>
+              <Typography className='font-medium mbe-4'>
                 Julia stiles shared an earnings report
               </Typography>
               <div className='flex items-center gap-1'>
@@ -307,10 +307,10 @@ const TimelineCenter = () => {
           )}
           <Card>
             <CardContent>
-              <Typography variant='body1' className='font-medium mbe-4'>
+              <Typography className='font-medium mbe-4'>
                 Josh Johnson shared Next js project progress report
               </Typography>
-              <Typography variant='body1' className='mbe-3' color='text.secondary'>
+              <Typography className='mbe-3' color='text.secondary'>
                 The structure and process are defined in the project organization considering the attainment of the
                 corporate objectives and therefore also project objectives. The components of the project process are
               </Typography>

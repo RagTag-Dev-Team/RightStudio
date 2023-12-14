@@ -21,7 +21,7 @@ import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 const shortcuts: ShortcutsType[] = [
   {
     url: '/apps/calendar',
-    icon: 'ri-calendar-event-fill',
+    icon: 'ri-calendar-line',
     title: 'Calendar',
     subtitle: 'Appointments'
   },
@@ -50,7 +50,7 @@ const shortcuts: ShortcutsType[] = [
     subtitle: 'User Dashboard'
   },
   {
-    url: '/pages/account-settings/account',
+    url: '/pages/account-settings',
     icon: 'ri-settings-4-line',
     title: 'Settings',
     subtitle: 'Account Settings'
@@ -75,7 +75,7 @@ const notifications: NotificationsType[] = [
     avatarImage: '/images/avatars/3.png',
     title: 'Bernard Woods',
     subtitle: 'You have new message from Bernard Woods',
-    time: 'Feb 18, 8:26 AM',
+    time: 'May 18, 8:26 AM',
     read: true
   },
   {
@@ -89,14 +89,14 @@ const notifications: NotificationsType[] = [
     avatarText: 'MG',
     title: 'Application has been approved 🚀',
     subtitle: 'Your Meta Gadgets project application has been approved.',
-    time: '2 days ago',
+    time: 'Feb 17, 12:17 PM',
     read: true
   },
   {
     avatarIcon: 'ri-mail-line',
     title: 'New message from Harry',
     subtitle: 'You have new message from Harry',
-    time: '5 days ago',
+    time: 'Jan 6, 1:48 PM',
     read: true
   }
 ]

@@ -30,8 +30,8 @@ import themeConfig from '@configs/themeConfig'
 
 // Style Imports
 import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 import commonDropdownStyles from '@components/layout/shared/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 export type ShortcutsType = {
   url: string
@@ -89,7 +89,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                 {
                   name: 'preventOverflow',
                   options: {
-                    padding: themeConfig.layoutPadding + 1
+                    padding: themeConfig.layoutPadding
                   }
                 }
               ]
@@ -98,7 +98,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper>
+            <Paper className={commonDropdownStyles.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
                   <div className='flex items-center justify-between plb-4 pli-5 is-full gap-2'>

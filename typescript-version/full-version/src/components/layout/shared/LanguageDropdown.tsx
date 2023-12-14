@@ -85,7 +85,7 @@ const LanguageDropdown = () => {
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper>
+            <Paper className={commonDropdownStyles.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   {languageData.map(locale => (

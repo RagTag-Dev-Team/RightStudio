@@ -89,7 +89,7 @@ const ModeDropdown = () => {
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper>
+            <Paper className={commonDropdownStyles.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('light')}>

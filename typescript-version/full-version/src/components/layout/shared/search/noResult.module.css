@@ -11,15 +11,17 @@
 }
 
 .noResultIcon {
+  font-size: 64px;
   margin-block-end: 10px;
 }
 
 .noResultText {
   font-size: 20px;
-  margin-block-end: 46px;
+  margin-block-end: 44px;
 }
 
 .noResultSubText {
   font-size: 14px;
   margin-block-end: 18px;
+  color: var(--mui-palette-text-disabled);
 }

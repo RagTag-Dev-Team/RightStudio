@@ -92,11 +92,13 @@ const NavSearch = () => {
                 <i className='ri-search-line' />
               </div>
               <KBarSearch defaultPlaceholder='' className={classnames('grow min-is-0', styles.searchInput)} />
-              <ComponentWithUseKBar className={styles.escape}>{`[esc]`}</ComponentWithUseKBar>
+              <ComponentWithUseKBar className={classnames(styles.escape, commonStyles.textDisabled)}>
+                {`[esc]`}
+              </ComponentWithUseKBar>
               <ComponentWithUseKBar
                 triggerClick
                 className='flex cursor-pointer'
-                icon={<i className='ri-close-line' />}
+                icon={<i className={classnames('ri-close-line', commonStyles.textSecondary)} />}
               />
             </div>
             <SearchResults />

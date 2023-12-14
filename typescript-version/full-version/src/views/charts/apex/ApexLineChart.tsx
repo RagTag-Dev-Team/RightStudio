@@ -98,7 +98,7 @@ const ApexLineChart = () => {
         }}
       />
       <CardContent>
-        <ReactApexcharts type='line' height={400} options={options} series={series} />
+        <ReactApexcharts type='line' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

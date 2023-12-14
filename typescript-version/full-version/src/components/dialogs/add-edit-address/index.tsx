@@ -21,16 +21,18 @@ import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { styled } from '@mui/material/styles'
+import type { TypographyProps } from '@mui/material/Typography'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Type Imports
-import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
+import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
-import CustomInputVertical from '@core/components/custom-inputs/Vertical'
+import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
@@ -55,18 +57,34 @@ type AddEditAddressProps = {
 
 const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
 
-const customInputData: CustomInputVerticalData[] = [
+const Title = styled(Typography, {
+  name: 'MuiCustomInputVertical',
+  slot: 'title'
+})<TypographyProps>(({ theme }) => ({
+  letterSpacing: '0.15px',
+  fontWeight: theme.typography.fontWeightMedium
+}))
+
+const customInputData: CustomInputHorizontalData[] = [
   {
-    title: 'Home',
+    title: (
+      <Title component='div' className='flex items-center gap-1'>
+        <i className='ri-home-4-line' />
+        <Typography className='font-medium'>Home</Typography>
+      </Title>
+    ),
     content: 'Delivery Time (7am - 9pm)',
-    asset: 'ri-home-4-line',
     value: 'home',
     isSelected: true
   },
   {
-    title: 'Office',
+    title: (
+      <Title component='div' className='flex items-center gap-1'>
+        <i className='ri-building-4-line' />
+        <Typography className='font-medium'>Office</Typography>
+      </Title>
+    ),
     content: 'Delivery Time (10am - 6pm)',
-    asset: 'ri-building-4-line',
     value: 'office'
   }
 ]
@@ -120,26 +138,18 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>
-            {customInputData.map((item, index) => {
-              let asset
-
-              if (item.asset && typeof item.asset === 'string') {
-                asset = <i className={item.asset} />
-              }
-
-              return (
-                <Grid item xs={12} sm={6} key={index}>
-                  <CustomInputVertical
-                    key={index}
-                    type='radio'
-                    name='addressType'
-                    selected={selected}
-                    data={typeof item.asset === 'string' ? { ...item, asset } : item}
-                    handleChange={handleChange}
-                  />
-                </Grid>
-              )
-            })}
+            {customInputData.map((item, index) => (
+              <Grid item xs={12} sm={6} key={index}>
+                <CustomInputHorizontal
+                  key={index}
+                  type='radio'
+                  name='addressType'
+                  selected={selected}
+                  data={item}
+                  handleChange={handleChange}
+                />
+              </Grid>
+            ))}
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth

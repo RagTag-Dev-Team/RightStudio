@@ -32,8 +32,8 @@ import { getInitials } from '@/utils/get-initials'
 
 // Style Imports
 import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 import commonDropdownStyles from '@components/layout/shared/styles.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 export type NotificationsType = {
   title: string
@@ -165,7 +165,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 {
                   name: 'preventOverflow',
                   options: {
-                    padding: themeConfig.layoutPadding + 1
+                    padding: themeConfig.layoutPadding
                   }
                 }
               ]
@@ -174,7 +174,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper>
+            <Paper className={commonDropdownStyles.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
                   <div className='flex items-center justify-between plb-4 pli-5 is-full gap-4'>

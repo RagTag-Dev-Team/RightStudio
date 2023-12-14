@@ -39,20 +39,14 @@ const ButtonsSizes = () => {
         </Button>
       </div>
       <div className='flex gap-4 items-center'>
-        <IconButton aria-label='capture screenshot' color='secondary' size='small'>
-          <i className='ri-camera-lens-fill text-base' />
+        <IconButton aria-label='capture screenshot' color='primary' size='small'>
+          <i className='ri-camera-lens-fill text-xl' />
         </IconButton>
-        <IconButton aria-label='capture screenshot' color='secondary' size='small'>
+        <IconButton aria-label='capture screenshot' color='primary'>
           <i className='ri-camera-lens-fill' />
         </IconButton>
-        <IconButton aria-label='capture screenshot' color='secondary'>
-          <i className='ri-camera-lens-fill' />
-        </IconButton>
-        <IconButton aria-label='capture screenshot' color='secondary' size='large'>
-          <i className='ri-camera-lens-fill' />
-        </IconButton>
-        <IconButton aria-label='capture screenshot' color='secondary' size='large'>
-          <i className='ri-camera-lens-fill text-[40px]' />
+        <IconButton aria-label='capture screenshot' color='primary' size='large'>
+          <i className='ri-camera-lens-fill text-[28px]' />
         </IconButton>
       </div>
     </div>

@@ -16,6 +16,8 @@ import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { styled } from '@mui/material/styles'
+import type { TypographyProps } from '@mui/material/Typography'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
@@ -37,13 +39,21 @@ type TwoFactorAuthProps = {
   direction: Direction
 }
 
+const Title = styled(Typography, {
+  name: 'MuiCustomInputHorizontal',
+  slot: 'title'
+})<TypographyProps>(({ theme }) => ({
+  letterSpacing: '0.15px',
+  fontWeight: theme.typography.fontWeightMedium
+}))
+
 const data: CustomInputHorizontalData[] = [
   {
     title: (
-      <div className='flex items-center gap-1'>
+      <Title component='div' className='flex items-center gap-1'>
         <i className='ri-settings-3-line' />
         <Typography className='font-medium'>Authenticator Apps</Typography>
-      </div>
+      </Title>
     ),
     value: 'app',
     isSelected: true,
@@ -51,10 +61,10 @@ const data: CustomInputHorizontalData[] = [
   },
   {
     title: (
-      <div className='flex items-center gap-1'>
+      <Title component='div' className='flex items-center gap-1'>
         <i className='ri-wechat-line' />
         <Typography className='font-medium'>SMS</Typography>
-      </div>
+      </Title>
     ),
     value: 'sms',
     content: 'We will send a code via SMS if you need to use your backup login method.'

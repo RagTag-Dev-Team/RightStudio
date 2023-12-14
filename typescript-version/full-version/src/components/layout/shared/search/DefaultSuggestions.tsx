@@ -1,6 +1,3 @@
-// React Imports
-import type { ReactNode } from 'react'
-
 // Next Imports
 import Link from 'next/link'
 
@@ -18,7 +15,7 @@ type DefaultSuggestionsType = {
   items: {
     label: string
     href: string
-    icon?: ReactNode
+    icon?: string
   }[]
 }
 
@@ -29,22 +26,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Analytics',
         href: '/dashboards/analytics',
-        icon: 'Icon'
+        icon: 'ri-bar-chart-line'
       },
       {
         label: 'CRM',
         href: '/dashboards/crm',
-        icon: 'Icon'
+        icon: 'ri-pie-chart-2-line'
       },
       {
         label: 'eCommerce',
         href: '/dashboards/ecommerce',
-        icon: 'Icon'
+        icon: 'ri-shopping-bag-3-line'
       },
       {
         label: 'User List',
         href: '/apps/user/list',
-        icon: 'Icon'
+        icon: 'ri-file-user-line'
       }
     ]
   },
@@ -54,22 +51,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Calendar',
         href: '/apps/calendar',
-        icon: 'Icon'
+        icon: 'ri-calendar-line'
       },
       {
         label: 'Invoice List',
         href: '/apps/invoice/list',
-        icon: 'Icon'
+        icon: 'ri-file-list-3-line'
       },
       {
         label: 'User List',
         href: '/apps/user/list',
-        icon: 'Icon'
+        icon: 'ri-file-user-line'
       },
       {
         label: 'Roles & Permissions',
         href: '/apps/roles',
-        icon: 'Icon'
+        icon: 'ri-lock-unlock-line'
       }
     ]
   },
@@ -79,22 +76,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'User Profile',
         href: '/pages/user-profile',
-        icon: 'Icon'
+        icon: 'ri-user-3-line'
       },
       {
         label: 'Account Settings',
         href: '/pages/account-settings',
-        icon: 'Icon'
+        icon: 'ri-settings-4-line'
       },
       {
         label: 'Pricing',
         href: '/pages/pricing',
-        icon: 'Icon'
+        icon: 'ri-money-dollar-circle-line'
       },
       {
         label: 'FAQ',
         href: '/pages/faq',
-        icon: 'Icon'
+        icon: 'ri-question-line'
       }
     ]
   },
@@ -104,22 +101,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Form Layouts',
         href: '/forms/form-layouts',
-        icon: 'Icon'
+        icon: 'ri-file-text-line'
       },
       {
         label: 'Form Validation',
         href: '/forms/form-validation',
-        icon: 'Icon'
+        icon: 'ri-checkbox-multiple-line'
       },
       {
         label: 'Form Wizard',
         href: '/forms/form-wizard',
-        icon: 'Icon'
+        icon: 'ri-equalizer-line'
       },
       {
         label: 'Apex Charts',
         href: '/charts/apex-charts',
-        icon: 'Icon'
+        icon: 'ri-line-chart-line'
       }
     ]
   }
@@ -151,7 +148,7 @@ const DefaultSuggestions = () => {
                     commonStyles.itemLink
                   )}
                 >
-                  {item.icon && <div className={classnames('flex', commonStyles.itemIcon)}>{item.icon}</div>}
+                  {item.icon && <i className={classnames(item.icon, commonStyles.itemIcon)} />}
                   <p className={commonStyles.itemLabel}>{item.label}</p>
                 </Link>
               </li>

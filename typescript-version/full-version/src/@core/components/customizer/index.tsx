@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 // MUI Imports
+import Chip from '@mui/material/Chip'
 import Grow from '@mui/material/Grow'
 import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
@@ -18,7 +19,7 @@ import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import { useMedia, useUpdateEffect } from 'react-use'
+import { useDebounce, useMedia, useUpdateEffect } from 'react-use'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -28,12 +29,7 @@ import type { Direction } from '@core/types'
 
 // Icon Imports
 import Cog from '@core/svg/Cog'
-import Refresh from '@core/svg/Refresh'
-import Close from '@menu-package/svg/Close'
 import EyeDropper from '@core/svg/EyeDropper'
-import ModeDark from '@core/svg/ModeDark'
-import ModeLight from '@core/svg/ModeLight'
-import ModeSystem from '@core/svg/ModeSystem'
 import SkinDefault from '@core/svg/SkinDefault'
 import SkinBordered from '@core/svg/SkinBordered'
 import LayoutVertical from '@core/svg/LayoutVertical'
@@ -99,6 +95,38 @@ export const primaryColorConfig: PrimaryColorConfig[] = [
     dark: '#1b5e20'
   }
 ]
+
+type DebouncedColorPickerProps = {
+  settings: Settings
+  isColorFromPrimaryConfig: PrimaryColorConfig | undefined
+  handleChange: (field: keyof Settings | 'primaryColor', value: Settings[keyof Settings] | string) => void
+}
+
+function DebouncedColorPicker(props: DebouncedColorPickerProps) {
+  // Props
+  const { settings, isColorFromPrimaryConfig, handleChange } = props
+
+  // States
+  const [debouncedColor, setDebouncedColor] = useState(settings.primaryColor ?? primaryColorConfig[0].main)
+
+  useDebounce(() => handleChange('primaryColor', debouncedColor), 200, [debouncedColor])
+
+  return (
+    <>
+      <HexColorPicker
+        color={!isColorFromPrimaryConfig ? settings.primaryColor ?? primaryColorConfig[0].main : '#eee'}
+        onChange={setDebouncedColor}
+      />
+      <HexColorInput
+        className={styles.colorInput}
+        color={!isColorFromPrimaryConfig ? settings.primaryColor ?? primaryColorConfig[0].main : '#eee'}
+        onChange={setDebouncedColor}
+        prefixed
+        placeholder='Type a color'
+      />
+    </>
+  )
+}
 
 const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
   // States
@@ -191,16 +219,19 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
           </div>
           <div className='flex gap-4'>
             <div onClick={resetSettings} className='relative flex cursor-pointer'>
-              <Refresh />
+              <i className={classnames('ri-refresh-line', styles.actionActiveColor)} />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
-            <Close onClick={handleToggle} className='cursor-pointer' />
+            <i
+              className={classnames('ri-close-line cursor-pointer', styles.actionActiveColor)}
+              onClick={handleToggle}
+            />
           </div>
         </div>
         <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
             <div className='theming-section flex flex-col gap-6'>
-              <p>Theming</p>
+              <Chip label='Theming' size='small' color='primary' className={classnames('self-start', styles.chip)} />
               <div className='flex flex-col gap-2.5'>
                 <p className='font-medium'>Primary Color</p>
                 <div className='flex items-center justify-between'>
@@ -248,24 +279,10 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                         <Paper elevation={6} className={styles.colorPopup}>
                           <ClickAwayListener onClickAway={handleMenuClose}>
                             <div>
-                              <HexColorPicker
-                                color={
-                                  !isColorFromPrimaryConfig
-                                    ? settings.primaryColor ?? primaryColorConfig[0].main
-                                    : '#eee'
-                                }
-                                onChange={newColor => handleChange('primaryColor', newColor)}
-                              />
-                              <HexColorInput
-                                className={styles.colorInput}
-                                color={
-                                  !isColorFromPrimaryConfig
-                                    ? settings.primaryColor ?? primaryColorConfig[0].main
-                                    : '#eee'
-                                }
-                                onChange={newColor => handleChange('primaryColor', newColor)}
-                                prefixed
-                                placeholder='Type a color'
+                              <DebouncedColorPicker
+                                settings={settings}
+                                isColorFromPrimaryConfig={isColorFromPrimaryConfig}
+                                handleChange={handleChange}
                               />
                             </div>
                           </ClickAwayListener>
@@ -285,7 +302,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                       })}
                       onClick={() => handleChange('mode', 'light')}
                     >
-                      <ModeLight fontSize='1.875rem' />
+                      <i className='ri-sun-line text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'light')}>
                       Light
@@ -298,7 +315,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                       })}
                       onClick={() => handleChange('mode', 'dark')}
                     >
-                      <ModeDark fontSize='1.875rem' />
+                      <i className='ri-moon-clear-line text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'dark')}>
                       Dark
@@ -311,7 +328,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                       })}
                       onClick={() => handleChange('mode', 'system')}
                     >
-                      <ModeSystem fontSize='1.875rem' />
+                      <i className='ri-computer-line text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'system')}>
                       System
@@ -363,7 +380,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
             </div>
             <hr className={styles.hr} />
             <div className='layout-section flex flex-col gap-6'>
-              <p>Layout</p>
+              <Chip label='Layout' size='small' color='primary' className={classnames('self-start', styles.chip)} />
               <div className='flex flex-col gap-2.5'>
                 <p className='font-medium'>Layouts</p>
                 <div className='flex items-center justify-between'>
