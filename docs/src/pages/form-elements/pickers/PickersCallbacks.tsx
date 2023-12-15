@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
-import DatePicker from 'react-datepicker'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersCallbacks = () => {
   // States
@@ -22,7 +22,7 @@ const PickersCallbacks = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='callback-open'
           dateFormat='MM/dd/yyyy'
@@ -33,7 +33,7 @@ const PickersCallbacks = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='callback-blur'
           onChange={(date: Date) => setDate(date)}
@@ -42,7 +42,7 @@ const PickersCallbacks = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='callback-change'
           customInput={<CustomInput label='onChange' />}

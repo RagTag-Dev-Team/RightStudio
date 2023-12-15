@@ -1,10 +1,21 @@
+'use client'
+
 // MUI imports
+import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
+import type { BoxProps } from '@mui/material/Box'
+
+import { Editor } from 'react-draft-wysiwyg'
+import type { EditorProps } from 'react-draft-wysiwyg'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
-const EditorWrapper = styled('div')(({ theme }: { theme: Theme }) => ({
+type Props = EditorProps & {
+  boxProps?: BoxProps
+}
+
+const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
   '& .rdw-editor-wrapper': {
     border: `1px solid ${theme.vars.palette.divider}`,
     '& .rdw-editor-toolbar': {
@@ -133,4 +144,14 @@ const EditorWrapper = styled('div')(({ theme }: { theme: Theme }) => ({
   }
 }))
 
-export default EditorWrapper
+const AppReactDraftWysiwyg = (props: Props) => {
+  const { boxProps, ...rest } = props
+
+  return (
+    <EditorWrapper {...boxProps}>
+      <Editor {...rest} />
+    </EditorWrapper>
+  )
+}
+
+export default AppReactDraftWysiwyg

@@ -18,55 +18,52 @@ import ApexRadialBarChart from '@views/charts/apex/ApexRadialBarChart'
 import ApexCandlestickChart from '@views/charts/apex/ApexCandlestickChart'
 
 // Style Imports
-import ApexChartWrapper from '@core/styles/libs/ReactApexCharts'
 import styles from '@/styles/link.module.css'
 
 const ApexCharts = () => {
   return (
-    <ApexChartWrapper>
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <Typography variant='h5'>ApexCharts</Typography>
-          <Typography variant='body2'>
-            <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
-            <Link href='https://apexcharts.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
-              official documentation
-            </Link>{' '}
-            for more details.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <ApexAreaChart />
-        </Grid>
-        <Grid item xs={12}>
-          <ApexColumnChart />
-        </Grid>
-        <Grid item xs={12}>
-          <ApexScatterChart />
-        </Grid>
-        <Grid item xs={12}>
-          <ApexLineChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexBarChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexCandlestickChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexHeatmapChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexRadialBarChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexRadarChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ApexDonutChart />
-        </Grid>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <Typography variant='h5'>ApexCharts</Typography>
+        <Typography variant='body2'>
+          <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
+          <Link href='https://apexcharts.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+            official documentation
+          </Link>{' '}
+          for more details.
+        </Typography>
       </Grid>
-    </ApexChartWrapper>
+      <Grid item xs={12}>
+        <ApexAreaChart />
+      </Grid>
+      <Grid item xs={12}>
+        <ApexColumnChart />
+      </Grid>
+      <Grid item xs={12}>
+        <ApexScatterChart />
+      </Grid>
+      <Grid item xs={12}>
+        <ApexLineChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexBarChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexCandlestickChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexHeatmapChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexRadialBarChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexRadarChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ApexDonutChart />
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,5 +1,5 @@
 // React Imports
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import List from '@mui/material/List'
@@ -101,7 +101,7 @@ const FileUploaderMultiple = () => {
   const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
-    <Fragment>
+    <>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <div className={classnames('flex gap-3 items-center', {'flex-col': isBelowMdScreen})}>
@@ -123,7 +123,7 @@ const FileUploaderMultiple = () => {
         </div>
       </div>
       {files.length ? (
-        <Fragment>
+        <>
           <List>{fileList}</List>
           <div className='buttons'>
             <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
@@ -131,9 +131,9 @@ const FileUploaderMultiple = () => {
             </Button>
             <Button variant='contained'>Upload Files</Button>
           </div>
-        </Fragment>
+        </>
       ) : null}
-    </Fragment>
+    </>
   )
 }
 

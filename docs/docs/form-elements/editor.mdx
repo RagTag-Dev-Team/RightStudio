@@ -5,38 +5,34 @@ sidebar_label: Editor
 ---
 
 import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
 
 import CardSnippet from '@docComponents/card-snippet/index'
 import EditorControlled from '@docPages/form-elements/editor/EditorControlled' 
 import SourceCodeEditorControlled from '!!raw-loader!@/examples/editor/EditorControlled'
 import EditorUncontrolled from '@docPages/form-elements/editor/EditorUncontrolled'
 import SourceCodeEditorUncontrolled from '!!raw-loader!@/examples/editor/EditorUncontrolled'
-import EditorWrapper from '@docComponents/styled-components/react-draft-wysiwyg'
 
 <h1 className='!m-0'>React Draft Wysiwyg</h1>
 
 <code>react-draft-wysiwyg</code> is a third-party library. Please refer to its [official documentation](https://jpuri.github.io/react-draft-wysiwyg/) for more details.
 
-<EditorWrapper>
-  <Grid container spacing={6}>
-    <Grid item xs={12}>
-      <CardSnippet
-        title='Controlled Editor'
-        code={SourceCodeEditorControlled}
-        className='overflow-visible'
-      >
-        <EditorControlled />
-      </CardSnippet>
-    </Grid>
-    <Grid item xs={12}>
-      <CardSnippet
-        title='Uncontrolled Wysiwyg Editor'
-        code={SourceCodeEditorUncontrolled}
-        className='overflow-visible'
-      >
-        <EditorUncontrolled />
-      </CardSnippet>
-    </Grid>
+<Grid container spacing={6}>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Controlled Editor'
+      code={SourceCodeEditorControlled}
+      className='overflow-visible'
+    >
+      <EditorControlled />
+    </CardSnippet>
   </Grid>
-</EditorWrapper>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Uncontrolled Wysiwyg Editor'
+      code={SourceCodeEditorUncontrolled}
+      className='overflow-visible'
+    >
+      <EditorUncontrolled />
+    </CardSnippet>
+  </Grid>
+</Grid>

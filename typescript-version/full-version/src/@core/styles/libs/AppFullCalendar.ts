@@ -4,7 +4,7 @@
 import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 
-const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
+const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -444,4 +444,4 @@ const StyledCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
   }
 }))
 
-export default StyledCalendar
+export default AppFullCalendar

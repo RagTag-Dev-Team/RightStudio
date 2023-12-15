@@ -26,7 +26,9 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
-import DatePicker from 'react-datepicker'
+
+// Style Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 type FormValues = {
   firstName: string
@@ -160,7 +162,7 @@ const FormValidationBasic = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
-                  <DatePicker
+                  <AppReactDatepicker
                     selected={value}
                     showYearDropdown
                     showMonthDropdown

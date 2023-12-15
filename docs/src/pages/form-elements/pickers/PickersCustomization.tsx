@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import { subDays, addDays } from 'date-fns'
-import DatePicker from 'react-datepicker'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersCustomization = () => {
   // States
@@ -19,7 +19,7 @@ const PickersCustomization = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           id='custom-format'
           selected={dateFormat}
           dateFormat='MMMM d, yyyy'
@@ -28,7 +28,7 @@ const PickersCustomization = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           id='highlight-dates'
           selected={dateHighlight}
           onChange={(date: Date) => setDateHighlight(date)}

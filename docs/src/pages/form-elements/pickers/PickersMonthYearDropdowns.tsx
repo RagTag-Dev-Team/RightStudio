@@ -4,11 +4,9 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersMonthYearDropdowns = () => {
   // States
@@ -19,7 +17,7 @@ const PickersMonthYearDropdowns = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={month}
           showMonthDropdown
           id='month-dropdown'
@@ -29,7 +27,7 @@ const PickersMonthYearDropdowns = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={year}
           showYearDropdown
           id='year-dropdown'
@@ -39,7 +37,7 @@ const PickersMonthYearDropdowns = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           showYearDropdown
           showMonthDropdown
           selected={monthYear}

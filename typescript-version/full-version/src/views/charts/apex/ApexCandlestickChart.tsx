@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
 
 const candlestickColors = {
   series1: '#28c76f',
@@ -140,7 +140,7 @@ const ApexCandlestickChart = () => {
         }}
       />
       <CardContent>
-        <ReactApexcharts type='candlestick' width='100%' height={400} options={options} series={series} />
+        <AppReactApexCharts type='candlestick' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

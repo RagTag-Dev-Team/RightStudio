@@ -68,7 +68,11 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
   }, [systemMode])
 
   // Return the layout based on the layout context
-  return <div data-skin={settings.skin}>{layout === 'horizontal' ? horizontalLayout : verticalLayout}</div>
+  return (
+    <div className='flex flex-auto' data-skin={settings.skin}>
+      {layout === 'horizontal' ? horizontalLayout : verticalLayout}
+    </div>
+  )
 }
 
 export default LayoutWrapper

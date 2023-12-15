@@ -4,11 +4,9 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersTime = () => {
   // States
@@ -18,7 +16,7 @@ const PickersTime = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           showTimeSelect
           selected={time}
           timeIntervals={15}
@@ -30,7 +28,7 @@ const PickersTime = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           showTimeSelect
           timeFormat='HH:mm'
           timeIntervals={15}

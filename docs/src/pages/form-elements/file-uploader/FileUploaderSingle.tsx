@@ -66,7 +66,7 @@ const FileUploaderSingle = () => {
   ))
 
   return (
-    <Box {...getRootProps({ className: 'dropzone' })} sx={files.length ? { height: 450 } : {}}>
+    <Box {...getRootProps({ className: 'dropzone' })} {...files.length && { sx: { height: 450 } }}>
       <input {...getInputProps()} />
       {files.length ? (
         img

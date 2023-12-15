@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
 
 const ApexBarChart = () => {
   // Hooks
@@ -67,7 +67,7 @@ const ApexBarChart = () => {
         }}
       />
       <CardContent>
-        <ReactApexcharts
+        <AppReactApexCharts
           type='bar'
           width='100%'
           height={400}

@@ -1,6 +1,3 @@
-// Third-party Imports
-import { ToastContainer } from 'react-toastify'
-
 // Type Imports
 import type { ChildrenType, Direction } from '@core/types'
 import type { Settings } from '@core/contexts/settingsContext'
@@ -11,11 +8,11 @@ import { VerticalNavProvider } from '@menu-package/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
 
+// Component Imports
+import AppReactToastify from '@/@core/styles/libs/AppReactToastify'
+
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-
-// Styled Component Imports
-import ToastifyWrapper from '@core/styles/libs/react-toastify'
 
 type Props = ChildrenType & {
   settingsCookie: Settings
@@ -32,9 +29,7 @@ const Providers = (props: Props) => {
         <SettingsProvider settingsCookie={settingsCookie}>
           <ThemeProvider direction={direction}>
             {children}
-            <ToastifyWrapper>
-              <ToastContainer position={themeConfig.toastPosition} hideProgressBar />
-            </ToastifyWrapper>
+            <AppReactToastify position={themeConfig.toastPosition} hideProgressBar />
           </ThemeProvider>
         </SettingsProvider>
       </VerticalNavProvider>

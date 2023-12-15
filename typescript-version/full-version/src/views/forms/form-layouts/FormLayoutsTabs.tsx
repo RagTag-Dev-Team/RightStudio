@@ -23,8 +23,8 @@ import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -171,7 +171,7 @@ const FormLayoutsWithTabs = () => {
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <DatePicker
+                  <AppReactDatepicker
                     selected={formData.date}
                     showYearDropdown
                     showMonthDropdown

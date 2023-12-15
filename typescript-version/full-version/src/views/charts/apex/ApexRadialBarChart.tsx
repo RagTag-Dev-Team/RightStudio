@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
 
 const radialBarColors = {
   series1: '#fdd835',
@@ -92,7 +92,7 @@ const ApexRadialBarChart = () => {
     <Card>
       <CardHeader title='Statistics' />
       <CardContent>
-        <ReactApexcharts type='radialBar' width='100%' height={400} options={options} series={[80, 50, 35]} />
+        <AppReactApexCharts type='radialBar' width='100%' height={400} options={options} series={[80, 50, 35]} />
       </CardContent>
     </Card>
   )

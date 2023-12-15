@@ -17,14 +17,14 @@ import RechartsScatterChart from '@views/charts/recharts/RechartsScatterChart'
 import { getDirection } from '@/utils/get-direction'
 
 // Style Imports
-import RechartsWrapper from '@core/styles/libs/Recharts'
+import AppRecharts from '@/@core/styles/libs/AppRecharts'
 import styles from '@/styles/link.module.css'
 
 const Recharts = () => {
   const direction = getDirection()
 
   return (
-    <RechartsWrapper>
+    <AppRecharts>
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Typography variant='h5'>Recharts</Typography>
@@ -55,7 +55,7 @@ const Recharts = () => {
           <RechartsPieChart />
         </Grid>
       </Grid>
-    </RechartsWrapper>
+    </AppRecharts>
   )
 }
 

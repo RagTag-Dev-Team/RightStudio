@@ -5,11 +5,11 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Third-party Imports
-import DatePicker from 'react-datepicker'
 import { addDays, setHours, setMinutes } from 'date-fns'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersSpecificRange = () => {
   // States
@@ -19,7 +19,7 @@ const PickersSpecificRange = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='specific-date'
           minDate={new Date()}
@@ -29,7 +29,7 @@ const PickersSpecificRange = () => {
         />
       </Grid>
       <Grid item xs={12}>
-        <DatePicker
+        <AppReactDatepicker
           showTimeSelect
           selected={time}
           id='specific-time'

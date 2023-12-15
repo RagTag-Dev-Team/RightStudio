@@ -25,7 +25,6 @@ import StepDealType from './StepDealType'
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 // style Imports
 import styles from './styles.module.css'
@@ -146,9 +145,7 @@ const CreateDeal = ({ direction }: { direction: Direction }) => {
         </StepperWrapper>
       </CardContent>
 
-      <CardContent className='flex-1'>
-        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev, direction)}</DatePickerWrapper>
-      </CardContent>
+      <CardContent className='flex-1'>{getStepContent(activeStep, handleNext, handlePrev, direction)}</CardContent>
     </Card>
   )
 }

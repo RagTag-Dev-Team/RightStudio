@@ -1,4 +1,5 @@
 // React Imports
+import type { SyntheticEvent } from 'react'
 import { useState, forwardRef } from 'react'
 
 // MUI Imports
@@ -20,10 +21,12 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
 import format from 'date-fns/format'
-import DatePicker from 'react-datepicker'
 
 // Type Imports
 import type { Direction } from '@core/types'
+
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 type CustomInputProps = TextFieldProps & {
   label?: string
@@ -67,7 +70,8 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction 
     setOfferedItems(typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value)
   }
 
-  const handleDateChange = (dates: [Date | null, Date | null]) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleDateChange = (dates: [Date | null, Date | null], event: SyntheticEvent<any, Event> | undefined) => {
     const [start, end] = dates
 
     setStartDate(start)
@@ -130,7 +134,7 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction 
         </Grid>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <DatePicker
+        <AppReactDatepicker
           selectsRange
           endDate={endDate}
           selected={startDate}

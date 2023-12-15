@@ -5,11 +5,11 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Third-party Imports
-import DatePicker from 'react-datepicker'
 import { addDays, subDays, setHours, setMinutes } from 'date-fns'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersIncludeExclude = () => {
   // States
@@ -21,7 +21,7 @@ const PickersIncludeExclude = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='include-dates'
           onChange={(date: Date) => setDate(date)}
@@ -30,7 +30,7 @@ const PickersIncludeExclude = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           id='exclude-dates'
           selected={dateExclude}
           onChange={(date: Date) => setDateExclude(date)}
@@ -39,7 +39,7 @@ const PickersIncludeExclude = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           showTimeSelect
           selected={time}
           id='include-time'
@@ -55,7 +55,7 @@ const PickersIncludeExclude = () => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <DatePicker
+        <AppReactDatepicker
           showTimeSelect
           id='exclude-time'
           selected={timeExclude}

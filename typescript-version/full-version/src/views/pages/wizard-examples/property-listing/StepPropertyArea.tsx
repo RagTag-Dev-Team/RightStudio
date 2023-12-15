@@ -12,11 +12,11 @@ import RadioGroup from '@mui/material/RadioGroup'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
 // Type Imports
 import type { Direction } from '@core/types'
+
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 type Props = {
   activeStep: number
@@ -66,7 +66,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps, direct
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           placeholderText='YYYY-MM-DD'
           dateFormat={'yyyy-MM-dd'}
@@ -131,8 +131,8 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps, direct
                   activeStep === steps.length - 1
                     ? 'ri-check-line'
                     : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
+                      ? 'ri-arrow-left-line'
+                      : 'ri-arrow-right-line'
                 }
               />
             }

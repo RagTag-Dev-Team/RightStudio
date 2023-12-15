@@ -1,15 +1,8 @@
-import BrowserOnly from "@docusaurus/BrowserOnly";
+// Component Imports
+import AppReactDraftWysiwyg from "@docComponents/styled-components/AppReactDraftWysiwyg";
 
 const EditorUncontrolled = () => {
-  return (
-    <BrowserOnly>
-      {() => {
-        const { Editor } = require("react-draft-wysiwyg");
-
-        return <Editor />;
-      }}
-    </BrowserOnly>
-  );
+  return <AppReactDraftWysiwyg />;
 };
 
 export default EditorUncontrolled;

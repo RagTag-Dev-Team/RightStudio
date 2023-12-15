@@ -23,7 +23,6 @@ import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import DatePicker from 'react-datepicker'
 
 // Type Imports
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
@@ -31,6 +30,7 @@ import type { FormDataType } from './AddCustomerDrawer'
 
 // Component Imports
 import AddCustomerDrawer, { initialFormData } from './AddCustomerDrawer'
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -38,7 +38,6 @@ import themeConfig from '@configs/themeConfig'
 // Style Imports
 import styles from '@views/apps/invoice/styles.module.css'
 import commonStyles from '@/styles/common.module.css'
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   // States
@@ -65,7 +64,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   }
 
   return (
-    <DatePickerWrapper>
+    <>
       <Card>
         <CardContent>
           <Grid container spacing={6}>
@@ -97,7 +96,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                     </div>
                     <div className='flex items-center'>
                       <Typography className='min-is-[100px]'>Date Issued:</Typography>
-                      <DatePicker
+                      <AppReactDatepicker
                         selected={issuedDate}
                         placeholderText='YYYY-MM-DD'
                         dateFormat={'yyyy-MM-dd'}
@@ -107,7 +106,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                     </div>
                     <div className='flex items-center'>
                       <Typography className='min-is-[100px]'>Date Due:</Typography>
-                      <DatePicker
+                      <AppReactDatepicker
                         selected={dueDate}
                         placeholderText='YYYY-MM-DD'
                         dateFormat={'yyyy-MM-dd'}
@@ -338,7 +337,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         </CardContent>
       </Card>
       <AddCustomerDrawer open={open} setOpen={setOpen} onFormSubmit={onFormSubmit} />
-    </DatePickerWrapper>
+    </>
   )
 }
 

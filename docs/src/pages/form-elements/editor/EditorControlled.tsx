@@ -1,24 +1,22 @@
 // React Imports
-import { useState } from 'react'
-
-import BrowserOnly from '@docusaurus/BrowserOnly'
+import { useState } from "react";
 
 // Third-party Imports
-import { EditorState } from 'draft-js'
+import { EditorState } from "draft-js";
+
+// Component Imports
+import AppReactDraftWysiwyg from "@docComponents/styled-components/AppReactDraftWysiwyg";
 
 const EditorControlled = () => {
   // States
-  const [value, setValue] = useState(EditorState.createEmpty())
+  const [value, setValue] = useState(EditorState.createEmpty());
 
   return (
-    <BrowserOnly>
-      {() => {
-        const { Editor } = require('react-draft-wysiwyg')
+    <AppReactDraftWysiwyg
+      editorState={value}
+      onEditorStateChange={(data: EditorState) => setValue(data)}
+    />
+  );
+};
 
-        return <Editor editorState={value} onEditorStateChange={(data: EditorState) => setValue(data)} />
-      }}
-    </BrowserOnly>
-  )
-}
-
-export default EditorControlled
+export default EditorControlled;

@@ -4,11 +4,9 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersBasic = () => {
   // States
@@ -17,7 +15,7 @@ const PickersBasic = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={4}>
-        <DatePicker
+        <AppReactDatepicker
           selected={date}
           id='basic-input'
           onChange={(date: Date) => setDate(date)}
@@ -26,7 +24,7 @@ const PickersBasic = () => {
         />
       </Grid>
       <Grid item xs={12} md={4}>
-        <DatePicker
+        <AppReactDatepicker
           disabled
           selected={date}
           id='disabled-input'
@@ -36,7 +34,7 @@ const PickersBasic = () => {
         />
       </Grid>
       <Grid item xs={12} md={4}>
-        <DatePicker
+        <AppReactDatepicker
           readOnly
           selected={date}
           id='read-only-input'

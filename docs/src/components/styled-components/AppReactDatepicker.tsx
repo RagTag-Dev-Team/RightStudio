@@ -1,12 +1,23 @@
+'use client'
+
 // MUI imports
 import Box from '@mui/material/Box'
 import { styled, useColorScheme } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
 
+
+// Type Imports
+import ReactDatePicker from 'react-datepicker'
+import type { ReactDatePickerProps } from 'react-datepicker'
+
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
-const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
+type Props = ReactDatePickerProps & {
+  boxProps?: BoxProps
+}
+
+const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
   const { mode } = useColorScheme()
 
   return {
@@ -462,4 +473,15 @@ const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
   }
 })
 
-export default DatePickerWrapper
+const AppReactDatepicker = (props: Props) => {
+  // Props
+  const { boxProps, ...rest } = props
+
+  return (
+    <StyledReactDatePicker {...boxProps}>
+      <ReactDatePicker {...rest} />
+    </StyledReactDatePicker>
+  )
+}
+
+export default AppReactDatepicker

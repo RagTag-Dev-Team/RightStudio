@@ -1,13 +1,13 @@
-'use client'
-
 // MUI imports
+import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
+import type { BoxProps } from '@mui/material/Box'
 
 // Third-party Imports
 import 'keen-slider/keen-slider.min.css'
 
-const KeenSliderWrapper = styled('div')(({ theme }: { theme: Theme }) => ({
+const AppKeenSlider = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
   '& .keen-slider': {
     // Keen Slider handles RTL internally and thus, we need to set the direction to LTR
     direction: 'ltr',
@@ -117,4 +117,4 @@ const KeenSliderWrapper = styled('div')(({ theme }: { theme: Theme }) => ({
   }
 }))
 
-export default KeenSliderWrapper
+export default AppKeenSlider

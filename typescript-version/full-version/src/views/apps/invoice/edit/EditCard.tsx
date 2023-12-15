@@ -23,10 +23,12 @@ import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import DatePicker from 'react-datepicker'
 
 // Type Imports
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
+
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -34,7 +36,6 @@ import themeConfig from '@configs/themeConfig'
 // Styles Imports
 import styles from '@views/apps/invoice/styles.module.css'
 import commonStyles from '@/styles/common.module.css'
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: string; data: InvoiceType[] }) => {
   // States
@@ -55,7 +56,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
   }
 
   return (
-    <DatePickerWrapper>
+    <>
       <Card>
         <CardContent>
           <Grid container>
@@ -87,7 +88,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                     </div>
                     <div className='flex items-center'>
                       <Typography className='min-is-[100px]'>Date Issued:</Typography>
-                      <DatePicker
+                      <AppReactDatepicker
                         selected={issueDate}
                         id='payment-date'
                         onChange={(date: Date) => setIssueDate(date)}
@@ -96,7 +97,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                     </div>
                     <div className='flex items-center'>
                       <Typography className='min-is-[100px]'>Date Due:</Typography>
-                      <DatePicker
+                      <AppReactDatepicker
                         selected={dueDate}
                         id='payment-date'
                         onChange={(date: Date) => setDueDate(date)}
@@ -301,7 +302,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
           </Grid>
         </CardContent>
       </Card>
-    </DatePickerWrapper>
+    </>
   )
 }
 

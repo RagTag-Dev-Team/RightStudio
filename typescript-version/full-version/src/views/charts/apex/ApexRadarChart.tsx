@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
 
 const radarColors = {
   series1: '#9b88fa',
@@ -102,7 +102,7 @@ const ApexRadarChart = () => {
     <Card>
       <CardHeader title='Mobile Comparison' />
       <CardContent>
-        <ReactApexcharts type='radar' width='100%' height={400} options={options} series={series} />
+        <AppReactApexCharts type='radar' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

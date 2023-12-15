@@ -11,7 +11,7 @@ import { getDirection } from '@/utils/get-direction'
 import CalendarWrapper from '@views/apps/calendar/CalendarWrapper'
 
 // Style Imports
-import StyledCalendar from '@core/styles/libs/fullcalendar'
+import AppFullCalendar from '@core/styles/libs/AppFullCalendar'
 
 async function fetchEvents() {
   const res = await fetch(`${process.env.API_URL}/apps/calendar-events`)
@@ -30,9 +30,9 @@ const CalendarApp = async ({ params }: { params: { lang: Locale } }) => {
 
   return (
     <Card>
-      <StyledCalendar className='app-calendar'>
+      <AppFullCalendar className='app-calendar'>
         <CalendarWrapper events={res.events} direction={direction} />
-      </StyledCalendar>
+      </AppFullCalendar>
     </Card>
   )
 }

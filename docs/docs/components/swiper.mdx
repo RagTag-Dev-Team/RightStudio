@@ -5,10 +5,9 @@ sidebar_label: Swiper
 ---
 
 import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
 
 import CardSnippet from '@docComponents/card-snippet/index'
-import KeenSliderWrapper from '@docComponents/styled-components/keen-slider'
+import AppKeenSlider from '@docComponents/styled-components/AppKeenSlider'
 import SwiperLoop from '@docPages/components/swiper/SwiperLoop'
 import SourceCodeSwiperLoop from '!!raw-loader!@docPages/components/swiper/SwiperLoop'
 import SwiperZoom from '@docPages/components/swiper/SwiperZoom'
@@ -40,7 +39,11 @@ import SourceCodeSwiperMutationObserver from '!!raw-loader!@docPages/components/
 
 <code>keen-slider</code> is a third-party library. Please refer to its [official documentation](https://keen-slider.io/) for more details.
 
-<KeenSliderWrapper>
+:::warning
+It is essential to ensure that when incorporating the <code>keen-slider</code> component into your project, it is correctly wrapped using the <code>AppKeenSlider</code> component. In scenarios where only a single instance of <code>keen-slider</code> is utilized, it should be individually enclosed within the <code>AppKeenSlider</code> component. Conversely, if multiple instances of <code>keen-slider</code> are used in one page, it becomes necessary to wrap the entire page with the <code>AppKeenSlider</code> component to ensure optimal styles.
+:::
+
+<AppKeenSlider>
   <Grid container spacing={6}>
     <Grid item xs={12}>
       <CardSnippet
@@ -147,4 +150,4 @@ import SourceCodeSwiperMutationObserver from '!!raw-loader!@docPages/components/
       </CardSnippet>
     </Grid>
   </Grid>
-</KeenSliderWrapper>
+</AppKeenSlider>

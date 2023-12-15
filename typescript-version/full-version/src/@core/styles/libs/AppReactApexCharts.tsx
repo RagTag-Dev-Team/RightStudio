@@ -1,9 +1,21 @@
 'use client'
 
 // MUI Imports
+import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
+import type { BoxProps } from '@mui/material/Box'
 
-const ApexChartWrapper = styled('div')(({ theme }) => ({
+// Third-party Imports
+import type { Props } from 'react-apexcharts'
+
+// Component Imports
+import ReactApexcharts from '@components/charts/apexchart'
+
+type ApexChartWrapperProps = Props & {
+  boxProps?: BoxProps
+}
+
+const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   '& .apexcharts-canvas': {
     "& line[stroke='transparent']": {
       display: 'none'
@@ -71,4 +83,15 @@ const ApexChartWrapper = styled('div')(({ theme }) => ({
   }
 }))
 
-export default ApexChartWrapper
+const AppReactApexCharts = (props: ApexChartWrapperProps) => {
+  // Props
+  const { boxProps, ...rest } = props
+
+  return (
+    <ApexChartWrapper {...boxProps}>
+      <ReactApexcharts {...rest} />
+    </ApexChartWrapper>
+  )
+}
+
+export default AppReactApexCharts

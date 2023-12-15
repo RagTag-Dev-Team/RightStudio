@@ -4,11 +4,9 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
 // Component Imports
 import CustomInput from './PickersCustomInput'
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 const PickersOptions = () => {
   // States
@@ -27,7 +25,7 @@ const PickersOptions = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={4}>
-        <DatePicker
+        <AppReactDatepicker
           isClearable
           id='picker-clear'
           selected={dateClear}
@@ -36,7 +34,7 @@ const PickersOptions = () => {
         />
       </Grid>
       <Grid item xs={12} lg={4}>
-        <DatePicker
+        <AppReactDatepicker
           weekLabel='Wk'
           showWeekNumbers
           id='picker-week-num'
@@ -46,7 +44,7 @@ const PickersOptions = () => {
         />
       </Grid>
       <Grid item xs={12} lg={4}>
-        <DatePicker
+        <AppReactDatepicker
           id='picker-filter'
           selected={dateFilter}
           filterDate={isWeekday}
@@ -55,7 +53,7 @@ const PickersOptions = () => {
         />
       </Grid>
       <Grid item xs={12} lg={4}>
-        <DatePicker
+        <AppReactDatepicker
           showYearDropdown
           showMonthDropdown
           selected={dateOpen}
@@ -66,7 +64,7 @@ const PickersOptions = () => {
         />
       </Grid>
       <Grid item xs={12} lg={4}>
-        <DatePicker
+        <AppReactDatepicker
           todayButton='Today'
           selected={dateTodayBtn}
           id='picker-date-today-btn'

@@ -1,5 +1,5 @@
 // React Imports
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import List from '@mui/material/List'
@@ -112,7 +112,7 @@ const FileUploaderRestrictions = () => {
   }
 
   return (
-    <Fragment>
+    <>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <div className={classnames('flex items-center', {'flex-col': isBelowMdScreen})}>
@@ -128,7 +128,7 @@ const FileUploaderRestrictions = () => {
         </div>
       </div>
       {files.length ? (
-        <Fragment>
+        <>
           <List>{fileList}</List>
           <div className='buttons'>
             <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
@@ -136,9 +136,9 @@ const FileUploaderRestrictions = () => {
             </Button>
             <Button variant='contained'>Upload Files</Button>
           </div>
-        </Fragment>
+        </>
       ) : null}
-    </Fragment>
+    </>
   )
 }
 

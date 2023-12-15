@@ -8,7 +8,9 @@ import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
 import { format, addDays } from 'date-fns'
-import DatePicker from 'react-datepicker'
+
+// Component Imports
+import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
 
 type CustomInputProps = TextFieldProps & {
   label: string
@@ -51,7 +53,7 @@ const PickersRange = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <DatePicker
+        <AppReactDatepicker
           selectsRange
           endDate={endDate}
           selected={startDate}
@@ -65,7 +67,7 @@ const PickersRange = () => {
         />
       </Grid>
       <Grid item xs={12}>
-        <DatePicker
+        <AppReactDatepicker
           selectsRange
           monthsShown={2}
           endDate={endDateRange}

@@ -29,7 +29,6 @@ import StepPriceDetails from './StepPriceDetails'
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -161,9 +160,7 @@ const PropertyListingWizard = ({ direction }: { direction: Direction }) => {
         </StepperWrapper>
       </CardContent>
 
-      <CardContent className='flex-1'>
-        <DatePickerWrapper>{getStepContent(activeStep, handleNext, handlePrev, direction)}</DatePickerWrapper>
-      </CardContent>
+      <CardContent className='flex-1'>{getStepContent(activeStep, handleNext, handlePrev, direction)}</CardContent>
     </Card>
   )
 }

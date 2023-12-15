@@ -1,14 +1,23 @@
 'use client'
 
 // MUI Imports
+import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
+import type { BoxProps } from '@mui/material/Box'
+
+// Third-party Imports
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+import type { ToastContainerProps } from 'react-toastify'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
-import 'react-toastify/dist/ReactToastify.css'
+type Props = ToastContainerProps & {
+  boxProps?: BoxProps
+}
 
-const ToastifyWrapper = styled('div')(({ theme }) => {
+const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
   // Hooks
   const { settings } = useSettings()
 
@@ -60,4 +69,14 @@ const ToastifyWrapper = styled('div')(({ theme }) => {
   }
 })
 
-export default ToastifyWrapper
+const AppReactToastify = (props: Props) => {
+  const { boxProps, ...rest } = props
+
+  return (
+    <ToastifyWrapper {...boxProps}>
+      <ToastContainer {...rest} />
+    </ToastifyWrapper>
+  )
+}
+
+export default AppReactToastify

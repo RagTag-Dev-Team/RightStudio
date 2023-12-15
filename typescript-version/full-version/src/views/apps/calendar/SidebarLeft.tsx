@@ -10,14 +10,15 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Third-party imports
 import classnames from 'classnames'
-import DatePicker from 'react-datepicker'
 
 // Types Imports
 import type { SidebarLeftProps, CalendarFiltersType } from '@/types/apps/calendarTypes'
 import type { ThemeColor } from '@core/types'
 
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+
 // Style Imports
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 import commonStyles from '@/styles/common.module.css'
 
 const SidebarLeft = (props: SidebarLeftProps) => {
@@ -97,12 +98,14 @@ const SidebarLeft = (props: SidebarLeftProps) => {
           </Button>
         </div>
         <Divider className='w-full' />
-        <DatePickerWrapper
-          className='flex justify-center w-full'
-          sx={{ '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' } }}
-        >
-          <DatePicker inline onChange={date => calendarApi.gotoDate(date)} />
-        </DatePickerWrapper>
+        <AppReactDatepicker
+          inline
+          onChange={date => calendarApi.gotoDate(date)}
+          boxProps={{
+            className: 'flex justify-center w-full',
+            sx: { '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' } }
+          }}
+        />
         <Divider className='w-full' />
 
         <div className='flex flex-col p-5 w-full'>

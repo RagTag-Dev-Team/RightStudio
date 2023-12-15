@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import type { BoxProps } from '@mui/material/Box'
 
-const DropzoneWrapper = styled(Box)<BoxProps>(({ theme }) => ({
+const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({
   '&.dropzone, & .dropzone': {
     minHeight: 300,
     display: 'flex',
@@ -74,4 +74,4 @@ const DropzoneWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   }
 }))
 
-export default DropzoneWrapper
+export default AppReactDropzone

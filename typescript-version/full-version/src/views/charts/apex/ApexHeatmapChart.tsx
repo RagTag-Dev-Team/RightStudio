@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
 
 type YRange = {
   min: number
@@ -130,7 +130,7 @@ const ApexHeatmapChart = () => {
     <Card>
       <CardHeader title='Daily Sales States' />
       <CardContent>
-        <ReactApexcharts type='heatmap' width='100%' height={400} options={options} series={series} />
+        <AppReactApexCharts type='heatmap' width='100%' height={400} options={options} series={series} />
       </CardContent>
     </Card>
   )

@@ -16,11 +16,8 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import DatePicker from 'react-datepicker'
-
-// Style Imports
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
+// Component Imports
+import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 type Props = {
   open: boolean
@@ -91,14 +88,12 @@ const AddPaymentDrawer = ({ open, handleClose }: Props) => {
             value={formData.paymentAmount}
             onChange={e => setFormData({ ...formData, paymentAmount: +e.target.value })}
           />
-          <DatePickerWrapper>
-            <DatePicker
-              selected={formData.paymentDate}
-              id='payment-date'
-              onChange={(date: Date) => setFormData({ ...formData, paymentDate: date })}
-              customInput={<TextField fullWidth label='Payment Date' />}
-            />
-          </DatePickerWrapper>
+          <AppReactDatepicker
+            selected={formData.paymentDate}
+            id='payment-date'
+            onChange={(date: Date) => setFormData({ ...formData, paymentDate: date })}
+            customInput={<TextField fullWidth label='Payment Date' />}
+          />
           <FormControl fullWidth>
             <InputLabel htmlFor='payment-method'>Payment Method</InputLabel>
             <Select
