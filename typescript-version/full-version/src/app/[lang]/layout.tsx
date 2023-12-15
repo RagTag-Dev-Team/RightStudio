@@ -20,9 +20,6 @@ import '@/app/globals.css'
 // Generated Icon CSS Imports
 import '@assets/iconify-icons/generated-icons.css'
 
-// Generated Icon Imports
-import '@assets/iconify-icons/generated-icons'
-
 export const metadata = {
   title: 'Master Next.js Framework Independent ',
   description: 'Master Next.js Framework Independent'

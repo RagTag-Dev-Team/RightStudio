@@ -1,5 +1,8 @@
 'use client'
 
+// React Imports
+import type { ComponentProps } from 'react'
+
 // MUI imports
 import Box from '@mui/material/Box'
 import { styled, useColorScheme } from '@mui/material/styles'
@@ -7,12 +10,11 @@ import type { BoxProps } from '@mui/material/Box'
 
 // Third-party Imports
 import ReactDatePicker from 'react-datepicker'
-import type { ReactDatePickerProps } from 'react-datepicker'
 
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
-type Props = ReactDatePickerProps & {
+type Props = ComponentProps<typeof ReactDatePicker> & {
   boxProps?: BoxProps
 }
 

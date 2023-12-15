@@ -21,14 +21,6 @@ const getData = async () => {
   return res.json()
 }
 
-export async function generateStaticParams() {
-  const posts: InvoiceType[] = await fetch(`${process.env.API_URL}/apps/invoice`).then(res => res.json())
-
-  return posts.map(post => ({
-    id: post.id
-  }))
-}
-
 const EditPage = async ({ params }: { params: { id: string } }) => {
   const data = await getData()
 

@@ -77,7 +77,7 @@ const SearchResultItem = forwardRef(
       active,
       currentRootActionId
     }: {
-      action: ActionImpl & { icon?: string }
+      action: ActionImpl
       active: boolean
       currentRootActionId: ActionId | undefined | null
     },
@@ -101,7 +101,7 @@ const SearchResultItem = forwardRef(
         )}
       >
         <div className={classnames(styles.itemContentWrapper, 'flex items-center grow gap-2')}>
-          {action.icon && <i className={classnames(action.icon, styles.itemIcon)} />}
+          {action.icon && <i className={classnames(action.icon as string, styles.itemIcon)} />}
           {action.name &&
             (action.subtitle ? (
               <div className={classnames('flex flex-col grow', styles.nameSubtitleWrapper)}>

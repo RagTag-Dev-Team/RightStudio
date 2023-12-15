@@ -18,14 +18,16 @@ import Pricing from '@components/pricing'
 
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
+import type { Direction } from '@core/types'
 
 type PricingProps = {
   open: boolean
   setOpen: (open: boolean) => void
   data: PricingPlanType[]
+  direction: Direction
 }
 
-const PricingDialog = ({ open, setOpen, data }: PricingProps) => {
+const PricingDialog = ({ open, setOpen, data, direction }: PricingProps) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
@@ -39,7 +41,7 @@ const PricingDialog = ({ open, setOpen, data }: PricingProps) => {
         <IconButton className={styles.closeIcon} onClick={() => setOpen(false)}>
           <i className='ri-close-line' />
         </IconButton>
-        <Pricing data={data} />
+        <Pricing data={data} direction={direction} />
       </DialogContent>
     </Dialog>
   )

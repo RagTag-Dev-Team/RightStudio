@@ -7,12 +7,13 @@ import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
+import type { Direction } from '@core/types'
 
 // Component Imports
 import PricingDialog from '@components/dialogs/pricing'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-const DialogPricing = ({ data }: { data: PricingPlanType[] }) => {
+const DialogPricing = ({ data, direction }: { data: PricingPlanType[]; direction: Direction }) => {
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'
@@ -29,7 +30,7 @@ const DialogPricing = ({ data }: { data: PricingPlanType[] }) => {
             element={Button}
             elementProps={buttonProps}
             dialog={PricingDialog}
-            dialogProps={{ data }}
+            dialogProps={{ data, direction }}
           />
         </CardContent>
       </Card>

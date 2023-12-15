@@ -61,7 +61,7 @@ const DialogExamples = async ({ params }: { params: { lang: Locale } }) => {
         <DialogPaymentProviders />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <DialogPricing data={data} />
+        <DialogPricing data={data} direction={direction} />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <DialogCreateApp direction={direction} />
