@@ -7,9 +7,6 @@ import DefaultSuggestions from './DefaultSuggestions'
 import NoResult from './NoResult'
 import SearchResultItem from './SearchResultItem'
 
-// Style Imports
-import styles from './styles.module.css'
-
 type Results = (string | ActionImpl)[]
 
 // Filter the search result data by limiting the number of results per section to 3 if
@@ -64,7 +61,7 @@ const SearchResults = () => {
       items={getFilteredResults(results)}
       onRender={({ item, active }) =>
         typeof item === 'string' ? (
-          <div className={styles.groupName}>{item}</div>
+          <div className='pbs-[15px] pbe-1.5 pli-6 text-[12px] uppercase'>{item}</div>
         ) : (
           <SearchResultItem action={item} active={active} currentRootActionId={rootActionId} />
         )

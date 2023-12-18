@@ -60,6 +60,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
+  const isBelowLgScreen = useMedia('(max-width: 1200px)', false)
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -90,6 +91,8 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
     document.documentElement.setAttribute('dir', direction)
   }, [direction])
 
+  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
+
   return (
     !breakpointReached && (
       <div
@@ -117,7 +120,11 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
             <Close onClick={handleToggle} className='cursor-pointer' />
           </div>
         </div>
-        <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
+        <ScrollWrapper
+          {...(isBelowLgScreen
+            ? { className: 'bs-full overflow-y-auto overflow-x-hidden' }
+            : { options: { wheelPropagation: false, suppressScrollX: true } })}
+        >
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
             <div className='theming-section flex flex-col gap-6'>
               <p>Theming</p>
@@ -360,7 +367,7 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr' }: CustomizerProps) => 
               </div>
             </div>
           </div>
-        </PerfectScrollbar>
+        </ScrollWrapper>
       </div>
     )
   )

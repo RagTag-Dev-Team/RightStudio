@@ -14,9 +14,6 @@ import { useSettings } from '@core/hooks/useSettings'
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const FooterContent = () => {
   const { settings } = useSettings()
   const { isBreakpointReached: isVerticalBreakpointReached } = useVerticalNav()
@@ -33,22 +30,22 @@ const FooterContent = () => {
         <span>{`© ${new Date().getFullYear()}, Made with `}</span>
         <span>{`❤️`}</span>
         <span>{` by `}</span>
-        <Link href='https://themeselection.com' target='_blank' className={styles.primaryColor}>
+        <Link href='https://themeselection.com' target='_blank' className='text-primary'>
           ThemeSelection
         </Link>
       </p>
       {!isBreakpointReached && (
         <div className='flex items-center gap-4'>
-          <Link href='https://themeselection.com/license' target='_blank' className={styles.primaryColor}>
+          <Link href='https://themeselection.com/license' target='_blank' className='text-primary'>
             License
           </Link>
-          <Link href='https://themeselection.com' target='_blank' className={styles.primaryColor}>
+          <Link href='https://themeselection.com' target='_blank' className='text-primary'>
             More Themes
           </Link>
-          <Link href='/' target='_blank' className={styles.primaryColor}>
+          <Link href='/' target='_blank' className='text-primary'>
             Documentation
           </Link>
-          <Link href='https://themeselection.com/support' target='_blank' className={styles.primaryColor}>
+          <Link href='https://themeselection.com/support' target='_blank' className='text-primary'>
             Support
           </Link>
         </div>

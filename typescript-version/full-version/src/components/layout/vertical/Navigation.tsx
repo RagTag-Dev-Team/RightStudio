@@ -12,20 +12,10 @@ import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
-import { useSettings } from '@core/hooks/useSettings'
 
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
-  const { updateSettings } = useSettings()
-
-  const handleClick = () => {
-    if (isCollapsed) {
-      updateSettings({ layout: 'vertical' })
-    } else {
-      updateSettings({ layout: 'collapsed' })
-    }
-  }
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -34,7 +24,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        {!(isCollapsed && !isHovered) && <NavCollapseIcons onClick={handleClick} />}
+        {!(isCollapsed && !isHovered) && <NavCollapseIcons />}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>

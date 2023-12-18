@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react'
 
 // Third-party Imports
-import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import type { ColumnDef, Row, RowData, Column, Table } from '@tanstack/react-table'
 
@@ -113,7 +112,7 @@ const EditableDataTables = () => {
   return (
     <div className='overflow-x-auto'>
       <table className={styles.table}>
-        <thead className={styles.thead}>
+        <thead>
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
@@ -124,7 +123,7 @@ const EditableDataTables = () => {
             </tr>
           ))}
         </thead>
-        <tbody className={styles.tbody}>
+        <tbody>
           {table
             .getRowModel()
             .rows.slice(0, 10)
@@ -133,7 +132,7 @@ const EditableDataTables = () => {
                 <tr key={row.id}>
                   {row.getVisibleCells().map(cell => {
                     return (
-                      <td key={cell.id} className={classnames(styles.cellWithInput, styles['input-border-0'])}>
+                      <td key={cell.id} className={styles.cellWithInput}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     )

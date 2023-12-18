@@ -15,9 +15,11 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-men
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
+// Hook Imports
+import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
 // import { generateVerticalMenu } from '@/utils/menuUtils'
 
@@ -40,12 +42,8 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
     /* Custom scrollbar instead of browser scroll, remove if you want browser scroll only */
     <ScrollWrapper
       {...(isBreakpointReached
-        ? {
-            className: 'bs-full overflow-y-auto overflow-x-hidden'
-          }
-        : {
-            options: { wheelPropagation: false, suppressScrollX: true }
-          })}
+        ? { className: 'bs-full overflow-y-auto overflow-x-hidden' }
+        : { options: { wheelPropagation: false, suppressScrollX: true } })}
     >
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
