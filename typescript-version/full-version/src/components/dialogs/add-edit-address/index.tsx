@@ -20,13 +20,8 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled } from '@mui/material/styles'
 import type { TypographyProps } from '@mui/material/Typography'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Type Imports
 import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
@@ -96,9 +91,6 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
   const [selected, setSelected] = useState<string>(initialSelected)
   const [addressData, setAddressData] = useState<AddEditAddressProps['data']>(Object.assign({}, data))
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
       setSelected(prop)
@@ -119,9 +111,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
     >
       <DialogTitle
         variant='h5'
-        className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {
-          [styles.smDialogTitle]: isBelowSmScreen
-        })}
+        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         {data ? 'Edit Address' : 'Add New Address'}
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
@@ -129,11 +119,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent
-          className={classnames(styles.dialogContent, {
-            [styles.smDialogContent]: isBelowSmScreen
-          })}
-        >
+        <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
           <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
             <i className='ri-close-line' />
           </IconButton>
@@ -262,11 +248,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions
-          className={classnames('gap-2 justify-center', styles.dialogActions, {
-            [styles.smDialogAction]: isBelowSmScreen
-          })}
-        >
+        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' onClick={() => setOpen(false)} type='submit'>
             {data ? 'Update' : 'Submit'}
           </Button>

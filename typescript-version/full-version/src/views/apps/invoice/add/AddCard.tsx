@@ -18,8 +18,6 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import InputLabel from '@mui/material/InputLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -48,10 +46,6 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   const [dueDate, setDueDate] = useState<Date | null | undefined>(null)
   const [formData, setFormData] = useState<FormDataType>(initialFormData)
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-
   const onFormSubmit = (data: FormDataType) => {
     setFormData(data)
   }
@@ -70,7 +64,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
           <Grid container spacing={6}>
             <Grid item xs={12}>
               <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
-                <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
+                <div className='flex justify-between flex-col sm:flex-row'>
                   <div className='flex flex-col'>
                     <div className='flex items-center'>
                       <Typography>{themeConfig.templateName}</Typography>
@@ -120,7 +114,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             </Grid>
 
             <Grid item xs={12}>
-              <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
+              <div className='flex justify-between flex-col sm:flex-row'>
                 <div className='flex flex-col'>
                   <Typography>Invoice To:</Typography>
                   <Select
@@ -205,11 +199,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 >
                   <Grid container>
                     <Grid item lg={6} md={5} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Item
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Item</Typography>
                       <Select fullWidth size='small' defaultValue='App Design'>
                         <MenuItem value='App Design'>App Design</MenuItem>
                         <MenuItem value='App Customization'>App Customization</MenuItem>
@@ -219,11 +209,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       <TextField rows={2} fullWidth multiline size='small' defaultValue='Customization & Bug Fixes' />
                     </Grid>
                     <Grid item lg={2} md={3} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Cost
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Cost</Typography>
                       <TextField
                         size='small'
                         type='number'
@@ -243,11 +229,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       </div>
                     </Grid>
                     <Grid item md={2} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Hours
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Hours</Typography>
                       <TextField
                         size='small'
                         type='number'
@@ -257,11 +239,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       />
                     </Grid>
                     <Grid item md={2} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Price
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Price</Typography>
                       <Typography>$24.00</Typography>
                     </Grid>
                   </Grid>
@@ -287,8 +265,8 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
               <Divider className='border-dashed' />
             </Grid>
             <Grid item xs={12}>
-              <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
-                <div className={classnames('flex flex-col', { 'order-2': isBelowSmScreen })}>
+              <div className='flex justify-between flex-col sm:flex-row'>
+                <div className='flex flex-col order-2 sm:order-[unset]'>
                   <div className='flex items-center'>
                     <Typography>Salesperson:</Typography>
                     <TextField size='small' defaultValue='Tommy Shelby' />

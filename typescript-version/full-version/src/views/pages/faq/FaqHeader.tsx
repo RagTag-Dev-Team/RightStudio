@@ -31,11 +31,7 @@ const FaqHeader = ({ searchValue, setSearchValue }: Props) => {
         <Typography>Hello, how can we help?</Typography>
         <Typography>or choose a category to quickly find the help you need</Typography>
         <TextField
-          fullWidth
-          className={classnames(styles.searchBar, {
-            [styles.inputWidth]: isBelowMdScreen,
-            '!max-w-full': isBelowSmScreen
-          })}
+          className='w-full sm:max-is-[55%] md:max-is-[600px]'
           variant='outlined'
           placeholder='Ask a question...'
           value={searchValue}

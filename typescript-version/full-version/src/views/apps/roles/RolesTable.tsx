@@ -22,8 +22,6 @@ import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import { styled } from '@mui/material/styles'
 import TablePagination from '@mui/material/TablePagination'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -140,9 +138,6 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[tableData])
   const [globalFilter, setGlobalFilter] = useState('')
-
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   useEffect(() => {
     const filteredData = tableData?.filter(user => {
@@ -290,34 +285,23 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
 
   return (
     <Card>
-      <CardContent
-        className={classnames('flex justify-between', {
-          'flex-col items-start': isBelowSmScreen,
-          'items-center': !isBelowSmScreen
-        })}
-      >
+      <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center'>
         <Button
           variant='outlined'
           color='secondary'
           startIcon={<i className='ri-upload-2-line' />}
-          {...(isBelowSmScreen && { fullWidth: true })}
+          className='is-full sm:is-auto'
         >
           Export
         </Button>
-        <div
-          className={classnames('flex', {
-            'flex-col !items-start is-full': isBelowSmScreen,
-            'items-center': !isBelowSmScreen
-          })}
-        >
+        <div className='flex flex-col !items-start is-full sm:flex-row sm:is-auto sm:items-center'>
           <DebouncedInput
             value={globalFilter ?? ''}
-            className={styles.searchWidth}
+            className={classnames('is-full sm:is-auto', styles.searchWidth)}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search User'
-            {...(isBelowSmScreen && { fullWidth: true })}
           />
-          <FormControl size='small' {...(isBelowSmScreen && { fullWidth: true })}>
+          <FormControl size='small' className='is-full sm:is-auto'>
             <InputLabel id='roles-app-role-select-label'>Select Role</InputLabel>
             <Select
               value={role}

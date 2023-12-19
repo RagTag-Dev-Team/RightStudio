@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
+import type { Direction } from '@core/types'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 import type { Direction } from '@core/types'
 

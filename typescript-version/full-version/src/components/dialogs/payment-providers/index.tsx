@@ -7,8 +7,6 @@ import DialogContent from '@mui/material/DialogContent'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -16,7 +14,6 @@ import classnames from 'classnames'
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
-import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type PaymentProvidersProps = {
   open: boolean
@@ -199,27 +196,18 @@ const cardList: CardList[] = [
 ]
 
 const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='md' scroll='body'>
       <DialogTitle
         variant='h5'
-        className={classnames('flex gap-2 flex-col text-center', globalDialogStyles.dialogTitle, {
-          [globalDialogStyles.smDialogTitle]: isBelowSmScreen
-        })}
+        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         Select Payment Providers
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
           Third-party payment providers
         </Typography>
       </DialogTitle>
-      <DialogContent
-        className={classnames(globalDialogStyles.dialogContentWithActions, {
-          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
-        })}
-      >
+      <DialogContent className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
           <i className='ri-close-line' />
         </IconButton>
@@ -228,10 +216,9 @@ const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
             <div
               key={index}
               className={classnames(
-                'flex items-center justify-between flex-wrap gap-x-4 gap-y-1',
+                'flex sm:items-center flex-col sm:flex-row items-start justify-between flex-wrap gap-x-4 gap-y-1',
                 styles.paymentItem,
-                styles.borderBottom,
-                { 'flex-col !items-start': isBelowSmScreen }
+                styles.borderBottom
               )}
             >
               <Typography className='font-medium'>{card.providerName}</Typography>

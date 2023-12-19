@@ -12,8 +12,6 @@ import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -29,16 +27,13 @@ const ResetPasswordV2 = ({ direction }: { direction: Direction }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
 
-  // Hooks
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
-
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   return (
     <div className='flex h-full justify-center'>
-      {isAboveMdScreen && <div className='flex h-full items-center justify-center flex-1'>image</div>}
+      <div className='flex h-full items-center justify-center flex-1 max-md:hidden'>image</div>
       <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
         <div>
           <div className={classnames('absolute', styles.templateName)}>Logo</div>

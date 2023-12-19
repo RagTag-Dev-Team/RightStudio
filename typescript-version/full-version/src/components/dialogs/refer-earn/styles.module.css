@@ -18,13 +18,3 @@
   background-color: #0077b5 !important;
   color: var(--mui-palette-common-white) !important;
 }
-
-.avatarIcon {
-  block-size: 88px;
-  inline-size: 88px;
-}
-
-.smAvatarIcon {
-  block-size: 66px;
-  inline-size: 66px;
-}

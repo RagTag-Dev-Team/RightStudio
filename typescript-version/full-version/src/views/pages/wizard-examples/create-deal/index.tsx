@@ -120,7 +120,7 @@ const CreateDeal = ({ direction }: { direction: Direction }) => {
   }
 
   return (
-    <Card className={classnames('flex', { 'flex-col': isBelowMdScreen })}>
+    <Card className='flex flex-col md:flex-row'>
       <CardContent
         className={classnames({ [styles.topCardContent]: isBelowMdScreen, [styles.leftCardContent]: !isBelowMdScreen })}
       >

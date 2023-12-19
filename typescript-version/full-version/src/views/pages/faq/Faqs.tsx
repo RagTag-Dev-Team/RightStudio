@@ -12,7 +12,6 @@ import Accordion from '@mui/material/Accordion'
 import Typography from '@mui/material/Typography'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
@@ -32,9 +31,6 @@ type props = {
 const FAQ = ({ faqData, searchValue }: props) => {
   // States
   const [activeTab, setActiveTab] = useState('payment')
-
-  // Hooks
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
     setActiveTab(newValue)
@@ -76,7 +72,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
               />
             ))}
           </CustomTabList>
-          {isAboveMdScreen && <img src='/illustration-john.png' alt='john image' />}
+          <img src='/illustration-john.png' className='max-md:hidden' alt='john image' />
         </Grid>
         <Grid item xs={12} md={8} xl={9}>
           {filteredData.map((faq, index) => (

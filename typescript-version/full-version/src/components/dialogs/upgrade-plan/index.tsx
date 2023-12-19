@@ -14,14 +14,8 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Style Imports
-import styles from '@components/dialogs/styles.module.css'
 import ConfirmationDialog from '../confirmation-dialog'
 
 type UpgradePlanProps = {
@@ -33,9 +27,6 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
   // States
   const [openConfirmation, setOpenConfirmation] = useState(false)
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleClose = () => {
     setOpen(false)
   }
@@ -45,20 +36,14 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
       <Dialog fullWidth open={open} onClose={handleClose}>
         <DialogTitle
           variant='h5'
-          className={classnames('flex flex-col gap-2 text-center', styles.dialogTitle, {
-            [styles.smDialogTitle]: isBelowSmScreen
-          })}
+          className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
         >
           Upgrade Plan
           <Typography component='span' variant='body2' className='flex flex-col text-center'>
             Choose the best plan for user
           </Typography>
         </DialogTitle>
-        <DialogContent
-          className={classnames('overflow-visible', styles.dialogContentAlone, {
-            [styles.smDialogContentAlone]: isBelowSmScreen
-          })}
-        >
+        <DialogContent className='overflow-visible pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
           <div className='flex items-center gap-4'>
             <FormControl fullWidth size='small'>
               <InputLabel id='user-view-plans-select-label'>Choose Plan</InputLabel>

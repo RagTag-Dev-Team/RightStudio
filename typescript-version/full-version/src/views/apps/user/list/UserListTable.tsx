@@ -17,8 +17,6 @@ import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 import { styled } from '@mui/material/styles'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
@@ -141,9 +139,6 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[tableData])
   const [globalFilter, setGlobalFilter] = useState('')
-
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   const getAvatar = (params: Pick<UsersType, 'avatar' | 'fullName'>) => {
     const { avatar, fullName } = params
@@ -287,36 +282,23 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         <CardHeader title='Filters' />
         <TableFilters setData={setData} tableData={tableData} />
         <Divider />
-        <div
-          className={classnames('flex justify-between', {
-            'flex-col items-start': isBelowSmScreen,
-            'items-center': !isBelowSmScreen
-          })}
-        >
+        <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center'>
           <Button
             color='secondary'
             variant='outlined'
             startIcon={<i className='ri-upload-2-line text-xl' />}
-            {...(isBelowSmScreen && { fullWidth: true })}
+            className='is-full sm:is-auto'
           >
             Export
           </Button>
-          <div
-            className={classnames('flex items-center gap-x-4', {
-              'is-full flex-col': isBelowSmScreen
-            })}
-          >
+          <div className='flex items-center gap-x-4 is-full flex-col sm:is-auto sm:flex-row'>
             <DebouncedInput
               value={globalFilter ?? ''}
               onChange={value => setGlobalFilter(String(value))}
               placeholder='Search User'
-              {...(isBelowSmScreen && { fullWidth: true })}
+              className='is-full sm:is-auto'
             />
-            <Button
-              variant='contained'
-              onClick={() => setAddUserOpen(!addUserOpen)}
-              {...(isBelowSmScreen && { fullWidth: true })}
-            >
+            <Button variant='contained' onClick={() => setAddUserOpen(!addUserOpen)} className='is-full sm:is-auto'>
               Add New User
             </Button>
           </div>

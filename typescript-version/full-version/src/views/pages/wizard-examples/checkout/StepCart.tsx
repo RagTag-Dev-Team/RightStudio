@@ -15,11 +15,9 @@ import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
 import IconButton from '@mui/material/IconButton'
 import Rating from '@mui/material/Rating'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import CardContent from '@mui/material/CardContent'
 import Collapse from '@mui/material/Collapse'
 import Fade from '@mui/material/Fade'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -61,10 +59,6 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
   const [openCollapse, setOpenCollapse] = useState<boolean>(true)
   const [openFade, setOpenFade] = useState<boolean>(true)
 
-  // Hooks
-  const isBetweenSmAndLg = useMediaQuery((theme: Theme) => theme.breakpoints.between('sm', 'lg'))
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   useEffect(() => {
     if (!openFade) {
       setTimeout(() => {
@@ -104,16 +98,14 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
           {products.map((product, index) => (
             <div
               key={index}
-              className={classnames('flex items-center relative', styles.borderBottom, {
-                'flex-col': isBelowSmScreen
-              })}
+              className={classnames('flex flex-col sm:flex-row items-center relative', styles.borderBottom)}
             >
               <img height={140} width={140} src={product.imgSrc} alt={product.imgAlt} />
               <IconButton size='small' className={styles.closeIcon}>
                 <i className='ri-close-line text-xl' />
               </IconButton>
-              <div className={classnames('flex justify-between w-full', { 'flex-col items-center': isBelowSmScreen })}>
-                <div className={classnames('flex flex-col', { 'items-center': isBelowSmScreen })}>
+              <div className={classnames('flex flex-col sm:flex-row items-center sm:justify-between w-full')}>
+                <div className={classnames('flex flex-col items-center sm:items-start')}>
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
@@ -134,11 +126,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
                     className={classnames('block', styles.maxWidth)}
                   />
                 </div>
-                <div
-                  className={classnames('flex flex-col justify-between items-end', {
-                    'items-center': isBelowSmScreen
-                  })}
-                >
+                <div className={classnames('flex flex-col justify-between items-center sm:items-end')}>
                   <div className='flex'>
                     <Typography color='primary'>{`$${product.price}`}</Typography>
                     <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
@@ -231,8 +219,8 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
             </div>
           </CardContent>
         </div>
-        <div className={classnames({ 'justify-end': isBetweenSmAndLg }, 'flex')}>
-          <Button fullWidth={!isBetweenSmAndLg} variant='contained' onClick={handleNext}>
+        <div className={classnames('flex justify-normal sm:justify-end xl:justify-normal')}>
+          <Button className='is-full sm:is-auto lg:is-full' variant='contained' onClick={handleNext}>
             Place Order
           </Button>
         </div>

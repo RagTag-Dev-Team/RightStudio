@@ -15,13 +15,6 @@ import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled } from '@mui/material/styles'
-import type { TypographyProps } from '@mui/material/Typography'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Type Imports
 import type { Direction } from '@core/types'
@@ -39,21 +32,13 @@ type TwoFactorAuthProps = {
   direction: Direction
 }
 
-const Title = styled(Typography, {
-  name: 'MuiCustomInputHorizontal',
-  slot: 'title'
-})<TypographyProps>(({ theme }) => ({
-  letterSpacing: '0.15px',
-  fontWeight: theme.typography.fontWeightMedium
-}))
-
 const data: CustomInputHorizontalData[] = [
   {
     title: (
-      <Title component='div' className='flex items-center gap-1'>
+      <div className='flex items-center gap-1'>
         <i className='ri-settings-3-line' />
         <Typography className='font-medium'>Authenticator Apps</Typography>
-      </Title>
+      </div>
     ),
     value: 'app',
     isSelected: true,
@@ -61,46 +46,33 @@ const data: CustomInputHorizontalData[] = [
   },
   {
     title: (
-      <Title component='div' className='flex items-center gap-1'>
+      <div className='flex items-center gap-1'>
         <i className='ri-wechat-line' />
         <Typography className='font-medium'>SMS</Typography>
-      </Title>
+      </div>
     ),
     value: 'sms',
     content: 'We will send a code via SMS if you need to use your backup login method.'
   }
 ]
 
-const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) => {
+const SMSDialog = (handleAuthDialogClose: () => void) => {
   return (
     <>
-      <DialogTitle
-        variant='h5'
-        className={classnames('flex flex-col gap-2', globalDialogStyles.dialogTitle, {
-          [globalDialogStyles.smDialogTitle]: isBelowSmScreen
-        })}
-      >
+      <DialogTitle variant='h5' className='flex flex-col gap-2 pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Verify Your Mobile Number for SMS
         <Typography component='span' variant='body2' className='flex flex-col'>
           Enter your mobile phone number with country code and we will send you a verification code.
         </Typography>
       </DialogTitle>
-      <DialogContent
-        className={classnames('overflow-visible', globalDialogStyles.dialogContent, {
-          [globalDialogStyles.smDialogContent]: isBelowSmScreen
-        })}
-      >
+      <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
         <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
 
         <TextField fullWidth type='number' label='Mobile Number' placeholder='123 456 7890' />
       </DialogContent>
-      <DialogActions
-        className={classnames('gap-2', globalDialogStyles.dialogActions, {
-          [globalDialogStyles.smDialogAction]: isBelowSmScreen
-        })}
-      >
+      <DialogActions className='gap-2 pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
         <Button variant='outlined' type='reset' color='secondary' onClick={handleAuthDialogClose}>
           Cancel
         </Button>
@@ -118,22 +90,13 @@ const SMSDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
   )
 }
 
-const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) => {
+const AppDialog = (handleAuthDialogClose: () => void) => {
   return (
     <>
-      <DialogTitle
-        variant='h5'
-        className={classnames('text-center', globalDialogStyles.dialogTitle, {
-          [globalDialogStyles.smDialogTitle]: isBelowSmScreen
-        })}
-      >
+      <DialogTitle variant='h5' className='text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Add Authenticator App
       </DialogTitle>
-      <DialogContent
-        className={classnames('flex flex-col gap-6', globalDialogStyles.dialogContent, {
-          [globalDialogStyles.smDialogContent]: isBelowSmScreen
-        })}
-      >
+      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-6 pli-10 sm:pli-16'>
         <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
@@ -155,11 +118,7 @@ const AppDialog = (handleAuthDialogClose: () => void, isBelowSmScreen: boolean) 
           <TextField fullWidth label='Enter Authentication Code' placeholder='Enter Authentication Code' />
         </div>
       </DialogContent>
-      <DialogActions
-        className={classnames('gap-2', globalDialogStyles.dialogActions, {
-          [globalDialogStyles.smDialogAction]: isBelowSmScreen
-        })}
-      >
+      <DialogActions className='gap-2 pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
         <Button variant='outlined' type='reset' color='secondary' onClick={handleAuthDialogClose}>
           Cancel
         </Button>
@@ -185,9 +144,6 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
   // States
   const [authType, setAuthType] = useState<'app' | 'sms'>(initialSelectedOption as 'app')
   const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)
-
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   const handleClose = () => {
     setOpen(false)
@@ -221,20 +177,14 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
       <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
         <DialogTitle
           variant='h5'
-          className={classnames('flex gap-2 flex-col text-center', globalDialogStyles.dialogTitle, {
-            [globalDialogStyles.smDialogTitle]: isBelowSmScreen
-          })}
+          className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
         >
           Select Authentication Method
           <Typography component='span' variant='body2' className='flex flex-col text-center'>
             You also need to select a method by which the proxy authenticates to the directory serve.
           </Typography>
         </DialogTitle>
-        <DialogContent
-          className={classnames(globalDialogStyles.dialogContent, {
-            [globalDialogStyles.smDialogContent]: isBelowSmScreen
-          })}
-        >
+        <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
           <IconButton onClick={handleClose} className={globalDialogStyles.closeIcon}>
             <i className='ri-close-line' />
           </IconButton>
@@ -252,11 +202,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
             ))}
           </Grid>
         </DialogContent>
-        <DialogActions
-          className={classnames(globalDialogStyles.dialogActions, {
-            [globalDialogStyles.smDialogAction]: isBelowSmScreen
-          })}
-        >
+        <DialogActions className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
           <Button
             variant='contained'
             endIcon={<i className={arrowIcon} />}
@@ -273,9 +219,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
 
       <Dialog fullWidth maxWidth='md' scroll='body' open={showAuthDialog} onClose={handleAuthDialogClose}>
         <form onSubmit={e => e.preventDefault()}>
-          {authType === 'sms'
-            ? SMSDialog(handleAuthDialogClose, isBelowSmScreen)
-            : AppDialog(handleAuthDialogClose, isBelowSmScreen)}
+          {authType === 'sms' ? SMSDialog(handleAuthDialogClose) : AppDialog(handleAuthDialogClose)}
         </form>
       </Dialog>
     </>

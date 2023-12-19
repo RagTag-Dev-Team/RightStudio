@@ -15,9 +15,7 @@ import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import Chip from '@mui/material/Chip'
-import type { Theme } from '@mui/material/styles'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
@@ -73,9 +71,6 @@ const AccountDetails = () => {
     setLanguage(event.target.value as string[])
   }
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleFormChange = (field: keyof Data, value: Data[keyof Data]) => {
     setFormData({ ...formData, [field]: value })
   }
@@ -105,13 +100,8 @@ const AccountDetails = () => {
         <div className='flex items-center'>
           <img height={120} width={120} className={commonStyles.borderRadius} src={imgSrc} alt='Profile' />
           <div className='flex flex-grow flex-col gap-4'>
-            <div className={classnames('flex gap-4', { 'flex-col': isBelowSmScreen })}>
-              <Button
-                component='label'
-                variant='contained'
-                htmlFor='account-settings-upload-image'
-                className={classnames({ 'w-full text-center': isBelowSmScreen })}
-              >
+            <div className={classnames('flex flex-col sm:flex-row gap-4')}>
+              <Button component='label' variant='contained' htmlFor='account-settings-upload-image'>
                 Upload New Photo
                 <input
                   hidden
@@ -122,12 +112,7 @@ const AccountDetails = () => {
                   id='account-settings-upload-image'
                 />
               </Button>
-              <Button
-                variant='outlined'
-                color='secondary'
-                onClick={handleFileInputReset}
-                className={classnames({ 'w-full text-center': isBelowSmScreen })}
-              >
+              <Button variant='outlined' color='secondary' onClick={handleFileInputReset}>
                 Reset
               </Button>
             </div>

@@ -6,8 +6,6 @@ import Link from 'next/link'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -16,12 +14,9 @@ import classnames from 'classnames'
 import styles from './v2.module.css'
 
 const VerifyEmailV2 = () => {
-  // Hooks
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
-
   return (
     <div className='flex h-full justify-center'>
-      {isAboveMdScreen && <div className='flex h-full items-center justify-center flex-1'>image</div>}
+      <div className='flex h-full items-center justify-center flex-1 max-md:hidden'>image</div>
       <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
         <div>
           <div className={classnames('absolute', styles.templateName)}>Logo</div>

@@ -17,8 +17,6 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -29,7 +27,6 @@ import themeConfig from '@configs/themeConfig'
 // Style Imports
 import styles from './styles.module.css'
 import commonStyles from '@/styles/common.module.css'
-import globalDialogStyles from '@components/dialogs/styles.module.css'
 
 type ReferEarnProps = {
   open: boolean
@@ -61,16 +58,11 @@ const options: Options[] = [
 ]
 
 const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='md' scroll='body'>
       <DialogTitle
         variant='h5'
-        className={classnames('flex gap-2 flex-col text-center', globalDialogStyles.dialogTitle, {
-          [globalDialogStyles.smDialogTitle]: isBelowSmScreen
-        })}
+        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         Refer & Earn
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
@@ -78,11 +70,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
           trial
         </Typography>
       </DialogTitle>
-      <DialogContent
-        className={classnames('flex flex-col gap-6', globalDialogStyles.dialogContentWithActions, {
-          [globalDialogStyles.smDialogContentWithActions]: isBelowSmScreen
-        })}
-      >
+      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
           <i className='ri-close-line' />
         </IconButton>
@@ -90,14 +78,9 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
           {options?.map((option, index) => (
             <Grid item xs={12} md={4} key={index}>
               <div className='flex items-center flex-col gap-4'>
-                <Avatar className={classnames(styles.avatarIcon, { [styles.smAvatarIcon]: isBelowSmScreen })}>
+                <Avatar className='bs-[66px] is-[66px] sm:bs-[88px] sm:is-[88px]'>
                   {typeof option.icon === 'string' ? (
-                    <i
-                      className={classnames(option.icon, {
-                        'text-[32px]': isBelowSmScreen,
-                        'text-[40px]': !isBelowSmScreen
-                      })}
-                    />
+                    <i className={classnames('text-[32px] sm:text-[40px]', option.icon)} />
                   ) : (
                     option.icon
                   )}
@@ -117,9 +100,9 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
             <InputLabel htmlFor='refer-email' className='inline-flex whitespace-break-spaces'>
               Enter your friend&#39;s email address and invite them to join {themeConfig.templateName} 😍
             </InputLabel>
-            <div className={classnames('flex items-center w-full', { 'flex-wrap': isBelowSmScreen })}>
+            <div className='flex items-center w-full flex-wrap sm:flex-nowrap'>
               <TextField fullWidth size='small' id='refer-email' placeholder='johnDoe@email.com' />
-              <Button variant='contained' className={classnames({ 'w-full': isBelowSmScreen })}>
+              <Button variant='contained' className='w-full sm:w-auto'>
                 Send
               </Button>
             </div>
@@ -131,11 +114,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
             <InputLabel htmlFor='refer-social' className='inline-flex whitespace-break-spaces'>
               You can also copy and send it or share it on your social media. 🚀
             </InputLabel>
-            <div
-              className={classnames('flex items-center justify-initial', {
-                'flex-wrap justify-end': isBelowSmScreen
-              })}
-            >
+            <div className='flex items-center justify-end sm:justify-initial flex-wrap sm:flex-nowrap'>
               <OutlinedInput
                 fullWidth
                 size='small'

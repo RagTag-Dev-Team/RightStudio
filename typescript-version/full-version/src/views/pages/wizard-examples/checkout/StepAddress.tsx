@@ -11,11 +11,9 @@ import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import CardContent from '@mui/material/CardContent'
 import { styled } from '@mui/material/styles'
 import type { TypographyProps } from '@mui/material/Typography'
-import type { Theme } from '@mui/material/styles'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
@@ -147,9 +145,6 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
   const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
   const [selectedSpeed, setSelectedSpeed] = useState<string>('standard')
 
-  // Hooks
-  const isBetweenSmAndLg = useMediaQuery((theme: Theme) => theme.breakpoints.between('sm', 'lg'))
-
   const buttonProps: ButtonProps = {
     variant: 'outlined',
     children: 'Add New Address'
@@ -261,7 +256,7 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
           </CardContent>
         </div>
         <div className='flex justify-end'>
-          <Button fullWidth={!isBetweenSmAndLg} variant='contained' onClick={handleNext}>
+          <Button className='is-full sm:is-auto lg:is-full' variant='contained' onClick={handleNext}>
             Place Order
           </Button>
         </div>

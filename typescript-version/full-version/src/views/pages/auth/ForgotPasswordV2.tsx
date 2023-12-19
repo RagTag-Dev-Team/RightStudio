@@ -7,8 +7,6 @@ import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -20,12 +18,9 @@ import type { Direction } from '@core/types'
 import styles from './v2.module.css'
 
 const ForgotPasswordV2 = ({ direction }: { direction: Direction }) => {
-  // Hooks
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
-
   return (
     <div className='flex h-full justify-center'>
-      {isAboveMdScreen && <div className={'flex items-center justify-center h-full flex-1'}>image</div>}
+      <div className='flex items-center justify-center h-full flex-1 max-md:hidden'>image</div>
       <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
         <div>
           <div className={classnames('absolute', styles.templateName)}>Logo</div>

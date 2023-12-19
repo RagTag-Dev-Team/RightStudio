@@ -19,13 +19,8 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemText from '@mui/material/ListItemText'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
@@ -130,9 +125,6 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
   // States
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -144,20 +136,14 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
     <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
       <DialogTitle
         variant='h5'
-        className={classnames('flex gap-2 flex-col text-center', styles.dialogTitle, {
-          [styles.smDialogTitle]: isBelowSmScreen
-        })}
+        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         Share Project
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
           Share project with the team members
         </Typography>
       </DialogTitle>
-      <DialogContent
-        className={classnames('flex flex-col gap-6', styles.dialogContentWithActions, {
-          [styles.smDialogContentWithActions]: isBelowSmScreen
-        })}
-      >
+      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
         <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
           <i className='ri-close-line' />
         </IconButton>
@@ -197,19 +183,19 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
                       {member.email}
                     </Typography>
                   </div>
-                  {isBelowSmScreen ? (
-                    <IconButton size='small' onClick={handleClick}>
-                      <i className='ri-arrow-down-s-line text-xl' />
-                    </IconButton>
-                  ) : (
-                    <Button
-                      color='secondary'
-                      onClick={handleClick}
-                      endIcon={<i className='ri-arrow-down-s-line text-xl' />}
-                    >
-                      {member.value}
-                    </Button>
-                  )}
+
+                  <IconButton className='sm:hidden' size='small' onClick={handleClick}>
+                    <i className='ri-arrow-down-s-line text-xl' />
+                  </IconButton>
+
+                  <Button
+                    color='secondary'
+                    className='hidden sm:flex'
+                    onClick={handleClick}
+                    endIcon={<i className='ri-arrow-down-s-line text-xl' />}
+                  >
+                    {member.value}
+                  </Button>
                 </div>
               </div>
             ))}

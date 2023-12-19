@@ -18,8 +18,6 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import Divider from '@mui/material/Divider'
 import InputLabel from '@mui/material/InputLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -44,10 +42,6 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
   const [issueDate, setIssueDate] = useState(new Date(invoiceData.issuedDate))
   const [dueDate, setDueDate] = useState(new Date(invoiceData.dueDate))
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-
   const deleteForm = (e: SyntheticEvent) => {
     e.preventDefault()
 
@@ -62,7 +56,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
           <Grid container>
             <Grid item xs={12}>
               <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
-                <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
+                <div className='flex justify-between flex-col sm:flex-row'>
                   <div className='flex flex-col'>
                     <div className='flex items-center'>
                       <Typography>{themeConfig.templateName}</Typography>
@@ -109,11 +103,11 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
+              <div className='flex justify-between flex-col sm:flex-row'>
                 <div className='flex flex-col'>
                   <Typography>Invoice To:</Typography>
                   <Select
-                    className={classnames({ 'w-1/2': isBelowSmScreen })}
+                    className='w-1/2 sm:w-auto'
                     size='small'
                     value={selectData.id}
                     onChange={e => {
@@ -172,11 +166,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                 >
                   <Grid container>
                     <Grid item lg={6} md={5} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Item
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Item</Typography>
                       <Select fullWidth size='small' defaultValue='App Design'>
                         <MenuItem value='App Design'>App Design</MenuItem>
                         <MenuItem value='App Customization'>App Customization</MenuItem>
@@ -186,11 +176,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                       <TextField rows={2} fullWidth multiline size='small' defaultValue='Customization & Bug Fixes' />
                     </Grid>
                     <Grid item lg={2} md={3} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Cost
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Cost</Typography>
                       <TextField
                         size='small'
                         type='number'
@@ -209,11 +195,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                       </div>
                     </Grid>
                     <Grid item md={2} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Hours
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Hours</Typography>
                       <TextField
                         size='small'
                         type='number'
@@ -223,11 +205,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                       />
                     </Grid>
                     <Grid item md={2} xs={12}>
-                      <Typography
-                        className={classnames({ static: isBelowSmScreen, 'absolute -top-6': !isBelowMdScreen })}
-                      >
-                        Price
-                      </Typography>
+                      <Typography className='static md:absolute md:-top-6'>Price</Typography>
                       <Typography>$24.00</Typography>
                     </Grid>
                   </Grid>
@@ -253,8 +231,8 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
               <Divider className='border-dashed' />
             </Grid>
             <Grid item xs={12}>
-              <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
-                <div className={classnames('flex flex-col', { 'order-2': isBelowSmScreen })}>
+              <div className='flex justify-between flex-col sm:flex-row'>
+                <div className='flex flex-col order-2 sm:order-[unset]'>
                   <div className='flex items-center'>
                     <Typography>Salesperson:</Typography>
                     <TextField size='small' defaultValue='Tommy Shelby' />

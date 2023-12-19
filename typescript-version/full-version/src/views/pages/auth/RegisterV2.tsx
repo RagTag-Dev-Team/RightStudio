@@ -15,8 +15,6 @@ import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -29,14 +27,11 @@ const RegisterV2 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
-  // Hooks
-  const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
-
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
     <div className='flex h-full justify-center'>
-      {isAboveMdScreen && <div className='flex h-full items-center justify-center flex-1'>image</div>}
+      <div className='flex h-full items-center justify-center flex-1 max-md:hidden'>image</div>
       <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
         <div>
           <div className={classnames('absolute', styles.templateName)}>Logo</div>

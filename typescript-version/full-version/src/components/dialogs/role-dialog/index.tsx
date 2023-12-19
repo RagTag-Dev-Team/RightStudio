@@ -15,11 +15,6 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Style Imports
 import styles from '@components/dialogs/styles.module.css'
@@ -54,9 +49,6 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
   // States
   const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([])
   const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState<boolean>(false)
-
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   const handleClose = () => {
     setOpen(false)
@@ -100,9 +92,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
     <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={handleClose}>
       <DialogTitle
         variant='h5'
-        className={classnames('flex flex-col gap-2 text-center', styles.dialogTitle, {
-          [styles.smDialogTitle]: isBelowSmScreen
-        })}
+        className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         Upgrade Plan
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
@@ -110,11 +100,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent
-          className={classnames('overflow-visible', styles.dialogContent, {
-            [styles.smDialogContent]: isBelowSmScreen
-          })}
-        >
+        <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
           <IconButton onClick={handleClose} className={styles.closeIcon}>
             <i className='ri-close-line' />
           </IconButton>
@@ -185,11 +171,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
             })}
           </div>
         </DialogContent>
-        <DialogActions
-          className={classnames('gap-2 justify-center', styles.dialogActions, {
-            [styles.smDialogAction]: isBelowSmScreen
-          })}
-        >
+        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' type='submit' onClick={handleClose}>
             Submit
           </Button>

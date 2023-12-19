@@ -41,7 +41,6 @@ const products = [
 const StepConfirmation = () => {
   // Hooks
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   return (
     <Grid container>
@@ -63,16 +62,11 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12}>
-        <div
-          className={classnames('flex', commonStyles.border, commonStyles.borderRadius, {
-            'flex-col': isBelowMdScreen
-          })}
-        >
+        <div className={classnames('flex flex-col md:flex-row', commonStyles.border, commonStyles.borderRadius)}>
           <div
-            className={classnames('flex flex-col w-full', {
+            className={classnames('flex flex-col w-full items-center sm:items-start', {
               [styles.borderBottom]: isBelowMdScreen,
-              [styles.borderRight]: !isBelowMdScreen,
-              'items-center': isBelowSmScreen
+              [styles.borderRight]: !isBelowMdScreen
             })}
           >
             <div className='flex items-center'>
@@ -86,10 +80,9 @@ const StepConfirmation = () => {
             <Typography>+123456789</Typography>
           </div>
           <div
-            className={classnames('flex flex-col w-full', {
+            className={classnames('flex flex-col w-full items-center sm:items-start', {
               [styles.borderBottom]: isBelowMdScreen,
-              [styles.borderRight]: !isBelowMdScreen,
-              'items-center': isBelowSmScreen
+              [styles.borderRight]: !isBelowMdScreen
             })}
           >
             <div className='flex items-center'>
@@ -103,9 +96,8 @@ const StepConfirmation = () => {
             <Typography>+123456789</Typography>
           </div>
           <div
-            className={classnames('flex flex-col w-full', {
-              [styles.borderBottom]: isBelowMdScreen,
-              'items-center': isBelowSmScreen
+            className={classnames('flex flex-col w-full items-center sm:items-start', {
+              [styles.borderBottom]: isBelowMdScreen
             })}
           >
             <div className='flex items-center'>
@@ -121,13 +113,12 @@ const StepConfirmation = () => {
       <Grid item xs={12} md={8} xl={9}>
         <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
           {products.map((product, index) => (
-            <div
-              key={index}
-              className={classnames('flex items-center', styles.borderBottom, { 'flex-col': isBelowSmScreen })}
-            >
+            <div key={index} className={classnames('flex flex-col sm:flex-row items-center', styles.borderBottom)}>
               <img height={80} width={80} src={product.imgSrc} alt={product.imgAlt} />
-              <div className={classnames('flex justify-between w-full', { 'flex-col items-center': isBelowSmScreen })}>
-                <div className={classnames('flex flex-col', { 'items-center': isBelowSmScreen })}>
+              <div
+                className={classnames('flex justify-between w-full flex-col sm:flex-row items-center sm:items-start')}
+              >
+                <div className={classnames('flex flex-col items-center sm:items-start')}>
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>

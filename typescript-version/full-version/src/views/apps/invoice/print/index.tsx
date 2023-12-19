@@ -7,8 +7,6 @@ import { useEffect, useRef } from 'react'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -56,9 +54,6 @@ const data = [
 ]
 
 const PrintPage = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }) => {
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const initialized = useRef(false)
 
   useEffect(() => {
@@ -74,11 +69,7 @@ const PrintPage = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }
     <Grid container>
       <Grid item xs={12}>
         <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
-          <div
-            className={classnames('flex justify-between', {
-              'flex-col': isBelowSmScreen
-            })}
-          >
+          <div className='flex justify-between flex-col sm:flex-row'>
             <div className='flex flex-col'>
               <div className='flex items-center'>
                 <Typography>{themeConfig.templateName}</Typography>
@@ -169,8 +160,8 @@ const PrintPage = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }
         </div>
       </Grid>
       <Grid item xs={12}>
-        <div className={classnames('flex justify-between', { 'flex-col': isBelowSmScreen })}>
-          <div className={classnames('flex flex-col', { 'order-2': isBelowSmScreen })}>
+        <div className='flex justify-between flex-col sm:flex-row'>
+          <div className='flex flex-col order-2 sm:order-[unset]'>
             <div className='flex items-center'>
               <Typography>Salesperson:</Typography>
               <Typography>Tommy Shelby</Typography>

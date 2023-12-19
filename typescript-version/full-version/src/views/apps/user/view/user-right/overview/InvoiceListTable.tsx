@@ -10,7 +10,6 @@ import Link from 'next/link'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
@@ -21,7 +20,6 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -129,9 +127,6 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   const [data, setData] = useState(...[invoiceData])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   useEffect(() => {
     const filteredData = invoiceData?.filter(invoice => {
       if (status && invoice.invoiceStatus.toLowerCase().replace(/\s+/g, '-') !== status) return false
@@ -236,31 +231,22 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
 
   return (
     <Card>
-      <CardContent
-        className={classnames('flex justify-between', {
-          'flex-col items-start': isBelowSmScreen,
-          'items-center': !isBelowSmScreen
-        })}
-      >
+      <CardContent className='flex justify-between flex-col sm:flex-row items-start sm:items-center'>
         <Button
           variant='contained'
           component={Link}
           startIcon={<i className='ri-add-line' />}
           href={`/apps/invoice/add/`}
-          {...(isBelowSmScreen && { fullWidth: true })}
+          className='is-full sm:is-auto'
         >
           Create Invoice
         </Button>
-        <div
-          className={classnames('flex items-center gap-x-4', {
-            'is-full flex-col': isBelowSmScreen
-          })}
-        >
+        <div className='flex items-center gap-x-4 flex-col sm:flex-row is-full sm:is-auto'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Invoice'
-            {...(isBelowSmScreen && { fullWidth: true })}
+            className='is-full sm:is-auto'
           />
           <FormControl fullWidth size='small'>
             <InputLabel id='status-select'>Invoice Status</InputLabel>

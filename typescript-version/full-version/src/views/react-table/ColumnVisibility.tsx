@@ -7,11 +7,7 @@ import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
-// Third-party Imports
-import classnames from 'classnames'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 
 // Type Imports
@@ -56,8 +52,6 @@ const ColumnVisibility = () => {
   const [columns] = useState<typeof defaultColumns>(() => [...defaultColumns])
   const [columnVisibility, setColumnVisibility] = useState({})
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
   const table = useReactTable({
     data,
     columns,
@@ -75,7 +69,7 @@ const ColumnVisibility = () => {
     <Card>
       <CardHeader
         title='Toggle Column Visibility'
-        className={classnames('gap-2', { 'flex-col items-start': isBelowSmScreen })}
+        className='gap-2 flex-col items-start sm:flex-row sm:items-center'
         sx={{ '& .MuiCardHeader-action': { m: 0 } }}
         action={
           <Button variant='contained' onClick={() => table.getAllLeafColumns()[1].toggleVisibility()}>

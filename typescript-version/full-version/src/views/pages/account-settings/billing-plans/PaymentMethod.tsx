@@ -16,8 +16,6 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
@@ -75,9 +73,6 @@ const PaymentMethod = () => {
     expiryDate: '',
     cardCvv: ''
   })
-
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
   const handleReset = () => {
     setCardData({
@@ -184,10 +179,7 @@ const PaymentMethod = () => {
                 className={classnames(
                   commonStyles.actionHoverColor,
                   commonStyles.borderRadius,
-                  'flex justify-between',
-                  {
-                    'flex-col items-start': isBelowSmScreen
-                  }
+                  'flex flex-col sm:flex-row items-start sm:justify-between'
                 )}
               >
                 <div className='flex flex-col items-start gap-2.5'>

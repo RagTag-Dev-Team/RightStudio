@@ -135,7 +135,7 @@ const PropertyListingWizard = ({ direction }: { direction: Direction }) => {
   }
 
   return (
-    <Card className={classnames('flex', { 'flex-col': isBelowLgScreen })}>
+    <Card className='flex flex-col lg:flex-row'>
       <CardContent
         className={classnames({ [styles.topCardContent]: isBelowLgScreen, [styles.leftCardContent]: !isBelowLgScreen })}
       >

@@ -12,8 +12,6 @@ import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 import TablePagination from '@mui/material/TablePagination'
 import IconButton from '@mui/material/IconButton'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 import type { TextFieldProps } from '@mui/material/TextField'
 import type { ButtonProps } from '@mui/material/Button'
 
@@ -119,9 +117,6 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   const [data, setData] = useState(...[permissionsData])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleEditPermission = (name: string) => {
     setOpen(true)
     setEditValue(name)
@@ -206,23 +201,18 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
     variant: 'contained',
     children: 'Add Permission',
     onClick: () => handleAddPermission(),
-    ...(isBelowSmScreen && { fullWidth: true })
+    className: 'is-full sm:is-auto'
   }
 
   return (
     <>
       <Card>
-        <CardContent
-          className={classnames('flex justify-between', {
-            'flex-col items-start': isBelowSmScreen,
-            'items-center': !isBelowSmScreen
-          })}
-        >
+        <CardContent className='flex flex-col sm:flex-row items-start sm:items-center justify-between'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Permissions'
-            {...(isBelowSmScreen && { fullWidth: true })}
+            className='is-full sm:is-auto'
           />
           <OpenDialogOnElementClick
             element={Button}

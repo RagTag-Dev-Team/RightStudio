@@ -9,9 +9,7 @@ import Chip from '@mui/material/Chip'
 import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 import InputLabel from '@mui/material/InputLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import Grid from '@mui/material/Grid'
-import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -29,9 +27,6 @@ import styles from './styles.module.css'
 const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Direction }) => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
-
-  // Hooks
-  const isAboveSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'))
 
   const handleChange = (e: ChangeEvent<{ checked: boolean }>) => {
     if (e.target.checked) {
@@ -57,23 +52,24 @@ const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Dire
           <InputLabel htmlFor='pricing-switch' className='cursor-pointer'>
             Annually
           </InputLabel>
-          {isAboveSmScreen && (
-            <div
+
+          <div
+            className={classnames('flex absolute max-sm:hidden', styles.popularPlan, {
+              'right-full': direction === 'rtl',
+              'left-1/2': direction !== 'rtl'
+            })}
+          >
+            <i
               className={classnames(
-                'flex absolute',
-                styles.popularPlan,
-                direction === 'rtl' ? 'right-full' : 'left-1/2'
+                {
+                  'ri-corner-right-down-line': direction === 'rtl',
+                  'ri-corner-left-down-line': direction !== 'rtl'
+                },
+                'mbs-2 mie-1'
               )}
-            >
-              <i
-                className={classnames(
-                  direction === 'rtl' ? 'ri-corner-right-down-line' : 'ri-corner-left-down-line ',
-                  'mbs-2 mie-1'
-                )}
-              />
-              <Chip label='Save up to 10%' size='small' />
-            </div>
-          )}
+            />
+            <Chip label='Save up to 10%' size='small' />
+          </div>
         </div>
       </div>
       <Grid container>

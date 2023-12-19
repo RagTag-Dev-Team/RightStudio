@@ -10,8 +10,6 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 import type { ButtonProps } from '@mui/material/Button'
 
 // Third-party Imports
@@ -73,9 +71,6 @@ const PaymentMethod = () => {
   // States
   const [creditCard, setCreditCard] = useState(0)
 
-  // Hooks
-  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
   const handleAddCard = () => {
     setCreditCard(-1)
   }
@@ -111,12 +106,9 @@ const PaymentMethod = () => {
             <div
               key={index}
               className={classnames(
-                'flex justify-between items-center',
+                'flex justify-between sm:items-center flex-col !items-start sm:flex-row',
                 commonStyles.border,
-                commonStyles.borderRadius,
-                {
-                  'flex-col !items-start': isBelowSmScreen
-                }
+                commonStyles.borderRadius
               )}
             >
               <div className='flex flex-col items-start'>
