@@ -103,7 +103,7 @@ const RowSelection = () => {
       <CardHeader title='Row Selection' />
       <div className='overflow-x-auto'>
         <table className={styles.table}>
-          <thead className={styles.thead}>
+          <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
@@ -114,7 +114,7 @@ const RowSelection = () => {
               </tr>
             ))}
           </thead>
-          <tbody className={styles.tbody}>
+          <tbody>
             {table
               .getRowModel()
               .rows.slice(0, 10)

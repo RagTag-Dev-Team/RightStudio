@@ -212,7 +212,7 @@ const KitchenSink = () => {
       />
       <div className='overflow-x-auto'>
         <table className={styles.table}>
-          <thead className={styles.thead}>
+          <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => {
@@ -242,7 +242,7 @@ const KitchenSink = () => {
               </tr>
             ))}
           </thead>
-          <tbody className={styles.tbody}>
+          <tbody>
             {table.getRowModel().rows.map(row => {
               return (
                 <tr key={row.id}>

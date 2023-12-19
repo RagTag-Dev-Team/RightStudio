@@ -160,6 +160,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
 
   const breakpointReached = useMedia(`(max-width: ${breakpointValue})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
+  const isBelowLgScreen = useMedia('(max-width: 1200px)', false)
   const isColorFromPrimaryConfig = primaryColorConfig.find(item => item.main === settings.primaryColor)
 
   const handleToggle = () => {
@@ -198,6 +199,8 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
     document.documentElement.setAttribute('dir', direction)
   }, [direction])
 
+  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
+
   return (
     !breakpointReached && (
       <div
@@ -228,7 +231,11 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
             />
           </div>
         </div>
-        <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
+        <ScrollWrapper
+          {...(isBelowLgScreen
+            ? { className: 'bs-full overflow-y-auto overflow-x-hidden' }
+            : { options: { wheelPropagation: false, suppressScrollX: true } })}
+        >
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
             <div className='theming-section flex flex-col gap-6'>
               <Chip label='Theming' size='small' color='primary' className={classnames('self-start', styles.chip)} />
@@ -507,7 +514,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
               </div>
             </div>
           </div>
-        </PerfectScrollbar>
+        </ScrollWrapper>
       </div>
     )
   )

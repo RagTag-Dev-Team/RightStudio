@@ -16,10 +16,15 @@
   --drawer-z-index: var(--mui-zIndex-drawer);
 }
 
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
 }
 
 a {

@@ -2,13 +2,11 @@
 import Link from 'next/link'
 
 // Third-party Imports
-import classnames from 'classnames'
-import { useMedia } from 'react-use'
 import { useKBar } from 'kbar'
+import classnames from 'classnames'
 
 // Style Imports
-import commonStyles from './styles.module.css'
-import styles from './defaultSuggestions.module.css'
+import commonStyles from '@/styles/common.module.css'
 
 type DefaultSuggestionsType = {
   sectionLabel: string
@@ -124,32 +122,26 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
 
 const DefaultSuggestions = () => {
   // Hooks
-  const isSmallScreen = useMedia('(max-width: 600px)', false)
   const { query } = useKBar()
 
   return (
-    <div className={classnames(styles.wrapper, { [styles.smallScreen]: isSmallScreen })}>
+    <div className='flex grow flex-wrap gap-x-[48px] gap-y-8 plb-14 pli-16 overflow-y-auto overflow-x-hidden'>
       {defaultSuggestions.map((section, index) => (
         <div
           key={index}
-          className={classnames('flex flex-col justify-center overflow-x-hidden gap-4', styles.suggestionGroup, {
-            'shrink-0': isSmallScreen
-          })}
+          className='flex flex-col justify-center overflow-x-hidden gap-4 basis-full sm:basis-[calc((100%-3rem)/2)]'
         >
-          <p className={styles.sectionLabel}>{section.sectionLabel}</p>
+          <p className={classnames('text-xs uppercase', commonStyles.textDisabled)}>{section.sectionLabel}</p>
           <ul className='flex flex-col gap-4'>
             {section.items.map((item, i) => (
               <li key={i} className='flex'>
                 <Link
                   href={item.href}
                   onClick={query.toggle}
-                  className={classnames(
-                    'flex items-center overflow-x-hidden cursor-pointer gap-2',
-                    commonStyles.itemLink
-                  )}
+                  className='flex items-center overflow-x-hidden cursor-pointer gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
                 >
-                  {item.icon && <i className={classnames(item.icon, commonStyles.itemIcon)} />}
-                  <p className={commonStyles.itemLabel}>{item.label}</p>
+                  {item.icon && <i className={classnames(item.icon, 'flex text-xl')} />}
+                  <p className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>
                 </Link>
               </li>
             ))}

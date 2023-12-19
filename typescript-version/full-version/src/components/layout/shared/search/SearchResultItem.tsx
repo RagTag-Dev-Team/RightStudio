@@ -9,14 +9,11 @@ import type { ActionId, ActionImpl } from 'kbar'
 // Icon Imports
 import SubdirectoryLeft from '@assets/svg/SubdirectoryLeft'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const Title = ({ title, flexGrow = false }: { title: string; flexGrow?: boolean }) => {
   return flexGrow ? (
-    <span className={classnames('grow', styles.itemLabel)}>{title}</span>
+    <span className='grow text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{title}</span>
   ) : (
-    <span className={styles.itemLabel}>{title}</span>
+    <span className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{title}</span>
   )
 }
 
@@ -49,7 +46,10 @@ const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
     return (
       <div className='flex items-center gap-1.5'>
         {shortcut.map(sc => (
-          <kbd key={sc} className={classnames('flex items-center justify-center', styles.kbd)}>
+          <kbd
+            key={sc}
+            className='kbd flex items-center justify-center is-6 bs-6 rounded-sm text-sm bg-[rgba(0,0,0,0.1)]'
+          >
             {sc}
           </kbd>
         ))}
@@ -57,7 +57,11 @@ const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
     )
   }
 
-  return <kbd className={classnames('flex items-center justify-center', styles.kbd)}>{shortcut[0]}</kbd>
+  return (
+    <kbd className='kbd flex items-center justify-center is-6 bs-6 rounded-sm text-sm bg-[rgba(0,0,0,0.1)]'>
+      {shortcut[0]}
+    </kbd>
+  )
 }
 
 const EnterComponent = ({ active }: { active: boolean }) => {
@@ -94,19 +98,17 @@ const SearchResultItem = forwardRef(
     return (
       <div
         ref={ref}
-        className={classnames(
-          styles.itemButton,
-          { [styles.activeItemButton]: active },
-          'flex items-center justify-between gap-4 cursor-pointer'
-        )}
+        className={classnames('flex items-center justify-between gap-4 relative plb-2.5 pli-6 cursor-pointer', {
+          ['bg-[var(--mui-palette-action-hover)]']: active
+        })}
       >
-        <div className={classnames(styles.itemContentWrapper, 'flex items-center grow gap-2')}>
-          {action.icon && <i className={classnames(action.icon as string, styles.itemIcon)} />}
+        <div className='flex items-center grow gap-2 text-sm'>
+          {action.icon && <i className={classnames(action.icon as string, 'text-xl')} />}
           {action.name &&
             (action.subtitle ? (
-              <div className={classnames('flex flex-col grow', styles.nameSubtitleWrapper)}>
+              <div className='flex flex-col grow gap-0.5'>
                 <TitleWithAncestors title={action.name} ancestors={ancestors} />
-                {action.subtitle && <span className={styles.itemSubtitle}>{action.subtitle}</span>}
+                {action.subtitle && <span className='text-xs'>{action.subtitle}</span>}
               </div>
             ) : (
               <TitleWithAncestors flexGrow title={action.name} ancestors={ancestors} />

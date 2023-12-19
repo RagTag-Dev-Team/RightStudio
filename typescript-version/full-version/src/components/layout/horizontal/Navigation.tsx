@@ -20,9 +20,6 @@ import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Style Imports
-import styles from './styles.module.css'
-
 type StyledDivProps = {
   isContentCompact: boolean
   isBreakpointReached?: boolean
@@ -54,7 +51,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   return (
     <div
       {...(!isBreakpointReached && {
-        className: classnames(horizontalLayoutClasses.navigation, 'flex', styles.navigation)
+        className: classnames(horizontalLayoutClasses.navigation, 'flex border-bs')
       })}
     >
       <StyledDiv

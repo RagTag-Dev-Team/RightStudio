@@ -23,16 +23,8 @@ import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles
 const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
-  const { settings, updateSettings } = useSettings()
+  const { settings } = useSettings()
   const { mode, systemMode } = useColorScheme()
-
-  const handleClick = () => {
-    if (isCollapsed) {
-      updateSettings({ layout: 'vertical' })
-    } else {
-      updateSettings({ layout: 'collapsed' })
-    }
-  }
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -51,7 +43,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        {!(isCollapsed && !isHovered) && <NavCollapseIcons onClick={handleClick} />}
+        {!(isCollapsed && !isHovered) && <NavCollapseIcons />}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>
