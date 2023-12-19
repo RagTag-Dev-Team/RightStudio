@@ -19,9 +19,31 @@ module.exports = plugin(function () {}, {
       '4xl': '1.5rem',
       full: '9999px'
     },
+    screens: {
+      sm: '600px',
+      md: '900px',
+      lg: '1200px',
+      xl: '1536px',
+      '2xl': '1920px'
+    },
     extend: {
+      boxShadow: {
+        none: 'none'
+      },
       colors: {
-        primary: 'var(--primary-color)'
+        primary: 'var(--primary-color)',
+        secondary: 'var(--mui-palette-secondary-main)',
+        error: 'var(--mui-palette-error-main)',
+        warning: 'var(--mui-palette-warning-main)',
+        info: 'var(--mui-palette-info-main)',
+        success: 'var(--mui-palette-success-main)',
+        textPrimary: 'var(--mui-palette-text-primary)',
+        textSecondary: 'var(--mui-palette-text-secondary)',
+        textDisabled: 'var(--mui-palette-text-disabled)',
+        actionActive: 'var(--mui-palette-action-active)',
+        actionHover: 'var(--mui-palette-action-hover)',
+        actionSelected: 'var(--mui-palette-action-selected)',
+        actionFocus: 'var(--mui-palette-action-focus)'
       },
       zIndex: {
         header: 'var(--header-z-index)',
