@@ -244,8 +244,8 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
         </MenuSection>
       </Menu>
 
-      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ ...menuItemStyles(settings, theme) }}>
-        {generateVerticalMenu(menuData(locale, params), locale)}
+      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
+        {generateVerticalMenu(menuData(dictionary, params), locale)}
       </Menu> */}
     </ScrollWrapper>
   )

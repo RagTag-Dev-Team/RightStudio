@@ -57,6 +57,12 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
+        verticalMenuProps={{
+          menuItemStyles: {
+            button: { paddingBlock: '12px' },
+            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
+          }
+        }}
       >
         <SubMenu label={dictionary['navigation'].dashboards}>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
