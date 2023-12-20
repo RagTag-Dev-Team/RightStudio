@@ -78,10 +78,6 @@ Contributions are always welcome and recommended! Here is how:
 - Contributions are only accepted through Github pull requests.
 - Finally, contributed code must work in all supported browsers.
 
-## Creators 😇
-
-- [PixInvent](https://pixinvent.com/)
-
 ## Useful Links 🎁
 
 - [Freebies](https://themeselection.com/products/category/download-free-admin-templates/)
@@ -90,7 +86,9 @@ Contributions are always welcome and recommended! Here is how:
 
 ## Social Media 🌍
 
-- Twitter : [https://twitter.com/pixinvents](https://twitter.com/pixinvents)
-- Facebook : [https://www.facebook.com/pixinvents](https://www.facebook.com/pixinvents)
-- Dribbble : [https://dribbble.com/pixinvent/about](https://dribbble.com/pixinvent/about)
-- Instagram : [https://www.instagram.com/pixinvents/](https://www.instagram.com/pixinvents/)
+- [Twitter](https://twitter.com/Theme_Selection)
+- [Facebook](https://www.facebook.com/ThemeSelections/)
+- [Pinterest](https://pinterest.com/themeselect/)
+- [Instagram](https://www.instagram.com/themeselection/)
+- [Discord](https://discord.gg/kBHkY7DekX)
+- [YouTube](https://www.youtube.com/channel/UCuryo5s0CW4aP83itLjIdZg)
