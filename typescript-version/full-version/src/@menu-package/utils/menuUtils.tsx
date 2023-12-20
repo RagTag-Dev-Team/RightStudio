@@ -66,7 +66,7 @@ export const confirmUrlInChildren = (children: ChildrenType['children'], url: st
 export const mapHorizontalToVerticalMenu = (children: ChildrenType['children']) => {
   return Children.map(children, child => {
     if (isValidElement(child)) {
-      const { children, ...rest } = child.props
+      const { children, verticalMenuProps, ...rest } = child.props
 
       switch (child.type) {
         case HorizontalMenuItem:
@@ -74,7 +74,7 @@ export const mapHorizontalToVerticalMenu = (children: ChildrenType['children']) 
         case HorizontalSubMenu:
           return <VerticalSubMenu {...rest}>{mapHorizontalToVerticalMenu(children)}</VerticalSubMenu>
         case HorizontalMenu:
-          return <VerticalMenu>{mapHorizontalToVerticalMenu(child.props.children)}</VerticalMenu>
+          return <VerticalMenu {...verticalMenuProps}>{mapHorizontalToVerticalMenu(child.props.children)}</VerticalMenu>
         default:
           return child
       }

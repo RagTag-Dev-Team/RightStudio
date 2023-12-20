@@ -9,6 +9,7 @@ import classnames from 'classnames'
 import { FloatingTree } from '@floating-ui/react'
 
 // Type Imports
+import type { MenuProps as VerticalMenuProps } from '../vertical-menu/Menu'
 import type {
   ChildrenType,
   MenuItemStyles,
@@ -41,6 +42,17 @@ export type HorizontalMenuContextProps = {
     alignmentAxis?: number | ((params: { level?: number }) => number)
   }
   textTruncate?: boolean
+  verticalMenuProps?: Pick<
+    VerticalMenuProps,
+    | 'transitionDuration'
+    | 'menuSectionStyles'
+    | 'menuItemStyles'
+    | 'subMenuOpenBehavior'
+    | 'renderExpandIcon'
+    | 'renderExpandedMenuItemIcon'
+    | 'textTruncate'
+    | 'rootStyles'
+  >
 }
 
 export type MenuProps = HorizontalMenuContextProps &
@@ -63,6 +75,7 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
     renderExpandedMenuItemIcon,
     popoutMenuOffset = { mainAxis: 0 },
     textTruncate = true,
+    verticalMenuProps,
     ...rest
   } = props
 
@@ -75,7 +88,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       renderExpandedMenuItemIcon,
       transitionDuration,
       popoutMenuOffset,
-      textTruncate
+      textTruncate,
+      verticalMenuProps
     }),
     [
       triggerPopout,
@@ -85,7 +99,8 @@ const Menu: ForwardRefRenderFunction<HTMLMenuElement, MenuProps> = (props, ref) 
       renderExpandedMenuItemIcon,
       transitionDuration,
       popoutMenuOffset,
-      textTruncate
+      textTruncate,
+      verticalMenuProps
     ]
   )
 

@@ -241,8 +241,14 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
         </MenuSection>
       </Menu>
 
-      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={{ button: { paddingBlock: '12px' } }}>
-        {generateVerticalMenu(menuData(locale, params), locale)}
+      {/* <Menu
+        popoutMenuOffset={{ mainAxis: 10 }}
+        menuItemStyles={{
+          button: { paddingBlock: '12px' },
+          subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
+        }}
+      >
+        {generateVerticalMenu(menuData(dictionary, params), locale)}
       </Menu> */}
     </ScrollWrapper>
   )
