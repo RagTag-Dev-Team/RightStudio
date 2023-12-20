@@ -26,9 +26,6 @@ import IconButton from '@mui/material/IconButton'
 // Component Imports
 import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
-// Style Imports
-import styles from './styles.module.css'
-
 type FormDataType = {
   firstName: string
   lastName: string
@@ -109,7 +106,7 @@ const FormLayoutsWithTabs = () => {
   return (
     <Card>
       <TabContext value={value}>
-        <TabList variant='scrollable' onChange={handleTabChange} className={styles.tabBorder}>
+        <TabList variant='scrollable' onChange={handleTabChange} className='border-be'>
           <Tab label='Personal Info' value='personal_info' />
           <Tab label='Account Details' value='account_details' />
           <Tab label='Social Links' value='social_links' />

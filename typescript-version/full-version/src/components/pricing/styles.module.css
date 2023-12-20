@@ -1,8 +1,0 @@
-.active {
-  border-color: var(--mui-palette-primary-main);
-}
-
-.popularPlan {
-  inset-block-start: -30px;
-  transform: translateX(35%);
-}

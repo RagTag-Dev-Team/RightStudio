@@ -9,9 +9,6 @@ import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Direction } from '@core/types'
 
@@ -21,9 +18,6 @@ import StepAccountDetails from './StepAccountDetails'
 import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
-
-// Style Imports
-import styles from './styles.module.css'
 
 const steps = [
   {
@@ -70,9 +64,9 @@ const RegisterMultiSteps = ({ direction }: { direction: Direction }) => {
 
   return (
     <div className='flex h-full justify-between items-center'>
-      <div className={classnames('flex h-full items-center justify-center w-full', styles.imgWidth)}>image</div>
+      <div className='flex h-full items-center justify-center w-full max-is-[480px]'>image</div>
       <div className='flex justify-center items-center h-full w-full'>
-        <StepperWrapper className={styles.contentWidth}>
+        <StepperWrapper className='is-[700px]'>
           <Stepper activeStep={activeStep}>
             {steps.map((step, index) => {
               return (

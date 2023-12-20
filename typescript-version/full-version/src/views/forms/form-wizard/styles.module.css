@@ -16,11 +16,3 @@
 [data-mui-color-scheme='dark'] .activeStepperCustomDot {
   background-color: var(--mui-palette-background-default);
 }
-
-.completedColor {
-  color: var(--mui-palette-primary-main);
-}
-
-.completedText {
-  margin-block: 8px 4px;
-}

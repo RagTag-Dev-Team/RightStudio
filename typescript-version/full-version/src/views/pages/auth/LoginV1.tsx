@@ -18,14 +18,8 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-
-// Style Imports
-import styles from './v1.module.css'
 
 const LoginV1 = () => {
   // States
@@ -34,7 +28,7 @@ const LoginV1 = () => {
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>{`Welcome to ${themeConfig.templateName}!👋🏻`}</Typography>

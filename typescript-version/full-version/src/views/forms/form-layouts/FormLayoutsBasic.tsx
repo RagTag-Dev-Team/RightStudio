@@ -17,9 +17,6 @@ import CardContent from '@mui/material/CardContent'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 const FormLayoutsBasic = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
@@ -102,7 +99,7 @@ const FormLayoutsBasic = () => {
                 </Button>
                 <div className='flex items-center justify-center gap-2'>
                   <Typography>Already have an account?</Typography>
-                  <Link href='/' onClick={e => e.preventDefault()} className={commonStyles.primaryColor}>
+                  <Link href='/' onClick={e => e.preventDefault()} className='text-primary'>
                     Log In
                   </Link>
                 </div>

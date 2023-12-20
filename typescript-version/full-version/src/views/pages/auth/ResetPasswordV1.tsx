@@ -15,14 +15,8 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Direction } from '@core/types'
-
-// Style Imports
-import styles from './v1.module.css'
 
 const ResetPasswordV1 = ({ direction }: { direction: Direction }) => {
   // States
@@ -34,7 +28,7 @@ const ResetPasswordV1 = ({ direction }: { direction: Direction }) => {
   const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Reset Password 🔒</Typography>

@@ -32,9 +32,6 @@ import { email, object, minLength, string, array, forward, custom } from 'valibo
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const steps = [
   {
     title: 'Account Details',
@@ -529,7 +526,7 @@ const StepperLinearWithValidation = () => {
       <CardContent>
         {activeStep === steps.length ? (
           <>
-            <Typography className={styles.completedText}>All steps are completed!</Typography>
+            <Typography className='mlb-2 mli-1'>All steps are completed!</Typography>
             <div className='flex justify-end mt-4'>
               <Button variant='contained' onClick={handleReset}>
                 Reset

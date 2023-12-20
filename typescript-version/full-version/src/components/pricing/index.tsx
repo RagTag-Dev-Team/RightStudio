@@ -21,9 +21,6 @@ import type { Direction } from '@core/types'
 // Component Imports
 import PlanDetails from './PlanDetails'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Direction }) => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
@@ -54,7 +51,7 @@ const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Dire
           </InputLabel>
 
           <div
-            className={classnames('flex absolute max-sm:hidden', styles.popularPlan, {
+            className={classnames('flex absolute max-sm:hidden block-start-[-30px] translate-x-[35%]', {
               'right-full': direction === 'rtl',
               'left-1/2': direction !== 'rtl'
             })}

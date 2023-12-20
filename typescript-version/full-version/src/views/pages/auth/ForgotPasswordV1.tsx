@@ -8,21 +8,15 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Direction } from '@core/types'
 
 // Component Imports
 import Form from '@components/Form'
 
-// Style Imports
-import styles from './v1.module.css'
-
 const ForgotPasswordV1 = ({ direction }: { direction: Direction }) => {
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Forgot Password 🔒</Typography>

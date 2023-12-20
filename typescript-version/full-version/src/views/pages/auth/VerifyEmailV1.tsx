@@ -9,15 +9,9 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './v1.module.css'
-
 const VerifyEmailV1 = () => {
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Verify your email ✉️</Typography>

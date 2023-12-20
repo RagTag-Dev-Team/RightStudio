@@ -18,13 +18,6 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './v1.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 const RegisterV1 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
@@ -32,7 +25,7 @@ const RegisterV1 = () => {
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Adventure starts here 🚀</Typography>
@@ -59,7 +52,7 @@ const RegisterV1 = () => {
             label={
               <>
                 <span>I agree to </span>
-                <Link className={commonStyles.primaryColor} href='/' onClick={e => e.preventDefault()}>
+                <Link className='text-primary' href='/' onClick={e => e.preventDefault()}>
                   privacy policy & terms
                 </Link>
               </>

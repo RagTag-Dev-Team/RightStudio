@@ -28,9 +28,6 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
-// Style Imports
-import styles from './styles.module.css'
-
 type FormData = {
   fullName: string
   phone: string
@@ -230,7 +227,11 @@ const FormLayoutsCollapsible = () => {
                 type='radio'
                 key={index}
                 data={item}
-                gridProps={{ xs: 12, className: styles.customRadioOption }}
+                gridProps={{
+                  xs: 12,
+                  className:
+                    '[&:first-of-type>*]:rounded-be-none [&:last-of-type>*]:rounded-bs-none [&:nth-of-type(2)>*]:rounded-none'
+                }}
                 selected={selectedOption}
                 name='custom-radios-basic'
                 handleChange={handleOptionChange}

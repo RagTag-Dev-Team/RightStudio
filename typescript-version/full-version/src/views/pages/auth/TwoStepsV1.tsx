@@ -5,19 +5,13 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Component Imports
 import Form from '@components/Form'
 import Link from '@components/Link'
 
-// Style Imports
-import styles from './v1.module.css'
-
 const TwoStepsV1 = () => {
   return (
-    <Card className={classnames('flex flex-col', styles.card)}>
+    <Card className='flex flex-col is-[450px]'>
       <CardContent>
         <div className='flex justify-center items-start'>Logo</div>
         <Typography>Two Step Verification 💬</Typography>

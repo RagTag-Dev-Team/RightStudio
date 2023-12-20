@@ -10,10 +10,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 type Props = {
   pricingPlan: 'monthly' | 'annually'
   data: PricingPlanType
@@ -22,8 +18,8 @@ type Props = {
 const PlanDetails = ({ data, pricingPlan }: Props) => {
   return (
     <CardContent
-      className={classnames('relative', commonStyles.border, commonStyles.borderRadius, {
-        [styles.active]: data?.popularPlan
+      className={classnames('relative border rounded', {
+        'border-primary': data?.popularPlan
       })}
     >
       {data?.popularPlan ? <Chip color='primary' label='Popular' size='small' className='absolute' /> : null}

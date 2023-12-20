@@ -6,16 +6,15 @@ import classnames from 'classnames'
 
 // Style Imports
 import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const StepperCustomDot = (props: StepIconProps) => {
   // Props
   const { active, completed, error } = props
 
   if (error) {
-    return <i className={classnames(commonStyles.errorColor, 'ri-alert-fill text-xl scale-125')} />
+    return <i className='ri-alert-fill text-xl scale-125 text-error' />
   } else if (completed) {
-    return <i className={classnames(styles.completedColor, 'ri-checkbox-circle-fill text-xl scale-125')} />
+    return <i className='ri-checkbox-circle-fill text-xl scale-125 text-primary' />
   } else {
     return <div className={classnames(styles.stepperCustomDot, { [styles.activeStepperCustomDot]: active })} />
   }

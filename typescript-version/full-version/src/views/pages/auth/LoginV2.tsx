@@ -16,14 +16,8 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-
-// Style Imports
-import styles from './v2.module.css'
 
 const LoginV2 = () => {
   // States
@@ -34,9 +28,9 @@ const LoginV2 = () => {
   return (
     <div className='flex h-full justify-center'>
       <div className='flex h-full items-center justify-center flex-1 max-md:hidden'>image</div>
-      <div className={classnames('flex justify-center items-center h-full', styles.rightWrapper)}>
+      <div className='flex justify-center items-center h-full is-[480px]'>
         <div>
-          <div className={classnames('absolute', styles.templateName)}>Logo</div>
+          <div className='absolute block-start-[33px] inline-start-[38px]'>Logo</div>
           <Typography>{`Welcome to ${themeConfig.templateName}!👋🏻`}</Typography>
           <Typography>Please sign-in to your account and start the adventure</Typography>
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
