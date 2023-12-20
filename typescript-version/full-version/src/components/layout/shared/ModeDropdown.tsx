@@ -13,18 +13,11 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Mode } from '@core/types'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-
-// Style Imports
-import commonDropdownStyles from '@components/layout/shared/styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const ModeDropdown = () => {
   // States
@@ -72,7 +65,7 @@ const ModeDropdown = () => {
         open={open ? false : tooltipOpen ? true : false}
         PopperProps={{ className: 'capitalize' }}
       >
-        <IconButton ref={anchorRef} onClick={handleToggle} className={commonStyles.textPrimary}>
+        <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
           <i className={getModeIcon()} />
         </IconButton>
       </Tooltip>
@@ -82,14 +75,14 @@ const ModeDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className={classnames('min-w-[140px]', commonDropdownStyles.popperStyles)}
+        className='min-w-[140px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper className={commonDropdownStyles.paper}>
+            <Paper elevation={8}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('light')}>

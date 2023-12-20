@@ -35,7 +35,6 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 import type { ThemeColor } from '@core/types'
 
 // Style Imports
-import styles from './styles.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 type ProjectListDataType = {
@@ -187,7 +186,7 @@ const ProjectListTable = () => {
         header: 'Project',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <Avatar src={row.original.img} className={styles.avatarSize} />
+            <Avatar src={row.original.img} className='bs-[34px] is-[34px]' />
             <div className='flex flex-col'>
               <Typography>{row.original.projectTitle}</Typography>
               <Typography>{row.original.projectType}</Typography>
@@ -266,7 +265,7 @@ const ProjectListTable = () => {
 
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead className={tableStyles.thead}>
+          <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
@@ -293,7 +292,7 @@ const ProjectListTable = () => {
               </tr>
             ))}
           </thead>
-          <tbody className={tableStyles.tbody}>
+          <tbody>
             {table
               .getRowModel()
               .rows.slice(0, table.getState().pagination.pageSize)
@@ -312,7 +311,7 @@ const ProjectListTable = () => {
       <TablePagination
         rowsPerPageOptions={[7, 10, 15]}
         component='div'
-        className={tableStyles.paginationWrapper}
+        className='border-bs'
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}

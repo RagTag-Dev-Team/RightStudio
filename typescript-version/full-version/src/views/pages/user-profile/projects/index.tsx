@@ -15,18 +15,11 @@ import LinearProgress from '@mui/material/LinearProgress'
 import AvatarGroup from '@mui/material/AvatarGroup'
 import Tooltip from '@mui/material/Tooltip'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { ProjectsTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
@@ -45,7 +38,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                           href='/'
                           component={Link}
                           onClick={e => e.preventDefault()}
-                          className={styles.title}
+                          className='hover:text-primary'
                         >
                           {item.title}
                         </Typography>
@@ -61,12 +54,12 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                         'View Details',
                         'Add to Favorite',
                         { divider: true },
-                        { text: 'Leave Project', menuItemProps: { className: commonStyles.errorColor } }
+                        { text: 'Leave Project', menuItemProps: { className: 'text-error' } }
                       ]}
                     />
                   </div>
                   <div className='flex items-center justify-between flex-wrap'>
-                    <div className={classnames(commonStyles.borderRadius, commonStyles.actionHoverColor)}>
+                    <div className='rounded bg-actionHover'>
                       <div className='flex'>
                         <Typography className='font-medium'>{item.budgetSpent}</Typography>
                         <Typography>{`/${item.budget}`}</Typography>

@@ -16,9 +16,6 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type RoleDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -101,7 +98,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
         <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className={styles.closeIcon}>
+          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
           <TextField label='Role Name' variant='outlined' fullWidth placeholder='Enter Role Name' />

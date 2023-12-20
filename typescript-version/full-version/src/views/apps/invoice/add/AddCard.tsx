@@ -19,9 +19,6 @@ import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import InputLabel from '@mui/material/InputLabel'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
 import type { FormDataType } from './AddCustomerDrawer'
@@ -32,10 +29,6 @@ import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-
-// Style Imports
-import styles from '@views/apps/invoice/styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   // States
@@ -63,7 +56,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         <CardContent>
           <Grid container spacing={6}>
             <Grid item xs={12}>
-              <div className={classnames(commonStyles.actionHoverColor, commonStyles.borderRadius)}>
+              <div className='bg-actionHover rounded'>
                 <div className='flex justify-between flex-col sm:flex-row'>
                   <div className='flex flex-col'>
                     <div className='flex items-center'>
@@ -193,10 +186,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             </Grid>
             <Grid item xs={12}>
               {Array.from(Array(count).keys()).map((item, index) => (
-                <div
-                  key={index}
-                  className={classnames('repeater-item flex relative', commonStyles.border, commonStyles.borderRadius)}
-                >
+                <div key={index} className='repeater-item flex relative border rounded'>
                   <Grid container>
                     <Grid item lg={6} md={5} xs={12}>
                       <Typography className='static md:absolute md:-top-6'>Item</Typography>
@@ -243,7 +233,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       <Typography>$24.00</Typography>
                     </Grid>
                   </Grid>
-                  <div className={classnames('flex flex-col justify-start', styles.borderLeft)}>
+                  <div className='flex flex-col justify-start border-is'>
                     <IconButton size='small' onClick={deleteForm}>
                       <i className='ri-close-line' />
                     </IconButton>
@@ -306,7 +296,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 rows={2}
                 fullWidth
                 multiline
-                className={classnames(commonStyles.border, commonStyles.borderRadius)}
+                className='border rounded'
                 defaultValue='It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
               projects. Thank You!'
               />

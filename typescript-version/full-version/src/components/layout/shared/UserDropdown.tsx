@@ -23,10 +23,6 @@ import Button from '@mui/material/Button'
 
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
-import classnames from 'classnames'
-
-// Style Imports
-import commonDropdownStyles from '@components/layout/shared/styles.module.css'
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -101,7 +97,7 @@ const UserDropdown = () => {
         disablePortal
         placement='bottom-end'
         anchorEl={anchorRef.current}
-        className={classnames('min-w-[240px]', commonDropdownStyles.popperStyles)}
+        className='min-w-[240px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -110,7 +106,7 @@ const UserDropdown = () => {
               transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top'
             }}
           >
-            <Paper className={commonDropdownStyles.paper}>
+            <Paper elevation={8}>
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>

@@ -24,14 +24,8 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import Fade from '@mui/material/Fade'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Component Imports
 import CustomTabList from '@core/components/mui/TabList'
-
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
 
 const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
   // States
@@ -150,7 +144,7 @@ const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
         </TabContext>
       </Grid>
       <Grid item xs={12} lg={4}>
-        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
+        <div className='border rounded'>
           <CardContent>
             <Typography className='font-medium'>Price Details</Typography>
             <div className='flex flex-col'>

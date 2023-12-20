@@ -17,9 +17,6 @@ import RoleDialog from '@components/dialogs/role-dialog'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 import Link from '@components/Link'
 
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 type CardDataType = {
   title: string
   avatars: string[]
@@ -39,7 +36,7 @@ const RoleCards = () => {
     children: 'Edit Role',
     variant: 'body2',
     component: Link,
-    className: commonStyles.primaryColor,
+    className: 'text-primary',
     onClick: e => e.preventDefault()
   }
 

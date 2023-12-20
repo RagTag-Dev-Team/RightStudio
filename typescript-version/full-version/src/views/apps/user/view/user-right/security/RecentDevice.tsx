@@ -45,7 +45,7 @@ const RecentDevice = () => {
     <Card>
       <CardHeader title='Recent Devices' />
       <table className={tableStyles.table}>
-        <thead className={tableStyles.thead}>
+        <thead>
           <tr>
             <th>Browser</th>
             <th>Device</th>
@@ -53,7 +53,7 @@ const RecentDevice = () => {
             <th>Recent Activities</th>
           </tr>
         </thead>
-        <tbody className={tableStyles.tbody}>
+        <tbody>
           {recentDeviceData.map((device, index) => (
             <tr key={index}>
               <td>

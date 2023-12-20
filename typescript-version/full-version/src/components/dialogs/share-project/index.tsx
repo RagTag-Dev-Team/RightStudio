@@ -22,8 +22,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
+// Config Imports
 import themeConfig from '@configs/themeConfig'
 
 type ShareProjectProps = {
@@ -144,7 +143,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+        <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <div className='flex flex-col gap-2'>

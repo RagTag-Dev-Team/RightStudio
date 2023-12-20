@@ -22,16 +22,10 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
 // Third Party Components
-import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonDropdownStyles from '@components/layout/shared/styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 export type ShortcutsType = {
   url: string
@@ -42,10 +36,10 @@ export type ShortcutsType = {
 
 const ScrollWrapper = ({ children, hidden }: { children: ReactNode; hidden: boolean }) => {
   if (hidden) {
-    return <div className={classnames('overflow-x-hidden', styles.maxHeight)}>{children}</div>
+    return <div className='overflow-x-hidden max-bs-[434px]'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar className={styles.maxHeight} options={{ wheelPropagation: false, suppressScrollX: true }}>
+      <PerfectScrollbar className='max-bs-[434px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
         {children}
       </PerfectScrollbar>
     )
@@ -73,7 +67,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
 
   return (
     <>
-      <IconButton ref={anchorRef} onClick={handleToggle} className={commonStyles.textPrimary}>
+      <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
         <i className='ri-star-smile-line' />
       </IconButton>
       <Popper
@@ -84,7 +78,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: classnames(commonDropdownStyles.popperStyles, 'is-full'),
+              className: 'is-full  !mbs-4 z-[1]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -94,11 +88,11 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                 }
               ]
             }
-          : { className: classnames(commonDropdownStyles.popperStyles, 'is-96') })}
+          : { className: 'is-96  !mbs-4 z-[1]' })}
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper className={commonDropdownStyles.paper}>
+            <Paper elevation={8}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
                   <div className='flex items-center justify-between plb-4 pli-5 is-full gap-2'>
@@ -117,7 +111,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                         }
                       }}
                     >
-                      <IconButton size='small' className={commonStyles.textPrimary}>
+                      <IconButton size='small' className='text-textPrimary'>
                         <i className='ri-add-line' />
                       </IconButton>
                     </Tooltip>
@@ -126,10 +120,16 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                   <ScrollWrapper hidden={hidden}>
                     <Grid container>
                       {shortcuts.map((shortcut, index) => (
-                        <Grid item xs={6} key={index} onClick={handleClose} className={styles.gridItem}>
+                        <Grid
+                          item
+                          xs={6}
+                          key={index}
+                          onClick={handleClose}
+                          className='[&:not(:last-of-type):not(:nth-last-of-type(2))]:border-be odd:border-ie'
+                        >
                           <Link
                             href={shortcut.url}
-                            className={classnames('flex items-center flex-col p-6 gap-3 bs-full', styles.link)}
+                            className='flex items-center flex-col p-6 gap-3 bs-full hover:bg-actionHover'
                           >
                             <Avatar>
                               <i className={shortcut.icon} />

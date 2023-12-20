@@ -19,9 +19,6 @@ import IconButton from '@mui/material/IconButton'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type BillingCardData = {
   cardNumber?: string
   name?: string
@@ -77,7 +74,7 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
         <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className={styles.closeIcon}>
+          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>

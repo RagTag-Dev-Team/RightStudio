@@ -15,9 +15,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { ProfileHeaderType } from '@/types/pages/profileTypes'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const UserProfileHeader = ({ data }: { data?: ProfileHeaderType }) => {
   // Hooks
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
@@ -25,7 +22,7 @@ const UserProfileHeader = ({ data }: { data?: ProfileHeaderType }) => {
 
   return (
     <Card>
-      <CardMedia image={data?.coverImg} className={styles.cardMedia} />
+      <CardMedia image={data?.coverImg} className='bs-[250px]' />
       <CardContent
         className={classnames('flex items-end pt-0 flex-wrap justify-start', { 'justify-center': isBelowMdScreen })}
       >

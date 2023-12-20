@@ -29,9 +29,6 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type AddEditAddressData = {
   firstName?: string
   lastName?: string
@@ -120,7 +117,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
         <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+          <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>

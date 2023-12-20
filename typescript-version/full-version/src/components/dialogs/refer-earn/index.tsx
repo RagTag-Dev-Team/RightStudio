@@ -24,10 +24,6 @@ import classnames from 'classnames'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 type ReferEarnProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -71,7 +67,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+        <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <Grid container spacing={6}>
@@ -129,13 +125,13 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                 }
               />
               <div className='flex items-center'>
-                <Button className={classnames(styles.facebookIcon, commonStyles.borderRadius)}>
+                <Button className='rounded text-white bg-[#4267b2]'>
                   <i className='ri-facebook-circle-fill' />
                 </Button>
-                <Button className={classnames(styles.twitterIcon, commonStyles.borderRadius)}>
+                <Button className='rounded text-white bg-[#1da1f2]'>
                   <i className='ri-twitter-fill' />
                 </Button>
-                <Button className={classnames(styles.linkedinIcon, commonStyles.borderRadius)}>
+                <Button className='rounded text-white bg-[#0077b5]'>
                   <i className='ri-linkedin-box-fill' />
                 </Button>
               </div>

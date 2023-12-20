@@ -7,17 +7,11 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Direction } from '@core/types'
 
 // Component Imports
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
-
-// Style Imports
-import styles from './styles.module.css'
 
 const angularData = [
   { x: 5.4, y: 170 },
@@ -85,19 +79,19 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
       <CardContent>
         <div className='flex mbe-4 gap-6'>
           <div className='flex items-center'>
-            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.reactIcon)} />
+            <i className='ri-circle-fill text-xs mie-1.5 text-primary' />
             <Typography variant='body2'>React</Typography>
           </div>
           <div className='flex items-center'>
-            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.vueIcon)} />
+            <i className='ri-circle-fill text-xs mie-1.5 text-success' />
             <Typography variant='body2'>Vue</Typography>
           </div>
           <div className='flex items-center'>
-            <i className={classnames('ri-circle-fill text-xs mie-1.5', styles.angularIcon)} />
+            <i className='ri-circle-fill text-xs mie-1.5 text-error' />
             <Typography variant='body2'>Angular</Typography>
           </div>
         </div>
-        <div className={styles.chartHeight}>
+        <div className='bs-[350px]'>
           <ResponsiveContainer>
             <ScatterChart height={350} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />

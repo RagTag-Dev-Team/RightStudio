@@ -8,9 +8,6 @@ import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 import type { ButtonProps } from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
@@ -18,9 +15,6 @@ import type { ThemeColor } from '@core/types'
 import EditUserInfo from '@components/dialogs/edit-user-info'
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
-
-// Style Imports
-import styles from './styles.module.css'
 
 const userData = {
   firstName: 'Seth',
@@ -58,7 +52,7 @@ const UserDetails = () => {
             <div className='flex'>
               <div className='flex items-center'>
                 <Avatar variant='rounded'>
-                  <i className={classnames('ri-check-line', styles.iconSize)} />
+                  <i className='ri-check-line' />
                 </Avatar>
                 <div>
                   <Typography>1.23k</Typography>
@@ -67,7 +61,7 @@ const UserDetails = () => {
               </div>
               <div className='flex items-center'>
                 <Avatar variant='rounded'>
-                  <i className={classnames('ri-star-line', styles.iconSize)} />
+                  <i className='ri-star-line' />
                 </Avatar>
                 <div>
                   <Typography>568</Typography>

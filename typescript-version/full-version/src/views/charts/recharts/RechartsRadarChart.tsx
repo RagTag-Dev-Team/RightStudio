@@ -20,9 +20,6 @@ import {
 } from '@components/charts/recharts'
 import type { TooltipProps } from '@components/charts/recharts'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const data = [
   {
     subject: 'Battery',
@@ -96,7 +93,7 @@ const RechartsRadarChart = () => {
     <Card>
       <CardHeader title='Mobile Comparison' />
       <CardContent>
-        <div className={styles.chartHeight}>
+        <div className='bs-[350px]'>
           <ResponsiveContainer>
             <RadarChart cx='50%' cy='50%' height={350} data={data} style={{ direction: 'ltr' }}>
               <PolarGrid />

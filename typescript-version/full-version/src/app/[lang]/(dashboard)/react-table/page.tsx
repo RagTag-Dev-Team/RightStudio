@@ -12,9 +12,6 @@ import ColumnVisibility from '@views/react-table/ColumnVisibility'
 import RowSelection from '@views/react-table/RowSelection'
 import KitchenSink from '@views/react-table/KitchenSink'
 
-// Style Imports
-import styles from '@/styles/link.module.css'
-
 const Tables = () => {
   return (
     <Grid container>
@@ -22,7 +19,12 @@ const Tables = () => {
         <Typography variant='h5'>React Table</Typography>
         <Typography variant='body2'>
           <code>@tanstack/react-table</code> is a third-party library. Please refer to its{' '}
-          <Link href='https://tanstack.com/table/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+          <Link
+            href='https://tanstack.com/table/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='no-underline text-primary'
+          >
             official documentation
           </Link>{' '}
           for more details.

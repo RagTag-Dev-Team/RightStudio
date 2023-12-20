@@ -8,13 +8,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 type PaymentMethodProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -80,21 +73,17 @@ const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+        <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <div>
           {cardList?.map((card, index) => (
             <div
               key={index}
-              className={classnames(
-                'flex gap-x-4 gap-y-1 flex-col sm:flex-row !items-start sm:items-center justify-between',
-                styles.paymentItem,
-                styles.borderBottom
-              )}
+              className='flex gap-x-4 gap-y-1 flex-col sm:flex-row !items-start sm:items-center justify-between first:pbe-4 last:pbs-4 [&:not(:last-child):not(:first-child)]:plb-4 [&:not(:last-child)]:border-be'
             >
               <div className='flex items-center gap-4'>
-                <Avatar variant='rounded' className={classnames(styles.avatarIcon, commonStyles.actionHoverColor)}>
+                <Avatar variant='rounded' className='bg-actionHover is-[50px] bs-[30px]'>
                   <img src={card.image} alt={card.alt} height={card.imgHeight} width={card.imgWidth} />
                 </Avatar>
                 <Typography className='font-medium'>{card.cardName}</Typography>

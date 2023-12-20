@@ -18,18 +18,12 @@ import CardContent from '@mui/material/CardContent'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import type { ButtonProps } from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
-
-// Styles Imports
-import commonStyles from '@/styles/common.module.css'
 
 type DataType = {
   cardNumber?: string
@@ -176,11 +170,7 @@ const PaymentMethod = () => {
             {data.map((item: DataType, index: number) => (
               <div
                 key={index}
-                className={classnames(
-                  commonStyles.actionHoverColor,
-                  commonStyles.borderRadius,
-                  'flex flex-col sm:flex-row items-start sm:justify-between'
-                )}
+                className='flex flex-col rounded bg-actionHover sm:flex-row items-start sm:justify-between'
               >
                 <div className='flex flex-col items-start gap-2.5'>
                   <img src={item.imgSrc} alt={item.imgAlt} />

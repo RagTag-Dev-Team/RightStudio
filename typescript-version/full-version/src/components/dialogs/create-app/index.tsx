@@ -14,7 +14,7 @@ import StepLabel from '@mui/material/StepLabel'
 import Stepper from '@mui/material/Stepper'
 import Avatar from '@mui/material/Avatar'
 
-// Third-Party Imports
+// Third-party Imports
 import classnames from 'classnames'
 
 // Type Imports
@@ -29,9 +29,6 @@ import Submit from './Submit'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
-
-// Style Imports
-import styles from './styles.module.css'
 
 type CreateAppProps = {
   open: boolean
@@ -177,7 +174,7 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='overflow-visible pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={handleClose} className={styles.closeIcon}>
+        <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <div className='flex gap-y-6 flex-col md:flex-row'>
@@ -187,14 +184,17 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
               activeStep={activeStep}
               orientation='vertical'
               connector={<></>}
-              className={classnames('flex flex-col gap-6', styles.stepperMinWidth)}
+              className='flex flex-col gap-6 min-is-[220px]'
             >
               {steps.map((label, index) => {
                 return (
                   <Step key={index} onClick={handleStep(index)}>
                     <StepLabel icon={<></>} className='p-0 cursor-pointer'>
                       <div className='step-label gap-4'>
-                        <Avatar variant='rounded' className={classnames({ [styles.activeStep]: activeStep === index })}>
+                        <Avatar
+                          variant='rounded'
+                          className={classnames({ 'bg-primary text-white': activeStep === index })}
+                        >
                           <i className={label.icon as string} />
                         </Avatar>
                         <div className='flex flex-col'>

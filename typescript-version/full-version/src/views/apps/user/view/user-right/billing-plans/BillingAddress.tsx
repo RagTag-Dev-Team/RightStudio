@@ -11,9 +11,6 @@ import type { ButtonProps } from '@mui/material/Button'
 import AddNewAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const data = {
   firstName: 'John',
   lastName: 'Doe',
@@ -55,10 +52,10 @@ const BillingAddress = () => {
         <CardContent>
           <Grid container>
             <Grid item xs={12} md={6}>
-              <table className={styles.addressTable}>
+              <table>
                 <tbody className='align-top'>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Name:
                       </Typography>
@@ -68,7 +65,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Billing Email:
                       </Typography>
@@ -78,7 +75,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Tax ID:
                       </Typography>
@@ -88,7 +85,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         VAT Number:
                       </Typography>
@@ -98,7 +95,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Billing Address:
                       </Typography>
@@ -111,10 +108,10 @@ const BillingAddress = () => {
               </table>
             </Grid>
             <Grid item xs={12} md={6}>
-              <table className={styles.addressTable}>
+              <table>
                 <tbody className='align-top'>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Contact:
                       </Typography>
@@ -124,7 +121,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Landmark:
                       </Typography>
@@ -134,7 +131,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Landmark:
                       </Typography>
@@ -144,7 +141,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Country:
                       </Typography>
@@ -154,7 +151,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         State:
                       </Typography>
@@ -164,7 +161,7 @@ const BillingAddress = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className='p-1 pis-0'>
+                    <td className='p-1 pis-0 is-[150px]'>
                       <Typography variant='subtitle2' color='text.primary'>
                         Zip Code:
                       </Typography>

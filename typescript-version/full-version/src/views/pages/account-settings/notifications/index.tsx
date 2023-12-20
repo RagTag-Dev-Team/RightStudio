@@ -14,7 +14,6 @@ import Link from '@components/Link'
 import Form from '@components/Form'
 
 // Styles Imports
-import commonStyles from '@/styles/common.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 type TableDataType = {
@@ -59,14 +58,14 @@ const Notifications = () => {
         subheader={
           <>
             We need permission from your browser to show notifications.
-            <Link className={commonStyles.primaryColor}>Request Permission</Link>
+            <Link className='text-primary'>Request Permission</Link>
           </>
         }
       />
       <Form>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
-            <thead className={tableStyles.thead}>
+            <thead>
               <tr>
                 <th>Type</th>
                 <th>Email</th>
@@ -74,7 +73,7 @@ const Notifications = () => {
                 <th>App</th>
               </tr>
             </thead>
-            <tbody className={tableStyles.tbody}>
+            <tbody>
               {tableData.map((data, index) => (
                 <tr key={index}>
                   <td>

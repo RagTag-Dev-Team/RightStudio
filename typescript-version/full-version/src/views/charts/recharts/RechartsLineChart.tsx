@@ -13,9 +13,6 @@ import type { TooltipProps } from '@components/charts/recharts'
 // Type Imports
 import type { Direction } from '@core/types'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const data = [
   { pv: 280, name: '7/12' },
   { pv: 200, name: '8/12' },
@@ -64,7 +61,7 @@ const RechartsLineChart = ({ direction }: { direction: Direction }) => {
         }}
       />
       <CardContent>
-        <div className={styles.chartHeight}>
+        <div className='bs-[350px]'>
           <ResponsiveContainer>
             <LineChart height={350} data={data} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />

@@ -16,18 +16,12 @@ import { styled } from '@mui/material/styles'
 import type { TypographyProps } from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { CustomInputHorizontalData, CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
-
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
 import AddEditAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
@@ -212,7 +206,7 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
         </div>
       </Grid>
       <Grid item xs={12} lg={4}>
-        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
+        <div className='border rounded'>
           <CardContent>
             <Typography className='font-medium'>Estimated Delivery Date</Typography>
             <div className='flex gap-2'>

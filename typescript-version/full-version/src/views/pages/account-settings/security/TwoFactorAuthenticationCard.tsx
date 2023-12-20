@@ -14,9 +14,6 @@ import type { Direction } from '@core/types'
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-// Styles Imports
-import commonStyles from '@/styles/common.module.css'
-
 const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) => {
   const buttonProps: ButtonProps = {
     variant: 'contained',
@@ -33,7 +30,7 @@ const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) =>
             <Typography>
               Two-factor authentication adds an additional layer of security to your account by requiring more than just
               a password to log in.
-              <Link className={commonStyles.primaryColor}>Learn more.</Link>
+              <Link className='text-primary'>Learn more.</Link>
             </Typography>
           </div>
           <OpenDialogOnElementClick

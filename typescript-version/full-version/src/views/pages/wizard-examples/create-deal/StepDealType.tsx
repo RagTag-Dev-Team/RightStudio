@@ -15,18 +15,12 @@ import Chip from '@mui/material/Chip'
 import Button from '@mui/material/Button'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Direction } from '@core/types'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
-
-// style Imports
-import commonStyles from '@/styles/common.module.css'
 
 type Props = {
   activeStep: number
@@ -84,7 +78,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: 
   return (
     <Grid container>
       <Grid item xs={12}>
-        <div className={classnames('flex', commonStyles.border, commonStyles.borderRadius)}>
+        <div className='flex border rounded'>
           <img alt='illustration' src='/images/pages/shopping-girl.png' />
         </div>
       </Grid>
@@ -163,8 +157,8 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: 
                   activeStep === steps.length - 1
                     ? 'ri-check-line'
                     : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
+                      ? 'ri-arrow-left-line'
+                      : 'ri-arrow-right-line'
                 }
               />
             }

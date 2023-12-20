@@ -18,12 +18,6 @@ import MenuItem from '@mui/material/MenuItem'
 import Chip from '@mui/material/Chip'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 type Data = {
   firstName: string
   lastName: string
@@ -98,9 +92,9 @@ const AccountDetails = () => {
     <Card>
       <CardContent>
         <div className='flex items-center'>
-          <img height={120} width={120} className={commonStyles.borderRadius} src={imgSrc} alt='Profile' />
+          <img height={120} width={120} className='rounded' src={imgSrc} alt='Profile' />
           <div className='flex flex-grow flex-col gap-4'>
-            <div className={classnames('flex flex-col sm:flex-row gap-4')}>
+            <div className='flex flex-col sm:flex-row gap-4'>
               <Button component='label' variant='contained' htmlFor='account-settings-upload-image'>
                 Upload New Photo
                 <input

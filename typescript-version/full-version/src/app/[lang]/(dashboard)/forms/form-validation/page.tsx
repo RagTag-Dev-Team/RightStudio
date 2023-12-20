@@ -10,9 +10,6 @@ import FormValidationBasic from '@views/forms/form-validation/FormValidationBasi
 import FormValidationOnSchema from '@views/forms/form-validation/FormValidationSchema'
 import FormValidationAsyncSubmit from '@views/forms/form-validation/FormValidationAsyncSubmit'
 
-// Style Imports
-import styles from '@/styles/link.module.css'
-
 const FormValidation = () => {
   return (
     <Grid container>
@@ -20,7 +17,12 @@ const FormValidation = () => {
         <Typography variant='h5'>React Hook Form</Typography>
         <Typography variant='body2'>
           <code>react-hook-form</code> is a third-party library. Please refer to its{' '}
-          <Link href='https://react-hook-form.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+          <Link
+            href='https://react-hook-form.com/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='no-underline text-primary'
+          >
             official documentation
           </Link>{' '}
           for more details.

@@ -15,9 +15,6 @@ import type { TooltipProps } from '@components/charts/recharts'
 // Type Imports
 import type { Direction } from '@core/types'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const data = [
   {
     name: '7/12',
@@ -147,7 +144,7 @@ const RechartsBarChart = ({ direction }: { direction: Direction }) => {
             <Typography variant='body2'>Motorola</Typography>
           </Box>
         </div>
-        <div className={styles.chartHeight}>
+        <div className='bs-[350px]'>
           <ResponsiveContainer>
             <BarChart height={350} data={data} barSize={15} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid strokeDasharray='3 3' />

@@ -12,9 +12,6 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 // Component Imports
 import Pricing from '@components/pricing'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type PricingProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -26,7 +23,7 @@ const PricingDialog = ({ open, setOpen, data, direction }: PricingProps) => {
   return (
     <Dialog fullWidth maxWidth='lg' open={open} onClose={() => setOpen(false)}>
       <DialogContent className='p-10 sm:p-16'>
-        <IconButton className={styles.closeIcon} onClick={() => setOpen(false)}>
+        <IconButton className='absolute block-start-4 inline-end-4' onClick={() => setOpen(false)}>
           <i className='ri-close-line' />
         </IconButton>
         <Pricing data={data} direction={direction} />

@@ -30,11 +30,6 @@ import themeConfig from '@configs/themeConfig'
 // Util Imports
 import { getInitials } from '@/utils/get-initials'
 
-// Style Imports
-import styles from './styles.module.css'
-import commonDropdownStyles from '@components/layout/shared/styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 export type NotificationsType = {
   title: string
   subtitle: string
@@ -60,10 +55,10 @@ export type NotificationsType = {
 
 const ScrollWrapper = ({ children, hidden }: { children: ReactNode; hidden: boolean }) => {
   if (hidden) {
-    return <div className={classnames('overflow-x-hidden', styles.maxHeight)}>{children}</div>
+    return <div className='overflow-x-hidden max-bs-[420px]'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar className={styles.maxHeight} options={{ wheelPropagation: false, suppressScrollX: true }}>
+      <PerfectScrollbar className='max-bs-[420px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
         {children}
       </PerfectScrollbar>
     )
@@ -140,7 +135,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
 
   return (
     <>
-      <IconButton ref={anchorRef} onClick={handleToggle} className={commonStyles.textPrimary}>
+      <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
         <Badge
           color='error'
           className='cursor-pointer'
@@ -160,7 +155,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: classnames(commonDropdownStyles.popperStyles, 'is-full'),
+              className: 'is-full !mbs-4 z-[1]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -170,11 +165,11 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 }
               ]
             }
-          : { className: classnames(commonDropdownStyles.popperStyles, 'is-96') })}
+          : { className: 'is-96 !mbs-4 z-[1]' })}
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper className={commonDropdownStyles.paper}>
+            <Paper elevation={8}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
                   <div className='flex items-center justify-between plb-4 pli-5 is-full gap-4'>
@@ -197,11 +192,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                       }}
                     >
                       {notificationsState.length > 0 ? (
-                        <IconButton
-                          size='small'
-                          onClick={() => readAllNotifications()}
-                          className={commonStyles.textPrimary}
-                        >
+                        <IconButton size='small' onClick={() => readAllNotifications()} className='text-textPrimary'>
                           <i className={readAll ? 'ri-mail-line' : 'ri-mail-open-line'} />
                         </IconButton>
                       ) : (
@@ -217,8 +208,8 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                       return (
                         <div
                           key={index}
-                          className={classnames('flex plb-3 pli-5 gap-3 cursor-pointer', styles.notificationItem, {
-                            [styles.borderBottom]: index !== notificationsState.length - 1
+                          className={classnames('flex plb-3 pli-5 gap-3 cursor-pointer hover:bg-actionHover group', {
+                            'border-be': index !== notificationsState.length - 1
                           })}
                           onClick={e => handleReadNotification(e, true, index)}
                         >
@@ -240,11 +231,11 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                               color={read ? 'secondary' : 'primary'}
                               onClick={e => handleReadNotification(e, !read, index)}
                               className={classnames('mbs-1 mie-1', {
-                                [styles.unreadNotificationItemBadge]: read
+                                'invisible group-hover:visible': read
                               })}
                             />
                             <i
-                              className={classnames('ri-close-line text-xl', styles.notificationItemClose)}
+                              className='ri-close-line text-xl invisible group-hover:visible'
                               onClick={e => handleRemoveNotification(e, index)}
                             />
                           </div>

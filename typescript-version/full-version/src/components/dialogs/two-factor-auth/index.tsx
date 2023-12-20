@@ -23,9 +23,6 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
-// Style Imports
-import globalDialogStyles from '@components/dialogs/styles.module.css'
-
 type TwoFactorAuthProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -66,7 +63,7 @@ const SMSDialog = (handleAuthDialogClose: () => void) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-        <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
+        <IconButton className='absolute block-start-4 inline-end-4' onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
 
@@ -97,7 +94,7 @@ const AppDialog = (handleAuthDialogClose: () => void) => {
         Add Authenticator App
       </DialogTitle>
       <DialogContent className='flex flex-col gap-6 pbs-0 pbe-6 pli-10 sm:pli-16'>
-        <IconButton className={globalDialogStyles.closeIcon} onClick={handleAuthDialogClose}>
+        <IconButton className='absolute block-start-4 inline-end-4' onClick={handleAuthDialogClose}>
           <i className='ri-close-line' />
         </IconButton>
         <div className='flex flex-col gap-2'>
@@ -185,7 +182,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
           </Typography>
         </DialogTitle>
         <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className={globalDialogStyles.closeIcon}>
+          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={6}>

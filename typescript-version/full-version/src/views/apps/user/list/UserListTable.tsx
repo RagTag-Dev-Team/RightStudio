@@ -51,7 +51,6 @@ import AddUserDrawer from './AddUserDrawer'
 import { getInitials } from '@/utils/get-initials'
 
 // Styles Imports
-import styles from './styles.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 declare module '@tanstack/table-core' {
@@ -182,7 +181,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           <div className='flex items-center'>
             {getAvatar({ avatar: row.original.avatar, fullName: row.original.fullName })}
             <div className='flex flex-col'>
-              <Typography component={Link} href='/apps/user/view' className={styles.title}>
+              <Typography component={Link} href='/apps/user/view' className='hover:text-primary'>
                 {row.original.fullName}
               </Typography>
               <Typography>{row.original.username}</Typography>
@@ -305,7 +304,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         </div>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
-            <thead className={tableStyles.thead}>
+            <thead>
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map(header => (
@@ -332,7 +331,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
                 </tr>
               ))}
             </thead>
-            <tbody className={tableStyles.tbody}>
+            <tbody>
               {table
                 .getRowModel()
                 .rows.slice(0, table.getState().pagination.pageSize)
@@ -351,7 +350,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 50]}
           component='div'
-          className={tableStyles.paginationWrapper}
+          className='border-bs'
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}

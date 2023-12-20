@@ -10,27 +10,19 @@ import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Type Imports
 import type { Direction } from '@core/types'
 
 // Component Imports
 import StepDealType from './StepDealType'
+import StepDealDetails from './StepDealDetails'
+import StepDealUsage from './StepDealUsage'
+import StepReview from './StepReview'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
-
-// style Imports
-import styles from './styles.module.css'
-import StepDealDetails from './StepDealDetails'
-import StepDealUsage from './StepDealUsage'
-import StepReview from './StepReview'
 
 const steps = [
   {
@@ -102,9 +94,6 @@ const CreateDeal = ({ direction }: { direction: Direction }) => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
-  // Hooks
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-
   const handleNext = () => {
     if (activeStep !== steps.length - 1) {
       setActiveStep(activeStep + 1)
@@ -121,9 +110,7 @@ const CreateDeal = ({ direction }: { direction: Direction }) => {
 
   return (
     <Card className='flex flex-col md:flex-row'>
-      <CardContent
-        className={classnames({ [styles.topCardContent]: isBelowMdScreen, [styles.leftCardContent]: !isBelowMdScreen })}
-      >
+      <CardContent className='border-be md:border-ie md:min-is-[300px]'>
         <StepperWrapper className='h-full'>
           <Stepper activeStep={activeStep} connector={<></>} orientation='vertical'>
             {steps.map((step, index) => {

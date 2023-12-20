@@ -10,11 +10,6 @@ import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 // Type Imports
 import type { Direction } from '@core/types'
@@ -29,9 +24,6 @@ import StepPriceDetails from './StepPriceDetails'
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
-
-// Style Imports
-import styles from './styles.module.css'
 
 const steps = [
   {
@@ -117,9 +109,6 @@ const PropertyListingWizard = ({ direction }: { direction: Direction }) => {
   // States
   const [activeStep, setActiveStep] = useState<number>(0)
 
-  // Hooks
-  const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
-
   const handleNext = () => {
     if (activeStep !== steps.length - 1) {
       setActiveStep(activeStep + 1)
@@ -136,9 +125,7 @@ const PropertyListingWizard = ({ direction }: { direction: Direction }) => {
 
   return (
     <Card className='flex flex-col lg:flex-row'>
-      <CardContent
-        className={classnames({ [styles.topCardContent]: isBelowLgScreen, [styles.leftCardContent]: !isBelowLgScreen })}
-      >
+      <CardContent className='border-be lg:border-ie lg:min-is-[300px]'>
         <StepperWrapper className='h-full'>
           <Stepper activeStep={activeStep} connector={<></>} orientation='vertical'>
             {steps.map((step, index) => {

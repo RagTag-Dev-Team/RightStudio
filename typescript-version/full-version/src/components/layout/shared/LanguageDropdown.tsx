@@ -16,18 +16,11 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
 // Util Imports
 import { getLocalePath } from '@/utils/get-locale-path'
-
-// Style Imports
-import commonDropdownStyles from '@components/layout/shared/styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 type LanguageDataType = {
   langCode: Locale
@@ -69,7 +62,7 @@ const LanguageDropdown = () => {
 
   return (
     <>
-      <IconButton ref={anchorRef} onClick={handleToggle} className={commonStyles.textPrimary}>
+      <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
         <i className='ri-translate-2' />
       </IconButton>
       <Popper
@@ -78,14 +71,14 @@ const LanguageDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className={classnames('min-w-[130px]', commonDropdownStyles.popperStyles)}
+        className='min-w-[130px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper className={commonDropdownStyles.paper}>
+            <Paper elevation={8}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   {languageData.map(locale => (

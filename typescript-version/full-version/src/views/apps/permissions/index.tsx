@@ -37,10 +37,12 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 import type { ThemeColor } from '@core/types'
 import type { PermissionRowType } from '@/types/apps/permissionTypes'
 
-// Style Imports
-import tableStyles from '@core/styles/table.module.css'
+// Component Imports
 import PermissionDialog from '@components/dialogs/permission-dialog'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+
+// Style Imports
+import tableStyles from '@core/styles/table.module.css'
 
 declare module '@tanstack/table-core' {
   interface FilterFns {
@@ -223,7 +225,7 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
         </CardContent>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
-            <thead className={tableStyles.thead}>
+            <thead>
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map(header => (
@@ -250,7 +252,7 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
                 </tr>
               ))}
             </thead>
-            <tbody className={tableStyles.tbody}>
+            <tbody>
               {table
                 .getRowModel()
                 .rows.slice(0, table.getState().pagination.pageSize)
@@ -269,7 +271,7 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
         <TablePagination
           rowsPerPageOptions={[5, 7, 10]}
           component='div'
-          className={tableStyles.paginationWrapper}
+          className='border-bs'
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}

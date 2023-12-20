@@ -15,8 +15,6 @@ import classnames from 'classnames'
 // Style Imports
 import { Divider } from '@mui/material'
 
-import styles from './styles.module.css'
-
 const data = [
   {
     title: 24,
@@ -57,8 +55,9 @@ const InvoiceCard = () => {
               md={3}
               key={index}
               className={classnames({
-                [styles.gridItemBelowMd]: isBelowMdScreen && !isBelowSmScreen,
-                [styles.gridItemAboveMd]: !isBelowMdScreen
+                '[&:nth-of-type(odd)>div]:pie-6 [&:nth-of-type(odd)>div]:border-ie':
+                  isBelowMdScreen && !isBelowSmScreen,
+                '[&:not(:last-child)>div]:pie-6 [&:not(:last-child)>div]:border-ie': !isBelowMdScreen
               })}
             >
               <div className='flex justify-between items-center'>

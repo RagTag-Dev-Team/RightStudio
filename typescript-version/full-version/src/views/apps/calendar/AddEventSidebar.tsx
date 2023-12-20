@@ -18,7 +18,6 @@ import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Third-party Imports
-import classnames from 'classnames'
 import { useForm, Controller } from 'react-hook-form'
 
 // Types
@@ -26,10 +25,6 @@ import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTy
 
 // Component Imports
 import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 interface PickerProps {
   label?: string
@@ -205,21 +200,21 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: ['100%', 400] } }}
     >
-      <Box className={classnames('flex justify-between sidebar-header', styles.addEventSidebar)}>
+      <Box className='flex justify-between sidebar-header p-3 pis-[1.31375rem] pie-[0.81375rem] bg-backgroundDefault'>
         <Typography variant='h6'>
           {calendars.selectedEvent && calendars.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
         </Typography>
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
-            <IconButton size='small' onClick={handleDeleteButtonClick} className={commonStyles.primaryTextColor}>
+            <IconButton size='small' onClick={handleDeleteButtonClick}>
               <i className='ri-delete-bin-7-line text-xl' />
             </IconButton>
-            <IconButton size='small' onClick={handleSidebarClose} className={commonStyles.primaryTextColor}>
+            <IconButton size='small' onClick={handleSidebarClose}>
               <i className='ri-close-line text-xl' />
             </IconButton>
           </Box>
         ) : (
-          <IconButton size='small' onClick={handleSidebarClose} className={commonStyles.primaryTextColor}>
+          <IconButton size='small' onClick={handleSidebarClose}>
             <i className='ri-close-line text-xl' />
           </IconButton>
         )}

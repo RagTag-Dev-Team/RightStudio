@@ -17,9 +17,6 @@ import ApexHeatmapChart from '@views/charts/apex/ApexHeatmapChart'
 import ApexRadialBarChart from '@views/charts/apex/ApexRadialBarChart'
 import ApexCandlestickChart from '@views/charts/apex/ApexCandlestickChart'
 
-// Style Imports
-import styles from '@/styles/link.module.css'
-
 const ApexCharts = () => {
   return (
     <Grid container spacing={6}>
@@ -27,7 +24,12 @@ const ApexCharts = () => {
         <Typography variant='h5'>ApexCharts</Typography>
         <Typography variant='body2'>
           <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
-          <Link href='https://apexcharts.com/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+          <Link
+            href='https://apexcharts.com/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='no-underline text-primary'
+          >
             official documentation
           </Link>{' '}
           for more details.

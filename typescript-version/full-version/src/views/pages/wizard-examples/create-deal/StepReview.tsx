@@ -10,7 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import type { Direction } from '@core/types'
 
 // Style Imports
-import styles from '@core/styles/table.module.css'
+import tableStyles from '@core/styles/table.module.css'
 
 type Props = {
   activeStep: number
@@ -26,8 +26,8 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps, direction }: Pr
       <Grid item xs={12} lg={6}>
         <Typography className='mb-4'>Almost done! 🚀</Typography>
         <Typography className='mb-4'>Confirm your deal details information and submit to create it.</Typography>
-        <table className={styles.table}>
-          <tbody className={styles.tbody}>
+        <table className={tableStyles.table}>
+          <tbody>
             <tr>
               <td>Deal Type</td>
               <td>Percentage</td>
@@ -80,8 +80,8 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps, direction }: Pr
                   activeStep === steps.length - 1
                     ? 'ri-check-line'
                     : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
+                      ? 'ri-arrow-left-line'
+                      : 'ri-arrow-right-line'
                 }
               />
             }

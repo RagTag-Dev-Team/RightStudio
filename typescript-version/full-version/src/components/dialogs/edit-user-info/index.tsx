@@ -21,9 +21,6 @@ import Switch from '@mui/material/Switch'
 import IconButton from '@mui/material/IconButton'
 import { FormControlLabel } from '@mui/material'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type EditUserInfoData = {
   firstName?: string
   lastName?: string
@@ -84,7 +81,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
         <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className={styles.closeIcon}>
+          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
           <Grid container spacing={5}>

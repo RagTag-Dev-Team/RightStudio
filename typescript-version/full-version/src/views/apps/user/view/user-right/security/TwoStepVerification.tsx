@@ -7,9 +7,6 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 const TwoStepVerification = () => {
   return (
     <Card>
@@ -29,7 +26,7 @@ const TwoStepVerification = () => {
         </div>
         <Typography>
           Two-factor authentication adds an additional layer of security to your account by requiring more than just a
-          password to log in. <span className={commonStyles.primaryColor}>Learn more.</span>
+          password to log in. <span className='text-primary'>Learn more.</span>
         </Typography>
       </CardContent>
     </Card>

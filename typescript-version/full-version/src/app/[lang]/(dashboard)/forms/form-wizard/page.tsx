@@ -11,9 +11,6 @@ import StepperAlternativeLabel from '@views/forms/form-wizard/StepperAlternative
 import StepperVerticalWithNumbers from '@views/forms/form-wizard/StepperVerticalWithNumbers'
 import StepperVerticalWithoutNumbers from '@views/forms/form-wizard/StepperVerticalWithoutNumbers'
 
-// Style Imports
-import styles from '@/styles/link.module.css'
-
 const FormWizard = () => {
   return (
     <Grid container>
@@ -25,7 +22,7 @@ const FormWizard = () => {
             href='https://mui.com/material-ui/react-stepper/'
             target='_blank'
             rel='noopener noreferrer'
-            className={styles.link}
+            className='no-underline text-primary'
           >
             usage guide
           </Link>{' '}
@@ -34,7 +31,7 @@ const FormWizard = () => {
             href='https://mui.com/material-ui/react-stepper/#api'
             target='_blank'
             rel='noopener noreferrer'
-            className={styles.link}
+            className='no-underline text-primary'
           >
             API documentation
           </Link>

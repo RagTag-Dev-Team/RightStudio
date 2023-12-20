@@ -15,9 +15,6 @@ import type { Direction } from '@core/types'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
 import type { TooltipProps } from '@components/charts/recharts'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const data = [
   {
     name: '7/12',
@@ -151,7 +148,7 @@ const RechartsAreaChart = ({ direction }: { direction: Direction }) => {
             <Typography variant='body2'>Visits</Typography>
           </Box>
         </div>
-        <div className={styles.chartHeight}>
+        <div className='bs-[350px]'>
           <ResponsiveContainer>
             <AreaChart height={350} data={data} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />

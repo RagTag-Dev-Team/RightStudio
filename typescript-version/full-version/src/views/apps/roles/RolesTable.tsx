@@ -50,7 +50,6 @@ import type { UsersType } from '@/types/apps/userTypes'
 import { getInitials } from '@/utils/get-initials'
 
 // Style Imports
-import styles from './style.module.css'
 import tableStyles from '@core/styles/table.module.css'
 
 declare module '@tanstack/table-core' {
@@ -297,7 +296,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
         <div className='flex flex-col !items-start is-full sm:flex-row sm:is-auto sm:items-center'>
           <DebouncedInput
             value={globalFilter ?? ''}
-            className={classnames('is-full sm:is-auto', styles.searchWidth)}
+            className='is-full sm:is-auto min-is-[220px]'
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search User'
           />
@@ -309,7 +308,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               label='Select Role'
               id='roles-app-role-select'
               labelId='roles-app-role-select-label'
-              className={styles.minWidth150}
+              className='min-is-[150px]'
             >
               <MenuItem value=''>Select Role</MenuItem>
               <MenuItem value='admin'>Admin</MenuItem>
@@ -323,7 +322,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
       </CardContent>
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead className={tableStyles.thead}>
+          <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
@@ -350,7 +349,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               </tr>
             ))}
           </thead>
-          <tbody className={tableStyles.tbody}>
+          <tbody>
             {table
               .getRowModel()
               .rows.slice(0, table.getState().pagination.pageSize)
@@ -369,7 +368,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
       <TablePagination
         rowsPerPageOptions={[10, 25, 50]}
         component='div'
-        className={tableStyles.paginationWrapper}
+        className='border-bs'
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}

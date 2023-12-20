@@ -16,10 +16,6 @@ import type { TeamsTabType } from '@/types/pages/profileTypes'
 import OptionMenu from '@core/components/option-menu'
 import Link from '@components/Link'
 
-// Style Import
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 const Teams = ({ data }: { data?: TeamsTabType[] }) => {
   return (
     <Grid container>
@@ -31,7 +27,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                 <CardContent>
                   <div className='flex items-center justify-between gap-2'>
                     <div className='flex items-center'>
-                      <Avatar src={item.avatar} className={styles.avatarLogo} />
+                      <Avatar src={item.avatar} className='bs-[38px] is-[38px]' />
                       <Typography>{item.title}</Typography>
                     </div>
                     <div className='flex items-center'>
@@ -44,7 +40,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                           'View Details',
                           'Add to Favorite',
                           { divider: true },
-                          { text: 'Delete Team', menuItemProps: { className: commonStyles.errorColor } }
+                          { text: 'Delete Team', menuItemProps: { className: 'text-error' } }
                         ]}
                       />
                     </div>

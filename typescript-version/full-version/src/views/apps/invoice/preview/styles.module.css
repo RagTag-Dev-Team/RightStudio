@@ -1,7 +1,0 @@
-.borderBottom {
-  border-block-end: 1px solid var(--mui-palette-divider);
-}
-
-.minWidth100 {
-  min-inline-size: 100px;
-}

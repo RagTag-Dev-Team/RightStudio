@@ -12,9 +12,6 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
-// Style Imports
-import styles from '@components/dialogs/styles.module.css'
-
 type PermissionDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -30,7 +27,7 @@ const AddContent = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <>
       <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-        <IconButton onClick={handleClose} className={styles.closeIcon}>
+        <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <TextField fullWidth label='Permission Name' variant='outlined' placeholder='Enter Permission Name' />
@@ -51,7 +48,7 @@ const AddContent = ({ handleClose }: { handleClose: () => void }) => {
 const EditContent = ({ handleClose, data }: EditProps) => {
   return (
     <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-      <IconButton onClick={handleClose} className={styles.closeIcon}>
+      <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
         <i className='ri-close-line' />
       </IconButton>
       <Alert severity='warning' className='mbe-8'>

@@ -58,7 +58,7 @@ const NotificationsTab = () => {
       <Divider />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead className={tableStyles.thead}>
+          <thead>
             <tr>
               <th>Type</th>
               <th>App</th>
@@ -66,7 +66,7 @@ const NotificationsTab = () => {
               <th>Browser</th>
             </tr>
           </thead>
-          <tbody className={tableStyles.tbody}>
+          <tbody>
             {tableData.map((data, index) => (
               <tr key={index}>
                 <td>

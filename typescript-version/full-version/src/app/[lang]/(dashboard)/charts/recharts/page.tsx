@@ -18,7 +18,6 @@ import { getDirection } from '@/utils/get-direction'
 
 // Style Imports
 import AppRecharts from '@/@core/styles/libs/AppRecharts'
-import styles from '@/styles/link.module.css'
 
 const Recharts = () => {
   const direction = getDirection()
@@ -30,7 +29,12 @@ const Recharts = () => {
           <Typography variant='h5'>Recharts</Typography>
           <Typography variant='body2'>
             <code>recharts</code> is a third-party library. Please refer to its{' '}
-            <Link href='https://recharts.org/' target='_blank' rel='noopener noreferrer' className={styles.link}>
+            <Link
+              href='https://recharts.org/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='no-underline text-primary'
+            >
               official documentation
             </Link>{' '}
             for more details.

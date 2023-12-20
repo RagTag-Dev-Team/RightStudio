@@ -18,9 +18,6 @@ import type { ThemeColor } from '@core/types'
 // Component Imports
 import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
 
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 const SidebarLeft = (props: SidebarLeftProps) => {
   const {
     mdAbove,
@@ -74,7 +71,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
         }}
         className={classnames('block', { static: mdAbove, absolute: !mdAbove })}
         PaperProps={{
-          className: classnames('items-start w-[280px]', commonStyles.borderRadius, commonStyles.boxShadowNone, {
+          className: classnames('items-start w-[280px] rounded', {
             static: mdAbove,
             absolute: !mdAbove
           })

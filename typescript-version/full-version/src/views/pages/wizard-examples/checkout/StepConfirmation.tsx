@@ -7,15 +7,6 @@ import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import CardContent from '@mui/material/CardContent'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 const products = [
   {
@@ -39,9 +30,6 @@ const products = [
 ]
 
 const StepConfirmation = () => {
-  // Hooks
-  const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -62,13 +50,8 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12}>
-        <div className={classnames('flex flex-col md:flex-row', commonStyles.border, commonStyles.borderRadius)}>
-          <div
-            className={classnames('flex flex-col w-full items-center sm:items-start', {
-              [styles.borderBottom]: isBelowMdScreen,
-              [styles.borderRight]: !isBelowMdScreen
-            })}
-          >
+        <div className='flex flex-col md:flex-row border rounded'>
+          <div className='flex flex-col w-full items-center sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-map-pin-2-line' />
               <Typography className='font-medium'>Shipping</Typography>
@@ -79,12 +62,7 @@ const StepConfirmation = () => {
             <Typography>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div
-            className={classnames('flex flex-col w-full items-center sm:items-start', {
-              [styles.borderBottom]: isBelowMdScreen,
-              [styles.borderRight]: !isBelowMdScreen
-            })}
-          >
+          <div className='flex flex-col w-full items-center sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-bank-card-2-line' />
               <Typography className='font-medium'>Billing Address</Typography>
@@ -95,11 +73,7 @@ const StepConfirmation = () => {
             <Typography>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div
-            className={classnames('flex flex-col w-full items-center sm:items-start', {
-              [styles.borderBottom]: isBelowMdScreen
-            })}
-          >
+          <div className='flex flex-col w-full items-center sm:items-start'>
             <div className='flex items-center'>
               <i className='ri-archive-line' />
               <Typography className='font-medium'>Shipping Method</Typography>
@@ -111,14 +85,12 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12} md={8} xl={9}>
-        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
+        <div className='border rounded'>
           {products.map((product, index) => (
-            <div key={index} className={classnames('flex flex-col sm:flex-row items-center', styles.borderBottom)}>
+            <div key={index} className='flex flex-col sm:flex-row items-center [&:not(:last-child)]:border-be'>
               <img height={80} width={80} src={product.imgSrc} alt={product.imgAlt} />
-              <div
-                className={classnames('flex justify-between w-full flex-col sm:flex-row items-center sm:items-start')}
-              >
-                <div className={classnames('flex flex-col items-center sm:items-start')}>
+              <div className='flex justify-between w-full flex-col sm:flex-row items-center sm:items-start'>
+                <div className='flex flex-col items-center sm:items-start'>
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>
                     <Typography>Sold By:</Typography>
@@ -138,7 +110,7 @@ const StepConfirmation = () => {
         </div>
       </Grid>
       <Grid item xs={12} md={4} xl={3}>
-        <div className={classnames(commonStyles.border, commonStyles.borderRadius)}>
+        <div className='border rounded'>
           <CardContent className='flex gap-4 flex-col'>
             <Typography className='font-medium'>Price Details</Typography>
             <div className='flex flex-col gap-4'>

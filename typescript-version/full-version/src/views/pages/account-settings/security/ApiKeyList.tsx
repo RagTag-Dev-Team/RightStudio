@@ -5,12 +5,6 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import commonStyles from '@/styles/common.module.css'
-
 type ApiKeyListType = {
   title: string
   access: string
@@ -50,7 +44,7 @@ const ApiKeyList = () => {
           billing.
         </Typography>
         {apiKeyList.map((item, index) => (
-          <div key={index} className={classnames(commonStyles.borderRadius, commonStyles.actionHoverColor)}>
+          <div key={index} className='rounded bg-actionHover'>
             <div className='flex items-center'>
               <Typography>{item.title}</Typography>
               <Chip color='primary' label={item.access} size='small' />

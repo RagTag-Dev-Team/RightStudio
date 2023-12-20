@@ -4,9 +4,6 @@ import Link from 'next/link'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Style Imports
-import commonStyles from '@/styles/common.module.css'
-
 type NoResultProps = {
   query: string | undefined
 }
@@ -44,7 +41,7 @@ const NoResult = (props: NoResultProps) => {
       <div className='flex flex-col items-center'>
         <i className='ri-file-forbid-line text-[64px] mbe-2.5' />
         <p className='text-xl mbe-11'>{`No result for "${query}"`}</p>
-        <p className={classnames('mbe-[18px]', commonStyles.textDisabled)}>Try searching for</p>
+        <p className='mbe-[18px] text-textDisabled'>Try searching for</p>
         <ul className='flex flex-col gap-4'>
           {noResultData.map((item, index) => (
             <li key={index} className='flex items-center'>

@@ -8,13 +8,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 type PaymentProvidersProps = {
   open: boolean
   setOpen: (open: boolean) => void
@@ -208,27 +201,19 @@ const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
         </Typography>
       </DialogTitle>
       <DialogContent className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
-        <IconButton onClick={() => setOpen(false)} className={styles.closeIcon}>
+        <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <div>
           {cardList?.map((card, index) => (
             <div
               key={index}
-              className={classnames(
-                'flex sm:items-center flex-col sm:flex-row items-start justify-between flex-wrap gap-x-4 gap-y-1',
-                styles.paymentItem,
-                styles.borderBottom
-              )}
+              className='flex sm:items-center flex-col sm:flex-row items-start justify-between flex-wrap gap-x-4 gap-y-1 first:pbe-4 last:pbs-4 [&:not(:last-child):not(:first-child)]:plb-4 [&:not(:last-child)]:border-be'
             >
               <Typography className='font-medium'>{card.providerName}</Typography>
               <div className='flex gap-x-4 gap-y-2 flex-wrap'>
                 {card.images.map((image, index) => (
-                  <Avatar
-                    key={index}
-                    variant='rounded'
-                    className={classnames(styles.avatarIcon, commonStyles.actionHoverColor)}
-                  >
+                  <Avatar key={index} variant='rounded' className='bg-actionHover  is-[50px] bs-[30px]'>
                     <img src={image.src} alt={image.alt} height={image.height} width={image.width} />
                   </Avatar>
                 ))}
