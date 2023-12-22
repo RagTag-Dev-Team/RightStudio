@@ -30,6 +30,22 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-navbar-search-input-icon: 'PUT ICON HERE';
   --ifm-link-color: var(--mui-palette-primary-main);
+
+  --border-radius: 6px;
+  --border-color: #efefef;
+  --primary-color: #765feb;
+  --background-color: #fff;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
