@@ -8,7 +8,7 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  plugins: [require('tailwindcss-logical')],
+  plugins: [require('tailwindcss-logical'), require('./src/tailwind/plugin')],
   theme: {
     extend: {},
   }
