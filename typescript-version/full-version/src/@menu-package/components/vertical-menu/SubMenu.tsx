@@ -149,7 +149,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   // Hooks
   const id = useId()
   const pathname = usePathname()
-  const { isCollapsed, isPopoutWhenCollapsed, isHovered } = useVerticalNav()
+  const { isCollapsed, isPopoutWhenCollapsed, isHovered, isBreakpointReached } = useVerticalNav()
   const {
     browserScroll,
     triggerPopout,
@@ -385,7 +385,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
           active,
           disabled,
           renderExpandedMenuItemIcon,
-          styles: getSubMenuItemStyles('icon')
+          styles: getSubMenuItemStyles('icon'),
+          isBreakpointReached
         })}
 
         {/* Sub Menu Prefix */}

@@ -51,7 +51,7 @@
       ],
       "@reducers/*": [
         "./src/reducers/*"
-      ],
+      ]
     }
   },
   "include": [
