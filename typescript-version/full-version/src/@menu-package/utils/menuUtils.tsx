@@ -29,6 +29,7 @@ type RenderMenuIconParams = {
   styles?: CSSObject
   icon?: ReactElement
   renderExpandedMenuItemIcon?: RenderExpandedMenuItemIcon
+  isBreakpointReached?: boolean
 }
 
 export const confirmUrlInChildren = (children: ChildrenType['children'], url: string): boolean => {
@@ -88,9 +89,9 @@ export const mapHorizontalToVerticalMenu = (children: ChildrenType['children']) 
  * Render all the icons for Menu Item and SubMenu components for all the levels more than 0
  */
 export const renderMenuIcon = (params: RenderMenuIconParams) => {
-  const { icon, level, active, disabled, styles, renderExpandedMenuItemIcon } = params
+  const { icon, level, active, disabled, styles, renderExpandedMenuItemIcon, isBreakpointReached } = params
 
-  if (icon) {
+  if (icon && (level === 0 || (!isBreakpointReached && level && level > 0))) {
     return (
       <StyledMenuIcon className={menuClasses.icon} rootStyles={styles}>
         {icon}

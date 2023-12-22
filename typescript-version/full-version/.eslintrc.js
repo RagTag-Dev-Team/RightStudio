@@ -103,6 +103,11 @@ module.exports = {
     },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx']
+    },
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json'
+      }
     }
   },
   overrides: [
@@ -113,8 +118,5 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off'
       }
     }
-  ],
-  parserOptions: {
-    project: './tsconfig.json'
-  }
+  ]
 }

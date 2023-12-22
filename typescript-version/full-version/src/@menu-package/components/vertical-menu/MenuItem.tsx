@@ -72,7 +72,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
   // Hooks
   const pathname = usePathname()
   const { menuItemStyles, renderExpandedMenuItemIcon, textTruncate } = useVerticalMenu()
-  const { isCollapsed, isHovered, isPopoutWhenCollapsed, toggleVerticalNav, isToggled } = useVerticalNav()
+  const { isCollapsed, isHovered, isPopoutWhenCollapsed, toggleVerticalNav, isToggled, isBreakpointReached } =
+    useVerticalNav()
 
   // Get the styles for the specified element.
   const getMenuItemStyles = (element: MenuItemElement): CSSObject | undefined => {
@@ -153,7 +154,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
           active,
           disabled,
           renderExpandedMenuItemIcon,
-          styles: getMenuItemStyles('icon')
+          styles: getMenuItemStyles('icon'),
+          isBreakpointReached
         })}
 
         {/* Menu Item Prefix */}
