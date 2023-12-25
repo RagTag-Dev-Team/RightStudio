@@ -3,12 +3,6 @@ import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'
 import type { IconContainerProps } from '@mui/material/Rating'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
-
 type CustomIcons = {
   [index: string]: { icon: string; label: string }
 }
@@ -55,7 +49,7 @@ const RatingsCustomized = () => {
           precision={0.5}
           defaultValue={3}
           name='customized-color'
-          icon={<i className={classnames('ri-heart-fill flex-shrink-0', styles.errorIconColor)}/>}
+          icon={<i className='ri-heart-fill flex-shrink-0 text-error'/>}
           emptyIcon={<i className='ri-heart-fill' />}
         />
       </div>

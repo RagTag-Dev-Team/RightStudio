@@ -10,15 +10,6 @@ import Typography from '@mui/material/Typography'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Component Imports
-import Icon from '@core/components/IconifyIcon'
-
-// Style Imports
-import styles from './styles.module.css'
-
 const CardActionRefreshContent = () => {
   // States
   const [reload, setReload] = useState(false)
@@ -49,7 +40,7 @@ const CardActionRefreshContent = () => {
           </Typography>
       </CardContent>
 
-      <Backdrop open={reload} className={classnames('absolute text-white', styles.backdropZIndex)}>
+      <Backdrop open={reload} className='absolute text-white z-[cal(var(--mui-zIndex-mobileStepper)-1)]'>
         <CircularProgress color='inherit' />
       </Backdrop>
     </Card>

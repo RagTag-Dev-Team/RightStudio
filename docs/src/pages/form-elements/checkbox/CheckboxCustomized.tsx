@@ -3,9 +3,6 @@ import { styled } from '@mui/material/styles'
 import Checkbox from '@mui/material/Checkbox'
 import type { CheckboxProps } from '@mui/material/Checkbox'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const BpIcon = styled('span')(({ theme }) => ({
   width: 16,
   height: 16,
@@ -60,7 +57,7 @@ const BpCheckbox = (props: CheckboxProps) => {
       icon={<BpIcon />}
       checkedIcon={<BpCheckedIcon />}
       inputProps={{ 'aria-label': 'Checkbox demo' }}
-      className={styles.checkboxBackgroundColor}
+      className='hover:bg-transparent'
     />
   )
 }

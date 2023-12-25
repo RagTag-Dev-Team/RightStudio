@@ -18,15 +18,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const CardMobile = () => {
   // States
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
-
-  // Hooks
-  const mdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   const open = Boolean(anchorEl)
 
@@ -49,7 +43,7 @@ const CardMobile = () => {
           item
           xs={12}
           md={7}
-          className={classnames({ [styles.borderLeft]: !mdScreen, [styles.borderTop]: mdScreen })}
+          className='md:border-is border-bs md:border-bs-0'
         >
           <CardContent>
             <Typography variant='h5' className='mbe-2'>

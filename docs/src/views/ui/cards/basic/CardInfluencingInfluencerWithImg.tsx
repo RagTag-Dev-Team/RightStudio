@@ -4,13 +4,10 @@ import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const CardInfluencingInfluencerWithImg = () => {
   return (
     <Card>
-      <CardMedia image='/images/cards/1.png' className={styles.influenceBgImg} />
+      <CardMedia image='/images/cards/1.png' className='bs-[200px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-2'>
           Influencing The Influencer

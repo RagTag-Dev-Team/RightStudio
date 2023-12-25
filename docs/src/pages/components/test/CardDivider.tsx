@@ -4,9 +4,6 @@ import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const CardDivider = () => {
   return (
     <Card>
@@ -25,7 +22,7 @@ const CardDivider = () => {
       <Divider variant='inset'>Inset</Divider>
       <CardContent></CardContent>
       <CardContent className='flex'>
-        <Divider flexItem className={styles.dividerHeight} variant='middle' orientation='vertical'>
+        <Divider flexItem className='bs-[100px]' variant='middle' orientation='vertical'>
           Middle
         </Divider>
         <Divider flexItem variant='fullWidth' orientation='vertical'>

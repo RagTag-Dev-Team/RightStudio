@@ -5,13 +5,10 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const CardWatch = () => {
   return (
     <Card>
-      <CardMedia image='/images/cards/5.png' className={styles.watchBgImg} />
+      <CardMedia image='/images/cards/5.png' className='bs-[140px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-2'>
           Apple Watch

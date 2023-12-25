@@ -6,9 +6,6 @@ import type { Ref } from 'react'
 import classnames from 'classnames'
 import type { ActionId, ActionImpl } from 'kbar'
 
-// Icon Imports
-import SubdirectoryLeft from '@assets/svg/SubdirectoryLeft'
-
 const Title = ({ title, flexGrow = false }: { title: string; flexGrow?: boolean }) => {
   return flexGrow ? (
     <span className='grow text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{title}</span>
@@ -65,13 +62,7 @@ const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
 }
 
 const EnterComponent = ({ active }: { active: boolean }) => {
-  return (
-    active && (
-      <div className='flex'>
-        <SubdirectoryLeft fontSize='1.25rem' />
-      </div>
-    )
-  )
+  return active && <i className='ri-corner-down-left-fill text-xl text-textSecondary' />
 }
 
 const SearchResultItem = forwardRef(

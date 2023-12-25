@@ -9,15 +9,10 @@ import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import { useDropzone } from 'react-dropzone'
-import classnames from 'classnames'
-
-// Styles Imports 
-import styles from './styles.module.css'
 
 type FileProp = {
   name: string
@@ -97,24 +92,18 @@ const FileUploaderMultiple = () => {
 
   // Hooks
   const theme = useTheme()
-  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
-  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
     <>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <div className={classnames('flex gap-3 items-center', {'flex-col': isBelowMdScreen})}>
+        <div className='flex gap-3 items-center flex-col md:flex-row'>
           <Img alt='Upload img' src='/assets/upload.png' />
-          <div className={classnames('flex flex-col', {
-            'text-center': isBelowMdScreen,
-            [styles.dropZoneTextAlign]: isAboveMdScreen
-          })}
-          >
+          <div className='flex flex-col md:[text-align:unset] text-center'>
             <HeadingTypography variant='h5'>Drop files here or click to upload.</HeadingTypography>
             <Typography color='textSecondary'>
               Drop files here or click{' '}
-              <a href='/' onClick={e => e.preventDefault()} className={styles.dropZone}>
+              <a href='/' onClick={e => e.preventDefault()} className='text-textPrimary no-underline'>
                 browse
               </a>{' '}
               thorough your machine

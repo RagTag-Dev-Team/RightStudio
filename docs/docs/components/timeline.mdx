@@ -38,7 +38,12 @@ Please refer to MUI's official docs for more details on component's [usage guide
   <Grid item xs={12}>
     <CardSnippet
       className='bg-transparent'
-      sx={{ boxShadow: 'none' }}
+      sx={{
+        boxShadow: 'none',
+        border: 'none',
+        '& > .MuiCardHeader-root': { pl: '0 !important' },
+        '& > .MuiCardContent-root': { p: '0 !important' }
+      }}
       title='Timeline Center With Icons'
       code={SourceCodeTimeLineCenter}
     >

@@ -12,9 +12,6 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import TableContainer from '@mui/material/TableContainer'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const createData = (name: string, calories: number, fat: number, carbs: number, protein: number, price: number) => {
   return {
     name,
@@ -48,16 +45,16 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
   return (
     <Fragment>
       <TableRow >
-        <TableCell className={styles.tableCollapseBorder}>
+        <TableCell className='border-be-0'>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
             <i className={open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
           </IconButton>
         </TableCell>
-        <TableCell className={styles.tableCollapseBorder} component='th' scope='row'>{row.name}</TableCell>
-        <TableCell className={styles.tableCollapseBorder} align='right'>{row.calories}</TableCell>
-        <TableCell className={styles.tableCollapseBorder} align='right'>{row.fat}</TableCell>
-        <TableCell className={styles.tableCollapseBorder} align='right'>{row.carbs}</TableCell>
-        <TableCell className={styles.tableCollapseBorder} align='right'>{row.protein}</TableCell>
+        <TableCell className='border-be-0' component='th' scope='row'>{row.name}</TableCell>
+        <TableCell className='border-be-0' align='right'>{row.calories}</TableCell>
+        <TableCell className='border-be-0' align='right'>{row.fat}</TableCell>
+        <TableCell className='border-be-0' align='right'>{row.carbs}</TableCell>
+        <TableCell className='border-be-0' align='right'>{row.protein}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell colSpan={6} className='plb-0'>

@@ -5,17 +5,11 @@ import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
-
 const CardSupport = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center'>
-        <Avatar className={classnames('mbe-2', styles.supportAvatar)}>
+        <Avatar className='mbe-2 is-[56px] bs-[56px]'>
           <i className='ri-question-line text-[32px]' />
         </Avatar>
         <Typography variant='h5' className='mbe-2'>

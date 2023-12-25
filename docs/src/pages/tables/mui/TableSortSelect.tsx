@@ -188,7 +188,14 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
 
   return (
     <Toolbar
-      className={classnames('pli-5', { [styles.tableSortBackground]: numSelected > 0})}
+      className={
+        classnames(
+          'pli-5',
+          {
+            'bg-[rgb(var(--mui-palette-primary-mainChannel)/var(--mui-palette-action-activatedOpacity))]': numSelected > 0
+          }
+        )
+      }
     >
       {numSelected > 0 ? (
         <Typography className='flex-auto' color='inherit' variant='subtitle1' component='div'>
@@ -201,7 +208,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       )}
       {numSelected > 0 ? (
         <Tooltip title='Delete'>
-          <IconButton className={styles.tableSortIcon}>
+          <IconButton className='text-textSecondary'>
             <i className='ri-delete-bin-7-line' />
           </IconButton>
         </Tooltip>
@@ -269,7 +276,7 @@ const EnhancedTable = () => {
     <>
       <EnhancedTableToolbar numSelected={selected.length} />
       <TableContainer>
-        <Table className={styles.tableSortSelectMinWidth} aria-labelledby='tableTitle'>
+        <Table className='min-is-[750px]' aria-labelledby='tableTitle'>
           <EnhancedTableHead
             order={order}
             orderBy={orderBy}

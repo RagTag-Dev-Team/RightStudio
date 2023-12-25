@@ -7,12 +7,6 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'  
-
 const CardAppBar = () => {
   return (
     <Card>

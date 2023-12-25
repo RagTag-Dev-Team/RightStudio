@@ -12,9 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const DrawerComponent = () => {
   // States
   const [open, setOpen] = useState<boolean>(false)
@@ -36,7 +33,7 @@ const DrawerComponent = () => {
         Left
       </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
-        <div role='presentation' className={styles.drawerWidth} onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+        <div role='presentation' className='is-[260]' onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <List>
             <ListItem disablePadding>
               <ListItemButton>

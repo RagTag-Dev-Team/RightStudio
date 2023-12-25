@@ -9,18 +9,13 @@ import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
-import classnames from 'classnames'
 
 // Icon Imports
 import { useDropzone } from 'react-dropzone'
-
-// Styles Imports 
-import styles from './styles.module.css'
 
 type FileProp = {
   name: string
@@ -70,8 +65,6 @@ const FileUploaderRestrictions = () => {
     }
   })
   const theme = useTheme()
-  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
-  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   const renderFilePreview = (file: FileProp) => {
     if (file.type.startsWith('image')) {
@@ -115,12 +108,9 @@ const FileUploaderRestrictions = () => {
     <>
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        <div className={classnames('flex items-center', {'flex-col': isBelowMdScreen})}>
+        <div className='flex items-center flex-col md:flex-row'>
           <Img alt='Upload img' src='/assets/upload.png' />
-          <div className={classnames('flex flex-col', {
-            'text-center': isBelowMdScreen,
-            [styles.dropZoneTextAlign]: isAboveMdScreen
-          })}>
+          <div className='flex flex-col md:[text-align:unset] text-center'>
             <HeadingTypography variant='h5'>Drop files here or click to upload.</HeadingTypography>
             <Typography color='text.secondary'>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
             <Typography color='text.secondary'>Max 2 files and max size of 2 MB</Typography>

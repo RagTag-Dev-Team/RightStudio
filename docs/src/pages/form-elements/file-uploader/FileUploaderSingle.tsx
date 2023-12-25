@@ -6,15 +6,10 @@ import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import { useDropzone } from 'react-dropzone'
-import classnames from 'classnames'
-
-// Styles Imports 
-import styles from './styles.module.css'
 
 type FileProp = {
   name: string
@@ -58,8 +53,6 @@ const FileUploaderSingle = () => {
     }
   })
   const theme = useTheme()
-  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
-  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
 
   const img = files.map((file: FileProp) => (
     <img key={file.name} alt={file.name} className='single-file-image' src={URL.createObjectURL(file as any)} />
@@ -71,18 +64,13 @@ const FileUploaderSingle = () => {
       {files.length ? (
         img
       ) : (
-        <div className={classnames('flex items-center', {'flex-col': isBelowMdScreen})}
-         >
+        <div className='flex items-center flex-col md:flex-row'>
           <Img alt='Upload img' src='/assets/upload.png' />
-          <div className={classnames('flex flex-col', {
-            'text-center': isBelowMdScreen,
-            [styles.dropZoneTextAlign]: isAboveMdScreen
-          })}
-          >
+          <div className='flex flex-col md:[text-align:unset] text-center'>
             <HeadingTypography variant='h5'>Drop files here or click to upload.</HeadingTypography>
             <Typography color='text.secondary'>
               Drop files here or click{' '}
-              <a href='/' onClick={e => e.preventDefault()} className={styles.dropZone}>
+              <a href='/' onClick={e => e.preventDefault()} className='text-textPrimary no-underline'>
                 browse
               </a>{' '}
               thorough your machine

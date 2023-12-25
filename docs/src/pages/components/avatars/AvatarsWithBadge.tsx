@@ -3,9 +3,6 @@ import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 import { styled } from '@mui/material/styles'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 // Styled component for badge content area
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -38,7 +35,7 @@ const AvatarsWithBadge = () => {
           <Avatar
             alt='Marie Garza'
             src='/assets/avatars/2.png'
-            className={styles.avatarBadge}
+            className='bs-[1.375rem] is-[1.375rem] border-2 border-backgroundPaper'
           />
         }
       >

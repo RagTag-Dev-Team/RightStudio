@@ -1,9 +1,6 @@
 // MUI Imports
 import Button from '@mui/material/Button'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const ButtonsContained = () => {
   return (
     <div className='flex gap-4'>
@@ -14,7 +11,7 @@ const ButtonsContained = () => {
       <Button variant='contained' disabled>
         Disabled
       </Button>
-      <Button variant='contained' href='#' className={styles.linkButton}>
+      <Button variant='contained' href='#' className='hover:text-[var(--mui-palette-primary-contrastText)]'>
         Link
       </Button>
     </div>

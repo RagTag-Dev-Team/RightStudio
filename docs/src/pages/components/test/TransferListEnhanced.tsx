@@ -14,12 +14,6 @@ import CardHeader from '@mui/material/CardHeader'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
-
 const not = (a: readonly number[], b: readonly number[]) => {
   return a.filter(value => b.indexOf(value) === -1)
 }
@@ -93,7 +87,7 @@ const TransferListEnhanced = () => {
         }
       />
       <Divider className='m-0' />
-      <List role='list' component='div' className={classnames('overflow-auto', styles.transferList)}>
+      <List role='list' component='div' className='overflow-auto is-[200px] bs-[265px]'>
         {items.map((value: number) => {
           const labelId = `transfer-list-all-item-${value}-label`
 

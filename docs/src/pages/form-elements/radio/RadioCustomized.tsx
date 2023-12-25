@@ -7,9 +7,6 @@ import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import type { RadioProps } from '@mui/material/Radio'
 
-// Styles Imports
-import StyleSheet from './styles.module.css'
-
 const BpIcon = styled('span')(({ theme }) => ({
   width: 16,
   height: 16,
@@ -51,7 +48,7 @@ const BpCheckedIcon = styled(BpIcon)({
   }
 })
 
-// Inspired by blueprintjs
+// Inspired by blueprints
 const BpRadio = (props: RadioProps) => {
   return (
     <Radio
@@ -60,7 +57,7 @@ const BpRadio = (props: RadioProps) => {
       color='default'
       icon={<BpIcon />}
       checkedIcon={<BpCheckedIcon />}
-      className={StyleSheet.radioBackgroundColor}
+      className='hover:bg-transparent'
     />
   )
 }

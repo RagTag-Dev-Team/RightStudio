@@ -11,12 +11,6 @@ import Checkbox from '@mui/material/Checkbox'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
-
 const not = (a: readonly number[], b: readonly number[]) => {
   return a.filter(value => b.indexOf(value) === -1)
 }
@@ -70,7 +64,7 @@ const TransferListBasic = () => {
 
   const customList = (items: readonly number[]) => (
     <Card>
-      <List component='div' role='list' className={classnames('overflow-auto', styles.transferList)}>
+      <List component='div' role='list' className='overflow-auto is-[200px] bs-[265px]'>
         {items.map((value: number) => {
           const labelId = `transfer-list-item-${value}-label`
 

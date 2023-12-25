@@ -6,9 +6,6 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 type Row = {
   desc: string
   qty: number
@@ -49,7 +46,7 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal
 const TableSpanning = () => {
   return (
     <TableContainer>
-      <Table className={styles.tableCommonMinWidth} aria-label='spanning table'>
+      <Table className='min-is-[700px]' aria-label='spanning table'>
         <TableHead>
           <TableRow>
             <TableCell align='center' colSpan={3}>Details</TableCell>

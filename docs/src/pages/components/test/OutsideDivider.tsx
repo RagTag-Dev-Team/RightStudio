@@ -2,9 +2,6 @@
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const OutsideDivider = () => {
   return (
     <>
@@ -20,7 +17,7 @@ const OutsideDivider = () => {
       <Divider variant='fullWidth'>Full Width</Divider>
       <Divider variant='inset'>Inset</Divider>
       <div className='p-5 flex'>
-        <Divider flexItem className={styles.dividerHeight} variant='middle' orientation='vertical'>
+        <Divider flexItem className='bs-[100px]' variant='middle' orientation='vertical'>
           Middle
         </Divider>
         <Divider flexItem variant='fullWidth' orientation='vertical'>

@@ -15,9 +15,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Style Imports
-import styles from './styles.module.css'
-
 const CardActionAll = () => {
   // States
   const [collapse, setCollapse] = useState(false)
@@ -56,7 +53,7 @@ const CardActionAll = () => {
             <Typography>Click on the above icons to see them in action</Typography>
           </CardContent>
 
-          <Backdrop open={reload} className={classnames('absolute text-white', styles.backdropZIndex)}>
+          <Backdrop open={reload} className='absolute text-white z-[cal(var(--mui-zIndex-mobileStepper)-1)]'>
             <CircularProgress color='inherit' />
           </Backdrop>
         </Collapse>

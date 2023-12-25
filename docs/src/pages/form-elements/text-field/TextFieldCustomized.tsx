@@ -6,9 +6,6 @@ import FormControl from '@mui/material/FormControl'
 import { styled } from '@mui/material/styles'
 import type { InputBaseProps } from '@mui/material/InputBase'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 // Styled InputBase component
 const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -43,7 +40,7 @@ const TextFieldCustomized = () => {
   return (
     <Box component='form' noValidate autoComplete='off' className='flex gap-4'>
       <FormControl fullWidth variant='standard'>
-        <InputLabel shrink htmlFor='bootstrap-input' className={styles.textFieldTranslate}>
+        <InputLabel shrink htmlFor='bootstrap-input' className='-translate-y-[0.25rem] scale-[0.75]'>
           Bootstrap
         </InputLabel>
         <InputBase defaultValue='react-bootstrap' id='bootstrap-input' />

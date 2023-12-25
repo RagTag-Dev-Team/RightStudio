@@ -11,12 +11,6 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// Third Party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
-
 const TextFieldIcons = () => {
   return (
     <Card>
@@ -52,7 +46,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className={classnames('ri-account-circle-line', styles.textFieldIconColor)} />
+                <i className='ri-account-circle-line text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth label='With a grid' />
@@ -88,7 +82,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className={classnames('ri-account-circle-line', styles.textFieldIconColor)} />
+                <i className='ri-account-circle-line text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='filled' label='With a grid' />
@@ -124,7 +118,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className={classnames('ri-account-circle-line mbs-3' ,styles.textFieldIconColor)}/>
+                <i className='ri-account-circle-line mbs-3 text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='standard' label='With a grid' />

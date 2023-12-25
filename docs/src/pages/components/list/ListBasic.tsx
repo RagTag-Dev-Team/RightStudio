@@ -6,9 +6,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const ListBasic = () => {
   return (
     <>
@@ -41,7 +38,7 @@ const ListBasic = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component='a' href='#simple-list' className={styles.listItemButton}>
+          <ListItemButton component='a' href='#simple-list' className='hover:text-inherit'>
             <ListItemIcon>
               <i className='ri-spam-2-line text-xl' />
             </ListItemIcon>

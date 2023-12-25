@@ -1,9 +1,6 @@
 // MUI Imports
 import Slider from '@mui/material/Slider'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const marks = [
   {
     value: 0,
@@ -29,7 +26,7 @@ const valuetext = (value: number) => {
 
 const SliderVertical = () => {
   return (
-    <div className={styles.sliderVertical}>
+    <div className='bs-[250px]'>
       <Slider orientation='vertical' getAriaValueText={valuetext} defaultValue={30} aria-labelledby='vertical-slider' className='mie-8'/>
       <Slider
         disabled

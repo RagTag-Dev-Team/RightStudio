@@ -9,11 +9,6 @@ import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Typography from "@mui/material/Typography";
 
-import classnames from "classnames";
-
-// Styles Imports
-import styles from './styles.module.css'
-
 const TabsNav = () => {
   // States
   const [value, setValue] = useState<string>("1");
@@ -30,7 +25,7 @@ const TabsNav = () => {
           component="a"
           label="Tab 1"
           href="/drafts"
-          className={styles.tabHoverColor}
+          className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
         <Tab
@@ -39,7 +34,7 @@ const TabsNav = () => {
           label="Tab 2"
           href="/trash"
 
-         className={styles.tabHoverColor}
+         className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
         <Tab
@@ -47,7 +42,7 @@ const TabsNav = () => {
           component="a"
           label="Tab 3"
           href="/spam"
-         className={styles.tabHoverColor}
+         className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
       </TabList>

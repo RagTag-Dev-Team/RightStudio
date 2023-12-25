@@ -6,13 +6,6 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
-
 const CardLifetimeMembership = () => {
   return (
     <Card>
@@ -30,35 +23,30 @@ const CardLifetimeMembership = () => {
             </Typography>
             <Divider className='mbs-7 mbe-7' />
             <Grid container>
-              <Grid item xs={12} sm={6} className={classnames('flex flex-col pie-5', styles.memberGridGap)}>
-                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
+              <Grid item xs={12} sm={6} className='flex flex-col pie-5 gap-[26px]'>
+                <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className={classnames('ri-lock-unlock-line text-xl', commonStyles.textSecondary)} />
+                    <i className='ri-lock-unlock-line text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Full Access</Typography>
                 </div>
-                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
+                <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className={classnames('ri-user-3-line text-xl', commonStyles.textSecondary)} />
+                    <i className='ri-user-3-line text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>15 Members</Typography>
                 </div>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                className={classnames('flex flex-col pis-5', styles.memberGridGap, styles.borderLeft)}
-              >
-                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
+              <Grid item xs={12} sm={6} className='flex flex-col pis-5 border-is gap-[26px]'>
+                <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className={classnames('ri-lock-unlock-line text-xl', commonStyles.textSecondary)} />
+                    <i className='ri-lock-unlock-line text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Access all Features</Typography>
                 </div>
-                <div className={classnames('flex items-center', styles.memberFeatureGap)}>
+                <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className={classnames('ri-user-3-line text-xl', commonStyles.textSecondary)} />
+                    <i className='ri-user-3-line text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Lifetime Free Update</Typography>
                 </div>
@@ -67,7 +55,7 @@ const CardLifetimeMembership = () => {
           </CardContent>
         </Grid>
         <Grid item xs={12} sm={5}>
-          <CardContent className={classnames('flex items-center justify-center h-full', styles.memberContentBgColor)}>
+          <CardContent className='flex items-center justify-center h-full bg-actionHover'>
             <div className='flex flex-col items-center justify-center gap-2'>
               <div className='flex items-end justify-center'>
                 <Typography variant='h5'>$</Typography>

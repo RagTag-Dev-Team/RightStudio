@@ -7,22 +7,12 @@ import Rating from '@mui/material/Rating'
 import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
-
-// Third-party Imports
-import classnames from 'classnames'
-
-// Style Imports
-import styles from './styles.module.css'
 
 const Img = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius
 }))
 
 const CardHorizontalRatings = () => {
-  // Hooks
-  const mdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   return (
     <Card>
@@ -51,7 +41,7 @@ const CardHorizontalRatings = () => {
           xs={12}
           md={6}
           lg={5}
-          className={classnames('flex items-center justify-center', { [styles.horRatingsGridOrder]: mdScreen })}
+          className='flex items-center justify-center md:order-[unset] -order-1'
         >
           <CardContent className='flex items-center justify-center'>
             <Img src='/images/cards/4.png' height={175} />

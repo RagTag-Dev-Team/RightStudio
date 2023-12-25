@@ -3,17 +3,10 @@ import { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
-
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
 
 const images = [
   '/images/banners/9.jpg',
@@ -37,16 +30,9 @@ const SwiperFader = () => {
     }
   })
   const theme = useTheme()
-  const isAboveMdScreen = useMediaQuery(theme.breakpoints.up('md'))
-  const isBelowMdScreen = useMediaQuery(theme.breakpoints.down('md'))
-  const isBelowSmScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <div ref={sliderRef}
-    className={classnames('fader', {[styles.swiperCommonHeight395]: isAboveMdScreen,
-      [styles.swiperCommonHeight250]: isBelowMdScreen, 
-      [styles.swiperCommonHeight200]: isBelowSmScreen})}
-    >
+    <div ref={sliderRef} className='fader md:bs-[395px] sm:bs-[250px] bs-[200px]'>
       {images.map((src, idx) => (
         <Box key={idx} className='fader__slide' sx={{ opacity: opacities[idx] }}>
           <img src={src} alt={`slider ${idx}`} />

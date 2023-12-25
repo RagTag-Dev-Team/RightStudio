@@ -12,9 +12,6 @@ import { styled } from "@mui/material/styles";
 import MuiInputBase from "@mui/material/InputBase";
 import type { InputBaseProps } from "@mui/material/InputBase";
 
-// Styles Imports
-import styles from "./styles.module.css";
-
 // Styled InputBase component
 const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
   marginTop: theme.spacing(4),
@@ -89,7 +86,7 @@ const TextFieldVariant = () => {
             <InputLabel
               shrink
               htmlFor="bootstrap-input"
-              className={styles.textFieldTranslate}
+              className='-translate-y-[0.25rem] scale-[0.75]'
             >
               Bootstrap
             </InputLabel>

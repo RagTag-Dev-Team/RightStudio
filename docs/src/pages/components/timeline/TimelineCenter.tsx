@@ -17,15 +17,8 @@ import LinearProgress from '@mui/material/LinearProgress'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { ThemeColor } from '@core/types'
-
-// Styles Imports
-import styles from './styles.module.css'
-import commonStyles from '@/styles/common.module.css'
 
 type DataProps = {
   image: string
@@ -126,7 +119,7 @@ const TimelineCenter = () => {
                 implement it successfully. Simply put, it's an umbrella term which includes all the documents created
                 over the course of the project.
               </Typography>
-              <div className={classnames('flex items-center gap-2.5 w-fit', styles.imageWrapper, styles.borderRadius)}>
+              <div className='flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
                 <img height={20} alt='documentation.pdf' src='/images/icons/pdf-document.png' />
                 <Typography className='font-medium'>documentation.pdf</Typography>
               </div>
@@ -166,7 +159,7 @@ const TimelineCenter = () => {
               </Typography>
               <div className='flex gap-4'>
                 {ImageList.map((image, index) => (
-                  <img key={index} className={styles.borderRadius} height={114} alt='documentation.pdf' src={image} />
+                  <img key={index} className='rounded' height={114} alt='documentation.pdf' src={image} />
                 ))}
               </div>
             </CardContent>
@@ -198,7 +191,7 @@ const TimelineCenter = () => {
                 Loretta write a review on Themeselection
               </Typography>
               <div className='flex items-center gap-4 mbe-3'>
-                <Avatar src='/assets/avatars/2.png' className={styles.avatarSize} />
+                <Avatar src='/assets/avatars/2.png' className='bs-[38px] is-[38px]' />
                 <div className='flex flex-col flex-wrap'>
                   <Typography variant='body2' className='font-medium'>
                     Loretta Moore
@@ -253,7 +246,7 @@ const TimelineCenter = () => {
               </Typography>
               <div className='flex items-center gap-1'>
                 <Typography variant='h4'>$24,895</Typography>
-                <i className={classnames('ri-arrow-up-s-fill text-3xl', commonStyles.successColor)} />
+                <i className='ri-arrow-up-s-fill text-3xl text-success'/>
                 <Typography variant='body2' className='font-medium' color='success'>
                   10%
                 </Typography>
@@ -314,9 +307,7 @@ const TimelineCenter = () => {
                 The structure and process are defined in the project organization considering the attainment of the
                 corporate objectives and therefore also project objectives. The components of the project process are
               </Typography>
-              <div
-                className={classnames('mbe-3 flex items-center gap-2 w-fit', styles.imageWrapper, styles.borderRadius)}
-              >
+              <div className='mbe-3 flex items-center gap-2 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
                 <img height={20} alt='progress-report.xls.pdf' src='/images/icons/xls-document.png' />
                 <Typography className='font-medium'>progress-report.xls</Typography>
               </div>

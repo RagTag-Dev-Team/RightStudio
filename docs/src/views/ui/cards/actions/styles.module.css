@@ -1,3 +1,0 @@
-.backdropZIndex {
-  z-index: cal(var(--mui-zIndex-mobileStepper) - 1);
-}

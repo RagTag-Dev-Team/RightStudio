@@ -7,9 +7,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TableRow, { TableRowProps } from '@mui/material/TableRow'
 import TableCell, { TableCellProps, tableCellClasses } from '@mui/material/TableCell'
 
-// Styles Imports
-import styles from './styles.module.css'
-
 const StyledTableCell = styled(TableCell)<TableCellProps>(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     color: theme.palette.common.white,
@@ -46,7 +43,7 @@ const rows = [
 const TableCustomized = () => {
   return (
     <TableContainer>
-      <Table className={styles.tableCommonMinWidth} aria-label='customized table'>
+      <Table className='min-is-[700px]' aria-label='customized table'>
         <TableHead>
           <TableRow>
             <StyledTableCell>Dessert (100g serving)</StyledTableCell>

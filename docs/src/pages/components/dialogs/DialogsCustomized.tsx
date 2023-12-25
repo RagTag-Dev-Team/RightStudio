@@ -10,12 +10,6 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Styles Imports
-import styles from './styles.module.css'
-
 const DialogsCustomized = () => {
   // States
   const [open, setOpen] = useState<boolean>(false)
@@ -37,7 +31,7 @@ const DialogsCustomized = () => {
           <IconButton
             aria-label='close'
             onClick={handleClose}
-            className={classnames('absolute top-2.5 right-2.5', styles.closeButton)}
+            className='absolute top-2.5 right-2.5 text-[var(--mui-palette-grey-500)]'
           >
             <i className='ri-close-line' />
           </IconButton>
