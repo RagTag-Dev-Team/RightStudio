@@ -120,6 +120,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
   }
 
   .${verticalLayoutClasses.navbar} {
+    position: relative;
     padding-block: 10px;
     padding-inline: ${themeConfig.layoutPadding}px;
     inline-size: 100%;
