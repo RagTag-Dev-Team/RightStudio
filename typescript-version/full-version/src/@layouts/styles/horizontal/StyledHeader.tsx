@@ -40,6 +40,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
   }
 
   .${horizontalLayoutClasses.navbar} {
+    position: relative;
     min-block-size: var(--header-height);
     padding-block: 10px;
     padding-inline: ${themeConfig.layoutPadding}px;

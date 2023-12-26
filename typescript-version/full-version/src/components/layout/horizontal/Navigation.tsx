@@ -25,7 +25,7 @@ type StyledDivProps = {
   isBreakpointReached?: boolean
 }
 
-const StyledDiv = styled.main<StyledDivProps>`
+const StyledDiv = styled.div<StyledDivProps>`
   ${({ isContentCompact, isBreakpointReached }) =>
     !isBreakpointReached &&
     `
@@ -51,7 +51,7 @@ const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
   return (
     <div
       {...(!isBreakpointReached && {
-        className: classnames(horizontalLayoutClasses.navigation, 'flex border-bs')
+        className: classnames(horizontalLayoutClasses.navigation, 'relative flex border-bs')
       })}
     >
       <StyledDiv
