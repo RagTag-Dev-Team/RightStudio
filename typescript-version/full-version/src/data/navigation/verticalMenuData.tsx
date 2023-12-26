@@ -352,6 +352,12 @@ const verticalMenuData = (dictionary: Dictionary, params: Params): VerticalMenuD
         target: '_blank'
       },
       {
+        label: dictionary['navigation'].menuExamples,
+        href: 'http://localhost:3001/docs/menu-examples/',
+        suffix: <LinkExternalIcon fontSize='1.125rem' />,
+        target: '_blank'
+      },
+      {
         label: dictionary['navigation'].raiseSupport,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'

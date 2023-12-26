@@ -351,13 +351,20 @@ const data: SearchData[] = [
   },
   {
     id: '50',
+    name: 'Menu Examples',
+    url: 'http://localhost:3001/docs/menu-examples/',
+    icon: 'Icon',
+    section: 'Others'
+  },
+  {
+    id: '51',
     name: 'Raise Support',
     url: '/support',
     icon: 'Icon',
     section: 'Others'
   },
   {
-    id: '51',
+    id: '52',
     name: 'Documentation',
     url: '/docs',
     icon: 'Icon',
