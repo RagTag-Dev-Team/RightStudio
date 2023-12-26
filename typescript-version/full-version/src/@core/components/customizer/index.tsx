@@ -102,7 +102,7 @@ type DebouncedColorPickerProps = {
   handleChange: (field: keyof Settings | 'primaryColor', value: Settings[keyof Settings] | string) => void
 }
 
-function DebouncedColorPicker(props: DebouncedColorPickerProps) {
+const DebouncedColorPicker = (props: DebouncedColorPickerProps) => {
   // Props
   const { settings, isColorFromPrimaryConfig, handleChange } = props
 
@@ -280,6 +280,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                     disablePortal
                     anchorEl={anchorRef.current}
                     placement='bottom-end'
+                    className='z-[1]'
                   >
                     {({ TransitionProps }) => (
                       <Grow {...TransitionProps} style={{ transformOrigin: 'right top' }}>

@@ -19,6 +19,9 @@ import MenuItem from '@mui/material/MenuItem'
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
 // Util Imports
 import { getLocalePath } from '@/utils/get-locale-path'
 
@@ -51,6 +54,7 @@ const LanguageDropdown = () => {
 
   // Hooks
   const pathName = usePathname()
+  const { settings } = useSettings()
 
   const handleClose = () => {
     setOpen(false)
@@ -71,14 +75,17 @@ const LanguageDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[130px] !mbs-4 z-[1]'
+        className='min-w-[160px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper elevation={8}>
+            <Paper
+              elevation={settings.skin === 'bordered' ? 0 : 8}
+              {...(settings.skin === 'bordered' && { className: 'border' })}
+            >
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   {languageData.map(locale => (

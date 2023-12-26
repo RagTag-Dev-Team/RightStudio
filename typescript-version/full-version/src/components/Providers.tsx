@@ -9,7 +9,7 @@ import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
 
 // Component Imports
-import AppReactToastify from '@/@core/styles/libs/AppReactToastify'
+import AppReactToastify from '@core/styles/libs/AppReactToastify'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'

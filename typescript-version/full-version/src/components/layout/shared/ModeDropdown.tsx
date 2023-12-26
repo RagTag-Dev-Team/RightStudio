@@ -75,14 +75,17 @@ const ModeDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[140px] !mbs-4 z-[1]'
+        className='min-w-[160px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper elevation={8}>
+            <Paper
+              elevation={settings.skin === 'bordered' ? 0 : 8}
+              {...(settings.skin === 'bordered' && { className: 'border' })}
+            >
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('light')}>

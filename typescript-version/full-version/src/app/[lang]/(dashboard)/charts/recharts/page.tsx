@@ -17,7 +17,7 @@ import RechartsScatterChart from '@views/charts/recharts/RechartsScatterChart'
 import { getDirection } from '@/utils/get-direction'
 
 // Style Imports
-import AppRecharts from '@/@core/styles/libs/AppRecharts'
+import AppRecharts from '@core/styles/libs/AppRecharts'
 
 const Recharts = () => {
   const direction = getDirection()

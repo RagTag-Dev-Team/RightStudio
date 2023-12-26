@@ -27,6 +27,9 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
 export type ShortcutsType = {
   url: string
   icon: string
@@ -56,6 +59,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
   // Hooks
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
   const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const { settings } = useSettings()
 
   const handleClose = useCallback(() => {
     setOpen(false)
@@ -92,10 +96,13 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
       >
         {({ TransitionProps, placement }) => (
           <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper elevation={8}>
+            <Paper
+              elevation={settings.skin === 'bordered' ? 0 : 8}
+              {...(settings.skin === 'bordered' && { className: 'border' })}
+            >
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
-                  <div className='flex items-center justify-between plb-4 pli-5 is-full gap-2'>
+                  <div className='flex items-center justify-between plb-2 pli-4 is-full gap-2'>
                     <Typography variant='h6'>Shortcuts</Typography>
                     <Tooltip
                       title='Add Shortcut'

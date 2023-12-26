@@ -24,6 +24,9 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
   width: 8,
@@ -44,6 +47,7 @@ const UserDropdown = () => {
   // Hooks
   const router = useRouter()
   const { data: session } = useSession()
+  const { settings } = useSettings()
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -106,7 +110,10 @@ const UserDropdown = () => {
               transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top'
             }}
           >
-            <Paper elevation={8}>
+            <Paper
+              elevation={settings.skin === 'bordered' ? 0 : 8}
+              {...(settings.skin === 'bordered' && { className: 'border' })}
+            >
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>
