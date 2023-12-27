@@ -11,6 +11,8 @@ export type Skin = 'default' | 'bordered'
 
 export type Mode = 'system' | 'light' | 'dark'
 
+export type SystemMode = 'light' | 'dark'
+
 export type Direction = 'ltr' | 'rtl'
 
 export type LayoutComponentWidth = 'compact' | 'wide'

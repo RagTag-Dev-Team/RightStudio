@@ -7,8 +7,6 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
-
-// Component Imports
 import type { Locale } from '@configs/i18n'
 
 // Util Imports
@@ -28,8 +26,10 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
   const direction = getDirection(params.lang)
 
   return (
-    <html lang={params.lang} dir={direction} className='flex is-full min-bs-full'>
-      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>{children}</body>
+    <html id='__next' lang={params.lang} dir={direction} className='flex is-full min-bs-full'>
+      <body className={classnames(inter.className, 'flex is-full min-bs-full flex-auto flex-col')}>
+        {children}
+      </body>
     </html>
   )
 }
