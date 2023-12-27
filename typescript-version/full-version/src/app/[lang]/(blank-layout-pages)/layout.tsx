@@ -1,6 +1,3 @@
-// Next Imports
-import { cookies } from 'next/headers'
-
 // Type Imports
 import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
@@ -12,14 +9,15 @@ import BlankLayout from '@layouts/BlankLayout'
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
 
-const Layout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
-  const direction = getDirection(params.lang)
-  const cookieStore = cookies()
+type Props = ChildrenType & {
+  params: { lang: Locale }
+}
 
-  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
+const Layout = ({ children, params }: Props) => {
+  const direction = getDirection(params.lang)
 
   return (
-    <Providers settingsCookie={settingsCookie} direction={direction}>
+    <Providers direction={direction}>
       <BlankLayout>{children}</BlankLayout>
     </Providers>
   )

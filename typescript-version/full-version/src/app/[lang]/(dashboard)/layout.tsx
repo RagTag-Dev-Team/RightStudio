@@ -1,6 +1,3 @@
-// Next Imports
-import { cookies } from 'next/headers'
-
 // MUI Imports
 import Button from '@mui/material/Button'
 
@@ -30,14 +27,10 @@ import { getDictionary } from '@/utils/get-dictionary'
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   const direction = getDirection(params.lang)
   const dictionary = await getDictionary(params.lang)
-  const cookieStore = cookies()
-
-  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
 
   return (
-    <Providers settingsCookie={settingsCookie} direction={direction}>
+    <Providers direction={direction}>
       <LayoutWrapper
-        settingsCookie={settingsCookie}
         verticalLayout={
           <VerticalLayout
             navigation={<Navigation dictionary={dictionary} />}

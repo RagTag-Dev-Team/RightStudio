@@ -1,6 +1,5 @@
 // Type Imports
 import type { ChildrenType, Direction } from '@core/types'
-import type { Settings } from '@core/contexts/settingsContext'
 
 // Context Imports
 import { NextAuthProvider } from '@/contexts/nextAuthProvider'
@@ -14,19 +13,24 @@ import AppReactToastify from '@core/styles/libs/AppReactToastify'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
+// Util Imports
+import { getMode, getSettingsFromCookie } from '@core/server/actions'
+
 type Props = ChildrenType & {
-  settingsCookie: Settings
   direction: Direction
 }
 
 const Providers = (props: Props) => {
   // Props
-  const { children, settingsCookie, direction } = props
+  const { children, direction } = props
+
+  const mode = getMode()
+  const settingsCookie = getSettingsFromCookie()
 
   return (
     <NextAuthProvider basePath={process.env.BASEPATH}>
       <VerticalNavProvider>
-        <SettingsProvider settingsCookie={settingsCookie}>
+        <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
           <ThemeProvider direction={direction}>
             {children}
             <AppReactToastify position={themeConfig.toastPosition} hideProgressBar />

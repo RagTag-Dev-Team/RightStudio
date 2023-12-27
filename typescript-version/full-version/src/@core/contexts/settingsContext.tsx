@@ -39,23 +39,29 @@ type SettingsContextProps = {
   updatePageSettings: (settings: Partial<Settings>) => () => void
 }
 
-// Initial Settings
-const initialSettings: Settings = {
-  mode: themeConfig.mode,
-  skin: themeConfig.skin,
-  semiDark: themeConfig.semiDark,
-  layout: themeConfig.layout,
-  navbarContentWidth: themeConfig.navbar.contentWidth,
-  contentWidth: themeConfig.contentWidth,
-  footerContentWidth: themeConfig.footer.contentWidth,
-  primaryColor: '#1976d2'
+type Props = {
+  children: ReactNode
+  settingsCookie: Settings | null
+  mode?: Mode
 }
 
 // Initial Settings Context
 export const SettingsContext = createContext<SettingsContextProps | null>(null)
 
 // Settings Provider
-export const SettingsProvider = (props: { children: ReactNode; settingsCookie: Settings | null }) => {
+export const SettingsProvider = (props: Props) => {
+  // Initial Settings
+  const initialSettings: Settings = {
+    mode: props.mode || themeConfig.mode,
+    skin: themeConfig.skin,
+    semiDark: themeConfig.semiDark,
+    layout: themeConfig.layout,
+    navbarContentWidth: themeConfig.navbar.contentWidth,
+    contentWidth: themeConfig.contentWidth,
+    footerContentWidth: themeConfig.footer.contentWidth,
+    primaryColor: '#1976d2'
+  }
+
   // Cookies
   const [settingsCookie, updateSettingsCookie] = useObjectCookie<Settings>(
     'settings',

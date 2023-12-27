@@ -1,19 +1,41 @@
 'use server'
 
-// Next imports
+// Next Imports
 import { cookies } from 'next/headers'
 
-export const getMode = () => {
-  const cookieStore = cookies()
-  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
-  const colorPrefCookie = cookieStore.get('colorPref')?.value || 'light'
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+import type { SystemMode } from '@core/types'
 
-  return (settingsCookie.mode === 'system' ? colorPrefCookie : settingsCookie.mode) || 'light'
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
+export const getSettingsFromCookie = (): Settings => {
+  const cookieStore = cookies()
+
+  return JSON.parse(cookieStore.get('settings')?.value || '{}')
+}
+
+export const getMode = () => {
+  const settingsCookie = getSettingsFromCookie()
+
+  // Get mode from cookie or fallback to theme config
+  const _mode = settingsCookie.mode || themeConfig.mode
+
+  return _mode
+}
+
+export const getSystemMode = (): SystemMode => {
+  const cookieStore = cookies()
+  const mode = getMode()
+
+  const colorPrefCookie = (cookieStore.get('colorPref')?.value || 'light') as SystemMode
+
+  return (mode === 'system' ? colorPrefCookie : mode) || 'light'
 }
 
 export const getSkin = () => {
-  const cookieStore = cookies()
-  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
+  const settingsCookie = getSettingsFromCookie()
 
   return settingsCookie.skin || 'default'
 }
