@@ -43,7 +43,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
             control={
               <Checkbox
                 color={value as ThemeColor}
-                checked={calendars.selectedCalendars.includes(key as CalendarFiltersType)}
+                checked={calendars.selectedCalendars.indexOf(key as CalendarFiltersType) > -1}
                 onChange={() => handleCalendarsUpdate(key as CalendarFiltersType)}
               />
             }

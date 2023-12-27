@@ -116,7 +116,7 @@ const Calendar = (props: CalenderProps) => {
 
       return [
         // Background Color
-        `bg-${colorName}`
+        `event-bg-${colorName}`
       ]
     },
 

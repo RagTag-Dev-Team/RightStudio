@@ -103,7 +103,9 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
                   <div className='flex items-center justify-between plb-2 pli-4 is-full gap-2'>
-                    <Typography variant='h6'>Shortcuts</Typography>
+                    <Typography variant='h6' className='flex-auto'>
+                      Shortcuts
+                    </Typography>
                     <Tooltip
                       title='Add Shortcut'
                       placement={placement === 'bottom-end' ? 'left' : 'right'}

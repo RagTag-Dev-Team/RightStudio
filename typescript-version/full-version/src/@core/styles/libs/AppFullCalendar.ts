@@ -142,7 +142,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     // Event Colors
     '& .fc-event': {
       '&:not(.fc-list-event)': {
-        '&.bg-primary': {
+        '&.event-bg-primary': {
           borderColor: 'transparent',
           color: theme.palette.primary.main,
 
@@ -152,7 +152,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             color: theme.palette.primary.main
           }
         },
-        '&.bg-success': {
+        '&.event-bg-success': {
           borderColor: 'transparent',
           color: theme.palette.success.main,
 
@@ -162,7 +162,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             color: theme.palette.success.main
           }
         },
-        '&.bg-error': {
+        '&.event-bg-error': {
           borderColor: 'transparent',
           color: theme.palette.error.main,
 
@@ -172,7 +172,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             color: theme.palette.error.main
           }
         },
-        '&.bg-warning': {
+        '&.event-bg-warning': {
           borderColor: 'transparent',
           color: theme.palette.warning.main,
 
@@ -182,7 +182,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             color: theme.palette.warning.main
           }
         },
-        '&.bg-info': {
+        '&.event-bg-info': {
           borderColor: 'transparent',
           color: theme.palette.info.main,
 
@@ -193,7 +193,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           }
         }
       },
-      '&.bg-primary': {
+      '&.event-bg-primary': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.primary.main,
           backgroundColor: theme.palette.primary.main
@@ -202,7 +202,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           backgroundColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.16)`
         }
       },
-      '&.bg-success': {
+      '&.event-bg-success': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.success.main,
           backgroundColor: theme.palette.success.main
@@ -211,7 +211,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           backgroundColor: `rgb(${theme.vars.palette.success.mainChannel} / 0.16)`
         }
       },
-      '&.bg-error': {
+      '&.event-bg-error': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.error.main,
           backgroundColor: theme.palette.error.main
@@ -220,7 +220,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           backgroundColor: `rgb(${theme.vars.palette.error.mainChannel} / 0.16)`
         }
       },
-      '&.bg-warning': {
+      '&.event-bg-warning': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.warning.main,
           backgroundColor: theme.palette.warning.main
@@ -229,7 +229,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           backgroundColor: `rgb(${theme.vars.palette.warning.mainChannel} / 0.16)`
         }
       },
-      '&.bg-info': {
+      '&.event-bg-info': {
         '& .fc-list-event-dot': {
           borderColor: theme.palette.info.main,
           backgroundColor: theme.palette.info.main

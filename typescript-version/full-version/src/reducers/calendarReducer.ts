@@ -47,11 +47,13 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
         selected_calendars.push(action.calendar as CalendarFiltersType)
       }
 
-      const events = calendars.events.filter(event => {
-        return event.extendedProps.calendar !== action.calendar
+      const selected_events = events.filter(event => {
+        return index !== -1
+          ? event.extendedProps.calendar !== action.calendar
+          : selected_calendars.indexOf(event.extendedProps.calendar as CalendarFiltersType) !== -1
       })
 
-      return { ...calendars, events, selectedCalendars: selected_calendars }
+      return { ...calendars, events: selected_events, selectedCalendars: selected_calendars }
     }
     case 'selected_all_calendars': {
       let selected_calendars: CalendarFiltersType[] = ['Personal', 'Business', 'Family', 'Holiday', 'ETC']
