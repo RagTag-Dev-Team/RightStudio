@@ -23,17 +23,24 @@ import ScrollToTop from '@core/components/scroll-to-top'
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
 import { getDictionary } from '@/utils/get-dictionary'
+import { getMode, getSettingsFromCookie, getSystemMode } from '@core/server/actions'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   const direction = getDirection(params.lang)
   const dictionary = await getDictionary(params.lang)
+  const mode = getMode()
+  const systemMode = getSystemMode()
+  const settingsCookie = getSettingsFromCookie()
 
   return (
     <Providers direction={direction}>
       <LayoutWrapper
+        systemMode={systemMode}
         verticalLayout={
           <VerticalLayout
-            navigation={<Navigation dictionary={dictionary} />}
+            navigation={
+              <Navigation settingsCookie={settingsCookie} dictionary={dictionary} mode={mode} systemMode={systemMode} />
+            }
             navbar={<Navbar />}
             footer={<VerticalFooter />}
           >

@@ -8,6 +8,9 @@ dependencies:
   '@auth/prisma-adapter':
     specifier: ^1.0.12
     version: 1.0.12(@prisma/client@5.7.1)
+  '@emotion/cache':
+    specifier: ^11.11.0
+    version: 11.11.0
   '@emotion/react':
     specifier: ^11.11.3
     version: 11.11.3(@types/react@18.2.45)(react@18.2.0)
@@ -68,6 +71,9 @@ dependencies:
   '@mui/material':
     specifier: ^5.15.2
     version: 5.15.2(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+  '@mui/material-nextjs':
+    specifier: ^5.15.0
+    version: 5.15.0(@emotion/cache@11.11.0)(@mui/material@5.15.2)(@types/react@18.2.45)(next@14.0.4)(react@18.2.0)
   '@prisma/client':
     specifier: ^5.7.1
     version: 5.7.1(prisma@5.7.1)
@@ -1014,6 +1020,31 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@mui/material-nextjs@5.15.0(@emotion/cache@11.11.0)(@mui/material@5.15.2)(@types/react@18.2.45)(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-UC3lnoRqJXoWUBeekqjxC4CpxMElz4D4bBCegOhrm80qGV1cP5TBJGjalqoSUq6HSl+COVv6u//AjjIMKCj/qA==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@emotion/cache': ^11.11.0
+      '@emotion/server': ^11.11.0
+      '@mui/material': ^5.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
+      next: ^13.0.0 || ^14.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/cache':
+        optional: true
+      '@emotion/server':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@emotion/cache': 11.11.0
+      '@mui/material': 5.15.2(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.45
+      next: 14.0.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /@mui/material@5.15.2(@emotion/react@11.11.3)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):

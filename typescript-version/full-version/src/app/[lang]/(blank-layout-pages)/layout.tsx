@@ -8,6 +8,7 @@ import BlankLayout from '@layouts/BlankLayout'
 
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
+import { getSystemMode } from '@core/server/actions'
 
 type Props = ChildrenType & {
   params: { lang: Locale }
@@ -15,10 +16,11 @@ type Props = ChildrenType & {
 
 const Layout = ({ children, params }: Props) => {
   const direction = getDirection(params.lang)
+  const systemMode = getSystemMode()
 
   return (
     <Providers direction={direction}>
-      <BlankLayout>{children}</BlankLayout>
+      <BlankLayout systemMode={systemMode}>{children}</BlankLayout>
     </Providers>
   )
 }

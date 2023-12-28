@@ -14,7 +14,7 @@ import type { Theme } from '@mui/material/styles'
 import coreTheme from '@core/theme'
 
 const mergedTheme = (direction: Theme['direction']) => {
-  const userTheme: Theme = {
+  const userTheme = {
     // Write your overrides here.
   } as Theme
 
