@@ -2,7 +2,11 @@
 import { Inter } from 'next/font/google'
 
 // MUI Imports
-import type { Theme } from '@mui/material'
+import type { Theme } from '@mui/material/styles'
+
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+import type { SystemMode } from '@core/types'
 
 // Theme Options Imports
 import overrides from './overrides'
@@ -11,7 +15,7 @@ import typography from './typography'
 
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800', '900'] })
 
-const theme = (direction: Theme['direction']): Theme => {
+const theme = (settings: Settings, mode: SystemMode, direction: Theme['direction']): Theme => {
   return {
     direction,
     components: overrides(),

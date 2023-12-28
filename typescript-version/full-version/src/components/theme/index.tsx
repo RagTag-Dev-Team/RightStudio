@@ -16,13 +16,13 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
 import type {} from '@mui/lab/themeAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
-import type { PaletteMode } from '@mui/material'
 
 // Third-party Imports
+import { useCookie } from 'react-use'
 import stylisRTLPlugin from 'stylis-plugin-rtl'
 
 // Type Imports
-import type { Direction } from '@core/types'
+import type { Direction, SystemMode } from '@core/types'
 
 // Component Imports
 import ModeChanger from './ModeChanger'
@@ -36,7 +36,7 @@ import defaultCoreTheme from '@core/theme'
 type Props = {
   children: ReactNode
   direction: Direction
-  systemMode: PaletteMode
+  systemMode: SystemMode
 }
 
 const ThemeProvider = (props: Props) => {
@@ -45,6 +45,20 @@ const ThemeProvider = (props: Props) => {
 
   // Hooks
   const { settings } = useSettings()
+  const [colorPref] = useCookie('colorPref')
+
+  const isServer = typeof window === 'undefined'
+  let currentMode: SystemMode
+
+  if (isServer) {
+    currentMode = systemMode
+  } else {
+    if (settings.mode === 'system') {
+      currentMode = colorPref as SystemMode
+    } else {
+      currentMode = settings.mode as SystemMode
+    }
+  }
 
   // Merge the primary color scheme override with the core theme
   const theme = useMemo(() => {
@@ -71,12 +85,12 @@ const ThemeProvider = (props: Props) => {
       }
     }
 
-    const coreTheme = deepmerge(defaultCoreTheme(direction), newColorScheme)
+    const coreTheme = deepmerge(defaultCoreTheme(settings, currentMode, direction), newColorScheme)
 
     return extendTheme(coreTheme)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.primaryColor, settings.skin])
+  }, [settings.primaryColor, settings.skin, settings.mode])
 
   return (
     <AppRouterCacheProvider
