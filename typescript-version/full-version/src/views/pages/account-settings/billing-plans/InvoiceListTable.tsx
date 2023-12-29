@@ -20,6 +20,7 @@ import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -191,9 +192,23 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
       columnHelper.accessor('invoiceStatus', {
         header: 'Status',
         cell: ({ row }) => (
-          <Avatar>
-            <i className={invoiceStatusObj[row.original.invoiceStatus].icon} />
-          </Avatar>
+          <Tooltip
+            title={
+              <div>
+                <Typography variant='caption'>{row.original.invoiceStatus}</Typography>
+                <br />
+                <Typography variant='caption'>Balance:</Typography>
+                {row.original.balance}
+                <br />
+                <Typography variant='caption'>Due Date:</Typography>
+                {row.original.dueDate}
+              </div>
+            }
+          >
+            <Avatar>
+              <i className={invoiceStatusObj[row.original.invoiceStatus].icon} />
+            </Avatar>
+          </Tooltip>
         )
       }),
       columnHelper.accessor('name', {
@@ -240,7 +255,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             </IconButton>
             <OptionMenu
               options={[
-                { text: 'Download', icon: 'ri-download-fill', menuItemProps: { className: 'flex items-center' } },
+                { text: 'Download', icon: 'ri-download-line', menuItemProps: { className: 'flex items-center' } },
                 {
                   text: 'Edit',
                   icon: 'ri-pencil-line',

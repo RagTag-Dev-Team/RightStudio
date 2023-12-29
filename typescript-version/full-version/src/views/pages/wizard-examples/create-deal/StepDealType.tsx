@@ -11,7 +11,6 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import OutlinedInput from '@mui/material/OutlinedInput'
-import Chip from '@mui/material/Chip'
 import Button from '@mui/material/Button'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
@@ -61,7 +60,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: 
 
   // States
   const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
-  const [region, setRegion] = useState<string[]>([])
+  const [region, setRegion] = useState<string>('')
 
   const handleOptionChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
@@ -69,10 +68,6 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: 
     } else {
       setSelectedOption((prop.target as HTMLInputElement).value)
     }
-  }
-
-  const handleRegionChange = (event: SelectChangeEvent<typeof region>) => {
-    setRegion(typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value)
   }
 
   return (
@@ -114,18 +109,10 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps, direction }: 
         <FormControl fullWidth>
           <InputLabel id='select-region'>Region</InputLabel>
           <Select
-            multiple
             value={region}
             labelId='select-region'
-            onChange={handleRegionChange}
+            onChange={(e: SelectChangeEvent) => setRegion(e.target.value as string)}
             input={<OutlinedInput label='Region' />}
-            renderValue={selected => (
-              <div className='flex flex-wrap'>
-                {selected.map(value => (
-                  <Chip key={value} label={value} size='small' />
-                ))}
-              </div>
-            )}
           >
             {regionArray.map(item => (
               <MenuItem key={item} value={item}>

@@ -45,7 +45,8 @@ const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalM
         href: '/chat'
       },
       {
-        label: dictionary['navigation'].calendar
+        label: dictionary['navigation'].calendar,
+        href: '/apps/calendar'
       },
       {
         label: dictionary['navigation'].invoice,

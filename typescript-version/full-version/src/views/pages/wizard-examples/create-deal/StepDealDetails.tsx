@@ -20,7 +20,7 @@ import type { TextFieldProps } from '@mui/material/TextField'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
-import format from 'date-fns/format'
+import dateFormat from 'date-fns/format'
 
 // Type Imports
 import type { Direction } from '@core/types'
@@ -52,8 +52,8 @@ const offeredItemsArray = [
 ]
 
 const CustomInput = forwardRef((props: CustomInputProps, ref) => {
-  const startDate = props.start !== null ? format(props.start, 'MM/dd/yyyy') : ''
-  const endDate = props.end !== null ? ` - ${format(props.end, 'MM/dd/yyyy')}` : null
+  const startDate = props.start !== null ? dateFormat(props.start, 'MM/dd/yyyy') : ''
+  const endDate = props.end !== null ? ` - ${dateFormat(props.end, 'MM/dd/yyyy')}` : null
 
   const value = `${startDate}${endDate !== null ? endDate : ''}`
 

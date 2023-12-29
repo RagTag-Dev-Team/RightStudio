@@ -46,6 +46,7 @@ import type { UsersType } from '@/types/apps/userTypes'
 // Component Imports
 import TableFilters from './TableFilters'
 import AddUserDrawer from './AddUserDrawer'
+import OptionMenu from '@core/components/option-menu'
 
 // Util Imports
 import { getInitials } from '@/utils/get-initials'
@@ -181,9 +182,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           <div className='flex items-center'>
             {getAvatar({ avatar: row.original.avatar, fullName: row.original.fullName })}
             <div className='flex flex-col'>
-              <Typography component={Link} href='/apps/user/view' className='hover:text-primary'>
-                {row.original.fullName}
-              </Typography>
+              <Typography>{row.original.fullName}</Typography>
               <Typography>{row.original.username}</Typography>
             </div>
           </div>
@@ -230,13 +229,24 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
-              <i className='ri-edit-box-line text-[22px]' />
-            </IconButton>
-            <IconButton>
-              <Link href='/apps/user/view/overview/' className='flex'>
+              <Link href='/apps/user/view/' className='flex'>
                 <i className='ri-eye-line text-[22px]' />
               </Link>
             </IconButton>
+            <OptionMenu
+              options={[
+                {
+                  text: 'Download',
+                  icon: 'ri-download-line text-[22px]',
+                  menuItemProps: { className: 'flex items-center' }
+                },
+                {
+                  text: 'Edit',
+                  icon: 'ri-edit-box-line text-[22px]',
+                  linkProps: { className: 'flex items-center' }
+                }
+              ]}
+            />
           </div>
         ),
         enableSorting: false

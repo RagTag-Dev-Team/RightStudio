@@ -197,7 +197,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Switch checked={userData?.useAsBillingAddress} />}
+                control={<Switch defaultChecked={userData?.useAsBillingAddress} />}
                 label='Use as a billing address?'
               />
             </Grid>

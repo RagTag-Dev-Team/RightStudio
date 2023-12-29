@@ -38,7 +38,7 @@ const InputBase = styled(MuiInputBase)<InputBaseProps>(({ theme }) => ({
 
 const TextFieldCustomized = () => {
   return (
-    <Box component='form' noValidate autoComplete='off' className='flex gap-4'>
+    <Box component='form' noValidate autoComplete='off' className='flex gap-4' onSubmit={e => e.preventDefault()}>
       <FormControl fullWidth variant='standard'>
         <InputLabel shrink htmlFor='bootstrap-input' className='-translate-y-[0.25rem] scale-[0.75]'>
           Bootstrap

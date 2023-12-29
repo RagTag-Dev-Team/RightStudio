@@ -5,7 +5,7 @@ const rating: Theme['components'] = {
   MuiRating: {
     styleOverrides: {
       root: {
-        color: 'var(-mui-palette-warning-main)',
+        color: 'var(--mui-palette-warning-main)',
         '& i, & svg': {
           flexShrink: 0
         }

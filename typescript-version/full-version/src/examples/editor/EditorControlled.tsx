@@ -7,13 +7,13 @@ import { useState } from 'react'
 import { EditorState } from 'draft-js'
 
 // Component Import
-import ReactDraftWysiwyg from '@core/components/ReactDraftWysiwyg'
+import AppReactDraftWysiwyg from '@core/styles/libs/AppReactDraftWysiwyg'
 
 const EditorControlled = () => {
   // States
   const [value, setValue] = useState(EditorState.createEmpty())
 
-  return <ReactDraftWysiwyg editorState={value} onEditorStateChange={data => setValue(data)} />
+  return <AppReactDraftWysiwyg editorState={value} onEditorStateChange={data => setValue(data)} />
 }
 
 export default EditorControlled

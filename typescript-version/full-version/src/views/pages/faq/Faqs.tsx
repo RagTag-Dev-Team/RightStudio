@@ -59,7 +59,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
   return filteredData.length > 0 ? (
     <TabContext value={activeTab}>
       <Grid container>
-        <Grid item xs={12} md={4} xl={3} className='flex flex-col items-center'>
+        <Grid item xs={12} sm={5} md={4} xl={3} className='flex flex-col items-center'>
           <CustomTabList orientation='vertical' onChange={handleChange} className='w-full' pill='true'>
             {filteredData.map((faq, index) => (
               <Tab
@@ -67,13 +67,13 @@ const FAQ = ({ faqData, searchValue }: props) => {
                 label={faq.title}
                 value={faq.id}
                 icon={<i className={classnames(faq.icon, '!mbe-0')} />}
-                className='flex-row justify-start'
+                className='flex-row justify-start !min-is-full'
               />
             ))}
           </CustomTabList>
           <img src='/illustration-john.png' className='max-md:hidden' alt='john image' />
         </Grid>
-        <Grid item xs={12} md={8} xl={9}>
+        <Grid item xs={12} sm={7} md={8} xl={9}>
           {filteredData.map((faq, index) => (
             <TabPanel key={index} value={faq.id} className='p-0'>
               <div className='flex items-center gap-4'>

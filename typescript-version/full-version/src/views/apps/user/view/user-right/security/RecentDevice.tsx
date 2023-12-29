@@ -44,37 +44,39 @@ const RecentDevice = () => {
   return (
     <Card>
       <CardHeader title='Recent Devices' />
-      <table className={tableStyles.table}>
-        <thead>
-          <tr>
-            <th>Browser</th>
-            <th>Device</th>
-            <th>Location</th>
-            <th>Recent Activities</th>
-          </tr>
-        </thead>
-        <tbody>
-          {recentDeviceData.map((device, index) => (
-            <tr key={index}>
-              <td>
-                <div className='flex items-center'>
-                  <img alt='Chrome' width='22px' src='/images/logos/chrome.png' />
-                  <Typography>{device.browser}</Typography>
-                </div>
-              </td>
-              <td>
-                <Typography>{device.device}</Typography>
-              </td>
-              <td>
-                <Typography>{device.location}</Typography>
-              </td>
-              <td>
-                <Typography>{device.recentActivity}</Typography>
-              </td>
+      <div className='overflow-x-auto'>
+        <table className={tableStyles.table}>
+          <thead>
+            <tr>
+              <th>Browser</th>
+              <th>Device</th>
+              <th>Location</th>
+              <th>Recent Activities</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {recentDeviceData.map((device, index) => (
+              <tr key={index}>
+                <td>
+                  <div className='flex items-center'>
+                    <img alt='Chrome' width='22px' src='/images/logos/chrome.png' />
+                    <Typography>{device.browser}</Typography>
+                  </div>
+                </td>
+                <td>
+                  <Typography>{device.device}</Typography>
+                </td>
+                <td>
+                  <Typography>{device.location}</Typography>
+                </td>
+                <td>
+                  <Typography>{device.recentActivity}</Typography>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Card>
   )
 }

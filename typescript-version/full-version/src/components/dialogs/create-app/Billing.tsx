@@ -41,7 +41,7 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           onChange={e => setCardData({ ...cardData, number: e.target.value })}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <TextField
           fullWidth
           name='name'
@@ -52,7 +52,7 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           onChange={e => setCardData({ ...cardData, name: e.target.value })}
         />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} sm={3}>
         <TextField
           fullWidth
           name='expiry'
@@ -63,7 +63,7 @@ const Billing = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           onChange={e => setCardData({ ...cardData, expiry: e.target.value })}
         />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} sm={3}>
         <TextField
           fullWidth
           name='cvv'

@@ -71,7 +71,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
         }}
         className={classnames('block', { static: mdAbove, absolute: !mdAbove })}
         PaperProps={{
-          className: classnames('items-start w-[280px] rounded', {
+          className: classnames('items-start w-[280px] rounded shadow-none', {
             static: mdAbove,
             absolute: !mdAbove
           })

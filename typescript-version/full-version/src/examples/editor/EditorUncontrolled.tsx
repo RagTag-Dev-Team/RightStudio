@@ -1,8 +1,8 @@
 'use client'
 
 // Component Import
-import ReactDraftWysiwyg from '@core/components/ReactDraftWysiwyg'
+import AppReactDraftWysiwyg from '@core/styles/libs/AppReactDraftWysiwyg'
 
-const EditorUncontrolled = () => <ReactDraftWysiwyg />
+const EditorUncontrolled = () => <AppReactDraftWysiwyg />
 
 export default EditorUncontrolled

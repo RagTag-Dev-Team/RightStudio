@@ -47,7 +47,14 @@ const defaultData: DataType[] = [
 
 const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
   // States
-  const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([])
+  const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([
+    'user-management-read',
+    'user-management-write',
+    'user-management-create',
+    'disputes-management-read',
+    'disputes-management-write',
+    'disputes-management-create'
+  ])
   const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState<boolean>(false)
 
   const handleClose = () => {

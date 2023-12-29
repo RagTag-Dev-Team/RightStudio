@@ -159,7 +159,7 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
               <i className='ri-edit-box-line text-[22px]' />
             </IconButton>
             <IconButton>
-              <i className='ri-delete-bin-7-line text-[22px]' />
+              <i className='ri-more-2-line text-[22px]' />
             </IconButton>
           </div>
         ),

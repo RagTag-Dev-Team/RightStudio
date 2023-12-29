@@ -19,8 +19,8 @@ const CreateApiKey = () => {
           <Grid item xs={12} md={6}>
             <form className='flex justify-end items-end h-full flex-col'>
               <FormControl fullWidth>
-                <InputLabel>Choose the API key type you want to create</InputLabel>
-                <Select label='Choose the API key type you want to create' defaultValue=''>
+                <InputLabel>Choose the API key type</InputLabel>
+                <Select label='Choose the API key type' defaultValue=''>
                   <MenuItem value='full-control'>Full Control</MenuItem>
                   <MenuItem value='modify'>Modify</MenuItem>
                   <MenuItem value='read-execute'>Read & Execute</MenuItem>

@@ -4,10 +4,11 @@ import { styled } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
 import type { BoxProps } from "@mui/material/Box";
 
-import { Editor } from "react-draft-wysiwyg";
 import type { EditorProps } from "react-draft-wysiwyg";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 type Props = EditorProps & {
   boxProps?: BoxProps;
@@ -149,9 +150,17 @@ const AppReactDraftWysiwyg = (props: Props) => {
   const { boxProps, ...rest } = props;
 
   return (
-    <EditorWrapper {...boxProps}>
-      <Editor {...rest} />
-    </EditorWrapper>
+    <BrowserOnly>
+      {() => {
+        const { Editor } = require("react-draft-wysiwyg");
+
+        return (
+          <EditorWrapper {...boxProps}>
+            <Editor {...rest} />
+          </EditorWrapper>
+        );
+      }}
+    </BrowserOnly>
   );
 };
 

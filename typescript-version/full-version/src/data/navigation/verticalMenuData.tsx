@@ -48,7 +48,8 @@ const verticalMenuData = (dictionary: Dictionary, params: Params): VerticalMenuD
         href: '/chat'
       },
       {
-        label: dictionary['navigation'].calendar
+        label: dictionary['navigation'].calendar,
+        href: '/apps/calendar'
       },
       {
         label: dictionary['navigation'].invoice,

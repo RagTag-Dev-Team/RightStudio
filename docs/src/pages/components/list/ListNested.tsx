@@ -34,7 +34,7 @@ const ListNested = () => {
           <List component='div' disablePadding>
             <ListItem disablePadding>
               <ListItemButton className='pis-8'>
-                <ListItemIcon className='mie-4'>
+                <ListItemIcon>
                   <i className='ri-time-line text-xl' />
                 </ListItemIcon>
                 <ListItemText primary='Scheduled' />

@@ -25,12 +25,12 @@ const TwoStepsV2 = () => {
               Skip For Now
             </Button>
             <div className='flex items-center justify-between'>
-              <TextField autoFocus />
-              <TextField />
-              <TextField />
-              <TextField />
-              <TextField />
-              <TextField />
+              <TextField autoFocus className='[&_input]:text-center' />
+              <TextField className='[&_input]:text-center' />
+              <TextField className='[&_input]:text-center' />
+              <TextField className='[&_input]:text-center' />
+              <TextField className='[&_input]:text-center' />
+              <TextField className='[&_input]:text-center' />
             </div>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>

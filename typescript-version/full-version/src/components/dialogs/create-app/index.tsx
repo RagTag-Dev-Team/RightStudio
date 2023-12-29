@@ -163,7 +163,7 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
   }
 
   return (
-    <Dialog fullWidth maxWidth='md' open={open} onClose={handleClose}>
+    <Dialog fullWidth maxWidth='md' open={open} onClose={handleClose} scroll='body'>
       <DialogTitle
         variant='h5'
         className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
@@ -173,7 +173,7 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
           Provide data with this form to create your app.
         </Typography>
       </DialogTitle>
-      <DialogContent className='overflow-visible pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
+      <DialogContent className='pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
         <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>

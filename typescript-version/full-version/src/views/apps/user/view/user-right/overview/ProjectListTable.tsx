@@ -10,7 +10,6 @@ import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // THird-party Imports
@@ -254,6 +253,7 @@ const ProjectListTable = () => {
     <Card>
       <CardHeader
         title='Project List'
+        className='flex flex-wrap gap-4'
         action={
           <DebouncedInput
             value={globalFilter ?? ''}
@@ -308,21 +308,6 @@ const ProjectListTable = () => {
           </tbody>
         </table>
       </div>
-      <TablePagination
-        rowsPerPageOptions={[7, 10, 15]}
-        component='div'
-        className='border-bs'
-        count={table.getFilteredRowModel().rows.length}
-        rowsPerPage={table.getState().pagination.pageSize}
-        page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
-        onPageChange={(_, page) => {
-          table.setPageIndex(page)
-        }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
-      />
     </Card>
   )
 }

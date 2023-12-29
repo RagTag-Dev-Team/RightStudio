@@ -14,6 +14,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
 
 // Style Imports
 import ConfirmationDialog from '../confirmation-dialog'
@@ -44,7 +45,10 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
           </Typography>
         </DialogTitle>
         <DialogContent className='overflow-visible pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-          <div className='flex items-center gap-4'>
+          <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
+            <i className='ri-close-line' />
+          </IconButton>
+          <div className='flex items-center gap-4 flex-col sm:flex-row'>
             <FormControl fullWidth size='small'>
               <InputLabel id='user-view-plans-select-label'>Choose Plan</InputLabel>
               <Select
@@ -59,14 +63,14 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
                 <MenuItem value='Company'>Company - $999/month</MenuItem>
               </Select>
             </FormControl>
-            <Button variant='contained' className='capitalize'>
+            <Button variant='contained' className='capitalize sm:is-auto is-full'>
               Upgrade
             </Button>
           </div>
           <Divider className='mlb-6' />
           <div className='flex flex-col gap-1'>
             <Typography variant='body2'>User current plan is standard plan</Typography>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between flex-wrap gap-2'>
               <div className='flex justify-center gap-1'>
                 <Typography component='sup' className='self-start' color='primary'>
                   $

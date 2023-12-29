@@ -8,14 +8,15 @@ import Box from '@mui/material/Box'
 import { styled, useColorScheme } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
 
-
 // Type Imports
-import ReactDatePicker from 'react-datepicker'
+import ReactDatePickerComponent from 'react-datepicker'
 
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
-type Props = ComponentProps<typeof ReactDatePicker> & {
+import BrowserOnly from '@docusaurus/BrowserOnly'
+
+type Props = ComponentProps<typeof ReactDatePickerComponent> & {
   boxProps?: BoxProps
 }
 
@@ -154,7 +155,7 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
         '&:not(.react-datepicker__day--selected):not(:empty)': {
           lineHeight: '2.125rem',
           color: theme.palette.primary.main,
-          border: `1px solid ${theme.palette.primary.main}`,
+          backgroundColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.16)`,
           '&:hover': {
             backgroundColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.04)`
           },
@@ -480,10 +481,16 @@ const AppReactDatepicker = (props: Props) => {
   const { boxProps, ...rest } = props
 
   return (
-    <StyledReactDatePicker {...boxProps}>
-      <ReactDatePicker {...rest} />
-    </StyledReactDatePicker>
-  )
+    <BrowserOnly>
+      {() => {
+        return (
+          <StyledReactDatePicker {...boxProps}>
+            <ReactDatePickerComponent {...rest} />
+          </StyledReactDatePicker>
+        );
+      }}
+    </BrowserOnly>
+  );
 }
 
 export default AppReactDatepicker
