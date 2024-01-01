@@ -11,6 +11,7 @@ import { i18n } from '@configs/i18n'
 import { getLocalePath } from '@/utils/get-locale-path'
 
 const LanguageDropdown = () => {
+  // Hooks
   const pathName = usePathname()
 
   return (

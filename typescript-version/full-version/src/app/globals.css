@@ -27,16 +27,16 @@
   border-color: theme('borderColor.DEFAULT', currentColor);
 }
 
+html {
+  display: flex;
+  inline-size: 100%;
+  min-block-size: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
 
 /*! Do note remove following style */
 /*

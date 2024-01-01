@@ -240,10 +240,19 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
         </SubMenu>
       </Menu>
       {/* <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        menuItemStyles={{
+          button: { paddingBlock: '12px' },
+          subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
+        }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+        }}
+        verticalMenuProps={{
+          menuItemStyles: {
+            button: { paddingBlock: '12px' },
+            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
+          }
         }}
       >
         {generateHorizontalMenu(menuData(locale, params), locale)}

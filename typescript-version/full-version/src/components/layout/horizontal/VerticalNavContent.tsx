@@ -16,6 +16,7 @@ import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 import { mapHorizontalToVerticalMenu } from '@menu-package/utils/menuUtils'
 
 const VerticalNavContent = ({ children }: ChildrenType) => {
+  // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar

@@ -15,6 +15,7 @@ import { blankLayoutClasses } from './utils/layoutClasses'
 type Props = ChildrenType
 
 const BlankLayout = ({ children }: Props) => {
+  // Hooks
   const { settings } = useSettings()
 
   return (

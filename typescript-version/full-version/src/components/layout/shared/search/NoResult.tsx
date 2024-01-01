@@ -3,6 +3,10 @@ import type { ReactNode } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
 
 type NoResultProps = {
   query: string | undefined
@@ -36,6 +40,11 @@ const NoResult = (props: NoResultProps) => {
   // Props
   const { query } = props
 
+  // Hooks
+  const pathname = usePathname()
+
+  const locale = getLocale(pathname)
+
   return (
     <div className='flex items-center justify-center grow flex-wrap plb-14 pli-16 overflow-y-auto overflow-x-hidden'>
       <div className='flex flex-col items-center'>
@@ -46,7 +55,7 @@ const NoResult = (props: NoResultProps) => {
           {noResultData.map((item, index) => (
             <li key={index} className='flex items-center'>
               <Link
-                href={item.href}
+                href={`/${locale}/${item.href}`}
                 className='flex items-center gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
               >
                 <div className='flex text-xl'>{item.icon}</div>
