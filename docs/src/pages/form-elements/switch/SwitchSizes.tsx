@@ -7,7 +7,7 @@ const SwitchSizes = () => {
   return (
     <FormGroup row>
       <FormControlLabel control={<Switch size='small' />} label='Small' />
-      <FormControlLabel control={<Switch />} label='Default' />
+      <FormControlLabel control={<Switch />} label='Medium' />
     </FormGroup>
   )
 }
