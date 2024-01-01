@@ -4,12 +4,10 @@ import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import { useKBar } from 'kbar'
+import classnames from 'classnames'
 
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
-
-// Third-party Imports
-import classnames from 'classnames'
 
 type NoResultProps = {
   query: string | undefined

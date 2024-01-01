@@ -83,7 +83,7 @@ ul:not([class]) {
   }
 }
 
-.ts-vertical-nav-container {
+.ts-vertical-nav-root {
   .ps__thumb-y {
     inline-size: 4px;
     &:hover,
@@ -102,19 +102,19 @@ ul:not([class]) {
       }
     }
   }
+}
 
-  :where([class^='ri-']) {
-    font-size: 1.5rem;
-  }
+:where([class^='ri-']) {
+  font-size: 1.5rem;
+}
 
-  code {
-    font-family: inherit;
-    padding-block: 2px;
-    padding-inline: 4px;
-    border-radius: 4px;
-    font-size: 90%;
-    color: var(--mui-palette-info-main);
-    background-color: rgb(var(--mui-palette-info-mainChannel) / 0.08);
-    border: 0;
-  }
+code {
+  font-family: inherit;
+  padding-block: 2px;
+  padding-inline: 4px;
+  border-radius: 4px;
+  font-size: 90%;
+  color: var(--mui-palette-info-main);
+  background-color: rgb(var(--mui-palette-info-mainChannel) / 0.08);
+  border: 0;
 }
