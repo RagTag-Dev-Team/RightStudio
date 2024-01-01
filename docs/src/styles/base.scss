@@ -69,3 +69,15 @@ ul:not([class]), ol:not([class]) {
 :where([class^='ri-']) {
   font-size: 1.5rem;
 }
+
+code {
+  font-family: inherit;
+  padding-block: 2px;
+  padding-inline: 4px;
+  border-radius: 4px;
+  font-size: 90%;
+  color: var(--mui-palette-info-main);
+  background-color: rgb(var(--mui-palette-info-mainChannel) / 0.08);
+  border: 0;
+}
+
