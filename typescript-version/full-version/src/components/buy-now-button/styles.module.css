@@ -1,5 +1,5 @@
-.buy-now-button,
-.button-inner {
+.button,
+.buttonInner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -26,17 +26,17 @@
   animation: anime 12s linear infinite;
 }
 
-.buy-now-button {
+.button {
   position: fixed;
   inset-inline-end: 5.5rem;
   inset-block-end: 2.5rem;
   z-index: 11;
   &:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: white;
     text-decoration: none;
   }
 
-  .button-inner {
+  .buttonInner {
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -44,7 +44,7 @@
     opacity: 0;
     transition: opacity 200ms ease-in-out;
   }
-  &:not(:hover) .button-inner {
+  &:not(:hover) .buttonInner {
     opacity: 0.8;
   }
 }

@@ -424,7 +424,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
               >
                 <SubMenuContent
                   open={open}
-                  top={y ?? 0}
+                  top={y ? y - window.screenY : 0}
                   firstLevel={level === 0}
                   browserScroll={browserScroll}
                   className={classnames(menuClasses.subMenuContent, contentClassName)}

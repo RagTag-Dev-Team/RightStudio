@@ -30,7 +30,7 @@ const Header = (props: Props) => {
   // Hooks
   const { settings } = useSettings()
 
-  const { navbarContentWidth, skin } = settings
+  const { navbarContentWidth } = settings
 
   const headerFixed = themeConfig.navbar.type === 'fixed'
   const headerStatic = themeConfig.navbar.type === 'static'
@@ -40,7 +40,6 @@ const Header = (props: Props) => {
 
   return (
     <StyledHeader
-      skin={skin}
       overrideStyles={overrideStyles}
       className={classnames(horizontalLayoutClasses.header, {
         [horizontalLayoutClasses.headerFixed]: headerFixed,

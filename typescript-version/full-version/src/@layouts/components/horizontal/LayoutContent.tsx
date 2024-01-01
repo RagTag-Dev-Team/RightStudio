@@ -19,6 +19,7 @@ import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 import StyledMain from '@layouts/styles/shared/StyledMain'
 
 const LayoutContent = ({ children }: ChildrenType) => {
+  // Hooks
   const { settings } = useSettings()
 
   const contentCompact = settings.contentWidth === 'compact'

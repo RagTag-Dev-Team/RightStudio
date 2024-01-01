@@ -57,7 +57,7 @@
     "autoprefixer": "^10.4.16",
     "docusaurus-plugin-module-alias": "^0.0.2",
     "postcss": "^8.4.32",
-    "prettier": "^3.1.1",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3.4.0",
     "tailwindcss-logical": "^3.0.1",
     "tsx": "^4.7.0",

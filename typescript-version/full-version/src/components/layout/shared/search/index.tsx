@@ -4,7 +4,7 @@
 import type { ElementType, ReactNode } from 'react'
 
 // Next Imports
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 // MUI Imports
 import { IconButton } from '@mui/material'
@@ -22,6 +22,9 @@ import SearchResults from './SearchResults'
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -63,12 +66,16 @@ const NavSearch = () => {
   const router = useRouter()
   const { settings } = useSettings()
   const isSmallScreen = useMedia('(max-width: 600px)', false)
+  const pathname = usePathname()
+
+  const locale = getLocale(pathname)
 
   // Search Actions Data with 'perform' method
   const searchActions = data.map(item => ({
     ...item,
     url: undefined, // Remove the 'url' key
-    perform: () => (item.url.startsWith('http') ? window.open(item.url, '_blank') : router.push(item.url)) // Add 'perform' method
+    perform: () =>
+      item.url.startsWith('http') ? window.open(item.url, '_blank') : router.push(`/${locale}/${item.url}`) // Add 'perform' method
   }))
 
   return (

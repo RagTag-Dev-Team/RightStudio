@@ -5,6 +5,9 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
 
+// Component Imports
+import BuyNowButton from '@components/buy-now-button'
+
 // Util Imports
 import { getDirection } from '@/utils/get-direction'
 
@@ -23,8 +26,11 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
   const direction = getDirection(params.lang)
 
   return (
-    <html id='__next' lang={params.lang} dir={direction} className='flex is-full min-bs-full'>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
+    <html id='__next' lang={params.lang} dir={direction}>
+      <body className='flex is-full min-bs-full flex-auto flex-col'>
+        {children}
+        <BuyNowButton />
+      </body>
     </html>
   )
 }

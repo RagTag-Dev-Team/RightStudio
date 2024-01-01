@@ -1,9 +1,13 @@
 // Next Imports
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 // Third-party Imports
 import { useKBar } from 'kbar'
 import classnames from 'classnames'
+
+// Util Imports
+import { getLocale } from '@/utils/get-locale'
 
 type DefaultSuggestionsType = {
   sectionLabel: string
@@ -120,6 +124,9 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
 const DefaultSuggestions = () => {
   // Hooks
   const { query } = useKBar()
+  const pathname = usePathname()
+
+  const locale = getLocale(pathname)
 
   return (
     <div className='flex grow flex-wrap gap-x-[48px] gap-y-8 plb-14 pli-16 overflow-y-auto overflow-x-hidden'>
@@ -133,7 +140,7 @@ const DefaultSuggestions = () => {
             {section.items.map((item, i) => (
               <li key={i} className='flex'>
                 <Link
-                  href={item.href}
+                  href={`/${locale}/${item.href}`}
                   onClick={query.toggle}
                   className='flex items-center overflow-x-hidden cursor-pointer gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
                 >

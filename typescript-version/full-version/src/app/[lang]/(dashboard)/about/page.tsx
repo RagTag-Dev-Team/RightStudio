@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useSettings } from '@core/hooks/useSettings'
 
 const AboutPage = () => {
+  // Hooks
   const { updatePageSettings } = useSettings()
 
   useEffect(() => {

@@ -13,6 +13,7 @@ import LayoutHeader from '@layouts/components/horizontal/Header'
 import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 const Header = ({ dictionary }: { dictionary: Dictionary }) => {
+  // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
   return (

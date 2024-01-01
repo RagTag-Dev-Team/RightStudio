@@ -30,7 +30,7 @@ const Navbar = (props: Props) => {
   // Hooks
   const { settings } = useSettings()
 
-  const { navbarContentWidth, skin } = settings
+  const { navbarContentWidth } = settings
 
   const headerFixed = themeConfig.navbar.type === 'fixed'
   const headerStatic = themeConfig.navbar.type === 'static'
@@ -43,7 +43,6 @@ const Navbar = (props: Props) => {
 
   return (
     <StyledHeader
-      skin={skin}
       overrideStyles={overrideStyles}
       className={classnames(verticalLayoutClasses.header, 'flex items-center justify-center is-full', {
         [verticalLayoutClasses.headerFixed]: headerFixed,

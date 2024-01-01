@@ -34,6 +34,13 @@ export const getSystemMode = (): SystemMode => {
   return (mode === 'system' ? colorPrefCookie : mode) || 'light'
 }
 
+export const getServerMode = () => {
+  const mode = getMode()
+  const systemMode = getSystemMode()
+
+  return mode === 'system' ? systemMode : mode
+}
+
 export const getSkin = () => {
   const settingsCookie = getSettingsFromCookie()
 
