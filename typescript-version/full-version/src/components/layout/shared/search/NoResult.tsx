@@ -2,6 +2,9 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+// Third-party Imports
+import { useKBar } from 'kbar'
+
 // Util Imports
 import { getLocale } from '@/utils/get-locale'
 
@@ -42,6 +45,7 @@ const NoResult = (props: NoResultProps) => {
 
   // Hooks
   const pathname = usePathname()
+  const { query: kbarQuery } = useKBar()
 
   const locale = getLocale(pathname)
 
@@ -57,6 +61,7 @@ const NoResult = (props: NoResultProps) => {
               <Link
                 href={`/${locale}/${item.href}`}
                 className='flex items-center gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
+                onClick={kbarQuery.toggle}
               >
                 <i className={classnames(item.icon, 'text-xl')} />
                 <p className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>
