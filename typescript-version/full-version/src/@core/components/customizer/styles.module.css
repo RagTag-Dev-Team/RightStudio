@@ -33,9 +33,9 @@
 
 .toggler {
   position: absolute;
-  inset-block-start: 50%;
+  inset-block-start: 20%;
   inset-inline-end: 100%;
-  transform: translateY(-50%);
+  transform: translateY(-20%);
   padding: 8px;
   background-color: var(--primary-color);
   color: var(--mui-palette-primary-contrastText);
