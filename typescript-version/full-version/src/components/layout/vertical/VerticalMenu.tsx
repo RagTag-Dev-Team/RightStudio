@@ -15,9 +15,6 @@ import type { Dictionary } from '@core/types'
 // Component Imports from @menu-package
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
 
-// Icon Imports
-import LinkExternalIcon from '@layouts/svg/LinkExternal'
-
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
@@ -185,14 +182,14 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
             href='http://localhost:3001/docs/forms-tables/intro#form-elements'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
             href='http://localhost:3001/docs/tables/mui-table'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].muiTables}
@@ -205,29 +202,29 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           </SubMenu>
           <MenuItem
             href='http://localhost:3001/docs/user-interface/intro'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].userInterface}
           </MenuItem>
           <MenuItem
             href='http://localhost:3001/docs/components/intro'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
             href='http://localhost:3001/docs/menu-examples/'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
+            suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].menuExamples}
           </MenuItem>
-          <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />} target='_blank'>
+          <MenuItem suffix={<i className='ri-external-link-line text-xl' />} target='_blank'>
             {dictionary['navigation'].raiseSupport}
           </MenuItem>
-          <MenuItem suffix={<LinkExternalIcon fontSize='1.125rem' />} target='_blank'>
+          <MenuItem suffix={<i className='ri-external-link-line text-xl' />} target='_blank'>
             {dictionary['navigation'].documentation}
           </MenuItem>
           <SubMenu label={dictionary['navigation'].others}>
@@ -235,7 +232,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
             <MenuItem
               href='https://themeselection.com/'
               target='_blank'
-              suffix={<LinkExternalIcon fontSize='1.125rem' />}
+              suffix={<i className='ri-external-link-line text-xl' />}
             >
               {dictionary['navigation'].externalLink}
             </MenuItem>

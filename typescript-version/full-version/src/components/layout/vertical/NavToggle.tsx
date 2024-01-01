@@ -1,8 +1,5 @@
 'use client'
 
-// Icon Imports
-import HamburgerMenuIcon from '@layouts/svg/HamburgerMenu'
-
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
@@ -16,15 +13,9 @@ const NavToggle = () => {
 
   return (
     <>
-      {/* <span className='flex'>
-        <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} className='cursor-pointer' />
-      </span> */}
+      {/* <i className='ri-menu-line text-xl cursor-pointer' onClick={handleClick} /> */}
       {/* Comment following code and uncomment above code in order to toggle menu on desktop screens as well */}
-      {isBreakpointReached && (
-        <span className='flex'>
-          <HamburgerMenuIcon fontSize='1.25rem' onClick={handleClick} className='cursor-pointer' />
-        </span>
-      )}
+      {isBreakpointReached && <i className='ri-menu-line text-xl cursor-pointer' onClick={handleClick} />}
     </>
   )
 }

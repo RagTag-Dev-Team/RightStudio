@@ -14,7 +14,6 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu-package/horizontal
 import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
 
 // Icon Imports
-import Search from '@layouts/svg/Search'
 import Logo from '@components/layout/shared/Logo'
 
 // Style Imports
@@ -49,7 +48,7 @@ const HorizontalNavbar = () => {
           </Menu>
         </HorizontalNav>
         <div className='flex gap-4 items-center'>
-          <Search className='mis-0' />
+          <i className='ri-search-line mis-0' />
           <LanguageDropdown />
           <ModeDropdown />
         </div>

@@ -16,8 +16,8 @@ interface ScrollToTopProps {
 const ScrollToTopStyled = styled('div')(({ theme }) => ({
   zIndex: 'var(--mui-zIndex-fab)',
   position: 'fixed',
-  right: theme.spacing(6),
-  bottom: theme.spacing(10)
+  insetInlineEnd: theme.spacing(10),
+  insetBlockEnd: theme.spacing(14)
 }))
 
 const ScrollToTop = (props: ScrollToTopProps) => {
