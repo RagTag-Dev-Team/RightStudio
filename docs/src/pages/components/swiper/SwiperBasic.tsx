@@ -1,7 +1,7 @@
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 
-const SwiperDefault = () => {
+const SwiperBasic = () => {
   // Hooks
   const [ref] = useKeenSlider<HTMLDivElement>()
 
@@ -26,4 +26,4 @@ const SwiperDefault = () => {
   )
 }
 
-export default SwiperDefault
+export default SwiperBasic

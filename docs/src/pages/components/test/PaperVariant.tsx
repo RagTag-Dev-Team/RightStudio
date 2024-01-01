@@ -20,7 +20,7 @@ const PaperVariant = () => {
     <>
       <Typography variant='h3'>Paper Variants</Typography>
       <div className='flex'>
-        <Paper variant='outlined'>Default</Paper>
+        <Paper variant='outlined'>Basic</Paper>
         <Paper variant='outlined' square>
           Square
         </Paper>

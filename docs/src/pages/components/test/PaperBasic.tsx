@@ -29,7 +29,7 @@ const PaperBasic = () => {
         <Paper>
           <div className='flex flex-col items-center'>
             <Typography>elevation</Typography>
-            <Typography variant='h6'>Default</Typography>
+            <Typography variant='h6'>Basic</Typography>
           </div>
         </Paper>
         <Paper elevation={3}>

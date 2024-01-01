@@ -7,8 +7,8 @@ const SliderSizes = () => {
     <div>
       <Typography className='font-medium'>Small</Typography>
       <Slider size='small' defaultValue={30} aria-labelledby='small-slider' />
-      <Typography className='font-medium'>Normal</Typography>
-      <Slider defaultValue={30} aria-labelledby='normal-slider' />
+      <Typography className='font-medium'>Medium</Typography>
+      <Slider defaultValue={30} aria-labelledby='medium-slider' />
     </div>
   )
 }
