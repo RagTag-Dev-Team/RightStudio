@@ -1,10 +1,9 @@
 .customizer {
-  inline-size: 401px;
+  inline-size: 400px;
   background-color: var(--mui-palette-background-paper);
   position: fixed;
   inset-block-start: 0;
-  inset-inline-end: -401px;
-  border-inline-start: 1px solid var(--border-color);
+  inset-inline-end: -400px;
   box-shadow: none;
   z-index: var(--customizer-z-index);
   transition-property: inset-inline-end, box-shadow;
