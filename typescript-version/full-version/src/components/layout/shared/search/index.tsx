@@ -66,6 +66,7 @@ const NavSearch = () => {
   // Hooks
   const router = useRouter()
   const { settings } = useSettings()
+  const { isBreakpointReached } = useVerticalNav()
   const isSmallScreen = useMedia('(max-width: 600px)', false)
   const pathname = usePathname()
 
@@ -84,8 +85,13 @@ const NavSearch = () => {
       <ComponentWithUseKBar
         triggerClick
         className='ts-nav-search-icon flex cursor-pointer'
-        icon={<Search fontSize='1.25rem' />}
-      />
+        {...((settings.layout === 'horizontal' || isBreakpointReached) && { icon: <Search fontSize='1.25rem' /> })}
+      >
+        <div className='flex items-center gap-4'>
+          <Search fontSize='1.25rem' />
+          <div className='whitespace-nowrap'>Search ⌘K</div>
+        </div>
+      </ComponentWithUseKBar>
       <KBarPortal>
         <KBarPositioner className='!p-0 !items-center z-[calc(var(--search-z-index)+1)]'>
           <StyledKBarAnimator skin={settings.skin} isSmallScreen={isSmallScreen}>
