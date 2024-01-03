@@ -47,11 +47,10 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
         selected_calendars.push(action.calendar as CalendarFiltersType)
       }
 
-      const selected_events = events.filter(event => {
-        return index !== -1
-          ? event.extendedProps.calendar !== action.calendar
-          : selected_calendars.indexOf(event.extendedProps.calendar as CalendarFiltersType) !== -1
-      })
+      // Filter events based on the updated selected_calendars
+      const selected_events = events.filter(event =>
+        selected_calendars.includes(event.extendedProps.calendar as CalendarFiltersType)
+      )
 
       return { ...calendars, events: selected_events, selectedCalendars: selected_calendars }
     }
