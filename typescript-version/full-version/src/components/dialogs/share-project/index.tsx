@@ -151,7 +151,6 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
             Add Members
           </InputLabel>
           <Autocomplete
-            autoHighlight
             id='add-member'
             options={autocompleteOptions || []}
             ListboxComponent={List}

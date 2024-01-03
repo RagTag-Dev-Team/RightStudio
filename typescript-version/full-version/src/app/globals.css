@@ -93,6 +93,7 @@ ul:not([class]) {
     }
   }
   .ps__rail-y {
+    inline-size: 10px;
     &:hover,
     &:focus,
     &.ps--clicking {
