@@ -52,7 +52,7 @@ export const SettingsContext = createContext<SettingsContextProps | null>(null)
 export const SettingsProvider = (props: Props) => {
   // Initial Settings
   const initialSettings: Settings = {
-    mode: props.mode || themeConfig.mode,
+    mode: themeConfig.mode,
     skin: themeConfig.skin,
     semiDark: themeConfig.semiDark,
     layout: themeConfig.layout,
@@ -62,15 +62,20 @@ export const SettingsProvider = (props: Props) => {
     primaryColor: '#765feb'
   }
 
+  const updatedInitialSettings = {
+    ...initialSettings,
+    mode: props.mode || themeConfig.mode
+  }
+
   // Cookies
   const [settingsCookie, updateSettingsCookie] = useObjectCookie<Settings>(
     'settings',
-    JSON.stringify(props.settingsCookie) !== '{}' ? props.settingsCookie : initialSettings
+    JSON.stringify(props.settingsCookie) !== '{}' ? props.settingsCookie : updatedInitialSettings
   )
 
   // State
   const [_settingsState, _updateSettingsState] = useState<Settings>(
-    JSON.stringify(settingsCookie) !== '{}' ? settingsCookie : initialSettings
+    JSON.stringify(settingsCookie) !== '{}' ? settingsCookie : updatedInitialSettings
   )
 
   const updateSettings = (settings: Partial<Settings>, options?: UpdateSettingsOptions) => {

@@ -255,7 +255,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           }
         }}
       >
-        {generateHorizontalMenu(menuData(locale, params), locale)}
+        {generateHorizontalMenu(menuData(dictionary, params), locale)}
       </Menu> */}
     </HorizontalNav>
   )
