@@ -14,7 +14,7 @@ import Popper from '@mui/material/Popper'
 import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import IconButton from '@mui/material/IconButton'
 import Divider from '@mui/material/Divider'
@@ -83,7 +83,7 @@ const OptionMenu = (props: OptionsMenuType) => {
         sx={{ zIndex: 1 }}
       >
         {({ TransitionProps, placement }) => (
-          <Grow
+          <Fade
             {...TransitionProps}
             style={{
               transformOrigin:
@@ -93,15 +93,15 @@ const OptionMenu = (props: OptionsMenuType) => {
                       ? 'left top'
                       : 'left bottom'
                     : placement === 'bottom-end'
-                    ? 'right top'
-                    : 'right bottom'
+                      ? 'right top'
+                      : 'right bottom'
                   : leftAlignMenu
-                  ? placement === 'bottom-end'
-                    ? 'right top'
-                    : 'right bottom'
-                  : placement === 'bottom-start'
-                  ? 'left top'
-                  : 'left bottom'
+                    ? placement === 'bottom-end'
+                      ? 'right top'
+                      : 'right bottom'
+                    : placement === 'bottom-start'
+                      ? 'left top'
+                      : 'left bottom'
             }}
           >
             <Paper>
@@ -140,7 +140,7 @@ const OptionMenu = (props: OptionsMenuType) => {
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </Fade>
         )}
       </Popper>
     </>

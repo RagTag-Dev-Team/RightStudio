@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 // MUI Imports
 import IconButton from '@mui/material/IconButton'
 import Popper from '@mui/material/Popper'
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
@@ -78,7 +78,7 @@ const LanguageDropdown = () => {
         className='min-w-[160px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
-          <Grow
+          <Fade
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
@@ -101,7 +101,7 @@ const LanguageDropdown = () => {
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </Fade>
         )}
       </Popper>
     </>

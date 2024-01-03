@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 // MUI Imports
 import Chip from '@mui/material/Chip'
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
 import { useTheme } from '@mui/material/styles'
@@ -283,7 +283,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                     className='z-[1]'
                   >
                     {({ TransitionProps }) => (
-                      <Grow {...TransitionProps} style={{ transformOrigin: 'right top' }}>
+                      <Fade {...TransitionProps} style={{ transformOrigin: 'right top' }}>
                         <Paper elevation={6} className={styles.colorPopup}>
                           <ClickAwayListener onClickAway={handleMenuClose}>
                             <div>
@@ -295,7 +295,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr' }: CustomizerProps) => {
                             </div>
                           </ClickAwayListener>
                         </Paper>
-                      </Grow>
+                      </Fade>
                     )}
                   </Popper>
                 </div>

@@ -12,7 +12,7 @@ import { styled } from '@mui/material/styles'
 import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 import Popper from '@mui/material/Popper'
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
@@ -104,7 +104,7 @@ const UserDropdown = () => {
         className='min-w-[240px] !mbs-4 z-[1]'
       >
         {({ TransitionProps, placement }) => (
-          <Grow
+          <Fade
             {...TransitionProps}
             style={{
               transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top'
@@ -154,7 +154,7 @@ const UserDropdown = () => {
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </Fade>
         )}
       </Popper>
     </>

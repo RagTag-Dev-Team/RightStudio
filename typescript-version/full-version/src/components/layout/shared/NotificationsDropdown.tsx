@@ -8,7 +8,7 @@ import type { MouseEvent, ReactNode } from 'react'
 import IconButton from '@mui/material/IconButton'
 import Badge from '@mui/material/Badge'
 import Popper from '@mui/material/Popper'
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Typography from '@mui/material/Typography'
@@ -172,7 +172,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
           : { className: 'is-96 !mbs-4 z-[1]' })}
       >
         {({ TransitionProps, placement }) => (
-          <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
+          <Fade {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
             <Paper
               elevation={settings.skin === 'bordered' ? 0 : 8}
               {...(settings.skin === 'bordered' && { className: 'border' })}
@@ -259,7 +259,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 </div>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </Fade>
         )}
       </Popper>
     </>
