@@ -144,20 +144,30 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
   const { settings, updateSettings, resetSettings, isSettingsChanged } = useSettings()
   const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
-  const breakpointValue =
-    breakpoint === 'xxl'
-      ? '1920px'
-      : breakpoint === 'xl'
-        ? `${theme.breakpoints.values.xl}px`
-        : breakpoint === 'lg'
-          ? `${theme.breakpoints.values.lg}px`
-          : breakpoint === 'md'
-            ? `${theme.breakpoints.values.md}px`
-            : breakpoint === 'sm'
-              ? `${theme.breakpoints.values.sm}px`
-              : breakpoint === 'xs'
-                ? `${theme.breakpoints.values.xs}px`
-                : breakpoint
+  let breakpointValue: CustomizerProps['breakpoint']
+
+  switch (breakpoint) {
+    case 'xxl':
+      breakpointValue = '1920px'
+      break
+    case 'xl':
+      breakpointValue = `${theme.breakpoints.values.xl}px`
+      break
+    case 'lg':
+      breakpointValue = `${theme.breakpoints.values.lg}px`
+      break
+    case 'md':
+      breakpointValue = `${theme.breakpoints.values.md}px`
+      break
+    case 'sm':
+      breakpointValue = `${theme.breakpoints.values.sm}px`
+      break
+    case 'xs':
+      breakpointValue = `${theme.breakpoints.values.xs}px`
+      break
+    default:
+      breakpointValue = breakpoint
+  }
 
   const breakpointReached = useMedia(`(max-width: ${breakpointValue})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
