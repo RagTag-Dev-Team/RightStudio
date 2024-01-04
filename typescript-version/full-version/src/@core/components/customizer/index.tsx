@@ -26,6 +26,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 import type { Direction } from '@core/types'
+import type { PrimaryColorConfig } from '@configs/primaryColorConfig'
 
 // Icon Imports
 import Cog from '@core/svg/Cog'
@@ -39,6 +40,9 @@ import ContentCompact from '@core/svg/ContentCompact'
 import ContentWide from '@core/svg/ContentWide'
 import DirectionLtr from '@core/svg/DirectionLtr'
 import DirectionRtl from '@core/svg/DirectionRtl'
+
+// Config Imports
+import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
@@ -55,47 +59,6 @@ type CustomizerProps = {
   dir?: Direction
   disableDirection?: boolean
 }
-
-export type PrimaryColorConfig = {
-  name?: string
-  light?: string
-  main: string
-  dark?: string
-}
-
-// Primary color config object
-export const primaryColorConfig: PrimaryColorConfig[] = [
-  {
-    name: 'primary-1',
-    light: '#42a5f5',
-    main: '#1976d2',
-    dark: '#1565c0'
-  },
-  {
-    name: 'primary-2',
-    light: '#ba68c8',
-    main: '#9c27b0',
-    dark: '#7b1fa2'
-  },
-  {
-    name: 'primary-3',
-    light: '#ef5350',
-    main: '#d32f2f',
-    dark: '#c62828'
-  },
-  {
-    name: 'primary-4',
-    light: '#ff9800',
-    main: '#ed6c02',
-    dark: '#e65100'
-  },
-  {
-    name: 'primary-5',
-    light: '#4caf50',
-    main: '#2e7d32',
-    dark: '#1b5e20'
-  }
-]
 
 type DebouncedColorPickerProps = {
   settings: Settings
