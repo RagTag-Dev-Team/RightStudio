@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
-          const res = await fetch(`http://localhost:3000/api/login`, {
+          const res = await fetch(`${process.env.API_URL}/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
