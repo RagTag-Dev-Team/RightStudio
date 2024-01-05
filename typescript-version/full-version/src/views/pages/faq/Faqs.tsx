@@ -1,5 +1,5 @@
 // React Imports
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports
@@ -36,25 +36,25 @@ const FAQ = ({ faqData, searchValue }: props) => {
   }
 
   const filteredData = useMemo(() => {
-    if (!searchValue) {
-      return faqData
+    let returnVal = faqData
+
+    if (searchValue) {
+      returnVal = faqData
+        .filter(category =>
+          category.questionsAnswers.some(item => item.question.toLowerCase().includes(searchValue.toLowerCase()))
+        )
+        .map(category => ({
+          ...category,
+          questionsAnswers: category.questionsAnswers.filter(item =>
+            item.question.toLowerCase().includes(searchValue.toLowerCase())
+          )
+        }))
     }
 
-    return faqData
-      .filter(category =>
-        category.questionsAnswers.some(item => item.question.toLowerCase().includes(searchValue.toLowerCase()))
-      )
-      .map(category => ({
-        ...category,
-        questionsAnswers: category.questionsAnswers.filter(item =>
-          item.question.toLowerCase().includes(searchValue.toLowerCase())
-        )
-      }))
-  }, [faqData, searchValue])
+    setActiveTab(returnVal[0]?.id ?? '')
 
-  useEffect(() => {
-    setActiveTab(filteredData[0]?.id ?? '')
-  }, [filteredData])
+    return returnVal
+  }, [faqData, searchValue])
 
   return filteredData.length > 0 ? (
     <TabContext value={activeTab}>
