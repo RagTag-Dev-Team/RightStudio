@@ -9,8 +9,8 @@ import CardContent from '@mui/material/CardContent'
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
 
-// Component Imports
-import AppReactApexCharts from '@core/styles/libs/AppReactApexCharts'
+// Styled Component Imports
+import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
 const candlestickColors = {
   series1: '#28c76f',

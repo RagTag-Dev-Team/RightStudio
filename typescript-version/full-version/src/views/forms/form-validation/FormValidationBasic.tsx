@@ -27,8 +27,8 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 
-// Style Component Imports
-import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+// Styled Component Imports
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 type FormValues = {
   firstName: string

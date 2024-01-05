@@ -8,7 +8,7 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
+// Component Imports
 import {
   Radar,
   Tooltip,
@@ -17,8 +17,8 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   ResponsiveContainer
-} from '@components/charts/recharts'
-import type { TooltipProps } from '@components/charts/recharts'
+} from '@/libs/Recharts'
+import type { TooltipProps } from '@/libs/Recharts'
 
 const data = [
   {

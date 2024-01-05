@@ -1,7 +1,9 @@
-// Next Import
+'use client'
+
+// Next Imports
 import dynamic from 'next/dynamic'
 
-// Types
+// Type Imports
 import type { EditorProps } from 'react-draft-wysiwyg'
 
 // ! To avoid 'Window is not defined' error

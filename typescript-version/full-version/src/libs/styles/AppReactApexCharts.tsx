@@ -9,7 +9,7 @@ import type { BoxProps } from '@mui/material/Box'
 import type { Props } from 'react-apexcharts'
 
 // Component Imports
-import ReactApexcharts from '@components/charts/apexchart'
+import ReactApexcharts from '@/libs/ApexCharts'
 
 type ApexChartWrapperProps = Props & {
   boxProps?: BoxProps

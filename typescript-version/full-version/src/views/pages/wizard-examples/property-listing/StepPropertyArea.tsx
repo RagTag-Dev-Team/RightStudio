@@ -15,8 +15,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 // Type Imports
 import type { Direction } from '@core/types'
 
-// Component Imports
-import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+// Styled Component Imports
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 type Props = {
   activeStep: number

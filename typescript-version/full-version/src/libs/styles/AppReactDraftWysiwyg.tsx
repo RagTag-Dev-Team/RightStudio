@@ -6,8 +6,11 @@ import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
 
-import { Editor } from 'react-draft-wysiwyg'
+// Third-party imports
 import type { EditorProps } from 'react-draft-wysiwyg'
+
+// Component Imports
+import Editor from '@/libs/Editor'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 

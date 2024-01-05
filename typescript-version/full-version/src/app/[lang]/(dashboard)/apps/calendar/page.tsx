@@ -10,8 +10,8 @@ import { getDirection } from '@/utils/get-direction'
 // Component Imports
 import CalendarWrapper from '@views/apps/calendar/CalendarWrapper'
 
-// Style Imports
-import AppFullCalendar from '@core/styles/libs/AppFullCalendar'
+// Styled Component Imports
+import AppFullCalendar from '@/libs/styles/AppFullCalendar'
 
 async function fetchEvents() {
   const res = await fetch(`${process.env.API_URL}/apps/calendar-events`)

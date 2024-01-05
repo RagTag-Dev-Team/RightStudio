@@ -1,8 +1,10 @@
 'use client'
 
 // MUI imports
-import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
+import { styled } from '@mui/material/styles'
+
+// Type imports
 import type { BoxProps } from '@mui/material/Box'
 
 const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({

@@ -8,12 +8,12 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
-import type { TooltipProps } from '@components/charts/recharts'
-
 // Type Imports
 import type { Direction } from '@core/types'
+
+// Component Imports
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
+import type { TooltipProps } from '@/libs/Recharts'
 
 const data = [
   {

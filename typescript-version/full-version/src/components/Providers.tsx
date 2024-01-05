@@ -7,8 +7,8 @@ import { VerticalNavProvider } from '@menu-package/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
 
-// Component Imports
-import AppReactToastify from '@core/styles/libs/AppReactToastify'
+// Styled Component Imports
+import AppReactToastify from '@/libs/styles/AppReactToastify'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'

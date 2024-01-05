@@ -22,8 +22,8 @@ import InputLabel from '@mui/material/InputLabel'
 // Type Imports
 import type { InvoiceType } from '@/types/apps/invoiceTypes'
 
-// Component Imports
-import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+// Styled Component Imports
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'

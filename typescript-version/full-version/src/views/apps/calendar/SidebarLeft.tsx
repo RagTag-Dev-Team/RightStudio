@@ -15,8 +15,8 @@ import classnames from 'classnames'
 import type { SidebarLeftProps, CalendarFiltersType } from '@/types/apps/calendarTypes'
 import type { ThemeColor } from '@core/types'
 
-// Component Imports
-import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+// Styled Component Imports
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 const SidebarLeft = (props: SidebarLeftProps) => {
   const {

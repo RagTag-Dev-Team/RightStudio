@@ -12,8 +12,8 @@ import CardContent from '@mui/material/CardContent'
 import type { Direction } from '@core/types'
 
 // Component Imports
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@components/charts/recharts'
-import type { TooltipProps } from '@components/charts/recharts'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
+import type { TooltipProps } from '@/libs/Recharts'
 
 const data = [
   {

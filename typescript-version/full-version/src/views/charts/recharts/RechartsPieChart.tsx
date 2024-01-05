@@ -7,8 +7,8 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
-import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@components/charts/recharts'
+// Component Imports
+import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@/libs/Recharts'
 
 type LabelProp = {
   cx: number

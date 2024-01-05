@@ -11,7 +11,7 @@ import CardContent from '@mui/material/CardContent'
 import type { Direction } from '@core/types'
 
 // Component Imports
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@components/charts/recharts'
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@/libs/Recharts'
 
 const angularData = [
   { x: 5.4, y: 170 },

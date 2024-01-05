@@ -20,11 +20,11 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 
-// Types
+// Type Imports
 import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
 
-// Component Imports
-import AppReactDatepicker from '@core/styles/libs/AppReactDatepicker'
+// Styled Component Imports
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 interface PickerProps {
   label?: string
