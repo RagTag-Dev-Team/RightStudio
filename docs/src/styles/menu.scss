@@ -13,11 +13,6 @@
   }
 }
 
-// Remove default arrows
-.menu__caret:before,
-.menu__link--sublist-caret:after {
-  display: none;
-}
 // Menu link which is active
 .menu__link--active,
 .menu__link--active:hover {

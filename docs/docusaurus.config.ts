@@ -134,6 +134,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.dracula,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'diff', 'json'],
     },
     imageZoom: {
       selector: '.markdown > img, .markdown > p > img',

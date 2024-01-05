@@ -2,7 +2,7 @@
 import NextAuth from 'next-auth'
 
 // Lib Imports
-import { authOptions } from '@/lib/auth'
+import { authOptions } from '@/libs/auth'
 
 /*
  * As we do not have backend server, the refresh token feature has not been incorporated into the template.
