@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
 // Lib Imports
-import { authOptions } from '@/lib/auth'
+import { authOptions } from '@/libs/auth'
 
 export default async function Page() {
   // Default redirect URL
