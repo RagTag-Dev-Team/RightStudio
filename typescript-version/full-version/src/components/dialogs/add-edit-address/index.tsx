@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
@@ -49,6 +49,18 @@ type AddEditAddressProps = {
 
 const countries = ['Select Country', 'France', 'Russia', 'China', 'UK', 'US']
 
+const initialAddressData: AddEditAddressProps['data'] = {
+  firstName: '',
+  lastName: '',
+  country: '',
+  address1: '',
+  address2: '',
+  landmark: '',
+  city: '',
+  state: '',
+  zipCode: ''
+}
+
 const Title = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'title'
@@ -86,7 +98,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
 
   // States
   const [selected, setSelected] = useState<string>(initialSelected)
-  const [addressData, setAddressData] = useState<AddEditAddressProps['data']>(Object.assign({}, data))
+  const [addressData, setAddressData] = useState<AddEditAddressProps['data']>(initialAddressData)
 
   const handleChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
@@ -95,6 +107,11 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
       setSelected((prop.target as HTMLInputElement).value)
     }
   }
+
+  useEffect(() => {
+    setAddressData(data ?? initialAddressData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
 
   return (
     <Dialog

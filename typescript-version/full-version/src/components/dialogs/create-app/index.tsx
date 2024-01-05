@@ -56,12 +56,12 @@ const steps: stepperProps[] = [
     active: true
   },
   {
-    icon: 'ri-pie-chart-line',
+    icon: 'ri-pie-chart-2-line',
     title: 'Database',
     subtitle: 'Select Database'
   },
   {
-    icon: 'ri-pie-chart-line',
+    icon: 'ri-bank-card-line',
     title: 'Billing',
     subtitle: 'Payment Details'
   },

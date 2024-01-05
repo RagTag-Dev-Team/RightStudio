@@ -42,14 +42,7 @@ type Props = {
   direction: Direction
 }
 
-const offeredItemsArray = [
-  'Apple iPhone 12 Pro Max (256GB)',
-  'Apple iPhone 12 Pro (512GB)',
-  'Apple iPhone 12 Mini (256GB)',
-  'Apple iPhone 11 Pro Max (256GB)',
-  'Apple iPhone 11 (64GB)',
-  'OnePlus Nord CE 56 (128GB)'
-]
+const offeredItemsArray = ['Apple iPhone 12 Pro', 'Apple iPhone 12 Mini', 'Apple iPhone 12', 'Apple iPhone 11 Pro Max']
 
 const CustomInput = forwardRef((props: CustomInputProps, ref) => {
   const startDate = props.start !== null ? dateFormat(props.start, 'MM/dd/yyyy') : ''

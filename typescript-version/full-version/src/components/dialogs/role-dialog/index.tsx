@@ -22,6 +22,7 @@ import tableStyles from '@core/styles/table.module.css'
 type RoleDialogProps = {
   open: boolean
   setOpen: (open: boolean) => void
+  title?: string
 }
 
 type DataType =
@@ -45,16 +46,20 @@ const defaultData: DataType[] = [
   'Payroll'
 ]
 
-const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
+const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
   // States
-  const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>([
-    'user-management-read',
-    'user-management-write',
-    'user-management-create',
-    'disputes-management-read',
-    'disputes-management-write',
-    'disputes-management-create'
-  ])
+  const [selectedCheckbox, setSelectedCheckbox] = useState<string[]>(
+    title
+      ? [
+          'user-management-read',
+          'user-management-write',
+          'user-management-create',
+          'disputes-management-read',
+          'disputes-management-write',
+          'disputes-management-create'
+        ]
+      : []
+  )
   const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState<boolean>(false)
 
   const handleClose = () => {
@@ -62,7 +67,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
   }
 
   const togglePermission = (id: string) => {
-    const arr = selectedCheckbox
+    const arr = selectedCheckbox ? [...selectedCheckbox] : []
 
     if (selectedCheckbox.includes(id)) {
       arr.splice(arr.indexOf(id), 1)
@@ -101,9 +106,9 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
         variant='h5'
         className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
-        Upgrade Plan
+        {title ? 'Edit Role' : 'Add Role'}
         <Typography component='span' variant='body2' className='flex flex-col text-center'>
-          Choose the best plan for user
+          Set Role Permissions
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
@@ -111,7 +116,7 @@ const RoleDialog = ({ open, setOpen }: RoleDialogProps) => {
           <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
-          <TextField label='Role Name' variant='outlined' fullWidth placeholder='Enter Role Name' />
+          <TextField label='Role Name' variant='outlined' fullWidth placeholder='Enter Role Name' value={title} />
           <Typography className='min-is-[225px]'>Role Permissions</Typography>
           <div className='overflow-x-auto'>
             <table className={tableStyles.table}>
