@@ -175,14 +175,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-tables/intro#form-elements'
+            href={`${process.env.DOCS_URL}/docs/forms-tables/intro#form-elements`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/forms-tables/intro#tables'
+            href={`${process.env.DOCS_URL}/docs/forms-tables/intro#tables`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
@@ -195,21 +195,21 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem
-            href='http://localhost:3001/docs/user-interface/intro'
+            href={`${process.env.DOCS_URL}/docs/user-interface/intro`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].userInterface}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/components/intro'
+            href={`${process.env.DOCS_URL}/docs/components/intro`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
-            href='http://localhost:3001/docs/menu-examples/'
+            href={`${process.env.DOCS_URL}/docs/menu-examples/`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >

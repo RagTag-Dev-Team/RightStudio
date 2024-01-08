@@ -2,7 +2,7 @@
 import styled from '@emotion/styled'
 
 // Config Imports
-import themeConfig from '@/configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 type StyledMainProps = {
   isContentCompact: boolean
