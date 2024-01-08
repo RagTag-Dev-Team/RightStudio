@@ -303,12 +303,12 @@ const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalM
       {
         label: dictionary['navigation'].formELements,
         suffix: <i className='ri-external-link-line text-xl' />,
-        href: `${process.env.DOCS_URL}/docs/forms-tables/intro#form-elements`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].muiTables,
-        href: `${process.env.DOCS_URL}/docs/tables/mui-table`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/tables/mui-table`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       }
@@ -332,19 +332,19 @@ const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalM
     children: [
       {
         label: dictionary['navigation'].userInterface,
-        href: `${process.env.DOCS_URL}/docs/user-interface/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].components,
-        href: `${process.env.DOCS_URL}/docs/components/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].menuExamples,
-        href: `${process.env.DOCS_URL}/docs/menu-examples/`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },

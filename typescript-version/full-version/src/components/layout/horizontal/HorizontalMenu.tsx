@@ -188,14 +188,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href={`${process.env.DOCS_URL}/docs/forms-tables/intro#form-elements`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href={`${process.env.DOCS_URL}/docs/tables/mui-table`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/tables/mui-table`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
@@ -208,21 +208,21 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem
-            href={`${process.env.DOCS_URL}/docs/user-interface/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].userInterface}
           </MenuItem>
           <MenuItem
-            href={`${process.env.DOCS_URL}/docs/components/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
-            href={`${process.env.DOCS_URL}/docs/menu-examples/`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
