@@ -61,6 +61,7 @@ const PaymentMethod = () => {
   // States
   const [paymentMethod, setPaymentMethod] = useState<'credit' | 'cod'>('credit')
   const [creditCard, setCreditCard] = useState(0)
+
   const [cardData, setCardData] = useState({
     cardNumber: '',
     name: '',

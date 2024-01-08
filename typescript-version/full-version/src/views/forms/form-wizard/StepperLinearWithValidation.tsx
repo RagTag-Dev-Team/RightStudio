@@ -103,6 +103,7 @@ const StepperLinearWithValidation = () => {
       confirmPassword: ''
     }
   })
+
   const {
     reset: personalReset,
     control: personalControl,
@@ -117,6 +118,7 @@ const StepperLinearWithValidation = () => {
       language: []
     }
   })
+
   const {
     reset: socialReset,
     control: socialControl,
@@ -134,6 +136,7 @@ const StepperLinearWithValidation = () => {
 
   const onSubmit = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
+
     if (activeStep === steps.length - 1) {
       toast.success('Form Submitted')
     }
@@ -479,6 +482,7 @@ const StepperLinearWithValidation = () => {
 
               if (index === activeStep) {
                 labelProps.error = false
+
                 if (
                   (accountErrors.email ||
                     accountErrors.username ||

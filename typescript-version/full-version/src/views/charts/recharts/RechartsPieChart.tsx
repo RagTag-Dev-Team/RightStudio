@@ -27,6 +27,7 @@ const data = [
 ]
 
 const RADIAN = Math.PI / 180
+
 const renderCustomizedLabel = (props: LabelProp) => {
   // Props
   const { cx, cy, midAngle, innerRadius, outerRadius, percent } = props

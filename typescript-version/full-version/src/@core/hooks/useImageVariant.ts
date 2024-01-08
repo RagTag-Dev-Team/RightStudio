@@ -29,6 +29,7 @@ export const useImageVariant = (
 
       return muiMode === 'system' ? muiSystemMode : muiMode
     })()
+
     const isBordered = settings?.skin === 'bordered'
     const isDarkMode = currentMode === 'dark'
 

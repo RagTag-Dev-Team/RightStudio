@@ -57,9 +57,11 @@ const UserDropdown = () => {
     if (url) {
       router.push(url)
     }
+
     if (anchorRef.current && anchorRef.current.contains(event?.target as HTMLElement)) {
       return
     }
+
     setOpen(false)
   }
 

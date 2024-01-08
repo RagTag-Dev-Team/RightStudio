@@ -42,12 +42,14 @@ const steps = [
       'Jelly lollipop halvah bear claw jujubes macaroon candy canes. Soufflé halvah lollipop liquorice macaroon powder. Cookie topping pastry oat cake caramels bonbon. Sesame snaps sweet cookie macaroon soufflé pudding. Chocolate donut macaroon muffin donut biscuit marzipan halvah. Bear claw biscuit chocolate cake chupa chups oat cake bear claw cupcake tiramisu apple pie. Carrot cake bear claw marshmallow sweet pudding toffee.'
   }
 ]
+
 const StepperVerticalWithoutNumbers = () => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
+
     if (activeStep === steps.length - 1) {
       toast.success('Completed All Steps!!')
     }

@@ -82,6 +82,7 @@ export default function ThemeRegistry(props: EmotionCacheProviderProps) {
     if (names.length === 0) {
       return null
     }
+
     let styles = ''
 
     for (const name of names) {

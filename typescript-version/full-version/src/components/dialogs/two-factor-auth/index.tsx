@@ -144,6 +144,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
 
   const handleClose = () => {
     setOpen(false)
+
     if (authType !== 'app') {
       setAuthType('app')
     }
@@ -152,6 +153,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
   const handleAuthDialogClose = () => {
     setShowAuthDialog(false)
     setShowAuthDialog(false)
+
     if (authType !== 'app') {
       setTimeout(() => {
         setAuthType('app')

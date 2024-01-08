@@ -56,6 +56,7 @@ const RegisterMultiSteps = ({ direction }: { direction: Direction }) => {
   const handleNext = () => {
     setActiveStep(activeStep + 1)
   }
+
   const handlePrev = () => {
     if (activeStep !== 0) {
       setActiveStep(activeStep - 1)

@@ -156,6 +156,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return
     }
+
     setIsMenuOpen(false)
   }
 

@@ -110,6 +110,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     } else {
       handleUpdateEvent({ id: parseInt(calendars.selectedEvent.id), ...modifiedEvent })
     }
+
     calendarApi.refetchEvents()
     handleSidebarClose()
   }

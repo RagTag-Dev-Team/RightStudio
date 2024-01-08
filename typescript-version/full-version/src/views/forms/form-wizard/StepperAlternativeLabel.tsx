@@ -62,6 +62,7 @@ const steps = [
 const StepperAlternativeLabel = () => {
   // States
   const [activeStep, setActiveStep] = useState(0)
+
   const [formData, setFormData] = useState<FormDataType>({
     username: '',
     email: '',
@@ -106,6 +107,7 @@ const StepperAlternativeLabel = () => {
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
+
     if (activeStep === steps.length - 1) {
       toast.success('Form Submitted')
     }

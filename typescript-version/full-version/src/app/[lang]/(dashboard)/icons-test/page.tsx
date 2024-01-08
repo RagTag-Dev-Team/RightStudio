@@ -10,6 +10,7 @@ const getData = async () => {
 
   return res.json()
 }
+
 const IconsTestPage = async () => {
   const data = await getData()
 

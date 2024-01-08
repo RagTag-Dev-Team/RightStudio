@@ -74,6 +74,7 @@ const FormLayoutsCollapsible = () => {
   const [expanded, setExpanded] = useState<string | false>('panel1')
   const [paymentMethod, setPaymentMethod] = useState('credit')
   const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
+
   const [cardData, setCardData] = useState<FormData>({
     fullName: '',
     phone: '',

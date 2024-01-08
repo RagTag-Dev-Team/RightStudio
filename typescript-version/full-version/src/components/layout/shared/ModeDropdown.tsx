@@ -41,6 +41,7 @@ const ModeDropdown = () => {
 
   const handleModeSwitch = (mode: Mode) => {
     handleClose()
+
     if (settings.mode !== mode) {
       updateSettings({ mode: mode })
     }

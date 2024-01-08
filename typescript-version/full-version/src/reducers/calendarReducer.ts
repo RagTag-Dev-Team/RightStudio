@@ -11,6 +11,7 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
         events: [...calendars.events, action.event as EventType]
       }
     }
+
     case 'updated': {
       const events = calendars.events.map(event => {
         if (event.id === action.event?.id) {
@@ -25,6 +26,7 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
         events
       }
     }
+
     case 'deleted': {
       const events = calendars.events.filter(event => event.id !== action.eventId)
 
@@ -33,9 +35,11 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
         events
       }
     }
+
     case 'selected_event': {
       return { ...calendars, selectedEvent: action.event }
     }
+
     case 'selected_calendars': {
       const selected_calendars = calendars.selectedCalendars
 
@@ -54,6 +58,7 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
 
       return { ...calendars, events: selected_events, selectedCalendars: selected_calendars }
     }
+
     case 'selected_all_calendars': {
       let selected_calendars: CalendarFiltersType[] = ['Personal', 'Business', 'Family', 'Holiday', 'ETC']
       let calendar_events = events
@@ -65,6 +70,7 @@ export default function calendarReducer(calendars: CalendarType, action: Calenda
 
       return { ...calendars, events: calendar_events, selectedCalendars: selected_calendars }
     }
+
     default: {
       throw Error('Unknown action: ' + action.type)
     }

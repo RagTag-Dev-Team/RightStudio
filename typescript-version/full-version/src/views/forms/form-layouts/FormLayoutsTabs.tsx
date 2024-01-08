@@ -50,6 +50,7 @@ type FormDataType = {
 const FormLayoutsWithTabs = () => {
   // States
   const [value, setValue] = useState('personal_info')
+
   const [formData, setFormData] = useState<FormDataType>({
     firstName: '',
     lastName: '',

@@ -60,6 +60,7 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
         ]
       : []
   )
+
   const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState<boolean>(false)
 
   const handleClose = () => {
