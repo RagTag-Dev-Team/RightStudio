@@ -45,6 +45,7 @@ const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
 
   // Hooks
   const { isBreakpointReached, isToggled, toggleVerticalNav } = useVerticalNav()
+
   const { query } = useKBar(state => {
     if (isBreakpointReached && isToggled && state.visualState === 'showing') {
       toggleVerticalNav(false)

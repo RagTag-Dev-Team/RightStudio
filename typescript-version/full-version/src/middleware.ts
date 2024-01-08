@@ -48,7 +48,7 @@ export default withAuth(
     }
 
     // If the user is logged in, `token` will be an object containing the user's details
-    const token = await request.nextauth.token
+    const token = request.nextauth.token
 
     // Check if the user is logged in
     const isUserLoggedIn = !!token

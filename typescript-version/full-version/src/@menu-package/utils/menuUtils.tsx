@@ -47,9 +47,11 @@ export const confirmUrlInChildren = (children: ChildrenType['children'], url: st
     if (component && component.props.href) {
       return component.props.href === url
     }
+
     if (href) {
       return href === url
     }
+
     if (subChildren) {
       return confirmUrlInChildren(subChildren, url)
     }

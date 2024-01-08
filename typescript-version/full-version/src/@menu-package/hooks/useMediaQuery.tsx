@@ -14,6 +14,7 @@ const useMediaQuery = (breakpoint?: string): boolean => {
       if (media.matches !== matches) {
         setMatches(media.matches)
       }
+
       const listener = () => setMatches(media.matches)
 
       window.addEventListener('resize', listener)

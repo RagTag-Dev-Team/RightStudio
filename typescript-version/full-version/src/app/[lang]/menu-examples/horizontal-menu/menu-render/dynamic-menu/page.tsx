@@ -58,6 +58,7 @@ const menuData = [
     label: 'Documentation'
   }
 ]
+
 const DynamicMenu = () => {
   const generateHorizontalMenu = (menuData: MenuData[]) => {
     // Use the map method to iterate through the array of menu data
