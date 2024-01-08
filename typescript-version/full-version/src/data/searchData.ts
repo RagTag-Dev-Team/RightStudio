@@ -373,252 +373,252 @@ const data: SearchData[] = [
   {
     id: '53',
     name: 'Typography',
-    url: 'http://localhost:3001/docs/user-interface/typography',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`,
     icon: 'Icon',
     section: 'User Interface'
   },
   {
     id: '54',
     name: 'Icons',
-    url: 'http://localhost:3001/docs/user-interface/icons',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/icons`,
     icon: 'Icon',
     section: 'User Interface'
   },
   {
     id: '55',
     name: 'Card Basic',
-    url: 'http://localhost:3001/docs/user-interface/cards-basic',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/cards-basic`,
     icon: 'Icon',
     section: 'User Interface'
   },
   {
     id: '56',
     name: 'Card Actions',
-    url: 'http://localhost:3001/docs/user-interface/cards-actions',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/cards-actions`,
     icon: 'Icon',
     section: 'User Interface'
   },
   {
     id: '57',
     name: 'Accordion',
-    url: 'http://localhost:3001/docs/components/accordion',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/accordion`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '58',
     name: 'Alerts',
-    url: 'http://localhost:3001/docs/components/alerts',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/alerts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '59',
     name: 'Avatars',
-    url: 'http://localhost:3001/docs/components/avatars',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/avatars`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '60',
     name: 'Badges',
-    url: 'http://localhost:3001/docs/components/badges',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/badges`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '61',
     name: 'Buttons',
-    url: 'http://localhost:3001/docs/components/buttons',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/buttons`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '62',
     name: 'Button Group',
-    url: 'http://localhost:3001/docs/components/button-group',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/button-group`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '63',
     name: 'Chips',
-    url: 'http://localhost:3001/docs/components/chips',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/chips`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '64',
     name: 'Dialogs',
-    url: 'http://localhost:3001/docs/components/dialogs',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/dialogs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '65',
     name: 'List',
-    url: 'http://localhost:3001/docs/components/list',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/list`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '66',
     name: 'Menu',
-    url: 'http://localhost:3001/docs/components/menu',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/menu`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '67',
     name: 'Pagination',
-    url: 'http://localhost:3001/docs/components/pagination',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/pagination`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '68',
     name: 'Progress',
-    url: 'http://localhost:3001/docs/components/progress',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/progress`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '69',
     name: 'Ratings',
-    url: 'http://localhost:3001/docs/components/ratings',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/ratings`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '70',
     name: 'Snackbar',
-    url: 'http://localhost:3001/docs/components/snackbar',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/snackbar`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '71',
     name: 'Swiper',
-    url: 'http://localhost:3001/docs/components/swiper',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/swiper`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '72',
     name: 'Tabs',
-    url: 'http://localhost:3001/docs/components/tabs',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/tabs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '73',
     name: 'Timeline',
-    url: 'http://localhost:3001/docs/components/timeline',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/timeline`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '74',
     name: 'Toasts',
-    url: 'http://localhost:3001/docs/components/toasts',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/toasts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '75',
     name: 'More Components',
-    url: 'http://localhost:3001/docs/components/more',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/more`,
     icon: 'Icon',
     section: 'Components'
   },
   {
     id: '76',
     name: 'Text Field',
-    url: 'http://localhost:3001/docs/form-elements/text-field',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/text-field`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '77',
     name: 'Select',
-    url: 'http://localhost:3001/docs/form-elements/select',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/select`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '78',
     name: 'Checkbox',
-    url: 'http://localhost:3001/docs/form-elements/checkbox',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/checkbox`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '79',
     name: 'Radio',
-    url: 'http://localhost:3001/docs/form-elements/radio',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/radio`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '80',
     name: 'Custom Inputs',
-    url: 'http://localhost:3001/docs/form-elements/custom-inputs',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/custom-inputs`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '81',
     name: 'Textarea',
-    url: 'http://localhost:3001/docs/form-elements/textarea',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/textarea`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '82',
     name: 'Autocomplete',
-    url: 'http://localhost:3001/docs/form-elements/autocomplete',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/autocomplete`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '83',
     name: 'Picker',
-    url: 'http://localhost:3001/docs/form-elements/picker',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/picker`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '84',
     name: 'Switch',
-    url: 'http://localhost:3001/docs/form-elements/switch',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/switch`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '85',
     name: 'File Uploader',
-    url: 'http://localhost:3001/docs/form-elements/file-uploader',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/file-uploader`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '86',
     name: 'Editor',
-    url: 'http://localhost:3001/docs/form-elements/editor',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/editor`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '87',
     name: 'Slider',
-    url: 'http://localhost:3001/docs/form-elements/slider',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/form-elements/slider`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
     id: '88',
     name: 'MUI Tables',
-    url: 'http://localhost:3001/docs/tables/mui-table',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/tables/mui-table`,
     icon: 'Icon',
     section: 'Forms & Tables'
   }
