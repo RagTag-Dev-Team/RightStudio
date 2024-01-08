@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
-const ForgotPasswordV2 = ({ direction }: { direction: Direction }) => {
+const ForgotPasswordV2 = () => {
   return (
     <div className='flex h-full justify-center'>
       <div className='flex items-center justify-center h-full flex-1 max-md:hidden'>image</div>
@@ -27,7 +27,7 @@ const ForgotPasswordV2 = ({ direction }: { direction: Direction }) => {
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
               <Link href='/pages/auth/login-v2' className='flex items-center'>
-                <i className={direction === 'rtl' ? 'ri-arrow-right-s-line' : 'ri-arrow-left-s-line'} />
+                <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
                 <span>Back to Login</span>
               </Link>
             </Typography>

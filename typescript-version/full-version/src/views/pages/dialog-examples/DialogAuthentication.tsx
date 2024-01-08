@@ -5,14 +5,11 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import type { ButtonProps } from '@mui/material/Button'
 
-// Type Imports
-import type { Direction } from '@core/types'
-
 // Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-const DialogAuthentication = ({ direction }: { direction: Direction }) => {
+const DialogAuthentication = () => {
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'
@@ -24,12 +21,7 @@ const DialogAuthentication = ({ direction }: { direction: Direction }) => {
         <i className='ri-lock-line text-[28px]' />
         <Typography variant='h5'>Two Factor Authentication</Typography>
         <Typography>Enhance your application security by enabling two factor authentication.</Typography>
-        <OpenDialogOnElementClick
-          element={Button}
-          elementProps={buttonProps}
-          dialog={TwoFactorAuth}
-          dialogProps={{ direction }}
-        />
+        <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={TwoFactorAuth} />
       </CardContent>
     </Card>
   )

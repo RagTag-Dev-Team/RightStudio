@@ -19,8 +19,8 @@ import CardContent from '@mui/material/CardContent'
 import Collapse from '@mui/material/Collapse'
 import Fade from '@mui/material/Fade'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 const products = [
   {
@@ -47,7 +47,7 @@ const products = [
   }
 ]
 
-const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction: Direction }) => {
+const StepCart = ({ handleNext }: { handleNext: () => void }) => {
   // States
   const [openCollapse, setOpenCollapse] = useState<boolean>(true)
   const [openFade, setOpenFade] = useState<boolean>(true)
@@ -132,7 +132,7 @@ const StepCart = ({ handleNext, direction }: { handleNext: () => void; direction
           color='primary'
         >
           Add more products from wishlist
-          <i className={direction === 'rtl' ? 'ri-arrow-left-s-line' : 'ri-arrow-right-s-line'} />
+          <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
         </Typography>
       </Grid>
       <Grid item xs={12} lg={4}>

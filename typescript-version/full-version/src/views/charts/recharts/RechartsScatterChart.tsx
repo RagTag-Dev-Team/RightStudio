@@ -7,9 +7,6 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
-// Type Imports
-import type { Direction } from '@core/types'
-
 // Component Imports
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@/libs/Recharts'
 
@@ -61,7 +58,7 @@ const reactData = [
   { x: 20.0, y: 120 }
 ]
 
-const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
+const RechartsScatterChart = () => {
   // Hooks
   const theme = useTheme()
 
@@ -93,10 +90,10 @@ const RechartsScatterChart = ({ direction }: { direction: Direction }) => {
         </div>
         <div className='bs-[350px]'>
           <ResponsiveContainer>
-            <ScatterChart height={350} style={{ direction }} margin={{ left: -20 }}>
+            <ScatterChart height={350} style={{ direction: theme.direction }} margin={{ left: -20 }}>
               <CartesianGrid />
-              <XAxis type='number' dataKey='x' reversed={direction === 'rtl'} />
-              <YAxis type='number' dataKey='y' orientation={direction === 'rtl' ? 'right' : 'left'} />
+              <XAxis type='number' dataKey='x' reversed={theme.direction === 'rtl'} />
+              <YAxis type='number' dataKey='y' orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
               <Scatter name='Angular' data={angularData} fill={theme.palette.error.main} />
               <Scatter name='Vue' data={vueData} fill={theme.palette.success.main} />
               <Scatter name='React' data={reactData} fill={theme.palette.primary.main} />

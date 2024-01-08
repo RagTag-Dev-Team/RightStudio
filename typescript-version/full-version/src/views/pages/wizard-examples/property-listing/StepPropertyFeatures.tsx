@@ -16,15 +16,14 @@ import Autocomplete from '@mui/material/Autocomplete'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Chip from '@mui/material/Chip'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
   activeStep: number
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
-  direction: Direction
 }
 
 const furnishingArray: string[] = [
@@ -41,7 +40,7 @@ const furnishingArray: string[] = [
   'Washing Machine'
 ]
 
-const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
+const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   // States
   const [furnishingDetails, setFurnishingDetails] = useState<string[]>(['Fridge', 'AC', 'TV'])
 
@@ -109,7 +108,7 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps, direc
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
           >
             Previous
           </Button>
@@ -118,15 +117,11 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps, direc
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
             endIcon={
-              <i
-                className={
-                  activeStep === steps.length - 1
-                    ? 'ri-check-line'
-                    : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
-                }
-              />
+              activeStep === steps.length - 1 ? (
+                <i className='ri-check-line' />
+              ) : (
+                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              )
             }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}

@@ -8,13 +8,12 @@ import type { ButtonProps } from '@mui/material/Button'
 
 // Type Imports
 import Link from '@components/Link'
-import type { Direction } from '@core/types'
 
 // Component Imports
 import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) => {
+const TwoFactorAuthenticationCard = () => {
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Enable two-factor authentication'
@@ -33,12 +32,7 @@ const TwoFactorAuthenticationCard = ({ direction }: { direction: Direction }) =>
               <Link className='text-primary'>Learn more.</Link>
             </Typography>
           </div>
-          <OpenDialogOnElementClick
-            element={Button}
-            elementProps={buttonProps}
-            dialog={TwoFactorAuth}
-            dialogProps={{ direction: direction }}
-          />
+          <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={TwoFactorAuth} />
         </CardContent>
       </Card>
     </>

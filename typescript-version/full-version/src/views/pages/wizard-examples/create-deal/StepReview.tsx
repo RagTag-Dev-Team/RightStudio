@@ -6,8 +6,8 @@ import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -17,10 +17,9 @@ type Props = {
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
-  direction: Direction
 }
 
-const StepReview = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
+const StepReview = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   return (
     <Grid container>
       <Grid item xs={12} lg={6}>
@@ -66,7 +65,7 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps, direction }: Pr
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
           >
             Previous
           </Button>
@@ -75,15 +74,11 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps, direction }: Pr
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
             endIcon={
-              <i
-                className={
-                  activeStep === steps.length - 1
-                    ? 'ri-check-line'
-                    : direction === 'rtl'
-                      ? 'ri-arrow-left-line'
-                      : 'ri-arrow-right-line'
-                }
-              />
+              activeStep === steps.length - 1 ? (
+                <i className='ri-check-line' />
+              ) : (
+                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              )
             }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}

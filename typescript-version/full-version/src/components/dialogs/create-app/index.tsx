@@ -17,9 +17,6 @@ import Avatar from '@mui/material/Avatar'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Type Imports
-import type { Direction } from '@core/types'
-
 // Component Imports
 import Details from './Details'
 import FrameWork from './FrameWork'
@@ -33,7 +30,6 @@ import StepperWrapper from '@core/styles/stepper'
 type CreateAppProps = {
   open: boolean
   setOpen: (open: boolean) => void
-  direction: Direction
 }
 
 type stepperProps = {
@@ -72,70 +68,28 @@ const steps: stepperProps[] = [
   }
 ]
 
-const renderStepCount = (
-  activeStep: number,
-  isLastStep: boolean,
-  handleNext: () => void,
-  handlePrev: () => void,
-  direction: Direction
-) => {
+const renderStepCount = (activeStep: number, isLastStep: boolean, handleNext: () => void, handlePrev: () => void) => {
   switch (activeStep) {
     case 0:
-      return (
-        <Details
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          isLastStep={isLastStep}
-          direction={direction}
-        />
-      )
+      return <Details activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
     case 1:
       return (
-        <FrameWork
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          isLastStep={isLastStep}
-          direction={direction}
-        />
+        <FrameWork activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
       )
     case 2:
       return (
-        <Database
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          isLastStep={isLastStep}
-          direction={direction}
-        />
+        <Database activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
       )
     case 3:
-      return (
-        <Billing
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          isLastStep={isLastStep}
-          direction={direction}
-        />
-      )
+      return <Billing activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
     case 4:
-      return (
-        <Submit
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          isLastStep={isLastStep}
-          direction={direction}
-        />
-      )
+      return <Submit activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
     default:
       return null
   }
 }
 
-const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
+const CreateApp = ({ open, setOpen }: CreateAppProps) => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
@@ -210,7 +164,7 @@ const CreateApp = ({ open, setOpen, direction }: CreateAppProps) => {
               })}
             </Stepper>
           </StepperWrapper>
-          <div className='flex-1'>{renderStepCount(activeStep, isLastStep, handleNext, handlePrev, direction)}</div>
+          <div className='flex-1'>{renderStepCount(activeStep, isLastStep, handleNext, handlePrev)}</div>
         </div>
       </DialogContent>
     </Dialog>

@@ -7,9 +7,7 @@ import Divider from '@mui/material/Divider'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-
-// Type Imports
-import type { Direction } from '@core/types'
+import { useTheme } from '@mui/material/styles'
 
 // Component Imports
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
@@ -121,7 +119,10 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
   return null
 }
 
-const RechartsAreaChart = ({ direction }: { direction: Direction }) => {
+const RechartsAreaChart = () => {
+  // Hooks
+  const theme = useTheme()
+
   return (
     <Card>
       <CardHeader
@@ -150,10 +151,10 @@ const RechartsAreaChart = ({ direction }: { direction: Direction }) => {
         </div>
         <div className='bs-[350px]'>
           <ResponsiveContainer>
-            <AreaChart height={350} data={data} style={{ direction }} margin={{ left: -20 }}>
+            <AreaChart height={350} data={data} style={{ direction: theme.direction }} margin={{ left: -20 }}>
               <CartesianGrid />
-              <XAxis dataKey='name' reversed={direction === 'rtl'} />
-              <YAxis orientation={direction === 'rtl' ? 'right' : 'left'} />
+              <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
+              <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
               <Tooltip content={CustomTooltip} />
               <Area dataKey='Clicks' stackId='Clicks' stroke='0' fill='rgb(115, 103, 240)' />
               <Area dataKey='Sales' stackId='Sales' stroke='0' fill='rgba(115, 103, 240, .5)' />

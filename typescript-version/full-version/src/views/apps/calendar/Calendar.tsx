@@ -3,6 +3,9 @@
 // React Imports
 import { useEffect, useRef } from 'react'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party imports
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -14,7 +17,6 @@ import interactionPlugin from '@fullcalendar/interaction'
 
 // Type Imports
 import type { AddEventType, CalendarColors, CalendarType } from '@/types/apps/calendarTypes'
-import type { Direction } from '@core/types'
 
 const blankEvent: AddEventType = {
   title: '',
@@ -31,7 +33,6 @@ const blankEvent: AddEventType = {
 
 type CalenderProps = {
   mdAbove: boolean
-  direction: Direction
   calendars: CalendarType
   calendarApi: any
   setCalendarApi: (val: any) => void
@@ -44,7 +45,6 @@ type CalenderProps = {
 
 const Calendar = (props: CalenderProps) => {
   const {
-    direction,
     calendars,
     calendarApi,
     setCalendarApi,
@@ -57,6 +57,7 @@ const Calendar = (props: CalenderProps) => {
 
   // Refs
   const calendarRef = useRef()
+  const theme = useTheme()
 
   useEffect(() => {
     if (calendarApi === null) {
@@ -169,7 +170,7 @@ const Calendar = (props: CalenderProps) => {
 
     ref: calendarRef,
 
-    direction
+    direction: theme.direction
   }
 
   // @ts-ignore

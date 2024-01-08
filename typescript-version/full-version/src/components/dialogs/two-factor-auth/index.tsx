@@ -17,16 +17,15 @@ import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
 // Type Imports
-import type { Direction } from '@core/types'
 import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
+import DirectionalIcon from '@components/DirectionalIcon'
 
 type TwoFactorAuthProps = {
   open: boolean
   setOpen: (open: boolean) => void
-  direction: Direction
 }
 
 const data: CustomInputHorizontalData[] = [
@@ -133,7 +132,7 @@ const AppDialog = (handleAuthDialogClose: () => void) => {
   )
 }
 
-const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
+const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value
@@ -160,8 +159,6 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
       }, 250)
     }
   }
-
-  const arrowIcon = direction === 'ltr' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'
 
   const handleOptionChange = () => {
     if (authType !== 'app') {
@@ -204,7 +201,7 @@ const TwoFactorAuth = ({ open, setOpen, direction }: TwoFactorAuthProps) => {
         <DialogActions className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
           <Button
             variant='contained'
-            endIcon={<i className={arrowIcon} />}
+            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
             onClick={() => {
               setOpen(false)
               setShowAuthDialog(true)

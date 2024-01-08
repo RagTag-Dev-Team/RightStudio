@@ -1,12 +1,6 @@
 // MUI Imports
 import Card from '@mui/material/Card'
 
-// Type Imports
-import type { Locale } from '@configs/i18n'
-
-// Util Imports
-import { getDirection } from '@/utils/get-direction'
-
 // Component Imports
 import CalendarWrapper from '@views/apps/calendar/CalendarWrapper'
 
@@ -23,15 +17,13 @@ async function fetchEvents() {
   return res.json()
 }
 
-const CalendarApp = async ({ params }: { params: { lang: Locale } }) => {
+const CalendarApp = async () => {
   const res = (await fetchEvents()) || []
-
-  const direction = getDirection(params.lang)
 
   return (
     <Card>
       <AppFullCalendar className='app-calendar'>
-        <CalendarWrapper events={res.events} direction={direction} />
+        <CalendarWrapper events={res.events} />
       </AppFullCalendar>
     </Card>
   )

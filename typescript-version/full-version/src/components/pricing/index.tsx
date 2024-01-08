@@ -10,20 +10,24 @@ import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 import InputLabel from '@mui/material/InputLabel'
 import Grid from '@mui/material/Grid'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Type Imports
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
-import type { Direction } from '@core/types'
 
 // Component Imports
 import PlanDetails from './PlanDetails'
+import DirectionalIcon from '@components/DirectionalIcon'
 
-const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Direction }) => {
+const Pricing = ({ data }: { data: PricingPlanType[] }) => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
+
+  // Hooks
+  const theme = useTheme()
 
   const handleChange = (e: ChangeEvent<{ checked: boolean }>) => {
     if (e.target.checked) {
@@ -52,18 +56,14 @@ const Pricing = ({ data, direction }: { data: PricingPlanType[]; direction: Dire
 
           <div
             className={classnames('flex absolute max-sm:hidden block-start-[-30px] translate-x-[35%]', {
-              'right-full': direction === 'rtl',
-              'left-1/2': direction !== 'rtl'
+              'right-full': theme.direction === 'rtl',
+              'left-1/2': theme.direction !== 'rtl'
             })}
           >
-            <i
-              className={classnames(
-                {
-                  'ri-corner-right-down-line': direction === 'rtl',
-                  'ri-corner-left-down-line': direction !== 'rtl'
-                },
-                'mbs-2 mie-1'
-              )}
+            <DirectionalIcon
+              ltrIconClass='ri-corner-left-down-line'
+              rtlIconClass='ri-corner-right-down-line'
+              className='mbs-2 mie-1'
             />
             <Chip label='Save up to 10%' size='small' />
           </div>

@@ -22,8 +22,8 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 // Third-party Imports
 import dateFormat from 'date-fns/format'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -39,7 +39,6 @@ type Props = {
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
-  direction: Direction
 }
 
 const offeredItemsArray = ['Apple iPhone 12 Pro', 'Apple iPhone 12 Mini', 'Apple iPhone 12', 'Apple iPhone 11 Pro Max']
@@ -53,7 +52,7 @@ const CustomInput = forwardRef((props: CustomInputProps, ref) => {
   return <TextField fullWidth inputRef={ref} label={props.label || ''} {...props} value={value} />
 })
 
-const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
+const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   // States
   const [startDate, setStartDate] = useState<Date | undefined | null>(null)
   const [endDate, setEndDate] = useState<Date | undefined | null>(null)
@@ -157,7 +156,7 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction 
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
           >
             Previous
           </Button>
@@ -166,15 +165,11 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps, direction 
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
             endIcon={
-              <i
-                className={
-                  activeStep === steps.length - 1
-                    ? 'ri-check-line'
-                    : direction === 'rtl'
-                      ? 'ri-arrow-left-line'
-                      : 'ri-arrow-right-line'
-                }
-              />
+              activeStep === steps.length - 1 ? (
+                <i className='ri-check-line' />
+              ) : (
+                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              )
             }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}

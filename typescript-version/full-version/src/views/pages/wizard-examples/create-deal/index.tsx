@@ -11,9 +11,6 @@ import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
 
-// Type Imports
-import type { Direction } from '@core/types'
-
 // Component Imports
 import StepDealType from './StepDealType'
 import StepDealDetails from './StepDealDetails'
@@ -43,54 +40,22 @@ const steps = [
   }
 ]
 
-const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void, direction: Direction) => {
+const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
   switch (step) {
     case 0:
-      return (
-        <StepDealType
-          activeStep={step}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          steps={steps}
-          direction={direction}
-        />
-      )
+      return <StepDealType activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
     case 1:
-      return (
-        <StepDealDetails
-          activeStep={step}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          steps={steps}
-          direction={direction}
-        />
-      )
+      return <StepDealDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
     case 2:
-      return (
-        <StepDealUsage
-          activeStep={step}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          steps={steps}
-          direction={direction}
-        />
-      )
+      return <StepDealUsage activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
     case 3:
-      return (
-        <StepReview
-          activeStep={step}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          steps={steps}
-          direction={direction}
-        />
-      )
+      return <StepReview activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
     default:
       return null
   }
 }
 
-const CreateDeal = ({ direction }: { direction: Direction }) => {
+const CreateDeal = () => {
   // States
   const [activeStep, setActiveStep] = useState(0)
 
@@ -132,7 +97,7 @@ const CreateDeal = ({ direction }: { direction: Direction }) => {
         </StepperWrapper>
       </CardContent>
 
-      <CardContent className='flex-1'>{getStepContent(activeStep, handleNext, handlePrev, direction)}</CardContent>
+      <CardContent className='flex-1'>{getStepContent(activeStep, handleNext, handlePrev)}</CardContent>
     </Card>
   )
 }

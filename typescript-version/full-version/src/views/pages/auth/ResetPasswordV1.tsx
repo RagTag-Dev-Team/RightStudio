@@ -15,10 +15,10 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
-const ResetPasswordV1 = ({ direction }: { direction: Direction }) => {
+const ResetPasswordV1 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
@@ -68,7 +68,7 @@ const ResetPasswordV1 = ({ direction }: { direction: Direction }) => {
           </Button>
           <Typography className='flex justify-center items-center' color='primary'>
             <Link href='/pages/auth/login-v1' onClick={e => e.preventDefault()} className='flex items-center'>
-              <i className={direction === 'rtl' ? 'ri-arrow-right-s-line' : 'ri-arrow-left-s-line'} />
+              <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
               <span>Back to Login</span>
             </Link>
           </Typography>

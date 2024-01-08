@@ -9,9 +9,6 @@ import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
 
-// Type Imports
-import type { Direction } from '@core/types'
-
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
 import StepAccountDetails from './StepAccountDetails'
@@ -34,21 +31,21 @@ const steps = [
   }
 ]
 
-const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void, direction: Direction) => {
+const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
   switch (step) {
     case 0:
-      return <StepAccountDetails handleNext={handleNext} direction={direction} />
+      return <StepAccountDetails handleNext={handleNext} />
     case 1:
-      return <StepPersonalInfo handleNext={handleNext} handlePrev={handlePrev} direction={direction} />
+      return <StepPersonalInfo handleNext={handleNext} handlePrev={handlePrev} />
     case 2:
-      return <StepBillingDetails handlePrev={handlePrev} direction={direction} />
+      return <StepBillingDetails handlePrev={handlePrev} />
 
     default:
       return null
   }
 }
 
-const RegisterMultiSteps = ({ direction }: { direction: Direction }) => {
+const RegisterMultiSteps = () => {
   // States
   const [activeStep, setActiveStep] = useState<number>(0)
 
@@ -85,7 +82,7 @@ const RegisterMultiSteps = ({ direction }: { direction: Direction }) => {
               )
             })}
           </Stepper>
-          {getStepContent(activeStep, handleNext, handlePrev, direction)}
+          {getStepContent(activeStep, handleNext, handlePrev)}
         </StepperWrapper>
       </div>
     </div>

@@ -13,15 +13,10 @@ import RechartsAreaChart from '@views/charts/recharts/RechartsAreaChart'
 import RechartsRadarChart from '@views/charts/recharts/RechartsRadarChart'
 import RechartsScatterChart from '@views/charts/recharts/RechartsScatterChart'
 
-// Util Imports
-import { getDirection } from '@/utils/get-direction'
-
 // Styled Component Imports
 import AppRecharts from '@/libs/styles/AppRecharts'
 
 const Recharts = () => {
-  const direction = getDirection()
-
   return (
     <AppRecharts>
       <Grid container spacing={6}>
@@ -41,16 +36,16 @@ const Recharts = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <RechartsLineChart direction={direction} />
+          <RechartsLineChart />
         </Grid>
         <Grid item xs={12}>
-          <RechartsAreaChart direction={direction} />
+          <RechartsAreaChart />
         </Grid>
         <Grid item xs={12}>
-          <RechartsScatterChart direction={direction} />
+          <RechartsScatterChart />
         </Grid>
         <Grid item xs={12}>
-          <RechartsBarChart direction={direction} />
+          <RechartsBarChart />
         </Grid>
         <Grid item xs={12} md={6}>
           <RechartsRadarChart />

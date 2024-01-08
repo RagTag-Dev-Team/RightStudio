@@ -7,9 +7,7 @@ import Divider from '@mui/material/Divider'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-
-// Type Imports
-import type { Direction } from '@core/types'
+import { useTheme } from '@mui/material/styles'
 
 // Component Imports
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
@@ -113,7 +111,10 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
   return null
 }
 
-const RechartsBarChart = ({ direction }: { direction: Direction }) => {
+const RechartsBarChart = () => {
+  // Hooks
+  const theme = useTheme()
+
   return (
     <Card>
       <CardHeader
@@ -146,10 +147,16 @@ const RechartsBarChart = ({ direction }: { direction: Direction }) => {
         </div>
         <div className='bs-[350px]'>
           <ResponsiveContainer>
-            <BarChart height={350} data={data} barSize={15} style={{ direction }} margin={{ left: -20 }}>
+            <BarChart
+              height={350}
+              data={data}
+              barSize={15}
+              style={{ direction: theme.direction }}
+              margin={{ left: -20 }}
+            >
               <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey='name' reversed={direction === 'rtl'} />
-              <YAxis orientation={direction === 'rtl' ? 'right' : 'left'} />
+              <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
+              <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
               <Tooltip content={CustomTooltip} />
               <Bar dataKey='Apple' stackId='a' fill='#826af9' />
               <Bar dataKey='Samsung' stackId='a' fill='#9f87ff' />

@@ -9,8 +9,8 @@ import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -20,10 +20,9 @@ type Props = {
   isLastStep: boolean
   handleNext: () => void
   handlePrev: () => void
-  direction: Direction
 }
 
-const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: Props) => {
+const Details = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
   // States
   const [value, setValue] = useState<string>('crm')
 
@@ -79,7 +78,7 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+          startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
         >
           Previous
         </Button>
@@ -88,11 +87,11 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev, direction }: 
           color={isLastStep ? 'success' : 'primary'}
           onClick={handleNext}
           endIcon={
-            <i
-              className={
-                isLastStep ? 'ri-check-line' : direction === 'rtl' ? 'ri-arrow-left-line' : 'ri-arrow-right-line'
-              }
-            />
+            isLastStep ? (
+              <i className='ri-check-line' />
+            ) : (
+              <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+            )
           }
         >
           {isLastStep ? 'Submit' : 'Next'}

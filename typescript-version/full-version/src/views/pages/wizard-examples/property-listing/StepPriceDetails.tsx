@@ -13,18 +13,17 @@ import RadioGroup from '@mui/material/RadioGroup'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 
-// Type Imports
-import type { Direction } from '@core/types'
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
   activeStep: number
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
-  direction: Direction
 }
 
-const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps, direction }: Props) => {
+const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
@@ -138,7 +137,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps, direction
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<i className={direction === 'rtl' ? 'ri-arrow-right-line' : 'ri-arrow-left-line'} />}
+            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
           >
             Previous
           </Button>
@@ -147,15 +146,11 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps, direction
             color={activeStep === steps.length - 1 ? 'success' : 'primary'}
             onClick={handleNext}
             endIcon={
-              <i
-                className={
-                  activeStep === steps.length - 1
-                    ? 'ri-check-line'
-                    : direction === 'rtl'
-                    ? 'ri-arrow-left-line'
-                    : 'ri-arrow-right-line'
-                }
-              />
+              activeStep === steps.length - 1 ? (
+                <i className='ri-check-line' />
+              ) : (
+                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              )
             }
           >
             {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
