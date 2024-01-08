@@ -150,6 +150,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const id = useId()
   const pathname = usePathname()
   const { isCollapsed, isPopoutWhenCollapsed, isHovered, isBreakpointReached } = useVerticalNav()
+
   const {
     browserScroll,
     triggerPopout,
@@ -173,6 +174,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     popoutMenuOffset &&
     popoutMenuOffset.mainAxis &&
     (typeof popoutMenuOffset.mainAxis === 'function' ? popoutMenuOffset.mainAxis({ level }) : popoutMenuOffset.mainAxis)
+
   const alignmentAxisOffset =
     popoutMenuOffset &&
     popoutMenuOffset.alignmentAxis &&
@@ -205,9 +207,11 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     enabled: triggerPopout === 'hover', // Only enable hover effect when triggerPopout option is set to 'hover'
     delay: { open: 75 } // Delay opening submenu by 75ms
   })
+
   const click = useClick(context, {
     enabled: triggerPopout === 'click' // Only enable click effect when triggerPopout option is set to 'click'
   })
+
   const dismiss = useDismiss(context)
   const role = useRole(context, { role: 'menu' })
 
@@ -233,6 +237,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
   const handleOnKeyUp = (event: KeyboardEvent<HTMLAnchorElement>) => {
     onKeyUp?.(event)
+
     if (event.key === 'Enter') {
       handleSlideToggle()
     }

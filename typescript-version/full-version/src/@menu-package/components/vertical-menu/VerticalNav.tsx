@@ -112,6 +112,7 @@ const VerticalNav = (props: VerticalNavProps) => {
       if (isCollapsedContext && !verticalNavCollapsedRef.current) {
         verticalNavCollapsedRef.current = true
       }
+
       isCollapsedContext && updateVerticalNavState({ isCollapsed: false })
       isHoveredContext && updateVerticalNavState({ isHovered: false })
     }
