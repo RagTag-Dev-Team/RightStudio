@@ -42,9 +42,13 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
         disabled={!isBrowser}
         title={title}
         aria-label={title}
-        aria-live="polite">
-        <IconLightMode className={clsx(styles.toggleIcon, styles.darkToggleIcon)}/>
-        <IconDarkMode className={clsx(styles.toggleIcon, styles.lightToggleIcon)}/>
+        aria-live="polite"
+      >
+        {value === 'dark' ? (
+          <IconLightMode className={clsx(styles.toggleIcon, styles.darkToggleIcon)} />
+        ) : (
+          <IconDarkMode className={clsx(styles.toggleIcon, styles.lightToggleIcon)} />
+        )}
       </button>
     </div>
   )

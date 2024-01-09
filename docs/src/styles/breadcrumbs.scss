@@ -1,11 +1,21 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+
 .breadcrumbs__link {
   color: #6b7280;
   [data-theme='dark'] & {
     color: #a3a3a3;
   }
-  border-radius: 4px;
   &:any-link:hover {
     background: none;
+  }
+  svg {
+    font-size: 1.25rem;
+    position: relative;
+    top: 1px;
+    vertical-align: top;
   }
 }
 
