@@ -9,6 +9,7 @@ import type { Mode, Skin, Layout, LayoutComponentWidth } from '@core/types'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import { useObjectCookie } from '@core/hooks/useObjectCookie'
@@ -59,7 +60,7 @@ export const SettingsProvider = (props: Props) => {
     navbarContentWidth: themeConfig.navbar.contentWidth,
     contentWidth: themeConfig.contentWidth,
     footerContentWidth: themeConfig.footer.contentWidth,
-    primaryColor: '#1976d2'
+    primaryColor: primaryColorConfig[0].main
   }
 
   const updatedInitialSettings = {
