@@ -7,8 +7,14 @@ import { usePathname } from 'next/navigation'
 // Config Imports
 import { i18n } from '@configs/i18n'
 
-// Util Imports
-import { getLocalePath } from '@/utils/get-locale-path'
+const getLocalePath = (pathName: string, locale: string) => {
+  if (!pathName) return '/'
+  const segments = pathName.split('/')
+
+  segments[1] = locale
+
+  return segments.join('/')
+}
 
 const LanguageDropdown = () => {
   // Hooks
