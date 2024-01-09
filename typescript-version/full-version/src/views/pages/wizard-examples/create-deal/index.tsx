@@ -41,18 +41,9 @@ const steps = [
 ]
 
 const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
-  switch (step) {
-    case 0:
-      return <StepDealType activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 1:
-      return <StepDealDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 2:
-      return <StepDealUsage activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 3:
-      return <StepReview activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    default:
-      return null
-  }
+  const Tag = step === 0 ? StepDealType : step === 1 ? StepDealDetails : step === 2 ? StepDealUsage : StepReview
+
+  return <Tag activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
 }
 
 const CreateDeal = () => {

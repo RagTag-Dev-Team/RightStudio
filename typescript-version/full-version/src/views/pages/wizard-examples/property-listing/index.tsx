@@ -46,20 +46,18 @@ const steps = [
 ]
 
 const getStepContent = (step: number, handleNext: () => void, handlePrev: () => void) => {
-  switch (step) {
-    case 0:
-      return <StepPersonalDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 1:
-      return <StepPropertyDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 2:
-      return <StepPropertyFeatures activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 3:
-      return <StepPropertyArea activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    case 4:
-      return <StepPriceDetails activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
-    default:
-      return null
-  }
+  const Tag =
+    step === 0
+      ? StepPersonalDetails
+      : step === 1
+        ? StepPropertyDetails
+        : step === 2
+          ? StepPropertyFeatures
+          : step === 3
+            ? StepPropertyArea
+            : StepPriceDetails
+
+  return <Tag activeStep={step} handleNext={handleNext} handlePrev={handlePrev} steps={steps} />
 }
 
 const PropertyListingWizard = () => {

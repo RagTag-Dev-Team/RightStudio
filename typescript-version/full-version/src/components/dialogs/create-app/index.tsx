@@ -69,24 +69,18 @@ const steps: stepperProps[] = [
 ]
 
 const renderStepCount = (activeStep: number, isLastStep: boolean, handleNext: () => void, handlePrev: () => void) => {
-  switch (activeStep) {
-    case 0:
-      return <Details activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
-    case 1:
-      return (
-        <FrameWork activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
-      )
-    case 2:
-      return (
-        <Database activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
-      )
-    case 3:
-      return <Billing activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
-    case 4:
-      return <Submit activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
-    default:
-      return null
-  }
+  const Tag =
+    activeStep === 0
+      ? Details
+      : activeStep === 1
+        ? FrameWork
+        : activeStep === 2
+          ? Database
+          : activeStep === 3
+            ? Billing
+            : Submit
+
+  return <Tag activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
 }
 
 const CreateApp = ({ open, setOpen }: CreateAppProps) => {
