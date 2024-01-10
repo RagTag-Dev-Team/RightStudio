@@ -48,9 +48,6 @@ import primaryColorConfig from '@configs/primaryColorConfig'
 import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
-// Util Imports
-import { getLocalePath } from '@/utils/get-locale-path'
-
 // Style Imports
 import styles from './styles.module.css'
 
@@ -58,6 +55,15 @@ type CustomizerProps = {
   breakpoint?: Breakpoint | 'xxl' | `${number}px` | `${number}rem` | `${number}em`
   dir?: Direction
   disableDirection?: boolean
+}
+
+const getLocalePath = (pathName: string, locale: string) => {
+  if (!pathName) return '/'
+  const segments = pathName.split('/')
+
+  segments[1] = locale
+
+  return segments.join('/')
 }
 
 type DebouncedColorPickerProps = {
@@ -92,7 +98,7 @@ const DebouncedColorPicker = (props: DebouncedColorPickerProps) => {
   )
 }
 
-const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }: CustomizerProps) => {
+const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = false }: CustomizerProps) => {
   // States
   const [isOpen, setIsOpen] = useState(false)
   const [direction, setDirection] = useState(dir)

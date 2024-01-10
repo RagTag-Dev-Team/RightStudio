@@ -11,7 +11,7 @@ import type { NextRequestWithAuth } from 'next-auth/middleware'
 // Config Imports
 import { i18n } from '@configs/i18n'
 
-function getLocale(request: NextRequest): string | undefined {
+const getLocale = (request: NextRequest): string | undefined => {
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {}
 

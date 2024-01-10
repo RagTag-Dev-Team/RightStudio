@@ -5,11 +5,11 @@ import type { Locale } from '@configs/i18n'
 import Providers from '@components/Providers'
 import NotFound from '@views/NotFound'
 
-// Util Imports
-import { getDirection } from '@/utils/get-direction'
+// Config Imports
+import { i18n } from '@configs/i18n'
 
 const NotFoundPage = ({ params }: { params: { lang: Locale } }) => {
-  const direction = getDirection(params.lang)
+  const direction = i18n.langDirection[params.lang]
 
   return (
     <Providers direction={direction}>

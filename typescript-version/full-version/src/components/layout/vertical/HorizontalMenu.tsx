@@ -3,27 +3,33 @@
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
-// Component Imports
-import { RouterLink } from '@menu-package/components/RouterLink'
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+// Next Imports
+// import { useParams } from 'next/navigation'
+
+// Type Imports
+// import type { getDictionary } from '@/utils/get-dictionary'
 
 // Context Imports
 import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
 
+// Component Imports
+import { RouterLink } from '@menu-package/components/RouterLink'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+
+// import { GenerateHorizontalMenu } from '@components/GenerateMenu'
+
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-
-// Util Imports
-// import { generateHorizontalMenu } from '@/utils/menuUtils'
 
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
 
 // Menu Data Imports
-// import menuData from '@/data/navigation/HorizontalMenuData'
+// import menuData from '@/data/navigation/horizontalMenuData'
 
-const HorizontalMenu = () => {
+const HorizontalMenu = (/* { dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> } */) => {
   // Hooks
+  // const params = useParams()
   const theme = useTheme()
   const { settings } = useSettings()
 
@@ -33,7 +39,7 @@ const HorizontalMenu = () => {
         <Menu
           menuItemStyles={{
             ...menuItemStyles(settings, theme),
-            ...{ subMenuStyles: { zIndex: 'calc(var(--drawer-z-index) + 1)' } }
+            ...{ subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' } }
           }}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
@@ -56,7 +62,18 @@ const HorizontalMenu = () => {
             <MenuItem href='/user-details'>User Details</MenuItem>
           </SubMenu>
         </Menu>
-        {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}
+        {/* <Menu
+          menuItemStyles={{
+            ...menuItemStyles(settings, theme),
+            ...{ subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' } }
+          }}
+          popoutMenuOffset={{
+            mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+            alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+          }}
+        >
+          <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
+        </Menu> */}
       </HorizontalNav>
     </HorizontalNavProvider>
   )

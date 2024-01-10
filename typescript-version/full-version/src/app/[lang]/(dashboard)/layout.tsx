@@ -20,13 +20,15 @@ import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
 import ScrollToTop from '@core/components/scroll-to-top'
 
+// Config Imports
+import { i18n } from '@configs/i18n'
+
 // Util Imports
-import { getDirection } from '@/utils/get-direction'
 import { getDictionary } from '@/utils/get-dictionary'
 import { getMode, getSettingsFromCookie, getSystemMode } from '@core/server/actions'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
-  const direction = getDirection(params.lang)
+  const direction = i18n.langDirection[params.lang]
   const dictionary = await getDictionary(params.lang)
   const mode = getMode()
   const systemMode = getSystemMode()

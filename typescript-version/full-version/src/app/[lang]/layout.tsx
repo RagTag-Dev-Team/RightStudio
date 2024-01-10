@@ -8,8 +8,8 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import BuyNowButton from '@components/buy-now-button'
 
-// Util Imports
-import { getDirection } from '@/utils/get-direction'
+// Config Imports
+import { i18n } from '@configs/i18n'
 
 // Style Imports
 import '@/app/globals.css'
@@ -23,7 +23,7 @@ export const metadata = {
 }
 
 const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
-  const direction = getDirection(params.lang)
+  const direction = i18n.langDirection[params.lang]
 
   return (
     <html id='__next' lang={params.lang} dir={direction}>

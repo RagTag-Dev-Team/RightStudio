@@ -1,8 +1,15 @@
 // Type Imports
 import type { VerticalMenuDataType } from '@/types/menuTypes'
-import type { Dictionary, Params } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
-const verticalMenuData = (dictionary: Dictionary, params: Params): VerticalMenuDataType[] => [
+type Params = {
+  [key: string]: string | string[]
+}
+
+const verticalMenuData = (
+  dictionary: Awaited<ReturnType<typeof getDictionary>>,
+  params: Params
+): VerticalMenuDataType[] => [
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,

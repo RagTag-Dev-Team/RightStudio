@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Dictionary } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports
 import HorizontalMenu from './HorizontalMenu'
@@ -41,7 +41,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   `}
 `
 
-const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
+const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()

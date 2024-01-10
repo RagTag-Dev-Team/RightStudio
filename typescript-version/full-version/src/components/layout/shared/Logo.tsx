@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 // Next Imports
 // import Img from 'next/image'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // Third-party Imports
 import styled from '@emotion/styled'
@@ -42,6 +43,8 @@ const Logo = () => {
 
   const { layout } = settings
 
+  const { lang: locale } = useParams()
+
   useEffect(() => {
     if (layout === 'horizontal' || !isCollapsed) {
       return
@@ -60,7 +63,7 @@ const Logo = () => {
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
   return (
-    <Link href='/' className='flex items-center'>
+    <Link href={locale ? `/${locale}` : '/'} className='flex items-center'>
       <svg width={22} height={24} viewBox='0 0 22.236 23.8' xmlns='http://www.w3.org/2000/svg' color='#765feb'>
         <g
           fontSize='9pt'

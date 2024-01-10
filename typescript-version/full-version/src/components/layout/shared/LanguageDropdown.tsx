@@ -22,8 +22,14 @@ import type { Locale } from '@configs/i18n'
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
-// Util Imports
-import { getLocalePath } from '@/utils/get-locale-path'
+const getLocalePath = (pathName: string, locale: string) => {
+  if (!pathName) return '/'
+  const segments = pathName.split('/')
+
+  segments[1] = locale
+
+  return segments.join('/')
+}
 
 type LanguageDataType = {
   langCode: Locale

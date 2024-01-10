@@ -6,8 +6,10 @@ import type { Locale } from '@configs/i18n'
 import Providers from '@components/Providers'
 import BlankLayout from '@layouts/BlankLayout'
 
+// Config Imports
+import { i18n } from '@configs/i18n'
+
 // Util Imports
-import { getDirection } from '@/utils/get-direction'
 import { getSystemMode } from '@core/server/actions'
 
 type Props = ChildrenType & {
@@ -15,7 +17,7 @@ type Props = ChildrenType & {
 }
 
 const Layout = ({ children, params }: Props) => {
-  const direction = getDirection(params.lang)
+  const direction = i18n.langDirection[params.lang]
   const systemMode = getSystemMode()
 
   return (
