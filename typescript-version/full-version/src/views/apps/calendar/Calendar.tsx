@@ -125,8 +125,8 @@ const Calendar = (props: CalenderProps) => {
       handleSelectEvent(clickedEvent)
       handleAddEventSidebarToggle()
 
-      // * Only grab required field otherwise it goes in infinity loop
-      // ! Always grab all fields rendered by form (even if it get `undefined`)
+      //* Only grab required field otherwise it goes in infinity loop
+      //! Always grab all fields rendered by form (even if it get `undefined`)
       // event.value = grabEventDataFromEventApi(clickedEvent)
       // isAddNewEventSidebarActive.value = true
     },
