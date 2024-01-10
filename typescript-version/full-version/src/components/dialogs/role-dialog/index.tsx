@@ -68,7 +68,7 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
   }
 
   const togglePermission = (id: string) => {
-    const arr = selectedCheckbox ? [...selectedCheckbox] : []
+    const arr = selectedCheckbox
 
     if (selectedCheckbox.includes(id)) {
       arr.splice(arr.indexOf(id), 1)
@@ -117,7 +117,14 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
           <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
-          <TextField label='Role Name' variant='outlined' fullWidth placeholder='Enter Role Name' value={title} />
+          <TextField
+            label='Role Name'
+            variant='outlined'
+            fullWidth
+            placeholder='Enter Role Name'
+            defaultValue={title}
+            onChange={e => e.target.value}
+          />
           <Typography className='min-is-[225px]'>Role Permissions</Typography>
           <div className='overflow-x-auto'>
             <table className={tableStyles.table}>

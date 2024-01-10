@@ -5,6 +5,7 @@ import { useState, useMemo, useEffect } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -141,6 +142,9 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   const [data, setData] = useState(...[tableData])
   const [globalFilter, setGlobalFilter] = useState('')
 
+  // Hooks
+  const { lang: locale } = useParams()
+
   useEffect(() => {
     const filteredData = tableData?.filter(user => {
       if (role && user.role !== role) return false
@@ -240,7 +244,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
-              <Link href='/apps/user/view/overview/' className='flex'>
+              <Link href={`/${locale}/apps/user/view/`} className='flex'>
                 <i className='ri-eye-line text-[22px]' />
               </Link>
             </IconButton>

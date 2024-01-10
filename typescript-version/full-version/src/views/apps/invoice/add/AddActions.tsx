@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -23,6 +24,9 @@ import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
 const AddActions = () => {
   // States
   const [sendDrawerOpen, setSendDrawerOpen] = useState(false)
+
+  // Hooks
+  const { lang: locale } = useParams()
 
   return (
     <Grid container spacing={6}>
@@ -44,7 +48,7 @@ const AddActions = () => {
               color='secondary'
               variant='outlined'
               className='capitalize'
-              href={`/apps/invoice/preview/4987`}
+              href={`/${locale}/apps/invoice/preview/4987`}
             >
               Preview
             </Button>

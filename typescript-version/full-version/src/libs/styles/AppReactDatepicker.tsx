@@ -5,7 +5,7 @@ import type { ComponentProps } from 'react'
 
 // MUI imports
 import Box from '@mui/material/Box'
-import { styled, useColorScheme } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
 
 // Third-party Imports
@@ -19,8 +19,6 @@ type Props = ComponentProps<typeof ReactDatePickerComponent> & {
 }
 
 const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
-  const { mode } = useColorScheme()
-
   return {
     '& .react-datepicker-popper': {
       zIndex: 20
@@ -265,7 +263,7 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
           borderColor: theme.palette.divider,
           borderRadius: theme.shape.borderRadius,
           backgroundColor: theme.palette.background.paper,
-          boxShadow: mode === 'light' ? theme.shadows[8] : theme.shadows[9]
+          boxShadow: theme.shadows[8]
         },
         '& .react-datepicker__month-option, & .react-datepicker__year-option': {
           paddingTop: theme.spacing(1),

@@ -1,5 +1,8 @@
+'use client'
+
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -13,6 +16,9 @@ import Form from '@components/Form'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 const ForgotPasswordV1 = () => {
+  // Hooks
+  const { lang: locale } = useParams()
+
   return (
     <Card className='flex flex-col is-[450px]'>
       <CardContent>
@@ -25,7 +31,7 @@ const ForgotPasswordV1 = () => {
             Send reset link
           </Button>
           <Typography className='flex justify-center items-center' color='primary'>
-            <Link href='/pages/auth/login-v1' className='flex items-center'>
+            <Link href={`/${locale}/pages/auth/login-v1`} className='flex items-center'>
               <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
               <span>Back to Login</span>
             </Link>

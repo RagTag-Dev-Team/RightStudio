@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -22,6 +23,9 @@ import themeConfig from '@configs/themeConfig'
 const LoginV2 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+
+  // Hooks
+  const { lang: locale } = useParams()
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
@@ -51,7 +55,12 @@ const LoginV2 = () => {
             />
             <div className='flex justify-between items-center flex-wrap gap-x-3 gap-y-1'>
               <FormControlLabel control={<Checkbox />} label='Remember me' />
-              <Typography className='text-end' color='primary' component={Link} href='/pages/auth/forgot-password-v2'>
+              <Typography
+                className='text-end'
+                color='primary'
+                component={Link}
+                href={`/${locale}/pages/auth/forgot-password-v2`}
+              >
                 Forgot password?
               </Typography>
             </div>
@@ -60,7 +69,7 @@ const LoginV2 = () => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} href='/pages/auth/register-v2' color='primary'>
+              <Typography component={Link} href={`/${locale}/pages/auth/register-v2`} color='primary'>
                 Create an account
               </Typography>
             </div>
