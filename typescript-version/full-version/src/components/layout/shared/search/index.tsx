@@ -4,7 +4,7 @@
 import type { ElementType, ReactNode } from 'react'
 
 // Next Imports
-import { usePathname, useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 // Third-party Imports
 import { useMedia } from 'react-use'
@@ -23,9 +23,6 @@ import Close from '@menu-package/svg/Close'
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
-
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -69,9 +66,7 @@ const NavSearch = () => {
   const { settings } = useSettings()
   const { isBreakpointReached } = useVerticalNav()
   const isSmallScreen = useMedia('(max-width: 600px)', false)
-  const pathname = usePathname()
-
-  const locale = getLocale(pathname)
+  const { lang: locale } = useParams()
 
   // Search Actions Data with 'perform' method
   const searchActions = data.map(item => ({

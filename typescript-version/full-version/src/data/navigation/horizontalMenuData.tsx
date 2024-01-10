@@ -1,11 +1,18 @@
 // Type Imports
 import type { HorizontalMenuDataType } from '@/types/menuTypes'
-import type { Dictionary, Params } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-const horizontalMenuData = (dictionary: Dictionary, params: Params): HorizontalMenuDataType[] => [
+type Params = {
+  [key: string]: string | string[]
+}
+
+const horizontalMenuData = (
+  dictionary: Awaited<ReturnType<typeof getDictionary>>,
+  params: Params
+): HorizontalMenuDataType[] => [
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,

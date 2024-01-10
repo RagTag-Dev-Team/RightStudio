@@ -1,26 +1,34 @@
 'use client'
 
-// Component Imports
-import { RouterLink } from '@menu-package/components/RouterLink'
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+// Next Imports
+// import { useParams } from 'next/navigation'
+
+// Type Imports
+// import type { getDictionary } from '@/utils/get-dictionary'
 
 // Context Imports
 import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
 
-// Util Imports
-// import { generateHorizontalMenu } from '@/utils/menuUtils'
+// Component Imports
+import { RouterLink } from '@menu-package/components/RouterLink'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+
+// import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Menu Data Imports
-// import menuData from '@/data/navigation/HorizontalMenuData'
+// import menuData from '@/data/navigation/horizontalMenuData'
 
-const HorizontalMenu = () => {
+const HorizontalMenu = (/* { dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> } */) => {
+  // Hooks
+  // const params = useParams()
+
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
         <Menu
           menuItemStyles={{
             button: { paddingBlock: '12px' },
-            subMenuStyles: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
+            subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
           }}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
@@ -43,7 +51,18 @@ const HorizontalMenu = () => {
             <MenuItem href='/user-details'>User Details</MenuItem>
           </SubMenu>
         </Menu>
-        {/* <Menu>{generateHorizontalMenu(menuData())}</Menu> */}
+        {/* <Menu
+          menuItemStyles={{
+            button: { paddingBlock: '12px' },
+            subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
+          }}
+          popoutMenuOffset={{
+            mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+            alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+          }}
+        >
+          <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
+        </Menu> */}
       </HorizontalNav>
     </HorizontalNavProvider>
   )

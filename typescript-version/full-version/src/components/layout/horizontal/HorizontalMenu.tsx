@@ -2,33 +2,30 @@
 'use client'
 
 // Next Imports
-import { usePathname, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 // Type Imports
-import type { Dictionary } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports from @menu-package
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+
+// Component Imports
 import VerticalNavContent from './VerticalNavContent'
+
+// import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
-
-// import { generateHorizontalMenu } from '@/utils/menuUtils'
-
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'
 
-const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
+const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
-  const pathName = usePathname()
   const params = useParams()
 
-  // Get locale from pathname
-  const locale = getLocale(pathName)
+  const { lang: locale, id } = params
 
   return (
     <HorizontalNav switchToVertical verticalNavContent={VerticalNavContent}>
@@ -61,12 +58,10 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/preview/${params.id || '4987'}`}>
+            <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
               {dictionary['navigation'].preview}
             </MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/edit/${params.id || '4987'}`}>
-              {dictionary['navigation'].edit}
-            </MenuItem>
+            <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
@@ -255,7 +250,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           }
         }}
       >
-        {generateHorizontalMenu(menuData(dictionary, params), locale)}
+        <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
       </Menu> */}
     </HorizontalNav>
   )

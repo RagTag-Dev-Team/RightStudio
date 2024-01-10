@@ -1,7 +1,7 @@
 'use client'
 
 // Type Imports
-import type { Dictionary } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports from @menu-package
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu-package/vertical-menu'
@@ -13,7 +13,7 @@ import VerticalMenu from './VerticalMenu'
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
-const Navigation = ({ dictionary }: { dictionary: Dictionary }) => {
+const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
 

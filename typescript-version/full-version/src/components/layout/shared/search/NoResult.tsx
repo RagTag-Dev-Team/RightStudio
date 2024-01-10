@@ -3,13 +3,10 @@ import type { ReactNode } from 'react'
 
 // Next Imports
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 // Third-party Imports
 import { useKBar } from 'kbar'
-
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
 
 type NoResultProps = {
   query: string | undefined
@@ -44,10 +41,8 @@ const NoResult = (props: NoResultProps) => {
   const { query } = props
 
   // Hooks
-  const pathname = usePathname()
   const { query: kbarQuery } = useKBar()
-
-  const locale = getLocale(pathname)
+  const { lang: locale } = useParams()
 
   return (
     <div className='flex items-center justify-center grow flex-wrap plb-14 pli-16 overflow-y-auto overflow-x-hidden'>

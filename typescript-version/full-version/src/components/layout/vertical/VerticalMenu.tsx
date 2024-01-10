@@ -1,16 +1,19 @@
 'use client'
 
 // Next Imports
-import { usePathname, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { Dictionary } from '@core/types'
+import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports from @menu-package
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
+
+// Component Imports
+// import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
@@ -18,22 +21,15 @@ import LinkExternalIcon from '@layouts/svg/LinkExternal'
 // Hook Imports
 import useVerticalNav from '@menu-package/hooks/useVerticalNav'
 
-// Util Imports
-import { getLocale } from '@/utils/get-locale'
-
-// import { generateVerticalMenu } from '@/utils/menuUtils'
-
 // Menu Data Imports
 // import menuData from '@/data/navigation/verticalMenuData'
 
-const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
+const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
-  const pathName = usePathname()
   const params = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
-  // Get locale from pathname
-  const locale = getLocale(pathName)
+  const { lang: locale, id } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
@@ -67,12 +63,10 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/preview/${params.id || '4987'}`}>
+            <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
               {dictionary['navigation'].preview}
             </MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/edit/${params.id || '4987'}`}>
-              {dictionary['navigation'].edit}
-            </MenuItem>
+            <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
@@ -247,7 +241,6 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           </SubMenu>
         </MenuSection>
       </Menu>
-
       {/* <Menu
         popoutMenuOffset={{ mainAxis: 10 }}
         menuItemStyles={{
@@ -255,7 +248,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Dictionary }) => {
           subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
         }}
       >
-        {generateVerticalMenu(menuData(dictionary, params), locale)}
+        <GenerateVerticalMenu menuData={menuData(dictionary, params)} />
       </Menu> */}
     </ScrollWrapper>
   )
