@@ -8,10 +8,10 @@ import NavToggle from '@components/layout/horizontal/NavToggle'
 import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
 import ModeDropdown from '@components/layout/shared/ModeDropdown'
 import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
-import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Icon Imports
 import Logo from '@components/layout/shared/Logo'

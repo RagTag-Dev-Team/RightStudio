@@ -5,7 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
 const FullMenuPerfectScroll = () => {
   return (

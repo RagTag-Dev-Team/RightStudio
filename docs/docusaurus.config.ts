@@ -44,7 +44,7 @@ const config: Config = {
           '@': path.resolve(__dirname, '../typescript-version/full-version/src'),
           '@core': path.resolve(__dirname, '../typescript-version/full-version/src/@core'),
           '@layouts': path.resolve(__dirname, '../typescript-version/full-version/src/@layouts'),
-          '@menu-package': path.resolve(__dirname, '../typescript-version/full-version/src/@menu-package'),
+          '@menu': path.resolve(__dirname, '../typescript-version/full-version/src/@menu'),
           '@assets': path.resolve(__dirname, '../typescript-version/full-version/src/assets'),
           '@components': path.resolve(__dirname, '../typescript-version/full-version/src/components'),
           '@configs': path.resolve(__dirname, '../typescript-version/full-version/src/configs'),

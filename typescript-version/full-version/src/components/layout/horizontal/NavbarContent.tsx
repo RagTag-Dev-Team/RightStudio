@@ -18,7 +18,7 @@ import NotificationsDropdown from '@components/layout/shared/NotificationsDropdo
 import UserDropdown from '@components/layout/shared/UserDropdown'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'

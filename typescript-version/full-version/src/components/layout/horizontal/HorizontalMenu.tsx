@@ -10,10 +10,8 @@ import { useTheme } from '@mui/material/styles'
 // Type Imports
 import type { getDictionary } from '@/utils/get-dictionary'
 
-// Component Imports from @menu-package
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
-
 // Component Imports
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'

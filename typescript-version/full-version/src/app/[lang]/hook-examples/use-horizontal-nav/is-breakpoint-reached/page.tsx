@@ -3,10 +3,10 @@
 // Comopoent Imports
 import NavToggle from '@components/layout/vertical/NavToggle'
 import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
-import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 const BreakPoint = () => {
   // Hooks

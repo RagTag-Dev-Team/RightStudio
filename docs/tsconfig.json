@@ -26,8 +26,8 @@
       "@layouts/*": [
         "../typescript-version/full-version/src/@layouts/*"
       ],
-      "@menu-package/*": [
-        "../typescript-version/full-version/src/@menu-package/*"
+      "@menu/*": [
+        "../typescript-version/full-version/src/@menu/*"
       ],
       "@assets/*": [
         "../typescript-version/full-version/src/assets/*"

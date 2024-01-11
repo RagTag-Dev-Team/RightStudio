@@ -10,11 +10,11 @@ import { useTheme } from '@mui/material/styles'
 // import type { getDictionary } from '@/utils/get-dictionary'
 
 // Context Imports
-import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
+import { HorizontalNavProvider } from '@menu/contexts/horizontalNavContext'
 
 // Component Imports
-import { RouterLink } from '@menu-package/components/RouterLink'
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
+import { RouterLink } from '@menu/components/RouterLink'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 

@@ -12,15 +12,14 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Type Imports
 import type { getDictionary } from '@/utils/get-dictionary'
 
-// Component Imports from @menu-package
-import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
-
 // Component Imports
+import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
 import menuItemStyles from '@core/styles/vertical/menuItemStyles'

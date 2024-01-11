@@ -1,10 +1,10 @@
 'use client'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 const Toggle = () => {
   const { isToggled, updateVerticalNavState } = useVerticalNav()

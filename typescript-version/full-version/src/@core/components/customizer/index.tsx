@@ -46,7 +46,7 @@ import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'

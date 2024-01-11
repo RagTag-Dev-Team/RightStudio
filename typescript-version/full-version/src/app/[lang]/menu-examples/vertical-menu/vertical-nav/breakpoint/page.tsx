@@ -2,7 +2,7 @@
 
 // Component Imports
 import NavToggle from '@components/layout/vertical/NavToggle'
-import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const BreakPoint = () => {
   return (

@@ -5,13 +5,13 @@ import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // Type Imports
-import type { MenuProps } from '@menu-package/components/vertical-menu/Menu'
+import type { MenuProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 const TriggerPopOut = () => {
   const {

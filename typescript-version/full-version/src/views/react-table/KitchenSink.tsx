@@ -32,7 +32,7 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 import type { DataType } from './data'
 
 // Icon Imports
-import ChevronRight from '@menu-package/svg/ChevronRight'
+import ChevronRight from '@menu/svg/ChevronRight'
 
 // Style Imports
 import styles from '@core/styles/table.module.css'

@@ -1,7 +1,7 @@
 'use client'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 const NavToggle = () => {
   // Hooks

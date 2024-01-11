@@ -1,7 +1,7 @@
 'use client'
 
 // Hook Imports
-import useMediaQuery from '@menu-package/hooks/useMediaQuery'
+import useMediaQuery from '@menu/hooks/useMediaQuery'
 
 const MediaQuery = () => {
   // Hooks

@@ -20,7 +20,7 @@ import type { ChildrenType } from '@core/types'
 import SearchResults from './SearchResults'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Styled Component Imports

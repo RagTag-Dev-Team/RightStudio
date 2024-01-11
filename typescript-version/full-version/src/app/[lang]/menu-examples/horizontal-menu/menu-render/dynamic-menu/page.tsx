@@ -5,10 +5,10 @@ import type { ReactNode } from 'react'
 import classnames from 'classnames'
 
 // Type Imports
-import type { MenuItemProps, SubMenuProps } from '@menu-package/horizontal-menu'
+import type { MenuItemProps, SubMenuProps } from '@menu/horizontal-menu'
 
 // Component Imports
-import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../../styles.module.css'

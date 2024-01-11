@@ -4,10 +4,10 @@
 import { useEffect, type ReactNode, useState } from 'react'
 
 // Type imports
-import type { MenuItemProps, MenuSectionProps, SubMenuProps } from '@menu-package/vertical-menu'
+import type { MenuItemProps, MenuSectionProps, SubMenuProps } from '@menu/vertical-menu'
 
 // Component imports
-import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
 type MenuData =
   | (Omit<MenuSectionProps, 'children'> & { isSection: boolean; children: MenuData[] })

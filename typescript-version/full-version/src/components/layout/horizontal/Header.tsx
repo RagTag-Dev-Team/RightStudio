@@ -10,7 +10,7 @@ import Navbar from '@layouts/components/horizontal/Navbar'
 import LayoutHeader from '@layouts/components/horizontal/Header'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 const Header = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks

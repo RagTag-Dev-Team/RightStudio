@@ -9,12 +9,12 @@ import VerticalNav, {
   Menu as VerticalMenu,
   MenuItem as VerticalMenuItem,
   SubMenu as VerticalSubMenu
-} from '@menu-package/vertical-menu'
+} from '@menu/vertical-menu'
 import HorizontalNav, {
   Menu as HorizontalMenu,
   MenuItem as HorizontalMenuItem,
   SubMenu as HorizontalSubMenu
-} from '@menu-package/horizontal-menu'
+} from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../../styles.module.css'

@@ -21,8 +21,8 @@ import type {
 } from '@/types/menuTypes'
 
 // Component Imports
-import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu-package/horizontal-menu'
-import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu-package/vertical-menu'
+import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu/horizontal-menu'
+import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu/vertical-menu'
 
 const localizeUrl = (menuItem: VerticalMenuItemDataType, locale: string) => {
   const pathnameIsMissingLocale = i18n.locales.every(

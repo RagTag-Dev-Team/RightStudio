@@ -2,10 +2,10 @@
 import classnames from 'classnames'
 
 // Component Imports
-import HorizontalNav, { Menu, MenuItem } from '@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem } from '@menu/horizontal-menu'
 
 // Util Imports
-import { menuClasses } from '@menu-package/utils/menuClasses'
+import { menuClasses } from '@menu/utils/menuClasses'
 
 // Style Imports
 import styles from '../../styles.module.css'

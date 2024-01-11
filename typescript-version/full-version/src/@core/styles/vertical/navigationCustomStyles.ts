@@ -1,5 +1,5 @@
 // Util Imports
-import { menuClasses, verticalNavClasses } from '@menu-package/utils/menuClasses'
+import { menuClasses, verticalNavClasses } from '@menu/utils/menuClasses'
 
 const navigationCustomStyles = () => ({
   color: 'var(--mui-palette-text-primary)',

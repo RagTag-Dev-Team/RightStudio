@@ -7,8 +7,8 @@ import Link from 'next/link'
 import classnames from 'classnames'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports

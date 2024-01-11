@@ -4,7 +4,7 @@
 import classnames from 'classnames'
 
 // Component Imports
-import HorizontalNav, { Menu, MenuItem } from '@menu-package/horizontal-menu'
+import HorizontalNav, { Menu, MenuItem } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../../../../styles.module.css'

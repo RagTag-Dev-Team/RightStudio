@@ -8,7 +8,7 @@ import classnames from 'classnames'
 import type { ChildrenType } from '@core/types'
 
 // Context Imports
-import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
+import { HorizontalNavProvider } from '@menu/contexts/horizontalNavContext'
 
 // Component Imports
 import LayoutContent from './components/horizontal/LayoutContent'
