@@ -10,13 +10,13 @@ import { useParams } from 'next/navigation'
 import styled from '@emotion/styled'
 
 // Type Imports
-import type { VerticalNavContextProps } from '@menu-package/contexts/verticalNavContext'
+import type { VerticalNavContextProps } from '@menu/contexts/verticalNavContext'
 
 // Config Imports
 import themeConfig from '@/configs/themeConfig'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 type LogoTextProps = {

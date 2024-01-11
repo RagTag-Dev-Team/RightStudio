@@ -5,7 +5,7 @@ toc_max_heading_level: 4
 
 # Menu Utils
 
-We provide a set of utilities to help you build your menu. These utilities are available in the `src/@menu-package/utils/menuUtils.tsx` file. Have a look at the following utilities:
+We provide a set of utilities to help you build your menu. These utilities are available in the `src/@menu/utils/menuUtils.tsx` file. Have a look at the following utilities:
 
 #### generateVerticalMenu
 
@@ -31,7 +31,7 @@ This function renders all the icons for all the menu items and submenus with a l
 
 ## How to override the menu utils
 
-Users have the option to override the menu utilities according to their requirements. You need to create a new file (you can name the file whichever you want; let us say that you have named `src/utils/userMenuUtils.tsx` file) for the same. You need to copy the code of any utility function from the `src/@menu-package/utils/menuUtils.tsx` file and paste it in the newly created file and make the changes according to your needs.
+Users have the option to override the menu utilities according to their requirements. You need to create a new file (you can name the file whichever you want; let us say that you have named `src/utils/userMenuUtils.tsx` file) for the same. You need to copy the code of any utility function from the `src/@menu/utils/menuUtils.tsx` file and paste it in the newly created file and make the changes according to your needs.
 
 For example if you want to override the `generateVerticalMenu` function and add a default `className` prop to the `MenuSection` component, you can do it the following way:
 

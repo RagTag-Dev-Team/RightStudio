@@ -4,7 +4,7 @@
 import { useState } from 'react'
 
 // Component imports
-import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const WithParams = () => {
   // States

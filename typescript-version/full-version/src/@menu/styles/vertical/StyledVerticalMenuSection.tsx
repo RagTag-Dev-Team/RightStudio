@@ -6,7 +6,7 @@ import type { CSSObject } from '@emotion/styled'
 import type { MenuSectionProps } from '../../components/vertical-menu/MenuSection'
 
 // Util Imports
-import { menuClasses } from '../../../@menu-package/utils/menuClasses'
+import { menuClasses } from '../../utils/menuClasses'
 
 type StyledVerticalMenuSectionProps = Pick<MenuSectionProps, 'rootStyles' | 'children'> & {
   menuSectionStyles?: CSSObject

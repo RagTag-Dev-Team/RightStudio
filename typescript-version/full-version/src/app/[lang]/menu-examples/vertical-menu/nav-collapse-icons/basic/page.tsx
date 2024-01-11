@@ -1,16 +1,16 @@
 'use client'
 
 // Component Imports
-import NavHeader from '@menu-package/components/vertical-menu/NavHeader'
-import NavCollapseIcons from '@menu-package/components/vertical-menu/NavCollapseIcons'
+import NavHeader from '@menu/components/vertical-menu/NavHeader'
+import NavCollapseIcons from '@menu/components/vertical-menu/NavCollapseIcons'
 import NavToggle from '@components/layout/vertical/NavToggle'
-import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Icon Imports
 import Logo from '@components/layout/shared/Logo'
 
 // Hook
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 const NavCollapseIcon = () => {
   const { isBreakpointReached } = useHorizontalNav()

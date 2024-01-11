@@ -1,7 +1,7 @@
 'use client'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem } from '@menu/vertical-menu'
 
 const OnActiveChange = () => {
   return (

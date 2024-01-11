@@ -1,9 +1,9 @@
 // Type Imports
-import type { ChildrenType } from '@menu-package/types'
+import type { ChildrenType } from '@menu/types'
 
 // Component Imports
 import Providers from '@components/Providers'
-import { HorizontalNavProvider } from '@menu-package/contexts/horizontalNavContext'
+import { HorizontalNavProvider } from '@menu/contexts/horizontalNavContext'
 
 const Layout = ({ children }: ChildrenType) => {
   return (

@@ -5,18 +5,17 @@
 import { useParams } from 'next/navigation'
 
 // Type Imports
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
+
 import type { getDictionary } from '@/utils/get-dictionary'
 
-// Component Imports from @menu-package
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu-package/horizontal-menu'
-
 // Component Imports
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
-import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'

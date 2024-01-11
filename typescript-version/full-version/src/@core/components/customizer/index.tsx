@@ -19,7 +19,7 @@ import type { Direction } from '@core/types'
 // Icon Imports
 import Cog from '@core/svg/Cog'
 import Refresh from '@core/svg/Refresh'
-import Close from '@menu-package/svg/Close'
+import Close from '@menu/svg/Close'
 import ModeDark from '@core/svg/ModeDark'
 import ModeLight from '@core/svg/ModeLight'
 import ModeSystem from '@core/svg/ModeSystem'
@@ -35,7 +35,7 @@ import DirectionRtl from '@core/svg/DirectionRtl'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'

@@ -34,8 +34,8 @@
       "@layouts/*": [
         "./src/@layouts/*"
       ],
-      "@menu-package/*": [
-        "./src/@menu-package/*"
+      "@menu/*": [
+        "./src/@menu/*"
       ],
       "@assets/*": [
         "./src/assets/*"

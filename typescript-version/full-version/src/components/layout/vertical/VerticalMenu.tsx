@@ -7,19 +7,19 @@ import { useParams } from 'next/navigation'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
+
 import type { getDictionary } from '@/utils/get-dictionary'
 
-// Component Imports from @menu-package
-import { Menu, SubMenu, MenuItem, MenuSection } from '@menu-package/vertical-menu'
-
 // Component Imports
+import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
-import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/verticalMenuData'

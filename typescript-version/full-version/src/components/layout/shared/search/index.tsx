@@ -18,10 +18,10 @@ import SearchResults from './SearchResults'
 
 // Icon Imports
 import Search from '@layouts/svg/Search'
-import Close from '@menu-package/svg/Close'
+import Close from '@menu/svg/Close'
 
 // Hook Imports
-import useVerticalNav from '@menu-package/hooks/useVerticalNav'
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Styled Component Imports

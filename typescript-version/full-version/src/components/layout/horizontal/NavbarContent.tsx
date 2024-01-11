@@ -12,7 +12,7 @@ import ModeSwitcher from '@layouts/components/ModeSwitcher'
 import UserDetails from '@layouts/components/UserDetails'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'

@@ -1,7 +1,7 @@
 'use client'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
 const MenuSectionStyles = () => {
   return (

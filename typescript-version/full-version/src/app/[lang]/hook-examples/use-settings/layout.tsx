@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 import type { ChildrenType } from '@core/types'
 
 // Context Imports
-import { VerticalNavProvider } from '@menu-package/contexts/verticalNavContext'
+import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 
 const Layout = ({ children }: ChildrenType) => {

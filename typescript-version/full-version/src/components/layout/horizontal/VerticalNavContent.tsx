@@ -5,15 +5,15 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import type { ChildrenType } from '@core/types'
 
 // Component Imports
-import NavHeader from '@menu-package/components/vertical-menu/NavHeader'
+import NavHeader from '@menu/components/vertical-menu/NavHeader'
 import Logo from '@components/layout/shared/Logo'
-import NavCollapseIcons from '@menu-package/components/vertical-menu/NavCollapseIcons'
+import NavCollapseIcons from '@menu/components/vertical-menu/NavCollapseIcons'
 
 // Hook Imports
-import useHorizontalNav from '@menu-package/hooks/useHorizontalNav'
+import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
-import { mapHorizontalToVerticalMenu } from '@menu-package/utils/menuUtils'
+import { mapHorizontalToVerticalMenu } from '@menu/utils/menuUtils'
 
 const VerticalNavContent = ({ children }: ChildrenType) => {
   // Hooks

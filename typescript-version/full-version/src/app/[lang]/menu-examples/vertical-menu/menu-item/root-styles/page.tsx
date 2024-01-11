@@ -1,10 +1,10 @@
 'use client'
 
 // Component Imports
-import VerticalNav, { Menu, MenuItem } from '@menu-package/vertical-menu'
+import VerticalNav, { Menu, MenuItem } from '@menu/vertical-menu'
 
 // Util imports
-import { menuClasses } from '@menu-package/utils/menuClasses'
+import { menuClasses } from '@menu/utils/menuClasses'
 
 const RootStyles = () => {
   return (
