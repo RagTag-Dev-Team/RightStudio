@@ -1,3 +1,10 @@
+.wrapper {
+  position: fixed;
+  inset-inline-end: 5.5rem;
+  inset-block-end: 2.5rem;
+  z-index: 11;
+}
+
 .button,
 .buttonInner {
   display: inline-flex;
@@ -27,10 +34,7 @@
 }
 
 .button {
-  position: fixed;
-  inset-inline-end: 6.5rem;
-  inset-block-end: 3.5rem;
-  z-index: 11;
+  position: relative;
   &:hover {
     color: white;
     text-decoration: none;

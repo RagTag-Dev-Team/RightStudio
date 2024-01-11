@@ -1,3 +1,10 @@
+.buy-now-wrapper {
+  position: fixed;
+  inset-inline-end: 5.5rem;
+  inset-block-end: 2.5rem;
+  z-index: 11;
+}
+
 .buy-now-button,
 .button-inner {
   display: inline-flex;
@@ -27,10 +34,7 @@
 }
 
 .buy-now-button {
-  position: fixed;
-  inset-inline-end: 5.5rem;
-  inset-block-end: 2.5rem;
-  z-index: 11;
+  position: relative;
   &:hover {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
