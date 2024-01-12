@@ -4,48 +4,41 @@ sidebar_position: 3
 
 # Logo
 
-## Overview
+## Customizing the Logo
 
-The logo holds significant importance within an admin dashboard template as it plays a crucial role in establishing the brand's identity and enabling users to identify the application or platform they are utilizing.
+Customizing the logo in the template to reflect your brand identity is a straightforward process. The logo component can be found at `src/components/layout/shared/Logo.tsx`. To update the logo, follow these steps:
 
-## How to change the logo
+1. **Locate the Logo component:** 
+  Navigate to the `src/components/layout/shared/Logo.tsx`. file in your project directory.
 
-The logo is implemented in the `src/components/layout/shared/Logo.tsx` file. It has been created using the svg and text elements.
+2. **Prepare your Logo:**
+  Have your new logo image ready, preferably in SVG format for scalability and performance. If it’s not in SVG format, ensure it's in a web-friendly format like PNG or JPG.
 
-Here is an example that demonstrates the utilization of `svg` and `text` elements to construct the logo:
+3. **Update the Logo Component:**
+   In the `Logo` component, replace the existing SVG with your new logo.
+   ```tsx
+   // Replace this SVG with your new logo
+   <svg ...>
+    ...
+   </svg>
+   ```
+   Or if you are using an image, replace the existing SVG with your new logo.
 
-```tsx
-<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fontSize='1.5rem' viewBox='0 0 24 24'>
-  <path fill='currentColor' d='M12.14 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z' />
-  <path
-    fill='currentColor'
-    d='M16.14 10a3 3 0 0 0-3-3h-5v10h2v-4h1.46l2.67 4h2.4l-2.75-4.12A3 3 0 0 0 16.14 10zm-3 1h-3V9h3a1 1 0 0 1 0 2z'
-  />
-</svg>
-<p>Registered</p>
-```
-
+4. **Customize Logo Text:**
+If your logo includes text, you can customize the text by updating the `templateName` in `src/configs/themeConfig.ts`
+or just update the `LogoText` value like so:
+    ```tsx
+    <LogoText
+      ...
+    >
+      Your Company Name
+    </LogoText>
+    ```
 You can modify the logo by making changes to the svg and text elements. Alternatively, you can use an image as the logo. To achieve this, you would need to replace the svg and text elements with an `img` element. You may create various combinations of logo but the most common ones are:
 
 - SVG Only
 - Image Only
 - Text Only
 - SVG + Text
-- Image + SVG
 - Image + Text
 
-## How to retain logo transition as ours
-
-Logo transition refers to the animation effect applied to a logo when the sidebar or navigation menu of a website or application is collapsed or expanded.
-
-To retain the logo transition please follow the steps below:
-
-1. In our template, the logo width is set to `22px`. However, if your logo has a different width, it is advisable not to make changes within the `@menu` folder. You need to create a new file (you can name the file whichever you want; let us say that you have named `src/components/UserNavHeader.tsx` file). Copy the code from `src/@menu/components/vertical-menu/NavHeader.tsx` file, paste it into the new file.
-
-2. Within the newly created `src/components/UserNavHeader.tsx` file, adjust the static value (in our case, `22px`) according to the width of your logo in the `padding-inline` property. If you want to modify any other styles, feel free to do so within the `StyledNavHeader` component in this file itself.
-
-3. After making the necessary changes, import the `src/components/UserNavHeader.tsx` file in the `src/components/layout/vertical/Navigation.tsx` file and replace the existing `NavHeader` component with the newly created `UserNavHeader` component.
-
-4. Similarly, for the horizontal layout, import the `src/components/UserNavHeader.tsx` file in the `src/components/layout/horizontal/VerticalNavContent.tsx` file and replace the existing `NavHeader` component with the newly created `UserNavHeader` component.
-
-That's it, now you will be able to see the updated logo in your application along with the logo transition.

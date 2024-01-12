@@ -24,6 +24,7 @@ Before checking folder structure it is better you know some stuff related to fol
 ├── src
 │   ├── @core                           -> Template's core files
 │   ├── @layouts                        -> Template's layout files
+│   ├── @menu                           -> Template's menu files
 │   ├── app                             -> App router to handle the template's routings
 │   ├── assets                          -> Static assets, like Svg
 │   ├── components                      -> Reusable components for the users
@@ -35,7 +36,7 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   ├── navigation                  -> Vertical & Horizontal static navigation menu data
 │   │   ├── translation                 -> Translation data for localization
 │   │   └── searchData.ts               -> Data related to search
-│   ├── lib                             -> 
+│   ├── libs                            -> 
 │   │   └── auth.ts                     -> Authentication using NextAuth.js
 │   ├── middleware.ts                   -> Middleware logic for Next.js
 │   ├── prisma                          -> Prisma ORM files, including database schema
@@ -44,11 +45,7 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   └── schema.prisma               -> Model and schema definitions for Prisma
 │   ├── types                           -> Type definitions
 │   ├── utils                           -> Utility functions
-│   │   ├── get-dictionary.ts           -> 
-│   │   ├── get-direction.ts            -> Util function to get the current direction
-│   │   ├── get-locale-path.ts          -> Util function to get the local along with the path
-│   │   ├── get-locale.ts               -> Util function to get the local
-│   │   └── menuUtils.tsx               -> Util functions for the Vertical & Horizontal menus
+│   │   └── get-dictionary.ts           -> Util function to get the locale dictionary
 │   └── views                           -> Files that are included in app folder
 ├── .editorconfig                       -> Configuration file for the editor
 ├── .env.example                        -> Example environment variables file
@@ -57,7 +54,6 @@ Before checking folder structure it is better you know some stuff related to fol
 ├── .npmrc                              -> Configuration for npm
 ├── .prettierrc.json                    -> Prettier configuration for code formatting
 ├── .stylelintrc.json                   -> Stylelint configuration for style files
-├── declarations.d.ts                   -> TypeScript declarations file
 ├── next.config.js                      -> Configuration file for Next.js
 ├── package.json                        -> Lists dependencies and project metadata
 ├── pnpm-lock.yaml                      -> Lock file for pnpm, ensuring consistent installations
@@ -119,3 +115,22 @@ Understanding the `src/@layout` folder will save your development time and you w
 | HorizontalLayout.tsx | Horizontal layout component |
 | LayoutWrapper.tsx | Wrapper component to conditionally render Vertical and Horizontal layout |
 | VerticalLayout.tsx | Vertical layout component |
+
+### Understanding the App Folder structure
+Understanding and Utilizing the App Directory, Learn the essentials of each component and file for effective customization and enhancement of your development.
+
+```plaintext
+app
+├── [lang]                      -> A dynamic folder for language-specific content, adaptable based on different
+|   |                              language codes.
+│   ├── (blank-layout-pages)    -> Contains pages that use a blank layout, typically for minimalistic pages like login
+│   ├── (dashboard)             -> Houses the main template pages, central to your admin interface
+│   ├── [...not-found]          -> A catch-all directory for handling 404 or 'page not found' scenarios
+│   ├── layout.tsx              -> The main layout component, which wraps all pages
+│   └── page.tsx                -> Manages authentication-based redirection for user access control
+├── api                         -> Central location for API-related scripts and services
+│   ├── auth                    -> Authentication-related scripts and services
+|   ├── fake db                 -> A mock database setup, usually for testing or development purposes
+│   └── login                   -> Specific scripts or functions related to the login process
+└── globals.css                 -> A CSS file that contains global styles applicable across the entire application
+```

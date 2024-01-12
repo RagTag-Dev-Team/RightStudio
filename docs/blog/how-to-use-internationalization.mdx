@@ -11,6 +11,9 @@ Master admin provides internationalization for navigation only. There might be a
     "helloWorld": "Hello World",
     "text": {
       "paragraph": "This is a paragraph"
+    },
+    "navigation": {
+      ...
     }
   }
   ```
@@ -20,6 +23,9 @@ Master admin provides internationalization for navigation only. There might be a
     "helloWorld": "Bonjour le monde",
     "text": {
       "paragraph": "C'est un paragraphe"
+    },
+    "navigation": {
+      ...
     }
   }
   ```
@@ -29,6 +35,9 @@ Master admin provides internationalization for navigation only. There might be a
     "helloWorld": "مرحبا بالعالم",
     "text": {
       "paragraph": "هذه فقرة"
+    },
+    "navigation": {
+      ...
     }
   }
   ```
@@ -37,19 +46,21 @@ Master admin provides internationalization for navigation only. There might be a
 
   ```jsx
   import { getDictionary } from '@/utils/get-dictionary'
-  import type { Locale } from '@/configs/i18n'
+  import type { Locale } from '@configs/i18n'
   ```
 
 5. You can now initialize the `getDictionary` and pass the locale as a parameter. This will return a promise which you can use to get the dictionary
 
   ```jsx
   // Type Imports
-  import type { Locale } from '@/configs/i18n'
+  import type { Locale } from '@configs/i18n'
 
   // Util Imports
   import { getDictionary } from '@/utils/get-dictionary'
 
   const Component = async ({ params }: { params: { lang: Locale } }) => {
+    
+    // getDictionary only called on the server side, calling it on the client side will throw an error
     const dictionary = await getDictionary(params.lang)
 
     return (
