@@ -23,6 +23,7 @@ import { i18n } from '@configs/i18n'
 import { getDictionary } from '@/utils/get-dictionary'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
+  // Vars
   const direction = i18n.langDirection[params.lang]
   const dictionary = await getDictionary(params.lang)
 

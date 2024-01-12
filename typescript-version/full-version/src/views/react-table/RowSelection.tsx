@@ -18,6 +18,9 @@ import styles from '@core/styles/table.module.css'
 // Data Imports
 import defaultData from './data'
 
+// Column Definitions
+const columnHelper = createColumnHelper<DataType>()
+
 const IndeterminateCheckbox = ({
   indeterminate,
   className = '',
@@ -42,8 +45,7 @@ const RowSelection = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(() => defaultData)
 
-  const columnHelper = createColumnHelper<DataType>()
-
+  // Hooks
   const columns = useMemo<ColumnDef<DataType, any>[]>(
     () => [
       {
@@ -93,7 +95,6 @@ const RowSelection = () => {
     []
   )
 
-  // Hooks
   const table = useReactTable({
     data,
     columns,

@@ -9,9 +9,9 @@ type ResponseUser = Omit<UserTable, 'password'>
 import { users } from './users'
 
 export async function POST(req: Request) {
+  // Vars
   const { email, password } = await req.json()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const user = users.find(u => u.email === email && u.password === password)
   let response: null | ResponseUser = null
 

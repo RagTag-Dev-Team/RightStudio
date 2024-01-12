@@ -53,6 +53,7 @@ interface EditableCellProps<TData extends RowData> {
 }
 
 const EditableCell = <TData extends RowData>({ getValue, row, column, table }: EditableCellProps<TData>) => {
+  // Vars
   const initialValue = getValue()
 
   // States

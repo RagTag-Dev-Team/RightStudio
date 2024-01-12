@@ -34,6 +34,9 @@ import styles from '@core/styles/table.module.css'
 // Data Imports
 import defaultData from './data'
 
+// Column Definitions
+const columnHelper = createColumnHelper<DataType>()
+
 declare module '@tanstack/table-core' {
   interface FilterFns {
     fuzzy: FilterFn<unknown>
@@ -87,10 +90,12 @@ const DebouncedInput = ({
 }
 
 const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<any> }) => {
+  // Vars
   const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id)
 
   const columnFilterValue = column.getFilterValue()
 
+  // Hooks
   const sortedUniqueValues = useMemo(
     () => (typeof firstValue === 'number' ? [] : Array.from(column.getFacetedUniqueValues().keys()).sort()),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,9 +142,10 @@ const KitchenSink = () => {
   // States
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState('')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [data, setData] = useState<DataType[]>(() => defaultData)
 
-  const columnHelper = createColumnHelper<DataType>()
-
+  // Hooks
   const columns = useMemo<ColumnDef<DataType, any>[]>(
     () => [
       columnHelper.accessor('fullName', {
@@ -166,9 +172,6 @@ const KitchenSink = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setData] = useState<DataType[]>(() => defaultData)
 
   const table = useReactTable({
     data,
