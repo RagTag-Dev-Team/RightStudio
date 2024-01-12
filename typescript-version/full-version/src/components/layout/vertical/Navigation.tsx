@@ -11,10 +11,12 @@ import VerticalMenu from './VerticalMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+import { useSettings } from '@core/hooks/useSettings'
 
 const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
+  const { updateSettings } = useSettings()
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -23,7 +25,9 @@ const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getD
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        {!(isCollapsed && !isHovered) && <NavCollapseIcons />}
+        {!(isCollapsed && !isHovered) && (
+          <NavCollapseIcons onClick={() => updateSettings({ layout: !isCollapsed ? 'collapsed' : 'vertical' })} />
+        )}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>
