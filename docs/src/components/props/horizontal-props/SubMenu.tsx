@@ -72,14 +72,6 @@ const SubMenuProps = () => {
         <td>-</td>
       </tr>
       <tr>
-        <td>aclProps</td>
-        <td>
-          <code>{'{ action: string; subject: string;}'}</code>
-        </td>
-        <td>Set permissions to access submenu</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>rootStyles</td>
         <td>
           <code>CSSObject</code>

@@ -32,13 +32,12 @@ const HorizontalNavProps = () => {
       <tr>
         <td>breakpoints</td>
         <td>
-          <code>
-            {
-              'breakpoints?: {xs?: string | sm?: string | md?: string | lg?: string | xl?: string | xxl?: string | always?: string }'
-            }
-          </code>
+          <code>{`Partial<typeof defaultBreakpoints>`}</code>
         </td>
-        <td>Set custom breakpoints when the sidebar should trigger responsiveness behavior</td>
+        <td>
+          Set custom breakpoints when the sidebar should trigger responsiveness
+          behavior
+        </td>
         <td>-</td>
       </tr>
       <tr>
@@ -62,17 +61,32 @@ const HorizontalNavProps = () => {
         <td>
           <code>
             {
-              '{ width?: number | string; backgroundColor?: string; backgroundImage?: string; customStyles?: CSSObject; }'
+              "{ width?: number; backgroundColor?: string; backgroundImage?: string; customStyles?: CSSObject; }"
             }
           </code>
         </td>
-        <td>Change the look of the Vertical navigation when breakpoint is reached</td>
         <td>
-          <code>{" width: '260px' "}</code>
+          Change the look of the Vertical navigation when breakpoint is reached
+        </td>
+        <td>
+          <code>{" width: {260} "}</code>
+        </td>
+      </tr>
+      <tr>
+        <td>verticalNavContent</td>
+        <td>
+          <code>{"{ ({ children }: ChildrenType) => JSX.Element }"}</code>
+        </td>
+        <td>
+          Change the content of the Vertical navigation when breakpoint is
+          reached
+        </td>
+        <td>
+          <code>{" width: {260} "}</code>
         </td>
       </tr>
     </>
-  )
-}
+  );
+};
 
-export default HorizontalNavProps
+export default HorizontalNavProps;

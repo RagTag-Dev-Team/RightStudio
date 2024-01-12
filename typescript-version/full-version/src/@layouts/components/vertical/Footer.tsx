@@ -30,6 +30,7 @@ const Footer = (props: Props) => {
   // Hooks
   const { settings } = useSettings()
 
+  // Vars
   const { footerContentWidth } = settings
 
   const footerDetached = themeConfig.footer.detached === true

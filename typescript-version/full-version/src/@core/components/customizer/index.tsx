@@ -143,6 +143,9 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
   const isBelowLgScreen = useMedia('(max-width: 1200px)', false)
   const isColorFromPrimaryConfig = primaryColorConfig.find(item => item.main === settings.primaryColor)
 
+  // Vars
+  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
+
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
@@ -174,8 +177,6 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.layout])
-
-  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
 
   return (
     !breakpointReached && (

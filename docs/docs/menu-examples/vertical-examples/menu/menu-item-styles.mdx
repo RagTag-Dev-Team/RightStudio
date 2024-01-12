@@ -14,16 +14,6 @@ The `menuItemStyles` prop allows you to customize the style of the menu items.
 ### Props
 
 ```ts noCopy
-type MenuItemStylesParams = {
-  level: number
-  disabled: boolean
-  active?: boolean
-  isSubmenu: boolean
-  open?: boolean
-}
-
-type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
-
 type MenuItemStyles = {
   root?: ElementStyles
   button?: ElementStyles
@@ -34,17 +24,17 @@ type MenuItemStyles = {
   subMenuContent?: ElementStyles
   subMenuExpandIcon?: ElementStyles
 }
+
+type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
+
+type MenuItemStylesParams = {
+  level: number
+  disabled: boolean
+  active?: boolean
+  isSubmenu: boolean
+  open?: boolean
+}
 ```
-
-The `MenuItemStylesParams` object contains the following properties:
-
-| Property  | Description                                                          |
-| --------- | -------------------------------------------------------------------- |
-| level     | The depth level of the menu item.                                    |
-| disabled  | Whether the menu item is disabled.                                   |
-| active    | Whether the menu item is active.                                     |
-| isSubmenu | Whether the menu item is a submenu.                                  |
-| open      | Whether the submenu associated with the menu item is open or closed. |
 
 The `MenuItemStyles` object allows you to customize the style of various elements within the menu item. Each property corresponds to a specific element and accepts a `CSSObject` that contains the styles.
 
@@ -58,6 +48,16 @@ The `MenuItemStyles` object allows you to customize the style of various element
 | icon              | The icon element of all the menu-items and submenus.     |
 | subMenuContent    | The content of sub menu element of all the submenus.     |
 | subMenuExpandIcon | The expand icon of sub menu element of all the submenus. |
+
+The `MenuItemStylesParams` object contains the following properties:
+
+| Property  | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| level     | The depth level of the menu item.                                    |
+| disabled  | Whether the menu item is disabled.                                   |
+| active    | Whether the menu item is active.                                     |
+| isSubmenu | Whether the menu item is a submenu.                                  |
+| open      | Whether the submenu associated with the menu item is open or closed. |
 
 You can customize these styles by providing a `CSSObject` with appropriate style properties.
 

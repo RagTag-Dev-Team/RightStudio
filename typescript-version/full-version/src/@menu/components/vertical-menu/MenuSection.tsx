@@ -19,7 +19,7 @@ import useVerticalMenu from '../../hooks/useVerticalMenu'
 // Util Imports
 import { menuClasses } from '../../utils/menuClasses'
 
-// Styled Components
+// Styled Component Imports
 import StyledMenuIcon from '../../styles/StyledMenuIcon'
 import StyledMenuPrefix from '../../styles/StyledMenuPrefix'
 import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
@@ -41,7 +41,6 @@ export type MenuSectionProps = Partial<ChildrenType> &
 
 type MenuSectionElement = keyof MenuSectionStyles
 
-// Styled Components
 const menuSectionWrapperStyles: CSSProperties = {
   display: 'inline-block',
   inlineSize: '100%',
@@ -61,7 +60,6 @@ const menuSectionContentStyles: CSSProperties = {
   overflow: 'hidden'
 }
 
-// Menu Section
 const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (props, ref) => {
   // Props
   const { children, icon, className, prefix, suffix, label, rootStyles, ...rest } = props

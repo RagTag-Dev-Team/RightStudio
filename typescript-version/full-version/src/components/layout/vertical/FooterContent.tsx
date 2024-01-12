@@ -20,6 +20,7 @@ const FooterContent = () => {
   const { isBreakpointReached: isVerticalBreakpointReached } = useVerticalNav()
   const { isBreakpointReached: isHorizontalBreakpointReached } = useHorizontalNav()
 
+  // Vars
   const isBreakpointReached =
     settings.layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
 

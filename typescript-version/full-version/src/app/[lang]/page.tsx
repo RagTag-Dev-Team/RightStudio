@@ -11,6 +11,7 @@ import type { Locale } from '@configs/i18n'
 import { authOptions } from '@/libs/auth'
 
 export default async function Page({ params }: { params: { lang: Locale } }) {
+  // Vars
   const locale = params.lang ? `/${params.lang}` : ''
 
   // Default redirect URL

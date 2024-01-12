@@ -4,7 +4,7 @@
 import NavToggle from '@components/layout/vertical/NavToggle'
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const Width = () => {
+const BackdropColor = () => {
   return (
     <div className='flex h-full' style={{ backgroundColor: 'lightblue' }}>
       <VerticalNav breakpoint='always' backdropColor='rgba(83, 83, 83, 0.5)'>
@@ -32,4 +32,4 @@ const Width = () => {
   )
 }
 
-export default Width
+export default BackdropColor

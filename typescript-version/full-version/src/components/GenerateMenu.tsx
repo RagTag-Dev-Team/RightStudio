@@ -5,11 +5,6 @@ import { useParams } from 'next/navigation'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
-
-// Config Imports
-import { i18n } from '@configs/i18n'
-
-// Type Imports
 import type {
   VerticalMenuDataType,
   VerticalSectionDataType,
@@ -23,6 +18,9 @@ import type {
 // Component Imports
 import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu/horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu/vertical-menu'
+
+// Config Imports
+import { i18n } from '@configs/i18n'
 
 const localizeUrl = (menuItem: VerticalMenuItemDataType, locale: string) => {
   const pathnameIsMissingLocale = i18n.locales.every(

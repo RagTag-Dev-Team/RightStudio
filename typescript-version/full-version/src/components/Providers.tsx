@@ -24,6 +24,7 @@ const Providers = (props: Props) => {
   // Props
   const { children, direction } = props
 
+  // Vars
   const mode = getMode()
   const settingsCookie = getSettingsFromCookie()
   const systemMode = getSystemMode()

@@ -49,6 +49,7 @@ const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
     }
   })
 
+  // Vars
   const Tag = tag || 'div'
 
   return (
@@ -67,6 +68,7 @@ const NavSearch = () => {
   const isSmallScreen = useMedia('(max-width: 600px)', false)
   const { lang: locale } = useParams()
 
+  // Vars
   // Search Actions Data with 'perform' method
   const searchActions = data.map(item => ({
     ...item,

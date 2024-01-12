@@ -81,6 +81,44 @@ const MenuProps = () => {
         </td>
       </tr>
       <tr>
+        <td>popoutMenuOffset</td>
+        <td>
+          <code>
+            {`{mainAxis?: number | ((params: { level?: number }) => number)
+               alignmentAxis?: number | ((params: { level?: number }) => number)
+                }`}
+          </code>
+        </td>
+        <td>Popout menu offset</td>
+        <td>
+          <code>-</code>
+        </td>
+      </tr>
+      <tr>
+        <td>verticalMenuProps</td>
+        <td>
+          <code>
+            {`{verticalMenuProps?: Pick<
+    VerticalMenuProps,
+    | 'transitionDuration'
+    | 'menuSectionStyles'
+    | 'menuItemStyles'
+    | 'subMenuOpenBehavior'
+    | 'renderExpandIcon'
+    | 'renderExpandedMenuItemIcon'
+    | 'textTruncate'
+    | 'rootStyles'>}`}
+          </code>
+        </td>
+        <td>
+          Props to be passed to the VerticalMenu component when the menu is
+          rendered vertically
+        </td>
+        <td>
+          <code>-</code>
+        </td>
+      </tr>
+      <tr>
         <td>rootStyles</td>
         <td>
           <code>CSSObject</code>

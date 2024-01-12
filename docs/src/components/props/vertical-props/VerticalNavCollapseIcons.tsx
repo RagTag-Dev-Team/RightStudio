@@ -25,6 +25,22 @@ const VerticalNavCollapseIcons = () => {
         <td>Unlocked icon when menu is collapsed and unlocked/hovered</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>onClick</td>
+        <td>
+          <code>{'() => void'}</code>
+        </td>
+        <td>Callback invoked when the collapse icon is clicked</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>onClose</td>
+        <td>
+          <code>{'() => void'}</code>
+        </td>
+        <td>Callback invoked when the close icon is clicked</td>
+        <td>-</td>
+      </tr>
     </>
   )
 }

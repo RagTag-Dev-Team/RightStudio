@@ -22,6 +22,7 @@ const LayoutContent = ({ children }: ChildrenType) => {
   // Hooks
   const { settings } = useSettings()
 
+  // Vars
   const contentCompact = settings.contentWidth === 'compact'
   const contentWide = settings.contentWidth === 'wide'
 

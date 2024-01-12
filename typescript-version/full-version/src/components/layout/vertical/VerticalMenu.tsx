@@ -34,6 +34,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
   const params = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
+  // Vars
   const { lang: locale, id } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar

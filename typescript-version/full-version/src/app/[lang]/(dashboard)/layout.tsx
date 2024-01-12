@@ -28,6 +28,7 @@ import { getDictionary } from '@/utils/get-dictionary'
 import { getMode, getSettingsFromCookie, getSystemMode } from '@core/server/actions'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
+  // Vars
   const direction = i18n.langDirection[params.lang]
   const dictionary = await getDictionary(params.lang)
   const mode = getMode()

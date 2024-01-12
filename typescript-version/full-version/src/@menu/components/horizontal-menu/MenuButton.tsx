@@ -21,6 +21,7 @@ type MenuButtonStylesProps = Partial<ChildrenType> & {
 }
 
 export const menuButtonStyles = (props: MenuButtonStylesProps) => {
+  // Props
   const { level, disabled, children } = props
 
   return css({

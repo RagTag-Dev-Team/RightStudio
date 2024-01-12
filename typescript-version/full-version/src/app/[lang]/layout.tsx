@@ -23,6 +23,7 @@ export const metadata = {
 }
 
 const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
+  // Vars
   const direction = i18n.langDirection[params.lang]
 
   return (

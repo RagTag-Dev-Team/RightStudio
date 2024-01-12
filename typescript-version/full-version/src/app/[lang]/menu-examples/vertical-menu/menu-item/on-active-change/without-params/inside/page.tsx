@@ -3,16 +3,16 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem } from '@menu/vertical-menu'
 
-const OnActiveChange = () => {
+const OnActiveChangeWithOutParams = () => {
   return (
     <div className='flex'>
       <VerticalNav customBreakpoint='200px'>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
-          <MenuItem href='/menu-examples/vertical-menu/menu-item/on-active-change/without-params'>
+          <MenuItem href='/en/menu-examples/vertical-menu/menu-item/on-active-change/without-params'>
             Analytics Dashboard
           </MenuItem>
           <MenuItem
-            href='/menu-examples/vertical-menu/menu-item/on-active-change/without-params/inside'
+            href='/en/menu-examples/vertical-menu/menu-item/on-active-change/without-params/inside'
             onActiveChange={() => {
               console.log('onActiveChange called')
             }}
@@ -31,4 +31,4 @@ const OnActiveChange = () => {
   )
 }
 
-export default OnActiveChange
+export default OnActiveChangeWithOutParams

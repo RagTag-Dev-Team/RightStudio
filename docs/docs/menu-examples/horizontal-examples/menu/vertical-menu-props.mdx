@@ -1,0 +1,39 @@
+---
+hide_table_of_contents: true
+---
+
+import TsToJsCodeSnippet from '@docComponents//ts-js-code'
+import IframeWindow from '@docComponents//browser-window/IframeWindow.tsx'
+import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/vertical-menu-props/page'
+
+# Vertical Menu Props
+
+:::warning
+Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
+:::
+
+The `vertical-menu-props` prop is used to change the appearance of the vertical navigation menu when breakpoint is reached.
+
+### Props
+
+```ts noCopy
+verticalMenuProps?: Pick<
+    VerticalMenuProps,
+    | 'transitionDuration'
+    | 'menuSectionStyles'
+    | 'menuItemStyles'
+    | 'subMenuOpenBehavior'
+    | 'renderExpandIcon'
+    | 'renderExpandedMenuItemIcon'
+    | 'textTruncate'
+    | 'rootStyles'
+  >
+```
+
+### Example
+
+<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/vertical-menu-props' />
+
+### Source Code
+
+<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

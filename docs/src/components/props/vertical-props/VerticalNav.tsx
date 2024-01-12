@@ -2,33 +2,23 @@ const VerticalNavProps = () => {
   return (
     <>
       <tr>
-        <td>defaultCollapsed</td>
-        <td>
-          <code>boolean</code>
-        </td>
-        <td>Initial collapsed status</td>
-        <td>
-          <code>false</code>
-        </td>
-      </tr>
-      <tr>
         <td>width</td>
         <td>
-          <code>number | string</code>
+          <code>number</code>
         </td>
         <td>Width of the sidebar</td>
         <td>
-          <code>260px</code>
+          <code>{260}</code>
         </td>
       </tr>
       <tr>
         <td>collapsedWidth</td>
         <td>
-          <code>number | string</code>
+          <code>number</code>
         </td>
         <td>Width of the sidebar on collapsed state</td>
         <td>
-          <code>80px</code>
+          <code>{80}</code>
         </td>
       </tr>
       <tr>
@@ -44,7 +34,7 @@ const VerticalNavProps = () => {
       <tr>
         <td>breakpoints</td>
         <td>
-          <code>Breakpoints</code>
+          <code>{`Partial<typeof defaultBreakpoints>`}</code>
         </td>
         <td>Set custom widths for each breakpoint</td>
         <td>-</td>

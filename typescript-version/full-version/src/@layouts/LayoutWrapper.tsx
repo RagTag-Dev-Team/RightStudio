@@ -10,7 +10,6 @@ import type { SystemMode } from '@core/types'
 import { useSettings } from '@core/hooks/useSettings'
 import useLayoutInit from '@core/hooks/useLayoutInit'
 
-// Type
 type LayoutWrapperProps = {
   systemMode: SystemMode
   verticalLayout: ReactElement

@@ -8,6 +8,7 @@ import type { HorizontalMenuContextProps } from '../components/horizontal-menu/M
 import { HorizontalMenuContext } from '../components/horizontal-menu/Menu'
 
 const useHorizontalMenu = (): HorizontalMenuContextProps => {
+  // Hooks
   const context = useContext(HorizontalMenuContext)
 
   if (context === undefined) {

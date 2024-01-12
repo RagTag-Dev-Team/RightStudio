@@ -19,7 +19,6 @@ const LoginForm = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  // Handlers
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 

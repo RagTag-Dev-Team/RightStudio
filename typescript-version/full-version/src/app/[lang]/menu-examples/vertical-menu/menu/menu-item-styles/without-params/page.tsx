@@ -3,7 +3,7 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
-const MenuItemStyles = () => {
+const MenuItemStylesWithOutParams = () => {
   return (
     <VerticalNav customBreakpoint='200px'>
       <Menu
@@ -39,4 +39,4 @@ const MenuItemStyles = () => {
   )
 }
 
-export default MenuItemStyles
+export default MenuItemStylesWithOutParams

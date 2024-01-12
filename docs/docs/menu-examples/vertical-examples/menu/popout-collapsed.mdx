@@ -8,6 +8,10 @@ import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/me
 
 # Popout When Collapsed
 
+:::danger Warning
+Please note that the `defaultCollapsed` prop is meant for internal use only. It is not recommended to use this prop in your application because the layout configuration will always override the menu configuration. If you want to `collapse` the menu, please set the `layout` prop to `collapsed` in the `src/config/themeConfig.ts` file.
+:::
+
 When the navigation sidebar is collapsed, the `popoutCollapsed` prop allows submenus to pop out and be displayed on hover or click. This is useful when the menu is collapsed and you want to display the submenu items. If you want to toggle the submenu items on click (default is hover), please refer to [this](/docs/menu-examples/vertical-examples/menu/trigger-popout) example.
 
 ### Props

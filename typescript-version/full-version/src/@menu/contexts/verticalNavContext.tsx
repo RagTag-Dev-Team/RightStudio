@@ -33,6 +33,7 @@ export const VerticalNavProvider = ({ children }: ChildrenType) => {
   // States
   const [verticalNavState, setVerticalNavState] = useState<VerticalNavState>()
 
+  // Hooks
   const updateVerticalNavState = useCallback((values: Partial<VerticalNavState>) => {
     setVerticalNavState(prevState => ({
       ...prevState,

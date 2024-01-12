@@ -4,8 +4,6 @@
 import { useColorScheme } from '@mui/material/styles'
 
 // Type Imports
-import Logo from '@components/layout/shared/Logo'
-
 import type { getDictionary } from '@/utils/get-dictionary'
 import type { Settings } from '@core/contexts/settingsContext'
 import type { Mode, SystemMode } from '@core/types'
@@ -13,6 +11,7 @@ import type { Mode, SystemMode } from '@core/types'
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
 import VerticalMenu from './VerticalMenu'
+import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -34,7 +33,7 @@ const Navigation = (props: Props) => {
 
   // Hooks
   const { isHovered, isCollapsed } = useVerticalNav()
-  const { settings } = useSettings()
+  const { updateSettings, settings } = useSettings()
   const { mode: muiMode, systemMode: muiSystemMode } = useColorScheme()
 
   const isServer = typeof window === 'undefined'
@@ -66,7 +65,9 @@ const Navigation = (props: Props) => {
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
         <Logo />
-        {!(isCollapsed && !isHovered) && <NavCollapseIcons />}
+        {!(isCollapsed && !isHovered) && (
+          <NavCollapseIcons onClick={() => updateSettings({ layout: !isCollapsed ? 'collapsed' : 'vertical' })} />
+        )}
       </NavHeader>
       <VerticalMenu dictionary={dictionary} />
     </VerticalNav>

@@ -8,6 +8,10 @@ import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/
 
 # Breakpoint
 
+:::warning
+Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
+:::
+
 The `breakpoint` prop is used to determine when the navigation menu should trigger responsive behavior. The responsive behavior typically involves hiding the navigation menu and showing a hamburger menu button instead. When the hamburger menu button is clicked, the navigation menu is shown as an overlay. The default value for the `breakpoint` prop is `lg`, which means that the navigation menu will be hidden when the screen size is less than 1200px. The `breakpoint` prop can be set to `always` to always show the hamburger menu button, regardless of the screen size.
 
 ### Props

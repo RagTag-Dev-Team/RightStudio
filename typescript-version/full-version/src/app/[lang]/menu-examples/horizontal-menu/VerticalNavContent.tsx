@@ -6,7 +6,6 @@ import type { ChildrenType } from '@core/types'
 
 // Component Imports
 import NavHeader from '@menu/components/vertical-menu/NavHeader'
-import Logo from '@components/layout/shared/Logo'
 import NavCollapseIcons from '@menu/components/vertical-menu/NavCollapseIcons'
 
 // Hook Imports
@@ -19,13 +18,12 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
-  // Vars
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
   return (
     <>
       <NavHeader>
-        <Logo />
+        Logo
         <NavCollapseIcons />
       </NavHeader>
       <ScrollWrapper

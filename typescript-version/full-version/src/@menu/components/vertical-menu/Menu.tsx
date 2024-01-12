@@ -30,13 +30,12 @@ import { menuClasses } from '../../utils/menuClasses'
 // Styled Component Imports
 import StyledVerticalMenu from '../../styles/vertical/StyledVerticalMenu'
 
-// Styles
+// Style Imports
 import styles from '../../styles/styles.module.css'
 
 // Default Config Imports
 import { verticalSubMenuToggleDuration } from '../../defaultConfigs'
 
-// Menu Section Styles Type
 export type MenuSectionStyles = {
   root?: CSSObject
   label?: CSSObject

@@ -30,6 +30,7 @@ const Navbar = (props: Props) => {
   // Hooks
   const { settings } = useSettings()
 
+  // Vars
   const { navbarContentWidth } = settings
 
   const headerFixed = themeConfig.navbar.type === 'fixed'

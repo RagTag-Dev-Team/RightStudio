@@ -13,7 +13,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
-const TriggerPopOut = () => {
+const TriggerPopout = () => {
   const {
     isToggled,
     isCollapsed,
@@ -105,4 +105,4 @@ const TriggerPopOut = () => {
   )
 }
 
-export default TriggerPopOut
+export default TriggerPopout

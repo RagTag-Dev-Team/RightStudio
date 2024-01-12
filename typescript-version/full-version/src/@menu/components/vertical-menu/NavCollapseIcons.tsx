@@ -10,7 +10,6 @@ import useVerticalNav from '../../hooks/useVerticalNav'
 import CloseIcon from '../../svg/Close'
 import RadioCircleIcon from '../../svg/RadioCircle'
 import RadioCircleMarkedIcon from '../../svg/RadioCircleMarked'
-import { useSettings } from '@core/hooks/useSettings'
 
 type NavCollapseIconsProps = HTMLAttributes<HTMLSpanElement> & {
   closeIcon?: ReactElement
@@ -26,7 +25,6 @@ const NavCollapseIcons = (props: NavCollapseIconsProps) => {
 
   // Hooks
   const { isCollapsed, collapseVerticalNav, isBreakpointReached, toggleVerticalNav } = useVerticalNav()
-  const { updateSettings } = useSettings()
 
   // Handle Lock / Unlock Icon Buttons click
   const handleClick = (action: 'lock' | 'unlock') => {
@@ -35,7 +33,6 @@ const NavCollapseIcons = (props: NavCollapseIconsProps) => {
 
     // Tell the verticalNav to lock or unlock
     collapseVerticalNav(collapse)
-    updateSettings({ layout: collapse ? 'collapsed' : 'vertical' })
 
     // Call onClick function if passed
     onClick && onClick()

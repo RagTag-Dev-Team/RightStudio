@@ -31,6 +31,7 @@ const StyledNavHeader = styled.div<StyledNavHeaderProps>`
 `
 
 const NavHeader = ({ children }: ChildrenType) => {
+  // Hooks
   const { isHovered, isCollapsed, collapsedWidth, transitionDuration } = useVerticalNav()
 
   return (

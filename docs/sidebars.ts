@@ -156,7 +156,6 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "menu-examples/vertical-examples/vertical-nav/basic",
-            "menu-examples/vertical-examples/vertical-nav/default-collapsed",
             "menu-examples/vertical-examples/vertical-nav/width",
             "menu-examples/vertical-examples/vertical-nav/collapsed-width",
             "menu-examples/vertical-examples/vertical-nav/breakpoint",
@@ -329,6 +328,7 @@ const sidebars: SidebarsConfig = {
             "menu-examples/horizontal-examples/menu/expand-icon",
             "menu-examples/horizontal-examples/menu/expanded-menu-item-icon",
             "menu-examples/horizontal-examples/menu/text-truncate",
+            "menu-examples/horizontal-examples/menu/vertical-menu-props",
             "menu-examples/horizontal-examples/menu/root-styles",
           ],
         },

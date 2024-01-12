@@ -8,6 +8,10 @@ import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/me
 
 # Collapsed + Hover
 
+:::danger Warning
+Please note that the `defaultCollapsed` prop is meant for internal use only. It is recommended not to use this prop in your project because the settings configuration will always override the `defaultCollapsed` prop. If you want to `collapse` the menu, set the value of `layout` to `collapsed` in the `src/config/themeConfig.ts` file.
+:::
+
 The `defaultCollapsed` prop is used to set the menu to be collapsed by default, and it will expand on hover.
 
 ### Props

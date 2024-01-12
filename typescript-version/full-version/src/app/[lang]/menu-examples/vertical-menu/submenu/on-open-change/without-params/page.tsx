@@ -3,7 +3,7 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const WithOutParams = () => {
+const SubMenuWithOutParams = () => {
   return (
     <div className='flex'>
       <VerticalNav customBreakpoint='200px'>
@@ -36,4 +36,4 @@ const WithOutParams = () => {
   )
 }
 
-export default WithOutParams
+export default SubMenuWithOutParams
