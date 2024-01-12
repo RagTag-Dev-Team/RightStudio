@@ -7,15 +7,14 @@ import classnames from 'classnames'
 import NavToggle from '@components/layout/horizontal/NavToggle'
 import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
 import ModeSwitcher from '@layouts/components/ModeSwitcher'
-import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+import VerticalNavContent from '../../VerticalNavContent'
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Icon Imports
 import Search from '@layouts/svg/Search'
-import Logo from '@components/layout/shared/Logo'
 
 // Style Imports
 import styles from '../../styles.module.css'
@@ -28,7 +27,7 @@ const HorizontalNavbar = () => {
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <div className='flex w-full items-center justify-between'>
         <NavToggle />
-        {!isBreakpointReached && <Logo />}
+        {!isBreakpointReached && 'Logo'}
         <HorizontalNav hideMenu switchToVertical verticalNavContent={VerticalNavContent}>
           <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
             <MenuItem>Home</MenuItem>

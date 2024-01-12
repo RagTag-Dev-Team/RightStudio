@@ -8,7 +8,11 @@ import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/
 
 # Hide Menu
 
-The `hidemenu` props can be used to hide the navigation menu when breakpoint size is reached during window resize. This props is only applicable to horizontal navigation menu. When the breakpoint is reached, the horizontal navigation menu will be hidden, and a hamburger icon will be displayed. Clicking on the hamburger icon will display the vertical navigation sidebar.
+:::warning
+Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
+:::
+
+The `hidemenu` props can be used to hide the navigation menu when breakpoint size is reached during window resize. This props is only applicable to horizontal navigation menu. When the breakpoint is reached, the horizontal navigation menu will be hidden, and a hamburger icon will be displayed. Clicking on the hamburger icon will display the vertical menu sidebar.
 
 For implementing this functionality, You need to pass the `hidemenu` prop to the horizontal navigation menu component. Also you need to pass the `switchToVertical` and `verticalNavContent` props to the other horizontal navigation menu components. The `switchToVertical` prop will be used to switch to vertical menu when the hamburger icon is clicked. The `verticalNavContent` prop will be used to display the vertical navigation sidebar.
 

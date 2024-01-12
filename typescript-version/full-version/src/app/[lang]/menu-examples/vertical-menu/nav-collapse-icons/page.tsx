@@ -6,9 +6,6 @@ import NavCollapseIcons from '@menu/components/vertical-menu/NavCollapseIcons'
 import NavToggle from '@components/layout/vertical/NavToggle'
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-// Icon Imports
-import Logo from '@components/layout/shared/Logo'
-
 // Hook
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
@@ -19,8 +16,14 @@ const NavCollapseIcon = () => {
     <div className='flex'>
       <VerticalNav customBreakpoint='1100px'>
         <NavHeader>
-          {!isBreakpointReached && <Logo />}
-          <NavCollapseIcons unlockedIcon={<>{'>'}</>} lockedIcon={<>{'<'}</>} closeIcon={<>X</>} />
+          {!isBreakpointReached && 'Logo'}
+          <NavCollapseIcons
+            unlockedIcon={<>{'>'}</>}
+            lockedIcon={<>{'<'}</>}
+            closeIcon={<>X</>}
+            onClick={() => console.log('clicked')}
+            onClose={() => console.log('closed')}
+          />
         </NavHeader>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>

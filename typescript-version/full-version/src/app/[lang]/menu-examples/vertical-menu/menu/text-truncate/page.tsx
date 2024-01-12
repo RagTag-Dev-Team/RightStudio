@@ -6,7 +6,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 const TextTruncate = () => {
   return (
     <VerticalNav customBreakpoint='200px'>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px', maxInlineSize: '250px' } }}>
+      <Menu menuItemStyles={{ button: { paddingBlock: '12px', maxInlineSize: '300px' } }}>
         <MenuSection label='Dashboards & Apps Dashboards & Apps'>
           <SubMenu label='Dashboards Dashboards Dashboards '>
             <MenuItem>Analytics</MenuItem>

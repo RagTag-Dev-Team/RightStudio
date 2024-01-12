@@ -6,7 +6,7 @@ import { useState } from 'react'
 // Component imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const WithParams = () => {
+const SubMenuWithParams = () => {
   // States
   const [text, setText] = useState('closed')
 
@@ -49,4 +49,4 @@ const WithParams = () => {
   )
 }
 
-export default WithParams
+export default SubMenuWithParams

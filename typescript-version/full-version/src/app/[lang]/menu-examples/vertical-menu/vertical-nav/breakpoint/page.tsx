@@ -4,7 +4,7 @@
 import NavToggle from '@components/layout/vertical/NavToggle'
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const BreakPoint = () => {
+const Breakpoint = () => {
   return (
     <div className='flex'>
       <VerticalNav breakpoint='md'>
@@ -32,4 +32,4 @@ const BreakPoint = () => {
   )
 }
 
-export default BreakPoint
+export default Breakpoint

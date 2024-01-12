@@ -6,7 +6,7 @@ import { useState } from 'react'
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const CollapsedHover = () => {
+const CollapsedPopout = () => {
   // States
   const [trigger, setTrigger] = useState<'click' | 'hover'>('click')
 
@@ -58,4 +58,4 @@ const CollapsedHover = () => {
   )
 }
 
-export default CollapsedHover
+export default CollapsedPopout

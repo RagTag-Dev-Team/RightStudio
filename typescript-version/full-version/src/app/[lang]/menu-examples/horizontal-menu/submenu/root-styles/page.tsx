@@ -10,7 +10,7 @@ import { menuClasses } from '@menu/utils/menuClasses'
 // Style Imports
 import styles from '../../styles.module.css'
 
-const Basic = () => {
+const RootStyles = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav>
@@ -47,4 +47,4 @@ const Basic = () => {
   )
 }
 
-export default Basic
+export default RootStyles

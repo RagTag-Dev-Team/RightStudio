@@ -2,8 +2,8 @@
 
 // Comopoent Imports
 import NavToggle from '@components/layout/vertical/NavToggle'
-import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+import VerticalNavContent from '../../../menu-examples/horizontal-menu/VerticalNavContent'
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'

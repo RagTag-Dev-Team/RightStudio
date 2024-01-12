@@ -8,20 +8,27 @@ import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 import VerticalNavContent from '../../VerticalNavContent'
 
-// Styled Components Imports
+// Style Imports
 import styles from '../../styles.module.css'
 
-const Breakpoints = () => {
+const VerticalMenuProps = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <NavToggle />
-      <HorizontalNav
-        switchToVertical
-        breakpoints={{ lg: '1000px' }}
-        verticalNavContent={VerticalNavContent}
-        verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
-      >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <HorizontalNav switchToVertical breakpoint='md' verticalNavContent={VerticalNavContent}>
+        <Menu
+          menuItemStyles={{ button: { paddingBlock: '12px' } }}
+          verticalMenuProps={{
+            menuItemStyles: { label: { color: '#1058e9' } },
+            menuSectionStyles: { label: { color: '#ec0e0e' } },
+            renderExpandedMenuItemIcon: { icon: <>🥶</> },
+            renderExpandIcon: ({ open }) => <>{open ? '🔥' : '💧'}</>,
+            rootStyles: { paddingBlock: '12px' },
+            subMenuOpenBehavior: 'accordion',
+            textTruncate: true,
+            transitionDuration: 500
+          }}
+        >
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -42,4 +49,4 @@ const Breakpoints = () => {
   )
 }
 
-export default Breakpoints
+export default VerticalMenuProps

@@ -3,7 +3,7 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
-const Width = () => {
+const CollapsedWidth = () => {
   return (
     <VerticalNav customBreakpoint='200px' defaultCollapsed collapsedWidth={120}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
@@ -26,4 +26,4 @@ const Width = () => {
   )
 }
 
-export default Width
+export default CollapsedWidth

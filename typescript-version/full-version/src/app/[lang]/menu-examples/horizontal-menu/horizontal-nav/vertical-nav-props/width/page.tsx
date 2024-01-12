@@ -5,8 +5,8 @@ import classnames from 'classnames'
 
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
-import VerticalNavContent from '@components/layout/horizontal/VerticalNavContent'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+import VerticalNavContent from '../../../VerticalNavContent'
 
 // Style Imports
 import styles from '../../../styles.module.css'

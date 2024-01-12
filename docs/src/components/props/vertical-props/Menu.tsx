@@ -16,7 +16,11 @@ const MenuProps = () => {
       <tr>
         <td>popoutMenuOffset</td>
         <td>
-          <code>PopoutMenuOffset</code>
+          <code>
+            {`{mainAxis?: number | ((params: { level?: number }) => number)
+               alignmentAxis?: number | ((params: { level?: number }) => number)
+                }`}
+          </code>
         </td>
         <td>Popout menu offset</td>
         <td>
