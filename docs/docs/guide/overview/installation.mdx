@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
@@ -25,6 +29,16 @@ Before installing the `node_modules`, make sure you have files starting with a d
 
 - After downloading zip, copy this zip to your desired location and then unzip it. Do not unzip first and then copy files to another location, it may not be able to run the template due to missing hidden files not copied over.
 - In the uncompressed folder, you will find the `typescript-version` and `javascript-version` folders which contain the `full-version` & `starter-kit` folders. Open the one you want to get started with in your code editor.
+
+To configure your environment variables, follow these steps:
+
+1. Copy the `.env.example` file and rename it to `.env`.
+2. Fill in the required values in the `.env` file.
+3. Make sure to write your secret in the `NEXTAUTH_SECRET` variable in the `.env` file. You may generate your secret by referring to [this](https://next-auth.js.org/configuration/options#secret) link.
+4. If you are using google authentication, make sure to mention your `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in the `.env` file.
+
+By following these steps, you can set up and manage your environment variables effectively.
+
 - Run the below command in the console:
 
   <Tabs
