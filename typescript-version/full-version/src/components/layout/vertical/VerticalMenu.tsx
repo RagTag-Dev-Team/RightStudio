@@ -7,8 +7,6 @@ import { useParams } from 'next/navigation'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import LinkExternalIcon from '@layouts/svg/LinkExternal'
-
 import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports
@@ -17,6 +15,7 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -29,6 +28,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
   const params = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
+  // Vars
   const { lang: locale, id } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar

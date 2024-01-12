@@ -37,6 +37,7 @@ const getFilteredResults = (results: Results) => {
 }
 
 const SearchResults = () => {
+  // Vars
   let query: string | undefined
 
   // Hooks

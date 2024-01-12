@@ -44,6 +44,9 @@ import type { ChildrenType, RootStylesType, SubMenuItemElement } from '../../typ
 import SubMenuContent from './SubMenuContent'
 import MenuButton, { menuButtonStyles } from './MenuButton'
 
+// Icon Imports
+import ChevronRight from '../../svg/ChevronRight'
+
 // Hook Imports
 import useVerticalNav from '../../hooks/useVerticalNav'
 import useVerticalMenu from '../../hooks/useVerticalMenu'
@@ -59,9 +62,6 @@ import StyledMenuSuffix from '../../styles/StyledMenuSuffix'
 import StyledVerticalNavExpandIcon, {
   StyledVerticalNavExpandIconWrapper
 } from '../../styles/vertical/StyledVerticalNavExpandIcon'
-
-// Icon Imports
-import ChevronRight from '../../svg/ChevronRight'
 
 export type SubMenuProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
@@ -150,6 +150,7 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
   const id = useId()
   const pathname = usePathname()
   const { isCollapsed, isPopoutWhenCollapsed, isHovered, isBreakpointReached } = useVerticalNav()
+  const tree = useFloatingTree()
 
   const {
     browserScroll,
@@ -165,9 +166,8 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     textTruncate
   } = useVerticalMenu()
 
-  // Floating UI Hooks
-  const tree = useFloatingTree()
-
+  // Vars
+  // Filter out falsy values from children
   const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
 
   const mainAxisOffset =

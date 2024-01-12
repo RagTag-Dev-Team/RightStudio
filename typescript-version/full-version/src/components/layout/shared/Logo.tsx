@@ -40,10 +40,10 @@ const Logo = () => {
   // Hooks
   const { isHovered, isCollapsed, transitionDuration } = useVerticalNav()
   const { settings } = useSettings()
-
-  const { layout } = settings
-
   const { lang: locale } = useParams()
+
+  // Vars
+  const { layout } = settings
 
   useEffect(() => {
     if (layout === 'horizontal' || !isCollapsed) {

@@ -69,6 +69,9 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
   const isMobileScreen = useMedia('(max-width: 600px)', false)
   const isBelowLgScreen = useMedia('(max-width: 1200px)', false)
 
+  // Vars
+  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
+
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
@@ -92,8 +95,6 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.layout])
-
-  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
 
   return (
     !breakpointReached && (

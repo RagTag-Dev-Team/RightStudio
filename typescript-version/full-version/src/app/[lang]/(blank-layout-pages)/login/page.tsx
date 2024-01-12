@@ -1,7 +1,7 @@
 // Next Imports
 import type { Metadata } from 'next'
 
-// Components Imports
+// Component Imports
 import LoginForm from '@views/login/LoginForm'
 
 export const metadata: Metadata = {

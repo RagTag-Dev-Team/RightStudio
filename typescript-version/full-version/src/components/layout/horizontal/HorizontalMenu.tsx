@@ -5,8 +5,6 @@
 import { useParams } from 'next/navigation'
 
 // Type Imports
-import LinkExternalIcon from '@layouts/svg/LinkExternal'
-
 import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports
@@ -16,6 +14,7 @@ import VerticalNavContent from './VerticalNavContent'
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Icon Imports
+import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'
@@ -24,6 +23,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
   // Hooks
   const params = useParams()
 
+  // Vars
   const { lang: locale, id } = params
 
   return (

@@ -3,13 +3,12 @@
 // Third-party Imports
 import classnames from 'classnames'
 
-// Components Imports
+// Component Imports
 import NavToggle from './NavToggle'
 import Logo from '@components/layout/shared/Logo'
 import NavSearch from '@components/layout/shared/search'
 import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
-import ModeSwitcher from '@layouts/components/ModeSwitcher'
-import UserDetails from '@layouts/components/UserDetails'
+import UserDetails from '@components/layout/shared/UserDetails'
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
@@ -34,7 +33,6 @@ const NavbarContent = () => {
       <div className='flex items-center gap-4'>
         <NavSearch />
         <LanguageDropdown />
-        <ModeSwitcher />
         <UserDetails />
         {/* Language Dropdown, Notification Dropdown, quick access menu dropdown, user dropdown will be placed here */}
       </div>

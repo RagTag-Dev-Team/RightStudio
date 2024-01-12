@@ -87,6 +87,7 @@ const SearchResultItem = forwardRef(
     },
     ref: Ref<HTMLDivElement>
   ) => {
+    // Hooks
     const ancestors = useMemo(() => {
       if (!currentRootActionId) return action.ancestors
 

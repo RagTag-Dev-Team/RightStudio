@@ -33,7 +33,6 @@ import styles from '../../styles/vertical/verticalNavBgImage.module.css'
 // Default Config Imports
 import { defaultBreakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
 
-// Define Types
 export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   width?: VerticalNavState['width']
   collapsedWidth?: VerticalNavState['collapsedWidth']
@@ -49,7 +48,6 @@ export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   customStyles?: CSSObject
 }
 
-// VerticalNav Component
 const VerticalNav = (props: VerticalNavProps) => {
   // Props
   const {
@@ -70,13 +68,17 @@ const VerticalNav = (props: VerticalNavProps) => {
     ...rest
   } = props
 
+  // Vars
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
+
+  // Refs
+  const verticalNavCollapsedRef = useRef(false)
+
   // Hooks
   const {
     updateVerticalNavState,
     isCollapsed: isCollapsedContext,
     width: widthContext,
-
-    // collapsedWidth: collapsedWidthContext,
     isBreakpointReached: isBreakpointReachedContext,
     isToggled: isToggledContext,
     isHovered: isHoveredContext,
@@ -86,11 +88,6 @@ const VerticalNav = (props: VerticalNavProps) => {
     transitionDuration: transitionDurationContext,
     isPopoutWhenCollapsed: isPopoutWhenCollapsedContext
   } = useVerticalNav()
-
-  // Refs
-  const verticalNavCollapsedRef = useRef(false)
-
-  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))

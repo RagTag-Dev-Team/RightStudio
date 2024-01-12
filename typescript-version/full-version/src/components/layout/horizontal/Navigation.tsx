@@ -46,6 +46,7 @@ const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getD
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
 
+  // Vars
   const headerContentCompact = settings.navbarContentWidth === 'compact'
 
   return (

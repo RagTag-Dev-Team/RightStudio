@@ -153,6 +153,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
 
   // Hooks
   const pathname = usePathname()
+  const tree = useFloatingTree()
+  const nodeId = useFloatingNodeId()
+  const parentId = useFloatingParentNodeId()
 
   const {
     triggerPopout,
@@ -165,17 +168,9 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     textTruncate
   } = useHorizontalMenu()
 
-  // Floating UI Hooks
-  const tree = useFloatingTree()
-  const nodeId = useFloatingNodeId()
-  const parentId = useFloatingParentNodeId()
-
+  // Vars
   // Filter out falsy values from children
   const childNodes = Children.toArray(children).filter(Boolean) as [ReactElement<SubMenuProps | MenuItemProps>]
-
-  useEffect(() => {
-    dir.current = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
-  }, [])
 
   const mainAxisOffset =
     popoutMenuOffset &&
@@ -188,6 +183,10 @@ const SubMenu: ForwardRefRenderFunction<HTMLLIElement, SubMenuProps> = (props, r
     (typeof popoutMenuOffset.alignmentAxis === 'function'
       ? popoutMenuOffset.alignmentAxis({ level })
       : popoutMenuOffset.alignmentAxis)
+
+  useEffect(() => {
+    dir.current = window.getComputedStyle(document.documentElement).getPropertyValue('direction')
+  }, [])
 
   const { y, refs, floatingStyles, context } = useFloating({
     open,

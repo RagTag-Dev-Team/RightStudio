@@ -8,7 +8,7 @@ import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 import VerticalNavContent from '../../../VerticalNavContent'
 
-// Styled Components Imports
+// Styled Component Imports
 import styles from '../../../styles.module.css'
 
 const BackgroundColor = () => {

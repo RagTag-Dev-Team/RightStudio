@@ -1,13 +1,12 @@
 'use client'
 
 // Type Imports
-import Logo from '@components/layout/shared/Logo'
-
 import type { getDictionary } from '@/utils/get-dictionary'
 
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
 import VerticalMenu from './VerticalMenu'
+import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'

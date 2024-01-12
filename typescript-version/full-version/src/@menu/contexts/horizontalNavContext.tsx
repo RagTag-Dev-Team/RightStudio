@@ -22,6 +22,7 @@ export const HorizontalNavProvider = ({ children }: ChildrenType) => {
     setIsBreakpointReached(isBreakpointReached)
   }
 
+  // Hooks
   const HorizontalNavProviderValue = useMemo(
     () => ({
       isBreakpointReached,

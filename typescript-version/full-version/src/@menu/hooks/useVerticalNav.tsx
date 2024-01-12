@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import VerticalNavContext from '../contexts/verticalNavContext'
 
 const useVerticalNav = () => {
+  // Hooks
   const context = useContext(VerticalNavContext)
 
   if (context === undefined) {

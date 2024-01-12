@@ -19,6 +19,7 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
+  // Vars
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
   return (

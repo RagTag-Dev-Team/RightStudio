@@ -1,13 +1,12 @@
 // Third-party Imports
 import classnames from 'classnames'
 
-// Components Imports
+// Component Imports
 import NavToggle from './NavToggle'
 import NavSearch from '@components/layout/shared/search'
 import HorizontalMenu from './HorizontalMenu'
 import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
-import ModeSwitcher from '@layouts/components/ModeSwitcher'
-import UserDetails from '@layouts/components/UserDetails'
+import UserDetails from '@components/layout/shared/UserDetails'
 
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
@@ -22,7 +21,6 @@ const NavbarContent = () => {
       </div>
       <div className='flex items-center gap-4'>
         <LanguageDropdown />
-        <ModeSwitcher />
         <UserDetails />
       </div>
     </div>

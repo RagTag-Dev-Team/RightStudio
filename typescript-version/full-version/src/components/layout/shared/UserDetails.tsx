@@ -11,7 +11,6 @@ const UserDetails = () => {
   const { data: session } = useSession()
   const router = useRouter()
 
-  // Handlers
   const handleUserLogout = async () => {
     try {
       // Sign out from the app
