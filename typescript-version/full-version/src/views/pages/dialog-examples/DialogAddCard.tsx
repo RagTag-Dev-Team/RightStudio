@@ -10,6 +10,7 @@ import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogAddCard = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'

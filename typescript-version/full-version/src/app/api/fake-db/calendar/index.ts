@@ -1,6 +1,7 @@
 // Type Imports
 import type { EventType } from '@/types/apps/calendarTypes'
 
+// Vars
 const date = new Date()
 const nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
 

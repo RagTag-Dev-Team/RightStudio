@@ -23,6 +23,7 @@ type Props = {
   steps: { title: string; subtitle: string }[]
 }
 
+// Data
 const data: CustomInputVerticalData[] = [
   {
     title: 'I am the Builder',
@@ -46,6 +47,7 @@ const data: CustomInputVerticalData[] = [
 ]
 
 const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+  // Vars
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value

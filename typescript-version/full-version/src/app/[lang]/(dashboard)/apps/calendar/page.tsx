@@ -8,6 +8,7 @@ import CalendarWrapper from '@views/apps/calendar/CalendarWrapper'
 import AppFullCalendar from '@/libs/styles/AppFullCalendar'
 
 async function fetchEvents() {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/calendar-events`)
 
   if (!res.ok) {
@@ -18,6 +19,7 @@ async function fetchEvents() {
 }
 
 const CalendarApp = async () => {
+  // Vars
   const res = (await fetchEvents()) || []
 
   return (

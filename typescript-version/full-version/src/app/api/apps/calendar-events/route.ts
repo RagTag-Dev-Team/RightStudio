@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
       ? events.filter(event => selectedCalendars.includes(event.extendedProps.calendar as CalendarFiltersType))
       : events
 
+    // Vars
     const json_response = {
       status: 'success',
       results: filtered_events.length,
@@ -36,6 +37,7 @@ export async function GET(request: NextRequest) {
 // Add new event
 export async function POST(request: NextRequest) {
   try {
+    // Vars
     const event = await request.json()
 
     // Generate new event id
@@ -44,6 +46,7 @@ export async function POST(request: NextRequest) {
     // add new event to events array
     events.push(event)
 
+    // Vars
     const json_response = {
       status: 'success',
       results: events.length,
@@ -62,6 +65,7 @@ export async function POST(request: NextRequest) {
 // Update event
 export async function PUT(request: NextRequest) {
   try {
+    // Vars
     const event = await request.json()
 
     // console.log(event)
@@ -77,6 +81,7 @@ export async function PUT(request: NextRequest) {
     // update event
     events[index] = event
 
+    // Vars
     const json_response = {
       status: 'success',
       results: events.length,
@@ -95,6 +100,7 @@ export async function PUT(request: NextRequest) {
 // Delete event
 export async function DELETE(request: NextRequest) {
   try {
+    // Vars
     const event = await request.json()
 
     // check if event id is present
@@ -108,6 +114,7 @@ export async function DELETE(request: NextRequest) {
     // remove event
     events.splice(index, 1)
 
+    // Vars
     const json_response = {
       status: 'success',
       results: events.length,

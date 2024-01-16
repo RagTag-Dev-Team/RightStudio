@@ -15,6 +15,7 @@ const TeamsTab = dynamic(() => import('@views/pages/user-profile/teams/index'))
 const ProjectsTab = dynamic(() => import('@views/pages/user-profile/projects/index'))
 const ConnectionsTab = dynamic(() => import('@views/pages/user-profile/connections/index'))
 
+// Data
 const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({
   profile: <ProfileTab data={data?.users.profile} />,
   teams: <TeamsTab data={data?.users.teams} />,
@@ -23,6 +24,7 @@ const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({
 })
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/pages/profile`)
 
   if (!res.ok) {
@@ -33,6 +35,7 @@ const getData = async () => {
 }
 
 const ProfilePage = async () => {
+  // Vars
   const data = await getData()
 
   return <UserProfile data={data} tabContentList={tabContentList(data)} />

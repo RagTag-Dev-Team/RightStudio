@@ -2,6 +2,7 @@
 import FAQ from '@views/pages/faq'
 
 const getFaqData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/pages/faq`)
 
   if (!res.ok) {
@@ -12,6 +13,7 @@ const getFaqData = async () => {
 }
 
 const FAQPage = async () => {
+  // Vars
   const data = await getFaqData()
 
   return <FAQ data={data} />

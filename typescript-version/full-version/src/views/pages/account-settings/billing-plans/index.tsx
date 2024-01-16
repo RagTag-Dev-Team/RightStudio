@@ -8,6 +8,7 @@ import PaymentMethod from './PaymentMethod'
 import InvoiceListTable from './InvoiceListTable'
 
 const getPricingData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
   if (!res.ok) {
@@ -18,6 +19,7 @@ const getPricingData = async () => {
 }
 
 const getInvoiceData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -28,8 +30,8 @@ const getInvoiceData = async () => {
 }
 
 const BillingPlans = async () => {
+  // vars
   const data = await getPricingData()
-
   const invoiceData = await getInvoiceData()
 
   return (

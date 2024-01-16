@@ -2,6 +2,7 @@
 import UserList from '@views/apps/user/list'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/user-list`)
 
   if (!res.ok) {
@@ -12,6 +13,7 @@ const getData = async () => {
 }
 
 const UserListApp = async () => {
+  // Vars
   const data = await getData()
 
   return <UserList userData={data} />

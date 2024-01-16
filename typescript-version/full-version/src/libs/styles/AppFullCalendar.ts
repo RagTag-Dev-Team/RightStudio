@@ -4,6 +4,7 @@
 import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 
+// Styled Components
 const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   position: 'relative',

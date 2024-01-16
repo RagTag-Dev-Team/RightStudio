@@ -10,6 +10,7 @@ import CreateApp from '@components/dialogs/create-app'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogCreateApp = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'

@@ -3,6 +3,7 @@
 // MUI imports
 import { styled } from '@mui/material/styles'
 
+// Styled Components
 const AppRecharts = styled('div')(({ theme }) => ({
   '& .recharts-cartesian-grid-vertical, & .recharts-cartesian-grid-horizontal, & .recharts-polar-grid-angle, & .recharts-polar-radius-axis, & .recharts-cartesian-axis':
     {

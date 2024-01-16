@@ -13,6 +13,7 @@ const BillingPlansTab = dynamic(() => import('@views/pages/account-settings/bill
 const NotificationsTab = dynamic(() => import('@views/pages/account-settings/notifications'))
 const ConnectionsTab = dynamic(() => import('@views/pages/account-settings/connections'))
 
+// Data
 const tabContentList = (): { [key: string]: ReactElement } => ({
   account: <AccountTab />,
   security: <SecurityTab />,

@@ -14,6 +14,7 @@ import DialogCreateApp from '@views/pages/dialog-examples/DialogCreateApp'
 import DialogPricing from '@views/pages/dialog-examples/DialogPricing'
 
 const getPricingData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
   if (!res.ok) {
@@ -24,6 +25,7 @@ const getPricingData = async () => {
 }
 
 const DialogExamples = async () => {
+  // Vars
   const data = await getPricingData()
 
   return (

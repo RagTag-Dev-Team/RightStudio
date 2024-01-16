@@ -10,6 +10,7 @@ import AddNewAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogAddNewAddress = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'

@@ -10,6 +10,7 @@ import ShareProject from '@components/dialogs/share-project'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogShareProject = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'

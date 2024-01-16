@@ -11,6 +11,7 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 
 const DialogReferEarn = () => {
   const buttonProps: ButtonProps = {
+    // Vars
     variant: 'contained',
     children: 'Show'
   }

@@ -15,6 +15,7 @@ import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 import DirectionalIcon from '@components/DirectionalIcon'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
+// Styled Components
 const Content = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'content'
@@ -23,6 +24,7 @@ const Content = styled(Typography, {
   textAlign: 'center'
 }))
 
+// Data
 const customInputData: CustomInputVerticalData[] = [
   {
     title: 'Basic',

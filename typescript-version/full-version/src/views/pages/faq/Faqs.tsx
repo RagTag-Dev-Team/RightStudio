@@ -31,10 +31,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
   // States
   const [activeTab, setActiveTab] = useState('payment')
 
-  const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setActiveTab(newValue)
-  }
-
+  // Hooks
   const filteredData = useMemo(() => {
     let returnVal = faqData
 
@@ -55,6 +52,10 @@ const FAQ = ({ faqData, searchValue }: props) => {
 
     return returnVal
   }, [faqData, searchValue])
+
+  const handleChange = (event: SyntheticEvent, newValue: string) => {
+    setActiveTab(newValue)
+  }
 
   return filteredData.length > 0 ? (
     <TabContext value={activeTab}>

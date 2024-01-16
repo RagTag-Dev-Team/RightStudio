@@ -18,6 +18,7 @@ type Props = EditorProps & {
   boxProps?: BoxProps
 }
 
+// Styled Components
 const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
   '& .rdw-editor-wrapper': {
     border: `1px solid ${theme.vars.palette.divider}`,

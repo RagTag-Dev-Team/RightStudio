@@ -15,6 +15,7 @@ type ApexChartWrapperProps = Props & {
   boxProps?: BoxProps
 }
 
+// Styled Components
 const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   '& .apexcharts-canvas': {
     "& line[stroke='transparent']": {

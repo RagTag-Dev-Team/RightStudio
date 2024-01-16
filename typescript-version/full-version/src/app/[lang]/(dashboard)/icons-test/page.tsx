@@ -2,6 +2,7 @@
 import IconsTest from '@views/icons-test'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/icons-test`)
 
   if (!res.ok) {
@@ -12,6 +13,7 @@ const getData = async () => {
 }
 
 const IconsTestPage = async () => {
+  // Vars
   const data = await getData()
 
   return <IconsTest data={data} />

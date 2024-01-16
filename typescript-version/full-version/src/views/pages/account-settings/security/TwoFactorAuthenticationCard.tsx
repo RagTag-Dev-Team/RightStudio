@@ -14,6 +14,7 @@ import TwoFactorAuth from '@components/dialogs/two-factor-auth'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const TwoFactorAuthenticationCard = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Enable two-factor authentication'

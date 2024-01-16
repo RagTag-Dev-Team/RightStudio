@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid'
 import InvoiceList from '@views/apps/invoice/list'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -15,6 +16,7 @@ const getData = async () => {
 }
 
 const InvoiceApp = async () => {
+  // Vars
   const data = await getData()
 
   return (

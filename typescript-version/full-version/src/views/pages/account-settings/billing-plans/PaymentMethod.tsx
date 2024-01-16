@@ -36,6 +36,7 @@ type DataType = {
   badgeColor?: ThemeColor
 }
 
+// Data
 const data: DataType[] = [
   {
     cardCvv: '587',

@@ -8,6 +8,7 @@ import type { InvoiceType } from '@/types/apps/invoiceTypes'
 import Preview from '@views/apps/invoice/preview'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -18,6 +19,7 @@ const getData = async () => {
 }
 
 const PreviewPage = async ({ params }: { params: { id: string } }) => {
+  // Vars
   const data = await getData()
 
   const filteredData = data.filter((invoice: InvoiceType) => invoice.id === params.id)[0]

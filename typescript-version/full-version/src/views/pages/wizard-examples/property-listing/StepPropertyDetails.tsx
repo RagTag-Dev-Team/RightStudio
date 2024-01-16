@@ -28,6 +28,7 @@ type Props = {
   steps: { title: string; subtitle: string }[]
 }
 
+// Styled Components
 const Content = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'content'
@@ -36,6 +37,7 @@ const Content = styled(Typography, {
   textAlign: 'center'
 }))
 
+// Data
 const data: CustomInputVerticalData[] = [
   {
     value: 'sale',
@@ -65,6 +67,7 @@ const data: CustomInputVerticalData[] = [
 ]
 
 const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
+  // Vars
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value

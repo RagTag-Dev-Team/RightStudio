@@ -14,6 +14,7 @@ type Props = ToastContainerProps & {
   boxProps?: BoxProps
 }
 
+// Styled Components
 const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   '& .Toastify__toast': {
     minBlockSize: 44,

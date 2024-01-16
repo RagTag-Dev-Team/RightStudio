@@ -10,6 +10,7 @@ import PaymentProviders from '@components/dialogs/payment-providers'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogPaymentProviders = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Show'

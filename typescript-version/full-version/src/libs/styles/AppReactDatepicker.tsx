@@ -18,6 +18,7 @@ type Props = ComponentProps<typeof ReactDatePickerComponent> & {
   boxProps?: BoxProps
 }
 
+// Styled Components
 const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
   return {
     '& .react-datepicker-popper': {

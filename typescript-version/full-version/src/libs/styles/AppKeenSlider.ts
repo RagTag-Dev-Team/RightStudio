@@ -7,6 +7,7 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import 'keen-slider/keen-slider.min.css'
 
+// Styled Components
 const AppKeenSlider = styled('div')(({ theme }: { theme: Theme }) => ({
   '& .keen-slider': {
     // Keen Slider handles RTL internally and thus, we need to set the direction to LTR

@@ -20,6 +20,7 @@ const BillingPlans = dynamic(() => import('@views/apps/user/view/user-right/bill
 const NotificationsTab = dynamic(() => import('@views/apps/user/view/user-right/notifications'))
 const ConnectionsTab = dynamic(() => import('@views/apps/user/view/user-right/connections'))
 
+// Data
 const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement } => ({
   overview: <OverViewTab />,
   security: <SecurityTab />,
@@ -29,6 +30,7 @@ const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement 
 })
 
 const getPricingData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
   if (!res.ok) {
@@ -39,6 +41,7 @@ const getPricingData = async () => {
 }
 
 const UserViewTab = async () => {
+  // Vars
   const data = await getPricingData()
 
   return (

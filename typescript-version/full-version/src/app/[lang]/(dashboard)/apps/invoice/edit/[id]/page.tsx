@@ -12,6 +12,7 @@ import EditCard from '@views/apps/invoice/edit/EditCard'
 import EditActions from '@views/apps/invoice/edit/EditActions'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -22,6 +23,7 @@ const getData = async () => {
 }
 
 const EditPage = async ({ params }: { params: { id: string } }) => {
+  // Vars
   const data = await getData()
 
   const filteredData = data.filter((invoice: InvoiceType) => invoice.id === params.id)[0]

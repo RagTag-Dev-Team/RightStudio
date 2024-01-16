@@ -9,6 +9,7 @@ import NotFound from '@views/NotFound'
 import { i18n } from '@configs/i18n'
 
 const NotFoundPage = ({ params }: { params: { lang: Locale } }) => {
+  // Vars
   const direction = i18n.langDirection[params.lang]
 
   return (

@@ -6,6 +6,7 @@ import AddCard from '@views/apps/invoice/add/AddCard'
 import AddActions from '@views/apps/invoice/add/AddActions'
 
 const getData = async () => {
+  // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
   if (!res.ok) {
@@ -16,6 +17,7 @@ const getData = async () => {
 }
 
 const InvoiceAdd = async () => {
+  // Vars
   const data = await getData()
 
   return (
