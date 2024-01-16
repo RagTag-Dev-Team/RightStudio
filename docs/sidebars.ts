@@ -344,6 +344,7 @@ const sidebars: SidebarsConfig = {
   faqSidebar: [
     "faqs/intro",
     "faqs/installation-errors",
+    "faqs/installation-warning",
     "faqs/remove-nextjs",
     "faqs/how-to-hide-menu",
     "faqs/server-side-menu",
