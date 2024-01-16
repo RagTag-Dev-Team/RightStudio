@@ -13,48 +13,43 @@ import RechartsAreaChart from '@views/charts/recharts/RechartsAreaChart'
 import RechartsRadarChart from '@views/charts/recharts/RechartsRadarChart'
 import RechartsScatterChart from '@views/charts/recharts/RechartsScatterChart'
 
-// Styled Component Imports
-import AppRecharts from '@/libs/styles/AppRecharts'
-
 const Recharts = () => {
   return (
-    <AppRecharts>
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <Typography variant='h5'>Recharts</Typography>
-          <Typography variant='body2'>
-            <code>recharts</code> is a third-party library. Please refer to its{' '}
-            <Link
-              href='https://recharts.org/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='no-underline text-primary'
-            >
-              official documentation
-            </Link>{' '}
-            for more details.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <RechartsLineChart />
-        </Grid>
-        <Grid item xs={12}>
-          <RechartsAreaChart />
-        </Grid>
-        <Grid item xs={12}>
-          <RechartsScatterChart />
-        </Grid>
-        <Grid item xs={12}>
-          <RechartsBarChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <RechartsRadarChart />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <RechartsPieChart />
-        </Grid>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <Typography variant='h5'>Recharts</Typography>
+        <Typography variant='body2'>
+          <code>recharts</code> is a third-party library. Please refer to its{' '}
+          <Link
+            href='https://recharts.org/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='no-underline text-primary'
+          >
+            official documentation
+          </Link>{' '}
+          for more details.
+        </Typography>
       </Grid>
-    </AppRecharts>
+      <Grid item xs={12}>
+        <RechartsLineChart />
+      </Grid>
+      <Grid item xs={12}>
+        <RechartsAreaChart />
+      </Grid>
+      <Grid item xs={12}>
+        <RechartsScatterChart />
+      </Grid>
+      <Grid item xs={12}>
+        <RechartsBarChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <RechartsRadarChart />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <RechartsPieChart />
+      </Grid>
+    </Grid>
   )
 }
 

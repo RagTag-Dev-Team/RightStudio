@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -12,6 +15,9 @@ import { useTheme } from '@mui/material/styles'
 // Component Imports
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 // Vars
 const data = [
@@ -147,26 +153,28 @@ const RechartsBarChart = () => {
             <Typography variant='body2'>Motorola</Typography>
           </Box>
         </div>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <BarChart
-              height={350}
-              data={data}
-              barSize={15}
-              style={{ direction: theme.direction }}
-              margin={{ left: -20 }}
-            >
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
-              <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
-              <Tooltip content={CustomTooltip} />
-              <Bar dataKey='Apple' stackId='a' fill='#826af9' />
-              <Bar dataKey='Samsung' stackId='a' fill='#9f87ff' />
-              <Bar dataKey='Oneplus' stackId='a' fill='#d2b0ff' />
-              <Bar dataKey='Motorola' stackId='a' fill='#f8d3ff' radius={[15, 15, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <BarChart
+                height={350}
+                data={data}
+                barSize={15}
+                style={{ direction: theme.direction }}
+                margin={{ left: -20 }}
+              >
+                <CartesianGrid strokeDasharray='3 3' />
+                <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
+                <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
+                <Tooltip content={CustomTooltip} />
+                <Bar dataKey='Apple' stackId='a' fill='#826af9' />
+                <Bar dataKey='Samsung' stackId='a' fill='#9f87ff' />
+                <Bar dataKey='Oneplus' stackId='a' fill='#d2b0ff' />
+                <Bar dataKey='Motorola' stackId='a' fill='#f8d3ff' radius={[15, 15, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
       </CardContent>
     </Card>
   )

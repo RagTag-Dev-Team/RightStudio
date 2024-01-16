@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
@@ -9,6 +12,9 @@ import CardContent from '@mui/material/CardContent'
 
 // Component Imports
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 // Vars
 const angularData = [
@@ -89,18 +95,20 @@ const RechartsScatterChart = () => {
             <Typography variant='body2'>Angular</Typography>
           </div>
         </div>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <ScatterChart height={350} style={{ direction: theme.direction }} margin={{ left: -20 }}>
-              <CartesianGrid />
-              <XAxis type='number' dataKey='x' reversed={theme.direction === 'rtl'} />
-              <YAxis type='number' dataKey='y' orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
-              <Scatter name='Angular' data={angularData} fill={theme.palette.error.main} />
-              <Scatter name='Vue' data={vueData} fill={theme.palette.success.main} />
-              <Scatter name='React' data={reactData} fill={theme.palette.primary.main} />
-            </ScatterChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <ScatterChart height={350} style={{ direction: theme.direction }} margin={{ left: -20 }}>
+                <CartesianGrid />
+                <XAxis type='number' dataKey='x' reversed={theme.direction === 'rtl'} />
+                <YAxis type='number' dataKey='y' orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
+                <Scatter name='Angular' data={angularData} fill={theme.palette.error.main} />
+                <Scatter name='Vue' data={vueData} fill={theme.palette.success.main} />
+                <Scatter name='React' data={reactData} fill={theme.palette.primary.main} />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
       </CardContent>
     </Card>
   )

@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
@@ -10,7 +13,7 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Styled Component Imports
-import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
+const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
 // Vars
 const areaColors = {

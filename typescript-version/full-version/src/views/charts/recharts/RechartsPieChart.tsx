@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -9,6 +12,9 @@ import CardContent from '@mui/material/CardContent'
 
 // Component Imports
 import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 type LabelProp = {
   cx: number
@@ -54,18 +60,20 @@ const RechartsPieChart = () => {
         subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
       />
       <CardContent>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <PieChart height={350} style={{ direction: 'ltr' }}>
-              <Pie data={data} innerRadius={80} dataKey='value' label={renderCustomizedLabel} labelLine={false}>
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <PieChart height={350} style={{ direction: 'ltr' }}>
+                <Pie data={data} innerRadius={80} dataKey='value' label={renderCustomizedLabel} labelLine={false}>
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
         <div className='flex justify-center flex-wrap mbe-4'>
           <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#00d4bd' } }}>
             <i className='ri-circle-fill text-xs' />

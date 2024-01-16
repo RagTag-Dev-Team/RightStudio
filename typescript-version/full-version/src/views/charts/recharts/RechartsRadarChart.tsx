@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -19,6 +22,9 @@ import {
   ResponsiveContainer
 } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 // Vars
 const data = [
@@ -95,18 +101,20 @@ const RechartsRadarChart = () => {
     <Card>
       <CardHeader title='Mobile Comparison' />
       <CardContent>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <RadarChart cx='50%' cy='50%' height={350} data={data} style={{ direction: 'ltr' }}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey='subject' />
-              <PolarRadiusAxis />
-              <Tooltip content={CustomTooltip} />
-              <Radar dataKey='iPhone 11' stroke='#fde802' fill='#fde802' fillOpacity={1} />
-              <Radar dataKey='Samsung s20' stroke='#9b88fa' fill='#9b88fa' fillOpacity={0.8} />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <RadarChart cx='50%' cy='50%' height={350} data={data} style={{ direction: 'ltr' }}>
+                <PolarGrid />
+                <PolarAngleAxis dataKey='subject' />
+                <PolarRadiusAxis />
+                <Tooltip content={CustomTooltip} />
+                <Radar dataKey='iPhone 11' stroke='#fde802' fill='#fde802' fillOpacity={1} />
+                <Radar dataKey='Samsung s20' stroke='#9b88fa' fill='#9b88fa' fillOpacity={0.8} />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
         <div className='flex justify-center mbe-4'>
           <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#fde802' } }}>
             <i className='ri-circle-fill text-xs' />

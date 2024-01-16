@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -12,6 +15,9 @@ import { useTheme } from '@mui/material/styles'
 // Component Imports
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 // Vars
 const data = [
@@ -151,19 +157,21 @@ const RechartsAreaChart = () => {
             <Typography variant='body2'>Visits</Typography>
           </Box>
         </div>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <AreaChart height={350} data={data} style={{ direction: theme.direction }} margin={{ left: -20 }}>
-              <CartesianGrid />
-              <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
-              <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
-              <Tooltip content={CustomTooltip} />
-              <Area dataKey='Clicks' stackId='Clicks' stroke='0' fill='rgb(115, 103, 240)' />
-              <Area dataKey='Sales' stackId='Sales' stroke='0' fill='rgba(115, 103, 240, .5)' />
-              <Area dataKey='Visits' stackId='Visits' stroke='0' fill='rgba(115, 103, 240, .2)' />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <AreaChart height={350} data={data} style={{ direction: theme.direction }} margin={{ left: -20 }}>
+                <CartesianGrid />
+                <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
+                <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
+                <Tooltip content={CustomTooltip} />
+                <Area dataKey='Clicks' stackId='Clicks' stroke='0' fill='rgb(115, 103, 240)' />
+                <Area dataKey='Sales' stackId='Sales' stroke='0' fill='rgba(115, 103, 240, .5)' />
+                <Area dataKey='Visits' stackId='Visits' stroke='0' fill='rgba(115, 103, 240, .2)' />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
       </CardContent>
     </Card>
   )

@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import dynamic from 'next/dynamic'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -10,6 +13,9 @@ import { useTheme } from '@mui/material/styles'
 // Component Imports
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
+
+// Styled Component Imports
+const AppRecharts = dynamic(() => import('@/libs/styles/AppRecharts'))
 
 // Vars
 const data = [
@@ -63,17 +69,19 @@ const RechartsLineChart = () => {
         }}
       />
       <CardContent>
-        <div className='bs-[350px]'>
-          <ResponsiveContainer>
-            <LineChart height={350} data={data} style={{ direction: theme.direction }} margin={{ left: -20 }}>
-              <CartesianGrid />
-              <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
-              <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
-              <Tooltip content={CustomTooltip} />
-              <Line dataKey='pv' stroke='#ff9f43' strokeWidth={3} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        <AppRecharts>
+          <div className='bs-[350px]'>
+            <ResponsiveContainer>
+              <LineChart height={350} data={data} style={{ direction: theme.direction }} margin={{ left: -20 }}>
+                <CartesianGrid />
+                <XAxis dataKey='name' reversed={theme.direction === 'rtl'} />
+                <YAxis orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
+                <Tooltip content={CustomTooltip} />
+                <Line dataKey='pv' stroke='#ff9f43' strokeWidth={3} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </AppRecharts>
       </CardContent>
     </Card>
   )
