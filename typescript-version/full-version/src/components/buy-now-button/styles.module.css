@@ -1,7 +1,7 @@
 .wrapper {
   position: fixed;
-  inset-inline-end: 5.5rem;
-  inset-block-end: 2.5rem;
+  inset-inline-end: 6.5rem;
+  inset-block-end: 3.5rem;
   z-index: 11;
 }
 
