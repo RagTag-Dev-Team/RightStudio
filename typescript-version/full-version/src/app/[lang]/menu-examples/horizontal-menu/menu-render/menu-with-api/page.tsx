@@ -8,10 +8,10 @@ import classnames from 'classnames'
 
 // Component Imports
 import HorizontalNav, { Menu } from '@menu/horizontal-menu'
+import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Style Imports
 import styles from '../../styles.module.css'
-import { GenerateHorizontalMenu } from '@/components/GenerateMenu'
 
 const MenuWithAPI = () => {
   // States
