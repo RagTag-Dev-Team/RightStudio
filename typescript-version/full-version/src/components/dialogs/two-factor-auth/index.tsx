@@ -133,6 +133,7 @@ const AppDialog = (handleAuthDialogClose: () => void) => {
 }
 
 const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
+  // Vars
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value

@@ -24,11 +24,11 @@ const ModeDropdown = () => {
   const [open, setOpen] = useState(false)
   const [tooltipOpen, setTooltipOpen] = useState(false)
 
-  // Hooks
-  const { settings, updateSettings } = useSettings()
-
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
+
+  // Hooks
+  const { settings, updateSettings } = useSettings()
 
   const handleClose = () => {
     setOpen(false)

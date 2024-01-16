@@ -94,6 +94,7 @@ const customInputData: CustomInputHorizontalData[] = [
 ]
 
 const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
+  // Vars
   const initialSelected: string = customInputData?.find(item => item.isSelected)?.value || ''
 
   // States

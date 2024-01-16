@@ -96,6 +96,7 @@ const CreateApp = ({ open, setOpen }: CreateAppProps) => {
     setActiveStep(step)
   }
 
+  // Vars
   const isLastStep = activeStep === steps.length - 1
 
   const handleNext = () => {

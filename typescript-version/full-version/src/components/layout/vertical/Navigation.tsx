@@ -36,8 +36,8 @@ const Navigation = (props: Props) => {
   const { updateSettings, settings } = useSettings()
   const { mode: muiMode, systemMode: muiSystemMode } = useColorScheme()
 
+  // Vars
   const isServer = typeof window === 'undefined'
-
   let isSemiDark, isDark
 
   if (isServer) {

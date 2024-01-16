@@ -12,6 +12,7 @@ type Props = Omit<ComponentProps<typeof NextLink>, 'href' | 'onClick'> & {
 }
 
 const Link = (props: Props) => {
+  // Props
   const { href, onClick, ...rest } = props
 
   return (

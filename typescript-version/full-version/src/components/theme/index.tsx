@@ -47,6 +47,7 @@ const ThemeProvider = (props: Props) => {
   const { settings } = useSettings()
   const isDark = useMedia('(prefers-color-scheme: dark)', false)
 
+  // Vars
   const isServer = typeof window === 'undefined'
   let currentMode: SystemMode
 

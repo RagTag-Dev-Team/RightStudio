@@ -89,6 +89,10 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
   const [open, setOpen] = useState(false)
   const [notificationsState, setNotificationsState] = useState(notifications)
 
+  // Vars
+  const notificationCount = notificationsState.filter(notification => !notification.read).length
+  const readAll = notificationsState.every(notification => notification.read)
+
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
 
@@ -104,10 +108,6 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
-
-  const notificationCount = notificationsState.filter(notification => !notification.read).length
-
-  const readAll = notificationsState.every(notification => notification.read)
 
   // Read notification when notification is clicked
   const handleReadNotification = (event: MouseEvent<HTMLElement>, value: boolean, index: number) => {

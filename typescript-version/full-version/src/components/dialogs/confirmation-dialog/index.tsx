@@ -37,6 +37,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
     setOpen(false)
   }
 
+  // Vars
   const Wrapper = type === 'suspend-account' ? 'div' : Fragment
 
   return (

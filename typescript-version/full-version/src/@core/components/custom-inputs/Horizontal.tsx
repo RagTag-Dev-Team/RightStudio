@@ -78,6 +78,7 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   // Props
   const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
 
+  // Vars
   const { meta, title, value, content } = data
 
   const renderData = () => {

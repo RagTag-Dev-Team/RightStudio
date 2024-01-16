@@ -9,14 +9,14 @@ import { useCookie, useMedia } from 'react-use'
 // Type Imports
 import { useColorScheme } from '@mui/material'
 
-import { useSettings } from '@/@core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 const useLayoutInit = (colorSchemeFallback: 'light' | 'dark') => {
+  // Hooks
   const { settings } = useSettings()
   const { setMode } = useColorScheme()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, updateCookieColorPref] = useCookie('colorPref')
-
   const isDark = useMedia('(prefers-color-scheme: dark)', colorSchemeFallback === 'dark')
 
   useEffect(() => {

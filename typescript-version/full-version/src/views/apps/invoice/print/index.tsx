@@ -17,7 +17,7 @@ import themeConfig from '@configs/themeConfig'
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
-// Styles Imports
+// Style Imports
 import tableStyles from '@core/styles/table.module.css'
 
 // Vars

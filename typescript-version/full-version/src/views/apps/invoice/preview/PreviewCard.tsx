@@ -13,7 +13,7 @@ import type { InvoiceType } from '@/types/apps/invoiceTypes'
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
-// Styles Imports
+// Style Imports
 import tableStyles from '@core/styles/table.module.css'
 
 // Vars

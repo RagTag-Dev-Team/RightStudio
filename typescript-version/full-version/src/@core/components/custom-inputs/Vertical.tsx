@@ -79,6 +79,7 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
   // Props
   const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
 
+  // Vars
   const { title, value, content, asset } = data
 
   const renderComponent = () => {

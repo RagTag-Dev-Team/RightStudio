@@ -24,6 +24,7 @@ const ScrollToTop = (props: ScrollToTopProps) => {
   // Props
   const { children, className } = props
 
+  // Hooks
   // init trigger
   const trigger = useScrollTrigger({
     threshold: 400,

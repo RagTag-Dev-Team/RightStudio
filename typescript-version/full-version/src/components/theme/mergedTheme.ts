@@ -18,6 +18,7 @@ import type { SystemMode } from '@core/types'
 import coreTheme from '@core/theme'
 
 const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['direction']) => {
+  // Vars
   const userTheme = {
     // Write your overrides here.
   } as Theme

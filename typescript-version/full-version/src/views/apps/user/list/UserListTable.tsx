@@ -52,7 +52,7 @@ import OptionMenu from '@core/components/option-menu'
 // Util Imports
 import { getInitials } from '@/utils/get-initials'
 
-// Styles Imports
+// Style Imports
 import tableStyles from '@core/styles/table.module.css'
 
 declare module '@tanstack/table-core' {
