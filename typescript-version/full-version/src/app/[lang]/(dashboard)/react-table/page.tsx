@@ -1,9 +1,9 @@
 // Component imports
-import BasicDataTables from '@/views/react-table/BasicDataTables'
-import EditableDataTables from '@/views/react-table/EditableDataTables'
-import ColumnVisibility from '@/views/react-table/ColumnVisibility'
-import RowSelection from '@/views/react-table/RowSelection'
-import KitchenSink from '@/views/react-table/KitchenSink'
+import BasicDataTables from '@views/react-table/BasicDataTables'
+import EditableDataTables from '@views/react-table/EditableDataTables'
+import ColumnVisibility from '@views/react-table/ColumnVisibility'
+import RowSelection from '@views/react-table/RowSelection'
+import KitchenSink from '@views/react-table/KitchenSink'
 
 const Tables = () => {
   return (

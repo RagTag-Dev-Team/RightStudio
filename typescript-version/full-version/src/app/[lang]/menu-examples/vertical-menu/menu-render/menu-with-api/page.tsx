@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 // Component imports
 import VerticalNav, { Menu } from '@menu/vertical-menu'
-import { GenerateVerticalMenu } from '@/components/GenerateMenu'
+import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 const MenuWithAPI = () => {
   // States

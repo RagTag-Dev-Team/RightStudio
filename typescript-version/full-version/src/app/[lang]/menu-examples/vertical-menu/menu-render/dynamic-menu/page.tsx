@@ -2,7 +2,7 @@
 
 // Component Imports
 import VerticalNav, { Menu } from '@menu/vertical-menu'
-import { GenerateVerticalMenu } from '@/components/GenerateMenu'
+import { GenerateVerticalMenu } from '@components/GenerateMenu'
 import type { VerticalMenuDataType } from '@/types/menuTypes'
 
 const menuData: VerticalMenuDataType[] = [
