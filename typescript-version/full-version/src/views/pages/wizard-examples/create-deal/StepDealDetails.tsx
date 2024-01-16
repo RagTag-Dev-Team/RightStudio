@@ -41,7 +41,7 @@ type Props = {
   steps: { title: string; subtitle: string }[]
 }
 
-// Data
+// Vars
 const offeredItemsArray = ['Apple iPhone 12 Pro', 'Apple iPhone 12 Mini', 'Apple iPhone 12', 'Apple iPhone 11 Pro Max']
 
 const CustomInput = forwardRef((props: CustomInputProps, ref) => {

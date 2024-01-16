@@ -32,6 +32,7 @@ import { email, object, minLength, string, array, forward, custom } from 'valibo
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
+// Vars
 const steps = [
   {
     title: 'Account Details',
@@ -85,10 +86,10 @@ const StepperLinearWithValidation = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
 
-  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+  // Vars
+  const Languages = ['English', 'French', 'Spanish', 'Portuguese', 'Italian', 'German', 'Arabic']
 
-  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
-
+  // Hooks
   const {
     reset: accountReset,
     control: accountControl,
@@ -134,6 +135,10 @@ const StepperLinearWithValidation = () => {
     }
   })
 
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+
+  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
+
   const onSubmit = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
 
@@ -154,8 +159,6 @@ const StepperLinearWithValidation = () => {
     setIsPasswordShown(false)
     setIsConfirmPasswordShown(false)
   }
-
-  const Languages = ['English', 'French', 'Spanish', 'Portuguese', 'Italian', 'German', 'Arabic']
 
   const renderStepContent = (activeStep: number) => {
     switch (activeStep) {

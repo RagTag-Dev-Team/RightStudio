@@ -23,6 +23,7 @@ type CardDataType = {
   totalUsers: number
 }
 
+// Vars
 const cardData: CardDataType[] = [
   { totalUsers: 4, title: 'Administrator', avatars: ['1.png', '2.png', '3.png', '4.png'] },
   { totalUsers: 7, title: 'Editor', avatars: ['5.png', '6.png', '7.png'] },
@@ -32,6 +33,7 @@ const cardData: CardDataType[] = [
 ]
 
 const RoleCards = () => {
+  // Vars
   const typographyProps: TypographyProps = {
     children: 'Edit Role',
     variant: 'body2',

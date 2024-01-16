@@ -61,6 +61,7 @@ type Colors = {
   [key: string]: ThemeColor
 }
 
+// Vars
 const colors: Colors = {
   support: 'info',
   users: 'success',
@@ -92,6 +93,7 @@ const DebouncedInput = ({
   onChange: (value: string | number) => void
   debounce?: number
 } & Omit<TextFieldProps, 'onChange'>) => {
+  // States
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
@@ -110,6 +112,9 @@ const DebouncedInput = ({
   return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
 }
 
+// Column Definitions
+const columnHelper = createColumnHelper<PermissionsTypeWithAction>()
+
 const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[] }) => {
   // States
   const [open, setOpen] = useState(false)
@@ -119,17 +124,15 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
   const [data, setData] = useState(...[permissionsData])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  const handleEditPermission = (name: string) => {
-    setOpen(true)
-    setEditValue(name)
+  // Vars
+  const buttonProps: ButtonProps = {
+    variant: 'contained',
+    children: 'Add Permission',
+    onClick: () => handleAddPermission(),
+    className: 'is-full sm:is-auto'
   }
 
-  const handleAddPermission = () => {
-    setEditValue('')
-  }
-
-  const columnHelper = createColumnHelper<PermissionsTypeWithAction>()
-
+  // Hooks
   const columns = useMemo<ColumnDef<PermissionsTypeWithAction, any>[]>(
     () => [
       columnHelper.accessor('name', {
@@ -199,11 +202,13 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
     getFacetedMinMaxValues: getFacetedMinMaxValues()
   })
 
-  const buttonProps: ButtonProps = {
-    variant: 'contained',
-    children: 'Add Permission',
-    onClick: () => handleAddPermission(),
-    className: 'is-full sm:is-auto'
+  const handleEditPermission = (name: string) => {
+    setOpen(true)
+    setEditValue(name)
+  }
+
+  const handleAddPermission = () => {
+    setEditValue('')
   }
 
   return (

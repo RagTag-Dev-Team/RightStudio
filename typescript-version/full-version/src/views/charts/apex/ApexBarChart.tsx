@@ -16,6 +16,7 @@ const ApexBarChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,

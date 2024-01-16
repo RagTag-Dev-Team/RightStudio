@@ -12,7 +12,7 @@ type ApiKeyListType = {
   key: string
 }
 
-// Data
+// Vars
 const apiKeyList: ApiKeyListType[] = [
   {
     title: 'Server Key 1',

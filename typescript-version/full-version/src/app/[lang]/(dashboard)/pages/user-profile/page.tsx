@@ -15,7 +15,7 @@ const TeamsTab = dynamic(() => import('@views/pages/user-profile/teams/index'))
 const ProjectsTab = dynamic(() => import('@views/pages/user-profile/projects/index'))
 const ConnectionsTab = dynamic(() => import('@views/pages/user-profile/connections/index'))
 
-// Data
+// Vars
 const tabContentList = (data?: Data): { [key: string]: ReactElement } => ({
   profile: <ProfileTab data={data?.users.profile} />,
   teams: <TeamsTab data={data?.users.teams} />,

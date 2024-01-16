@@ -43,6 +43,7 @@ type FormData = {
   cvv: string
 }
 
+// Vars
 const data: CustomInputHorizontalData[] = [
   {
     title: 'Standard 3-5 Days',
@@ -66,6 +67,7 @@ const data: CustomInputHorizontalData[] = [
 ]
 
 const FormLayoutsCollapsible = () => {
+  // Vars
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value

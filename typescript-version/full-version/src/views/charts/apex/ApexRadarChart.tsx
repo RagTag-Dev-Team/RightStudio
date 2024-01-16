@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const radarColors = {
   series1: '#9b88fa',
   series2: '#ffa1a1'
@@ -32,6 +33,7 @@ const ApexRadarChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,

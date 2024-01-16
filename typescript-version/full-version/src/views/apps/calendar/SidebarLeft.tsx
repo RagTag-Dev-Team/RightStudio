@@ -19,6 +19,7 @@ import type { ThemeColor } from '@core/types'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 const SidebarLeft = (props: SidebarLeftProps) => {
+  // Props
   const {
     mdAbove,
     leftSidebarOpen,
@@ -32,6 +33,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
     handleAddEventSidebarToggle
   } = props
 
+  // Vars
   const colorsArr = calendarsColor ? Object.entries(calendarsColor) : []
 
   const renderFilters = colorsArr.length

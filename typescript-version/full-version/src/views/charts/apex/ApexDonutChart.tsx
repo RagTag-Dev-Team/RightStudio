@@ -24,6 +24,7 @@ const ApexDonutChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     stroke: { width: 0 },
     labels: ['Operational', 'Networking', 'Hiring', 'R&D'],

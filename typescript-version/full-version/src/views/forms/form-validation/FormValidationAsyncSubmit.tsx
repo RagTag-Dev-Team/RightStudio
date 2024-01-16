@@ -30,6 +30,7 @@ const FormValidationAsyncSubmit = () => {
   const [loading, setLoading] = useState(false)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
+  // Hooks
   const {
     control,
     reset,

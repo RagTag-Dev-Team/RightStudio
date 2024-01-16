@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const areaColors = {
   series1: '#ab7efd',
   series2: '#b992fe',
@@ -37,6 +38,7 @@ const ApexAreaChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,

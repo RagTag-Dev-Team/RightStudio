@@ -22,6 +22,7 @@ import classNames from 'classnames'
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
+// Vars
 const steps = [
   {
     title: 'Account Details',

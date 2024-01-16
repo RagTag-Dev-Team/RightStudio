@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const candlestickColors = {
   series1: '#28c76f',
   series2: '#ea5455'
@@ -84,6 +85,7 @@ const ApexCandlestickChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,

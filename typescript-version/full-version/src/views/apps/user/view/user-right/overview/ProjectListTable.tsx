@@ -56,6 +56,7 @@ declare module '@tanstack/table-core' {
   }
 }
 
+// Vars
 const projectTable: ProjectListDataType[] = [
   {
     id: 1,
@@ -152,6 +153,7 @@ const DebouncedInput = ({
   onChange: (value: string | number) => void
   debounce?: number
 } & Omit<TextFieldProps, 'onChange'>) => {
+  // States
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
@@ -170,6 +172,9 @@ const DebouncedInput = ({
   return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
 }
 
+// Column Definitions
+const columnHelper = createColumnHelper<ProjectListDataType>()
+
 const ProjectListTable = () => {
   // States
   const [rowSelection, setRowSelection] = useState({})
@@ -177,8 +182,7 @@ const ProjectListTable = () => {
   const [data, setData] = useState(...[projectTable])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  const columnHelper = createColumnHelper<ProjectListDataType>()
-
+  // Hooks
   const columns = useMemo<ColumnDef<ProjectListDataType, any>[]>(
     () => [
       columnHelper.accessor('projectTitle', {

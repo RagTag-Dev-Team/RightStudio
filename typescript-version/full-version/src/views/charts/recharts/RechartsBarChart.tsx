@@ -13,6 +13,7 @@ import { useTheme } from '@mui/material/styles'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
 
+// Vars
 const data = [
   {
     name: '7/12',
@@ -86,17 +87,18 @@ const data = [
   }
 ]
 
-const CustomTooltip = (data: TooltipProps<any, any>) => {
-  const { active, payload } = data
+const CustomTooltip = (props: TooltipProps<any, any>) => {
+  // Props
+  const { active, payload } = props
 
   if (active && payload) {
     return (
       <div className='recharts-custom-tooltip'>
-        <Typography>{data.label}</Typography>
+        <Typography>{props.label}</Typography>
         <Divider />
-        {data &&
-          data.payload &&
-          data.payload.map((i: any) => {
+        {props &&
+          props.payload &&
+          props.payload.map((i: any) => {
             return (
               <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
                 <i className='ri-circle-fill text-[10px]' />

@@ -24,6 +24,7 @@ type FormDataType = {
   message: string
 }
 
+// Vars
 const initialData: FormDataType = {
   from: 'shelbyComapny@email.com',
   to: 'qConsolidated@email.com',

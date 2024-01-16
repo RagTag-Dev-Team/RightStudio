@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const scatterColors = {
   series1: '#ff9f43',
   series2: '#7367f0',
@@ -76,6 +77,7 @@ const ApexScatterChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,

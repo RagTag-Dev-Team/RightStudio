@@ -11,6 +11,7 @@ import { useTheme } from '@mui/material/styles'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from '@/libs/Recharts'
 import type { TooltipProps } from '@/libs/Recharts'
 
+// Vars
 const data = [
   { pv: 280, name: '7/12' },
   { pv: 200, name: '8/12' },

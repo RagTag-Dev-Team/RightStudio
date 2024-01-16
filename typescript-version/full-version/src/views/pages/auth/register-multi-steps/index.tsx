@@ -16,7 +16,7 @@ import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
 import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
 
-// Data
+// Vars
 const steps = [
   {
     title: 'Account',

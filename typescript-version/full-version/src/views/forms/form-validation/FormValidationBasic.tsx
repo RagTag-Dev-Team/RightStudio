@@ -46,6 +46,7 @@ const FormValidationBasic = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
+  // Hooks
   const {
     control,
     reset,

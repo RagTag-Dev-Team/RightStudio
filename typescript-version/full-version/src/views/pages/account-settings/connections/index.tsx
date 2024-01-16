@@ -23,7 +23,7 @@ type SocialAccountsType = {
   isConnected: boolean
 }
 
-// Data
+// Vars
 const connectedAccountsArr: ConnectedAccountsType[] = [
   {
     checked: true,

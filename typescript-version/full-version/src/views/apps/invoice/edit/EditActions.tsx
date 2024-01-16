@@ -23,6 +23,7 @@ import AddPaymentDrawer from '@views/apps/invoice/shared/AddPaymentDrawer'
 import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
 
 const EditActions = ({ id }: { id: string }) => {
+  // States
   const [paymentDrawerOpen, setPaymentDrawerOpen] = useState(false)
   const [sendDrawerOpen, setSendDrawerOpen] = useState(false)
 

@@ -74,6 +74,7 @@ const DebouncedInput = ({
   onChange: (value: string | number) => void
   debounce?: number
 } & Omit<TextFieldProps, 'onChange'>) => {
+  // States
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
@@ -92,6 +93,9 @@ const DebouncedInput = ({
   return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
 }
 
+// Column Definitions
+const columnHelper = createColumnHelper<ProjectTableRowType>()
+
 const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
@@ -99,8 +103,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
   const [data, setData] = useState(...[projectTable])
   const [globalFilter, setGlobalFilter] = useState('')
 
-  const columnHelper = createColumnHelper<ProjectTableRowType>()
-
+  // Hooks
   const columns = useMemo<ColumnDef<ProjectTableRowType, any>[]>(
     () => [
       {

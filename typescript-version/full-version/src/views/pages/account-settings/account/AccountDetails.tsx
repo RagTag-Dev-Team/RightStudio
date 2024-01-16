@@ -33,7 +33,7 @@ type Data = {
   currency: string
 }
 
-// Data
+// Vars
 const initialData: Data = {
   firstName: 'John',
   lastName: 'Doe',

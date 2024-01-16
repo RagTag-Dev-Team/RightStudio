@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const radialBarColors = {
   series1: '#fdd835',
   series2: '#32baff',
@@ -24,6 +25,7 @@ const ApexRadialBarChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     stroke: { lineCap: 'round' },
     labels: ['Comments', 'Replies', 'Shares'],

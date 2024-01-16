@@ -12,6 +12,7 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 import AppReactApexCharts from '@/libs/styles/AppReactApexCharts'
 
+// Vars
 const columnColors = {
   bg: '#f8d3ff',
   series1: '#826af9',
@@ -33,6 +34,7 @@ const ApexColumnChart = () => {
   // Hooks
   const theme = useTheme()
 
+  // Vars
   const options: ApexOptions = {
     chart: {
       offsetX: -10,

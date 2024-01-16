@@ -30,6 +30,7 @@ type FormDataType = {
   status: string
 }
 
+// Vars
 const initialData = {
   fullName: '',
   username: '',

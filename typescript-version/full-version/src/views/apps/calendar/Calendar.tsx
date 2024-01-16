@@ -44,6 +44,7 @@ type CalenderProps = {
 }
 
 const Calendar = (props: CalenderProps) => {
+  // Props
   const {
     calendars,
     calendarApi,

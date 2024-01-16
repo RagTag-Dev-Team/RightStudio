@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent'
 // Component Imports
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from '@/libs/Recharts'
 
+// Vars
 const angularData = [
   { x: 5.4, y: 170 },
   { x: 5.4, y: 100 },

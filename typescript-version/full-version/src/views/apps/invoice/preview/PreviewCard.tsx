@@ -16,6 +16,7 @@ import themeConfig from '@configs/themeConfig'
 // Styles Imports
 import tableStyles from '@core/styles/table.module.css'
 
+// Vars
 const data = [
   {
     Item: 'Premium Branding Package',

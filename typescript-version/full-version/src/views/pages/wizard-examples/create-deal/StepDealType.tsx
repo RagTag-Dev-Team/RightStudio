@@ -28,7 +28,7 @@ type Props = {
   steps: { title: string; subtitle: string }[]
 }
 
-// Data
+// Vars
 const data: CustomInputVerticalData[] = [
   {
     title: 'Percentage',

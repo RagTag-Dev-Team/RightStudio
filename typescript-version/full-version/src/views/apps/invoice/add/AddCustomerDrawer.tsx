@@ -30,6 +30,7 @@ export type FormDataType = {
   contactNumber: string
 }
 
+// Vars
 export const initialFormData: FormDataType = {
   name: '',
   company: '',
@@ -42,6 +43,7 @@ export const initialFormData: FormDataType = {
 const countries = ['USA', 'UK', 'Russia', 'Australia', 'Canada']
 
 const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
+  // States
   const [data, setData] = useState<FormDataType>(initialFormData)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

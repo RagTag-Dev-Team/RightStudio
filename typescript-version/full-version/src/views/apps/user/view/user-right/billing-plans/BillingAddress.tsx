@@ -11,6 +11,7 @@ import type { ButtonProps } from '@mui/material/Button'
 import AddNewAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
+// Vars
 const data = {
   firstName: 'John',
   lastName: 'Doe',
@@ -28,6 +29,7 @@ const data = {
 }
 
 const BillingAddress = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Edit Address',

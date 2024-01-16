@@ -26,7 +26,7 @@ type Props = {
   steps: { title: string; subtitle: string }[]
 }
 
-// Data
+// Vars
 const furnishingArray: string[] = [
   'AC',
   'TV',

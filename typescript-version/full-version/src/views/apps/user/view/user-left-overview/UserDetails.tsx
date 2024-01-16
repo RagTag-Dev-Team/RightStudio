@@ -16,6 +16,7 @@ import EditUserInfo from '@components/dialogs/edit-user-info'
 import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
+// Vars
 const userData = {
   firstName: 'Seth',
   lastName: 'Hallam',
@@ -31,6 +32,7 @@ const userData = {
 }
 
 const UserDetails = () => {
+  // Vars
   const buttonProps = (children: string, color: ThemeColor, variant: ButtonProps['variant']): ButtonProps => ({
     children,
     color,

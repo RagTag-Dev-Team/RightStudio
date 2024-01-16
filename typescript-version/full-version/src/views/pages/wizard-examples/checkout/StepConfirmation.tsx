@@ -8,7 +8,7 @@ import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import CardContent from '@mui/material/CardContent'
 
-// Data
+// Vars
 const products = [
   {
     imgSrc: '/images/pages/google-home.png',

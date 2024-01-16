@@ -17,7 +17,7 @@ type RecentDeviceDataType = {
   date: string
 }
 
-// Data
+// Vars
 const recentDeviceData: RecentDeviceDataType[] = [
   {
     location: 'Switzerland',

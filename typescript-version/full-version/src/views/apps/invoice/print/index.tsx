@@ -20,6 +20,7 @@ import { useSettings } from '@core/hooks/useSettings'
 // Styles Imports
 import tableStyles from '@core/styles/table.module.css'
 
+// Vars
 const data = [
   {
     Item: 'Premium Branding Package',

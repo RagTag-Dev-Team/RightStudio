@@ -43,8 +43,10 @@ interface DefaultStateType {
   guests: string[] | string | undefined
 }
 
+// Vars
 const capitalize = (string: string) => string && string[0].toUpperCase() + string.slice(1)
 
+// Vars
 const defaultState: DefaultStateType = {
   url: '',
   title: '',
@@ -72,6 +74,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   // States
   const [values, setValues] = useState<DefaultStateType>(defaultState)
 
+  // Refs
+  const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
+    return (
+      <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} className='w-full' error={props.error} />
+    )
+  })
+
+  // Hooks
   const {
     control,
     setValue,
@@ -79,6 +89,29 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     handleSubmit,
     formState: { errors }
   } = useForm({ defaultValues: { title: '' } })
+
+  const resetToStoredValues = useCallback(() => {
+    if (calendars.selectedEvent !== null) {
+      const event = calendars.selectedEvent
+
+      setValue('title', event.title || '')
+      setValues({
+        url: event.url || '',
+        title: event.title || '',
+        allDay: event.allDay,
+        guests: event.extendedProps.guests || [],
+        description: event.extendedProps.description || '',
+        calendar: event.extendedProps.calendar || 'Business',
+        endDate: event.end !== null ? event.end : event.start,
+        startDate: event.start !== null ? event.start : new Date()
+      })
+    }
+  }, [setValue, calendars.selectedEvent])
+
+  const resetToEmptyValues = useCallback(() => {
+    setValue('title', '')
+    setValues(defaultState)
+  }, [setValue])
 
   const handleSidebarClose = async () => {
     setValues(defaultState)
@@ -130,43 +163,6 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     }
   }
 
-  const resetToStoredValues = useCallback(() => {
-    if (calendars.selectedEvent !== null) {
-      const event = calendars.selectedEvent
-
-      setValue('title', event.title || '')
-      setValues({
-        url: event.url || '',
-        title: event.title || '',
-        allDay: event.allDay,
-        guests: event.extendedProps.guests || [],
-        description: event.extendedProps.description || '',
-        calendar: event.extendedProps.calendar || 'Business',
-        endDate: event.end !== null ? event.end : event.start,
-        startDate: event.start !== null ? event.start : new Date()
-      })
-    }
-  }, [setValue, calendars.selectedEvent])
-
-  const resetToEmptyValues = useCallback(() => {
-    setValue('title', '')
-    setValues(defaultState)
-  }, [setValue])
-
-  useEffect(() => {
-    if (calendars.selectedEvent !== null) {
-      resetToStoredValues()
-    } else {
-      resetToEmptyValues()
-    }
-  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendars.selectedEvent])
-
-  const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
-    return (
-      <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} className='w-full' error={props.error} />
-    )
-  })
-
   const RenderSidebarFooter = () => {
     if (calendars.selectedEvent === null || (calendars.selectedEvent && !calendars.selectedEvent.title.length)) {
       return (
@@ -192,6 +188,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       )
     }
   }
+
+  useEffect(() => {
+    if (calendars.selectedEvent !== null) {
+      resetToStoredValues()
+    } else {
+      resetToEmptyValues()
+    }
+  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendars.selectedEvent])
 
   return (
     <Drawer

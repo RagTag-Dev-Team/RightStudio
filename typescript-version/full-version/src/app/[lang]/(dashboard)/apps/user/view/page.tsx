@@ -20,7 +20,7 @@ const BillingPlans = dynamic(() => import('@views/apps/user/view/user-right/bill
 const NotificationsTab = dynamic(() => import('@views/apps/user/view/user-right/notifications'))
 const ConnectionsTab = dynamic(() => import('@views/apps/user/view/user-right/connections'))
 
-// Data
+// Vars
 const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement } => ({
   overview: <OverViewTab />,
   security: <SecurityTab />,

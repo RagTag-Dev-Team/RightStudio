@@ -37,7 +37,7 @@ const Content = styled(Typography, {
   textAlign: 'center'
 }))
 
-// Data
+// Vars
 const data: CustomInputVerticalData[] = [
   {
     value: 'sale',

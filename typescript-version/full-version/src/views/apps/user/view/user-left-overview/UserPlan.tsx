@@ -12,6 +12,7 @@ import UpgradePlan from '@components/dialogs/upgrade-plan'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const UserPlan = () => {
+  // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
     children: 'Upgrade Plan'

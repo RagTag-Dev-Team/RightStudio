@@ -44,6 +44,7 @@ type FormDataType = {
   github: string
 }
 
+// Vars
 const steps = [
   {
     title: 'Account Details',

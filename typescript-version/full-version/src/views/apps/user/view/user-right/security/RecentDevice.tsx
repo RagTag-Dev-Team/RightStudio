@@ -13,6 +13,7 @@ type DataType = {
   recentActivity: string
 }
 
+// Vars
 const recentDeviceData: DataType[] = [
   {
     device: 'Dell XPS 15',

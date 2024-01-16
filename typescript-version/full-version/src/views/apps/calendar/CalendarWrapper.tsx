@@ -39,6 +39,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false)
   const [addEventSidebarOpen, setAddEventSidebarOpen] = useState<boolean>(false)
 
+  // Vars
   const initialState: CalendarType = {
     events: events,
     selectedEvent: null,
@@ -47,9 +48,6 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
 
   // Hooks
   const [calendars, dispatch] = useReducer(calendarReducer, initialState)
-
-  // Vars
-  // const { skin, direction } = settings
   const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
   const handleLeftSidebarToggle = () => setLeftSidebarOpen(!leftSidebarOpen)

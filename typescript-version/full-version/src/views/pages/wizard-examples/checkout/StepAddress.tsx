@@ -38,7 +38,7 @@ const VerticalContent = styled(Typography, {
   textAlign: 'center'
 })
 
-// Data
+// Vars
 const data: CustomInputHorizontalData[] = [
   {
     title: 'John Doe (Default)',

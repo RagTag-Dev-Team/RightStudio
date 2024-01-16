@@ -23,7 +23,7 @@ type TableDataType = {
   browser: boolean
 }
 
-// Data
+// Vars
 const tableData: TableDataType[] = [
   {
     app: false,

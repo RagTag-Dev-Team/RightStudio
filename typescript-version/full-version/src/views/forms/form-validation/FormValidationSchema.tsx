@@ -20,6 +20,8 @@ import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string } from 'valibot'
 import type { Input } from 'valibot'
 
+type FormData = Input<typeof schema>
+
 const schema = object({
   firstName: string([
     minLength(1, 'This field is required'),
@@ -36,12 +38,11 @@ const schema = object({
   ])
 })
 
-type FormData = Input<typeof schema>
-
 const FormValidationOnScheme = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
+  // Hooks
   const {
     control,
     reset,

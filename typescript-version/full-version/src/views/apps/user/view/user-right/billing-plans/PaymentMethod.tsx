@@ -30,6 +30,7 @@ type DataType = {
   badgeColor?: ThemeColor
 }
 
+// Vars
 const data: DataType[] = [
   {
     cardCvv: '587',
@@ -73,6 +74,7 @@ const PaymentMethod = () => {
     setCreditCard(index)
   }
 
+  // Vars
   const addButtonProps: ButtonProps = {
     variant: 'contained',
     children: 'Add Card',

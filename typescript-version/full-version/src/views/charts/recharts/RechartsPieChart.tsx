@@ -19,6 +19,7 @@ type LabelProp = {
   outerRadius: number
 }
 
+// Vars
 const data = [
   { name: 'R&D', value: 50, color: '#00d4bd' },
   { name: 'Operational', value: 85, color: '#ffe700' },
@@ -32,6 +33,7 @@ const renderCustomizedLabel = (props: LabelProp) => {
   // Props
   const { cx, cy, midAngle, innerRadius, outerRadius, percent } = props
 
+  // Vars
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5
   const x = cx + radius * Math.cos(-midAngle * RADIAN)
   const y = cy + radius * Math.sin(-midAngle * RADIAN)
