@@ -2,7 +2,6 @@
 
 // React Imports
 import { useMemo } from 'react'
-import type { ReactNode } from 'react'
 
 // MUI Imports
 import { deepmerge } from '@mui/utils'
@@ -22,7 +21,7 @@ import { useMedia } from 'react-use'
 import stylisRTLPlugin from 'stylis-plugin-rtl'
 
 // Type Imports
-import type { Direction, SystemMode } from '@core/types'
+import type { ChildrenType, Direction, SystemMode } from '@core/types'
 
 // Component Imports
 import ModeChanger from './ModeChanger'
@@ -33,8 +32,7 @@ import { useSettings } from '@core/hooks/useSettings'
 // Core Theme Imports
 import defaultCoreTheme from '@core/theme'
 
-type Props = {
-  children: ReactNode
+type Props = ChildrenType & {
   direction: Direction
   systemMode: SystemMode
 }
