@@ -18,6 +18,7 @@
 | @typescript-eslint/parser           | https://github.com/typescript-eslint/typescript-eslint         | BSD-2-Clause         |
 | autoprefixer                        | https://github.com/postcss/autoprefixer                        | MIT                  |
 | classnames                          | https://github.com/JedWatson/classnames                        | MIT                  |
+| dotenv-cli                          | https://github.com/entropitor/dotenv-cli                       | MIT                  |
 | eslint                              | https://github.com/eslint/eslint                               | MIT                  |
 | eslint-config-next                  | https://github.com/vercel/next.js                              | MIT                  |
 | eslint-config-prettier              | https://github.com/prettier/eslint-config-prettier             | MIT                  |

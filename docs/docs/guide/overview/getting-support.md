@@ -8,7 +8,7 @@ Raising support ticket in support portal is as simple as commenting on post. How
 
 ### Finding existing solution
 
-There might be a case that your issue is already resolved and you are the one who is facing due to some issue. So before creating new support ticket please search your question / issue in our [FAQ page](#) where we have listed most common questions / issues asked in our support portal.
+There might be a case that your issue is already resolved and you are the one who is facing due to some issue. So before creating new support ticket please search your question / issue in our [FAQ page](/docs/faqs/intro) where we have listed most common questions / issues asked in our support portal.
 
 ### Ticket Type
 
@@ -35,9 +35,9 @@ Good examples can be: 💯
 
 ### New Issue - New ticket
 
-Always consider creating a new support ticket for the question or issue you might have that is not related to your currently open ticket.
+For a more organized and efficient support experience, it's advisable to create separate support tickets for distinct issues or questions.
 
-Let's say you opened ticket for installation issue and want to ask about some component usage then it will be better to close installation ticket and open another ticket for that component to make support portal more accurate and easy find place.
+For instance, if you have an open ticket regarding an installation issue and then have a query about a specific component's usage, it's preferable to raise new ticket for your component-related question. This approach helps in maintaining clarity and ensures the support portal remains an accurate and easily navigable resource for all.
 
 ### Template Version
 

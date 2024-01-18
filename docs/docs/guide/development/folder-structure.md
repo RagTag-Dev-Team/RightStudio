@@ -2,9 +2,9 @@
 
 :::warning Heads Up
 
-Do not make any changes in the `src/@core` & `src/@layout` folders unless suggested by our support team. It is the core functionality of the template which is responsible to run the template.
+Do not make any changes in the `src/@core`, `src/@layout` and `src/@menu` folders unless suggested by our support team. It is the core functionality of the template which is responsible to run the template.
 
-The `src/@core` and `src/@layout` folders will receive updates with each new release. Kindly handle these folders with utmost care, as they contain crucial elements that ensure the template runs properly. Unauthorized changes to them could result in conflicts with subsequent updates, potentially disrupting your project.
+The `src/@core`, `src/@layout` and `src/@menu` folders will receive updates with each new release. Kindly handle these folders with utmost care, as they contain crucial elements that ensure the template runs properly. Unauthorized changes to them could result in conflicts with subsequent updates, potentially disrupting your project.
 :::
 
 Understand folder structure of the template and what every folder contains.
@@ -13,8 +13,8 @@ Understand folder structure of the template and what every folder contains.
 
 Before checking folder structure it is better you know some stuff related to folder structure.
 
-- `src/@core` & `src/@layout` folders contains core files of template which shall not get modified unless our support team guide you to do it.
-- Outside of `src/@core` & `src/@layout` folders are files you can move and modify as per your wish. Basically that is your playground where you can modify anything.
+- `src/@core`, `src/@layout` and `src/@menu` folders contains core files of template which shall not get modified unless our support team guide you to do it.
+- Outside of `src/@core`, `src/@layout` and `src/@menu` folders are files you can move and modify as per your wish. Basically that is your playground where you can modify anything.
 - `src/app/api/fake-db` folder just contains dummy data which we get in response of API call. This enables us to take step forward in providing API ready template.
 - `src/components` folder outside of `src/@layout` are your layouts which you can modify however you like. Template will always render these layouts.
 
@@ -115,6 +115,24 @@ Understanding the `src/@layout` folder will save your development time and you w
 | HorizontalLayout.tsx | Horizontal layout component |
 | LayoutWrapper.tsx | Wrapper component to conditionally render Vertical and Horizontal layout |
 | VerticalLayout.tsx | Vertical layout component |
+
+### Understanding Menu folder
+
+Understanding the `src/@menu` folder will save your development time and you will know about the menu structure of our template.
+
+| Folder/File    | Description |
+|-----------|-------------|
+| components | It contains components of the template for vertical & horizontal menu |
+| contexts | It contains menu context which is responsible for menu state |
+| hooks | It contains hooks to access menu context values |
+| horizontal-menu | Horizontal menu imports |
+| styles | Styled components for horizontal & vertical menu components |
+| svg | SVG components |
+| utils | Utils classes and functions for menu |
+| vertical-menu | Vertical menu imports |
+| defaultConfigs.ts | Default menu configs |
+| types.ts | It contains all the types of menu features like menu item, menu config, etc |
+
 
 ### Understanding the App Folder structure
 Understanding and Utilizing the App Directory, Learn the essentials of each component and file for effective customization and enhancement of your development.

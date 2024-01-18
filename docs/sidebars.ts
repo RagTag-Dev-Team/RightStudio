@@ -37,6 +37,7 @@ const sidebars: SidebarsConfig = {
       label: 'Overview',
       items: [
         'guide/overview/getting-started',
+        'guide/overview/starter-kit-vs-full-package',
         'guide/overview/dependencies',
         'guide/overview/installation',
         'guide/overview/getting-support',
@@ -49,6 +50,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'guide/development/folder-structure',
         'guide/development/demo-config',
+        'guide/development/nextjs-api',
       ]
     },
     'guide/logo',
