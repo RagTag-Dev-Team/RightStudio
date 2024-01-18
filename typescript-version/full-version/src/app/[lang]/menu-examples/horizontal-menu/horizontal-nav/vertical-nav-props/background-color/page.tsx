@@ -20,7 +20,7 @@ const BackgroundColor = () => {
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
         verticalNavProps={{
-          backgroundColor: '#ecebeb',
+          backgroundColor: '#f2e3ff',
           customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } }
         }}
       >

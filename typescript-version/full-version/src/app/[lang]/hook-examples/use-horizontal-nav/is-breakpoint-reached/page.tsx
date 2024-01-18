@@ -8,7 +8,7 @@ import VerticalNavContent from '../../../menu-examples/horizontal-menu/VerticalN
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
-const BreakPoint = () => {
+const IsBreakpointReached = () => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
 
@@ -42,4 +42,4 @@ const BreakPoint = () => {
   )
 }
 
-export default BreakPoint
+export default IsBreakpointReached

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `useVerticalNav()` hook is a custom hook specifically designed to handle the functionality and state management of a navigation sidebar within a web application. Its purpose is to provide a comprehensive set of variables that can be utilized to customize the behavior of the navigation sidebar.This documentation has explained how to use the hook and described the variables for configuring and customizing the menu.
+The `useVerticalNav()` hook is a custom hook specifically designed to handle the functionality and state management of a navigation sidebar within a web application. Its purpose is to provide a comprehensive set of variables that can be utilized to customize the behavior of the navigation sidebar. This documentation has explained how to use the hook and described variables for configuring and customizing the menu.
 
 ## Values
 
@@ -10,8 +10,8 @@ The `useVerticalNav()` hook provides the following variables that can be used to
 
 | Value                  | Type                                                | Description                                                                        |
 | ---------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| width                  | `number`, `string`                                  | Determines the width of the navigation sidebar.                                    |
-| collapsedWidth         | `number`, `string`                                  | Specifies the width of the navigation sidebar when it is collapsed.                |
+| width                  | `number`                                            | Determines the width of the navigation sidebar.                                    |
+| collapsedWidth         | `number`                                            | Specifies the width of the navigation sidebar when it is collapsed.                |
 | isCollapsed            | `boolean`                                           | Indicates whether the navigation sidebar is currently collapsed.                   |
 | isHovered              | `boolean`                                           | Indicates whether the navigation sidebar is currently being hovered over.          |
 | isToggled              | `boolean`                                           | Indicates whether the navigation sidebar is currently toggled.                     |
@@ -19,17 +19,17 @@ The `useVerticalNav()` hook provides the following variables that can be used to
 | isPopoutWhenCollapsed  | `boolean`                                           | Determines whether the navigation sidebar pops out when it is collapsed.           |
 | isBreakpointReached    | `boolean`                                           | Indicates whether the specified breakpoint has been reached.                       |
 | transitionDuration     | `number`                                            | Specifies the duration (in `ms`) of the transition for the entire navigation menu. |
-| updateVerticalNavState | `(values: VerticalNavState) => void`                | A function used to update the state of the navigation sidebar .                    |
-| collapseVerticalNav    | `(value?: VerticalNavState['isCollapsed']) => void` | A function used to collapse the navigation sidebar .                               |
-| hoverVerticalNav       | `(value?: VerticalNavState['isHovered']) => void`   | A function used to apply a hover effect to the navigation sidebar .                |
-| toggleVerticalNav      | `(value?: VerticalNavState['isToggled']) => void`   | A function used to toggle the visibility of the navigation sidebar .               |
+| updateVerticalNavState | `(values: VerticalNavState) => void`                | A function used to update the state of the navigation sidebar.                     |
+| collapseVerticalNav    | `(value?: VerticalNavState['isCollapsed']) => void` | A function used to collapse the navigation sidebar.                                |
+| hoverVerticalNav       | `(value?: VerticalNavState['isHovered']) => void`   | A function used to apply a hover effect to the navigation sidebar.                 |
+| toggleVerticalNav      | `(value?: VerticalNavState['isToggled']) => void`   | A function used to toggle the visibility of the navigation sidebar.                |
 
 ## Usage
 
 To utilize the `useVerticalNav()` hook, please refer to the following examples:
 
-import TsToJsCodeSnippet from "@docComponents//ts-js-code"
-import IframeWindow from "@docComponents//browser-window/IframeWindow.tsx"
+import TsToJsCodeSnippet from "@docComponents//ts-js-code";
+import IframeWindow from "@docComponents//browser-window/IframeWindow.tsx";
 
 ### toggleVerticalNav
 

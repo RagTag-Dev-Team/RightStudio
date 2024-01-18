@@ -19,7 +19,8 @@ const RootStyles = () => {
             label='Dashboards'
             rootStyles={{
               ['& > .' + menuClasses.button]: {
-                backgroundColor: '#c5c5c5'
+                backgroundColor: '#e4e2ff',
+                color: '#7367F0 !important'
               }
             }}
           >

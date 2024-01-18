@@ -18,8 +18,8 @@ const RootStyles = () => {
           <MenuItem
             rootStyles={{
               ['.' + menuClasses.button]: {
-                backgroundColor: '#d6d6d6',
-                color: '#9f0099'
+                backgroundColor: '#e4e2ff',
+                color: '#7367F0 !important'
               }
             }}
           >

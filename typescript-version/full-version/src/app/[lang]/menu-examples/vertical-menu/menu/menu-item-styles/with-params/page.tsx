@@ -9,11 +9,11 @@ const MenuItemStylesWithParams = () => {
       <Menu
         menuItemStyles={{
           button: ({ disabled, open, isSubmenu, level }) => ({
-            ...(level === 1 && { fontSize: '1.2rem' }),
+            ...(level === 1 && { paddingInlineStart: '20px' }),
             paddingBlock: '12px',
             fontWeight: open ? 500 : 400,
-            color: disabled ? '#8f8b8b' : '#000000',
-            backgroundColor: isSubmenu ? '#efdaf0' : '#ddedf0'
+            color: disabled ? '#a19e9e' : '#000000',
+            backgroundColor: isSubmenu ? '#fef0ff' : '#ecfcff'
           })
         }}
       >

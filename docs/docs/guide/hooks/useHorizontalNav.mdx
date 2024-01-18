@@ -2,29 +2,40 @@
 
 ## Overview
 
-The `useHorizontalNav()` hook is a custom hook specifically designed to handle the functionality of a navigation menu within a web application. Its purpose is to provide a comprehensive variable that can be utilized to customize the behavior of the navigation menu. This documentation has explained how to use the hook and described the vairble for configuring and customizing the navigation menu.
+The `useHorizontalNav()` hook is a custom hook specifically designed to handle the functionality of a navigation menu within a web application. Its purpose is to provide a comprehensive variable that can be utilized to customize the behavior of the navigation menu. This documentation has explained how to use the hook and described variables for configuring and customizing the navigation menu.
 
 ## Values
 
 The `useHorizontalNav()` hook provides the following variable that can be used to customize the behavior of the navigation menu:
 
-| Value                     | Type       | Description                                                             |
-| ------------------------- | ---------- | ----------------------------------------------------------------------- |
-| isBreakpointReached       | `boolean`  | A boolean value that indicates whether the breakpoint has been reached. |
+| Value                     | Type                                     | Description                                                             |
+| ------------------------- | ---------------------------------------- | ----------------------------------------------------------------------- |
+| isBreakpointReached       | `boolean`                                | A boolean value that indicates whether the breakpoint has been reached. |
+| updateIsBreakpointReached | `(isBreakpointReached: boolean) => void` | A function used to update isBreakpointReached value.                    |
 
 ## Usage
 
-To utilize the `useVerticalNav()` hook, please refer to the example provided below:
+To utilize the `useHorizontalNav()` hook, please refer to the example provided below:
 
 import TsToJsCodeSnippet from "@docComponents//ts-js-code"
 import IframeWindow from "@docComponents//browser-window/IframeWindow.tsx"
 
 ### isBreakpointReached
 
-import SourceCodeIsBreakpointReached from "!raw-loader!@/app/[lang]/hook-examples/use-horizontal-nav/is-breakpoint-reached/page";
+import SourceCodeIsBreakpointReached from "!raw-loader!@/app/[lang]/hook-examples/use-horizontal-nav/is-breakpoint-reached/page"
 
 <IframeWindow url="http://localhost:3000/en/hook-examples/use-horizontal-nav/is-breakpoint-reached" />
 
 #### Source Code
 
 <TsToJsCodeSnippet>{SourceCodeIsBreakpointReached}</TsToJsCodeSnippet>
+
+### updateIsBreakpointReached
+
+import SourceCodeUpdateIsBreakpointReached from "!raw-loader!@/app/[lang]/hook-examples/use-horizontal-nav/update-is-breakpoint-reached/page"
+
+<IframeWindow url="http://localhost:3000/en/hook-examples/use-horizontal-nav/update-is-breakpoint-reached" />
+
+#### Source Code
+
+<TsToJsCodeSnippet>{SourceCodeUpdateIsBreakpointReached}</TsToJsCodeSnippet>

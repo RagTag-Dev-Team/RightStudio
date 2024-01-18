@@ -9,8 +9,8 @@ const RootStyles = () => {
       <Menu
         menuItemStyles={{ button: { paddingBlock: '12px' } }}
         rootStyles={{
-          backgroundColor: '#ebebeb',
-          color: 'red'
+          backgroundColor: '#f2fdff',
+          color: '#00a2ff'
         }}
       >
         <MenuSection label='Dashboards & Apps'>
