@@ -1,0 +1,286 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+# Adding i18n to the Starter-Kit
+
+:::note
+Our template supports Right-to-Left (RTL) languages like Arabic and Left-to-Right (LTR) languages like English. By adding i18n, you enable the template to automatically switch between RTL and LTR layouts based on the selected language.
+:::
+
+### Step 1: Add Packages
+
+Begin by installing packages related to i18n, which handle locale matching and negotiation. 
+
+- `@formatjs/intl-localematcher`
+- `@types/negotiator`
+- `negotiator`
+- `server-only`
+
+Run the appropriate command in your project's root directory based on your package manager:
+
+<Tabs
+    defaultValue="pnpm"
+    values={[
+        { label: 'PNPM (Highly Recommended)', value: 'pnpm' },
+        { label: 'YARN', value: 'yarn' },
+        { label: 'NPM', value: 'npm' },
+    ]}>
+    <TabItem value="pnpm">
+        <CodeBlock language='bash'>pnpm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="yarn">
+        <CodeBlock language='bash'>yarn install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="npm">
+        <CodeBlock language='bash'>npm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+</Tabs>
+
+### Step 2: Organize Content
+
+1. Create a `[lang]` folder inside the `src/app` folder.
+2. Move all files and folders into the `[lang]` folder you want to translate. Please note that you have to move all files and folders except the `src/app/api` folder and `favicon` and `global.css` file.
+3. Update all the path references in the moved files and folders.
+
+### Step: 3 Middleware File
+
+:::warning Note
+If you have implemented [Authentication](/docs/guide/authentication/add-auth) in Starter Kit, and you want to add i18n to your project, then you can copy the middleware file from the full-version of the template. The middleware file is located at `src/middleware.ts/js`.
+:::
+
+If you want to add only i18n in starter kit, then you have to create a `middleware.ts/js` file in the `src` folder and add the following code:
+
+```ts
+// Next Imports
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+// Third-party Imports
+import Negotiator from 'negotiator'
+import { match as matchLocale } from '@formatjs/intl-localematcher'
+
+// Config Imports
+import { i18n } from '@configs/i18n'
+
+const getLocale = (request: NextRequest): string | undefined => {
+  // Negotiator expects plain object so we need to transform headers
+  const negotiatorHeaders: Record<string, string> = {}
+
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
+
+  // @ts-ignore locales are readonly
+  const locales: string[] = i18n.locales
+
+  // Use negotiator and intl-localematcher to get best locale
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
+
+  const locale = matchLocale(languages, locales, i18n.defaultLocale)
+
+  return locale
+}
+
+export default function middleware(request: NextRequest) {
+  let pathname = request.nextUrl.pathname
+
+  // Check if there is any supported locale in the pathname
+  const pathnameIsMissingLocale = i18n.locales.every(
+    locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  )
+
+  // Get locale from request headers
+  const locale = getLocale(request)
+
+  // Update pathname if locale is missing
+  if (pathnameIsMissingLocale) {
+    // e.g. incoming request is /products
+    // The new URL is now /en-US/products
+    pathname = `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`
+  }
+
+  // Access granted, continue to the page
+  if (!pathnameIsMissingLocale) {
+    // If the pathname already contains a locale, continue to the page
+    return NextResponse.next()
+  } else {
+    // Redirect to the same path with the locale added
+    return NextResponse.redirect(new URL(pathname, request.url))
+  }
+}
+
+// Matcher Config
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - all items inside the public folder
+     *    - images (public images)
+     *    - next.svg (Next.js logo)
+     *    - vercel.svg (Vercel logo)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|images|next.svg|vercel.svg).*)'
+  ]
+}
+```
+
+### Step 4: Create i18n.ts File
+
+Create an `i18n.ts` file in the `src/configs` folder and add the following code:
+
+```ts
+export const i18n = {
+  defaultLocale: 'en',
+  locales: ['en', 'fr', 'ar'],
+  langDirection: {
+    en: 'ltr',
+    fr: 'ltr',
+    ar: 'rtl'
+  }
+} as const
+
+export type Locale = (typeof i18n)['locales'][number]
+```
+
+### Step 5: Create dictionary related files
+
+1. Create a `dictionaries` folder in the `src/data` folder.
+2. Create a json file for each language in the `dictionaries` folder. For example, `en.json`, `fr.json`, and `ar.json`.
+3. For example in `en.json` file add the following code:
+
+    ```json
+    {
+      "navigation": {
+        "home": "Home",
+        "about": "About"
+      }
+    }
+    ```
+    Similarly, you can add the dictionary for other languages as well.
+4. Create a `get-dictionary.tsx` file in the `src/utils` folder and add the following code:
+
+    ```tsx
+    // Third-party Imports
+    import 'server-only'
+
+    // Type Imports
+    import type { Locale } from '@configs/i18n'
+
+    const dictionaries = {
+    en: () => import('@/data/dictionaries/en.json').then(module => module.default),
+    ... // add other languages
+    }
+
+    export const getDictionary = async (locale: Locale) => dictionaries[locale]()
+    ```
+
+### Step 6: Additional Changes
+
+- Go to the `src/app/[lang]/layout.tsx` file and make the following changes.
+
+  1. Add the follownig import:
+      ```diff
+      + import { i18n } from '@/configs/i18n'
+      + import type { Locale } from '@/configs/i18n'
+      ```
+  2. Replace the following statement:
+
+      ```diff
+      - { children }: ChildrenType
+      + { children, params }: ChildrenType & { params: { lang: Locale} }
+
+      - const direction = 'ltr' // Make sure you replace this in the whole project
+      + const direction = i18n.langDirection[params.lang]  
+
+      - lang='en'
+      + lang={params.lang}
+      ```
+
+- Go to the `src/app/[lang]/(dashboard)/layout.tsx` file and make the following changes.
+
+  1. Make the same changes as you did in the `src/app/[lang]/layout.tsx` file.
+  2. Additionally, add the following statement:
+
+      ```diff
+      + const dictionary = await getDictionary(params.lang)
+      ```
+  3. Add the `dictionary={dictionary}` prop to the `<Navigation />` and `<Header />` components.
+
+- Go to the `src/components/layout/vertical/Navigation.tsx` file and make the following changes.
+
+  1. Add the following in props and get the dictionary from props.
+
+      ```diff
+      // If you have used props
+      type Props = {
+        ...
+      + dictionary: Awaited<ReturnType<typeof getDictionary>>
+      }
+      ```
+
+      ```diff
+      // Direct passing the parameter
+      + { dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }
+      ```
+  You have to make the changes mentioned above in the following files as well:
+
+  - `src/components/layout/vertical/VerticalMenu.tsx`
+
+  - `src/components/layout/horizontal/Header.tsx`
+
+  - `src/components/layout/horizontal/Navigation.tsx`
+
+  - `src/components/layout/horizontal/HorizontalMenu.tsx`
+
+  2. Pass the dictionary to the `<VerticalMenu>` component.
+
+      ```diff
+      - <VerticalMenu />
+      + <VerticalMenu scrollMenu={scrollMenu} dictionary={dictionary} />
+      ```
+
+- Go to the `src/components/layout/vertical/VerticalMenu.tsx` file.
+
+  1. Add the following code:
+
+      ```diff
+      + // Next Imports
+      + import { useParams } from 'next/navigation'
+
+      + const params = useParams()
+      + const { lang: locale } = params
+      ```
+
+  2. Replace the following statement:
+
+      ```diff
+      -  <MenuItem href='/home' icon={<i className='ri-home-smile-line' />}>
+      -    Home
+      -  </MenuItem>
+      -  <MenuItem href='/about' icon={<i className='ri-information-line' />}>
+      -    About
+      -  </MenuItem>
+
+      +  <MenuItem href={`/${locale}/home`} icon={<i className='ri-home-smile-line' />}>
+      +    {dictionary['navigation'].home}
+      +  </MenuItem>
+      +  <MenuItem href={`/${locale}/about`} icon={<i className='ri-information-line' />}>
+      +    {dictionary['navigation'].about}
+      +  </MenuItem>
+      ```
+
+- Go to the `src/components/layout/horizontal/Header.tsx` file and pass the `dictionary={dictionary}` prop to the `<Navigation>` component.
+
+- Go to the `src/components/layout/horizontal/Navigation.tsx` file and pass the `dictionary={dictionary}` prop to the `<HorizontalMenu>` component.
+
+- Go to the `src/components/layout/horizontal/HorizontalMenu.tsx` file and make the changes as we have did in the `src/components/layout/vertical/VerticalMenu.tsx` file.
+
+:::warning Note
+Please note that whereever you have used the `href` prop, you have to add the locale in the path. For example, if you have used `href='/home'` then you have to replace it with ``href={`/${locale}/home`}`` to add the locale in the path.
+:::
+
+After completing these steps, if you encounter any type errors, try refreshing/reopening your editor or deleting the .next folder before running your project again.
+
+That's it! You have successfully added i18n to your project 🥳🎉.
