@@ -36,7 +36,11 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   ├── navigation                  -> Vertical & Horizontal static navigation menu data
 │   │   ├── translation                 -> Translation data for localization
 │   │   └── searchData.ts               -> Data related to search
-│   ├── libs                            -> 
+│   ├── libs                            -> Third party libraries
+│   │   ├── styles                      -> Styles for third party libraries
+│   │   ├── ApexCharts                  -> Renders charts in client side
+│   │   ├── Editor                      -> Renders editor in client side
+│   │   ├── Recharts                    -> Renders charts in client side
 │   │   └── auth.ts                     -> Authentication using NextAuth.js
 │   ├── middleware.ts                   -> Middleware logic for Next.js
 │   ├── prisma                          -> Prisma ORM files, including database schema
@@ -44,8 +48,11 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   ├── dev.db                      -> SQLite database
 │   │   └── schema.prisma               -> Model and schema definitions for Prisma
 │   ├── types                           -> Type definitions
+|   ├── reducers                        -> Reducers
+|   |   └── calendarReducer.ts          -> Reducer for calendar
 │   ├── utils                           -> Utility functions
-│   │   └── get-dictionary.ts           -> Util function to get the locale dictionary
+│   │   ├── get-dictionary.ts           -> Util function to get the locale dictionary 
+│   │   └── get-initials.ts             -> Util function to get initials from name
 │   └── views                           -> Files that are included in app folder
 ├── .editorconfig                       -> Configuration file for the editor
 ├── .env.example                        -> Example environment variables file

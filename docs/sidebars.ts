@@ -64,6 +64,22 @@ const sidebars: SidebarsConfig = {
         'guide/development/folder-structure',
         'guide/development/demo-config',
         'guide/development/nextjs-api',
+        {
+          "type": "category",
+          "label": "Theming",
+          "items": [
+            "guide/development/overview",
+            "guide/development/override-color-palette",
+            "guide/development/change-primary-color",
+            "guide/development/override-custom-color",
+            "guide/development/add-new-custom-color",
+            "guide/development/override-typography",
+            "guide/development/override-shadow",
+            "guide/development/override-breakpoints",
+            "guide/development/override-component-styling",
+            "guide/development/create-your-own-theme",
+          ]
+        }
       ]
     },
     'guide/logo',
@@ -104,34 +120,41 @@ const sidebars: SidebarsConfig = {
     'user-interface/cards-actions'
   ],
   componentsSidebar: [
-    'components/intro',
-    'components/accordion',
-    'components/alerts',
-    'components/avatars',
-    'components/badges',
-    'components/buttons',
-    'components/button-group',
-    'components/chips',
-    'components/dialogs',
-    'components/list',
-    'components/menu',
-    'components/pagination',
-    'components/progress',
-    'components/ratings',
-    'components/snackbar',
-    'components/swiper',
-    'components/tabs',
-    'components/timeline',
-    'components/toasts',
-    'components/more',
-    'components/test'
+   {
+    type: 'category',
+    label: 'Components',
+    collapsed: false,
+    link: { type: 'doc', id: 'components/intro' },
+    items:[
+      'components/accordion',
+      'components/alerts',
+      'components/avatars',
+      'components/badges',
+      'components/buttons',
+      'components/button-group',
+      'components/chips',
+      'components/dialogs',
+      'components/list',
+      'components/menu',
+      'components/pagination',
+      'components/progress',
+      'components/ratings',
+      'components/snackbar',
+      'components/swiper',
+      'components/tabs',
+      'components/timeline',
+      'components/toasts',
+      'components/more',
+      'components/test'
+    ]
+   }
   ],
   formsTablesSidebar: [
-    'forms-tables/intro',
     {
       type: 'category',
       label: 'Form Elements',
       collapsed: false,
+      link: { type: 'doc', id: 'form-elements/intro' },
       items: [
         'form-elements/text-field',
         'form-elements/select',
@@ -148,14 +171,7 @@ const sidebars: SidebarsConfig = {
         'form-elements/test',
       ]
     },
-    {
-      type: 'category',
-      label: 'Tables',
-      collapsed: false,
-      items: [
-        'tables/mui-table',
-      ]
-    }
+    'tables/mui-table',
   ],
   menuExamplesSidebar: [
     "menu-examples/menu-examples-intro",
@@ -422,16 +438,26 @@ const sidebars: SidebarsConfig = {
     },
   ],
   faqSidebar: [
-    "faqs/intro",
-    "faqs/installation-errors",
-    "faqs/installation-warning",
+    'faqs/intro',
+    'faqs/installation-errors',
+    'faqs/installation-warning',
     "faqs/remove-nextjs",
     "faqs/how-to-hide-menu",
     "faqs/server-side-menu",
+    'faqs/how-to-change-logo',
+    'faqs/how-to-change-colors',
+    'faqs/how-to-change-fonts',
+    'faqs/how-to-change-mode',
+    'faqs/how-to-change-skin',
+    'faqs/why-cannot-revert-to-default-theme',
     'faqs/configure-local-template-like-demos',
+    'faqs/integrate-template-into-existing-project',
     "faqs/update-navbar-and-footer",
     "faqs/why-default-collapsed-menu-be-avoided",
-    "faqs/switching-authentication",
+    'faqs/how-to-override-component-styling',
+    'faqs/switching-authentication',
+    'faqs/migration',
+    'faqs/how-to-use-directions',
     "faqs/how-to-clear-browser-cache",
     "faqs/why-static-export-is-not-possible"
   ],
