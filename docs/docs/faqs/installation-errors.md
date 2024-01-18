@@ -19,9 +19,9 @@ hide_table_of_contents: true
 - Please make sure you are using the LTS version of node which is recommended and not one with the latest features.
 - Try running the `pnpm cache clean`, `yarn cache clean` or `npm cache clean` command.
 
-**After following the steps explained above, if you are still getting any errors, please [raise support](#) at our support portal with the below details:**
+**After following the steps explained above, if you are still getting any errors, please [raise support](/docs/guide/overview/getting-support) at our support portal with the below details:**
 - Your OS information, Node version, pnpm/yarn/npm version, Template/Package version.
 - Mention if you can run a fresh react project using `npx create-next-app@latest` without our template/package.
 - Attach log file of the error you are getting in your console(provide full log).
-- Mention which common you are running.
+- Mention which command you are running.
 - Mention if you are were able to run our template on one machine and not on another.

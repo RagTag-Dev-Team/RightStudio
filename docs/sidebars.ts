@@ -16,6 +16,18 @@ const sidebars: SidebarsConfig = {
     'guide/intro',
     'guide/tags',
     {
+      type : 'category',
+      label : 'Translations',
+      items : ['guide/translation/how-to-remove-i18n', 'guide/translation/add-i18n-to-Starter-kit']
+    },
+    'guide/environment-variables',
+    'guide/rtl',
+    {
+      type: 'category',
+      label: 'Layout',
+      items: ['guide/layout/customizer']
+    },
+    {
       type: 'category',
       label: 'Authentication',
       items: ['guide/authentication/intro', 'guide/authentication/credentials-provider', 'guide/authentication/google-prisma', 'guide/authentication/remove-auth', 'guide/authentication/add-auth']
@@ -38,6 +50,7 @@ const sidebars: SidebarsConfig = {
       label: 'Overview',
       items: [
         'guide/overview/getting-started',
+        'guide/overview/starter-kit-vs-full-package',
         'guide/overview/dependencies',
         'guide/overview/installation',
         'guide/overview/getting-support',
@@ -50,11 +63,10 @@ const sidebars: SidebarsConfig = {
       items: [
         'guide/development/folder-structure',
         'guide/development/demo-config',
+        'guide/development/nextjs-api',
       ]
     },
     'guide/logo',
-    'guide/menu-classes',
-    'guide/menu-utils',
     'guide/before-after-content',
     {
       type: 'category',
@@ -65,6 +77,15 @@ const sidebars: SidebarsConfig = {
         'guide/hooks/useHorizontalNav',
         'guide/hooks/useMediaQuery',
         'guide/hooks/useSettings'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Settings',
+      items: [
+        'guide/settings/vscode-configurations',
+        'guide/settings/theme-configurations',
+        'guide/settings/settings-context'
       ]
     },
     {
@@ -411,6 +432,8 @@ const sidebars: SidebarsConfig = {
     "faqs/update-navbar-and-footer",
     "faqs/why-default-collapsed-menu-be-avoided",
     "faqs/switching-authentication",
+    "faqs/how-to-clear-browser-cache",
+    "faqs/why-static-export-is-not-possible"
   ],
 };
 

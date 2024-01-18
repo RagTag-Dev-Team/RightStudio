@@ -1,11 +1,7 @@
----
-hide_table_of_contents: true
----
-
-import TsToJsCodeSnippet from '@docComponents//ts-js-code'
-import IframeWindow from '@docComponents//browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/without-params/page'
+import TsToJsCodeSnippet from "@docComponents//ts-js-code";
+import IframeWindow from "@docComponents//browser-window/IframeWindow.tsx";
+import SourceCodeWithParams from "!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/with-params/page";
+import SourceCodeWithoutParams from "!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/without-params/page";
 
 # Menu Item Styles
 
@@ -15,25 +11,27 @@ The `menuItemStyles` prop allows you to customize the style of the menu items.
 
 ```ts noCopy
 type MenuItemStyles = {
-  root?: ElementStyles
-  button?: ElementStyles
-  label?: ElementStyles
-  prefix?: ElementStyles
-  suffix?: ElementStyles
-  icon?: ElementStyles
-  subMenuContent?: ElementStyles
-  subMenuExpandIcon?: ElementStyles
-}
+  root?: ElementStyles;
+  button?: ElementStyles;
+  label?: ElementStyles;
+  prefix?: ElementStyles;
+  suffix?: ElementStyles;
+  icon?: ElementStyles;
+  subMenuContent?: ElementStyles;
+  subMenuExpandIcon?: ElementStyles;
+};
 
-type ElementStyles = CSSObject | ((params: MenuItemStylesParams) => CSSObject | undefined)
+type ElementStyles =
+  | CSSObject
+  | ((params: MenuItemStylesParams) => CSSObject | undefined);
 
 type MenuItemStylesParams = {
-  level: number
-  disabled: boolean
-  active?: boolean
-  isSubmenu: boolean
-  open?: boolean
-}
+  level: number;
+  disabled: boolean;
+  active?: boolean;
+  isSubmenu: boolean;
+  open?: boolean;
+};
 ```
 
 The `MenuItemStyles` object allows you to customize the style of various elements within the menu item. Each property corresponds to a specific element and accepts a `CSSObject` that contains the styles.
@@ -69,7 +67,7 @@ By using the MenuItemStylesParams object, you can dynamically apply styles based
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/with-params' />
+<IframeWindow url="http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/with-params" />
 
 ### Source Code
 
@@ -81,7 +79,7 @@ The `menuItemStyles` prop directly returns a `CSSObject` without any parameters.
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/without-params' />
+<IframeWindow url="http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/without-params" />
 
 ### Source Code
 

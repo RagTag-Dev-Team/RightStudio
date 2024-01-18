@@ -1,0 +1,37 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+# How to add Search in Starter Kit
+
+Search has been implemented in the full-version only. If you have started your project using the starter kit as per our suggestion, please follow the below steps in order to implement search functionality in your project.
+
+Begin by installing `kbar` package which is related to search functionality
+
+Run the appropriate command in your project's root directory based on your package manager:
+
+<Tabs
+    defaultValue="pnpm"
+    values={[
+        { label: 'PNPM (Highly Recommended)', value: 'pnpm' },
+        { label: 'YARN', value: 'yarn' },
+        { label: 'NPM', value: 'npm' },
+    ]}>
+    <TabItem value="pnpm">
+        <CodeBlock language='bash'>pnpm install kbar</CodeBlock>
+    </TabItem>
+    <TabItem value="yarn">
+        <CodeBlock language='bash'>yarn install kbar</CodeBlock>
+    </TabItem>
+    <TabItem value="npm">
+        <CodeBlock language='bash'>npm install kbar</CodeBlock>
+    </TabItem>
+</Tabs>
+
+1. Copy `full-version/src/components/layout/shared/search` folder from the full-version and paste it in your project's `src/components/layout/shared` folder.
+
+2. You have to create a `searchData.ts/js` file in your project's `src/data/` folder. This file will contain the data that will be used for search.
+
+3. Import the `<NavSearch />` component in `src/components/layout/vertical/NavbarContent.tsx` file and add after the `<NavToggle />` component.
+
+That's it. You have successfully implemented search functionality in your project.🥳🎉

@@ -10,9 +10,8 @@ const RootStyles = () => {
         <MenuSection
           label='Dashbaords & Apps'
           rootStyles={{
-            color: 'red',
-            fontSize: '1.3em',
-            backgroundColor: '#e9eded'
+            backgroundColor: '#e4e2ff',
+            color: '#7367F0 !important'
           }}
         >
           <SubMenu label='Dashboards'>

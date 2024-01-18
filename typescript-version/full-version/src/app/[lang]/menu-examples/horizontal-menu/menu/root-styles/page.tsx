@@ -14,8 +14,10 @@ const RootStyles = () => {
         <Menu
           menuItemStyles={{ button: { paddingBlock: '12px' } }}
           rootStyles={{
-            color: '#0044ff',
-            backgroundColor: '#dddddd'
+            backgroundColor: '#eaf1ff',
+            color: '#254dff',
+            borderRadius: '0.375rem',
+            padding: '0.25rem'
           }}
         >
           <SubMenu label='Dashboards'>

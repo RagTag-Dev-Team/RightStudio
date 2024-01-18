@@ -21,7 +21,7 @@ const BackgroundColor = () => {
         verticalNavContent={VerticalNavContent}
         verticalNavProps={{
           customStyles: {
-            color: '#ff0000',
+            color: '#b056ff',
             '& .ts-menu-button': { paddingBlock: '12px' }
           }
         }}

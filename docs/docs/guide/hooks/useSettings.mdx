@@ -8,11 +8,12 @@ The `useSettings()` hook is a React hook that allows you to access the settings 
 
 The `useSettings()` hook provides the following variables, allowing you to customize the settings of your app.
 
-| Value          | Type                        | Description                                       |
-| -------------- | --------------------------- | ------------------------------------------------- |
-| settings       | `Settings`                  | The settings of your app.                         |
-| saveSettings   | `(value: Settings) => void` | A function that saves the settings of your app.   |
-| updateSettings | `(value: Settings) => void` | A function that updates the settings of specific page. |
+| Value             | Type                                                                     | Description                                                 |
+| ----------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| settings          | `Settings`                                                               | The settings of your app.                                   |
+| isSettingsChanged | `boolean`                                                                | Indicates whether the initial settings changed.             |
+| updateSettings    | `(settings: Partial<Settings>, options?: UpdateSettingsOptions) => void` | A function that updates the settings of your app.           |
+| resetSettings     | `() => void`                                                             | A function that reset the settings to the initial settings. |
 
 ```ts noCopy
 export type Settings = {
@@ -23,15 +24,24 @@ export type Settings = {
   navbarContentWidth?: LayoutComponentWidth
   contentWidth?: LayoutComponentWidth
   footerContentWidth?: LayoutComponentWidth
+  primaryColor?: string
 }
 ```
+
+```ts noCopy
+type UpdateSettingsOptions = {
+  updateCookie?: boolean
+}
+```
+
+The `updateCookie` prop allows you to update the settings of your app in the browser's cookies. By default, this prop is set to `true`.
 
 ## Usage
 
 To utilize the `useSettings()` hook, please refer to the following examples:
 
-import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code"
+import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx"
 
 ### Mode
 
@@ -103,18 +113,6 @@ import SourceCodeFooterContentWidth from "!!raw-loader!@/app/[lang]/hook-example
 
 <TsToJsCodeSnippet>{SourceCodeFooterContentWidth}</TsToJsCodeSnippet>
 
-### updateSettingsMode
-
-The `updateSettings` allows you to update the settings of specific page within your app. Here we have just changed to `mode` of the app  to `dark` on the specific page and the rest of the app remains unchanged. You can use the other `settings` values in the same way. 
-
-import SourceCodeUpdateSettingsMode from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/update-settings-mode/page"
-
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/update-settings-mode" />
-
-#### Source Code
-
-<TsToJsCodeSnippet>{SourceCodeUpdateSettingsMode}</TsToJsCodeSnippet>
-
 ### Change/Reset SettingsMode
 
 import SourceCodeChangeSettingsMode from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-changed/page"
@@ -124,4 +122,3 @@ import SourceCodeChangeSettingsMode from "!!raw-loader!@/app/[lang]/hook-example
 #### Source Code
 
 <TsToJsCodeSnippet>{SourceCodeChangeSettingsMode}</TsToJsCodeSnippet>
-

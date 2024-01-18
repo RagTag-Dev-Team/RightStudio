@@ -6,7 +6,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
-const IsToggled = () => {
+const IsPopoutWhenCollapsed = () => {
   // Hooks
   const { updateVerticalNavState, isPopoutWhenCollapsed } = useVerticalNav()
 
@@ -45,4 +45,4 @@ const IsToggled = () => {
   )
 }
 
-export default IsToggled
+export default IsPopoutWhenCollapsed

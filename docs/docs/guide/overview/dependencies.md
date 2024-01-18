@@ -16,6 +16,7 @@ You may add / update / remove any other dependencies according to your requireme
     "@types/react-dom" // Typescript version only
     "autoprefixer"
     "classnames"
+    "dotenv-cli"
     "next"
     "postcss"
     "postcss-styled-syntax"

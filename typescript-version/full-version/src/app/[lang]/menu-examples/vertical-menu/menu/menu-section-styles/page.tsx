@@ -10,11 +10,11 @@ const MenuSectionStyles = () => {
         menuItemStyles={{ button: { paddingBlock: '12px' } }}
         menuSectionStyles={{
           root: {
-            color: '#991245',
-            backgroundColor: '#f9f9f9'
+            color: '#c32bff',
+            backgroundColor: 'rgba(115, 103, 240, 0.06)'
           },
           label: {
-            color: '#4475ff'
+            color: '#4B465C'
           }
         }}
       >

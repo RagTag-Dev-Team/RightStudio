@@ -22,13 +22,15 @@ It is always suggested to get started with the minimal setup and we exactly prov
 
 Once you unzip the template you will find TypeScript / JavaScript version folder and under that full-version and starter-kit folders.
 
-First step should be to verify all the [dependencies](/docs/guide/overview/dependencies) and clean up all the packages that are not required for your project.
+### Understanding Dependencies in Starter Kit
 
-### What's the Point of Including All the Dependencies with Starter Kit?
+- The Starter Kit version is designed with minimalism in mind. It includes only the essential dependencies    required to get started with the template.
+- This approach ensures a lightweight and efficient setup, ideal for smaller projects or for those who prefer to build upon a lean foundation.
 
-Your question is totally valid and legit. To make the experience smoother, we have listed all the [dependencies](/docs/guide/overview/dependencies) and provided freedom to remove dependencies which are not required in your project.
+### Adding to the Starter Kit
 
-Searching for packages that are required and to install them can be difficult and confusing for new users. Hence, we have included all the packages in the starter-kit. New user can just copy components from full version without worrying about packages.
+- If you begin with the Starter Kit but later find you need more features, you can easily integrate additional dependencies from the Full Version.
+- This process allows for a tailored development experience, you start with the basics and add more complexity only as needed.
 
 ## Integrating Our Template into Your Existing Project
 
@@ -46,7 +48,7 @@ You want your local template to look like one of the 6 demos you saw online then
 
 ## FAQs
 
-If you face any difficulties with installation, or has any question on usage of this template like changing colors, fonts, branding etc., then treat yourself by visiting FAQs section. You are most likely to find your answer there.
+If you face any difficulties with installation, or has any question on usage of this template like changing colors, fonts, branding etc., then treat yourself by visiting [FAQs](/docs/faqs/intro) section. You are most likely to find your answer there.
 
 ## Search Docs
 

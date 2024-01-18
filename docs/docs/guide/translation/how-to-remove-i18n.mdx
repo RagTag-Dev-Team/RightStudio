@@ -1,0 +1,239 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+# Removing i18n from the Template
+
+This guide provides steps to remove i18n (internationalization) from your Docusaurus project template.
+
+:::warning
+Please be aware that our template's support for Right-to-Left (RTL) languages like Arabic is directly tied to the language settings. This means that RTL formatting is automatically applied when an RTL language is selected. Conversely, languages like English (en) use Left-to-Right (LTR) formatting.
+
+If you remove the internationalization (i18n) feature from our template, the automatic RTL support will also be disabled. This is because our RTL functionality is based on the language settings — it recognizes and formats RTL languages appropriately and does the same for LTR languages.
+
+In essence, without the i18n feature, the template will not automatically switch between RTL and LTR layouts based on the language. Please consider this carefully when modifying the template, especially if your audience includes users of RTL languages.
+:::
+
+### Step 1: Remove Packages
+
+Begin by uninstalling packages related to i18n, which handle locale matching and negotiation. 
+
+- `@formatjs/intl-localematcher`
+- `@types/negotiator`
+- `negotiator`
+- `server-only`
+
+Run the appropriate command in your project's root directory based on your package manager:
+
+<Tabs
+    defaultValue="pnpm"
+    values={[
+        { label: 'PNPM (Highly Recommended)', value: 'pnpm' },
+        { label: 'YARN', value: 'yarn' },
+        { label: 'NPM', value: 'npm' },
+    ]}>
+    <TabItem value="pnpm">
+        <CodeBlock language='bash'>pnpm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="yarn">
+        <CodeBlock language='bash'>yarn uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="npm">
+        <CodeBlock language='bash'>npm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+</Tabs>
+
+### Step 2: Reorganize Content
+
+Next, move all the content from the `[lang]` folder to the app folder. This step consolidates all your content into a single language and location.
+
+1. Move all files and folders from the `[lang]` folder to the app folder.
+
+2. After moving the content, ensure that all links and references in your project are updated to reflect the new locations.
+
+3. Remove the `[lang]` folder.
+
+### Step 3: Update middleware file
+
+In the `middleware.js/ts` file, make these changes:
+
+1. Remove the following imports:
+
+    ```diff
+    - import type { NextRequest } from 'next/server'
+
+    - import Negotiator from 'negotiator'
+    - import { match as matchLocale } from '@formatjs/intl-localematcher'
+
+    - import { i18n } from '@configs/i18n'
+    ```
+
+2. Remove the `getLocale` function from the file.
+
+3. Replace the followings lines in the `middleware` function:
+
+    ```diff
+    - const rootRoute = `/${locale}/`
+    + const rootRoute = '/'
+    ```
+
+    ```diff
+    - if (!pathnameIsMissingLocale) {
+    -    // If the pathname already contains a locale, continue to the page
+    -    return NextResponse.next()
+    - } else {
+    -   // Redirect to the same path with the locale added
+    -   return NextResponse.redirect(new URL(pathname, request.url))
+    - }
+
+    + return NextResponse.next()
+    ```
+4. Remove the `locale` and `pathnameIsMissingLocale` related code from the `middleware` function.
+
+5. Change the `pathname` varaible from `let` to `const`.
+
+
+### Step 4: Additional changes need to be done
+
+- Go to the `src/components/layout/vertical/Navigation.tsx` file and Remove the `{ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }` and `dictionary={dictionary}` from the type `Props` and `<VerticalMenu>` component.
+
+- Go to the `src/components/layout/vertical/VerticalMenu.tsx` file and make the following changes.
+
+    1. Remove the `{ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }` from the `props` parameter of the `VerticalMenu` function.
+
+    2. Replace the `label` and `href` from SubMenu, MenuItem and MenuSection in the whole file as below: 
+
+        <CodeBlock language='tsx'>
+        {`<SubMenu label={dictionary['navigation'].dashboards} icon={<i className='ri-home-smile-line' />}>
+        <MenuItem href={'/$locale}/dashboards/analytics'}>{dictionary['navigation'].analytics}</MenuItem>
+        </SubMenu>`}
+        </CodeBlock>
+
+        to:
+
+        <CodeBlock language='tsx'>{`<SubMenu label='dashboards' icon={<i className='ri-home-smile-line' />}>
+        <MenuItem href={'/dashboards/analytics'}>analytics</MenuItem>
+        </SubMenu>`}</CodeBlock>
+        
+    3. Remove the unused variable and it's releted import from the `VerticalMenu.tsx` file.
+
+- You need to remove `dictionary` prop from `<GenerateVerticalMenu menuData={menuData(dictionary, params)} />` from `src/components/layout/vertical/VerticalMenu.tsx` file.
+
+- Go to the `src/components/layout/horizontal/HorizontalMenu.tsx` file and make the same changes above in the `VerticalMenu.tsx` file. and also you need to remove the `{ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }` from the `props` parameter and replace the `label` as above mentioned in `src/data/navigation/verticalMenuData.tsx` and `src/data/navigation/horizontalMenuData.tsx` files.
+
+
+- Go to the `src/components/layout/horizontal/Header.tsx` file and make the following changes.
+
+    1. Remove the following import:
+
+        ```diff
+        - import type { getDictionary } from '@/utils/get-dictionary'
+        ```
+
+    2. Remove the `dictionary={dictionary}` from the `<Navigation>` component.
+
+- Go to the `src/components/layout/horizontal/Navigation.tsx` file and make the following changes.
+
+- Remove the `dictionary` from the `props` parameter of the `Navigation` function and `dictionary: Dictionary` from the `<HorizontalMenu>` component.
+
+- Remove the `src/components/layout/shared/LanguageDropdown.tsx` file and it's related import from the whole project.
+
+- Please go to the `src/components/layout/shared/search/DefaultSuggestions.tsx` file and make the following changes.
+
+    1. Remove the following and it's related import:
+
+        ```diff
+        - const { lang: locale } = useParams()
+        ```
+
+    2. Replace the following:
+
+        ```diff
+        - <Link href={`/${locale}/${item.href}`}
+        + <Link href={item.href}
+        ```
+
+- Remove the `src/configs/i18n.ts` file and it's related import from the whole project.
+
+- Go to the `src/app/layout.tsx` file and make the following changes.
+
+    1. Remove `lang` param from the `<html>` tag.
+
+    2. Replace the following:
+
+        ```diff
+        - const direction = i18n.langDirection[params.lang]
+        + const direction = 'ltr'
+        ```
+
+- Go to the 'src/app/(dashboards)/layout.tsx' file and make the following changes.
+
+- Please note that you have to replace `const direction = 'ltr'` as mentioned above in all the files where `const direction = i18n.langDirection[params.lang]` is used.
+
+    1. Remove the following import:
+
+        ```diff
+        - import { getDictionary } from '@/utils/get-dictionary'
+        ```
+
+    2. Remove the follwoing statements:
+
+        ```diff
+        const dictionary = await getDictionary(params.lang)
+        ```
+
+    3. Remove `dictionary={dictionary}` prop from `<Navigation>` and `<Header>` components.
+
+- Please go to the `src/components/layout/shared/search/index.tsx` file and make the following changes.
+
+    1. Remove the following and it's related import:
+
+        ```diff
+        - const { lang: locale } = useParams()
+        ```
+
+    2. Replace the following in `searchActions` function:
+
+        ```diff
+        - router.push(`/${locale}/${item.url}`)
+        + router.push(item.url)
+        ```
+
+- Go to the `src/components/layout/shared/search/NoResult.tsx` file and make the following changes.
+
+    1. Remove the following and it's related import:
+
+        ```diff
+        - const { lang: locale } = useParams()
+        ```
+
+    2. Replace the following:
+
+        ```diff
+        - <Link href={`/${locale}/${item.href}`}
+        + <Link href={item.href}
+        ```
+
+- Remove the `src/utils/get-dictionary.tsx` and it's related import from the whole project.
+
+- Please go to the `src/components/GenerateMenu.tsx` and make the following changes.
+
+    1. Remove the `localizeUrl` function.
+
+    2. Remove the following statement:
+
+        ```diff
+        - const href = menuItem.href?.startsWith('http') ? menuItem.href : localizeUrl(menuItem, locale as Locale)
+        ```
+
+    3. Replace the `href={href}` with `href={menuItem.href}` in the `<VerticalMenuItem>` and `<HorizontalMenuItem>` components.
+
+- Please go to the `src/app/(dashboards)/layout.tsx` file and add the `disableDirection` prop in the `<Customizer>` component.
+
+    ```tsx  
+    <Customizer dir={direction} disableDirection />
+    ```
+ 
+If you get any type errors after doing the above steps, you need to refresh/reopen your editor or you can remove `.next` folder and then try to run your project.
+
+That's it! You have successfully removed i18n from your project 🥳.

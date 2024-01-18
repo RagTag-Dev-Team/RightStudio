@@ -30,4 +30,19 @@ import VerticalNavCollapseIconsProps from '@site/src/components/props/vertical-p
 
 ### Source Code
 
+:::warning
+The `onClick={() => console.log('clicked')}` prop written below in the `NavCollapseIcons` component is for demo purposes only. You should write the following instead in order to update the layout according to the collapsed state.
+
+```diff
++ import useVerticalNav from '@menu/hooks/useVerticalNav'
++ import { useSettings } from '@core/hooks/useSettings'
+
++ const { isCollapsed } = useVerticalNav()
++ const { updateSettings } = useSettings()
+
+- <NavCollapseIcons onClick={() => console.log('clicked')} />
++ <NavCollapseIcons onClick={() => updateSettings({ layout: !isCollapsed ? 'collapsed' : 'vertical' })} />
+```
+:::
+
 <TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>

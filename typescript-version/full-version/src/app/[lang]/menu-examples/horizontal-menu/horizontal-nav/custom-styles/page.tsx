@@ -12,8 +12,10 @@ const CustomStyles = () => {
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav
         customStyles={{
-          backgroundColor: '#f3f4f6',
-          color: '#0d25ff'
+          backgroundColor: '#edebff',
+          color: '#695dee',
+          borderRadius: '0.375rem',
+          padding: '0.25rem'
         }}
       >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>

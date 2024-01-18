@@ -16,9 +16,11 @@ const MenuItemStylesWithOutParams = () => {
         <Menu
           menuItemStyles={{
             button: {
-              color: '#ff0000',
-              fontSize: '1.2rem',
-              paddingBlock: '12px'
+              color: '#7367F0',
+              backgroundColor: '#FFF5FF',
+              fontSize: '1rem',
+              paddingBlock: '12px',
+              fontWeight: 500
             }
           }}
         >
