@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs'
 
 export type UpdateFileModifier = (data: string) => string
 
@@ -9,9 +9,5 @@ export type UpdateFileModifier = (data: string) => string
  * @param modifier Function that modifies the file data
  */
 export const updateFile = (path: string, modifier: UpdateFileModifier) => {
-  fs.writeFileSync(
-    path,
-    modifier(fs.readFileSync(path, { encoding: 'utf-8' })),
-    { encoding: 'utf-8' },
-  )
+  fs.writeFileSync(path, modifier(fs.readFileSync(path, { encoding: 'utf-8' })), { encoding: 'utf-8' })
 }
