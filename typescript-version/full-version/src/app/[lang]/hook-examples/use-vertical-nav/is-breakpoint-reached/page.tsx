@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import Button from '@mui/material/Button'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -32,9 +35,7 @@ const BreakPoint = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         {isBreakpointReached && (
-          <div onClick={() => toggleVerticalNav(isBreakpointReached ? !isToggled : true)} className='cursor-pointer'>
-            Menu Toggle
-          </div>
+          <Button onClick={() => toggleVerticalNav(isBreakpointReached ? !isToggled : true)}>Menu Toggle</Button>
         )}
       </main>
     </div>

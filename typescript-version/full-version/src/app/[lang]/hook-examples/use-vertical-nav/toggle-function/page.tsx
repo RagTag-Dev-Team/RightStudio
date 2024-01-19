@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -31,9 +35,7 @@ const ToggleFunction = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        <button onClick={() => toggleVerticalNav(!isToggled)} className='cursor-pointer'>
-          Click here to toggle menu
-        </button>
+        <FormControlLabel label='Toggle Menu' control={<Checkbox onChange={() => toggleVerticalNav(!isToggled)} />} />
       </main>
     </div>
   )

@@ -1,5 +1,10 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import Button from '@mui/material/Button'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -32,10 +37,11 @@ const HoveredFunction = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button onClick={() => collapseVerticalNav(!isCollapsed)} className='cursor-pointer'>
-            Menu Toggle
-          </button>
-          <p onClick={() => hoverVerticalNav(!isHovered)}>Click here to toggle Hover</p>
+          <FormControlLabel
+            label='Menu Toggle'
+            control={<Checkbox onChange={() => collapseVerticalNav(!isCollapsed)} />}
+          />
+          <Button onClick={() => hoverVerticalNav(!isHovered)}>Click here to toggle Hover</Button>
         </div>
       </main>
     </div>

@@ -4,6 +4,14 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormGroup from '@mui/material/FormGroup'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { MenuProps } from '@menu/components/vertical-menu/Menu'
 
@@ -14,14 +22,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 const TriggerPopout = () => {
-  const {
-    isToggled,
-    isCollapsed,
-    toggleVerticalNav,
-    isBreakpointReached,
-    isPopoutWhenCollapsed,
-    updateVerticalNavState
-  } = useVerticalNav()
+  const { isCollapsed, isPopoutWhenCollapsed, updateVerticalNavState } = useVerticalNav()
 
   // States
   const [trigger, setTrigger] = useState<MenuProps['triggerPopout']>('hover')
@@ -59,47 +60,24 @@ const TriggerPopout = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        {isBreakpointReached ? (
-          <div
-            onClick={() => toggleVerticalNav(isBreakpointReached ? !isToggled : true)}
-            className='flex items-center gap-2 cursor-pointer mb-5'
-          >
-            🔥 Menu Toggle
-          </div>
-        ) : (
-          <>
-            <button onClick={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} className='cursor-pointer'>
-              Collapse
-            </button>
-            <div
-              onClick={() => updateVerticalNavState({ isPopoutWhenCollapsed: !isPopoutWhenCollapsed })}
-              className='flex items-center gap-2 cursor-pointer'
-            >
-              {isPopoutWhenCollapsed === true ? '🔥' : '🌊'}
-              Popout When Collapsed
-            </div>
-            <div>
-              <input
-                type='radio'
-                name='trigger'
-                id='hover'
-                value='hover'
-                checked={trigger === 'hover'}
-                onChange={handleTriggerChange}
-              />
-              <label htmlFor='hover'>Hover</label>
-              <input
-                type='radio'
-                name='trigger'
-                id='click'
-                value='click'
-                checked={trigger === 'click'}
-                onChange={handleTriggerChange}
-              />
-              <label htmlFor='click'>Click</label>
-            </div>
-          </>
-        )}
+        <FormControl>
+          <FormGroup>
+            <FormControlLabel
+              label='Collapse'
+              control={<Checkbox onChange={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} />}
+            />
+            <FormControlLabel
+              label='Popout When Collapsed'
+              control={
+                <Checkbox onChange={() => updateVerticalNavState({ isPopoutWhenCollapsed: !isPopoutWhenCollapsed })} />
+              }
+            />
+          </FormGroup>
+          <RadioGroup row value={trigger} onChange={handleTriggerChange}>
+            <FormControlLabel value='hover' control={<Radio />} label='Hover' />
+            <FormControlLabel value='click' control={<Radio />} label='Click' />
+          </RadioGroup>
+        </FormControl>
       </main>
     </div>
   )

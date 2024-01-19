@@ -1,5 +1,11 @@
 'use client'
 
+// MUI Imports
+import Button from '@mui/material/Button'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 
@@ -19,39 +25,17 @@ const SettingsChanged = () => {
   return (
     <main className='p-4 flex-grow'>
       <div className='flex justify-between'>
-        <form>
+        <div>
           <p>Mode:</p>
-          <input
-            type='radio'
-            id='dark'
-            name='mode'
-            value='dark'
-            checked={settings.mode === 'dark'}
-            onChange={() => handleChange('mode', 'dark')}
-          />
-          <label htmlFor='dark'>Dark</label>
-          <input
-            type='radio'
-            id='light'
-            name='mode'
-            value='light'
-            checked={settings.mode === 'light'}
-            onChange={() => handleChange('mode', 'light')}
-          />
-          <label htmlFor='light'>Light</label>
-          <input
-            type='radio'
-            id='system'
-            name='mode'
-            value='system'
-            checked={settings.mode === 'system'}
-            onChange={() => handleChange('mode', 'system')}
-          />
-          <label htmlFor='system'>System</label>
-        </form>
-        <p>{isSettingsChanged && `value:${settings.mode}`}</p>
+          <RadioGroup row value={settings.mode} onChange={event => handleChange('mode', event.target.value)}>
+            <FormControlLabel value='dark' control={<Radio />} label='Dark' />
+            <FormControlLabel value='light' control={<Radio />} label='Light' />
+            <FormControlLabel value='system' control={<Radio />} label='System' />
+          </RadioGroup>
+        </div>
+        <p>{isSettingsChanged && `value: ${settings.mode}`}</p>
       </div>
-      {isSettingsChanged && <button onClick={resetSettings}>Reset</button>}
+      {isSettingsChanged && <Button onClick={resetSettings}>Reset</Button>}
     </main>
   )
 }

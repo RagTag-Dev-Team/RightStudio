@@ -1,5 +1,10 @@
 'use client'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 
@@ -18,29 +23,17 @@ const SettingsFooterContentWidth = () => {
 
   return (
     <main className='p-4 flex-grow'>
-      <div className='flex justify-between'>
-        <form>
-          <p>Footer Content:</p>
-          <input
-            type='radio'
-            id='compact'
-            name='content'
-            value='compact'
-            checked={settings.footerContentWidth === 'compact'}
-            onChange={() => handleChange('footerContentWidth', 'compact')}
-          />
-          <label htmlFor='compact'>Compact</label>
-          <input
-            type='radio'
-            id='wide'
-            name='content'
-            value='wide'
-            checked={settings.footerContentWidth === 'wide'}
-            onChange={() => handleChange('footerContentWidth', 'wide')}
-          />
-          <label htmlFor='wide'>Wide</label>
-        </form>
-        <p>Value:{settings.footerContentWidth}</p>
+      <div className='flex flex-col'>
+        <p>Footer Content:</p>
+        <RadioGroup
+          row
+          value={settings.footerContentWidth}
+          onChange={event => handleChange('footerContentWidth', event.target.value)}
+        >
+          <FormControlLabel value='compact' control={<Radio />} label='Compact' />
+          <FormControlLabel value='wide' control={<Radio />} label='Wide' />
+        </RadioGroup>
+        <p>Value: {settings.footerContentWidth}</p>
       </div>
     </main>
   )

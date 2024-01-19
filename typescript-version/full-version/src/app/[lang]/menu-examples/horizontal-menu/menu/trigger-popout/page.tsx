@@ -4,6 +4,11 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -47,24 +52,10 @@ const TriggerPopout = () => {
         </HorizontalNav>
       </div>
       <main className='p-4 flex-grow'>
-        <input
-          id='hover'
-          type='radio'
-          value='hover'
-          name='trigger'
-          checked={trigger === 'hover'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='hover'>Hover</label>
-        <input
-          id='click'
-          type='radio'
-          value='click'
-          name='trigger'
-          checked={trigger === 'click'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='click'>Click</label>
+        <RadioGroup row value={trigger} onChange={handleTriggerChange}>
+          <FormControlLabel value='hover' control={<Radio />} label='Hover' />
+          <FormControlLabel value='click' control={<Radio />} label='Click' />
+        </RadioGroup>
       </main>
     </div>
   )

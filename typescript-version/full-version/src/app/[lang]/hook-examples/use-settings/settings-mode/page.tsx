@@ -1,5 +1,10 @@
 'use client'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 
@@ -18,38 +23,14 @@ const SettingsMode = () => {
 
   return (
     <main className='p-4 flex-grow'>
-      <div className='flex justify-between'>
-        <form>
-          <p>Mode:</p>
-          <input
-            type='radio'
-            id='dark'
-            name='mode'
-            value='dark'
-            checked={settings.mode === 'dark'}
-            onChange={() => handleChange('mode', 'dark')}
-          />
-          <label htmlFor='dark'>Dark</label>
-          <input
-            type='radio'
-            id='light'
-            name='mode'
-            value='light'
-            checked={settings.mode === 'light'}
-            onChange={() => handleChange('mode', 'light')}
-          />
-          <label htmlFor='light'>Light</label>
-          <input
-            type='radio'
-            id='system'
-            name='mode'
-            value='system'
-            checked={settings.mode === 'system'}
-            onChange={() => handleChange('mode', 'system')}
-          />
-          <label htmlFor='system'>System</label>
-        </form>
-        <p>value:{settings.mode}</p>
+      <div className='flex flex-col'>
+        <p>Mode:</p>
+        <RadioGroup row value={settings.mode} onChange={event => handleChange('mode', event.target.value)}>
+          <FormControlLabel value='dark' control={<Radio />} label='Dark' />
+          <FormControlLabel value='light' control={<Radio />} label='Light' />
+          <FormControlLabel value='system' control={<Radio />} label='System' />
+        </RadioGroup>
+        <p>value: {settings.mode}</p>
       </div>
     </main>
   )

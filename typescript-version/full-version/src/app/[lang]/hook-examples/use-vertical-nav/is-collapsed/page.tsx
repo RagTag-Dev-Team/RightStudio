@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -32,9 +36,10 @@ const IsCollapsed = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button onClick={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} className='cursor-pointer'>
-            Click here to {isCollapsed ? 'expand' : 'collapse'} menu
-          </button>
+          <FormControlLabel
+            label={isCollapsed ? 'Expand Menu' : 'Collapse Menu'}
+            control={<Checkbox onChange={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} />}
+          />
           <p>{`isCollapsed: ${isCollapsed}`}</p>
         </div>
       </main>

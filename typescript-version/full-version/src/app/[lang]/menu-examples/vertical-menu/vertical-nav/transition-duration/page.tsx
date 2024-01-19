@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -31,9 +35,10 @@ const TransitionDuration = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         {!isBreakpointReached && (
-          <button onClick={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} className='cursor-pointer'>
-            Collapse
-          </button>
+          <FormControlLabel
+            label='Collapse'
+            control={<Checkbox onChange={() => updateVerticalNavState({ isCollapsed: !isCollapsed })} />}
+          />
         )}
       </main>
     </div>

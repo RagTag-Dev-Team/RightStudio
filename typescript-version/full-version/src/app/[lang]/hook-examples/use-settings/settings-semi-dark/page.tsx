@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 
@@ -19,17 +23,13 @@ const SettingsSemiDark = () => {
   return (
     <main className='p-4 flex-grow'>
       <div className='flex justify-between'>
-        <form>
-          <input
-            type='checkbox'
-            id='semiDark'
-            name='semiDark'
-            checked={settings.semiDark}
-            onChange={() => handleChange('semiDark', !settings.semiDark)}
-          />
-          <label id='semiDark'>Semi Dark</label>
-        </form>
-        <p>Value:{settings.semiDark?.toString()}</p>
+        <FormControlLabel
+          label='Semi Dark'
+          control={
+            <Checkbox checked={settings.semiDark} onChange={() => handleChange('semiDark', !settings.semiDark)} />
+          }
+        />
+        <p>Value: {settings.semiDark?.toString()}</p>
       </div>
     </main>
   )

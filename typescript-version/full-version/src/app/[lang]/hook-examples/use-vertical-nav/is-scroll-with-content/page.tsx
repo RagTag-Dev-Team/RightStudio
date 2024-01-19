@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -32,12 +36,12 @@ const IsScrollWithContent = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button
-            onClick={() => updateVerticalNavState({ isScrollWithContent: !isScrollWithContent })}
-            className='cursor-pointer'
-          >
-            Scroll With Content
-          </button>
+          <FormControlLabel
+            label='Scroll With Content'
+            control={
+              <Checkbox onChange={() => updateVerticalNavState({ isScrollWithContent: !isScrollWithContent })} />
+            }
+          />
           <p>{`Status : ${isScrollWithContent}`}</p>
         </div>
         <p className='mt-4'>

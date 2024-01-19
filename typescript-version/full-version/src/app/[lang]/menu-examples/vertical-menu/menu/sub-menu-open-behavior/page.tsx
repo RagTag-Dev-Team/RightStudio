@@ -4,6 +4,11 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type imports
 import type { MenuProps } from '@menu/components/vertical-menu/Menu'
 
@@ -43,24 +48,10 @@ const SubMenuOpenBehavior = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        <input
-          type='radio'
-          id='accordion'
-          value='accordion'
-          name='triggerPopout'
-          checked={openBehavior === 'accordion'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='accordion'>Accordion</label>
-        <input
-          type='radio'
-          id='collapse'
-          value='collapse'
-          name='triggerPopout'
-          checked={openBehavior === 'collapse'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='collapse'>Collapse</label>
+        <RadioGroup row value={openBehavior} onChange={handleTriggerChange}>
+          <FormControlLabel value='accordion' control={<Radio />} label='Accordion' />
+          <FormControlLabel value='collapse' control={<Radio />} label='Collapse' />
+        </RadioGroup>
       </main>
     </div>
   )

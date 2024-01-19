@@ -1,5 +1,9 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -32,9 +36,10 @@ const IsToggled = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button onClick={() => updateVerticalNavState({ isToggled: !isToggled })} className='cursor-pointer'>
-            Click here to toggle menu
-          </button>
+          <FormControlLabel
+            label='Toggle Menu'
+            control={<Checkbox onChange={() => updateVerticalNavState({ isToggled: !isToggled })} />}
+          />
           <p>{`isToggled: ${isToggled}`}</p>
         </div>
       </main>

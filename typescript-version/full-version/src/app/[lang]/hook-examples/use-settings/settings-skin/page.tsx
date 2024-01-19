@@ -1,5 +1,10 @@
 'use client'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type Imports
 import type { Settings } from '@core/contexts/settingsContext'
 
@@ -18,29 +23,13 @@ const SettingsSkin = () => {
 
   return (
     <main className='p-4 flex-grow'>
-      <div className='flex justify-between'>
-        <form>
-          <p>Skin:</p>
-          <input
-            type='radio'
-            id='default'
-            name='skin'
-            value='default'
-            checked={settings.skin === 'default'}
-            onChange={() => handleChange('skin', 'default')}
-          />
-          <label htmlFor='default'>Default</label>
-          <input
-            type='radio'
-            id='border'
-            name='skin'
-            value='bordered'
-            checked={settings.skin === 'bordered'}
-            onChange={() => handleChange('skin', 'bordered')}
-          />
-          <label htmlFor='border'>Border</label>
-        </form>
-        <p>value:{settings.skin}</p>
+      <div className='flex flex-col'>
+        <p>Skin:</p>
+        <RadioGroup row value={settings.skin} onChange={event => handleChange('skin', event.target.value)}>
+          <FormControlLabel value='default' control={<Radio />} label='Default' />
+          <FormControlLabel value='bordered' control={<Radio />} label='Border' />
+        </RadioGroup>
+        <p>value: {settings.skin}</p>
       </div>
     </main>
   )
