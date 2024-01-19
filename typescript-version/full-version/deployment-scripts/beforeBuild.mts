@@ -3,11 +3,10 @@ import path from 'node:path'
 
 import { globbySync } from 'globby'
 
-import { fullVersionDirPath } from './paths.mts';
+import { fullVersionDirPath } from './paths.mts'
 import { updateFile } from './utils.mts'
 
 const basePath = process.env.BASEPATH
-
 
 const addBasePathInApi = async () => {
   if (!basePath) {
@@ -17,29 +16,28 @@ const addBasePathInApi = async () => {
     console.log(`Adding basePath: ${basePath}`)
   }
 
-  const files = globbySync(
-    ['src/app/api/**/*.ts'],
-    {
-      cwd: fullVersionDirPath,
-      absolute: true,
-      gitignore: false,
-      dot: true,
-    }
+  const files = globbySync(['src/app/api/**/*.ts'], {
+    cwd: fullVersionDirPath,
+    absolute: true,
+    gitignore: false,
+    dot: true
+  })
+
+  await Promise.all(
+    files.map(async file => {
+      let newContent = await fs.readFile(file, 'utf-8')
+
+      newContent = newContent.replace(/\/images\//g, `${basePath}/images/`)
+
+      await fs.writeFile(file, newContent)
+    })
   )
-
-  await Promise.all(files.map(async (file) => {
-    let newContent = await fs.readFile(file, 'utf-8')
-
-    newContent = newContent.replace(/\/images\//g, `${basePath}/images/`)
-
-    await fs.writeFile(file, newContent)
-  }))
 }
 
 const removeGoogleSingIn = () => {
   const loginFilePath = path.join(fullVersionDirPath, 'src/views/Login.tsx')
 
-  updateFile(loginFilePath, (content) => {
+  updateFile(loginFilePath, content => {
     let newContent = content.replace(/<Divider.*?<\/Button>/gms, '')
 
     newContent = newContent.replace(/import Divider.*/g, '')
@@ -53,17 +51,17 @@ const removeIconTest = async () => {
 
   // Remove Icon test page from searchData.ts
   // ❗ Assuming icon test is after id: '41'
-  updateFile(searchDataFilePath, (content) => {
+  updateFile(searchDataFilePath, content => {
     return content.replace(/(?<=id: '41'.*){.*icons-test.*?},.*?(?={)/gms, '')
   })
 
   const filesToRemove = [
     path.join(fullVersionDirPath, 'src', 'views', 'icons-test'),
     path.join(fullVersionDirPath, 'src', 'app', 'api', 'icons-test'),
-    path.join(fullVersionDirPath, 'src', 'app', '[lang]', '(dashboard)', 'icons-test'),
+    path.join(fullVersionDirPath, 'src', 'app', '[lang]', '(dashboard)', 'icons-test')
   ]
 
-  await Promise.all(filesToRemove.map(async (path) => fs.rm(path, { recursive: true, force: true })))searchDataFilePathpath.joinfullVersionDirPath,RemoveIcontestpagefromsearchData.tsAssumingicontestisafterid
+  await Promise.all(filesToRemove.map(async path => fs.rm(path, { recursive: true, force: true })))
 }
 
 const updateNextConfig = () => {
@@ -85,15 +83,12 @@ const updateNextConfig = () => {
     ]
   },`
 
-  updateFile(nextConfigFilePath, (content) => {
+  updateFile(nextConfigFilePath, content => {
     return content.replace(/( +)(reactStrictMode: false)/gms, `$1$2,\n$1${configData}`)
   })
 }
 
-await Promise.all([
-  await removeIconTest(),
-  await addBasePathInApi(),
-])
+await Promise.all([await removeIconTest(), await addBasePathInApi()])
 
 removeGoogleSingIn()
 updateNextConfig()
