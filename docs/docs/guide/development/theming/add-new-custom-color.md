@@ -53,4 +53,4 @@ Suppose you want to add a new customColor `bodyColor` to the template.
     }
     ```
 
-3. Now follow the common [customization steps](/docs/guide/development/overview#common-customization-steps) mentioned on Overview page.
+3. Now follow the common [customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned on Overview page.

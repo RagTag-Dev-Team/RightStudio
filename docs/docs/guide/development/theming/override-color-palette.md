@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 :::info
 The instructions provided below will not change the primary color.<br/> 
-If you want to change the primary color, please refer [How to change Primary Color](/docs/guide/development/change-primary-color).
+If you want to change the primary color, please refer [How to change Primary Color](/docs/guide/development/theming/change-primary-color).
 :::
 
 In order to change the colors of the template,you need to follow the steps below:
@@ -46,7 +46,7 @@ In order to change the colors of the template,you need to follow the steps below
    } as Theme;
    ```
 
-2. Now follow the [common customization steps](/docs/guide/development/overview#common-customization-steps) mentioned in Overview.
+2. Now follow the [common customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned in Overview.
 
 Above example is for changing the secondary color, you can change any color by following the same steps. Please refer
 [MUI extendTheme customization](https://mui.com/material-ui/experimental-api/css-theme-variables/customization/#color-schemes) for more information.

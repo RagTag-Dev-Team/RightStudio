@@ -26,7 +26,7 @@ You need to change the breakpoints in both `tailwind.config.js` and `src/compone
    } as Theme;
    ```
 
-2. Now follow the common [customization steps](/docs/guide/development/overview#common-customization-steps) mentioned in Overview.
+2. Now follow the common [customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned in Overview.
 
 ## How to change Tailwind Breakpoints
 
@@ -45,6 +45,7 @@ theme: {
     },
 }
 ```
+
 :::tip Reference
-https://mui.com/material-ui/customization/breakpoints/
+[https://mui.com/material-ui/customization/breakpoints](https://mui.com/material-ui/customization/breakpoints)
 :::

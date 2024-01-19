@@ -16,7 +16,7 @@ To customize colors, typography, spacing, or other aspects of component styling,
 :::
 
 :::tip Important
-If you want to use your own custom theme from scratch, you can follow the steps mentioned in [How to create your own custom theme](/docs/guide/development/create-your-own-theme).
+If you want to use your own custom theme from scratch, you can follow the steps mentioned in [How to create your own custom theme](/docs/guide/development/theming/create-your-own-theme).
 :::
 
 ### Common Customization steps

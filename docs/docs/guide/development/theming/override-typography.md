@@ -32,7 +32,7 @@ You can change it by following these steps:
    } as Theme;
    ```
 
-3. Now follow the [common customization steps](/docs/guide/development/overview#common-customization-steps) mentioned in Overview.
+3. Now follow the [common customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned in Overview.
 
 #### Use multiple fonts
 
@@ -57,4 +57,4 @@ You can refer the typography of the template from `src/@core/theme/typography.ts
 
 :::tip Reference
 You can refer to template's typography from [here](/docs/user-interface/typography) <br/>
-MUI typography customization: https://mui.com/material-ui/customization/typography/
+MUI typography customization: [https://mui.com/material-ui/customization/typography](https://mui.com/material-ui/customization/typography)

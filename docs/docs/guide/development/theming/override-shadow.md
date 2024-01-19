@@ -21,4 +21,5 @@ You can also checkout the MUI Shadows in our core theme file `src/@core/theme/sh
      },
    } as Theme;
    ```
-2. Now follow the common [customization steps](/docs/guide/development/overview#common-customization-steps) mentioned in Overview.
+
+2. Now follow the common [customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned in Overview.

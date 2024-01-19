@@ -28,6 +28,7 @@ dark: {
   }
 }
 ```
+
 In order to change the custom colors of the template, you need to follow the steps below:
 
 1. Open the file `src/components/theme/mergedTheme.ts` and override the color as per your requirement.
@@ -57,7 +58,5 @@ The example shows how to change the `bodyBg` color.
       }
     }
    ```
-2. Now follow the common [customization steps](/docs/guide/development/overview#common-customization-steps) mentioned above.
 
-
-
+2. Now follow the common [customization steps](/docs/guide/development/theming/overview#common-customization-steps) mentioned above.
