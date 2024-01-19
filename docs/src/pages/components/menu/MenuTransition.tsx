@@ -4,7 +4,7 @@ import type { MouseEvent } from 'react'
 
 // MUI Imports
 import Menu from '@mui/material/Menu'
-import Fade from '@mui/material/Fade'
+import Zoom from '@mui/material/Zoom'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 
@@ -22,16 +22,16 @@ const MenuTransition = () => {
 
   return (
     <>
-      <Button variant='outlined' aria-controls='fade-menu' aria-haspopup='true' onClick={handleClick}>
-        Open with fade transition
+      <Button variant='outlined' aria-controls='zoom-menu' aria-haspopup='true' onClick={handleClick}>
+        Open with zoom transition
       </Button>
       <Menu
         keepMounted
-        id='fade-menu'
+        id='zoom-menu'
         anchorEl={anchorEl}
         onClose={handleClose}
         open={Boolean(anchorEl)}
-        TransitionComponent={Fade}
+        TransitionComponent={Zoom}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>

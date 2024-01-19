@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent, MouseEvent, TouchEvent } from 'react'
 
 // MUI Imports
-import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import Popper from '@mui/material/Popper'
@@ -81,7 +81,7 @@ const MenuComposition = () => {
         }}
       >
         {({ TransitionProps, placement }) => (
-          <Grow
+          <Fade
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom' }}
           >
@@ -94,7 +94,7 @@ const MenuComposition = () => {
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </Fade>
         )}
       </Popper>
     </>

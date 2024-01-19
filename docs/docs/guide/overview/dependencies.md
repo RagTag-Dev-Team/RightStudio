@@ -86,7 +86,7 @@ You may add / update / remove any other dependencies according to your requireme
 ## Date Time Picker
 ```json
   "react-datepicker"
-  "@types/react- datepicker" // Typescript version only
+  "@types/react-datepicker" // Typescript version only
   "date-fns" // date formatter
 ```
 
@@ -94,6 +94,7 @@ You may add / update / remove any other dependencies according to your requireme
 ```json
   "draft-js"
   "react-draft-wysiwyg"
+  "@types/react-draft-wysiwyg" // Typescript version only
 ```
 
 ## Eslint
