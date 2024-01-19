@@ -7,7 +7,7 @@ import { HorizontalNavProvider } from '@menu/contexts/horizontalNavContext'
 
 const Layout = ({ children }: ChildrenType) => {
   return (
-    <Providers direction='ltr'>
+    <Providers>
       <HorizontalNavProvider>{children}</HorizontalNavProvider>
     </Providers>
   )

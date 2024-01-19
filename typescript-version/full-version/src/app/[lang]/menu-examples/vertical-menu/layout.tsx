@@ -5,7 +5,7 @@ import type { ChildrenType } from '@menu/types'
 import Providers from '@/examples/menu/Providers'
 
 const Layout = async ({ children }: ChildrenType) => {
-  return <Providers direction='ltr'>{children}</Providers>
+  return <Providers>{children}</Providers>
 }
 
 export default Layout
