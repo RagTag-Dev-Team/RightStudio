@@ -93,7 +93,6 @@ Understanding the `src/@core` folder will save your development time and you wil
 | theme | MUI theming like component's overrides, spacing, shadows, etc. & updated MUI types |
 | types.ts | It contains all the types of core features like layout, skin, mode etc |
 
-
 ## @layout folder
 
 `src/@layout` folder contains styles, svg, utils, layout components like Blank Layout, Vertical Layout, Horizontal Layout, Layout Wrapper, etc. where you should not make any changes but override them with the help of our docs in case of any changes required in layout files.
@@ -138,8 +137,8 @@ Understanding the `src/@menu` folder will save your development time and you wil
 | defaultConfigs.ts | Default menu configs |
 | types.ts | It contains all the types of menu features like menu item, menu config, etc |
 
-
 ### Understanding the App Folder structure
+
 Understanding and Utilizing the App Directory, Learn the essentials of each component and file for effective customization and enhancement of your development.
 
 ```plaintext
