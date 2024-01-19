@@ -72,6 +72,8 @@ const sidebars: SidebarsConfig = {
         'guide/layout/menu-classes',
         'guide/layout/menu-utils',
         'guide/layout/before-after-content',
+        'guide/layout/icons',
+        'guide/layout/how-to-use-react-icon',
         'guide/layout/customizer'
       ]
     },
@@ -456,6 +458,7 @@ const sidebars: SidebarsConfig = {
     'faqs/switching-authentication',
     'faqs/migration',
     'faqs/how-to-use-directions',
+    "faqs/how-to-add-rtl-in-swiper",
     "faqs/how-to-clear-browser-cache",
     "faqs/why-static-export-is-not-possible"
   ],

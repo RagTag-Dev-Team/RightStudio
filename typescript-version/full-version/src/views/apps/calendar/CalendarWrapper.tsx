@@ -55,9 +55,9 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   const handleAddEventSidebarToggle = () => setAddEventSidebarOpen(!addEventSidebarOpen)
 
   // Add event handler
-  const handleAddEvent = (event: AddEventType) => {
+  const handleAddEvent = async (event: AddEventType) => {
     // Add event API
-    fetch('/api/apps/calendar-events', {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'POST',
       body: JSON.stringify(event)
     })
@@ -69,9 +69,9 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   }
 
   // Update event handler
-  const handleUpdateEvent = (event: EventType) => {
+  const handleUpdateEvent = async (event: EventType) => {
     // Update event API
-    fetch('/api/apps/calendar-events/', {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: {
@@ -88,7 +88,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   // Delete event handler
   const handleDeleteEvent = async (eventId: EventType['id']) => {
     // Delete event API
-    fetch('/api/apps/calendar-events/', {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'DELETE',
       body: JSON.stringify({ id: eventId }),
       headers: {

@@ -10,8 +10,8 @@ import ReferEarn from '@components/dialogs/refer-earn'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const DialogReferEarn = () => {
+  // Vars
   const buttonProps: ButtonProps = {
-    // Vars
     variant: 'contained',
     children: 'Show'
   }

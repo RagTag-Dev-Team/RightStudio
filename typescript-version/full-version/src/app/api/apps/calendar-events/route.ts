@@ -40,18 +40,14 @@ export async function POST(request: NextRequest) {
     // Vars
     const event = await request.json()
 
-    // Generate new event id
-    event['id'] = events[events.length - 1].id + 1
-
-    // add new event to events array
-    events.push(event)
-
-    // Vars
     const json_response = {
       status: 'success',
       results: events.length,
       event
     }
+
+    // Generate new event id
+    event['id'] = events[events.length - 1].id + 1
 
     // return new event
     return NextResponse.json(json_response)
@@ -68,6 +64,12 @@ export async function PUT(request: NextRequest) {
     // Vars
     const event = await request.json()
 
+    const json_response = {
+      status: 'success',
+      results: events.length,
+      event
+    }
+
     // console.log(event)
 
     // check if event id is present
@@ -80,13 +82,6 @@ export async function PUT(request: NextRequest) {
 
     // update event
     events[index] = event
-
-    // Vars
-    const json_response = {
-      status: 'success',
-      results: events.length,
-      event
-    }
 
     // return updated event
     return NextResponse.json(json_response)
@@ -103,6 +98,12 @@ export async function DELETE(request: NextRequest) {
     // Vars
     const event = await request.json()
 
+    const json_response = {
+      status: 'success',
+      results: events.length,
+      event
+    }
+
     // check if event id is present
     if (!event.id) {
       return new NextResponse('Event ID missing', { status: 400 })
@@ -113,13 +114,6 @@ export async function DELETE(request: NextRequest) {
 
     // remove event
     events.splice(index, 1)
-
-    // Vars
-    const json_response = {
-      status: 'success',
-      results: events.length,
-      event
-    }
 
     // return deleted event
     return NextResponse.json(json_response)
