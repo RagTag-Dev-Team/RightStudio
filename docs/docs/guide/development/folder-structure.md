@@ -45,7 +45,6 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   └── schema.prisma               -> Model and schema definitions for Prisma
 │   ├── types                           -> Type definitions
 │   ├── utils                           -> Utility functions
-│   │   └── get-dictionary.ts           -> Util function to get the locale dictionary
 │   └── views                           -> Files that are included in app folder
 ├── .editorconfig                       -> Configuration file for the editor
 ├── .env.example                        -> Example environment variables file

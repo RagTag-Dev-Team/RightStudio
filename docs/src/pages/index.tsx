@@ -17,7 +17,7 @@ const HomepageHeader = () => {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg flex items-center gap-2"
-            to="/docs/guide/intro"
+            to="/docs/guide/overview/getting-started"
           >
             Get Started →
           </Link>
