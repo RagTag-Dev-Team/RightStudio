@@ -11,7 +11,6 @@ Following are the properties and their values that are stored in the Settings Co
 | Property            | Values                                               | Description |
 |---------------------|------------------------------------------------------|-------------|
 | settings            | `Settings`                                           | Stores the settings. | 
-| primaryColor        | `primary`                                            | Specifies the main color theme. |
 | updateSettings      | `(settings: Partial<Settings>, options?: UpdateSettingsOptions) => void` | Function to update settings with provided values. |
 | isSettingsChanged   | `boolean`                                            | Indicates if settings have been modified. |
 | resetSettings       | `() => void`                                         | Resets settings to default values. |

@@ -54,7 +54,7 @@ To change the direction based on selected language, e.g., Portuguese ('pt') for 
 
 Make sure these languages are set up in `src/config/i18n.ts` and `src/utils/get-dictionary` files and `src/data/dictionaries` folder.
 
-```tsx
+```tsx title='src/components/customizer/index.tsx'
 <div className='flex items-center gap-4'>
   {/* For Portuguese (LTR) */}
   <Link href={getLocalePath(pathName, 'pt')}>
