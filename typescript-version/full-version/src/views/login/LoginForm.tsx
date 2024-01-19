@@ -5,10 +5,16 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 
 // Next Imports
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 // Third-party Imports
 import { signIn } from 'next-auth/react'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const LoginForm = () => {
   // States
@@ -18,6 +24,7 @@ const LoginForm = () => {
   // Hooks
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { lang: locale } = useParams()
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -27,7 +34,7 @@ const LoginForm = () => {
     if (res && res.ok && res.error === null) {
       const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-      router.push(redirectURL)
+      router.push(getLocalizedUrl(redirectURL, locale as Locale))
     } else {
       if (res?.error) {
         const error = JSON.parse(res.error)

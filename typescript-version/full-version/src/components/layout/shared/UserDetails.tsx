@@ -1,15 +1,22 @@
 'use client'
 
 // Next Imports
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
+
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const UserDetails = () => {
   // Hooks
   const { data: session } = useSession()
   const router = useRouter()
+  const { lang: locale } = useParams()
 
   const handleUserLogout = async () => {
     try {
@@ -17,7 +24,7 @@ const UserDetails = () => {
       await signOut({ redirect: false })
 
       // Redirect to login page
-      router.push('/login')
+      router.push(getLocalizedUrl('/login', locale as Locale))
     } catch (error) {
       console.error(error)
 

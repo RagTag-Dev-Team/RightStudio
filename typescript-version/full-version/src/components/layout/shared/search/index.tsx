@@ -12,6 +12,7 @@ import { KBarProvider, KBarPortal, KBarPositioner, KBarSearch, useKBar } from 'k
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
+import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import SearchResults from './SearchResults'
@@ -23,6 +24,9 @@ import Close from '@menu/svg/Close'
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Component Imports
 import StyledKBarAnimator from './StyledKBarAnimator'
@@ -74,8 +78,11 @@ const NavSearch = () => {
   const searchActions = data.map(item => ({
     ...item,
     url: undefined, // Remove the 'url' key
+    // Add 'perform' method
     perform: () =>
-      item.url.startsWith('http') ? window.open(item.url, '_blank') : router.push(`/${locale}/${item.url}`) // Add 'perform' method
+      item.url.startsWith('http')
+        ? window.open(item.url, '_blank')
+        : router.push(getLocalizedUrl(item.url, locale as Locale))
   }))
 
   return (
