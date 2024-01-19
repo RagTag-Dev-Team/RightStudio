@@ -42,7 +42,9 @@ The `themeConfig` object contains various properties and their default values th
     type: 'static',
     contentWidth: 'compact',
     detached: true
-  }
+  },
+  disableRipple: false,
+  toastPosition: 'top-right'
 }`
 }</TsToJsCodeSnippet>
 
@@ -68,5 +70,7 @@ Here is a table that lists all the properties available in the `themeConfig` obj
 | `footer.type`        | `fixed`, `static`                      | Specifies the type of the footer                              |
 | `footer.contentWidth`| `compact`, `wide`                      | Sets the width of the footer                                  |
 | `footer.detached`    | `true`, `false`                        | Controls whether the footer is detached                       |
+| `disableRipple`      | `true`, `false`                        | Enables or disables ripple effect                             |
+| `toastPosition`      | `top-right`, `top-center`, `top-left`, `bottom-right`, `bottom-center`, `bottom-left` | Specifies the position of the toast message |
 
 You can customize these properties according to your project's requirements to achieve the desired look and feel for your template.

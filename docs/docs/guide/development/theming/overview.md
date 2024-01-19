@@ -34,9 +34,8 @@ Following two steps are common for all the customizations in the theme.
    ```
 
 2. Now use `mergedTheme` instead of `defaultCoreTheme` in the `ThemeProvider` component as shown below:
+
    ```diff title="src/components/theme/index.tsx"
    - const coreTheme = deepmerge(defaultCoreTheme(..), ...)
    + const coreTheme = deepmerge(mergedTheme(..), ...)
    ```
-
-

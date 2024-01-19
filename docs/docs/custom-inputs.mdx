@@ -13,7 +13,7 @@ import CustomCheckboxWithImage from '!!raw-loader!@docPages/form-elements/custom
 
 ## Overview
 
-We have made the custom radio and custom checkbox components for you to make it easy for you and you don't have to waste your precious time.Please visit [MUI Radio Docs](https://mui.com/material-ui/react-radio-button/) for a proper explanation of the Radio component and [MUI Checkbox Docs](https://mui.com/material-ui/react-checkbox/) for a proper explanation of the Checkbox component.
+We have created custom radio and checkbox components to save your time and make it easier for you. You can find detailed explanations of the Radio component in the [MUI Radio Docs](https://mui.com/material-ui/react-radio-button/) and the Checkbox component in the [MUI Checkbox Docs](https://mui.com/material-ui/react-checkbox/).
 
 We have already added these components in the `MUI` components. More information on how to create `Themeable component` of MUI can be found [here](https://mui.com/material-ui/guides/themeable-component/#introduction).
 
@@ -166,7 +166,7 @@ To override or customized the styles, follow these steps:
 
 Let us say you want to customize the `CustomInputHorizontal` component.(you can customize other custom input components as well by following the same steps).
 
-You can override the styles in both the `src/components/theme/Theme.ts` or `src/components/theme/MergedTheme.ts` file.
+You can override the styles in both the `src/components/theme/userTheme.ts` or `src/components/theme/mergedTheme.ts` file.
 
 You may refer to the following code snippet:
 
@@ -175,7 +175,7 @@ You may refer to the following code snippet:
 
 ```tsx title='src/components/theme/MergedTheme.ts'
 const MergedTheme = () => {
-  const userTheme: ThemeOptions = {
+  const userTheme = {
     components: {
       MuiCustomInputHorizontal: {
         styleOverrides: {
@@ -186,17 +186,17 @@ const MergedTheme = () => {
         }
       }
     }
-  }
+  } as Theme
 
 return deepmerge(coreTheme(), userTheme)
 }
 ```
 
 </TabItem>
-<TabItem value="Theme.ts">
+<TabItem value="userTheme.ts">
 
-```tsx title='src/components/theme/Theme.tsx'
-const theme = (): ThemeOptions => {
+```tsx title='src/components/theme/userTheme.ts'
+const userTheme = (): Theme => {
   return {
     components: {
       MuiCustomInputHorizontal: {
@@ -208,11 +208,13 @@ const theme = (): ThemeOptions => {
         }
       }
     }
-  }
+  } as Theme
 }
 ```
 
 </TabItem>
 </Tabs>
 
- That's it ! 
+You have to add `mergedTheme` or `userTheme` in `index.tsx` file. You may refer to [this](/docs/guide/development/themeing/overview#common-customization-steps) on how to implement it.
+
+That's it ! 
