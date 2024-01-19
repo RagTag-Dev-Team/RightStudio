@@ -38,6 +38,7 @@ type Footer = {
 
 export type Config = {
   templateName: string
+  settingsCookieName: string
   mode: Mode
   skin: Skin
   semiDark: boolean
@@ -53,6 +54,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'Master',
+  settingsCookieName: 'master-next-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false

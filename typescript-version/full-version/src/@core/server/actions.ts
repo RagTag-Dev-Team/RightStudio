@@ -13,7 +13,7 @@ import themeConfig from '@configs/themeConfig'
 export const getSettingsFromCookie = (): Settings => {
   const cookieStore = cookies()
 
-  return JSON.parse(cookieStore.get('settings')?.value || '{}')
+  return JSON.parse(cookieStore.get(themeConfig.settingsCookieName)?.value || '{}')
 }
 
 export const getMode = () => {

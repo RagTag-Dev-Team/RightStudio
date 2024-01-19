@@ -1,6 +1,3 @@
-// Next Imports
-import { cookies } from 'next/headers'
-
 // Type Imports
 import type { ChildrenType } from '@core/types'
 
@@ -8,10 +5,12 @@ import type { ChildrenType } from '@core/types'
 import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 
-const Layout = ({ children }: ChildrenType) => {
-  const cookieStore = cookies()
+// Util Imports
+import { getSettingsFromCookie } from '@core/server/actions'
 
-  const settingsCookie = JSON.parse(cookieStore.get('settings')?.value || '{}')
+const Layout = ({ children }: ChildrenType) => {
+  // Vars
+  const settingsCookie = getSettingsFromCookie()
 
   return (
     <VerticalNavProvider>

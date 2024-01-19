@@ -1,10 +1,10 @@
 // Third-party Imports
-import type { NextAuthOptions } from 'next-auth'
-import type { Adapter } from 'next-auth/adapters'
 import CredentialProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
+import type { NextAuthOptions } from 'next-auth'
+import type { Adapter } from 'next-auth/adapters'
 
 const prisma = new PrismaClient()
 
@@ -83,7 +83,8 @@ export const authOptions: NextAuthOptions = {
      * You can still force a JWT session by explicitly defining `jwt`.
      * When using `database`, the session cookie will only contain a `sessionToken` value,
      * which is used to look up the session in the database.
-     * If you use a custom credentials provider, user accounts will not be persisted in a database by NextAuth.js (even if one is configured). * The option to use JSON Web Tokens for session tokens must be enabled to use a custom credentials provider.
+     * If you use a custom credentials provider, user accounts will not be persisted in a database by NextAuth.js (even if one is configured).
+     * The option to use JSON Web Tokens for session tokens must be enabled to use a custom credentials provider.
      */
     strategy: 'jwt',
 

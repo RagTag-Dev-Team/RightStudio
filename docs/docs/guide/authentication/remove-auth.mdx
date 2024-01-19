@@ -1,0 +1,163 @@
+# Remove Authentication from full-version
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## Overview
+
+In this guide, we'll walk you through the process of removing authentication from the full-version of the application.
+
+## Remove Files
+
+To remove authentication from the `full-version`, you'll need to delete the following files & folders:
+
+#### API Endpoints
+
+- `src/app/api/auth/[...nextauth]/route.ts`: This file serves as the entry point for NextAuth.js, handling authentication-related functionality
+- `src/app/api/login/route.ts`: This file is the entry point for the login API, managing the login process
+- `src/app/api/login/users.ts`: This file holds mock user data for the login API, facilitating testing and development.
+
+#### Authentication Logic
+
+- `src/libs/auth.ts`: This file encompasses the authentication logic, supporting various authentication processes.
+
+#### Context Provider
+
+- `src/contexts/nextAuthProvider.tsx`: This file provides the NextAuth.js context, allowing components to access authentication-related information.
+
+#### Database Schema and Migrations
+
+- `src/prisma` (folder): This folder contains the Prisma schema and migrations, enabling interaction with the database.
+
+## Remove Authentication Code
+
+To remove authentication from the full-version, you'll need to remove the following code:
+
+- remove `signOut` & `useSession` imports and usage from the `src/components/layout/shared/UserDetails.tsx` file
+- remove `signIn` import and usage from the `src/views/login/LoginForm.tsx` file
+- in the `src/middleware.ts` file, remove `NextRequestWithAuth` and `withAuth` imports and their usages, also remove `callbacks` and `guestRoutes`, `sharedRoutes` and `privateRoutes` and their logical conditions
+
+  <Tabs>
+  <TabItem value="TS">
+
+  ```diff title="src/middleware.ts"
+  - import { withAuth } from 'next-auth/middleware'
+  - import type { NextRequestWithAuth } from 'next-auth/middleware'
+
+  - export default withAuth(
+  -   async function middleware(request: NextRequestWithAuth) {
+  + export default async function middleware(request: NextRequest) {
+
+  // remove `guestRoutes`, `sharedRoutes` and `privateRoutes` variable and their logical conditions
+
+  -   {
+  -     callbacks: {
+  -       ...
+  -     }
+  -   }
+  - )
+  ```
+
+  </TabItem>
+  <TabItem value="JS">
+
+  ```diff title="src/middleware.js"
+  - import { withAuth } from 'next-auth/middleware'
+
+  - export default withAuth(
+  -   async function middleware(request) {
+  + export default async function middleware(request) {
+
+  // remove `guestRoutes`, `sharedRoutes` and `privateRoutes` variable and their logical conditions
+
+  -   {
+  -     callbacks: {
+  -       ...
+  -     }
+  -   }
+  - )
+  ```
+
+  </TabItem>
+  </Tabs>
+
+- remove `getServerSession` and `authOptions` imports and their usages in the `src/app/[lang]/page.tsx` file. You may replace this file's code with the following:
+
+  <Tabs>
+  <TabItem value="TSX">
+
+  ```tsx title="src/app/[lang]/page.tsx"
+  // Next Imports
+  import { redirect } from 'next/navigation'
+
+  // Type Imports
+  import type { Locale } from '@configs/i18n'
+
+  export default async function Page({ params }: { params: { lang: Locale } }) {
+    // Vars
+    const locale = params.lang ? `/${params.lang}` : ''
+
+    const redirectURL = `${locale}/about`
+
+    // Redirect user to respective home page
+    redirect(redirectURL)
+  }
+  ```
+
+  </TabItem>
+  <TabItem value="JS">
+
+  ```tsx title="src/app/[lang]/page.js"
+  // Next Imports
+  import { redirect } from 'next/navigation'
+
+  export default async function Page({ params }) {
+    // Vars
+    const locale = params.lang ? `/${params.lang}` : ''
+
+    const redirectURL = `${locale}/about`
+
+    // Redirect user to respective home page
+    redirect(redirectURL)
+  }
+  ```
+
+  </TabItem>
+  </Tabs>
+
+- remove `NextAuthProvider` import and its usage from the `src/components/Providers.tsx` file
+
+## Remove Dependencies
+
+To remove authentication from the full-version, you'll need to remove the following dependencies:
+
+- `@auth/prisma-adapter`
+- `@prisma/client`
+- `next-auth`
+- `prisma`
+
+Use the following command to remove the dependencies:
+
+<Tabs>
+<TabItem value="pnpm">
+
+```bash
+pnpm remove @auth/prisma-adapter @prisma/client next-auth prisma
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn remove @auth/prisma-adapter @prisma/client next-auth prisma
+```
+
+</TabItem>
+<TabItem value="npm">
+
+```bash
+npm uninstall @auth/prisma-adapter @prisma/client next-auth prisma
+```
+
+</TabItem>
+</Tabs>

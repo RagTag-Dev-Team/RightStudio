@@ -51,8 +51,6 @@ Before checking folder structure it is better you know some stuff related to fol
 |   ├── reducers                        -> Reducers
 |   |   └── calendarReducer.ts          -> Reducer for calendar
 │   ├── utils                           -> Utility functions
-│   │   ├── get-dictionary.ts           -> Util function to get the locale dictionary 
-│   │   └── get-initials.ts             -> Util function to get initials from name
 │   └── views                           -> Files that are included in app folder
 ├── .editorconfig                       -> Configuration file for the editor
 ├── .env.example                        -> Example environment variables file

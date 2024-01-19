@@ -1,1 +1,1 @@
-# Add authentication to Starter-kit
+# Add Authentication to Starter-kit

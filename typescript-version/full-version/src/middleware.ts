@@ -11,7 +11,16 @@ import type { NextRequestWithAuth } from 'next-auth/middleware'
 // Config Imports
 import { i18n } from '@configs/i18n'
 
+// Util Imports
+import { getLocalizedUrl, isUrlMissingLocale } from '@/utils/i18n'
+import { ensurePrefix, withoutSuffix } from '@/utils/string'
+
 const getLocale = (request: NextRequest): string | undefined => {
+  // Try to get locale from URL
+  const urlLocale = i18n.locales.find(locale => request.nextUrl.pathname.startsWith(`/${locale}/`))
+
+  if (urlLocale) return urlLocale
+
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {}
 
@@ -28,33 +37,36 @@ const getLocale = (request: NextRequest): string | undefined => {
   return locale
 }
 
+const localizedRedirect = (url: string, locale: string | undefined, request: NextRequestWithAuth) => {
+  let _url = url
+
+  const isLocaleMissing = isUrlMissingLocale(_url)
+
+  if (isLocaleMissing) {
+    // e.g. incoming request is /products
+    // The new URL is now /en/products
+    _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
+  }
+
+  _url = ensurePrefix(_url, `${process.env.BASEPATH}`)
+
+  const redirectUrl = new URL(_url, request.url).toString()
+
+  return NextResponse.redirect(redirectUrl)
+}
+
 export default withAuth(
   async function middleware(request: NextRequestWithAuth) {
-    let pathname = request.nextUrl.pathname
-
-    // Check if there is any supported locale in the pathname
-    const pathnameIsMissingLocale = i18n.locales.every(
-      locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-    )
-
     // Get locale from request headers
     const locale = getLocale(request)
 
-    // Update pathname if locale is missing
-    if (pathnameIsMissingLocale) {
-      // e.g. incoming request is /products
-      // The new URL is now /en-US/products
-      pathname = `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`
-    }
+    const pathname = request.nextUrl.pathname
 
     // If the user is logged in, `token` will be an object containing the user's details
     const token = request.nextauth.token
 
     // Check if the user is logged in
     const isUserLoggedIn = !!token
-
-    // Root route
-    const rootRoute = `/${locale}/`
 
     // Guest routes (Routes that can be accessed by guest users who are not logged in)
     const guestRoutes = ['login', 'register', 'forgot-password']
@@ -67,22 +79,26 @@ export default withAuth(
 
     // If the user is not logged in and is trying to access a private route, redirect to the login page
     if (!isUserLoggedIn && privateRoute) {
-      return NextResponse.redirect(new URL(`${rootRoute}login?redirectTo=${pathname}`, request.url))
+      let redirectUrl = '/login'
+
+      if (!(pathname === '/' || pathname === `/${locale}`)) {
+        const searchParamsStr = new URLSearchParams({ redirectTo: withoutSuffix(pathname, '/') }).toString()
+
+        redirectUrl += `?${searchParamsStr}`
+      }
+
+      return localizedRedirect(redirectUrl, locale, request)
     }
 
     // If the user is logged in and is trying to access a guest route, redirect to the root page
-    if (isUserLoggedIn && rootRoute !== pathname && guestRoutes.some(route => pathname.endsWith(route))) {
-      return NextResponse.redirect(new URL(rootRoute, request.url))
+    const isRequestedRouteIsGuestRoute = guestRoutes.some(route => pathname.endsWith(route))
+
+    if (isUserLoggedIn && isRequestedRouteIsGuestRoute) {
+      return localizedRedirect(`/`, locale, request)
     }
 
-    // Access granted, continue to the page
-    if (!pathnameIsMissingLocale) {
-      // If the pathname already contains a locale, continue to the page
-      return NextResponse.next()
-    } else {
-      // Redirect to the same path with the locale added
-      return NextResponse.redirect(new URL(pathname, request.url))
-    }
+    // If pathname already contains a locale, return next() else redirect with localized URL
+    return isUrlMissingLocale(pathname) ? localizedRedirect(pathname, locale, request) : NextResponse.next()
   },
   {
     callbacks: {

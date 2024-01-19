@@ -1,6 +1,7 @@
 {
   "name": "next-app-test",
   "version": "0.1.0",
+  "license": "Commercial",
   "private": true,
   "scripts": {
     "dev": "next dev",
