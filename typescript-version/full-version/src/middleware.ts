@@ -48,7 +48,7 @@ const localizedRedirect = (url: string, locale: string | undefined, request: Nex
     _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
   }
 
-  _url = ensurePrefix(_url, `${process.env.BASEPATH}`)
+  _url = ensurePrefix(_url, `${process.env.BASEPATH ?? ''}`)
 
   const redirectUrl = new URL(_url, request.url).toString()
 
