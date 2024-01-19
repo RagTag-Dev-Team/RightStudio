@@ -62,6 +62,32 @@ const removeIconTest = async () => {
   ]
 
   await Promise.all(filesToRemove.map(async path => fs.rm(path, { recursive: true, force: true })))
+
+  const manualMenuFilePaths = [
+    path.join(fullVersionDirPath, 'src', 'components', 'layout', 'horizontal', 'HorizontalMenu.tsx'),
+    path.join(fullVersionDirPath, 'src', 'components', 'layout', 'vertical', 'VerticalMenu.tsx')
+  ]
+
+  await Promise.all(
+    manualMenuFilePaths.map(async path => {
+      updateFile(path, content => {
+        return content.replace(/<MenuItem.*[\n\s]+Icons Test[\n\s]+<\/MenuItem>[\n\s]+/gm, '')
+      })
+    })
+  )
+
+  const navLinksFiles = [
+    path.join(fullVersionDirPath, 'src', 'data', 'navigation', 'horizontalMenuData.tsx'),
+    path.join(fullVersionDirPath, 'src', 'data', 'navigation', 'verticalMenuData.tsx')
+  ]
+
+  await Promise.all(
+    navLinksFiles.map(async path => {
+      updateFile(path, content => {
+        return content.replace(/[\n\s]+{[\s\n]+label: 'Icons Test',.*?}/gms, '')
+      })
+    })
+  )
 }
 
 const updateNextConfig = () => {
