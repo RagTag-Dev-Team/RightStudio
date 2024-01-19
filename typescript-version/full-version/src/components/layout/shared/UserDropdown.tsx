@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -24,8 +24,14 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -48,6 +54,7 @@ const UserDropdown = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const { settings } = useSettings()
+  const { lang: locale } = useParams()
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -55,7 +62,7 @@ const UserDropdown = () => {
 
   const handleDropdownClose = (event?: MouseEvent<HTMLLIElement> | (MouseEvent | TouchEvent), url?: string) => {
     if (url) {
-      router.push(url)
+      router.push(getLocalizedUrl(url, locale as Locale))
     }
 
     if (anchorRef.current && anchorRef.current.contains(event?.target as HTMLElement)) {
@@ -71,7 +78,7 @@ const UserDropdown = () => {
       await signOut({ redirect: false })
 
       // Redirect to login page
-      router.push('/login')
+      router.push(getLocalizedUrl('/login', locale as Locale))
     } catch (error) {
       console.error(error)
 
