@@ -1,6 +1,9 @@
 // React Imports
 import type { ReactNode } from "react";
 
+// Docusaurus Imports
+import { useColorMode } from "@docusaurus/theme-common/internal"
+
 // MUI Imports
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
@@ -20,14 +23,22 @@ import globalStyling from "./globalStyles";
 
 // Theme Overrides Imports
 import overrides from "@core/theme/overrides";
+import colorSchemes from "@core/theme/colorSchemes";
 import spacing from "@core/theme/spacing";
+import shadows from "@core/theme/shadows";
+import customShadows from "@core/theme/customShadows";
 import typography from "@core/theme/typography";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  // Hooks
+  const { colorMode } = useColorMode()
+
   const theme = extendTheme({
     components: overrides(),
+    colorSchemes: colorSchemes('default'),
     ...spacing,
     shape: {
+      borderRadius: 6,
       customBorderRadius: {
         xs: 2,
         sm: 4,
@@ -36,7 +47,15 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         xl: 10
       }
     },
-    typography: typography('')
+    shadows: shadows(colorMode),
+    typography: typography(''),
+    customShadows: customShadows(colorMode),
+    mainColorChannels: {
+      light: '47 43 61',
+      dark: '225 222 245',
+      lightShadow: '47 43 61',
+      darkShadow: '19 17 32'
+    }
   });
 
   return (
