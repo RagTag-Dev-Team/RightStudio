@@ -61,6 +61,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Settings',
+      items: [
+        'guide/settings/vscode-configurations',
+        'guide/settings/theme-configurations',
+        'guide/settings/settings-context'
+      ]
+    },
+    {
+      type: 'category',
       label: 'Authentication',
       items: [
         'guide/authentication/intro',
@@ -84,11 +93,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Settings',
+      label: 'Components',
       items: [
-        'guide/settings/vscode-configurations',
-        'guide/settings/theme-configurations',
-        'guide/settings/settings-context'
+        'guide/components/overview',
+        {
+          type: 'category',
+          label: 'Custom',
+          items: [
+            'guide/components/custom/generate-menu',
+          ]
+        }
       ]
     },
     'guide/credit',
