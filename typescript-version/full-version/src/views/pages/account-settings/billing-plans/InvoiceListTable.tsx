@@ -291,6 +291,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   })
 
   const getAvatar = (params: Pick<InvoiceType, 'avatar' | 'name'>) => {
+    // Vars
     const { avatar, name } = params
 
     if (avatar) {
