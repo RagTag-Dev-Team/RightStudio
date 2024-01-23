@@ -3,6 +3,10 @@ html, body {
   min-height: 100dvh;
 }
 
+#__docusaurus {
+  min-height: 100dvh !important;
+}
+
 h1 {
   font-weight: 600;
 }
@@ -13,10 +17,21 @@ h5,
 h6 {
   font-weight: var(--ifm-font-weight-semibold);
 }
+
 .markdown h1:first-child {
   --ifm-h1-font-size: 36px;
 }
 .markdown > h2 {
   --ifm-h2-font-size: 30px;
   border-block-end: 1px solid var(--ifm-hr-background-color);
+}
+
+code {
+  border: 0.1rem solid #EBEBEB;
+  border-radius: 5px;
+  padding: 3px 8px;
+
+  [data-theme='dark'] & {
+    border-color: #36363B;
+  }
 }

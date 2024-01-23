@@ -107,9 +107,27 @@ const sidebars: SidebarsConfig = {
     },
     'guide/credit',
   ],
-  userInterfaceSidebar: ["user-interface/intro"],
-  componentsSidebar: ["components/intro"],
-  formsTablesSidebar: ["forms-tables/intro"],
+  userInterfaceSidebar: [
+    "user-interface/intro",
+    {
+      type: 'category',
+      label: 'Components',
+      link: {
+        type: "doc",
+        id: "user-interface/components/intro",
+      },
+      items: []
+    },
+    {
+      type: 'category',
+      label: 'Form Elements',
+      link: {
+        type: "doc",
+        id: "user-interface/form-elements/intro",
+      },
+      items: []
+    }
+  ],
   menuExamplesSidebar: [
     "menu-examples/intro",
     {

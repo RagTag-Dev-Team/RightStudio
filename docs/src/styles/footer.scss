@@ -1,0 +1,29 @@
+footer.footer {
+  background-color: #f3f4f6;
+  [data-theme='dark'] & {
+    background-color: #2E2E32;
+  }
+
+  svg[class*='iconExternalLink_'] {
+    display: none;
+  }
+
+  .footer__links .footer__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .footer__link-separator {
+    display: none;
+  }
+}
+
+@media (max-width: 996px){
+  .footer {
+    --ifm-footer-padding-horizontal: 2rem;
+  }
+}

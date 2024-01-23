@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const config: Config = {
   title: 'Master',
-  tagline: 'MUI React Next.Js Admin Template',
+  tagline: 'Next.Js Admin Template',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
@@ -102,34 +102,44 @@ const config: Config = {
           type: 'docSidebar', 
           sidebarId: 'userInterfaceSidebar', 
           position: 'left', 
-          label: 'UI',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'componentsSidebar',
-          position: 'left',
-          label: 'Components',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'formsTablesSidebar',
-          position: 'left',
-          label: 'Forms & Tables',
+          label: 'User Interface',
         },
         { type: 'docSidebar', sidebarId: 'menuExamplesSidebar', label: 'Menu Examples', position: 'left', },
-        { type: 'docSidebar', sidebarId: 'faqSidebar', label: 'FAQs', position: 'right', },
-        { to: '/articles', label: 'Articles', position: 'right' },
+        { type: 'docSidebar', sidebarId: 'faqSidebar', label: 'FAQs', position: 'left', },
+        { to: '/articles', label: 'Articles', position: 'left' },
         {
-          href: 'https://themeselection.com/github',
-          label: 'GitHub',
+          href: 'https://themeselection.com/changelog',
           position: 'right',
+          label: 'Changelog',
         },
         {
-          href: 'https://themeselection.com//changelog',
-          label: 'Changelog',
+          href: 'https://themeselection.com/hire-us',
           position: 'right',
+          label: 'Hire Us',
+        },
+        {
+          href: 'https://themeselection.com/demo',
+          position: 'right',
+          label: 'Live Demo',
         },
       ],
+    },
+    footer: {
+      copyright: `Copyright © ${new Date().getFullYear()} ThemeSelection, All rights Reserved.`,
+      links: [
+        {
+          label: 'License',
+          href: 'https://themeselection.com/license',
+        },
+        {
+          label: 'More Themes',
+          href: 'https://themeselection.com',
+        },
+        {
+          label: 'Support',
+          href: 'https://themeselection.com/support',
+        }
+      ]
     },
     prism: {
       theme: prismThemes.dracula,

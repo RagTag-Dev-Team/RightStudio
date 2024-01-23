@@ -77,19 +77,107 @@ If you don't wrap your imported MDX with `MDXContent`, the global scope will not
 :::
 
 :::note
-Below is just some dummy content to have more table of contents items available on the current page.
+
+This feature is powered by [an `MDXProvider`](https://mdxjs.com/docs/using-mdx/#mdx-provider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
+
+```jsx title="src/pages/index.js"
+import FeatureDisplay from './_featureDisplay.mdx'
+// highlight-next-line
+import MDXContent from '@theme/MDXContent'
+
+export default function LandingPage() {
+  return (
+    <div>
+      {/* highlight-start */}
+      <MDXContent>
+        <FeatureDisplay />
+      </MDXContent>
+      {/* highlight-end */}
+    </div>
+  )
+}
+```
+
+If you don't wrap your imported MDX with `MDXContent`, the global scope will not be available.
+
 :::
 
 :::danger
-Below is just some dummy content to have more table of `contents` items available on the current page.
+
+This feature is powered by [an `MDXProvider`](https://mdxjs.com/docs/using-mdx/#mdx-provider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
+
+```jsx title="src/pages/index.js"
+import FeatureDisplay from './_featureDisplay.mdx'
+// highlight-next-line
+import MDXContent from '@theme/MDXContent'
+
+export default function LandingPage() {
+  return (
+    <div>
+      {/* highlight-start */}
+      <MDXContent>
+        <FeatureDisplay />
+      </MDXContent>
+      {/* highlight-end */}
+    </div>
+  )
+}
+```
+
+If you don't wrap your imported MDX with `MDXContent`, the global scope will not be available.
+
 :::
 
 :::tip
-Below is just some dummy content to have more table of contents items available on the current page.
+
+This feature is powered by [an `MDXProvider`](https://mdxjs.com/docs/using-mdx/#mdx-provider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
+
+```jsx title="src/pages/index.js"
+import FeatureDisplay from './_featureDisplay.mdx'
+// highlight-next-line
+import MDXContent from '@theme/MDXContent'
+
+export default function LandingPage() {
+  return (
+    <div>
+      {/* highlight-start */}
+      <MDXContent>
+        <FeatureDisplay />
+      </MDXContent>
+      {/* highlight-end */}
+    </div>
+  )
+}
+```
+
+If you don't wrap your imported MDX with `MDXContent`, the global scope will not be available.
+
 :::
 
 :::info
-Below is just some dummy content to have more table of contents items available on the current page.
+
+This feature is powered by [an `MDXProvider`](https://mdxjs.com/docs/using-mdx/#mdx-provider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
+
+```jsx title="src/pages/index.js"
+import FeatureDisplay from './_featureDisplay.mdx'
+// highlight-next-line
+import MDXContent from '@theme/MDXContent'
+
+export default function LandingPage() {
+  return (
+    <div>
+      {/* highlight-start */}
+      <MDXContent>
+        <FeatureDisplay />
+      </MDXContent>
+      {/* highlight-end */}
+    </div>
+  )
+}
+```
+
+If you don't wrap your imported MDX with `MDXContent`, the global scope will not be available.
+
 :::
 
 ```jsx title="/src/components/HelloCodeTitle.js"
