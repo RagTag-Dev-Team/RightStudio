@@ -79,6 +79,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Settings',
+      items: [
+        'guide/settings/vscode-configurations',
+        'guide/settings/theme-configurations',
+        'guide/settings/settings-context'
+      ]
+    },
+    {
+      type: 'category',
       label: 'Authentication',
       items: [
         'guide/authentication/intro',
@@ -102,59 +111,64 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Settings',
+      label: 'Components',
       items: [
-        'guide/settings/vscode-configurations',
-        'guide/settings/theme-configurations',
-        'guide/settings/settings-context'
+        'guide/components/overview',
+        {
+          type: 'category',
+          label: 'Custom',
+          items: [
+            'guide/components/custom/generate-menu',
+          ]
+        }
       ]
     },
     'custom-inputs',
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    'user-interface/intro',
+    "user-interface/intro",
     'user-interface/typography',
     'user-interface/icons',
     'user-interface/cards-basic',
-    'user-interface/cards-actions'
-  ],
-  componentsSidebar: [
-   {
-    type: 'category',
-    label: 'Components',
-    collapsed: false,
-    link: { type: 'doc', id: 'components/intro' },
-    items:[
-      'components/accordion',
-      'components/alerts',
-      'components/avatars',
-      'components/badges',
-      'components/buttons',
-      'components/button-group',
-      'components/chips',
-      'components/dialogs',
-      'components/list',
-      'components/menu',
-      'components/pagination',
-      'components/progress',
-      'components/ratings',
-      'components/snackbar',
-      'components/swiper',
-      'components/tabs',
-      'components/timeline',
-      'components/toasts',
-      'components/more',
-      'components/test'
-    ]
-   }
-  ],
-  formsTablesSidebar: [
+    'user-interface/cards-actions',
+    {
+      type: 'category',
+      label: 'Components',
+      link: {
+        type: "doc",
+        id: "user-interface/components/intro",
+      },
+      items: [
+        'components/accordion',
+        'components/alerts',
+        'components/avatars',
+        'components/badges',
+        'components/buttons',
+        'components/button-group',
+        'components/chips',
+        'components/dialogs',
+        'components/list',
+        'components/menu',
+        'components/pagination',
+        'components/progress',
+        'components/ratings',
+        'components/snackbar',
+        'components/swiper',
+        'components/tabs',
+        'components/timeline',
+        'components/toasts',
+        'components/more',
+        'components/test'
+      ]
+    },
     {
       type: 'category',
       label: 'Form Elements',
-      collapsed: false,
-      link: { type: 'doc', id: 'form-elements/intro' },
+      link: {
+        type: "doc",
+        id: "user-interface/form-elements/intro",
+      },
       items: [
         'form-elements/text-field',
         'form-elements/select',

@@ -16,8 +16,8 @@
     "postinstall": "npm run build:icons"
   },
   "dependencies": {
-    "@docusaurus/core": "3.0.1",
-    "@docusaurus/preset-classic": "3.0.1",
+    "@docusaurus/core": "3.1.0",
+    "@docusaurus/preset-classic": "3.1.0",
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -42,10 +42,10 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
-    "@docusaurus/eslint-plugin": "^3.0.1",
-    "@docusaurus/module-type-aliases": "3.0.1",
-    "@docusaurus/tsconfig": "3.0.1",
-    "@docusaurus/types": "3.0.1",
+    "@docusaurus/eslint-plugin": "^3.1.0",
+    "@docusaurus/module-type-aliases": "3.1.0",
+    "@docusaurus/tsconfig": "3.1.0",
+    "@docusaurus/types": "3.1.0",
     "@iconify/iconify": "^3.1.1",
     "@iconify/json": "^2.2.161",
     "@iconify/tools": "^3.0.7",

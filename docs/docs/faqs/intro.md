@@ -3,7 +3,7 @@ title: FAQs
 hide_table_of_contents: true
 ---
 
-:::note tip
+:::tip
 If you can't find your problem, try searching related terms on [Stack Overflow](https://stackoverflow.com).
 :::
 

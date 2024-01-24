@@ -1,0 +1,50 @@
+# Generate Menu
+
+## Overview
+
+In the `src/components/GenerateMenu.tsx` file, you will find two components:
+
+- GenerateVerticalMenu
+- GenerateHorizontalMenu
+
+These components are used to generate the navigation menu based on the `menuData` prop.
+
+## GenerateVerticalMenu
+
+This component is used to generate the vertical navigation menu. It uses the `menuData` prop to generate the menu.
+
+| Prop Name | Type                     | Description                              |
+| --------- | ------------------------ | ---------------------------------------- |
+| menuData  | `VerticalMenuDataType[]` | The menu data used to generate the menu. |
+
+Please refer to the `src/types/menuTypes.ts` file to see the type definition of the `VerticalMenuDataType` type.
+
+Please refer to the `src/data/navigation/verticalMenuData.tsx` file to see the data structure of the `menuData` prop.
+
+### Usage
+
+Please refer to the [Dynamic Menu Render](/docs/menu-examples/vertical-examples/menu-render/dynamic-menu) example to see how to use this component.
+
+Please refer to the [Dynamic Menu Render with API](/docs/menu-examples/vertical-examples/menu-render/menu-with-api) example to see how to use this component with API.
+
+You may also refer to the commented code at the bottom of the `src/components/layout/vertical/VerticalMenu.tsx` file to see how to use this component.
+
+## GenerateHorizontalMenu
+
+This component is used to generate the horizontal navigation menu. It uses the `menuData` prop to generate the menu.
+
+| Prop Name | Type                       | Description                              |
+| --------- | -------------------------- | ---------------------------------------- |
+| menuData  | `HorizontalMenuDataType[]` | The menu data used to generate the menu. |
+
+Please refer to the `src/types/menuTypes.ts` file to see the type definition of the `HorizontalMenuDataType` type.
+
+Please refer to the `src/data/navigation/horizontalMenuData.tsx` file to see the data structure of the `menuData` prop.
+
+### Usage
+
+Please refer to the [Dynamic Menu Render](/docs/menu-examples/horizontal-examples/menu-render/dynamic-menu) example to see how to use this component.
+
+Please refer to the [Dynamic Menu Render with API](/docs/menu-examples/horizontal-examples/menu-render/menu-with-api) example to see how to use this component with API.
+
+You may also refer to the commented code at the bottom of the `src/components/layout/horizontal/HorizontalMenu.tsx` file to see how to use this component.

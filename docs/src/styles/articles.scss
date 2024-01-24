@@ -2,7 +2,7 @@
   margin-block-start: 0.25rem !important;
 }
 
-[class*='BlogPostItem-Header-Title'] {
+h2[itemprop='headline'] {
   font-size: var(--ifm-h1-font-size) !important;
 }
 

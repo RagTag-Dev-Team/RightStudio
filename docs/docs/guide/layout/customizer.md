@@ -26,11 +26,11 @@ Then, add the Customizer component to your page or component:
 
 Customizer lets you change these things:
 
-| Name             | Type                                                            | Default | Description                                              |
-| ---------------- | ----------------------------------------------------------------| ------- | ---------------------------------------------------------|
-| breakpoint       | Breakpoint, 'xxl', `${number}px`, `${number}rem`, `${number}em` | 'lg'    | Determines the breakpoint for displaying the customizer. |
-| dir              | 'ltr', 'rtl'                                                    | 'ltr'   | The direction of the customizer.                         |
-| disableDirection | boolean                                                         | false   | If true the direction section will be removed.           |
+| Name             | Type                                         | Default  | Description                                                           |
+| ---------------- | -------------------------------------------- | -------  | --------------------------------------------------------------------- |
+| breakpoint       | `${number}px`, `${number}rem`, `${number}em` | `1200px` | Determines the breakpoint for displaying the customizer.              |
+| dir              | `ltr`, `rtl`                                 | `ltr`    | The direction of the customizer.                                      |
+| disableDirection | boolean                                      | false    | If `true`, the direction section will be removed from the customizer. |
 
 The `Breakpoint` type is defined as:
 
