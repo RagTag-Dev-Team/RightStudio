@@ -5,10 +5,7 @@
   &:not(.table-of-contents__link--active) {
     color: var(--ifm-menu-color);
     &:hover {
-      color: #111827;
-      [data-theme='dark'] & {
-        color: #f9fafb;
-      }
+      color: var(--mui-palette-text-primary);
     }
   }
   // table of contents link which is active and not a sublist

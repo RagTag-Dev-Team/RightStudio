@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const config: Config = {
   title: 'Master',
-  tagline: 'Next.Js Admin Template',
+  tagline: 'MUI Next.Js Admin Template',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here

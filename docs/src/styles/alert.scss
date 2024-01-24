@@ -8,6 +8,10 @@
     font-size: 16px;
     text-transform: capitalize;
   }
+  a:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+  }
 }
 
 .alert--warning {

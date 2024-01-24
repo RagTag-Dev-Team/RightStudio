@@ -1,10 +1,7 @@
 .theme-doc-sidebar-container:has(nav.menu) {
-  background-color: #fff;
+  background-color: var(--mui-palette-background-paper);
   border-right: 1px solid var(--border-color);
   clip-path: unset;
-  [data-theme='dark'] & {
-    background-color: #0F0F12;
-  }
 }
 
 nav.menu {
@@ -60,16 +57,13 @@ nav.menu {
 .menu__list-item-collapsible:not(.menu__list-item-collapsible--active) {
   color: var(--ifm-menu-color);
   &:hover {
-    color: #111827;
-    [data-theme='dark'] & {
-      color: #f9fafb;
-    }
+    color: var(--mui-palette-text-primary);
   }
 }
 
 // Submenu with arrow and not button
 .menu__link--sublist-caret:hover {
-  color: #111827;
+  color: var(--mui-palette-text-primary);
 }
 .menu__link {
   font-size: 15px;
@@ -79,10 +73,7 @@ nav.menu {
   &:not(.menu__link--sublist):not(.menu__link--active) {
     color: var(--ifm-menu-color);
     &:hover {
-      color: #111827;
-      [data-theme='dark'] & {
-        color: #f9fafb;
-      }
+      color: var(--mui-palette-text-primary);
     }
   }
   // Menu link before submenu button

@@ -7,9 +7,6 @@
 // navbar brand name styles
 .navbar__brand:hover {
   color: var(--ifm-color-content);
-  [data-theme='dark'] & {
-    color: #e3e3e3;
-  }
 }
 
 .navbar__logo {
@@ -27,10 +24,7 @@
   color: var(--ifm-menu-color);
   font-weight: var(--ifm-font-weight-normal);
   &:hover {
-    color: #111827;
-    [data-theme='dark'] & {
-      color: #f9fafb;
-    }
+    color: var(--mui-palette-text-primary);
   }
   &.navbar__link--active {
     font-weight: 600;
@@ -62,10 +56,7 @@
   kbd[class*='searchHint_'] {
     border: 0;
     box-shadow: none;
-    background-color: #D8D9DA;
+    background-color: var(--mui-palette-action-focus);
     color: var(--ifm-color-content);
-    [data-theme='dark'] & {
-      background-color: var(--ifm-navbar-background-color);
-    }
   }
 }

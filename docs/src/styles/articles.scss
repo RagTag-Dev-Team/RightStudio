@@ -20,10 +20,7 @@ h2[itemprop='headline'] {
     color: var(--ifm-menu-color) !important;
     &:hover {
       background-color: var(--ifm-menu-color-background-hover) !important;
-      color: #111827 !important;
-      [data-theme='dark'] & {
-        color: #f9fafb !important;
-      }
+      color: var(--mui-palette-text-primary) !important;
     }
   }
 }

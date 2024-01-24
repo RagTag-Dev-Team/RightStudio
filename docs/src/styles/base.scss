@@ -81,6 +81,11 @@ ul:not([class]), ol:not([class]) {
   margin-bottom: var(--ifm-list-paragraph-margin)
 }
 
+.table-of-contents ul {
+  margin: 0;
+  padding-left: var(--ifm-toc-padding-horizontal);
+}
+
 :where([class^='ri-']) {
   font-size: 1.5rem;
 }
