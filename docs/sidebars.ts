@@ -59,6 +59,26 @@ const sidebars: SidebarsConfig = {
         },
         'guide/development/demo-config',
         'guide/development/nextjs-api',
+        {
+          "type": 'category',
+          "label": 'Apps & Pages Setup',
+          link: { type: 'doc', id: 'guide/development/apps-and-pages-setup/intro' },
+          items: [
+            'guide/development/apps-and-pages-setup/pages',
+            'guide/development/apps-and-pages-setup/apps',
+          ]
+        }
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Components',
+      items: [
+        'guide/components/form',
+        'guide/components/link',
+        'guide/components/open-dialog-on-element-click',
+        'guide/components/option-menu',
+        'guide/components/overriding-custom-components',
       ]
     },
     {

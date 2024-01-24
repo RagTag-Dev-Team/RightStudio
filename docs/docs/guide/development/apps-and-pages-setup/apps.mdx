@@ -1,0 +1,99 @@
+---
+title: 'Apps'
+---
+
+# How to setup Apps in your project
+
+## Overview
+
+In this guide, we'll walk through the process of developing applications within our template, using the Invoice app as an example. This guide will cover API integration, database management, and the organization of server files and components, providing a clear blueprint for developing applications similar to our Invoice app.
+
+### Server File and API Integration
+
+#### Location and Structure
+
+- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/apps/`.
+
+- Example: For the invoice app, find the server file at `src/app/[lang]/(dashboard)/apps/invoice/preview/[id]/page.tsx`.
+
+#### API Call Implementation
+
+- Handling API Calls: In the Invoice app example, the server file includes a function `getData` to fetch data from the API.
+
+```tsx
+const getData = async () => {
+  const res = await fetch(`${process.env.API_URL}/apps/invoice`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch invoice data');
+  }
+  return res.json();
+};
+
+const PreviewPage = async ({ params }: { params: { id: string } }) => {
+  const data = await getData();
+  const filteredData = data.filter((invoice: InvoiceType) => invoice.id === params.id)[0];
+
+  if (!filteredData) {
+    redirect('/not-found');
+  }
+
+  return <Preview invoiceData={filteredData} id={params.id} />;
+};
+
+export default PreviewPage;
+```
+
+### Creating APIs
+
+#### API File Location
+
+For more on Next.js routing conventions, visit [Next.js Routing](https://nextjs.org/docs/app/building-your-application/routing).
+
+- Path: APIs specific to apps are created in `src/app/api/apps/`.
+
+- Routing: The API routing adheres to Next.js app router conventions.
+
+- Example: The API for the Invoice app is defined in `src/app/api/apps/invoice/route.ts`.
+
+```ts
+import { NextResponse } from 'next/server';
+import { db } from '@/app/api/fake-db/apps/invoice';
+
+export async function GET() {
+  return NextResponse.json(db);
+}
+```
+
+### Using Fake Databases
+
+#### Storing Fake Data
+
+- Path: Fake database files for apps are stored at `src/app/api/fake-db/apps/`.
+
+- Example: The Invoice app's fake database is located at `src/app/api/fake-db/apps/invoice/index.ts`.
+
+```ts
+import type { InvoiceType } from '@/types/apps/invoiceTypes';
+
+export const db: InvoiceType[] = [
+  // ...Invoice data...
+];
+```
+
+For steps on integrating real databases and API calls, refer to [Using Real APIs](/articles/how-to-remove-fake-db-and-use-real-api).
+
+### Component and Style Management
+
+#### Component Location
+
+- Path: The components for apps are located at `src/app/[lang]/(dashboard)/apps/`.
+
+- Example: The Invoice app's components are located at `src/app/[lang]/(dashboard)/apps/invoice/`.
+
+#### Styling Approach
+
+- Recommended Styling: Use Tailwind classes for styling. If custom styles is not possible with Tailwind then only create a `styles.module.css` file in the respective page folder.
+
+- Example: For the Invoice app, styles are organized in `src/views/apps/invoice/preview`.
+
+By adhering to the structure and practices detailed in this guide, developers can seamlessly integrate their apps into our template, ensuring consistency in code quality and style. The Invoice app example provides practical insight into applying these methodologies effectively.

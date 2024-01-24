@@ -1,0 +1,93 @@
+---
+title: 'Pages'
+---
+
+# How to setup Pages in your project
+
+## Overview
+
+This documentation is a detailed guide on the process of developing pages within our template, with a specific focus on structure, API integration, database management, and styling. We will use the FAQ page as a practical example to illustrate these concepts, making it easier for developers to understand and apply these principles in their own work.
+
+### Server File and API Integration
+
+#### Location and Structure
+
+- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/pages/`.
+
+- Example: For the FAQ page, find the server file at `src/app/[lang]/(dashboard)/pages/faq/page.tsx`.
+
+#### API Call Implementation
+
+- Handling API Calls: In the FAQ page example, the server file includes a function `getFaqData` to fetch data from the API.
+
+  ```tsx
+  const getFaqData = async () => {
+    const res = await fetch(`${process.env.API_URL}/pages/faq`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch faqData');
+    }
+    return res.json();
+  };
+
+  const FAQPage = async () => {
+    const data = await getFaqData();
+    return <FAQ data={data} />;
+  };
+
+  export default FAQPage
+  ```
+
+### Creating APIs
+
+#### API File Location
+
+- Path: APIs specific to pages are created in `src/app/api/pages/`.
+
+#### Routing and Functionality
+
+You may refer to the Next.js routing conventions [here](https://nextjs.org/docs/app/building-your-application/routing).
+
+- Routing: The API routing follows the Next.js app router conventions.
+
+- Example: The API for the FAQ page is defined in `src/app/api/pages/faq/route.ts`.
+
+  ```tsx
+  import { NextResponse } from 'next/server';
+  import { db } from '@/app/api/fake-db/pages/faq';
+
+  export async function GET() {
+    return NextResponse.json(db);
+  }
+  ```
+
+### Using Fake Databases
+
+#### Storing Fake Data
+
+- Path: Fake database files are stored at `src/app/api/fake-db/pages/`.
+
+- Example: FAQ Page Fake Database is located in `src/app/api/fake-db/pages/faq/index.ts`.
+
+  ```ts
+  import type { FaqType } from '@/types/pages/faqTypes';
+
+  export const db: FaqType[] = [
+    // ...FAQ data...
+  ];
+  ```
+
+- For integrating real databases and API calls, refer to [Using Real APIs](/articles/how-to-remove-fake-db-and-use-real-api) for detailed steps.
+
+### Component and Style Management
+
+#### Component Location
+
+- Path: Page-related components are in `src/views/pages/`.
+
+#### Styling Approach
+
+- Recommended Styling: Use Tailwind classes for styling. If custom styles is not possible with Tailwind then only create a `styles.module.css` file in the respective page folder.
+
+- Example: For the FAQ page, styles are organized in `src/views/pages/faq`.
+
+This guide provides a comprehensive understanding of how to develop pages in our template. By following the structure and practices outlined here, developers can ensure a smooth integration of their work with the existing template, maintaining high standards of code quality and consistency. The FAQ page serves as a practical example to visualize and understand these concepts effectively.
