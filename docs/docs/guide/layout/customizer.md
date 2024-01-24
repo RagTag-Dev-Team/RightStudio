@@ -28,7 +28,7 @@ Customizer lets you change these things:
 
 | Name             | Type                                           | Default  | Description                                                           |
 | ---------------- | ---------------------------------------------- | -------  | --------------------------------------------------------------------- |
-| breakpoint       | `${number}px`, `${number}rem` or `${number}em` | `1200px` | Determines the breakpoint for displaying the customizer.              |
+| breakpoint       | `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `${number}px`, `${number}rem` or `${number}em` | `lg` | Determines the breakpoint for displaying the customizer. |
 | dir              | `ltr` or `rtl`                                 | `ltr`    | The direction of the customizer.                                      |
 | disableDirection | boolean                                        | false    | If `true`, the direction section will be removed from the customizer. |
 
