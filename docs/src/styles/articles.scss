@@ -2,8 +2,10 @@
   margin-block-start: 0.25rem !important;
 }
 
+h1[itemprop='headline'],
 h2[itemprop='headline'] {
   font-size: var(--ifm-h1-font-size) !important;
+  font-weight: 500 !important;
 }
 
 [class*='sidebarItemTitle'] {
