@@ -4,8 +4,8 @@ import * as path from 'path';
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const config: Config = {
-  title: 'Master - Next.js Admin Template Documentation',
-  tagline: 'Production Ready, Carefully Crafted, Extensive Next.js Admin Template 🚀',
+  title: 'Master - MUI Next.js Admin Template Documentation',
+  tagline: 'Production Ready, Carefully Crafted, Extensive MUI Next.js Admin Template 🚀',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here

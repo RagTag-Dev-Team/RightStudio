@@ -29,7 +29,7 @@ const Home = (): JSX.Element => {
   return (
     <Layout
       title='Welcome'
-      description="Master - Next.js Admin Template Documentation"
+      description="Master - MUI Next.js Admin Template Documentation"
     >
       <HomepageHeader />
       <main>

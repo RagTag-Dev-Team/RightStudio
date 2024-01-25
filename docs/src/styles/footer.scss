@@ -1,5 +1,6 @@
 footer.footer {
-  background-color: var(--mui-palette-action-hover);
+  background-color: var(--mui-palette-background-paper);
+  border-top: 1px solid var(--mui-palette-divider);
 
   svg[class*='iconExternalLink_'] {
     display: none;
@@ -18,10 +19,7 @@ footer.footer {
     color: var(--ifm-menu-color);
     text-decoration: none;
     &:hover {
-      color: #111827;
-      [data-theme='dark'] & {
-        color: #f9fafb;
-      }
+      color: var(--mui-palette-text-primary);
     }
   }
 
