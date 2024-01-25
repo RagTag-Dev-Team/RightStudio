@@ -72,17 +72,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Components',
-      items: [
-        'guide/components/form',
-        'guide/components/link',
-        'guide/components/open-dialog-on-element-click',
-        'guide/components/option-menu',
-        'guide/components/overriding-custom-components',
-      ]
-    },
-    {
-      type: 'category',
       label: 'Layout',
       items: [
         'guide/layout/layout-types',
@@ -139,8 +128,23 @@ const sidebars: SidebarsConfig = {
           label: 'Custom',
           items: [
             'guide/components/custom/generate-menu',
+            'guide/components/custom/form',
+            'guide/components/custom/link',
+            'guide/components/custom/open-dialog-on-element-click',
+            'guide/components/custom/option-menu',
+            {
+              type: 'category',
+              label: 'Custom-Inputs',
+              items: [
+                'guide/components/custom/custom-inputs/horizontal',
+                'guide/components/custom/custom-inputs/vertical',
+                'guide/components/custom/custom-inputs/image',
+                'guide/components/custom/custom-inputs/override-custom-inputs'
+              ]
+            },
           ]
-        }
+        },
+        'guide/components/overriding-custom-components',
       ]
     },
     'custom-inputs',
