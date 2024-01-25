@@ -5,15 +5,11 @@ import classnames from 'classnames'
 
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
-import LanguageDropdown from '@components/layout/shared/LanguageDropdown'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 import VerticalNavContent from '../../VerticalNavContent'
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
-
-// Icon Imports
-import Search from '@layouts/svg/Search'
 
 // Style Imports
 import styles from '../../styles.module.css'
@@ -46,10 +42,6 @@ const HorizontalNavbar = () => {
             </SubMenu>
           </Menu>
         </HorizontalNav>
-        <div className='flex gap-4 items-center'>
-          <Search className='mis-0' />
-          <LanguageDropdown />
-        </div>
       </div>
     </div>
   )
