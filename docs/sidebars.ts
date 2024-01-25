@@ -147,7 +147,6 @@ const sidebars: SidebarsConfig = {
         'guide/components/overriding-custom-components',
       ]
     },
-    'custom-inputs',
     'guide/credit',
   ],
   userInterfaceSidebar: [
