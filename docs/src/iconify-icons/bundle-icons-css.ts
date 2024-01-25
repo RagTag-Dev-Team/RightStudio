@@ -59,7 +59,8 @@ interface BundleScriptConfig {
 const sources: BundleScriptConfig = {
   json: [
     // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
-    require.resolve('@iconify/json/json/ri.json'),
+    require.resolve("@iconify/json/json/tabler.json"),
+    require.resolve("@iconify/json/json/ri.json"),
 
     // Custom file with only few icons
     /* {
@@ -74,7 +75,7 @@ const sources: BundleScriptConfig = {
   /* icons: [
     'bx-basket',
     'bi-airplane-engines',
-    'tabler-anchor',
+    'ri-anchor-line',
     'uit-adobe-alt',
 
     'fa6-regular-comment',
@@ -87,7 +88,6 @@ const sources: BundleScriptConfig = {
       monotone: false,
       prefix: 'custom'
     } */
-
     /* {
       dir: 'src/assets/iconify-icons/emojis',
       monotone: false,

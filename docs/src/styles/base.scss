@@ -66,7 +66,8 @@ ul:not([class]), ol:not([class]) {
   margin-bottom: var(--ifm-list-paragraph-margin)
 }
 
-:where([class^='ri-']) {
+:where([class^='ri-']),
+:where([class^='tabler-']) {
   font-size: 1.5rem;
 }
 
