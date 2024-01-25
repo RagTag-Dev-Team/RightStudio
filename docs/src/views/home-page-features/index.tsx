@@ -1,9 +1,6 @@
 // React Imports
 import React from 'react'
 
-// Style Imports
-import styles from './styles.module.css'
-
 type FeatureItem = {
   title: string
   Svg: React.ComponentType<React.ComponentProps<'svg'>>
@@ -47,7 +44,7 @@ const Feature = ({title, Svg, description}: FeatureItem) => {
   return (
     <div className='col col--4'>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <Svg className='is-[200px] bs-[200px]' role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
@@ -59,7 +56,7 @@ const Feature = ({title, Svg, description}: FeatureItem) => {
 
 const HomepageFeatures = (): JSX.Element => {
   return (
-    <section className={styles.features}>
+    <section className='flex items-center is-full plb-8'>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

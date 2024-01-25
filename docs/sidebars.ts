@@ -147,7 +147,6 @@ const sidebars: SidebarsConfig = {
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    "user-interface/intro",
     'user-interface/typography',
     'user-interface/icons',
     'user-interface/cards-basic',

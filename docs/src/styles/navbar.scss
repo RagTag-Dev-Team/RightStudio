@@ -30,6 +30,12 @@
     font-weight: 600;
     color: var(--ifm-color-primary) !important;
   }
+  &[href='https://themeselection.com/buy-now'] {
+    background-color: var(--ifm-color-primary);
+    color: #fff;
+    border-radius: 4px;
+    margin-inline-end: 0.5rem;
+  }
 }
 
 .navbar__item svg[class*='iconExternalLink_'] {

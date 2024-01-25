@@ -2,11 +2,7 @@
 import Layout from '@theme-original/Layout'
 import Head from '@docusaurus/Head';
 
-// Third-party Imports
-import { ToastContainer } from 'react-toastify'
-
 // Component Imports
-import BuyNowButton from '@docComponents/buy-now-button'
 import AppReactToastify from '@docComponents/styled-components/AppReactToastify'
 
 // MUI's Customized Theme Import
@@ -25,8 +21,7 @@ const LayoutWrapper = (props) => {
       </Head>
       <ThemeProvider>
         {props.children}
-          <AppReactToastify hideProgressBar />
-        <BuyNowButton />
+        <AppReactToastify hideProgressBar />
       </ThemeProvider>
     </Layout>
   )
