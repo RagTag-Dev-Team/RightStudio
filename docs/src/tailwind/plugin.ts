@@ -32,4 +32,7 @@ module.exports = plugin(function () {}, {
       },
     },
   },
+  corePlugins: {
+    container: false
+  }
 });

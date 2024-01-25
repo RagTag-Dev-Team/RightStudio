@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Installation warnings
 
 while running `pnpm install`, `yarn install` or `npm install`, you may encounter warnings related to the libraries or packages we utilize.
