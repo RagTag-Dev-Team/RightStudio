@@ -108,7 +108,6 @@ const sidebars: SidebarsConfig = {
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    "user-interface/intro",
     {
       type: 'category',
       label: 'Components',

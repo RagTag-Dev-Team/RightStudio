@@ -17,6 +17,17 @@ footer.footer {
     row-gap: 0.5rem;
   }
 
+  .footer__link-item {
+    color: var(--ifm-menu-color);
+    text-decoration: none;
+    &:hover {
+      color: #111827;
+      [data-theme='dark'] & {
+        color: #f9fafb;
+      }
+    }
+  }
+
   .footer__link-separator {
     display: none;
   }

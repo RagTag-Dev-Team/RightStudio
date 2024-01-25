@@ -4,8 +4,8 @@ import * as path from 'path';
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const config: Config = {
-  title: 'Master',
-  tagline: 'Next.Js Admin Template',
+  title: 'Master - Next.js Admin Template Documentation',
+  tagline: 'Production Ready, Carefully Crafted, Extensive Next.js Admin Template 🚀',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
@@ -122,10 +122,15 @@ const config: Config = {
           position: 'right',
           label: 'Live Demo',
         },
+        {
+          href: 'https://themeselection.com/buy-now',
+          position: 'right',
+          label: 'Buy Now',
+        },
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} ThemeSelection, All rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href='https://themeselection.com' target='_blank'>ThemeSelection</a>, All rights Reserved.`,
       links: [
         {
           label: 'License',
