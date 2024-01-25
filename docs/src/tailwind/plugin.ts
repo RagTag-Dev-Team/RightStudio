@@ -52,5 +52,8 @@ module.exports = plugin(function () {}, {
         drawer: 'var(--drawer-z-index)'
       }
     }
+  },
+  corePlugins: {
+    container: false
   }
 })
