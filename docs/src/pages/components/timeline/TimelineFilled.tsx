@@ -11,6 +11,11 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import MuiTimeline from '@mui/lab/Timeline'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import document from '../../../../docs/assets/images/icons/pdf-document.png'
+
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
   paddingLeft: 0,
@@ -47,7 +52,7 @@ const TimelineFilled = () => {
             <img
               height={20}
               alt='invoice.pdf'
-              src='/images/icons/pdf-document.png'
+              src={document}
             />
             <Typography className='font-medium'>invoices.pdf</Typography>
           </div>

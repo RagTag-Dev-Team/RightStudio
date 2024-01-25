@@ -1,3 +1,6 @@
+// React Imports
+import { ReactNode } from 'react'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -19,6 +22,19 @@ import type { TimelineProps } from '@mui/lab/Timeline'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
+
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import pdfDocument from '../../../../docs/assets/images/icons/pdf-document.png'
+import xlsDocument from '../../../../docs/assets/images/icons/xls-document.png'
+import plant1 from '../../../../docs/assets/images/misc/plant-1.png'
+import plant2 from '../../../../docs/assets/images/misc/plant-2.png'
+import plant3 from '../../../../docs/assets/images/misc/plant-3.png'
+import plant4 from '../../../../docs/assets/images/misc/plant-4.png'
+import zipcar from  '../../../../docs/assets/images/misc/zipcar.png'
+import bitbank from  '../../../../docs/assets/images/misc/bitbank.png'
+import aviato from  '../../../../docs/assets/images/misc/aviato.png'
 
 type DataProps = {
   image: string
@@ -45,30 +61,25 @@ const Timeline = styled(MuiTimeline)<TimelineProps>(({ theme }) => ({
   }
 }))
 
-const ImageList = [
-  '/images/misc/plant-1.png',
-  '/images/misc/plant-2.png',
-  '/images/misc/plant-3.png',
-  '/images/misc/plant-4.png'
-]
+const ImageList = [plant1, plant2, plant3, plant4]
 
 const Data: DataProps[] = [
   {
-    image: '/images/misc/zipcar.png',
+    image: zipcar,
     title: 'Zipcar',
     subtitle: 'Vuejs, React & HTML',
     progress: 24895.65,
     progressColor: 'primary'
   },
   {
-    image: '/images/misc/bitbank.png',
+    image: bitbank,
     title: 'Bitbank',
     subtitle: 'Sketch, Figma & XD',
     progress: 86500.2,
     progressColor: 'info'
   },
   {
-    image: '/images/misc/aviato.png',
+    image: aviato,
     title: 'Aviato',
     subtitle: 'HTML & Anguler',
     progress: 12450.8,
@@ -120,7 +131,7 @@ const TimelineCenter = () => {
                 over the course of the project.
               </Typography>
               <div className='flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
-                <img height={20} alt='documentation.pdf' src='/images/icons/pdf-document.png' />
+                <img height={20} alt='documentation.pdf' src={pdfDocument} />
                 <Typography className='font-medium'>documentation.pdf</Typography>
               </div>
             </CardContent>
@@ -308,7 +319,7 @@ const TimelineCenter = () => {
                 corporate objectives and therefore also project objectives. The components of the project process are
               </Typography>
               <div className='mbe-3 flex items-center gap-2 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
-                <img height={20} alt='progress-report.xls.pdf' src='/images/icons/xls-document.png' />
+                <img height={20} alt='progress-report.xls.pdf' src={xlsDocument} />
                 <Typography className='font-medium'>progress-report.xls</Typography>
               </div>
               <div className='flex items-center gap-2'>

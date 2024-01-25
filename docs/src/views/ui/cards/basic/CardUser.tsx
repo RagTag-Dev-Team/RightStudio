@@ -7,10 +7,15 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import AvatarGroup from "@mui/material/AvatarGroup";
 
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import img2 from "../../../../../docs/assets/images/cards/2.png";
+
 const CardUser = () => {
   return (
     <Card>
-      <CardMedia image="/images/cards/2.png" className="bs-[180px]" />
+      <CardMedia image={img2} className="bs-[180px]" />
       <CardContent className="relative">
         <Avatar
           src="/assets/avatars/3.png"

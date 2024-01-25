@@ -8,6 +8,11 @@ import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import img4 from '../../../../../docs/assets/images/cards/4.png'
+
 const Img = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius
 }))
@@ -44,7 +49,7 @@ const CardHorizontalRatings = () => {
           className='flex items-center justify-center md:order-[unset] -order-1'
         >
           <CardContent className='flex items-center justify-center'>
-            <Img src='/images/cards/4.png' height={175} />
+            <Img src={img4} height={175} />
           </CardContent>
         </Grid>
       </Grid>

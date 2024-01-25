@@ -15,8 +15,10 @@ import MenuItem from '@mui/material/MenuItem'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
-// Third-party Imports
-import classnames from 'classnames'
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import iphone11 from '../../../../../docs/assets/images/cards/iPhone-11-pro.png'
 
 const CardMobile = () => {
   // States
@@ -36,7 +38,7 @@ const CardMobile = () => {
       <Grid container>
         <Grid item xs={12} md={5} className='flex items-center justify-center'>
           <CardContent className='flex items-center justify-center'>
-            <img alt='iPhone 11 Pro' src='/images/cards/iPhone-11-pro.png' height={175} />
+            <img alt='iPhone 11 Pro' src={iphone11} height={175} />
           </CardContent>
         </Grid>
         <Grid

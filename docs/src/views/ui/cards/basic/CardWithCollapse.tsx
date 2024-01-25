@@ -12,12 +12,17 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
 
+// Image Imports
+// You don't need to import the image as below. You can directly use the path instead of the image variable.
+// We had to import the images because we are using them in the Documentation.
+import img3 from "../../../../../docs/assets/images/cards/3.png";
+
 const CardWithCollapse = () => {
   const [expanded, setExpanded] = useState(false)
 
   return (
     <Card>
-      <CardMedia image='/images/cards/3.png' className='bs-[185px]' />
+      <CardMedia image={img3} className='bs-[185px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-3'>
           Popular Uses Of The Internet
