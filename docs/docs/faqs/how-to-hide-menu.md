@@ -10,4 +10,4 @@ A user has the freedom to change the breakpoint from which the user wants to hid
 
 Please refer to [this](/docs/menu-examples/vertical-examples/vertical-nav/breakpoint) docs to change the breakpoint in the Vertical layout.
 
-Please refer to [this](/docs/menu-examples/horizontal-examples/horizontal-nav/hide-menu) docs to change the breakpoint in the Horizontal layout.
+Please refer to [this](/docs/menu-examples/horizontal-examples/horizontal-nav/breakpoint) docs to change the breakpoint in the Horizontal layout.
