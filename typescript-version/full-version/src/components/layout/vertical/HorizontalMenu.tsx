@@ -4,7 +4,7 @@
 // import { useParams } from 'next/navigation'
 
 // Type Imports
-// import type { getDictionary } from '@/utils/get-dictionary'
+// import type { getDictionary } from '@/utils/getDictionary'
 
 // Context Imports
 import { HorizontalNavProvider } from '@menu/contexts/horizontalNavContext'

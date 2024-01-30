@@ -7,7 +7,7 @@ import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 
 // Util Imports
-import { getMode, getSettingsFromCookie } from '@core/server/actions'
+import { getDemoName, getMode, getSettingsFromCookie } from '@core/utils/serverHelpers'
 
 type Props = ChildrenType
 
@@ -18,11 +18,12 @@ const Providers = (props: Props) => {
   // Vars
   const mode = getMode()
   const settingsCookie = getSettingsFromCookie()
+  const demoName = getDemoName()
 
   return (
     <NextAuthProvider basePath={process.env.NEXTAUTH_BASEPATH}>
       <VerticalNavProvider>
-        <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
+        <SettingsProvider settingsCookie={settingsCookie} mode={mode} demoName={demoName}>
           {children}
         </SettingsProvider>
       </VerticalNavProvider>

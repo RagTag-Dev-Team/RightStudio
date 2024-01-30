@@ -20,7 +20,7 @@ import Customizer from '@core/components/customizer'
 import { i18n } from '@configs/i18n'
 
 // Util Imports
-import { getDictionary } from '@/utils/get-dictionary'
+import { getDictionary } from '@/utils/getDictionary'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   // Vars

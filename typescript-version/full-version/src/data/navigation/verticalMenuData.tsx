@@ -1,6 +1,6 @@
 // Type Imports
 import type { VerticalMenuDataType } from '@/types/menuTypes'
-import type { getDictionary } from '@/utils/get-dictionary'
+import type { getDictionary } from '@/utils/getDictionary'
 
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
