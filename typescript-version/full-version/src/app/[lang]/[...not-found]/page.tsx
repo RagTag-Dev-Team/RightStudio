@@ -10,7 +10,7 @@ import NotFound from '@views/NotFound'
 import { i18n } from '@configs/i18n'
 
 // Util Imports
-import { getSystemMode } from '@core/server/actions'
+import { getSystemMode } from '@core/utils/serverHelpers'
 
 const NotFoundPage = ({ params }: { params: { lang: Locale } }) => {
   // Vars

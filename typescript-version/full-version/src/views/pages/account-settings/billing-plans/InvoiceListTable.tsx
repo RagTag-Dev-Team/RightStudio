@@ -51,7 +51,7 @@ import type { InvoiceType } from '@/types/apps/invoiceTypes'
 import OptionMenu from '@core/components/option-menu'
 
 // Util Imports
-import { getInitials } from '@/utils/get-initials'
+import { getInitials } from '@/utils/getInitials'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'

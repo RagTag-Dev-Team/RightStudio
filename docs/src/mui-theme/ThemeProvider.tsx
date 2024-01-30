@@ -15,6 +15,9 @@ import type {} from '@mui/lab/themeAugmentation';
 // Component Imports
 import ChangeMuiMode from "./ChangeMuiMode";
 
+// Config Imports
+import themeConfig from "@configs/themeConfig";
+
 // Style Imports
 import globalStyling from "./globalStyles";
 
@@ -41,7 +44,10 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <CssVarsProvider theme={theme}>
+      <CssVarsProvider
+        theme={theme}
+        modeStorageKey={`${themeConfig.templateName.toLowerCase().split(' ').join('-')}-mui-docs-mode`}
+      >
         <GlobalStyles styles={() => globalStyling(theme)} />
         <CssBaseline />
         <ChangeMuiMode />

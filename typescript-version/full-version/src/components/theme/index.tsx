@@ -26,6 +26,9 @@ import type { ChildrenType, Direction, SystemMode } from '@core/types'
 // Component Imports
 import ModeChanger from './ModeChanger'
 
+// Config Imports
+import themeConfig from '@configs/themeConfig'
+
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
@@ -101,7 +104,11 @@ const ThemeProvider = (props: Props) => {
         })
       }}
     >
-      <CssVarsProvider theme={theme} defaultMode={systemMode}>
+      <CssVarsProvider
+        theme={theme}
+        defaultMode={systemMode}
+        modeStorageKey={`${themeConfig.templateName.toLowerCase().split(' ').join('-')}-mui-template-mode`}
+      >
         <>
           <ModeChanger />
           <CssBaseline />
