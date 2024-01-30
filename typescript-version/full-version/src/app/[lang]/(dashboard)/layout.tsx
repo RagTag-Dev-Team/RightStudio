@@ -24,8 +24,8 @@ import ScrollToTop from '@core/components/scroll-to-top'
 import { i18n } from '@configs/i18n'
 
 // Util Imports
-import { getDictionary } from '@/utils/get-dictionary'
-import { getMode, getSettingsFromCookie, getSystemMode } from '@core/server/actions'
+import { getDictionary } from '@/utils/getDictionary'
+import { getMode, getSettingsFromCookie, getSystemMode } from '@core/utils/serverHelpers'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   // Vars

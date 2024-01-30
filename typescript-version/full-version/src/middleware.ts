@@ -15,6 +15,9 @@ import { i18n } from '@configs/i18n'
 import { getLocalizedUrl, isUrlMissingLocale } from '@/utils/i18n'
 import { ensurePrefix, withoutSuffix } from '@/utils/string'
 
+// Constants
+const HOME_PAGE_URL = '/about'
+
 const getLocale = (request: NextRequest): string | undefined => {
   // Try to get locale from URL
   const urlLocale = i18n.locales.find(locale => request.nextUrl.pathname.startsWith(`/${locale}/`))
@@ -48,7 +51,11 @@ const localizedRedirect = (url: string, locale: string | undefined, request: Nex
     _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
   }
 
-  _url = ensurePrefix(_url, `${process.env.BASEPATH ?? ''}`)
+  let _basePath = process.env.BASEPATH ?? ''
+
+  _basePath = _basePath.replace('demo-1', request.headers.get('X-server-header') ?? 'demo-1')
+
+  _url = ensurePrefix(_url, `${_basePath ?? ''}`)
 
   const redirectUrl = new URL(_url, request.url).toString()
 
@@ -94,7 +101,12 @@ export default withAuth(
     const isRequestedRouteIsGuestRoute = guestRoutes.some(route => pathname.endsWith(route))
 
     if (isUserLoggedIn && isRequestedRouteIsGuestRoute) {
-      return localizedRedirect(`/`, locale, request)
+      return localizedRedirect(HOME_PAGE_URL, locale, request)
+    }
+
+    // If the user is logged in and is trying to access root page, redirect to the dashboard page
+    if (pathname === '/' || pathname === `/${locale}`) {
+      return localizedRedirect(HOME_PAGE_URL, locale, request)
     }
 
     // If pathname already contains a locale, return next() else redirect with localized URL

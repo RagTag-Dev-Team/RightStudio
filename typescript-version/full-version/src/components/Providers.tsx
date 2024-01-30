@@ -14,7 +14,7 @@ import themeConfig from '@configs/themeConfig'
 import AppReactToastify from '@/libs/styles/AppReactToastify'
 
 // Util Imports
-import { getMode, getSettingsFromCookie, getSystemMode } from '@core/server/actions'
+import { getDemoName, getMode, getSettingsFromCookie, getSystemMode } from '@core/utils/serverHelpers'
 
 type Props = ChildrenType & {
   direction: Direction
@@ -27,12 +27,13 @@ const Providers = (props: Props) => {
   // Vars
   const mode = getMode()
   const settingsCookie = getSettingsFromCookie()
+  const demoName = getDemoName()
   const systemMode = getSystemMode()
 
   return (
     <NextAuthProvider basePath={process.env.NEXTAUTH_BASEPATH}>
       <VerticalNavProvider>
-        <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
+        <SettingsProvider settingsCookie={settingsCookie} mode={mode} demoName={demoName}>
           <ThemeProvider direction={direction} systemMode={systemMode}>
             {children}
             <AppReactToastify position={themeConfig.toastPosition} hideProgressBar />

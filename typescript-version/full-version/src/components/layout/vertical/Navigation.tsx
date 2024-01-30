@@ -4,7 +4,7 @@
 import { useColorScheme } from '@mui/material/styles'
 
 // Type Imports
-import type { getDictionary } from '@/utils/get-dictionary'
+import type { getDictionary } from '@/utils/getDictionary'
 import type { Settings } from '@core/contexts/settingsContext'
 import type { Mode, SystemMode } from '@core/types'
 
