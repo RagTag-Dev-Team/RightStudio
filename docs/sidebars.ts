@@ -144,6 +144,27 @@ const sidebars: SidebarsConfig = {
             },
           ]
         },
+        {
+          type: 'category',
+          label: 'Libs',
+          items: [
+            'guide/components/libs/apex-charts',
+            'guide/components/libs/editor'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Styled Libs',
+          items: [
+            'guide/components/styled-libs/app-full-calendar',
+            'guide/components/styled-libs/app-keen-slider',
+            'guide/components/styled-libs/app-react-apex-charts',
+            'guide/components/styled-libs/app-react-datepicker',
+            'guide/components/styled-libs/app-react-draft-wysiwyg',
+            'guide/components/styled-libs/app-react-dropzone',
+            'guide/components/styled-libs/app-react-toastify',
+          ]
+        },
         'guide/components/overriding-custom-components',
       ]
     },
