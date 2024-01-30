@@ -1,7 +1,7 @@
 # Credits
 
 | Package                             | URL                                                            | License              |
-|-------------------------------------|----------------------------------------------------------------|----------------------|
+| ----------------------------------- | -------------------------------------------------------------- | -------------------- |
 | @auth/prisma-adapter                | https://github.com/nextauthjs/next-auth                        | ISC                  |
 | @emotion/react                      | https://github.com/emotion-js/emotion                          | MIT                  |
 | @emotion/styled                     | https://github.com/emotion-js/emotion                          | MIT                  |
@@ -42,4 +42,3 @@
 | tailwindcss                         | https://github.com/tailwindlabs/tailwindcss                    | MIT                  |
 | tailwindcss-logical                 | https://github.com/stevecochrane/tailwindcss-logical           | ISC                  |
 | typescript                          | https://github.com/Microsoft/TypeScript                        | Apache-2.0           |
-
