@@ -1,5 +1,8 @@
 'use client'
 
+// React Imports
+import { useEffect } from 'react'
+
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
 
@@ -14,8 +17,17 @@ import { useSettings } from '@core/hooks/useSettings'
 
 const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
-  const { isHovered, isCollapsed } = useVerticalNav()
-  const { updateSettings } = useSettings()
+  const { isHovered, isCollapsed, collapseVerticalNav } = useVerticalNav()
+  const { updateSettings, settings } = useSettings()
+
+  useEffect(() => {
+    if (settings.layout === 'collapsed') {
+      collapseVerticalNav(true)
+    } else {
+      collapseVerticalNav(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings.layout])
 
   return (
     // eslint-disable-next-line lines-around-comment

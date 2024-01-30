@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
@@ -35,7 +35,6 @@ import DirectionRtl from '@core/svg/DirectionRtl'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -63,7 +62,6 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
   // Hooks
   const pathName = usePathname()
   const { settings, updateSettings, resetSettings, isSettingsChanged } = useSettings()
-  const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
   const breakpointReached = useMedia(`(max-width: ${breakpoint})`, false)
   const isMobileScreen = useMedia('(max-width: 600px)', false)
@@ -86,15 +84,6 @@ const Customizer = ({ breakpoint = '1200px', dir = 'ltr', disableDirection = fal
       updateSettings({ [field]: value })
     }
   }
-
-  useEffect(() => {
-    if (settings.layout === 'collapsed') {
-      collapseVerticalNav(true)
-    } else {
-      collapseVerticalNav(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.layout])
 
   return (
     !breakpointReached && (
