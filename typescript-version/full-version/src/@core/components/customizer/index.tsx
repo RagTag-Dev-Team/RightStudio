@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 // Next Imports
 import { usePathname } from 'next/navigation'
@@ -46,7 +46,6 @@ import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
 import styles from './styles.module.css'
@@ -112,7 +111,6 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
   const theme = useTheme()
   const pathName = usePathname()
   const { settings, updateSettings, resetSettings, isSettingsChanged } = useSettings()
-  const { collapseVerticalNav } = useVerticalNav()
   const isSystemDark = useMedia('(prefers-color-scheme: dark)', false)
 
   // Vars
@@ -170,15 +168,6 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
 
     setIsMenuOpen(false)
   }
-
-  useEffect(() => {
-    if (settings.layout === 'collapsed') {
-      collapseVerticalNav(true)
-    } else {
-      collapseVerticalNav(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.layout])
 
   return (
     !breakpointReached && (

@@ -1,5 +1,8 @@
 'use client'
 
+// React Imports
+import { useEffect } from 'react'
+
 // MUI Imports
 import { useColorScheme } from '@mui/material/styles'
 
@@ -32,7 +35,7 @@ const Navigation = (props: Props) => {
   const { settingsCookie, dictionary, mode, systemMode } = props
 
   // Hooks
-  const { isHovered, isCollapsed } = useVerticalNav()
+  const { isHovered, isCollapsed, collapseVerticalNav } = useVerticalNav()
   const { updateSettings, settings } = useSettings()
   const { mode: muiMode, systemMode: muiSystemMode } = useColorScheme()
 
@@ -47,6 +50,15 @@ const Navigation = (props: Props) => {
     isSemiDark = settings.semiDark
     isDark = muiMode === 'system' ? muiSystemMode === 'dark' : muiMode === 'dark'
   }
+
+  useEffect(() => {
+    if (settings.layout === 'collapsed') {
+      collapseVerticalNav(true)
+    } else {
+      collapseVerticalNav(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings.layout])
 
   return (
     // eslint-disable-next-line lines-around-comment
