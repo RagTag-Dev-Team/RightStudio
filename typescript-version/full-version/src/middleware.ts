@@ -20,7 +20,7 @@ const HOME_PAGE_URL = '/about'
 
 const getLocale = (request: NextRequest): string | undefined => {
   // Try to get locale from URL
-  const urlLocale = i18n.locales.find(locale => request.nextUrl.pathname.startsWith(`/${locale}/`))
+  const urlLocale = i18n.locales.find(locale => request.nextUrl.pathname.startsWith(`/${locale}`))
 
   if (urlLocale) return urlLocale
 
@@ -104,7 +104,7 @@ export default withAuth(
       return localizedRedirect(HOME_PAGE_URL, locale, request)
     }
 
-    // If the user is logged in and is trying to access root page, redirect to the dashboard page
+    // If the user is logged in and is trying to access root page, redirect to the home page
     if (pathname === '/' || pathname === `/${locale}`) {
       return localizedRedirect(HOME_PAGE_URL, locale, request)
     }
