@@ -10,10 +10,14 @@ import { useParams } from 'next/navigation'
 import styled from '@emotion/styled'
 
 // Type Imports
+import type { Locale } from '@configs/i18n'
 import type { VerticalNavContextProps } from '@menu/contexts/verticalNavContext'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -63,7 +67,7 @@ const Logo = () => {
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
   return (
-    <Link href={locale ? `/${locale}` : '/'} className='flex items-center'>
+    <Link href={getLocalizedUrl('/', locale as Locale)} className='flex items-center'>
       <svg width={22} height={24} viewBox='0 0 22.236 23.8' xmlns='http://www.w3.org/2000/svg' color='#765feb'>
         <g
           fontSize='9pt'

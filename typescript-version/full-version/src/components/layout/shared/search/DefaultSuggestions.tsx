@@ -6,6 +6,12 @@ import { useParams } from 'next/navigation'
 import { useKBar } from 'kbar'
 import classnames from 'classnames'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 type DefaultSuggestionsType = {
   sectionLabel: string
   items: {
@@ -135,7 +141,7 @@ const DefaultSuggestions = () => {
             {section.items.map((item, i) => (
               <li key={i} className='flex'>
                 <Link
-                  href={`/${locale}/${item.href}`}
+                  href={getLocalizedUrl(item.href, locale as Locale)}
                   onClick={query.toggle}
                   className='flex items-center overflow-x-hidden cursor-pointer gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
                 >
