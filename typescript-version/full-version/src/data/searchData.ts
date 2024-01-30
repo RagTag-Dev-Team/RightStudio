@@ -352,21 +352,7 @@ const data: SearchData[] = [
   {
     id: '50',
     name: 'Menu Examples',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`,
-    icon: 'Icon',
-    section: 'Others'
-  },
-  {
-    id: '51',
-    name: 'Raise Support',
-    url: '/support',
-    icon: 'Icon',
-    section: 'Others'
-  },
-  {
-    id: '52',
-    name: 'Documentation',
-    url: '/docs',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`,
     icon: 'Icon',
     section: 'Others'
   }

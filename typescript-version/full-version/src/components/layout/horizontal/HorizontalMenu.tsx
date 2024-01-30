@@ -169,14 +169,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#tables`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/table`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
@@ -189,21 +189,21 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].userInterface}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`}
             suffix={<LinkExternalIcon fontSize='1.125rem' />}
             target='_blank'
           >

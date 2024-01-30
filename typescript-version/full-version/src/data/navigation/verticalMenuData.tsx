@@ -317,12 +317,12 @@ const verticalMenuData = (
       {
         label: dictionary['navigation'].formELements,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].tables,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#tables`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/table`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       }
@@ -348,19 +348,19 @@ const verticalMenuData = (
 
       {
         label: dictionary['navigation'].userInterface,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].components,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].menuExamples,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
