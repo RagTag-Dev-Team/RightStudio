@@ -5,10 +5,10 @@ import { ChangeEvent, useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputVerticalData } from '@docComponents/custom-inputs/types'
+import { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Components Imports
-import CustomInputVertical from '@docComponents/custom-inputs/Vertical'
+import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 
 const data: CustomInputVerticalData[] = [
   {

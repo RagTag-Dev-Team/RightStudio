@@ -17,8 +17,14 @@
       "@docViews/*": [
         "./src/views/*"
       ],
+      "@/libs/styles/*":[
+        "./src/components/styled-components/*"
+      ],
       "@/*": [
         "../typescript-version/full-version/src/*"
+      ],
+      "@core/components/*": [
+        "./src/components/*"
       ],
       "@core/*": [
         "../typescript-version/full-version/src/@core/*"

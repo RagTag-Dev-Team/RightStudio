@@ -11,6 +11,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import type { ListProps } from '@mui/material/List'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-container': {
     border: `1px solid ${theme.palette.divider}`,
@@ -48,34 +50,33 @@ type User = {
 const userList: User[] = [
   {
     name: 'Caroline Black',
-    avatarSrc: '/assets/avatars/2.png',
+    avatarSrc: '/images/avatars/2.png',
     status: 'Online',
     statusColor: 'success.main',
     lastActive: '13 minutes ago'
   },
   {
     name: 'Alfred Copeland',
-    avatarSrc: '/assets/avatars/1.png',
+    avatarSrc: '/images/avatars/1.png',
     status: 'Away',
     statusColor: 'warning.main',
     lastActive: '11 minutes ago'
   },
   {
     name: 'Celia Schneider',
-    avatarSrc: '/assets/avatars/8.png',
+    avatarSrc: '/images/avatars/8.png',
     status: 'Offline',
     statusColor: 'secondary.main',
     lastActive: '9 minutes ago'
   },
   {
     name: 'Max Rogan',
-    avatarSrc: '/assets/avatars/5.png',
+    avatarSrc: '/images/avatars/5.png',
     status: 'In Meeting',
     statusColor: 'error.main',
     lastActive: '28 minutes ago'
   }
 ]
-
 
 const ListUsers = () => {
   return (
@@ -83,7 +84,7 @@ const ListUsers = () => {
       {userList.map((user, index) => (
         <ListItem key={index}>
           <ListItemAvatar>
-            <Avatar src={user.avatarSrc} alt={user.name} />
+            <Avatar src={`${useBaseUrl(user.avatarSrc)}`} alt={user.name} />
           </ListItemAvatar>
           <div>
             <ListItemText primary={user.name} />

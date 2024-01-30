@@ -9,7 +9,7 @@ import { subDays, addDays } from 'date-fns'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
-import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 const PickersMinMax = () => {
   // States

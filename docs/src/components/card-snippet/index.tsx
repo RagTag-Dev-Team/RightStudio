@@ -68,7 +68,14 @@ const CardSnippet = (props: CardSnippetProps) => {
               }
             }}
           >
-            <TsToJsCodeSnippet>{code}</TsToJsCodeSnippet>
+             {/* Remove useBaseUrl usage */}
+             <TsToJsCodeSnippet>
+              {code
+                .replace(/data={{...item, img: useBaseUrl\(item.img as string\)}}/gm, 'data={item}')
+                .replace(/\`\$\{useBaseUrl\((.*?)\)\}\`/gm, '$1')
+                .replace(/\{?useBaseUrl\((.*?)\)\}?/gm, '$1')
+                .replace(/import useBaseUrl from.*?\n/g, '')}
+            </TsToJsCodeSnippet>
           </CardContent>
         </Collapse>
       )}

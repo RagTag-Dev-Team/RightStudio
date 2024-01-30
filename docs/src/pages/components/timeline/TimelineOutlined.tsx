@@ -11,10 +11,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import MuiTimeline from '@mui/lab/Timeline'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
-// Image Imports
-// You don't need to import the image as below. You can directly use the path instead of the image variable.
-// We had to import the images because we are using them in the Documentation.
-import document from '../../../../docs/assets/images/icons/pdf-document.png'
+import useBaseUrl from '@docusaurus/useBaseUrl' 
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -52,7 +49,7 @@ const TimelineOutlined = () => {
             <img
               height={20}
               alt='invoice.pdf'
-              src={document}
+              src={useBaseUrl('/images/icons/pdf-document.png')}
             />
             <Typography className='font-medium'>invoices.pdf</Typography>
           </div>
@@ -77,7 +74,7 @@ const TimelineOutlined = () => {
             Project meeting with john @10:15am
           </Typography>
           <div className='flex items-center mbe-2.5 gap-2.5'>
-            <Avatar src='/assets/avatars/2.png' className='w-8 h-8' />
+            <Avatar src={useBaseUrl('/images/avatars/2.png')} className='w-8 h-8' />
             <div className='flex flex-col flex-wrap'>
               <Typography variant='body2' className='font-medium'>
                 Lester McCarthy (Client)
@@ -106,9 +103,9 @@ const TimelineOutlined = () => {
             6 team members in a project
           </Typography>
           <AvatarGroup total={6} className='pull-up'>
-            <Avatar alt='Travis Howard' src='/images/avatars/2.jpg' />
-            <Avatar alt='Agnes Walker' src='/images/avatars/4.jpg' />
-            <Avatar alt='John Doe' src='/images/avatars/5.jpg' />
+            <Avatar alt='Travis Howard' src={useBaseUrl('/images/avatars/2.jpg')} />
+            <Avatar alt='Agnes Walker' src={useBaseUrl('/images/avatars/4.jpg')} />
+            <Avatar alt='John Doe' src={useBaseUrl('/images/avatars/5.jpg')} />
           </AvatarGroup>
         </TimelineContent>
       </TimelineItem>

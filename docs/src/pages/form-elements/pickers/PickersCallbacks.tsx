@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 
 // Component Imports
 import CustomInput from './PickersCustomInput'
-import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 const PickersCallbacks = () => {
   // States

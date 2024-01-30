@@ -4,6 +4,8 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const CardFacebook = () => {
   return (
     <Card className='bg-[#3b5998]'>
@@ -20,7 +22,7 @@ const CardFacebook = () => {
         </Typography>
         <div className='flex align-center justify-between flex-wrap gap-x-4 gap-y-2'>
           <div className='flex items-center gap-2.5'>
-            <Avatar src='/images/avatars/1.png' />
+            <Avatar src={useBaseUrl('/images/avatars/1.png')} />
             <Typography className='text-white'>
               Eugene Clarke
             </Typography>

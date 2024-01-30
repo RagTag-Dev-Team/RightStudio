@@ -5,24 +5,26 @@ import { ChangeEvent, useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputImgData } from '@docComponents/custom-inputs/types'
+import { CustomInputImgData } from '@core/components/custom-inputs/types'
 
 // Components Imports
-import CustomInputImg from '@docComponents/custom-inputs/Image'
+import CustomInputImg from '@core/components/custom-inputs/Image'
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const data: CustomInputImgData[] = [
   {
     value: 'clock',
     isSelected: true,
-    img: '/images/banners/27.jpg',
+    img: '/images/banners/27.jpg'
   },
   {
     value: 'donuts',
-    img: '/images/banners/26.jpg',
+    img: '/images/banners/26.jpg'
   },
   {
     value: 'flowers',
-    img: '/images/banners/22.jpg',
+    img: '/images/banners/22.jpg'
   },
 ]
 
@@ -48,7 +50,7 @@ const CustomRadioWithImage = () => {
         <CustomInputImg
           type='radio'
           key={index}
-          data={item}
+          data={{...item, img: useBaseUrl(item.img as string)}}
           selected={selected}
           name='custom-radios-img'
           handleChange={handleChange}

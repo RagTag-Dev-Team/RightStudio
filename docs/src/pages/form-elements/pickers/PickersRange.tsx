@@ -10,7 +10,7 @@ import type { TextFieldProps } from '@mui/material/TextField'
 import { format, addDays } from 'date-fns'
 
 // Component Imports
-import AppReactDatepicker from '@docComponents/styled-components/AppReactDatepicker'
+import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 type CustomInputProps = TextFieldProps & {
   label: string

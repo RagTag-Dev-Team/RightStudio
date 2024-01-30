@@ -9,16 +9,15 @@ import { useTheme } from '@mui/material/styles'
 import { useKeenSlider } from 'keen-slider/react'
 import type { TrackDetails } from 'keen-slider/react'
 
-// Image Imports
-// You don't need to import the image as below. You can directly use the path instead of the image variable.
-// We had to import the images because we are using them in the Documentation.
-import img6 from '../../../../docs/assets/images/banners/6.jpg'
-import img7 from '../../../../docs/assets/images/banners/7.jpg'
-import img8 from '../../../../docs/assets/images/banners/8.jpg'
-import img9 from '../../../../docs/assets/images/banners/9.jpg'
-import img10 from '../../../../docs/assets/images/banners/10.jpg'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
-const images = [img6, img7, img8, img9, img10]
+const images = [
+  '/images/banners/6.jpg',
+  '/images/banners/7.jpg',
+  '/images/banners/8.jpg',
+  '/images/banners/9.jpg',
+  '/images/banners/10.jpg'
+]
 
 const SwiperZoom = () => {
   // States
@@ -50,7 +49,7 @@ const SwiperZoom = () => {
       {images.map((src, idx) => (
         <div key={idx} className='keen-slider__slide zoom-out__slide'>
           <Box className='slider-content-wrapper' sx={{ ...scaleStyle(idx) }}>
-            <img src={src} alt={`slider ${idx}`} />
+            <img src={`${useBaseUrl(src)}`} alt={`slider ${idx}`} />
           </Box>
         </div>
       ))}

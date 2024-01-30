@@ -11,6 +11,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const ListWithCheckbox = () => {
   // States
   const [checked, setChecked] = useState<number[]>([0])
@@ -33,7 +35,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(0)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/2.png' alt='Caroline Black' />
+            <Avatar src={useBaseUrl('/images/avatars/2.png')} alt='Caroline Black' />
           </ListItemAvatar>
           <ListItemText id='checkbox-list-label-0' primary='Caroline Black' />
           <ListItemSecondaryAction>
@@ -51,7 +53,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(1)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/1.png' alt='Alfred Copeland' />
+            <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='Alfred Copeland' />
           </ListItemAvatar>
           <ListItemText id='checkbox-list-label-1' primary='Alfred Copeland' />
           <ListItemSecondaryAction>
@@ -69,7 +71,7 @@ const ListWithCheckbox = () => {
       <ListItem disablePadding>
         <ListItemButton onClick={handleToggle(2)}>
           <ListItemAvatar>
-            <Avatar src='/assets/avatars/8.png' alt='Celia Schneider' />
+            <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='Celia Schneider' />
           </ListItemAvatar>
           <ListItemText id='checkbox-list-label-2' primary='Celia Schneider' />
           <ListItemSecondaryAction>

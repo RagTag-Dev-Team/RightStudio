@@ -1,14 +1,7 @@
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 
-// Image Imports
-// You don't need to import the image as below. You can directly use the path instead of the image variable.
-// We had to import the images because we are using them in the Documentation.
-import img21 from '../../../../docs/assets/images/banners/21.jpg'
-import img22 from '../../../../docs/assets/images/banners/22.jpg'
-import img23 from '../../../../docs/assets/images/banners/23.jpg'
-import img24 from '../../../../docs/assets/images/banners/24.jpg'
-import img25 from '../../../../docs/assets/images/banners/25.jpg'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const SwiperFreeMode = () => {
   // Hooks
@@ -24,19 +17,19 @@ const SwiperFreeMode = () => {
   return (
     <div ref={ref} className='keen-slider'>
       <div className='keen-slider__slide'>
-        <img src={img21} alt='swiper 21' />
+        <img src={useBaseUrl('/images/banners/21.jpg')} alt='swiper 21' />
       </div>
       <div className='keen-slider__slide'>
-        <img src={img22} alt='swiper 22' />
+        <img src={useBaseUrl('/images/banners/22.jpg')} alt='swiper 22' />
       </div>
       <div className='keen-slider__slide'>
-        <img src={img23} alt='swiper 23' />
+        <img src={useBaseUrl('/images/banners/23.jpg')} alt='swiper 23' />
       </div>
       <div className='keen-slider__slide'>
-        <img src={img24} alt='swiper 24' />
+        <img src={useBaseUrl('/images/banners/24.jpg')} alt='swiper 24' />
       </div>
       <div className='keen-slider__slide'>
-        <img src={img25} alt='swiper 25' />
+        <img src={useBaseUrl('/images/banners/25.jpg')} alt='swiper 25' />
       </div>
     </div>
   )

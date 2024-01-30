@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 type ChipData = {
   key: number
   label: string
@@ -13,14 +15,17 @@ type ChipData = {
 }
 
 const data: ChipData[] = [
-  { key: 0, avatar: '/assets/avatars/avatars/1.png', avatarAlt: 'User Avatar', label: 'Norman Santiago' },
-  { key: 1, avatar: '/assets/avatars/avatars/2.png', avatarAlt: 'User Avatar', label: 'Cecelia Tucker' },
+  { key: 0, avatar: '/images/avatars/avatars/1.png', avatarAlt: 'User Avatar', label: 'Norman Santiago' },
+  { key: 1, avatar: '/images/avatars/avatars/2.png', avatarAlt: 'User Avatar', label: 'Cecelia Tucker' },
   { key: 2, label: 'Max Burns' },
-  { key: 3, avatar: '/assets/avatars/avatars/4.png', avatarAlt: 'User Avatar', label: 'Ellen Nguyen' },
-  { key: 4, avatar: '/assets/avatars/avatars/5.png', avatarAlt: 'User Avatar', label: 'Edward Francis' }
+  { key: 3, avatar: '/images/avatars/avatars/4.png', avatarAlt: 'User Avatar', label: 'Ellen Nguyen' },
+  { key: 4, avatar: '/images/avatars/avatars/5.png', avatarAlt: 'User Avatar', label: 'Edward Francis' }
 ];
 
+
 const ChipsArray = () => {
+
+  
   // States
   const [chipData, setChipData] = useState<ChipData[]>(data)
 
@@ -34,7 +39,7 @@ const ChipsArray = () => {
         <Chip
           key={data.key}
           label={data.label}
-          avatar={<Avatar src={data.avatar} alt={data.avatarAlt} />}
+          avatar={<Avatar src={`${useBaseUrl(data.avatar)}`} alt={data.avatarAlt} />}
           onDelete={data.key === 2 ? undefined : handleDelete(data)}
         />
       ))}
