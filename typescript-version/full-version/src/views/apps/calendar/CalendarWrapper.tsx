@@ -131,7 +131,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
         handleAddEventSidebarToggle={handleAddEventSidebarToggle}
       />
       <div
-        className='p-5 pbe-0 flex-grow bg-backgroundPaper'
+        className='p-5 pbe-0 flex-grow overflow-visible bg-backgroundPaper'
 
         // ...(mdAbove ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : {})
       >

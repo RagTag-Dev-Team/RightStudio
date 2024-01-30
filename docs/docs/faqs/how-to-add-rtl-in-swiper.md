@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # How to add RTL in Swiper?
 
 Swiper comes with RTL support which means you can use it with right-to-left languages like Arabic, Hebrew, etc.

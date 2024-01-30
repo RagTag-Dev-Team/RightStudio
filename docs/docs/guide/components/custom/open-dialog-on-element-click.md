@@ -9,11 +9,11 @@ The `OpenDialogOnElementClick` component is a reusable component that encapsulat
 The component accepts the following props:
 
 | Prop          | Description                                                     | Required |
-|---------------|-----------------------------------------------------------------|----------|
+| ------------- | --------------------------------------------------------------- | -------- |
 | `element`     | A React component that will act as the clickable element.       | Yes      |
 | `dialog`      | Dialog component that will be opened upon clicking the element. | Yes      |
-| `elementProps`|  Props to be passed to the clickable element.                   | No       |
-| `dialogProps` |  Props to be passed to the dialog component.                    | No       |
+| `elementProps`| Props to be passed to the clickable element.                    | No       |
+| `dialogProps` | Props to be passed to the dialog component.                     | No       |
 
 ## Usage
 

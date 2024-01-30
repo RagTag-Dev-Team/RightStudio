@@ -9,7 +9,7 @@ The `OptionMenu` component is a flexible and customizable menu component, using 
 The `OptionMenu` component accepts the following props, structured to customize its behavior and appearance:
 
 | Prop              | Type              | Description                                                                 |
-|-------------------|-------------------|-----------------------------------------------------------------------------|
+| ----------------- | ----------------- | --------------------------------------------------------------------------- |
 | `icon`            | `ReactNode`       | Optional. A React node to be used as the icon for the menu button           |
 | `options`         | `OptionType[]`    | An array of options to be displayed in the menu. Can be strings, dividers, or menu items. |
 | `leftAlignMenu`   | `boolean`         | Optional. If `true`, aligns the menu to the left of the button. Default is right-aligned. |
@@ -24,14 +24,14 @@ The `OptionMenu` component accepts the following props, structured to customize 
 ### OptionDividerType Props
 
 | Prop           | Type           | Description                                             |
-|----------------|----------------|---------------------------------------------------------|
+| -------------- | -------------- | ------------------------------------------------------- |
 | `divider`      | `boolean`      | Must be `true` to render a divider.                     |
 | `dividerProps` | `DividerProps` | Optional. Props to be passed to the MUI Divider component. |
 
 ### OptionMenuItemType Props
 
 | Prop            | Type              | Description                                                      |
-|-----------------|-------------------|------------------------------------------------------------------|
+| --------------- | ----------------- | ---------------------------------------------------------------- |
 | `text`          | `ReactNode`       | The text to display for the menu item.                           |
 | `icon`          | `ReactNode`       | Optional. An icon to display alongside the text.                 |
 | `href?`         | `LinkProps['href']` | Optional. A URL or path to navigate to when the menu item is clicked. |

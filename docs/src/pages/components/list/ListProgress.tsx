@@ -40,7 +40,7 @@ const StyledList = styled(List)<ListProps>(({ theme }) => ({
 type CourseListType = {
   description?: string
   progress?: number
-  variant?: ThemeColor
+  color?: ThemeColor
   icon?: string
 }
 
@@ -48,31 +48,31 @@ const courseList: CourseListType[] = [
   {
     description: 'React is a JavaScript library for building user interfaces',
     progress: 90,
-    variant: 'info',
+    color: 'info',
     icon: 'ri-reactjs-fill'
   },
   {
     description: 'Bootstrap is an open source toolkit',
     progress: 75,
-    variant: 'primary',
+    color: 'primary',
     icon: 'ri-bootstrap-fill'
   },
   {
     description: 'Vue.js is the Progressive JavaScript Framework',
     progress: 85,
-    variant: 'success',
+    color: 'success',
     icon: 'ri-vuejs-fill'
   },
   {
     description: 'Angular implements Functional Programming concepts',
     progress: 60,
-    variant: 'error',
+    color: 'error',
     icon: 'ri-angularjs-fill'
   },
   {
     description: 'JavaScript is the programming language of the Web',
     progress: 70,
-    variant: 'warning',
+    color: 'warning',
     icon: 'ri-javascript-fill'
   }
 ]
@@ -89,7 +89,7 @@ const ListProgress = () => {
               </Avatar>
               <div className='w-full'>
                 <ListItemText primary={course.description}></ListItemText>
-                <LinearProgress value={course.progress} variant='determinate' color={course.variant} />
+                <LinearProgress value={course.progress} variant='determinate' color={course.color} />
               </div>
             </ListItemAvatar>
           </ListItem>
