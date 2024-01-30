@@ -2,6 +2,21 @@ html, body {
   height: auto !important;
   min-height: 100dvh;
 }
+body {
+  background-color: var(--mui-palette-background-paper) !important;
+}
+// Home Page Styles
+body:has(.template-bg-color) {
+  background-color: var(--mui-palette-background-default) !important;
+
+  .theme-doc-sidebar-container:has(nav.menu) {
+    background-color: var(--mui-palette-background-paper);
+  }
+
+  footer.footer {
+    background-color: var(--mui-palette-background-paper);
+  }
+}
 
 #__docusaurus {
   min-height: 100dvh !important;
