@@ -75,7 +75,7 @@ By following these steps, you can set up and manage your environment variables e
       <CodeBlock language='bash'>yarn dev</CodeBlock>
     </TabItem>
     <TabItem value="npm">
-      <CodeBlock language='bash'>npm dev</CodeBlock>
+      <CodeBlock language='bash'>npm run dev</CodeBlock>
     </TabItem>
   </Tabs>
 
@@ -87,4 +87,10 @@ By following these steps, you can set up and manage your environment variables e
 
 :::note
 Your network URL might not have same URL as screenshot and that is completely fine. It depends on your network.
+:::
+
+:::tip
+If you want to change the port number, you can do so by adding `--port <port-number>` or `-p <port-number>` at the end of the command. For example, `pnpm dev --port 3001` or `pnpm dev -p 3001`.
+
+Additionally, you also need to change the port number from `http://localhost:3000` to `http://localhost:<port-number>` in the `.env` file. For the above example, it would be `http://localhost:3001`.
 :::

@@ -1,9 +1,14 @@
 footer.footer {
+  padding-block: 1rem;
   background-color: var(--mui-palette-background-default);
-  border-top: 1px solid var(--mui-palette-divider);
+  border-top: 1px solid var(--border-color);
 
   svg[class*='iconExternalLink_'] {
     display: none;
+  }
+
+  .footer__links {
+    margin-block-end: 0.5rem;
   }
 
   .footer__links .footer__links {

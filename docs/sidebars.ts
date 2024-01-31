@@ -170,6 +170,7 @@ const sidebars: SidebarsConfig = {
         'guide/components/overriding-custom-components',
       ]
     },
+    'guide/deployment',
     'guide/credit',
   ],
   userInterfaceSidebar: [
