@@ -149,6 +149,7 @@ const sidebars: SidebarsConfig = {
           label: 'Libs',
           items: [
             'guide/components/libs/apex-charts',
+            'guide/components/libs/recharts',
             'guide/components/libs/editor'
           ]
         },
@@ -163,6 +164,7 @@ const sidebars: SidebarsConfig = {
             'guide/components/styled-libs/app-react-draft-wysiwyg',
             'guide/components/styled-libs/app-react-dropzone',
             'guide/components/styled-libs/app-react-toastify',
+            'guide/components/styled-libs/app-recharts',
           ]
         },
         'guide/components/overriding-custom-components',
@@ -507,6 +509,7 @@ const sidebars: SidebarsConfig = {
     'faqs/how-to-change-mode',
     'faqs/how-to-change-skin',
     'faqs/why-cannot-revert-to-default-theme',
+    'faqs/why-app-runs-slow-in-local',
     'faqs/configure-local-template-like-demos',
     'faqs/integrate-template-into-existing-project',
     "faqs/update-navbar-and-footer",
