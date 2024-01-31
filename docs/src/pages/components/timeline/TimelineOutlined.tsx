@@ -103,9 +103,9 @@ const TimelineOutlined = () => {
             6 team members in a project
           </Typography>
           <AvatarGroup total={6} className='pull-up'>
-            <Avatar alt='Travis Howard' src={useBaseUrl('/images/avatars/2.jpg')} />
-            <Avatar alt='Agnes Walker' src={useBaseUrl('/images/avatars/4.jpg')} />
-            <Avatar alt='John Doe' src={useBaseUrl('/images/avatars/5.jpg')} />
+            <Avatar alt='Travis Howard' src={useBaseUrl('/images/avatars/2.png')} />
+            <Avatar alt='Agnes Walker' src={useBaseUrl('/images/avatars/4.png')} />
+            <Avatar alt='John Doe' src={useBaseUrl('/images/avatars/5.png')} />
           </AvatarGroup>
         </TimelineContent>
       </TimelineItem>
