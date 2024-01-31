@@ -105,6 +105,7 @@ const sidebars: SidebarsConfig = {
         }
       ]
     },
+    'guide/deployment',
     'guide/credit',
   ],
   userInterfaceSidebar: [
