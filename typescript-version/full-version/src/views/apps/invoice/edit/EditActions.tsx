@@ -18,9 +18,15 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Component Imports
 import AddPaymentDrawer from '@views/apps/invoice/shared/AddPaymentDrawer'
 import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const EditActions = ({ id }: { id: string }) => {
   // States
@@ -51,7 +57,7 @@ const EditActions = ({ id }: { id: string }) => {
                 color='secondary'
                 variant='outlined'
                 className='capitalize'
-                href={`/${locale}/apps/invoice/preview/${id}`}
+                href={getLocalizedUrl(`apps/invoice/preview/${id}`, locale as Locale)}
               >
                 Preview
               </Button>

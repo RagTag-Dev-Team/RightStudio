@@ -17,8 +17,14 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const LoginV2 = () => {
   // States
@@ -59,7 +65,7 @@ const LoginV2 = () => {
                 className='text-end'
                 color='primary'
                 component={Link}
-                href={`/${locale}/pages/auth/forgot-password-v2`}
+                href={getLocalizedUrl('pages/auth/forgot-password-v2', locale as Locale)}
               >
                 Forgot password?
               </Typography>
@@ -69,7 +75,11 @@ const LoginV2 = () => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} href={`/${locale}/pages/auth/register-v2`} color='primary'>
+              <Typography
+                component={Link}
+                href={getLocalizedUrl('pages/auth/register-v2', locale as Locale)}
+                color='primary'
+              >
                 Create an account
               </Typography>
             </div>

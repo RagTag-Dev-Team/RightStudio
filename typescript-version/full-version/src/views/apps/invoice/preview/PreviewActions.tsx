@@ -12,9 +12,15 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Component Imports
 import AddPaymentDrawer from '@views/apps/invoice/shared/AddPaymentDrawer'
 import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const PreviewActions = ({ id }: { id: string }) => {
   // States
@@ -58,7 +64,7 @@ const PreviewActions = ({ id }: { id: string }) => {
               color='secondary'
               variant='outlined'
               className='capitalize'
-              href={`/${locale}/apps/invoice/edit/${id}`}
+              href={getLocalizedUrl(`apps/invoice/edit/${id}`, locale as Locale)}
             >
               Edit
             </Button>

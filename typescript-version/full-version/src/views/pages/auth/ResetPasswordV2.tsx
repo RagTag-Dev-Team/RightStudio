@@ -14,8 +14,14 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const ResetPasswordV2 = () => {
   // States
@@ -76,7 +82,7 @@ const ResetPasswordV2 = () => {
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
               <Link
-                href={`/${locale}/pages/auth/login-v2`}
+                href={getLocalizedUrl('pages/auth/login-v2', locale as Locale)}
                 onClick={e => e.preventDefault()}
                 className='flex items-center'
               >

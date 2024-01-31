@@ -11,9 +11,15 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
 // Component Imports
 import Form from '@components/Form'
 import DirectionalIcon from '@components/DirectionalIcon'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const ForgotPasswordV1 = () => {
   // Hooks
@@ -31,7 +37,7 @@ const ForgotPasswordV1 = () => {
             Send reset link
           </Button>
           <Typography className='flex justify-center items-center' color='primary'>
-            <Link href={`/${locale}/pages/auth/login-v1`} className='flex items-center'>
+            <Link href={getLocalizedUrl('pages/auth/login-v1', locale as Locale)} className='flex items-center'>
               <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
               <span>Back to Login</span>
             </Link>
