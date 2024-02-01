@@ -1,7 +1,7 @@
 # Credits
 
 | Package                             | URL                                                            | License              |
-|-------------------------------------|----------------------------------------------------------------|----------------------|
+| ----------------------------------- | -------------------------------------------------------------- | -------------------- |
 | @auth/prisma-adapter                | https://github.com/nextauthjs/next-auth                        | ISC                  |
 | @emotion/cache                      | https://github.com/emotion-js/emotion                          | MIT                  |
 | @emotion/react                      | https://github.com/emotion-js/emotion                          | MIT                  |
@@ -79,4 +79,3 @@
 | tsx                                 | https://github.com/privatenumber/tsx                           | MIT                  |
 | typescript                          | https://github.com/Microsoft/TypeScript                        | Apache-2.0           |
 | valibot                             | https://github.com/fabian-hiller/valibot                       | MIT                  |
-

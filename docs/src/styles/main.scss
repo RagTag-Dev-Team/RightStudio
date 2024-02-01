@@ -1,0 +1,5 @@
+main[class*='docMainContainer_'] {
+  .row .col:first-child {
+    --ifm-spacing-horizontal: 2rem;
+  }
+}

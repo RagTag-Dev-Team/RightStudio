@@ -5,7 +5,7 @@ import { useState } from "react";
 import { EditorState } from "draft-js";
 
 // Component Imports
-import AppReactDraftWysiwyg from "@docComponents/styled-components/AppReactDraftWysiwyg";
+import AppReactDraftWysiwyg from "@/libs/styles/AppReactDraftWysiwyg";
 
 const EditorControlled = () => {
   // States

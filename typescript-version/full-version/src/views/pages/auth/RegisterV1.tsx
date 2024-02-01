@@ -19,6 +19,12 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 const RegisterV1 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
@@ -67,7 +73,11 @@ const RegisterV1 = () => {
           </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Already have an account?</Typography>
-            <Typography component={Link} href={`/${locale}/pages/auth/login-v1`} color='primary'>
+            <Typography
+              component={Link}
+              href={getLocalizedUrl('pages/auth/login-v1', locale as Locale)}
+              color='primary'
+            >
               Sign in instead
             </Typography>
           </div>

@@ -6,7 +6,7 @@ import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 
 // Util Imports
-import { getSettingsFromCookie } from '@core/server/actions'
+import { getSettingsFromCookie } from '@core/utils/serverHelpers'
 
 const Layout = ({ children }: ChildrenType) => {
   // Vars

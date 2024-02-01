@@ -10,7 +10,10 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
+  --ifm-background-color: var(--mui-palette-background-default);
+  --ifm-background-surface-color: var(--mui-palette-background-paper);
   --ifm-code-font-size: 95%;
+  --ifm-code-background: #F9F9F9;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-font-family-base: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
@@ -22,19 +25,20 @@
   --ifm-h4-font-size: 1.25rem;
   --ifm-h5-font-size: 1.125rem;
   --ifm-h6-font-size: 1rem;
-  --ifm-color-content: #334155;
-  --ifm-menu-color: #6b7280;
-  --ifm-menu-color-background-hover: rgba(93, 93, 93, 0.1);
+  --ifm-color-content: var(--mui-palette-text-primary);
+  --ifm-hr-background-color: var(--mui-palette-divider);
+  --ifm-menu-color: var(--mui-palette-text-secondary);
+  --ifm-menu-color-background-hover: var(--mui-palette-action-hover);
   --ifm-menu-color-background-active: rgba(37, 194, 160, 0.15);
   --ifm-heading-line-height: 1.5;
+  --ifm-navbar-search-input-background-color: var(--mui-palette-action-hover);
   --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgb(107 114 128)"></path></svg>');
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.9999 10.8284L7.0502 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z" fill="rgb(107 114 128)"></path></svg>');
   --ifm-link-color: var(--mui-palette-primary-main);
 
   --border-radius: 6px;
-  --border-color: #efefef;
-  --primary-color: #765feb;
-  --background-color: #fff;
+  --border-color: var(--mui-palette-divider);
+  --primary-color: var(--mui-palette-primary-main);
 }
 
 *,
@@ -57,14 +61,20 @@ html[data-theme='dark']:root {
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
+  --ifm-background-color: var(--mui-palette-background-default);
+  --ifm-background-surface-color: var(--mui-palette-background-paper);
+  --ifm-code-background: #2B2B2F;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-toc-border-color: transparent;
-  --ifm-menu-color: #a3a3a3;
-  --ifm-menu-color-background-hover: rgba(224, 243, 255, 0.05);
-  --ifm-navbar-background-color: #1b1b1d;
+  --ifm-hr-background-color: var(--mui-palette-divider);
+  --ifm-menu-color: var(--mui-palette-text-secondary);
+  --ifm-navbar-background-color: var(--mui-palette-background-paper);
   --ifm-table-stripe-background: rgba(224, 243, 255, 0.05);
+  --ifm-navbar-search-input-background-color: var(--mui-palette-action-hover);
   --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgb(163 163 163)"></path></svg>');
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.9999 10.8284L7.0502 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z" fill="rgb(163 163 163)"></path></svg>');
+
+  --border-color: var(--mui-palette-divider);
 }
 
 // Medium zoom styles
@@ -82,26 +92,12 @@ html[data-theme='dark']:root {
   }
 }
 
-// Scrollbar Styles
-.menu.thin-scrollbar {
-  padding: 20px;
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  &:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(115, 115, 115, 0.2);
-  }
-  &:hover::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(115, 115, 115, 0.4);
-  }
-}
-
 // Scroll back to top button styles
 .clean-btn.theme-back-to-top-button {
   inset-block-end: 35.2px;
+}
+.theme-back-to-top-button {
+  bottom: 2.2rem !important
 }
 
 // Code block title bottom border style
@@ -109,17 +105,14 @@ html[data-theme='dark']:root {
   border-block-end: .0625rem solid #5b6169 !important;
 }
 
-.theme-back-to-top-button {
-  bottom: 2.2rem !important
-}
-
+@import './base.scss';
 @import './alert.scss';
 @import './articles.scss';
-@import './base.scss';
 @import './breadcrumbs.scss';
-@import './buy-now-button.scss';
 @import './menu.scss';
 @import './navbar.scss';
 @import './pagination.scss';
 @import './table-of-content.scss';
+@import './main.scss';
+@import './footer.scss';
 @import './table.scss';

@@ -3,10 +3,11 @@ import { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
-import { useTheme } from '@mui/material/styles'
 
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const images = [
   '/images/banners/9.jpg',
@@ -29,13 +30,12 @@ const SwiperFader = () => {
       setOpacities(new_opacities)
     }
   })
-  const theme = useTheme()
 
   return (
     <div ref={sliderRef} className='fader md:bs-[395px] sm:bs-[250px] bs-[200px]'>
       {images.map((src, idx) => (
         <Box key={idx} className='fader__slide' sx={{ opacity: opacities[idx] }}>
-          <img src={src} alt={`slider ${idx}`} />
+          <img src={`${useBaseUrl(src)}`} alt={`slider ${idx}`} />
         </Box>
       ))}
     </div>

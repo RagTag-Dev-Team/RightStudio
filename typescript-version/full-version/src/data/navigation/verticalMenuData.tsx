@@ -1,6 +1,6 @@
 // Type Imports
 import type { VerticalMenuDataType } from '@/types/menuTypes'
-import type { getDictionary } from '@/utils/get-dictionary'
+import type { getDictionary } from '@/utils/getDictionary'
 
 type Params = {
   [key: string]: string | string[]
@@ -315,12 +315,12 @@ const verticalMenuData = (
       {
         label: dictionary['navigation'].formELements,
         suffix: <i className='ri-external-link-line text-xl' />,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].muiTables,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/tables/mui-table`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/mui-table`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       }
@@ -346,19 +346,19 @@ const verticalMenuData = (
 
       {
         label: dictionary['navigation'].userInterface,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].components,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].menuExamples,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },

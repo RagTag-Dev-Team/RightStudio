@@ -15,8 +15,7 @@ import MenuItem from '@mui/material/MenuItem'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
-// Third-party Imports
-import classnames from 'classnames'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const CardMobile = () => {
   // States
@@ -36,7 +35,7 @@ const CardMobile = () => {
       <Grid container>
         <Grid item xs={12} md={5} className='flex items-center justify-center'>
           <CardContent className='flex items-center justify-center'>
-            <img alt='iPhone 11 Pro' src='/images/cards/iPhone-11-pro.png' height={175} />
+            <img alt='iPhone 11 Pro' src={useBaseUrl('/images/cards/iPhone-11-pro.png')} height={175} />
           </CardContent>
         </Grid>
         <Grid

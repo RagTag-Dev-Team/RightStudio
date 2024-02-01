@@ -49,7 +49,7 @@
     "@types/react-draft-wysiwyg": "^1.13.8",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
-    "apexcharts": "^3.45.1",
+    "apexcharts": "^3.45.2",
     "autoprefixer": "^10.4.16",
     "bootstrap-icons": "^1.11.3",
     "classnames": "^2.5.1",

@@ -11,15 +11,14 @@ import {
   StyledEngineProvider
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import type {} from '@mui/material/themeCssVarsAugmentation'
 import type {} from '@mui/lab/themeAugmentation';
 
 // Component Imports
 import ChangeMuiMode from "./ChangeMuiMode";
 
-// Style Imports
-import globalStyling from "./globalStyles";
+// Config Imports
+import themeConfig from "@configs/themeConfig";
 
 // Theme Overrides Imports
 import overrides from "@core/theme/overrides";
@@ -60,8 +59,10 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <CssVarsProvider theme={theme}>
-        <GlobalStyles styles={() => globalStyling(theme)} />
+      <CssVarsProvider
+        theme={theme}
+        modeStorageKey={`${themeConfig.templateName.toLowerCase().split(' ').join('-')}-mui-docs-mode`}
+      >
         <CssBaseline />
         <ChangeMuiMode />
         {children}

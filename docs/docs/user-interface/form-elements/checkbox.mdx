@@ -1,0 +1,134 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Checkbox
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+
+import CardSnippet from '@docComponents/card-snippet/index'
+import CheckboxBasic from '@docPages/form-elements/checkbox/CheckboxBasic'
+import SourceCodeCheckboxBasic from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxBasic'
+import CheckboxSizes from '@docPages/form-elements/checkbox/CheckboxSizes'
+import SourceCodeCheckboxSizes from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxSizes'
+import CheckboxColors from '@docPages/form-elements/checkbox/CheckboxColors'
+import SourceCodeCheckboxColors from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxColors'
+import CheckboxShowError from '@docPages/form-elements/checkbox/CheckboxShowError'
+import SourceCodeCheckboxShowError from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxShowError'
+import CheckboxCustomized from '@docPages/form-elements/checkbox/CheckboxCustomized'
+import SourceCodeCheckboxCustomized from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxCustomized'
+import CheckboxCustomIcons from '@docPages/form-elements/checkbox/CheckboxCustomIcons'
+import SourceCodeCheckboxCustomIcons from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxCustomIcons'
+import CheckboxLabelPlacement from '@docPages/form-elements/checkbox/CheckboxLabelPlacement'
+import SourceCodeCheckboxLabelPlacement from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxLabelPlacement'
+import CheckboxControlledUncontrolled from '@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
+import SourceCodeCheckboxControlledUncontrolled from '!!raw-loader!@docPages/form-elements/checkbox/CheckboxControlledUncontrolled'
+
+<h1 className='!m-0'>Checkbox</h1>
+
+<div className='template-bg-color' />
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-checkbox/) and [API documentation](https://mui.com/material-ui/react-checkbox/#api).
+
+<Grid container spacing={6}>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Basic Checkboxes'
+      code={SourceCodeCheckboxBasic}
+    >
+      <CheckboxBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Controlled and Uncontrolled'
+      code={SourceCodeCheckboxControlledUncontrolled}
+    >
+      {
+        <Typography className='mbe-2'>
+          Manage <code>checked</code> prop with the help of a state for controlled <code>Checkbox</code> and <code>defaultChecked</code> prop for uncontrolled <code>Checkbox</code>.
+        </Typography>
+      }
+      <CheckboxControlledUncontrolled />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Colors'
+      code={SourceCodeCheckboxColors}
+    >
+      {
+        <Typography className='mbe-2'>
+          Use <code>color</code> prop for different colored checkbox.
+        </Typography>
+      }
+      <CheckboxColors />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Custom Icons'
+      code={SourceCodeCheckboxCustomIcons}
+    >
+      {
+        <Typography className='mbe-2'>
+          Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component to change default checkbox icons.
+        </Typography>
+      }
+      <CheckboxCustomIcons />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Customized'
+      code={SourceCodeCheckboxCustomized}
+    >
+      {
+        <Typography className='mbe-2'>
+          Use <code>styled</code> hook to customize your checkbox.
+        </Typography>
+      }
+      <CheckboxCustomized />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Label Placement'
+      code={SourceCodeCheckboxLabelPlacement}
+    >
+      {
+        <Typography className='mbe-2'>
+          Use <code>labelPlacement</code> prop with <code>FormControlLabel</code> component to change the placement of the label.
+        </Typography>
+      }
+      <CheckboxLabelPlacement />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Show Error'
+      code={SourceCodeCheckboxShowError}
+    >
+      {
+        <Typography className='mbe-2'>
+          You can display error by managing <code>error</code> prop with <code>FormControl</code> component with the help of a state.
+        </Typography>
+      }
+      <CheckboxShowError />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Sizes'
+      code={SourceCodeCheckboxSizes}
+    >
+      {
+        <Typography className='mbe-2'>
+          Use <code>icon</code> and <code>checkedIcon</code> props with <code>Checkbox</code> component and use <code>fontSize='small'</code> prop with the former props for small checkbox.
+        </Typography>
+      }
+      <CheckboxSizes />
+    </CardSnippet>
+  </Grid>
+</Grid>

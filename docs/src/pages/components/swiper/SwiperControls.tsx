@@ -8,6 +8,8 @@ import Badge from '@mui/material/Badge'
 import classnames from 'classnames'
 import { useKeenSlider } from 'keen-slider/react'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const SwiperControls = () => {
   // States
   const [loaded, setLoaded] = useState<boolean>(false)
@@ -27,21 +29,21 @@ const SwiperControls = () => {
     <>
       <div className='navigation-wrapper'>
         <div ref={sliderRef} className='keen-slider'>
-          <div className='keen-slider__slide'>
-            <img src='/images/banners/1.jpg' alt='swiper 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <img src='/images/banners/2.jpg' alt='swiper 2' />
-          </div>
-          <div className='keen-slider__slide'>
-            <img src='/images/banners/3.jpg' alt='swiper 3' />
-          </div>
-          <div className='keen-slider__slide'>
-            <img src='/images/banners/4.jpg' alt='swiper 4' />
-          </div>
-          <div className='keen-slider__slide'>
-            <img src='/images/banners/5.jpg' alt='swiper 5' />
-          </div>
+        <div className='keen-slider__slide'>
+          <img src={useBaseUrl('/images/banners/1.jpg')} alt='swiper 1' />
+        </div>
+        <div className='keen-slider__slide'>
+          <img src={useBaseUrl('/images/banners/2.jpg')} alt='swiper 2' />
+        </div>
+        <div className='keen-slider__slide'>
+          <img src={useBaseUrl('/images/banners/3.jpg')} alt='swiper 3' />
+        </div>
+        <div className='keen-slider__slide'>
+          <img src={useBaseUrl('/images/banners/4.jpg')} alt='swiper 4' />
+        </div>
+        <div className='keen-slider__slide'>
+          <img src={useBaseUrl('/images/banners/5.jpg')} alt='swiper 5' />
+        </div>
         </div>
         {loaded && instanceRef.current && (
           <>

@@ -9,6 +9,8 @@ import { useTheme } from '@mui/material/styles'
 import { useKeenSlider } from 'keen-slider/react'
 import type { TrackDetails } from 'keen-slider/react'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const images = [
   '/images/banners/6.jpg',
   '/images/banners/7.jpg',
@@ -47,7 +49,7 @@ const SwiperZoom = () => {
       {images.map((src, idx) => (
         <div key={idx} className='keen-slider__slide zoom-out__slide'>
           <Box className='slider-content-wrapper' sx={{ ...scaleStyle(idx) }}>
-            <img src={src} alt={`slider ${idx}`} />
+            <img src={`${useBaseUrl(src)}`} alt={`slider ${idx}`} />
           </Box>
         </div>
       ))}

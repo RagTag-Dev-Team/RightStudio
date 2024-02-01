@@ -10,7 +10,7 @@ import BlankLayout from '@layouts/BlankLayout'
 import { i18n } from '@configs/i18n'
 
 // Util Imports
-import { getSystemMode } from '@core/server/actions'
+import { getSystemMode } from '@core/utils/serverHelpers'
 
 type Props = ChildrenType & {
   params: { lang: Locale }

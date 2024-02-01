@@ -5,10 +5,12 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const CardWatch = () => {
   return (
     <Card>
-      <CardMedia image='/images/cards/5.png' className='bs-[140px]' />
+      <CardMedia image={useBaseUrl('/images/cards/5.png')} className='bs-[140px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-2'>
           Apple Watch

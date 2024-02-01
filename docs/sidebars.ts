@@ -59,6 +59,15 @@ const sidebars: SidebarsConfig = {
         },
         'guide/development/demo-config',
         'guide/development/nextjs-api',
+        {
+          "type": 'category',
+          "label": 'Apps & Pages Setup',
+          link: { type: 'doc', id: 'guide/development/apps-and-pages-setup/intro' },
+          items: [
+            'guide/development/apps-and-pages-setup/pages',
+            'guide/development/apps-and-pages-setup/apps',
+          ]
+        }
       ]
     },
     {
@@ -75,6 +84,15 @@ const sidebars: SidebarsConfig = {
         'guide/layout/icons',
         'guide/layout/how-to-use-react-icon',
         'guide/layout/customizer'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Settings',
+      items: [
+        'guide/settings/vscode-configurations',
+        'guide/settings/theme-configurations',
+        'guide/settings/settings-context'
       ]
     },
     {
@@ -102,76 +120,118 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Settings',
+      label: 'Components',
       items: [
-        'guide/settings/vscode-configurations',
-        'guide/settings/theme-configurations',
-        'guide/settings/settings-context'
+        'guide/components/overview',
+        {
+          type: 'category',
+          label: 'Custom',
+          items: [
+            'guide/components/custom/generate-menu',
+            'guide/components/custom/form',
+            'guide/components/custom/link',
+            'guide/components/custom/open-dialog-on-element-click',
+            'guide/components/custom/option-menu',
+            {
+              type: 'category',
+              label: 'Custom-Inputs',
+              items: [
+                'guide/components/custom/custom-inputs/horizontal',
+                'guide/components/custom/custom-inputs/vertical',
+                'guide/components/custom/custom-inputs/image',
+                'guide/components/custom/custom-inputs/override-custom-inputs'
+              ]
+            },
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Libs',
+          items: [
+            'guide/components/libs/apex-charts',
+            'guide/components/libs/recharts',
+            'guide/components/libs/editor'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Styled Libs',
+          items: [
+            'guide/components/styled-libs/app-full-calendar',
+            'guide/components/styled-libs/app-keen-slider',
+            'guide/components/styled-libs/app-react-apex-charts',
+            'guide/components/styled-libs/app-react-datepicker',
+            'guide/components/styled-libs/app-react-draft-wysiwyg',
+            'guide/components/styled-libs/app-react-dropzone',
+            'guide/components/styled-libs/app-react-toastify',
+            'guide/components/styled-libs/app-recharts',
+          ]
+        },
+        'guide/components/overriding-custom-components',
       ]
     },
-    'custom-inputs',
+    'guide/deployment',
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    'user-interface/intro',
     'user-interface/typography',
     'user-interface/icons',
     'user-interface/cards-basic',
-    'user-interface/cards-actions'
-  ],
-  componentsSidebar: [
-   {
-    type: 'category',
-    label: 'Components',
-    collapsed: false,
-    link: { type: 'doc', id: 'components/intro' },
-    items:[
-      'components/accordion',
-      'components/alerts',
-      'components/avatars',
-      'components/badges',
-      'components/buttons',
-      'components/button-group',
-      'components/chips',
-      'components/dialogs',
-      'components/list',
-      'components/menu',
-      'components/pagination',
-      'components/progress',
-      'components/ratings',
-      'components/snackbar',
-      'components/swiper',
-      'components/tabs',
-      'components/timeline',
-      'components/toasts',
-      'components/more',
-      'components/test'
-    ]
-   }
-  ],
-  formsTablesSidebar: [
+    'user-interface/cards-actions',
+    {
+      type: 'category',
+      label: 'Components',
+      link: {
+        type: "doc",
+        id: "user-interface/components/intro",
+      },
+      items: [
+        'user-interface/components/accordion',
+        'user-interface/components/alerts',
+        'user-interface/components/avatars',
+        'user-interface/components/badges',
+        'user-interface/components/buttons',
+        'user-interface/components/button-group',
+        'user-interface/components/chips',
+        'user-interface/components/dialogs',
+        'user-interface/components/list',
+        'user-interface/components/menu',
+        'user-interface/components/pagination',
+        'user-interface/components/progress',
+        'user-interface/components/ratings',
+        'user-interface/components/snackbar',
+        'user-interface/components/swiper',
+        'user-interface/components/tabs',
+        'user-interface/components/timeline',
+        'user-interface/components/toasts',
+        'user-interface/components/more',
+        'user-interface/components/test'
+      ]
+    },
     {
       type: 'category',
       label: 'Form Elements',
-      collapsed: false,
-      link: { type: 'doc', id: 'form-elements/intro' },
+      link: {
+        type: "doc",
+        id: "user-interface/form-elements/intro",
+      },
       items: [
-        'form-elements/text-field',
-        'form-elements/select',
-        'form-elements/checkbox',
-        'form-elements/radio',
-        'form-elements/custom-inputs',
-        'form-elements/textarea',
-        'form-elements/autocomplete',
-        'form-elements/picker',
-        'form-elements/switch',
-        'form-elements/file-uploader',
-        'form-elements/editor',
-        'form-elements/slider',
-        'form-elements/test',
+        'user-interface/form-elements/text-field',
+        'user-interface/form-elements/select',
+        'user-interface/form-elements/checkbox',
+        'user-interface/form-elements/radio',
+        'user-interface/form-elements/custom-inputs',
+        'user-interface/form-elements/textarea',
+        'user-interface/form-elements/autocomplete',
+        'user-interface/form-elements/picker',
+        'user-interface/form-elements/switch',
+        'user-interface/form-elements/file-uploader',
+        'user-interface/form-elements/editor',
+        'user-interface/form-elements/slider',
+        'user-interface/form-elements/test',
       ]
     },
-    'tables/mui-table',
+    'user-interface/mui-table',
   ],
   menuExamplesSidebar: [
     "menu-examples/intro",
@@ -450,6 +510,7 @@ const sidebars: SidebarsConfig = {
     'faqs/how-to-change-mode',
     'faqs/how-to-change-skin',
     'faqs/why-cannot-revert-to-default-theme',
+    'faqs/why-app-runs-slow-in-local',
     'faqs/configure-local-template-like-demos',
     'faqs/integrate-template-into-existing-project',
     "faqs/update-navbar-and-footer",

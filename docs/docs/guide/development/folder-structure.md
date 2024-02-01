@@ -84,7 +84,7 @@ It's a good idea to have a look at it and know what it contains to use stuff we 
 Understanding the `src/@core` folder will save your development time and you will know how to get most out of our template.
 
 | Folder/File    | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | components | It contains core components of the template. Make sure to check them all in our custom components section |
 | contexts | Settings context which is responsible for live template customization |
 | hooks | `useSettings` is used to access settings context values |
@@ -110,7 +110,7 @@ It's a good idea to have a look at it and know what it contains to use stuff we 
 Understanding the `src/@layout` folder will save your development time and you will know how to get most out of our template.
 
 | Folder/File    | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | components | It contains layout components of the template like Navbar, Footer, etc. |
 | styles | Styled components for horizontal & vertical layout components |
 | svg | SVG components |
@@ -125,7 +125,7 @@ Understanding the `src/@layout` folder will save your development time and you w
 Understanding the `src/@menu` folder will save your development time and you will know about the menu structure of our template.
 
 | Folder/File    | Description |
-|-----------|-------------|
+| --------- | ----------- |
 | components | It contains components of the template for vertical & horizontal menu |
 | contexts | It contains menu context which is responsible for menu state |
 | hooks | It contains hooks to access menu context values |

@@ -8,6 +8,8 @@ import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const Img = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius
 }))
@@ -44,7 +46,7 @@ const CardHorizontalRatings = () => {
           className='flex items-center justify-center md:order-[unset] -order-1'
         >
           <CardContent className='flex items-center justify-center'>
-            <Img src='/images/cards/4.png' height={175} />
+            <Img src={useBaseUrl('/images/cards/4.png')} height={175} />
           </CardContent>
         </Grid>
       </Grid>

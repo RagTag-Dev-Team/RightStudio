@@ -63,6 +63,7 @@ const PaymentMethod = () => {
   const [paymentMethod, setPaymentMethod] = useState<'credit' | 'cod'>('credit')
   const [creditCard, setCreditCard] = useState(0)
 
+  // Hooks
   const [cardData, setCardData] = useState({
     cardNumber: '',
     name: '',

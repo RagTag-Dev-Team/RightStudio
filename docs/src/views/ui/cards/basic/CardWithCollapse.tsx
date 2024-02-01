@@ -12,12 +12,14 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const CardWithCollapse = () => {
   const [expanded, setExpanded] = useState(false)
 
   return (
     <Card>
-      <CardMedia image='/images/cards/3.png' className='bs-[185px]' />
+      <CardMedia image={useBaseUrl('/images/cards/3.png')} className='bs-[185px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-3'>
           Popular Uses Of The Internet

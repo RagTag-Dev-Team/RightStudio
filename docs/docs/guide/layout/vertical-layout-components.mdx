@@ -20,8 +20,11 @@ The `Navigation` component is created to render the navigation menu which contai
 The `Navigation` component takes the following properties:
 
 | Prop Name        | Type        | Description  |
-|------------------|-------------|--------------|
+| ---------------- | ----------- | ------------ |
 | `dictionary`     | `Awaited<ReturnType<typeof getDictionary>>`  | Dynamic object for localization or language-specific text. _This prop is used only if you are using the `translation` (i18n) feature._ |
+| `settingsCookie` | `Settings`  | The settings object that is stored in the cookie. Please refer to the [Settings](/docs/guide/settings/settings-context) guide for more information. |
+| `mode`           | `system`, `light` or `dark` | The mode of the template. |
+| `systemMode`     | `light` or `dark` | The system mode of the user's device. |
 
 #### Usage
 
@@ -54,7 +57,7 @@ The `VerticalMenu` component is created to render the navigation items (menu sec
 The `VerticalMenu` component takes the following properties:
 
 | Prop Name        | Type        | Description  |
-|------------------|-------------|--------------|
+| ---------------- | ----------- | ------------ |
 | `dictionary`     | `Awaited<ReturnType<typeof getDictionary>>`  | Dynamic object for localization or language-specific text. _This prop is used only if you are using the `translation` (i18n) feature._ |
 
 #### Usage
@@ -84,7 +87,7 @@ The `Navbar` component serves as a dedicated wrapper, encapsulating your navbar 
 The `Navbar` component takes the following properties:
 
 | Prop Name        | Type        | Required  | Description  |
-|------------------|-------------|-----------|--------------|
+| ---------------- | ----------- | --------- | ------------ |
 | `children`       | `ReactNode` | Yes       | This prop is used to pass child components or elements that will be rendered inside the `Navbar` component. |
 | `overrideStyles` | `CSSObject` | No        | This allows the user to pass custom styles to the `Navbar` component. It accepts a `CSSObject`, which is a type from the `@emotion/styled` library for defining CSS styles in JavaScript objects. |
 
@@ -143,7 +146,7 @@ The `Footer` component serves as a dedicated wrapper, encapsulating your footer 
 The `Footer` component takes the following properties:
 
 | Prop Name        | Type        | Required  | Description  |
-|------------------|-------------|-----------|--------------|
+| ---------------- | ----------- | --------- | ------------ |
 | `children`       | `ReactNode` | Yes       | This prop is used to pass child components or elements that will be rendered inside the `Footer` component. |
 | `overrideStyles` | `CSSObject` | No        | This allows the user to pass custom styles to the `Footer` component. It accepts a `CSSObject`, which is a type from the `@emotion/styled` library for defining CSS styles in JavaScript objects. |
 

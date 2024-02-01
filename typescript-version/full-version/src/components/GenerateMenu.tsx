@@ -19,25 +19,8 @@ import type {
 import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu/horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu/vertical-menu'
 
-// Config Imports
-import { i18n } from '@configs/i18n'
-
-const localizeUrl = (menuItem: VerticalMenuItemDataType, locale: string) => {
-  const pathnameIsMissingLocale = i18n.locales.every(
-    locale =>
-      menuItem.href && !menuItem.href.startsWith(`/${locale}/`) && menuItem.href && menuItem.href !== `/${locale}`
-  )
-
-  // Get the current URL
-  let href = menuItem.href
-
-  // If there is no supported locale in the pathname, add the current locale to the href
-  if (pathnameIsMissingLocale) {
-    href = `/${locale}${menuItem.href}`
-  }
-
-  return href
-}
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Generate a menu from the menu data array
 export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataType[] }) => {
@@ -77,7 +60,9 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
       }
 
       // Localize the href
-      const href = menuItem.href?.startsWith('http') ? menuItem.href : localizeUrl(menuItem, locale as Locale)
+      const href = menuItem.href?.startsWith('http')
+        ? menuItem.href
+        : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
 
       // If the current item is neither a section nor a sub menu, return a MenuItem component
       return (
@@ -115,7 +100,9 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
       }
 
       // Localize the href
-      const href = menuItem.href?.startsWith('http') ? menuItem.href : localizeUrl(menuItem, locale as Locale)
+      const href = menuItem.href?.startsWith('http')
+        ? menuItem.href
+        : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
 
       // If the current item is not a sub menu, return a MenuItem component
       return (

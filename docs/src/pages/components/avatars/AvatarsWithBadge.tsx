@@ -3,6 +3,8 @@ import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 import { styled } from '@mui/material/styles'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 // Styled component for badge content area
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -23,7 +25,7 @@ const AvatarsWithBadge = () => {
           horizontal: 'right'
         }}
       >
-        <Avatar alt='Marie Garza' src='/assets/avatars/2.png' />
+        <Avatar alt='Marie Garza' src={useBaseUrl('/images/avatars/2.png')} />
       </Badge>
       <Badge
         overlap='circular'
@@ -34,12 +36,12 @@ const AvatarsWithBadge = () => {
         badgeContent={
           <Avatar
             alt='Marie Garza'
-            src='/assets/avatars/2.png'
+            src={useBaseUrl('/images/avatars/2.png')}
             className='bs-[1.375rem] is-[1.375rem] border-2 border-backgroundPaper'
           />
         }
       >
-        <Avatar alt='Olivia Sparks' src='/assets/avatars/4.png' />
+        <Avatar alt='Olivia Sparks' src={useBaseUrl('/images/avatars/4.png')} />
       </Badge>
     </div>
   )

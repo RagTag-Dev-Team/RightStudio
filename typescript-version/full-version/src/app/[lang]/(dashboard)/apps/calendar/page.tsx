@@ -23,7 +23,7 @@ const CalendarApp = async () => {
   const res = (await fetchEvents()) || []
 
   return (
-    <Card>
+    <Card className='overflow-visible'>
       <AppFullCalendar className='app-calendar'>
         <CalendarWrapper events={res.events} />
       </AppFullCalendar>

@@ -3,23 +3,25 @@ import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import AvatarGroup from '@mui/material/AvatarGroup'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const AvatarsGroupedPullUpWithTooltip = () => {
   return (
     <AvatarGroup className='pull-up' max={4}>
       <Tooltip title='Olivia Sparks'>
-        <Avatar src='/assets/avatars/4.png' alt='Olivia Sparks' />
+        <Avatar src={useBaseUrl('/images/avatars/4.png')} alt='Olivia Sparks' />
       </Tooltip>
       <Tooltip title='Howard Lloyd'>
-        <Avatar src='/assets/avatars/5.png' alt='Howard Lloyd' />
+        <Avatar src={useBaseUrl('/images/avatars/5.png')} alt='Howard Lloyd' />
       </Tooltip>
       <Tooltip title='Hallie Richards'>
-        <Avatar src='/assets/avatars/6.png' alt='Hallie Richards' />
+        <Avatar src={useBaseUrl('/images/avatars/6.png')} alt='Hallie Richards' />
       </Tooltip>
       <Tooltip title='Alice Cobb'>
-        <Avatar src='/assets/avatars/8.png' alt='Alice Cobb' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='Alice Cobb' />
       </Tooltip>
       <Tooltip title='Jeffery Warner'>
-        <Avatar src='/assets/avatars/7.png' alt='Jeffery Warner' />
+        <Avatar src={useBaseUrl('/images/avatars/7.png')} alt='Jeffery Warner' />
       </Tooltip>
     </AvatarGroup>
   )

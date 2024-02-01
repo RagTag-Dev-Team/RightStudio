@@ -1,6 +1,8 @@
 // Third-party Components
 import { useKeenSlider } from 'keen-slider/react'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const SwiperFreeMode = () => {
   // Hooks
   const [ref] = useKeenSlider<HTMLDivElement>({
@@ -15,19 +17,19 @@ const SwiperFreeMode = () => {
   return (
     <div ref={ref} className='keen-slider'>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/21.jpg' alt='swiper 21' />
+        <img src={useBaseUrl('/images/banners/21.jpg')} alt='swiper 21' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/22.jpg' alt='swiper 22' />
+        <img src={useBaseUrl('/images/banners/22.jpg')} alt='swiper 22' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/23.jpg' alt='swiper 23' />
+        <img src={useBaseUrl('/images/banners/23.jpg')} alt='swiper 23' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/24.jpg' alt='swiper 24' />
+        <img src={useBaseUrl('/images/banners/24.jpg')} alt='swiper 24' />
       </div>
       <div className='keen-slider__slide'>
-        <img src='/images/banners/25.jpg' alt='swiper 25' />
+        <img src={useBaseUrl('/images/banners/25.jpg')} alt='swiper 25' />
       </div>
     </div>
   )

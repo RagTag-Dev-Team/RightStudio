@@ -2,6 +2,17 @@ html, body {
   height: auto !important;
   min-height: 100dvh;
 }
+body {
+  background-color: var(--mui-palette-background-paper) !important;
+}
+// Home Page Styles
+body:has(.template-bg-color) {
+  background-color: var(--mui-palette-background-default) !important;
+}
+
+#__docusaurus {
+  min-height: 100dvh !important;
+}
 
 h1 {
   font-weight: 600;
@@ -13,12 +24,23 @@ h5,
 h6 {
   font-weight: var(--ifm-font-weight-semibold);
 }
+
 .markdown h1:first-child {
   --ifm-h1-font-size: 36px;
 }
 .markdown > h2 {
   --ifm-h2-font-size: 30px;
   border-block-end: 1px solid var(--ifm-hr-background-color);
+}
+
+code {
+  border: 0.1rem solid #EBEBEB;
+  border-radius: 5px;
+  padding: 1px 5px;
+
+  [data-theme='dark'] & {
+    border-color: #36363B;
+  }
 }
 
 a:hover {
@@ -66,19 +88,12 @@ ul:not([class]), ol:not([class]) {
   margin-bottom: var(--ifm-list-paragraph-margin)
 }
 
+.table-of-contents ul {
+  margin: 0;
+  padding-left: var(--ifm-toc-padding-horizontal);
+}
+
 :where([class^='ri-']),
 :where([class^='tabler-']) {
   font-size: 1.5rem;
 }
-
-code {
-  font-family: inherit;
-  padding-block: 2px;
-  padding-inline: 4px;
-  border-radius: 4px;
-  font-size: 90%;
-  color: var(--mui-palette-info-main);
-  background-color: rgb(var(--mui-palette-info-mainChannel) / 0.08);
-  border: 0;
-}
-

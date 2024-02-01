@@ -6,6 +6,12 @@ import { useParams } from 'next/navigation'
 import { useKBar } from 'kbar'
 import classnames from 'classnames'
 
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 type NoResultProps = {
   query: string | undefined
 }
@@ -52,7 +58,7 @@ const NoResult = (props: NoResultProps) => {
           {noResultData.map((item, index) => (
             <li key={index} className='flex items-center'>
               <Link
-                href={`/${locale}/${item.href}`}
+                href={getLocalizedUrl(item.href, locale as Locale)}
                 className='flex items-center gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
                 onClick={kbarQuery.toggle}
               >

@@ -43,6 +43,7 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 import type { UsersType } from '@/types/apps/userTypes'
+import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import TableFilters from './TableFilters'
@@ -50,7 +51,8 @@ import AddUserDrawer from './AddUserDrawer'
 import OptionMenu from '@core/components/option-menu'
 
 // Util Imports
-import { getInitials } from '@/utils/get-initials'
+import { getInitials } from '@/utils/getInitials'
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -227,7 +229,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
-              <Link href={`/${locale}/apps/user/view`} className='flex'>
+              <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
                 <i className='ri-eye-line text-[22px]' />
               </Link>
             </IconButton>

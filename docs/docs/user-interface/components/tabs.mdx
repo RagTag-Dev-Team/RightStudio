@@ -1,0 +1,154 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Tabs
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+
+import CardSnippet from '@docComponents/card-snippet/index'
+import TabsNav from '@docPages/components/tabs/TabsNav'
+import SourceCodeTabsNav from '!!raw-loader!@docPages/components/tabs/TabsNav'
+import TabsIcon from '@docPages/components/tabs/TabsIcon'
+import SourceCodeTabsIcon from '!!raw-loader!@docPages/components/tabs/TabsIcon'
+import TabsColor from '@docPages/components/tabs/TabsColor'
+import SourceCodeTabsColor from '!!raw-loader!@docPages/components/tabs/TabsColor'
+import TabsBasic from '@docPages/components/tabs/TabsBasic'
+import SourceCodeTabsBasic from '!!raw-loader!@docPages/components/tabs/TabsBasic'
+import TabsCentered from '@docPages/components/tabs/TabsCentered'
+import SourceCodeTabsCentered from '!!raw-loader!@docPages/components/tabs/TabsCentered'
+import TabsVertical from '@docPages/components/tabs/TabsVertical'
+import SourceCodeTabsVertical from '!!raw-loader!@docPages/components/tabs/TabsVertical'
+import TabsFullWidth from '@docPages/components/tabs/TabsFullWidth'
+import SourceCodeTabsFullWidth from '!!raw-loader!@docPages/components/tabs/TabsFullWidth'
+import TabsCustomized from '@docPages/components/tabs/TabsCustomized'
+import SourceCodeTabsCustomized from '!!raw-loader!@docPages/components/tabs/TabsCustomized'
+import TabsCustomizedVertical from '@docPages/components/tabs/TabsCustomizedVertical'
+import SourceCodeTabsCustomizedVertical from '!!raw-loader!@docPages/components/tabs/TabsCustomizedVertical'
+
+<h1 className='!m-0'>Tabs</h1>
+
+<div className='template-bg-color' />
+
+Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-tabs/) and [API documentation](https://mui.com/material-ui/react-tabs/#api).
+
+<Grid container spacing={6}>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Basic Tabs'
+      code={SourceCodeTabsBasic}
+    >
+      {
+        <Typography className='mbe-4'>
+          Tabs are managed with the help of a state.
+        </Typography>
+      }
+      <TabsBasic />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Color'
+      code={SourceCodeTabsColor}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>textColor='secondary'</code> and <code>indicatorColor='secondary'</code> props with <code>TabList</code> component for secondary tabs.
+        </Typography>
+      }
+      <TabsColor />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Full Width Tabs'
+      code={SourceCodeTabsFullWidth}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='fullWidth'</code> prop with <code>TabList</code> component to have full width tabs.
+        </Typography>
+      }
+      <TabsFullWidth />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Centered Tabs'
+      code={SourceCodeTabsCentered}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>centered</code> prop with <code>TabList</code> component to have tabs on center.
+        </Typography>
+      }
+      <TabsCentered />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Icon Tabs'
+      code={SourceCodeTabsIcon}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>icon</code> prop with <code>Tab</code> component for icons in the tab.
+        </Typography>
+      }
+      <TabsIcon />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Customized Tabs'
+      code={SourceCodeTabsCustomized}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>styled</code> hook to customize your tabs.
+        </Typography>
+      }
+      <TabsCustomized />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Vertical Tabs'
+      code={SourceCodeTabsVertical}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>orientation='vertical'</code> prop with <code>TabList</code> component to have vertical tabs.
+        </Typography>
+      }
+      <TabsVertical />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Customized Vertical Tabs'
+      code={SourceCodeTabsCustomizedVertical}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>styled</code> hook to customize your tabs.
+        </Typography>
+      }
+      <TabsCustomizedVertical />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Nav Tabs'
+      code={SourceCodeTabsNav}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>component</code> prop to change the <code>Tab</code> component to the component of your choice.
+        </Typography>
+      }
+      <TabsNav />
+    </CardSnippet>
+  </Grid>
+</Grid>

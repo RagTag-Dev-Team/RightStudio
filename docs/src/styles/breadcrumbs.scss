@@ -4,10 +4,7 @@
 }
 
 .breadcrumbs__link {
-  color: #6b7280;
-  [data-theme='dark'] & {
-    color: #a3a3a3;
-  }
+  color: var(--mui-palette-text-secondary);
   &:any-link:hover {
     background: none;
   }

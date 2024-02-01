@@ -7,13 +7,15 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import AvatarGroup from "@mui/material/AvatarGroup";
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 const CardUser = () => {
   return (
     <Card>
-      <CardMedia image="/images/cards/2.png" className="bs-[180px]" />
+      <CardMedia image={useBaseUrl('/images/cards/2.png')} className="bs-[180px]" />
       <CardContent className="relative">
         <Avatar
-          src="/assets/avatars/3.png"
+          src={useBaseUrl("/images/avatars/3.png")}
           alt="Robert Meyer"
           className="is-[78px] bs-[78px] border-[5px] border-backgroundPaper absolute start-[11px] block-start-[-39px]"
         />
@@ -29,12 +31,12 @@ const CardUser = () => {
             18 mutual friends
           </Typography>
           <AvatarGroup max={4}>
-            <Avatar src="/images/avatars/1.png" />
-            <Avatar src="/images/avatars/5.png" />
-            <Avatar src="/images/avatars/4.png" />
-            <Avatar src="/images/avatars/6.png" />
-            <Avatar src="/images/avatars/7.png" />
-            <Avatar src="/images/avatars/8.png" />
+            <Avatar src={useBaseUrl("/images/avatars/1.png")} />
+            <Avatar src={useBaseUrl("/images/avatars/5.png")} />
+            <Avatar src={useBaseUrl("/images/avatars/4.png")} />
+            <Avatar src={useBaseUrl("/images/avatars/6.png")} />
+            <Avatar src={useBaseUrl("/images/avatars/7.png")} />
+            <Avatar src={useBaseUrl("/images/avatars/8.png")} />
           </AvatarGroup>
         </div>
       </CardContent>

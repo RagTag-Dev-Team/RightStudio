@@ -1,0 +1,69 @@
+---
+hide_table_of_contents: true
+title: ''
+sidebar_label: Test
+---
+
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+
+import Textarea from '@docPages/form-elements/test/TextArea'
+import TextFieldIcons from '@docPages/form-elements/test/TextFieldIcons'
+import SelectVariants from '@docPages/form-elements/test/SelectVariants'
+import SelectMultiple from '@docPages/form-elements/test/SelectMultiple'
+import TextFieldVariant from '@docPages/form-elements/test/TextFieldVariant'
+import TextFieldComponents from '@docPages/form-elements/test/TextFieldComponents'
+import AutocompleteVariants from '@docPages/form-elements/test/AutocompleteVariants'
+import TextFieldInputAdornment from '@docPages/form-elements/test/TextFieldInputAdornment'
+import SelectCustomizedAndGrouping from '@docPages/form-elements/test/SelectCustomizedAndGrouping'
+
+<h1 className='!m-0'>Test</h1>
+
+<div className='template-bg-color' />
+
+<Grid container spacing={6}>
+  <Grid item xs={12}>
+    <Typography variant='h3'>TextField</Typography>
+    <Divider />
+  </Grid>
+  <Grid item xs={12}>
+    <TextFieldVariant />
+  </Grid>
+  <Grid item xs={12}>
+    <TextFieldIcons />
+  </Grid>
+  <Grid item xs={12}>
+    <TextFieldInputAdornment />
+  </Grid>
+  <Grid item xs={12}>
+    <TextFieldComponents />
+  </Grid>
+  <Grid item xs={12}>
+    <Typography variant='h3'>Textarea</Typography>
+    <Divider />
+  </Grid>
+  <Grid item xs={12}>
+    <Textarea />
+  </Grid>
+  <Grid item xs={12}>
+    <Typography variant='h3'>Select</Typography>
+    <Divider />
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <SelectVariants />
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <SelectCustomizedAndGrouping />
+  </Grid>
+  <Grid item xs={12}>
+    <SelectMultiple />
+  </Grid>
+  <Grid item xs={12}>
+    <Typography variant='h3'>Autocomplete</Typography>
+    <Divider />
+  </Grid>
+  <Grid item xs={12}>
+    <AutocompleteVariants />
+  </Grid>
+</Grid>

@@ -5,10 +5,10 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Imports
-import type { CustomInputHorizontalData } from '@docComponents/custom-inputs/types'
+import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 
 // Components Imports
-import CustomInputHorizontal from '@docComponents/custom-inputs/Horizontal'
+import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 
 const data: CustomInputHorizontalData[] = [
   {

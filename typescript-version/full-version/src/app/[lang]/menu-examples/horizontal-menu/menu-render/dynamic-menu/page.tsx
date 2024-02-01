@@ -3,6 +3,9 @@
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { HorizontalMenuDataType } from '@/types/menuTypes'
+
 // Component Imports
 import HorizontalNav, { Menu } from '@menu/horizontal-menu'
 import { GenerateHorizontalMenu } from '@components/GenerateMenu'
@@ -10,7 +13,7 @@ import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 // Style Imports
 import styles from '../../styles.module.css'
 
-const menuData = [
+const menuData: HorizontalMenuDataType[] = [
   {
     label: 'Dashboards',
     children: [

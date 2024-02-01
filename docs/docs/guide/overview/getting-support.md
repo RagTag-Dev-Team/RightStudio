@@ -17,6 +17,7 @@ Add ticket type to your ticket title to let community understand what your ticke
 So, your ticket till will be like `[question] how to change theme?`
 
 Some common ticket types are listed below:
+
 - **question** - If you are asking question
 - **installation** - If you have anything related to installation
 - **auth** - If you have anything related to JWT or Auth
@@ -26,6 +27,7 @@ Some common ticket types are listed below:
 - **other** - if your ticket isn't related to above mentioned ticket types
 
 Good examples can be: 💯
+
 - [question] How to change theme?
 - [question] How to change i18n locale?
 - [installation] Getting errors in npm run dev
@@ -62,7 +64,7 @@ Best solution for this is using our Starter-kit where we can test it without any
 
 You can create zip and share with us using private link.
 
-:::caution Warning
+:::warning
 Never upload our package or modified version of our package on public sites where others can view or download it.
 :::
 

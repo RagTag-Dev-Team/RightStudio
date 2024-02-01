@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation'
 import { useTheme } from '@mui/material/styles'
 
 // Type Imports
-import type { getDictionary } from '@/utils/get-dictionary'
+import type { getDictionary } from '@/utils/getDictionary'
 
 // Component Imports
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
@@ -182,14 +182,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/forms-tables/intro#form-elements`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/tables/mui-table`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/mui-table`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
@@ -202,21 +202,21 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].userInterface}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/components/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
