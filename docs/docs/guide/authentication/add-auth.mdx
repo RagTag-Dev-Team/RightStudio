@@ -67,10 +67,10 @@ If you want to use email and password for authentication, you need to add NextAu
 
 - copy the `src/libs/auth.ts` file from the full-version to your project. In this file, the code for the GoogleProvider has also been implemented. If you don't need GoogleProvider, you can remove its code by following the step related to the `src/libs/auth.ts` file from [this guide](/docs/guide/authentication/remove-auth#remove-google-provider-from-the-full-version)
 
-- copy the `src/views/login/LoginForm.tsx` file from the full-version to your project. In this file, the code for logging in with Google has also been implemented. If you don't need this feature, you can remove its code by following the step related to removing the button for logging in with Google from [this guide](/docs/guide/authentication/remove-auth#remove-google-provider-from-the-full-version)
+- copy the `src/views/Login.tsx` file from the full-version to your project. In this file, the code for logging in with Google has also been implemented. If you don't need this feature, you can remove its code by following the step related to removing the button for logging in with Google from [this guide](/docs/guide/authentication/remove-auth#remove-google-provider-from-the-full-version)
 
   :::warning Note!
-  The code for i18n has been implemented in the `src/views/login/LoginForm.tsx` file. If you don't have i18n in your project, you can remove its code from this file
+  The code for i18n has been implemented in the `src/views/Login.tsx` file. If you don't have i18n in your project, you can remove its code from this file
   :::
 
 That's it! You have successfully added NextAuth with CredentialsProvider to your starter-kit.
@@ -137,10 +137,10 @@ If you want to use Google for authentication, you need to add a Google provider.
 
 - copy the `src/libs/auth.ts` file from the full-version to your project. In this file, the code for the CredentialsProvider has also been implemented. If you don't need CredentialsProvider, you can remove its code by following the step related to the `src/libs/auth.ts` file from [this guide](/docs/guide/authentication/remove-auth#remove-credentials-provider-from-the-full-version)
 
-- copy the `src/views/login/LoginForm.tsx` file from the full-version to your project. In this file, the code for logging in with email and password has also been implemented. If you don't need this feature, you can remove its code by following the steps related to the `src/views/login/LoginForm.tsx` file from [this guide](/docs/guide/authentication/remove-auth#remove-credentials-provider-from-the-full-version)
+- copy the `src/views/Login.tsx` file from the full-version to your project. In this file, the code for logging in with email and password has also been implemented. If you don't need this feature, you can remove its code by following the steps related to the `src/views/Login.tsx` file from [this guide](/docs/guide/authentication/remove-auth#remove-credentials-provider-from-the-full-version)
 
   :::warning Note!
-  The code for i18n has been implemented in the `src/views/login/LoginForm.tsx` file. If you don't have i18n in your project, you can remove its code from this file
+  The code for i18n has been implemented in the `src/views/Login.tsx` file. If you don't have i18n in your project, you can remove its code from this file
   :::
 
 - copy the `src/prisma/schema.prisma` file from the full-version to your project
@@ -181,8 +181,8 @@ That's it! You have successfully added NextAuth with GoogleProvider and PrismaAd
 
 ## Signing Out
 
-We have implemented the sign-out functionality in the `full-version/src/components/layout/shared/UserDetails.tsx` file. You may copy the `signOut` import statement and its usage from this file to your project's `src/components/layout/shared/UserDetails.tsx` file.
+We have implemented the sign-out functionality in the `full-version/src/components/layout/shared/UserDropdown.tsx` file. You may copy the `signOut` import statement and its usage from this file to your project's `src/components/layout/shared/UserDropdown.tsx` file.
 
 ## Adding User's Name and Email to User Dropdown
 
-We have shown the user's name and email in the user dropdown in the navbar from the `full-version/src/components/layout/shared/UserDetails.tsx` file. If you want to show this, you may copy the `useSession` import statement and its usage from this file to your project's `src/components/layout/shared/UserDetails.tsx` file.
+We have shown the user's name and email in the user dropdown in the navbar from the `full-version/src/components/layout/shared/UserDropdown.tsx` file. If you want to show this, you may copy the `useSession` import statement and its usage from this file to your project's `src/components/layout/shared/UserDropdown.tsx` file.
