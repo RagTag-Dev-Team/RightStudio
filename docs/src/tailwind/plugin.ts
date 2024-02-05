@@ -27,6 +27,32 @@ module.exports = plugin(function () {}, {
       '2xl': '1920px'
     },
     extend: {
+      boxShadow: {
+        xs: 'var(--mui-customShadows-xs)',
+        sm: 'var(--mui-customShadows-sm)',
+        DEFAULT: 'var(--mui-customShadows-md)',
+        md: 'var(--mui-customShadows-md)',
+        lg: 'var(--mui-customShadows-lg)',
+        xl: 'var(--mui-customShadows-xl)',
+        primarySm: 'var(--mui-customShadows-primary-sm)',
+        primaryMd: 'var(--mui-customShadows-primary-md)',
+        primaryLg: 'var(--mui-customShadows-primary-lg)',
+        secondarySm: 'var(--mui-customShadows-secondary-sm)',
+        secondaryMd: 'var(--mui-customShadows-secondary-md)',
+        secondaryLg: 'var(--mui-customShadows-secondary-lg)',
+        errorSm: 'var(--mui-customShadows-error-sm)',
+        errorMd: 'var(--mui-customShadows-error-md)',
+        errorLg: 'var(--mui-customShadows-error-lg)',
+        warningSm: 'var(--mui-customShadows-warning-sm)',
+        warningMd: 'var(--mui-customShadows-warning-md)',
+        warningLg: 'var(--mui-customShadows-warning-lg)',
+        infoSm: 'var(--mui-customShadows-info-sm)',
+        infoMd: 'var(--mui-customShadows-info-md)',
+        infoLg: 'var(--mui-customShadows-info-lg)',
+        successSm: 'var(--mui-customShadows-success-sm)',
+        successMd: 'var(--mui-customShadows-success-md)',
+        successLg: 'var(--mui-customShadows-success-lg)'
+      },
       colors: {
         primary: 'var(--primary-color)',
         secondary: 'var(--mui-palette-secondary-main)',

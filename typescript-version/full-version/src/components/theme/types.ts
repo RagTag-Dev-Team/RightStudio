@@ -37,6 +37,36 @@ declare module '@mui/material/styles' {
       md: string
       lg: string
       xl: string
+      primary: {
+        sm: string
+        md: string
+        lg: string
+      }
+      secondary: {
+        sm: string
+        md: string
+        lg: string
+      }
+      error: {
+        sm: string
+        md: string
+        lg: string
+      }
+      warning: {
+        sm: string
+        md: string
+        lg: string
+      }
+      info: {
+        sm: string
+        md: string
+        lg: string
+      }
+      success: {
+        sm: string
+        md: string
+        lg: string
+      }
     }
     mainColorChannels: {
       light: string
@@ -62,6 +92,36 @@ declare module '@mui/material/styles' {
       md?: string
       lg?: string
       xl?: string
+      primary?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
+      secondary?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
+      error?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
+      warning?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
+      info?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
+      success?: {
+        sm?: string
+        md?: string
+        lg?: string
+      }
     }
     mainColorChannels?: {
       light?: string
