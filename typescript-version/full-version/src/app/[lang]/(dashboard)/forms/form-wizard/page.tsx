@@ -19,7 +19,7 @@ const FormWizard = () => {
         <Typography variant='body2'>
           Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
           <Link
-            href='https://mui.com/material-ui/react-stepper/'
+            href='https://mui.com/material-ui/react-stepper'
             target='_blank'
             rel='noopener noreferrer'
             className='no-underline text-primary'

@@ -18,7 +18,7 @@ const FormValidation = () => {
         <Typography variant='body2'>
           <code>react-hook-form</code> is a third-party library. Please refer to its{' '}
           <Link
-            href='https://react-hook-form.com/'
+            href='https://react-hook-form.com'
             target='_blank'
             rel='noopener noreferrer'
             className='no-underline text-primary'

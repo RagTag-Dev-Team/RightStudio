@@ -21,7 +21,7 @@ const Recharts = () => {
         <Typography variant='body2'>
           <code>recharts</code> is a third-party library. Please refer to its{' '}
           <Link
-            href='https://recharts.org/'
+            href='https://recharts.org'
             target='_blank'
             rel='noopener noreferrer'
             className='no-underline text-primary'

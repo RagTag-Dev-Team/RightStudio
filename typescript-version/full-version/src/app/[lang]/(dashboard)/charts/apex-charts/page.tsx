@@ -25,7 +25,7 @@ const ApexCharts = () => {
         <Typography variant='body2'>
           <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
           <Link
-            href='https://apexcharts.com/'
+            href='https://apexcharts.com'
             target='_blank'
             rel='noopener noreferrer'
             className='no-underline text-primary'
