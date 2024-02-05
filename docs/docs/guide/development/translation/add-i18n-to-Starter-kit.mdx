@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
@@ -8,174 +12,43 @@ import CodeBlock from '@theme/CodeBlock';
 Our template supports Right-to-Left (RTL) languages like Arabic and Left-to-Right (LTR) languages like English. By adding i18n, you enable the template to automatically switch between RTL and LTR layouts based on the selected language.
 :::
 
-### Step 1: Add Packages
+- Add the following dependency to your project:
 
-Begin by installing packages related to i18n, which handle locale matching and negotiation. 
+  Begin by installing packages related to i18n, which handle locale matching and negotiation. 
 
-- `@formatjs/intl-localematcher`
-- `@types/negotiator`
-- `negotiator`
-- `server-only`
+  - `@formatjs/intl-localematcher`
+  - `@types/negotiator`
+  - `negotiator`
+  - `server-only`
 
-Run the appropriate command in your project's root directory based on your package manager:
+  Use the following command to add these dependencies:
 
-<Tabs>
-  <TabItem value="pnpm">
-    <CodeBlock language='bash'>pnpm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-  </TabItem>
-  <TabItem value="yarn">
-    <CodeBlock language='bash'>yarn install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-  </TabItem>
-  <TabItem value="npm">
-    <CodeBlock language='bash'>npm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="pnpm">
+      <CodeBlock language='bash'>pnpm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="yarn">
+      <CodeBlock language='bash'>yarn install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+    <TabItem value="npm">
+      <CodeBlock language='bash'>npm install @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    </TabItem>
+  </Tabs>
 
-### Step 2: Organize Content for Translation
+- In `src/app`, create a folder named `[lang]`. Move all content from `src/app` to `src/app/[lang]`, excluding `src/app/api`, `favicon`, and `global.css`. Update path references in the moved files.
 
-1. In `src/app`, create a folder named `[lang]`.
-2. Move all content from `src/app` to `[lang]`, excluding `src/app/api`, `favicon`, and `global.css`.
-3. Update path references in the moved files.
+- Add the following files from the full-version to your project:
 
-### Step 3: Create i18n.ts File
+  - `src/configs/i18n.ts`
+  - `src/utils/i18n.ts`
+  - `src/middleware.ts`
 
-In `src/configs`, create `i18n.ts` with the following content:
+    :::warning Note
+    In the `src/middleware.ts` file, the code for authentication has also been implemented. If you don't need authentication, you can remove its code by following [this guide](/docs/guide/authentication/remove-auth#remove-authentication-completely-from-the-full-version).
+    :::
 
-```ts
-export const i18n = {
-  defaultLocale: 'en',
-  locales: ['en', 'fr', 'ar'],
-  langDirection: {
-    en: 'ltr',
-    fr: 'ltr',
-    ar: 'rtl'
-  }
-} as const
-
-export type Locale = (typeof i18n)['locales'][number]
-```
-
-### Step 4: Create i18n.ts File in utils folder
-
-In `src/utils`, create `i18n.ts` with the following content:
-
-```ts
-// Config Imports
-import { i18n } from '@configs/i18n'
-
-// Util Imports
-import { ensurePrefix } from '@/utils/string'
-
-// Check if the url is missing the locale
-export const isUrlMissingLocale = (url: string) => {
-  return i18n.locales.every(locale => !(url.startsWith(`/${locale}/`) || url === `/${locale}`))
-}
-
-// Get the localized url
-export const getLocalizedUrl = (url: string, languageCode: string): string => {
-  if (!url || !languageCode) throw new Error("URL or Language Code can't be empty")
-
-  return isUrlMissingLocale(url) ? `/${languageCode}${ensurePrefix(url, '/')}` : url
-}
-```
-
-### Step 5: Middleware File
-
-:::warning Note
-If you have implemented [Authentication](/docs/guide/authentication/add-auth) in Starter Kit, and you want to add i18n to your project, then you can copy the middleware file from the full-version of the template. The middleware file is located at `src/middleware.ts/js`.
-:::
-
-If you want to add only i18n in starter kit, then you have to create a `middleware.ts/js` file in the `src` folder and add the following code:
-
-```ts
-// Next Imports
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-
-// Third-party Imports
-import Negotiator from 'negotiator'
-import { match as matchLocale } from '@formatjs/intl-localematcher'
-
-// Config Imports
-import { i18n } from '@configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl, isUrlMissingLocale } from '@/utils/i18n'
-import { ensurePrefix } from '@/utils/string'
-
-const getLocale = (request: NextRequest): string | undefined => {
-  // Try to get locale from URL
-  const urlLocale = i18n.locales.find(locale => request.nextUrl.pathname.startsWith(`/${locale}/`))
-
-  if (urlLocale) return urlLocale
-
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {}
-
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales
-
-  // Use negotiator and intl-localematcher to get best locale
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
-
-  const locale = matchLocale(languages, locales, i18n.defaultLocale)
-
-  return locale
-}
-
-const localizedRedirect = (url: string, locale: string | undefined, request: NextRequest) => {
-  let _url = url
-
-  const isLocaleMissing = isUrlMissingLocale(_url)
-
-  if (isLocaleMissing) {
-    // e.g. incoming request is /products
-    // The new URL is now /en/products
-    _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
-  }
-
-  _url = ensurePrefix(_url, `${process.env.BASEPATH ?? ''}`)
-
-  const redirectUrl = new URL(_url, request.url).toString()
-
-  return NextResponse.redirect(redirectUrl)
-}
-
-export default async function middleware(request: NextRequest) {
-  // Get locale from request headers
-  const locale = getLocale(request)
-
-  const pathname = request.nextUrl.pathname
-
-  // If pathname already contains a locale, return next() else redirect with localized URL
-  return isUrlMissingLocale(pathname) ? localizedRedirect(pathname, locale, request) : NextResponse.next()
-}
-
-// Matcher Config
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - all items inside the public folder
-     *    - images (public images)
-     *    - next.svg (Next.js logo)
-     *    - vercel.svg (Vercel logo)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|.+?/hook-examples|.+?/menu-examples|images|next.svg|vercel.svg).*)'
-  ]
-}
-```
-
-### Step 6: Manage Language Dictionaries
-
-1. In `src/data`, create a `dictionaries` folder.
-2. Create a json file for each language in the `dictionaries` folder. For example, `en.json`, `fr.json`, and `ar.json`.
-3. For example in `en.json` file add the following code:
+- In `src/data`, create a `dictionaries` folder and create a json file for each language in the `dictionaries` folder. For example, `en.json`, `fr.json`, and `ar.json`.
+- For example in `en.json` file add the following code:
 
     ```json
     {
@@ -186,35 +59,15 @@ export const config = {
     }
     ```
     Similarly, you can add the dictionary for other languages as well.
-4. Create a `get-dictionary.ts` file in the `src/utils` folder and add the following code:
-
-    ```tsx
-    // Third-party Imports
-    import 'server-only'
-
-    // Type Imports
-    import type { Locale } from '@configs/i18n'
-
-    const dictionaries = {
-    en: () => import('@/data/dictionaries/en.json').then(module => module.default),
-    ... // add other languages
-    }
-
-    export const getDictionary = async (locale: Locale) => dictionaries[locale]()
-    ```
-
-### Step 7: Integrating i18n in the Project
+- Add the `src/utils/getDictionary.ts` file from the full-version to your project. Make sure to update the languages as per your requirement.
 
 - Go to the `src/app/[lang]/layout.tsx` file and make the following changes.
 
-  1. Add the following import:
+  1. Update the following code
       ```diff
       + import { i18n } from '@/configs/i18n'
       + import type { Locale } from '@/configs/i18n'
-      ```
-  2. Replace the following statement:
 
-      ```diff
       - { children }: ChildrenType
       + { children, params }: ChildrenType & { params: { lang: Locale} }
 
@@ -233,7 +86,7 @@ export const config = {
   2. Additionally, add the following statement:
 
       ```diff
-      + import { getDictionary } from '@/utils/get-dictionary'
+      + import { getDictionary } from '@/utils/getDictionary'
 
       + const dictionary = await getDictionary(params.lang)
       ```
@@ -245,7 +98,7 @@ export const config = {
 
       ```diff
       // If you have used props
-      + import type { getDictionary } from '@/utils/get-dictionary'
+      + import type { getDictionary } from '@/utils/getDictionary'
 
       type Props = {
         ...
@@ -319,6 +172,12 @@ export const config = {
         // Next Imports
       + import { useParams } from 'next/navigation'
 
+        // Type Imports
+      + import type { Locale } from '@configs/i18n'
+
+      // Util Imports
+      + import { getLocalizedUrl } from '@/utils/i18n'
+
         // Hooks
       + const params = useParams()
       + const { lang: locale } = params
@@ -328,44 +187,12 @@ export const config = {
 
       ```diff
       -  <Link href='/'>
-      +  <Link href={locale ? `/${locale}` : '/'}>
+      +  <Link href={getLocalizedUrl('/', locale as Locale)}>
       ```
-
-
-  :::warning Note
-  If you are using dynamic routes in your project, then you have to add `/${locale}/` in the path in `src/data/navigation/verticalMenuData.tsx` and `src/data/navigation/horizontalMenuData.tsx` files like this:
-
-  ```diff
-  -  href: '/home',
-  +  href: `/${locale}/home`,
-  ```
-  :::
 
   :::danger Note
-  Please note that wherever you have used the `href` prop, you have to add the locale in the path. For example, if you have used `href='/home'` then you have to replace it with ``href={`/${locale}/home`}`` to add the locale in the path.
+  Please note that wherever you have used the `href` prop, you have to add the locale in the path. For example, if you have used `href='/home'` then you have to replace it with ``href={`/${locale}/home`}`` to add the locale in the path except for the `src/data/navigation/verticalMenuData.tsx` and `src/data/navigation/horizontalMenuData.tsx` files.
   :::
-
-- Go to the `src/app/[lang]/page.tsx` file and make following changes:
-
-  1. Add the following code:
-
-      ```diff
-        // Next Imports
-      + import { useParams } from 'next/navigation'
-
-        // Hooks
-      + const params = useParams()
-      + const { lang: locale } = params
-      ```
-
-  2. Replace the following statement:
-
-      ```diff
-      -  redirect('/home')
-      +  redirect(`/${locale}/home`)
-      ```
-
-### Step 8: LanguageDropdown Component
 
 - If you want to add a language dropdown in your project, then you may copy the `LanguageDropdown.tsx` file from the full-version of the template and modify as per your requirement. The file is located at `src/components/layout/shared/LanguageDropdown.tsx`.
 
