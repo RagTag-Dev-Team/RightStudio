@@ -2,7 +2,6 @@
 toc_max_heading_level: 4
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
@@ -30,22 +29,16 @@ First, uninstall the packages associated with i18n. These packages handle langua
 
 Run the appropriate command in your project's root directory based on your package manager:
 
-<Tabs
-    defaultValue="pnpm"
-    values={[
-        { label: 'PNPM (Highly Recommended)', value: 'pnpm' },
-        { label: 'YARN', value: 'yarn' },
-        { label: 'NPM', value: 'npm' },
-    ]}>
-    <TabItem value="pnpm">
-        <CodeBlock language='bash'>pnpm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-    </TabItem>
-    <TabItem value="yarn">
-        <CodeBlock language='bash'>yarn uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-    </TabItem>
-    <TabItem value="npm">
-        <CodeBlock language='bash'>npm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
-    </TabItem>
+<Tabs>
+  <TabItem value="pnpm">
+    <CodeBlock language='bash'>pnpm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+  </TabItem>
+  <TabItem value="yarn">
+    <CodeBlock language='bash'>yarn uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+  </TabItem>
+  <TabItem value="npm">
+    <CodeBlock language='bash'>npm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+  </TabItem>
 </Tabs>
 
 ### Step 2: Reorganize Content

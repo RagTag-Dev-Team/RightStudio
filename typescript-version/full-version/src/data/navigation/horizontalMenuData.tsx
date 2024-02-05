@@ -370,7 +370,7 @@ const horizontalMenuData = (
       },
       {
         label: dictionary['navigation'].externalLink,
-        href: 'https://themeselection.com/',
+        href: 'https://themeselection.com',
         target: '_blank',
         suffix: <i className='ri-external-link-line text-xl' />
       },
