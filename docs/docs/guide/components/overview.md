@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Overview
 
 In this section, we have explained only the custom components, that are made by our team from scratch.
