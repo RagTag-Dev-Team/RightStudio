@@ -9,13 +9,11 @@ import type { Mode, Skin, Layout, LayoutComponentWidth, DemoName } from '@core/t
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
+import demoConfigs from '@configs/demoConfigs'
 import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
 import { useObjectCookie } from '@core/hooks/useObjectCookie'
-
-// Util Imports
-import { getDemoConfig } from '@/utils/demos'
 
 // Settings type
 export type Settings = {
@@ -56,6 +54,7 @@ export const SettingsContext = createContext<SettingsContextProps | null>(null)
 // Settings Provider
 export const SettingsProvider = (props: Props) => {
   const demoName = props.demoName || null
+  const demoConfigurations = demoName ? demoConfigs[demoName] : {}
 
   // Initial Settings
   const initialSettings: Settings = {
@@ -67,12 +66,12 @@ export const SettingsProvider = (props: Props) => {
     contentWidth: themeConfig.contentWidth,
     footerContentWidth: themeConfig.footer.contentWidth,
     primaryColor: primaryColorConfig[0].main,
-    ...(demoName && getDemoConfig(demoName))
+    ...(demoName && demoConfigurations)
   }
 
   const updatedInitialSettings = {
     ...initialSettings,
-    mode: props.mode || (demoName && getDemoConfig(demoName).mode) || themeConfig.mode
+    mode: props.mode || (demoName && demoConfigurations.mode) || themeConfig.mode
   }
 
   // Cookies
