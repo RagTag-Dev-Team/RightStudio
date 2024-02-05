@@ -17,12 +17,12 @@ To remove the Credentials Provider from the full-version, you'll need to follow 
 
 - remove `CredentialProvider` import and its usage from the `src/libs/auth.ts` file
 - remove the `src/app/api/login` folder
-- update the `handleSubmit` function in the `src/views/login/LoginForm.tsx` file to the following:
+- update the `handleSubmit` function in the `src/views/Login.tsx` file to the following:
 
   <Tabs>
   <TabItem value="TS">
 
-  ```tsx title="src/views/login/LoginForm.tsx"
+  ```tsx title="src/views/Login.tsx"
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
   }
@@ -31,7 +31,7 @@ To remove the Credentials Provider from the full-version, you'll need to follow 
   </TabItem>
   <TabItem value="JS">
 
-  ```js title="src/views/login/LoginForm.js"
+  ```js title="src/views/Login.js"
   const handleSubmit = (event) => {
     event.preventDefault()
   }
@@ -40,7 +40,7 @@ To remove the Credentials Provider from the full-version, you'll need to follow 
   </TabItem>
   </Tabs>
 
-  Also, remove the unused hooks and imports from the `src/views/login/LoginForm.tsx` file.
+  Also, remove the unused hooks and imports from the `src/views/Login.tsx` file.
 
 That's it! You've successfully removed the CredentialsProvider from the full-version.
 
@@ -79,9 +79,9 @@ To remove the Google Provider from the full-version, you'll need to follow the s
   </Tabs>
 
 - remove the `src/prisma` folder
-- remove the button with the `onClick={() => signIn('google')}` prop from the `src/views/login/LoginForm.tsx` file:
+- remove the button with the `onClick={() => signIn('google')}` prop from the `src/views/Login.tsx` file:
 
-  ```tsx title="src/views/login/LoginForm.tsx"
+  ```tsx title="src/views/Login.tsx"
   <button className='block' onClick={() => signIn('google')}>
     Login with google
   </button>
@@ -155,8 +155,8 @@ To remove authentication completely from the full-version, you'll need to follow
   - `src/contexts/nextAuthProvider.tsx`
   - `src/prisma`
 
-- remove `signOut` & `useSession` imports and usage from the `src/components/layout/shared/UserDetails.tsx` file
-- remove `signIn` import and usage from the `src/views/login/LoginForm.tsx` file
+- remove `signOut` & `useSession` imports and usage from the `src/components/layout/shared/UserDropdown.tsx` file
+- remove `signIn` import and usage from the `src/views/Login.tsx` file
 - in the `src/middleware.ts` file, remove `NextRequestWithAuth` and `withAuth` imports and their usages, also remove `callbacks` and `guestRoutes`, `sharedRoutes` and `privateRoutes` and their logical conditions:
 
   <Tabs>
@@ -211,6 +211,7 @@ To remove authentication completely from the full-version, you'll need to follow
   - `NEXTAUTH_SECRET`
   - `GOOGLE_CLIENT_ID`
   - `GOOGLE_CLIENT_SECRET`
+  - `DATABASE_URL`
 
 - update the following in your `package.json` file:
 
@@ -231,6 +232,7 @@ To remove authentication completely from the full-version, you'll need to follow
   - `@prisma/client`
   - `next-auth`
   - `prisma`
+  - `dotenv-cli`
 
   Use the following command to remove these dependencies:
 
@@ -238,21 +240,21 @@ To remove authentication completely from the full-version, you'll need to follow
   <TabItem value="pnpm">
 
   ```bash
-  pnpm remove @auth/prisma-adapter @prisma/client next-auth prisma
+  pnpm remove @auth/prisma-adapter @prisma/client next-auth prisma dotenv-cli
   ```
 
   </TabItem>
   <TabItem value="yarn">
 
   ```bash
-  yarn remove @auth/prisma-adapter @prisma/client next-auth prisma
+  yarn remove @auth/prisma-adapter @prisma/client next-auth prisma dotenv-cli
   ```
 
   </TabItem>
   <TabItem value="npm">
 
   ```bash
-  npm uninstall @auth/prisma-adapter @prisma/client next-auth prisma
+  npm uninstall @auth/prisma-adapter @prisma/client next-auth prisma dotenv-cli
   ```
 
   </TabItem>
