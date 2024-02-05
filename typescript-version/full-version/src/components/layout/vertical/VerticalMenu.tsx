@@ -224,7 +224,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           <SubMenu label={dictionary['navigation'].others}>
             <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
             <MenuItem
-              href='https://themeselection.com/'
+              href='https://themeselection.com'
               target='_blank'
               suffix={<LinkExternalIcon fontSize='1.125rem' />}
             >

@@ -216,11 +216,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             {dictionary['navigation'].documentation}
           </MenuItem>
           <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
-          <MenuItem
-            href='https://themeselection.com/'
-            target='_blank'
-            suffix={<LinkExternalIcon fontSize='1.125rem' />}
-          >
+          <MenuItem href='https://themeselection.com' target='_blank' suffix={<LinkExternalIcon fontSize='1.125rem' />}>
             {dictionary['navigation'].externalLink}
           </MenuItem>
           <SubMenu label={dictionary['navigation'].menuLevels}>
