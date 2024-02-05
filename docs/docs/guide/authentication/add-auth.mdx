@@ -11,7 +11,9 @@ Only for those who are using the **starter-kit**.
 
 In this guide, we'll walk you through the process of adding authentication partly or completely to your starter-kit. We'll be using [NextAuth.js](https://next-auth.js.org/) for authentication.
 
-## Prerequisites
+## With NextAuth
+
+### Prerequisites
 
 - add the following dependency to your project:
 
@@ -59,7 +61,7 @@ In this guide, we'll walk you through the process of adding authentication partl
   In the `src/middleware.ts` file, the code for i18n has also been implemented. If you don't need i18n, you can remove its code by following [this guide](/docs/guide/development/translation/how-to-remove-i18n#step-3-modify-middleware-file).
   :::
 
-## Add Credentials Provider
+### Add Credentials Provider
 
 If you want to use email and password for authentication, you need to add NextAuth's CredentialsProvider. To do so, follow these steps:
 
@@ -75,7 +77,7 @@ If you want to use email and password for authentication, you need to add NextAu
 
 That's it! You have successfully added NextAuth with CredentialsProvider to your starter-kit.
 
-## Add Google Provider with Prisma Adapter
+### Add Google Provider with Prisma Adapter
 
 If you want to use Google for authentication, you need to add a Google provider. To do so, follow these steps:
 
@@ -179,10 +181,17 @@ If you want to use Google for authentication, you need to add a Google provider.
 
 That's it! You have successfully added NextAuth with GoogleProvider and PrismaAdapter to your starter-kit.
 
-## Signing Out
+### Signing Out
 
 We have implemented the sign-out functionality in the `full-version/src/components/layout/shared/UserDropdown.tsx` file. You may copy the `signOut` import statement and its usage from this file to your project's `src/components/layout/shared/UserDropdown.tsx` file.
 
-## Adding User's Name and Email to User Dropdown
+### Adding User's Name and Email to User Dropdown
 
 We have shown the user's name and email in the user dropdown in the navbar from the `full-version/src/components/layout/shared/UserDropdown.tsx` file. If you want to show this, you may copy the `useSession` import statement and its usage from this file to your project's `src/components/layout/shared/UserDropdown.tsx` file.
+
+## Without NextAuth
+
+If you don't want to use NextAuth, you may refer to the following links:
+
+- [https://www.youtube.com/watch?v=DJvM2lSPn6w](https://www.youtube.com/watch?v=DJvM2lSPn6w)
+- [https://nextjs.org/learn/dashboard-app/adding-authentication](https://nextjs.org/learn/dashboard-app/adding-authentication)
