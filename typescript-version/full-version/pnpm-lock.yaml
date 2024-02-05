@@ -23,12 +23,6 @@ dependencies:
   '@formatjs/intl-localematcher':
     specifier: ^0.5.2
     version: 0.5.4
-  '@fullcalendar/common':
-    specifier: ^5.11.5
-    version: 5.11.5
-  '@fullcalendar/core':
-    specifier: ^6.1.10
-    version: 6.1.10
   '@fullcalendar/daygrid':
     specifier: ^6.1.10
     version: 6.1.10(@fullcalendar/core@6.1.10)
@@ -53,9 +47,6 @@ dependencies:
   '@iconify/json':
     specifier: ^2.2.167
     version: 2.2.172
-  '@iconify/react':
-    specifier: ^4.1.1
-    version: 4.1.1(react@18.2.0)
   '@iconify/tools':
     specifier: ^4.0.0
     version: 4.0.0
@@ -782,12 +773,6 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@fullcalendar/common@5.11.5:
-    resolution: {integrity: sha512-3iAYiUbHXhjSVXnYWz27Od2cslztUPsOwiwKlfGvQxBixv2Kl6a8IPwaijKFYJHXdwYmfPoEgK7rvqAGVoIYwA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
   /@fullcalendar/core@6.1.10:
     resolution: {integrity: sha512-oTXGJSAGpCf1oY+CKp5qYjMHkJCPBkJ3SHitl63n8Q6xKeiwQ4EF6Au451euUovREwJpLmD1AyZrCnWmtB9AVg==}
     dependencies:
@@ -878,15 +863,6 @@ packages:
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
-    dev: false
-
-  /@iconify/react@4.1.1(react@18.2.0):
-    resolution: {integrity: sha512-jed14EjvKjee8mc0eoscGxlg7mSQRkwQG3iX3cPBCO7UlOjz0DtlvTqxqEcHUJGh+z1VJ31Yhu5B9PxfO0zbdg==}
-    peerDependencies:
-      react: '>=16'
-    dependencies:
-      '@iconify/types': 2.0.0
-      react: 18.2.0
     dev: false
 
   /@iconify/tools@4.0.0:
