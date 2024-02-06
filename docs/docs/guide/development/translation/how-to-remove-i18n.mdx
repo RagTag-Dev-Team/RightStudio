@@ -12,9 +12,9 @@ This guide provides steps to remove i18n (internationalization) from your projec
 
 :::warning
 Please be aware that our template's support for Right-to-Left (RTL) languages like Arabic is directly tied to the language settings. This means that RTL formatting is automatically applied when an RTL language is selected. Conversely, languages like English (en) use Left-to-Right (LTR) formatting.
-
+<br/>
 If you remove the internationalization (i18n) feature from our template, the automatic RTL support will also be disabled. This is because our RTL functionality is based on the language settings — it recognizes and formats RTL languages appropriately and does the same for LTR languages.
-
+<br/>
 In essence, without the i18n feature, the template will not automatically switch between RTL and LTR layouts based on the language. Please consider this carefully when modifying the template, especially if your audience includes users of RTL languages.
 :::
 
@@ -103,7 +103,7 @@ In the `middleware.js/ts` file, make these changes:
 
 #### Layout and Navigation Changes:
 
-- Go to the `src/components/layout/vertical/Navigation.tsx` file and Remove the `{ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }` and `dictionary={dictionary}` from the `<VerticalMenu>` component.
+- Go to the `src/components/layout/vertical/Navigation.tsx` file and Remove the `dictionary: Awaited<ReturnType<typeof getDictionary>>` from the `Props` and `dictionary={dictionary}` from the `<VerticalMenu>` component.
 
 - Go to the `src/components/layout/vertical/VerticalMenu.tsx` file and make the following changes.
 
