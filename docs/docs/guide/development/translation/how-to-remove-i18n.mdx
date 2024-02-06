@@ -81,8 +81,8 @@ In the `middleware.js/ts` file, make these changes:
     - return localizedRedirect(HOME_PAGE_URL, locale, request)
     + return _redirect(HOME_PAGE_URL, request)
 
-    - if (pathname === '/' || pathname === `/${locale}`)
-    + if (pathname === '/')
+    - if (pathname === '/' || pathname === `/${locale}`) {
+    + if (pathname === '/') {
 
     - return isUrlMissingLocale(pathname) ? localizedRedirect(pathname, locale, request) : NextResponse.next()
     + return NextResponse.next()
@@ -91,6 +91,15 @@ In the `middleware.js/ts` file, make these changes:
 4. Remove the unused imports from the `middleware.js/ts` file.
 
 ### Step 4: Additional Modifications
+
+#### Common Changes
+
+- Replace the `getLocalizedUrl` function with the actual URL in the whole project like below:
+
+    ```diff
+    - getLocalizedUrl('/your-url', locale as Locale)
+    + '/your-url'
+    ```
 
 #### Layout and Navigation Changes:
 
@@ -161,17 +170,6 @@ In the `middleware.js/ts` file, make these changes:
 
     2. Remove the `dictionary={dictionary}` from the `<Navigation>` and `<Header>` components and it's related variable and imports.
 
-- Go to the `src/components/layout/shared/Logo.tsx` file and make the following changes.
-
-    1. Replace the following:
-
-        ```diff
-        - href={getLocalizedUrl('/', locale as Locale)}
-        + href={'/'}
-        ```
-    
-    2. Remove the unused variable and it's releted import from the `Logo.tsx` file.
-
 #### Login and other components changes:
 
 - Go to the `src/components/GenerateMenu.tsx` and make the following changes.
@@ -186,69 +184,14 @@ In the `middleware.js/ts` file, make these changes:
 
     3. Remove the unused variable and it's releted import from the `GenerateMenu.tsx` file.
 
-- Go to the `src/components/layout/shared/UserDetails.tsx` file and make the following changes.
-
-    1. Replace the following:
-
-        ```diff
-        - router.push(getLocalizedUrl('/login', locale as Locale))
-        + router.push('/login')
-        ```  
-    2. Remove the unused variable and it's releted import.    
-
-- Go to the `src/views/login/LoginForm.tsx` file and make the following changes.
-
-    1. Replace the following:
-
-        ```diff
-        - router.push(getLocalizedUrl(redirectURL, locale as Locale))
-        + router.push(redirectURL)
-        ``` 
-
-#### Search changes:
-
-- Go to the `src/components/layout/shared/search/DefaultSuggestions.tsx` file and make the following changes.
-
-    1. Remove the following and it's related import:
-
-        ```diff
-        - const { lang: locale } = useParams()
-        ```
-
-    2. Replace the following:
-
-        ```diff
-        - <Link href={getLocalizedUrl(item.href, locale as Locale)}
-        + <Link href={item.href}
-        ```
-
-- Go to the `src/components/layout/shared/search/index.tsx` file and make the following changes.
-
-    1. Replace the following in `searchActions` function:
-
-        ```diff
-        - router.push(getLocalizedUrl(item.url, locale as Locale))
-        + router.push(item.url)
-        ```
-    2. Remove the unused variable and it's releted import.
-
-- Go to the `src/components/layout/shared/search/NoResult.tsx` file and make the following changes.
-
-    1. Replace the following:
-
-        ```diff
-        - <Link href={getLocalizedUrl(item.href, locale as Locale)}
-        + <Link href={item.href}
-       ```
-    2. Remove the unused variable and it's releted import.
-
 #### Configs and Utils changes:
 
-- Remove the following files and it's related import from the whole project:
+- Remove the following files/folders and it's related import from the whole project:
 
     - `src/config/i18n.ts`
     - `src/utils/i18n.ts`
     - `src/utils/getDictionary.ts`
+    - `src/data/directories`
 
 #### next.config Modifications:
 
