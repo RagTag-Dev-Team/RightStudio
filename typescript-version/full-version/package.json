@@ -40,7 +40,7 @@
     "@tanstack/react-table": "^8.11.6",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.11.0",
-    "@types/react": "^18.2.47",
+    "@types/react": "^18.2.55",
     "@types/react-datepicker": "^4.19.5",
     "@types/react-dom": "^18.2.18",
     "@types/react-draft-wysiwyg": "^1.13.8",

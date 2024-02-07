@@ -32,6 +32,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'guide/development/folder-structure',
         'guide/development/environment-variables',
+        'guide/development/home-page-url',
         {
           type : 'category',
           label : 'Translations',

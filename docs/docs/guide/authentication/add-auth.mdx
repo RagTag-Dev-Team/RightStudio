@@ -59,6 +59,8 @@ In this guide, we'll walk you through the process of adding authentication partl
 
   :::warning Note!
   In the `src/middleware.ts` file, the code for i18n has also been implemented. If you don't need i18n, you can remove its code by following [this guide](/docs/guide/development/translation/how-to-remove-i18n#step-3-modify-middleware-file).
+
+  After adding the `src/middleware.ts` file in your project, you need to remove the `src/app/page.tsx` file from your project as the `src/middleware.ts` file will manage the redirection to your desired home page. Please refer to [this guide](/docs/guide/development/home-page-url) to change your home page's redirection (URL).
   :::
 
 ### Add Credentials Provider
