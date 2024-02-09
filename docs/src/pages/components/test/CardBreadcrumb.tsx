@@ -24,7 +24,7 @@ const CardBreadcrumb = () => {
           <a href='/' onClick={handleClick}>
             Core
           </a>
-          <Typography>Breadcrumb</Typography>
+          <Typography color='text.primary'>Breadcrumb</Typography>
         </Breadcrumbs>
 
         <Breadcrumbs separator='-' aria-label='breadcrumb'>
@@ -34,30 +34,30 @@ const CardBreadcrumb = () => {
           <a href='/' onClick={handleClick}>
             Core
           </a>
-          <Typography>Breadcrumb</Typography>
+          <Typography color='text.primary'>Breadcrumb</Typography>
         </Breadcrumbs>
 
-        <Breadcrumbs aria-label='breadcrumb' separator={<i className='ri-arrow-right-s-line text-xl' />}>
+        <Breadcrumbs aria-label='breadcrumb' separator={<i className='tabler-chevron-right text-xl' />}>
           <a href='/' onClick={handleClick}>
             MUI
           </a>
           <a href='/' onClick={handleClick}>
             Core
           </a>
-          <Typography>Breadcrumb</Typography>
+          <Typography color='text.primary'>Breadcrumb</Typography>
         </Breadcrumbs>
 
         <Breadcrumbs aria-label='breadcrumb' className='mbs-2'>
-          <a href='/' onClick={handleClick} className='flex items-center'>
-            <i className='ri-home-8-line text-xl' />
+          <a href='/' onClick={handleClick} className='flex gap-1'>
+            <i className='tabler-home-2 text-xl' />
             MUI
           </a>
-          <a href='/' onClick={handleClick} className='flex items-center'>
-            <i className='ri-bookmark-line text-xl' />
+          <a href='/' onClick={handleClick} className='flex gap-1'>
+            <i className='tabler-bookmark text-xl' />
             Core
           </a>
-          <Typography className='flex items-center'>
-            <i className='ri-file-3-line text-xl' />
+          <Typography className='flex gap-1' color='text.primary'>
+            <i className='tabler-file text-xl' />
             Breadcrumb
           </Typography>
         </Breadcrumbs>

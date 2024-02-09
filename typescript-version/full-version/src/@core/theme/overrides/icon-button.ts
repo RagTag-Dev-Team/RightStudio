@@ -8,7 +8,7 @@ const iconButton: Theme['components'] = {
   MuiIconButton: {
     styleOverrides: {
       root: {
-        '& .MuiSvgIcon-root': {
+        '& .MuiSvgIcon-root, & i, & svg': {
           fontSize: 'inherit'
         }
       },

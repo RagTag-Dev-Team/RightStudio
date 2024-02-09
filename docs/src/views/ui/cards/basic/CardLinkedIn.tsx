@@ -11,7 +11,7 @@ const CardLinkedIn = () => {
     <Card className='bg-[#007bb6]'>
       <CardContent>
         <div className='flex items-center gap-2 mbe-4'>
-          <i className='ri-linkedin-fill text-3xl text-white' />
+          <i className='tabler-brand-linkedin text-3xl text-white' />
           <Typography variant='h5' className='text-white'>
             LinkedIn Card
           </Typography>
@@ -28,11 +28,11 @@ const CardLinkedIn = () => {
             </Typography>
           </div>
           <div className='flex items-center gap-1.5'>
-            <i className='ri-thumb-up-fill text-xl text-white' />
+            <i className='tabler-thumb-up-filled text-xl text-white' />
             <Typography variant='body2' className='text-white'>
               1.2k
             </Typography>
-            <i className='ri-share-line text-xl text-white' />
+            <i className='tabler-share text-xl text-white' />
             <Typography variant='body2' className='text-white'>
               56
             </Typography>

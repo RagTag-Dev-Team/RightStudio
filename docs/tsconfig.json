@@ -38,6 +38,9 @@
       "@assets/*": [
         "../typescript-version/full-version/src/assets/*"
       ],
+      "@components/dialogs/*": [
+        "./src/components/dialogs/*"
+      ],
       "@components/*": [
         "../typescript-version/full-version/src/components/*"
       ],

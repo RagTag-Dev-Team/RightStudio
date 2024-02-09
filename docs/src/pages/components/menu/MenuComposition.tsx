@@ -85,9 +85,9 @@ const MenuComposition = () => {
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom' }}
           >
-            <Paper>
+            <Paper className='shadow-lg mbs-0.5'>
               <ClickAwayListener onClickAway={() => setOpen(false)}>
-                <MenuList autoFocusItem={open} id='composition-menu' onKeyDown={handleListKeyDown}>
+                <MenuList autoFocusItem={open} id='composition-menu' onKeyDown={handleListKeyDown} className='flex flex-col gap-0.5 pli-2'>
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                   <MenuItem onClick={handleClose}>Logout</MenuItem>

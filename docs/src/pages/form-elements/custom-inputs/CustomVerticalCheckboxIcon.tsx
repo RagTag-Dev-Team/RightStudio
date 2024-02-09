@@ -4,6 +4,9 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
@@ -16,19 +19,19 @@ const data: CustomInputVerticalData[] = [
     title: 'Backup',
     isSelected: true,
     content: 'Backup every file from your project.',
-    asset: 'ri-server-line',
+    asset: 'tabler-folder',
   },
   {
     value: 'encrypt',
     title: 'Encrypt',
     content: 'Translate your data to encrypted text.',
-    asset: 'ri-shield-line',
+    asset: 'tabler-ban',
   },
   {
     value: 'site-lock',
     title: 'Site Lock',
     content: 'Security tool to protect your website.',
-    asset: 'ri-lock-2-line',
+    asset: 'tabler-lock',
   },
 ]
 
@@ -55,7 +58,7 @@ const CustomVerticalCheckboxIcon = () => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <i className={item.asset} />
+          asset = <i className={classnames(item.asset, 'text-[28px]')} />
         }
 
         return (

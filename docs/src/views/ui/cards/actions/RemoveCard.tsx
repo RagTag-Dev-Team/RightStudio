@@ -20,14 +20,14 @@ const CardActionRemoveCard = () => {
           title='Remove Card'
           action={
             <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-              <i className='ri-close-line text-xl' />
+              <i className='tabler-x text-xl' />
             </IconButton>
           }
         />
         <CardContent>
           <Typography>
             Click on{' '}
-            <i className='ri-close-line text-xl align-sub' />{' '}
+            <i className='tabler-x text-xl align-sub' />{' '}
             icon to see it in action
           </Typography>
         </CardContent>

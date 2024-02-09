@@ -13,21 +13,21 @@ import type { MenuProps } from '@mui/material/Menu'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 
 // Styled Menu component
-const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({
+const Menu = styled(MuiMenu)<MenuProps>({
   '& .MuiMenu-paper': {
-    border: `1px solid ${theme.palette.divider}`
+    border: '1px solid var(--mui-palette-divider)'
   }
-}))
+})
 
 // Styled MenuItem component
-const MenuItem = styled(MuiMenuItem)<MenuItemProps>(({ theme }) => ({
+const MenuItem = styled(MuiMenuItem)<MenuItemProps>({
   '&:focus': {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: 'var(--mui-palette-primary-main)',
     '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-      color: theme.palette.common.white
+      color: 'var(--mui-palette-common-white)'
     }
   }
-}))
+})
 
 const MenuCustomized = () => {
   // States
@@ -64,19 +64,19 @@ const MenuCustomized = () => {
       >
         <MenuItem>
           <ListItemIcon>
-            <i className='ri-send-plane-2-line text-xl' />
+            <i className='tabler-send-2 text-xl' />
           </ListItemIcon>
           <ListItemText primary='Sent mail' />
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <i className='ri-mail-open-line text-xl' />
+            <i className='tabler-mail-opened text-xl' />
           </ListItemIcon>
           <ListItemText primary='Drafts' />
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <i className='ri-inbox-archive-line text-xl' />
+            <i className='tabler-inbox text-xl' />
           </ListItemIcon>
           <ListItemText primary='Inbox' />
         </MenuItem>

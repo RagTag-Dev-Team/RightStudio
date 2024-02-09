@@ -10,7 +10,7 @@ const CardSupport = () => {
     <Card>
       <CardContent className='flex flex-col items-center text-center'>
         <Avatar className='mbe-2 is-[56px] bs-[56px]'>
-          <i className='ri-question-line text-[32px]' />
+          <i className='tabler-help-circle text-[32px]' />
         </Avatar>
         <Typography variant='h5' className='mbe-2'>
           Support

@@ -14,7 +14,7 @@ const ChipsAvatar = () => {
         label='Archived'
         avatar={
           <Avatar>
-            <i className='ri-archive-line' />
+            <i className='tabler-archive' />
           </Avatar>
         }
       />

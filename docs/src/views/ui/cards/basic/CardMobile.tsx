@@ -12,8 +12,6 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import type { Theme } from '@mui/material/styles'
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
@@ -57,14 +55,14 @@ const CardMobile = () => {
             </div>
           </CardContent>
           <CardActions className='justify-between'>
-            <Button startIcon={<i className='ri-shopping-cart-2-line' />}>Add to Cart</Button>
+            <Button startIcon={<i className='tabler-shopping-cart' />}>Add to Cart</Button>
             <IconButton
               id='share-button'
               aria-haspopup='true'
               {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
               onClick={handleClick}
             >
-              <i className='ri-share-line text-xl' />
+              <i className='tabler-share text-xl' />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -73,16 +71,16 @@ const CardMobile = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <i className='ri-facebook-fill text-xl' />
+                <i className='tabler-brand-facebook-filled text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='ri-twitter-fill text-xl' />
+                <i className='tabler-brand-twitter-filled text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='ri-linkedin-fill text-xl' />
+                <i className='tabler-brand-linkedin text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='ri-google-line text-xl' />
+                <i className='tabler-brand-google-filled text-xl' />
               </MenuItem>
             </Menu>
           </CardActions>

@@ -24,10 +24,10 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton onClick={handleClick}>
             <ListItemIcon>
-              <i className='ri-mail-line text-xl' />
+              <i className='tabler-mail text-xl' />
             </ListItemIcon>
             <ListItemText primary='Inbox' />
-            <i className={open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
+                <i className={open ? 'tabler-chevron-up text-xl' : 'tabler-chevron-down text-xl' }  />
           </ListItemButton>
         </ListItem>
         <Collapse in={open} timeout='auto' unmountOnExit>
@@ -35,7 +35,7 @@ const ListNested = () => {
             <ListItem disablePadding>
               <ListItemButton className='pis-8'>
                 <ListItemIcon>
-                  <i className='ri-time-line text-xl' />
+                  <i className='tabler-clock text-xl' />
                 </ListItemIcon>
                 <ListItemText primary='Scheduled' />
               </ListItemButton>
@@ -45,7 +45,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-file-copy-line text-xl' />
+              <i className='tabler-copy text-xl' />
             </ListItemIcon>
             <ListItemText primary='Draft' />
           </ListItemButton>
@@ -56,7 +56,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-time-line text-xl' />
+              <i className='tabler-clock text-xl' />
             </ListItemIcon>
             <ListItemText primary='Snoozed' />
           </ListItemButton>
@@ -64,7 +64,7 @@ const ListNested = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-spam-2-line text-xl' />
+              <i className='tabler-alert-octagon text-xl' />
             </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItemButton>

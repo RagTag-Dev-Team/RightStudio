@@ -13,7 +13,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-mail-line text-xl' />
+              <i className='tabler-mail text-xl' />
             </ListItemIcon>
             <ListItemText primary='Inbox' />
           </ListItemButton>
@@ -21,7 +21,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-file-copy-line text-xl' />
+              <i className='tabler-copy text-xl' />
             </ListItemIcon>
             <ListItemText primary='Draft' />
           </ListItemButton>
@@ -32,7 +32,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <i className='ri-time-line text-xl' />
+              <i className='tabler-clock text-xl' />
             </ListItemIcon>
             <ListItemText primary='Snoozed' />
           </ListItemButton>
@@ -40,7 +40,7 @@ const ListBasic = () => {
         <ListItem disablePadding>
           <ListItemButton component='a' href='#simple-list' className='hover:text-inherit'>
             <ListItemIcon>
-              <i className='ri-spam-2-line text-xl' />
+              <i className='tabler-alert-octagon text-xl' />
             </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItemButton>

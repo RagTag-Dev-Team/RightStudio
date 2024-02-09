@@ -31,7 +31,7 @@ const ListWithSwitch = () => {
     <List subheader={<ListSubheader>Settings</ListSubheader>}>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-wifi-line text-xl' />
+          <i className='tabler-wifi text-xl' />
         </ListItemIcon>
         <ListItemText primary='Wi-Fi' />
         <ListItemSecondaryAction>
@@ -40,7 +40,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-bluetooth-line text-xl' />
+          <i className='tabler-bluetooth text-xl' />
         </ListItemIcon>
         <ListItemText primary='Bluetooth' />
         <ListItemSecondaryAction>
@@ -49,7 +49,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-map-pin-line text-xl' />
+          <i className='tabler-map-pin text-xl' />
         </ListItemIcon>
         <ListItemText primary='Location' />
         <ListItemSecondaryAction>
@@ -58,7 +58,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-plane-line text-xl' />
+          <i className='tabler-plane-tilt text-xl' />
         </ListItemIcon>
         <ListItemText primary='Airplane Mode' />
         <ListItemSecondaryAction>
@@ -67,7 +67,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-hotspot-line text-xl' />
+          <i className='tabler-access-point text-xl' />
         </ListItemIcon>
         <ListItemText primary='Hotspot' />
         <ListItemSecondaryAction>
@@ -76,7 +76,7 @@ const ListWithSwitch = () => {
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <i className='ri-indeterminate-circle-line text-xl' />
+          <i className='tabler-circle-minus text-xl' />
         </ListItemIcon>
         <ListItemText primary='Do not disturb' />
         <ListItemSecondaryAction>

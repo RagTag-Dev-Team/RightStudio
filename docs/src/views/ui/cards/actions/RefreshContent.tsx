@@ -28,14 +28,14 @@ const CardActionRefreshContent = () => {
         title='Refresh Content'
         action={
           <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-            <i className='ri-refresh-line text-xl' />
+            <i className='tabler-refresh text-xl' />
           </IconButton>
         }
       />
       <CardContent>
         <Typography>
             Click on{' '}
-            <i className='ri-refresh-line text-xl align-sub' />{' '}
+            <i className='tabler-refresh text-xl align-sub' />{' '}
             icon to see it in action
           </Typography>
       </CardContent>

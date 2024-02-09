@@ -1,39 +1,39 @@
 // React Imports
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react'
 
 // Docusaurus Imports
-import { useColorMode } from "@docusaurus/theme-common/internal"
+import { useColorMode } from '@docusaurus/theme-common/internal'
 
 // MUI Imports
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
   experimental_extendTheme as extendTheme,
   StyledEngineProvider
-} from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+} from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation'
-import type {} from '@mui/lab/themeAugmentation';
+import type {} from '@mui/lab/themeAugmentation'
 
 // Component Imports
-import ChangeMuiMode from "./ChangeMuiMode";
+import ChangeMuiMode from './ChangeMuiMode'
 
 // Config Imports
-import themeConfig from "@configs/themeConfig";
+import themeConfig from '@configs/themeConfig'
 
 // Theme Overrides Imports
-import overrides from "@core/theme/overrides";
-import colorSchemes from "@core/theme/colorSchemes";
-import spacing from "@core/theme/spacing";
-import shadows from "@core/theme/shadows";
-import customShadows from "@core/theme/customShadows";
-import typography from "@core/theme/typography";
+import overrides from '@core/theme/overrides'
+import colorSchemes from '@core/theme/colorSchemes'
+import spacing from '@core/theme/spacing'
+import shadows from '@core/theme/shadows'
+import customShadows from '@core/theme/customShadows'
+import typography from '@core/theme/typography'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Hooks
   const { colorMode } = useColorMode()
 
   const theme = extendTheme({
-    components: overrides(),
+    components: overrides('default'),
     colorSchemes: colorSchemes('default'),
     ...spacing,
     shape: {
@@ -55,7 +55,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
       lightShadow: '47 43 61',
       darkShadow: '19 17 32'
     }
-  });
+  })
 
   return (
     <StyledEngineProvider injectFirst>
@@ -68,7 +68,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         {children}
       </CssVarsProvider>
     </StyledEngineProvider>
-  );
-};
+  )
+}
 
-export default ThemeProvider;
+export default ThemeProvider

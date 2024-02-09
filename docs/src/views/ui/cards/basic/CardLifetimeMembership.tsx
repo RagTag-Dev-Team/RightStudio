@@ -12,7 +12,7 @@ const CardLifetimeMembership = () => {
       <Grid container>
         <Grid item xs={12} sm={7}>
           <CardContent>
-            <Typography variant='h5' className='mbe-2'>
+            <Typography variant='h6' className='mbe-2'>
               Lifetime Membership
             </Typography>
             <Typography color='text.secondary'>
@@ -26,13 +26,13 @@ const CardLifetimeMembership = () => {
               <Grid item xs={12} sm={6} className='flex flex-col pie-5 gap-[26px]'>
                 <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className='ri-lock-unlock-line text-xl text-textSecondary' />
+                    <i className='tabler-lock-open text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Full Access</Typography>
                 </div>
                 <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className='ri-user-3-line text-xl text-textSecondary' />
+                    <i className='tabler-user text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>15 Members</Typography>
                 </div>
@@ -40,13 +40,13 @@ const CardLifetimeMembership = () => {
               <Grid item xs={12} sm={6} className='flex flex-col pis-5 border-is gap-[26px]'>
                 <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className='ri-lock-unlock-line text-xl text-textSecondary' />
+                    <i className='tabler-lock-open text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Access all Features</Typography>
                 </div>
                 <div className='flex items-center gap-2.5'>
                   <div className='flex'>
-                    <i className='ri-user-3-line text-xl text-textSecondary' />
+                    <i className='tabler-user text-xl text-textSecondary' />
                   </div>
                   <Typography color='text.secondary'>Lifetime Free Update</Typography>
                 </div>

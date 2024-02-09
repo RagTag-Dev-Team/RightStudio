@@ -9,14 +9,13 @@ import type { TooltipProps } from '@mui/material/Tooltip'
 
 const LightTooltip = styled((props: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: props.className }} className='mie-4' />
-))(({ theme }) => ({
+))({
   [`& .${tooltipClasses.tooltip}`]: {
-    borderRadius: 4,
-    boxShadow: theme.shadows[2],
-    color: theme.palette.common.black,
-    backgroundColor: theme.palette.common.white
+    boxShadow: 'var(--mui-customShadows-sm)',
+    color: 'var(--mui-palette-common-black)',
+    backgroundColor: 'var(--mui-palette-common-white)'
   }
-}))
+})
 
 const CardTooltip = () => {
   return (

@@ -18,8 +18,8 @@ const ListSecondary = () => {
         </ListItemAvatar>
         <ListItemText primary='Caroline Black' secondary='Sweet dessert brownie.' />
         <ListItemSecondaryAction>
-          <IconButton edge='end'>
-            <i className='ri-add-line' />
+          <IconButton edge='end' size='small'>
+            <i className='tabler-plus ' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -29,8 +29,8 @@ const ListSecondary = () => {
         </ListItemAvatar>
         <ListItemText primary='Alfred Copeland' secondary='Pudding pie tiramisu.' />
         <ListItemSecondaryAction>
-          <IconButton edge='end'>
-            <i className='ri-add-line' />
+          <IconButton edge='end' size='small'>
+            <i className='tabler-plus ' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -40,8 +40,8 @@ const ListSecondary = () => {
         </ListItemAvatar>
         <ListItemText primary='Celia Schneider' secondary='Muffin pie chupa chups.' />
         <ListItemSecondaryAction>
-          <IconButton edge='end'>
-            <i className='ri-add-line' />
+          <IconButton edge='end' size='small'>
+            <i className='tabler-plus ' />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

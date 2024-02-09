@@ -98,6 +98,27 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
           activeChannel: 'var(--mui-mainColorChannels-light)',
           selectedChannel: 'var(--mui-mainColorChannels-light)'
         },
+        Alert: {
+          errorColor: 'var(--mui-palette-error-main)',
+          warningColor: 'var(--mui-palette-warning-main)',
+          infoColor: 'var(--mui-palette-info-main)',
+          successColor: 'var(--mui-palette-success-main)',
+          errorStandardBg: 'var(--mui-palette-error-lightOpacity)',
+          warningStandardBg: 'var(--mui-palette-warning-lightOpacity)',
+          infoStandardBg: 'var(--mui-palette-info-lightOpacity)',
+          successStandardBg: 'var(--mui-palette-success-lightOpacity)',
+          errorFilledColor: 'var(--mui-palette-error-contrastText)',
+          warningFilledColor: 'var(--mui-palette-warning-contrastText)',
+          infoFilledColor: 'var(--mui-palette-info-contrastText)',
+          successFilledColor: 'var(--mui-palette-success-contrastText)',
+          errorFilledBg: 'var(--mui-palette-error-main)',
+          warningFilledBg: 'var(--mui-palette-warning-main)',
+          infoFilledBg: 'var(--mui-palette-info-main)',
+          successFilledBg: 'var(--mui-palette-success-main)'
+        },
+        Chip: {
+          defaultBorder: 'var(--mui-palette-divider)'
+        },
         SnackbarContent: {
           bg: '#2F2B3D',
           color: 'var(--mui-palette-background-paper)'
@@ -207,6 +228,27 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
           focusOpacity: 0.1,
           activeChannel: 'var(--mui-mainColorChannels-dark)',
           selectedChannel: 'var(--mui-mainColorChannels-dark)'
+        },
+        Alert: {
+          errorColor: 'var(--mui-palette-error-main)',
+          warningColor: 'var(--mui-palette-warning-main)',
+          infoColor: 'var(--mui-palette-info-main)',
+          successColor: 'var(--mui-palette-success-main)',
+          errorStandardBg: 'var(--mui-palette-error-lightOpacity)',
+          warningStandardBg: 'var(--mui-palette-warning-lightOpacity)',
+          infoStandardBg: 'var(--mui-palette-info-lightOpacity)',
+          successStandardBg: 'var(--mui-palette-success-lightOpacity)',
+          errorFilledColor: 'var(--mui-palette-error-contrastText)',
+          warningFilledColor: 'var(--mui-palette-warning-contrastText)',
+          infoFilledColor: 'var(--mui-palette-info-contrastText)',
+          successFilledColor: 'var(--mui-palette-success-contrastText)',
+          errorFilledBg: 'var(--mui-palette-error-main)',
+          warningFilledBg: 'var(--mui-palette-warning-main)',
+          infoFilledBg: 'var(--mui-palette-info-main)',
+          successFilledBg: 'var(--mui-palette-success-main)'
+        },
+        Chip: {
+          defaultBorder: 'var(--mui-palette-divider)'
         },
         SnackbarContent: {
           bg: '#F7F4FF',

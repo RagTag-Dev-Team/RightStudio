@@ -23,8 +23,8 @@ const ListItemSelected = () => {
   return (
     <List>
       <ListItem disablePadding secondaryAction={
-        <IconButton edge='end' onClick={e => e.stopPropagation()}>
-         <i className='ri-message-2-line text-xl' />
+        <IconButton edge='end' size='small' onClick={e => e.stopPropagation()}>
+         <i className='tabler-message-dots' />
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 0} onClick={() => handleListItemClick(0)}>
@@ -35,8 +35,8 @@ const ListItemSelected = () => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding secondaryAction={
-        <IconButton edge='end' onClick={e => e.stopPropagation()}>
-          <i className='ri-message-2-line text-xl'/>
+        <IconButton edge='end' size='small' onClick={e => e.stopPropagation()}>
+          <i className='tabler-message-dots'/>
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 1} onClick={() => handleListItemClick(1)}>
@@ -47,8 +47,8 @@ const ListItemSelected = () => {
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding secondaryAction={
-        <IconButton edge='end' onClick={e => e.stopPropagation()}>
-         <i className='ri-message-2-line text-xl'/>
+        <IconButton edge='end' size='small' onClick={e => e.stopPropagation()}>
+         <i className='tabler-message-dots'/>
         </IconButton>
       }>
         <ListItemButton selected={selectedIndex === 2} onClick={() => handleListItemClick(2)}>

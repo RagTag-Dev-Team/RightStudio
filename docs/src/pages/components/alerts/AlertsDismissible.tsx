@@ -24,7 +24,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen1(false)}>
-                <i className='ri-close-line' />
+                <i className='tabler-x' />
               </IconButton>
             }
           >
@@ -41,7 +41,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen2(false)}>
-                <i className='ri-close-line' />
+                <i className='tabler-x' />
               </IconButton>
             }
           >
@@ -58,7 +58,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen3(false)}>
-                <i className='ri-close-line' />
+                <i className='tabler-x' />
               </IconButton>
             }
           >
@@ -75,7 +75,7 @@ const AlertsDismissible = () => {
           <Alert
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen4(false)}>
-                <i className='ri-close-line' />
+                <i className='tabler-x' />
               </IconButton>
             }
           >

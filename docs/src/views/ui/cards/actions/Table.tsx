@@ -27,21 +27,21 @@ const CardActionsTable = () => {
               <TableRow>
                 <TableCell>Collapse</TableCell>
                 <TableCell>
-                  <i className='ri-arrow-up-s-line text-xl' />
+                  <i className='tabler-chevron-up text-xl' />
                 </TableCell>
                 <TableCell>Collapse card content using collapse action</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Refresh Content</TableCell>
                 <TableCell>
-                  <i className='ri-refresh-line text-xl' />
+                  <i className='tabler-refresh text-xl' />
                 </TableCell>
                 <TableCell>Refresh your card content using refresh action</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Remove Card</TableCell>
                 <TableCell>
-                  <i className='ri-close-line text-xl' />
+                  <i className='tabler-x text-xl' />
                 </TableCell>
                 <TableCell>Remove card from page using remove card action</TableCell>
               </TableRow>

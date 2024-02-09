@@ -24,10 +24,12 @@ const Root = styled('div', {
   alignItems: 'center',
   gap: theme.spacing(2),
   flexDirection: 'column',
-  padding: theme.spacing(4),
+  padding: theme.spacing(4, 4, 2),
   borderRadius: 'var(--mui-shape-borderRadius)',
-  border: '1px solid var(--mui-palette-divider)',
-  transition: theme.transitions.create(['border-color'], { duration: theme.transitions.duration.shorter }),
+  border: '1px solid var(--mui-palette-customColors-inputBorder)',
+  transition: theme.transitions.create(['border-color'], {
+    duration: theme.transitions.duration.shorter
+  }),
 
   '&:hover': {
     borderColor: 'var(--mui-palette-action-active)'
@@ -93,7 +95,7 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
           })}
         >
           {asset || null}
-          {title ? typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title : null}
+          {title ? typeof title === 'string' ? <Title color='text.primary'>{title}</Title> : title : null}
           {content ? typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content : null}
           {type === 'radio' ? (
             <RadioInput name={name} color={color} value={value} onChange={handleChange} checked={selected === value} />

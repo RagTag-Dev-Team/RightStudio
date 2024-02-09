@@ -4,6 +4,9 @@ import { ChangeEvent, useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Import
 import { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
@@ -16,19 +19,19 @@ const data: CustomInputVerticalData[] = [
     title: 'Starter',
     isSelected: true,
     content: 'A simple start for everyone.',
-    asset: 'ri-rocket-line',
+    asset: 'tabler-rocket',
   },
   {
     value: 'standard',
     title: 'Standard',
     content: 'For small to medium businesses.',
-    asset: 'ri-user-3-line',
+    asset: 'tabler-star',
   },
   {
     value: 'enterprise',
     title: 'Enterprise',
     content: 'Solution for big organizations.',
-    asset: 'ri-vip-crown-line'
+    asset: 'tabler-briefcase'
   },
 ]
 
@@ -54,7 +57,7 @@ const CustomVerticalRadioIcon = () => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <i className={item.asset} />
+          asset = <i className={classnames(item.asset, 'text-[28px]')} />
         }
 
         return (

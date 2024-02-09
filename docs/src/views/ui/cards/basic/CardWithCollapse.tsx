@@ -31,7 +31,7 @@ const CardWithCollapse = () => {
       <CardActions className='justify-between'>
         <Button onClick={() => setExpanded(!expanded)}>Details</Button>
         <IconButton onClick={() => setExpanded(!expanded)}>
-          <i className={expanded ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
+          <i className={expanded ? 'tabler-chevron-up' : 'tabler-chevron-down'} />
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout={300}>

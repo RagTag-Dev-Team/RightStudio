@@ -13,14 +13,14 @@ import type { ThemeColor } from '@core/types'
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-root': {
-    border: `1px solid ${theme.palette.divider}`,
+    border: '1px solid var(--mui-palette-divider)',
     '&:first-of-type': {
-      borderTopLeftRadius: theme.shape.borderRadius,
-      borderTopRightRadius: theme.shape.borderRadius
+      borderTopLeftRadius: 'var(--mui-shape-borderRadius)',
+      borderTopRightRadius:'var(--mui-shape-borderRadius)'
     },
     '&:last-child': {
-      borderBottomLeftRadius: theme.shape.borderRadius,
-      borderBottomRightRadius: theme.shape.borderRadius
+      borderBottomLeftRadius: 'var(--mui-shape-borderRadius)',
+      borderBottomRightRadius: 'var(--mui-shape-borderRadius)'
     },
     '&:not(:last-child)': {
       borderBottom: 0
@@ -49,31 +49,31 @@ const courseList: CourseListType[] = [
     description: 'React is a JavaScript library for building user interfaces',
     progress: 90,
     color: 'info',
-    icon: 'ri-reactjs-fill'
+    icon: 'tabler-brand-react'
   },
   {
     description: 'Bootstrap is an open source toolkit',
     progress: 75,
     color: 'primary',
-    icon: 'ri-bootstrap-fill'
+    icon: 'tabler-brand-bootstrap'
   },
   {
     description: 'Vue.js is the Progressive JavaScript Framework',
     progress: 85,
     color: 'success',
-    icon: 'ri-vuejs-fill'
+    icon: 'tabler-brand-vue'
   },
   {
     description: 'Angular implements Functional Programming concepts',
     progress: 60,
     color: 'error',
-    icon: 'ri-angularjs-fill'
+    icon: 'tabler-brand-angular'
   },
   {
     description: 'JavaScript is the programming language of the Web',
     progress: 70,
     color: 'warning',
-    icon: 'ri-javascript-fill'
+    icon: 'tabler-brand-javascript'
   }
 ]
 

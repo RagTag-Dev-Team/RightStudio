@@ -21,7 +21,7 @@ const public_sans = Public_Sans({ subsets: ['latin'], weight: ['300', '400', '50
 const theme = (settings: Settings, mode: SystemMode, direction: Theme['direction']): Theme => {
   return {
     direction,
-    components: overrides(),
+    components: overrides(settings.skin as Skin),
     colorSchemes: colorSchemes(settings.skin as Skin),
     ...spacing,
     shape: {

@@ -37,13 +37,13 @@ const CardActionAll = () => {
           action={
             <div className='flex'>
               <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-                <i className={classnames(collapse ? 'ri-arrow-down-s-line' : 'ri-arrow-up-s-line', 'text-xl')} />
+                <i className={classnames(collapse ? 'tabler-chevron-down' : 'tabler-chevron-up', 'text-xl')} />
               </IconButton>
               <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-                <i className='ri-refresh-line text-xl' />
+                <i className='tabler-refresh text-xl' />
               </IconButton>
               <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-                <i className='ri-close-line text-xl' />
+                <i className='tabler-x text-xl' />
               </IconButton>
             </div>
           }

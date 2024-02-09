@@ -22,7 +22,7 @@ const marks = [
 const Slider = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   height: 2,
   padding: '15px 0',
-  color: theme.palette.primary.main,
+  color: 'var(--mui-palette-primary-main)',
   '& .MuiSlider-rail': {
     opacity: 0.5,
     backgroundColor: '#bfbfbf'
@@ -42,10 +42,11 @@ const Slider = styled(MuiSlider)<SliderProps>(({ theme }) => ({
   '& .MuiSlider-thumb': {
     width: 28,
     height: 28,
-    backgroundColor: theme.palette.common.white,
+    border: 'none',
+    backgroundColor: 'var(--mui-palette-common-white)',
     boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)',
-    '&:focus, &:hover, &.Mui-active': {
-      boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02) !important',
 
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
@@ -54,17 +55,17 @@ const Slider = styled(MuiSlider)<SliderProps>(({ theme }) => ({
     }
   },
   '& .MuiSlider-valueLabel': {
-    top: -6,
+    top: 0,
     fontSize: 12,
     fontWeight: 'normal',
     backgroundColor: 'unset',
-    color: theme.palette.text.primary,
+    color: 'var(--mui-palette-text-primary)',
     '&:before': {
       display: 'none'
     },
     '& *': {
       background: 'transparent',
-      color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black
+      color: theme.palette.mode === 'dark' ? 'var(--mui-palette-common-white)' : 'var(--mui-palette-common-black)'
     }
   }
 }))

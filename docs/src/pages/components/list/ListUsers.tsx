@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import ListItem from '@mui/material/ListItem'
-import { Theme, styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItemText from '@mui/material/ListItemText'
@@ -15,14 +15,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-container': {
-    border: `1px solid ${theme.palette.divider}`,
+    border: '1px solid var(--mui-palette-divider)',
     '&:first-of-type': {
-      borderTopLeftRadius: theme.shape.borderRadius,
-      borderTopRightRadius: theme.shape.borderRadius
+      borderTopLeftRadius: 'var(--mui-shape-borderRadius)',
+      borderTopRightRadius: 'var(--mui-shape-borderRadius)'
     },
     '&:last-child': {
-      borderBottomLeftRadius: theme.shape.borderRadius,
-      borderBottomRightRadius: theme.shape.borderRadius
+      borderBottomLeftRadius: 'var(--mui-shape-borderRadius)',
+      borderBottomRightRadius: 'var(--mui-shape-borderRadius)'
     },
     '&:not(:last-child)': {
       borderBottom: 0
@@ -89,8 +89,8 @@ const ListUsers = () => {
           <div>
             <ListItemText primary={user.name} />
             <div className='flex items-center flex-wrap'>
-              <Box className='mie-3 flex items-center gap-1' sx={{ '& svg': { color: user.statusColor } }}>
-                <i className='ri-circle-fill text-[10px]' />
+              <Box className='mie-3 flex items-center gap-1' sx={{ '& i, & svg': { color: user.statusColor } }}>
+                <i className='tabler-circle-filled text-[10px]' />
                 <Typography variant='body2'>{user.status}</Typography>
               </Box>
               <Typography variant='body2' color='text.disabled'>
