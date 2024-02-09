@@ -51,7 +51,7 @@ const ButtonGroupSplit = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <i className='ri-arrow-down-s-fill' />
+          <i className='tabler-chevron-down' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>

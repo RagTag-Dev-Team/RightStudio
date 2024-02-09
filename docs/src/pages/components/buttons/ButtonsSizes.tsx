@@ -28,6 +28,17 @@ const ButtonsSizes = () => {
         </Button>
       </div>
       <div className='flex gap-4 items-center'>
+        <Button variant='tonal' size='small'>
+          Small
+        </Button>
+        <Button variant='tonal' size='medium'>
+          Medium
+        </Button>
+        <Button variant='tonal' size='large'>
+          Large
+        </Button>
+      </div>
+      <div className='flex gap-4 items-center'>
         <Button variant='contained' size='small'>
           Small
         </Button>
@@ -40,13 +51,13 @@ const ButtonsSizes = () => {
       </div>
       <div className='flex gap-4 items-center'>
         <IconButton aria-label='capture screenshot' color='primary' size='small'>
-          <i className='ri-camera-lens-fill text-xl' />
+          <i className='tabler-aperture text-xl' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='primary'>
-          <i className='ri-camera-lens-fill' />
+          <i className='tabler-aperture' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='primary' size='large'>
-          <i className='ri-camera-lens-fill text-[28px]' />
+          <i className='tabler-aperture text-[28px]' />
         </IconButton>
       </div>
     </div>

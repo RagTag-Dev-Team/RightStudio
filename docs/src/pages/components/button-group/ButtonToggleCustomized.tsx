@@ -3,22 +3,28 @@ import { useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // MUI Imports
-import Divider from '@mui/material/Divider'
 import { styled } from '@mui/material/styles'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import MuiToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import MuiToggleButton from '@mui/material/ToggleButton'
+import type { ToggleButtonGroupProps } from '@mui/material/ToggleButtonGroup'
 import type { ToggleButtonProps } from '@mui/material/ToggleButton'
+
+// Styled ToggleButtonGroup component
+const ToggleButtonGroup = styled(MuiToggleButtonGroup)<ToggleButtonGroupProps>(({ theme }) => ({
+  padding: theme.spacing(1.75),
+  border: '1px solid var(--mui-palette-divider)'
+}))
 
 // Styled ToggleButton component
 const ToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(({ theme }) => ({
-  margin: theme.spacing(1),
+  margin: '0 !important',
   border: 'none !important',
-  padding: theme.spacing(2),
+  padding: theme.spacing(2.5),
   '&:not(:first-of-type)': {
-    borderRadius: `${theme.shape.borderRadius}px !important`
+    borderRadius: 'var(--mui-shape-borderRadius) !important'
   },
   '&:first-of-type': {
-    borderRadius: `${theme.shape.borderRadius}px !important`
+    borderRadius: 'var(--mui-shape-borderRadius) !important'
   }
 }))
 
@@ -36,34 +42,33 @@ const ButtonToggleCustomized = () => {
   }
 
   return (
-    <div className='flex flex-wrap'>
+    <div className='flex flex-wrap gap-4'>
       <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
         <ToggleButton value='left' aria-label='left aligned'>
-          <i className='ri-align-left' />
+          <i className='tabler-align-left' />
         </ToggleButton>
         <ToggleButton value='center' aria-label='center aligned'>
-          <i className='ri-align-center' />
+          <i className='tabler-align-center' />
         </ToggleButton>
         <ToggleButton value='right' aria-label='right aligned'>
-          <i className='ri-align-right' />
+          <i className='tabler-align-right' />
         </ToggleButton>
         <ToggleButton value='justify' aria-label='justified' disabled>
-          <i className='ri-align-justify' />
+          <i className='tabler-align-justified' />
         </ToggleButton>
       </ToggleButtonGroup>
-      <Divider flexItem orientation='vertical' className='m-1'/>
       <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='text alignment'>
         <ToggleButton value='bold' aria-label='bold'>
-          <i className='ri-bold' />
+          <i className='tabler-bold' />
         </ToggleButton>
         <ToggleButton value='italic' aria-label='italic'>
-          <i className='ri-italic' />
+          <i className='tabler-italic' />
         </ToggleButton>
         <ToggleButton value='underlined' aria-label='underlined'>
-          <i className='ri-underline' />
+          <i className='tabler-underline' />
         </ToggleButton>
         <ToggleButton value='color' aria-label='color' disabled>
-          <i className='ri-paint-fill' />
+          <i className='tabler-color-swatch' />
         </ToggleButton>
       </ToggleButtonGroup>
     </div>

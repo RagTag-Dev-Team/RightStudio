@@ -17,16 +17,16 @@ const ButtonToggleBasic = () => {
   return (
     <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
       <ToggleButton value='left' aria-label='left aligned'>
-        <i className='ri-align-left' />
+        <i className='tabler-align-left' />
       </ToggleButton>
       <ToggleButton value='center' aria-label='center aligned'>
-        <i className='ri-align-center' />
+        <i className='tabler-align-center' />
       </ToggleButton>
       <ToggleButton value='right' aria-label='right aligned'>
-        <i className='ri-align-right' />
+        <i className='tabler-align-right' />
       </ToggleButton>
       <ToggleButton value='justify' aria-label='justified' disabled>
-        <i className='ri-align-justify' />
+        <i className='tabler-align-justified' />
       </ToggleButton>
     </ToggleButtonGroup>
   )

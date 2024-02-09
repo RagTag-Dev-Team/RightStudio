@@ -8,62 +8,62 @@ const ButtonsFab = () => {
       <Typography className='font-medium'>Circular Variant</Typography>
       <div className='flex gap-4 mbe-6'>
         <Fab aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='primary' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='secondary' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='success' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='error' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='warning' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab color='info' aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
         <Fab disabled aria-label='edit'>
-          <i className='ri-pencil-line' />
+          <i className='tabler-pencil' />
         </Fab>
       </div>
       <Typography className='font-medium'>Extended Variant</Typography>
       <div className='flex gap-4'>
         <Fab variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='primary' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='secondary' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='success' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='error' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='warning' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab color='info' variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
         <Fab disabled variant='extended'>
-          <i className='ri-add-line mie-1'/>
+          <i className='tabler-plus mie-1'/>
           Add
         </Fab>
       </div>

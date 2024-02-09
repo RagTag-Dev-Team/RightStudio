@@ -31,16 +31,16 @@ const ButtonToggleEnforceValue = () => {
         <Typography className='font-medium mbe-2'>Exclusive Selection</Typography>
         <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
           <ToggleButton value='left' aria-label='left aligned'>
-            <i className='ri-align-left' />
+            <i className='tabler-align-left' />
           </ToggleButton>
           <ToggleButton value='center' aria-label='center aligned'>
-            <i className='ri-align-center' />
+            <i className='tabler-align-center' />
           </ToggleButton>
           <ToggleButton value='right' aria-label='right aligned'>
-            <i className='ri-align-right' />
+            <i className='tabler-align-right' />
           </ToggleButton>
           <ToggleButton value='justify' aria-label='justified' disabled>
-            <i className='ri-align-justify' />
+            <i className='tabler-align-justified' />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>
@@ -48,13 +48,13 @@ const ButtonToggleEnforceValue = () => {
         <Typography className='font-medium mbe-2'>Multiple Selection</Typography>
         <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='device'>
           <ToggleButton value='laptop' aria-label='laptop'>
-            <i className='ri-macbook-line' />
+            <i className='tabler-device-laptop' />
           </ToggleButton>
           <ToggleButton value='desktop' aria-label='desktop'>
-            <i className='ri-computer-line' />
+            <i className='tabler-device-desktop' />
           </ToggleButton>
           <ToggleButton value='phone' aria-label='phone'>
-            <i className='ri-smartphone-line' />
+            <i className='tabler-device-mobile' />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>

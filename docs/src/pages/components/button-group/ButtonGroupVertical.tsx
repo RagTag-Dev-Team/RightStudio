@@ -4,8 +4,13 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 
 const ButtonGroupVertical = () => {
   return (
-    <div className='flex gap-4'>
+    <div className='flex gap-4 flex-wrap'>
       <ButtonGroup variant='outlined' orientation='vertical'>
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>
+      <ButtonGroup variant='tonal' orientation='vertical'>
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>

@@ -20,6 +20,8 @@ import ButtonsColors from '@docPages/components/buttons/ButtonsColors'
 import SourceCodeButtonsColors from '!!raw-loader!@docPages/components/buttons/ButtonsColors'
 import ButtonsOutlined from '@docPages/components/buttons/ButtonsOutlined'
 import SourceCodeButtonsOutlined from '!!raw-loader!@docPages/components/buttons/ButtonsOutlined'
+import ButtonsTonal from '@docPages/components/buttons/ButtonsTonal'
+import SourceCodeButtonsTonal from '!!raw-loader!@docPages/components/buttons/ButtonsTonal'
 import ButtonsFabSizes from '@docPages/components/buttons/ButtonsFabSizes'
 import SourceCodeButtonsFabSizes from '!!raw-loader!@docPages/components/buttons/ButtonsFabSizes'
 import ButtonsContained from '@docPages/components/buttons/ButtonsContained'
@@ -73,6 +75,19 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <ButtonsOutlined />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title="Tonal"
+      code={SourceCodeButtonsTonal}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='tonal'</code> prop with <code>&lt;Button&gt;</code> component for tonal buttons.
+        </Typography>
+      }
+      <ButtonsTonal />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>

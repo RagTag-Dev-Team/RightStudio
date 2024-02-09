@@ -17,13 +17,13 @@ const ButtonToggleVertical = () => {
   return (
     <ToggleButtonGroup exclusive value={view} orientation='vertical' onChange={handleView} aria-label='text alignment'>
       <ToggleButton value='left' aria-label='left aligned'>
-        <i className='ri-layout-column-fill' />
+        <i className='tabler-layout-sidebar' />
       </ToggleButton>
       <ToggleButton value='center' aria-label='center aligned'>
-        <i className='ri-layout-5-fill' />
+        <i className='tabler-layout-board' />
       </ToggleButton>
       <ToggleButton value='right' aria-label='right aligned'>
-        <i className='ri-layout-masonry-fill' />
+        <i className='tabler-layout-board-split' />
       </ToggleButton>
     </ToggleButtonGroup>
   )

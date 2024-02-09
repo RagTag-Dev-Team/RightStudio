@@ -25,6 +25,20 @@ const ButtonsColors = () => {
         </Button>
       </div>
       <div className='flex gap-4'>
+        <Button variant='tonal' color='success'>
+          Success
+        </Button>
+        <Button variant='tonal' color='error'>
+          Error
+        </Button>
+        <Button variant='tonal' color='warning'>
+          Warning
+        </Button>
+        <Button variant='tonal' color='info'>
+          Info
+        </Button>
+      </div>
+      <div className='flex gap-4'>
         <Button variant='contained' color='success'>
           Success
         </Button>

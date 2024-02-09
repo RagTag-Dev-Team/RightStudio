@@ -215,3 +215,15 @@ declare module '@mui/material/styles' {
     }
   }
 }
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    tonal: true
+  }
+}
+
+declare module '@mui/material/ButtonGroup' {
+  interface ButtonGroupPropsVariantOverrides {
+    tonal: true
+  }
+}
