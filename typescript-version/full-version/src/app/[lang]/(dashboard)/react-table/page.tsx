@@ -20,7 +20,7 @@ const Tables = () => {
         <Typography variant='body2'>
           <code>@tanstack/react-table</code> is a third-party library. Please refer to its{' '}
           <Link
-            href='https://tanstack.com/table/'
+            href='https://tanstack.com/table'
             target='_blank'
             rel='noopener noreferrer'
             className='no-underline text-primary'

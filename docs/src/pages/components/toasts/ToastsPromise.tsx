@@ -28,10 +28,10 @@ const ToastsPromise = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-timer-2-line mbe-2 text-[28px]' />
+      <i className='ri-timer-2-line mbe-2 text-[42px]' />
       <Typography className='mbe-4' variant='h5'>Promise</Typography>
       <Typography className='mbe-3'>Update automatically when promise resolves / fails.</Typography>
-      <Button className='mbe-8'variant='contained' onClick={handleClick}>
+      <Button variant='contained' onClick={handleClick}>
         Promise
       </Button>
     </div>

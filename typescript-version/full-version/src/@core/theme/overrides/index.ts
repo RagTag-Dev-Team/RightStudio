@@ -19,10 +19,11 @@ import list from './list'
 import menu from './menu'
 import paper from './paper'
 import progress from './progress'
-import rating from './rating'
+import Rating from './rating'
 import slider from './slider'
 import tablePagination from './table-pagination'
 import tabs from './tabs'
+import timeline from './timeline'
 import tooltip from './tooltip'
 import typography from './typography'
 
@@ -46,10 +47,11 @@ const overrides = (skin: Skin) => {
     menu(skin),
     paper,
     progress,
-    rating,
+    Rating,
     slider,
     tablePagination,
     tabs,
+    timeline,
     tooltip,
     typography
   )

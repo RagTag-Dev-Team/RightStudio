@@ -16,7 +16,7 @@ import type { Locale } from '@/configs/i18n'
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
-const LoginForm = () => {
+const Login = () => {
   // States
   const [email, setEmail] = useState('admin@master.com')
   const [password, setPassword] = useState('admin')
@@ -71,4 +71,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default Login

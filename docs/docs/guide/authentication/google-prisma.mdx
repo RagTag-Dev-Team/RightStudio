@@ -72,21 +72,21 @@ npx prisma generate
 To configure your database to use the new schema (e.g. creating tables and columns), run the following command:
 
 <Tabs>
-  <TabItem value="PNPM">
+  <TabItem value="pnpm">
 
   ```bash
   pnpm migrate
   ```
 
   </TabItem>
-  <TabItem value="YARN">
+  <TabItem value="yarn">
 
   ```bash
   yarn migrate
   ```
 
   </TabItem>
-  <TabItem value="NPM">
+  <TabItem value="npm">
 
   ```bash
   npm run migrate
@@ -210,13 +210,13 @@ Here is the example code for the login page:
 // Third-party Imports
 import { signIn } from 'next-auth/react'
 
-const LoginForm = () => {
+const Login = () => {
   return (
     <button onClick={() => signIn('google')}>Login with google</button>
   )
 }
 
-export default LoginForm
+export default Login
 ```
 
 ## Extending NextAuth Types for Custom User Fields

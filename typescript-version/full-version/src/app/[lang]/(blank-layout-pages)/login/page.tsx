@@ -2,15 +2,15 @@
 import type { Metadata } from 'next'
 
 // Component Imports
-import LoginForm from '@views/login/LoginForm'
+import Login from '@views/Login'
 
 export const metadata: Metadata = {
   title: 'Login',
   description: 'Login to your account'
 }
 
-const Login = () => {
-  return <LoginForm />
+const LoginPage = () => {
+  return <Login />
 }
 
-export default Login
+export default LoginPage

@@ -27,6 +27,7 @@ const Root = styled('div', {
   padding: theme.spacing(4, 4, 2),
   borderRadius: 'var(--mui-shape-borderRadius)',
   border: '1px solid var(--mui-palette-customColors-inputBorder)',
+  color: 'var(--mui-palette-text-primary)',
   transition: theme.transitions.create(['border-color'], {
     duration: theme.transitions.duration.shorter
   }),

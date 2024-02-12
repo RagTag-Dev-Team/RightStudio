@@ -7,7 +7,7 @@ const Target = () => {
   return (
     <VerticalNav customBreakpoint='200px'>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
-        <MenuItem href='https://www.google.com/' target='_blank' rel='noopener'>
+        <MenuItem href='https://www.google.com' target='_blank' rel='noopener'>
           Analytics Dashboard
         </MenuItem>
         <MenuItem>Calendar</MenuItem>

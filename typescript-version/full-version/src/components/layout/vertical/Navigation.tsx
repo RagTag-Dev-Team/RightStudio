@@ -8,7 +8,6 @@ import { useColorScheme } from '@mui/material/styles'
 
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
-import type { Settings } from '@core/contexts/settingsContext'
 import type { Mode, SystemMode } from '@core/types'
 
 // Component Imports
@@ -24,7 +23,6 @@ import { useSettings } from '@core/hooks/useSettings'
 import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 type Props = {
-  settingsCookie: Settings
   dictionary: Awaited<ReturnType<typeof getDictionary>>
   mode: Mode
   systemMode: SystemMode
@@ -32,7 +30,7 @@ type Props = {
 
 const Navigation = (props: Props) => {
   // Props
-  const { settingsCookie, dictionary, mode, systemMode } = props
+  const { dictionary, mode, systemMode } = props
 
   // Hooks
   const { isHovered, isCollapsed, collapseVerticalNav } = useVerticalNav()
@@ -41,13 +39,12 @@ const Navigation = (props: Props) => {
 
   // Vars
   const isServer = typeof window === 'undefined'
-  let isSemiDark, isDark
+  const isSemiDark = settings.semiDark
+  let isDark
 
   if (isServer) {
-    isSemiDark = settingsCookie.semiDark || false
     isDark = mode === 'system' ? systemMode === 'dark' : mode === 'dark'
   } else {
-    isSemiDark = settings.semiDark
     isDark = muiMode === 'system' ? muiSystemMode === 'dark' : muiMode === 'dark'
   }
 
