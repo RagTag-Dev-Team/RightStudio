@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl'
 
 const SelectVariants = () => {
   return (
-    <div className='flex gap-4 flex-col'>
+    <div className='flex gap-6'>
       <FormControl fullWidth>
         <InputLabel id='demo-basic-select-outlined-label'>Age</InputLabel>
         <Select

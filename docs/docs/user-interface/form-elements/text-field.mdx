@@ -10,22 +10,18 @@ import Typography from '@mui/material/Typography'
 import CardSnippet from '@docComponents/card-snippet/index'
 import TextFieldSizes from '@docPages/form-elements/text-field/TextFieldSizes'
 import SourceCodeTextFieldSizes from '!!raw-loader!@docPages/form-elements/text-field/TextFieldSizes'
+import TextCustomField from '@docPages/form-elements/text-field/TextCustomField'
+import SourceCodeTextCustomField from '!!raw-loader!@docPages/form-elements/text-field/TextCustomField'
 import TextFieldColor from '@docPages/form-elements/text-field/TextFieldColor'
 import SourceCodeTextFieldColor from '!!raw-loader!@docPages/form-elements/text-field/TextFieldColor'
 import TextFieldIcons from '@docPages/form-elements/text-field/TextFieldIcons'
 import SourceCodeTextFieldIcons from '!!raw-loader!@docPages/form-elements/text-field/TextFieldIcons'
 import TextFieldLayout from '@docPages/form-elements/text-field/TextFieldLayout'
 import SourceCodeTextFieldLayout from '!!raw-loader!@docPages/form-elements/text-field/TextFieldLayout'
-import TextFieldInputs from '@docPages/form-elements/text-field/TextFieldInputs'
-import SourceCodeTextFieldInputs from '!!raw-loader!@docPages/form-elements/text-field/TextFieldInputs'
 import TextFieldVariant from '@docPages/form-elements/text-field/TextFieldVariant'
 import SourceCodeTextFieldVariant from '!!raw-loader!@docPages/form-elements/text-field/TextFieldVariant'
 import TextFieldFormProps from '@docPages/form-elements/text-field/TextFieldFormProps'
 import SourceCodeTextFieldFormProps from '!!raw-loader!@docPages/form-elements/text-field/TextFieldFormProps'
-import TextFieldComponents from '@docPages/form-elements/text-field/TextFieldComponents'
-import SourceCodeTextFieldComponents from '!!raw-loader!@docPages/form-elements/text-field/TextFieldComponents'
-import TextFieldCustomized from '@docPages/form-elements/text-field/TextFieldCustomized'
-import SourceCodeTextFieldCustomized from '!!raw-loader!@docPages/form-elements/text-field/TextFieldCustomized'
 import TextFieldValidation from '@docPages/form-elements/text-field/TextFieldValidation'
 import SourceCodeTextFieldValidation from '!!raw-loader!@docPages/form-elements/text-field/TextFieldValidation'
 import TextFieldInputAdornment from '@docPages/form-elements/text-field/TextFieldInputAdornment'
@@ -40,7 +36,20 @@ import SourceCodeTextFieldControlledUncontrolled from '!!raw-loader!@docPages/fo
 Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-text-field/) and [API documentation](https://mui.com/material-ui/react-text-field/#api).
 
 <Grid container spacing={6}>
-  <Grid item xs={12} >
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Custom'
+      code={SourceCodeTextCustomField}
+    >
+      {
+        <Typography className='mbe-4'>
+         Use the <code>CustomTextField</code> component for the custom variant.
+        </Typography>
+      }
+      <TextCustomField />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6} >
     <CardSnippet
       title='Variants'
       code={SourceCodeTextFieldVariant}
@@ -92,7 +101,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <TextFieldSizes />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <CardSnippet
       title='Color'
       code={SourceCodeTextFieldColor}
@@ -105,20 +114,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <TextFieldColor />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Input Adornment'
-      code={SourceCodeTextFieldInputAdornment}
-    >
-      {
-        <Typography className='mbe-4'>
-          The main way is with an <code>InputAdornment</code>. This can be used to add a prefix, a suffix or an action to an input. For instance, you can use an icon button to hide or reveal the password.
-        </Typography>
-      }
-      <TextFieldInputAdornment />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <CardSnippet
       title='Icons'
       code={SourceCodeTextFieldIcons}
@@ -131,17 +127,17 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <TextFieldIcons />
     </CardSnippet>
   </Grid>
-   <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <CardSnippet
-      title='Validation'
-      code={SourceCodeTextFieldValidation}
+      title='Input Adornment'
+      code={SourceCodeTextFieldInputAdornment}
     >
       {
         <Typography className='mbe-4'>
-          The <code>error</code> prop toggles the error state, the <code>helperText</code> prop can then be used to provide feedback to the user about the error.
+          The main way is with an <code>InputAdornment</code>. This can be used to add a prefix, a suffix or an action to an input. For instance, you can use an icon button to hide or reveal the password.
         </Typography>
       }
-      <TextFieldValidation />
+      <TextFieldInputAdornment />
     </CardSnippet>
   </Grid>
   <Grid item xs={12}>
@@ -164,38 +160,17 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <TextFieldLayout />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12}>
+   <Grid item xs={12}>
     <CardSnippet
-      title='Components'
-      code={SourceCodeTextFieldComponents}
+      title='Validation'
+      code={SourceCodeTextFieldValidation}
     >
       {
         <Typography className='mbe-4'>
-          <code>TextField</code> is composed of smaller components (<code>FormControl</code>, <code>Input</code>, <code>FilledInput</code>, <code>InputLabel</code>, <code>OutlinedInput</code>, and <code>FormHelperText</code>) that you can leverage directly to significantly customize your form inputs.
+          The <code>error</code> prop toggles the error state, the <code>helperText</code> prop can then be used to provide feedback to the user about the error.
         </Typography>
       }
-      <TextFieldComponents />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Inputs'
-      code={SourceCodeTextFieldInputs}
-    >
-      <TextFieldInputs />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Customized'
-      code={SourceCodeTextFieldCustomized}
-    >
-      {
-        <Typography className='mbe-4'>
-          Use <code>styled</code> hook to customize your text field.
-        </Typography>
-      }
-      <TextFieldCustomized />
+      <TextFieldValidation />
     </CardSnippet>
   </Grid>
 </Grid>

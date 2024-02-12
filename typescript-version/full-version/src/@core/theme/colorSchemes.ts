@@ -122,6 +122,11 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
         Chip: {
           defaultBorder: 'var(--mui-palette-divider)'
         },
+        FilledInput: {
+          bg: 'var(--mui-palette-action-hover)',
+          hoverBg: 'var(--mui-palette-action-selected)',
+          disabledBg: 'var(--mui-palette-action-hover)'
+        },
         SnackbarContent: {
           bg: '#2F2B3D',
           color: 'var(--mui-palette-background-paper)'
@@ -265,6 +270,11 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
         },
         Chip: {
           defaultBorder: 'var(--mui-palette-divider)'
+        },
+        FilledInput: {
+          bg: 'var(--mui-palette-action-hover)',
+          hoverBg: 'var(--mui-palette-action-selected)',
+          disabledBg: `var(--mui-palette-action-hover)`
         },
         SnackbarContent: {
           bg: '#F7F4FF',

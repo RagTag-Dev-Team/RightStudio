@@ -24,7 +24,7 @@ const TextFieldIcons = () => {
                 label='With a start adornment'
                 startAdornment={
                   <InputAdornment position='start'>
-                    <i className='ri-account-circle-line' />
+                    <i className='tabler-user-circle' />
                   </InputAdornment>
                 }
               />
@@ -37,7 +37,7 @@ const TextFieldIcons = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
-                    <i className='ri-account-circle-line' />
+                    <i className='tabler-user-circle' />
                   </InputAdornment>
                 )
               }}
@@ -46,7 +46,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className='ri-account-circle-line text-actionActive' />
+                <i className='tabler-user-circle text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth label='With a grid' />
@@ -59,7 +59,7 @@ const TextFieldIcons = () => {
             <FilledInput
               startAdornment={
                 <InputAdornment position='start'>
-                  <i className='ri-account-circle-line' />
+                  <i className='tabler-user-circle' />
                 </InputAdornment>
               }
             />
@@ -73,7 +73,7 @@ const TextFieldIcons = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <i className='ri-account-circle-line' />
+                  <i className='tabler-user-circle' />
                 </InputAdornment>
               )
             }}
@@ -82,7 +82,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className='ri-account-circle-line text-actionActive' />
+                <i className='tabler-user-circle text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='filled' label='With a grid' />
@@ -95,7 +95,7 @@ const TextFieldIcons = () => {
             <Input
               startAdornment={
                 <InputAdornment position='start'>
-                  <i className='ri-account-circle-line' />
+                  <i className='tabler-user-circle' />
                 </InputAdornment>
               }
             />
@@ -109,7 +109,7 @@ const TextFieldIcons = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <i className='ri-account-circle-line' />
+                  <i className='tabler-user-circle' />
                 </InputAdornment>
               )
             }}
@@ -118,7 +118,7 @@ const TextFieldIcons = () => {
           <Grid item xs={12} md={4}>
             <Grid container className='items-center'>
               <Grid item xs={1}>
-                <i className='ri-account-circle-line mbs-3 text-actionActive' />
+                <i className='tabler-user-circle mbs-3 text-actionActive' />
               </Grid>
               <Grid item xs={11}>
                 <TextField fullWidth variant='standard' label='With a grid' />

@@ -3,8 +3,10 @@ import { useState } from 'react'
 
 // MUI Imports
 import Chip from '@mui/material/Chip'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
+
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Data Imports
 import { top100Films } from '../../../data/top100films'
@@ -22,13 +24,13 @@ const AutocompleteFixedOptions = () => {
   const [value, setValue] = useState<DataType[]>([...fixedOptions, top100Films[13]])
 
   return (
-    <Autocomplete
+    <CustomAutocomplete
       multiple
       value={value}
       options={top100Films}
       id='autocomplete-fixed-option'
       getOptionLabel={option => option.title || ''}
-      renderInput={params => <TextField {...params} label='Fixed tag' placeholder='Favorites' />}
+      renderInput={params => <CustomTextField {...params} label='Fixed tag' placeholder='Favorites' />}
       onChange={(event, newValue) => {
         setValue([...fixedOptions, ...newValue.filter(option => fixedOptions.indexOf(option) === -1)])
       }}

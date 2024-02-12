@@ -85,7 +85,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
+                    <i className={classnames(values.showPassword ? 'tabler-eye' : 'tabler-eye-off', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }
@@ -130,7 +130,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
+                    <i className={classnames(values.showPassword ? 'tabler-eye' : 'tabler-eye-off', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }
@@ -175,7 +175,7 @@ const TextFieldInputAdornment = () => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <i className={classnames(values.showPassword ? 'ri-eye-line' : 'ri-eye-off-line', 'text-xl')} />
+                    <i className={classnames(values.showPassword ? 'tabler-eye' : 'tabler-eye-off', 'text-xl')} />
                   </IconButton>
                 </InputAdornment>
               }

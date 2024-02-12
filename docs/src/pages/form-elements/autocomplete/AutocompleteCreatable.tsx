@@ -2,8 +2,11 @@
 import { useState } from 'react'
 
 // MUI Imports
-import TextField from '@mui/material/TextField'
-import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
+import { createFilterOptions } from '@mui/material/Autocomplete'
+
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Data Imports
 import { top100Films } from '../../../data/top100films'
@@ -21,7 +24,7 @@ const AutocompleteCreatable = () => {
   const [value, setValue] = useState<FilmOptionType | null>(null)
 
   return (
-    <Autocomplete
+    <CustomAutocomplete
       freeSolo
       clearOnBlur
       value={value}
@@ -29,7 +32,7 @@ const AutocompleteCreatable = () => {
       options={top100Films}
       id='autocomplete-free-solo-with-text'
       renderOption={(props, option) => <li {...props}>{option.title}</li>}
-      renderInput={params => <TextField {...params} label='Free solo with text demo' />}
+      renderInput={params => <CustomTextField {...params} label='Free solo with text demo' />}
       getOptionLabel={option => {
         if (typeof option === 'string') {
           return option || ''

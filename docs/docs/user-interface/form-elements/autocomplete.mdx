@@ -8,6 +8,8 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import CardSnippet from '@docComponents/card-snippet/index'
+import AutocompleteCustom from '@docPages/form-elements/autocomplete/AutocompleteCustom'
+import SourceCodeAutocompleteCustom from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteCustom'
 import AutocompleteProps from '@docPages/form-elements/autocomplete/AutocompleteProps'
 import SourceCodeAutocompleteProps from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteProps'
 import AutocompleteCountry from '@docPages/form-elements/autocomplete/AutocompleteCountry'
@@ -22,8 +24,8 @@ import AutocompleteCreatable from '@docPages/form-elements/autocomplete/Autocomp
 import SourceCodeAutocompleteCreatable from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteCreatable'
 import AutocompleteLimitTags from '@docPages/form-elements/autocomplete/AutocompleteLimitTags'
 import SourceCodeAutocompleteLimitTags from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteLimitTags'
-import AutocompleteSmallSize from '@docPages/form-elements/autocomplete/AutocompleteSmallSize'
-import SourceCodeAutocompleteSmallSize from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteSmallSize'
+import AutocompleteMediumSize from '@site/src/pages/form-elements/autocomplete/AutocompleteMediumSize'
+import SourceCodeAutocompleteMediumSize from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteMediumSize'
 import AutocompleteCheckboxes from '@docPages/form-elements/autocomplete/AutocompleteCheckboxes'
 import SourceCodeAutocompleteCheckboxes from '!!raw-loader!@docPages/form-elements/autocomplete/AutocompleteCheckboxes'
 import AutocompleteCustomInput from '@docPages/form-elements/autocomplete/AutocompleteCustomInput'
@@ -46,7 +48,20 @@ import SourceCodeAutocompleteControlledUncontrolled from '!!raw-loader!@docPages
 Please refer to MUI's official docs for more details on component's [usage guide](https://mui.com/material-ui/react-autocomplete/) and [API documentation](https://mui.com/material-ui/api/autocomplete/).
 
 <Grid container spacing={6}>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
+    <CardSnippet
+      title='Variants'
+      code={SourceCodeAutocompleteCustom}
+    >
+     {
+        <Typography className='mbe-4'>
+          Use the <code>CustomTextField</code> component in the <code>renderInput</code> prop with the <code>CustomAutocomplete</code> component to render a custom autocomplete. Use <code>disabled</code> and <code>readOnly</code> props with the <code>CustomAutocomplete</code> component for disabled and read-only autocomplete respectively.
+        </Typography>
+      }
+      <AutocompleteCustom />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
     <CardSnippet
       title='Variants'
       code={SourceCodeAutocompleteVariants}
@@ -59,7 +74,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <AutocompleteVariants />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <CardSnippet
@@ -68,7 +83,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
         >
           {
             <Typography className='mbe-4'>
-              Use <code>value</code> prop with <code>Autocomplete</code> component for controlled autocomplete input.
+              Use <code>value</code> prop with <code>CustomAutocomplete</code> component for controlled autocomplete input.
             </Typography>
           }
           <AutocompleteControlledUncontrolled />
@@ -76,35 +91,22 @@ Please refer to MUI's official docs for more details on component's [usage guide
       </Grid>
       <Grid item xs={12}>
         <CardSnippet
-        title='Free Solo'
-        code={SourceCodeAutocompleteFreeSolo}
+          title='Autocomplete Props'
+          code={SourceCodeAutocompleteProps}
         >
           {
             <Typography className='mbe-4'>
-              Use <code>freeSolo</code> prop so the textbox can contain any arbitrary value.
+              Each of the following examples demonstrate one feature of <code>Autocomplete</code> component.
             </Typography>
           }
-          <AutocompleteFreeSolo />
+          <AutocompleteProps />
         </CardSnippet>
       </Grid>
     </Grid>
   </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Autocomplete Props'
-      code={SourceCodeAutocompleteProps}
-    >
-      {
-        <Typography className='mbe-4'>
-          Each of the following examples demonstrate one feature of <code>Autocomplete</code> component.
-        </Typography>
-      }
-      <AutocompleteProps />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <Grid container spacing={6}>
-      <Grid item xs={12}>
+      <Grid item xs={12} md={6}>
         <CardSnippet
           title='Country Select'
           code={SourceCodeAutocompleteCountry}
@@ -117,7 +119,20 @@ Please refer to MUI's official docs for more details on component's [usage guide
           <AutocompleteCountry />
         </CardSnippet>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} md={6}>
+        <CardSnippet
+        title='Free Solo'
+        code={SourceCodeAutocompleteFreeSolo}
+        >
+          {
+            <Typography className='mbe-4'>
+              Use <code>freeSolo</code> prop so the textbox can contain any arbitrary value.
+            </Typography>
+          }
+          <AutocompleteFreeSolo />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12} md={6}>
         <CardSnippet
           title='Creatable'
           code={SourceCodeAutocompleteCreatable}
@@ -128,6 +143,45 @@ Please refer to MUI's official docs for more details on component's [usage guide
             </Typography>
           }
           <AutocompleteCreatable />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardSnippet
+          title='Grouped'
+          code={SourceCodeAutocompleteGrouped}
+        >
+          {
+            <Typography className='mbe-4'>
+              Use <code>groupBy</code> prop to group the list according to your needs.
+            </Typography>
+          }
+          <AutocompleteGrouped />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardSnippet
+          title='Disabled Options'
+          code={SourceCodeAutocompleteDisabledOptions}
+        >
+        {
+          <Typography className='mbe-4'>
+            Use <code>getOptionDisabled</code> prop to disable some options from the list.
+          </Typography>
+        }
+          <AutocompleteDisabledOptions />
+        </CardSnippet>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <CardSnippet
+          title='Fixed Options'
+          code={SourceCodeAutocompleteFixedOptions}
+        >
+          {
+            <Typography className='mbe-4'>
+              You can fix an option in the input and add any other option as well.
+            </Typography>
+          }
+          <AutocompleteFixedOptions />
         </CardSnippet>
       </Grid>
       <Grid item xs={12}>
@@ -147,32 +201,6 @@ Please refer to MUI's official docs for more details on component's [usage guide
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
-      title='Disabled Options'
-      code={SourceCodeAutocompleteDisabledOptions}
-    >
-     {
-        <Typography className='mbe-4'>
-          Use <code>getOptionDisabled</code> prop to disable some options from the list.
-        </Typography>
-      }
-      <AutocompleteDisabledOptions />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Grouped'
-      code={SourceCodeAutocompleteGrouped}
-    >
-      {
-        <Typography className='mbe-4'>
-          Use <code>groupBy</code> prop to group the list according to your needs.
-        </Typography>
-      }
-      <AutocompleteGrouped />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
       title='Checkboxes'
       code={SourceCodeAutocompleteCheckboxes}
     >
@@ -182,32 +210,6 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <AutocompleteCheckboxes />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Fixed Options'
-      code={SourceCodeAutocompleteFixedOptions}
-    >
-      {
-        <Typography className='mbe-4'>
-          You can fix an option in the input and add any other option as well.
-        </Typography>
-      }
-      <AutocompleteFixedOptions />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12} md={6}>
-    <CardSnippet
-      title='Small Size'
-      code={SourceCodeAutocompleteSmallSize}
-    >
-      {
-        <Typography className='mbe-5'>
-          Use <code>size='small'</code> prop for small sized input.
-        </Typography>
-      }
-      <AutocompleteSmallSize />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
@@ -223,17 +225,17 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <AutocompleteLimitTags />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12}>
     <CardSnippet
-      title='Custom Filter'
-      code={SourceCodeAutocompleteCustomFilter}
+      title='Medium Size'
+      code={SourceCodeAutocompleteMediumSize}
     >
       {
-        <Typography className='mbe-4'>
-          Use <code>filterOptions</code> prop to filter the search according to your needs.
+        <Typography className='mbe-5'>
+          Use <code>size='medium'</code> prop for medium sized input.
         </Typography>
       }
-      <AutocompleteCustomFilter />
+      <AutocompleteMediumSize />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
@@ -247,6 +249,19 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <AutocompleteCustomInput />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Custom Filter'
+      code={SourceCodeAutocompleteCustomFilter}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>filterOptions</code> prop to filter the search according to your needs.
+        </Typography>
+      }
+      <AutocompleteCustomFilter />
     </CardSnippet>
   </Grid>
 </Grid>

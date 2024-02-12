@@ -5,13 +5,13 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import InputLabel from '@mui/material/InputLabel'
 import DialogTitle from '@mui/material/DialogTitle'
-import FormControl from '@mui/material/FormControl'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const SelectWithDialog = () => {
   // States
@@ -34,34 +34,26 @@ const SelectWithDialog = () => {
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent className='!pbs-2'>
           <Box component='form' className='flex gap-4'>
-            <FormControl className='mie-4 mbe-4' fullWidth>
-              <InputLabel id='demo-dialog-select-label'>Age</InputLabel>
-              <Select label='Age' labelId='demo-dialog-select-label' id='demo-dialog-select' defaultValue=''>
-                <MenuItem value=''>
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl fullWidth>
-              <InputLabel htmlFor='outlined-age-native-basic'>Age</InputLabel>
-              <Select
-                native
-                label='Age'
-                defaultValue=''
-                inputProps={{
-                  name: 'age',
-                  id: 'outlined-age-native-basic'
-                }}
-              >
-                <option aria-label='None' value='' />
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
-              </Select>
-            </FormControl>
+            <CustomTextField select fullWidth label='Age' id='demo-dialog-select' defaultValue=''>
+              <MenuItem value=''>
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </CustomTextField>
+            <CustomTextField
+              select
+              fullWidth
+              label='Age'
+              defaultValue=''
+              SelectProps={{ native: true }}
+            >
+              <option aria-label='None' value='' />
+              <option value={10}>Ten</option>
+              <option value={20}>Twenty</option>
+              <option value={30}>Thirty</option>
+            </CustomTextField>
           </Box>
         </DialogContent>
         <DialogActions>

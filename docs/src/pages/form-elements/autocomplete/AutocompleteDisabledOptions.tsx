@@ -1,6 +1,6 @@
-// MUI Imports
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 
 const timeSlots = Array.from(new Array(24 * 2)).map(
   (_, index) => `${index < 20 ? '0' : ''}${Math.floor(index / 2)}:${index % 2 === 0 ? '00' : '30'}`
@@ -8,10 +8,10 @@ const timeSlots = Array.from(new Array(24 * 2)).map(
 
 const AutocompleteDisabledOptions = () => {
   return (
-    <Autocomplete
+    <CustomAutocomplete
       options={timeSlots}
       id='autocomplete-disabled-options'
-      renderInput={params => <TextField {...params} label='Disabled options' />}
+      renderInput={params => <CustomTextField {...params} label='Disabled options' />}
       getOptionDisabled={option => option === timeSlots[0] || option === timeSlots[2]}
     />
   )

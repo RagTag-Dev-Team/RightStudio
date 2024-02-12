@@ -3,10 +3,10 @@ import { useState } from 'react'
 
 // MUI Imports
 import MenuItem from '@mui/material/MenuItem'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
 import type { SelectChangeEvent } from '@mui/material/Select'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const SelectControlledUncontrolled = () => {
   // States
@@ -17,35 +17,39 @@ const SelectControlledUncontrolled = () => {
   }
 
   return (
-    <div className='flex gap-4 flex-col'>
-      <FormControl fullWidth>
-        <InputLabel id='controlled-select-label'>Controlled</InputLabel>
-        <Select
-          value={value}
-          label='Controlled'
-          id='controlled-select'
-          onChange={handleChange}
-          labelId='controlled-select-label'
+    <div className='flex gap-4'>
+      <CustomTextField
+        select
+        fullWidth
+        defaultValue=''
+        value={value}
+        label='Controlled'
+        id='controlled-select'
+        SelectProps={{
+          onChange: handleChange
+        }}
+      >
+        <MenuItem value=''>
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </CustomTextField>
+      <CustomTextField
+        select
+        fullWidth
+        defaultValue='' 
+        label='Uncontrolled' 
+        id='uncontrolled-select' 
         >
-          <MenuItem value=''>
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel id='uncontrolled-select-label'>Uncontrolled</InputLabel>
-        <Select defaultValue='' label='Uncontrolled' id='uncontrolled-select' labelId='uncontrolled-select-label'>
-          <MenuItem value=''>
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+        <MenuItem value=''>
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </CustomTextField>
     </div>
   )
 }

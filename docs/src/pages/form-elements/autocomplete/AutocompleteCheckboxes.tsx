@@ -1,20 +1,22 @@
 // MUI Imports
 import Checkbox from '@mui/material/Checkbox'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
+
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Data Imports
 import { top100Films } from '../../../data/top100films'
 
 const AutocompleteCheckboxes = () => {
   return (
-    <Autocomplete
+    <CustomAutocomplete
       multiple
       disableCloseOnSelect
       options={top100Films}
       id='autocomplete-checkboxes'
       getOptionLabel={option => option.title || ''}
-      renderInput={params => <TextField {...params} key={params.id} label='Checkboxes' placeholder='Favorites' />}
+      renderInput={params => <CustomTextField {...params} key={params.id} label='Checkboxes' placeholder='Favorites' />}
       renderOption={(props, option, { selected }) => (
         <li {...props} key={option.title}>
           <Checkbox checked={selected} className='mie-2' />

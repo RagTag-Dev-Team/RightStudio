@@ -1,12 +1,14 @@
 // MUI Imports
 import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field/index'
 
 const TextFieldValidation = () => {
   return (
-    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-col'>
-      <TextField error id='validation-error' label='Error' defaultValue='Hello World' />
-      <TextField
+    <Box component='form' noValidate autoComplete='off' className='flex gap-6'>
+      <CustomTextField error id='validation-error' label='Error' defaultValue='Hello World' />
+      <CustomTextField
         error
         label='Error'
         defaultValue='Hello World'

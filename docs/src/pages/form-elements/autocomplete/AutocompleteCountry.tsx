@@ -1,7 +1,6 @@
-// MUI Imports
-import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Data Imports
 import { countries } from '../../../data/countries'
@@ -14,13 +13,13 @@ type CountryType = {
 
 const AutocompleteCountry = () => {
   return (
-    <Autocomplete
+    <CustomAutocomplete
       autoHighlight
       id='autocomplete-country-select'
       options={countries as CountryType[]}
       getOptionLabel={option => option.label || ''}
       renderOption={(props, option) => (
-        <Box component='li' {...props} key={option.label}>
+        <li {...props} key={option.label}>
           <img
           className='mie-4 flex-shrink-0'
             alt=''
@@ -30,10 +29,10 @@ const AutocompleteCountry = () => {
             srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
           />
           {option.label} ({option.code}) +{option.phone}
-        </Box>
+        </li>
       )}
       renderInput={params => (
-        <TextField
+        <CustomTextField
           {...params}
           key={params.id}
           label='Choose a country'

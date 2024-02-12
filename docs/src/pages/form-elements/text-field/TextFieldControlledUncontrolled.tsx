@@ -4,7 +4,9 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field/index'
 
 const TextFieldControlledUncontrolled = () => {
   // States
@@ -15,9 +17,9 @@ const TextFieldControlledUncontrolled = () => {
   }
 
   return (
-    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-wrap flex-col'>
-      <TextField value={name} label='Controlled' onChange={handleChange} id='controlled-text-field' />
-      <TextField id='uncontrolled-text-field' label='Uncontrolled' defaultValue='foo' />
+    <Box component='form' noValidate autoComplete='off' className='flex gap-6 flex-wrap'>
+      <CustomTextField value={name} label='Controlled' onChange={handleChange} id='controlled-text-field' />
+      <CustomTextField id='uncontrolled-text-field' label='Uncontrolled' defaultValue='foo' />
     </Box>
   )
 }

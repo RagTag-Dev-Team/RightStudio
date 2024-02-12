@@ -1,11 +1,10 @@
-// MUI Imports
-import Autocomplete from '@mui/material/Autocomplete'
-
+// Components Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
 const options = ['Option 1', 'Option 2']
 
 const AutocompleteCustomInput = () => {
   return (
-    <Autocomplete
+    <CustomAutocomplete
       options={options}
       id='autocomplete-custom-input'
       renderInput={params => (
@@ -18,8 +17,9 @@ const AutocompleteCustomInput = () => {
         display: 'inline-block',
         '& input': {
           width: 200,
+          borderWidth: 2,
           backgroundColor: 'background.paper',
-          color: theme => theme.palette.getContrastText(theme.palette.background.paper)
+          color: 'theme => theme.palette.getContrastText(theme.palette.background.paper)'
         }
       }}
     />

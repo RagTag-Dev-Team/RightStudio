@@ -3,16 +3,14 @@ import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import MenuItem from '@mui/material/MenuItem'
 import Checkbox from '@mui/material/Checkbox'
-import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
 import ListItemText from '@mui/material/ListItemText'
-import Select from '@mui/material/Select'
 import type { SelectChangeEvent } from '@mui/material/Select'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -62,127 +60,121 @@ const SelectMultiple = () => {
   return (
     <div className='flex gap-4 flex-col'>
       <div>
-        <Typography className='mbe-2 font-medium'>Default</Typography>
-        <FormControl fullWidth>
-          <InputLabel id='demo-multiple-name-label'>Name</InputLabel>
-          <Select
-            multiple
-            label='Name'
-            value={personName}
-            MenuProps={MenuProps}
-            id='demo-multiple-name'
-            onChange={handleChange}
-            labelId='demo-multiple-name-label'
-          >
-            {names.map(name => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <CustomTextField
+          select
+          fullWidth
+          label='Default'
+          value={personName}
+          id='select-multiple-default'
+          SelectProps={{ MenuProps, multiple: true, onChange: handleChange}}
+
+        >
+          {names.map(name => (
+            <MenuItem key={name} value={name}>
+              {name}
+            </MenuItem>
+          ))}
+        </CustomTextField>
       </div>
       <div>
-        <Typography className='mbe-2 font-medium'>Checkmarks</Typography>
-        <FormControl fullWidth>
-          <InputLabel id='demo-multiple-checkbox-label'>Tag</InputLabel>
-          <Select
-            multiple
-            label='Tag'
-            value={personName}
-            MenuProps={MenuProps}
-            onChange={handleChange}
-            id='demo-multiple-checkbox'
-            labelId='demo-multiple-checkbox-label'
-            renderValue={selected => (selected as unknown as string[]).join(', ')}
-          >
-            {names.map(name => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={personName.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <CustomTextField
+          select
+          fullWidth
+          label='Checkbox'
+          value={personName}
+          id='demo-multiple-checkbox'
+          SelectProps={{ MenuProps,
+            multiple: true,
+            onChange: handleChange,
+            renderValue: selected => (selected as unknown as string[]).join(', ')
+          }}
+        >
+          {names.map(name => (
+            <MenuItem key={name} value={name}>
+              <Checkbox checked={personName.indexOf(name) > -1} />
+              <ListItemText primary={name} />
+            </MenuItem>
+          ))}
+        </CustomTextField>
       </div>
       <div>
-        <Typography className='mbe-2 font-medium'>Chip</Typography>
-        <FormControl fullWidth>
-          <InputLabel id='demo-multiple-chip-label'>Chip</InputLabel>
-          <Select
-            multiple
-            label='Chip'
-            value={personName}
-            MenuProps={MenuProps}
-            id='demo-multiple-chip'
-            onChange={handleChange}
-            labelId='demo-multiple-chip-label'
-            renderValue={selected => (
+        <CustomTextField
+          select
+          fullWidth
+          label='Chip'
+          value={personName}
+          id='demo-multiple-chip'
+          SelectProps={{ 
+            multiple: true,
+            MenuProps,
+            onChange: handleChange,
+            renderValue: selected => (
               <div className='flex flex-wrap gap-1'>
                 {(selected as unknown as string[]).map(value => (
                   <Chip key={value} label={value} size='small' />
                 ))}
               </div>
-            )}
-          >
-            {names.map(name => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+            )
+          }}
+        >
+          {names.map(name => (
+            <MenuItem key={name} value={name}>
+              {name}
+            </MenuItem>
+          ))}
+        </CustomTextField>
       </div>
       <div>
-        <Typography className='mbe-2 font-medium'>Placeholder</Typography>
-        <FormControl fullWidth>
-          <Select
-            multiple
-            displayEmpty
-            value={personName}
-            MenuProps={MenuProps}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'Without label' }}
-            renderValue={selected => {
+        <CustomTextField
+          select
+          fullWidth
+          label='Placeholder'
+          value={personName}
+          inputProps={{ 'aria-label': 'Without label' }}
+          SelectProps={{ 
+            MenuProps,
+            multiple: true,
+            displayEmpty: true,
+            onChange: handleChange,
+            renderValue:selected => {
               if ((selected as unknown as string[]).length === 0) {
                 return <em>Placeholder</em>
               }
-
+  
               return (selected as unknown as string[]).join(', ')
-            }}
-          >
-            <MenuItem disabled value=''>
-              <em>Placeholder</em>
+            }
+          }}
+        >
+          <MenuItem disabled value=''>
+            <em>Placeholder</em>
+          </MenuItem>
+          {names.map(name => (
+            <MenuItem key={name} value={name}>
+              {name}
             </MenuItem>
-            {names.map(name => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+          ))}
+        </CustomTextField>
       </div>
       <div>
-        <Typography className='mbe-2 font-medium'>Native</Typography>
-        <FormControl fullWidth>
-          <InputLabel shrink htmlFor='select-multiple-native'>
-            Native
-          </InputLabel>
-          <Select
-            native
-            multiple
-            label='Native'
-            value={personNameNative} // @ts-ignore
-            onChange={handleChangeMultipleNative}
-            inputProps={{ id: 'select-multiple-native' }}
-          >
-            {names.map(name => (
-              <option key={name} value={name}>
-                {name}
-              </option>
-            ))}
-          </Select>
-        </FormControl>
+        <CustomTextField
+          select
+          fullWidth
+          label='Native'
+          value= {personNameNative}
+          SelectProps={{ 
+            MenuProps,
+            native: true,
+            multiple: true, // @ts-ignore
+            onChange: e =>  handleChangeMultipleNative(e),
+            inputProps: { id: 'select-multiple-native' }
+          }}
+        >
+          {names.map(name => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+        </CustomTextField>
       </div>
     </div>
   )

@@ -1,54 +1,44 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import Input from '@mui/material/Input'
-import TextField from '@mui/material/TextField'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
 import InputAdornment from '@mui/material/InputAdornment'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field/index'
 
 const TextFieldIcons = () => {
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12}>
-      <FormControl fullWidth variant='standard'>
-        <InputLabel htmlFor='input-with-icon-adornment'>With a start adornment</InputLabel>
-        <Input
-          id='input-with-icon-adornment'
-          startAdornment={
-            <InputAdornment position='start'>
-              <i className='ri-account-circle-line' />
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-      </Grid>
-      <Grid item xs={12}>
-      <TextField
-        fullWidth
-        label='TextField'
-        variant='standard'
-        id='input-with-icon-textfield'
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position='start'>
-              <i className='ri-account-circle-line' />
-            </InputAdornment>
-          )
-        }}
-      />
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container spacing={2} className='items-end'>
-          <Grid item xs={1} className='flex justify-center'>
-            <i className='ri-account-circle-line text-actionActive' />
-          </Grid>
-          <Grid item xs={11}>
-            <TextField fullWidth variant='standard' id='input-with-icon-grid' label='With a grid' />
+    <form className='flex items-center'>
+      <Grid container spacing={6}>
+        <Grid item>
+          <CustomTextField
+            id='input-with-icon-adornment'
+            label='With adornment'
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <i className='tabler-user-circle' />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid item>
+          <Grid container spacing={2}>
+            <Grid item className='flex items-center'>
+              <i className='tabler-user-circle text-base mbs-3' />
+            </Grid>
+            <Grid item>
+              <CustomTextField
+                fullWidth
+                id='input-with-icon-grid'
+                label='With a grid'
+              />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </form>
   )
 }
 
-export default TextFieldIcons
+export default TextFieldIcons;

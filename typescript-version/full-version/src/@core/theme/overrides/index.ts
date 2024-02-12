@@ -19,6 +19,7 @@ import drawer from './drawer'
 import fab from './fab'
 import formControlLabel from './form-control-label'
 import iconButton from './icon-button'
+import input from './input'
 import list from './list'
 import menu from './menu'
 import pagination from './pagination'
@@ -27,6 +28,7 @@ import popover from './popover'
 import progress from './progress'
 import Radio from './radio'
 import Rating from './rating'
+import select from './select'
 import slider from './slider'
 import snackbar from './snackbar'
 import switchOverrides from './switch'
@@ -42,7 +44,7 @@ const overrides = (skin: Skin) => {
     {},
     Accordion(skin),
     Alerts,
-    Autocomplete,
+    Autocomplete(skin),
     avatar,
     backdrop,
     badges,
@@ -57,6 +59,7 @@ const overrides = (skin: Skin) => {
     fab,
     formControlLabel,
     iconButton,
+    input,
     list,
     menu(skin),
     pagination,
@@ -65,6 +68,7 @@ const overrides = (skin: Skin) => {
     progress,
     Radio,
     Rating,
+    select,
     slider,
     snackbar(skin),
     switchOverrides,

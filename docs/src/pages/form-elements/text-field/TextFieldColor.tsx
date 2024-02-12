@@ -1,13 +1,17 @@
 // MUI Imports
 import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field/index'
 
 const TextFieldColor = () => {
   return (
-    <Box component='form' noValidate autoComplete='off' className='flex gap-4 flex-wrap flex-col'>
-      <TextField id='color-outlined' label='Outlined success' color='success' />
-      <TextField id='color-filled' label='Filled success' variant='filled' color='success' />
-      <TextField id='color-standard' label='Standard success' color='success' variant='standard' />
+    <Box component='form' noValidate autoComplete='off' className='flex gap-6 flex-wrap'>
+      <CustomTextField label='Secondary' color='secondary' helperText='helper text' />
+      <CustomTextField label='Success' color='success' helperText='helper text' />
+      <CustomTextField label='Error' color='error' helperText='helper text' />
+      <CustomTextField label='Warning' color='warning' helperText='helper text' />
+      <CustomTextField label='Info' color='info' helperText='helper text' />
     </Box>
   )
 }
