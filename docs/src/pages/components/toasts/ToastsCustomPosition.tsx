@@ -15,10 +15,10 @@ const ToastsCustomPosition = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <i className='ri-layout-grid-line mbe-2 text-[28px]'/>
+      <i className='ri-layout-grid-line mbe-2 text-[42px]'/>
       <Typography className='mbe-4' variant='h5'>Custom Position</Typography>
       <Typography className='mbe-3'>You can change the toast's position as you like.</Typography>
-      <Button className='mbe-8' variant='contained' onClick={handleClick}>
+      <Button variant='contained' onClick={handleClick}>
         Position
       </Button>
     </div>

@@ -45,7 +45,7 @@ const TimelineOutlined = () => {
           <Typography className='mbe-2' color='text.secondary'>
             Invoices have been paid to the company
           </Typography>
-          <div className='flex items-center gap-2.5 mbe-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
+          <div className='flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
             <img
               height={20}
               alt='invoice.pdf'
@@ -73,7 +73,7 @@ const TimelineOutlined = () => {
           <Typography className='mbe-2' color='text.secondary'>
             Project meeting with john @10:15am
           </Typography>
-          <div className='flex items-center mbe-2.5 gap-2.5'>
+          <div className='flex items-center gap-2.5'>
             <Avatar src={useBaseUrl('/images/avatars/2.png')} className='w-8 h-8' />
             <div className='flex flex-col flex-wrap'>
               <Typography variant='body2' className='font-medium'>

@@ -26,6 +26,7 @@ const Root = styled('div', {
   alignItems: 'flex-start',
   border: '1px solid var(--mui-palette-divider)',
   padding: theme.spacing(4),
+  color: 'var(--mui-palette-text-primary)',
   transition: theme.transitions.create(['border-color'], {
     duration: theme.transitions.duration.shorter
   }),

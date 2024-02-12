@@ -16,10 +16,10 @@ const ToastsMultiLine = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-file-text-line mbe-2 text-[28px]'/>
+      <i className='ri-file-text-line mbe-2 text-[42px]'/>
       <Typography className='mbe-4' variant='h5'>Multi Line</Typography>
       <Typography className='mbe-3'>The most basic variant with longer texts</Typography>
-      <Button className='mbe-8'variant='contained' onClick={handleClick}>
+      <Button variant='contained' onClick={handleClick}>
         Multi Line
       </Button>
     </div>

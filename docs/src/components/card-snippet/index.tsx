@@ -21,11 +21,12 @@ export type CardSnippetProps = CardProps & {
   children: ReactNode
   code: string
   className?: string
+  showIconInCardContent?: boolean
 }
 
 const CardSnippet = (props: CardSnippetProps) => {
   // Props
-  const { sx, code, title, children, className } = props
+  const { sx, code, title, children, className, showIconInCardContent = false } = props
 
   // States
   const [showCode, setShowCode] = useState<boolean>(false)
@@ -38,19 +39,32 @@ const CardSnippet = (props: CardSnippetProps) => {
       className={className}
       sx={{ "& .MuiCardHeader-action": { lineHeight: 0.8 }, ...sx }}
     >
-      <CardHeader
-        title={title}
-        {...(hidden
-          ? {}
-          : {
-              action: (
-                <IconButton size='small' onClick={() => setShowCode(!showCode)}>
-                  <i className="ri-code-line text-xl" />
-                </IconButton>
-              ),
-            })}
-      />
-      <CardContent>{children}</CardContent>
+      {!showIconInCardContent && (
+        <CardHeader
+          title={title}
+          {...(hidden
+            ? {}
+            : {
+                action: (
+                  <IconButton size='small' onClick={() => setShowCode(!showCode)}>
+                    <i className="ri-code-line text-xl" />
+                  </IconButton>
+                ),
+              })}
+        />
+      )}
+      <CardContent {...(showIconInCardContent && { className: 'relative' })}>
+        {showIconInCardContent && (
+          <IconButton
+            size='small'
+            onClick={() => setShowCode(!showCode)}
+            className="absolute end-0 [inset-block-start:0]"
+          >
+            <i className="ri-code-line text-xl" />
+          </IconButton>
+        )}
+        {children}
+      </CardContent>
       {hidden ? null : (
         <Collapse in={showCode}>
           <Divider className='mlb-0' />
