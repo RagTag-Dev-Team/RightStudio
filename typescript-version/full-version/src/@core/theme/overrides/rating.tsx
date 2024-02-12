@@ -4,8 +4,8 @@ import type { Theme } from '@mui/material/styles'
 const rating: Theme['components'] = {
   MuiRating: {
     defaultProps: {
-      emptyIcon: <i className='ri-star-line' />,
-      icon: <i className='ri-star-fill' />
+      emptyIcon: <i className='tabler-star' />,
+      icon: <i className='tabler-star-filled' />
     },
     styleOverrides: {
       root: {

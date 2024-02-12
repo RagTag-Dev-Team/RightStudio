@@ -38,7 +38,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <i className='ri-inbox-archive-line' />
+                  <i className='tabler-inbox' />
                 </ListItemIcon>
                 <ListItemText primary='Index' />
               </ListItemButton>
@@ -46,7 +46,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <i className='ri-star-line' />
+                  <i className='tabler-star' />
                 </ListItemIcon>
                 <ListItemText primary='Starred' />
               </ListItemButton>
@@ -57,7 +57,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <i className='ri-delete-bin-7-line' />
+                  <i className='tabler-trash' />
                 </ListItemIcon>
                 <ListItemText primary='Trash' />
               </ListItemButton>
@@ -65,7 +65,7 @@ const DrawerComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <i className='ri-information-line' />
+                  <i className='tabler-info-circle' />
                 </ListItemIcon>
                 <ListItemText primary='Spam' />
               </ListItemButton>

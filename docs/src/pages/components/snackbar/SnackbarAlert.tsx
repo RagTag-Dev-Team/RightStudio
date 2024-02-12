@@ -28,11 +28,10 @@ const SnackbarAlert = () => {
       </Button>
       <Snackbar open={open} onClose={handleClose} autoHideDuration={3000}>
         <Alert
-          elevation={3}
           variant='filled'
           severity='success'
           onClose={handleClose}
-          className='w-full'
+          className='w-full shadow-xs'
         >
           This is a success message!
         </Alert>

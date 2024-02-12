@@ -116,12 +116,25 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
           infoFilledBg: 'var(--mui-palette-info-main)',
           successFilledBg: 'var(--mui-palette-success-main)'
         },
+        Avatar: {
+          defaultBg: '#EEEDF0'
+        },
         Chip: {
           defaultBorder: 'var(--mui-palette-divider)'
         },
         SnackbarContent: {
           bg: '#2F2B3D',
           color: 'var(--mui-palette-background-paper)'
+        },
+        Switch: {
+          defaultColor: 'var(--mui-palette-common-white)',
+          defaultDisabledColor: 'var(--mui-palette-common-white)',
+          primaryDisabledColor: 'var(--mui-palette-common-white)',
+          secondaryDisabledColor: 'var(--mui-palette-common-white)',
+          errorDisabledColor: 'var(--mui-palette-common-white)',
+          warningDisabledColor: 'var(--mui-palette-common-white)',
+          infoDisabledColor: 'var(--mui-palette-common-white)',
+          successDisabledColor: 'var(--mui-palette-common-white)'
         },
         Tooltip: {
           bg: '#2F2B3D'
@@ -247,12 +260,25 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
           infoFilledBg: 'var(--mui-palette-info-main)',
           successFilledBg: 'var(--mui-palette-success-main)'
         },
+        Avatar: {
+          defaultBg: '#373B50'
+        },
         Chip: {
           defaultBorder: 'var(--mui-palette-divider)'
         },
         SnackbarContent: {
           bg: '#F7F4FF',
           color: 'var(--mui-palette-background-paper)'
+        },
+        Switch: {
+          defaultColor: 'var(--mui-palette-common-white)',
+          defaultDisabledColor: 'var(--mui-palette-common-white)',
+          primaryDisabledColor: 'var(--mui-palette-common-white)',
+          secondaryDisabledColor: 'var(--mui-palette-common-white)',
+          errorDisabledColor: 'var(--mui-palette-common-white)',
+          warningDisabledColor: 'var(--mui-palette-common-white)',
+          infoDisabledColor: 'var(--mui-palette-common-white)',
+          successDisabledColor: 'var(--mui-palette-common-white)'
         },
         Tooltip: {
           bg: '#F7F4FF'

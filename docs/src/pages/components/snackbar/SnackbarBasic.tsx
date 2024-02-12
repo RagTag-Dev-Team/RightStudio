@@ -38,7 +38,7 @@ const SnackbarBasic = () => {
               Undo
             </Button>
             <IconButton size='small' aria-label='close' color='inherit' onClick={handleClose}>
-              <i className='ri-close-line text-xl' />
+              <i className='tabler-x text-xl' />
             </IconButton>
           </>
         }

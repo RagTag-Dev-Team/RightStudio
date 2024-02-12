@@ -19,12 +19,16 @@ const ToastsCustom = () => {
           <div className='flex items-center'>
             <Avatar alt='Victor Anderson' src={avatarUrl} className='mie-3 w-10 h-10'/>
             <div>
-              <Typography>John Doe</Typography>
-              <Typography variant='caption'>Sure! 8:30pm works great!</Typography>
+              <Typography variant='h5' className='leading-6'>
+                John Doe
+              </Typography>
+              <Typography variant='caption' color='text.secondary'>
+                Sure! 8:30pm works great!
+              </Typography>
             </div>
           </div>
           <IconButton onClick={() => toast.dismiss(t.toastProps.toastId)}>
-            <i className='ri-close-line text-xl' />
+            <i className='tabler-x text-xl text-[var(--mui-palette-text-primary)]' />
           </IconButton>
         </div>
       ),
@@ -40,7 +44,7 @@ const ToastsCustom = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <i className='ri-pencil-line mbe-2 text-[42px]' />
+      <i className='tabler-pencil mbe-2 text-[42px]' />
       <Typography className='mbe-4' variant='h5'>Custom</Typography>
       <Typography className='mbe-3'>Make a toast using any custom content</Typography>
       <Button variant='contained' onClick={handleClick}>

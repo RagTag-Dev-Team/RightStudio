@@ -31,7 +31,7 @@ const CardPopover = () => {
           Open Popover
         </Button>
         <Popover open={open} anchorEl={anchorEl} onClose={handleClose} id='card-basic-popover'>
-          <Typography className='p-4'>The content of the Popover.</Typography>
+          <Typography className='plb-3 pli-4'>The content of the Popover.</Typography>
         </Popover>
       </CardContent>
     </Card>

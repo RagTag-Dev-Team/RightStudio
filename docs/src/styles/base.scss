@@ -97,3 +97,7 @@ ul:not([class]), ol:not([class]) {
 :where([class^='tabler-']) {
   font-size: 1.5rem;
 }
+
+.MuiPagination-root .MuiPagination-ul li {
+  margin: 0 !important
+}

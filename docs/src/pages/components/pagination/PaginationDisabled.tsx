@@ -6,6 +6,7 @@ const PaginationDisabled = () => {
     <div className='flex flex-col gap-4'>
       <Pagination count={10} disabled />
       <Pagination count={10} variant='outlined' disabled />
+      <Pagination count={10} variant='tonal' disabled />
     </div>
   )
 }

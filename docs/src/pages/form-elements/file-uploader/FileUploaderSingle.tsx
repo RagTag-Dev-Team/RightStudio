@@ -42,10 +42,10 @@ const FileUploaderSingle = () => {
       ) : (
         <div className='flex items-center flex-col'>
           <Avatar variant='rounded' className='h-12 w-12 mbe-9'>
-            <i className='ri-upload-2-line' />
+            <i className='tabler-upload' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>Drop files here or click to upload.</Typography>
-          <Typography color='textSecondary'>
+          <Typography>
             Drop files here or click{' '}
             <a href='/' onClick={e => e.preventDefault()} className='text-textPrimary no-underline'>
               browse

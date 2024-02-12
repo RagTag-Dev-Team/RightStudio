@@ -10,7 +10,7 @@ const OutsideAppBar = () => {
     <AppBar position='static'>
       <Toolbar>
         <IconButton size='large' className='mie-2.5' color='inherit' aria-label='menu'>
-          <i className='ri-menu-line' />
+          <i className='tabler-baseline-density-medium' />
         </IconButton>
         <Typography variant='h6' className='flex-grow' color='white'>
           News

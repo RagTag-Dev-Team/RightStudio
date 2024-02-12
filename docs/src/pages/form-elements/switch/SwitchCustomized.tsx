@@ -25,7 +25,8 @@ const MaterialUISwitch = styled(MuiSwitch)<SwitchProps>(({ theme }) => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be'
+        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+        boxShadow: 'var(--mui-shadows-0)'
       }
     }
   },

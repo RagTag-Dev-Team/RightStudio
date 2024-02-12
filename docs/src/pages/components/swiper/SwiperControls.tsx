@@ -48,14 +48,14 @@ const SwiperControls = () => {
         {loaded && instanceRef.current && (
           <>
             <i
-              className={classnames('ri-arrow-left-s-line arrow arrow-left', {
+              className={classnames('tabler-chevron-left arrow arrow-left', {
                 'arrow-disabled': currentSlide === 0
               })}
               onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
             />
 
             <i
-              className={classnames('ri-arrow-right-s-line arrow arrow-right', {
+              className={classnames('tabler-chevron-right arrow arrow-right', {
                 'arrow-disabled': currentSlide === instanceRef.current.track.details.slides.length - 1
               })}
               onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}

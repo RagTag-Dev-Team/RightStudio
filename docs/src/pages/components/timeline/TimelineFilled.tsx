@@ -35,14 +35,14 @@ const TimelineFilled = () => {
         </TimelineSeparator>
         <TimelineContent>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-            <Typography className='font-medium'>
+            <Typography className='font-medium' color='text.primary'>
               12 Invoices have been paid
             </Typography>
             <Typography variant='caption'>
               12 min ago
             </Typography>
           </div>
-          <Typography className='mbe-2' color='text.secondary'>
+          <Typography className='mbe-2'>
             Invoices have been paid to the company
           </Typography>
           <div className='flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
@@ -63,14 +63,14 @@ const TimelineFilled = () => {
         </TimelineSeparator>
         <TimelineContent>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-            <Typography className='font-medium'>
+            <Typography className='font-medium' color='text.primary'>
               Client Meeting
             </Typography>
             <Typography variant='caption'>
               45 min ago
             </Typography>
           </div>
-          <Typography className='mbe-2' color='text.secondary'>
+          <Typography className='mbe-2'>
             Project meeting with john @10:15am
           </Typography>
           <div className='flex items-center gap-2.5'>
@@ -92,14 +92,14 @@ const TimelineFilled = () => {
         </TimelineSeparator>
         <TimelineContent>
           <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-            <Typography className='font-medium'>
+            <Typography className='font-medium' color='text.primary'>
               Create a new project for client
             </Typography>
             <Typography variant='caption'>
               2 Day Ago
             </Typography>
           </div>
-          <Typography className='mbe-2' color='text.secondary'>
+          <Typography className='mbe-2'>
             6 team members in a project
           </Typography>
           <AvatarGroup total={6} className='pull-up'>

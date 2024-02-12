@@ -25,7 +25,6 @@ const TabsNav = () => {
           component="a"
           label="Tab 1"
           href="/drafts"
-          className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
         <Tab
@@ -33,8 +32,6 @@ const TabsNav = () => {
           component="a"
           label="Tab 2"
           href="/trash"
-
-         className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
         <Tab
@@ -42,7 +39,6 @@ const TabsNav = () => {
           component="a"
           label="Tab 3"
           href="/spam"
-         className='hover:shadow-none'
           onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}
         />
       </TabList>

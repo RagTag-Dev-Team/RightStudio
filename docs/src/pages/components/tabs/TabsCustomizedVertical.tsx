@@ -9,7 +9,7 @@ import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 
 // Component Imports
-import CustomTabList from '@site/src/components/mui/TabList'
+import CustomTabList from '@core/components/mui/TabList'
 
 const TabsCustomizedVertical = () => {
   // States

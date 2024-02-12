@@ -8,13 +8,13 @@ const BadgesMaxValue = () => {
   return (
     <div className='flex gap-6'>
       <Badge badgeContent={99} color='primary'>
-        <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='User Avatar' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='User Avatar' />
       </Badge>
       <Badge badgeContent={100} color='primary'>
-        <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='User Avatar' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='User Avatar' />
       </Badge>
       <Badge badgeContent={1000} max={999} color='primary'>
-        <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='User Avatar' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='User Avatar' />
       </Badge>
     </div>
   )

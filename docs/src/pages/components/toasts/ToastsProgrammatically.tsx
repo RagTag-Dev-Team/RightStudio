@@ -21,7 +21,7 @@ const ToastsProgrammatically = () => {
     <div
     className='flex text-center flex-col items-center'
     > 
-      <i className='ri-braces-line mbe-2 text-[42px]'/>
+      <i className='tabler-braces mbe-2 text-[42px]'/>
       <Typography className='mbe-4' variant='h5'>Remove Programmatically</Typography>
       <Typography className='mbe-3'>Remove last or all toast(s) programmatically</Typography>
       <div className='flex gap-4'>

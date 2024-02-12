@@ -38,13 +38,6 @@ const BpCheckedIcon = styled(BpIcon)({
   backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
   'input:hover ~ &': {
     backgroundColor: '#106ba3'
-  },
-  '&:before': {
-    width: 16,
-    height: 16,
-    content: '""',
-    display: 'block',
-    backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)'
   }
 })
 

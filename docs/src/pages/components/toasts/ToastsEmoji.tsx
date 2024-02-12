@@ -9,7 +9,7 @@ const ToastsEmoji = () => {
   return (
     <div className='flex text-center flex-col items-center'
     >
-      <i className='ri-emoji-sticker-line mbe-2 text-[42px]' />
+      <i className='tabler-mood-happy mbe-2 text-[42px]' />
       <Typography className='mbe-4' variant='h5'>Emoji</Typography>
       <Typography className='mbe-3'>Add any emoji instead of an icon</Typography>
       <Button variant='contained' onClick={() => toast('Good Job!', { icon: '👏' })}>

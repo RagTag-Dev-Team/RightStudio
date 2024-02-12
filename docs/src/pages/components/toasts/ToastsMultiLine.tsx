@@ -16,7 +16,7 @@ const ToastsMultiLine = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-file-text-line mbe-2 text-[42px]'/>
+      <i className='tabler-article mbe-2 text-[42px]'/>
       <Typography className='mbe-4' variant='h5'>Multi Line</Typography>
       <Typography className='mbe-3'>The most basic variant with longer texts</Typography>
       <Button variant='contained' onClick={handleClick}>

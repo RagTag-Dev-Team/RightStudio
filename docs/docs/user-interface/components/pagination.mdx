@@ -19,7 +19,9 @@ import SourceCodePaginationRounded from '!!raw-loader!@docPages/components/pagin
 import PaginationButtons from '@docPages/components/pagination/PaginationButtons' 
 import SourceCodePaginationButtons from '!!raw-loader!@docPages/components/pagination/PaginationButtons' 
 import PaginationOutlined from '@docPages/components/pagination/PaginationOutlined'    
-import SourceCodePaginationOutlined from '!!raw-loader!@docPages/components/pagination/PaginationOutlined'    
+import SourceCodePaginationOutlined from '!!raw-loader!@docPages/components/pagination/PaginationOutlined'  
+import PaginationTonal from '@docPages/components/pagination/PaginationTonal'
+import SourceCodePaginationTonal from '!!raw-loader!@docPages/components/pagination/PaginationTonal'
 import PaginationDisabled from '@docPages/components/pagination/PaginationDisabled'
 import SourceCodePaginationDisabled from '!!raw-loader!@docPages/components/pagination/PaginationDisabled'
 import PaginationControlled from '@docPages/components/pagination/PaginationControlled'
@@ -56,6 +58,19 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <PaginationOutlined />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <CardSnippet
+      title='Tonal Pagination'
+      code={SourceCodePaginationTonal}
+    >
+      {
+        <Typography className='mbe-4'>
+          Use <code>variant='Tonal'</code> prop for Tonal pagination.
+        </Typography>
+      }
+      <PaginationTonal />
     </CardSnippet>
   </Grid>
   <Grid item xs={12} md={6}>
@@ -110,7 +125,7 @@ Please refer to MUI's official docs for more details on component's [usage guide
       <PaginationButtons />
     </CardSnippet>
   </Grid>
-  <Grid item xs={12}>
+  <Grid item xs={12} md={6}>
     <CardSnippet
       title='Controlled Pagination'
       code={SourceCodePaginationControlled}

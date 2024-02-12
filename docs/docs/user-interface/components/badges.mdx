@@ -20,6 +20,8 @@ import BadgesAlignment from '@docPages/components/badges/BadgesAlignment'
 import SourceCodeBadgesAlignment from '!!raw-loader!@docPages/components/badges/BadgesAlignment'
 import BadgesVisibility from '@docPages/components/badges/BadgesVisibility'
 import SourceCodeBadgesVisibility from '!!raw-loader!@docPages/components/badges/BadgesVisibility'
+import BadgesTonal from '@docPages/components/badges/BadgesTonal'
+import SourceCodeBadgesTonal from '!!raw-loader!@docPages/components/badges/BadgesTonal'
 
 <h1 className='!m-0'>Badges</h1>
 
@@ -104,6 +106,19 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <BadgesVisibility />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title="Custom Tonal Badges"
+      code={SourceCodeBadgesTonal}
+    >
+      {
+        <Typography className='mbe-6'>
+          If you want to use Tonal variant of the badges, you need to use our custom component with <code>tonal='true'</code> prop.
+        </Typography>
+      }
+      <BadgesTonal />
     </CardSnippet>
   </Grid>
 </Grid>

@@ -47,7 +47,7 @@ const CardSnippet = (props: CardSnippetProps) => {
             : {
                 action: (
                   <IconButton size='small' onClick={() => setShowCode(!showCode)}>
-                    <i className="ri-code-line text-xl" />
+                    <i className="tabler-code text-xl" />
                   </IconButton>
                 ),
               })}
@@ -58,9 +58,9 @@ const CardSnippet = (props: CardSnippetProps) => {
           <IconButton
             size='small'
             onClick={() => setShowCode(!showCode)}
-            className="absolute end-0 [inset-block-start:0]"
+            className="absolute end-6 [inset-block-start:24]"
           >
-            <i className="ri-code-line text-xl" />
+            <i className="tabler-code text-xl" />
           </IconButton>
         )}
         {children}

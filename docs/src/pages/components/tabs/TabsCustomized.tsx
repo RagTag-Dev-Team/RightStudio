@@ -9,7 +9,7 @@ import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
 
 // Component Imports
-import CustomTabList from '@site/src/components/mui/TabList'
+import CustomTabList from '@core/components/mui/TabList'
 
 const TabsCustomized = () => {
   // States

@@ -46,7 +46,7 @@ const FileUploaderRestrictions = () => {
     if (file.type.startsWith('image')) {
       return <img width={38} height={38} alt={file.name} src={URL.createObjectURL(file as any)} />
     } else {
-      return <i className='ri-file-text-line' />
+      return <i className='tabler-file-description' />
     }
   }
 
@@ -71,7 +71,7 @@ const FileUploaderRestrictions = () => {
         </div>
       </div>
       <IconButton onClick={() => handleRemoveFile(file)}>
-        <i className='ri-close-line text-xl' />
+        <i className='tabler-x text-xl' />
       </IconButton>
     </ListItem>
   ))
@@ -86,11 +86,11 @@ const FileUploaderRestrictions = () => {
         <input {...getInputProps()} />
         <div className='flex items-center flex-col'>
           <Avatar variant='rounded' className='h-12 w-12 mbe-9'>
-            <i className='ri-upload-2-line' />
+            <i className='tabler-upload' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>Drop files here or click to upload.</Typography>
-          <Typography color='textSecondary'>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
-          <Typography color='textSecondary'>Max 2 files and max size of 2 MB</Typography>
+          <Typography>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
+          <Typography>Max 2 files and max size of 2 MB</Typography>
         </div>
       </div>
       {files.length ? (

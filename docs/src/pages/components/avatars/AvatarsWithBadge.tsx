@@ -6,13 +6,13 @@ import { styled } from '@mui/material/styles'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 // Styled component for badge content area
-const BadgeContentSpan = styled('span')(({ theme }) => ({
+const BadgeContentSpan = styled('span')({
   width: 8,
   height: 8,
   borderRadius: '50%',
-  backgroundColor: theme.palette.success.main,
-  boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
-}))
+  backgroundColor: 'var(--mui-palette-success-main)',
+  boxShadow: '0 0 0 2px var(--mui-palette-background-paper)'
+})
 
 const AvatarsWithBadge = () => {
   return (

@@ -10,7 +10,7 @@ const ToastError = () => {
     <div
      className='flex text-center flex-col items-center'
     >
-      <i className='ri-close-line mbe-2 text-[42px]' />
+      <i className='tabler-x mbe-2 text-[42px]' />
       <Typography className='mbe-4' variant='h5'>Error</Typography>
       <Typography className='mbe-3'>Indicate that an error occurred.</Typography>
       <Button color='error' variant='contained' onClick={() => toast.error("This didn't work.")}>

@@ -9,10 +9,10 @@ const BadgesDot = () => {
   return (
     <div className='flex items-start gap-4'>
       <Badge variant='dot' color='primary'>
-        <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='User Avatar' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='User Avatar' />
       </Badge>
       <Badge variant='dot' color='secondary'>
-        <Avatar src={useBaseUrl('/images/avatars/1.png')} alt='User Avatar' />
+        <Avatar src={useBaseUrl('/images/avatars/8.png')} alt='User Avatar' />
       </Badge>
       <Badge variant='dot' color='error'>
         <Typography>Typography</Typography>

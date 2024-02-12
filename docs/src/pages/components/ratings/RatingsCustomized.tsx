@@ -10,19 +10,19 @@ type CustomIcons = {
 const customIcons: CustomIcons = {
   1: {
     label: 'Very Dissatisfied',
-    icon: 'ri-emotion-unhappy-line'
+    icon: 'tabler-mood-sad'
   },
   2: {
     label: 'Neutral',
-    icon: 'ri-emotion-normal-line'
+    icon: 'tabler-mood-empty'
   },
   3: {
     label: 'Satisfied',
-    icon: 'ri-emotion-happy-line'
+    icon: 'tabler-mood-smile'
   },
   4: {
     label: 'Very Satisfied',
-    icon: 'ri-emotion-line'
+    icon: 'tabler-mood-happy'
   }
 }
 
@@ -41,7 +41,7 @@ const RatingsCustomized = () => {
     <>
       <div className='mbe-3'>
         <Typography className='font-medium'>Custom empty icon</Typography>
-        <Rating name='customized-empty' defaultValue={2} precision={0.5} emptyIcon={<i className='ri-star-fill' />} />
+        <Rating name='customized-empty' defaultValue={2} precision={0.5} emptyIcon={<i className='tabler-star-filled' />} />
       </div>
       <div className='mbe-3'>
         <Typography className='font-medium'>Custom icon and color</Typography>
@@ -49,8 +49,8 @@ const RatingsCustomized = () => {
           precision={0.5}
           defaultValue={3}
           name='customized-color'
-          icon={<i className='ri-heart-fill flex-shrink-0 text-error'/>}
-          emptyIcon={<i className='ri-heart-fill' />}
+          icon={<i className='tabler-heart-filled flex-shrink-0 text-error'/>}
+          emptyIcon={<i className='tabler-heart-filled' />}
         />
       </div>
       <div className='mbe-3'>

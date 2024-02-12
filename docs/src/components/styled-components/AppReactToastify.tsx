@@ -16,7 +16,7 @@ type Props = ToastContainerProps & {
 
 const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   '& .Toastify__toast': {
-    minBlockSize: 44,
+    minBlockSize: 46,
     borderRadius: 'var(--mui-shape-borderRadius)',
     padding: theme.spacing(1.5, 2.5),
     boxShadow: 'var(--mui-customShadows-md)',
@@ -49,11 +49,18 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   },
   '& .Toastify__toast-body': {
     margin: 0,
-    lineHeight: 1.25,
+    lineHeight: 1.46667,
     fontSize: theme.typography.body1.fontSize
   },
   '& .Toastify__toast-icon': {
-    marginRight: theme.spacing(3)
+    marginRight: theme.spacing(3),
+    height: 20,
+    width: 20,
+    '& .Toastify__spinner': {
+      margin: 3,
+      height: 14,
+      width: 14
+    }
   },
   '& .Toastify__close-button': {
     color: 'var(--mui-palette-text-primary)'

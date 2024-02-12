@@ -20,14 +20,14 @@ const RadioControlledUncontrolled = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} sm={6}>
-        <Typography>Controlled</Typography>
+        <Typography color='text.primary'>Controlled</Typography>
         <RadioGroup row aria-label='controlled' name='controlled' value={value} onChange={handleChange}>
           <FormControlLabel value='controlled-checked' control={<Radio />} label='Checked' />
           <FormControlLabel value='controlled-unchecked' control={<Radio />} label='Unchecked' />
         </RadioGroup>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Typography>Uncontrolled</Typography>
+        <Typography color='text.primary'>Uncontrolled</Typography>
         <RadioGroup row aria-label='uncontrolled' name='uncontrolled' defaultValue='uncontrolled-checked'>
           <FormControlLabel value='uncontrolled-checked' control={<Radio />} label='Checked' />
           <FormControlLabel value='uncontrolled-unchecked' control={<Radio />} label='Unchecked' />

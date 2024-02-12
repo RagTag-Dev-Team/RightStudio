@@ -233,3 +233,15 @@ declare module '@mui/material/Chip' {
     tonal: true
   }
 }
+
+declare module '@mui/material/Pagination' {
+  interface PaginationPropsVariantOverrides {
+    tonal: true
+  }
+}
+
+declare module '@mui/lab/TimelineDot' {
+  interface TimelineDotPropsVariantOverrides {
+    tonal: true
+  }
+}
