@@ -17,6 +17,11 @@ const AutocompleteMultipleValues = () => {
         id='autocomplete-multiple-outlined'
         getOptionLabel={option => option.title || ''}
         renderInput={params => <TextField {...params} label='filterSelectedOptions' placeholder='Favorites' />}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+          ))
+        }
       />
       <Autocomplete
         freeSolo
@@ -40,6 +45,11 @@ const AutocompleteMultipleValues = () => {
         renderInput={params => (
           <TextField {...params} label='Multiple values' placeholder='Favorites' variant='standard' />
         )}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+          ))
+        }
       />
     </div>
   )

@@ -22,7 +22,8 @@ const AutocompleteCountry = () => {
       renderOption={(props, option) => (
         <Box component='li' {...props} key={option.label}>
           <img
-          className='mie-4 flex-shrink-0'
+            key={option.code}
+            className='mie-4 flex-shrink-0'
             alt=''
             width='20'
             loading='lazy'
@@ -35,7 +36,6 @@ const AutocompleteCountry = () => {
       renderInput={params => (
         <TextField
           {...params}
-          key={params.id}
           label='Choose a country'
           inputProps={{
             ...params.inputProps,

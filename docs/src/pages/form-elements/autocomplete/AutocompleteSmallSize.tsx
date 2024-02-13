@@ -1,4 +1,5 @@
 // MUI Imports
+import Chip from '@mui/material/Chip'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 
@@ -25,6 +26,11 @@ const AutocompleteSmallSize = () => {
         id='autocomplete-size-small-multi'
         getOptionLabel={option => option.title || ''}
         renderInput={params => <TextField {...params} label='Size small' placeholder='Favorites' />}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+          ))
+        }
       />
     </div>
   )
