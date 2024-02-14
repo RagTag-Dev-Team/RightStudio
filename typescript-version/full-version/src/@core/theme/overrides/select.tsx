@@ -33,7 +33,7 @@ const select: Theme['components'] = {
           height: '1.5em'
         }),
         ...(ownerState.variant === 'filled' && {
-          minHeight: '1.4375em'
+          maxHeight: '1.4375em'
         }),
         '&[aria-expanded="true"] ~ i, &[aria-expanded="true"] ~ svg': {
           transform: 'rotate(180deg)'

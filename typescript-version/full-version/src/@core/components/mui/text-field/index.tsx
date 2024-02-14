@@ -46,7 +46,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
         transform: 'translateX(4px)'
       },
       '& :not(textarea).MuiFilledInput-input': {
-        padding: '6.25px 15px'
+        padding: '6.25px 13px'
       },
       '&:not(.Mui-error).MuiInputBase-colorPrimary': {
         borderColor: 'var(--mui-palette-primary-main)',
@@ -105,22 +105,22 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       paddingInlineEnd: '0px !important'
     }
   },
-  '& .MuiInputLabel-sizeMedium + .MuiInputBase-adornedStart.Mui-focused': {
+  '& :not(.MuiInputBase-sizeSmall).MuiInputBase-adornedStart.Mui-focused': {
     paddingInlineStart: '15px',
     '& .MuiInputBase-input': {
-      paddingInlineStart: '16px !important'
+      paddingInlineStart: '0px !important'
     }
   },
-  '& .MuiInputLabel-sizeMedium + .MuiInputBase-adornedStart': {
+  '& :not(.MuiInputBase-sizeSmall).MuiInputBase-adornedStart': {
     paddingInlineStart: '16px'
   },
-  '& .MuiInputLabel-sizeMedium + .MuiInputBase-adornedEnd.Mui-focused': {
+  '& :not(.MuiInputBase-sizeSmall).MuiInputBase-adornedEnd.Mui-focused': {
     paddingInlineEnd: '15px',
     '& .MuiInputBase-input': {
-      paddingInlineEnd: '16px !important'
+      paddingInlineEnd: '0px !important'
     }
   },
-  '& .MuiInputLabel-sizeMedium + .MuiInputBase-adornedEnd': {
+  '& :not(.MuiInputBase-sizeSmall).MuiInputBase-adornedEnd': {
     paddingInlineEnd: '16px'
   },
   '& .MuiInputAdornment-sizeMedium': {
@@ -131,7 +131,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
 
   '& .MuiInputBase-input': {
     '&:not(textarea).MuiInputBase-inputSizeSmall': {
-      padding: '7.25px 16px'
+      padding: '7.25px 14px'
     },
     '&:not(.MuiInputBase-readOnly):not([readonly])::placeholder': {
       transition: theme.transitions.create(['opacity', 'transform'], {
@@ -139,7 +139,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       })
     }
   },
-  '& .MuiInputLabel-sizeMedium + .MuiInputBase-root': {
+  '& :not(.MuiInputBase-sizeSmall).MuiInputBase-root': {
     borderRadius: '8px',
     fontSize: '17px',
     lineHeight: '1.41',
@@ -171,6 +171,9 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       blockSize: '1.125rem'
     }
   },
+  '& .MuiSelect-select': {
+    lineHeight: 1.5
+  },
   '& .Mui-focused .MuiSelect-select': {
     '& ~ i, & ~ svg': {
       right: '0.9375rem'
@@ -182,7 +185,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   },
 
   // For Autocomplete
-  '& .MuiInputLabel-sizeMedium + .MuiAutocomplete-inputRoot': {
+  '& :not(.MuiInputBase-sizeSmall).MuiAutocomplete-inputRoot': {
     paddingBlock: '5.55px',
     '& .MuiAutocomplete-input': {
       paddingInline: '8px !important',
