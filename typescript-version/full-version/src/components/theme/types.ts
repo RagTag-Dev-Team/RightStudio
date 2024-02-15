@@ -240,6 +240,12 @@ declare module '@mui/material/Pagination' {
   }
 }
 
+declare module '@mui/material/PaginationItem' {
+  interface PaginationItemPropsVariantOverrides {
+    tonal: true
+  }
+}
+
 declare module '@mui/lab/TimelineDot' {
   interface TimelineDotPropsVariantOverrides {
     tonal: true
