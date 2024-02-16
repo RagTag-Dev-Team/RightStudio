@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import Chip from '@mui/material/Chip'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
@@ -8,7 +11,7 @@ const StaticMenu = () => {
     <VerticalNav customBreakpoint='200px'>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <MenuSection label='Dashboards & Apps'>
-          <SubMenu label='Dashboards'>
+          <SubMenu label='Dashboards' suffix={<Chip label='2' size='small' color='error' />}>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
           </SubMenu>

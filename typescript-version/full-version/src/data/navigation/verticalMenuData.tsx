@@ -13,6 +13,10 @@ const verticalMenuData = (
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,
+    suffix: {
+      label: '2',
+      color: 'error'
+    },
     children: [
       // This is how you will normally render menu item
       {
@@ -376,6 +380,10 @@ const verticalMenuData = (
         label: dictionary['navigation'].others,
         children: [
           {
+            suffix: {
+              label: 'New',
+              color: 'info'
+            },
             label: dictionary['navigation'].itemWithBadge
           },
           {
