@@ -17,6 +17,10 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
+  customFields: {
+    templateName: 'Master',
+    templateFullName: 'Master Next.js Admin Template'
+  },
 
   plugins: [
     'docusaurus-plugin-sass',
