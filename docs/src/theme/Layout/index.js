@@ -1,5 +1,9 @@
+// Docusaurus Imports
 import Layout from '@theme-original/Layout';
 import Head from '@docusaurus/Head';
+
+// Generated Icon CSS Imports
+import '@site/src/iconify-icons/generated-icons.css'
 
 const LayoutWrapper = (props) => {
   return (
