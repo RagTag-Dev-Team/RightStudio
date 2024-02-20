@@ -24,7 +24,7 @@ const Root = styled('div', {
   alignItems: 'center',
   gap: theme.spacing(2),
   flexDirection: 'column',
-  padding: theme.spacing(4, 4, 2),
+  padding: theme.spacing(4),
   borderRadius: 'var(--mui-shape-borderRadius)',
   border: '1px solid var(--mui-palette-customColors-inputBorder)',
   color: 'var(--mui-palette-text-primary)',
@@ -80,7 +80,15 @@ const CheckboxInput = styled(Checkbox, {
 
 const CustomInputVertical = (props: CustomInputVerticalProps) => {
   // Props
-  const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
+  const {
+    type,
+    data,
+    name,
+    selected,
+    gridProps,
+    handleChange,
+    color = 'primary'
+  } = props
 
   const { title, value, content, asset } = data
 
@@ -91,15 +99,35 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
           onClick={() => handleChange(value)}
           className={classnames({
             'radio-only': type === 'radio' && !asset && !title && !content,
-            'checkbox-only': type === 'checkbox' && !asset && !title && !content,
-            active: type === 'radio' ? selected === value : selected.includes(value)
+            'checkbox-only':
+              type === 'checkbox' && !asset && !title && !content,
+            active:
+              type === 'radio' ? selected === value : selected.includes(value),
           })}
         >
           {asset || null}
-          {title ? typeof title === 'string' ? <Title color='text.primary'>{title}</Title> : title : null}
-          {content ? typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content : null}
+          {title ? (
+            typeof title === 'string' ? (
+              <Title color='text.primary'>{title}</Title>
+            ) : (
+              title
+            )
+          ) : null}
+          {content ? (
+            typeof content === 'string' ? (
+              <Content variant='body2'>{content}</Content>
+            ) : (
+              content
+            )
+          ) : null}
           {type === 'radio' ? (
-            <RadioInput name={name} color={color} value={value} onChange={handleChange} checked={selected === value} />
+            <RadioInput
+              name={name}
+              color={color}
+              value={value}
+              onChange={handleChange}
+              checked={selected === value}
+            />
           ) : (
             <CheckboxInput
               color={color}

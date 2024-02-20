@@ -26,7 +26,7 @@ const CardVerticalRatings = () => {
           easy and simple.
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className='card-actions-dense'>
         <Button>Location</Button>
         <Button>Review</Button>
       </CardActions>

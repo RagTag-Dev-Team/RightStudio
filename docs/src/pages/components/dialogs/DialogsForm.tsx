@@ -4,11 +4,13 @@ import { useState } from 'react'
 // MUI Imports
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
-import TextField from '@mui/material/TextField'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContentText from '@mui/material/DialogContentText'
+
+// Component Imports
+import CustomTextField from '@site/src/components/mui/text-field'
 
 const DialogsForm = () => {
   // States
@@ -23,13 +25,24 @@ const DialogsForm = () => {
       <Button variant='outlined' onClick={handleClickOpen}>
         Open form dialog
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='form-dialog-title'
+      >
         <DialogTitle id='form-dialog-title'>Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText className='mbe-3'>
-            To subscribe to this website, please enter your email address here. We will send updates occasionally.
+            To subscribe to this website, please enter your email address here.
+            We will send updates occasionally.
           </DialogContentText>
-          <TextField id='name' autoFocus fullWidth type='email' label='Email Address' />
+          <CustomTextField
+            id='name'
+            autoFocus
+            fullWidth
+            type='email'
+            label='Email Address'
+          />
         </DialogContent>
         <DialogActions className='dialog-actions-dense'>
           <Button onClick={handleClose}>Disagree</Button>

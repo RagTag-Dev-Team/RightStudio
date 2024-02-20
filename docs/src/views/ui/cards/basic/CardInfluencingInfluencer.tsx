@@ -22,7 +22,7 @@ const CardInfluencingInfluencer = () => {
           rundown of some of the best systems available.
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className='card-actions-dense'>
         <Button>Read More</Button>
       </CardActions>
     </Card>

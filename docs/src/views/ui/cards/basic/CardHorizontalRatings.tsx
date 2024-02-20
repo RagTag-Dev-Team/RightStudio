@@ -33,7 +33,7 @@ const CardHorizontalRatings = () => {
               build.
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions className='card-actions-dense'>
             <Button>Location</Button>
             <Button>Reviews</Button>
           </CardActions>

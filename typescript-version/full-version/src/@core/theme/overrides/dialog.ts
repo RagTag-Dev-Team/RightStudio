@@ -16,6 +16,9 @@ const dialog = (skin: Skin): Theme['components'] => ({
           : {
               boxShadow: 'none'
             })
+      },
+      paperFullScreen: {
+        borderRadius: 0
       }
     }
   },

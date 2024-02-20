@@ -24,7 +24,7 @@ const Root = styled('div', {
   alignItems: 'center',
   gap: theme.spacing(2),
   flexDirection: 'column',
-  padding: theme.spacing(4, 4, 2),
+  padding: theme.spacing(4),
   borderRadius: 'var(--mui-shape-borderRadius)',
   border: '1px solid var(--mui-palette-customColors-inputBorder)',
   color: 'var(--mui-palette-text-primary)',

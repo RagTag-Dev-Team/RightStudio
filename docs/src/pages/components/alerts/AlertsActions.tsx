@@ -6,6 +6,7 @@ const AlertsActions = () => {
   return (
     <div className='flex flex-col gap-4'>
       <Alert
+        className='flex items-center'
         onClose={e => {
           e.preventDefault()
         }}

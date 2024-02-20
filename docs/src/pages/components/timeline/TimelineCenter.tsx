@@ -322,7 +322,7 @@ const TimelineCenter = () => {
               </div>
               <div className='flex items-center gap-2'>
                 <LinearProgress variant='determinate' value={34} className='w-full' />
-                <Typography>34%</Typography>
+                <Typography variant='body2' className='font-medium'>34%</Typography>
               </div>
             </CardContent>
           </Card>

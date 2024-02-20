@@ -10,6 +10,7 @@ import Tab from '@mui/material/Tab'
 import TabPanel from '@mui/lab/TabPanel'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import CardContent from '@mui/material/CardContent'
 
 const CardWithTabs = () => {
   // ** State
@@ -27,36 +28,39 @@ const CardWithTabs = () => {
           <Tab value='2' label='Item Two' />
           <Tab value='3' label='Item Three' />
         </TabList>
-        <TabPanel value='1'>
-          <Typography variant='h5' className='mbe-2'>
-            Header One
-          </Typography>
-          <Typography color='text.secondary' className='mbe-6'>
-            Pudding tiramisu caramels. Gingerbread gummies danish chocolate bar toffee marzipan. Wafer wafer cake powder
-            danish oat cake.
-          </Typography>
-          <Button variant='contained'>Button One</Button>
-        </TabPanel>
-        <TabPanel value='2'>
-          <Typography variant='h5' className='mbe-2'>
-            Header Two
-          </Typography>
-          <Typography color='text.secondary' className='mbe-6'>
-            Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake marzipan. Carrot cake sweet roll gummi
-            bears caramels jelly beans.
-          </Typography>
-          <Button variant='contained'>Button Two</Button>
-        </TabPanel>
-        <TabPanel value='3'>
-          <Typography variant='h5' className='mbe-2'>
-            Header Three
-          </Typography>
-          <Typography color='text.secondary' className='mbe-6'>
-            Icing cake macaroon macaroon jelly chocolate bar. Chupa chups dessert dessert soufflé chocolate bar jujubes
-            gummi bears lollipop.
-          </Typography>
-          <Button variant='contained'>Button Three</Button>
-        </TabPanel>
+        <CardContent>
+          <TabPanel value='1'>
+            <Typography variant='h5' className='mbe-2'>
+              Header One
+            </Typography>
+            <Typography color='text.secondary' className='mbe-6'>
+              Pudding tiramisu caramels. Gingerbread gummies danish chocolate
+              bar toffee marzipan. Wafer wafer cake powder danish oat cake.
+            </Typography>
+            <Button variant='contained'>Button One</Button>
+          </TabPanel>
+          <TabPanel value='2'>
+            <Typography variant='h5' className='mbe-2'>
+              Header Two
+            </Typography>
+            <Typography color='text.secondary' className='mbe-6'>
+              Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake
+              marzipan. Carrot cake sweet roll gummi bears caramels jelly beans.
+            </Typography>
+            <Button variant='contained'>Button Two</Button>
+          </TabPanel>
+          <TabPanel value='3'>
+            <Typography variant='h5' className='mbe-2'>
+              Header Three
+            </Typography>
+            <Typography color='text.secondary' className='mbe-6'>
+              Icing cake macaroon macaroon jelly chocolate bar. Chupa chups
+              dessert dessert soufflé chocolate bar jujubes gummi bears
+              lollipop.
+            </Typography>
+            <Button variant='contained'>Button Three</Button>
+          </TabPanel>
+        </CardContent>
       </TabContext>
     </Card>
   )

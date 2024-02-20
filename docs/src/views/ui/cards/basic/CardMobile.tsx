@@ -54,7 +54,7 @@ const CardMobile = () => {
               <Typography className='font-medium'>$899</Typography>
             </div>
           </CardContent>
-          <CardActions className='justify-between'>
+          <CardActions className='justify-between card-actions-dense'>
             <Button startIcon={<i className='tabler-shopping-cart' />}>Add to Cart</Button>
             <IconButton
               id='share-button'
@@ -71,16 +71,16 @@ const CardMobile = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <i className='tabler-brand-facebook-filled text-xl' />
+                <i className='tabler-brand-facebook text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='tabler-brand-twitter-filled text-xl' />
+                <i className='tabler-brand-twitter text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <i className='tabler-brand-linkedin text-xl' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='tabler-brand-google-filled text-xl' />
+                <i className='tabler-brand-google text-xl' />
               </MenuItem>
             </Menu>
           </CardActions>

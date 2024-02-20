@@ -67,7 +67,7 @@ const card = (skin: Skin): Theme['components'] => {
             paddingBlockEnd: 0,
             '&:first-of-type': {
               paddingBlockStart: 0,
-              '& + .MuiTabPanel-root': {
+              '& ~ .MuiTabPanel-root': {
                 paddingBlockStart: 0
               }
             }

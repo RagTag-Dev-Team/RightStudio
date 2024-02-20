@@ -16,9 +16,6 @@ const menu = (skin: Skin): Theme['components'] => ({
       })
     },
     styleOverrides: {
-      list: ({ theme }) => ({
-        paddingInline: theme.spacing(2)
-      }),
       paper: ({ theme }) => ({
         marginBlockStart: theme.spacing(0.5),
         ...(skin !== 'bordered' && {
@@ -32,6 +29,7 @@ const menu = (skin: Skin): Theme['components'] => ({
       root: ({ theme }) => ({
         paddingBlock: theme.spacing(2),
         color: 'var(--mui-palette-text-primary)',
+        marginInline: theme.spacing(2),
         borderRadius: 'var(--mui-shape-borderRadius)',
         '&:not(:last-of-type)': {
           marginBlockEnd: theme.spacing(0.5)

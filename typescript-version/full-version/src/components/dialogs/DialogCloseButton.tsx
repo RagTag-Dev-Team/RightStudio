@@ -19,8 +19,8 @@ const DialogCloseButton = styled(Button)<ButtonProps>({
   inlineSize: 30,
   minInlineSize: 0,
   padding: 0,
-  '&:hover': {
-    transform: 'translate(7px, -5px)'
+  '&:hover, &:active': {
+    transform: 'translate(7px, -5px) !important'
   },
   '& i, & svg': {
     fontSize: '1.25rem'

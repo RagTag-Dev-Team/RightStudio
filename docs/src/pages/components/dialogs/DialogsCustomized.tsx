@@ -34,7 +34,7 @@ const DialogsCustomized = () => {
           <Typography variant='h5' component='span'>
             Modal title
           </Typography>
-          <DialogCloseButton onClick={handleClose}>
+          <DialogCloseButton onClick={handleClose} disableRipple>
             <i className='tabler-x' />
           </DialogCloseButton>
         </DialogTitle>

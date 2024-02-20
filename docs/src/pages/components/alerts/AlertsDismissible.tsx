@@ -22,6 +22,7 @@ const AlertsDismissible = () => {
       <div className='mbe-6'>
         <Collapse in={open1}>
           <Alert
+            className='flex items-center'
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen1(false)}>
                 <i className='tabler-x' />
@@ -39,6 +40,7 @@ const AlertsDismissible = () => {
       <div className='mbe-6'>
         <Fade in={open2} {...(open2 ? { timeout: 700 } : {})}>
           <Alert
+            className='flex items-center'
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen2(false)}>
                 <i className='tabler-x' />
@@ -56,6 +58,7 @@ const AlertsDismissible = () => {
       <div className='mbe-6'>
         <Grow in={open3} {...(open3 ? { timeout: 700 } : {})}>
           <Alert
+            className='flex items-center'
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen3(false)}>
                 <i className='tabler-x' />
@@ -73,6 +76,7 @@ const AlertsDismissible = () => {
       <>
         <Slide in={open4} direction='left' {...(open4 ? { timeout: 500 } : {})}>
           <Alert
+            className='flex items-center'
             action={
               <IconButton size='small' color='inherit' aria-label='close' onClick={() => setOpen4(false)}>
                 <i className='tabler-x' />

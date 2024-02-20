@@ -31,7 +31,7 @@ const SnackbarAlert = () => {
           variant='filled'
           severity='success'
           onClose={handleClose}
-          className='w-full shadow-xs'
+          className='w-full shadow-xs items-center'
         >
           This is a success message!
         </Alert>
