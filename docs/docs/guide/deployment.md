@@ -18,3 +18,7 @@ Numerous community forums and discussion platforms can offer valuable insights:
 
 - **Stack Overflow**: A large community of developers where you can search for answers or ask specific questions about Next.js deployment.
 - **Next.js GitHub Discussions**: Engage with the Next.js community on GitHub for deployment-related queries and discussions.
+
+### Static Export not possible
+
+Static export is not possible with our template. Please refer to [this](/docs/faqs/why-static-export-is-not-possible) FAQ for more information.

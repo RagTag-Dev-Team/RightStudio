@@ -2,7 +2,7 @@
 hide_table_of_contents: true
 ---
 
-# Why should defaultCollapsed menu be avoided for menu collapsing
+# Why should defaultCollapsed menu be avoided for menu collapsing?
 
 **Q: Why is it recommended to avoid using the `defaultCollapsed` property for collapsing menus?**
 

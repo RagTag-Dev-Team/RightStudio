@@ -63,9 +63,9 @@ Before checking folder structure it is better you know some stuff related to fol
 
 ## @core folder
 
-`src/@core` folder is the core of our template which contains core components, contexts, hooks, styles, etc where you should not make any change but override them with the help of our docs in case of any changes required in core files.
+`src/@core` folder is the core of our template which contains core components, contexts, hooks, styles, etc. where you should not make any change but override them with the help of our docs in case of any changes required in core files.
 
-`src/@core` folder isn't meant to get modified. When you will update our template replacing this `src/@core` folder will hopefully update the template with minimum changes.
+`src/@core` folder isn't meant to get modified. When you will update our template, replacing the `src/@core` folder will hopefully update the template with minimum changes.
 
 :::warning Heads Up
 If you want to customize components, utilize the `src/components` folder, which is specifically intended for such modifications and provides a safer avenue for personalization without impacting the core structure of the template.
@@ -73,7 +73,7 @@ If you want to customize components, utilize the `src/components` folder, which 
 
 It's a good idea to have a look at it and know what it contains to use stuff we already invented so you don't have to reinvent the wheel.
 
-### Understanding Core folder
+### Understanding the folder
 
 Understanding the `src/@core` folder will save your development time and you will know how to get most out of our template.
 
@@ -84,14 +84,15 @@ Understanding the `src/@core` folder will save your development time and you wil
 | hooks | `useSettings` is used to access settings context values |
 | styles | Custom styles for the navigation menus, table, all the third party library components and some MUI components |
 | svg | SVG components |
-| theme | MUI theming like component's overrides, spacing, shadows, etc. & updated MUI types |
-| types.ts | It contains all the types of core features like layout, skin, mode etc |
+| tailwind | Tailwind CSS plugin to add our custom classes |
+| utils | Utils classes and functions for core features |
+| types.ts | It contains all the types of core features like layout, skin, mode etc. |
 
 ## @layout folder
 
 `src/@layout` folder contains styles, svg, utils, layout components like Blank Layout, Vertical Layout, Horizontal Layout, Layout Wrapper, etc. where you should not make any changes but override them with the help of our docs in case of any changes required in layout files.
 
-`src/@layout` folder isn't meant to get modified. When you will update our template replacing this `src/@layout` folder will hopefully update the template with minimum changes.
+`src/@layout` folder isn't meant to get modified. When you will update our template, replacing the `src/@layout` folder will hopefully update the template with minimum changes.
 
 :::warning Heads Up
 If you want to customize/add any layout, create the `src/layouts` folder. You may copy any layout from the `src/@layouts` folder and paste in the newly created folder and customize it according to your needs.
@@ -99,7 +100,7 @@ If you want to customize/add any layout, create the `src/layouts` folder. You ma
 
 It's a good idea to have a look at it and know what it contains to use stuff we already invented so you don't have to reinvent the wheel.
 
-### Understanding Layout folder
+### Understanding the folder
 
 Understanding the `src/@layout` folder will save your development time and you will know how to get most out of our template.
 
@@ -114,7 +115,19 @@ Understanding the `src/@layout` folder will save your development time and you w
 | LayoutWrapper.tsx | Wrapper component to conditionally render Vertical and Horizontal layout |
 | VerticalLayout.tsx | Vertical layout component |
 
-### Understanding Menu folder
+## @menu folder
+
+`src/@menu` folder contains contexts, hooks, styles, svg, utils, components, etc. where you should not make any changes but override them with the help of our docs in case of any changes required in menu files.
+
+`src/@menu` folder isn't meant to get modified. When you will update our template, replacing the `src/@menu` folder will hopefully update the template with minimum changes.
+
+:::warning Heads Up
+If you want to customize anything related to menu, create the `src/menu` folder. You may copy any file from the `src/@menu` folder and paste in the newly created folder and customize it according to your needs.
+:::
+
+It's a good idea to have a look at it and know what it contains to use stuff we already invented so you don't have to reinvent the wheel.
+
+### Understanding the folder
 
 Understanding the `src/@menu` folder will save your development time and you will know about the menu structure of our template.
 
@@ -129,11 +142,15 @@ Understanding the `src/@menu` folder will save your development time and you wil
 | utils | Utils classes and functions for menu |
 | vertical-menu | Vertical menu imports |
 | defaultConfigs.ts | Default menu configs |
-| types.ts | It contains all the types of menu features like menu item, menu config, etc |
+| types.ts | It contains all the types of menu features like menu item, menu config, etc. |
 
-### Understanding the App Folder structure
+## src/app folder
 
-Understanding and Utilizing the App Directory, Learn the essentials of each component and file for effective customization and enhancement of your development.
+`src/app` folder contains the layout, API routes and pages of the template.
+
+### Understanding the folder
+
+Understanding and utilizing the `src/app` directory, learn the essentials of each component and file for effective customization and enhancement of your development.
 
 ```plaintext
 app

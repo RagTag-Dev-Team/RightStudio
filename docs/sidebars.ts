@@ -17,6 +17,10 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Overview',
+      link: {
+        type: "doc",
+        id: "guide/overview",
+      },
       items: [
         'guide/overview/getting-started',
         'guide/overview/starter-kit-vs-full-package',
@@ -54,8 +58,8 @@ const sidebars: SidebarsConfig = {
         'guide/layout/vertical-layout-components',
         'guide/layout/horizontal-layout-components',
         'guide/layout/layout-classes',
+        'guide/layout/menu-styling',
         'guide/layout/menu-classes',
-        'guide/layout/menu-utils',
         'guide/layout/before-after-content',
         'guide/layout/customizer'
       ]
@@ -106,6 +110,7 @@ const sidebars: SidebarsConfig = {
         }
       ]
     },
+    'guide/customizing-our-component',
     'guide/deployment',
     'guide/credit',
   ],
@@ -115,7 +120,7 @@ const sidebars: SidebarsConfig = {
       label: 'Components',
       link: {
         type: "doc",
-        id: "user-interface/components/intro",
+        id: "user-interface/components",
       },
       items: []
     },
@@ -124,7 +129,7 @@ const sidebars: SidebarsConfig = {
       label: 'Form Elements',
       link: {
         type: "doc",
-        id: "user-interface/form-elements/intro",
+        id: "user-interface/form-elements",
       },
       items: []
     }
@@ -398,14 +403,16 @@ const sidebars: SidebarsConfig = {
     "faqs/installation-errors",
     "faqs/installation-warning",
     "faqs/remove-nextjs",
+    "faqs/how-to-update-this-template",
     "faqs/how-to-hide-menu",
     "faqs/server-side-menu",
     'faqs/configure-local-template-like-demos',
     "faqs/update-navbar-and-footer",
     "faqs/why-default-collapsed-menu-be-avoided",
-    "faqs/switching-authentication",
+    "faqs/add-or-remove-authentication",
     "faqs/how-to-clear-browser-cache",
-    "faqs/why-static-export-is-not-possible"
+    "faqs/why-static-export-is-not-possible",
+    "faqs/how-to-implement-acl"
   ],
 };
 
