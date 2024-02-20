@@ -20,5 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # icon generated file
-src/iconify-icons/generated-icons.js
 src/iconify-icons/generated-icons.css

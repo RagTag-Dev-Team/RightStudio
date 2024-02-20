@@ -5,41 +5,43 @@ hide_table_of_contents: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
+import { TemplateName } from '@site/src/components/TemplateName'
 
-# Installation
+# Installation Guide
 
-Master is built using [Create Next App](https://nextjs.org/docs/app/api-reference/create-next-app). Create Next App sets up everything automatically for you.
+Welcome to the <TemplateName /> installation guide! 🎉 Leveraging [Create Next App](https://nextjs.org/docs/app/api-reference/create-next-app), we've streamlined the setup to kickstart your project automatically and efficiently.
 
-## Guide
+## 📚 Getting Started
 
-First of all make sure you have installed [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) / [yarn](https://yarnpkg.com/) / [npm](https://www.npmjs.com/).
+Before you begin, ensure [Node.js](https://nodejs.org/) is installed along with one of the following package managers: [pnpm](https://pnpm.io/), [yarn](https://yarnpkg.com/), or [npm](https://www.npmjs.com/).
 
-:::tip
-pnpm package manager is recommended
+:::warning Recommendations & Requirements
+
+**Package Manager:** `pnpm` is our preferred choice for its speed and efficiency.
+
+**Node Version:** Stick to the LTS version recommended on the official Node.js site. Our template is optimized for this version to avoid compatibility issues.
+
+**Hidden Files:** Ensure files starting with a dot (.eslintrc, .env.example, etc.) are visible and copied correctly. This is crucial for a successful setup, as missing hidden files can occur if they're not enabled on your system.
 :::
 
-:::warning Requirements
-Please make sure you use the node's LTS version which is recommended by the official node site and not the one with the latest features or previous versions. Our project is not tested to work with other Node versions.
+### Project Setup:
+1. Download the <TemplateName /> zip and place it in your chosen directory before unzipping. This step prevents the loss of hidden files during transfer.
 
-:::
+2. Inside, you'll find `typescript-version` and `javascript-version` folders, each with `full-version` & `starter-kit`. Select the one that suits your project needs and open it in your code editor.
 
-:::warning important
-Before installing the `node_modules`, make sure you have files starting with a dot (`.eslintrc`, `.env.example` etc..). It mostly happens when hidden files are not enabled on your machine and you try to copy our template at some other place on your system.
-:::
+### Environment Variables Configuration:
 
-- After downloading zip, copy this zip to your desired location and then unzip it. Do not unzip first and then copy files to another location, it may not be able to run the template due to missing hidden files not copied over.
-- In the uncompressed folder, you will find the `typescript-version` and `javascript-version` folders which contain the `full-version` & `starter-kit` folders. Open the one you want to get started with in your code editor.
+1. Rename `.env.example` to `.env`.
 
-To configure your environment variables, follow these steps:
+2. Populate the `.env` file with your specific values.
 
-1. Copy the `.env.example` file and rename it to `.env`.
-2. Fill in the required values in the `.env` file.
-3. Make sure to write your secret in the `NEXTAUTH_SECRET` variable in the `.env` file. You may generate your secret by referring to [this](https://next-auth.js.org/configuration/options#secret) link.
-4. If you are using google authentication, make sure to mention your `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in the `.env` file.
+3. In the `full-version`, generate a secure `NEXTAUTH_SECRET` as suggested [here](https://next-auth.js.org/configuration/options#secret).
 
-By following these steps, you can set up and manage your environment variables effectively.
+4. For Google authentication in the `full-version`, include `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in the `.env` file.
 
-- Run the below command in the console:
+## Dependency Installation
+
+Run the install command using your chosen package manager from the options below:
 
   <Tabs
     defaultValue="pnpm"
@@ -59,7 +61,9 @@ By following these steps, you can set up and manage your environment variables e
     </TabItem>
   </Tabs>
 
-- After installing the modules run your project with following command:
+## Launch Project
+
+Initiate your project with the start command tailored for your package manager:
 
   <Tabs
     defaultValue="pnpm"
@@ -79,18 +83,18 @@ By following these steps, you can set up and manage your environment variables e
     </TabItem>
   </Tabs>
 
-- You will find following output after running above command in console:
-  {/* ![CLI image](../../assets/cli-demo.png) */}
-  <img alt='cli-demo' />
+You will find following output after running above command in console:
+{/* ![CLI image](../../assets/cli-demo.png) */}
+<img alt='cli-demo' />
 
-- Congratulations! You have successfully run the project. Visit [http://localhost:3000/](http://localhost:3000/) to check it in your browser.
+🎊 Success! Once the command runs successfully, your console will show the project is active. Visit `http://localhost:3000` to view your work in action.
 
-:::note
-Your network URL might not have same URL as screenshot and that is completely fine. It depends on your network.
+:::note 🌍 Network URL Variation
+Your network URL might differ from examples shown; this is normal and depends on your specific network setup.
 :::
 
-:::tip
-If you want to change the port number, you can do so by adding `--port <port-number>` or `-p <port-number>` at the end of the command. For example, `pnpm dev --port 3001` or `pnpm dev -p 3001`.
-
-Additionally, you also need to change the port number from `http://localhost:3000` to `http://localhost:<port-number>` in the `.env` file. For the above example, it would be `http://localhost:3001`.
+:::tip 🔧 Port Customization
+Change the port by adding `--port <port-number>` or `-p <port-number>` to your launch command. Update the `.env` file's URL to reflect the new port, e.g., `pnpm dev --port 3001` changes the URL to `http://localhost:3001`.
 :::
+
+Begin your <TemplateName /> adventure with joy and efficiency! 🚀

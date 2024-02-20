@@ -71,25 +71,19 @@ const sources: BundleScriptConfig = {
     // 'json/gg.json'
   ],
 
-  /* icons: [
-    'bx-basket',
-    'bi-airplane-engines',
-    'tabler-anchor',
-    'uit-adobe-alt',
-
-    'fa6-regular-comment',
-    'twemoji-auto-rickshaw'
-  ], */
+  icons: [
+    'mdi-rocket-launch-outline'
+  ],
 
   svg: [
     /* {
-      dir: 'src/assets/iconify-icons/svg',
+      dir: 'src/iconify-icons/svg',
       monotone: false,
       prefix: 'custom'
-    } */
+    }, */
 
     /* {
-      dir: 'src/assets/iconify-icons/emojis',
+      dir: 'src/iconify-icons/emojis',
       monotone: false,
       prefix: 'emoji'
     } */

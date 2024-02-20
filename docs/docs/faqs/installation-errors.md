@@ -20,6 +20,7 @@ hide_table_of_contents: true
 - Try running the `pnpm cache clean`, `yarn cache clean` or `npm cache clean` command.
 
 **After following the steps explained above, if you are still getting any errors, please [raise support](/docs/guide/overview/getting-support) at our support portal with the below details:**
+
 - Your OS information, Node version, pnpm/yarn/npm version, Template/Package version.
 - Mention if you can run a fresh react project using `npx create-next-app@latest` without our template/package.
 - Attach log file of the error you are getting in your console(provide full log).

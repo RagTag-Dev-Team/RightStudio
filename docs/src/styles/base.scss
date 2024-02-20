@@ -43,6 +43,10 @@ code {
   }
 }
 
+:where([class^='ri-']) {
+  font-size: 1.5rem;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -91,8 +95,4 @@ ul:not([class]), ol:not([class]) {
 .table-of-contents ul {
   margin: 0;
   padding-left: var(--ifm-toc-padding-horizontal);
-}
-
-:where([class^='ri-']) {
-  font-size: 1.5rem;
 }

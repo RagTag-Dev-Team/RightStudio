@@ -1,32 +1,39 @@
-# Starter-kit vs Full Package
+# Choosing Between Starter Kit and Full Package
 
-### Starter kit
+## Starter Kit Overview
 
-Starter-kit is minimal template from where you can start your project quickly instead of removing stuff which ins't needed. Below is quick notes on starter-kit:
+The Starter Kit is your quick-launch platform, designed for developers who want to hit the ground running without the hassle of stripping away unused features. Here's what you need to know about the Starter Kit:
 
-- No Auth
-- No i18n
-- Simple Navbar
-- Four Pages (Two sample pages + 404 + Login)
-- No Customizer
-- No Scroll to top
+- **Minimalistic Design:** Keeps your project lean with just the essentials.
+- **Efficient:** No unnecessary code or dependencies.
+  - No authentication system
+  - No i18n (Internationalization / Translation)
+  - No built-in theme customizer
+  - No Middleware
+  - Simplified navbar
+  - Comes with four pages: two sample pages, a 404 error page, and a login page
 
-Use it if you don't want to clutter your project with extra libs which are not required.
+**Ideal Use Case:** Opt for the Starter Kit if your priority is to avoid unnecessary libraries and complexity from the get-go. It's streamlined to ensure you're not bogged down by features you don't need immediately.
 
-Our Starter Kit is tailored for efficiency with minimal dependencies, making it perfect to just get started.
-We've carefully eliminated any unnecessary code to ensure it's as streamlined as possible. <br/>
-While the Full Version includes a broader range of dependencies for its extensive features, the Starter Kit allows for the addition of specific components from the Full Version as needed. Most components from the Full Version are compatible with the Starter Kit and can be integrated without requiring extra dependencies, providing flexibility to enhance your project's functionality at your own pace.
+The Starter Kit is engineered for simplicity and speed, stripping back to the basics to offer a clean slate. Although it eschews the broader functionalities found in the Full Package, it remains flexible. You can seamlessly incorporate components from the Full Package as your project's needs expand. This adaptability makes it an excellent choice for gradually scaling your application's features. Add the required dependencies while adding new features, components or pages from the Full Package.
 
 :::tip
-Use starter-kit to provide reproduction steps if you raise any technical issue on [Github](/docs/guide/overview/getting-support).
+For reporting technical issues on [Github](/docs/guide/overview/getting-support), the Starter Kit is the preferred reference point, ensuring clarity and ease of reproduction.
 :::
 
-### Full Package
+## Full Package Insights
 
-This setup have all the things which you can see in live demo. Except that Buy Now button 😅.
+The Full Package is the all-inclusive variant, mirroring the richness and dynamism of our live demo—minus the "Buy Now" button, of course 😅.
 
-With this you have to remove things which you don't use or replace them with your content.
+What's Included:
 
-### Conclusion
+- **Comprehensive Features:** Comes packed with all the functionalities showcased in our demo.
+- **Customization Requirement:** Tailoring required to fit your project's unique needs, involving the removal of unused components or integrating your content.
 
-According to us, starter-kit is easy to get started with minimal setup and our folder and code structure will help you adding libs support in starter-kit more easily than ever. Still if your project becomes easy with full package go for it.
+## Making the Choice
+
+**Why Choose the Starter Kit?** It's the epitome of efficiency and ease, offering a minimalist setup that simplifies the process of adding new libraries or features. Our structured codebase is designed to facilitate easy enhancements, making the Starter Kit an excellent starting point for most projects.
+
+**Opting for the Full Package:** If your project demands the full spectrum of features from the outset, the Full Package delivers. It's suited for those who need a comprehensive set of tools and components at their disposal, ready to be customized to fit the project's requirements.
+
+**The Bottom Line:** Whether you lean towards the streamlined simplicity of the Starter Kit or the feature-rich environment of the Full Package, both paths are designed with your project's growth in mind. Choose based on your immediate needs, knowing you have the flexibility to expand and adapt as your project evolves.

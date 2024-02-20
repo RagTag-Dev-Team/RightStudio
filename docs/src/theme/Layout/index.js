@@ -9,7 +9,7 @@ import AppReactToastify from '@docComponents/styled-components/AppReactToastify'
 import ThemeProvider from '@site/src/mui-theme/ThemeProvider'
 
 // Generated Icon CSS Imports
-import '@/assets/iconify-icons/generated-icons.css'
+import '@site/src/iconify-icons/generated-icons.css'
 
 const LayoutWrapper = (props) => {
   return (
