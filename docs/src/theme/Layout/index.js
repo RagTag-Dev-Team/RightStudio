@@ -1,6 +1,6 @@
 // Docusaurus Imports
 import Layout from '@theme-original/Layout'
-import Head from '@docusaurus/Head';
+import Head from '@docusaurus/Head'
 
 // Component Imports
 import AppReactToastify from '@docComponents/styled-components/AppReactToastify'

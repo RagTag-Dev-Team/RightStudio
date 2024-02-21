@@ -21,7 +21,6 @@
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@iconify/react": "^4.1.1",
     "@mdx-js/react": "^3.0.0",
     "@mui/lab": "5.0.0-alpha.158",
     "@mui/material": "^5.15.2",
