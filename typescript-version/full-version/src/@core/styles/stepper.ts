@@ -55,11 +55,11 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
       },
       '&.Mui-active, &.Mui-completed': {
         '& .MuiStepConnector-line': {
-          borderColor: theme.vars.palette.primary.main
+          borderColor: 'var(--mui-palette-primary-main)'
         }
       },
       '&.Mui-disabled .MuiStepConnector-line': {
-        borderColor: `rgb(${theme.vars.palette.primary.mainChannel} / 0.12)`
+        borderColor: 'var(--mui-palette-primary-lightOpacity)'
       }
     },
     '& .MuiStepper-alternativeLabel': {
@@ -83,13 +83,13 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         '& .MuiStepContent-root': {
           borderInlineStartWidth: 3,
           marginLeft: theme.spacing(2.25),
-          borderColor: theme.vars.palette.primary.main
+          borderColor: 'var(--mui-palette-primary-main)'
         },
         '& .button-wrapper': {
           marginTop: theme.spacing(4)
         },
         '&.active + .MuiStepConnector-root .MuiStepConnector-line': {
-          borderColor: theme.vars.palette.primary.main
+          borderColor: 'var(--mui-palette-primary-main)'
         }
       },
       '& .MuiStepConnector-root': {

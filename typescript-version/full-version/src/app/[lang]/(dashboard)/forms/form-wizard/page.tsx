@@ -10,13 +10,15 @@ import StepperLinearWithValidation from '@views/forms/form-wizard/StepperLinearW
 import StepperAlternativeLabel from '@views/forms/form-wizard/StepperAlternativeLabel'
 import StepperVerticalWithNumbers from '@views/forms/form-wizard/StepperVerticalWithNumbers'
 import StepperVerticalWithoutNumbers from '@views/forms/form-wizard/StepperVerticalWithoutNumbers'
+import StepperCustomHorizontal from '@views/forms/form-wizard/StepperCustomHorizontal'
+import StepperCustomVertical from '@/views/forms/form-wizard/StepperCustomVertical'
 
 const FormWizard = () => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
-        <Typography variant='h5'>Stepper</Typography>
-        <Typography variant='body2'>
+        <Typography variant='h4'>Stepper</Typography>
+        <Typography variant='body1'>
           Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
           <Link
             href='https://mui.com/material-ui/react-stepper'
@@ -39,13 +41,13 @@ const FormWizard = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant='h6'>Linear Stepper with Validation</Typography>
+        <Typography variant='h5'>Linear Stepper with Validation</Typography>
       </Grid>
       <Grid item xs={12}>
         <StepperLinearWithValidation />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant='h6'>Alternative Label</Typography>
+        <Typography variant='h5'>Alternative Label</Typography>
       </Grid>
       <Grid item xs={12}>
         <StepperAlternativeLabel />
@@ -55,6 +57,18 @@ const FormWizard = () => {
       </Grid>
       <Grid item xs={12}>
         <StepperVerticalWithoutNumbers />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant='h5'>Custom Horizontal Stepper</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <StepperCustomHorizontal />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant='h5'>Custom Vertical Stepper</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <StepperCustomVertical />
       </Grid>
     </Grid>
   )
