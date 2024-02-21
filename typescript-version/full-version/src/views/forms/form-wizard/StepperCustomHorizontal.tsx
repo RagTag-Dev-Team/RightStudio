@@ -4,27 +4,34 @@
 import { useState } from 'react'
 
 // MUI Imports
+import { styled, useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import CardContent from '@mui/material/CardContent'
 import Stepper from '@mui/material/Stepper'
-import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
+import Divider from '@mui/material/Divider'
+import MuiStep from '@mui/material/Step'
+import type { StepProps } from '@mui/material/Step'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
+import classnames from 'classnames'
 
 // Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+import DirectionalIcon from '@components/DirectionalIcon'
+import StepperCustomDot from './StepperCustomDot'
 import CustomTextField from '@core/components/mui/text-field'
 
-// Styled Component Imports
+// Styles Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
 
 type FormDataType = {
   username: string
@@ -46,22 +53,59 @@ type FormDataType = {
 // Vars
 const steps = [
   {
+    icon: 'tabler-file-analytics',
     title: 'Account Details',
     subtitle: 'Enter your account details'
   },
   {
+    icon: 'tabler-user',
     title: 'Personal Info',
     subtitle: 'Setup Information'
   },
   {
+    icon: 'tabler-brand-instagram',
     title: 'Social Links',
     subtitle: 'Add Social Links'
   }
 ]
 
-const StepperAlternativeLabel = () => {
+const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
+  paddingInline: theme.spacing(7),
+  '&:first-of-type': {
+    paddingLeft: 0
+  },
+  '&:last-of-type': {
+    paddingRight: 0
+  },
+  '& .MuiStepLabel-iconContainer': {
+    display: 'none'
+  },
+  '& .step-subtitle': {
+    color: `${theme.palette.text.disabled} !important`
+  },
+  '& + svg': {
+    color: theme.palette.text.disabled
+  },
+  '&.Mui-completed .step-title': {
+    color: theme.palette.text.disabled
+  },
+  '&.Mui-completed + svg': {
+    color: theme.palette.primary.main
+  },
+  [theme.breakpoints.down('md')]: {
+    padding: 0,
+    ':not(:last-of-type)': {
+      marginBottom: theme.spacing(6)
+    }
+  }
+}))
+
+const StepperCustomHorizontal = () => {
   // States
   const [activeStep, setActiveStep] = useState(0)
+
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
 
   const [formData, setFormData] = useState<FormDataType>({
     username: '',
@@ -298,25 +342,48 @@ const StepperAlternativeLabel = () => {
 
   return (
     <>
-      <StepperWrapper>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => {
-            return (
-              <Step key={label.title}>
-                <StepLabel StepIconComponent={StepperCustomDot}>
-                  <div className='step-label'>
-                    <div>
-                      <Typography className='step-title'>{label.title}</Typography>
-                      <Typography className='step-subtitle'>{label.subtitle}</Typography>
-                    </div>
-                  </div>
-                </StepLabel>
-              </Step>
-            )
-          })}
-        </Stepper>
-      </StepperWrapper>
-      <Card className='mt-4'>
+      <Card>
+        <CardContent>
+          <StepperWrapper>
+            <Stepper
+              activeStep={activeStep}
+              connector={
+                !isSmallScreen ? (
+                  <DirectionalIcon
+                    ltrIconClass='tabler-chevron-right'
+                    rtlIconClass='tabler-chevron-left'
+                    className='text-xl'
+                  />
+                ) : null
+              }
+            >
+              {steps.map((step, index) => {
+                return (
+                  <Step key={index}>
+                    <StepLabel StepIconComponent={StepperCustomDot}>
+                      <div className='step-label'>
+                        <CustomAvatar
+                          variant='rounded'
+                          skin={activeStep === index ? 'filled' : 'light'}
+                          {...(activeStep >= index && { color: 'primary' })}
+                          {...(activeStep === index && { className: 'shadow-primarySm' })}
+                          size={38}
+                        >
+                          <i className={classnames(step.icon)} />
+                        </CustomAvatar>
+                        <div>
+                          <Typography className='step-title'>{step.title}</Typography>
+                          <Typography className='step-subtitle'>{step.subtitle}</Typography>
+                        </div>
+                      </div>
+                    </StepLabel>
+                  </Step>
+                )
+              })}
+            </Stepper>
+          </StepperWrapper>
+        </CardContent>
+        <Divider sx={{ m: '0 !important' }} />
         <CardContent>
           {activeStep === steps.length ? (
             <>
@@ -356,4 +423,4 @@ const StepperAlternativeLabel = () => {
   )
 }
 
-export default StepperAlternativeLabel
+export default StepperCustomHorizontal

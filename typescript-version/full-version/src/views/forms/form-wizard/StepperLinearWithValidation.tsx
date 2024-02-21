@@ -7,17 +7,13 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
-import Select from '@mui/material/Select'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Stepper from '@mui/material/Stepper'
 import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
 import CardContent from '@mui/material/CardContent'
-import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
@@ -29,6 +25,7 @@ import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string, array, forward, custom } from 'valibot'
 
 // Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
 
@@ -165,9 +162,11 @@ const StepperLinearWithValidation = () => {
       case 0:
         return (
           <form key={0} onSubmit={handleAccountSubmit(onSubmit)}>
-            <Grid container>
+            <Grid container spacing={6}>
               <Grid item xs={12}>
-                <Typography className='font-medium'>{steps[0].title}</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  {steps[0].title}
+                </Typography>
                 <Typography variant='body2'>{steps[0].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -176,7 +175,7 @@ const StepperLinearWithValidation = () => {
                   control={accountControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='Username'
@@ -192,7 +191,7 @@ const StepperLinearWithValidation = () => {
                   control={accountControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       type='email'
@@ -209,7 +208,7 @@ const StepperLinearWithValidation = () => {
                   control={accountControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='Password'
@@ -241,7 +240,7 @@ const StepperLinearWithValidation = () => {
                   control={accountControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='Confirm Password'
@@ -271,7 +270,7 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' disabled color='secondary'>
+                <Button variant='tonal' disabled color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -284,9 +283,9 @@ const StepperLinearWithValidation = () => {
       case 1:
         return (
           <form key={1} onSubmit={handlePersonalSubmit(onSubmit)}>
-            <Grid container>
+            <Grid container spacing={6}>
               <Grid item xs={12}>
-                <Typography className='font-medium'>{steps[1].title}</Typography>
+                <Typography className='font-medium' color='text.primary'>{steps[1].title}</Typography>
                 <Typography variant='body2'>{steps[1].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -295,7 +294,7 @@ const StepperLinearWithValidation = () => {
                   control={personalControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='First Name'
@@ -314,7 +313,7 @@ const StepperLinearWithValidation = () => {
                   control={personalControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='Last Name'
@@ -328,52 +327,54 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <InputLabel error={Boolean(personalErrors.country)}>Country</InputLabel>
-                  <Controller
-                    name='country'
-                    control={personalControl}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <Select label='Country' {...field} error={Boolean(personalErrors.country)}>
-                        <MenuItem value='UK'>UK</MenuItem>
-                        <MenuItem value='USA'>USA</MenuItem>
-                        <MenuItem value='Australia'>Australia</MenuItem>
-                        <MenuItem value='Germany'>Germany</MenuItem>
-                      </Select>
-                    )}
-                  />
-                  {personalErrors.country && <FormHelperText error>country is a required field</FormHelperText>}
-                </FormControl>
+                <Controller
+                  name='country'
+                  control={personalControl}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <CustomTextField
+                      select
+                      fullWidth
+                      label='Country'
+                      {...field}
+                      error={Boolean(personalErrors.country)}
+                    >
+                      <MenuItem value='UK'>UK</MenuItem>
+                      <MenuItem value='USA'>USA</MenuItem>
+                      <MenuItem value='Australia'>Australia</MenuItem>
+                      <MenuItem value='Germany'>Germany</MenuItem>
+                    </CustomTextField>
+                  )}
+                />
+                {personalErrors.country && <FormHelperText error>country is a required field</FormHelperText>}
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <InputLabel error={Boolean(personalErrors.language)}>Language</InputLabel>
-                  <Controller
-                    name='language'
-                    control={personalControl}
-                    rules={{ required: true }}
-                    render={({ field: { value, onChange } }) => (
-                      <Select
-                        multiple
-                        label='Language'
-                        value={Array.isArray(value) ? value : []}
-                        onChange={onChange}
-                        error={Boolean(personalErrors.language)}
-                      >
-                        {Languages.map(language => (
-                          <MenuItem key={language} value={language}>
-                            {language}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    )}
-                  />
-                  {personalErrors.language && <FormHelperText error>language is a required field</FormHelperText>}
-                </FormControl>
+                <Controller
+                  name='language'
+                  control={personalControl}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <CustomTextField
+                      select
+                      fullWidth
+                      SelectProps={{ multiple: true}}
+                      label='Language'
+                      value={Array.isArray(value) ? value : []}
+                      onChange={onChange}
+                      error={Boolean(personalErrors.language)}
+                    >
+                      {Languages.map(language => (
+                        <MenuItem key={language} value={language}>
+                          {language}
+                        </MenuItem>
+                      ))}
+                    </CustomTextField>
+                  )}
+                />
+                {personalErrors.language && <FormHelperText error>language is a required field</FormHelperText>}
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' onClick={handleBack} color='secondary'>
+                <Button variant='tonal' onClick={handleBack} color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -386,9 +387,9 @@ const StepperLinearWithValidation = () => {
       case 2:
         return (
           <form key={2} onSubmit={handleSocialSubmit(onSubmit)}>
-            <Grid container>
+            <Grid container spacing={6}>
               <Grid item xs={12}>
-                <Typography className='font-medium'>{steps[2].title}</Typography>
+                <Typography className='font-medium'  color='text.primary'>{steps[2].title}</Typography>
                 <Typography variant='body2'>{steps[2].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -397,7 +398,7 @@ const StepperLinearWithValidation = () => {
                   control={socialControl}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
-                    <TextField
+                    <CustomTextField
                       value={value}
                       onChange={onChange}
                       fullWidth
@@ -414,7 +415,7 @@ const StepperLinearWithValidation = () => {
                   control={socialControl}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
-                    <TextField
+                    <CustomTextField
                       value={value}
                       onChange={onChange}
                       fullWidth
@@ -431,7 +432,7 @@ const StepperLinearWithValidation = () => {
                   control={socialControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='Google'
@@ -447,7 +448,7 @@ const StepperLinearWithValidation = () => {
                   control={socialControl}
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <TextField
+                    <CustomTextField
                       {...field}
                       fullWidth
                       label='LinkedIn'
@@ -458,7 +459,7 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' onClick={handleBack} color='secondary'>
+                <Button variant='tonal' onClick={handleBack} color='secondary'>
                   Back
                 </Button>
                 <Button variant='contained' type='submit'>
@@ -518,7 +519,9 @@ const StepperLinearWithValidation = () => {
                     <div className='step-label'>
                       <Typography className='step-number'>{`0${index + 1}`}</Typography>
                       <div>
-                        <Typography className='step-title'>{label.title}</Typography>
+                        <Typography className='step-title' color='text.primary'>
+                          {label.title}
+                        </Typography>
                         <Typography className='step-subtitle'>{label.subtitle}</Typography>
                       </div>
                     </div>

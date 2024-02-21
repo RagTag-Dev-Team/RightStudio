@@ -18,28 +18,33 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
       '& .step-label': {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+        '& .MuiAvatar-root': {
+          marginInlineEnd: theme.spacing(3)
+        }
       },
       '& .step-number': {
         ...theme.typography.h4,
-        fontWeight: 'bold',
-        marginRight: theme.spacing(2.5)
+        marginRight: theme.spacing(2),
+        color: 'var(--mui-palette-text-primary) !important'
       },
       '& .step-title': {
         ...theme.typography.body1,
-        fontWeight: 500
+        fontWeight: 500,
+        color: 'var(--mui-palette-text-primary)'
       },
       '& .step-subtitle': {
         ...theme.typography.body2
       },
       '& .MuiStepLabel-root.Mui-disabled': {
         '& .step-number': {
-          color: theme.vars.palette.text.disabled
+          color: 'var(--mui-palette-text-disabled)'
         }
       },
       '& .Mui-error': {
         '& .MuiStepLabel-labelContainer, & .step-number, & .step-title, & .step-subtitle': {
-          color: theme.vars.palette.error.main
+          color: 'var(--mui-palette-error-main) !important'
         }
       }
     },

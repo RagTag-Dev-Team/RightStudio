@@ -90,7 +90,7 @@ const StepperVerticalWithNumbers = () => {
                     <Button
                       size='small'
                       color='secondary'
-                      variant='outlined'
+                      variant='tonal'
                       onClick={handleBack}
                       disabled={index === 0}
                     >
