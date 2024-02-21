@@ -524,7 +524,7 @@ const sidebars: SidebarsConfig = {
     "faqs/why-default-collapsed-menu-be-avoided",
     'faqs/how-to-override-component-styling',
     'faqs/add-or-remove-authentication',
-    'faqs/migration',
+    'faqs/migration-from-pages-to-app-router',
     'faqs/how-to-use-directions',
     "faqs/how-to-add-rtl-in-swiper",
     "faqs/how-to-clear-browser-cache",

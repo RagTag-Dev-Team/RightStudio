@@ -4,8 +4,42 @@ hide_table_of_contents: true
 
 # Components
 
-import DocCardList from '@theme/DocCardList';
+import Link from '@docusaurus/Link'
+
+import CardContent from '@mui/material/CardContent'
+import Divider from '@mui/material/Divider'
+import Typography from '@mui/material/Typography'
+
+import Accordion from '@site/src/svg/Accordion'
+import Alert from '@site/src/svg/Alert'
+import '@site/src/styles/showcase-page.scss'
 
 <div className='template-bg-color' />
 
-<DocCardList />
+<div className='row showcase-row'>
+  {/* Accordion */}
+  <div className='col col--3'>
+    <Link to='/docs/user-interface/components/accordion' className='card showcase-card'>
+      <CardContent className='flex items-center justify-center'>
+        <Accordion />
+      </CardContent>
+      <Divider />
+      <CardContent>
+        <Typography className='text-center font-medium' sx={{ fontSize: '18px', lineHeight: 1.223 }}>Accordion</Typography>
+      </CardContent>
+    </Link>
+  </div>
+
+  {/* Alerts */}
+  <div className='col col--3'>
+    <Link to='/docs/user-interface/components/alerts' className='card showcase-card'>
+      <CardContent className='flex items-center justify-center'>
+        <Alert />
+      </CardContent>
+      <Divider />
+      <CardContent>
+        <Typography className='text-center font-medium' sx={{ fontSize: '18px', lineHeight: 1.223 }}>Alerts</Typography>
+      </CardContent>
+    </Link>
+  </div>
+</div>

@@ -14,7 +14,6 @@ You may add / update / remove any other dependencies according to your requireme
 "@floating-ui/react"
 "@iconify/iconify"
 "@iconify/json"
-"@iconify/react"
 "@iconify/tools"
 "@iconify/types"
 "@iconify/utils"
@@ -32,6 +31,7 @@ You may add / update / remove any other dependencies according to your requireme
 "postcss-styled-syntax"
 "prettier"
 "react"
+"react-colorful"
 "react-dom"
 "react-perfect-scrollbar"
 "react-use"
@@ -53,51 +53,52 @@ You may add / update / remove any other dependencies according to your requireme
 "prisma"
 ```
 
-## Calendar 
+## Calendar
+
 ```json
-    "@fullcalendar/common"
-    "@fullcalendar/core"
-    "@fullcalendar/daygrid"
-    "@fullcalendar/interaction"
-    "@fullcalendar/list"
-    "@fullcalendar/react"
-    "@fullcalendar/timegrid"
-    "bootstrap-icons"
+"@fullcalendar/common"
+"@fullcalendar/core"
+"@fullcalendar/daygrid"
+"@fullcalendar/interaction"
+"@fullcalendar/list"
+"@fullcalendar/react"
+"@fullcalendar/timegrid"
+"bootstrap-icons"
 ```
 
 ## Charts
-  ```json
-    "apexcharts"
-    "react-apexcharts"
-    "recharts"
-  ```
 
-## Customizer
 ```json
-  "react-colorful"
+"apexcharts"
+"react-apexcharts"
+"recharts"
 ```
 
 ## DataTable
+
 ```json
 "@tanstack/match-sorter-utils"
 "@tanstack/react-table"
 ```
 
 ## Date Time Picker
+
 ```json
-  "react-datepicker"
-  "@types/react-datepicker" // Typescript version only
-  "date-fns" // date formatter
+"@types/react-datepicker" // Typescript version only
+"date-fns" // date formatter
+"react-datepicker"
 ```
 
 ## Editor
+
 ```json
-  "draft-js"
-  "react-draft-wysiwyg"
-  "@types/react-draft-wysiwyg" // Typescript version only
+"@types/react-draft-wysiwyg" // Typescript version only
+"draft-js"
+"react-draft-wysiwyg"
 ```
 
 ## Eslint
+
 ```json
 "@typescript-eslint/eslint-plugin" // Typescript version only
 "@typescript-eslint/parser" // Typescript version only
@@ -109,13 +110,15 @@ You may add / update / remove any other dependencies according to your requireme
 ```
 
 ## Form Validation
+
 ```json
-  "@hookform/resolvers"
-  "react-hook-form"
-  "valibot"
+"@hookform/resolvers"
+"react-hook-form"
+"valibot"
 ```
 
 ## Internationalization (i18n)
+
 ```json
 "@formatjs/intl-localematcher"
 "@types/negotiator" // Typescript version only
@@ -123,27 +126,32 @@ You may add / update / remove any other dependencies according to your requireme
 ```
 
 ## Right to Left (RTL)
+
 ```json
-  "stylis"
-  "stylis-plugin-rtl"
+"stylis"
+"stylis-plugin-rtl"
 ```
 
 ## Search
+
 ```json
 "kbar"
 ```
 
 ## Swiper
+
 ```json
-  "keen-slider"
+"keen-slider"
 ```
 
 ## Toast
+
 ```json
-  "react-toastify"
+"react-toastify"
 ```
 
 ## Upload
+
 ```json
-  "react-dropzone"
+"react-dropzone"
 ```
