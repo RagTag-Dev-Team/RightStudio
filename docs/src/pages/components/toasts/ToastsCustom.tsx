@@ -27,8 +27,8 @@ const ToastsCustom = () => {
               </Typography>
             </div>
           </div>
-          <IconButton onClick={() => toast.dismiss(t.toastProps.toastId)}>
-            <i className='tabler-x text-xl text-[var(--mui-palette-text-primary)]' />
+          <IconButton onClick={() => toast.dismiss(t.toastProps.toastId)} size='small'>
+            <i className='tabler-x text-[var(--mui-palette-text-primary)]' />
           </IconButton>
         </div>
       ),

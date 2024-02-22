@@ -3,7 +3,7 @@ import ResetPasswordV1 from '@views/pages/auth/ResetPasswordV1'
 
 const ResetPasswordV1Page = () => {
   return (
-    <div className='flex h-full justify-center items-center'>
+    <div className='flex flex-col justify-center items-center min-bs-[100dvh] p-6'>
       <ResetPasswordV1 />
     </div>
   )

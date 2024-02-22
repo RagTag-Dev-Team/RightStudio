@@ -11,7 +11,6 @@ import { useParams } from 'next/navigation'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Button from '@mui/material/Button'
@@ -21,9 +20,14 @@ import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+import Logo from '@components/layout/shared/Logo'
+import CustomTextField from '@core/components/mui/text-field/index'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
+
+// Styled Component Imports
+import AuthIllustrationWrapper from './AuthIllustrationWrapper'
 
 const ResetPasswordV1 = () => {
   // States
@@ -38,57 +42,72 @@ const ResetPasswordV1 = () => {
   const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
 
   return (
-    <Card className='flex flex-col is-[450px]'>
-      <CardContent>
-        <div className='flex justify-center items-start'>Logo</div>
-        <Typography>Reset Password 🔒</Typography>
-        <Typography>Your new password must be different from previously used passwords</Typography>
-        <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-          <TextField
-            autoFocus
-            fullWidth
-            label='Password'
-            type={isPasswordShown ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                    <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-          <TextField
-            fullWidth
-            label='Confirm Password'
-            type={isConfirmPasswordShown ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <IconButton edge='end' onClick={handleClickShowConfirmPassword} onMouseDown={e => e.preventDefault()}>
-                    <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-          <Button fullWidth variant='contained' type='submit'>
-            Set New Password
-          </Button>
-          <Typography className='flex justify-center items-center' color='primary'>
-            <Link
-              href={getLocalizedUrl('pages/auth/login-v1', locale as Locale)}
-              onClick={e => e.preventDefault()}
-              className='flex items-center'
-            >
-              <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
-              <span>Back to Login</span>
-            </Link>
-          </Typography>
-        </form>
-      </CardContent>
-    </Card>
+    <AuthIllustrationWrapper>
+      <Card className='flex flex-col sm:is-[450px]'>
+        <CardContent className='!p-9 md:!p-12'>
+          <div className='flex justify-center mbe-6'>
+            <Logo />
+          </div>
+          <div className='flex flex-col gap-1 mbe-6'>
+            <Typography variant='h4'>Reset Password 🔒</Typography>
+            <Typography>Your new password must be different from previously used passwords</Typography>
+          </div>
+          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-6'>
+            <CustomTextField
+              autoFocus
+              fullWidth
+              label='New Password'
+              placeholder='············'
+              type={isPasswordShown ? 'text' : 'password'}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
+                      <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+            <CustomTextField
+              fullWidth
+              label='Confirm Password'
+              placeholder='············'
+              type={isConfirmPasswordShown ? 'text' : 'password'}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton
+                      edge='end'
+                      onClick={handleClickShowConfirmPassword}
+                      onMouseDown={e => e.preventDefault()}
+                    >
+                      <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+            <Button fullWidth variant='contained' type='submit'>
+              Set New Password
+            </Button>
+            <Typography className='flex justify-center items-center' color='primary'>
+              <Link
+                href={getLocalizedUrl('pages/auth/login-v1', locale as Locale)}
+                className='flex items-center gap-1.5'
+              >
+                <DirectionalIcon
+                  ltrIconClass='tabler-chevron-left'
+                  rtlIconClass='tabler-chevron-right'
+                  className='text-xl'
+                />
+                <span>Back to login</span>
+              </Link>
+            </Typography>
+          </form>
+        </CardContent>
+      </Card>
+    </AuthIllustrationWrapper>
   )
 }
 

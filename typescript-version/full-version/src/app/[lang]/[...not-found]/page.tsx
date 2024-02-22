@@ -10,17 +10,18 @@ import NotFound from '@views/NotFound'
 import { i18n } from '@configs/i18n'
 
 // Util Imports
-import { getSystemMode } from '@core/utils/serverHelpers'
+import { getServerMode, getSystemMode } from '@core/utils/serverHelpers'
 
 const NotFoundPage = ({ params }: { params: { lang: Locale } }) => {
   // Vars
   const direction = i18n.langDirection[params.lang]
+  const mode = getServerMode()
   const systemMode = getSystemMode()
 
   return (
     <Providers direction={direction}>
       <BlankLayout systemMode={systemMode}>
-        <NotFound />
+        <NotFound mode={mode} />
       </BlankLayout>
     </Providers>
   )

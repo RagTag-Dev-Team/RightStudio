@@ -3,7 +3,7 @@ import VerifyEmailV1 from '@views/pages/auth/VerifyEmailV1'
 
 const VerifyEmailV1Page = () => {
   return (
-    <div className='flex h-full justify-center items-center'>
+    <div className='flex flex-col justify-center items-center min-bs-[100dvh] p-6'>
       <VerifyEmailV1 />
     </div>
   )

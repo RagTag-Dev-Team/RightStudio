@@ -16,7 +16,7 @@ export const users: UserTable[] = [
     id: 1,
     name: 'John Doe',
     password: 'admin',
-    email: 'admin@master.com',
+    email: 'admin@vuexy.com',
     image: '/images/avatars/1.png'
   }
 ]
