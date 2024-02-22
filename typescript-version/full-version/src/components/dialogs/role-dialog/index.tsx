@@ -104,11 +104,11 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
   return (
     <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={handleClose}>
       <DialogTitle
-        variant='h5'
+        variant='h4'
         className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         {title ? 'Edit Role' : 'Add Role'}
-        <Typography component='span' variant='body2' className='flex flex-col text-center'>
+        <Typography component='span' className='flex flex-col text-center'>
           Set Role Permissions
         </Typography>
       </DialogTitle>

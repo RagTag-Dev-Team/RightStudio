@@ -1,4 +1,5 @@
 // MUI Imports
+import Chip from '@mui/material/Chip'
 import Checkbox from '@mui/material/Checkbox'
 
 // Components Imports
@@ -19,10 +20,15 @@ const AutocompleteCheckboxes = () => {
       renderInput={params => <CustomTextField {...params} key={params.id} label='Checkboxes' placeholder='Favorites' />}
       renderOption={(props, option, { selected }) => (
         <li {...props} key={option.title}>
-          <Checkbox checked={selected} className='mie-2' />
+          <Checkbox key={option.title} checked={selected} className='mie-2' />
           {option.title}
         </li>
       )}
+      renderTags={(tagValue, getTagProps) =>
+        tagValue.map((option, index) => (
+          <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+        ))
+      }
     />
   )
 }

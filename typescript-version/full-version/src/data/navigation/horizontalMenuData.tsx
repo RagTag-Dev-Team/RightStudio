@@ -366,6 +366,10 @@ const horizontalMenuData = (
         target: '_blank'
       },
       {
+        suffix: {
+          label: 'New',
+          color: 'info'
+        },
         label: dictionary['navigation'].itemWithBadge
       },
       {

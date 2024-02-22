@@ -106,8 +106,13 @@ html[data-theme='dark']:root {
 }
 
 // Code block title bottom border style
-.codeBlockTitle_src-theme-CodeBlock-Content-styles-module {
-  border-block-end: .0625rem solid #5b6169 !important;
+.theme-code-block {
+  [class^='codeBlockTitle'] {
+    border-color: #5b6169;
+  }
+  [class^='buttonGroup'] {
+    right: 1rem;
+  }
 }
 
 @import './base.scss';

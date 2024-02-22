@@ -28,6 +28,7 @@ import { email, object, minLength, string, array, forward, custom } from 'valibo
 import CustomTextField from '@core/components/mui/text-field'
 import StepperWrapper from '@core/styles/stepper'
 import StepperCustomDot from './StepperCustomDot'
+import DirectionalIcon from '@components/DirectionalIcon'
 
 // Vars
 const steps = [
@@ -270,10 +271,10 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='tonal' disabled color='secondary'>
+                <Button variant='tonal' disabled color='secondary' startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}>
                   Back
                 </Button>
-                <Button variant='contained' type='submit'>
+                <Button variant='contained' type='submit' endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}>
                   Next
                 </Button>
               </Grid>
@@ -374,10 +375,15 @@ const StepperLinearWithValidation = () => {
                 {personalErrors.language && <FormHelperText error>language is a required field</FormHelperText>}
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='tonal' onClick={handleBack} color='secondary'>
+                <Button
+                  variant='tonal'
+                  onClick={handleBack}
+                  color='secondary'
+                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                >
                   Back
                 </Button>
-                <Button variant='contained' type='submit'>
+                <Button variant='contained' type='submit' endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}>
                   Next
                 </Button>
               </Grid>
@@ -459,10 +465,15 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='tonal' onClick={handleBack} color='secondary'>
+                <Button
+                  variant='tonal'
+                  onClick={handleBack}
+                  color='secondary'
+                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                >
                   Back
                 </Button>
-                <Button variant='contained' type='submit'>
+                <Button variant='contained' type='submit' endIcon={<i className='ri-check-line' />}>
                   Submit
                 </Button>
               </Grid>

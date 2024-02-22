@@ -20,6 +20,11 @@ const AutocompleteMultipleValues = () => {
         id='autocomplete-multiple-outlined'
         getOptionLabel={option => option.title || ''}
         renderInput={params => <CustomTextField {...params} label='filterSelectedOptions' placeholder='Favorites' />}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+          ))
+        }
       />
       <CustomAutocomplete
         fullWidth
@@ -45,6 +50,11 @@ const AutocompleteMultipleValues = () => {
         renderInput={params => (
           <CustomTextField {...params} label='Multiple values' placeholder='Favorites' variant='standard' />
         )}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+          ))
+        }
       />
     </div>
   )

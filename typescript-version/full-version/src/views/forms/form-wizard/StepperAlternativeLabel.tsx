@@ -20,6 +20,7 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 
 // Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
 import CustomTextField from '@core/components/mui/text-field'
 
 // Styled Component Imports
@@ -339,10 +340,26 @@ const StepperAlternativeLabel = () => {
                   </Grid>
                   {renderStepContent(activeStep)}
                   <Grid item xs={12} className='flex justify-between'>
-                    <Button variant='tonal' disabled={activeStep === 0} onClick={handleBack} color='secondary'>
+                    <Button
+                      variant='tonal'
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      color='secondary'
+                      startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                    >
                       Back
                     </Button>
-                    <Button variant='contained' onClick={handleNext}>
+                    <Button
+                      variant='contained'
+                      onClick={handleNext}
+                      endIcon={
+                        activeStep === steps.length - 1 ? (
+                          <i className='ri-check-line' />
+                        ) : (
+                          <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                        )
+                      }
+                    >
                       {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                     </Button>
                   </Grid>

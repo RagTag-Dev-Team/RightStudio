@@ -114,11 +114,11 @@ const CreateApp = ({ open, setOpen }: CreateAppProps) => {
   return (
     <Dialog fullWidth maxWidth='md' open={open} onClose={handleClose} scroll='body'>
       <DialogTitle
-        variant='h5'
+        variant='h4'
         className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         Create App
-        <Typography component='span' variant='body2' className='flex flex-col text-center'>
+        <Typography component='span' className='flex flex-col text-center'>
           Provide data with this form to create your app.
         </Typography>
       </DialogTitle>

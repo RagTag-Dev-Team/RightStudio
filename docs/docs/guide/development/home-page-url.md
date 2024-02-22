@@ -4,6 +4,10 @@ The home page URL is the URL which you want to redirect to whenever a user visit
 
 ## Setting Home Page URL With Middleware
 
+:::warning
+If your project includes the `src/middleware.ts` file (from either the **full-version** or the **starter-kit**), you can configure the home page URL there. If not, you can proceed to the next section.
+:::
+
 If you have the `src/middleware.ts` file in your project, you will find the `HOME_PAGE_URL` constant immediately after the imports in this file like the following:
 
 ```tsx
@@ -19,6 +23,10 @@ If you have the `src/middleware.ts` file in your project, you will not find the 
 :::
 
 ## Setting Home Page URL Without Middleware
+
+:::warning
+If your project does not include the `src/middleware.ts` file, you can configure the home page URL from the `src/app/page.tsx` file.
+:::
 
 If you do not have the `src/middleware.ts` file in your project, you can set the home page URL from the `src/app/page.tsx` file. You will find the following code in the `src/app/page.tsx` file:
 

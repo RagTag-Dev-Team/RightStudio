@@ -8,142 +8,150 @@ You may add / update / remove any other dependencies according to your requireme
 :::
 
 ```json
-  "@emotion/cache"
-  "@emotion/react"
-  "@emotion/styled"
-  "@floating-ui/react"
-  "@iconify/iconify"
-  "@iconify/json"
-  "@iconify/react"
-  "@iconify/tools"
-  "@iconify/types"
-  "@iconify/utils"
-  "@mui/lab"
-  "@mui/material"
-  "@mui/material-nextjs"
-  "@types/node" // Typescript version only
-  "@types/react" // Typescript version only
-  "@types/react-dom" // Typescript version only
-  "autoprefixer"
-  "classnames"
-  "dotenv-cli"
-  "next"
-  "postcss"
-  "postcss-styled-syntax"
-  "prettier"
-  "react"
-  "react-dom"
-  "react-perfect-scrollbar"
-  "react-use"
-  "server-only"
-  "stylelint"
-  "stylelint-use-logical-spec"
-  "tailwindcss"
-  "tailwindcss-logical"
-  "tsx"
-  "typescript" // Typescript version only
+"@emotion/cache"
+"@emotion/react"
+"@emotion/styled"
+"@floating-ui/react"
+"@iconify/iconify"
+"@iconify/json"
+"@iconify/tools"
+"@iconify/types"
+"@iconify/utils"
+"@mui/lab"
+"@mui/material"
+"@mui/material-nextjs"
+"@types/node" // Typescript version only
+"@types/react" // Typescript version only
+"@types/react-dom" // Typescript version only
+"autoprefixer"
+"classnames"
+"dotenv-cli"
+"next"
+"postcss"
+"postcss-styled-syntax"
+"prettier"
+"react"
+"react-colorful"
+"react-dom"
+"react-perfect-scrollbar"
+"react-use"
+"server-only"
+"stylelint"
+"stylelint-use-logical-spec"
+"tailwindcss"
+"tailwindcss-logical"
+"tsx"
+"typescript" // Typescript version only
 ```
 
 ## Authentication
 
 ```json
-  "@auth/prisma-adapter"
-  "@prisma/client"
-  "next-auth"
-  "prisma"
+"@auth/prisma-adapter"
+"@prisma/client"
+"next-auth"
+"prisma"
 ```
 
-## Calendar 
+## Calendar
+
 ```json
-    "@fullcalendar/common"
-    "@fullcalendar/core"
-    "@fullcalendar/daygrid"
-    "@fullcalendar/interaction"
-    "@fullcalendar/list"
-    "@fullcalendar/react"
-    "@fullcalendar/timegrid"
-    "bootstrap-icons"
+"@fullcalendar/common"
+"@fullcalendar/core"
+"@fullcalendar/daygrid"
+"@fullcalendar/interaction"
+"@fullcalendar/list"
+"@fullcalendar/react"
+"@fullcalendar/timegrid"
+"bootstrap-icons"
 ```
 
 ## Charts
-  ```json
-    "apexcharts"
-    "react-apexcharts"
-    "recharts"
-  ```
 
-## Customizer
 ```json
-  "react-colorful"
+"apexcharts"
+"react-apexcharts"
+"recharts"
 ```
 
 ## DataTable
+
 ```json
-  "@tanstack/match-sorter-utils"
-  "@tanstack/react-table"
+"@tanstack/match-sorter-utils"
+"@tanstack/react-table"
 ```
 
 ## Date Time Picker
+
 ```json
-  "react-datepicker"
-  "@types/react-datepicker" // Typescript version only
-  "date-fns" // date formatter
+"@types/react-datepicker" // Typescript version only
+"date-fns" // date formatter
+"react-datepicker"
 ```
 
 ## Editor
+
 ```json
-  "draft-js"
-  "react-draft-wysiwyg"
-  "@types/react-draft-wysiwyg" // Typescript version only
+"@types/react-draft-wysiwyg" // Typescript version only
+"draft-js"
+"react-draft-wysiwyg"
 ```
 
 ## Eslint
+
 ```json
-  "@typescript-eslint/eslint-plugin" // Typescript version only
-  "@typescript-eslint/parser" // Typescript version only
-  "eslint"
-  "eslint-config-next"
-  "eslint-config-prettier"
-  "eslint-import-resolver-typescript" // Typescript version only
-  "eslint-plugin-import"
+"@typescript-eslint/eslint-plugin" // Typescript version only
+"@typescript-eslint/parser" // Typescript version only
+"eslint"
+"eslint-config-next"
+"eslint-config-prettier"
+"eslint-import-resolver-typescript" // Typescript version only
+"eslint-plugin-import"
 ```
 
 ## Form Validation
+
 ```json
-  "@hookform/resolvers"
-  "react-hook-form"
-  "valibot"
+"@hookform/resolvers"
+"react-hook-form"
+"valibot"
 ```
 
 ## Internationalization (i18n)
+
 ```json
-  "@formatjs/intl-localematcher"
-  "@types/negotiator" // Typescript version only
-  "negotiator"
+"@formatjs/intl-localematcher"
+"@types/negotiator" // Typescript version only
+"negotiator"
 ```
 
 ## Right to Left (RTL)
+
 ```json
-  "stylis"
-  "stylis-plugin-rtl"
+"stylis"
+"stylis-plugin-rtl"
 ```
 
 ## Search
+
 ```json
-  "kbar"
+"kbar"
 ```
 
 ## Swiper
+
 ```json
-  "keen-slider"
+"keen-slider"
 ```
 
 ## Toast
+
 ```json
-  "react-toastify"
+"react-toastify"
 ```
 
 ## Upload
+
 ```json
-  "react-dropzone"
+"react-dropzone"
 ```

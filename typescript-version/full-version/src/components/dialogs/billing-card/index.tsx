@@ -64,11 +64,11 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle
-        variant='h5'
+        variant='h4'
         className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
       >
         {data ? 'Edit Card' : 'Add New Card'}
-        <Typography component='span' variant='body2' className='flex flex-col text-center'>
+        <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit your saved card details' : 'Add card for future billing'}
         </Typography>
       </DialogTitle>

@@ -173,11 +173,11 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
     <>
       <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
         <DialogTitle
-          variant='h5'
+          variant='h4'
           className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
         >
           Select Authentication Method
-          <Typography component='span' variant='body2' className='flex flex-col text-center'>
+          <Typography component='span' className='flex flex-col text-center'>
             You also need to select a method by which the proxy authenticates to the directory serve.
           </Typography>
         </DialogTitle>

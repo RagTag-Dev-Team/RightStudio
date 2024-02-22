@@ -23,13 +23,13 @@ const FormLayouts = () => {
         <FormLayoutsSeparator />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant='h6'>Form with Tabs</Typography>
+        <Typography variant='h5'>Form with Tabs</Typography>
       </Grid>
       <Grid item xs={12}>
         <FormLayoutsTabs />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant='h6'>Collapsible Sections</Typography>
+        <Typography variant='h5'>Collapsible Sections</Typography>
       </Grid>
       <Grid item xs={12}>
         <FormLayoutsCollapsible />

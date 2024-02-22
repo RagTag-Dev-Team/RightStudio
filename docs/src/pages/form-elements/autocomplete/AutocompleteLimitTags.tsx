@@ -1,3 +1,6 @@
+// MUI Imports
+import Chip from '@mui/material/Chip'
+
 // Components Imports
 import CustomAutocomplete from '@core/components/mui/autocomplete'
 import CustomTextField from '@core/components/mui/text-field'
@@ -15,6 +18,11 @@ const AutocompleteLimitTags = () => {
       getOptionLabel={option => option.title || ''}
       defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
       renderInput={params => <CustomTextField {...params} label='limitTags' placeholder='Favorites' />}
+      renderTags={(tagValue, getTagProps) =>
+        tagValue.map((option, index) => (
+          <Chip label={option.title} {...(getTagProps({ index }) as {})} key={index} size='small' />
+        ))
+      }
     />
   )
 }

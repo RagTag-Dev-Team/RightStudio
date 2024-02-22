@@ -1,81 +1,69 @@
-# Getting Support
+# How to Get Support
 
-In this page you will find how to get support and how to raise perfect support ticket to resolve your issues quickly with minimum conversation. We value your time ⏱️
+Welcome to our support guide, where we aim to streamline your journey towards resolving issues swiftly and efficiently. We understand the value of your time ⏱️, and our goal is to ensure you receive the support you need with minimal back-and-forth.
 
-## Raising Support Ticket
+## Submitting a Support Ticket
 
-Raising support ticket in support portal is as simple as commenting on post. However, If you want to get your issues resolved quickly please follow below guide:
+Submitting a ticket on our support portal is as straightforward as commenting on a blog post. To expedite the resolution process, kindly follow the guidance below:
 
-### Finding existing solution
+### Check for Existing Solutions
 
-There might be a case that your issue is already resolved and you are the one who is facing due to some issue. So before creating new support ticket please search your question / issue in our [FAQ page](/docs/faqs/intro) where we have listed most common questions / issues asked in our support portal.
+It's possible your issue has already been addressed, and you might find the solution without needing to submit a new ticket. Please take a moment to search our [FAQ page](/docs/faqs/intro) or [Articles](/articles) for common questions or issues—it could save you time!
 
-### Ticket Type
+### Ticket Title and Type
 
-Add ticket type to your ticket title to let community understand what your ticket is about. This also helps to find related tickets using ticket type.
+Help the community and our team by categorizing your ticket right in the title. This not only clarifies your needs but also aids in searching related issues. Structure your ticket title as `[ticket type] Your question or issue`.
 
-So, your ticket till will be like `[question] how to change theme?`
+Examples of ticket types include:
 
-Some common ticket types are listed below:
+- **question** - General inquiries.
+- **installation** - Installation-related issues.
+- **auth** - Authentication and authorization queries.
+- **acl** - Access control concerns.
+- **feat-req** - Feature requests.
+- **bug** - Reporting bugs in the template.
+- **other** - Anything that doesn't fit the categories above.
 
-- **question** - If you are asking question
-- **installation** - If you have anything related to installation
-- **auth** - If you have anything related to JWT or Auth
-- **acl** - If you have anything related to Access Control
-- **feat-req** - If you have any feature request for our template
-- **bug** - If you find any bug in template
-- **other** - if your ticket isn't related to above mentioned ticket types
-
-Good examples can be: 💯
+Examples of well-formed ticket titles: 💯
 
 - [question] How to change theme?
 - [question] How to change i18n locale?
-- [installation] Getting errors in npm run dev
+- [installation] Errors during npm run dev
 - [auth] Unexpected behavior after login
-- [other] Collapse component is not working as expected
-- [auth] I get redirected to login page even after login on refresh
+- [other] Collapse component not working as expected
+- [auth] Redirected to login page post-login on refresh
 
-### New Issue - New ticket
+### One Issue Per Ticket
 
-For a more organized and efficient support experience, it's advisable to create separate support tickets for distinct issues or questions.
+For clarity and efficiency, please create separate tickets for distinct issues. This helps keep the support process organized and ensures your queries are addressed promptly.
 
-For instance, if you have an open ticket regarding an installation issue and then have a query about a specific component's usage, it's preferable to raise new ticket for your component-related question. This approach helps in maintaining clarity and ensures the support portal remains an accurate and easily navigable resource for all.
+### Specify Your Template Version
 
-### Template Version
+Including details about the template version you're using (TypeScript or JavaScript, Full-Version or Starter-Kit, etc.) streamlines the support process. If you're integrating our template with other technologies, mentioning this can further assist in pinpointing the issue.
 
-Mentioning which version of our template you are using will help us to answer more accurately and will mitigate one question from our side.
-
-Mentioning template version includes if you are using TypeScript or JavaScript, Full-Version or Starter-Kit. Also, if you are using some other technology with our template then mentioning it will also help us in resolving issue quickly.
-
-Good examples can be: 💯
+Good examples include: 💯
 
 - TypeScript + Full Version
 - Javascript + Starter Kit
 
-### Sharing Code or Snippet
+### Code Sharing
 
-If you want to show us some code it will be better if you can format it properly and use code block so your pasted code get highlighted.
+When sharing code snippets, formatting them correctly and using code blocks enhances readability and helps us understand your issue better.
 
-### Reproducing Issue/Bug - Starter-kit
+### Reproducing Issues/Bugs with the Starter Kit
 
-If you have ticket where we need to have a look at your code like some component's certain feature is working in our live demo but not in your downloaded package then it will better you give us actual issue or reproduction steps.
-
-Best solution for this is using our Starter-kit where we can test it without any dependency. This will also help you to clear your issue before sending it to us.
-
-You can create zip and share with us using private link.
+If your issue requires a code review, such as a feature working in the demo but not in your download, providing steps to reproduce the issue is invaluable. Using the Starter Kit for this purpose ensures a dependency-free environment for testing. You can share a zip file via a private link, but please:
 
 :::warning
 Never upload our package or modified version of our package on public sites where others can view or download it.
 :::
 
-## Support Portal
+## Accessing the Support Portal
 
-Once you have purchased our template, You can get support at our [support portal](https://themeselection.com/support/) raising support ticket.
+After purchasing our template, you can seek support by submitting tickets at our [support portal](https://themeselection.com/support/). Adhering to the ticket submission guidelines above will facilitate a smoother support experience.
 
-Please make sure to follow standards defined in [Raising Support Ticket](/docs/guide/overview/getting-support#raising-support-ticket) section.
-
-:::note Don't want to waste time?
-Creating perfect support ticket (Following our Guide) will increase the chances of getting issue resolved with minimum conversation and time.
+:::note Want Quick Resolution?
+Crafting a detailed support ticket using our guide significantly increases the likelihood of resolving your issue swiftly and with fewer exchanges.
 :::
 
 ### Framework Support

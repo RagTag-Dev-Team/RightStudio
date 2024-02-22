@@ -31,7 +31,11 @@ const AutocompleteCreatable = () => {
       handleHomeEndKeys
       options={top100Films}
       id='autocomplete-free-solo-with-text'
-      renderOption={(props, option) => <li {...props}>{option.title}</li>}
+      renderOption={(props, option) => (
+        <li {...props} key={option.title}>
+          {option.title}
+        </li>
+      )}
       renderInput={params => <CustomTextField {...params} label='Free solo with text demo' />}
       getOptionLabel={option => {
         if (typeof option === 'string') {

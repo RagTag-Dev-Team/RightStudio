@@ -12,6 +12,7 @@ const menuData: VerticalMenuDataType[] = [
     children: [
       {
         label: 'Dashboards',
+        suffix: { label: '2', color: 'error' },
         children: [
           {
             label: 'Analytics'

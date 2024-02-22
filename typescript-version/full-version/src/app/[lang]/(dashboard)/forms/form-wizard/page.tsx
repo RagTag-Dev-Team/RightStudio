@@ -18,7 +18,7 @@ const FormWizard = () => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Typography variant='h4'>Stepper</Typography>
-        <Typography variant='body1'>
+        <Typography>
           Please refer to MUI&#39;s official docs for more details on component&#39;s{' '}
           <Link
             href='https://mui.com/material-ui/react-stepper'

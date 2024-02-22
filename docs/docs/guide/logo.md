@@ -10,7 +10,7 @@ Customizing the logo in the template to reflect your brand identity is a straigh
 
 1. **Locate the Logo component:** Navigate to the `src/components/layout/shared/Logo.tsx`. file in your project directory.
 
-2. **Prepare your Logo:** Have your new logo image ready, preferably in SVG format for scalability and performance. If it’s not in SVG format, ensure it's in a web-friendly format like PNG or JPG.
+2. **Prepare your Logo:** Have your new logo image ready, preferably in SVG format for scalability and performance. If it's not in SVG format, ensure it's in a web-friendly format like PNG or JPG.
 
 3. **Update the Logo Component:** In the `Logo` component, replace the existing SVG with your new logo.
 
