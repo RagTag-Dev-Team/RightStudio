@@ -33,26 +33,26 @@ const PreviewActions = ({ id }: { id: string }) => {
   return (
     <>
       <Card>
-        <CardContent>
+        <CardContent className='flex flex-col gap-4'>
           <Button
             fullWidth
             variant='contained'
             className='capitalize'
-            startIcon={<i className='ri-send-plane-line' />}
+            startIcon={<i className='tabler-send' />}
             onClick={() => setSendDrawerOpen(true)}
           >
             Send Invoice
           </Button>
-          <Button fullWidth color='secondary' variant='outlined' className='capitalize'>
+          <Button fullWidth color='secondary' variant='tonal' className='capitalize'>
             Download
           </Button>
-          <div className='flex items-center'>
+          <div className='flex items-center gap-4'>
             <Button
               fullWidth
               target='_blank'
               component={Link}
               color='secondary'
-              variant='outlined'
+              variant='tonal'
               className='capitalize'
               href={`/apps/invoice/print/${id}`}
             >
@@ -62,7 +62,7 @@ const PreviewActions = ({ id }: { id: string }) => {
               fullWidth
               component={Link}
               color='secondary'
-              variant='outlined'
+              variant='tonal'
               className='capitalize'
               href={getLocalizedUrl(`apps/invoice/edit/${id}`, locale as Locale)}
             >
@@ -75,7 +75,7 @@ const PreviewActions = ({ id }: { id: string }) => {
             variant='contained'
             className='capitalize'
             onClick={() => setPaymentDrawerOpen(true)}
-            startIcon={<i className='ri-money-dollar-circle-line' />}
+            startIcon={<i className='tabler-currency-dollar' />}
           >
             Add Payment
           </Button>

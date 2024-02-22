@@ -12,9 +12,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
-import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 
@@ -23,6 +21,7 @@ import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -38,12 +37,12 @@ const AddActions = () => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Card>
-          <CardContent>
+          <CardContent className='flex flex-col gap-4'>
             <Button
               fullWidth
               variant='contained'
               className='capitalize'
-              startIcon={<i className='ri-send-plane-line' />}
+              startIcon={<i className='tabler-send' />}
               onClick={() => setSendDrawerOpen(true)}
             >
               Send Invoice
@@ -52,13 +51,13 @@ const AddActions = () => {
               fullWidth
               component={Link}
               color='secondary'
-              variant='outlined'
+              variant='tonal'
               className='capitalize'
               href={getLocalizedUrl('apps/invoice/preview/4987', locale as Locale)}
             >
               Preview
             </Button>
-            <Button fullWidth color='secondary' variant='outlined' className='capitalize'>
+            <Button fullWidth color='secondary' variant='tonal' className='capitalize'>
               Save
             </Button>
           </CardContent>
@@ -67,17 +66,14 @@ const AddActions = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <FormControl fullWidth>
-          <InputLabel id='payment-select'>Accept payments via</InputLabel>
-          <Select fullWidth defaultValue='Internet Banking' label='Accept payments via' labelId='payment-select'>
-            <MenuItem value='Internet Banking'>Internet Banking</MenuItem>
-            <MenuItem value='Debit Card'>Debit Card</MenuItem>
-            <MenuItem value='Credit Card'>Credit Card</MenuItem>
-            <MenuItem value='Paypal'>Paypal</MenuItem>
-            <MenuItem value='UPI Transfer'>UPI Transfer</MenuItem>
-          </Select>
-        </FormControl>
-        <div className='flex items-center justify-between'>
+        <CustomTextField select fullWidth defaultValue='Internet Banking' label='Accept payments via'>
+          <MenuItem value='Internet Banking'>Internet Banking</MenuItem>
+          <MenuItem value='Debit Card'>Debit Card</MenuItem>
+          <MenuItem value='Credit Card'>Credit Card</MenuItem>
+          <MenuItem value='Paypal'>Paypal</MenuItem>
+          <MenuItem value='UPI Transfer'>UPI Transfer</MenuItem>
+        </CustomTextField>
+        <div className='flex items-center justify-between mbs-3'>
           <InputLabel htmlFor='invoice-edit-payment-terms' className='cursor-pointer'>
             Payment Terms
           </InputLabel>

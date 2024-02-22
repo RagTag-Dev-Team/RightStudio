@@ -18,6 +18,19 @@ import interactionPlugin from '@fullcalendar/interaction'
 // Type Imports
 import type { AddEventType, CalendarColors, CalendarType } from '@/types/apps/calendarTypes'
 
+type CalenderProps = {
+  mdAbove: boolean
+  calendars: CalendarType
+  calendarApi: any
+  setCalendarApi: (val: any) => void
+  calendarsColor: CalendarColors
+  handleSelectEvent: (event: any) => void
+  handleUpdateEvent: (event: any) => void
+  handleLeftSidebarToggle: () => void
+  handleAddEventSidebarToggle: () => void
+}
+
+// Vars
 const blankEvent: AddEventType = {
   title: '',
   start: '',
@@ -29,18 +42,6 @@ const blankEvent: AddEventType = {
     guests: [],
     description: ''
   }
-}
-
-type CalenderProps = {
-  mdAbove: boolean
-  calendars: CalendarType
-  calendarApi: any
-  setCalendarApi: (val: any) => void
-  calendarsColor: CalendarColors
-  handleSelectEvent: (event: any) => void
-  handleUpdateEvent: (event: any) => void
-  handleLeftSidebarToggle: () => void
-  handleAddEventSidebarToggle: () => void
 }
 
 const Calendar = (props: CalenderProps) => {
@@ -58,6 +59,8 @@ const Calendar = (props: CalenderProps) => {
 
   // Refs
   const calendarRef = useRef()
+
+  // Hooks
   const theme = useTheme()
 
   useEffect(() => {
@@ -78,7 +81,7 @@ const Calendar = (props: CalenderProps) => {
     },
     views: {
       week: {
-        titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
+        titleFormat: { year: 'numeric', month: 'short', day: 'numeric' }
       }
     },
 
@@ -122,9 +125,16 @@ const Calendar = (props: CalenderProps) => {
       ]
     },
 
-    eventClick({ event: clickedEvent }: any) {
+    eventClick({ event: clickedEvent, jsEvent }: any) {
+      jsEvent.preventDefault()
+
       handleSelectEvent(clickedEvent)
       handleAddEventSidebarToggle()
+
+      if (clickedEvent.url) {
+        // Open the URL in a new tab
+        window.open(clickedEvent.url, '_blank')
+      }
 
       //* Only grab required field otherwise it goes in infinity loop
       //! Always grab all fields rendered by form (even if it get `undefined`)
@@ -134,7 +144,7 @@ const Calendar = (props: CalenderProps) => {
 
     customButtons: {
       sidebarToggle: {
-        icon: 'bi bi-list',
+        icon: 'tabler tabler-menu-2',
         click() {
           handleLeftSidebarToggle()
         }

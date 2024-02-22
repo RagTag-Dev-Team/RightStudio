@@ -20,41 +20,47 @@ const UserPlan = () => {
 
   return (
     <>
-      <Card className='border-2 border-primary rounded'>
-        <CardContent className='flex flex-col'>
+      <Card className='border-2 border-primary rounded shadow-primarySm'>
+        <CardContent className='flex flex-col gap-6'>
           <div className='flex justify-between'>
-            <Chip label='standard' size='small' color='primary' />
+            <Chip label='Standard' size='small' color='primary' variant='tonal' />
             <div className='flex justify-center'>
-              <Typography component='sup' className='self-end'>
+              <Typography variant='h5' component='sup' className='self-start' color='primary'>
                 $
               </Typography>
-              <Typography component='span'>99</Typography>
-              <Typography component='sub' className='self-end'>
+              <Typography component='span' variant='h1' color='primary'>
+                99
+              </Typography>
+              <Typography component='sub' className='self-end' color='text.primary'>
                 /month
               </Typography>
             </div>
           </div>
-          <div>
+          <div className='flex flex-col gap-2'>
             <div className='flex items-center gap-2'>
-              <i className='ri-circle-fill text-[10px]' />
+              <i className='tabler-circle-filled text-[10px] text-secondary' />
               <Typography component='span'>10 Users</Typography>
             </div>
             <div className='flex items-center gap-2'>
-              <i className='ri-circle-fill text-[10px]' />
+              <i className='tabler-circle-filled text-[10px] text-secondary' />
               <Typography component='span'>Up to 10 GB storage</Typography>
             </div>
             <div className='flex items-center gap-2'>
-              <i className='ri-circle-fill text-[10px]' />
+              <i className='tabler-circle-filled text-[10px] text-secondary' />
               <Typography component='span'>Basic Support</Typography>
             </div>
           </div>
           <div className='flex flex-col gap-1'>
             <div className='flex items-center justify-between'>
-              <Typography>Days</Typography>
-              <Typography>65%</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                Days
+              </Typography>
+              <Typography className='font-medium' color='text.primary'>
+                26 of 30 Days
+              </Typography>
             </div>
             <LinearProgress variant='determinate' value={65} />
-            <Typography>4 days remaining</Typography>
+            <Typography variant='body2'>4 days remaining</Typography>
           </div>
           <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={UpgradePlan} />
         </CardContent>

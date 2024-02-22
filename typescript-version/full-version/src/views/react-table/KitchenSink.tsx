@@ -31,6 +31,9 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 // Type Imports
 import type { DataType } from './data'
 
+// Component Imports
+import TablePaginationComponent from '@components/TablePaginationComponent'
+
 // Icon Imports
 import ChevronRight from '@menu/svg/ChevronRight'
 
@@ -258,19 +261,13 @@ const KitchenSink = () => {
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[7, 10, 25, { label: 'All', value: data.length }]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

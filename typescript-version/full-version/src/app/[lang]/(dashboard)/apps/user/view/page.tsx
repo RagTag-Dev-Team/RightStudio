@@ -45,7 +45,7 @@ const UserViewTab = async () => {
   const data = await getPricingData()
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} lg={4} md={5}>
         <UserLeftOverview />
       </Grid>

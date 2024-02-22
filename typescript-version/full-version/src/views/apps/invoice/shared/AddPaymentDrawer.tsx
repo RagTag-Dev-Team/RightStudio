@@ -8,13 +8,13 @@ import type { FormEvent } from 'react'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import InputAdornment from '@mui/material/InputAdornment'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -63,22 +63,23 @@ const AddPaymentDrawer = ({ open, handleClose }: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between'>
-        <Typography variant='h6'>Add New User</Typography>
+      <div className='flex items-center justify-between plb-5 pli-6'>
+        <Typography variant='h5'>Add New User</Typography>
         <IconButton onClick={handleReset}>
-          <i className='ri-close-line' />
+          <i className='tabler-x' />
         </IconButton>
       </div>
-      <div>
-        <form onSubmit={handleSubmit} className='flex flex-col'>
-          <TextField
+      <Divider />
+      <div className='p-6'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
+          <CustomTextField
             fullWidth
             id='invoice-balance'
             label='Invoice Balance'
             InputProps={{ disabled: true }}
             defaultValue='5000.00'
           />
-          <TextField
+          <CustomTextField
             fullWidth
             id='payment-amount'
             label='Payment Amount'
@@ -93,28 +94,24 @@ const AddPaymentDrawer = ({ open, handleClose }: Props) => {
             selected={formData.paymentDate}
             id='payment-date'
             onChange={(date: Date) => setFormData({ ...formData, paymentDate: date })}
-            customInput={<TextField fullWidth label='Payment Date' />}
+            customInput={<CustomTextField fullWidth label='Payment Date' />}
           />
-          <FormControl fullWidth>
-            <InputLabel htmlFor='payment-method'>Payment Method</InputLabel>
-            <Select
-              label='Payment Method'
-              labelId='payment-method'
-              id='payment-method-select'
-              value={formData.paymentMethod}
-              onChange={e => setFormData({ ...formData, paymentMethod: e.target.value as string })}
-            >
-              <MenuItem value='select-method' disabled>
-                Select Payment Method
-              </MenuItem>
-              <MenuItem value='cash'>Cash</MenuItem>
-              <MenuItem value='bank-transfer'>Bank Transfer</MenuItem>
-              <MenuItem value='credit'>Credit</MenuItem>
-              <MenuItem value='debit'>Debit</MenuItem>
-              <MenuItem value='paypal'>Paypal</MenuItem>
-            </Select>
-          </FormControl>
-          <TextField
+          <CustomTextField
+            label='Payment Method'
+            id='payment-method-select'
+            value={formData.paymentMethod}
+            onChange={e => setFormData({ ...formData, paymentMethod: e.target.value as string })}
+          >
+            <MenuItem value='select-method' disabled>
+              Select Payment Method
+            </MenuItem>
+            <MenuItem value='cash'>Cash</MenuItem>
+            <MenuItem value='bank-transfer'>Bank Transfer</MenuItem>
+            <MenuItem value='credit'>Credit</MenuItem>
+            <MenuItem value='debit'>Debit</MenuItem>
+            <MenuItem value='paypal'>Paypal</MenuItem>
+          </CustomTextField>
+          <CustomTextField
             rows={6}
             multiline
             fullWidth
@@ -123,11 +120,11 @@ const AddPaymentDrawer = ({ open, handleClose }: Props) => {
             value={formData.paymentNote}
             onChange={e => setFormData({ ...formData, paymentNote: e.target.value })}
           />
-          <div className='flex items-center'>
-            <Button size='large' variant='contained' type='submit'>
+          <div className='flex items-center gap-4'>
+            <Button variant='contained' type='submit'>
               Send
             </Button>
-            <Button size='large' variant='outlined' color='secondary' type='reset' onClick={handleReset}>
+            <Button variant='tonal' color='error' type='reset' onClick={handleReset}>
               Cancel
             </Button>
           </div>

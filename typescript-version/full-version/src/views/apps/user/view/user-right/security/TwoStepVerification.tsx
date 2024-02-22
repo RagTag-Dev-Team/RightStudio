@@ -1,26 +1,32 @@
+'use client'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputLabel from '@mui/material/InputLabel'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const TwoStepVerification = () => {
   return (
     <Card>
       <CardHeader title='Two-step verification' subheader='Keep your account secure with authentication step.' />
       <CardContent>
-        <InputLabel htmlFor='sms'>SMS</InputLabel>
-        <div className='flex items-center'>
-          <TextField id='sms' placeholder='+1(968) 819-2547' fullWidth size='small' />
-          <div className='flex'>
-            <Button variant='outlined' color='secondary'>
-              <i className='ri-edit-box-line text-2xl' />
+        <Typography htmlFor='sms' component={InputLabel} className='inline-flex font-medium mbe-1' color='text.primary'>
+          SMS
+        </Typography>
+        <div className='flex items-center mbe-4 gap-5'>
+          <CustomTextField id='sms' placeholder='+1(968) 819-2547' fullWidth />
+          <div className='flex items-center gap-1'>
+            <Button variant='text' color='secondary' className='p-1.5 bs-[38px] is-[38px] min-is-0'>
+              <i className='tabler-edit text-[22px]' />
             </Button>
-            <Button variant='outlined' color='secondary'>
-              <i className='ri-user-add-line text-2xl' />
+            <Button variant='text' color='secondary' className='p-1.5 bs-[38px] is-[38px] min-is-0'>
+              <i className='tabler-user-plus text-[22px]' />
             </Button>
           </div>
         </div>

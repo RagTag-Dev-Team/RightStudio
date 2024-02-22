@@ -21,7 +21,7 @@ const OverViewTab = async () => {
   const invoiceData = await getData()
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <ProjectListTable />
       </Grid>

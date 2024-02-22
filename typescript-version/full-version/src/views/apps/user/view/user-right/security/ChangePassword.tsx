@@ -8,12 +8,14 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Button from '@mui/material/Button'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const ChangePassword = () => {
   // States
@@ -23,15 +25,15 @@ const ChangePassword = () => {
   return (
     <Card>
       <CardHeader title='Change Password' />
-      <CardContent>
+      <CardContent className='flex flex-col gap-4'>
         <Alert icon={false} severity='warning' onClose={() => {}}>
           <AlertTitle>Ensure that these requirements are met</AlertTitle>
           Minimum 8 characters long, uppercase & symbol
         </Alert>
         <form>
-          <Grid container>
+          <Grid container spacing={4}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Password'
                 type={isPasswordShown ? 'text' : 'password'}
@@ -43,7 +45,7 @@ const ChangePassword = () => {
                         onClick={() => setIsPasswordShown(!isPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -51,7 +53,7 @@ const ChangePassword = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Confirm Password'
                 type={isConfirmPasswordShown ? 'text' : 'password'}
@@ -63,7 +65,7 @@ const ChangePassword = () => {
                         onClick={() => setIsConfirmPasswordShown(!isConfirmPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )

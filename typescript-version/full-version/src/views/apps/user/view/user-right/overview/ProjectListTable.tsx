@@ -4,15 +4,16 @@
 import { useState, useMemo, useEffect } from 'react'
 
 // MUI Imports
-import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
+import MenuItem from '@mui/material/MenuItem'
+import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
-// THird-party Imports
+// Third-party Imports
 import classnames from 'classnames'
 import { rankItem } from '@tanstack/match-sorter-utils'
 import {
@@ -32,6 +33,11 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
+
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/text-field'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -188,29 +194,31 @@ const ProjectListTable = () => {
       columnHelper.accessor('projectTitle', {
         header: 'Project',
         cell: ({ row }) => (
-          <div className='flex items-center'>
-            <Avatar src={row.original.img} className='bs-[34px] is-[34px]' />
+          <div className='flex items-center gap-4'>
+            <CustomAvatar src={row.original.img} size={34} />
             <div className='flex flex-col'>
-              <Typography>{row.original.projectTitle}</Typography>
-              <Typography>{row.original.projectType}</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                {row.original.projectTitle}
+              </Typography>
+              <Typography variant='body2'>{row.original.projectType}</Typography>
             </div>
           </div>
         )
       }),
       columnHelper.accessor('totalTask', {
         header: 'Total Task',
-        cell: ({ row }) => <Typography>{row.original.totalTask}</Typography>
+        cell: ({ row }) => <Typography color='text.primary'>{row.original.totalTask}</Typography>
       }),
       columnHelper.accessor('progressValue', {
         header: 'Progress',
         cell: ({ row }) => (
           <>
-            <Typography>{`${row.original.progressValue}%`}</Typography>
+            <Typography color='text.primary'>{`${row.original.progressValue}%`}</Typography>
             <LinearProgress
               color={row.original.progressColor}
               value={row.original.progressValue}
               variant='determinate'
-              className='w-full'
+              className='is-full'
             />
           </>
         )
@@ -255,18 +263,27 @@ const ProjectListTable = () => {
 
   return (
     <Card>
-      <CardHeader
-        title='Project List'
-        className='flex flex-wrap gap-4'
-        action={
-          <DebouncedInput
-            value={globalFilter ?? ''}
-            onChange={value => setGlobalFilter(String(value))}
-            placeholder='Search Project'
-          />
-        }
-      />
-
+      <CardHeader title='Users&#39;s Project List' className='flex flex-wrap gap-4' />
+      <div className='flex items-center justify-between p-6 gap-4'>
+        <div className='flex items-center gap-2'>
+          <Typography>Show</Typography>
+          <CustomTextField
+            select
+            value={table.getState().pagination.pageSize}
+            onChange={e => table.setPageSize(Number(e.target.value))}
+            className='is-[70px]'
+          >
+            <MenuItem value='5'>5</MenuItem>
+            <MenuItem value='7'>7</MenuItem>
+            <MenuItem value='10'>10</MenuItem>
+          </CustomTextField>
+        </div>
+        <DebouncedInput
+          value={globalFilter ?? ''}
+          onChange={value => setGlobalFilter(String(value))}
+          placeholder='Search Project'
+        />
+      </div>
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>
@@ -285,8 +302,8 @@ const ProjectListTable = () => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -296,22 +313,41 @@ const ProjectListTable = () => {
               </tr>
             ))}
           </thead>
-          <tbody>
-            {table
-              .getRowModel()
-              .rows.slice(0, table.getState().pagination.pageSize)
-              .map(row => {
-                return (
-                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
-                    {row.getVisibleCells().map(cell => (
-                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                    ))}
-                  </tr>
-                )
-              })}
-          </tbody>
+          {table.getFilteredRowModel().rows.length === 0 ? (
+            <tbody>
+              <tr>
+                <td colSpan={table.getVisibleFlatColumns().length} className='text-center'>
+                  No data available
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            <tbody>
+              {table
+                .getRowModel()
+                .rows.slice(0, table.getState().pagination.pageSize)
+                .map(row => {
+                  return (
+                    <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                      {row.getVisibleCells().map(cell => (
+                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                      ))}
+                    </tr>
+                  )
+                })}
+            </tbody>
+          )}
         </table>
       </div>
+      <TablePagination
+        component={() => <TablePaginationComponent table={table} />}
+        count={table.getFilteredRowModel().rows.length}
+        rowsPerPage={table.getState().pagination.pageSize}
+        page={table.getState().pagination.pageIndex}
+        onPageChange={(_, page) => {
+          table.setPageIndex(page)
+        }}
+      />
     </Card>
   )
 }

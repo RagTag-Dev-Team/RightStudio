@@ -21,7 +21,7 @@ const InvoiceAdd = async () => {
   const data = await getData()
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={9}>
         <AddCard invoiceData={data} />
       </Grid>

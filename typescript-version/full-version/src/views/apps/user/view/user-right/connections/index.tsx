@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -8,6 +11,9 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 type ConnectedAccountsType = {
   title: string
@@ -21,6 +27,7 @@ type SocialAccountsType = {
   logo: string
   username?: string
   isConnected: boolean
+  href?: string
 }
 
 // Vars
@@ -66,14 +73,16 @@ const socialAccountsArr: SocialAccountsType[] = [
   {
     title: 'Twitter',
     isConnected: true,
-    username: '@Theme_Selection',
-    logo: '/images/logos/twitter.png'
+    username: '@Pixinvent',
+    logo: '/images/logos/twitter.png',
+    href: 'https://twitter.com/pixinvents'
   },
   {
     title: 'Linkedin',
     isConnected: true,
-    username: '@ThemeSelection',
-    logo: '/images/logos/linkedin.png'
+    username: '@Pixinvent',
+    logo: '/images/logos/linkedin.png',
+    href: 'https://www.linkedin.com/company/pixinvent'
   },
   {
     title: 'Dribbble',
@@ -89,20 +98,22 @@ const socialAccountsArr: SocialAccountsType[] = [
 
 const ConnectionsTab = () => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <Card>
           <CardHeader
             title='Connected Accounts'
             subheader='Display content from your connected accounts on your site'
           />
-          <CardContent>
+          <CardContent className='flex flex-col gap-4'>
             {connectedAccountsArr.map((item, index) => (
-              <div key={index} className='flex items-center justify-between'>
-                <div className='flex flex-grow items-center'>
-                  <img height={32} width={32} src={item.logo} alt={item.title} />
-                  <div className='flex-grow'>
-                    <Typography>{item.title}</Typography>
+              <div key={index} className='flex items-center justify-between gap-4'>
+                <div className='flex flex-grow items-center gap-4'>
+                  <img height={36} width={36} src={item.logo} alt={item.title} />
+                  <div className='flex flex-col flex-grow gap-0.5'>
+                    <Typography className='font-medium' color='text.primary'>
+                      {item.title}
+                    </Typography>
                     <Typography>{item.subtitle}</Typography>
                   </div>
                 </div>
@@ -115,22 +126,32 @@ const ConnectionsTab = () => {
       <Grid item xs={12}>
         <Card>
           <CardHeader title='Social Accounts' subheader='Display content from social accounts on your site' />
-          <CardContent>
+          <CardContent className='flex flex-col gap-4'>
             {socialAccountsArr.map((item, index) => (
-              <div key={index} className='flex items-center justify-between'>
-                <div className='flex flex-grow items-center'>
-                  <img height={32} width={32} src={item.logo} alt={item.title} />
-                  <div className='flex-grow'>
-                    <Typography>{item.title}</Typography>
+              <div key={index} className='flex items-center justify-between gap-4'>
+                <div className='flex flex-grow items-center gap-4'>
+                  <img height={36} width={36} src={item.logo} alt={item.title} />
+                  <div className='flex flex-col flex-grow gap-0.5'>
+                    <Typography className='font-medium' color='text.primary'>
+                      {item.title}
+                    </Typography>
                     {item.isConnected ? (
-                      <Typography>{item.username}</Typography>
+                      <Typography color='primary' component={Link} href={item.href || '/'} target='_blank'>
+                        {item.username}
+                      </Typography>
                     ) : (
                       <Typography>Not Connected</Typography>
                     )}
                   </div>
                 </div>
-                <Button variant='outlined' color='secondary'>
-                  <i className={item.isConnected ? 'ri-delete-bin-7-line' : 'ri-link-m'} />
+                <Button
+                  variant='tonal'
+                  color={item.isConnected ? 'error' : 'secondary'}
+                  className='p-1.5 is-[38px] bs-[38px] min-is-0'
+                >
+                  <i
+                    className={classnames(item.isConnected ? 'tabler-trash text-error' : 'tabler-link', 'text-[22px]')}
+                  />
                 </Button>
               </div>
             ))}

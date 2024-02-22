@@ -10,19 +10,13 @@ import { useParams } from 'next/navigation'
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
-import { styled } from '@mui/material/styles'
 import TablePagination from '@mui/material/TablePagination'
+import { styled } from '@mui/material/styles'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -49,7 +43,10 @@ import type { UsersType } from '@/types/apps/userTypes'
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
+import CustomTextField from '@core/components/mui/text-field'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -121,16 +118,16 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Vars
 const userRoleObj: UserRoleType = {
-  admin: { icon: 'ri-vip-crown-line', color: 'error' },
-  author: { icon: 'ri-computer-line', color: 'warning' },
-  editor: { icon: 'ri-edit-box-line', color: 'info' },
-  maintainer: { icon: 'ri-pie-chart-2-line', color: 'success' },
-  subscriber: { icon: 'ri-user-3-line', color: 'primary' }
+  admin: { icon: 'tabler-crown', color: 'primary' },
+  author: { icon: 'tabler-device-desktop', color: 'error' },
+  editor: { icon: 'tabler-edit', color: 'warning' },
+  maintainer: { icon: 'tabler-chart-pie', color: 'info' },
+  subscriber: { icon: 'tabler-user', color: 'success' }
 }
 
 const userStatusObj: UserStatusType = {
@@ -180,40 +177,49 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
       columnHelper.accessor('fullName', {
         header: 'User',
         cell: ({ row }) => (
-          <div className='flex items-center'>
+          <div className='flex items-center gap-4'>
             {getAvatar({ avatar: row.original.avatar, fullName: row.original.fullName })}
             <div className='flex flex-col'>
-              <Typography>{row.original.fullName}</Typography>
-              <Typography>{row.original.username}</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                {row.original.fullName}
+              </Typography>
+              <Typography variant='body2'>{row.original.username}</Typography>
             </div>
           </div>
         )
       }),
-      columnHelper.accessor('email', {
-        header: 'Email',
-        cell: ({ row }) => <Typography>{row.original.email}</Typography>
-      }),
       columnHelper.accessor('role', {
         header: 'Role',
         cell: ({ row }) => (
-          <div className='flex items-center'>
+          <div className='flex items-center gap-2'>
             <Icon
               className={userRoleObj[row.original.role].icon}
-              sx={{ color: `var(--mui-palette-${userRoleObj[row.original.role].color}-main)` }}
+              sx={{ color: `var(--mui-palette-${userRoleObj[row.original.role].color}-main)`, fontSize: '1.375rem' }}
             />
-            <Typography className='capitalize'>{row.original.role}</Typography>
+            <Typography className='capitalize' color='text.primary'>
+              {row.original.role}
+            </Typography>
           </div>
         )
       }),
       columnHelper.accessor('currentPlan', {
         header: 'Plan',
-        cell: ({ row }) => <Typography className='capitalize'>{row.original.currentPlan}</Typography>
+        cell: ({ row }) => (
+          <Typography className='capitalize' color='text.primary'>
+            {row.original.currentPlan}
+          </Typography>
+        )
+      }),
+      columnHelper.accessor('billing', {
+        header: 'Billing',
+        cell: ({ row }) => <Typography className='capitalize'>{row.original.billing}</Typography>
       }),
       columnHelper.accessor('status', {
         header: 'Status',
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <Chip
+              variant='tonal'
               className='capitalize'
               label={row.original.status}
               color={userStatusObj[row.original.status]}
@@ -227,24 +233,25 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
         cell: () => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='ri-delete-bin-7-line text-[22px]' />
+              <i className='tabler-trash text-xl text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
-                <i className='ri-eye-line text-[22px]' />
+                <i className='tabler-eye text-xl text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
+              iconClassName='text-xl text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'ri-download-line text-[22px]',
-                  menuItemProps: { className: 'flex items-center' }
+                  icon: 'tabler-download text-xl',
+                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'ri-edit-box-line text-[22px]',
-                  linkProps: { className: 'flex items-center' }
+                  icon: 'tabler-edit text-xl',
+                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
             />
@@ -290,9 +297,13 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
     const { avatar, fullName } = params
 
     if (avatar) {
-      return <Avatar src={avatar} />
+      return <CustomAvatar src={avatar} skin='light' size={34} />
     } else {
-      return <Avatar>{getInitials(fullName as string)}</Avatar>
+      return (
+        <CustomAvatar skin='light' size={34}>
+          {getInitials(fullName as string)}
+        </CustomAvatar>
+      )
     }
   }
 
@@ -308,40 +319,42 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center'>
-        <Button
-          variant='outlined'
-          color='secondary'
-          startIcon={<i className='ri-upload-2-line' />}
-          className='is-full sm:is-auto'
-        >
-          Export
-        </Button>
-        <div className='flex flex-col !items-start is-full sm:flex-row sm:is-auto sm:items-center'>
+      <CardContent className='flex justify-between flex-col gap-4 items-start sm:flex-row sm:items-center'>
+        <div className='flex items-center gap-2'>
+          <Typography>Show</Typography>
+          <CustomTextField
+            select
+            value={table.getState().pagination.pageSize}
+            onChange={e => table.setPageSize(Number(e.target.value))}
+            className='is-[70px]'
+          >
+            <MenuItem value='10'>10</MenuItem>
+            <MenuItem value='25'>25</MenuItem>
+            <MenuItem value='50'>50</MenuItem>
+          </CustomTextField>
+        </div>
+        <div className='flex gap-4 flex-col !items-start is-full sm:flex-row sm:is-auto sm:items-center'>
           <DebouncedInput
             value={globalFilter ?? ''}
-            className='is-full sm:is-auto min-is-[220px]'
+            className='is-[250px]'
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search User'
           />
-          <FormControl size='small' className='is-full sm:is-auto'>
-            <InputLabel id='roles-app-role-select-label'>Select Role</InputLabel>
-            <Select
-              value={role}
-              onChange={e => setRole(e.target.value)}
-              label='Select Role'
-              id='roles-app-role-select'
-              labelId='roles-app-role-select-label'
-              className='min-is-[150px]'
-            >
-              <MenuItem value=''>Select Role</MenuItem>
-              <MenuItem value='admin'>Admin</MenuItem>
-              <MenuItem value='author'>Author</MenuItem>
-              <MenuItem value='editor'>Editor</MenuItem>
-              <MenuItem value='maintainer'>Maintainer</MenuItem>
-              <MenuItem value='subscriber'>Subscriber</MenuItem>
-            </Select>
-          </FormControl>
+          <CustomTextField
+            select
+            value={role}
+            onChange={e => setRole(e.target.value)}
+            id='roles-app-role-select'
+            className='is-[160px]'
+            SelectProps={{ displayEmpty: true }}
+          >
+            <MenuItem value=''>Select Role</MenuItem>
+            <MenuItem value='admin'>Admin</MenuItem>
+            <MenuItem value='author'>Author</MenuItem>
+            <MenuItem value='editor'>Editor</MenuItem>
+            <MenuItem value='maintainer'>Maintainer</MenuItem>
+            <MenuItem value='subscriber'>Subscriber</MenuItem>
+          </CustomTextField>
         </div>
       </CardContent>
       <div className='overflow-x-auto'>
@@ -362,8 +375,8 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -373,36 +386,40 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               </tr>
             ))}
           </thead>
-          <tbody>
-            {table
-              .getRowModel()
-              .rows.slice(0, table.getState().pagination.pageSize)
-              .map(row => {
-                return (
-                  <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
-                    {row.getVisibleCells().map(cell => (
-                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                    ))}
-                  </tr>
-                )
-              })}
-          </tbody>
+          {table.getFilteredRowModel().rows.length === 0 ? (
+            <tbody>
+              <tr>
+                <td colSpan={table.getVisibleFlatColumns().length} className='text-center'>
+                  No data available
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            <tbody>
+              {table
+                .getRowModel()
+                .rows.slice(0, table.getState().pagination.pageSize)
+                .map(row => {
+                  return (
+                    <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
+                      {row.getVisibleCells().map(cell => (
+                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                      ))}
+                    </tr>
+                  )
+                })}
+            </tbody>
+          )}
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

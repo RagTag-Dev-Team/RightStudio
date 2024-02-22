@@ -11,7 +11,7 @@ import BillingAddress from './BillingAddress'
 
 const BillingPlans = ({ data }: { data: PricingPlanType[] }) => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <CurrentPlan data={data} />
       </Grid>

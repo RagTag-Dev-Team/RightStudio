@@ -18,6 +18,9 @@ import Paper from '@mui/material/Paper'
 import IconButton from '@mui/material/IconButton'
 import Divider from '@mui/material/Divider'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { OptionsMenuType, OptionType, OptionMenuItemType } from './types'
 
@@ -35,7 +38,7 @@ const MenuItemWrapper = ({ children, option }: { children: ReactNode; option: Op
 
 const OptionMenu = (props: OptionsMenuType) => {
   // Props
-  const { icon, options, leftAlignMenu, iconButtonProps } = props
+  const { icon, iconClassName, options, leftAlignMenu, iconButtonProps } = props
 
   // States
   const [open, setOpen] = useState(false)
@@ -59,11 +62,11 @@ const OptionMenu = (props: OptionsMenuType) => {
     <>
       <IconButton ref={anchorRef} size='small' onClick={handleToggle} {...iconButtonProps}>
         {typeof icon === 'string' ? (
-          <i className={icon} />
+          <i className={classnames(icon, iconClassName)} />
         ) : (icon as ReactNode) ? (
           icon
         ) : (
-          <i className='ri-more-2-line' />
+          <i className={classnames('ri-more-2-line', iconClassName)} />
         )}
       </IconButton>
       <Popper

@@ -3,12 +3,10 @@
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -51,12 +49,11 @@ const tableData: TableDataType[] = [
 const NotificationsTab = () => {
   return (
     <Card>
-      <CardHeader title='Notifications' />
-      <Divider />
-      <CardContent>
-        <Typography>You will receive notification for the below selected items.</Typography>
-      </CardContent>
-      <Divider />
+      <CardHeader
+        title='Notifications'
+        subheader='You will receive notification for the below selected items'
+        subheaderTypographyProps={{ className: 'text-textPrimary font-medium' }}
+      />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>
@@ -67,11 +64,11 @@ const NotificationsTab = () => {
               <th>Browser</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='border-be'>
             {tableData.map((data, index) => (
               <tr key={index}>
                 <td>
-                  <Typography>{data.type}</Typography>
+                  <Typography color='text.primary'>{data.type}</Typography>
                 </td>
                 <td>
                   <Checkbox defaultChecked={data.app} />
@@ -87,11 +84,11 @@ const NotificationsTab = () => {
           </tbody>
         </table>
       </div>
-      <CardActions>
+      <CardActions className='flex items-center gap-2'>
         <Button variant='contained' type='submit'>
           Save Changes
         </Button>
-        <Button variant='outlined' color='secondary' type='reset'>
+        <Button variant='tonal' color='secondary' type='reset'>
           Discard
         </Button>
       </CardActions>

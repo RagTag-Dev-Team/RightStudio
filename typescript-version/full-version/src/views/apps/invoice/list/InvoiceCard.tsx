@@ -18,22 +18,22 @@ const data = [
   {
     title: 24,
     subtitle: 'Clients',
-    icon: 'ri-user-3-line'
+    icon: 'tabler-user'
   },
   {
     title: 165,
     subtitle: 'Invoices',
-    icon: 'ri-pages-line'
+    icon: 'tabler-file-invoice'
   },
   {
     title: '$2.46k',
     subtitle: 'Paid',
-    icon: 'ri-wallet-line'
+    icon: 'tabler-checks'
   },
   {
     title: '$876',
     subtitle: 'Unpaid',
-    icon: 'ri-money-dollar-circle-line'
+    icon: 'tabler-circle-off'
   }
 ]
 
@@ -61,11 +61,11 @@ const InvoiceCard = () => {
             >
               <div className='flex justify-between items-center'>
                 <div className='flex flex-col'>
-                  <Typography>{item.title}</Typography>
+                  <Typography variant='h4'>{item.title}</Typography>
                   <Typography>{item.subtitle}</Typography>
                 </div>
-                <Avatar variant='rounded'>
-                  <i className={item.icon}></i>
+                <Avatar variant='rounded' className='is-[42px] bs-[42px]'>
+                  <i className={classnames(item.icon, 'text-[26px]')}></i>
                 </Avatar>
               </div>
               {isBelowMdScreen && !isBelowSmScreen && index < data.length - 2 && (

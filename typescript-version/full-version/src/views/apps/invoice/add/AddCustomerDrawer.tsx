@@ -8,12 +8,12 @@ import type { FormEvent } from 'react'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
+import Divider from '@mui/material/Divider'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 type Props = {
   open: boolean
@@ -67,36 +67,37 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between'>
-        <Typography variant='h6'>Add New User</Typography>
+      <div className='flex items-center justify-between plb-5 pli-6'>
+        <Typography variant='h6'>Add New Customer</Typography>
         <IconButton onClick={handleReset}>
-          <i className='ri-close-line' />
+          <i className='tabler-x' />
         </IconButton>
       </div>
-      <div>
-        <form onSubmit={e => handleSubmit(e)} className='flex flex-col'>
-          <TextField
+      <Divider />
+      <div className='p-6'>
+        <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-5'>
+          <CustomTextField
             fullWidth
             id='name'
             label='Name'
             value={data.name}
             onChange={e => setData({ ...data, name: e.target.value })}
           />
-          <TextField
+          <CustomTextField
             fullWidth
             id='company'
             label='Company'
             value={data.company}
             onChange={e => setData({ ...data, company: e.target.value })}
           />
-          <TextField
+          <CustomTextField
             fullWidth
             id='email'
             label='Email'
             value={data.email}
             onChange={e => setData({ ...data, email: e.target.value })}
           />
-          <TextField
+          <CustomTextField
             rows={6}
             multiline
             fullWidth
@@ -105,24 +106,22 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
             value={data.address}
             onChange={e => setData({ ...data, address: e.target.value })}
           />
-          <FormControl>
-            <InputLabel id='country'>Country</InputLabel>
-            <Select
-              id='country'
-              label='Country'
-              name='country'
-              variant='outlined'
-              value={data?.country?.toLowerCase().replace(/\s+/g, '-') || ''}
-              onChange={e => setData({ ...data, country: e.target.value })}
-            >
-              {countries.map((item, index) => (
-                <MenuItem key={index} value={item.toLowerCase().replace(/\s+/g, '-')}>
-                  {item}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <TextField
+          <CustomTextField
+            select
+            id='country'
+            label='Country'
+            name='country'
+            variant='outlined'
+            value={data?.country?.toLowerCase().replace(/\s+/g, '-') || ''}
+            onChange={e => setData({ ...data, country: e.target.value })}
+          >
+            {countries.map((item, index) => (
+              <MenuItem key={index} value={item.toLowerCase().replace(/\s+/g, '-')}>
+                {item}
+              </MenuItem>
+            ))}
+          </CustomTextField>
+          <CustomTextField
             fullWidth
             id='contact'
             type='number'
@@ -130,11 +129,11 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
             value={data.contactNumber}
             onChange={e => setData({ ...data, contactNumber: e.target.value })}
           />
-          <div className='flex items-center'>
+          <div className='flex items-center gap-4'>
             <Button variant='contained' type='submit'>
               Add
             </Button>
-            <Button variant='outlined' color='secondary' type='reset' onClick={handleReset}>
+            <Button variant='tonal' color='error' type='reset' onClick={handleReset}>
               Cancel
             </Button>
           </div>

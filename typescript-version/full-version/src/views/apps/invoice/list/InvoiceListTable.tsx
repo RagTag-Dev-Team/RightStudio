@@ -15,11 +15,6 @@ import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
 import Chip from '@mui/material/Chip'
 import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
-import Avatar from '@mui/material/Avatar'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
@@ -50,6 +45,9 @@ import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import CustomAvatar from '@core/components/mui/Avatar'
+import TablePaginationComponent from '@components/TablePaginationComponent'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -117,17 +115,17 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Vars
 const invoiceStatusObj: InvoiceStatusObj = {
-  Sent: { color: 'secondary', icon: 'ri-send-plane-2-line' },
-  Paid: { color: 'success', icon: 'ri-check-line' },
-  Draft: { color: 'primary', icon: 'ri-mail-line' },
-  'Partial Payment': { color: 'warning', icon: 'ri-pie-chart-2-line' },
-  'Past Due': { color: 'error', icon: 'ri-information-line' },
-  Downloaded: { color: 'info', icon: 'ri-arrow-down-line' }
+  Sent: { color: 'secondary', icon: 'tabler-send-2' },
+  Paid: { color: 'success', icon: 'tabler-check' },
+  Draft: { color: 'primary', icon: 'tabler-mail' },
+  'Partial Payment': { color: 'warning', icon: 'tabler-chart-pie-2' },
+  'Past Due': { color: 'error', icon: 'tabler-alert-circle' },
+  Downloaded: { color: 'info', icon: 'tabler-arrow-down' }
 }
 
 // Column Definitions
@@ -184,30 +182,38 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
           <Tooltip
             title={
               <div>
-                <Typography variant='caption'>{row.original.invoiceStatus}</Typography>
+                <Typography variant='body2' component='span' className='text-inherit'>
+                  {row.original.invoiceStatus}
+                </Typography>
                 <br />
-                <Typography variant='caption'>Balance:</Typography>
+                <Typography variant='body2' component='span' className='text-inherit'>
+                  Balance:
+                </Typography>
                 {row.original.balance}
                 <br />
-                <Typography variant='caption'>Due Date:</Typography>
+                <Typography variant='body2' component='span' className='text-inherit'>
+                  Due Date:
+                </Typography>
                 {row.original.dueDate}
               </div>
             }
           >
-            <Avatar>
-              <i className={invoiceStatusObj[row.original.invoiceStatus].icon} />
-            </Avatar>
+            <CustomAvatar skin='light' color={invoiceStatusObj[row.original.invoiceStatus].color} size={28}>
+              <i className={classnames('bs-4 is-4', invoiceStatusObj[row.original.invoiceStatus].icon)} />
+            </CustomAvatar>
           </Tooltip>
         )
       }),
       columnHelper.accessor('name', {
         header: 'Client',
         cell: ({ row }) => (
-          <div className='flex items-center'>
+          <div className='flex items-center gap-3'>
             {getAvatar({ avatar: row.original.avatar, name: row.original.name })}
             <div className='flex flex-col'>
-              <Typography>{row.original.name}</Typography>
-              <Typography>{row.original.companyEmail}</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                {row.original.name}
+              </Typography>
+              <Typography variant='body2'>{row.original.companyEmail}</Typography>
             </div>
           </div>
         )
@@ -224,9 +230,9 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         header: 'Balance',
         cell: ({ row }) => {
           return row.original.balance === 0 ? (
-            <Chip label='Paid' color='success' size='small' />
+            <Chip label='Paid' color='success' size='small' variant='tonal' />
           ) : (
-            <Typography>{row.original.balance}</Typography>
+            <Typography color='text.primary'>{row.original.balance}</Typography>
           )
         }
       }),
@@ -235,26 +241,37 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='ri-delete-bin-7-line text-[22px]' />
+              <i className='tabler-trash text-xl text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link
                 href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
-                <i className='ri-eye-line text-[22px]' />
+                <i className='tabler-eye text-xl text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
+              iconClassName='text-xl text-textSecondary'
               options={[
-                { text: 'Download', icon: 'ri-download-line', menuItemProps: { className: 'flex items-center' } },
+                {
+                  text: 'Download',
+                  icon: 'tabler-download text-xl',
+                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
+                },
                 {
                   text: 'Edit',
-                  icon: 'ri-pencil-line',
+                  icon: 'tabler-pencil text-xl',
                   href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale as Locale),
-                  linkProps: { className: 'flex items-center' }
+                  linkProps: {
+                    className: 'flex items-center is-full plb-2 pli-4 gap-2 text-textSecondary'
+                  }
                 },
-                { text: 'Duplicate', icon: 'ri-file-copy-line', menuItemProps: { className: 'flex items-center' } }
+                {
+                  text: 'Duplicate',
+                  icon: 'tabler-copy text-xl',
+                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
+                }
               ]}
             />
           </div>
@@ -299,9 +316,13 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
     const { avatar, name } = params
 
     if (avatar) {
-      return <Avatar src={avatar} />
+      return <CustomAvatar src={avatar} skin='light' size={34} />
     } else {
-      return <Avatar>{getInitials(name as string)}</Avatar>
+      return (
+        <CustomAvatar skin='light' size={34}>
+          {getInitials(name as string)}
+        </CustomAvatar>
+      )
     }
   }
 
@@ -317,42 +338,54 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex justify-between flex-col items-center sm:flex-row'>
-        <Button
-          variant='contained'
-          component={Link}
-          startIcon={<i className='ri-add-line' />}
-          href={getLocalizedUrl('apps/invoice/add', locale as Locale)}
-          className='is-full sm:is-auto'
-        >
-          Create Invoice
-        </Button>
-        <div className='flex flex-col sm:flex-row is-full sm:is-auto items-center gap-x-4'>
+      <CardContent className='flex justify-between flex-col items-start md:items-center md:flex-row gap-4'>
+        <div className='flex items-center justify-between gap-x-6 gap-y-4'>
+          <div className='flex items-center gap-2'>
+            <Typography className='hidden sm:block'>Show</Typography>
+            <CustomTextField
+              select
+              value={table.getState().pagination.pageSize}
+              onChange={e => table.setPageSize(Number(e.target.value))}
+              className='is-[70px]'
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+              <MenuItem value='50'>50</MenuItem>
+            </CustomTextField>
+          </div>
+          <Button
+            variant='contained'
+            component={Link}
+            startIcon={<i className='tabler-plus' />}
+            href={getLocalizedUrl('apps/invoice/add', locale as Locale)}
+            className='is-full sm:is-auto'
+          >
+            Create Invoice
+          </Button>
+        </div>
+        <div className='flex flex-col sm:flex-row is-full sm:is-auto items-start sm:items-center gap-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Invoice'
-            className='is-full sm:is-auto'
+            className='is-[250px]'
           />
-          <FormControl fullWidth size='small'>
-            <InputLabel id='status-select'>Invoice Status</InputLabel>
-            <Select
-              fullWidth
-              id='select-status'
-              value={status}
-              onChange={e => setStatus(e.target.value)}
-              label='Invoice Status'
-              labelId='status-select'
-            >
-              <MenuItem value=''>none</MenuItem>
-              <MenuItem value='downloaded'>Downloaded</MenuItem>
-              <MenuItem value='draft'>Draft</MenuItem>
-              <MenuItem value='paid'>Paid</MenuItem>
-              <MenuItem value='partial-payment'>Partial Payment</MenuItem>
-              <MenuItem value='past-due'>Past Due</MenuItem>
-              <MenuItem value='sent'>Sent</MenuItem>
-            </Select>
-          </FormControl>
+          <CustomTextField
+            select
+            id='select-status'
+            value={status}
+            onChange={e => setStatus(e.target.value)}
+            className='is-[160px]'
+            SelectProps={{ displayEmpty: true }}
+          >
+            <MenuItem value=''>Invoice Status</MenuItem>
+            <MenuItem value='downloaded'>Downloaded</MenuItem>
+            <MenuItem value='draft'>Draft</MenuItem>
+            <MenuItem value='paid'>Paid</MenuItem>
+            <MenuItem value='partial-payment'>Partial Payment</MenuItem>
+            <MenuItem value='past-due'>Past Due</MenuItem>
+            <MenuItem value='sent'>Sent</MenuItem>
+          </CustomTextField>
         </div>
       </CardContent>
       <div className='overflow-x-auto'>
@@ -373,8 +406,8 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -411,15 +444,10 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}

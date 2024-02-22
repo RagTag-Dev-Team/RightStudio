@@ -6,22 +6,25 @@ import { useState, useEffect, forwardRef, useCallback } from 'react'
 // MUI Imports
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
-import Select from '@mui/material/Select'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
-import InputLabel from '@mui/material/InputLabel'
 import Typography from '@mui/material/Typography'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -77,11 +80,20 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   // Refs
   const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
     return (
-      <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} className='w-full' error={props.error} />
+      <CustomTextField
+        inputRef={ref}
+        fullWidth
+        {...props}
+        label={props.label || ''}
+        className='is-full'
+        error={props.error}
+      />
     )
   })
 
   // Hooks
+  const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+
   const {
     control,
     setValue,
@@ -167,10 +179,10 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     if (calendars.selectedEvent === null || (calendars.selectedEvent && !calendars.selectedEvent.title.length)) {
       return (
         <div className='flex gap-4'>
-          <Button size='large' type='submit' variant='contained'>
+          <Button type='submit' variant='contained'>
             Add
           </Button>
-          <Button size='large' variant='outlined' color='secondary' onClick={resetToEmptyValues}>
+          <Button variant='outlined' color='secondary' onClick={resetToEmptyValues}>
             Reset
           </Button>
         </div>
@@ -178,16 +190,18 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     } else {
       return (
         <div className='flex gap-4'>
-          <Button size='large' type='submit' variant='contained'>
+          <Button type='submit' variant='contained'>
             Update
           </Button>
-          <Button size='large' variant='outlined' color='secondary' onClick={resetToStoredValues}>
+          <Button variant='outlined' color='secondary' onClick={resetToStoredValues}>
             Reset
           </Button>
         </div>
       )
     }
   }
+
+  const ScrollWrapper = isBelowSmScreen ? 'div' : PerfectScrollbar
 
   useEffect(() => {
     if (calendars.selectedEvent !== null) {
@@ -205,34 +219,39 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: ['100%', 400] } }}
     >
-      <Box className='flex justify-between sidebar-header p-3 pis-[1.31375rem] pie-[0.81375rem] bg-backgroundDefault'>
-        <Typography variant='h6'>
+      <Box className='flex justify-between items-center sidebar-header plb-5 pli-6 border-be'>
+        <Typography variant='h5'>
           {calendars.selectedEvent && calendars.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
         </Typography>
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick}>
-              <i className='ri-delete-bin-7-line text-xl' />
+              <i className='tabler-trash text-xl' />
             </IconButton>
             <IconButton size='small' onClick={handleSidebarClose}>
-              <i className='ri-close-line text-xl' />
+              <i className='tabler-x text-xl' />
             </IconButton>
           </Box>
         ) : (
           <IconButton size='small' onClick={handleSidebarClose}>
-            <i className='ri-close-line text-xl' />
+            <i className='tabler-x text-xl' />
           </IconButton>
         )}
       </Box>
-      <Box className='sidebar-body plb-5 pli-6'>
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-          <FormControl fullWidth className='mbe-6'>
+      <ScrollWrapper
+        {...(isBelowSmScreen
+          ? { className: 'bs-full overflow-y-auto overflow-x-hidden' }
+          : { options: { wheelPropagation: false, suppressScrollX: true } })}
+      >
+        <Box className='sidebar-body plb-5 pli-6'>
+          <form onSubmit={handleSubmit(onSubmit)} autoComplete='off' className='flex flex-col gap-6'>
             <Controller
               name='title'
               control={control}
               rules={{ required: true }}
               render={({ field: { value, onChange } }) => (
-                <TextField
+                <CustomTextField
+                  fullWidth
                   label='Title'
                   value={value}
                   onChange={onChange}
@@ -240,13 +259,11 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
                 />
               )}
             />
-          </FormControl>
-          <FormControl fullWidth className='mbe-6'>
-            <InputLabel id='event-calendar'>Calendar</InputLabel>
-            <Select
+            <CustomTextField
+              select
+              fullWidth
               label='Calendar'
               value={values.calendar}
-              labelId='event-calendar'
               onChange={e => setValues({ ...values, calendar: e.target.value })}
             >
               <MenuItem value='Personal'>Personal</MenuItem>
@@ -254,9 +271,8 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               <MenuItem value='Family'>Family</MenuItem>
               <MenuItem value='Holiday'>Holiday</MenuItem>
               <MenuItem value='ETC'>ETC</MenuItem>
-            </Select>
-          </FormControl>
-          <div className='mbe-6'>
+            </CustomTextField>
+
             <AppReactDatepicker
               selectsStart
               id='event-start-date'
@@ -269,8 +285,6 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               onChange={(date: Date) => setValues({ ...values, startDate: new Date(date) })}
               onSelect={handleStartDate}
             />
-          </div>
-          <div className='mbe-6'>
             <AppReactDatepicker
               selectsEnd
               id='event-end-date'
@@ -283,56 +297,54 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               customInput={<PickersComponent label='End Date' registername='endDate' />}
               onChange={(date: Date) => setValues({ ...values, endDate: new Date(date) })}
             />
-          </div>
-          <FormControl className='mbe-6'>
-            <FormControlLabel
-              label='All Day'
-              control={
-                <Switch checked={values.allDay} onChange={e => setValues({ ...values, allDay: e.target.checked })} />
-              }
+            <FormControl>
+              <FormControlLabel
+                label='All Day'
+                control={
+                  <Switch checked={values.allDay} onChange={e => setValues({ ...values, allDay: e.target.checked })} />
+                }
+              />
+            </FormControl>
+            <CustomTextField
+              fullWidth
+              type='url'
+              id='event-url'
+              label='Event URL'
+              value={values.url}
+              onChange={e => setValues({ ...values, url: e.target.value })}
             />
-          </FormControl>
-          <TextField
-            fullWidth
-            type='url'
-            id='event-url'
-            className='mbe-6'
-            label='Event URL'
-            value={values.url}
-            onChange={e => setValues({ ...values, url: e.target.value })}
-          />
-          <FormControl fullWidth className='mbe-6'>
-            <InputLabel id='event-guests'>Guests</InputLabel>
-            <Select
-              multiple
+            <CustomTextField
+              fullWidth
+              select
               label='Guests'
               value={values.guests}
-              labelId='event-guests'
               id='event-guests-select'
               onChange={e => setValues({ ...values, guests: e.target.value })}
+              SelectProps={{
+                multiple: true
+              }}
             >
               <MenuItem value='bruce'>Bruce</MenuItem>
               <MenuItem value='clark'>Clark</MenuItem>
               <MenuItem value='diana'>Diana</MenuItem>
               <MenuItem value='john'>John</MenuItem>
               <MenuItem value='barry'>Barry</MenuItem>
-            </Select>
-          </FormControl>
-          <TextField
-            rows={4}
-            multiline
-            fullWidth
-            className='mbe-6'
-            label='Description'
-            id='event-description'
-            value={values.description}
-            onChange={e => setValues({ ...values, description: e.target.value })}
-          />
-          <div className='flex items-center'>
-            <RenderSidebarFooter />
-          </div>
-        </form>
-      </Box>
+            </CustomTextField>
+            <CustomTextField
+              rows={4}
+              multiline
+              fullWidth
+              label='Description'
+              id='event-description'
+              value={values.description}
+              onChange={e => setValues({ ...values, description: e.target.value })}
+            />
+            <div className='flex items-center'>
+              <RenderSidebarFooter />
+            </div>
+          </form>
+        </Box>
+      </ScrollWrapper>
     </Drawer>
   )
 }

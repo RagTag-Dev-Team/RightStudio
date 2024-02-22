@@ -14,7 +14,8 @@ export const db: UsersType[] = [
     currentPlan: 'enterprise',
     status: 'inactive',
     avatar: '',
-    avatarColor: 'primary'
+    avatarColor: 'primary',
+    billing: 'Auto Debit'
   },
   {
     id: 2,
@@ -27,7 +28,8 @@ export const db: UsersType[] = [
     email: 'hredmore1@imgur.com',
     currentPlan: 'team',
     status: 'pending',
-    avatar: '/images/avatars/3.png'
+    avatar: '/images/avatars/3.png',
+    billing: 'Auto Debit'
   },
   {
     id: 3,
@@ -40,7 +42,8 @@ export const db: UsersType[] = [
     email: 'msicely2@who.int',
     currentPlan: 'enterprise',
     status: 'active',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Auto Debit'
   },
   {
     id: 4,
@@ -53,7 +56,8 @@ export const db: UsersType[] = [
     email: 'crisby3@wordpress.com',
     currentPlan: 'team',
     status: 'inactive',
-    avatar: '/images/avatars/3.png'
+    avatar: '/images/avatars/3.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 5,
@@ -66,7 +70,8 @@ export const db: UsersType[] = [
     email: 'mhurran4@yahoo.co.jp',
     currentPlan: 'enterprise',
     status: 'pending',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Manual Cash'
   },
   {
     id: 6,
@@ -80,7 +85,8 @@ export const db: UsersType[] = [
     currentPlan: 'company',
     status: 'active',
     avatar: '',
-    avatarColor: 'error'
+    avatarColor: 'error',
+    billing: 'Manual Cash'
   },
   {
     id: 7,
@@ -94,7 +100,8 @@ export const db: UsersType[] = [
     currentPlan: 'company',
     status: 'pending',
     avatar: '',
-    avatarColor: 'warning'
+    avatarColor: 'warning',
+    billing: 'Auto Debit'
   },
   {
     id: 8,
@@ -107,7 +114,8 @@ export const db: UsersType[] = [
     email: 'kliger7@vinaora.com',
     currentPlan: 'enterprise',
     status: 'pending',
-    avatar: '/images/avatars/4.png'
+    avatar: '/images/avatars/4.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 9,
@@ -120,7 +128,8 @@ export const db: UsersType[] = [
     email: 'fscotfurth8@dailymotion.com',
     currentPlan: 'team',
     status: 'pending',
-    avatar: '/images/avatars/2.png'
+    avatar: '/images/avatars/2.png',
+    billing: 'Auto Debit'
   },
   {
     id: 10,
@@ -133,7 +142,8 @@ export const db: UsersType[] = [
     email: 'jbellany9@kickstarter.com',
     currentPlan: 'company',
     status: 'inactive',
-    avatar: '/images/avatars/5.png'
+    avatar: '/images/avatars/5.png',
+    billing: 'Manual Cash'
   },
   {
     id: 11,
@@ -146,7 +156,8 @@ export const db: UsersType[] = [
     email: 'jwharltona@oakley.com',
     currentPlan: 'team',
     status: 'inactive',
-    avatar: '/images/avatars/4.png'
+    avatar: '/images/avatars/4.png',
+    billing: 'Auto Debit'
   },
   {
     id: 12,
@@ -159,7 +170,8 @@ export const db: UsersType[] = [
     email: 'shallamb@hugedomains.com',
     currentPlan: 'team',
     status: 'pending',
-    avatar: '/images/avatars/5.png'
+    avatar: '/images/avatars/5.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 13,
@@ -172,7 +184,8 @@ export const db: UsersType[] = [
     email: 'ypottiec@privacy.gov.au',
     currentPlan: 'basic',
     status: 'inactive',
-    avatar: '/images/avatars/7.png'
+    avatar: '/images/avatars/7.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 14,
@@ -185,7 +198,8 @@ export const db: UsersType[] = [
     email: 'mkraused@stanford.edu',
     currentPlan: 'team',
     status: 'active',
-    avatar: '/images/avatars/6.png'
+    avatar: '/images/avatars/6.png',
+    billing: 'Auto Debit'
   },
   {
     id: 15,
@@ -198,7 +212,8 @@ export const db: UsersType[] = [
     email: 'zmcclevertye@soundcloud.com',
     currentPlan: 'enterprise',
     status: 'active',
-    avatar: '/images/avatars/2.png'
+    avatar: '/images/avatars/2.png',
+    billing: 'Auto Debit'
   },
   {
     id: 16,
@@ -211,7 +226,8 @@ export const db: UsersType[] = [
     email: 'bemblinf@wired.com',
     currentPlan: 'company',
     status: 'active',
-    avatar: '/images/avatars/6.png'
+    avatar: '/images/avatars/6.png',
+    billing: 'Manual Cash'
   },
   {
     id: 17,
@@ -225,7 +241,8 @@ export const db: UsersType[] = [
     currentPlan: 'basic',
     status: 'active',
     avatar: '',
-    avatarColor: 'success'
+    avatarColor: 'success',
+    billing: 'Auto Debit'
   },
   {
     id: 18,
@@ -238,7 +255,8 @@ export const db: UsersType[] = [
     email: 'bbinerh@mozilla.com',
     currentPlan: 'team',
     status: 'active',
-    avatar: '/images/avatars/7.png'
+    avatar: '/images/avatars/7.png',
+    billing: 'Manual Cash'
   },
   {
     id: 19,
@@ -252,7 +270,8 @@ export const db: UsersType[] = [
     currentPlan: 'enterprise',
     status: 'active',
     avatar: '',
-    avatarColor: 'primary'
+    avatarColor: 'primary',
+    billing: 'Manual Cash'
   },
   {
     id: 20,
@@ -265,7 +284,8 @@ export const db: UsersType[] = [
     email: 'wburlandj@uiuc.edu',
     currentPlan: 'team',
     status: 'inactive',
-    avatar: '/images/avatars/6.png'
+    avatar: '/images/avatars/6.png',
+    billing: 'Manual paypal'
   },
   {
     id: 21,
@@ -278,7 +298,8 @@ export const db: UsersType[] = [
     email: 'irena.dubrovna@wayne.com',
     currentPlan: 'team',
     status: 'active',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Manual paypal'
   },
   {
     id: 22,
@@ -291,7 +312,8 @@ export const db: UsersType[] = [
     email: 'jlysterl@guardian.co.uk',
     currentPlan: 'company',
     status: 'inactive',
-    avatar: '/images/avatars/8.png'
+    avatar: '/images/avatars/8.png',
+    billing: 'Auto Debit'
   },
   {
     id: 23,
@@ -304,7 +326,8 @@ export const db: UsersType[] = [
     email: 'kskitterelm@ainyx.com',
     currentPlan: 'basic',
     status: 'pending',
-    avatar: '/images/avatars/3.png'
+    avatar: '/images/avatars/3.png',
+    billing: 'Manual Cash'
   },
   {
     id: 24,
@@ -317,7 +340,8 @@ export const db: UsersType[] = [
     email: 'chatherleighn@washington.edu',
     currentPlan: 'team',
     status: 'pending',
-    avatar: '/images/avatars/2.png'
+    avatar: '/images/avatars/2.png',
+    billing: 'Auto Debit'
   },
   {
     id: 25,
@@ -331,7 +355,8 @@ export const db: UsersType[] = [
     currentPlan: 'enterprise',
     status: 'pending',
     avatar: '',
-    avatarColor: 'error'
+    avatarColor: 'error',
+    billing: 'Manual Cash'
   },
   {
     id: 26,
@@ -344,7 +369,8 @@ export const db: UsersType[] = [
     email: 'hhassonp@bizjournals.com',
     currentPlan: 'basic',
     status: 'inactive',
-    avatar: '/images/avatars/4.png'
+    avatar: '/images/avatars/4.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 27,
@@ -357,7 +383,8 @@ export const db: UsersType[] = [
     email: 'gjacombsq@jigsy.com',
     currentPlan: 'enterprise',
     status: 'active',
-    avatar: '/images/avatars/5.png'
+    avatar: '/images/avatars/5.png',
+    billing: 'Auto Debit'
   },
   {
     id: 28,
@@ -371,7 +398,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'active',
     avatar: '',
-    avatarColor: 'warning'
+    avatarColor: 'warning',
+    billing: 'Manual Cash'
   },
   {
     id: 29,
@@ -384,7 +412,8 @@ export const db: UsersType[] = [
     email: 'cpinyons@behance.net',
     currentPlan: 'team',
     status: 'active',
-    avatar: '/images/avatars/7.png'
+    avatar: '/images/avatars/7.png',
+    billing: 'Auto Debit'
   },
   {
     id: 30,
@@ -398,7 +427,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'pending',
     avatar: '',
-    avatarColor: 'info'
+    avatarColor: 'info',
+    billing: 'Manual Cash'
   },
   {
     id: 31,
@@ -411,7 +441,8 @@ export const db: UsersType[] = [
     email: 'gmeinekenu@hc360.com',
     currentPlan: 'basic',
     status: 'pending',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Auto Debit'
   },
   {
     id: 32,
@@ -424,7 +455,8 @@ export const db: UsersType[] = [
     email: 'rsnowballv@indiegogo.com',
     currentPlan: 'basic',
     status: 'pending',
-    avatar: '/images/avatars/5.png'
+    avatar: '/images/avatars/5.png',
+    billing: 'Manual Cash'
   },
   {
     id: 33,
@@ -437,7 +469,8 @@ export const db: UsersType[] = [
     email: 'remerw@blogtalkradio.com',
     currentPlan: 'basic',
     status: 'active',
-    avatar: '/images/avatars/8.png'
+    avatar: '/images/avatars/8.png',
+    billing: 'Manual Cash'
   },
   {
     id: 34,
@@ -450,7 +483,8 @@ export const db: UsersType[] = [
     email: 'ofibbensx@booking.com',
     currentPlan: 'company',
     status: 'active',
-    avatar: '/images/avatars/4.png'
+    avatar: '/images/avatars/4.png',
+    billing: 'Manual Cash'
   },
   {
     id: 35,
@@ -464,7 +498,8 @@ export const db: UsersType[] = [
     currentPlan: 'company',
     status: 'pending',
     avatar: '',
-    avatarColor: 'error'
+    avatarColor: 'error',
+    billing: 'Auto Debit'
   },
   {
     id: 36,
@@ -478,7 +513,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'inactive',
     avatar: '',
-    avatarColor: 'success'
+    avatarColor: 'success',
+    billing: 'Auto Debit'
   },
   {
     id: 37,
@@ -491,7 +527,8 @@ export const db: UsersType[] = [
     email: 'shebblethwaite10@arizona.edu',
     currentPlan: 'company',
     status: 'inactive',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 38,
@@ -504,7 +541,8 @@ export const db: UsersType[] = [
     email: 'mpiccard11@vimeo.com',
     currentPlan: 'enterprise',
     status: 'inactive',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Manual Paypal'
   },
   {
     id: 39,
@@ -518,7 +556,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'pending',
     avatar: '',
-    avatarColor: 'primary'
+    avatarColor: 'primary',
+    billing: 'Manual Paypal'
   },
   {
     id: 40,
@@ -531,7 +570,8 @@ export const db: UsersType[] = [
     email: 'fdesporte13@omniture.com',
     currentPlan: 'company',
     status: 'active',
-    avatar: '/images/avatars/6.png'
+    avatar: '/images/avatars/6.png',
+    billing: 'Auto Debit'
   },
   {
     id: 41,
@@ -545,7 +585,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'pending',
     avatar: '',
-    avatarColor: 'info'
+    avatarColor: 'info',
+    billing: 'Auto Debit'
   },
   {
     id: 42,
@@ -559,7 +600,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'inactive',
     avatar: '',
-    avatarColor: 'warning'
+    avatarColor: 'warning',
+    billing: 'Auto Debit'
   },
   {
     id: 43,
@@ -573,7 +615,8 @@ export const db: UsersType[] = [
     currentPlan: 'basic',
     status: 'inactive',
     avatar: '',
-    avatarColor: 'error'
+    avatarColor: 'error',
+    billing: 'Manual Cash'
   },
   {
     id: 44,
@@ -587,7 +630,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'active',
     avatar: '',
-    avatarColor: 'success'
+    avatarColor: 'success',
+    billing: 'Manual Cash'
   },
   {
     id: 45,
@@ -600,7 +644,8 @@ export const db: UsersType[] = [
     email: 'cperot18@goo.ne.jp',
     currentPlan: 'team',
     status: 'pending',
-    avatar: '/images/avatars/3.png'
+    avatar: '/images/avatars/3.png',
+    billing: 'Manual Cash'
   },
   {
     id: 46,
@@ -614,7 +659,8 @@ export const db: UsersType[] = [
     currentPlan: 'enterprise',
     status: 'pending',
     avatar: '',
-    avatarColor: 'primary'
+    avatarColor: 'primary',
+    billing: 'Manual Paypal'
   },
   {
     id: 47,
@@ -627,7 +673,8 @@ export const db: UsersType[] = [
     email: 'kcourtliff1a@bbc.co.uk',
     currentPlan: 'basic',
     status: 'active',
-    avatar: '/images/avatars/1.png'
+    avatar: '/images/avatars/1.png',
+    billing: 'Auto Debit'
   },
   {
     id: 48,
@@ -641,7 +688,8 @@ export const db: UsersType[] = [
     currentPlan: 'basic',
     status: 'pending',
     avatar: '',
-    avatarColor: 'error'
+    avatarColor: 'error',
+    billing: 'Auto Debit'
   },
   {
     id: 49,
@@ -655,7 +703,8 @@ export const db: UsersType[] = [
     currentPlan: 'team',
     status: 'inactive',
     avatar: '',
-    avatarColor: 'warning'
+    avatarColor: 'warning',
+    billing: 'Manual Cash'
   },
   {
     id: 50,
@@ -668,6 +717,7 @@ export const db: UsersType[] = [
     email: 'bkrabbe1d@home.pl',
     currentPlan: 'company',
     status: 'active',
-    avatar: '/images/avatars/2.png'
+    avatar: '/images/avatars/2.png',
+    billing: 'Auto Debit'
   }
 ]

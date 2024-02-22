@@ -33,7 +33,7 @@ const EditPage = async ({ params }: { params: { id: string } }) => {
   }
 
   return filteredData ? (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={9}>
         <EditCard data={data} invoiceData={filteredData} id={params.id} />
       </Grid>

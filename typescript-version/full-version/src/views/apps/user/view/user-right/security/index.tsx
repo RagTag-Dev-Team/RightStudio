@@ -8,7 +8,7 @@ import RecentDevice from './RecentDevice'
 
 const SecurityTab = () => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <ChangePassword />
       </Grid>

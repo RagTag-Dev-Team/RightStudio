@@ -36,26 +36,30 @@ const RoleCards = () => {
   // Vars
   const typographyProps: TypographyProps = {
     children: 'Edit Role',
-    variant: 'body2',
     component: Link,
-    className: 'text-primary',
+    color: 'primary',
     onClick: e => e.preventDefault()
   }
 
   const CardProps: CardProps = {
-    className: 'cursor-pointer h-full',
+    className: 'cursor-pointer bs-full',
     children: (
-      <Grid container className='h-full'>
+      <Grid container className='bs-full'>
         <Grid item xs={5}>
-          <div className='flex items-end justify-center h-full'>
-            <img alt='add-role' src='/images/cards/pose_m1.png' />
+          <div className='flex items-end justify-center bs-full'>
+            <img alt='add-role' src='/images/illustrations/characters/1.png' height={130} />
           </div>
         </Grid>
         <Grid item xs={7}>
           <CardContent>
-            <div className='text-right'>
-              <Button variant='contained'>Add Role</Button>
-              <Typography>Add role, if it doesn&#39;t exist.</Typography>
+            <div className='flex flex-col items-end gap-4 text-right'>
+              <Button variant='contained' size='small'>
+                Add Role
+              </Button>
+              <Typography>
+                Add new role, <br />
+                if it doesn&#39;t exist.
+              </Typography>
             </div>
           </CardContent>
         </Grid>
@@ -65,13 +69,13 @@ const RoleCards = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid container spacing={6}>
         {cardData.map((item, index) => (
           <Grid item xs={12} sm={6} lg={4} key={index}>
             <Card>
-              <CardContent>
+              <CardContent className='flex flex-col gap-4'>
                 <div className='flex items-center justify-between'>
-                  <Typography>{`Total ${item.totalUsers} users`}</Typography>
+                  <Typography className='flex-grow'>{`Total ${item.totalUsers} users`}</Typography>
                   <AvatarGroup total={item.totalUsers}>
                     {item.avatars.map((img, index: number) => (
                       <Avatar key={index} alt={item.title} src={`/images/avatars/${img}`} />
@@ -79,8 +83,8 @@ const RoleCards = () => {
                   </AvatarGroup>
                 </div>
                 <div className='flex justify-between items-center'>
-                  <div className='flex flex-col items-start'>
-                    <Typography variant='h6'>{item.title}</Typography>
+                  <div className='flex flex-col items-start gap-1'>
+                    <Typography variant='h5'>{item.title}</Typography>
                     <OpenDialogOnElementClick
                       element={Typography}
                       elementProps={typographyProps}
@@ -88,8 +92,8 @@ const RoleCards = () => {
                       dialogProps={{ title: item.title }}
                     />
                   </div>
-                  <IconButton>
-                    <i className='ri-file-copy-line' />
+                  <IconButton className='p-[7px]'>
+                    <i className='tabler-copy text-secondary' />
                   </IconButton>
                 </div>
               </CardContent>

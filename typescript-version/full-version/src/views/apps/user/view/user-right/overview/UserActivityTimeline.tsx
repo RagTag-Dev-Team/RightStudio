@@ -16,6 +16,9 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import MuiTimeline from '@mui/lab/Timeline'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
   paddingLeft: 0,
@@ -41,7 +44,9 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography className='font-medium'>12 Invoices have been paid</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  12 Invoices have been paid
+                </Typography>
                 <Typography variant='caption' color='text.disabled'>
                   12 min ago
                 </Typography>
@@ -60,14 +65,16 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography className='font-medium'>Client Meeting</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  Client Meeting
+                </Typography>
                 <Typography variant='caption' color='text.disabled'>
                   45 min ago
                 </Typography>
               </div>
               <Typography className='mbe-2'>Project meeting with john @10:15am</Typography>
               <div className='flex items-center gap-2.5'>
-                <Avatar src='/assets/avatars/2.png' className='w-8 h-8' />
+                <CustomAvatar src='/images/avatars/1.png' size={32} />
                 <div className='flex flex-col flex-wrap'>
                   <Typography variant='body2' className='font-medium'>
                     Lester McCarthy (Client)
@@ -84,16 +91,18 @@ const UserActivityTimeLine = () => {
             </TimelineSeparator>
             <TimelineContent>
               <div className='flex flex-wrap items-center justify-between gap-x-2 mbe-2.5'>
-                <Typography className='font-medium'>Create a new project for client</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  Create a new project for client
+                </Typography>
                 <Typography variant='caption' color='text.disabled'>
                   2 Day Ago
                 </Typography>
               </div>
               <Typography className='mbe-2'>6 team members in a project</Typography>
               <AvatarGroup total={6} className='pull-up'>
-                <Avatar alt='Travis Howard' src='/images/avatars/2.jpg' />
-                <Avatar alt='Agnes Walker' src='/images/avatars/4.jpg' />
-                <Avatar alt='John Doe' src='/images/avatars/5.jpg' />
+                <Avatar alt='Travis Howard' src='/images/avatars/1.png' />
+                <Avatar alt='Agnes Walker' src='/images/avatars/4.png' />
+                <Avatar alt='John Doe' src='/images/avatars/2.png' />
               </AvatarGroup>
             </TimelineContent>
           </TimelineItem>
