@@ -6,13 +6,19 @@ import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import type { LinearProgressProps } from '@mui/material/LinearProgress'
 
-const LinearProgressWithLabel = (props: LinearProgressProps & { value: number }) => {
+const LinearProgressWithLabel = (
+  props: LinearProgressProps & { value: number }
+) => {
   return (
     <div className='flex items-center gap-3'>
       <div className='w-full'>
         <LinearProgress variant='determinate' {...props} />
       </div>
-      <Typography variant='body2' color='text.secondary'>{`${Math.round(props.value)}%`}</Typography>
+      <Typography
+        variant='body2'
+        color='text.secondary'
+        className='font-medium'
+      >{`${Math.round(props.value)}%`}</Typography>
     </div>
   )
 }
@@ -23,7 +29,9 @@ const ProgressLinearWithLabel = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(prevProgress => (prevProgress >= 100 ? 10 : prevProgress + 10))
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 10 : prevProgress + 10
+      )
     }, 800)
 
     return () => {

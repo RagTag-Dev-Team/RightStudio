@@ -20,21 +20,23 @@ import type { ProjectsTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import CustomAvatar from '@core/components/mui/Avatar'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       {data &&
         data.map((item, index) => {
           return (
             <Grid item key={index} xs={12} md={6} lg={4}>
               <Card>
-                <CardContent>
+                <CardContent className='flex flex-col gap-4'>
                   <div className='flex items-center justify-between'>
-                    <div className='flex items-center'>
+                    <div className='flex items-center gap-4'>
                       <Avatar src={item.avatar} />
                       <div>
                         <Typography
+                          variant='h5'
                           href='/'
                           component={Link}
                           onClick={e => e.preventDefault()}
@@ -42,7 +44,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                         >
                           {item.title}
                         </Typography>
-                        <Typography>
+                        <Typography className='font-medium'>
                           <span>Client:</span>
                           {item.client}
                         </Typography>
@@ -54,25 +56,25 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                         'View Details',
                         'Add to Favorite',
                         { divider: true },
-                        { text: 'Leave Project', menuItemProps: { className: 'text-error' } }
+                        { text: 'Leave Project', menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' } }
                       ]}
                     />
                   </div>
                   <div className='flex items-center justify-between flex-wrap'>
-                    <div className='rounded bg-actionHover'>
+                    <div className='rounded bg-actionHover plb-2 pli-3'>
                       <div className='flex'>
-                        <Typography className='font-medium'>{item.budgetSpent}</Typography>
+                        <Typography className='font-medium' color='text.primary'>{item.budgetSpent}</Typography>
                         <Typography>{`/${item.budget}`}</Typography>
                       </div>
                       <Typography>Total Budget</Typography>
                     </div>
                     <div className='flex flex-col'>
                       <div className='flex'>
-                        <Typography>Start Date:</Typography>
+                        <Typography className='font-medium' color='text.primary'>Start Date:</Typography>
                         <Typography>{item.startDate}</Typography>
                       </div>
                       <div className='flex'>
-                        <Typography>Deadline:</Typography>
+                        <Typography className='font-medium' color='text.primary'>Deadline:</Typography>
                         <Typography>{item.deadline}</Typography>
                       </div>
                     </div>
@@ -80,38 +82,43 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                   <Typography>{item.description}</Typography>
                 </CardContent>
                 <Divider />
-                <CardContent>
-                  <div className='flex items-center justify-between'>
+                <CardContent className='flex flex-col gap-4'>
+                  <div className='flex items-center justify-between '>
                     <div className='flex'>
-                      <Typography className='font-medium'>All Hours:</Typography>
+                      <Typography className='font-medium' color='text.primary'>All Hours:</Typography>
                       <Typography>{item.hours}</Typography>
                     </div>
-                    <Chip size='small' color={item.chipColor} label={`${item.daysLeft} days left`} />
+                    <Chip variant='tonal' size='small' color={item.chipColor} label={`${item.daysLeft} days left`} />
+                  </div>
+                  <div>
+                    <div className='flex items-center justify-between mbe-2'>
+                      <Typography variant='caption' className='text-textSecondary'>{`Tasks: ${item.completedTask}/${item.totalTask}`}</Typography>
+                      <Typography variant='caption' className='text-textSecondary'>{`${Math.round((item.completedTask / item.totalTask) * 100)}% Completed`}</Typography>
+                    </div>
+                    <LinearProgress
+                      color='primary'
+                      variant='determinate'
+                      value={Math.round((item.completedTask / item.totalTask) * 100)}
+                      className='bs-2'
+                    />
                   </div>
                   <div className='flex items-center justify-between'>
-                    <Typography>{`Tasks: ${item.completedTask}/${item.totalTask}`}</Typography>
-                    <Typography>{`${Math.round((item.completedTask / item.totalTask) * 100)}% Completed`}</Typography>
-                  </div>
-                  <LinearProgress
-                    color='primary'
-                    variant='determinate'
-                    value={Math.round((item.completedTask / item.totalTask) * 100)}
-                  />
-                  <div className='flex items-center justify-between'>
-                    <div className='flex items-center flex-grow'>
+                    <div className='flex items-center flex-grow gap-3'>
                       <AvatarGroup className='items-center pull-up'>
                         {item.avatarGroup.map((person, index) => {
                           return (
                             <Tooltip key={index} title={person.name}>
-                              <Avatar src={person.avatar} alt={person.name} />
+                              <CustomAvatar src={person.avatar} alt={person.name} size={32} />
                             </Tooltip>
                           )
                         })}
                       </AvatarGroup>
-                      <Typography className='flex-grow'>{item.members}</Typography>
+                      <Typography variant='body2' className='flex-grow'>
+                        {item.members}
+                      </Typography>
                     </div>
-                    <div className='flex items-center'>
-                      <i className='ri-message-2-line' />
+                    <div className='flex items-center gap-1'>
+                      <i className='tabler-message-dots' />
                       <Typography>{item.comments}</Typography>
                     </div>
                   </div>

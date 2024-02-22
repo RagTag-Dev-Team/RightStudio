@@ -18,21 +18,21 @@ import Link from '@components/Link'
 
 const Teams = ({ data }: { data?: TeamsTabType[] }) => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       {data &&
         data.map((item, index) => {
           return (
             <Grid item key={index} xs={12} md={6} lg={4}>
               <Card>
-                <CardContent>
+                <CardContent className='flex flex-col gap-4'>
                   <div className='flex items-center justify-between gap-2'>
-                    <div className='flex items-center'>
+                    <div className='flex items-center gap-2'>
                       <Avatar src={item.avatar} className='bs-[38px] is-[38px]' />
-                      <Typography>{item.title}</Typography>
+                      <Typography variant='h5'>{item.title}</Typography>
                     </div>
                     <div className='flex items-center'>
                       <IconButton size='small'>
-                        <i className='ri-star-line' />
+                        <i className='tabler-star' />
                       </IconButton>
                       <OptionMenu
                         options={[
@@ -40,7 +40,7 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                           'View Details',
                           'Add to Favorite',
                           { divider: true },
-                          { text: 'Delete Team', menuItemProps: { className: 'text-error' } }
+                          { text: 'Delete Team', menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' } }
                         ]}
                       />
                     </div>
@@ -60,10 +60,10 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                         )
                       })}
                     </AvatarGroup>
-                    <div className='flex items-center'>
+                    <div className='flex items-center gap-2'>
                       {item.chips.map((chip, index) => (
                         <Link key={index}>
-                          <Chip size='small' label={chip.title} color={chip.color} />
+                          <Chip variant='tonal' size='small' label={chip.title} color={chip.color} />
                         </Link>
                       ))}
                     </div>

@@ -8,7 +8,8 @@ export const db: PricingPlanType[] = [
     currentPlan: true,
     popularPlan: false,
     subtitle: 'A simple start for everyone',
-    imgSrc: '/images/pages/pricing-basic.png',
+    imgSrc: '/images/illustrations/objects/pricing-basic.png',
+    imgHeight: 120,
     yearlyPlan: {
       monthly: 0,
       annually: 0
@@ -27,7 +28,8 @@ export const db: PricingPlanType[] = [
     popularPlan: true,
     currentPlan: false,
     subtitle: 'For small to medium businesses',
-    imgSrc: '/images/pages/pricing-standard.png',
+    imgSrc: '/images/illustrations/objects/pricing-standard.png',
+    imgHeight: 120,
     yearlyPlan: {
       monthly: 40,
       annually: 480
@@ -46,7 +48,8 @@ export const db: PricingPlanType[] = [
     currentPlan: false,
     title: 'Enterprise',
     subtitle: 'Solution for big organizations',
-    imgSrc: '/images/pages/pricing-enterprise.png',
+    imgSrc: '/images/illustrations/objects/pricing-enterprise.png',
+    imgHeight: 120,
     yearlyPlan: {
       monthly: 80,
       annually: 960

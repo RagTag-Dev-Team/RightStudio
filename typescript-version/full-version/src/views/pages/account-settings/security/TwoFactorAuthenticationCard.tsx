@@ -24,9 +24,11 @@ const TwoFactorAuthenticationCard = () => {
     <>
       <Card>
         <CardHeader title='Two-steps verification' />
-        <CardContent className='flex flex-col items-start gap-5'>
+        <CardContent className='flex flex-col items-start gap-6'>
           <div className='flex flex-col gap-4'>
-            <Typography>Two factor authentication is not enabled yet.</Typography>
+            <Typography variant='h5' color='text.secondary'>
+              Two factor authentication is not enabled yet.
+            </Typography>
             <Typography>
               Two-factor authentication adds an additional layer of security to your account by requiring more than just
               a password to log in.

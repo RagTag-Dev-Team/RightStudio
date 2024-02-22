@@ -31,35 +31,37 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
     <Card>
       <CardHeader title='Current Plan' />
       <CardContent>
-        <Grid container>
-          <Grid item xs={12} md={6}>
-            <div>
-              <Typography>Your Current Plan is Basic</Typography>
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={6} className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-1'>
+              <Typography color='text.primary'>Your Current Plan is Basic</Typography>
               <Typography>A simple start for everyone</Typography>
             </div>
-            <div>
-              <Typography>Active until Dec 09, 2021</Typography>
+            <div className='flex flex-col gap-1'>
+              <Typography color='text.primary'>Active until Dec 09, 2021</Typography>
               <Typography>We will send you a notification upon Subscription expiration</Typography>
             </div>
-            <div>
-              <div className='flex items-center'>
-                <Typography>$199 Per Month</Typography>
-                <Chip color='primary' label='Popular' size='small' />
+            <div className='flex flex-col gap-1'>
+              <div className='flex items-center gap-1.5'>
+                <Typography color='text.primary'>$199 Per Month</Typography>
+                <Chip color='primary' variant='tonal' label='Popular' size='small' />
               </div>
               <Typography>Standard plan for small to medium businesses</Typography>
             </div>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className='flex flex-col gap-6'>
             <Alert severity='warning'>
               <AlertTitle>We need your attention!</AlertTitle>
               Your plan requires update
             </Alert>
-            <div className='flex items-center justify-between'>
-              <Typography>Days</Typography>
-              <Typography>12 of 30 Days</Typography>
+            <div className='flex flex-col gap-1'>
+              <div className='flex items-center justify-between'>
+                <Typography color='text.primary'>Days</Typography>
+                <Typography color='text.primary'>12 of 30 Days</Typography>
+              </div>
+              <LinearProgress variant='determinate' value={20} />
+              <Typography>18 days remaining until your plan requires update</Typography>
             </div>
-            <LinearProgress variant='determinate' value={40} />
-            <Typography>18 days remaining until your plan requires update</Typography>
           </Grid>
           <Grid item xs={12} className='flex gap-4 flex-wrap'>
             <OpenDialogOnElementClick
@@ -70,7 +72,7 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
             />
             <OpenDialogOnElementClick
               element={Button}
-              elementProps={buttonProps('Cancel Subscription', 'secondary', 'outlined')}
+              elementProps={buttonProps('Cancel Subscription', 'error', 'tonal')}
               dialog={ConfirmationDialog}
               dialogProps={{ type: 'unsubscribe' }}
             />

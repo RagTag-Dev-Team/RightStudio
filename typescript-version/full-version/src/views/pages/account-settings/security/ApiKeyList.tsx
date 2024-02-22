@@ -28,7 +28,7 @@ const apiKeyList: ApiKeyListType[] = [
   },
   {
     title: 'Server Key 3',
-    access: 'Read Only',
+    access: 'Full Access',
     date: '28 Dec 2021, 12:21 GTM+4:10',
     key: '2e915e59-3105-47f2-8838-6e46bf83b711'
   }
@@ -37,26 +37,26 @@ const apiKeyList: ApiKeyListType[] = [
 const ApiKeyList = () => {
   return (
     <Card>
-      <CardHeader title='API Key List & Access' />
-      <CardContent>
+      <CardHeader title='API Key List & Access' className='pbe-4' />
+      <CardContent className='flex flex-col gap-6'>
         <Typography>
           An API key is a simple encrypted string that identifies an application without any principal. They are useful
           for accessing public data anonymously, and are used to associate API requests with your project for quota and
           billing.
         </Typography>
         {apiKeyList.map((item, index) => (
-          <div key={index} className='rounded bg-actionHover'>
-            <div className='flex items-center'>
-              <Typography>{item.title}</Typography>
-              <Chip color='primary' label={item.access} size='small' />
+          <div key={index} className='flex flex-col gap-2 p-4 rounded bg-actionHover'>
+            <div className='flex items-center gap-3'>
+              <Typography variant='h5'>{item.title}</Typography>
+              <Chip color='primary' variant='tonal' label={item.access} size='small' />
             </div>
-            <div className='flex items-center'>
+            <div className='flex items-center gap-3'>
               <Typography>{item.key}</Typography>
               <div className='flex'>
-                <i className='ri-file-copy-line' />
+                <i className='tabler-copy text-xl' />
               </div>
             </div>
-            <Typography>{`Created on ${item.date}`}</Typography>
+            <Typography color='text.disabled'>{`Created on ${item.date}`}</Typography>
           </div>
         ))}
       </CardContent>

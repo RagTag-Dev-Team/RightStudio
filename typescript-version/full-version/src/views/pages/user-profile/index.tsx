@@ -26,18 +26,18 @@ const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <UserProfileHeader data={data?.profileHeader} />
       </Grid>
       {activeTab === undefined ? null : (
-        <Grid item xs={12}>
+        <Grid item xs={12} className='flex flex-col gap-6'>
           <TabContext value={activeTab}>
             <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
               <Tab
                 label={
-                  <div className='flex items-center'>
-                    <i className='ri-user-3-line' />
+                  <div className='flex items-center gap-1.5'>
+                    <i className='tabler-user-check text-lg' />
                     Profile
                   </div>
                 }
@@ -45,8 +45,8 @@ const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]
               />
               <Tab
                 label={
-                  <div className='flex items-center'>
-                    <i className='ri-group-line' />
+                  <div className='flex items-center gap-1.5'>
+                    <i className='tabler-users text-lg' />
                     Teams
                   </div>
                 }
@@ -54,8 +54,8 @@ const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]
               />
               <Tab
                 label={
-                  <div className='flex items-center'>
-                    <i className='ri-layout-grid-line' />
+                  <div className='flex items-center gap-1.5'>
+                    <i className='tabler-layout-grid text-lg' />
                     Projects
                   </div>
                 }
@@ -63,8 +63,8 @@ const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]
               />
               <Tab
                 label={
-                  <div className='flex items-center'>
-                    <i className='ri-links-line' />
+                  <div className='flex items-center gap-1.5'>
+                    <i className='tabler-link text-lg' />
                     Connections
                   </div>
                 }

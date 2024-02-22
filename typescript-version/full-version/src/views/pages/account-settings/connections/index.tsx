@@ -66,13 +66,13 @@ const socialAccountsArr: SocialAccountsType[] = [
   {
     title: 'Twitter',
     isConnected: true,
-    username: '@Theme_Selection',
+    username: '@Pixinvent',
     logo: '/images/logos/twitter.png'
   },
   {
     title: 'Linkedin',
     isConnected: true,
-    username: '@ThemeSelection',
+    username: '@Pixinvent',
     logo: '/images/logos/linkedin.png'
   },
   {
@@ -96,13 +96,13 @@ const Connections = () => {
             title='Connected Accounts'
             subheader='Display content from your connected accounts on your site'
           />
-          <CardContent>
+          <CardContent className='flex flex-col gap-4'>
             {connectedAccountsArr.map((item, index) => (
-              <div key={index} className='flex items-center justify-between'>
-                <div className='flex flex-grow items-center'>
+              <div key={index} className='flex items-center justify-between gap-4'>
+                <div className='flex flex-grow items-center gap-4'>
                   <img height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
-                    <Typography>{item.title}</Typography>
+                    <Typography className='text-textPrimary font-medium'>{item.title}</Typography>
                     <Typography>{item.subtitle}</Typography>
                   </div>
                 </div>
@@ -113,13 +113,13 @@ const Connections = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <CardHeader title='Social Accounts' subheader='Display content from social accounts on your site' />
-          <CardContent>
+          <CardContent className='flex flex-col gap-4'>
             {socialAccountsArr.map((item, index) => (
-              <div key={index} className='flex items-center justify-between'>
-                <div className='flex flex-grow items-center'>
+              <div key={index} className='flex items-center justify-between gap-4'>
+                <div className='flex flex-grow items-center gap-4'>
                   <img height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
-                    <Typography>{item.title}</Typography>
+                    <Typography className='text-textPrimary font-medium'>{item.title}</Typography>
                     {item.isConnected ? (
                       <Typography>{item.username}</Typography>
                     ) : (
@@ -127,8 +127,12 @@ const Connections = () => {
                     )}
                   </div>
                 </div>
-                <Button variant='outlined' color='secondary'>
-                  <i className={item.isConnected ? 'ri-delete-bin-7-line' : 'ri-links-line'} />
+                <Button
+                  variant='tonal'
+                  color={item.isConnected ? 'error' : 'secondary'}
+                  className='bs-[38px] is-[38px] min-is-0 p-2'
+                >
+                  <i className={item.isConnected ? 'tabler-trash' : 'tabler-link'} />
                 </Button>
               </div>
             ))}

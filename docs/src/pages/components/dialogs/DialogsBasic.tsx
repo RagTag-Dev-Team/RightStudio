@@ -46,7 +46,7 @@ const DialogsBasic = () => {
               <ListItemButton>
                 <ListItemAvatar>
                   <Avatar>
-                    <i className='ri-user-3-line' />
+                    <i className='tabler-user' />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={email} />
@@ -57,7 +57,7 @@ const DialogsBasic = () => {
             <ListItemButton>
               <ListItemAvatar>
                 <MuiAvatar>
-                  <i className='ri-add-line' />
+                  <i className='tabler-plus' />
                 </MuiAvatar>
               </ListItemAvatar>
               <ListItemText primary='Add account' />

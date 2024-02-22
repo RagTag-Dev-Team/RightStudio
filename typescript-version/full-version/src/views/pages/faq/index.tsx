@@ -19,7 +19,7 @@ const FAQ = ({ data }: { data: FaqType[] }) => {
   const [searchValue, setSearchValue] = useState('')
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <FaqHeader searchValue={searchValue} setSearchValue={setSearchValue} />
       </Grid>

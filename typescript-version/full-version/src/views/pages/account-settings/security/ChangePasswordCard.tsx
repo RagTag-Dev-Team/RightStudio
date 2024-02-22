@@ -8,11 +8,13 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+
+//Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const ChangePasswordCard = () => {
   // States
@@ -29,12 +31,13 @@ const ChangePasswordCard = () => {
       <CardHeader title='Change Password' />
       <CardContent>
         <form>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Current Password'
                 type={isCurrentPasswordShown ? 'text' : 'password'}
+                placeholder='············'
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
@@ -43,7 +46,7 @@ const ChangePasswordCard = () => {
                         onClick={handleClickShowCurrentPassword}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isCurrentPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isCurrentPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -51,12 +54,13 @@ const ChangePasswordCard = () => {
               />
             </Grid>
           </Grid>
-          <Grid container className='mbs-0'>
+          <Grid container className='mbs-0' spacing={6}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='New Password'
                 type={isNewPasswordShown ? 'text' : 'password'}
+                placeholder='············'
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
@@ -65,7 +69,7 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsNewPasswordShown(!isNewPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isNewPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isNewPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -73,10 +77,11 @@ const ChangePasswordCard = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Confirm New Password'
                 type={isConfirmPasswordShown ? 'text' : 'password'}
+                placeholder='············'
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
@@ -85,33 +90,33 @@ const ChangePasswordCard = () => {
                         onClick={() => setIsConfirmPasswordShown(!isConfirmPasswordShown)}
                         onMouseDown={e => e.preventDefault()}
                       >
-                        <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
                 }}
               />
             </Grid>
-            <Grid item xs={12}>
-              <Typography>Password Requirements:</Typography>
-              <div>
-                <div className='flex items-center'>
-                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
+            <Grid item xs={12} className='flex flex-col gap-4'>
+              <Typography variant='h6'>Password Requirements:</Typography>
+              <div className='flex flex-col gap-4'>
+                <div className='flex items-center gap-2.5'>
+                  <i className='tabler-circle-filled text-[8px]' />
                   Minimum 8 characters long - the more, the better
                 </div>
-                <div className='flex items-center'>
-                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
+                <div className='flex items-center gap-2.5'>
+                  <i className='tabler-circle-filled text-[8px]' />
                   At least one lowercase & one uppercase character
                 </div>
-                <div className='flex items-center'>
-                  <i className='ri-checkbox-blank-circle-fill text-[8px]' />
+                <div className='flex items-center gap-2.5'>
+                  <i className='tabler-circle-filled text-[8px]' />
                   At least one number, symbol, or whitespace character
                 </div>
               </div>
             </Grid>
             <Grid item xs={12} className='flex gap-4'>
               <Button variant='contained'>Save Changes</Button>
-              <Button variant='outlined' type='reset' color='secondary'>
+              <Button variant='tonal' type='reset' color='secondary'>
                 Reset
               </Button>
             </Grid>

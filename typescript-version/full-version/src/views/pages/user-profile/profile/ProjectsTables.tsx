@@ -4,11 +4,9 @@
 import { useEffect, useMemo, useState } from 'react'
 
 // MUI Imports
-import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
-import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import Checkbox from '@mui/material/Checkbox'
 import CardHeader from '@mui/material/CardHeader'
@@ -38,6 +36,9 @@ import type { ProjectTableRowType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/text-field'
+import TablePaginationComponent from '@/components/TablePaginationComponent'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -90,7 +91,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -131,25 +132,27 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
       columnHelper.accessor('title', {
         header: 'Project',
         cell: ({ row }) => (
-          <div className='flex items-center'>
-            <Avatar src={row.original.avatar} />
+          <div className='flex items-center gap-3'>
+            <CustomAvatar src={row.original.avatar} size={34} />
             <div className='flex flex-col'>
-              <Typography>{row.original.title}</Typography>
-              <Typography>{row.original.subtitle}</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                {row.original.title}
+              </Typography>
+              <Typography variant='body2'>{row.original.subtitle}</Typography>
             </div>
           </div>
         )
       }),
       columnHelper.accessor('leader', {
         header: 'Leader',
-        cell: ({ row }) => <Typography>{row.original.leader}</Typography>
+        cell: ({ row }) => <Typography color='text.primary'>{row.original.leader}</Typography>
       }),
       columnHelper.accessor('avatarGroup', {
         header: 'Team',
         cell: ({ row }) => (
-          <AvatarGroup max={4} className='flex items-center'>
+          <AvatarGroup max={4} className='flex items-center pull-up'>
             {row.original.avatarGroup.map((avatar, index) => (
-              <Avatar key={index} src={avatar} />
+              <CustomAvatar key={index} src={avatar} size={26} />
             ))}
           </AvatarGroup>
         ),
@@ -159,8 +162,8 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
         header: 'Progress',
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
-            <LinearProgress color='primary' value={row.original.status} variant='determinate' className='w-20' />
-            <Typography>{`${row.original.status}%`}</Typography>
+            <LinearProgress color='primary' value={row.original.status} variant='determinate' className='is-20' />
+            <Typography color='text.primary'>{`${row.original.status}%`}</Typography>
           </div>
         )
       }),
@@ -216,12 +219,12 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
     <Card>
       <CardHeader
         className='flex-wrap gap-x-4 gap-y-2'
-        title='Projects'
+        title='Project List'
         action={
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
-            placeholder='Search all columns...'
+            placeholder='Search Project'
           />
         }
       />
@@ -243,8 +246,8 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
                       >
                         {flexRender(header.column.columnDef.header, header.getContext())}
                         {{
-                          asc: <i className='ri-arrow-up-s-line text-xl' />,
-                          desc: <i className='ri-arrow-down-s-line text-xl' />
+                          asc: <i className='tabler-chevron-up text-xl' />,
+                          desc: <i className='tabler-chevron-down text-xl' />
                         }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                       </div>
                     )}
@@ -271,7 +274,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
       </div>
       <TablePagination
         rowsPerPageOptions={[5, 7, 10]}
-        component='div'
+        component={() => <TablePaginationComponent table={table} />}
         className='border-bs'
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}

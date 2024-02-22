@@ -12,12 +12,12 @@ import ProjectsTable from './ProjectsTables'
 
 const ProfileTab = ({ data }: { data?: ProfileTabType }) => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item lg={4} md={5} xs={12}>
         <AboutOverview data={data} />
       </Grid>
       <Grid item lg={8} md={7} xs={12}>
-        <Grid container>
+        <Grid container spacing={6}>
           <Grid item xs={12}>
             <ActivityTimeline />
           </Grid>

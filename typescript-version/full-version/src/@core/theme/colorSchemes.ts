@@ -144,6 +144,9 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
         Tooltip: {
           bg: '#2F2B3D'
         },
+        TableCell: {
+          border: 'var(--mui-palette-divider)'
+        },
         customColors: {
           bodyBg: '#F8F7FA',
           chatBg: '#F3F2F5',
@@ -292,6 +295,9 @@ const colorSchemes = (skin: Skin): Theme['colorSchemes'] => {
         },
         Tooltip: {
           bg: '#F7F4FF'
+        },
+        TableCell: {
+          border: 'var(--mui-palette-divider)'
         },
         customColors: {
           bodyBg: '#25293C',

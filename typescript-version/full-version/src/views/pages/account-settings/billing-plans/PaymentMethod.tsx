@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import RadioGroup from '@mui/material/RadioGroup'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
@@ -24,6 +23,7 @@ import type { ThemeColor } from '@core/types'
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import CustomTextField from '@core/components/mui/text-field'
 
 type DataType = {
   cardNumber?: string
@@ -81,7 +81,7 @@ const PaymentMethod = () => {
   }
 
   const buttonProps = (index: number): ButtonProps => ({
-    variant: 'outlined',
+    variant: 'tonal',
     children: 'Edit',
     onClick: () => setCreditCard(index)
   })
@@ -90,15 +90,16 @@ const PaymentMethod = () => {
     <Card>
       <CardHeader title='Payment Method' />
       <CardContent>
-        <Grid container>
+        <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <Grid container>
+            <Grid container spacing={6}>
               <Grid item xs={12}>
                 <RadioGroup
                   row
                   name='payment-method-radio'
                   value={paymentMethod}
                   onChange={e => setPaymentMethod(e.target.value as 'credit' | 'cod')}
+                  className='flex gap-4'
                 >
                   <FormControlLabel value='credit' control={<Radio />} label='Credit/Debit/ATM Card' />
                   <FormControlLabel value='cash' control={<Radio />} label='COD/Cheque' />
@@ -107,7 +108,7 @@ const PaymentMethod = () => {
               {paymentMethod === 'credit' ? (
                 <>
                   <Grid item xs={12}>
-                    <TextField
+                    <CustomTextField
                       fullWidth
                       name='number'
                       autoComplete='off'
@@ -118,7 +119,7 @@ const PaymentMethod = () => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={6}>
-                    <TextField
+                    <CustomTextField
                       fullWidth
                       name='name'
                       label='Name'
@@ -129,7 +130,7 @@ const PaymentMethod = () => {
                     />
                   </Grid>
                   <Grid item xs={6} md={3}>
-                    <TextField
+                    <CustomTextField
                       fullWidth
                       name='expiry'
                       autoComplete='off'
@@ -140,12 +141,12 @@ const PaymentMethod = () => {
                     />
                   </Grid>
                   <Grid item xs={6} md={3}>
-                    <TextField
+                    <CustomTextField
                       fullWidth
                       name='cvv'
                       label='CVV Code'
                       autoComplete='off'
-                      placeholder='123'
+                      placeholder='654'
                       value={cardData.cardCvv}
                       onChange={e => setCardData({ ...cardData, cardCvv: e.target.value })}
                     />
@@ -169,40 +170,44 @@ const PaymentMethod = () => {
                 <Button type='submit' variant='contained'>
                   Save Changes
                 </Button>
-                <Button type='reset' variant='outlined' color='secondary' onClick={handleReset}>
+                <Button type='reset' variant='tonal' color='secondary' onClick={handleReset}>
                   Reset
                 </Button>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className='flex flex-col gap-6'>
             <Typography>My Cards</Typography>
             {data.map((item: DataType, index: number) => (
               <div
                 key={index}
-                className='flex flex-col rounded bg-actionHover sm:flex-row items-start sm:justify-between'
+                className='flex flex-col rounded bg-actionHover sm:flex-row items-start sm:justify-between p-6'
               >
-                <div className='flex flex-col items-start gap-2.5'>
+                <div className='flex flex-col items-start gap-2'>
                   <img src={item.imgSrc} alt={item.imgAlt} />
-                  <div className='flex items-center'>
-                    <Typography>{item.name}</Typography>
-                    {item.cardStatus ? <Chip color={item.badgeColor} label={item.cardStatus} size='small' /> : null}
+                  <div className='flex items-center gap-4'>
+                    <Typography className='text-textPrimary font-medium'>{item.name}</Typography>
+                    {item.cardStatus ? (
+                      <Chip color={item.badgeColor} variant='tonal' label={item.cardStatus} size='small' />
+                    ) : null}
                   </div>
                   <Typography>
                     {item.cardNumber && item.cardNumber.slice(0, -4).replace(/[0-9]/g, '*') + item.cardNumber.slice(-4)}
                   </Typography>
                 </div>
-                <div>
-                  <OpenDialogOnElementClick
-                    element={Button}
-                    elementProps={buttonProps(index)}
-                    dialog={BillingCard}
-                    dialogProps={{ data: data[creditCard] }}
-                  />
-                  <Button variant='outlined' color='secondary'>
-                    Delete
-                  </Button>
+                <div className='flex flex-col gap-4'>
+                  <div className='flex gap-4'>
+                    <OpenDialogOnElementClick
+                      element={Button}
+                      elementProps={buttonProps(index)}
+                      dialog={BillingCard}
+                      dialogProps={{ data: data[creditCard] }}
+                    />
+                    <Button variant='tonal' color='secondary'>
+                      Delete
+                    </Button>
+                  </div>
                   <Typography>Card expires at {item.expiryDate}</Typography>
                 </div>
               </div>

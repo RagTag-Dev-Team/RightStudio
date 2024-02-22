@@ -8,13 +8,12 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputAdornment from '@mui/material/InputAdornment'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const Address = () => {
   // States
@@ -25,21 +24,21 @@ const Address = () => {
       <CardHeader title='Billing Address' />
       <CardContent>
         <form>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Company Name' variant='outlined' placeholder='ThemeSelection' />
+              <CustomTextField fullWidth label='Company Name' variant='outlined' placeholder='Pixinvent' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Billing Email' variant='outlined' placeholder='john.doe@example.com' />
+              <CustomTextField fullWidth label='Billing Email' variant='outlined' placeholder='john.doe@example.com' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='TAX ID' variant='outlined' placeholder='Enter TAX ID' />
+              <CustomTextField fullWidth label='TAX ID' variant='outlined' placeholder='Enter TAX ID' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='VAT Number' variant='outlined' placeholder='Enter VAT Number' />
+              <CustomTextField fullWidth label='VAT Number' variant='outlined' placeholder='Enter VAT Number' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 type='number'
                 label='Mobile Number'
@@ -50,31 +49,28 @@ const Address = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Country</InputLabel>
-                <Select label='Country' value={state} onChange={e => setState(e.target.value)}>
-                  <MenuItem value=''>Select Country</MenuItem>
-                  <MenuItem value='australia'>Australia</MenuItem>
-                  <MenuItem value='canada'>Canada</MenuItem>
-                  <MenuItem value='france'>France</MenuItem>
-                  <MenuItem value='united-kingdom'>United Kingdom</MenuItem>
-                  <MenuItem value='united-states'>United States</MenuItem>
-                </Select>
-              </FormControl>
+              <CustomTextField select fullWidth label='Country' value={state} onChange={e => setState(e.target.value)}>
+                <MenuItem value=''>Select Country</MenuItem>
+                <MenuItem value='australia'>Australia</MenuItem>
+                <MenuItem value='canada'>Canada</MenuItem>
+                <MenuItem value='france'>France</MenuItem>
+                <MenuItem value='united-kingdom'>United Kingdom</MenuItem>
+                <MenuItem value='united-states'>United States</MenuItem>
+              </CustomTextField>
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Billing Address' variant='outlined' placeholder='Billing Address' />
+              <CustomTextField fullWidth label='Billing Address' variant='outlined' placeholder='Billing Address' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='State' variant='outlined' placeholder='California' />
+              <CustomTextField fullWidth label='State' variant='outlined' placeholder='California' />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth type='number' label='Zip Code' variant='outlined' placeholder='231465' />
+              <CustomTextField fullWidth type='number' label='Zip Code' variant='outlined' placeholder='231465' />
             </Grid>
             <Grid item xs={12} className='flex gap-4 flex-wrap'>
               <Button variant='contained'>Save Changes</Button>
-              <Button variant='outlined' type='reset' color='secondary' onClick={() => setState('')}>
-                Reset
+              <Button variant='tonal' type='reset' color='secondary' onClick={() => setState('')}>
+                Discard
               </Button>
             </Grid>
           </Grid>

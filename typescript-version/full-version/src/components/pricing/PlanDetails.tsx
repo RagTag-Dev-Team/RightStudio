@@ -18,11 +18,19 @@ type Props = {
 const PlanDetails = ({ data, pricingPlan }: Props) => {
   return (
     <CardContent
-      className={classnames('relative border rounded', {
+      className={classnames('relative border rounded pli-5 pbs-[3.75rem] flex flex-col gap-5', {
         'border-primary': data?.popularPlan
       })}
     >
-      {data?.popularPlan ? <Chip color='primary' label='Popular' size='small' className='absolute' /> : null}
+      {data?.popularPlan ? (
+        <Chip
+          color='primary'
+          label='Popular'
+          size='small'
+          className='absolute block-start-4 inline-end-5'
+          variant='tonal'
+        />
+      ) : null}
       <div className='flex justify-center'>
         <img
           src={data?.imgSrc}
@@ -31,16 +39,16 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
           alt={`${data?.title.toLowerCase().replace(' ', '-')}-img`}
         />
       </div>
-      <div className='text-center'>
-        <Typography>{data?.title}</Typography>
+      <div className='text-center flex flex-col gap-1'>
+        <Typography variant='h4'>{data?.title}</Typography>
         <Typography>{data?.subtitle}</Typography>
       </div>
-      <div className='relative'>
+      <div className='relative mbe-4'>
         <div className='flex justify-center'>
           <Typography component='sup' className='self-start'>
             $
           </Typography>
-          <Typography component='span' color='primary'>
+          <Typography variant='h1' component='span' color='primary'>
             {pricingPlan === 'monthly' ? data?.monthlyPrice : data?.yearlyPlan.monthly}
           </Typography>
           <Typography component='sub' className='self-end'>
@@ -48,14 +56,17 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
           </Typography>
         </div>
         {pricingPlan !== 'monthly' && data?.monthlyPrice !== 0 ? (
-          <Typography variant='caption' className='absolute'>{`USD ${data?.yearlyPlan.annually}/year`}</Typography>
+          <Typography
+            variant='caption'
+            className='absolute inline-end-1/2 translate-x-[50%]'
+          >{`USD ${data?.yearlyPlan.annually}/year`}</Typography>
         ) : null}
       </div>
-      <div>
+      <div className='flex flex-col gap-4'>
         {data?.planBenefits.map((item: string, index: number) => (
-          <div key={index} className='flex items-center'>
+          <div key={index} className='flex items-center gap-2'>
             <span className='inline-flex'>
-              <i className='ri-checkbox-blank-circle-line text-xs' />
+              <i className='tabler-circle-filled text-xs' />
             </span>
             <Typography>{item}</Typography>
           </div>
@@ -64,7 +75,7 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
       <Button
         fullWidth
         color={data?.currentPlan ? 'success' : 'primary'}
-        variant={data?.popularPlan ? 'contained' : 'outlined'}
+        variant={data?.popularPlan ? 'contained' : 'tonal'}
       >
         {data?.currentPlan ? 'Your Current Plan' : 'Upgrade'}
       </Button>

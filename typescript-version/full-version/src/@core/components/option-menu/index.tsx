@@ -66,7 +66,7 @@ const OptionMenu = (props: OptionsMenuType) => {
         ) : (icon as ReactNode) ? (
           icon
         ) : (
-          <i className={classnames('ri-more-2-line', iconClassName)} />
+          <i className={classnames('tabler-dots-vertical', iconClassName)} />
         )}
       </IconButton>
       <Popper
@@ -81,7 +81,7 @@ const OptionMenu = (props: OptionsMenuType) => {
           <Fade {...TransitionProps}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open}>
+                <MenuList autoFocusItem={open} className='p-2'>
                   {options.map((option: OptionType, index: number) => {
                     if (typeof option === 'string') {
                       return (
@@ -90,7 +90,7 @@ const OptionMenu = (props: OptionsMenuType) => {
                         </MenuItem>
                       )
                     } else if ('divider' in option) {
-                      return option.divider && <Divider key={index} {...option.dividerProps} />
+                      return option.divider && <Divider className='mlb-2' key={index} {...option.dividerProps} />
                     } else {
                       return (
                         <MenuItem

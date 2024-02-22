@@ -1,10 +1,11 @@
+'use client'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
@@ -12,6 +13,7 @@ import Button from '@mui/material/Button'
 // Component Imports
 import Link from '@components/Link'
 import Form from '@components/Form'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -59,7 +61,7 @@ const Notifications = () => {
         subheader={
           <>
             We need permission from your browser to show notifications.
-            <Link className='text-primary'>Request Permission</Link>
+            <Link className='text-primary'> Request Permission</Link>
           </>
         }
       />
@@ -78,7 +80,7 @@ const Notifications = () => {
               {tableData.map((data, index) => (
                 <tr key={index}>
                   <td>
-                    <Typography>{data.type}</Typography>
+                    <Typography color='text.primary'>{data.type}</Typography>
                   </td>
                   <td>
                     <Checkbox defaultChecked={data.email} />
@@ -95,20 +97,20 @@ const Notifications = () => {
           </table>
         </div>
         <CardContent>
-          <Typography>When should we send you notifications?</Typography>
-          <Grid container>
+          <Typography className='mbe-6 font-medium'>When should we send you notifications?</Typography>
+          <Grid container spacing={6}>
             <Grid item xs={12} sm={6} md={4}>
-              <Select fullWidth defaultValue='online'>
+              <CustomTextField select fullWidth defaultValue='online'>
                 <MenuItem value='online'>Only when I&#39;m online</MenuItem>
                 <MenuItem value='anytime'>Anytime</MenuItem>
-              </Select>
+              </CustomTextField>
             </Grid>
             <Grid item xs={12} className='flex gap-4 flex-wrap'>
               <Button variant='contained' type='submit'>
                 Save Changes
               </Button>
-              <Button variant='outlined' color='secondary' type='reset'>
-                Reset
+              <Button variant='tonal' color='secondary' type='reset'>
+                Discard
               </Button>
             </Grid>
           </Grid>
