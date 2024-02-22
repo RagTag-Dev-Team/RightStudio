@@ -394,22 +394,18 @@ export const db: DB = {
         ]
       },
       {
-        title: 'React Developers',
-        avatar: '/images/icons/project-icons/react.png',
+        title: 'Python Developers',
+        avatar: '/images/logos/python-bg.png',
         avatarGroup: [
           { avatar: '/images/avatars/5.png', name: 'Kim Karlos' },
           { avatar: '/images/avatars/6.png', name: 'Katy Turner' },
           { avatar: '/images/avatars/7.png', name: 'Peter Adward' }
         ],
         description:
-          'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React.',
+          "Harness Python's versatility for web development, data analysis & system automation for cutting-edge solutions.",
         chips: [
           {
-            title: 'React',
-            color: 'primary'
-          },
-          {
-            title: 'MUI',
+            title: 'Python',
             color: 'info'
           }
         ]

@@ -45,15 +45,15 @@ const AboutOverview = ({ data }: { data?: ProfileTabType }) => {
         <Card>
           <CardContent>
             <div>
-              <Typography>About</Typography>
+              <Typography className='uppercase'>About</Typography>
               {data?.about && renderList(data?.about)}
             </div>
             <div>
-              <Typography>Contacts</Typography>
+              <Typography className='uppercase'>Contacts</Typography>
               {data?.contacts && renderList(data?.contacts)}
             </div>
             <div>
-              <Typography>Teams</Typography>
+              <Typography className='uppercase'>Teams</Typography>
               {data?.teams && renderTeams(data?.teams)}
             </div>
           </CardContent>
@@ -63,7 +63,7 @@ const AboutOverview = ({ data }: { data?: ProfileTabType }) => {
         <Card>
           <CardContent>
             <div>
-              <Typography>Overview</Typography>
+              <Typography>OVERVIEW</Typography>
               {data?.overview && renderList(data?.overview)}
             </div>
           </CardContent>

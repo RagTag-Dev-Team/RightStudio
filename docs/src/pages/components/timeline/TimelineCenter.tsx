@@ -274,7 +274,7 @@ const TimelineCenter = () => {
                     <Typography variant='body2' className='font-medium' color='text.primary'>
                       ${item.progress}
                     </Typography>
-                    <LinearProgress variant='determinate' value={75} color={item.progressColor} className='w-full' />
+                    <LinearProgress variant='determinate' value={75} color={item.progressColor} className='is-20' />
                   </div>
                 </div>
               ))}

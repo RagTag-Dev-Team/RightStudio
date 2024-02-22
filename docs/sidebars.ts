@@ -130,6 +130,13 @@ const sidebars: SidebarsConfig = {
         'guide/components/overview',
         {
           type: 'category',
+          label: 'MUI',
+          items: [
+            'guide/components/mui/card'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Custom',
           items: [
             'guide/components/custom/generate-menu',

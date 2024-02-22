@@ -14,8 +14,8 @@ const FormValidation = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Typography variant='h5'>React Hook Form</Typography>
-        <Typography variant='body2'>
+        <Typography variant='h4'>React Hook Form</Typography>
+        <Typography>
           <code>react-hook-form</code> is a third-party library. Please refer to its{' '}
           <Link
             href='https://react-hook-form.com'

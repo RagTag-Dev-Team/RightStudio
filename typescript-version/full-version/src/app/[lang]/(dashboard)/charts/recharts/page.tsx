@@ -17,8 +17,8 @@ const Recharts = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <Typography variant='h5'>Recharts</Typography>
-        <Typography variant='body2'>
+        <Typography variant='h4'>Recharts</Typography>
+        <Typography>
           <code>recharts</code> is a third-party library. Please refer to its{' '}
           <Link
             href='https://recharts.org'

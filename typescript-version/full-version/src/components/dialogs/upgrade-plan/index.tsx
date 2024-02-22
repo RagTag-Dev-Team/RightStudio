@@ -36,11 +36,11 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
     <>
       <Dialog fullWidth open={open} onClose={handleClose}>
         <DialogTitle
-          variant='h5'
+          variant='h4'
           className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
         >
           Upgrade Plan
-          <Typography component='span' variant='body2' className='flex flex-col text-center'>
+          <Typography component='span' className='flex flex-col text-center'>
             Choose the best plan for user
           </Typography>
         </DialogTitle>
@@ -71,14 +71,14 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
           <div className='flex flex-col gap-1'>
             <Typography variant='body2'>User current plan is standard plan</Typography>
             <div className='flex items-center justify-between flex-wrap gap-2'>
-              <div className='flex justify-center gap-1'>
+              <div className='flex justify-center items-baseline gap-1'>
                 <Typography component='sup' className='self-start' color='primary'>
                   $
                 </Typography>
-                <Typography component='span' color='primary'>
+                <Typography component='span' color='primary' variant='h1'>
                   99
                 </Typography>
-                <Typography component='sub' className='self-end'>
+                <Typography component='sub' className='self-baseline'>
                   /month
                 </Typography>
               </div>

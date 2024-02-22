@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Avatar from '@mui/material/Avatar'
@@ -52,12 +53,12 @@ const ConnectionsTeams = (props: Props) => {
                   </Button>
                 </div>
               ))}
-            <div className='text-center'>
-              <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
-                View all connections
-              </Typography>
-            </div>
           </CardContent>
+          <CardActions className='flex justify-center'>
+            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+              View all connections
+            </Typography>
+          </CardActions>
         </Card>
       </Grid>
       <Grid item xs={12} md={6}>
@@ -80,14 +81,12 @@ const ConnectionsTeams = (props: Props) => {
                   <Chip color={team.ChipColor} label={team.chipText} size='small' />
                 </div>
               ))}
-            <div>
-              <div className='text-center'>
-                <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
-                  View all teams
-                </Typography>
-              </div>
-            </div>
           </CardContent>
+          <CardActions className='flex justify-center'>
+            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+              View all teams
+            </Typography>
+          </CardActions>
         </Card>
       </Grid>
     </>

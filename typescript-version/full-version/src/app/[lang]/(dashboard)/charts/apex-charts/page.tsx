@@ -21,8 +21,8 @@ const ApexCharts = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <Typography variant='h5'>ApexCharts</Typography>
-        <Typography variant='body2'>
+        <Typography variant='h4'>ApexCharts</Typography>
+        <Typography>
           <code>react-apexcharts</code> is a third-party library. Please refer to its{' '}
           <Link
             href='https://apexcharts.com'

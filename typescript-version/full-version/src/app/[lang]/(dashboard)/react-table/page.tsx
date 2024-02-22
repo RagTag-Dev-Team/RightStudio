@@ -16,8 +16,8 @@ const Tables = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Typography variant='h5'>React Table</Typography>
-        <Typography variant='body2'>
+        <Typography variant='h4'>React Table</Typography>
+        <Typography>
           <code>@tanstack/react-table</code> is a third-party library. Please refer to its{' '}
           <Link
             href='https://tanstack.com/table'
