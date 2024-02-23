@@ -41,6 +41,7 @@ const accordion = (skin: Skin): Theme['components'] => ({
       root: ({ theme }) => ({
         minHeight: 46,
         padding: theme.spacing(3, 5),
+        paddingInlineStart: theme.spacing(6),
         gap: theme.spacing(2),
         color: 'var(--mui-palette-text-primary)',
         '&.Mui-expanded': {
@@ -48,6 +49,9 @@ const accordion = (skin: Skin): Theme['components'] => ({
           '& .MuiAccordionSummary-expandIconWrapper': {
             transform: 'rotate(90deg)'
           }
+        },
+        '& .MuiAccordionSummary-expandIconWrapper': {
+          transform: theme.direction === 'rtl' && 'rotate(180deg)'
         },
         '& .MuiTypography-root': {
           color: 'inherit',
@@ -69,7 +73,7 @@ const accordion = (skin: Skin): Theme['components'] => ({
   MuiAccordionDetails: {
     styleOverrides: {
       root: ({ theme }) => ({
-        padding: theme.spacing(5),
+        padding: theme.spacing(6),
         paddingTop: theme.spacing(0),
         '& .MuiTypography-root': {
           color: 'var(--mui-palette-text-secondary)'

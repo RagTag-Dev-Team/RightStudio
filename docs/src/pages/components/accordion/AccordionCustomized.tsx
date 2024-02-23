@@ -57,7 +57,7 @@ const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(
 
 // Styled component for AccordionDetails component
 const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>(({ theme }) => ({
-  paddingBlockStart: `${theme.spacing(5)} !important`
+  paddingBlockStart: `${theme.spacing(6)} !important`
 }))
 
 const AccordionCustomized = () => {
