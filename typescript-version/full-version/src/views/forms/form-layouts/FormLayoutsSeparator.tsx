@@ -7,18 +7,17 @@ import { useState } from 'react'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Select from '@mui/material/Select'
 import Divider from '@mui/material/Divider'
 import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -83,14 +82,14 @@ const FormLayoutsSeparator = () => {
       <Divider />
       <form onSubmit={e => e.preventDefault()}>
         <CardContent>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
               <Typography variant='body2' className='font-medium'>
                 1. Account Details
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='UserName'
                 placeholder='johnDoe '
@@ -99,7 +98,7 @@ const FormLayoutsSeparator = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 type='email'
                 label='Email'
@@ -109,7 +108,7 @@ const FormLayoutsSeparator = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Password'
                 placeholder='············'
@@ -126,7 +125,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={formData.isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -134,7 +133,7 @@ const FormLayoutsSeparator = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Confirm Password'
                 placeholder='············'
@@ -151,7 +150,7 @@ const FormLayoutsSeparator = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <i className={formData.isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -167,7 +166,7 @@ const FormLayoutsSeparator = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='First Name'
                 placeholder='John'
@@ -176,7 +175,7 @@ const FormLayoutsSeparator = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Last Name'
                 placeholder='Doe'
@@ -185,38 +184,38 @@ const FormLayoutsSeparator = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Country</InputLabel>
-                <Select
-                  label='Country'
-                  value={formData.country}
-                  onChange={e => setFormData({ ...formData, country: e.target.value })}
-                >
-                  <MenuItem value='UK'>UK</MenuItem>
-                  <MenuItem value='USA'>USA</MenuItem>
-                  <MenuItem value='Australia'>Australia</MenuItem>
-                  <MenuItem value='Germany'>Germany</MenuItem>
-                </Select>
-              </FormControl>
+              <CustomTextField
+                select
+                fullWidth
+                label='Country'
+                value={formData.country}
+                onChange={e => setFormData({ ...formData, country: e.target.value })}
+              >
+                <MenuItem value='UK'>UK</MenuItem>
+                <MenuItem value='USA'>USA</MenuItem>
+                <MenuItem value='Australia'>Australia</MenuItem>
+                <MenuItem value='Germany'>Germany</MenuItem>
+              </CustomTextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Language</InputLabel>
-                <Select
-                  multiple
-                  label='Language'
-                  value={formData.language}
-                  onChange={e => setFormData({ ...formData, language: e.target.value as string[] })}
-                >
-                  <MenuItem value='English'>English</MenuItem>
-                  <MenuItem value='French'>French</MenuItem>
-                  <MenuItem value='Spanish'>Spanish</MenuItem>
-                  <MenuItem value='Portuguese'>Portuguese</MenuItem>
-                  <MenuItem value='Italian'>Italian</MenuItem>
-                  <MenuItem value='German'>German</MenuItem>
-                  <MenuItem value='Arabic'>Arabic</MenuItem>
-                </Select>
-              </FormControl>
+              <CustomTextField
+                select
+                fullWidth
+                label='Language'
+                value={formData.language}
+                SelectProps={{
+                  multiple: true,
+                  onChange: e => setFormData({ ...formData, language: e.target.value as string[] })
+                }}
+              >
+                <MenuItem value='English'>English</MenuItem>
+                <MenuItem value='French'>French</MenuItem>
+                <MenuItem value='Spanish'>Spanish</MenuItem>
+                <MenuItem value='Portuguese'>Portuguese</MenuItem>
+                <MenuItem value='Italian'>Italian</MenuItem>
+                <MenuItem value='German'>German</MenuItem>
+                <MenuItem value='Arabic'>Arabic</MenuItem>
+              </CustomTextField>
             </Grid>
             <Grid item xs={12} sm={6}>
               <AppReactDatepicker
@@ -225,11 +224,11 @@ const FormLayoutsSeparator = () => {
                 showMonthDropdown
                 onChange={(date: Date) => setFormData({ ...formData, date })}
                 placeholderText='MM/DD/YYYY'
-                customInput={<TextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
+                customInput={<CustomTextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Phone Number'
                 type='number'
@@ -247,7 +246,8 @@ const FormLayoutsSeparator = () => {
           </Button>
           <Button
             type='reset'
-            variant='outlined'
+            variant='tonal'
+            color='secondary'
             onClick={() => {
               handleReset()
             }}

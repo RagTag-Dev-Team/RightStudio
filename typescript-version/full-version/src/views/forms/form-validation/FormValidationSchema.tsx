@@ -9,7 +9,6 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 
@@ -19,6 +18,9 @@ import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { email, object, minLength, string } from 'valibot'
 import type { Input } from 'valibot'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 type FormData = Input<typeof schema>
 
@@ -67,14 +69,14 @@ const FormValidationOnScheme = () => {
       <CardHeader title='Validation Schema With OnChange' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
               <Controller
                 name='firstName'
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='First Name'
@@ -90,7 +92,7 @@ const FormValidationOnScheme = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Last Name'
@@ -106,7 +108,7 @@ const FormValidationOnScheme = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     type='email'
@@ -123,7 +125,7 @@ const FormValidationOnScheme = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Password'
@@ -139,7 +141,7 @@ const FormValidationOnScheme = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                            <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -153,7 +155,7 @@ const FormValidationOnScheme = () => {
               <Button variant='contained' type='submit'>
                 Submit
               </Button>
-              <Button variant='outlined' type='reset' onClick={() => reset()}>
+              <Button variant='tonal' color='secondary' type='reset' onClick={() => reset()}>
                 Reset
               </Button>
             </Grid>

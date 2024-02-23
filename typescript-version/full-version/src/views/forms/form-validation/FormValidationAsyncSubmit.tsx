@@ -7,7 +7,6 @@ import { useState } from 'react'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -17,6 +16,9 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 type FormValues = {
   firstName: string
@@ -61,14 +63,14 @@ const FormValidationAsyncSubmit = () => {
       <CardHeader title='Async Submit' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
               <Controller
                 name='firstName'
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='First Name'
@@ -84,7 +86,7 @@ const FormValidationAsyncSubmit = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Last Name'
@@ -100,7 +102,7 @@ const FormValidationAsyncSubmit = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     type='email'
@@ -117,7 +119,7 @@ const FormValidationAsyncSubmit = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Password'
@@ -133,7 +135,7 @@ const FormValidationAsyncSubmit = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                            <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -148,7 +150,7 @@ const FormValidationAsyncSubmit = () => {
                 {loading && <CircularProgress size={20} color='inherit' />}
                 Submit
               </Button>
-              <Button variant='outlined' type='reset' onClick={() => reset()}>
+              <Button variant='tonal' color='secondary' type='reset' onClick={() => reset()}>
                 Reset
               </Button>
             </Grid>

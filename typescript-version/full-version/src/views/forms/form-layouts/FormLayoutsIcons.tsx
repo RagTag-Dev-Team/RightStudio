@@ -4,10 +4,12 @@
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputAdornment from '@mui/material/InputAdornment'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const FormLayoutsWithIcon = () => {
   return (
@@ -15,23 +17,23 @@ const FormLayoutsWithIcon = () => {
       <CardHeader title='Basic with Icons' />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Name'
                 placeholder='John Doe'
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='ri-user-3-line' />
+                      <i className='tabler-user' />
                     </InputAdornment>
                   )
                 }}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 type='email'
                 label='Email'
@@ -39,38 +41,38 @@ const FormLayoutsWithIcon = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='ri-mail-line' />
+                      <i className='tabler-mail' />
                     </InputAdornment>
                   )
                 }}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Phone No.'
                 placeholder='123-456-7890'
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='ri-phone-fill' />
+                      <i className='tabler-phone' />
                     </InputAdornment>
                   )
                 }}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 rows={4}
                 multiline
                 label='Message'
                 placeholder='Bio...'
-                sx={{ '& .MuiOutlinedInput-root': { alignItems: 'baseline' } }}
+                sx={{ '& .MuiInputBase-root.MuiFilledInput-root': { alignItems: 'baseline' } }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <i className='ri-message-2-line' />
+                      <i className='tabler-message' />
                     </InputAdornment>
                   )
                 }}

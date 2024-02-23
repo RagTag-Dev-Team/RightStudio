@@ -225,7 +225,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                              <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                             </IconButton>
                           </InputAdornment>
                         )
@@ -257,7 +257,7 @@ const StepperLinearWithValidation = () => {
                               onMouseDown={e => e.preventDefault()}
                               aria-label='toggle password visibility'
                             >
-                              <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                              <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                             </IconButton>
                           </InputAdornment>
                         )
@@ -286,7 +286,9 @@ const StepperLinearWithValidation = () => {
           <form key={1} onSubmit={handlePersonalSubmit(onSubmit)}>
             <Grid container spacing={6}>
               <Grid item xs={12}>
-                <Typography className='font-medium' color='text.primary'>{steps[1].title}</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  {steps[1].title}
+                </Typography>
                 <Typography variant='body2'>{steps[1].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -358,7 +360,7 @@ const StepperLinearWithValidation = () => {
                     <CustomTextField
                       select
                       fullWidth
-                      SelectProps={{ multiple: true}}
+                      SelectProps={{ multiple: true }}
                       label='Language'
                       value={Array.isArray(value) ? value : []}
                       onChange={onChange}
@@ -395,7 +397,9 @@ const StepperLinearWithValidation = () => {
           <form key={2} onSubmit={handleSocialSubmit(onSubmit)}>
             <Grid container spacing={6}>
               <Grid item xs={12}>
-                <Typography className='font-medium'  color='text.primary'>{steps[2].title}</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  {steps[2].title}
+                </Typography>
                 <Typography variant='body2'>{steps[2].subtitle}</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -525,7 +529,7 @@ const StepperLinearWithValidation = () => {
               }
 
               return (
-                <Step key={index}>
+                <Step key={index} className='max-md:mbe-5'>
                   <StepLabel {...labelProps} StepIconComponent={StepperCustomDot}>
                     <div className='step-label'>
                       <Typography className='step-number'>{`0${index + 1}`}</Typography>

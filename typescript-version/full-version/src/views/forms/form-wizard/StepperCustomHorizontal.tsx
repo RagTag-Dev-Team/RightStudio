@@ -81,21 +81,21 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
     display: 'none'
   },
   '& .step-subtitle': {
-    color: `${theme.palette.text.disabled} !important`
+    color: 'var(--mui-palette-text-disabled) !important'
   },
   '& + svg': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   },
   '&.Mui-completed .step-title': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   },
   '&.Mui-completed + svg': {
-    color: theme.palette.primary.main
+    color: 'var(--mui-palette-primary-main)'
   },
   [theme.breakpoints.down('md')]: {
     padding: 0,
     ':not(:last-of-type)': {
-      marginBottom: theme.spacing(6)
+      marginBlockEnd: theme.spacing(6)
     }
   }
 }))
@@ -190,7 +190,7 @@ const StepperCustomHorizontal = () => {
                 fullWidth
                 label='Password'
                 placeholder='············'
-                id='stepper-alternative-password'
+                id='stepper-customHorizontal-password'
                 type={formData.isPasswordShown ? 'text' : 'password'}
                 value={formData.password}
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
@@ -203,7 +203,7 @@ const StepperCustomHorizontal = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={formData.isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -215,7 +215,7 @@ const StepperCustomHorizontal = () => {
                 fullWidth
                 label='Confirm Password'
                 placeholder='············'
-                id='stepper-alternative-confirm-password'
+                id='stepper-customHorizontal-confirm-password'
                 type={formData.isConfirmPasswordShown ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
@@ -228,7 +228,7 @@ const StepperCustomHorizontal = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <i className={formData.isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -406,10 +406,16 @@ const StepperCustomHorizontal = () => {
                   </Grid>
                   {renderStepContent(activeStep)}
                   <Grid item xs={12} className='flex justify-between'>
-                    <Button variant='tonal' disabled={activeStep === 0} onClick={handleBack} color='secondary'>
+                    <Button variant='tonal' disabled={activeStep === 0} onClick={handleBack} startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />} color='secondary'>
                       Back
                     </Button>
-                    <Button variant='contained' onClick={handleNext}>
+                    <Button variant='contained' onClick={handleNext} endIcon={
+                        activeStep === steps.length - 1 ? (
+                          <i className='tabler-check' />
+                        ) : (
+                          <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
+                        )
+                      }>
                       {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                     </Button>
                   </Grid>

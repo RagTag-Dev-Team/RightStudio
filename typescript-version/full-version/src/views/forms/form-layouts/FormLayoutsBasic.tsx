@@ -10,12 +10,14 @@ import Link from 'next/link'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const FormLayoutsBasic = () => {
   // States
@@ -31,12 +33,12 @@ const FormLayoutsBasic = () => {
       <CardHeader title='Basic' />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
-              <TextField fullWidth label='Name' placeholder='John Doe' />
+              <CustomTextField fullWidth label='Name' placeholder='John Doe' />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 type='email'
                 label='Email'
@@ -45,7 +47,7 @@ const FormLayoutsBasic = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Password'
                 placeholder='············'
@@ -61,7 +63,7 @@ const FormLayoutsBasic = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -69,7 +71,7 @@ const FormLayoutsBasic = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Confirm Password'
                 placeholder='············'
@@ -85,7 +87,7 @@ const FormLayoutsBasic = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )

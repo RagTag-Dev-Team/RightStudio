@@ -31,6 +31,7 @@ import classnames from 'classnames'
 import StepperCustomDot from './StepperCustomDot'
 import CustomAvatar from '@core/components/mui/Avatar'
 import CustomTextField from '@core/components/mui/text-field'
+import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
@@ -61,10 +62,10 @@ const steps = [
 ]
 
 const StepperHeaderContainer = styled(CardContent)<CardContentProps>(({ theme }) => ({
-  borderRight: `1px solid ${theme.palette.divider}`,
+  borderRight: `1px solid 'var(--mui-palette-divider)'`,
   [theme.breakpoints.down('md')]: {
     borderRight: 0,
-    borderBottom: `1px solid ${theme.palette.divider}`
+    borderBottom: `1px solid 'var(--mui-palette-divider)'`
   }
 }))
 
@@ -82,10 +83,10 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
     display: 'none'
   },
   '& + svg': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   },
   '&.Mui-completed .step-title, &.Mui-completed .step-subtitle': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   }
 }))
 
@@ -368,10 +369,26 @@ const StepperCustomVertical = () => {
             </Grid>
             {getStepContent(activeStep)}
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant='tonal' color='secondary' disabled={activeStep === 0} onClick={handleBack}>
+              <Button
+                variant='tonal'
+                color='secondary'
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
+              >
                 Back
               </Button>
-              <Button variant='contained' onClick={handleNext}>
+              <Button
+                variant='contained'
+                onClick={handleNext}
+                endIcon={
+                  activeStep === steps.length - 1 ? (
+                    <i className='tabler-check' />
+                  ) : (
+                    <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
+                  )
+                }
+              >
                 {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
               </Button>
             </Grid>

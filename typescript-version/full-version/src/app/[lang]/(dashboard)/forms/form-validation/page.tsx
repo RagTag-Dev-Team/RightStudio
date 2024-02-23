@@ -12,7 +12,7 @@ import FormValidationAsyncSubmit from '@views/forms/form-validation/FormValidati
 
 const FormValidation = () => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
         <Typography variant='h4'>React Hook Form</Typography>
         <Typography>

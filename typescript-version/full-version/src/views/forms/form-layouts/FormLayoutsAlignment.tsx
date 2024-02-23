@@ -7,7 +7,6 @@ import { useState } from 'react'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
 import CardHeader from '@mui/material/CardHeader'
@@ -15,6 +14,9 @@ import CardContent from '@mui/material/CardContent'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 const FormLayoutsAlignment = () => {
   // States
@@ -27,15 +29,15 @@ const FormLayoutsAlignment = () => {
       <CardHeader title='Form Alignment' />
       <CardContent className='flex flex-col items-center justify-center bs-[500px]'>
         <form onSubmit={e => e.preventDefault()} className='p-12 max-is-[400px] border rounded'>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
               <Typography variant='h5'>Sign In</Typography>
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Username' placeholder='johnDoe ' />
+              <CustomTextField fullWidth label='Username' placeholder='johnDoe ' />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Password'
                 placeholder='············'
@@ -50,7 +52,7 @@ const FormLayoutsAlignment = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )

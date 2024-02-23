@@ -160,7 +160,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle password visibility'
                       >
-                        <i className={formData.isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )
@@ -185,7 +185,7 @@ const StepperAlternativeLabel = () => {
                         onMouseDown={e => e.preventDefault()}
                         aria-label='toggle confirm password visibility'
                       >
-                        <i className={formData.isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                        <i className={formData.isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                       </IconButton>
                     </InputAdornment>
                   )

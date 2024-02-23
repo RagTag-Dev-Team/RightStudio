@@ -8,8 +8,6 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
-import Select from '@mui/material/Select'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -18,7 +16,6 @@ import Checkbox from '@mui/material/Checkbox'
 import FormLabel from '@mui/material/FormLabel'
 import FormHelperText from '@mui/material/FormHelperText'
 import MenuItem from '@mui/material/MenuItem'
-import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
@@ -26,6 +23,9 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/text-field'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -75,14 +75,14 @@ const FormValidationBasic = () => {
       <CardHeader title='Basic' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12} sm={6}>
               <Controller
                 name='firstName'
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='First Name'
@@ -98,7 +98,7 @@ const FormValidationBasic = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Last Name'
@@ -114,7 +114,7 @@ const FormValidationBasic = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     type='email'
@@ -131,7 +131,7 @@ const FormValidationBasic = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     fullWidth
                     label='Password'
@@ -147,7 +147,7 @@ const FormValidationBasic = () => {
                             onMouseDown={e => e.preventDefault()}
                             aria-label='toggle password visibility'
                           >
-                            <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                            <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                           </IconButton>
                         </InputAdornment>
                       )
@@ -170,7 +170,7 @@ const FormValidationBasic = () => {
                     onChange={onChange}
                     placeholderText='MM/DD/YYYY'
                     customInput={
-                      <TextField
+                      <CustomTextField
                         value={value}
                         onChange={onChange}
                         fullWidth
@@ -183,23 +183,20 @@ const FormValidationBasic = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel error={Boolean(errors.select)}>Country</InputLabel>
-                <Controller
-                  name='select'
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select label='Country' {...field} error={Boolean(errors.select)}>
-                      <MenuItem value='UK'>UK</MenuItem>
-                      <MenuItem value='USA'>USA</MenuItem>
-                      <MenuItem value='Australia'>Australia</MenuItem>
-                      <MenuItem value='Germany'>Germany</MenuItem>
-                    </Select>
-                  )}
-                />
-                {errors.select && <FormHelperText error>This field is required.</FormHelperText>}
-              </FormControl>
+              <Controller
+                name='select'
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <CustomTextField select fullWidth label='Country' {...field} error={Boolean(errors.select)}>
+                    <MenuItem value='UK'>UK</MenuItem>
+                    <MenuItem value='USA'>USA</MenuItem>
+                    <MenuItem value='Australia'>Australia</MenuItem>
+                    <MenuItem value='Germany'>Germany</MenuItem>
+                  </CustomTextField>
+                )}
+              />
+              {errors.select && <FormHelperText error>This field is required.</FormHelperText>}
             </Grid>
             <Grid item xs={12}>
               <Controller
@@ -207,7 +204,7 @@ const FormValidationBasic = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <TextField
+                  <CustomTextField
                     {...field}
                     rows={4}
                     fullWidth
@@ -253,7 +250,7 @@ const FormValidationBasic = () => {
               <Button variant='contained' type='submit'>
                 Submit
               </Button>
-              <Button variant='outlined' type='reset' onClick={() => reset()}>
+              <Button variant='tonal' color='secondary'  type='reset' onClick={() => reset()}>
                 Reset
               </Button>
             </Grid>
