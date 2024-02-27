@@ -42,7 +42,7 @@ const SubMenuProps = () => {
       <tr>
         <td>prefix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a prefix to the submenu</td>
         <td>-</td>
@@ -50,7 +50,7 @@ const SubMenuProps = () => {
       <tr>
         <td>suffix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a suffix to the submenu</td>
         <td>-</td>

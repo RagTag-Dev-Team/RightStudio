@@ -20,7 +20,7 @@ const MenuSectionProps = () => {
       <tr>
         <td>prefix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a prefix to the menu section</td>
         <td>-</td>
@@ -28,7 +28,7 @@ const MenuSectionProps = () => {
       <tr>
         <td>suffix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a suffix to the menu section</td>
         <td>-</td>
