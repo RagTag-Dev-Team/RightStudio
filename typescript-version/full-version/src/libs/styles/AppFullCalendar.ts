@@ -287,7 +287,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       }
     },
     '& .fc-scrollgrid': {
-      borderColor: theme.palette.divider
+      borderColor: theme.palette.divider,
+      borderInlineStart: 0
     },
     '& .fc-day-past, & .fc-day-future': {
       '&.fc-daygrid-day-number': {

@@ -143,6 +143,7 @@ const sidebars: SidebarsConfig = {
             'guide/components/custom/form',
             'guide/components/custom/link',
             'guide/components/custom/open-dialog-on-element-click',
+            'guide/components/custom/card-statistics',
             'guide/components/custom/option-menu',
             {
               type: 'category',
