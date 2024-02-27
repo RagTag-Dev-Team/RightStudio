@@ -24,7 +24,7 @@ const MenuItemProps = () => {
       <tr>
         <td>prefix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a prefix to the menuItem</td>
         <td>-</td>
@@ -32,7 +32,7 @@ const MenuItemProps = () => {
       <tr>
         <td>suffix</td>
         <td>
-          <code>ReactNode</code>
+          <code>ReactNode | ChipProps</code>
         </td>
         <td>Add a suffix to the menuItem</td>
         <td>-</td>
