@@ -18,13 +18,13 @@ import { HorizontalWithSubtitle } from "src/components/card-statistics";
 const Component = () => {
   return (
     <HorizontalWithSubtitle
+      title="Session"
+      subTitle="Total User"
+      value="21,459"
       avatarIcon="ri-user-3-line"
       avatarColor="primary"
       change="positive"
       changeNumber="29%"
-      subTitle="Total User"
-      title="Session"
-      value="21,459"
     />
   )
 }
@@ -39,7 +39,7 @@ export default Component
 | title        | `string`                                                                  | Yes      | The title displayed on the card              |
 | subTitle     | `string`                                                                  | Yes      | The subtitle displayed on the card           |
 | value        | `string`                                                                  | Yes      | The primary statistic number displayed
-| icon         | `string`                                                                  | Yes      | Icon to display inside the avatar            |
+| avatarIcon         | `string`                                                                  | Yes      | Icon to display inside the avatar            |
 | avatarColor  | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | No       | Color theme for the avatar                   |
 | change       | `'positive' \| 'negative'`                                                | Yes      | Indicating change in the number of sessions  |
 | changeNumber | `string`                                                                  | Yes      | Numerical value indicating the trend         |
