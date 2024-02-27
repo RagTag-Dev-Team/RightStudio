@@ -13,7 +13,7 @@ This component is placed inside the `src/components/card-statistics/HorizontalWi
 Usage: Here's an example of how to use the `HorizontalWithSubtitle` component:
 
 ```tsx
-import { HorizontalWithSubtitle } from "src/components/card-statistics";
+import HorizontalWithSubtitle from '@components/card-statistics/HorizontalWithSubtitle'
 
 const Component = () => {
   return (
@@ -21,7 +21,7 @@ const Component = () => {
       title="Session"
       subTitle="Total User"
       value="21,459"
-      avatarIcon="ri-user-3-line"
+      avatarIcon="tabler-user"
       avatarColor="primary"
       change="positive"
       changeNumber="29%"

@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 const TextFieldSizes = () => {
   return (

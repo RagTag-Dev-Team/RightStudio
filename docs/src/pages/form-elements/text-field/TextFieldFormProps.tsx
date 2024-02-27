@@ -2,7 +2,7 @@
 import Grid from '@mui/material/Grid';
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field/index';
+import CustomTextField from '@core/components/mui/text-field';
 
 const TextFieldFormProps = () => {
   return (

@@ -1,5 +1,5 @@
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 const TextFieldCustom = () => {
   return <CustomTextField

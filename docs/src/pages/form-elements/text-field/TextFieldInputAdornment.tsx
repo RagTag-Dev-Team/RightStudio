@@ -11,7 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import classnames from 'classnames'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 type State = {
   weight: string

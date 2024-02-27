@@ -132,7 +132,10 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'MUI',
           items: [
-            'guide/components/mui/card'
+            'guide/components/mui/card',
+            'guide/components/mui/text-field',
+            'guide/components/mui/select',
+            'guide/components/mui/autocomplete',
           ]
         },
         {
