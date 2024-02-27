@@ -27,7 +27,7 @@ import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -145,11 +145,7 @@ const Register = ({ mode }: { mode: Mode }) => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Already have an account?</Typography>
-              <Typography
-                component={Link}
-                href={getLocalizedUrl('/login', locale as Locale)}
-                color='primary'
-              >
+              <Typography component={Link} href={getLocalizedUrl('/login', locale as Locale)} color='primary'>
                 Sign in instead
               </Typography>
             </div>

@@ -25,20 +25,20 @@
       block-size: 56px;
       &:not(:first-of-type):not(:last-of-type) {
         padding-block: 0.5rem;
-        padding-inline: 1.25rem 1rem;
+        padding-inline: 1rem;
       }
       &:first-of-type {
         &:not(:has(input[type='checkbox'])) {
           padding-block: 0.5rem;
-          padding-inline: 1.25rem 1rem;
+          padding-inline: 1.5rem 1rem;
         }
         &:has(input[type='checkbox']) {
-          padding-inline-start: 0.45rem;
+          padding-inline-start: 0.9375rem;
         }
       }
       &:last-of-type {
         padding-block: 0.5rem;
-        padding-inline: 1rem 1.25rem;
+        padding-inline: 1rem 1.5rem;
       }
     }
   }
@@ -53,25 +53,27 @@
       block-size: 50px;
       &:not(:first-of-type):not(:last-of-type) {
         padding-block: 0.5rem;
-        padding-inline: 1.25rem 1rem;
+        padding-inline: 1rem;
       }
       &:first-of-type {
         &:not(:has(input[type='checkbox'])) {
           padding-block: 0.5rem;
-          padding-inline: 1.25rem 1rem;
+          padding-inline: 1.5rem 1rem;
         }
         &:has(input[type='checkbox']) {
-          padding-inline-start: 0.45rem;
+          padding-inline-start: 0.9375rem;
         }
       }
       &:last-of-type {
         padding-block: 0.5rem;
-        padding-inline: 1rem 1.25rem;
+        padding-inline: 1rem 1.5rem;
       }
     }
 
     tr:not(:last-child) {
       border-block-end: 1px solid var(--border-color);
+    }
+    tr {
       border-block-start: 1px solid var(--border-color);
     }
   }

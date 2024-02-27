@@ -24,6 +24,9 @@ import classnames from 'classnames'
 // Type Imports
 import type { OptionsMenuType, OptionType, OptionMenuItemType } from './types'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
 const MenuItemWrapper = ({ children, option }: { children: ReactNode; option: OptionMenuItemType }) => {
   if (option.href) {
     return (
@@ -45,6 +48,9 @@ const OptionMenu = (props: OptionsMenuType) => {
 
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
+
+  // Hooks
+  const { settings } = useSettings()
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
@@ -79,9 +85,9 @@ const OptionMenu = (props: OptionsMenuType) => {
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps}>
-            <Paper>
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open} className='p-2'>
+                <MenuList autoFocusItem={open}>
                   {options.map((option: OptionType, index: number) => {
                     if (typeof option === 'string') {
                       return (
@@ -90,7 +96,7 @@ const OptionMenu = (props: OptionsMenuType) => {
                         </MenuItem>
                       )
                     } else if ('divider' in option) {
-                      return option.divider && <Divider className='mlb-2' key={index} {...option.dividerProps} />
+                      return option.divider && <Divider key={index} {...option.dividerProps} />
                     } else {
                       return (
                         <MenuItem

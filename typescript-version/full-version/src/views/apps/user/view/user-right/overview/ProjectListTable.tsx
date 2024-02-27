@@ -6,7 +6,6 @@ import { useState, useMemo, useEffect } from 'react'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
-import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import MenuItem from '@mui/material/MenuItem'
@@ -175,7 +174,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -263,7 +262,7 @@ const ProjectListTable = () => {
 
   return (
     <Card>
-      <CardHeader title='Users&#39;s Project List' className='flex flex-wrap gap-4' />
+      <CardHeader title='User&#39;s Project List' className='flex flex-wrap gap-4' />
       <div className='flex items-center justify-between p-6 gap-4'>
         <div className='flex items-center gap-2'>
           <Typography>Show</Typography>

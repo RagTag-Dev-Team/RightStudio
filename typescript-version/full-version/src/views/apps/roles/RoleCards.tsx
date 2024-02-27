@@ -47,7 +47,7 @@ const RoleCards = () => {
       <Grid container className='bs-full'>
         <Grid item xs={5}>
           <div className='flex items-end justify-center bs-full'>
-            <img alt='add-role' src='/images/illustrations/characters/1.png' height={130} />
+            <img alt='add-role' src='/images/illustrations/characters/5.png' height={130} />
           </div>
         </Grid>
         <Grid item xs={7}>

@@ -34,7 +34,7 @@ import type { Locale } from '@/configs/i18n'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'

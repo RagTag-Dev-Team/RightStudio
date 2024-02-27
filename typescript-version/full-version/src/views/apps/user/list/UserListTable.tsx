@@ -12,7 +12,6 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
@@ -50,6 +49,7 @@ import AddUserDrawer from './AddUserDrawer'
 import OptionMenu from '@core/components/option-menu'
 import TablePaginationComponent from '@components/TablePaginationComponent'
 import CustomTextField from '@core/components/mui/text-field'
+import CustomAvatar from '@core/components/mui/Avatar'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -186,7 +186,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <Typography color='text.primary' className='font-medium'>
                 {row.original.fullName}
               </Typography>
-              <Typography>{row.original.username}</Typography>
+              <Typography variant='body2'>{row.original.username}</Typography>
             </div>
           </div>
         )
@@ -236,24 +236,24 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         cell: () => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-xl text-textSecondary' />
+              <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
-                <i className='tabler-eye text-xl text-textSecondary' />
+                <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-xl text-textSecondary'
+              iconClassName='text-[22px] text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-xl',
+                  icon: 'tabler-download text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-xl',
+                  icon: 'tabler-edit text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -300,9 +300,9 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
     const { avatar, fullName } = params
 
     if (avatar) {
-      return <Avatar src={avatar} />
+      return <CustomAvatar src={avatar} size={34} />
     } else {
-      return <Avatar>{getInitials(fullName as string)}</Avatar>
+      return <CustomAvatar size={34}>{getInitials(fullName as string)}</CustomAvatar>
     }
   }
 

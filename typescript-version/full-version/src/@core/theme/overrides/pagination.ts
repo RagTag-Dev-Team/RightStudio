@@ -3,6 +3,11 @@ import type { Theme } from '@mui/material/styles'
 
 const pagination: Theme['components'] = {
   MuiPagination: {
+    styleOverrides: {
+      ul: {
+        rowGap: 6
+      }
+    },
     variants: [
       {
         props: { variant: 'text', color: 'primary' },

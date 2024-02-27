@@ -233,24 +233,24 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
         cell: () => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-xl text-textSecondary' />
+              <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
-                <i className='tabler-eye text-xl text-textSecondary' />
+                <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-xl text-textSecondary'
+              iconClassName='text-[22px] text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-xl',
+                  icon: 'tabler-download text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-xl',
+                  icon: 'tabler-edit text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}

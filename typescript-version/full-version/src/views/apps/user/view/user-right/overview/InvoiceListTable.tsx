@@ -14,7 +14,6 @@ import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
@@ -167,27 +166,27 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-xl text-textSecondary' />
+              <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link
                 href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
-                <i className='tabler-eye text-xl text-textSecondary' />
+                <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-xl text-textSecondary'
+              iconClassName='text-[22px] text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-xl',
+                  icon: 'tabler-download text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-xl',
+                  icon: 'tabler-edit text-[22px]',
                   href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale as Locale),
                   linkProps: {
                     className: classnames('flex items-center bs-[40px] plb-2 pli-4 is-full gap-2 text-textSecondary')
@@ -195,7 +194,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 },
                 {
                   text: 'Duplicate',
-                  icon: 'tabler-copy text-xl',
+                  icon: 'tabler-copy text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -242,10 +241,6 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
     setAnchorEl(event.currentTarget)
   }
 
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
   return (
     <Card>
       <CardHeader
@@ -278,17 +273,6 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             >
               Export
             </Button>
-            <Menu open={open} anchorEl={anchorEl} onClose={handleClose} id='user-view-overview-export'>
-              <MenuItem onClick={handleClose} className='uppercase'>
-                pdf
-              </MenuItem>
-              <MenuItem onClick={handleClose} className='uppercase'>
-                xlsx
-              </MenuItem>
-              <MenuItem onClick={handleClose} className='uppercase'>
-                csv
-              </MenuItem>
-            </Menu>
           </div>
         }
       />
@@ -298,7 +282,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
-                  <th key={header.id} {...(header.id === 'action' && { className: 'max-is-24' })}>
+                  <th key={header.id} {...(header.id === 'action' && { className: 'is-24' })}>
                     {header.isPlaceholder ? null : (
                       <>
                         <div
@@ -329,7 +313,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 return (
                   <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                     {row.getVisibleCells().map(cell => (
-                      <td key={cell.id} {...(cell.id.includes('action') && { className: 'max-is-24' })}>
+                      <td key={cell.id} {...(cell.id.includes('action') && { className: 'is-24' })}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}

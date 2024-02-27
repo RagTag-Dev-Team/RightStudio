@@ -144,7 +144,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                         setOpen(true)
                       }}
                     >
-                      <i className='tabler-plus' />
+                      <i className='tabler-plus text-base' />
                       Add New Customer
                     </MenuItem>
                     {invoiceData.slice(0, 5).map((invoice: InvoiceType, index) => (

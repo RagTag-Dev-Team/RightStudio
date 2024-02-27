@@ -68,7 +68,7 @@ const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
                 26 of 30 Days
               </Typography>
             </div>
-            <LinearProgress variant='determinate' value={80} className='mlb-0.5 bs-2.5' />
+            <LinearProgress variant='determinate' value={80} className='mlb-1 bs-2.5' />
             <Typography variant='body2'>Your plan requires update</Typography>
           </Grid>
           <Grid item xs={12} className='flex gap-4 flex-wrap'>

@@ -22,7 +22,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       flexDirection: 'row !important',
       '&.fc-header-toolbar': {
         gap: theme.spacing(2),
-        marginBottom: theme.spacing(5)
+        marginBottom: theme.spacing(6)
       },
       '& .fc-sidebarToggle-button': {
         color: `${theme.palette.text.secondary} !important`,
@@ -268,8 +268,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
 
     '& .fc-view-harness': {
       minHeight: '650px',
-      margin: theme.spacing(0, -5.25),
-      width: `calc(100% + ${theme.spacing(5.25 * 2)})`
+      margin: theme.spacing(0, -6)
     },
 
     // Calendar Head

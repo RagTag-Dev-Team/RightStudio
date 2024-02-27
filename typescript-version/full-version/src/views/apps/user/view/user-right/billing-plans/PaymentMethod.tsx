@@ -102,7 +102,7 @@ const PaymentMethod = () => {
           {data.map((item, index) => (
             <div
               key={index}
-              className='flex justify-between border rounded sm:items-center p-5 flex-col !items-start sm:flex-row gap-2'
+              className='flex justify-between border rounded sm:items-center p-6 flex-col !items-start sm:flex-row gap-2'
             >
               <div className='flex flex-col items-start gap-2'>
                 <img src={item.imgSrc} alt={item.imgAlt} height={25} />

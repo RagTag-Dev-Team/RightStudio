@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from 'react'
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
-import TextField from '@mui/material/TextField'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -33,6 +32,7 @@ import type { DataType } from './data'
 
 // Component Imports
 import TablePaginationComponent from '@components/TablePaginationComponent'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Icon Imports
 import ChevronRight from '@menu/svg/ChevronRight'
@@ -95,7 +95,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} size='small' value={value} onChange={e => setValue(e.target.value)} />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<any> }) => {
@@ -106,19 +106,17 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
 
   return typeof firstValue === 'number' ? (
     <div className='flex gap-x-2'>
-      <TextField
+      <CustomTextField
         fullWidth
         type='number'
-        size='small'
         sx={{ minInlineSize: 100, maxInlineSize: 125 }}
         value={(columnFilterValue as [number, number])?.[0] ?? ''}
         onChange={e => column.setFilterValue((old: [number, number]) => [e.target.value, old?.[1]])}
         placeholder={`Min ${column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : ''}`}
       />
-      <TextField
+      <CustomTextField
         fullWidth
         type='number'
-        size='small'
         sx={{ minInlineSize: 100, maxInlineSize: 125 }}
         value={(columnFilterValue as [number, number])?.[1] ?? ''}
         onChange={e => column.setFilterValue((old: [number, number]) => [old?.[0], e.target.value])}
@@ -126,9 +124,8 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
       />
     </div>
   ) : (
-    <TextField
+    <CustomTextField
       fullWidth
-      size='small'
       sx={{ minInlineSize: 100 }}
       value={(columnFilterValue ?? '') as string}
       onChange={e => column.setFilterValue(e.target.value)}

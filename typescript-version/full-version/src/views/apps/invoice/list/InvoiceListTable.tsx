@@ -241,27 +241,27 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-xl text-textSecondary' />
+              <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link
                 href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
-                <i className='tabler-eye text-xl text-textSecondary' />
+                <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-xl text-textSecondary'
+              iconClassName='text-[22px] text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-xl',
+                  icon: 'tabler-download text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-pencil text-xl',
+                  icon: 'tabler-pencil text-[22px]',
                   href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale as Locale),
                   linkProps: {
                     className: 'flex items-center is-full plb-2 pli-4 gap-2 text-textSecondary'
@@ -269,7 +269,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 },
                 {
                   text: 'Duplicate',
-                  icon: 'tabler-copy text-xl',
+                  icon: 'tabler-copy text-[22px]',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -339,7 +339,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   return (
     <Card>
       <CardContent className='flex justify-between flex-col items-start md:items-center md:flex-row gap-4'>
-        <div className='flex items-center justify-between gap-x-6 gap-y-4'>
+        <div className='flex items-center justify-between gap-4'>
           <div className='flex items-center gap-2'>
             <Typography className='hidden sm:block'>Show</Typography>
             <CustomTextField

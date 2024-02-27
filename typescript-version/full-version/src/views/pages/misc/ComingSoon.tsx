@@ -13,7 +13,7 @@ import classnames from 'classnames'
 import type { Mode } from '@core/types'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'

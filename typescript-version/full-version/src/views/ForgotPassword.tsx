@@ -20,7 +20,7 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field/index'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -97,10 +97,7 @@ const ForgotPassword = ({ mode }: { mode: Mode }) => {
               Send Reset Link
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
-              <Link
-                href={getLocalizedUrl('/login', locale as Locale)}
-                className='flex items-center gap-1.5'
-              >
+              <Link href={getLocalizedUrl('/login', locale as Locale)} className='flex items-center gap-1.5'>
                 <DirectionalIcon
                   ltrIconClass='tabler-chevron-left'
                   rtlIconClass='tabler-chevron-right'

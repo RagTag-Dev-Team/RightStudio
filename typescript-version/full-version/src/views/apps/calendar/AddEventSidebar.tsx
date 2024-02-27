@@ -226,15 +226,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
           <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick}>
-              <i className='tabler-trash text-xl' />
+              <i className='tabler-trash text-xl text-textPrimary' />
             </IconButton>
             <IconButton size='small' onClick={handleSidebarClose}>
-              <i className='tabler-x text-xl' />
+              <i className='tabler-x text-xl text-textPrimary' />
             </IconButton>
           </Box>
         ) : (
           <IconButton size='small' onClick={handleSidebarClose}>
-            <i className='tabler-x text-xl' />
+            <i className='tabler-x text-xl text-textPrimary' />
           </IconButton>
         )}
       </Box>

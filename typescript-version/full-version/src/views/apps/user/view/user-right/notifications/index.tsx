@@ -49,11 +49,7 @@ const tableData: TableDataType[] = [
 const NotificationsTab = () => {
   return (
     <Card>
-      <CardHeader
-        title='Notifications'
-        subheader='You will receive notification for the below selected items'
-        subheaderTypographyProps={{ className: 'text-textPrimary font-medium' }}
-      />
+      <CardHeader title='Notifications' subheader='You will receive notification for the below selected items' />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>

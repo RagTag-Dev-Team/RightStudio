@@ -69,9 +69,7 @@ const RecentDevice = () => {
                 <td>
                   <div className='flex items-center gap-4'>
                     {device.browserIcon}
-                    <Typography className='font-medium' color='text.primary'>
-                      {device.browser}
-                    </Typography>
+                    <Typography color='text.primary'>{device.browser}</Typography>
                   </div>
                 </td>
                 <td>
