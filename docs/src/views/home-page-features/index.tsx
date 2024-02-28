@@ -1,50 +1,64 @@
 // React Imports
 import React from 'react'
 
+// Docusaurus Imports
+import ThemedImage from '@theme/ThemedImage'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 type FeatureItem = {
   title: string
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>
+  imgLightSrc: string
+  imgDarkSrc: string
+  imgAlt: string
   description: JSX.Element
 }
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/images/undraw_docusaurus_mountain.svg').default,
+    title: 'Based on MUI & Next.js',
+    imgLightSrc: '/images/home-page/light-mui-nextjs-tailwind.png',
+    imgDarkSrc: '/images/home-page/dark-mui-nextjs-tailwind.png',
+    imgAlt: 'MUI & Next.js',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+       With MUI & Next.js you can build responsive, mobile-first, and ARIA accessible projects on the web.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/images/undraw_docusaurus_tree.svg').default,
+    title: 'TypeScript & JavaScript',
+    imgLightSrc: '/images/home-page/light-ts-js.png',
+    imgDarkSrc: '/images/home-page/dark-ts-js.png',
+    imgAlt: 'TypeScript & JavaScript',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Use TypeScript or JavaScript to build your website. We handle all the
+        configuration, so you can focus on writing code.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/images/undraw_docusaurus_react.svg').default,
+    title: 'Next Auth & Translations',
+    imgLightSrc: '/images/home-page/light-auth-translation-hook.png',
+    imgDarkSrc: '/images/home-page/dark-auth-translation-hook.png',
+    imgAlt: 'Next Auth & Translations',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        With Next Auth you can utilize and auth service and with Translations you can translate your app to any language.
       </>
     ),
   },
 ]
 
-const Feature = ({title, Svg, description}: FeatureItem) => {
+const Feature = ({title, imgLightSrc, imgDarkSrc, imgAlt, description}: FeatureItem) => {
   return (
     <div className='col col--4'>
       <div className="text--center">
-        <Svg className='is-[200px] bs-[200px]' role="img" />
+        <ThemedImage
+          alt={imgAlt}
+          className='is-[350px]'
+          sources={{ light: useBaseUrl(imgLightSrc), dark: useBaseUrl(imgDarkSrc) }}
+        />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

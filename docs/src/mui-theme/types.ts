@@ -31,6 +31,22 @@ declare module '@mui/material/styles' {
     }
   }
 
+    // Palette Color
+    interface PaletteColor {
+      lighterOpacity?: string
+      lightOpacity?: string
+      mainOpacity?: string
+      darkOpacity?: string
+      darkerOpacity?: string
+    }
+    interface SimplePaletteColorOptions {
+      lighterOpacity?: string
+      lightOpacity?: string
+      mainOpacity?: string
+      darkOpacity?: string
+      darkerOpacity?: string
+    }
+
   interface ComponentNameToClassKey {
     MuiCustomInputHorizontal: 'root' | 'title' | 'meta' | 'content' | 'input'
     MuiCustomInputVertical: 'root' | 'title' | 'content' | 'input'

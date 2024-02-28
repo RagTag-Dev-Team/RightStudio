@@ -273,6 +273,10 @@ const verticalMenuData = (
         label: dictionary['navigation'].widgetExamples,
         children: [
           {
+            label: dictionary['navigation'].basic,
+            href: '/pages/widget-examples/basic'
+          },
+          {
             label: dictionary['navigation'].advanced,
             href: '/pages/widget-examples/advanced'
           },
@@ -283,6 +287,10 @@ const verticalMenuData = (
           {
             label: dictionary['navigation'].charts,
             href: '/pages/widget-examples/charts'
+          },
+          {
+            label: dictionary['navigation'].actions,
+            href: '/pages/widget-examples/actions'
           }
         ]
       },
@@ -346,7 +354,7 @@ const verticalMenuData = (
 
       {
         label: dictionary['navigation'].foundation,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },

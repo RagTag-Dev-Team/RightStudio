@@ -288,328 +288,342 @@ const data: SearchData[] = [
   },
   {
     id: '41',
+    name: 'Widget - Basic',
+    url: '/pages/widget-examples/basic',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '42',
     name: 'Widget - Advanced',
     url: '/pages/widget-examples/advanced',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '42',
+    id: '43',
     name: 'Widget - Statistics',
     url: '/pages/widget-examples/statistics',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '43',
+    id: '44',
     name: 'Widget - Charts',
     url: '/pages/widget-examples/charts',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '44',
+    id: '45',
+    name: 'Widget - Actions',
+    url: '/pages/widget-examples/actions',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '46',
     name: 'Icons Test',
     url: '/icons-test',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '45',
+    id: '47',
     name: 'Form Layouts',
     url: '/forms/form-layouts',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '46',
+    id: '48',
     name: 'Form Validation',
     url: '/forms/form-validation',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '47',
+    id: '49',
     name: 'Form Wizard',
     url: '/forms/form-wizard',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '48',
+    id: '50',
     name: 'React Table',
     url: '/react-table',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '49',
+    id: '51',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '50',
+    id: '52',
     name: 'Apex Charts',
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '51',
+    id: '53',
     name: 'Menu Examples',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
     icon: 'Icon',
     section: 'Others'
   },
   {
-    id: '51',
-    name: 'Typography',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`,
-    icon: 'Icon',
-    section: 'User Interface'
-  },
-  {
-    id: '52',
-    name: 'Icons',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/icons`,
-    icon: 'Icon',
-    section: 'User Interface'
-  },
-  {
-    id: '53',
-    name: 'Card Basic',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/cards-basic`,
-    icon: 'Icon',
-    section: 'User Interface'
-  },
-  {
     id: '54',
-    name: 'Card Actions',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/cards-actions`,
+    name: 'Typography',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`,
     icon: 'Icon',
-    section: 'User Interface'
+    section: 'Foundation'
   },
   {
     id: '55',
+    name: 'Colors',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/colors`,
+    icon: 'Icon',
+    section: 'Foundation'
+  },
+  {
+    id: '56',
+    name: 'Shadows',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/shadows`,
+    icon: 'Icon',
+    section: 'Foundation'
+  },
+  {
+    id: '57',
+    name: 'Icons',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/icons`,
+    icon: 'Icon',
+    section: 'Foundation'
+  },
+  {
+    id: '58',
     name: 'Accordion',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/accordion`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '56',
+    id: '59',
     name: 'Alerts',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/alerts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '57',
+    id: '60',
     name: 'Avatars',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/avatars`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '58',
+    id: '61',
     name: 'Badges',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/badges`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '59',
+    id: '62',
     name: 'Buttons',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/buttons`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '60',
+    id: '63',
     name: 'Button Group',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/button-group`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '61',
+    id: '64',
     name: 'Chips',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/chips`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '62',
+    id: '65',
     name: 'Dialogs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/dialogs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '63',
+    id: '66',
     name: 'List',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/list`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '64',
+    id: '67',
     name: 'Menu',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/menu`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '65',
+    id: '68',
     name: 'Pagination',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/pagination`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '66',
+    id: '69',
     name: 'Progress',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/progress`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '67',
+    id: '70',
     name: 'Ratings',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/ratings`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '68',
+    id: '71',
     name: 'Snackbar',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/snackbar`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '69',
+    id: '72',
     name: 'Swiper',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/swiper`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '70',
+    id: '73',
     name: 'Tabs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/tabs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '71',
+    id: '74',
     name: 'Timeline',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/timeline`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '72',
+    id: '75',
     name: 'Toasts',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/toasts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '73',
+    id: '76',
     name: 'More Components',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/more`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '74',
+    id: '77',
     name: 'Text Field',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/text-field`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '75',
+    id: '78',
     name: 'Select',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/select`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '76',
+    id: '79',
     name: 'Checkbox',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/checkbox`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '77',
+    id: '80',
     name: 'Radio',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/radio`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '78',
+    id: '81',
     name: 'Custom Inputs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/custom-inputs`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '79',
+    id: '82',
     name: 'Textarea',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/textarea`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '80',
+    id: '83',
     name: 'Autocomplete',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/autocomplete`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '81',
+    id: '84',
     name: 'Picker',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/picker`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '82',
+    id: '85',
     name: 'Switch',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/switch`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '83',
+    id: '86',
     name: 'File Uploader',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/file-uploader`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '84',
+    id: '87',
     name: 'Editor',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/editor`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '85',
+    id: '88',
     name: 'Slider',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/slider`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '86',
+    id: '89',
     name: 'MUI Tables',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/mui-table`,
     icon: 'Icon',

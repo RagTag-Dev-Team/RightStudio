@@ -188,18 +188,19 @@ const sidebars: SidebarsConfig = {
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    'user-interface/typography',
-    'user-interface/icons',
-    'user-interface/cards-basic',
-    'user-interface/cards-actions',
     {
       type: 'category',
       label: 'Foundation',
       link: {
-        type: "doc",
-        id: "user-interface/foundation",
+        type: 'doc',
+        id: 'user-interface/foundation',
       },
-      items: []
+      items: [
+        'user-interface/foundation/colors',
+        'user-interface/foundation/typography',
+        'user-interface/foundation/icons',
+        'user-interface/foundation/shadows',
+      ]
     },
     {
       type: 'category',

@@ -160,11 +160,13 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           </SubMenu>
           <MenuItem href={`/${locale}/pages/dialog-examples`}>{dictionary['navigation'].dialogExamples}</MenuItem>
           <SubMenu label={dictionary['navigation'].widgetExamples}>
+            <MenuItem href={`/${locale}/pages/widget-examples/basic`}>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/advanced`}>{dictionary['navigation'].advanced}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/statistics`}>
               {dictionary['navigation'].statistics}
             </MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
+            <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
           <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
         </MenuSection>
@@ -194,7 +196,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
             <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
           </SubMenu>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >

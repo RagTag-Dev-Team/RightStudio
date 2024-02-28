@@ -56,5 +56,5 @@ You can refer the typography of the template from `src/@core/theme/typography.ts
 :::
 
 :::tip Reference
-You can refer to template's typography from [here](/docs/user-interface/typography) <br/>
+You can refer to template's typography from [here](/docs/user-interface/foundation/typography) <br/>
 MUI typography customization: [https://mui.com/material-ui/customization/typography](https://mui.com/material-ui/customization/typography)
