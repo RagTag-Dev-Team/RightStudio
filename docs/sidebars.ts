@@ -117,6 +117,15 @@ const sidebars: SidebarsConfig = {
   userInterfaceSidebar: [
     {
       type: 'category',
+      label: 'Foundation',
+      link: {
+        type: "doc",
+        id: "user-interface/foundation",
+      },
+      items: []
+    },
+    {
+      type: 'category',
       label: 'Components',
       link: {
         type: "doc",
@@ -135,7 +144,7 @@ const sidebars: SidebarsConfig = {
     }
   ],
   menuExamplesSidebar: [
-    "menu-examples/intro",
+    "menu-examples/overview",
     {
       type: "category",
       label: "Vertical Menu",

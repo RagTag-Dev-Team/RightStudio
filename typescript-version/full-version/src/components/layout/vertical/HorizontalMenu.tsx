@@ -46,9 +46,10 @@ const HorizontalMenu = (/* { dictionary }: { dictionary: Awaited<ReturnType<type
               <MenuItem href='/pages/auth/login-v2'>Login v2</MenuItem>
             </SubMenu>
           </SubMenu>
-          <SubMenu label='Manage Users'>
-            <MenuItem href='/user-list'>User List</MenuItem>
-            <MenuItem href='/user-details'>User Details</MenuItem>
+          <SubMenu label='Dashboards'>
+            <MenuItem href='/dashboards/crm'>CRM</MenuItem>
+            <MenuItem href='/dashboards/analytics'>Analytics</MenuItem>
+            <MenuItem href='/dashboards/ecommerce'>eCommerce</MenuItem>
           </SubMenu>
         </Menu>
         {/* <Menu

@@ -19,6 +19,10 @@ const verticalMenuData = (
     children: [
       // This is how you will normally render menu item
       {
+        label: dictionary['navigation'].crm,
+        href: '/dashboards/crm'
+      },
+      {
         label: dictionary['navigation'].analytics,
         href: '/dashboards/analytics'
       },
@@ -31,14 +35,6 @@ const verticalMenuData = (
   {
     label: 'About',
     href: '/about'
-  },
-  {
-    label: 'User List',
-    href: '/user-list'
-  },
-  {
-    label: 'User Details',
-    href: '/user-details'
   },
 
   // This is how you will normally render menu section
@@ -317,7 +313,7 @@ const verticalMenuData = (
       {
         label: dictionary['navigation'].formELements,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements`,
         target: '_blank'
       },
       {
@@ -347,20 +343,20 @@ const verticalMenuData = (
       },
 
       {
-        label: dictionary['navigation'].userInterface,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface`,
+        label: dictionary['navigation'].foundation,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].components,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].menuExamples,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
         suffix: <LinkExternalIcon fontSize='1.125rem' />,
         target: '_blank'
       },
