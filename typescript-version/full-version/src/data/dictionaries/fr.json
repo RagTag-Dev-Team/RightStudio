@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "Tableaux de bord",
+    "crm": "GRC",
     "analytics": "Analytique",
     "eCommerce": "commerce électronique",
     "appsPages": "Applications et pages",
@@ -67,7 +68,7 @@
     "charts": "Graphiques",
     "recharts": "Regraphiques",
     "apex": "Sommet",
-    "userInterface": "Interface utilisateur",
+    "foundation": "fondation",
     "components": "Composants",
     "menuExamples": "Exemples de menus",
     "raiseSupport": "Augmenter le soutien",

@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "Dashboards",
+    "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",
     "appsPages": "Apps & Pages",
@@ -67,7 +68,7 @@
     "charts": "Charts",
     "recharts": "Recharts",
     "apex": "Apex",
-    "userInterface": "User Interface",
+    "foundation": "Foundation",
     "components": "Components",
     "menuExamples": "Menu Examples",
     "raiseSupport": "Raise Support",

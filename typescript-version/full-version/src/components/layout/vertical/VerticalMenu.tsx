@@ -51,12 +51,11 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
       {/* Vertical Menu */}
       <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
         <SubMenu label={dictionary['navigation'].dashboards}>
+          <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
         </SubMenu>
         <MenuItem href={`/${locale}/about`}>About</MenuItem>
-        <MenuItem href={`/${locale}/user-list`}>User List</MenuItem>
-        <MenuItem href={`/${locale}/user-details`}>User Details</MenuItem>
         <MenuSection label={dictionary['navigation'].appsPages}>
           <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
           <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
@@ -175,7 +174,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
           <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
@@ -195,21 +194,21 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
             <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
           </SubMenu>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
-            {dictionary['navigation'].userInterface}
+            {dictionary['navigation'].foundation}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
-            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`}
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`}
             suffix={<i className='ri-external-link-line text-xl' />}
             target='_blank'
           >

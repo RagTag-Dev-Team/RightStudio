@@ -194,6 +194,15 @@ const sidebars: SidebarsConfig = {
     'user-interface/cards-actions',
     {
       type: 'category',
+      label: 'Foundation',
+      link: {
+        type: "doc",
+        id: "user-interface/foundation",
+      },
+      items: []
+    },
+    {
+      type: 'category',
       label: 'Components',
       link: {
         type: "doc",
@@ -248,7 +257,7 @@ const sidebars: SidebarsConfig = {
     'user-interface/mui-table',
   ],
   menuExamplesSidebar: [
-    "menu-examples/intro",
+    "menu-examples/overview",
     {
       type: "category",
       label: "Vertical Menu",

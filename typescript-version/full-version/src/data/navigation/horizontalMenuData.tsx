@@ -16,6 +16,10 @@ const horizontalMenuData = (
     children: [
       // This is how you will normally render menu item
       {
+        label: dictionary['navigation'].crm,
+        href: '/dashboards/crm'
+      },
+      {
         label: dictionary['navigation'].analytics,
         href: '/dashboards/analytics'
       },
@@ -28,14 +32,6 @@ const horizontalMenuData = (
   {
     label: 'About',
     href: '/about'
-  },
-  {
-    label: 'User List',
-    href: '/user-list'
-  },
-  {
-    label: 'User Details',
-    href: '/user-details'
   },
   {
     label: dictionary['navigation'].apps,
@@ -310,7 +306,7 @@ const horizontalMenuData = (
       {
         label: dictionary['navigation'].formELements,
         suffix: <i className='ri-external-link-line text-xl' />,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements`,
         target: '_blank'
       },
       {
@@ -338,20 +334,20 @@ const horizontalMenuData = (
     label: dictionary['navigation'].others,
     children: [
       {
-        label: dictionary['navigation'].userInterface,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/typography`,
+        label: dictionary['navigation'].foundation,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].components,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
       {
         label: dictionary['navigation'].menuExamples,
-        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/intro`,
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
         suffix: <i className='ri-external-link-line text-xl' />,
         target: '_blank'
       },
