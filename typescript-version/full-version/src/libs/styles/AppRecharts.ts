@@ -46,6 +46,9 @@ const AppRecharts = styled('div')(({ theme }) => ({
   '& .recharts-text': {
     fontSize: '0.875rem',
     fill: theme.palette.text.disabled
+  },
+  '& .recharts-pie .recharts-sector, & .recharts-layer': {
+    outline: 'none !important'
   }
 }))
 
