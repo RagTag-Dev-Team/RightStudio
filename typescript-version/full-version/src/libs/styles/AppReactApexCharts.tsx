@@ -25,6 +25,16 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
       boxShadow: theme.shadows[3],
       borderColor: theme.palette.divider,
       background: theme.palette.background.paper,
+      ...(theme.direction === 'rtl' && {
+        '.apexcharts-tooltip-marker': {
+          marginInlineEnd: 10,
+          marginInlineStart: 0
+        },
+        '.apexcharts-tooltip-text-y-value': {
+          marginInlineStart: 5,
+          marginInlineEnd: 0
+        }
+      }),
       '& .apexcharts-tooltip-title': {
         fontWeight: 600,
         borderColor: theme.palette.divider,

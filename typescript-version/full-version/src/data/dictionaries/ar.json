@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "لوحات القيادة",
+    "crm": "إدارة علاقات العملاء",
     "analytics": "تحليلات",
     "eCommerce": "التجارة الإلكترونية",
     "appsPages": "التطبيقات والصفحات",
@@ -54,8 +55,10 @@
     "createDeal": "إنشاء صفقة",
     "dialogExamples": "أمثلة الحوار",
     "widgetExamples": "أمثلة القطعة",
+    "basic": "أساسي",
     "advanced": "متقدم",
     "statistics": "إحصائيات",
+    "actions": "أجراءات",
     "formsAndTables": "النماذج والجداول",
     "formLayouts": "تخطيطات النموذج",
     "formValidation": "التحقق من صحة النموذج",
@@ -67,7 +70,7 @@
     "charts": "الرسوم البيانية",
     "recharts": "يعيد رسم الخرائط",
     "apex": "ذروة",
-    "userInterface": "واجهة المستخدم",
+    "foundation": "مؤسسة",
     "components": "عناصر",
     "menuExamples": "أمثلة القائمة",
     "raiseSupport": "رفع الدعم",

@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "Dashboards",
+    "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",
     "appsPages": "Apps & Pages",
@@ -54,8 +55,10 @@
     "createDeal": "Create Deal",
     "dialogExamples": "Dialog Examples",
     "widgetExamples": "Widget Examples",
+    "basic": "Basic",
     "advanced": "Advanced",
     "statistics": "Statistics",
+    "actions": "Actions",
     "formsAndTables": "Forms & Tables",
     "formLayouts": "Form Layouts",
     "formValidation": "Form Validation",
@@ -67,7 +70,7 @@
     "charts": "Charts",
     "recharts": "Recharts",
     "apex": "Apex",
-    "userInterface": "User Interface",
+    "foundation": "Foundation",
     "components": "Components",
     "menuExamples": "Menu Examples",
     "raiseSupport": "Raise Support",

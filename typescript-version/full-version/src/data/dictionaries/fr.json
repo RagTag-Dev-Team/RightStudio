@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "Tableaux de bord",
+    "crm": "GRC",
     "analytics": "Analytique",
     "eCommerce": "commerce électronique",
     "appsPages": "Applications et pages",
@@ -54,8 +55,10 @@
     "createDeal": "Créer un accord",
     "dialogExamples": "Exemples de dialogue",
     "widgetExamples": "Exemples de widgets",
+    "basic": "basique",
     "advanced": "Avancée",
     "statistics": "Statistiques",
+    "actions": "Actions",
     "formsAndTables": "Formulaires et tableaux",
     "formLayouts": "Dispositions de formulaire",
     "formValidation": "Validation du formulaire",
@@ -67,7 +70,7 @@
     "charts": "Graphiques",
     "recharts": "Regraphiques",
     "apex": "Sommet",
-    "userInterface": "Interface utilisateur",
+    "foundation": "fondation",
     "components": "Composants",
     "menuExamples": "Exemples de menus",
     "raiseSupport": "Augmenter le soutien",

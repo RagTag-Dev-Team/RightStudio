@@ -191,10 +191,20 @@ const sidebars: SidebarsConfig = {
     'guide/credit',
   ],
   userInterfaceSidebar: [
-    'user-interface/typography',
-    'user-interface/icons',
-    'user-interface/cards-basic',
-    'user-interface/cards-actions',
+    {
+      type: 'category',
+      label: 'Foundation',
+      link: {
+        type: 'doc',
+        id: 'user-interface/foundation',
+      },
+      items: [
+        'user-interface/foundation/colors',
+        'user-interface/foundation/typography',
+        'user-interface/foundation/icons',
+        'user-interface/foundation/shadows',
+      ]
+    },
     {
       type: 'category',
       label: 'Components',
@@ -251,7 +261,7 @@ const sidebars: SidebarsConfig = {
     'user-interface/mui-table',
   ],
   menuExamplesSidebar: [
-    "menu-examples/intro",
+    "menu-examples/overview",
     {
       type: "category",
       label: "Vertical Menu",
