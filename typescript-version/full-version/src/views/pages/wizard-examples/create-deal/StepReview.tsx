@@ -53,7 +53,7 @@ const StepReview = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
         </table>
         <FormControlLabel control={<Switch />} label='I have confirmed the deal details.' />
       </Grid>
-      <Grid item lg={6} xl={5} xs={12}>
+      <Grid item lg={6} xs={12}>
         <div className='flex justify-center items-end w-full h-full'>
           <img alt='review-illustration' src='' />
         </div>

@@ -200,7 +200,7 @@ const PaymentMethod = () => {
                     dialog={BillingCard}
                     dialogProps={{ data: data[creditCard] }}
                   />
-                  <Button variant='outlined' color='secondary'>
+                  <Button variant='outlined' color='error'>
                     Delete
                   </Button>
                   <Typography>Card expires at {item.expiryDate}</Typography>

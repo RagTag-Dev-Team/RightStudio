@@ -33,7 +33,7 @@ const AddContent = ({ handleClose }: { handleClose: () => void }) => {
         <TextField fullWidth label='Permission Name' variant='outlined' placeholder='Enter Permission Name' />
         <FormControlLabel control={<Checkbox />} label='Set as core permission' />
       </DialogContent>
-      <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+      <DialogActions className='max-sm:flex-col max-sm:items-center gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
         <Button type='submit' variant='contained' onClick={handleClose}>
           Create Permission
         </Button>

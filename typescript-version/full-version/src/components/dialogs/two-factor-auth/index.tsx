@@ -2,6 +2,7 @@
 
 // React Imports
 import { useState } from 'react'
+import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
@@ -139,7 +140,7 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
   ].value
 
   // States
-  const [authType, setAuthType] = useState<'app' | 'sms'>(initialSelectedOption as 'app')
+  const [authType, setAuthType] = useState<string>(initialSelectedOption)
   const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)
 
   const handleClose = () => {
@@ -161,11 +162,11 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
     }
   }
 
-  const handleOptionChange = () => {
-    if (authType !== 'app') {
-      setAuthType('app')
+  const handleOptionChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
+    if (typeof prop === 'string') {
+      setAuthType(prop)
     } else {
-      setAuthType('sms')
+      setAuthType((prop.target as HTMLInputElement).value)
     }
   }
 
