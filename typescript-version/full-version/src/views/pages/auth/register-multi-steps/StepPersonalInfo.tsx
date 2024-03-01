@@ -1,77 +1,73 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+import CustomTextField from '@core/components/mui/text-field'
 
 const StepPersonalInfo = ({ handleNext, handlePrev }: { handleNext: () => void; handlePrev: () => void }) => {
   return (
     <>
-      <Typography>Personal Information</Typography>
-      <Typography>Enter Your Personal Information</Typography>
-      <Grid container>
+      <div className='mbe-5'>
+        <Typography variant='h4'>Personal Information</Typography>
+        <Typography>Enter Your Personal Information</Typography>
+      </div>
+      <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label='First Name' placeholder='John' />
+          <CustomTextField fullWidth label='First Name' placeholder='John' />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label='Last Name' placeholder='Doe' />
+          <CustomTextField fullWidth label='Last Name' placeholder='Doe' />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
             fullWidth
             type='number'
             label='Mobile'
-            placeholder='123-456-7890'
+            placeholder='202 555 0111'
             InputProps={{
               startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment>
             }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth type='number' label='Pin Code' placeholder='689421' />
+          <CustomTextField fullWidth type='number' label='Pin Code' placeholder='689421' />
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth label='Address' placeholder='1456, Liberty Street' />
+          <CustomTextField fullWidth label='Address' placeholder='1456, Liberty Street' />
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth label='Landmark' placeholder='Nr. Wall Street' />
+          <CustomTextField fullWidth label='Landmark' placeholder='Nr. Wall Street' />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label='City' placeholder='Miami' />
+          <CustomTextField fullWidth label='City' placeholder='Miami' />
         </Grid>
         <Grid item xs={12} md={6}>
-          <FormControl fullWidth>
-            <InputLabel>State</InputLabel>
-            <Select label='State' defaultValue='new-york'>
-              <MenuItem value='new-york'>New York</MenuItem>
-              <MenuItem value='california'>California</MenuItem>
-              <MenuItem value='texas'>Texas</MenuItem>
-              <MenuItem value='florida'>Florida</MenuItem>
-              <MenuItem value='washington'>Washington</MenuItem>
-            </Select>
-          </FormControl>
+          <CustomTextField select fullWidth label='State' defaultValue='new-york'>
+            <MenuItem value='new-york'>New York</MenuItem>
+            <MenuItem value='california'>California</MenuItem>
+            <MenuItem value='texas'>Texas</MenuItem>
+            <MenuItem value='florida'>Florida</MenuItem>
+            <MenuItem value='washington'>Washington</MenuItem>
+          </CustomTextField>
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
           <Button
-            variant='contained'
+            variant='tonal'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
           <Button
             variant='contained'
             onClick={handleNext}
-            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+            endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
           >
             Next
           </Button>

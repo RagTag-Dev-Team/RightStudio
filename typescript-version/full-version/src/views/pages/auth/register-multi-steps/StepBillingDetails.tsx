@@ -5,13 +5,13 @@ import type { ChangeEvent } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import type { TypographyProps } from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
@@ -30,14 +30,36 @@ const customInputData: CustomInputVerticalData[] = [
     title: 'Basic',
     value: 'basic',
     content: (
-      <Content component='div' className='flex justify-center items-center flex-col h-full'>
-        <Typography className='mlb-auto'>A simple start for start ups & Students</Typography>
-        <div>
-          <Typography component='sup' className='self-start'>
+      <Content component='div' className='flex flex-col justify-center items-center bs-full gap-2'>
+        <Typography>A simple start for start ups & Students</Typography>
+        <div className='flex items-baseline'>
+          <Typography component='sup' className='self-start' color='primary'>
             $
           </Typography>
-          <Typography component='span'>0</Typography>
-          <Typography component='sub' className='self-end'>
+          <Typography component='span' variant='h3' color='primary'>
+            0
+          </Typography>
+          <Typography component='sub' className='self-baseline text-textDisabled'>
+            /month
+          </Typography>
+        </div>
+      </Content>
+    )
+  },
+  {
+    title: 'Standard',
+    value: 'standard',
+    content: (
+      <Content component='div' className='flex flex-col justify-center items-center bs-full gap-2'>
+        <Typography>For small to medium businesses</Typography>
+        <div className='flex items-baseline'>
+          <Typography component='sup' className='self-start' color='primary'>
+            $
+          </Typography>
+          <Typography component='span' variant='h3' color='primary'>
+            99
+          </Typography>
+          <Typography component='sub' className='self-baseline text-textDisabled'>
             /month
           </Typography>
         </div>
@@ -46,35 +68,19 @@ const customInputData: CustomInputVerticalData[] = [
     isSelected: true
   },
   {
-    title: 'Standard',
-    value: 'standard',
-    content: (
-      <Content component='div' className='flex justify-center items-center flex-col h-full'>
-        <Typography className='mlb-auto'>For small to medium businesses</Typography>
-        <div>
-          <Typography component='sup' className='self-start'>
-            $
-          </Typography>
-          <Typography component='span'>99</Typography>
-          <Typography component='sub' className='self-end'>
-            /month
-          </Typography>
-        </div>
-      </Content>
-    )
-  },
-  {
     title: 'Enterprise',
     value: 'enterprise',
     content: (
-      <Content component='div' className='flex justify-center items-center flex-col h-full'>
-        <Typography className='mlb-auto'>Solution for enterprise & organizations</Typography>
-        <div>
-          <Typography component='sup' className='self-start'>
+      <Content component='div' className='flex flex-col justify-center items-center bs-full gap-2'>
+        <Typography>Solution for enterprise & organizations</Typography>
+        <div className='flex items-baseline'>
+          <Typography component='sup' className='self-start' color='primary'>
             $
           </Typography>
-          <Typography component='span'>499</Typography>
-          <Typography component='sub' className='self-end'>
+          <Typography component='span' variant='h3' color='primary'>
+            499
+          </Typography>
+          <Typography component='sub' className='self-baseline text-textDisabled'>
             /month
           </Typography>
         </div>
@@ -101,9 +107,11 @@ const StepBillingDetails = ({ handlePrev }: { handlePrev: () => void }) => {
 
   return (
     <>
-      <Typography>Select Plan</Typography>
-      <Typography>Select plan as per your requirement</Typography>
-      <Grid container>
+      <div className='mbe-5'>
+        <Typography variant='h4'>Select Plan</Typography>
+        <Typography>Select plan as per your requirement</Typography>
+      </div>
+      <Grid container spacing={5}>
         {customInputData.map((item, index) => (
           <CustomInputVertical
             type='radio'
@@ -116,31 +124,33 @@ const StepBillingDetails = ({ handlePrev }: { handlePrev: () => void }) => {
           />
         ))}
       </Grid>
-      <Typography>Payment Information</Typography>
-      <Typography>Enter your card information</Typography>
-      <Grid container>
+      <div className='mbs-6 md:mbs-12 mbe-6'>
+        <Typography variant='h4'>Payment Information</Typography>
+        <Typography>Enter your card information</Typography>
+      </div>
+      <Grid container spacing={6}>
         <Grid item xs={12}>
-          <TextField fullWidth label='Card Number' placeholder='1234 1234 1234 1234' />
+          <CustomTextField fullWidth label='Card Number' placeholder='1356 3215 6548 7898' />
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField fullWidth label='Name on Card' placeholder='John Doe' />
+        <Grid item xs={12} sm={6}>
+          <CustomTextField fullWidth label='Name On Card' placeholder='John Doe' />
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField fullWidth label='Expiry Date' placeholder='MM/YY' />
+        <Grid item xs={12} sm={3}>
+          <CustomTextField fullWidth label='Expiry Date' placeholder='MM/YY' />
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField fullWidth label='CVV' placeholder='123' />
+        <Grid item xs={12} sm={3}>
+          <CustomTextField fullWidth label='CVV Code' placeholder='654' />
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
           <Button
-            variant='contained'
+            variant='tonal'
             color='secondary'
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
-          <Button variant='contained' onClick={() => alert('Submitted..!!')}>
+          <Button variant='contained' color='success' onClick={() => alert('Submitted..!!')}>
             Submit
           </Button>
         </Grid>

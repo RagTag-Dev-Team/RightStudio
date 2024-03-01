@@ -4,13 +4,13 @@ import { useState } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+import CustomTextField from '@core/components/mui/text-field'
 
 const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
   // States
@@ -27,17 +27,19 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
 
   return (
     <>
-      <Typography>Account Information</Typography>
-      <Typography>Enter Your Account Details</Typography>
-      <Grid container>
+      <div className='mbe-5'>
+        <Typography variant='h4'>Account Information</Typography>
+        <Typography>Enter Your Account Details</Typography>
+      </div>
+      <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label='Username' placeholder='johnDoe' />
+          <CustomTextField fullWidth label='Username' placeholder='johnDoe' />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth type='email' label='Email' placeholder='johndoe@gmail.com' />
+          <CustomTextField fullWidth type='email' label='Email' placeholder='john.deo@gmail.com' />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
             fullWidth
             label='Password'
             placeholder='············'
@@ -52,7 +54,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle password visibility'
                   >
-                    <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                    <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -60,7 +62,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <CustomTextField
             fullWidth
             label='Confirm Password'
             placeholder='············'
@@ -75,7 +77,7 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
                     onMouseDown={e => e.preventDefault()}
                     aria-label='toggle confirm password visibility'
                   >
-                    <i className={isConfirmPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                    <i className={isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                   </IconButton>
                 </InputAdornment>
               )
@@ -83,20 +85,21 @@ const StepAccountDetails = ({ handleNext }: { handleNext: () => void }) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth label='Profile Link' placeholder='johndoe/profile' />
+          <CustomTextField fullWidth label='Profile Link' placeholder='johndoe/profile' />
         </Grid>
         <Grid item xs={12} className='flex justify-between'>
           <Button
             disabled
-            variant='contained'
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            variant='tonal'
+            color='secondary'
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
           <Button
             variant='contained'
             onClick={handleNext}
-            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+            endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
           >
             Next
           </Button>
