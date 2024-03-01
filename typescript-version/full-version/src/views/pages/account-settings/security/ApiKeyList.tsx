@@ -4,6 +4,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
+import IconButton from '@mui/material/IconButton'
 
 type ApiKeyListType = {
   title: string
@@ -53,7 +54,9 @@ const ApiKeyList = () => {
             <div className='flex items-center gap-3'>
               <Typography>{item.key}</Typography>
               <div className='flex'>
-                <i className='tabler-copy text-xl' />
+                <IconButton size='small'>
+                  <i className='tabler-copy text-xl' />
+                </IconButton>
               </div>
             </div>
             <Typography color='text.disabled'>{`Created on ${item.date}`}</Typography>

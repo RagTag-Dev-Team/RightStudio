@@ -204,7 +204,7 @@ const PaymentMethod = () => {
                       dialog={BillingCard}
                       dialogProps={{ data: data[creditCard] }}
                     />
-                    <Button variant='tonal' color='secondary'>
+                    <Button variant='tonal' color='error'>
                       Delete
                     </Button>
                   </div>
