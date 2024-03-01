@@ -45,13 +45,13 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
       </div>
       <div className='relative mbe-4'>
         <div className='flex justify-center'>
-          <Typography component='sup' className='self-start'>
+          <Typography component='sup' className='self-start font-medium'>
             $
           </Typography>
           <Typography variant='h1' component='span' color='primary'>
             {pricingPlan === 'monthly' ? data?.monthlyPrice : data?.yearlyPlan.monthly}
           </Typography>
-          <Typography component='sub' className='self-end'>
+          <Typography component='sub' className='self-end font-medium'>
             /month
           </Typography>
         </div>
@@ -66,7 +66,7 @@ const PlanDetails = ({ data, pricingPlan }: Props) => {
         {data?.planBenefits.map((item: string, index: number) => (
           <div key={index} className='flex items-center gap-2'>
             <span className='inline-flex'>
-              <i className='tabler-circle-filled text-xs' />
+              <i className='tabler-circle-filled text-[8px]' />
             </span>
             <Typography>{item}</Typography>
           </div>

@@ -19,9 +19,11 @@ const DialogPaymentProviders = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='ri-secure-payment-line text-[28px]' />
+        <i className='tabler-device-imac-dollar text-[34px] text-textPrimary' />
         <Typography variant='h5'>Payment providers</Typography>
-        <Typography>Elegant payment options modal popup example, easy to use in any page.</Typography>
+        <Typography color='text.primary'>
+          Elegant payment options modal popup example, easy to use in any page.
+        </Typography>
         <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={PaymentProviders} />
       </CardContent>
     </Card>

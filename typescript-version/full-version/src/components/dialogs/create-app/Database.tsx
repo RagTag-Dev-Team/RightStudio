@@ -4,12 +4,12 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
 import Radio from '@mui/material/Radio'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 // Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Config Imports
@@ -32,45 +32,51 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => 
 
   return (
     <div className='flex flex-col gap-6'>
-      <TextField
+      <CustomTextField
         fullWidth
         label='Database Name'
         placeholder={`${themeConfig.templateName.toLowerCase().replace(/\s+/g, '_')}_database`}
       />
       <div className='flex flex-col gap-4'>
-        <Typography variant='h6'>Select Database Engine</Typography>
+        <Typography variant='h5'>Select Database Engine</Typography>
         <div onClick={() => setValue('firebase')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='warning' variant='rounded' size={46}>
               <img src='/images/logos/firebase.png' alt='firebase' height={30} width={30} />
-            </Avatar>
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>Firebase</Typography>
-              <Typography variant='caption'>Cloud Firestore</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                Firebase
+              </Typography>
+              <Typography variant='body2'>Cloud Firestore</Typography>
             </div>
           </div>
           <Radio value='firebase' onChange={handleChange} checked={value === 'firebase'} />
         </div>
         <div onClick={() => setValue('aws')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='secondary' variant='rounded' size={46}>
               <img src='/images/logos/aws.png' alt='aws' height={30} width={30} />
-            </Avatar>
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>AWS</Typography>
-              <Typography variant='caption'>Amazon Fast NoSQL Database</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                AWS
+              </Typography>
+              <Typography variant='body2'>Amazon Fast NoSQL Database</Typography>
             </div>
           </div>
           <Radio value='aws' onChange={handleChange} checked={value === 'aws'} />
         </div>
         <div onClick={() => setValue('sql')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
-              <i className='ri-database-2-line text-3xl' />
-            </Avatar>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='info' variant='rounded' size={46}>
+              <i className='tabler-database text-3xl' />
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>MySQL</Typography>
-              <Typography variant='caption'>Basic MySQL database</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                MySQL
+              </Typography>
+              <Typography variant='body2'>Basic MySQL database</Typography>
             </div>
           </div>
           <Radio value='sql' onChange={handleChange} checked={value === 'sql'} />
@@ -78,11 +84,11 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => 
       </div>
       <div className='flex items-center justify-between'>
         <Button
-          variant='outlined'
+          variant='tonal'
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+          startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
         >
           Previous
         </Button>
@@ -92,9 +98,9 @@ const DataBase = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => 
           onClick={handleNext}
           endIcon={
             isLastStep ? (
-              <i className='ri-check-line' />
+              <i className='tabler-check' />
             ) : (
-              <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
             )
           }
         >

@@ -8,13 +8,15 @@ import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
 import Checkbox from '@mui/material/Checkbox'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
+
+// Component Imports
+import DialogCloseButton from '../DialogCloseButton'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -102,22 +104,26 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
   }, [selectedCheckbox])
 
   return (
-    <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={handleClose}>
-      <DialogTitle
-        variant='h4'
-        className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+    <Dialog
+      fullWidth
+      maxWidth='md'
+      scroll='body'
+      open={open}
+      onClose={handleClose}
+      sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+    >
+      <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+        <i className='tabler-x' />
+      </DialogCloseButton>
+      <DialogTitle variant='h4' className='flex flex-col gap-2 text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         {title ? 'Edit Role' : 'Add Role'}
         <Typography component='span' className='flex flex-col text-center'>
           Set Role Permissions
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
-            <i className='ri-close-line' />
-          </IconButton>
-          <TextField
+        <DialogContent className='overflow-visible flex flex-col gap-6 pbs-0 sm:pli-16'>
+          <CustomTextField
             label='Role Name'
             variant='outlined'
             fullWidth
@@ -125,16 +131,21 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
             defaultValue={title}
             onChange={e => e.target.value}
           />
-          <Typography className='min-is-[225px]'>Role Permissions</Typography>
+          <Typography variant='h5' className='min-is-[225px]'>
+            Role Permissions
+          </Typography>
           <div className='overflow-x-auto'>
             <table className={tableStyles.table}>
               <tbody>
-                <tr>
-                  <th>
-                    <Typography>Administrator Access</Typography>
+                <tr className='border-bs-0'>
+                  <th className='pis-0'>
+                    <Typography color='text.primary' className='font-medium whitespace-nowrap flex-grow min-is-[225px]'>
+                      Administrator Access
+                    </Typography>
                   </th>
-                  <th className='!text-end'>
+                  <th className='!text-end pie-0'>
                     <FormControlLabel
+                      className='mie-0 capitalize'
                       control={
                         <Checkbox
                           onChange={handleSelectAllCheckbox}
@@ -150,22 +161,38 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
                   const id = (typeof item === 'string' ? item : item.title).toLowerCase().split(' ').join('-')
 
                   return (
-                    <tr key={index}>
-                      <td>
-                        <Typography className='min-is-[225px]'>
+                    <tr key={index} className='border-be'>
+                      <td className='pis-0'>
+                        <Typography
+                          className='font-medium whitespace-nowrap flex-grow min-is-[225px]'
+                          color='text.primary'
+                        >
                           {typeof item === 'object' ? item.title : item}
                         </Typography>
                       </td>
-                      <td>
+                      <td className='!text-end pie-0'>
                         {typeof item === 'object' ? (
                           <FormGroup className='flex-row justify-end flex-nowrap gap-6'>
-                            <FormControlLabel control={<Checkbox checked={item.read} />} label='Read' />
-                            <FormControlLabel control={<Checkbox checked={item.write} />} label='Write' />
-                            <FormControlLabel control={<Checkbox checked={item.select} />} label='Select' />
+                            <FormControlLabel
+                              className='mie-0'
+                              control={<Checkbox checked={item.read} />}
+                              label='Read'
+                            />
+                            <FormControlLabel
+                              className='mie-0'
+                              control={<Checkbox checked={item.write} />}
+                              label='Write'
+                            />
+                            <FormControlLabel
+                              className='mie-0'
+                              control={<Checkbox checked={item.select} />}
+                              label='Select'
+                            />
                           </FormGroup>
                         ) : (
                           <FormGroup className='flex-row justify-end flex-nowrap gap-6'>
                             <FormControlLabel
+                              className='mie-0'
                               control={
                                 <Checkbox
                                   id={`${id}-read`}
@@ -176,6 +203,7 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
                               label='Read'
                             />
                             <FormControlLabel
+                              className='mie-0'
                               control={
                                 <Checkbox
                                   id={`${id}-write`}
@@ -186,6 +214,7 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
                               label='Write'
                             />
                             <FormControlLabel
+                              className='mie-0'
                               control={
                                 <Checkbox
                                   id={`${id}-create`}
@@ -205,11 +234,11 @@ const RoleDialog = ({ open, setOpen, title }: RoleDialogProps) => {
             </table>
           </div>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' type='submit' onClick={handleClose}>
             Submit
           </Button>
-          <Button variant='outlined' type='reset' color='secondary' onClick={handleClose}>
+          <Button variant='tonal' type='reset' color='secondary' onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>

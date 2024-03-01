@@ -7,7 +7,7 @@ import type { Skin } from '@core/types'
 const dialog = (skin: Skin): Theme['components'] => ({
   MuiDialog: {
     styleOverrides: {
-      paper: {
+      paper: ({ theme }) => ({
         borderRadius: 'var(--mui-shape-customBorderRadius-lg)',
         ...(skin !== 'bordered'
           ? {
@@ -15,8 +15,11 @@ const dialog = (skin: Skin): Theme['components'] => ({
             }
           : {
               boxShadow: 'none'
-            })
-      },
+            }),
+        [theme.breakpoints.down('sm')]: {
+          margin: theme.spacing(6)
+        }
+      }),
       paperFullScreen: {
         borderRadius: 0
       }
@@ -49,7 +52,7 @@ const dialog = (skin: Skin): Theme['components'] => ({
     styleOverrides: {
       root: ({ theme }) => ({
         padding: theme.spacing(6),
-        '& .MuiButtonBase-root:not(:first-of-type)':{
+        '& .MuiButtonBase-root:not(:first-of-type)': {
           marginInlineStart: theme.spacing(4)
         },
         '&:where(.dialog-actions-dense)': {

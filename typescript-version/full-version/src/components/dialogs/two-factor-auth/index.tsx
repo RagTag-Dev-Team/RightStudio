@@ -12,8 +12,6 @@ import DialogContent from '@mui/material/DialogContent'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
@@ -22,7 +20,8 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
-import DirectionalIcon from '@components/DirectionalIcon'
+import DialogCloseButton from '../DialogCloseButton'
+import CustomTextField from '@core/components/mui/text-field'
 
 type TwoFactorAuthProps = {
   open: boolean
@@ -32,9 +31,11 @@ type TwoFactorAuthProps = {
 const data: CustomInputHorizontalData[] = [
   {
     title: (
-      <div className='flex items-center gap-1'>
-        <i className='ri-settings-3-line' />
-        <Typography className='font-medium'>Authenticator Apps</Typography>
+      <div className='flex items-top gap-1'>
+        <i className='tabler-settings text-xl shrink-0' />
+        <Typography className='font-medium' color='text.primary'>
+          Authenticator Apps
+        </Typography>
       </div>
     ),
     value: 'app',
@@ -43,9 +44,11 @@ const data: CustomInputHorizontalData[] = [
   },
   {
     title: (
-      <div className='flex items-center gap-1'>
-        <i className='ri-wechat-line' />
-        <Typography className='font-medium'>SMS</Typography>
+      <div className='flex items-top gap-1'>
+        <i className='tabler-message-2 text-xl' />
+        <Typography className='font-medium' color='text.primary'>
+          SMS
+        </Typography>
       </div>
     ),
     value: 'sms',
@@ -56,28 +59,24 @@ const data: CustomInputHorizontalData[] = [
 const SMSDialog = (handleAuthDialogClose: () => void) => {
   return (
     <>
-      <DialogTitle variant='h5' className='flex flex-col gap-2 pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
+      <DialogTitle variant='h5' className='flex flex-col gap-2 sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Verify Your Mobile Number for SMS
-        <Typography component='span' variant='body2' className='flex flex-col'>
+        <Typography component='span' className='flex flex-col'>
           Enter your mobile phone number with country code and we will send you a verification code.
         </Typography>
       </DialogTitle>
-      <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-        <IconButton className='absolute block-start-4 inline-end-4' onClick={handleAuthDialogClose}>
-          <i className='ri-close-line' />
-        </IconButton>
-
-        <TextField fullWidth type='number' label='Mobile Number' placeholder='123 456 7890' />
+      <DialogContent className='overflow-visible pbs-0 pli-10 sm:pli-16'>
+        <CustomTextField fullWidth type='number' label='Mobile Number' placeholder='123 456 7890' />
       </DialogContent>
-      <DialogActions className='gap-2 pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
-        <Button variant='outlined' type='reset' color='secondary' onClick={handleAuthDialogClose}>
+      <DialogActions className='pbs-0 sm:pbe-16 sm:pli-16'>
+        <Button variant='tonal' type='reset' color='secondary' onClick={handleAuthDialogClose}>
           Cancel
         </Button>
         <Button
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<i className='ri-check-line' />}
+          endIcon={<i className='tabler-check' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -90,40 +89,37 @@ const SMSDialog = (handleAuthDialogClose: () => void) => {
 const AppDialog = (handleAuthDialogClose: () => void) => {
   return (
     <>
-      <DialogTitle variant='h5' className='text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
+      <DialogTitle variant='h4' className='text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Add Authenticator App
       </DialogTitle>
-      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-6 pli-10 sm:pli-16'>
-        <IconButton className='absolute block-start-4 inline-end-4' onClick={handleAuthDialogClose}>
-          <i className='ri-close-line' />
-        </IconButton>
+      <DialogContent className='flex flex-col gap-6 pbs-0 sm:pli-16'>
         <div className='flex flex-col gap-2'>
-          <Typography variant='h6'>Authenticator Apps</Typography>
-          <Typography variant='body2'>
+          <Typography variant='h5'>Authenticator Apps</Typography>
+          <Typography>
             Using an authenticator app like Google Authenticator, Microsoft Authenticator, Authy, or 1Password, scan the
             QR code. It will generate a 6 digit code for you to enter below.
           </Typography>
         </div>
         <div className='flex justify-center'>
-          <img alt='qr-code' src='/images/pages/themeselection-qr.png' />
+          <img alt='qr-code' height={150} width={150} src='/images/misc/barcode.png' />
         </div>
         <div className='flex flex-col gap-4'>
           <Alert severity='warning' icon={false}>
             <AlertTitle>ASDLKNASDA9AHS678dGhASD78AB</AlertTitle>
             If you having trouble using the QR code, select manual entry on your app
           </Alert>
-          <TextField fullWidth label='Enter Authentication Code' placeholder='Enter Authentication Code' />
+          <CustomTextField fullWidth label='Enter Authentication Code' placeholder='Enter Authentication Code' />
         </div>
       </DialogContent>
-      <DialogActions className='gap-2 pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
-        <Button variant='outlined' type='reset' color='secondary' onClick={handleAuthDialogClose}>
+      <DialogActions className='pbs-0 sm:pbe-16 sm:pli-16'>
+        <Button variant='tonal' type='reset' color='secondary' onClick={handleAuthDialogClose}>
           Cancel
         </Button>
         <Button
           color='success'
           variant='contained'
           type='submit'
-          endIcon={<i className='ri-check-line' />}
+          endIcon={<i className='tabler-check' />}
           onClick={handleAuthDialogClose}
         >
           Submit
@@ -172,25 +168,29 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
 
   return (
     <>
-      <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
-        <DialogTitle
-          variant='h4'
-          className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-        >
+      <Dialog
+        fullWidth
+        maxWidth='md'
+        scroll='body'
+        open={open}
+        onClose={() => setOpen(false)}
+        sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+      >
+        <DialogCloseButton onClick={handleClose} disableRipple>
+          <i className='tabler-x' />
+        </DialogCloseButton>
+        <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           Select Authentication Method
           <Typography component='span' className='flex flex-col text-center'>
             You also need to select a method by which the proxy authenticates to the directory serve.
           </Typography>
         </DialogTitle>
-        <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
-            <i className='ri-close-line' />
-          </IconButton>
+        <DialogContent className='pbs-0 sm:pli-16'>
           <Grid container spacing={6}>
             {data.map((item, index) => (
               <CustomInputHorizontal
-                key={index}
                 type='radio'
+                key={index}
                 selected={authType}
                 handleChange={handleOptionChange}
                 data={item}
@@ -200,10 +200,9 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
             ))}
           </Grid>
         </DialogContent>
-        <DialogActions className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='pbs-0 sm:pbe-16 sm:pli-16 flex justify-center'>
           <Button
             variant='contained'
-            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
             onClick={() => {
               setOpen(false)
               setShowAuthDialog(true)
@@ -212,10 +211,23 @@ const TwoFactorAuth = ({ open, setOpen }: TwoFactorAuthProps) => {
           >
             Continue
           </Button>
+          <Button variant='tonal' color='secondary' onClick={handleClose} className='capitalize'>
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
 
-      <Dialog fullWidth maxWidth='md' scroll='body' open={showAuthDialog} onClose={handleAuthDialogClose}>
+      <Dialog
+        fullWidth
+        maxWidth='md'
+        scroll='body'
+        open={showAuthDialog}
+        onClose={handleAuthDialogClose}
+        sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+      >
+        <DialogCloseButton onClick={handleAuthDialogClose} disableRipple>
+          <i className='tabler-x' />
+        </DialogCloseButton>
         <form onSubmit={e => e.preventDefault()}>
           {authType === 'sms' ? SMSDialog(handleAuthDialogClose) : AppDialog(handleAuthDialogClose)}
         </form>

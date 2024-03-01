@@ -70,7 +70,8 @@ module.exports = plugin(function () {}, {
         backgroundPaper: 'var(--mui-palette-background-paper)',
         backgroundDefault: 'var(--mui-palette-background-default)',
         facebook: '#4267B2',
-        twitter: '#1DA1F2'
+        twitter: '#1DA1F2',
+        linkedin: '#007BB6'
       },
       zIndex: {
         header: 'var(--header-z-index)',

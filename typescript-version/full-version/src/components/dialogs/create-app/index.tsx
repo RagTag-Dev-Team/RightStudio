@@ -4,24 +4,26 @@
 import { useState } from 'react'
 
 // MUI Imports
+import { styled } from '@mui/material/styles'
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import Step from '@mui/material/Step'
+import MuiStep from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import Stepper from '@mui/material/Stepper'
-import Avatar from '@mui/material/Avatar'
+import type { StepProps } from '@mui/material/Step'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Component Imports
-import Details from './Details'
-import FrameWork from './FrameWork'
-import Database from './Database'
 import Billing from './Billing'
+import CustomAvatar from '@core/components/mui/Avatar'
+import Details from './Details'
+import DialogCloseButton from '../DialogCloseButton'
+import Database from './Database'
+import FrameWork from './FrameWork'
 import Submit from './Submit'
 
 // Styled Component Imports
@@ -41,32 +43,38 @@ type stepperProps = {
 
 const steps: stepperProps[] = [
   {
-    icon: 'ri-file-text-line',
+    icon: 'tabler-file-text',
     title: 'Details',
     subtitle: 'Enter Details'
   },
   {
-    icon: 'ri-star-smile-line',
+    icon: 'tabler-id',
     title: 'FrameWorks',
     subtitle: 'Select Framework',
     active: true
   },
   {
-    icon: 'ri-pie-chart-2-line',
+    icon: 'tabler-database',
     title: 'Database',
     subtitle: 'Select Database'
   },
   {
-    icon: 'ri-bank-card-line',
+    icon: 'tabler-credit-card',
     title: 'Billing',
     subtitle: 'Payment Details'
   },
   {
-    icon: 'ri-check-double-line',
+    icon: 'tabler-check',
     title: 'Submit',
     subtitle: 'Submit'
   }
 ]
+
+const Step = styled(MuiStep)<StepProps>({
+  '&.Mui-completed .step-title , &.Mui-completed .step-subtitle': {
+    color: 'var(--mui-palette-text-disabled)'
+  }
+})
 
 const renderStepCount = (activeStep: number, isLastStep: boolean, handleNext: () => void, handlePrev: () => void) => {
   const Tag =
@@ -112,45 +120,49 @@ const CreateApp = ({ open, setOpen }: CreateAppProps) => {
   }
 
   return (
-    <Dialog fullWidth maxWidth='md' open={open} onClose={handleClose} scroll='body'>
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+    <Dialog
+      fullWidth
+      maxWidth='md'
+      open={open}
+      onClose={handleClose}
+      scroll='body'
+      sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+    >
+      <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+        <i className='tabler-x' />
+      </DialogCloseButton>
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Create App
         <Typography component='span' className='flex flex-col text-center'>
           Provide data with this form to create your app.
         </Typography>
       </DialogTitle>
-      <DialogContent className='pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
-          <i className='ri-close-line' />
-        </IconButton>
-        <div className='flex gap-y-6 flex-col md:flex-row'>
+      <DialogContent className='pbs-0 sm:pli-16 sm:pbe-16'>
+        <div className='flex gap-y-6 flex-col md:flex-row md:gap-5'>
           <StepperWrapper>
             <Stepper
-              nonLinear
               activeStep={activeStep}
               orientation='vertical'
               connector={<></>}
-              className='flex flex-col gap-6 min-is-[220px]'
+              className='flex flex-col gap-4 min-is-[220px]'
             >
               {steps.map((label, index) => {
                 return (
                   <Step key={index} onClick={handleStep(index)}>
-                    <StepLabel icon={<></>} className='p-0 cursor-pointer'>
-                      <div className='step-label gap-4'>
-                        <Avatar
+                    <StepLabel icon={<></>} className='p-1 cursor-pointer'>
+                      <div className='step-label'>
+                        <CustomAvatar
                           variant='rounded'
-                          className={classnames({ 'bg-primary text-white': activeStep === index })}
+                          skin={activeStep === index ? 'filled' : 'light'}
+                          {...(activeStep >= index && { color: 'primary' })}
+                          {...(activeStep === index && { className: 'shadow-primarySm' })}
+                          size={38}
                         >
-                          <i className={label.icon as string} />
-                        </Avatar>
+                          <i className={classnames(label.icon as string, 'text-[22px]')} />
+                        </CustomAvatar>
                         <div className='flex flex-col'>
-                          <Typography variant='body2' color='text.primary'>
-                            {label.title}
-                          </Typography>
-                          <Typography variant='caption'>{label.subtitle}</Typography>
+                          <Typography className='uppercase step-title'>{label.title}</Typography>
+                          <Typography className='step-subtitle'>{label.subtitle}</Typography>
                         </div>
                       </div>
                     </StepLabel>

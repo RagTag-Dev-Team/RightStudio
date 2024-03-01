@@ -10,24 +10,22 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import { styled } from '@mui/material/styles'
-import type { TypographyProps } from '@mui/material/Typography'
 
-// Type Imports
-import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
+// Third-party Imports
+import classnames from 'classnames'
+
+// Type Import
+import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
-import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
+import CustomInputVertical from '@core/components/custom-inputs/Vertical'
+import DialogCloseButton from '../DialogCloseButton'
+import CustomTextField from '@core/components/mui/text-field'
 
 type AddEditAddressData = {
   firstName?: string
@@ -61,35 +59,19 @@ const initialAddressData: AddEditAddressProps['data'] = {
   zipCode: ''
 }
 
-const Title = styled(Typography, {
-  name: 'MuiCustomInputVertical',
-  slot: 'title'
-})<TypographyProps>(({ theme }) => ({
-  letterSpacing: '0.15px',
-  fontWeight: theme.typography.fontWeightMedium
-}))
-
-const customInputData: CustomInputHorizontalData[] = [
+const customInputData: CustomInputVerticalData[] = [
   {
-    title: (
-      <Title component='div' className='flex items-center gap-1'>
-        <i className='ri-home-4-line' />
-        <Typography className='font-medium'>Home</Typography>
-      </Title>
-    ),
+    title: 'Home',
     content: 'Delivery Time (7am - 9pm)',
     value: 'home',
-    isSelected: true
+    isSelected: true,
+    asset: 'tabler-home'
   },
   {
-    title: (
-      <Title component='div' className='flex items-center gap-1'>
-        <i className='ri-building-4-line' />
-        <Typography className='font-medium'>Office</Typography>
-      </Title>
-    ),
+    title: 'Office',
     content: 'Delivery Time (10am - 6pm)',
-    value: 'office'
+    value: 'office',
+    asset: 'tabler-building-skyscraper'
   }
 ]
 
@@ -123,36 +105,42 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
         setOpen(false)
         setSelected(initialSelected)
       }}
+      sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
     >
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         {data ? 'Edit Address' : 'Add New Address'}
         <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit Address for future billing' : 'Add address for billing address'}
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
-            <i className='ri-close-line' />
-          </IconButton>
-          <Grid container spacing={5}>
-            {customInputData.map((item, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <CustomInputHorizontal
-                  key={index}
-                  type='radio'
-                  name='addressType'
-                  selected={selected}
-                  data={item}
-                  handleChange={handleChange}
-                />
-              </Grid>
-            ))}
+        <DialogContent className='pbs-0 sm:pli-16'>
+          <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+            <i className='tabler-x' />
+          </DialogCloseButton>
+          <Grid container spacing={6}>
+            {customInputData.map((item, index) => {
+              let asset
+
+              if (item.asset && typeof item.asset === 'string') {
+                asset = <i className={classnames(item.asset, 'text-[28px]')} />
+              }
+
+              return (
+                <Grid item xs={12} sm={6} key={index}>
+                  <CustomInputVertical
+                    type='radio'
+                    key={index}
+                    data={{ ...item, asset }}
+                    selected={selected}
+                    name='addressType'
+                    handleChange={handleChange}
+                  />
+                </Grid>
+              )
+            })}
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='First Name'
                 name='firstName'
@@ -163,7 +151,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Last Name'
                 name='lastName'
@@ -174,25 +162,24 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>Country</InputLabel>
-                <Select
-                  label='Country'
-                  name='country'
-                  variant='outlined'
-                  value={addressData?.country?.toLowerCase().replace(/\s+/g, '-') || ''}
-                  onChange={e => setAddressData({ ...addressData, country: e.target.value })}
-                >
-                  {countries.map((item, index) => (
-                    <MenuItem key={index} value={item.toLowerCase().replace(/\s+/g, '-')}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <CustomTextField
+                select
+                fullWidth
+                label='Country'
+                name='country'
+                variant='outlined'
+                value={addressData?.country?.toLowerCase().replace(/\s+/g, '-') || ''}
+                onChange={e => setAddressData({ ...addressData, country: e.target.value })}
+              >
+                {countries.map((item, index) => (
+                  <MenuItem key={index} value={index === 0 ? '' : item.toLowerCase().replace(/\s+/g, '-')}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </CustomTextField>
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Address Line 1'
                 name='address1'
@@ -203,7 +190,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Address Line 2'
                 name='address1'
@@ -214,7 +201,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Landmark'
                 name='landmark'
@@ -225,7 +212,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='City'
                 name='city'
@@ -236,7 +223,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='State'
                 name='state'
@@ -247,7 +234,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Zip Code'
                 type='number'
@@ -263,12 +250,12 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' onClick={() => setOpen(false)} type='submit'>
             {data ? 'Update' : 'Submit'}
           </Button>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             onClick={() => {
               setOpen(false)

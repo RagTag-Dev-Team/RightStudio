@@ -7,19 +7,18 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import Chip from '@mui/material/Chip'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
-import IconButton from '@mui/material/IconButton'
 import { FormControlLabel } from '@mui/material'
+
+// Component Imports
+import DialogCloseButton from '../DialogCloseButton'
+import CustomTextField from '@core/components/mui/text-field'
 
 type EditUserInfoData = {
   firstName?: string
@@ -45,7 +44,7 @@ const initialData: EditUserInfoProps['data'] = {
   lastName: 'Queen',
   userName: 'oliverQueen',
   billingEmail: 'oliverQueen@gmail.com',
-  status: 'status',
+  status: 'active',
   taxId: 'Tax-8894',
   contact: '+ 1 609 933 4422',
   language: ['english'],
@@ -69,24 +68,28 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
   }
 
   return (
-    <Dialog fullWidth open={open} onClose={handleClose} maxWidth='md' scroll='body'>
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+    <Dialog
+      fullWidth
+      open={open}
+      onClose={handleClose}
+      maxWidth='md'
+      scroll='body'
+      sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+    >
+      <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+        <i className='tabler-x' />
+      </DialogCloseButton>
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Edit User Information
         <Typography component='span' className='flex flex-col text-center'>
           Updating user details will receive a privacy audit.
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
-            <i className='ri-close-line' />
-          </IconButton>
+        <DialogContent className='overflow-visible pbs-0 sm:pli-16'>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='First Name'
                 placeholder='John'
@@ -95,7 +98,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Last Name'
                 placeholder='Doe'
@@ -104,7 +107,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='User Name'
                 placeholder='JohnDoe'
@@ -113,7 +116,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Billing Email'
                 placeholder='johnDoe@email.com'
@@ -122,23 +125,22 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Status</InputLabel>
-                <Select
-                  label='Status'
-                  value={userData?.status}
-                  onChange={e => setUserData({ ...userData, status: e.target.value as string })}
-                >
-                  {status.map((status, index) => (
-                    <MenuItem key={index} value={status.toLowerCase().replace(/\s+/g, '-')}>
-                      {status}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <CustomTextField
+                select
+                fullWidth
+                label='Status'
+                value={userData?.status}
+                onChange={e => setUserData({ ...userData, status: e.target.value as string })}
+              >
+                {status.map((status, index) => (
+                  <MenuItem key={index} value={index === 0 ? '' : status.toLowerCase().replace(/\s+/g, '-')}>
+                    {status}
+                  </MenuItem>
+                ))}
+              </CustomTextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Tax ID'
                 placeholder='Tax-7490'
@@ -147,7 +149,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 label='Contact'
                 placeholder='+ 123 456 7890'
@@ -156,44 +158,44 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Language</InputLabel>
-                <Select
-                  label='Language'
-                  multiple
-                  value={userData?.language}
-                  onChange={e => setUserData({ ...userData, language: e.target.value as string[] })}
-                  renderValue={selected => (
+              <CustomTextField
+                select
+                fullWidth
+                label='Language'
+                value={userData?.language}
+                SelectProps={{
+                  multiple: true,
+                  onChange: e => setUserData({ ...userData, language: e.target.value as string[] }),
+                  renderValue: selected => (
                     <div className='flex items-center gap-2'>
                       {(selected as string[]).map(value => (
                         <Chip key={value} label={value} className='capitalize' size='small' />
                       ))}
                     </div>
-                  )}
-                >
-                  {languages.map((language, index) => (
-                    <MenuItem key={index} value={language.toLowerCase().replace(/\s+/g, '-')}>
-                      {language}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+                  )
+                }}
+              >
+                {languages.map((language, index) => (
+                  <MenuItem key={index} value={language.toLowerCase().replace(/\s+/g, '-')}>
+                    {language}
+                  </MenuItem>
+                ))}
+              </CustomTextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel>Country</InputLabel>
-                <Select
-                  label='Country'
-                  value={userData?.country?.toLowerCase().replace(/\s+/g, '-')}
-                  onChange={e => setUserData({ ...userData, country: e.target.value as string })}
-                >
-                  {countries.map((country, index) => (
-                    <MenuItem key={index} value={country.toLowerCase().replace(/\s+/g, '-')}>
-                      {country}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <CustomTextField
+                select
+                fullWidth
+                label='Country'
+                value={userData?.country?.toLowerCase().replace(/\s+/g, '-')}
+                onChange={e => setUserData({ ...userData, country: e.target.value as string })}
+              >
+                {countries.map((country, index) => (
+                  <MenuItem key={index} value={index === 0 ? '' : country.toLowerCase().replace(/\s+/g, '-')}>
+                    {country}
+                  </MenuItem>
+                ))}
+              </CustomTextField>
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -203,11 +205,11 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' onClick={handleClose} type='submit'>
             Submit
           </Button>
-          <Button variant='outlined' color='secondary' type='reset' onClick={handleClose}>
+          <Button variant='tonal' color='secondary' type='reset' onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>

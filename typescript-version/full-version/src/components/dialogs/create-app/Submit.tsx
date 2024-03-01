@@ -17,18 +17,18 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col items-center gap-4'>
         <div className='flex flex-col items-center gap-1'>
-          <Typography>Submit 🥳</Typography>
-          <Typography>Submit to kickstart your project.</Typography>
+          <Typography variant='h5'>Submit</Typography>
+          <Typography variant='body2'>Submit to kickstart your project.</Typography>
         </div>
-        <img alt='submit-img' src='/images/cards/illustration-john.png' />
+        <img alt='submit-img' src='/images/illustrations/characters/4.png' height={200} width={176} />
       </div>
       <div className='flex items-center justify-between'>
         <Button
-          variant='outlined'
+          variant='tonal'
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+          startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
         >
           Previous
         </Button>
@@ -38,9 +38,9 @@ const Submit = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           onClick={handleNext}
           endIcon={
             isLastStep ? (
-              <i className='ri-check-line' />
+              <i className='tablerr-check' />
             ) : (
-              <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
             )
           }
         >

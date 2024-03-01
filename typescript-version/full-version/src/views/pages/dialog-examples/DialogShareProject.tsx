@@ -19,9 +19,11 @@ const DialogShareProject = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='ri-file-list-2-line text-[28px]' />
+        <i className='tabler-file-description text-[34px] text-textPrimary' />
         <Typography variant='h5'>Share Project</Typography>
-        <Typography>Elegant Share Project options modal popup example, easy to use in any page.</Typography>
+        <Typography color='text.primary'>
+          Elegant Share Project options modal popup example, easy to use in any page.
+        </Typography>
         <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={ShareProject} />
       </CardContent>
     </Card>

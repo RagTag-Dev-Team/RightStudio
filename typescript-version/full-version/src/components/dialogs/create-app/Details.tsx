@@ -4,12 +4,12 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Radio from '@mui/material/Radio'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 
 // Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Config Imports
@@ -32,41 +32,47 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
 
   return (
     <div className='flex flex-col gap-6'>
-      <TextField fullWidth label='Application Name' placeholder={`${themeConfig.templateName}`} />
+      <CustomTextField fullWidth label='Application Name' placeholder={`${themeConfig.templateName}`} />
       <div className='flex flex-col gap-4'>
-        <Typography variant='h6'>Category</Typography>
+        <Typography variant='h5'>Category</Typography>
         <div onClick={() => setValue('crm')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
-              <i className='ri-bar-chart-box-line' />
-            </Avatar>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='info' variant='rounded' size={46}>
+              <i className='tabler-file-text text-3xl' />
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>CRM Application</Typography>
-              <Typography variant='caption'>Scales with any business</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                CRM Application
+              </Typography>
+              <Typography variant='body2'>Scales with any business</Typography>
             </div>
           </div>
           <Radio value='crm' onChange={handleChange} checked={value === 'crm'} />
         </div>
         <div onClick={() => setValue('eCommerce')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
-              <i className='ri-shopping-cart-line' />
-            </Avatar>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='success' variant='rounded' size={46}>
+              <i className='tabler-shopping-cart text-3xl' />
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>eCommerce Platforms</Typography>
-              <Typography variant='caption'>Grow Your Business With App</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                eCommerce Platforms
+              </Typography>
+              <Typography variant='body2'>Grow Your Business With App</Typography>
             </div>
           </div>
           <Radio value='eCommerce' onChange={handleChange} checked={value === 'eCommerce'} />
         </div>
         <div onClick={() => setValue('learning')} className='flex items-center justify-between cursor-pointer gap-4'>
-          <div className='flex items-center gap-4'>
-            <Avatar variant='rounded'>
-              <i className='ri-video-upload-line' />
-            </Avatar>
+          <div className='flex items-center gap-3'>
+            <CustomAvatar skin='light' color='error' variant='rounded' size={46}>
+              <i className='tabler-device-laptop text-3xl' />
+            </CustomAvatar>
             <div className='flex flex-col gap-1'>
-              <Typography>Online Learning platform</Typography>
-              <Typography variant='caption'>Start learning today</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                Online Learning platform
+              </Typography>
+              <Typography variant='body2'>Start learning today</Typography>
             </div>
           </div>
           <Radio value='learning' onChange={handleChange} checked={value === 'learning'} />
@@ -74,11 +80,11 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
       </div>
       <div className='flex items-center justify-between'>
         <Button
-          variant='outlined'
+          variant='tonal'
           color='secondary'
           disabled={activeStep === 0}
           onClick={handlePrev}
-          startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+          startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
         >
           Previous
         </Button>
@@ -88,9 +94,9 @@ const Details = ({ activeStep, isLastStep, handleNext, handlePrev }: Props) => {
           onClick={handleNext}
           endIcon={
             isLastStep ? (
-              <i className='ri-check-line' />
+              <i className='tabler-check' />
             ) : (
-              <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+              <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
             )
           }
         >

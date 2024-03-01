@@ -8,16 +8,18 @@ import Grid from '@mui/material/Grid'
 import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
 import Switch from '@mui/material/Switch'
-import TextField from '@mui/material/TextField'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
+
+// Component Imports
+import DialogCloseButton from '../DialogCloseButton'
+import CustomTextField from '@core/components/mui/text-field'
 
 type BillingCardData = {
   cardNumber?: string
@@ -62,24 +64,21 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
   }, [open])
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle
-        variant='h4'
-        className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+    <Dialog open={open} onClose={handleClose} sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}>
+      <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+        <i className='tabler-x' />
+      </DialogCloseButton>
+      <DialogTitle variant='h4' className='flex flex-col gap-2 text-center p-6 sm:pbs-16 sm:pbe-6 sm:pli-16'>
         {data ? 'Edit Card' : 'Add New Card'}
         <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit your saved card details' : 'Add card for future billing'}
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
-          <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
-            <i className='ri-close-line' />
-          </IconButton>
-          <Grid container spacing={5}>
+        <DialogContent className='overflow-visible pbs-0 p-6 sm:pli-16'>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 name='number'
                 autoComplete='off'
@@ -90,7 +89,7 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 name='name'
                 label='Name on Card'
@@ -101,7 +100,7 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
               />
             </Grid>
             <Grid item xs={6} sm={3}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 name='expiry'
                 autoComplete='off'
@@ -112,7 +111,7 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
               />
             </Grid>
             <Grid item xs={6} sm={3}>
-              <TextField
+              <CustomTextField
                 fullWidth
                 name='cvv'
                 label='CVV'
@@ -127,11 +126,11 @@ const BillingCard = ({ open, setOpen, data }: BillingCardProps) => {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='justify-center pbs-0 p-6 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' type='submit' onClick={handleClose}>
             {data ? 'Update' : 'Submit'}
           </Button>
-          <Button variant='outlined' type='reset' color='secondary' onClick={handleClose}>
+          <Button variant='tonal' type='reset' color='secondary' onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>

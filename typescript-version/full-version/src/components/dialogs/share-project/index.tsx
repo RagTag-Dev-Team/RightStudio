@@ -11,16 +11,19 @@ import DialogContent from '@mui/material/DialogContent'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import Autocomplete from '@mui/material/Autocomplete'
 import Avatar from '@mui/material/Avatar'
-import TextField from '@mui/material/TextField'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemText from '@mui/material/ListItemText'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+
+// Component Imports
+import DialogCloseButton from '../DialogCloseButton'
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
+import CustomAvatar from '@core/components/mui/Avatar'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -133,34 +136,38 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
   }
 
   return (
-    <Dialog fullWidth maxWidth='md' scroll='body' open={open} onClose={() => setOpen(false)}>
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+    <Dialog
+      fullWidth
+      maxWidth='md'
+      scroll='body'
+      open={open}
+      onClose={() => setOpen(false)}
+      sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+    >
+      <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
+        <i className='tabler-x' />
+      </DialogCloseButton>
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         Share Project
         <Typography component='span' className='flex flex-col text-center'>
           Share project with the team members
         </Typography>
       </DialogTitle>
-      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
-        <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
-          <i className='ri-close-line' />
-        </IconButton>
+      <DialogContent className='flex flex-col gap-6 pbs-0 sm:pli-16 sm:pbe-16'>
         <div className='flex flex-col gap-2'>
-          <InputLabel htmlFor='add-member' className='inline-flex'>
-            Add Members
-          </InputLabel>
-          <Autocomplete
-            id='add-member'
+          <CustomAutocomplete
+            fullWidth
             options={autocompleteOptions || []}
             ListboxComponent={List}
+            id='add-member'
             getOptionLabel={option => option.name}
-            renderInput={params => <TextField {...params} size='small' placeholder='Add project members...' />}
+            renderInput={params => (
+              <CustomTextField {...params} size='small' placeholder='Add project members...' label='Add Members' />
+            )}
             renderOption={(props, option) => (
-              <ListItem {...props} key={option.name}>
+              <ListItem {...props} key={option.name} sx={{ width: 'calc(100% - 1rem)' }}>
                 <ListItemAvatar>
-                  <Avatar src={`/images/avatars/${option.avatar}`} alt={option.name} />
+                  <CustomAvatar src={`/images/avatars/${option.avatar}`} alt={option.name} size={30} />
                 </ListItemAvatar>
                 <ListItemText primary={option.name} />
               </ListItem>
@@ -168,30 +175,30 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
           />
         </div>
         <div className='flex flex-col gap-4'>
-          <Typography variant='h6'>{`${data.length} Members`}</Typography>
+          <Typography variant='h5'>{`${data.length} Members`}</Typography>
           <div className='flex flex-col flex-wrap gap-4'>
             {data.map((member, index) => (
-              <div key={index} className='flex items-center w-full gap-4'>
+              <div key={index} className='flex items-center is-full gap-4'>
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />
-                <div className='flex justify-between items-center w-full overflow-hidden'>
+                <div className='flex justify-between items-center is-full overflow-hidden'>
                   <div className='flex flex-col items-start overflow-hidden'>
-                    <Typography variant='body2' className='truncate w-full' color='text.primary'>
+                    <Typography className='truncate is-full' color='text.primary'>
                       {member.name}
                     </Typography>
-                    <Typography variant='body2' className='truncate w-full'>
+                    <Typography variant='body2' className='truncate is-full'>
                       {member.email}
                     </Typography>
                   </div>
 
                   <IconButton className='sm:hidden' size='small' onClick={handleClick}>
-                    <i className='ri-arrow-down-s-line text-xl' />
+                    <i className='tabler-chevron-down text-base' />
                   </IconButton>
 
                   <Button
                     color='secondary'
                     className='hidden sm:flex'
                     onClick={handleClick}
-                    endIcon={<i className='ri-arrow-down-s-line text-xl' />}
+                    endIcon={<i className='tabler-chevron-down text-base' />}
                   >
                     {member.value}
                   </Button>
@@ -221,16 +228,15 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
             </Menu>
           </div>
         </div>
-        <div className='flex items-center justify-between flex-wrap'>
+        <div className='flex items-center justify-between flex-wrap gap-4'>
           <div className='flex items-center flex-grow gap-2'>
-            <i className='ri-group-line text-xl' />
+            <i className='tabler-users text-xl' />
             <Typography
-              variant='body2'
               color='text.primary'
-            >{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
+              className='font-medium'
+            >{`Public to ${themeConfig.templateName} - Pixinvent`}</Typography>
           </div>
-          <Button variant='outlined' className='flex' size='small'>
-            <i className='ri-link text-xl' />
+          <Button variant='contained' className='flex' startIcon={<i className='tabler-link text-base' />}>
             Copy Project Link
           </Button>
         </div>

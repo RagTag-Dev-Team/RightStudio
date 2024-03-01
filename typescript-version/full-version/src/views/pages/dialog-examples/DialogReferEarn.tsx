@@ -19,9 +19,9 @@ const DialogReferEarn = () => {
   return (
     <Card>
       <CardContent className='flex flex-col items-center text-center gap-4'>
-        <i className='ri-gift-line text-[28px]' />
+        <i className='tabler-gift text-[34px] text-textPrimary' />
         <Typography variant='h5'>Refer & Earn</Typography>
-        <Typography>
+        <Typography color='text.primary'>
           Use Refer & Earn modal to encourage your exiting customers refer their friends & colleague.
         </Typography>
         <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={ReferEarn} />
