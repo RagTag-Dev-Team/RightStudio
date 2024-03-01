@@ -5,12 +5,15 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
+import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
+
+// Util Imports
+import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -18,8 +21,13 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 const ApexBarChart = () => {
   // Hooks
   const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
 
   // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
+  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,
@@ -30,12 +38,14 @@ const ApexBarChart = () => {
     plotOptions: {
       bar: {
         borderRadius: 8,
+        borderRadiusApplication: 'end',
+        borderRadiusWhenStacked: 'all',
         barHeight: '30%',
         horizontal: true
       }
     },
     grid: {
-      borderColor: theme.palette.divider,
+      borderColor: divider,
       xaxis: {
         lines: { show: false }
       },
@@ -45,15 +55,15 @@ const ApexBarChart = () => {
     },
     yaxis: {
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: disabledText, fontSize: '13px' }
       }
     },
     xaxis: {
       axisBorder: { show: false },
-      axisTicks: { color: theme.palette.divider },
+      axisTicks: { color: divider },
       categories: ['MON, 11', 'THU, 14', 'FRI, 15', 'MON, 18', 'WED, 20', 'FRI, 21', 'MON, 23'],
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: disabledText, fontSize: '13px' }
       }
     }
   }

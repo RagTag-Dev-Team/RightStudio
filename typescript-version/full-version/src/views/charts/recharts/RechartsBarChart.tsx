@@ -100,14 +100,14 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
   if (active && payload) {
     return (
       <div className='recharts-custom-tooltip'>
-        <Typography>{props.label}</Typography>
+        <Typography color='text.primary'>{props.label}</Typography>
         <Divider />
         {props &&
           props.payload &&
           props.payload.map((i: any) => {
             return (
               <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
-                <i className='ri-circle-fill text-[10px]' />
+                <i className='tabler-circle-filled text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -135,21 +135,21 @@ const RechartsBarChart = () => {
         }}
       />
       <CardContent>
-        <div className='flex flex-wrap mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#826af9' } }}>
-            <i className='ri-circle-fill text-xs' />
+        <div className='flex flex-wrap mbe-4 gap-6'>
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#826af9' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Apple</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#9f87ff' } }}>
-            <i className='ri-circle-fill text-xs' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#9f87ff' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Samsung</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#d2b0ff' } }}>
-            <i className='ri-circle-fill text-xs' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#d2b0ff' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Oneplus</Typography>
           </Box>
           <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#f8d3ff' } }}>
-            <i className='ri-circle-fill text-xs' />
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Motorola</Typography>
           </Box>
         </div>

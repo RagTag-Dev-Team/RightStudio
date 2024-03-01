@@ -108,14 +108,14 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
   if (active && payload) {
     return (
       <div className='recharts-custom-tooltip'>
-        <Typography>{props.label}</Typography>
+        <Typography color='text.primary'>{props.label}</Typography>
         <Divider />
         {props &&
           props.payload &&
           props.payload.map((i: any) => {
             return (
               <Box key={i.dataKey} className='flex items-center gap-2.5' sx={{ '& i': { color: i.fill } }}>
-                <i className='ri-circle-fill text-[10px]' />
+                <i className='tabler-circle-filled text-[10px]' />
                 <Typography variant='body2'>{`${i.dataKey} : ${i.payload[i.dataKey]}`}</Typography>
               </Box>
             )
@@ -143,17 +143,17 @@ const RechartsAreaChart = () => {
         }}
       />
       <CardContent>
-        <div className='flex mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgb(115, 103, 240)' } }}>
-            <i className='ri-circle-fill text-xs' />
+        <div className='flex mbe-4 gap-6'>
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: 'rgb(115, 103, 240)' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Click</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .5)' } }}>
-            <i className='ri-circle-fill text-xs' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .5)' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Sales</Typography>
           </Box>
           <Box className='flex items-center gap-1.5' sx={{ '& i': { color: 'rgba(115, 103, 240, .2)' } }}>
-            <i className='ri-circle-fill text-xs' />
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Visits</Typography>
           </Box>
         </div>

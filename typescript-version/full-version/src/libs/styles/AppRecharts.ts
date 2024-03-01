@@ -19,13 +19,13 @@ const AppRecharts = styled('div')(({ theme }) => ({
   },
   '& .recharts-default-tooltip': {
     border: 'none !important',
-    boxShadow: theme.shadows[3],
+    boxShadow: theme.customShadows.xs,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: `${theme.palette.background.paper} !important`
   },
   '& .recharts-custom-tooltip': {
     padding: theme.spacing(2.5),
-    boxShadow: theme.shadows[3],
+    boxShadow: theme.customShadows.xs,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.background.paper
   },
@@ -44,7 +44,7 @@ const AppRecharts = styled('div')(({ theme }) => ({
     color: `${theme.palette.text.primary} !important`
   },
   '& .recharts-text': {
-    fontSize: '0.875rem',
+    fontSize: '0.8125rem',
     fill: theme.palette.text.disabled
   },
   '& .recharts-pie .recharts-sector, & .recharts-layer': {

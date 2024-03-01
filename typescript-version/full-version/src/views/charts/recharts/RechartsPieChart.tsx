@@ -54,17 +54,20 @@ const renderCustomizedLabel = (props: LabelProp) => {
 const RechartsPieChart = () => {
   return (
     <Card>
-      <CardHeader
-        title='Expense Ratio'
-        subheader='Spending on various categories'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
-      />
+      <CardHeader title='Expense Ratio' subheader='Spending on various categories' />
       <CardContent>
         <AppRecharts>
           <div className='bs-[350px]'>
             <ResponsiveContainer>
               <PieChart height={350} style={{ direction: 'ltr' }}>
-                <Pie data={data} innerRadius={80} dataKey='value' label={renderCustomizedLabel} labelLine={false}>
+                <Pie
+                  data={data}
+                  innerRadius={80}
+                  dataKey='value'
+                  label={renderCustomizedLabel}
+                  labelLine={false}
+                  stroke='none'
+                >
                   {data.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
@@ -74,21 +77,21 @@ const RechartsPieChart = () => {
             </ResponsiveContainer>
           </div>
         </AppRecharts>
-        <div className='flex justify-center flex-wrap mbe-4'>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#00d4bd' } }}>
-            <i className='ri-circle-fill text-xs' />
+        <div className='flex justify-center flex-wrap gap-6'>
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#00d4bd' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>R&D</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#ffe700' } }}>
-            <i className='ri-circle-fill text-xs' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#ffe700' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Operational</Typography>
           </Box>
-          <Box className='flex items-center mie-6 gap-1.5' sx={{ '& i': { color: '#FFA1A1' } }}>
-            <i className='ri-circle-fill text-xs' />
+          <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#FFA1A1' } }}>
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Networking</Typography>
           </Box>
           <Box className='flex items-center gap-1.5' sx={{ '& i': { color: '#826bf8' } }}>
-            <i className='ri-circle-fill text-xs' />
+            <i className='tabler-circle-filled text-xs' />
             <Typography variant='body2'>Hiring</Typography>
           </Box>
         </div>

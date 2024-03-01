@@ -5,12 +5,15 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
+import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
+
+// Util Imports
+import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -73,30 +76,28 @@ const series = [
 const ApexHeatmapChart = () => {
   // Hooks
   const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
 
   // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,
       toolbar: { show: false }
     },
     dataLabels: { enabled: false },
-
-    // stroke: {
-    //   colors: [theme.palette.mode === 'light' ? theme.palette.background.paper : theme.palette.customColors.bodyBg]
-    // },
     legend: {
       position: 'bottom',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
       },
       markers: {
         offsetY: 0,
-        offsetX: -3
+        offsetX: theme.direction === 'rtl' ? 7 : -4
       },
       itemMargin: {
-        vertical: 3,
-        horizontal: 10
+        horizontal: 9
       }
     },
     plotOptions: {
@@ -120,7 +121,8 @@ const ApexHeatmapChart = () => {
     yaxis: {
       labels: {
         style: {
-          colors: theme.palette.text.disabled
+          colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`),
+          fontSize: '13px'
         }
       }
     },

@@ -5,12 +5,15 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
+import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
+
+// Util Imports
+import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -35,8 +38,13 @@ const series = [
 const ApexRadarChart = () => {
   // Hooks
   const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
 
   // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
+  const textDisabled = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+
   const options: ApexOptions = {
     chart: {
       parentHeightOffset: 0,
@@ -57,22 +65,22 @@ const ApexRadarChart = () => {
       show: false
     },
     legend: {
+      fontSize: '13px',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
       },
       markers: {
-        offsetX: -3
+        offsetX: theme.direction === 'rtl' ? 7 : -4
       },
       itemMargin: {
-        vertical: 3,
-        horizontal: 10
+        horizontal: 9
       }
     },
     plotOptions: {
       radar: {
         polygons: {
-          strokeColors: theme.palette.divider,
-          connectorColors: theme.palette.divider
+          strokeColors: divider,
+          connectorColors: divider
         }
       }
     },
@@ -88,15 +96,16 @@ const ApexRadarChart = () => {
       categories: ['Battery', 'Brand', 'Camera', 'Memory', 'Storage', 'Display', 'OS', 'Price'],
       labels: {
         style: {
+          fontSize: '13px',
           colors: [
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled
+            textDisabled,
+            textDisabled,
+            textDisabled,
+            textDisabled,
+            textDisabled,
+            textDisabled,
+            textDisabled,
+            textDisabled
           ]
         }
       }

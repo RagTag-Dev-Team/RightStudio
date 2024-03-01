@@ -5,12 +5,15 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
+import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
+
+// Util Imports
+import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -36,8 +39,13 @@ const series = [
 const ApexColumnChart = () => {
   // Hooks
   const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
 
   // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
+  const textDisabled = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+
   const options: ApexOptions = {
     chart: {
       offsetX: -10,
@@ -51,14 +59,15 @@ const ApexColumnChart = () => {
     legend: {
       position: 'top',
       horizontalAlign: 'left',
-      labels: { colors: theme.palette.text.secondary },
+      fontSize: '13px',
+      labels: { colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`) },
       markers: {
-        offsetY: 1,
-        offsetX: -3
+        offsetY: 2,
+        offsetX: theme.direction === 'rtl' ? 7 : -4,
+        radius: 12
       },
       itemMargin: {
-        vertical: 3,
-        horizontal: 10
+        horizontal: 9
       }
     },
     stroke: {
@@ -75,25 +84,25 @@ const ApexColumnChart = () => {
       }
     },
     grid: {
-      borderColor: theme.palette.divider,
+      borderColor: divider,
       xaxis: {
         lines: { show: true }
       }
     },
     yaxis: {
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: textDisabled, fontSize: '13px' }
       }
     },
     xaxis: {
       axisBorder: { show: false },
-      axisTicks: { color: theme.palette.divider },
+      axisTicks: { color: divider },
       categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12'],
       crosshairs: {
-        stroke: { color: theme.palette.divider }
+        stroke: { color: divider }
       },
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: textDisabled, fontSize: '13px' }
       }
     },
     responsive: [

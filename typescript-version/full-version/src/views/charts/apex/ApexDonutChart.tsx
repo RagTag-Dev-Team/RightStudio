@@ -5,16 +5,20 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
+import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
 
+// Util Imports
+import { rgbaToHex } from '@/utils/rgbaToHex'
+
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
+// Vars
 const donutColors = {
   series1: '#fdd835',
   series2: '#00d4bd',
@@ -26,8 +30,12 @@ const donutColors = {
 const ApexDonutChart = () => {
   // Hooks
   const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
 
   // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
+
   const options: ApexOptions = {
     stroke: { width: 0 },
     labels: ['Operational', 'Networking', 'Hiring', 'R&D'],
@@ -37,12 +45,14 @@ const ApexDonutChart = () => {
       formatter: (val: string) => `${parseInt(val, 10)}%`
     },
     legend: {
+      fontSize: '13px',
       position: 'bottom',
-      markers: { offsetX: -3 },
-      labels: { colors: theme.palette.text.secondary },
+      markers: {
+        offsetX: theme.direction === 'rtl' ? 7 : -4
+      },
+      labels: { colors: textSecondary },
       itemMargin: {
-        vertical: 3,
-        horizontal: 10
+        horizontal: 9
       }
     },
     plotOptions: {
@@ -55,7 +65,7 @@ const ApexDonutChart = () => {
             },
             value: {
               fontSize: '1.2rem',
-              color: theme.palette.text.secondary,
+              color: textSecondary,
               formatter: (val: string) => `${parseInt(val, 10)}`
             },
             total: {
@@ -63,7 +73,7 @@ const ApexDonutChart = () => {
               fontSize: '1.2rem',
               label: 'Operational',
               formatter: () => '31%',
-              color: theme.palette.text.primary
+              color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)
             }
           }
         }
@@ -112,11 +122,7 @@ const ApexDonutChart = () => {
 
   return (
     <Card>
-      <CardHeader
-        title='Expense Ratio'
-        subheader='Spending on various categories'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
-      />
+      <CardHeader title='Expense Ratio' subheader='Spending on various categories' />
       <CardContent>
         <AppReactApexCharts type='donut' width='100%' height={400} options={options} series={[85, 16, 50, 50]} />
       </CardContent>

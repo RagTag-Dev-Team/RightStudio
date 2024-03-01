@@ -82,16 +82,16 @@ const RechartsScatterChart = () => {
       />
       <CardContent>
         <div className='flex mbe-4 gap-6'>
-          <div className='flex items-center'>
-            <i className='ri-circle-fill text-xs mie-1.5 text-primary' />
+          <div className='flex items-center gap-1.5'>
+            <i className='tabler-circle-filled text-xs text-primary' />
             <Typography variant='body2'>React</Typography>
           </div>
-          <div className='flex items-center'>
-            <i className='ri-circle-fill text-xs mie-1.5 text-success' />
+          <div className='flex items-center gap-1.5'>
+            <i className='tabler-circle-filled text-xs text-success' />
             <Typography variant='body2'>Vue</Typography>
           </div>
-          <div className='flex items-center'>
-            <i className='ri-circle-fill text-xs mie-1.5 text-error' />
+          <div className='flex items-center gap-1.5'>
+            <i className='tabler-circle-filled text-xs text-error' />
             <Typography variant='body2'>Angular</Typography>
           </div>
         </div>
