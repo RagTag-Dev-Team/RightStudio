@@ -3,20 +3,18 @@ import { useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import FormLabel from '@mui/material/FormLabel'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import Button from '@mui/material/Button'
-import Autocomplete from '@mui/material/Autocomplete'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Chip from '@mui/material/Chip'
 
 // Component Imports
+import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
@@ -46,40 +44,39 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
   const [furnishingDetails, setFurnishingDetails] = useState<string[]>(['Fridge', 'AC', 'TV'])
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Bedrooms' placeholder='3' />
+        <CustomTextField fullWidth label='Bedrooms' placeholder='3' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Floor No' placeholder='12' />
+        <CustomTextField fullWidth label='Floor No' placeholder='12' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Bathroom' placeholder='4' />
+        <CustomTextField fullWidth label='Bathroom' placeholder='4' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <FormControl fullWidth>
-          <InputLabel id='select-furnished-status'>Furnished Status</InputLabel>
-          <Select id='demo-simple-select' label='Furnished Status' labelId='select-furnished-status' defaultValue=''>
-            <MenuItem value='fully-furnished'>Fully Furnished</MenuItem>
-            <MenuItem value='furnished'>Furnished</MenuItem>
-            <MenuItem value='semi-furnished'>Semi Furnished</MenuItem>
-            <MenuItem value='unfurnished'>UnFurnished</MenuItem>
-          </Select>
-        </FormControl>
+        <CustomTextField select fullWidth id='demo-simple-select' label='Furnished Status' defaultValue=''>
+          <MenuItem value=''>Select Furnished Status</MenuItem>
+          <MenuItem value='fully-furnished'>Fully Furnished</MenuItem>
+          <MenuItem value='furnished'>Furnished</MenuItem>
+          <MenuItem value='semi-furnished'>Semi Furnished</MenuItem>
+          <MenuItem value='unfurnished'>UnFurnished</MenuItem>
+        </CustomTextField>
       </Grid>
       <Grid item xs={12}>
-        <Autocomplete
+        <CustomAutocomplete
           fullWidth
           multiple
+          value={furnishingDetails}
           onChange={(event, value) => setFurnishingDetails(value as string[])}
           id='select-furnishing-details'
           options={furnishingArray}
           defaultValue={furnishingDetails}
           getOptionLabel={option => option || ''}
-          renderInput={params => <TextField {...params} label='Furnishing Details' />}
+          renderInput={params => <CustomTextField {...params} label='Furnishing Details' />}
           renderTags={(value: string[], getTagProps) =>
             value.map((option: string, index: number) => (
-              <Chip key={index} size='small' label={option} {...(getTagProps({ index }) as {})} />
+              <Chip label={option} size='small' {...(getTagProps({ index }) as {})} key={index} />
             ))
           }
         />
@@ -105,11 +102,11 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -119,9 +116,9 @@ const StepPropertyFeatures = ({ activeStep, handleNext, handlePrev, steps }: Pro
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

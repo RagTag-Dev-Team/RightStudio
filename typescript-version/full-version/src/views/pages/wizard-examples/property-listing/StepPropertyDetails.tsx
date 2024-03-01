@@ -5,20 +5,20 @@ import type { ChangeEvent } from 'react'
 // MUI IMports
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import type { TypographyProps } from '@mui/material/Typography'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
@@ -49,7 +49,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'ri-money-dollar-circle-line',
+    asset: 'tabler-home',
     isSelected: true
   },
   {
@@ -62,7 +62,7 @@ const data: CustomInputVerticalData[] = [
         Unlimited free listing.
       </Content>
     ),
-    asset: 'ri-home-5-line'
+    asset: 'tabler-wallet'
   }
 ]
 
@@ -84,12 +84,12 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       {data.map((item, index) => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <i className={item.asset} />
+          asset = <i className={classnames(item.asset, 'text-[28px]')} />
         }
 
         return (
@@ -105,49 +105,52 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
         )
       })}
       <Grid item xs={12} md={6}>
-        <FormControl fullWidth>
-          <InputLabel id='validation-property-select'>Property Type</InputLabel>
-          <Select label='Property Type' labelId='validation-property-select' defaultValue=''>
-            <MenuItem value='residential'>Residential</MenuItem>
-            <MenuItem value='commercial'>Commercial</MenuItem>
-          </Select>
-        </FormControl>
+        <CustomTextField select fullWidth label='Property Type' id='validation-property-select' defaultValue=''>
+          <MenuItem value=''>Select Property Type</MenuItem>
+          <MenuItem value='residential'>Residential</MenuItem>
+          <MenuItem value='commercial'>Commercial</MenuItem>
+        </CustomTextField>
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth type='number' label='Zip Code' placeholder='99950' />
+        <CustomTextField fullWidth type='number' label='Zip Code' placeholder='99950' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <FormControl fullWidth>
-          <InputLabel id='country-select'>Country</InputLabel>
-          <Select label='Country' labelId='country-select' aria-describedby='country-select' defaultValue=''>
-            <MenuItem value='UK'>UK</MenuItem>
-            <MenuItem value='USA'>USA</MenuItem>
-            <MenuItem value='India'>India</MenuItem>
-            <MenuItem value='Australia'>Australia</MenuItem>
-            <MenuItem value='Germany'>Germany</MenuItem>
-          </Select>
-        </FormControl>
+        <CustomTextField
+          select
+          fullWidth
+          label='Country'
+          id='country-select'
+          aria-describedby='country-select'
+          defaultValue=''
+        >
+          <MenuItem value=''>Select Country</MenuItem>
+          <MenuItem value='UK'>UK</MenuItem>
+          <MenuItem value='USA'>USA</MenuItem>
+          <MenuItem value='India'>India</MenuItem>
+          <MenuItem value='Australia'>Australia</MenuItem>
+          <MenuItem value='Germany'>Germany</MenuItem>
+        </CustomTextField>
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Landmark' placeholder='Nr. Hard Rock Cafe' />
+        <CustomTextField fullWidth label='Landmark' placeholder='Nr. Hard Rock Cafe' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='City' placeholder='Los Angeles' />
+        <CustomTextField fullWidth label='City' placeholder='Los Angeles' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='State' placeholder='California' />
+        <CustomTextField fullWidth label='State' placeholder='California' />
       </Grid>
       <Grid item xs={12}>
-        <TextField fullWidth multiline minRows={2} label='Address' placeholder='12, Business Park' />
+        <CustomTextField fullWidth multiline minRows={2} label='Address' placeholder='12, Business Park' />
       </Grid>
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -157,9 +160,9 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

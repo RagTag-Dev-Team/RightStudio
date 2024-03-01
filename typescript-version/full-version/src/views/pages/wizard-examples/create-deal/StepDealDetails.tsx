@@ -6,10 +6,7 @@ import { useState, forwardRef } from 'react'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import Chip from '@mui/material/Chip'
 import Checkbox from '@mui/material/Checkbox'
 import FormGroup from '@mui/material/FormGroup'
@@ -23,6 +20,7 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import dateFormat from 'date-fns/format'
 
 // Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
@@ -72,15 +70,15 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} sm={6}>
-        <TextField fullWidth label='Deal Title' placeholder='Black Friday sale, 25% off' />
+        <CustomTextField fullWidth label='Deal Title' placeholder='Black Friday sale, 25% off' />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TextField fullWidth label='Deal Code' placeholder='25PEROFF' />
+        <CustomTextField fullWidth label='Deal Code' placeholder='25PEROFF' />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           multiline
           minRows={4}
@@ -89,40 +87,38 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Grid container>
+        <Grid container spacing={6}>
           <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel id='select-offered-items'>Offered Items</InputLabel>
-              <Select
-                multiple
-                value={offeredItems}
-                onChange={handleChange}
-                labelId='select-offered-items'
-                input={<OutlinedInput label='Offered Items' />}
-                renderValue={selected => (
-                  <div className='flex flex-wrap'>
-                    {selected.map((value, index) => (
-                      <Chip key={index} label={value} />
+            <CustomTextField
+              select
+              fullWidth
+              SelectProps={{
+                multiple: true, // @ts-ignore
+                onChange: handleChange,
+                renderValue: selected => (
+                  <div className='flex flex-wrap gap-2'>
+                    {(selected as string[]).map((value, index) => (
+                      <Chip size='small' key={index} label={value} />
                     ))}
                   </div>
-                )}
-              >
-                {offeredItemsArray.map((item, index) => (
-                  <MenuItem key={index} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                )
+              }}
+              label='Offered Items'
+              value={offeredItems}
+            >
+              {offeredItemsArray.map((item, index) => (
+                <MenuItem key={index} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            </CustomTextField>
           </Grid>
           <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel id='select-cart-condition'>Cart Condition</InputLabel>
-              <Select labelId='select-cart-condition' label='Cart Condition' defaultValue=''>
-                <MenuItem value='all'>Cart must contain all selected Downloads</MenuItem>
-                <MenuItem value='any'>Cart needs one or more of the selected Downloads</MenuItem>
-              </Select>
-            </FormControl>
+            <CustomTextField select fullWidth label='Cart Condition' defaultValue=''>
+              <MenuItem value=''>Select Condition</MenuItem>
+              <MenuItem value='all'>Cart must contain all selected Downloads</MenuItem>
+              <MenuItem value='any'>Cart needs one or more of the selected Downloads</MenuItem>
+            </CustomTextField>
           </Grid>
         </Grid>
       </Grid>
@@ -153,11 +149,11 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -167,9 +163,9 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

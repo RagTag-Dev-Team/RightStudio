@@ -13,6 +13,7 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
@@ -30,37 +31,37 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
   const [date, setDate] = useState<Date | null | undefined>(null)
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           label='Total Area'
           placeholder='1000'
           InputProps={{
-            endAdornment: <InputAdornment position='end'>sq-ft</InputAdornment>
+            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-ft</InputAdornment>
           }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           label='Carpet Area'
           placeholder='800'
           InputProps={{
-            endAdornment: <InputAdornment position='end'>sq-ft</InputAdornment>
+            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-ft</InputAdornment>
           }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           label='Plot Area'
           placeholder='800'
           InputProps={{
-            endAdornment: <InputAdornment position='end'>sq-yd</InputAdornment>
+            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-yd</InputAdornment>
           }}
         />
       </Grid>
@@ -112,11 +113,11 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -126,9 +127,9 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

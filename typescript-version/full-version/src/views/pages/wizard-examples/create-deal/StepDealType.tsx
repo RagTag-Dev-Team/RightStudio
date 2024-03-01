@@ -4,21 +4,21 @@ import type { ChangeEvent } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import OutlinedInput from '@mui/material/OutlinedInput'
 import Button from '@mui/material/Button'
-import type { SelectChangeEvent } from '@mui/material/Select'
+import { styled, useTheme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
+import type { Mode } from '@core/types'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
@@ -26,6 +26,7 @@ type Props = {
   handleNext: () => void
   handlePrev: () => void
   steps: { title: string; subtitle: string }[]
+  mode?: Mode
 }
 
 // Vars
@@ -34,27 +35,45 @@ const data: CustomInputVerticalData[] = [
     title: 'Percentage',
     value: 'percentage',
     content: 'Create a deal which offer uses some % off (i.e 5% OFF) on total.',
-    asset: 'ri-price-tag-3-line',
+    asset: 'tabler-discount-check-filled',
     isSelected: true
   },
   {
     title: 'Flat Amount',
     value: 'flat-amount',
     content: 'Create a deal which offer uses flat $ off (i.e $5 OFF) on the total.',
-    asset: 'ri-money-dollar-circle-line'
+    asset: 'tabler-credit-card-filled'
   },
   {
     title: 'Prime Member',
     value: 'prime member',
     content: 'Create prime member only deal to encourage the prime members.',
-    asset: 'ri-user-3-line'
+    asset: 'tabler-diamond-filled'
   }
 ]
 
-const regionArray = ['Asia', 'Europe', 'Africa', 'Australia', 'North America', 'South America']
+const ImgWrapper = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'flex-end',
+  justifyContent: 'center',
+  borderRadius: 'var(--mui-shape-borderRadius)',
+  border: '1px solid var(--mui-palette-divider)',
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(4, 4, 0, 4)
+  },
+  [theme.breakpoints.up('sm')]: {
+    height: 250,
+    padding: theme.spacing(5, 5, 0, 5)
+  },
+  '& img': {
+    height: 'auto',
+    maxWidth: '100%'
+  }
+}))
+
+const regionArray = ['Select Region', 'Asia', 'Europe', 'Africa', 'Australia', 'North America', 'South America']
 
 const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
-  // Vars
   const initialSelectedOption: string = data.filter(item => item.isSelected)[
     data.filter(item => item.isSelected).length - 1
   ].value
@@ -62,6 +81,9 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   // States
   const [selectedOption, setSelectedOption] = useState<string>(initialSelectedOption)
   const [region, setRegion] = useState<string>('')
+
+  // Hooks
+  const theme = useTheme()
 
   const handleOptionChange = (prop: string | ChangeEvent<HTMLInputElement>) => {
     if (typeof prop === 'string') {
@@ -72,17 +94,17 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12}>
-        <div className='flex border rounded'>
-          <img alt='illustration' src='/images/pages/shopping-girl.png' />
-        </div>
+        <ImgWrapper>
+          <img width={650} alt='illustration' src={`/images/pages/create-deal-type-${theme.palette.mode}.png`} />
+        </ImgWrapper>
       </Grid>
       {data.map((item, index) => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <i className={item.asset} />
+          asset = <i className={classnames(item.asset, 'text-[1.75rem]')} />
         }
 
         return (
@@ -98,7 +120,7 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
         )
       })}
       <Grid item xs={12} sm={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           label='Discount'
@@ -107,31 +129,31 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <FormControl fullWidth>
-          <InputLabel id='select-region'>Region</InputLabel>
-          <Select
-            value={region}
-            labelId='select-region'
-            onChange={(e: SelectChangeEvent) => setRegion(e.target.value as string)}
-            input={<OutlinedInput label='Region' />}
-          >
-            {regionArray.map(item => (
-              <MenuItem key={item} value={item}>
-                {item}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText>Select applicable regions for the deal.</FormHelperText>
-        </FormControl>
+        <CustomTextField
+          select
+          fullWidth
+          value={region}
+          SelectProps={{
+            onChange: e => setRegion(e.target.value as string)
+          }}
+          label='Region'
+        >
+          {regionArray.map((item, index) => (
+            <MenuItem key={item} value={index === 0 ? '' : item}>
+              {item}
+            </MenuItem>
+          ))}
+        </CustomTextField>
+        <FormHelperText>Select applicable regions for the deal.</FormHelperText>
       </Grid>
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -141,9 +163,9 @@ const StepDealType = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

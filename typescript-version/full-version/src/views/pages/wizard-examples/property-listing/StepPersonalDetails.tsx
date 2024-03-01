@@ -5,9 +5,11 @@ import type { ChangeEvent } from 'react'
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
@@ -15,6 +17,7 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 import DirectionalIcon from '@components/DirectionalIcon'
+import CustomTextField from '@core/components/mui/text-field'
 
 type Props = {
   activeStep: number
@@ -28,21 +31,21 @@ const data: CustomInputVerticalData[] = [
   {
     title: 'I am the Builder',
     value: 'builder',
-    content: 'List property as Builder, list your project and get highest reach.',
-    asset: 'ri-home-5-line',
+    content: 'List property as Builder, list your project and get highest reach very fast.',
+    asset: 'tabler-building',
     isSelected: true
   },
   {
     title: 'I am the Owner',
     value: 'owner',
     content: 'Submit property as an Individual. Lease, Rent or Sell at the best price.',
-    asset: 'ri-user-3-line'
+    asset: 'tabler-diamond'
   },
   {
     title: 'I am the broker',
     value: 'broker',
     content: 'Earn highest commission by listing your clients properties at the best price.',
-    asset: 'ri-money-dollar-circle-line'
+    asset: 'tabler-briefcase'
   }
 ]
 
@@ -67,12 +70,12 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
   }
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       {data.map((item, index) => {
         let asset
 
         if (item.asset && typeof item.asset === 'string') {
-          asset = <i className={item.asset} />
+          asset = <i className={classnames(item.asset, 'text-[28px]')} />
         }
 
         return (
@@ -88,16 +91,16 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
         )
       })}
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='First Name' placeholder='John' />
+        <CustomTextField fullWidth label='First Name' placeholder='John' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Last Name' placeholder='Doe' />
+        <CustomTextField fullWidth label='Last Name' placeholder='Doe' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Username' placeholder='john.doe' />
+        <CustomTextField fullWidth label='Username' placeholder='john.doe' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           label='Password'
           placeholder='············'
@@ -112,7 +115,7 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
                   onMouseDown={e => e.preventDefault()}
                   aria-label='toggle password visibility'
                 >
-                  <i className={isPasswordShown ? 'ri-eye-off-line' : 'ri-eye-line'} />
+                  <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
                 </IconButton>
               </InputAdornment>
             )
@@ -120,26 +123,19 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField fullWidth label='Email' placeholder='john.doe@gmail.com' />
+        <CustomTextField fullWidth label='Email' placeholder='john.doe@gmail.com' />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
-          fullWidth
-          label='Contact'
-          placeholder='202 555 0111'
-          InputProps={{
-            startAdornment: <InputAdornment position='start'>US (+1)</InputAdornment>
-          }}
-        />
+        <CustomTextField fullWidth label='Contact' placeholder='202 555 0111' />
       </Grid>
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
-            startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+            startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
           >
             Previous
           </Button>
@@ -149,9 +145,9 @@ const StepPersonalDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
-                <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
               )
             }
           >

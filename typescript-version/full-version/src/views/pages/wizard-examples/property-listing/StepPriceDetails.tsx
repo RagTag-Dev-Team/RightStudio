@@ -1,10 +1,7 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import FormLabel from '@mui/material/FormLabel'
 import Radio from '@mui/material/Radio'
@@ -14,6 +11,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 
 // Component Imports
+import CustomTextField from '@core/components/mui/text-field'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {
@@ -25,9 +23,9 @@ type Props = {
 
 const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           placeholder='25,000'
@@ -35,14 +33,14 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </InputAdornment>
             )
           }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           placeholder='500'
@@ -50,14 +48,14 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </InputAdornment>
             )
           }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           placeholder='50'
@@ -65,7 +63,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </InputAdornment>
             )
           }}
@@ -73,19 +71,17 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
       </Grid>
 
       <Grid item xs={12} md={6}>
-        <FormControl fullWidth>
-          <InputLabel id='select-maintenance'>Maintenance Period</InputLabel>
-          <Select labelId='select-maintenance' label='Maintenance Period' defaultValue=''>
-            <MenuItem value='monthly'>Monthly</MenuItem>
-            <MenuItem value='quarterly'>Quarterly</MenuItem>
-            <MenuItem value='half-yearly'>Half Yearly</MenuItem>
-            <MenuItem value='yearly'>Yearly</MenuItem>
-            <MenuItem value='one-time'>One-time</MenuItem>
-          </Select>
-        </FormControl>
+        <CustomTextField select fullWidth label='Maintenance Period' defaultValue=''>
+          <MenuItem value=''>Select Maintenance Period</MenuItem>
+          <MenuItem value='monthly'>Monthly</MenuItem>
+          <MenuItem value='quarterly'>Quarterly</MenuItem>
+          <MenuItem value='half-yearly'>Half Yearly</MenuItem>
+          <MenuItem value='yearly'>Yearly</MenuItem>
+          <MenuItem value='one-time'>One-time</MenuItem>
+        </CustomTextField>
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           placeholder='250'
@@ -93,14 +89,14 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </InputAdornment>
             )
           }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <TextField
+        <CustomTextField
           fullWidth
           type='number'
           placeholder='500'
@@ -108,7 +104,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </InputAdornment>
             )
           }}
@@ -133,7 +129,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
       <Grid item xs={12}>
         <div className='flex items-center justify-between'>
           <Button
-            variant='outlined'
+            variant='tonal'
             color='secondary'
             disabled={activeStep === 0}
             onClick={handlePrev}
@@ -147,7 +143,7 @@ const StepPriceDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) 
             onClick={handleNext}
             endIcon={
               activeStep === steps.length - 1 ? (
-                <i className='ri-check-line' />
+                <i className='tabler-check' />
               ) : (
                 <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
               )

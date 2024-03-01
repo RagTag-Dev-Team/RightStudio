@@ -21,6 +21,7 @@ import Fade from '@mui/material/Fade'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+import CustomTextField from '@core/components/mui/text-field'
 
 // Vars
 const products = [
@@ -62,12 +63,12 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
   }, [openFade])
 
   return (
-    <Grid container>
-      <Grid item xs={12} lg={8}>
+    <Grid container spacing={6}>
+      <Grid item xs={12} lg={8} className='flex flex-col gap-4'>
         <Collapse in={openCollapse}>
           <Fade in={openFade} timeout={{ exit: 300 }}>
             <Alert
-              icon={<i className='ri-percent-line' />}
+              icon={<i className='tabler-percentage' />}
               action={
                 <IconButton
                   aria-label='close'
@@ -77,47 +78,63 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                     setOpenFade(false)
                   }}
                 >
-                  <i className='ri-close-line' />
+                  <i className='tabler-x' />
                 </IconButton>
               }
             >
               <AlertTitle>Available Offers</AlertTitle>
-              <Typography>- 10% Instant Discount on Bank of America Corp Bank Debit and Credit cards</Typography>
-              <Typography>- 25% Cashback Voucher of up to $60 on first ever PayPal transaction. TCA</Typography>
+              <Typography color='success.main'>
+                - 10% Instant Discount on Bank of America Corp Bank Debit and Credit cards
+              </Typography>
+              <Typography color='success.main'>
+                - 25% Cashback Voucher of up to $60 on first ever PayPal transaction. TCA
+              </Typography>
             </Alert>
           </Fade>
         </Collapse>
-        <Typography>My Shopping Bag (2 Items)</Typography>
+        <Typography variant='h5'>My Shopping Bag (2 Items)</Typography>
         <div className='border rounded'>
           {products.map((product, index) => (
-            <div key={index} className='flex flex-col sm:flex-row items-center relative [&:not(:last-child)]:border-be'>
+            <div
+              key={index}
+              className='flex flex-col sm:flex-row items-center gap-4 p-6 relative [&:not(:last-child)]:border-be'
+            >
               <img height={140} width={140} src={product.imgSrc} alt={product.imgAlt} />
-              <IconButton size='small' className='absolute block-start-2 inline-end-2'>
-                <i className='ri-close-line text-xl' />
+              <IconButton size='small' className='absolute block-start-4 inline-end-4'>
+                <i className='tabler-x text-lg' />
               </IconButton>
               <div className='flex flex-col sm:flex-row items-center sm:justify-between w-full'>
-                <div className='flex flex-col items-center sm:items-start'>
-                  <Typography>{product.productName}</Typography>
-                  <div className='flex items-center'>
-                    <Typography>Sold By:</Typography>
-                    <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
-                      {product.soldBy}
-                    </Typography>
+                <div className='flex flex-col items-center gap-2 sm:items-start'>
+                  <Typography color='text.primary' className='font-medium'>
+                    {product.productName}
+                  </Typography>
+                  <div className='flex items-center gap-4'>
+                    <div className='flex items-center gap-0.5'>
+                      <Typography>Sold By:</Typography>
+                      <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+                        {product.soldBy}
+                      </Typography>
+                    </div>
                     {product.inStock ? (
-                      <Chip size='small' color='success' label='In Stock' />
+                      <Chip variant='tonal' size='small' color='success' label='In Stock' />
                     ) : (
-                      <Chip size='small' color='error' label='Out of Stock' />
+                      <Chip variant='tonal' size='small' color='error' label='Out of Stock' />
                     )}
                   </div>
-                  <Rating name='google-nest-rating' value={product.rating} readOnly />
-                  <TextField size='small' type='number' defaultValue={product.count} className='block max-is-[100px]' />
+                  <Rating
+                    name='google-nest-rating'
+                    value={product.rating}
+                    emptyIcon={<i className='tabler-star-filled text-textDisabled' />}
+                    readOnly
+                  />
+                  <CustomTextField type='number' defaultValue={product.count} className='block max-is-[152px]' />
                 </div>
-                <div className='flex flex-col justify-between items-center sm:items-end'>
+                <div className='flex flex-col justify-between items-center gap-4 sm:items-end'>
                   <div className='flex'>
                     <Typography color='primary'>{`$${product.price}`}</Typography>
                     <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
                   </div>
-                  <Button variant='outlined' size='small'>
+                  <Button variant='tonal' size='small'>
                     Move to wishlist
                   </Button>
                 </div>
@@ -129,25 +146,29 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           href='/'
           component={Link}
           onClick={e => e.preventDefault()}
-          className='flex items-center justify-between gap-4 border rounded'
+          className='flex items-center justify-between gap-4 plb-2 pli-5 border border-primary rounded'
           color='primary'
         >
           Add more products from wishlist
-          <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
+          <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' className='text-base' />
         </Typography>
       </Grid>
-      <Grid item xs={12} lg={4}>
+      <Grid item xs={12} lg={4} className='flex flex-col gap-4'>
         <div className='border rounded'>
-          <CardContent>
-            <Typography className='font-medium'>Offer</Typography>
+          <CardContent className='flex flex-col gap-4'>
+            <Typography color='text.primary' className='font-medium'>
+              Offer
+            </Typography>
             <div className='flex gap-4'>
               <TextField fullWidth size='small' placeholder='Enter Promo Code' />
               <Button variant='outlined' className='normal-case'>
                 Apply
               </Button>
             </div>
-            <div className='rounded bg-actionHover'>
-              <Typography className='font-medium'>Buying gift for a loved one?</Typography>
+            <div className='rounded bg-actionHover p-6 flex flex-col gap-2'>
+              <Typography color='text.primary' className='font-medium'>
+                Buying gift for a loved one?
+              </Typography>
               <Typography>Gift wrap and personalized message on card, Only for $2.</Typography>
               <Typography
                 href='/'
@@ -162,33 +183,31 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           </CardContent>
           <Divider />
           <CardContent className='flex gap-4 flex-col'>
-            <Typography className='font-medium'>Price Details</Typography>
+            <Typography color='text.primary' className='font-medium'>
+              Price Details
+            </Typography>
             <div className='flex flex-col gap-2'>
               <div className='flex items-center flex-wrap justify-between'>
-                <Typography>Bag Total</Typography>
+                <Typography color='text.primary'>Bag Total</Typography>
                 <Typography>$1198.00</Typography>
               </div>
               <div className='flex items-center flex-wrap justify-between'>
-                <Typography>Coup Discount</Typography>
-                <Typography
-                  href='/'
-                  component={Link}
-                  onClick={e => e.preventDefault()}
-                  className='font-medium'
-                  color='primary'
-                >
+                <Typography color='text.primary'>Coup Discount</Typography>
+                <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
                   Apply Coupon
                 </Typography>
               </div>
               <div className='flex items-center flex-wrap justify-between'>
-                <Typography>Order Total</Typography>
+                <Typography color='text.primary'>Order Total</Typography>
                 <Typography>$1198.00</Typography>
               </div>
               <div className='flex items-center flex-wrap justify-between'>
-                <Typography>Delivery Charges</Typography>
-                <div className='flex items-center'>
-                  <Typography className='line-through'>$5.00</Typography>
-                  <Chip size='small' color='success' label='Free' />
+                <Typography color='text.primary'>Delivery Charges</Typography>
+                <div className='flex items-center gap-2'>
+                  <Typography color='text.disabled' className='line-through'>
+                    $5.00
+                  </Typography>
+                  <Chip variant='tonal' size='small' color='success' label='Free' />
                 </div>
               </div>
             </div>
@@ -196,8 +215,12 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
           <Divider />
           <CardContent>
             <div className='flex items-center flex-wrap justify-between'>
-              <Typography className='font-medium'>Total</Typography>
-              <Typography className='font-medium'>$1198.00</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                Total
+              </Typography>
+              <Typography color='text.primary' className='font-medium'>
+                $1198.00
+              </Typography>
             </div>
           </CardContent>
         </div>
