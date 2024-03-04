@@ -32,9 +32,6 @@ const select: Theme['components'] = {
         ...(ownerState.variant === 'outlined' && {
           height: '1.5em'
         }),
-        ...(ownerState.variant === 'filled' && {
-          maxHeight: '1.4375em'
-        }),
         '&[aria-expanded="true"] ~ i, &[aria-expanded="true"] ~ svg': {
           transform: 'rotate(180deg)'
         },

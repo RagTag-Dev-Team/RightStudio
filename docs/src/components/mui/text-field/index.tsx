@@ -10,6 +10,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   '& .MuiInputLabel-root': {
     transform: 'none',
     width: 'fit-content',
+    maxWidth: '100%',
     lineHeight: 1.153,
     position: 'relative',
     fontSize: theme.typography.body2.fontSize,
@@ -173,6 +174,9 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   },
   '& .MuiSelect-select': {
     lineHeight: 1.5,
+    '&.MuiInputBase-input': {
+      paddingInlineEnd: '32px !important'
+    },
   },
   '& .Mui-focused .MuiSelect-select': {
     '& ~ i, & ~ svg': {

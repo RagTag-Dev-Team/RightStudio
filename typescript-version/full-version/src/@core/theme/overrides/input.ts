@@ -101,7 +101,8 @@ const input: Theme['components'] = {
     styleOverrides: {
       root: {
         lineHeight: 1,
-        letterSpacing: 'unset'
+        letterSpacing: 'unset',
+        marginInline: 0
       }
     }
   }
