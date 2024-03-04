@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
+import Chip from '@mui/material/Chip'
 
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
@@ -17,17 +18,22 @@ import VerticalNavContent from './VerticalNavContent'
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
+import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
+import menuRootStyles from '@core/styles/horizontal/menuRootStyles'
 import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
+import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
+import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'
 
 const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
+  const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
   const { settings } = useSettings()
   const params = useParams()
@@ -40,34 +46,39 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       switchToVertical
       verticalNavContent={VerticalNavContent}
       verticalNavProps={{
-        customStyles: verticalNavigationCustomStyles(),
+        customStyles: verticalNavigationCustomStyles(verticalNavOptions, theme),
         backgroundColor: 'var(--mui-palette-background-paper)'
       }}
     >
       <Menu
+        triggerPopout='click'
+        rootStyles={menuRootStyles(theme)}
         menuItemStyles={menuItemStyles(settings, theme)}
+        renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
-          mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
-          alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+          mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
+          alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: {
-            button: { paddingBlock: '12px' },
-            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-          }
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          renderExpandedMenuItemIcon: { icon: <i className='tabler-circle text-xs' /> },
+          menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >
-        <SubMenu label={dictionary['navigation'].dashboards}>
+        <SubMenu label={dictionary['navigation'].dashboards} icon={<i className='tabler-smart-home' />}>
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
-          <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
-          <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/analytics`} icon={<i className='tabler-chart-pie-2' />}>
+            {dictionary['navigation'].analytics}
+          </MenuItem>
+          <MenuItem href={`/${locale}/dashboards/ecommerce`} icon={<i className='tabler-shopping-cart' />}>
+            {dictionary['navigation'].eCommerce}
+          </MenuItem>
         </SubMenu>
-        <MenuItem href={`/${locale}/about`}>About</MenuItem>
-        <SubMenu label={dictionary['navigation'].apps}>
-          <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
-          <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
-          <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
-          <SubMenu label={dictionary['navigation'].invoice}>
+        <SubMenu label={dictionary['navigation'].apps} icon={<i className='tabler-mail' />}>
+          <MenuItem href={`/${locale}/apps/calendar`} icon={<i className='tabler-calendar' />}>
+            {dictionary['navigation'].calendar}
+          </MenuItem>
+          <SubMenu label={dictionary['navigation'].invoice} icon={<i className='tabler-file-description' />}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
               {dictionary['navigation'].preview}
@@ -75,21 +86,29 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].user}>
+          <SubMenu label={dictionary['navigation'].user} icon={<i className='tabler-user' />}>
             <MenuItem href={`/${locale}/apps/user/list`}>{dictionary['navigation'].list}</MenuItem>
             <MenuItem href={`/${locale}/apps/user/view`}>{dictionary['navigation'].view}</MenuItem>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].rolesPermissions}>
+          <SubMenu label={dictionary['navigation'].rolesPermissions} icon={<i className='tabler-lock' />}>
             <MenuItem href={`/${locale}/apps/roles`}>{dictionary['navigation'].roles}</MenuItem>
             <MenuItem href={`/${locale}/apps/permissions`}>{dictionary['navigation'].permissions}</MenuItem>
           </SubMenu>
         </SubMenu>
-        <SubMenu label={dictionary['navigation'].pages}>
-          <MenuItem href={`/${locale}/pages/user-profile`}>{dictionary['navigation'].userProfile}</MenuItem>
-          <MenuItem href={`/${locale}/pages/account-settings`}>{dictionary['navigation'].accountSettings}</MenuItem>
-          <MenuItem href={`/${locale}/pages/faq`}>{dictionary['navigation'].faq}</MenuItem>
-          <MenuItem href={`/${locale}/pages/pricing`}>{dictionary['navigation'].pricing}</MenuItem>
-          <SubMenu label={dictionary['navigation'].miscellaneous}>
+        <SubMenu label={dictionary['navigation'].pages} icon={<i className='tabler-file' />}>
+          <MenuItem href={`/${locale}/pages/user-profile`} icon={<i className='tabler-user-circle' />}>
+            {dictionary['navigation'].userProfile}
+          </MenuItem>
+          <MenuItem href={`/${locale}/pages/account-settings`} icon={<i className='tabler-settings' />}>
+            {dictionary['navigation'].accountSettings}
+          </MenuItem>
+          <MenuItem href={`/${locale}/pages/faq`} icon={<i className='tabler-help-circle' />}>
+            {dictionary['navigation'].faq}
+          </MenuItem>
+          <MenuItem href={`/${locale}/pages/pricing`} icon={<i className='tabler-currency-dollar' />}>
+            {dictionary['navigation'].pricing}
+          </MenuItem>
+          <SubMenu label={dictionary['navigation'].miscellaneous} icon={<i className='tabler-file-info' />}>
             <MenuItem href={`/${locale}/pages/misc/coming-soon`} target='_blank'>
               {dictionary['navigation'].comingSoon}
             </MenuItem>
@@ -103,7 +122,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
               {dictionary['navigation'].notAuthorized401}
             </MenuItem>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].authPages}>
+          <SubMenu label={dictionary['navigation'].authPages} icon={<i className='tabler-shield-lock' />}>
             <SubMenu label={dictionary['navigation'].login}>
               <MenuItem href={`/${locale}/pages/auth/login-v1`} target='_blank'>
                 {dictionary['navigation'].loginV1}
@@ -156,7 +175,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
               </MenuItem>
             </SubMenu>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].wizardExamples}>
+          <SubMenu label={dictionary['navigation'].wizardExamples} icon={<i className='tabler-dots' />}>
             <MenuItem href={`/${locale}/pages/wizard-examples/checkout`}>{dictionary['navigation'].checkout}</MenuItem>
             <MenuItem href={`/${locale}/pages/wizard-examples/property-listing`}>
               {dictionary['navigation'].propertyListing}
@@ -165,8 +184,10 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
               {dictionary['navigation'].createDeal}
             </MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/pages/dialog-examples`}>{dictionary['navigation'].dialogExamples}</MenuItem>
-          <SubMenu label={dictionary['navigation'].widgetExamples}>
+          <MenuItem href={`/${locale}/pages/dialog-examples`} icon={<i className='tabler-square' />}>
+            {dictionary['navigation'].dialogExamples}
+          </MenuItem>
+          <SubMenu label={dictionary['navigation'].widgetExamples} icon={<i className='tabler-chart-bar' />}>
             <MenuItem href={`/${locale}/pages/widget-examples/basic`}>{dictionary['navigation'].basic}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/advanced`}>{dictionary['navigation'].advanced}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/statistics`}>
@@ -175,69 +196,104 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
+          <MenuItem href={`/${locale}/icons-test`} icon={<i className='tabler-icons' />}>
+            Icons Test
+          </MenuItem>
         </SubMenu>
-        <SubMenu label={dictionary['navigation'].formsAndTables}>
-          <MenuItem href={`/${locale}/forms/form-layouts`}>{dictionary['navigation'].formLayouts}</MenuItem>
-          <MenuItem href={`/${locale}/forms/form-validation`}>{dictionary['navigation'].formValidation}</MenuItem>
-          <MenuItem href={`/${locale}/forms/form-wizard`}>{dictionary['navigation'].formWizard}</MenuItem>
-          <MenuItem href={`/${locale}/react-table`}>{dictionary['navigation'].reactTable}</MenuItem>
+        <SubMenu label={dictionary['navigation'].formsAndTables} icon={<i className='tabler-file-invoice' />}>
+          <MenuItem href={`/${locale}/forms/form-layouts`} icon={<i className='tabler-layout' />}>
+            {dictionary['navigation'].formLayouts}
+          </MenuItem>
+          <MenuItem href={`/${locale}/forms/form-validation`} icon={<i className='tabler-checkup-list' />}>
+            {dictionary['navigation'].formValidation}
+          </MenuItem>
+          <MenuItem href={`/${locale}/forms/form-wizard`} icon={<i className='tabler-git-merge' />}>
+            {dictionary['navigation'].formWizard}
+          </MenuItem>
+          <MenuItem href={`/${locale}/react-table`} icon={<i className='tabler-table' />}>
+            {dictionary['navigation'].reactTable}
+          </MenuItem>
           <MenuItem
+            icon={<i className='tabler-checkbox' />}
             href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements`}
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].formELements}
           </MenuItem>
           <MenuItem
+            icon={<i className='tabler-layout-board-split' />}
             href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/mui-table`}
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].muiTables}
           </MenuItem>
         </SubMenu>
-        <SubMenu label={dictionary['navigation'].charts}>
-          <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
-          <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
+        <SubMenu label={dictionary['navigation'].charts} icon={<i className='tabler-chart-donut-2' />}>
+          <MenuItem href={`/${locale}/charts/recharts`} icon={<i className='tabler-chart-sankey' />}>
+            {dictionary['navigation'].recharts}
+          </MenuItem>
+          <MenuItem href={`/${locale}/charts/apex-charts`} icon={<i className='tabler-chart-ppf' />}>
+            {dictionary['navigation'].apex}
+          </MenuItem>
         </SubMenu>
-        <SubMenu label={dictionary['navigation'].others}>
+        <SubMenu label={dictionary['navigation'].others} icon={<i className='tabler-dots' />}>
           <MenuItem
+            icon={<i className='tabler-cards' />}
             href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation`}
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].foundation}
           </MenuItem>
           <MenuItem
+            icon={<i className='tabler-atom' />}
             href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components`}
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].components}
           </MenuItem>
           <MenuItem
+            icon={<i className='tabler-list-search' />}
             href={`${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`}
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
           >
             {dictionary['navigation'].menuExamples}
           </MenuItem>
-          <MenuItem suffix={<i className='ri-external-link-line text-xl' />} target='_blank'>
+          <MenuItem
+            suffix={<i className='tabler-external-link text-xl' />}
+            target='_blank'
+            href='https://pixinvent.ticksy.com'
+            icon={<i className='tabler-lifebuoy' />}
+          >
             {dictionary['navigation'].raiseSupport}
           </MenuItem>
-          <MenuItem suffix={<i className='ri-external-link-line text-xl' />} target='_blank'>
+          <MenuItem
+            suffix={<i className='tabler-external-link text-xl' />}
+            target='_blank'
+            icon={<i className='tabler-book-2' />}
+            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+          >
             {dictionary['navigation'].documentation}
           </MenuItem>
-          <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
           <MenuItem
+            suffix={<Chip label='New' size='small' color='info' />}
+            icon={<i className='tabler-notification' />}
+          >
+            {dictionary['navigation'].itemWithBadge}
+          </MenuItem>
+          <MenuItem
+            icon={<i className='tabler-link' />}
             href='https://themeselection.com'
             target='_blank'
-            suffix={<i className='ri-external-link-line text-xl' />}
+            suffix={<i className='tabler-external-link text-xl' />}
           >
             {dictionary['navigation'].externalLink}
           </MenuItem>
-          <SubMenu label={dictionary['navigation'].menuLevels}>
+          <SubMenu label={dictionary['navigation'].menuLevels} icon={<i className='tabler-menu-2' />}>
             <MenuItem>{dictionary['navigation'].menuLevel2}</MenuItem>
             <SubMenu label={dictionary['navigation'].menuLevel2}>
               <MenuItem>{dictionary['navigation'].menuLevel3}</MenuItem>
@@ -250,14 +306,15 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       {/* <Menu
         menuItemStyles={menuItemStyles(settings, theme)}
         popoutMenuOffset={{
-          mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
+          mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
           menuItemStyles: {
             button: { paddingBlock: '12px' },
             subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-          }
+          },
+          menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >
         <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />

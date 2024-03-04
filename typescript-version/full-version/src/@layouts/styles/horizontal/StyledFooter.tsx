@@ -1,3 +1,6 @@
+// MUI Imports
+import type { Theme } from '@mui/material/styles'
+
 // Third-party Imports
 import styled from '@emotion/styled'
 import type { CSSObject } from '@emotion/styled'
@@ -9,6 +12,7 @@ import themeConfig from '@configs/themeConfig'
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledFooterProps = {
+  theme: Theme
   overrideStyles?: CSSObject
 }
 
@@ -17,8 +21,15 @@ const StyledFooter = styled.footer<StyledFooterProps>`
     position: sticky;
     inset-block-end: 0;
     z-index: var(--footer-z-index);
-    background-color: var(--background-color);
-    border-block-start: 1px solid var(--border-color);
+    background-color: var(--mui-palette-background-paper);
+    ${({ theme }) => `
+    box-shadow: 0 3px 12px 0px rgb(var(--mui-mainColorChannels-${theme.palette.mode}Shadow) / 0.14);
+        `}
+
+    [data-skin='bordered'] & {
+      box-shadow: none;
+      border-block-start: 1px solid var(--border-color);
+    }
   }
 
   &.${horizontalLayoutClasses.footerContentCompact} .${horizontalLayoutClasses.footerContentWrapper} {
@@ -27,7 +38,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   }
 
   .${horizontalLayoutClasses.footerContentWrapper} {
-    padding-block: 15px;
+    padding-block: 16px;
     padding-inline: ${themeConfig.layoutPadding}px;
   }
 

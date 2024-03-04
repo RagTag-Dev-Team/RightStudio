@@ -1,3 +1,6 @@
+// MUI Imports
+import type { Theme } from '@mui/material/styles'
+
 // Third-party Imports
 import styled from '@emotion/styled'
 import type { CSSObject } from '@emotion/styled'
@@ -9,6 +12,7 @@ import themeConfig from '@configs/themeConfig'
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledHeaderProps = {
+  theme: Theme
   overrideStyles?: CSSObject
 }
 
@@ -35,6 +39,10 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     .${verticalLayoutClasses.navbar} {
       max-inline-size: ${themeConfig.compactContentWidth}px;
     }
+
+    .${verticalLayoutClasses.navbar} {
+      max-inline-size: 1440px;
+    }
   }
 
   &.${verticalLayoutClasses.headerFixed} {
@@ -42,15 +50,22 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     inset-block-start: 0;
     z-index: var(--header-z-index);
 
-    &:not(.${verticalLayoutClasses.headerBlur}).${verticalLayoutClasses.headerAttached},
-      &:not(.${verticalLayoutClasses.headerBlur}).${verticalLayoutClasses.headerDetached}
+    &:not(.${verticalLayoutClasses.headerBlur}).scrolled.${verticalLayoutClasses.headerAttached},
+      &:not(.${verticalLayoutClasses.headerBlur}).scrolled.${verticalLayoutClasses.headerDetached}
       .${verticalLayoutClasses.navbar} {
-      background-color: var(--background-color);
+      background-color: var(--mui-palette-background-paper);
     }
 
     &.${verticalLayoutClasses.headerDetached} .${verticalLayoutClasses.navbar} {
-      border-inline: 1px solid var(--border-color);
-      border-block-end: 1px solid var(--border-color);
+      box-shadow: var(--mui-customShadows-sm);
+
+      [data-skin='bordered'] & {
+        box-shadow: none;
+        border-inline: 1px solid var(--border-color);
+        border-block-end: 1px solid var(--border-color);
+      }
+    }
+    &.${verticalLayoutClasses.headerDetached} .${verticalLayoutClasses.navbar} {
       border-end-start-radius: var(--border-radius);
       border-end-end-radius: var(--border-radius);
     }
@@ -70,7 +85,7 @@ const StyledHeader = styled.header<StyledHeaderProps>`
         &.${verticalLayoutClasses.headerFloating}
         .${verticalLayoutClasses.navbar} {
         backdrop-filter: blur(6px);
-        background-color: rgb(var(--background-color-rgb) / 0.9);
+        background-color: rgb(var(--background-color-rgb) / 0.88);
       }
 
       &.${verticalLayoutClasses.headerFloating} {
@@ -83,18 +98,42 @@ const StyledHeader = styled.header<StyledHeaderProps>`
           block-size: 100%;
           background: linear-gradient(
             180deg,
-            rgb(var(--background-color-rgb) / 0.7) 44%,
-            rgb(var(--background-color-rgb) / 0.43) 73%,
-            rgb(var(--background-color-rgb) / 0)
+            rgb(var(--mui-palette-background-defaultChannel) / 0.7) 44%,
+            rgb(var(--mui-palette-background-defaultChannel) / 0.43) 73%,
+            rgb(var(--mui-palette-background-defaultChannel) / 0)
           );
           backdrop-filter: blur(10px);
-          mask: linear-gradient(black, black 18%, transparent 100%);
+          mask: linear-gradient(
+            var(--mui-palette-background-default),
+            var(--mui-palette-background-default) 18%,
+            transparent 100%
+          );
         }
       }
     }
 
-    &.${verticalLayoutClasses.headerAttached} {
-      border-block-end: 1px solid var(--border-color);
+    &.${verticalLayoutClasses.headerAttached}.scrolled {
+      box-shadow: var(--mui-customShadows-sm);
+
+      [data-skin='bordered'] & {
+        box-shadow: none;
+        border-block-end: 1px solid var(--border-color);
+      }
+    }
+
+    &.${verticalLayoutClasses.headerFloating}
+      .${verticalLayoutClasses.navbar},
+      &:not(.${verticalLayoutClasses.headerFloating}).${verticalLayoutClasses.headerAttached},
+      &:not(.${verticalLayoutClasses.headerFloating}).${verticalLayoutClasses.headerDetached}
+      .${verticalLayoutClasses.navbar} {
+      ${({ theme }) =>
+        `transition: ${theme.transitions.create(['box-shadow', 'border-width', 'padding-inline', 'backdrop-filter'])}`};
+    }
+    &:not(.${verticalLayoutClasses.headerFloating}).${verticalLayoutClasses.headerAttached}
+      .${verticalLayoutClasses.navbar},
+      &:not(.${verticalLayoutClasses.headerFloating}).${verticalLayoutClasses.headerDetached}.scrolled
+      .${verticalLayoutClasses.navbar} {
+      padding-inline: 16px;
     }
   }
 
@@ -102,9 +141,15 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     padding-block-start: 16px;
 
     .${verticalLayoutClasses.navbar} {
-      background-color: var(--background-color);
-      border: 1px solid var(--border-color);
+      background-color: var(--mui-palette-background-paper);
       border-radius: var(--border-radius);
+      padding-inline: 16px;
+      box-shadow: var(--mui-customShadows-sm);
+
+      [data-skin='bordered'] & {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+      }
     }
   }
 
@@ -115,10 +160,15 @@ const StyledHeader = styled.header<StyledHeaderProps>`
     inline-size: calc(100% - ${2 * themeConfig.layoutPadding}px);
   }
 
+  &:not(.${verticalLayoutClasses.headerFloating}).${verticalLayoutClasses.headerStatic}
+    .${verticalLayoutClasses.navbar} {
+    padding-inline: 16px;
+  }
+
   .${verticalLayoutClasses.navbar} {
     position: relative;
-    padding-block: 10px;
-    padding-inline: ${themeConfig.layoutPadding}px;
+    padding-block: 8px;
+    padding-inline: 16px;
     inline-size: 100%;
   }
 

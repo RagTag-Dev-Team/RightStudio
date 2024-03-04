@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import classnames from 'classnames'
 import type { CSSObject } from '@emotion/styled'
@@ -29,6 +32,7 @@ const Header = (props: Props) => {
 
   // Hooks
   const { settings } = useSettings()
+  const theme = useTheme()
 
   // Vars
   const { navbarContentWidth } = settings
@@ -41,6 +45,7 @@ const Header = (props: Props) => {
 
   return (
     <StyledHeader
+      theme={theme}
       overrideStyles={overrideStyles}
       className={classnames(horizontalLayoutClasses.header, {
         [horizontalLayoutClasses.headerFixed]: headerFixed,

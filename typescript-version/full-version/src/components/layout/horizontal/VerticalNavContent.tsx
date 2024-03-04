@@ -26,7 +26,11 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
     <>
       <NavHeader>
         <Logo />
-        <NavCollapseIcons />
+        <NavCollapseIcons
+          lockedIcon={<i className='tabler-circle-dot text-xl' />}
+          unlockedIcon={<i className='tabler-circle text-xl' />}
+          closeIcon={<i className='tabler-x text-xl' />}
+        />
       </NavHeader>
       <ScrollWrapper
         {...(isBreakpointReached

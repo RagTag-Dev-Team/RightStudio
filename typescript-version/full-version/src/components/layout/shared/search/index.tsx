@@ -4,7 +4,7 @@
 import type { ElementType, ReactNode } from 'react'
 
 // Next Imports
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 
 // MUI Imports
 import { IconButton } from '@mui/material'
@@ -67,6 +67,7 @@ const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
 const NavSearch = () => {
   // Hooks
   const router = useRouter()
+  const pathName = usePathname()
   const { settings } = useSettings()
   const { isBreakpointReached } = useVerticalNav()
   const isSmallScreen = useMedia('(max-width: 600px)', false)
@@ -92,14 +93,14 @@ const NavSearch = () => {
         {...((settings.layout === 'horizontal' || isBreakpointReached) && {
           icon: (
             <IconButton className='text-textPrimary'>
-              <i className='ri-search-line' />
+              <i className='tabler-search' />
             </IconButton>
           )
         })}
       >
         <div className='flex items-center gap-2'>
           <IconButton className='text-textPrimary'>
-            <i className='ri-search-line' />
+            <i className='tabler-search' />
           </IconButton>
           <div className='whitespace-nowrap text-textDisabled'>Search ⌘K</div>
         </div>
@@ -109,7 +110,7 @@ const NavSearch = () => {
           <StyledKBarAnimator skin={settings.skin} isSmallScreen={isSmallScreen}>
             <div className='flex items-center gap-2 plb-5 pli-6 border-be'>
               <div className='flex'>
-                <i className='ri-search-line' />
+                <i className='tabler-search' />
               </div>
               <KBarSearch
                 defaultPlaceholder=''
@@ -120,14 +121,14 @@ const NavSearch = () => {
               <ComponentWithUseKBar
                 triggerClick
                 className='flex cursor-pointer'
-                icon={<i className='ri-close-line text-textSecondary' />}
+                icon={<i className='tabler-x text-textPrimary' />}
               />
             </div>
-            <SearchResults />
+            <SearchResults currentPath={pathName} data={data} />
           </StyledKBarAnimator>
         </KBarPositioner>
         <div
-          className='ts-nav-search-backdrop fixed inset-0 z-search bg-[rgba(0,0,0,0.3)]'
+          className='ts-nav-search-backdrop fixed inset-0 z-search bg-backdrop'
           role='button'
           aria-label='backdrop'
         />

@@ -40,6 +40,8 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
       const subMenuItem = item as VerticalSubMenuDataType
       const menuItem = item as VerticalMenuItemDataType
 
+      const icon = <i className={menuItem.icon} />
+
       // Check if the current item is a section
       if (menuSectionItem.isSection) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -73,7 +75,7 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
 
         // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
         return (
-          <VerticalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest}>
+          <VerticalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest} icon={icon}>
             {children && renderMenuItems(children)}
           </VerticalSubMenu>
         )
@@ -94,7 +96,7 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
         suffix && (suffix as ChipProps).label ? <Chip size='small' {...(suffix as ChipProps)} /> : (suffix as ReactNode)
 
       return (
-        <VerticalMenuItem key={index} prefix={menuItemPrefix} suffix={menuItemSuffix} {...rest} href={href}>
+        <VerticalMenuItem key={index} prefix={menuItemPrefix} suffix={menuItemSuffix} {...rest} icon={icon} href={href}>
           {menuItem.label}
         </VerticalMenuItem>
       )
@@ -114,6 +116,8 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
     return data.map((item: HorizontalMenuDataType, index) => {
       const subMenuItem = item as HorizontalSubMenuDataType
       const menuItem = item as HorizontalMenuItemDataType
+
+      const icon = <i className={menuItem.icon} />
 
       // Check if the current item is a sub menu
       if (subMenuItem.children) {
@@ -135,7 +139,7 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
 
         // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
         return (
-          <HorizontalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest}>
+          <HorizontalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest} icon={icon}>
             {children && renderMenuItems(children)}
           </HorizontalSubMenu>
         )
@@ -156,7 +160,14 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
         suffix && (suffix as ChipProps).label ? <Chip size='small' {...(suffix as ChipProps)} /> : (suffix as ReactNode)
 
       return (
-        <HorizontalMenuItem key={index} prefix={menuItemPrefix} suffix={menuItemSuffix} {...rest} href={href}>
+        <HorizontalMenuItem
+          key={index}
+          prefix={menuItemPrefix}
+          suffix={menuItemSuffix}
+          {...rest}
+          icon={icon}
+          href={href}
+        >
           {menuItem.label}
         </HorizontalMenuItem>
       )

@@ -49,11 +49,11 @@ const ModeDropdown = () => {
 
   const getModeIcon = () => {
     if (settings.mode === 'system') {
-      return 'ri-macbook-line'
+      return 'tabler-device-laptop'
     } else if (settings.mode === 'dark') {
-      return 'ri-moon-clear-line'
+      return 'tabler-moon-stars'
     } else {
-      return 'ri-sun-line'
+      return 'tabler-sun'
     }
   }
 
@@ -76,29 +76,38 @@ const ModeDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[160px] !mbs-4 z-[1]'
+        className='min-w-[160px] !mbs-3 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Fade
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper
-              elevation={settings.skin === 'bordered' ? 0 : 8}
-              {...(settings.skin === 'bordered' && { className: 'border' })}
-            >
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
-                  <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('light')}>
-                    <i className='ri-sun-line' />
+                  <MenuItem
+                    className='gap-3'
+                    onClick={() => handleModeSwitch('light')}
+                    selected={settings.mode === 'light'}
+                  >
+                    <i className='tabler-sun  text-[22px]' />
                     Light
                   </MenuItem>
-                  <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('dark')}>
-                    <i className='ri-moon-clear-line' />
+                  <MenuItem
+                    className='gap-3'
+                    onClick={() => handleModeSwitch('dark')}
+                    selected={settings.mode === 'dark'}
+                  >
+                    <i className='tabler-moon-stars text-[22px]' />
                     Dark
                   </MenuItem>
-                  <MenuItem className='gap-2.5' onClick={() => handleModeSwitch('system')}>
-                    <i className='ri-macbook-line' />
+                  <MenuItem
+                    className='gap-3'
+                    onClick={() => handleModeSwitch('system')}
+                    selected={settings.mode === 'system'}
+                  >
+                    <i className='tabler-device-laptop text-[22px]' />
                     System
                   </MenuItem>
                 </MenuList>

@@ -18,15 +18,18 @@ import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import Avatar from '@mui/material/Avatar'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
 // Third Party Components
+import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
+
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -80,7 +83,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
   return (
     <>
       <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
-        <i className='ri-star-smile-line' />
+        <i className='tabler-layout-grid-add' />
       </IconButton>
       <Popper
         open={open}
@@ -90,7 +93,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: 'is-full  !mbs-4 z-[1]',
+              className: 'is-full  !mbs-3 z-[1]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -100,17 +103,14 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                 }
               ]
             }
-          : { className: 'is-96  !mbs-4 z-[1]' })}
+          : { className: 'is-96  !mbs-3 z-[1]' })}
       >
         {({ TransitionProps, placement }) => (
           <Fade {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper
-              elevation={settings.skin === 'bordered' ? 0 : 8}
-              {...(settings.skin === 'bordered' && { className: 'border' })}
-            >
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
-                  <div className='flex items-center justify-between plb-2 pli-4 is-full gap-2'>
+                  <div className='flex items-center justify-between plb-3 pli-4 is-full gap-2'>
                     <Typography variant='h6' className='flex-auto'>
                       Shortcuts
                     </Typography>
@@ -129,7 +129,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                       }}
                     >
                       <IconButton size='small' className='text-textPrimary'>
-                        <i className='ri-add-line' />
+                        <i className='tabler-plus' />
                       </IconButton>
                     </Tooltip>
                   </div>
@@ -148,11 +148,13 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
                             href={getLocalizedUrl(shortcut.url, locale as Locale)}
                             className='flex items-center flex-col p-6 gap-3 bs-full hover:bg-actionHover'
                           >
-                            <Avatar>
-                              <i className={shortcut.icon} />
-                            </Avatar>
+                            <CustomAvatar size={50} className='bg-actionSelected text-textPrimary'>
+                              <i className={classnames('text-[1.625rem]', shortcut.icon)} />
+                            </CustomAvatar>
                             <div className='flex flex-col items-center text-center'>
-                              <Typography className='font-medium'>{shortcut.title}</Typography>
+                              <Typography className='font-medium' color='text.primary'>
+                                {shortcut.title}
+                              </Typography>
                               <Typography variant='body2'>{shortcut.subtitle}</Typography>
                             </div>
                           </Link>

@@ -1,3 +1,6 @@
+// MUI Imports
+import type { Theme } from '@mui/material/styles'
+
 // Third-party Imports
 import styled from '@emotion/styled'
 import type { CSSObject } from '@emotion/styled'
@@ -9,6 +12,7 @@ import themeConfig from '@configs/themeConfig'
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 type StyledFooterProps = {
+  theme: Theme
   overrideStyles?: CSSObject
 }
 
@@ -33,7 +37,7 @@ const StyledFooter = styled.footer<StyledFooterProps>`
     &.${verticalLayoutClasses.footerAttached},
       &.${verticalLayoutClasses.footerDetached}
       .${verticalLayoutClasses.footerContentWrapper} {
-      background-color: var(--background-color);
+      background-color: var(--mui-palette-background-paper);
     }
 
     &.${verticalLayoutClasses.footerDetached} {
@@ -42,20 +46,34 @@ const StyledFooter = styled.footer<StyledFooterProps>`
 
       & .${verticalLayoutClasses.footerContentWrapper} {
         pointer-events: auto;
-        border-inline: 1px solid var(--border-color);
-        border-block-start: 1px solid var(--border-color);
-        border-start-start-radius: var(--border-radius);
+        ${({ theme }) => `
+          box-shadow: 0 3px 12px 0px rgb(var(--mui-mainColorChannels-${theme.palette.mode}Shadow) / 0.14);
+        `}
+        border-start-start-radius:  var(--border-radius);
         border-start-end-radius: var(--border-radius);
+
+        [data-skin='bordered'] & {
+          box-shadow: none;
+          border-inline: 1px solid var(--border-color);
+          border-block-start: 1px solid var(--border-color);
+        }
       }
     }
 
     &.${verticalLayoutClasses.footerAttached} {
-      border-block-start: 1px solid var(--border-color);
+      ${({ theme }) => `
+        box-shadow: 0 3px 12px 0px rgb(var(--mui-mainColorChannels-${theme.palette.mode}Shadow) / 0.14);
+      `}
+
+      [data-skin='bordered'] & {
+        box-shadow: none;
+        border-block-start: 1px solid var(--border-color);
+      }
     }
   }
 
   & .${verticalLayoutClasses.footerContentWrapper} {
-    padding-block: 15px;
+    padding-block: 16px;
     padding-inline: ${themeConfig.layoutPadding}px;
   }
 

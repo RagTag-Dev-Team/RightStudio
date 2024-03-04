@@ -28,22 +28,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Analytics',
         href: '/dashboards/analytics',
-        icon: 'ri-bar-chart-line'
+        icon: 'tabler-chart-pie-2'
       },
       {
         label: 'CRM',
         href: '/dashboards/crm',
-        icon: 'ri-pie-chart-2-line'
+        icon: 'tabler-3d-cube-sphere'
       },
       {
         label: 'eCommerce',
         href: '/dashboards/ecommerce',
-        icon: 'ri-shopping-bag-3-line'
+        icon: 'tabler-shopping-cart'
       },
       {
         label: 'User List',
         href: '/apps/user/list',
-        icon: 'ri-file-user-line'
+        icon: 'tabler-file-description'
       }
     ]
   },
@@ -53,22 +53,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Calendar',
         href: '/apps/calendar',
-        icon: 'ri-calendar-line'
+        icon: 'tabler-calendar'
       },
       {
         label: 'Invoice List',
         href: '/apps/invoice/list',
-        icon: 'ri-file-list-3-line'
+        icon: 'tabler-file-info'
       },
       {
         label: 'User List',
         href: '/apps/user/list',
-        icon: 'ri-file-user-line'
+        icon: 'tabler-file-invoice'
       },
       {
         label: 'Roles & Permissions',
         href: '/apps/roles',
-        icon: 'ri-lock-unlock-line'
+        icon: 'tabler-lock'
       }
     ]
   },
@@ -78,22 +78,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'User Profile',
         href: '/pages/user-profile',
-        icon: 'ri-user-3-line'
+        icon: 'tabler-user'
       },
       {
         label: 'Account Settings',
         href: '/pages/account-settings',
-        icon: 'ri-settings-4-line'
+        icon: 'tabler-settings'
       },
       {
         label: 'Pricing',
         href: '/pages/pricing',
-        icon: 'ri-money-dollar-circle-line'
+        icon: 'tabler-currency-dollar'
       },
       {
         label: 'FAQ',
         href: '/pages/faq',
-        icon: 'ri-question-line'
+        icon: 'tabler-help-circle'
       }
     ]
   },
@@ -103,22 +103,22 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
       {
         label: 'Form Layouts',
         href: '/forms/form-layouts',
-        icon: 'ri-file-text-line'
+        icon: 'tabler-layout'
       },
       {
         label: 'Form Validation',
         href: '/forms/form-validation',
-        icon: 'ri-checkbox-multiple-line'
+        icon: 'tabler-checkup-list'
       },
       {
         label: 'Form Wizard',
         href: '/forms/form-wizard',
-        icon: 'ri-equalizer-line'
+        icon: 'tabler-git-merge'
       },
       {
         label: 'Apex Charts',
         href: '/charts/apex-charts',
-        icon: 'ri-line-chart-line'
+        icon: 'tabler-chart-ppf'
       }
     ]
   }
@@ -136,7 +136,9 @@ const DefaultSuggestions = () => {
           key={index}
           className='flex flex-col justify-center overflow-x-hidden gap-4 basis-full sm:basis-[calc((100%-3rem)/2)]'
         >
-          <p className='text-xs uppercase text-textDisabled'>{section.sectionLabel}</p>
+          <p className='text-xs leading-[1.16667] uppercase text-textDisabled tracking-[0.8px]'>
+            {section.sectionLabel}
+          </p>
           <ul className='flex flex-col gap-4'>
             {section.items.map((item, i) => (
               <li key={i} className='flex'>
@@ -146,7 +148,7 @@ const DefaultSuggestions = () => {
                   className='flex items-center overflow-x-hidden cursor-pointer gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
                 >
                   {item.icon && <i className={classnames(item.icon, 'flex text-xl')} />}
-                  <p className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>
+                  <p className='text-[15px] leading-[1.4667] truncate'>{item.label}</p>
                 </Link>
               </li>
             ))}

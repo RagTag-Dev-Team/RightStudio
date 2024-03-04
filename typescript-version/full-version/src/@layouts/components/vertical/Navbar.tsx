@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import classnames from 'classnames'
 import type { CSSObject } from '@emotion/styled'
@@ -29,6 +32,7 @@ const Navbar = (props: Props) => {
 
   // Hooks
   const { settings } = useSettings()
+  const theme = useTheme()
 
   // Vars
   const { navbarContentWidth } = settings
@@ -44,6 +48,7 @@ const Navbar = (props: Props) => {
 
   return (
     <StyledHeader
+      theme={theme}
       overrideStyles={overrideStyles}
       className={classnames(verticalLayoutClasses.header, 'flex items-center justify-center is-full', {
         [verticalLayoutClasses.headerFixed]: headerFixed,

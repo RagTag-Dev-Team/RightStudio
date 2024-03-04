@@ -101,7 +101,7 @@ const UserDropdown = () => {
           alt={session?.user?.name || ''}
           src={session?.user?.image || ''}
           onClick={handleDropdownOpen}
-          className='cursor-pointer bs-10 is-10'
+          className='cursor-pointer bs-[38px] is-[38px]'
         />
       </Badge>
       <Popper
@@ -110,7 +110,7 @@ const UserDropdown = () => {
         disablePortal
         placement='bottom-end'
         anchorEl={anchorRef.current}
-        className='min-w-[240px] !mbs-4 z-[1]'
+        className='min-w-[240px] !mbs-3 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Fade
@@ -119,43 +119,44 @@ const UserDropdown = () => {
               transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top'
             }}
           >
-            <Paper
-              elevation={settings.skin === 'bordered' ? 0 : 8}
-              {...(settings.skin === 'bordered' && { className: 'border' })}
-            >
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
-                  <div className='flex items-center plb-1.5 pli-4 gap-2.5' tabIndex={-1}>
+                  <div className='flex items-center plb-2 pli-6 gap-2' tabIndex={-1}>
                     <Avatar alt={session?.user?.name || ''} src={session?.user?.image || ''} />
                     <div className='flex items-start flex-col'>
-                      <Typography>{session?.user?.name || ''}</Typography>
-                      <Typography>{session?.user?.email || ''}</Typography>
+                      <Typography className='font-medium' color='text.primary'>
+                        {session?.user?.name || ''}
+                      </Typography>
+                      <Typography variant='caption'>{session?.user?.email || ''}</Typography>
                     </div>
                   </div>
                   <Divider className='mlb-1' />
-                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/user-profile')}>
-                    <i className='ri-user-3-line' />
-                    <Typography>My Profile</Typography>
+                  <MenuItem className='mli-2 gap-3' onClick={e => handleDropdownClose(e, '/pages/user-profile')}>
+                    <i className='tabler-user text-[22px]' />
+                    <Typography color='text.primary'>My Profile</Typography>
                   </MenuItem>
-                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/account-settings')}>
-                    <i className='ri-settings-4-line' />
-                    <Typography>Settings</Typography>
+                  <MenuItem className='mli-2 gap-3' onClick={e => handleDropdownClose(e, '/pages/account-settings')}>
+                    <i className='tabler-settings text-[22px]' />
+                    <Typography color='text.primary'>Settings</Typography>
                   </MenuItem>
-                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/pricing')}>
-                    <i className='ri-money-dollar-circle-line' />
-                    <Typography>Pricing</Typography>
+                  <MenuItem className='mli-2 gap-3' onClick={e => handleDropdownClose(e, '/pages/pricing')}>
+                    <i className='tabler-currency-dollar text-[22px]' />
+                    <Typography color='text.primary'>Pricing</Typography>
                   </MenuItem>
-                  <MenuItem className='gap-2' onClick={e => handleDropdownClose(e, '/pages/faq')}>
-                    <i className='ri-question-line' />
-                    <Typography>FAQ</Typography>
+                  <MenuItem className='mli-2 gap-3' onClick={e => handleDropdownClose(e, '/pages/faq')}>
+                    <i className='tabler-help-circle text-[22px]' />
+                    <Typography color='text.primary'>FAQ</Typography>
                   </MenuItem>
-                  <div className='flex items-center plb-1.5 pli-4'>
+                  <div className='flex items-center plb-2 pli-3'>
                     <Button
                       fullWidth
                       variant='contained'
                       color='error'
-                      endIcon={<i className='ri-logout-box-r-line' />}
+                      size='small'
+                      endIcon={<i className='tabler-logout' />}
                       onClick={handleUserLogout}
+                      sx={{ '& .MuiButton-endIcon': { marginInlineStart: 1.5 } }}
                     >
                       Logout
                     </Button>

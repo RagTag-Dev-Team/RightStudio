@@ -2,6 +2,9 @@
 import { KBarResults, useKBar, useMatches } from 'kbar'
 import type { ActionImpl } from 'kbar'
 
+// Type Imports
+import type { SearchData } from '@/data/searchData'
+
 // Component Imports
 import DefaultSuggestions from './DefaultSuggestions'
 import NoResult from './NoResult'
@@ -36,7 +39,7 @@ const getFilteredResults = (results: Results) => {
   return data
 }
 
-const SearchResults = () => {
+const SearchResults = ({ currentPath, data }: { currentPath: string; data: SearchData[] }) => {
   // Vars
   let query: string | undefined
 
@@ -62,9 +65,17 @@ const SearchResults = () => {
       items={getFilteredResults(results)}
       onRender={({ item, active }) =>
         typeof item === 'string' ? (
-          <div className='pbs-[15px] pbe-1.5 pli-6 text-[12px] uppercase'>{item}</div>
+          <div className='pbs-4 pbe-2 pli-4 text-[12px] leading-[1.16667] text-textDisabled uppercase tracking-[0.8px]'>
+            {item}
+          </div>
         ) : (
-          <SearchResultItem action={item} active={active} currentRootActionId={rootActionId} />
+          <SearchResultItem
+            action={item}
+            active={active}
+            currentRootActionId={rootActionId}
+            currentPath={currentPath}
+            data={data.filter(d => d.id === item.id)[0]}
+          />
         )
       } // @ts-ignore
       maxHeight='100%'

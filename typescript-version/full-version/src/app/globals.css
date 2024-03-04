@@ -7,8 +7,8 @@
   --border-color: var(--mui-palette-divider);
   --primary-color: var(--mui-palette-primary-main);
   --background-color: var(--mui-palette-background-default);
-  --background-color-rgb: var(--mui-palette-background-defaultChannel);
-  --header-height: 64px;
+  --background-color-rgb: var(--mui-palette-background-paperChannel);
+  --header-height: 54px;
   --header-z-index: var(--mui-zIndex-appBar);
   --footer-z-index: 10;
   --customizer-z-index: var(--mui-zIndex-drawer);

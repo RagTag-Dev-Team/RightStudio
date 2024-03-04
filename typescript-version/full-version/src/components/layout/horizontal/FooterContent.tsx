@@ -29,25 +29,29 @@ const FooterContent = () => {
       className={classnames(horizontalLayoutClasses.footerContent, 'flex items-center justify-between flex-wrap gap-4')}
     >
       <p>
-        <span>{`© ${new Date().getFullYear()}, Made with `}</span>
+        <span className='text-textSecondary'>{`© ${new Date().getFullYear()}, Made with `}</span>
         <span>{`❤️`}</span>
-        <span>{` by `}</span>
-        <Link href='https://themeselection.com' target='_blank' className='text-primary'>
-          ThemeSelection
+        <span className='text-textSecondary'>{` by `}</span>
+        <Link href='https://pixinvent.com/' target='_blank' className='text-primary uppercase'>
+          Pixinvent
         </Link>
       </p>
       {!isBreakpointReached && (
         <div className='flex items-center gap-4'>
-          <Link href='https://themeselection.com/license' target='_blank' className='text-primary'>
+          <Link href='https://themeforest.net/licenses/standard' target='_blank' className='text-primary'>
             License
           </Link>
-          <Link href='https://themeselection.com' target='_blank' className='text-primary'>
+          <Link href='https://themeforest.net/user/pixinvent/portfolio' target='_blank' className='text-primary'>
             More Themes
           </Link>
-          <Link href='/' target='_blank' className='text-primary'>
+          <Link
+            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+            target='_blank'
+            className='text-primary'
+          >
             Documentation
           </Link>
-          <Link href='https://themeselection.com/support' target='_blank' className='text-primary'>
+          <Link href='https://pixinvent.ticksy.com' target='_blank' className='text-primary'>
             Support
           </Link>
         </div>

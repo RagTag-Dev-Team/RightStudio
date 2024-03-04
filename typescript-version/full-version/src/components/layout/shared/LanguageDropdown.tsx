@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 
 // Next Imports
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useParams } from 'next/navigation'
 
 // MUI Imports
 import IconButton from '@mui/material/IconButton'
@@ -22,6 +22,11 @@ import type { Locale } from '@configs/i18n'
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
+type LanguageDataType = {
+  langCode: Locale
+  langName: string
+}
+
 const getLocalePath = (pathName: string, locale: string) => {
   if (!pathName) return '/'
   const segments = pathName.split('/')
@@ -31,11 +36,7 @@ const getLocalePath = (pathName: string, locale: string) => {
   return segments.join('/')
 }
 
-type LanguageDataType = {
-  langCode: Locale
-  langName: string
-}
-
+// Vars
 const languageData: LanguageDataType[] = [
   {
     langCode: 'en',
@@ -61,6 +62,7 @@ const LanguageDropdown = () => {
   // Hooks
   const pathName = usePathname()
   const { settings } = useSettings()
+  const { lang } = useParams()
 
   const handleClose = () => {
     setOpen(false)
@@ -73,7 +75,7 @@ const LanguageDropdown = () => {
   return (
     <>
       <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
-        <i className='ri-translate-2' />
+        <i className='tabler-language' />
       </IconButton>
       <Popper
         open={open}
@@ -81,17 +83,14 @@ const LanguageDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[160px] !mbs-4 z-[1]'
+        className='min-w-[160px] !mbs-3 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Fade
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-start' ? 'left top' : 'right top' }}
           >
-            <Paper
-              elevation={settings.skin === 'bordered' ? 0 : 8}
-              {...(settings.skin === 'bordered' && { className: 'border' })}
-            >
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList onKeyDown={handleClose}>
                   {languageData.map(locale => (
@@ -100,6 +99,7 @@ const LanguageDropdown = () => {
                       component={Link}
                       href={getLocalePath(pathName, locale.langCode)}
                       onClick={handleClose}
+                      selected={lang === locale.langCode}
                     >
                       {locale.langName}
                     </MenuItem>

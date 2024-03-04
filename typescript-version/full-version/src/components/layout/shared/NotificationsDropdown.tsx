@@ -24,6 +24,13 @@ import type { Theme } from '@mui/material/styles'
 import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
+// Type Imports
+import type { ThemeColor } from '@core/types'
+import type { CustomAvatarProps } from '@core/components/mui/Avatar'
+
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
@@ -43,14 +50,20 @@ export type NotificationsType = {
       avatarImage?: string
       avatarIcon?: never
       avatarText?: never
+      avatarColor?: never
+      avatarSkin?: never
     }
   | {
       avatarIcon?: string
+      avatarColor?: ThemeColor
+      avatarSkin?: CustomAvatarProps['skin']
       avatarImage?: never
       avatarText?: never
     }
   | {
       avatarText?: string
+      avatarColor?: ThemeColor
+      avatarSkin?: CustomAvatarProps['skin']
       avatarImage?: never
       avatarIcon?: never
     }
@@ -68,19 +81,25 @@ const ScrollWrapper = ({ children, hidden }: { children: ReactNode; hidden: bool
   }
 }
 
-const getAvatar = (params: Pick<NotificationsType, 'avatarImage' | 'avatarIcon' | 'title' | 'avatarText'>) => {
-  const { avatarImage, avatarIcon, avatarText, title } = params
+const getAvatar = (
+  params: Pick<NotificationsType, 'avatarImage' | 'avatarIcon' | 'title' | 'avatarText' | 'avatarColor' | 'avatarSkin'>
+) => {
+  const { avatarImage, avatarIcon, avatarText, title, avatarColor, avatarSkin } = params
 
   if (avatarImage) {
     return <Avatar src={avatarImage} />
   } else if (avatarIcon) {
     return (
-      <Avatar>
+      <CustomAvatar color={avatarColor} skin={avatarSkin || 'light-static'}>
         <i className={avatarIcon} />
-      </Avatar>
+      </CustomAvatar>
     )
   } else {
-    return <Avatar>{avatarText || getInitials(title)}</Avatar>
+    return (
+      <CustomAvatar color={avatarColor} skin={avatarSkin || 'light-static'}>
+        {avatarText || getInitials(title)}
+      </CustomAvatar>
+    )
   }
 }
 
@@ -146,9 +165,12 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
           variant='dot'
           overlap='circular'
           invisible={notificationCount === 0}
+          sx={{
+            '& .MuiBadge-dot': { top: 6, right: 5, boxShadow: 'var(--mui-palette-background-paper) 0px 0px 0px 2px' }
+          }}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
-          <i className='ri-notification-2-line' />
+          <i className='tabler-bell' />
         </Badge>
       </IconButton>
       <Popper
@@ -159,7 +181,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: 'is-full !mbs-4 z-[1]',
+              className: 'is-full !mbs-3 z-[1]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -169,21 +191,20 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 }
               ]
             }
-          : { className: 'is-96 !mbs-4 z-[1]' })}
+          : { className: 'is-96 !mbs-3 z-[1]' })}
       >
         {({ TransitionProps, placement }) => (
           <Fade {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper
-              elevation={settings.skin === 'bordered' ? 0 : 8}
-              {...(settings.skin === 'bordered' && { className: 'border' })}
-            >
+            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
-                  <div className='flex items-center justify-between plb-2 pli-4 is-full gap-4'>
+                  <div className='flex items-center justify-between plb-3 pli-4 is-full gap-2'>
                     <Typography variant='h6' className='flex-auto'>
                       Notifications
                     </Typography>
-                    {notificationCount > 0 && <Chip size='small' color='primary' label={`${notificationCount} New`} />}
+                    {notificationCount > 0 && (
+                      <Chip size='small' variant='tonal' color='primary' label={`${notificationCount} New`} />
+                    )}
                     <Tooltip
                       title={readAll ? 'Mark all as unread' : 'Mark all as read'}
                       placement={placement === 'bottom-end' ? 'left' : 'right'}
@@ -200,7 +221,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                     >
                       {notificationsState.length > 0 ? (
                         <IconButton size='small' onClick={() => readAllNotifications()} className='text-textPrimary'>
-                          <i className={readAll ? 'ri-mail-line' : 'ri-mail-open-line'} />
+                          <i className={readAll ? 'tabler-mail' : 'tabler-mail-opened'} />
                         </IconButton>
                       ) : (
                         <></>
@@ -210,22 +231,32 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                   <Divider />
                   <ScrollWrapper hidden={hidden}>
                     {notificationsState.map((notification, index) => {
-                      const { title, subtitle, time, read, avatarImage, avatarIcon, avatarText } = notification
+                      const {
+                        title,
+                        subtitle,
+                        time,
+                        read,
+                        avatarImage,
+                        avatarIcon,
+                        avatarText,
+                        avatarColor,
+                        avatarSkin
+                      } = notification
 
                       return (
                         <div
                           key={index}
-                          className={classnames('flex plb-3 pli-5 gap-3 cursor-pointer hover:bg-actionHover group', {
+                          className={classnames('flex plb-3 pli-4 gap-3 cursor-pointer hover:bg-actionHover group', {
                             'border-be': index !== notificationsState.length - 1
                           })}
                           onClick={e => handleReadNotification(e, true, index)}
                         >
-                          {getAvatar({ avatarImage, avatarIcon, title, avatarText })}
+                          {getAvatar({ avatarImage, avatarIcon, title, avatarText, avatarColor, avatarSkin })}
                           <div className='flex flex-col flex-auto'>
-                            <Typography variant='body2' className='font-medium' color='text.primary'>
+                            <Typography variant='body2' className='font-medium mbe-1' color='text.primary'>
                               {title}
                             </Typography>
-                            <Typography variant='caption' className='mbe-1'>
+                            <Typography variant='caption' color='text.secondary' className='mbe-2'>
                               {subtitle}
                             </Typography>
                             <Typography variant='caption' color='text.disabled'>
@@ -242,7 +273,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                               })}
                             />
                             <i
-                              className='ri-close-line text-xl invisible group-hover:visible'
+                              className='tabler-x text-xl invisible group-hover:visible'
                               onClick={e => handleRemoveNotification(e, index)}
                             />
                           </div>
@@ -251,7 +282,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                     })}
                   </ScrollWrapper>
                   <Divider />
-                  <div className='plb-4 pli-5'>
+                  <div className='p-4'>
                     <Button fullWidth variant='contained' size='small'>
                       View All Notifications
                     </Button>

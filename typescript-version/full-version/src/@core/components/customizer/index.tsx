@@ -29,8 +29,6 @@ import type { Direction } from '@core/types'
 import type { PrimaryColorConfig } from '@configs/primaryColorConfig'
 
 // Icon Imports
-import Cog from '@core/svg/Cog'
-import EyeDropper from '@core/svg/EyeDropper'
 import SkinDefault from '@core/svg/SkinDefault'
 import SkinBordered from '@core/svg/SkinBordered'
 import LayoutVertical from '@core/svg/LayoutVertical'
@@ -181,22 +179,19 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
           className={classnames('customizer-toggler flex items-center justify-center cursor-pointer', styles.toggler)}
           onClick={handleToggle}
         >
-          <Cog />
+          <i className='tabler-settings text-[22px]' />
         </div>
         <div className={classnames('customizer-header flex items-center justify-between', styles.header)}>
-          <div className='flex flex-col gap-2'>
+          <div className='flex flex-col'>
             <h4 className={styles.customizerTitle}>Theme Customizer</h4>
-            <p>Customize & Preview in Real Time</p>
+            <p className={styles.customizerSubtitle}>Customize & Preview in Real Time</p>
           </div>
           <div className='flex gap-4'>
             <div onClick={resetSettings} className='relative flex cursor-pointer'>
-              <i className={classnames('ri-refresh-line', styles.actionActiveColor)} />
+              <i className={classnames('tabler-refresh', styles.textPrimaryColor)} />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
-            <i
-              className={classnames('ri-close-line cursor-pointer', styles.actionActiveColor)}
-              onClick={handleToggle}
-            />
+            <i className={classnames('tabler-x cursor-pointer', styles.textPrimaryColor)} onClick={handleToggle} />
           </div>
         </div>
         <ScrollWrapper
@@ -206,8 +201,14 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
         >
           <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
             <div className='theming-section flex flex-col gap-6'>
-              <Chip label='Theming' size='small' color='primary' className={classnames('self-start', styles.chip)} />
-              <div className='flex flex-col gap-2.5'>
+              <Chip
+                label='Theming'
+                size='small'
+                color='primary'
+                variant='tonal'
+                className={classnames('self-start', styles.chip)}
+              />
+              <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Primary Color</p>
                 <div className='flex items-center justify-between'>
                   {primaryColorConfig.map(item => (
@@ -239,7 +240,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                           : 'var(--mui-palette-primary-contrastText)'
                       }}
                     >
-                      <EyeDropper fontSize='1.25rem' />
+                      <i className='tabler-color-picker text-xl' />
                     </div>
                   </div>
                   <Popper
@@ -268,7 +269,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                   </Popper>
                 </div>
               </div>
-              <div className='flex flex-col gap-2.5'>
+              <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Mode</p>
                 <div className='flex items-center justify-between'>
                   <div className='flex flex-col items-start gap-0.5'>
@@ -278,7 +279,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                       })}
                       onClick={() => handleChange('mode', 'light')}
                     >
-                      <i className='ri-sun-line text-[30px]' />
+                      <i className='tabler-sun text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'light')}>
                       Light
@@ -291,7 +292,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                       })}
                       onClick={() => handleChange('mode', 'dark')}
                     >
-                      <i className='ri-moon-clear-line text-[30px]' />
+                      <i className='tabler-moon-stars text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'dark')}>
                       Dark
@@ -304,7 +305,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                       })}
                       onClick={() => handleChange('mode', 'system')}
                     >
-                      <i className='ri-computer-line text-[30px]' />
+                      <i className='tabler-device-laptop text-[30px]' />
                     </div>
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'system')}>
                       System
@@ -312,7 +313,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                   </div>
                 </div>
               </div>
-              <div className='flex flex-col gap-2.5'>
+              <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Skin</p>
                 <div className='flex items-center gap-4'>
                   <div className='flex flex-col items-start gap-0.5'>
@@ -356,8 +357,14 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
             </div>
             <hr className={styles.hr} />
             <div className='layout-section flex flex-col gap-6'>
-              <Chip label='Layout' size='small' color='primary' className={classnames('self-start', styles.chip)} />
-              <div className='flex flex-col gap-2.5'>
+              <Chip
+                label='Layout'
+                variant='tonal'
+                size='small'
+                color='primary'
+                className={classnames('self-start', styles.chip)}
+              />
+              <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Layouts</p>
                 <div className='flex items-center justify-between'>
                   <div className='flex flex-col items-start gap-0.5'>
@@ -395,7 +402,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                   </div>
                 </div>
               </div>
-              <div className='flex flex-col gap-2.5'>
+              <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Content</p>
                 <div className='flex items-center gap-4'>
                   <div className='flex flex-col items-start gap-0.5'>
@@ -447,7 +454,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                 </div>
               </div>
               {!disableDirection && (
-                <div className='flex flex-col gap-2.5'>
+                <div className='flex flex-col gap-2'>
                   <p className='font-medium'>Direction</p>
                   <div className='flex items-center gap-4'>
                     <Link href={getLocalePath(pathName, 'en')}>

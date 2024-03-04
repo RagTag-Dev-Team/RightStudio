@@ -18,11 +18,13 @@ import type {
 // Vertical Menu Data
 export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   label: ReactNode
+  icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps
 }
 export type VerticalSubMenuDataType = Omit<VerticalSubMenuProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   children: VerticalMenuDataType[]
+  icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps
 }
@@ -35,11 +37,13 @@ export type VerticalMenuDataType = VerticalMenuItemDataType | VerticalSubMenuDat
 // Horizontal Menu Data
 export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   label: ReactNode
+  icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps
 }
 export type HorizontalSubMenuDataType = Omit<HorizontalSubMenuProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   children: HorizontalMenuDataType[]
+  icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps
 }

@@ -27,37 +27,37 @@ import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 const shortcuts: ShortcutsType[] = [
   {
     url: '/apps/calendar',
-    icon: 'ri-calendar-line',
+    icon: 'tabler-calendar',
     title: 'Calendar',
     subtitle: 'Appointments'
   },
   {
     url: '/apps/invoice/list',
-    icon: 'ri-file-list-3-line',
+    icon: 'tabler-file-dollar',
     title: 'Invoice App',
     subtitle: 'Manage Accounts'
   },
   {
     url: '/apps/user/list',
-    icon: 'ri-user-3-line',
+    icon: 'tabler-user',
     title: 'Users',
     subtitle: 'Manage Users'
   },
   {
     url: '/apps/roles',
-    icon: 'ri-computer-line',
+    icon: 'tabler-users-group',
     title: 'Role Management',
     subtitle: 'Permissions'
   },
   {
     url: '/',
-    icon: 'ri-pie-chart-2-line',
+    icon: 'tabler-device-desktop-analytics',
     title: 'Dashboard',
     subtitle: 'User Dashboard'
   },
   {
     url: '/pages/account-settings',
-    icon: 'ri-settings-4-line',
+    icon: 'tabler-settings',
     title: 'Settings',
     subtitle: 'Account Settings'
   }
@@ -65,7 +65,7 @@ const shortcuts: ShortcutsType[] = [
 
 const notifications: NotificationsType[] = [
   {
-    avatarImage: '/images/avatars/2.png',
+    avatarImage: '/images/avatars/8.png',
     title: 'Congratulations Flora 🎉',
     subtitle: 'Won the monthly bestseller gold badge',
     time: '1h ago',
@@ -73,6 +73,7 @@ const notifications: NotificationsType[] = [
   },
   {
     title: 'Cecilia Becker',
+    avatarColor: 'secondary',
     subtitle: 'Accepted your connection',
     time: '12h ago',
     read: false
@@ -85,9 +86,10 @@ const notifications: NotificationsType[] = [
     read: true
   },
   {
-    avatarIcon: 'ri-bar-chart-line',
+    avatarIcon: 'tabler-chart-bar',
     title: 'Monthly report generated',
     subtitle: 'July month financial report is generated',
+    avatarColor: 'info',
     time: 'Apr 24, 10:30 AM',
     read: true
   },
@@ -95,13 +97,15 @@ const notifications: NotificationsType[] = [
     avatarText: 'MG',
     title: 'Application has been approved 🚀',
     subtitle: 'Your Meta Gadgets project application has been approved.',
+    avatarColor: 'success',
     time: 'Feb 17, 12:17 PM',
     read: true
   },
   {
-    avatarIcon: 'ri-mail-line',
+    avatarIcon: 'tabler-mail',
     title: 'New message from Harry',
     subtitle: 'You have new message from Harry',
+    avatarColor: 'error',
     time: 'Jan 6, 1:48 PM',
     read: true
   }
