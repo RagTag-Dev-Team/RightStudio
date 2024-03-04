@@ -55,7 +55,7 @@ const SalesOverview = () => {
               <Typography color='text.secondary' className='m'>
                 Visits
               </Typography>
-              <CustomAvatar skin='light' variant='rounded' size={24}>
+              <CustomAvatar skin='light' variant='rounded' size={24} color='primary'>
                 <i className='tabler-link text-lg' />
               </CustomAvatar>
             </div>

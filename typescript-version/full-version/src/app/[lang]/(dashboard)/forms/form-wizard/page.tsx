@@ -11,7 +11,7 @@ import StepperAlternativeLabel from '@views/forms/form-wizard/StepperAlternative
 import StepperVerticalWithNumbers from '@views/forms/form-wizard/StepperVerticalWithNumbers'
 import StepperVerticalWithoutNumbers from '@views/forms/form-wizard/StepperVerticalWithoutNumbers'
 import StepperCustomHorizontal from '@views/forms/form-wizard/StepperCustomHorizontal'
-import StepperCustomVertical from '@/views/forms/form-wizard/StepperCustomVertical'
+import StepperCustomVertical from '@views/forms/form-wizard/StepperCustomVertical'
 
 const FormWizard = () => {
   return (

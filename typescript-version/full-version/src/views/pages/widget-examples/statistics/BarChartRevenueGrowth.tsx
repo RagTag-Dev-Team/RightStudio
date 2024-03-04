@@ -102,7 +102,7 @@ const BarChartRevenueGrowth = () => {
             <Chip variant='tonal' size='small' color='success' label='+15.2%' />
           </div>
         </div>
-        <AppReactApexCharts type='bar' width={160} height={144} series={series} options={options} />
+        <AppReactApexCharts type='bar' width={160} height={172} series={series} options={options} />
       </CardContent>
     </Card>
   )

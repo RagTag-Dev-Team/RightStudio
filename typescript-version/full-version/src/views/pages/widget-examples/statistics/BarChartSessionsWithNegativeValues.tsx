@@ -63,7 +63,7 @@ const BarChartSessionsWithNegativeValues = () => {
     plotOptions: {
       bar: {
         borderRadius: 5,
-        columnWidth: '45%',
+        columnWidth: '46%',
         borderRadiusApplication: 'around',
         borderRadiusWhenStacked: 'all'
       }

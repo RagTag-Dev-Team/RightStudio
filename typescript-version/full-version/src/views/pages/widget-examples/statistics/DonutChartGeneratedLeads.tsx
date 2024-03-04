@@ -34,14 +34,14 @@ const BarChartRevenueGrowth = () => {
 
   const options: ApexOptions = {
     colors: [
-      theme.palette.success.main,
+      successColor,
       rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.7)`),
       rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.5)`),
       rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.16)`)
     ],
     stroke: { width: 0 },
     legend: { show: false },
-    tooltip: { enabled: false },
+    tooltip: { enabled: true, theme: 'light' },
     dataLabels: { enabled: false },
     labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
     states: {
@@ -81,6 +81,7 @@ const BarChartRevenueGrowth = () => {
             },
             total: {
               show: true,
+              showAlways: true,
               label: 'Total',
               color: successColor,
               fontFamily: theme.typography.fontFamily,
@@ -110,7 +111,7 @@ const BarChartRevenueGrowth = () => {
             </div>
           </div>
         </div>
-        <AppReactApexCharts type='donut' width={150} height={185} series={series} options={options} />
+        <AppReactApexCharts type='donut' width={165} height={229} series={series} options={options} />
       </CardContent>
     </Card>
   )

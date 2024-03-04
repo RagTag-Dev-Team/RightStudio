@@ -92,7 +92,7 @@ const BarChartDailyTraffic = () => {
       <CardContent>
         <div className='flex items-start justify-between mbe-3'>
           <div className='flex flex-col items-start'>
-            <Typography variant='h3'>2.84k</Typography>
+            <Typography variant='h4'>2.84k</Typography>
             <Typography variant='subtitle2' color='text.secondary'>
               Avg Daily Traffic
             </Typography>

@@ -7,6 +7,7 @@ export const db: CardStatsType = {
       avatarColor: 'error',
       avatarSize: 40,
       avatarIconSize: 24,
+      avatarVariant: 'rounded',
       stats: '97.8k',
       statsTitle: 'Orders'
     },
@@ -15,6 +16,7 @@ export const db: CardStatsType = {
       avatarColor: 'success',
       avatarSize: 40,
       avatarIconSize: 24,
+      avatarVariant: 'rounded',
       stats: '3.4k',
       statsTitle: 'Review'
     }
@@ -77,8 +79,12 @@ export const db: CardStatsType = {
       stats: '24.67k',
       avatarIcon: 'tabler-currency-dollar',
       avatarColor: 'success',
+      avatarSize: 44,
+      avatarIconSize: 28,
+      avatarSkin: 'light',
       chipText: '+24.5%',
-      chipColor: 'success'
+      chipColor: 'success',
+      chipVariant: 'tonal'
     }
   ],
   statsWithAreaChart: [
@@ -87,7 +93,7 @@ export const db: CardStatsType = {
       chartColor: 'primary',
       avatarSize: 42,
       avatarColor: 'primary',
-      avatarIconSize: 28,
+      avatarIconSize: 26,
       avatarIcon: 'tabler-users',
       title: 'Subscribers Gained',
       chartSeries: [{ data: [40, 4, 58, 12, 35, 10, 84] }]
@@ -96,7 +102,7 @@ export const db: CardStatsType = {
       title: 'Quarterly Sales',
       stats: '36.5%',
       avatarSize: 42,
-      avatarIconSize: 28,
+      avatarIconSize: 26,
       avatarColor: 'error',
       avatarIcon: 'tabler-shopping-cart',
       chartColor: 'error',
@@ -106,7 +112,7 @@ export const db: CardStatsType = {
       title: 'Orders Received',
       stats: '97.5k',
       avatarSize: 42,
-      avatarIconSize: 28,
+      avatarIconSize: 26,
       avatarColor: 'warning',
       avatarIcon: 'tabler-box',
       chartColor: 'warning',
@@ -116,7 +122,7 @@ export const db: CardStatsType = {
       title: 'Revenue Generated',
       stats: '91.8k',
       avatarSize: 42,
-      avatarIconSize: 28,
+      avatarIconSize: 26,
       avatarColor: 'success',
       avatarIcon: 'tabler-credit-card',
       chartColor: 'success',
