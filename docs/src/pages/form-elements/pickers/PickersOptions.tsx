@@ -5,8 +5,8 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersOptions = () => {
   // States
@@ -29,7 +29,7 @@ const PickersOptions = () => {
           isClearable
           id='picker-clear'
           selected={dateClear}
-          customInput={<CustomInput label='Clear' />}
+          customInput={<CustomTextField label='Clear' fullWidth />}
           onChange={(date: Date) => setDateClear(date)}
         />
       </Grid>
@@ -40,7 +40,7 @@ const PickersOptions = () => {
           id='picker-week-num'
           selected={dateWeekNum}
           onChange={(date: Date) => setDateWeekNum(date)}
-          customInput={<CustomInput label='Week Numbers' />}
+          customInput={<CustomTextField label='Week Numbers' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={4}>
@@ -49,7 +49,7 @@ const PickersOptions = () => {
           selected={dateFilter}
           filterDate={isWeekday}
           onChange={(date: Date) => setDateFilter(date)}
-          customInput={<CustomInput label='Filter Dates' />}
+          customInput={<CustomTextField label='Filter Dates' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={4}>
@@ -60,7 +60,7 @@ const PickersOptions = () => {
           id='picker-open-date'
           openToDate={new Date('1993/09/28')}
           onChange={(date: Date) => setDateOpen(date)}
-          customInput={<CustomInput label='Open To Date' />}
+          customInput={<CustomTextField label='Open To Date' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={4}>
@@ -69,7 +69,7 @@ const PickersOptions = () => {
           selected={dateTodayBtn}
           id='picker-date-today-btn'
           onChange={(date: Date) => setDateTodayBtn(date)}
-          customInput={<CustomInput label='Date Today Button' />}
+          customInput={<CustomTextField label='Date Today Button' fullWidth />}
         />
       </Grid>
     </Grid>

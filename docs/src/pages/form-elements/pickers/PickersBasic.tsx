@@ -5,8 +5,8 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersBasic = () => {
   // States
@@ -20,7 +20,7 @@ const PickersBasic = () => {
           id='basic-input'
           onChange={(date: Date) => setDate(date)}
           placeholderText='Click to select a date'
-          customInput={<CustomInput label='Basic' />}
+          customInput={<CustomTextField label='Basic' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} md={4}>
@@ -30,7 +30,7 @@ const PickersBasic = () => {
           id='disabled-input'
           onChange={(date: Date) => setDate(date)}
           placeholderText='Click to select a date'
-          customInput={<CustomInput label='Disabled' />}
+          customInput={<CustomTextField label='Disabled' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} md={4}>
@@ -40,7 +40,7 @@ const PickersBasic = () => {
           id='read-only-input'
           onChange={(date: Date) => setDate(date)}
           placeholderText='Click to select a date'
-          customInput={<CustomInput readOnly label='Readonly' />}
+          customInput={<CustomTextField InputProps={{ readOnly: true }} label='Readonly' fullWidth />}
         />
       </Grid>
     </Grid>

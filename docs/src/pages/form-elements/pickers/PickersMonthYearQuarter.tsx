@@ -5,8 +5,8 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersMonthYear = () => {
   // States
@@ -23,7 +23,7 @@ const PickersMonthYear = () => {
           showMonthYearPicker
           dateFormat='MM/yyyy'
           onChange={(date: Date) => setMonth(date)}
-          customInput={<CustomInput label='Month Picker' />}
+          customInput={<CustomTextField label='Month Picker' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
@@ -33,7 +33,7 @@ const PickersMonthYear = () => {
           id='year-picker'
           dateFormat='MM/yyyy'
           onChange={(date: Date) => setYear(date)}
-          customInput={<CustomInput label='Year Picker' />}
+          customInput={<CustomTextField label='Year Picker' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
@@ -43,7 +43,7 @@ const PickersMonthYear = () => {
           showQuarterYearPicker
           dateFormat='yyyy, QQQ'
           onChange={(date: Date) => setQuarter(date)}
-          customInput={<CustomInput label='Quarter Picker' />}
+          customInput={<CustomTextField label='Quarter Picker' fullWidth />}
         />
       </Grid>
     </Grid>

@@ -68,7 +68,7 @@ Example: Basic Date Picker Implementation
 ```tsx
 import { useState } from 'react';
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker';
-import CustomInput from './PickersCustomInput';
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersBasic = () => {
   const [date, setDate] = useState<Date | null | undefined>(new Date());
@@ -78,7 +78,7 @@ const PickersBasic = () => {
       selected={date}
       onChange={(date: Date) => setDate(date)}
       placeholderText='Click to select a date'
-      customInput={<CustomInput label='Basic' />}
+      customInput={<CustomTextField label='Basic' fullWidth />}
     />
   );
 };

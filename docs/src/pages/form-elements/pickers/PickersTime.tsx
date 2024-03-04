@@ -5,8 +5,8 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersTime = () => {
   // States
@@ -24,7 +24,7 @@ const PickersTime = () => {
           dateFormat='h:mm aa'
           id='time-only-picker'
           onChange={(date: Date) => setTime(date)}
-          customInput={<CustomInput label='Time Only' />}
+          customInput={<CustomTextField label='Time Only' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
@@ -36,7 +36,7 @@ const PickersTime = () => {
           id='date-time-picker'
           dateFormat='MM/dd/yyyy h:mm aa'
           onChange={(date: Date) => setDateTime(date)}
-          customInput={<CustomInput label='Date & Time' />}
+          customInput={<CustomTextField label='Date & Time' fullWidth />}
         />
       </Grid>
     </Grid>

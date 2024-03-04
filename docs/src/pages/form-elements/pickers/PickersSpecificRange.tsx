@@ -8,8 +8,8 @@ import Grid from '@mui/material/Grid'
 import { addDays, setHours, setMinutes } from 'date-fns'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersSpecificRange = () => {
   // States
@@ -25,7 +25,7 @@ const PickersSpecificRange = () => {
           minDate={new Date()}
           maxDate={addDays(new Date(), 5)}
           onChange={(date: Date) => setDate(date)}
-          customInput={<CustomInput label='Specific Date Range' />}
+          customInput={<CustomTextField label='Specific Date Range' fullWidth />}
         />
       </Grid>
       <Grid item xs={12}>
@@ -37,7 +37,7 @@ const PickersSpecificRange = () => {
           onChange={(date: Date) => setTime(date)}
           minTime={setHours(setMinutes(new Date(), 0), 17)}
           maxTime={setHours(setMinutes(new Date(), 30), 20)}
-          customInput={<CustomInput label='Specific Time' />}
+          customInput={<CustomTextField label='Specific Time' fullWidth />}
         />
       </Grid>
     </Grid>

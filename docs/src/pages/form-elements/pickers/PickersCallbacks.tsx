@@ -8,8 +8,8 @@ import Grid from '@mui/material/Grid'
 import { toast } from 'react-toastify'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersCallbacks = () => {
   // States
@@ -27,7 +27,7 @@ const PickersCallbacks = () => {
           id='callback-open'
           dateFormat='MM/dd/yyyy'
           onChange={(date: Date) => setDate(date)}
-          customInput={<CustomInput label='Open & Closed' />}
+          customInput={<CustomTextField label='Open & Closed' fullWidth />}
           onCalendarOpen={() => handlePickerCallback(`Selected Date: ${new Date(date || '').toLocaleDateString()}`)}
           onCalendarClose={() => handlePickerCallback(`Selected Date: ${new Date(date || '').toLocaleDateString()}`)}
         />
@@ -37,7 +37,7 @@ const PickersCallbacks = () => {
           selected={date}
           id='callback-blur'
           onChange={(date: Date) => setDate(date)}
-          customInput={<CustomInput label='Blur' />}
+          customInput={<CustomTextField label='Blur' fullWidth />}
           onBlur={() => handlePickerCallback('Picker Closed')}
         />
       </Grid>
@@ -45,7 +45,7 @@ const PickersCallbacks = () => {
         <AppReactDatepicker
           selected={date}
           id='callback-change'
-          customInput={<CustomInput label='onChange' />}
+          customInput={<CustomTextField label='onChange' fullWidth />}
           onChange={(date: Date) => {
             setDate(date)
             handlePickerCallback(`Selected Date: ${new Date(date || '').toLocaleDateString()}`)

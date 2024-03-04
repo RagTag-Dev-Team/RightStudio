@@ -3,7 +3,6 @@ import { useState, forwardRef } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
@@ -11,6 +10,7 @@ import { format, addDays } from 'date-fns'
 
 // Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 type CustomInputProps = TextFieldProps & {
   label: string
@@ -47,7 +47,7 @@ const PickersRange = () => {
 
     const value = `${startDate}${endDate !== null ? endDate : ''}`
 
-    return <TextField fullWidth inputRef={ref} {...rest} label={label} value={value} />
+    return <CustomTextField fullWidth inputRef={ref} {...rest} label={label} value={value} />
   })
 
   return (

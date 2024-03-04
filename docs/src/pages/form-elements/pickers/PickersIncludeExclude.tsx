@@ -8,8 +8,8 @@ import Grid from '@mui/material/Grid'
 import { addDays, subDays, setHours, setMinutes } from 'date-fns'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersIncludeExclude = () => {
   // States
@@ -25,7 +25,7 @@ const PickersIncludeExclude = () => {
           selected={date}
           id='include-dates'
           onChange={(date: Date) => setDate(date)}
-          customInput={<CustomInput label='Include Dates' />}
+          customInput={<CustomTextField label='Include Dates' fullWidth />}
           includeDates={[new Date(), addDays(new Date(), 1)]}
         />
       </Grid>
@@ -34,7 +34,7 @@ const PickersIncludeExclude = () => {
           id='exclude-dates'
           selected={dateExclude}
           onChange={(date: Date) => setDateExclude(date)}
-          customInput={<CustomInput label='Exclude Dates' />}
+          customInput={<CustomTextField label='Exclude Dates' fullWidth />}
           excludeDates={[subDays(new Date(), 1), subDays(new Date(), 2)]}
         />
       </Grid>
@@ -45,7 +45,7 @@ const PickersIncludeExclude = () => {
           id='include-time'
           dateFormat='MM/dd/yyyy h:mm aa'
           onChange={(date: Date) => setTime(date)}
-          customInput={<CustomInput label='Include Time' />}
+          customInput={<CustomTextField label='Include Time' fullWidth />}
           includeTimes={[
             setHours(setMinutes(new Date(), 0), 17),
             setHours(setMinutes(new Date(), 30), 18),
@@ -61,7 +61,7 @@ const PickersIncludeExclude = () => {
           selected={timeExclude}
           dateFormat='MM/dd/yyyy h:mm aa'
           onChange={(date: Date) => setTimeExclude(date)}
-          customInput={<CustomInput label='Exclude Time' />}
+          customInput={<CustomTextField label='Exclude Time' fullWidth />}
           excludeTimes={[
             setHours(setMinutes(new Date(), 0), 17),
             setHours(setMinutes(new Date(), 30), 18),

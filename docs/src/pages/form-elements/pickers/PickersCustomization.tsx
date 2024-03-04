@@ -8,8 +8,8 @@ import Grid from '@mui/material/Grid'
 import { subDays, addDays } from 'date-fns'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersCustomization = () => {
   // States
@@ -24,7 +24,7 @@ const PickersCustomization = () => {
           selected={dateFormat}
           dateFormat='MMMM d, yyyy'
           onChange={(date: Date) => setDateFormat(date)}
-          customInput={<CustomInput label='Custom Date Format' />}
+          customInput={<CustomTextField label='Custom Date Format' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
@@ -32,7 +32,7 @@ const PickersCustomization = () => {
           id='highlight-dates'
           selected={dateHighlight}
           onChange={(date: Date) => setDateHighlight(date)}
-          customInput={<CustomInput label='Highlight Dates' />}
+          customInput={<CustomTextField label='Highlight Dates' fullWidth />}
           highlightDates={[subDays(new Date(), 7), addDays(new Date(), 7)]}
         />
       </Grid>

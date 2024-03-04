@@ -8,8 +8,8 @@ import Grid from '@mui/material/Grid'
 import { subDays, addDays } from 'date-fns'
 
 // Component Imports
-import CustomInput from './PickersCustomInput'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+import CustomTextField from '@core/components/mui/text-field'
 
 const PickersMinMax = () => {
   // States
@@ -24,7 +24,7 @@ const PickersMinMax = () => {
           selected={minDate}
           minDate={subDays(new Date(), 5)}
           onChange={(date: Date) => setMinDate(date)}
-          customInput={<CustomInput label='Min Date' />}
+          customInput={<CustomTextField label='Min Date' fullWidth />}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
@@ -33,7 +33,7 @@ const PickersMinMax = () => {
           selected={maxDate}
           maxDate={addDays(new Date(), 5)}
           onChange={(date: Date) => setMaxDate(date)}
-          customInput={<CustomInput label='Max Date' />}
+          customInput={<CustomTextField label='Max Date' fullWidth />}
         />
       </Grid>
     </Grid>
