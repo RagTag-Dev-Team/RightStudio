@@ -51,7 +51,7 @@ const ProjectStatus = () => {
   const theme = useTheme()
 
   // Vars
-  const primaryColor = theme.palette.primary.main
+  const warningColor = theme.palette.warning.main
 
   const options: ApexOptions = {
     chart: {
@@ -79,7 +79,7 @@ const ProjectStatus = () => {
             {
               offset: 0,
               opacity: 0.4,
-              color: primaryColor
+              color: warningColor
             },
             {
               offset: 100,
@@ -95,7 +95,7 @@ const ProjectStatus = () => {
         enabled: true,
         shadeTo: 'light',
         shadeIntensity: 1,
-        color: primaryColor
+        color: warningColor
       }
     },
     grid: {
@@ -120,7 +120,7 @@ const ProjectStatus = () => {
       <CardHeader title='Project Status' action={<OptionMenu options={['Share', 'Refresh', 'Update']} />} />
       <CardContent className='flex flex-col gap-6'>
         <div className='flex items-center gap-4'>
-          <CustomAvatar skin='light' variant='rounded' color='primary'>
+          <CustomAvatar skin='light' variant='rounded' color='warning'>
             <i className='tabler-currency-dollar' />
           </CustomAvatar>
           <div className='flex justify-between items-center is-full'>
@@ -135,7 +135,7 @@ const ProjectStatus = () => {
             </Typography>
           </div>
         </div>
-        <AppReactApexCharts type='area' height={234} series={series} options={options} />
+        <AppReactApexCharts type='area' height={198} series={series} options={options} />
         <div className='flex flex-col gap-4'>
           {data.map((item: DataType, index: number) => (
             <div key={index} className='flex items-center justify-between gap-4'>

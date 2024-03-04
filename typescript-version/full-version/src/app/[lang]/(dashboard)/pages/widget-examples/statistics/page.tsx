@@ -7,7 +7,7 @@ import type { CardStatsType } from '@/types/pages/widgetTypes'
 // Component Imports
 import StatisticsCard from '@views/pages/widget-examples/statistics/StatisticsCard'
 import Square from '@views/pages/widget-examples/statistics/Square'
-import DistributedBarChartSessions from '@views/pages/widget-examples/statistics/DistributedBarChartSessions'
+import DistributedBarChartOrder from '@/views/pages/widget-examples/statistics/DistributedBarChartOrder'
 import LineAreaYearlySalesChart from '@views/pages/widget-examples/statistics/LineAreaYearlySalesChart'
 import LineChartProfit from '@views/pages/widget-examples/statistics/LineChartProfit'
 import BarChartSessionsWithNegativeValues from '@views/pages/widget-examples/statistics/BarChartSessionsWithNegativeValues'
@@ -47,7 +47,7 @@ const Statistics = async () => {
         <Square data={data.statsSquare} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
-        <DistributedBarChartSessions />
+        <DistributedBarChartOrder />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <LineAreaYearlySalesChart />

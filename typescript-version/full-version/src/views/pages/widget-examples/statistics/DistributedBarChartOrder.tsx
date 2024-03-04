@@ -19,7 +19,7 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 // Vars
 const series = [{ data: [77, 55, 23, 43, 77, 55, 89] }]
 
-const DistributedBarChartSessions = () => {
+const DistributedBarChartOrder = () => {
   // Hooks
   const theme = useTheme()
 
@@ -122,4 +122,4 @@ const DistributedBarChartSessions = () => {
   )
 }
 
-export default DistributedBarChartSessions
+export default DistributedBarChartOrder
