@@ -6,21 +6,25 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-const shadows = ['xs', 'sm', 'md', 'lg', 'xl']
+const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'success']
 
-const Custom = () => {
+const shadows = ['sm', 'md', 'lg']
+
+const colorShadows = colors.flatMap(color => shadows.map(shadow => ({ color, shadow })));
+
+const Color = () => {
   return (
     <Card>
-      <CardHeader title='Custom' className='p-[50px]'/>
+      <CardHeader title='Color' className='p-[50px]'/>
       <CardContent className='flex gap-6 flex-wrap items-center justify-center !p-[50px] !pbs-0'>
         <Grid container spacing={12}>
-          {shadows.map((shadow, index) => (
-            <Grid item xs={12} sm={index === (shadows.length-1) ? 12 : 6} lg={2.4} key={shadow}>
+          {colorShadows.map(({ color, shadow }, index) => (
+            <Grid item key={index} sm={12} lg={4}>
               <Box
-                sx={{boxShadow: `var(--mui-customShadows-${shadow})`}}
+                sx={{ boxShadow: `var(--mui-customShadows-${color}-${shadow})` }}
                 className='flex rounded-lg p-6 items-center justify-center min-w-[100px]'
               >
-                <Typography variant='h6'>{shadow}</Typography>
+                <Typography variant='h6'>{color}-{shadow}</Typography>
               </Box>
             </Grid>
           ))}
@@ -30,4 +34,4 @@ const Custom = () => {
   )
 }
 
-export default Custom
+export default Color
