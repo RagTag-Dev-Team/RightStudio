@@ -26,9 +26,13 @@ const AccountDelete = () => {
   // Hooks
   const {
     control,
+    watch,
     handleSubmit,
     formState: { errors }
   } = useForm({ defaultValues: { checkbox: false } })
+
+  // Vars
+  const checkboxValue = watch('checkbox')
 
   const onSubmit = () => {
     setOpen(true)
@@ -50,7 +54,7 @@ const AccountDelete = () => {
             />
             {errors.checkbox && <FormHelperText error>Please confirm you want to delete account</FormHelperText>}
           </FormControl>
-          <Button variant='contained' color='error' type='submit' disabled={Boolean(errors.checkbox)}>
+          <Button variant='contained' color='error' type='submit' disabled={!checkboxValue}>
             Deactivate Account
           </Button>
           <ConfirmationDialog open={open} setOpen={setOpen} type='delete-account' />
