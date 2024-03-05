@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const TextFieldIcons = () => {
   return (

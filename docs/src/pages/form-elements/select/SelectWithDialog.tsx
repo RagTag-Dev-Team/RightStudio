@@ -11,7 +11,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const SelectWithDialog = () => {
   // States

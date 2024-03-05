@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Components Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const FormLayoutsWithIcon = () => {
   return (

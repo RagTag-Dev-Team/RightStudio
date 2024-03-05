@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8

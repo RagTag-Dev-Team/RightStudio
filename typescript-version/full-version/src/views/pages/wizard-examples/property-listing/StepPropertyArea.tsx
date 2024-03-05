@@ -13,7 +13,7 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
@@ -39,7 +39,11 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           label='Total Area'
           placeholder='1000'
           InputProps={{
-            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-ft</InputAdornment>
+            endAdornment: (
+              <InputAdornment position='end' className='text-textDisabled'>
+                sq-ft
+              </InputAdornment>
+            )
           }}
         />
       </Grid>
@@ -50,7 +54,11 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           label='Carpet Area'
           placeholder='800'
           InputProps={{
-            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-ft</InputAdornment>
+            endAdornment: (
+              <InputAdornment position='end' className='text-textDisabled'>
+                sq-ft
+              </InputAdornment>
+            )
           }}
         />
       </Grid>
@@ -61,7 +69,11 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           label='Plot Area'
           placeholder='800'
           InputProps={{
-            endAdornment: <InputAdornment position='end' className='text-textDisabled'>sq-yd</InputAdornment>
+            endAdornment: (
+              <InputAdornment position='end' className='text-textDisabled'>
+                sq-yd
+              </InputAdornment>
+            )
           }}
         />
       </Grid>

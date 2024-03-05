@@ -20,7 +20,7 @@ import { email, object, minLength, string } from 'valibot'
 import type { Input } from 'valibot'
 
 // Components Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type FormData = Input<typeof schema>
 

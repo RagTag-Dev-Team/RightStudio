@@ -24,7 +24,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'

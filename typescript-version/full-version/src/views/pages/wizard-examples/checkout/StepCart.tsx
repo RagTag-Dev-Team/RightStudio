@@ -21,7 +21,7 @@ import Fade from '@mui/material/Fade'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Vars
 const products = [

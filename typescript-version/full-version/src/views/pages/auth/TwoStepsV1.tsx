@@ -11,7 +11,7 @@ import Button from '@mui/material/Button'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import AuthIllustrationWrapper from './AuthIllustrationWrapper'

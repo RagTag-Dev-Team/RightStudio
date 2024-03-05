@@ -35,7 +35,7 @@ import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Style Imports

@@ -21,8 +21,8 @@ import MenuItem from '@mui/material/MenuItem'
 
 // Component Imports
 import DialogCloseButton from '../DialogCloseButton'
-import CustomAutocomplete from '@core/components/mui/autocomplete'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
 import CustomAvatar from '@core/components/mui/Avatar'
 
 // Config Imports

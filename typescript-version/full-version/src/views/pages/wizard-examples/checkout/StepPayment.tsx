@@ -25,7 +25,7 @@ import Fade from '@mui/material/Fade'
 
 // Component Imports
 import CustomTabList from '@core/components/mui/TabList'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const StepPayment = ({ handleNext }: { handleNext: () => void }) => {
   // States

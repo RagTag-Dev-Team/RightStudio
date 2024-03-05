@@ -2,8 +2,8 @@
 import { createFilterOptions } from '@mui/material/Autocomplete'
 
 // Components Imports
-import CustomAutocomplete from '@core/components/mui/autocomplete'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Data Imports
 import { top100Films } from '../../../data/top100films'

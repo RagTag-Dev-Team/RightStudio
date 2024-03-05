@@ -13,8 +13,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Chip from '@mui/material/Chip'
 
 // Component Imports
-import CustomAutocomplete from '@core/components/mui/autocomplete'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 type Props = {

@@ -1,6 +1,6 @@
 // Components Imports
-import CustomAutocomplete from '@core/components/mui/autocomplete'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
 
 const timeSlots = Array.from(new Array(24 * 2)).map(
   (_, index) => `${index < 20 ? '0' : ''}${Math.floor(index / 2)}:${index % 2 === 0 ? '00' : '30'}`

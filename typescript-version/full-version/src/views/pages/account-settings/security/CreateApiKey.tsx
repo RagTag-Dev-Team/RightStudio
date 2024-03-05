@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const CreateApiKey = () => {
   return (

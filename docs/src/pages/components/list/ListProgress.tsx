@@ -11,7 +11,7 @@ import type { ListProps } from '@mui/material/List'
 import type { ThemeColor } from '@core/types'
 
 //Component Imports
-import CustomAvatar from '@site/src/components/mui/Avatar'
+import CustomAvatar from '@core/components/mui/Avatar'
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-root': {

@@ -13,7 +13,7 @@ import classnames from 'classnames'
 
 // Styles imports
 import styles from './styles.module.css'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled CustomTextField component
 const CustomTextFieldStyled = styled(CustomTextField)<TextFieldProps>(({ theme }) => ({

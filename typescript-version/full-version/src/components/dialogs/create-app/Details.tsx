@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Config Imports

@@ -17,7 +17,7 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import type { Breakpoint } from '@mui/material/styles'
 
 // Component Imports
-import CustomTextField from '@site/src/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled component for the form
 const Form = styled('form')({

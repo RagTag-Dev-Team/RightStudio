@@ -19,7 +19,7 @@ import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import DialogCloseButton from '../DialogCloseButton'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type BillingCardData = {
   cardNumber?: string

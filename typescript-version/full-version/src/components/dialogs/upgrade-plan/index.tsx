@@ -16,7 +16,7 @@ import Divider from '@mui/material/Divider'
 import ConfirmationDialog from '../confirmation-dialog'
 
 //Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import DialogCloseButton from '../DialogCloseButton'
 
 type UpgradePlanProps = {

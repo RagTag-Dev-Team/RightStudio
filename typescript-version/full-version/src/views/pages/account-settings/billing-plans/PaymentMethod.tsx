@@ -23,7 +23,7 @@ import type { ThemeColor } from '@core/types'
 // Component Imports
 import BillingCard from '@components/dialogs/billing-card'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type DataType = {
   cardNumber?: string

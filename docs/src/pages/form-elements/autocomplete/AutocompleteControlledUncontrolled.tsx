@@ -3,8 +3,8 @@ import { useState } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // Components Imports
-import CustomTextField from '@core/components/mui/text-field'
-import CustomAutocomplete from '@core/components/mui/autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
 
 // Data Imports
 import { top100Films } from '../../../data/top100films'

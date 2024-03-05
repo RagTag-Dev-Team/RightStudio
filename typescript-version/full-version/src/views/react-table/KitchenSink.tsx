@@ -32,7 +32,7 @@ import type { DataType } from './data'
 
 // Component Imports
 import TablePaginationComponent from '@components/TablePaginationComponent'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Icon Imports
 import ChevronRight from '@menu/svg/ChevronRight'

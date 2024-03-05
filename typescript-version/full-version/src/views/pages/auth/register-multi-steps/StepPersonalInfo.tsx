@@ -7,7 +7,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const StepPersonalInfo = ({ handleNext, handlePrev }: { handleNext: () => void; handlePrev: () => void }) => {
   return (

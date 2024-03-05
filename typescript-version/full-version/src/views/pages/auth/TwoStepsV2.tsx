@@ -17,7 +17,7 @@ import type { Mode } from '@core/types'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'

@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles'
 
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@components/DirectionalIcon'
 import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 

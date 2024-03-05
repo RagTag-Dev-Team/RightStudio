@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 
 // Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const PickersCallbacks = () => {
   // States

@@ -19,7 +19,7 @@ import classnames from 'classnames'
 
 // Component Imports
 import DialogCloseButton from '../DialogCloseButton'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import CustomAvatar from '@core/components/mui/Avatar'
 
 // Config Imports

@@ -16,7 +16,7 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'

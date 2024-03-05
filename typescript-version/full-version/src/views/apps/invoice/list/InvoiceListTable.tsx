@@ -47,7 +47,7 @@ import type { Locale } from '@configs/i18n'
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
 import TablePaginationComponent from '@components/TablePaginationComponent'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'

@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContentText from '@mui/material/DialogContentText'
 
 // Component Imports
-import CustomTextField from '@site/src/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const DialogsForm = () => {
   // States

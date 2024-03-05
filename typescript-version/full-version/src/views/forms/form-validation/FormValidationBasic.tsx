@@ -25,7 +25,7 @@ import { toast } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
 
 // Components Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -250,7 +250,7 @@ const FormValidationBasic = () => {
               <Button variant='contained' type='submit'>
                 Submit
               </Button>
-              <Button variant='tonal' color='secondary'  type='reset' onClick={() => reset()}>
+              <Button variant='tonal' color='secondary' type='reset' onClick={() => reset()}>
                 Reset
               </Button>
             </Grid>

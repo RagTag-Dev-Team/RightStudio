@@ -29,7 +29,7 @@ import type { FormDataType } from './AddCustomerDrawer'
 // Component Imports
 import AddCustomerDrawer, { initialFormData } from './AddCustomerDrawer'
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@/@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'

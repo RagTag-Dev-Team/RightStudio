@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem'
 import type { UsersType } from '@/types/apps/userTypes'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const TableFilters = ({ setData, tableData }: { setData: any; tableData?: UsersType[] }) => {
   // States

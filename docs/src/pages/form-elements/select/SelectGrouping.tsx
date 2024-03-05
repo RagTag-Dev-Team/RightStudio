@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem'
 import ListSubheader from '@mui/material/ListSubheader'
 
 // Component Imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const SelectGrouping = () => {
   return (

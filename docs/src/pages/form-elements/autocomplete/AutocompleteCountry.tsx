@@ -1,6 +1,6 @@
 // Components Imports
-import CustomAutocomplete from '@core/components/mui/autocomplete'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomAutocomplete from '@core/components/mui/Autocomplete'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Data Imports
 import { countries } from '../../../data/countries'

@@ -48,7 +48,7 @@ import TableFilters from './TableFilters'
 import AddUserDrawer from './AddUserDrawer'
 import OptionMenu from '@core/components/option-menu'
 import TablePaginationComponent from '@components/TablePaginationComponent'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 import CustomAvatar from '@core/components/mui/Avatar'
 
 // Util Imports

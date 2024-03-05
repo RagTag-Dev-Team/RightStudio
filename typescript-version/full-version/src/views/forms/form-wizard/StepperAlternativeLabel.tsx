@@ -21,7 +21,7 @@ import { toast } from 'react-toastify'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
@@ -345,7 +345,9 @@ const StepperAlternativeLabel = () => {
                       disabled={activeStep === 0}
                       onClick={handleBack}
                       color='secondary'
-                      startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                      startIcon={
+                        <DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />
+                      }
                     >
                       Back
                     </Button>

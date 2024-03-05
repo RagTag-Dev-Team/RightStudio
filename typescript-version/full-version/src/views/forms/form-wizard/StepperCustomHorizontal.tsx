@@ -28,7 +28,7 @@ import classnames from 'classnames'
 import CustomAvatar from '@core/components/mui/Avatar'
 import DirectionalIcon from '@components/DirectionalIcon'
 import StepperCustomDot from './StepperCustomDot'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styles Component Imports
 import StepperWrapper from '@core/styles/stepper'
@@ -406,16 +406,26 @@ const StepperCustomHorizontal = () => {
                   </Grid>
                   {renderStepContent(activeStep)}
                   <Grid item xs={12} className='flex justify-between'>
-                    <Button variant='tonal' disabled={activeStep === 0} onClick={handleBack} startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />} color='secondary'>
+                    <Button
+                      variant='tonal'
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
+                      color='secondary'
+                    >
                       Back
                     </Button>
-                    <Button variant='contained' onClick={handleNext} endIcon={
+                    <Button
+                      variant='contained'
+                      onClick={handleNext}
+                      endIcon={
                         activeStep === steps.length - 1 ? (
                           <i className='tabler-check' />
                         ) : (
                           <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
                         )
-                      }>
+                      }
+                    >
                       {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                     </Button>
                   </Grid>

@@ -2,7 +2,7 @@
 import MenuItem from '@mui/material/MenuItem'
 
 // Component imports
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 const SelectCustom = () => {
   return (

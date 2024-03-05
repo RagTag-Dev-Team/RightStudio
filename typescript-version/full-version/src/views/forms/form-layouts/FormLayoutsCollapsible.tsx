@@ -23,7 +23,7 @@ import type { CustomInputHorizontalData } from '@core/components/custom-inputs/t
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type FormData = {
   fullName: string

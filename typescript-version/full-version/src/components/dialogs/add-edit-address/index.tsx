@@ -25,7 +25,7 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 import DialogCloseButton from '../DialogCloseButton'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type AddEditAddressData = {
   firstName?: string

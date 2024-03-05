@@ -17,7 +17,7 @@ import type { CustomInputVerticalData } from '@core/components/custom-inputs/typ
 // Component Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
 import DirectionalIcon from '@components/DirectionalIcon'
-import CustomTextField from '@core/components/mui/text-field'
+import CustomTextField from '@core/components/mui/TextField'
 
 type Props = {
   activeStep: number
