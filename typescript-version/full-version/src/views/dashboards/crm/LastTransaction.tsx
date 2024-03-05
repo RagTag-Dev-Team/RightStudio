@@ -6,11 +6,16 @@ import CardHeader from '@mui/material/CardHeader'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
+import { useColorScheme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
+
+// Types Imports
+import type { ThemeColor } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
-
-import type { ThemeColor } from '@core/types'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -84,6 +89,9 @@ const statusObj: StatusObj = {
 }
 
 const LastTransaction = () => {
+  // Hooks
+  const { mode } = useColorScheme()
+
   return (
     <Card>
       <CardHeader
@@ -105,19 +113,29 @@ const LastTransaction = () => {
               <tr key={index} className='border-0'>
                 <td className='pis-6 pli-2 plb-3'>
                   <div className='flex items-center gap-4'>
-                    <Avatar variant='rounded' className='is-[50px] bs-[30px]'>
+                    <Avatar
+                      variant='rounded'
+                      className={classnames('is-[50px] bs-[30px]', {
+                        'bg-white': mode === 'dark',
+                        'bg-actionHover': mode === 'light'
+                      })}
+                    >
                       <img width={30} alt={row.imgName} src={`/images/logos/${row.imgName}.png`} />
                     </Avatar>
                     <div className='flex flex-col'>
                       <Typography color='text.primary'>{row.cardNumber}</Typography>
-                      <Typography variant='body2'>{row.cardType}</Typography>
+                      <Typography variant='body2' color='text.disabled'>
+                        {row.cardType}
+                      </Typography>
                     </div>
                   </div>
                 </td>
                 <td className='pli-2 plb-3'>
                   <div className='flex flex-col'>
                     <Typography color='text.primary'>Sent</Typography>
-                    <Typography variant='body2'>{row.date}</Typography>
+                    <Typography variant='body2' color='text.disabled'>
+                      {row.date}
+                    </Typography>
                   </div>
                 </td>
                 <td className='pli-2 plb-3'>
