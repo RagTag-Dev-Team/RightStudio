@@ -1,12 +1,13 @@
 // React Imports
 import React from 'react'
+import type { ReactNode } from 'react'
 
 // Docusaurus Imports
 import ThemedImage from '@theme/ThemedImage'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 type FeatureItem = {
-  title: string
+  title: ReactNode
   imgLightSrc: string
   imgDarkSrc: string
   imgAlt: string
@@ -15,36 +16,35 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Based on MUI & Next.js',
+    title: <>Based on Next.js, MUI & <br /> Tailwind</>,
     imgLightSrc: '/images/home-page/light-mui-nextjs-tailwind.png',
     imgDarkSrc: '/images/home-page/dark-mui-nextjs-tailwind.png',
-    imgAlt: 'MUI & Next.js',
+    imgAlt: 'Next.js, MUI & Tailwind',
     description: (
       <>
-       With MUI & Next.js you can build responsive, mobile-first, and ARIA accessible projects on the web.
+        With Next.js, MUI & Tailwind you can build responsive and mobile-first projects on the web.
       </>
     ),
   },
   {
-    title: 'TypeScript & JavaScript',
+    title: <>TypeScript & <br /> JavaScript</>,
     imgLightSrc: '/images/home-page/light-ts-js.png',
     imgDarkSrc: '/images/home-page/dark-ts-js.png',
     imgAlt: 'TypeScript & JavaScript',
     description: (
       <>
-        Use TypeScript or JavaScript to build your website. We handle all the
-        configuration, so you can focus on writing code.
+        We offer support for both TypeScript and JavaScript, ensuring comprehensive coverage for all developer use cases.
       </>
     ),
   },
   {
-    title: 'Next Auth & Translations',
+    title: <>Next Auth, React Hook Form & Translations</>,
     imgLightSrc: '/images/home-page/light-auth-translation-hook.png',
     imgDarkSrc: '/images/home-page/dark-auth-translation-hook.png',
-    imgAlt: 'Next Auth & Translations',
+    imgAlt: 'Next Auth, React Hook Form & Translations',
     description: (
       <>
-        With Next Auth you can utilize and auth service and with Translations you can translate your app to any language.
+        Authenticate users, Validate Forms and Translate your app using built-in Next Auth, React Hook Form & Translation support.
       </>
     ),
   },
@@ -56,12 +56,12 @@ const Feature = ({title, imgLightSrc, imgDarkSrc, imgAlt, description}: FeatureI
       <div className="text--center">
         <ThemedImage
           alt={imgAlt}
-          className='is-[350px]'
+          className='is-[350px] mbe-4'
           sources={{ light: useBaseUrl(imgLightSrc), dark: useBaseUrl(imgDarkSrc) }}
         />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <p>{description}</p>
       </div>
     </div>

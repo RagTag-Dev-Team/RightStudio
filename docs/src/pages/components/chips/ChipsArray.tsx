@@ -22,6 +22,19 @@ const data: ChipData[] = [
   { key: 4, avatar: '/images/avatars/5.png', avatarAlt: 'User Avatar', label: 'Edward Francis' }
 ];
 
+// Separate component for rendering each chip
+const ChipItem = ({ data, onDelete }: { data: ChipData; onDelete: () => void }) => {
+  const avatarUrl = data.avatar ? useBaseUrl(data.avatar) : undefined;
+
+  return (
+    <Chip
+      key={data.key}
+      label={data.label}
+      avatar={avatarUrl ? <Avatar src={avatarUrl} alt={data.avatarAlt} /> : null}
+      onDelete={onDelete}
+    />
+  );
+};
 
 const ChipsArray = () => {
 
@@ -36,12 +49,11 @@ const ChipsArray = () => {
   return (
     <div className='flex gap-4 flex-wrap'>
       {chipData.map(data => (
-        <Chip
-          key={data.key}
-          label={data.label}
-          avatar={<Avatar src={`${useBaseUrl(data.avatar)}`} alt={data.avatarAlt} />}
-          onDelete={data.key === 2 ? undefined : handleDelete(data)}
-        />
+         <ChipItem
+         key={data.key}
+         data={data}
+         onDelete={data.key === 2 ? undefined : handleDelete(data)}
+       />
       ))}
     </div>
   )
