@@ -74,7 +74,7 @@ const Slides = () => {
             </Typography>
             <Grid container spacing={4} className='relative'>
               <Grid item xs={12} sm={8} className='order-2 sm:order-1'>
-                <div className='flex flex-col gap-4 sm:pbs-6'>
+                <div className='flex flex-col gap-4 pbs-5 sm:plb-6'>
                   <Typography className='font-medium text-[var(--mui-palette-common-white)]'>{slide.title}</Typography>
                   <Grid container spacing={4}>
                     {Object.keys(slide.details).map((key: string, index: number) => {
@@ -170,10 +170,11 @@ const WebsiteAnalyticsSlider = () => {
                       '& .MuiBadge-dot': {
                         width: '8px !important',
                         height: '8px !important',
-                        backgroundColor: `${(theme.palette.common.white, 0.4)} !important`
+                        backgroundColor: `${theme.palette.common.white} !important`,
+                        opacity: 0.4
                       },
                       '&.active .MuiBadge-dot': {
-                        backgroundColor: `${theme.palette.common.white} !important`
+                        opacity: 1
                       }
                     }}
                   ></Badge>

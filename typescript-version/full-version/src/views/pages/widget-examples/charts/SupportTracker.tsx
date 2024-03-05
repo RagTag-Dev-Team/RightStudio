@@ -136,11 +136,46 @@ const SupportTracker = () => {
       {
         breakpoint: 1280,
         options: {
+          chart: {
+            height: 325
+          },
           grid: {
             padding: {
               top: 12,
               left: 12
             }
+          }
+        }
+      },
+      {
+        breakpoint: 1201,
+        options: {
+          chart: {
+            height: 362
+          }
+        }
+      },
+      {
+        breakpoint: 1135,
+        options: {
+          chart: {
+            height: 350
+          }
+        }
+      },
+      {
+        breakpoint: 980,
+        options: {
+          chart: {
+            height: 300
+          }
+        }
+      },
+      {
+        breakpoint: 900,
+        options: {
+          chart: {
+            height: 350
           }
         }
       }

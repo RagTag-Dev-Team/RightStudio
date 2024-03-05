@@ -164,7 +164,7 @@ const EarningReports = () => {
         action={<OptionMenu options={['Last Week', 'Last Month', 'Last Year']} />}
         className='pbe-0'
       />
-      <CardContent className='flex flex-col gap-5'>
+      <CardContent className='flex flex-col gap-5 max-md:gap-5 max-[1015px]:gap-[62px] max-[1051px]:gap-10 max-[1200px]:gap-5 max-[1310px]:gap-10'>
         <div className='flex flex-col sm:flex-row items-center justify-between gap-8'>
           <div className='flex flex-col gap-3 is-full sm:is-[unset]'>
             <div className='flex items-center gap-2.5'>
@@ -184,7 +184,7 @@ const EarningReports = () => {
                 <CustomAvatar skin='light' variant='rounded' color={item.avatarColor} size={26}>
                   <i className={classnames(item.avatarIcon, 'text-lg')} />
                 </CustomAvatar>
-                <Typography variant='h6' className='leading-6'>
+                <Typography variant='h6' className='leading-6 font-normal'>
                   {item.title}
                 </Typography>
               </div>

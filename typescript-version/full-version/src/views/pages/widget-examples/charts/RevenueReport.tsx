@@ -261,7 +261,7 @@ const RevenueReport = () => {
               size='small'
               variant='tonal'
               onClick={handleClick}
-              endIcon={<i className='ri-arrow-down-s-line text-xl' />}
+              endIcon={<i className='tabler-chevron-down text-xl' />}
             >
               {new Date().getFullYear()}
             </Button>

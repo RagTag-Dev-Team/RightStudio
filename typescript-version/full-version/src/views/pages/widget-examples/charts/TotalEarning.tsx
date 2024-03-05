@@ -85,7 +85,7 @@ const TotalEarning = () => {
     },
     colors: [
       rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
+      rgbaToHex(`rgb(${theme.palette.secondary.mainChannel} / 1)`)
     ],
     states: {
       hover: {

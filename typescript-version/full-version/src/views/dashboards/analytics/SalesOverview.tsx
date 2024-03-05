@@ -46,11 +46,7 @@ const SalesOverview = () => {
             </Typography>
           </div>
           <Divider flexItem orientation='vertical'>
-            <CustomAvatar
-              skin='light'
-              size={24}
-              className='text-xs text-textDisabled bg-[var(--mui-palette-action-hover)]'
-            >
+            <CustomAvatar skin='light' size={24} className='text-xs text-textDisabled bg-actionHover'>
               VS
             </CustomAvatar>
           </Divider>

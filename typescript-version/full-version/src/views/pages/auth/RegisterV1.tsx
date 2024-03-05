@@ -43,7 +43,7 @@ const RegisterV1 = () => {
   return (
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
-        <CardContent className='!p-9 md:!p-12'>
+        <CardContent className='sm:!p-12'>
           <div className='flex justify-center mbe-6'>
             <Logo />
           </div>
@@ -93,7 +93,7 @@ const RegisterV1 = () => {
                 Sign in instead
               </Typography>
             </div>
-            <Divider className='gap-2'>or</Divider>
+            <Divider className='gap-2 text-textPrimary'>or</Divider>
             <div className='flex justify-center items-center gap-1.5'>
               <IconButton className='text-facebook' size='small'>
                 <i className='tabler-brand-facebook-filled' />

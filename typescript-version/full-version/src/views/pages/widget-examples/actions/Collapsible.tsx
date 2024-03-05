@@ -24,14 +24,14 @@ const CardActionCollapsible = () => {
         title='Collapsible'
         action={
           <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-            <i className={classnames(collapse ? 'ri-arrow-down-s-line' : 'ri-arrow-up-s-line', 'text-xl')} />
+            <i className={classnames(collapse ? 'tabler-chevron-down' : 'tabler-chevron-up', 'text-xl')} />
           </IconButton>
         }
       />
       <Collapse in={!collapse}>
         <CardContent>
           <Typography>
-            Click on <i className='ri-arrow-up-s-line text-xl align-sub' /> icon to see it in action
+            Click on <i className='tabler-chevron-up text-xl align-sub' /> icon to see it in action
           </Typography>
         </CardContent>
       </Collapse>

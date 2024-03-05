@@ -45,7 +45,7 @@ const renderCustomizedLabel = (props: LabelProp) => {
   const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
   return (
-    <text x={x} y={y} fill='#fff' textAnchor='middle' dominantBaseline='central'>
+    <text x={x} y={y} fill='#fff' textAnchor='middle' dominantBaseline='central' className='max-[400px]:text-xs'>
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   )

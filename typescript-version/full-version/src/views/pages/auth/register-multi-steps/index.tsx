@@ -36,10 +36,7 @@ import { useSettings } from '@core/hooks/useSettings'
 const RegisterIllustration = styled('img')(({ theme }) => ({
   zIndex: 2,
   maxBlockSize: 550,
-  marginBlock: theme.spacing(12),
-  [theme.breakpoints.down('lg')]: {
-    maxBlockSize: 450
-  }
+  marginBlock: theme.spacing(12)
 }))
 
 const MaskImg = styled('img')({
@@ -73,6 +70,9 @@ const steps = [
 const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
   paddingInline: theme.spacing(7),
   paddingBlock: theme.spacing(1),
+  '& + i': {
+    color: theme.palette.text.secondary
+  },
   '&:first-of-type': {
     paddingInlineStart: 0
   },
@@ -82,16 +82,10 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
   '& .MuiStepLabel-iconContainer': {
     display: 'none'
   },
-  '& .step-subtitle': {
-    color: `${theme.palette.text.disabled} !important`
-  },
-  '& + svg': {
+  '&.Mui-completed .step-title, &.Mui-completed .step-subtitle': {
     color: theme.palette.text.disabled
   },
-  '&.Mui-completed .step-title': {
-    color: theme.palette.text.disabled
-  },
-  '&.Mui-completed + svg': {
+  '&.Mui-completed + i': {
     color: theme.palette.primary.main
   },
   [theme.breakpoints.down('md')]: {
@@ -145,7 +139,7 @@ const RegisterMultiSteps = ({ mode }: { mode: Mode }) => {
     <div className='flex bs-full justify-between items-center'>
       <div
         className={classnames(
-          'flex bs-full items-center justify-center is-[23.75rem] lg:is-[28.125rem] relative p-6 max-md:hidden',
+          'flex bs-full items-center justify-center is-[23.75rem] lg:is-[28.125rem] relative p-6 max-lg:hidden',
           {
             'border-ie': settings.skin === 'bordered'
           }
@@ -168,7 +162,7 @@ const RegisterMultiSteps = ({ mode }: { mode: Mode }) => {
         <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
           <Logo />
         </div>
-        <StepperWrapper className='p-6 sm:p-12 max-is-[46.25rem] mbs-8 sm:mbs-11 md:mbs-0'>
+        <StepperWrapper className='p-6 sm:p-8 max-is-[46.25rem] mbs-11 sm:mbs-14 lg:mbs-0'>
           <Stepper
             activeStep={activeStep}
             connector={

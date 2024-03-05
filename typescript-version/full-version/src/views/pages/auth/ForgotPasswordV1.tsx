@@ -31,7 +31,7 @@ const ForgotPasswordV1 = () => {
   return (
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
-        <CardContent className='!p-9 md:!p-12'>
+        <CardContent className='sm:!p-12'>
           <div className='flex justify-center mbe-6'>
             <Logo />
           </div>

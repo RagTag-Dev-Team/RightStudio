@@ -87,14 +87,14 @@ const BrowserStates = () => {
                 <div className='flex relative'>
                   <CircularProgress
                     variant='determinate'
-                    size={28}
+                    size={26}
                     value={100}
                     thickness={5}
                     sx={{ position: 'absolute', color: theme => theme.palette.customColors.trackBg }}
                   />
                   <CircularProgress
                     variant='determinate'
-                    size={28}
+                    size={26}
                     value={item.progress}
                     thickness={5}
                     color={item.progressColor}
