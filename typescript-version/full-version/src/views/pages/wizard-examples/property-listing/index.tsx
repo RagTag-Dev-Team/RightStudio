@@ -81,7 +81,7 @@ const PropertyListingWizard = () => {
 
   return (
     <Card className='flex flex-col lg:flex-row'>
-      <CardContent className='border-be lg:border-ie lg:min-is-[300px]'>
+      <CardContent className='max-lg:border-be lg:border-ie lg:min-is-[300px]'>
         <StepperWrapper className='h-full'>
           <Stepper activeStep={activeStep} connector={<></>} orientation='vertical'>
             {steps.map((step, index) => {

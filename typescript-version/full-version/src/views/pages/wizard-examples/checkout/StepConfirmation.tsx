@@ -52,7 +52,7 @@ const StepConfirmation = () => {
       </Grid>
       <Grid item xs={12}>
         <div className='flex flex-col md:flex-row border rounded'>
-          <div className='flex flex-col w-full items-center sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col w-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-map-pin-2-line' />
               <Typography className='font-medium'>Shipping</Typography>
@@ -63,7 +63,7 @@ const StepConfirmation = () => {
             <Typography>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col w-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-bank-card-2-line' />
               <Typography className='font-medium'>Billing Address</Typography>

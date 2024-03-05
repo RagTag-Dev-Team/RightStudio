@@ -12,7 +12,7 @@ const CardLifetimeMembership = () => {
       <Grid container>
         <Grid item xs={12} sm={7}>
           <CardContent>
-            <Typography variant='h6' className='mbe-2'>
+            <Typography variant='h5' className='mbe-2'>
               Lifetime Membership
             </Typography>
             <Typography color='text.secondary'>
@@ -37,7 +37,7 @@ const CardLifetimeMembership = () => {
                   <Typography color='text.secondary'>15 Members</Typography>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={6} className='flex flex-col pis-5 border-is gap-[26px]'>
+              <Grid item xs={12} sm={6} className='flex flex-col max-sm:mbs-[26px] sm:pis-5 sm:border-is gap-[26px]'>
                 <div className='flex items-center gap-2.5'>
                   <div className='flex'>
                     <i className='ri-lock-unlock-line text-xl text-textSecondary' />
