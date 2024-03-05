@@ -26,6 +26,8 @@ import ChipsOnDelete from '@docPages/components/chips/ChipsOnDelete'
 import SourceCodeChipsOnDelete from '!!raw-loader!@docPages/components/chips/ChipsOnDelete'
 import ChipsClickable from '@docPages/components/chips/ChipsClickable'
 import SourceCodeChipsClickable from '!!raw-loader!@docPages/components/chips/ChipsClickable'
+import ChipsRound from '@docPages/components/chips/ChipsRound'
+import SourceCodeChipsRound from '!!raw-loader!@docPages/components/chips/ChipsRound'
 
 <h1 className='!m-0'>Chips</h1>
 
@@ -149,6 +151,19 @@ Please refer to MUI's official docs for more details on component's [usage guide
         </Typography>
       }
       <ChipsArray />
+    </CardSnippet>
+  </Grid>
+  <Grid item xs={12}>
+    <CardSnippet
+      title="Round Chip"
+      code={SourceCodeChipsRound}
+    >
+      {
+        <Typography className='mbe-4'>
+          You need to add <code>round='true'</code> to the <code>CustomChip</code> component to use round chip.
+        </Typography>
+      }
+      <ChipsRound />
     </CardSnippet>
   </Grid>
 </Grid>

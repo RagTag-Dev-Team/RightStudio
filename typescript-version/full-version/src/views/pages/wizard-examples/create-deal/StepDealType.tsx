@@ -62,8 +62,7 @@ const ImgWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(4, 4, 0, 4)
   },
   [theme.breakpoints.up('sm')]: {
-    height: 250,
-    padding: theme.spacing(5, 5, 0, 5)
+    height: 237
   },
   '& img': {
     height: 'auto',

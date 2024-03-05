@@ -33,7 +33,7 @@ const ActivityTimeline = () => {
     <Card>
       <CardHeader
         title='Activity Timeline'
-        avatar={<i className='tabler-chart-bar' />}
+        avatar={<i className='tabler-chart-bar text-textSecondary' />}
         titleTypographyProps={{ variant: 'h5' }}
       />
       <CardContent>

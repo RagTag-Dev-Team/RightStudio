@@ -275,14 +275,14 @@ const StepperLinearWithValidation = () => {
                   variant='tonal'
                   disabled
                   color='secondary'
-                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                  startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
                 >
                   Back
                 </Button>
                 <Button
                   variant='contained'
                   type='submit'
-                  endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                  endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
                 >
                   Next
                 </Button>
@@ -390,14 +390,14 @@ const StepperLinearWithValidation = () => {
                   variant='tonal'
                   onClick={handleBack}
                   color='secondary'
-                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                  startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
                 >
                   Back
                 </Button>
                 <Button
                   variant='contained'
                   type='submit'
-                  endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                  endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
                 >
                   Next
                 </Button>
@@ -486,11 +486,11 @@ const StepperLinearWithValidation = () => {
                   variant='tonal'
                   onClick={handleBack}
                   color='secondary'
-                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                  startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
                 >
                   Back
                 </Button>
-                <Button variant='contained' type='submit' endIcon={<i className='ri-check-line' />}>
+                <Button variant='contained' type='submit' endIcon={<i className='tabler-check' />}>
                   Submit
                 </Button>
               </Grid>

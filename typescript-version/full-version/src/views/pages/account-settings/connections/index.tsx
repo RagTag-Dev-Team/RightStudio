@@ -1,5 +1,8 @@
 'use client'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -103,7 +106,7 @@ const Connections = () => {
                   <img height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
                     <Typography className='text-textPrimary font-medium'>{item.title}</Typography>
-                    <Typography>{item.subtitle}</Typography>
+                    <Typography variant='body2'>{item.subtitle}</Typography>
                   </div>
                 </div>
                 <Switch defaultChecked={item.checked} />
@@ -121,9 +124,17 @@ const Connections = () => {
                   <div className='flex-grow'>
                     <Typography className='text-textPrimary font-medium'>{item.title}</Typography>
                     {item.isConnected ? (
-                      <Typography>{item.username}</Typography>
+                      <Typography
+                        variant='body2'
+                        color='primary'
+                        component={Link}
+                        href='/'
+                        onClick={e => e.preventDefault()}
+                      >
+                        {item.username}
+                      </Typography>
                     ) : (
-                      <Typography>Not Connected</Typography>
+                      <Typography variant='body2'>Not Connected</Typography>
                     )}
                   </div>
                 </div>

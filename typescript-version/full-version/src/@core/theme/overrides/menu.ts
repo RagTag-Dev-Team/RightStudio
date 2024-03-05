@@ -41,7 +41,7 @@ const menu = (skin: Skin): Theme['components'] => ({
             color: 'var(--mui-palette-primary-main)'
           },
           '&:hover': {
-            backgroundColor: 'var(--mui-palette-primary-lightOpacity)'
+            backgroundColor: 'var(--mui-palette-primary-mainOpacity)'
           }
         },
         '&.Mui-disabled': {

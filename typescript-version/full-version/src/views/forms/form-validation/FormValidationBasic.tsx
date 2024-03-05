@@ -189,6 +189,7 @@ const FormValidationBasic = () => {
                 rules={{ required: true }}
                 render={({ field }) => (
                   <CustomTextField select fullWidth label='Country' {...field} error={Boolean(errors.select)}>
+                    <MenuItem value=''>Select Country</MenuItem>
                     <MenuItem value='UK'>UK</MenuItem>
                     <MenuItem value='USA'>USA</MenuItem>
                     <MenuItem value='Australia'>Australia</MenuItem>

@@ -29,18 +29,18 @@ type TableDataType = {
 const tableData: TableDataType[] = [
   {
     app: false,
-    email: false,
+    email: true,
     browser: false,
     type: 'New for you'
   },
   {
     app: false,
     email: false,
-    browser: false,
+    browser: true,
     type: 'Account activity'
   },
   {
-    app: false,
+    app: true,
     email: false,
     browser: false,
     type: 'A new browser used to sign in'
@@ -48,7 +48,7 @@ const tableData: TableDataType[] = [
   {
     app: false,
     email: false,
-    browser: false,
+    browser: true,
     type: 'A new device is linked'
   }
 ]
@@ -76,7 +76,7 @@ const Notifications = () => {
                 <th>App</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className='border-be'>
               {tableData.map((data, index) => (
                 <tr key={index}>
                   <td>

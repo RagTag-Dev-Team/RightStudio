@@ -26,7 +26,6 @@ import StepperWrapper from '@core/styles/stepper'
 import StepAccountDetails from './StepAccountDetails'
 import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
-import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -179,7 +178,7 @@ const RegisterMultiSteps = ({ mode }: { mode: Mode }) => {
             {steps.map((step, index) => {
               return (
                 <Step key={index}>
-                  <StepLabel StepIconComponent={StepperCustomDot}>
+                  <StepLabel>
                     <div className='step-label'>
                       <CustomAvatar
                         variant='rounded'

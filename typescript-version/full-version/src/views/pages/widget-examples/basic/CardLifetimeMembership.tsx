@@ -12,7 +12,7 @@ const CardLifetimeMembership = () => {
       <Grid container>
         <Grid item xs={12} sm={7}>
           <CardContent>
-            <Typography variant='h6' className='mbe-2'>
+            <Typography variant='h5' className='mbe-2'>
               Lifetime Membership
             </Typography>
             <Typography color='text.secondary'>

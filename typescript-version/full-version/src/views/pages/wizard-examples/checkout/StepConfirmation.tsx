@@ -57,7 +57,7 @@ const StepConfirmation = () => {
       </Grid>
       <Grid item xs={12}>
         <div className='flex flex-col md:flex-row border rounded'>
-          <div className='flex flex-col w-full items-center p-6 sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col w-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center gap-2 mbe-4'>
               <i className='tabler-map-pin text-xl text-textPrimary' />
               <Typography color='text.primary' className='font-medium'>
@@ -70,7 +70,7 @@ const StepConfirmation = () => {
             <Typography className='mbe-4'>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center p-6 sm:items-start [&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col w-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center gap-2 mbe-4'>
               <i className='tabler-credit-card text-xl text-textPrimary' />
               <Typography color='text.primary' className='font-medium'>
@@ -120,8 +120,8 @@ const StepConfirmation = () => {
                   </div>
                 </div>
                 <div className='flex items-center'>
-                  <Typography color='primary'>{`$${product.price}`}</Typography>
-                  <Typography color='text.disabled' className='line-through'>{`/$${product.originalPrice}`}</Typography>
+                  <Typography color='primary'>{`$${product.price}/`}</Typography>
+                  <Typography color='text.disabled' className='line-through'>{`$${product.originalPrice}`}</Typography>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ const StepConfirmation = () => {
             <div className='flex flex-col gap-4'>
               <div className='flex items-center justify-between gap-2'>
                 <Typography color='text.primary'>Order Total</Typography>
-                <Typography>$1198.00</Typography>
+                <Typography color='text.primary'>$1198.00</Typography>
               </div>
               <div className='flex items-center justify-between gap-2'>
                 <Typography color='text.primary'>Charges</Typography>

@@ -82,7 +82,7 @@ const FormLayoutsCollapsible = () => {
     landmark: '',
     city: '',
     country: '',
-    addressType: '',
+    addressType: 'home',
     number: '',
     name: '',
     expiry: '',
@@ -192,6 +192,7 @@ const FormLayoutsCollapsible = () => {
                 value={cardData.country}
                 onChange={e => setCardData({ ...cardData, country: e.target.value })}
               >
+                <MenuItem value=''>Select Country</MenuItem>
                 <MenuItem value='UK'>UK</MenuItem>
                 <MenuItem value='USA'>USA</MenuItem>
                 <MenuItem value='Australia'>Australia</MenuItem>

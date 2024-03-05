@@ -223,6 +223,7 @@ const StepperAlternativeLabel = () => {
                 value={formData.country}
                 onChange={e => setFormData({ ...formData, country: e.target.value as string })}
               >
+                <MenuItem value=''>Select Country</MenuItem>
                 <MenuItem value='UK'>UK</MenuItem>
                 <MenuItem value='USA'>USA</MenuItem>
                 <MenuItem value='Australia'>Australia</MenuItem>
@@ -345,9 +346,7 @@ const StepperAlternativeLabel = () => {
                       disabled={activeStep === 0}
                       onClick={handleBack}
                       color='secondary'
-                      startIcon={
-                        <DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />
-                      }
+                      startIcon={<DirectionalIcon ltrIconClass='tabler-arrow-left' rtlIconClass='tabler-arrow-right' />}
                     >
                       Back
                     </Button>
@@ -356,9 +355,9 @@ const StepperAlternativeLabel = () => {
                       onClick={handleNext}
                       endIcon={
                         activeStep === steps.length - 1 ? (
-                          <i className='ri-check-line' />
+                          <i className='tabler-check' />
                         ) : (
-                          <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                          <DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />
                         )
                       }
                     >

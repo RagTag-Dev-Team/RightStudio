@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
-import TextField from '@mui/material/TextField'
+
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
@@ -110,7 +110,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                   </Typography>
                   <div className='flex items-center gap-4'>
                     <div className='flex items-center gap-0.5'>
-                      <Typography>Sold By:</Typography>
+                      <Typography color='text.disabled'>Sold By:</Typography>
                       <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
                         {product.soldBy}
                       </Typography>
@@ -127,12 +127,17 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
                     emptyIcon={<i className='tabler-star-filled text-textDisabled' />}
                     readOnly
                   />
-                  <CustomTextField type='number' defaultValue={product.count} className='block max-is-[152px]' />
+                  <CustomTextField
+                    size='small'
+                    type='number'
+                    defaultValue={product.count}
+                    className='block max-is-[152px]'
+                  />
                 </div>
                 <div className='flex flex-col justify-between items-center gap-4 sm:items-end'>
                   <div className='flex'>
-                    <Typography color='primary'>{`$${product.price}`}</Typography>
-                    <Typography className='line-through'>{`/$${product.originalPrice}`}</Typography>
+                    <Typography color='primary'>{`$${product.price}/`}</Typography>
+                    <Typography className='line-through'>{`$${product.originalPrice}`}</Typography>
                   </div>
                   <Button variant='tonal' size='small'>
                     Move to wishlist
@@ -160,8 +165,8 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
               Offer
             </Typography>
             <div className='flex gap-4'>
-              <TextField fullWidth size='small' placeholder='Enter Promo Code' />
-              <Button variant='outlined' className='normal-case'>
+              <CustomTextField fullWidth size='small' placeholder='Enter Promo Code' />
+              <Button variant='tonal' className='normal-case'>
                 Apply
               </Button>
             </div>
@@ -189,7 +194,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
             <div className='flex flex-col gap-2'>
               <div className='flex items-center flex-wrap justify-between'>
                 <Typography color='text.primary'>Bag Total</Typography>
-                <Typography>$1198.00</Typography>
+                <Typography color='text.primary'>$1198.00</Typography>
               </div>
               <div className='flex items-center flex-wrap justify-between'>
                 <Typography color='text.primary'>Coup Discount</Typography>
@@ -199,7 +204,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
               </div>
               <div className='flex items-center flex-wrap justify-between'>
                 <Typography color='text.primary'>Order Total</Typography>
-                <Typography>$1198.00</Typography>
+                <Typography color='text.primary'>$1198.00</Typography>
               </div>
               <div className='flex items-center flex-wrap justify-between'>
                 <Typography color='text.primary'>Delivery Charges</Typography>

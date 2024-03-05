@@ -106,7 +106,14 @@ const chip: Theme['components'] = {
         fontSize: theme.typography.body2.fontSize,
         fontWeight: theme.typography.fontWeightMedium,
         lineHeight: theme.typography.body2.lineHeight,
-        borderRadius: 'var(--mui-shape-borderRadius)',
+
+        ...(ownerState.size === 'small'
+          ? {
+              borderRadius: 'var(--mui-shape-customBorderRadius-sm)'
+            }
+          : {
+              borderRadius: 'var(--mui-shape-borderRadius)'
+            }),
 
         '& .MuiChip-deleteIcon': {
           ...(ownerState.size === 'small'

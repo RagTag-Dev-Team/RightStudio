@@ -4,7 +4,6 @@ import { useState, forwardRef } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 import Chip from '@mui/material/Chip'
@@ -48,7 +47,7 @@ const CustomInput = forwardRef((props: CustomInputProps, ref) => {
   const endDate = props.end !== null ? ` - ${dateFormat(props.end, 'MM/dd/yyyy')}` : null
   const value = `${startDate}${endDate !== null ? endDate : ''}`
 
-  return <TextField fullWidth inputRef={ref} label={props.label || ''} {...props} value={value} />
+  return <CustomTextField fullWidth inputRef={ref} label={props.label || ''} {...props} value={value} />
 })
 
 const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) => {

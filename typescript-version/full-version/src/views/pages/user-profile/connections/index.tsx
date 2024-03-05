@@ -23,11 +23,15 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Card className='relative'>
                 <OptionMenu
+                  iconClassName='text-textDisabled'
                   options={[
                     'Share Connection',
                     'Block Connection',
                     { divider: true },
-                    { text: 'Delete', menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' } }
+                    {
+                      text: 'Delete',
+                      menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' }
+                    }
                   ]}
                   iconButtonProps={{ className: 'absolute top-6 right-5 text-textDisabled' }}
                 />
@@ -66,7 +70,7 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                       {item.isConnected ? 'Connected' : 'Connect'}
                     </Button>
                     <Button variant='tonal' color='secondary' className='bs-[38px] is-[38px] min-is-0 p-1.5'>
-                      <i className='tabler-mail' />
+                      <i className='tabler-mail text-[22px]' />
                     </Button>
                   </div>
                 </CardContent>

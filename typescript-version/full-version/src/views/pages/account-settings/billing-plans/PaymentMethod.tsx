@@ -83,6 +83,7 @@ const PaymentMethod = () => {
   const buttonProps = (index: number): ButtonProps => ({
     variant: 'tonal',
     children: 'Edit',
+    size: 'small',
     onClick: () => setCreditCard(index)
   })
 
@@ -171,18 +172,20 @@ const PaymentMethod = () => {
                   Save Changes
                 </Button>
                 <Button type='reset' variant='tonal' color='secondary' onClick={handleReset}>
-                  Reset
+                  Cancel
                 </Button>
               </Grid>
             </Grid>
           </Grid>
 
           <Grid item xs={12} md={6} className='flex flex-col gap-6'>
-            <Typography>My Cards</Typography>
+            <Typography color='text.primary' className='font-medium'>
+              My Cards
+            </Typography>
             {data.map((item: DataType, index: number) => (
               <div
                 key={index}
-                className='flex flex-col rounded bg-actionHover sm:flex-row items-start sm:justify-between p-6'
+                className='flex flex-col rounded bg-actionHover sm:flex-row items-start sm:justify-between max-sm:gap-4 p-6'
               >
                 <div className='flex flex-col items-start gap-2'>
                   <img src={item.imgSrc} alt={item.imgAlt} />
@@ -196,7 +199,7 @@ const PaymentMethod = () => {
                     {item.cardNumber && item.cardNumber.slice(0, -4).replace(/[0-9]/g, '*') + item.cardNumber.slice(-4)}
                   </Typography>
                 </div>
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col sm:items-end gap-4'>
                   <div className='flex gap-4'>
                     <OpenDialogOnElementClick
                       element={Button}
@@ -204,11 +207,11 @@ const PaymentMethod = () => {
                       dialog={BillingCard}
                       dialogProps={{ data: data[creditCard] }}
                     />
-                    <Button variant='tonal' color='error'>
+                    <Button variant='tonal' color='error' size='small'>
                       Delete
                     </Button>
                   </div>
-                  <Typography>Card expires at {item.expiryDate}</Typography>
+                  <Typography variant='body2'>Card expires at {item.expiryDate}</Typography>
                 </div>
               </div>
             ))}

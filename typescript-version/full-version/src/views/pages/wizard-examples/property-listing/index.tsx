@@ -97,7 +97,7 @@ const PropertyListingWizard = () => {
 
   return (
     <Card className='flex flex-col lg:flex-row'>
-      <CardContent className='border-be lg:border-ie lg:min-is-[300px]'>
+      <CardContent className='max-lg:border-be lg:border-ie lg:min-is-[300px]'>
         <StepperWrapper>
           <Stepper
             activeStep={activeStep}

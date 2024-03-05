@@ -496,7 +496,7 @@ export const db: DB = {
         members: '137 members',
         client: 'Hulda Wright',
         title: 'Create Website',
-        avatar: '/images/icons/project-icons/html-label.png',
+        avatar: '/images/logos/html-bg.png',
         description: 'Your domain name should reflect your products or services so that your...',
         avatarGroup: [
           { avatar: '/images/avatars/2.png', name: 'Andrew Tye' },

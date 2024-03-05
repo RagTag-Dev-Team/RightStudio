@@ -91,11 +91,11 @@ const AccountDetails = () => {
   return (
     <Card>
       <CardContent className='mbe-4'>
-        <div className='flex items-center sm:items-center gap-6'>
+        <div className='flex items-start sm:items-center gap-6'>
           <img height={100} width={100} className='rounded' src={imgSrc} alt='Profile' />
           <div className='flex flex-grow flex-col gap-4'>
             <div className='flex flex-col sm:flex-row gap-4'>
-              <Button component='label' variant='contained' size='small' htmlFor='account-settings-upload-image'>
+              <Button component='label' variant='contained' htmlFor='account-settings-upload-image'>
                 Upload New Photo
                 <input
                   hidden
@@ -106,7 +106,7 @@ const AccountDetails = () => {
                   id='account-settings-upload-image'
                 />
               </Button>
-              <Button variant='tonal' color='secondary' size='small' onClick={handleFileInputReset}>
+              <Button variant='tonal' color='secondary' onClick={handleFileInputReset}>
                 Reset
               </Button>
             </div>

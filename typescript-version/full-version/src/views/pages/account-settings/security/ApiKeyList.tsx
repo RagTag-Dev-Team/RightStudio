@@ -51,11 +51,11 @@ const ApiKeyList = () => {
               <Typography variant='h5'>{item.title}</Typography>
               <Chip color='primary' variant='tonal' label={item.access} size='small' />
             </div>
-            <div className='flex items-center gap-3'>
-              <Typography>{item.key}</Typography>
+            <div className='flex items-center gap-1'>
+              <Typography className='font-medium'>{item.key}</Typography>
               <div className='flex'>
                 <IconButton size='small'>
-                  <i className='tabler-copy text-xl' />
+                  <i className='tabler-copy text-xl text-textSecondary' />
                 </IconButton>
               </div>
             </div>

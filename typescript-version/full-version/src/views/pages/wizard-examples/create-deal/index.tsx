@@ -82,7 +82,7 @@ const CreateDeal = () => {
 
   return (
     <Card className='flex flex-col md:flex-row'>
-      <CardContent className='border-be md:border-ie md:min-is-[300px]'>
+      <CardContent className='max-md:border-be md:border-ie md:min-is-[300px]'>
         <StepperWrapper>
           <Stepper
             activeStep={activeStep}

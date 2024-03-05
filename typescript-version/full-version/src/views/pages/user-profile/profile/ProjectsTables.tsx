@@ -171,6 +171,7 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
         header: 'Actions',
         cell: () => (
           <OptionMenu
+            iconClassName='text-[22px] text-textSecondary'
             options={[
               'Details',
               'Archive',

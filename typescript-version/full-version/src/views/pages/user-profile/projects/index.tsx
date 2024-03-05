@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -33,7 +32,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                 <CardContent className='flex flex-col gap-4'>
                   <div className='flex items-center justify-between'>
                     <div className='flex items-center gap-4'>
-                      <Avatar src={item.avatar} />
+                      <CustomAvatar src={item.avatar} size={38} />
                       <div>
                         <Typography
                           variant='h5'
@@ -44,37 +43,47 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                         >
                           {item.title}
                         </Typography>
-                        <Typography className='font-medium'>
-                          <span>Client:</span>
+                        <Typography>
+                          <span>Client: </span>
                           {item.client}
                         </Typography>
                       </div>
                     </div>
                     <OptionMenu
+                      iconClassName='text-textDisabled'
                       options={[
                         'Rename Project',
                         'View Details',
                         'Add to Favorite',
                         { divider: true },
-                        { text: 'Leave Project', menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' } }
+                        {
+                          text: 'Leave Project',
+                          menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' }
+                        }
                       ]}
                     />
                   </div>
-                  <div className='flex items-center justify-between flex-wrap'>
+                  <div className='flex items-center justify-between flex-wrap gap-4'>
                     <div className='rounded bg-actionHover plb-2 pli-3'>
                       <div className='flex'>
-                        <Typography className='font-medium' color='text.primary'>{item.budgetSpent}</Typography>
+                        <Typography className='font-medium' color='text.primary'>
+                          {item.budgetSpent}
+                        </Typography>
                         <Typography>{`/${item.budget}`}</Typography>
                       </div>
                       <Typography>Total Budget</Typography>
                     </div>
                     <div className='flex flex-col'>
                       <div className='flex'>
-                        <Typography className='font-medium' color='text.primary'>Start Date:</Typography>
+                        <Typography className='font-medium' color='text.primary'>
+                          Start Date:
+                        </Typography>
                         <Typography>{item.startDate}</Typography>
                       </div>
                       <div className='flex'>
-                        <Typography className='font-medium' color='text.primary'>Deadline:</Typography>
+                        <Typography className='font-medium' color='text.primary'>
+                          Deadline:
+                        </Typography>
                         <Typography>{item.deadline}</Typography>
                       </div>
                     </div>
@@ -85,15 +94,23 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                 <CardContent className='flex flex-col gap-4'>
                   <div className='flex items-center justify-between '>
                     <div className='flex'>
-                      <Typography className='font-medium' color='text.primary'>All Hours:</Typography>
+                      <Typography className='font-medium' color='text.primary'>
+                        All Hours:
+                      </Typography>
                       <Typography>{item.hours}</Typography>
                     </div>
                     <Chip variant='tonal' size='small' color={item.chipColor} label={`${item.daysLeft} days left`} />
                   </div>
                   <div>
                     <div className='flex items-center justify-between mbe-2'>
-                      <Typography variant='caption' className='text-textSecondary'>{`Tasks: ${item.completedTask}/${item.totalTask}`}</Typography>
-                      <Typography variant='caption' className='text-textSecondary'>{`${Math.round((item.completedTask / item.totalTask) * 100)}% Completed`}</Typography>
+                      <Typography
+                        variant='caption'
+                        className='text-textSecondary'
+                      >{`Tasks: ${item.completedTask}/${item.totalTask}`}</Typography>
+                      <Typography
+                        variant='caption'
+                        className='text-textSecondary'
+                      >{`${Math.round((item.completedTask / item.totalTask) * 100)}% Completed`}</Typography>
                     </div>
                     <LinearProgress
                       color='primary'

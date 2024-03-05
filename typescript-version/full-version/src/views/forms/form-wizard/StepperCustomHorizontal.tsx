@@ -27,7 +27,6 @@ import classnames from 'classnames'
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 import DirectionalIcon from '@components/DirectionalIcon'
-import StepperCustomDot from './StepperCustomDot'
 import CustomTextField from '@core/components/mui/TextField'
 
 // Styles Component Imports
@@ -80,18 +79,10 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
   '& .MuiStepLabel-iconContainer': {
     display: 'none'
   },
-  '& .step-subtitle': {
-    color: 'var(--mui-palette-text-disabled) !important'
-  },
-  '& + svg': {
+  '&.Mui-completed .step-title , &.Mui-completed .step-subtitle': {
     color: 'var(--mui-palette-text-disabled)'
   },
-  '&.Mui-completed .step-title': {
-    color: 'var(--mui-palette-text-disabled)'
-  },
-  '&.Mui-completed + svg': {
-    color: 'var(--mui-palette-primary-main)'
-  },
+
   [theme.breakpoints.down('md')]: {
     padding: 0,
     ':not(:last-of-type)': {
@@ -266,6 +257,7 @@ const StepperCustomHorizontal = () => {
                 value={formData.country}
                 onChange={e => setFormData({ ...formData, country: e.target.value as string })}
               >
+                <MenuItem value=''>Select Country</MenuItem>
                 <MenuItem value='UK'>UK</MenuItem>
                 <MenuItem value='USA'>USA</MenuItem>
                 <MenuItem value='Australia'>Australia</MenuItem>
@@ -360,7 +352,7 @@ const StepperCustomHorizontal = () => {
               {steps.map((step, index) => {
                 return (
                   <Step key={index}>
-                    <StepLabel StepIconComponent={StepperCustomDot}>
+                    <StepLabel>
                       <div className='step-label'>
                         <CustomAvatar
                           variant='rounded'

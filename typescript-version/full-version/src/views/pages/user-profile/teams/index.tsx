@@ -32,21 +32,25 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                     </div>
                     <div className='flex items-center'>
                       <IconButton size='small'>
-                        <i className='tabler-star' />
+                        <i className='tabler-star text-textDisabled' />
                       </IconButton>
                       <OptionMenu
+                        iconClassName='text-textDisabled'
                         options={[
                           'Rename Team',
                           'View Details',
                           'Add to Favorite',
                           { divider: true },
-                          { text: 'Delete Team', menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' } }
+                          {
+                            text: 'Delete Team',
+                            menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' }
+                          }
                         ]}
                       />
                     </div>
                   </div>
                   <Typography>{item.description}</Typography>
-                  <div className='flex items-center justify-between flex-wrap'>
+                  <div className='flex items-center justify-between flex-wrap gap-4'>
                     <AvatarGroup
                       total={item.extraMembers ? item.extraMembers + 3 : 3}
                       sx={{ '& .MuiAvatar-root': { width: '2rem', height: '2rem', fontSize: '1rem' } }}

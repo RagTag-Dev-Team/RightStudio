@@ -191,6 +191,7 @@ const FormLayoutsSeparator = () => {
                 value={formData.country}
                 onChange={e => setFormData({ ...formData, country: e.target.value })}
               >
+                <MenuItem value=''>Select Country</MenuItem>
                 <MenuItem value='UK'>UK</MenuItem>
                 <MenuItem value='USA'>USA</MenuItem>
                 <MenuItem value='Australia'>Australia</MenuItem>

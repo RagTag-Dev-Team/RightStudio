@@ -44,13 +44,14 @@ const ConnectionsTeams = (props: Props) => {
                   <div className='flex items-center flex-grow gap-2'>
                     <CustomAvatar src={connection.avatar} size={38} />
                     <div className='flex flex-grow flex-col'>
-                      <Typography className='font-medium' color='text.primary'>{connection.name}</Typography>
+                      <Typography className='font-medium' color='text.primary'>
+                        {connection.name}
+                      </Typography>
                       <Typography variant='body2'>{connection.connections} Connections</Typography>
                     </div>
                   </div>
                   <Button
                     variant={connection.isFriend ? 'tonal' : 'contained'}
-                    size='small'
                     className='is-[38px] bs-[38px] min-is-0 p-2'
                   >
                     <i

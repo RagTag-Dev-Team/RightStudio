@@ -244,7 +244,7 @@ const StepAddress = ({ handleNext }: { handleNext: () => void }) => {
             <div className='flex flex-col gap-2'>
               <div className='flex gap-2 justify-between items-center flex-wrap'>
                 <Typography color='text.primary'>Order Total</Typography>
-                <Typography>$1198.00</Typography>
+                <Typography color='text.primary'>$1198.00</Typography>
               </div>
               <div className='flex justify-between flex-wrap'>
                 <Typography color='text.primary'>Delivery Charges</Typography>

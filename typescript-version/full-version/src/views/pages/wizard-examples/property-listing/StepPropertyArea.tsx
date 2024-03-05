@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
@@ -83,7 +82,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           placeholderText='YYYY-MM-DD'
           dateFormat={'yyyy-MM-dd'}
           onChange={(date: Date) => setDate(date)}
-          customInput={<TextField fullWidth label='Available From' />}
+          customInput={<CustomTextField fullWidth label='Available From' />}
         />
       </Grid>
       <Grid item xs={12} md={6}>

@@ -28,7 +28,6 @@ import { toast } from 'react-toastify'
 import classnames from 'classnames'
 
 // Components Imports
-import StepperCustomDot from './StepperCustomDot'
 import CustomAvatar from '@core/components/mui/Avatar'
 import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@components/DirectionalIcon'
@@ -73,19 +72,19 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
   '& .MuiStepLabel-root': {
     paddingTop: 0
   },
+  '&:first-of-type .MuiStepLabel-root': {
+    paddingTop: theme.spacing(1)
+  },
   '&:not(:last-of-type) .MuiStepLabel-root': {
     paddingBottom: theme.spacing(6)
   },
   '&:last-of-type .MuiStepLabel-root': {
-    paddingBottom: 0
+    paddingBottom: theme.spacing(1)
   },
   '& .MuiStepLabel-iconContainer': {
     display: 'none'
   },
-  '& + svg': {
-    color: 'var(--mui-palette-text-disabled)'
-  },
-  '&.Mui-completed .step-title, &.Mui-completed .step-subtitle': {
+  '&.Mui-completed .step-title , &.Mui-completed .step-subtitle': {
     color: 'var(--mui-palette-text-disabled)'
   }
 }))
@@ -268,6 +267,7 @@ const StepperCustomVertical = () => {
                 onChange={e => setCountry(e.target.value)}
                 id='stepper-custom-vertical-personal-select'
               >
+                <MenuItem value=''>Select Country</MenuItem>
                 <MenuItem value='UK'>UK</MenuItem>
                 <MenuItem value='USA'>USA</MenuItem>
                 <MenuItem value='Australia'>Australia</MenuItem>
@@ -413,7 +413,7 @@ const StepperCustomVertical = () => {
 
               return (
                 <Step key={index}>
-                  <StepLabel StepIconComponent={StepperCustomDot}>
+                  <StepLabel>
                     <div className='step-label'>
                       <CustomAvatar
                         variant='rounded'

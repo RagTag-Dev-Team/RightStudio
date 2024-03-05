@@ -186,8 +186,8 @@ const CheckoutWizard = () => {
             activeStep={activeStep}
             connector={
               <DirectionalIcon
-                ltrIconClass='ri-arrow-right-s-line'
-                rtlIconClass='ri-arrow-left-s-line'
+                ltrIconClass='tabler-chevron-right'
+                rtlIconClass='tabler-chevron-left'
                 className='mli-12 hidden md:block text-xl text-textDisabled'
               />
             }
