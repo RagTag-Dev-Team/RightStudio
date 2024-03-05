@@ -132,7 +132,8 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'MUI',
           items: [
-            'guide/components/mui/card'
+            'guide/components/mui/card',
+            'guide/components/mui/tabs'
           ]
         },
         {
