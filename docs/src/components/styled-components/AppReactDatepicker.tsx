@@ -30,6 +30,9 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
     '& .react-datepicker-wrapper': {
       width: '100%'
     },
+    '& .react-datepicker__triangle': {
+        display: 'none'
+    },
     '& .react-datepicker': {
       color: theme.palette.text.primary,
       borderRadius: theme.shape.borderRadius,
@@ -54,9 +57,6 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
             marginTop: theme.spacing(4)
           }
         }
-      },
-      '& .react-datepicker__triangle': {
-        display: 'none'
       },
       '& > .react-datepicker__navigation': {
         top: 18,
