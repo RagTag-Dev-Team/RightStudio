@@ -89,7 +89,7 @@ const ListProgress = () => {
               <CustomAvatar skin='light' color={course.color} variant='rounded' className='is-9 bs-9'>
                 <i className={course.icon} />
               </CustomAvatar>
-              <div className='w-full'>
+              <div className='is-full'>
                 <ListItemText primary={course.description}></ListItemText>
                 <LinearProgress value={course.progress} variant='determinate' color={course.color} />
               </div>

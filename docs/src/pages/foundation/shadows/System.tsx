@@ -17,7 +17,7 @@ const System = () => {
               <Box
                 key={i}
                 sx={{ boxShadow: `var(--mui-shadows-${i + 1})` }}
-                className='flex rounded-lg p-6 items-center justify-center min-w-[100px]'
+                className='flex rounded-lg p-6 items-center justify-center min-is-[100px]'
               >
                 <Typography variant='h6'>{`Z${i + 1}`}</Typography>
               </Box>

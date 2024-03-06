@@ -124,7 +124,7 @@ const TimelineCenter = () => {
                 implement it successfully. Simply put, it's an umbrella term which includes all the documents created
                 over the course of the project.
               </Typography>
-              <div className='flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
+              <div className='flex items-center gap-2.5 is-fit rounded bg-actionHover plb-[5px] pli-2.5'>
                 <img height={20} alt='documentation.pdf' src={useBaseUrl('/images/icons/pdf-document.png')} />
                 <Typography className='font-medium'>documentation.pdf</Typography>
               </div>
@@ -214,7 +214,7 @@ const TimelineCenter = () => {
                   className='uppercase'
                   color='success'
                   label='Verified Buyer'
-                  avatar={<Avatar alt='user' src={useBaseUrl('/images/avatars/2.png')} className='!w-4 !h-4' />}
+                  avatar={<Avatar alt='user' src={useBaseUrl('/images/avatars/2.png')} className='!is-4 !bs-4' />}
                 />
               </div>
               <Typography>
@@ -278,7 +278,7 @@ const TimelineCenter = () => {
                     <Typography className='font-medium' color='text.primary'>
                       ${item.progress}
                     </Typography>
-                    <LinearProgress variant='determinate' value={75} color={item.progressColor} className='is-20 max-h-1' />
+                    <LinearProgress variant='determinate' value={75} color={item.progressColor} className='is-20 max-bs-1' />
                   </div>
                 </div>
               ))}
@@ -316,12 +316,12 @@ const TimelineCenter = () => {
                 The structure and process are defined in the project organization considering the attainment of the
                 corporate objectives and therefore also project objectives. The components of the project process are
               </Typography>
-              <div className='mbe-3 flex items-center gap-2.5 w-fit rounded bg-actionHover plb-[5px] pli-2.5'>
+              <div className='mbe-3 flex items-center gap-2.5 is-fit rounded bg-actionHover plb-[5px] pli-2.5'>
                 <img height={20} alt='progress-report.xls.pdf' src={useBaseUrl('/images/icons/xls-document.png')} />
                 <Typography className='font-medium'>progress-report.xls</Typography>
               </div>
               <div className='flex items-center gap-2'>
-                <LinearProgress variant='determinate' value={34} className='w-full' />
+                <LinearProgress variant='determinate' value={34} className='is-full' />
                 <Typography variant='body2' className='font-medium'>34%</Typography>
               </div>
             </CardContent>

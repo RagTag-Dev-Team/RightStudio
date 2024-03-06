@@ -17,8 +17,8 @@ const OpenChangeWithParams = () => {
   const [text, setText] = useState('closed')
 
   return (
-    <div className='flex flex-col h-full w-full'>
-      <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
+    <div className='flex flex-col bs-full is-full'>
+      <div className={classnames('flex items-center plb-2.5 pli-6 is-full', styles.customStyles)}>
         <HorizontalNav>
           <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
             <SubMenu

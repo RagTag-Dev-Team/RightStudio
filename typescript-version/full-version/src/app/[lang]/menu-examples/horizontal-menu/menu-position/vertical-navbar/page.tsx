@@ -21,7 +21,7 @@ import styles from '../../styles.module.css'
 
 const VerticalNavbar = () => {
   return (
-    <div className='flex w-full'>
+    <div className='flex is-full'>
       <VerticalNav breakpoint='md'>
         <VerticalMenu>
           <VerticalMenuItem>Email</VerticalMenuItem>
@@ -45,7 +45,7 @@ const VerticalNavbar = () => {
         </VerticalMenu>
       </VerticalNav>
       <div className='flex-grow'>
-        <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
+        <div className={classnames('flex items-center plb-2.5 pli-6 is-full', styles.customStyles)}>
           <NavToggle />
           <HorizontalNav hideMenu breakpoint='md'>
             <HorizontalMenu>

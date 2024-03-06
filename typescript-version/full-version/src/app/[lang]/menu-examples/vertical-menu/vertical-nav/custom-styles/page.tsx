@@ -14,7 +14,7 @@ const CustomStyles = () => {
   const { isBreakpointReached, updateVerticalNavState, isCollapsed } = useVerticalNav()
 
   return (
-    <div className='flex h-full'>
+    <div className='flex bs-full'>
       <VerticalNav customBreakpoint='200px' customStyles={isCollapsed ? { color: 'red' } : { color: 'blue' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>

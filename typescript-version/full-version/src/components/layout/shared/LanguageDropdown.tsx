@@ -83,7 +83,7 @@ const LanguageDropdown = () => {
         disablePortal
         placement='bottom-start'
         anchorEl={anchorRef.current}
-        className='min-w-[160px] !mbs-3 z-[1]'
+        className='min-is-[160px] !mbs-3 z-[1]'
       >
         {({ TransitionProps, placement }) => (
           <Fade

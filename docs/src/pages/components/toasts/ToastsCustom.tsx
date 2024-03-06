@@ -15,9 +15,9 @@ const ToastsCustom = () => {
   const handleClick = () => {
     return toast(
       t => (
-        <div className='w-full flex items-center justify-between'>
+        <div className='is-full flex items-center justify-between'>
           <div className='flex items-center'>
-            <Avatar alt='Victor Anderson' src={avatarUrl} className='mie-3 w-10 h-10'/>
+            <Avatar alt='Victor Anderson' src={avatarUrl} className='mie-3 is-10 bs-10'/>
             <div>
               <Typography variant='h5' className='leading-6'>
                 John Doe

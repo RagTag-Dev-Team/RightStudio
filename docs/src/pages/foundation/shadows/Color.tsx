@@ -22,7 +22,7 @@ const Color = () => {
             <Grid item key={index} sm={12} lg={4}>
               <Box
                 sx={{ boxShadow: `var(--mui-customShadows-${color}-${shadow})` }}
-                className='flex rounded-lg p-6 items-center justify-center min-w-[100px]'
+                className='flex rounded-lg p-6 items-center justify-center min-is-[100px]'
               >
                 <Typography variant='h6'>{color}-{shadow}</Typography>
               </Box>

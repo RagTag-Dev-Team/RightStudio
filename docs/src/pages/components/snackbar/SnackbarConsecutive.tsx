@@ -64,7 +64,7 @@ const SnackbarConsecutive = () => {
         <Alert
           variant='filled'
           onClose={handleClose}
-          className='w-full shadow-xs items-center'
+          className='is-full shadow-xs items-center'
           severity={messageInfo?.message === 'success' ? 'success' : 'error'}
         >
           This is {messageInfo?.message === 'success' ? 'a success' : 'an error'} message!

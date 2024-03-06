@@ -57,7 +57,7 @@ const StepConfirmation = () => {
       </Grid>
       <Grid item xs={12}>
         <div className='flex flex-col md:flex-row border rounded'>
-          <div className='flex flex-col w-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col is-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center gap-2 mbe-4'>
               <i className='tabler-map-pin text-xl text-textPrimary' />
               <Typography color='text.primary' className='font-medium'>
@@ -70,7 +70,7 @@ const StepConfirmation = () => {
             <Typography className='mbe-4'>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col is-full items-center p-6 sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center gap-2 mbe-4'>
               <i className='tabler-credit-card text-xl text-textPrimary' />
               <Typography color='text.primary' className='font-medium'>
@@ -83,7 +83,7 @@ const StepConfirmation = () => {
             <Typography className='mbe-4'>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center p-6 sm:items-start'>
+          <div className='flex flex-col is-full items-center p-6 sm:items-start'>
             <div className='flex items-center gap-2 mbe-4'>
               <i className='tabler-ship text-xl text-textPrimary' />
               <Typography color='text.primary' className='font-medium'>
@@ -104,7 +104,7 @@ const StepConfirmation = () => {
               className='flex flex-col sm:flex-row items-center gap-4 p-6 [&:not(:last-child)]:border-be'
             >
               <img height={80} width={80} src={product.imgSrc} alt={product.imgAlt} />
-              <div className='flex justify-between w-full flex-col sm:flex-row items-center gap-2'>
+              <div className='flex justify-between is-full flex-col sm:flex-row items-center gap-2'>
                 <div className='flex flex-col items-center sm:items-start gap-2'>
                   <Typography color='text.primary' className='font-medium'>
                     {product.productName}

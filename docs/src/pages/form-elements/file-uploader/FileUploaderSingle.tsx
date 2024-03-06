@@ -41,7 +41,7 @@ const FileUploaderSingle = () => {
         img
       ) : (
         <div className='flex items-center flex-col'>
-          <Avatar variant='rounded' className='h-12 w-12 mbe-9'>
+          <Avatar variant='rounded' className='bs-12 is-12 mbe-9'>
             <i className='tabler-upload' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>Drop files here or click to upload.</Typography>

@@ -6,7 +6,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const BackdropColor = () => {
   return (
-    <div className='flex h-full bg-indigo-50'>
+    <div className='flex bs-full bg-indigo-50'>
       <VerticalNav breakpoint='always' backdropColor='rgba(84, 75, 126, 0.5)'>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>

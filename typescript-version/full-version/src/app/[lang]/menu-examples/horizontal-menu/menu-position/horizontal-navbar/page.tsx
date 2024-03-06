@@ -19,8 +19,8 @@ const HorizontalNavbar = () => {
   const { isBreakpointReached } = useHorizontalNav()
 
   return (
-    <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
-      <div className='flex w-full items-center justify-between'>
+    <div className={classnames('flex items-center plb-2.5 pli-6 is-full', styles.customStyles)}>
+      <div className='flex is-full items-center justify-between'>
         <NavToggle />
         {!isBreakpointReached && 'Logo'}
         <HorizontalNav hideMenu switchToVertical verticalNavContent={VerticalNavContent}>

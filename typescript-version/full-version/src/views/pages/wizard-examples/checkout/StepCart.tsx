@@ -103,7 +103,7 @@ const StepCart = ({ handleNext }: { handleNext: () => void }) => {
               <IconButton size='small' className='absolute block-start-4 inline-end-4'>
                 <i className='tabler-x text-lg' />
               </IconButton>
-              <div className='flex flex-col sm:flex-row items-center sm:justify-between w-full'>
+              <div className='flex flex-col sm:flex-row items-center sm:justify-between is-full'>
                 <div className='flex flex-col items-center gap-2 sm:items-start'>
                   <Typography color='text.primary' className='font-medium'>
                     {product.productName}

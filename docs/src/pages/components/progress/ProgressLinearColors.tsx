@@ -3,7 +3,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 
 const ProgressLinearColors = () => {
   return (
-    <div className='w-full flex gap-4 flex-col'>
+    <div className='is-full flex gap-4 flex-col'>
       <LinearProgress color='secondary' />
       <LinearProgress color='success' />
       <LinearProgress color='error' />

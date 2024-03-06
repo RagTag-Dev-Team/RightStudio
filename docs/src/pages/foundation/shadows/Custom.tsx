@@ -18,7 +18,7 @@ const Custom = () => {
             <Grid item xs={12} sm={index === (shadows.length-1) ? 12 : 6} lg={2.4} key={shadow}>
               <Box
                 sx={{boxShadow: `var(--mui-customShadows-${shadow})`}}
-                className='flex rounded-lg p-6 items-center justify-center min-w-[100px]'
+                className='flex rounded-lg p-6 items-center justify-center min-is-[100px]'
               >
                 <Typography variant='h6'>{shadow}</Typography>
               </Box>
