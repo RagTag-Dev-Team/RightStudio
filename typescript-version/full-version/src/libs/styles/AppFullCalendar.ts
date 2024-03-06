@@ -70,7 +70,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         '& .fc-button-primary': {
           '&:not(.fc-prev-button):not(.fc-next-button)': {
             backgroundColor: 'transparent',
-            padding: theme.spacing(1.5, 5.08),
+            padding: theme.spacing(1.5, 4),
             color: theme.palette.text.primary,
             borderColor: theme.palette.divider,
             '&.fc-button-active, &:hover': {

@@ -2,7 +2,7 @@
   --ifm-navbar-padding-horizontal: 2rem;
   box-shadow: none;
   border-bottom: 1px solid var(--border-color);
-  z-index: 1500;
+  z-index: calc(var(--mui-zIndex-fab) + 1);
 }
 
 // navbar brand name styles
