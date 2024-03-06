@@ -87,8 +87,8 @@ const EarningReports = () => {
       show: false,
       padding: {
         top: -31,
-        left: -10,
-        right: -11,
+        left: 0,
+        right: 0,
         bottom: -9
       }
     },
@@ -129,31 +129,7 @@ const EarningReports = () => {
         }
       }
     },
-    yaxis: { show: false },
-    responsive: [
-      {
-        breakpoint: theme.breakpoints.values.xl,
-        options: {
-          grid: {
-            padding: {
-              left: 0,
-              right: 0
-            }
-          }
-        }
-      },
-      {
-        breakpoint: theme.breakpoints.values.md,
-        options: {
-          grid: {
-            padding: {
-              left: -9,
-              right: -10
-            }
-          }
-        }
-      }
-    ]
+    yaxis: { show: false }
   }
 
   return (
@@ -184,7 +160,7 @@ const EarningReports = () => {
                 <CustomAvatar skin='light' variant='rounded' color={item.avatarColor} size={26}>
                   <i className={classnames(item.avatarIcon, 'text-lg')} />
                 </CustomAvatar>
-                <Typography variant='h6' className='leading-6'>
+                <Typography variant='h6' className='leading-6 font-normal'>
                   {item.title}
                 </Typography>
               </div>

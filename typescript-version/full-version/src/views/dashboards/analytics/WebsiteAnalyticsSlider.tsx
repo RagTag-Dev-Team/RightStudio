@@ -187,7 +187,7 @@ const WebsiteAnalyticsSlider = () => {
       <Card className='bg-primary'>
         <div ref={sliderRef} className='keen-slider relative'>
           {loaded && instanceRef.current && (
-            <div className={classnames(theme.direction === 'rtl' ? 'left-6' : 'right-6', 'swiper-dots absolute top-1')}>
+            <div className='swiper-dots absolute top-1 inline-end-6'>
               {[...Array(instanceRef.current.track.details.slides.length).keys()].map(idx => {
                 return (
                   <Badge

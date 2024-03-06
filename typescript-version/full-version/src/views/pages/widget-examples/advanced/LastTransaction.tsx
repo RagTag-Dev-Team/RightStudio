@@ -89,7 +89,10 @@ const statusObj: StatusObj = {
 
 const LastTransaction = () => {
   // Hooks
-  const { mode } = useColorScheme()
+  const { mode, systemMode } = useColorScheme()
+
+  // Vars
+  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
 
   return (
     <Card>
@@ -115,8 +118,8 @@ const LastTransaction = () => {
                     <Avatar
                       variant='rounded'
                       className={classnames('is-[50px] bs-[30px]', {
-                        'bg-white': mode === 'dark',
-                        'bg-actionHover': mode === 'light'
+                        'bg-white': _mode === 'dark',
+                        'bg-actionHover': _mode === 'light'
                       })}
                     >
                       <img width={30} alt={row.imgName} src={`/images/logos/${row.imgName}.png`} />

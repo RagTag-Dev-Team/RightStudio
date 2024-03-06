@@ -150,11 +150,11 @@ const EarningReportsWithTabs = () => {
     legend: { show: false },
     tooltip: { enabled: false },
     dataLabels: {
-      offsetY: -15,
+      offsetY: -11,
       formatter: val => `${val}k`,
       style: {
         fontWeight: 500,
-        colors: [rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)],
+        colors: [rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)],
         fontSize: theme.typography.body1.fontSize as string
       }
     },
@@ -172,13 +172,13 @@ const EarningReportsWithTabs = () => {
       padding: {
         top: -19,
         left: -4,
-        right: -13,
+        right: 0,
         bottom: -11
       }
     },
     xaxis: {
       axisTicks: { show: false },
-      axisBorder: { offsetX: 9, color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`) },
+      axisBorder: { color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`) },
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
       labels: {
         style: {
@@ -211,6 +211,11 @@ const EarningReportsWithTabs = () => {
       {
         breakpoint: 600,
         options: {
+          dataLabels: {
+            style: {
+              fontSize: theme.typography.body2.fontSize as string
+            }
+          },
           plotOptions: {
             bar: { columnWidth: '58%' }
           }

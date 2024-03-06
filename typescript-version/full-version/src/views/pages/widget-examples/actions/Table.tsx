@@ -9,13 +9,16 @@ import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 import TableBody from '@mui/material/TableBody'
 
+// Style Imports
+import tableStyles from '@core/styles/table.module.css'
+
 const CardActionsTable = () => {
   return (
     <Card>
       <CardHeader title='Card Actions' />
       <CardContent>
         <TableContainer>
-          <Table>
+          <Table className={tableStyles.table}>
             <TableHead>
               <TableRow>
                 <TableCell>Action</TableCell>

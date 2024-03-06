@@ -101,10 +101,10 @@ const ProjectStatus = () => {
     grid: {
       show: false,
       padding: {
-        top: -42,
+        top: -40,
         left: 0,
         right: 0,
-        bottom: 30
+        bottom: 32
       }
     },
     xaxis: {

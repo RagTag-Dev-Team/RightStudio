@@ -45,7 +45,6 @@ const Sales = () => {
     colors: [theme.palette.primary.main, theme.palette.info.main],
     plotOptions: {
       radar: {
-        size: 110,
         polygons: {
           connectorColors: divider,
           strokeColors: divider
@@ -84,7 +83,7 @@ const Sales = () => {
         subheader='Last 6 Months'
         action={<OptionMenu options={['Last Month', 'Last 6 months', 'Last Year']} />}
       />
-      <CardContent className='flex flex-col gap-6'>
+      <CardContent>
         <AppReactApexCharts type='radar' height={299} width='100%' series={series} options={options} />
       </CardContent>
     </Card>

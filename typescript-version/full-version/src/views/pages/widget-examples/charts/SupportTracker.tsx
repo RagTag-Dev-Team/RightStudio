@@ -108,7 +108,7 @@ const SupportTracker = () => {
             formatter: value => `${value}%`,
             color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`),
             fontFamily: theme.typography.fontFamily,
-            fontSize: theme.typography.h1.fontSize as string
+            fontSize: theme.typography.h2.fontSize as string
           }
         }
       }
