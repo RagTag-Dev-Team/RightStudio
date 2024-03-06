@@ -16,6 +16,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
@@ -40,7 +41,7 @@ interface DefaultStateType {
   description: string
   endDate: Date | string
   startDate: Date | string
-  guests: string[] | string | undefined
+  guests: string[] | undefined
 }
 
 // Vars
@@ -309,7 +310,12 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               value={values.guests}
               labelId='event-guests'
               id='event-guests-select'
-              onChange={e => setValues({ ...values, guests: e.target.value })}
+              onChange={(e: SelectChangeEvent<(typeof values)['guests']>) =>
+                setValues({
+                  ...values,
+                  guests: typeof e.target.value === 'string' ? e.target.value.split(',') : e.target.value
+                })
+              }
             >
               <MenuItem value='bruce'>Bruce</MenuItem>
               <MenuItem value='clark'>Clark</MenuItem>
