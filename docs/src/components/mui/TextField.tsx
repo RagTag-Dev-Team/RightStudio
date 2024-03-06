@@ -100,7 +100,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd': {
     paddingInlineEnd: '14px'
   },
-  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.Mui-focused': {
+  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.Mui-focused:not(.MuiAutocomplete-inputRoot)': {
     paddingInlineEnd: '13px',
     '& .MuiInputBase-input': {
       paddingInlineEnd: '0px !important'
@@ -177,7 +177,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
     maxHeight: '1.4375em',
     '&.MuiInputBase-input': {
       paddingInlineEnd: '32px !important'
-    },
+    }
   },
   '& .Mui-focused .MuiSelect-select': {
     '& ~ i, & ~ svg': {
@@ -210,14 +210,14 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
     paddingBlock: '4.75px !important',
     paddingInlineStart: '10px',
     '&.Mui-focused': {
-      paddingInlineStart: '9px'
+      paddingBlock: '3.75px !important',
+      paddingInlineStart: '9px',
+      '.MuiAutocomplete-input': {
+        paddingBlock: '2.5px',
+        paddingInline: '3px !important'
+      }
     },
     '& .MuiAutocomplete-input': {
-      paddingInline: '3px !important'
-    },
-
-    '&.Mui-focused .MuiAutocomplete-input': {
-      paddingBlock: '1.5px',
       paddingInline: '3px !important'
     }
   },

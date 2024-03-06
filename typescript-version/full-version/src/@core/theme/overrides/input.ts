@@ -55,7 +55,7 @@ const input: Theme['components'] = {
           transform: 'translate(14px, -8px) scale(0.867)'
         }),
         ...(ownerState.variant === 'filled' && {
-          transform: 'translate(12px, 7px) scale(0.867)'
+          transform: `translate(12px, ${ownerState.size === 'small' ? 4 : 7}px) scale(0.867)`
         }),
         ...(ownerState.variant === 'standard' && {
           transform: 'translate(0, -1.5px) scale(0.867)'
@@ -111,8 +111,7 @@ const input: Theme['components'] = {
     styleOverrides: {
       root: {
         lineHeight: 1,
-        letterSpacing: 'unset',
-        marginInline: 0
+        letterSpacing: 'unset'
       }
     }
   }
