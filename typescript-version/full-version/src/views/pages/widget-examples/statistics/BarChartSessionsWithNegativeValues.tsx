@@ -40,10 +40,10 @@ const BarChartSessionsWithNegativeValues = () => {
     },
     grid: {
       padding: {
-        top: -32,
+        top: -20,
         left: -5,
         right: -5,
-        bottom: -26
+        bottom: -15
       },
       yaxis: {
         lines: { show: false }
@@ -97,7 +97,17 @@ const BarChartSessionsWithNegativeValues = () => {
         }
       },
       {
-        breakpoint: 1288,
+        breakpoint: 1370,
+        options: {
+          plotOptions: {
+            bar: {
+              columnWidth: '62%'
+            }
+          }
+        }
+      },
+      {
+        breakpoint: 1298,
         options: {
           plotOptions: {
             bar: {
@@ -152,8 +162,8 @@ const BarChartSessionsWithNegativeValues = () => {
   return (
     <Card>
       <CardHeader title='Sessions' subheader='This Month' className='pbe-0' />
-      <CardContent className='flex flex-col gap-3 pbs-3'>
-        <AppReactApexCharts type='bar' height={68} width='100%' options={options} series={series} />
+      <CardContent className='flex flex-col'>
+        <AppReactApexCharts type='bar' height={98} width='100%' options={options} series={series} />
         <div className='flex items-center justify-between flex-wrap gap-x-4 gap-y-0.5'>
           <Typography variant='h4' color='text.primary'>
             45.1k

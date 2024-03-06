@@ -36,6 +36,12 @@ const LineChartImpression = () => {
     },
     colors: [theme.palette.error.main],
     grid: {
+      padding: {
+        top: 10,
+        bottom: 20,
+        left: 5,
+        right: 5
+      },
       yaxis: {
         lines: { show: false }
       }
@@ -53,8 +59,8 @@ const LineChartImpression = () => {
   return (
     <Card>
       <CardHeader title='Impression' subheader='Expenses' className='pbe-0' />
-      <CardContent className='flex flex-col gap-3 pbs-3'>
-        <AppReactApexCharts type='line' height={68} width='100%' options={options} series={series} />
+      <CardContent className='flex flex-col'>
+        <AppReactApexCharts type='line' height={98} width='100%' options={options} series={series} />
         <div className='flex items-center justify-between flex-wrap gap-x-4 gap-y-0.5'>
           <Typography variant='h4' color='text.primary'>
             26.1k

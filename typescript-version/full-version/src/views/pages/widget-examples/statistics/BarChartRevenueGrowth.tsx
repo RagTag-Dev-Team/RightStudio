@@ -67,10 +67,10 @@ const BarChartRevenueGrowth = () => {
     grid: {
       show: false,
       padding: {
-        top: -10,
-        left: -10,
-        right: -8,
-        bottom: -12
+        top: -15,
+        left: 0,
+        right: 0,
+        bottom: -5
       }
     },
     xaxis: {
@@ -86,7 +86,39 @@ const BarChartRevenueGrowth = () => {
         }
       }
     },
-    yaxis: { show: false }
+    yaxis: { show: false },
+    responsive: [
+      {
+        breakpoint: 1335,
+        options: {
+          chart: {
+            width: 150
+          },
+          plotOptions: {
+            bar: { columnWidth: '55%' }
+          }
+        }
+      },
+      {
+        breakpoint: 1200,
+        options: {
+          chart: {
+            width: 190
+          }
+        }
+      },
+      {
+        breakpoint: 410,
+        options: {
+          chart: {
+            width: 150
+          },
+          plotOptions: {
+            bar: { columnWidth: '60%' }
+          }
+        }
+      }
+    ]
   }
 
   return (
@@ -102,7 +134,7 @@ const BarChartRevenueGrowth = () => {
             <Chip variant='tonal' size='small' color='success' label='+15.2%' />
           </div>
         </div>
-        <AppReactApexCharts type='bar' width={160} height={172} series={series} options={options} />
+        <AppReactApexCharts type='bar' width={190} height={172} series={series} options={options} />
       </CardContent>
     </Card>
   )

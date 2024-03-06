@@ -55,7 +55,8 @@ const BarChartRevenueGrowth = () => {
     grid: {
       padding: {
         top: -22,
-        bottom: -18
+        bottom: -18,
+        right: 15
       }
     },
     plotOptions: {

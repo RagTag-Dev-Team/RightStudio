@@ -95,6 +95,7 @@ export const db: CardStatsType = {
       avatarColor: 'primary',
       avatarIconSize: 26,
       avatarIcon: 'tabler-users',
+      avatarSkin: 'light',
       title: 'Subscribers Gained',
       chartSeries: [{ data: [40, 4, 58, 12, 35, 10, 84] }]
     },
@@ -105,6 +106,7 @@ export const db: CardStatsType = {
       avatarIconSize: 26,
       avatarColor: 'error',
       avatarIcon: 'tabler-shopping-cart',
+      avatarSkin: 'light',
       chartColor: 'error',
       chartSeries: [{ data: [44, 75, 24, 57, 6, 84] }]
     },
@@ -115,6 +117,7 @@ export const db: CardStatsType = {
       avatarIconSize: 26,
       avatarColor: 'warning',
       avatarIcon: 'tabler-box',
+      avatarSkin: 'light',
       chartColor: 'warning',
       chartSeries: [{ data: [30, 84, 11, 76, 0, 49, 9] }]
     },
@@ -125,6 +128,7 @@ export const db: CardStatsType = {
       avatarIconSize: 26,
       avatarColor: 'success',
       avatarIcon: 'tabler-credit-card',
+      avatarSkin: 'light',
       chartColor: 'success',
       chartSeries: [{ data: [6, 35, 25, 61, 32, 84, 70] }]
     }

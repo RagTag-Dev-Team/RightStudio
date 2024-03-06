@@ -32,7 +32,8 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
     avatarSize,
     chartColor = 'primary',
     avatarColor,
-    avatarIconSize
+    avatarIconSize,
+    avatarSkin
   } = props
 
   // Hook
@@ -98,7 +99,7 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
   return (
     <Card>
       <CardContent className='flex flex-col gap-2 pb-3'>
-        <CustomAvatar variant='rounded' skin='light' color={avatarColor} size={avatarSize}>
+        <CustomAvatar variant='rounded' skin={avatarSkin} color={avatarColor} size={avatarSize}>
           <i className={classnames(avatarIcon, `text-[${avatarIconSize}px]`)} />
         </CustomAvatar>
         <div>

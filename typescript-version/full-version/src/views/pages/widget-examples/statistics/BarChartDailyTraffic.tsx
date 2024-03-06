@@ -55,10 +55,10 @@ const BarChartDailyTraffic = () => {
     grid: {
       show: false,
       padding: {
-        top: -20,
-        left: -5,
-        right: -8,
-        bottom: -12
+        top: -10,
+        left: 5,
+        right: 8,
+        bottom: 5
       }
     },
     xaxis: {
@@ -77,6 +77,14 @@ const BarChartDailyTraffic = () => {
     yaxis: { show: false },
     responsive: [
       {
+        breakpoint: 1459,
+        options: {
+          plotOptions: {
+            bar: { columnWidth: '35%' }
+          }
+        }
+      },
+      {
         breakpoint: 1200,
         options: {
           plotOptions: {
@@ -90,7 +98,7 @@ const BarChartDailyTraffic = () => {
   return (
     <Card>
       <CardContent>
-        <div className='flex items-start justify-between mbe-3'>
+        <div className='flex items-start justify-between'>
           <div className='flex flex-col items-start'>
             <Typography variant='h4'>2.84k</Typography>
             <Typography variant='subtitle2' color='text.secondary'>
@@ -99,7 +107,7 @@ const BarChartDailyTraffic = () => {
           </div>
           <Chip variant='tonal' color='success' label='+15%' size='small' />
         </div>
-        <AppReactApexCharts type='bar' height={140} series={series} options={options} />
+        <AppReactApexCharts type='bar' height={156} series={series} options={options} />
       </CardContent>
     </Card>
   )

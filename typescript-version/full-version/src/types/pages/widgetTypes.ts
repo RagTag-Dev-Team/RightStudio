@@ -51,6 +51,7 @@ export type CardStatsWithAreaChartProps = {
   avatarSize?: number
   avatarColor?: ThemeColor
   avatarIconSize?: number
+  avatarSkin?: CustomAvatarProps['skin']
 }
 
 export type CardStatsType = {
