@@ -54,7 +54,7 @@ const data: CustomInputVerticalData[] = [
     title: 'I am the Builder',
     value: 'builder',
     content: 'List property as Builder, list your project and get highest reach.',
-    asset: 'ri-home-5-line',
+    asset: 'tabler-home',
     isSelected: true
   }
   // Additional data objects

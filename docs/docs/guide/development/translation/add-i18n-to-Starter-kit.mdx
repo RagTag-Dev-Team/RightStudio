@@ -151,17 +151,17 @@ Our template supports Right-to-Left (RTL) languages like Arabic and Left-to-Righ
   2. Replace the following statement:
 
       ```diff
-      -  <MenuItem href='/home' icon={<i className='ri-home-smile-line' />}>
+      -  <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
       -    Home
       -  </MenuItem>
-      -  <MenuItem href='/about' icon={<i className='ri-information-line' />}>
+      -  <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
       -    About
       -  </MenuItem>
 
-      +  <MenuItem href={`/${locale}/home`} icon={<i className='ri-home-smile-line' />}>
+      +  <MenuItem href={`/${locale}/home`} icon={<i className='tabler-smart-home' />}>
       +    {dictionary['navigation'].home}
       +  </MenuItem>
-      +  <MenuItem href={`/${locale}/about`} icon={<i className='ri-information-line' />}>
+      +  <MenuItem href={`/${locale}/about`} icon={<i className='tabler-info-circle' />}>
       +    {dictionary['navigation'].about}
       +  </MenuItem>
       ```

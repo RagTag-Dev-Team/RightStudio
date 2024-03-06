@@ -85,7 +85,7 @@ import DirectionalIcon from '@components/DirectionalIcon'
 const component = () => {
   return (
     ...
-    <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
+    <DirectionalIcon ltrIconClass='tabler-chevron-left' rtlIconClass='tabler-chevron-right' />
     ...
   )
 }

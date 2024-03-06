@@ -47,7 +47,7 @@ const Row = (props: { row: ReturnType<typeof createData> }) => {
       <TableRow >
         <TableCell className='border-be-0'>
           <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
-            <i className={open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} />
+            <i className={open ? 'tabler-chevron-up' : 'tabler-chevron-down'} />
           </IconButton>
         </TableCell>
         <TableCell className='border-be-0' component='th' scope='row'>{row.name}</TableCell>

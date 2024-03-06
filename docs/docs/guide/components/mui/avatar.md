@@ -23,22 +23,22 @@ Here is the example of how to use the colors mentioned above:
 import CustomAvatar from '@core/components/mui/Avatar'
 
 <CustomAvatar>
-  <i className='ri-notification-4-line' />
+  <i className='tabler-bell' />
 </CustomAvatar>
 <CustomAvatar color='secondary'>
-  <i className='ri-add-box-line' />
+  <i className='tabler-square-plus' />
 </CustomAvatar>
 <CustomAvatar color='success'>
-  <i className='ri-save-2-line' />
+  <i className='tabler-device-floppy' />
 </CustomAvatar>
 <CustomAvatar color='warning'>
-  <i className='ri-notification-4-line' />
+  <i className='tabler-bell' />
 </CustomAvatar>
 <CustomAvatar color='error'>
-  <i className='ri-save-2-line' />
+  <i className='tabler-device-floppy' />
 </CustomAvatar>
 <CustomAvatar color='info'>
-  <i className='ri-add-box-line' />
+  <i className='tabler-square-plus' />
 </CustomAvatar>
 ```
 

@@ -209,7 +209,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       {numSelected > 0 ? (
         <Tooltip title='Delete'>
           <IconButton className='text-textSecondary'>
-            <i className='ri-delete-bin-7-line' />
+            <i className='tabler-trash' />
           </IconButton>
         </Tooltip>
       ) : null}

@@ -57,83 +57,83 @@ const IconsTest = ({ data }: { data: string[] }) => {
       <Typography className='mbs-4 font-medium'>Remix Icons</Typography>
       <Typography>
         Simple Remix Icon
-        <i className='ri-bike-line' />
+        <i className='tabler-bike' />
       </Typography>
       <Typography className='flex items-center'>
         Remix Icon wrapped with <code>Box</code> component
         <Box component='span' className='mis-5 inline-flex text-success'>
-          <i className='ri-bike-line' />
+          <i className='tabler-bike' />
         </Box>
       </Typography>
       <Typography>
         Remix Icon with font-size
-        <i className='ri-bike-line text-5xl' />
+        <i className='tabler-bike text-5xl' />
       </Typography>
       <Typography>
         Remix Icon with color and passed color-name
-        <i className='ri-bike-line text-red-500' />
+        <i className='tabler-bike text-red-500' />
       </Typography>
       <Typography>
         Remix Icon with color using CSS modules
-        <i className='ri-bike-line text-[#09a6eb] text-lg' />
+        <i className='tabler-bike text-[#09a6eb] text-lg' />
       </Typography>
       <Typography>
         Remix Icon with style
-        <i className='ri-bike-line' style={{ color: '#00f' }} />
+        <i className='tabler-bike' style={{ color: '#00f' }} />
       </Typography>
       <Typography>
         Remix Icon with horizontal flip
-        <i className='ri-bike-line -scale-x-100 scale-y-100' />
+        <i className='tabler-bike -scale-x-100 scale-y-100' />
       </Typography>
       <Typography>
         Remix Icon with vertical flip
-        <i className='ri-bike-line scale-x-100 -scale-y-100' />
+        <i className='tabler-bike scale-x-100 -scale-y-100' />
       </Typography>
       <Typography>
         Remix Icon with vertical & horizontal flips
-        <i className='ri-bike-line -scale-x-100 -scale-y-100' />
+        <i className='tabler-bike -scale-x-100 -scale-y-100' />
       </Typography>
       <Typography>
         Remix Icon with rotate 90 degree
-        <i className='ri-bike-line rotate-90' />
+        <i className='tabler-bike rotate-90' />
       </Typography>
       <Typography>
         Remix Icon with rotate 270 degree
-        <i className='ri-bike-line -rotate-90' />
+        <i className='tabler-bike -rotate-90' />
       </Typography>
       <Typography>
         Remix Icon with width
-        <i className='ri-bike-line w-24' />
+        <i className='tabler-bike is-24' />
       </Typography>
       <Typography>
         Remix Icon with height
-        <i className='ri-bike-line h-20' />
+        <i className='tabler-bike bs-20' />
       </Typography>
       <Typography>
         Remix Icon with cursor pointer
-        <i className='ri-bike-line cursor-pointer' />
+        <i className='tabler-bike cursor-pointer' />
       </Typography>
       <Typography>
         Remix Icon with display flex
-        <i className='ri-bike-line flex' />
+        <i className='tabler-bike flex' />
       </Typography>
       <Typography>
         Remix Icon with onClick. It has all props for <code>on</code>
-        <i className='ri-bike-line' onClick={() => alert('Clicked on the icon')} />
+        <i className='tabler-bike' onClick={() => alert('Clicked on the icon')} />
       </Typography>
       <Typography>
         Remix Icon with opacity using string
-        <i className='ri-bike-line opacity-60' />
+        <i className='tabler-bike opacity-60' />
         Remix Icon with opacity using number
-        <i className='ri-bike-line opacity-30' />
+        <i className='tabler-bike opacity-30' />
       </Typography>
       <Typography>
         Remix Icon with transform scale
-        <i className='ri-bike-line scale-[2]' />
+        <i className='tabler-bike scale-[2]' />
       </Typography>
       <Typography>
         Remix Icon with visibility hidden
-        <i className='ri-bike-line invisible' />
+        <i className='tabler-bike invisible' />
       </Typography>
 
       <Typography variant='h5' className='mbs-4'>
@@ -141,7 +141,7 @@ const IconsTest = ({ data }: { data: string[] }) => {
       </Typography>
       <i className='bx-basket' />
       <i className='bi-airplane-engines' />
-      <i className='tabler-anchor' />
+      <i className='ri-anchor-line' />
       <i className='uit-adobe-alt' />
       <i className='fa6-regular-comment' />
       <i className='twemoji-auto-rickshaw' />

@@ -112,14 +112,14 @@ In the `middleware.js/ts` file, make these changes:
     2. Replace the `label` and `href` from SubMenu, MenuItem and MenuSection in the whole file as below: 
 
         <CodeBlock language='tsx'>
-        {`<SubMenu label={dictionary['navigation'].dashboards} icon={<i className='ri-home-smile-line' />}>
+        {`<SubMenu label={dictionary['navigation'].dashboards} icon={<i className='tabler-smart-home' />}>
         <MenuItem href={'/$locale}/dashboards/analytics'}>{dictionary['navigation'].analytics}</MenuItem>
         </SubMenu>`}
         </CodeBlock>
 
         to:
 
-        <CodeBlock language='tsx'>{`<SubMenu label='dashboards' icon={<i className='ri-home-smile-line' />}>
+        <CodeBlock language='tsx'>{`<SubMenu label='dashboards' icon={<i className='tabler-smart-home' />}>
         <MenuItem href={'/dashboards/analytics'}>analytics</MenuItem>
         </SubMenu>`}</CodeBlock>
         

@@ -43,10 +43,6 @@ code {
   }
 }
 
-:where([class^='ri-']) {
-  font-size: 1.5rem;
-}
-
 a:hover {
   text-decoration: none;
 }
@@ -97,7 +93,6 @@ ul:not([class]), ol:not([class]) {
   padding-left: var(--ifm-toc-padding-horizontal);
 }
 
-:where([class^='ri-']),
 :where([class^='tabler-']) {
   font-size: 1.5rem;
 }

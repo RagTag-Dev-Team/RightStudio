@@ -110,7 +110,6 @@ ul:not([class]) {
   }
 }
 
-:where([class^='ri-']),
 :where([class^='tabler-']) {
   font-size: 1.5rem;
 }
