@@ -133,6 +133,8 @@ const sidebars: SidebarsConfig = {
           label: 'MUI',
           items: [
             'guide/components/mui/autocomplete',
+            'guide/components/mui/avatar',
+            'guide/components/mui/badge',
             'guide/components/mui/card',
             'guide/components/mui/select',
             'guide/components/mui/tabs',

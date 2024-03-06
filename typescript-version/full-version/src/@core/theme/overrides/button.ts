@@ -34,12 +34,13 @@ const button: Theme['components'] = {
         '&.Mui-disabled': {
           opacity: 0.45
         },
+        transform: 'scale(1.001)',
+        transition: theme.transitions.create('all', {
+          duration: theme.transitions.duration.short
+        }),
         '&:not(.Mui-disabled):active': {
           transform: 'scale(0.98)'
         },
-        transition: theme.transitions.create(['background-color', 'box-shadow', 'border-color', 'color', 'transform'], {
-          duration: theme.transitions.duration.short
-        }),
         ...(ownerState.variant === 'text'
           ? {
               ...(ownerState.size === 'small' && {

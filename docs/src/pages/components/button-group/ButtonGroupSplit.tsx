@@ -60,7 +60,7 @@ const ButtonGroupSplit = () => {
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'right bottom' }}
           >
-            <Paper>
+            <Paper className='shadow-lg'>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id='split-button-menu'>
                   {options.map((option, index) => (

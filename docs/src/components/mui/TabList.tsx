@@ -11,7 +11,7 @@ export type CustomTabListProps = TabListProps & {
   pill?: 'true' | 'false'
 }
 
-const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, color, pill, orientation }) => ({
+const TabList = styled(MuiTabList)<CustomTabListProps>(({ color, theme, pill, orientation }) => ({
   ...(pill === 'true' && {
     minHeight: 38,
     ...(orientation === 'vertical'
@@ -37,7 +37,7 @@ const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, color, pill, or
     '& .Mui-selected': {
       backgroundColor: `var(--mui-palette-${color}-main) !important`,
       color: `var(--mui-palette-${color}-contrastText) !important`,
-      boxShadow: 'var(--mui-customShadows-xs)'
+      boxShadow: `var(--mui-customShadows-${color}-sm)`
     },
     '& .MuiTab-root': {
       minHeight: 38,
@@ -45,7 +45,8 @@ const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, color, pill, or
       borderRadius: 'var(--mui-shape-borderRadius)',
       '&:hover': {
         border: 0,
-        backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
+        backgroundColor: `var(--mui-palette-${color}-lightOpacity)`,
+        color: `var(--mui-palette-${color}-main)`,
         ...(orientation === 'vertical'
           ? {
               paddingInlineEnd: theme.spacing(5)
