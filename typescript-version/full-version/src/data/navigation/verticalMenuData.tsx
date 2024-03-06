@@ -332,12 +332,12 @@ const verticalMenuData = (
         label: dictionary['navigation'].charts,
         children: [
           {
-            label: dictionary['navigation'].recharts,
-            href: '/charts/recharts'
-          },
-          {
             label: dictionary['navigation'].apex,
             href: '/charts/apex-charts'
+          },
+          {
+            label: dictionary['navigation'].recharts,
+            href: '/charts/recharts'
           }
         ]
       },
