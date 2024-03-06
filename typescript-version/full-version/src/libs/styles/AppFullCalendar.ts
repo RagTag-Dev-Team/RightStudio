@@ -412,6 +412,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     // Popover
     '& .fc-popover': {
       zIndex: 20,
+      '[data-skin="bordered"] &': {
+        boxShadow: 'none'
+      },
       boxShadow: 1,
       borderColor: theme.palette.divider,
       background: theme.palette.background.paper,
