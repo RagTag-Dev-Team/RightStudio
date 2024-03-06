@@ -16,7 +16,7 @@ import type { TextFieldProps } from '@mui/material/TextField'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
 // Third-party Imports
-import dateFormat from 'date-fns/format'
+import { formatDate } from 'date-fns/format'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -43,8 +43,8 @@ const offeredItemsArray = ['Apple iPhone 12 Pro', 'Apple iPhone 12 Mini', 'Apple
 
 const CustomInput = forwardRef((props: CustomInputProps, ref) => {
   // Vars
-  const startDate = props.start !== null ? dateFormat(props.start, 'MM/dd/yyyy') : ''
-  const endDate = props.end !== null ? ` - ${dateFormat(props.end, 'MM/dd/yyyy')}` : null
+  const startDate = props.start !== null ? formatDate(props.start, 'MM/dd/yyyy') : ''
+  const endDate = props.end !== null ? ` - ${formatDate(props.end, 'MM/dd/yyyy')}` : null
   const value = `${startDate}${endDate !== null ? endDate : ''}`
 
   return <CustomTextField fullWidth inputRef={ref} label={props.label || ''} {...props} value={value} />

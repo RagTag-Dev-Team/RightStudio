@@ -1,0 +1,55 @@
+name: Deploy - Demos
+run-name: ${{ inputs.is_production && '🚀' || '🧪' }} Deploy - Demos
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ inputs.is_marketplace && secrets.VERCEL_PROJECT_ID_MARKETPLACE || secrets.VERCEL_PROJECT_ID }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      is_production:
+        type: boolean
+        description: Is production deployment
+      is_marketplace:
+        type: boolean
+        description: Is MUI marketplace deployment
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: ⚙️ Set BRAND_NAME environment variable from repo name
+        run: echo BRAND_NAME=${{ github.event.repository.name }} | cut -d '-' -f1 >> $GITHUB_ENV
+
+      - name: ⬇️ Checkout template
+        uses: actions/checkout@v3
+        with:
+          path: ${{ env.BRAND_NAME }}/nextjs
+
+      - name: ⬇️ Checkout scripts
+        uses: actions/checkout@v3
+        with:
+          repository: themeselection/automation-scripts
+          token: ${{ secrets.GH_PAT }}
+          path: automation-scripts
+
+      - name: ⬇️ Install packages in automation-scripts dir
+        working-directory: automation-scripts/nextjs
+        run: pnpm i
+
+      - name: ⬇️ Install packages in typescript full version
+        working-directory: ${{ env.BRAND_NAME }}/nextjs/typescript-version/full-version
+        run: pnpm i
+
+      - name: 📦 Build
+        working-directory: automation-scripts/nextjs
+        run: pnpm tsx ./src/generateBuild.ts ${{ env.BRAND_NAME }} $([[ "${{ inputs.is_marketplace }}" == "true" ]] && echo -m) $([[ "${{ inputs.is_production }}" == "true" ]] && echo --prod) --vercel-token ${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Deploy to Vercel
+        working-directory: ${{ env.BRAND_NAME }}/nextjs
+        run: vercel $([[ "${{ inputs.is_production }}" == "true" ]] && echo --prod) --prebuilt --token ${{ secrets.VERCEL_TOKEN }}

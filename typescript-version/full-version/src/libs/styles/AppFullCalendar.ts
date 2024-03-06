@@ -74,7 +74,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             ...theme.typography.button,
             textTransform: 'capitalize',
             backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
-            padding: theme.spacing(1.75, 4.5),
+            padding: theme.spacing(1.75, 4),
             color: theme.palette.primary.main,
             borderColor: 'transparent',
             '&.fc-button-active, &:hover': {
@@ -458,6 +458,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     // Popover
     '& .fc-popover': {
       zIndex: 20,
+      '[data-skin="bordered"] &': {
+        boxShadow: 'none'
+      },
       boxShadow: 1,
       borderColor: theme.palette.divider,
       background: theme.palette.background.paper,

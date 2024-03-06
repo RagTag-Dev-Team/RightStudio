@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import type { SelectChangeEvent } from '@mui/material/Select'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
@@ -43,7 +44,7 @@ interface DefaultStateType {
   description: string
   endDate: Date | string
   startDate: Date | string
-  guests: string[] | string | undefined
+  guests: string[] | undefined
 }
 
 // Vars
@@ -319,7 +320,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
               label='Guests'
               value={values.guests}
               id='event-guests-select'
-              onChange={e => setValues({ ...values, guests: e.target.value })}
+              // eslint-disable-next-line lines-around-comment
+              // @ts-ignore
+              onChange={(e: SelectChangeEvent<(typeof values)['guests']>) => {
+                setValues({
+                  ...values,
+                  guests: typeof e.target.value === 'string' ? e.target.value.split(',') : e.target.value
+                })
+              }}
               SelectProps={{
                 multiple: true
               }}
