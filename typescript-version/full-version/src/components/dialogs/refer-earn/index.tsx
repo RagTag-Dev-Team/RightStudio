@@ -18,9 +18,12 @@ import InputAdornment from '@mui/material/InputAdornment'
 import classnames from 'classnames'
 
 // Component Imports
-import DialogCloseButton from '../DialogCloseButton'
 import CustomTextField from '@core/components/mui/TextField'
 import CustomAvatar from '@core/components/mui/Avatar'
+import DialogCloseButton from '../DialogCloseButton'
+import Keyboard from '@/assets/svg/Keyboard'
+import Paper from '@/assets/svg/Paper'
+import Rocket from '@/assets/svg/Rocket'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -38,17 +41,17 @@ type Options = {
 
 const options: Options[] = [
   {
-    icon: 'tabler-send',
+    icon: <Paper />,
     title: 'Send Invitation 👍🏻',
     subtitle: 'Send your referral link to your friend'
   },
   {
-    icon: 'tabler-keyboard',
+    icon: <Keyboard />,
     title: 'Registration 😎',
     subtitle: 'Let them register to our services'
   },
   {
-    icon: 'tabler-rocket',
+    icon: <Rocket />,
     title: 'Free Trial  🎉',
     subtitle: 'Your friend will get 30 days free trial'
   }

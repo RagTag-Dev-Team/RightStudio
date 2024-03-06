@@ -44,7 +44,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                           {item.title}
                         </Typography>
                         <Typography>
-                          <span>Client: </span>
+                          <span className='font-medium'>Client: </span>
                           {item.client}
                         </Typography>
                       </div>

@@ -65,7 +65,7 @@ const SMSDialog = (handleAuthDialogClose: () => void) => {
           Enter your mobile phone number with country code and we will send you a verification code.
         </Typography>
       </DialogTitle>
-      <DialogContent className='overflow-visible pbs-0 pli-10 sm:pli-16'>
+      <DialogContent className='overflow-visible pbs-0 sm:pbe-16 sm:pli-16'>
         <CustomTextField fullWidth type='number' label='Mobile Number' placeholder='123 456 7890' />
       </DialogContent>
       <DialogActions className='pbs-0 sm:pbe-16 sm:pli-16'>

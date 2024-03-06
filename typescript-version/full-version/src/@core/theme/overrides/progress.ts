@@ -7,7 +7,7 @@ const progress: Theme['components'] = {
       root: ({ theme }) => ({
         blockSize: 6,
         borderRadius: 'var(--mui-shape-borderRadius)',
-        backgroundColor: 'var(--mui-palette-action-selected)',
+        backgroundColor: 'var(--mui-palette-customColors-trackBg)',
         '& .MuiLinearProgress-bar': {
           borderRadius: 'var(--mui-shape-borderRadius)'
         },

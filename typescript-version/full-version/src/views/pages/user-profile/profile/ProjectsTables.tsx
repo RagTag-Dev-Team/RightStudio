@@ -274,15 +274,10 @@ const ProjectTables = ({ projectTable }: { projectTable?: ProjectTableRowType[] 
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[5, 7, 10]}
         component={() => <TablePaginationComponent table={table} />}
-        className='border-bs'
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}

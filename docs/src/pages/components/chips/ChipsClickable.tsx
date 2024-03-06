@@ -9,7 +9,7 @@ const ChipsClickable = () => {
   return (
     <div className='flex gap-4'>
       <Chip label='Clickable' onClick={handleClick} />
-      <Chip label='Clickable Link' component='a' href='https://themeselection.com/' target='_blank' clickable />
+      <Chip label='Clickable Link' component='a' href='https://pixinvent.com/' target='_blank' clickable />
     </div>
   )
 }
