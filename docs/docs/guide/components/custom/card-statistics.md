@@ -26,10 +26,10 @@ const Component = () => {
       change="positive"
       changeNumber="29%"
     />
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 ### Props
@@ -70,10 +70,10 @@ const Component = () => {
       chipColor="error"
       chipVariant="tonal"
     />
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 ### Props
@@ -114,10 +114,10 @@ const Component = () => {
       avatarSize={44}
       avatarIconSize={28}
     />
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 ### Props
@@ -155,10 +155,10 @@ const Component = () => {
       avatarIconSize={28}
       avatarSkin="light"
     />
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 ### Props

@@ -41,7 +41,7 @@ const BarChartRevenueGrowth = () => {
     ],
     stroke: { width: 0 },
     legend: { show: false },
-    tooltip: { enabled: true, theme: 'light' },
+    tooltip: { enabled: true, theme: 'false' },
     dataLabels: { enabled: false },
     labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
     states: {
@@ -77,7 +77,7 @@ const BarChartRevenueGrowth = () => {
               formatter: val => `${val}`,
               color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`),
               fontFamily: theme.typography.fontFamily,
-              fontSize: theme.typography.h4.fontSize as string
+              fontSize: theme.typography.h3.fontSize as string
             },
             total: {
               show: true,
