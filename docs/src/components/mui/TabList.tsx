@@ -3,11 +3,15 @@ import MuiTabList from '@mui/lab/TabList'
 import { styled } from '@mui/material/styles'
 import type { TabListProps } from '@mui/lab/TabList'
 
+// Type Imports
+import type { ThemeColor } from '@core/types'
+
 export type CustomTabListProps = TabListProps & {
+  color?: ThemeColor
   pill?: 'true' | 'false'
 }
 
-const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, pill, orientation }) => ({
+const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, color, pill, orientation }) => ({
   ...(pill === 'true' && {
     minHeight: 38,
     ...(orientation === 'vertical'
@@ -31,8 +35,8 @@ const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, pill, orientati
       gap: theme.spacing(1)
     },
     '& .Mui-selected': {
-      backgroundColor: 'var(--mui-palette-primary-main) !important',
-      color: 'var(--mui-palette-primary-contrastText) !important',
+      backgroundColor: `var(--mui-palette-${color}-main) !important`,
+      color: `var(--mui-palette-${color}-contrastText) !important`,
       boxShadow: 'var(--mui-customShadows-xs)'
     },
     '& .MuiTab-root': {
@@ -54,6 +58,11 @@ const TabList = styled(MuiTabList)<CustomTabListProps>(({ theme, pill, orientati
   })
 }))
 
-const CustomTabList = (props: CustomTabListProps) => <TabList {...props} />;
+const CustomTabList = (props: CustomTabListProps) => {
+  // Props
+  const { color = 'primary', ...rest } = props
+
+  return <TabList color={color} {...rest} />
+}
 
 export default CustomTabList

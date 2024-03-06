@@ -52,7 +52,7 @@ const Logo = () => {
   const logoTextRef = useRef<HTMLSpanElement>(null)
 
   // Hooks
-  const { isHovered, isCollapsed, transitionDuration } = useVerticalNav()
+  const { isHovered, transitionDuration } = useVerticalNav()
   const { settings } = useSettings()
   const { lang: locale } = useParams()
 
@@ -60,19 +60,19 @@ const Logo = () => {
   const { layout } = settings
 
   useEffect(() => {
-    if (layout === 'horizontal' || !isCollapsed) {
+    if (layout !== 'collapsed') {
       return
     }
 
     if (logoTextRef && logoTextRef.current) {
-      if (isCollapsed && !isHovered) {
+      if (layout === 'collapsed' && !isHovered) {
         logoTextRef.current?.classList.add('hidden')
       } else {
         logoTextRef.current.classList.remove('hidden')
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isHovered, isCollapsed])
+  }, [isHovered, layout])
 
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
@@ -82,7 +82,7 @@ const Logo = () => {
       <LogoText
         ref={logoTextRef}
         isHovered={isHovered}
-        isCollapsed={isCollapsed}
+        isCollapsed={layout === 'collapsed'}
         transitionDuration={transitionDuration}
       >
         {themeConfig.templateName}
