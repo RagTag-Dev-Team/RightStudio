@@ -14,15 +14,15 @@ import CustomAvatar from '@core/components/mui/Avatar'
 
 const CardStatsSquare = (props: CardStatsSquareProps) => {
   // Props
-  const { avatarColor, avatarIcon, stats, statsTitle, avatarIconSize, avatarVariant, avatarSize } = props
+  const { avatarColor, avatarIcon, stats, statsTitle, avatarIconSize, avatarVariant, avatarSize, avatarSkin } = props
 
   return (
     <Card>
       <CardContent className='flex flex-col items-center gap-2'>
-        <CustomAvatar color={avatarColor} skin='light' variant={avatarVariant} size={avatarSize}>
+        <CustomAvatar color={avatarColor} skin={avatarSkin} variant={avatarVariant} size={avatarSize}>
           <i className={classnames(avatarIcon, `text-[${avatarIconSize}px]`)} />
         </CustomAvatar>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col items-center gap-1'>
           <Typography variant='h5'>{stats}</Typography>
           <Typography color='text.secondary'>{statsTitle}</Typography>
         </div>

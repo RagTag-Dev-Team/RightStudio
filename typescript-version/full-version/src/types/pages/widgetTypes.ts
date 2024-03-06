@@ -14,6 +14,7 @@ export type CardStatsSquareProps = {
   avatarSize?: number
   avatarIconSize?: number
   avatarVariant?: CustomAvatarProps['variant']
+  avatarSkin?: CustomAvatarProps['skin']
   stats: string
   statsTitle: string
 }

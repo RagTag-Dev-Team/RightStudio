@@ -24,7 +24,7 @@ The custom modifications come with certain restrictions:
 To use the customized `textField` component in your project, import it as follows:
 
 ```tsx
-import CustomTextField from '@core/components/mui/text-field';
+import CustomTextField from '@core/components/mui/TextField'
 ```
 
 ### Example
@@ -32,7 +32,7 @@ import CustomTextField from '@core/components/mui/text-field';
 Here's how to integrate the `CustomTextField`.
 
 ```tsx
-import CustomTextField from '@core/components/mui/text-field';
+import CustomTextField from '@core/components/mui/TextField'
 
 const Example = () => {
   return (

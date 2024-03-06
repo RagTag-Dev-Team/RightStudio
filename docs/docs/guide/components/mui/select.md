@@ -15,7 +15,7 @@ Additionally, `SelectProps` allows for the further customization of the select t
 ### How to use
 
 ```tsx
-import CustomTextField from "@core/components/mui/text-field";
+import CustomTextField from '@core/components/mui/TextField'
 import MenuItem from "@mui/material/MenuItem";
 
 const selectCustom = () => {

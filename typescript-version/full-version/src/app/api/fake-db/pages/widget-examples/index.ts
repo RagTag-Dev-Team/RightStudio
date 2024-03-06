@@ -8,6 +8,7 @@ export const db: CardStatsType = {
       avatarSize: 40,
       avatarIconSize: 24,
       avatarVariant: 'rounded',
+      avatarSkin: 'light',
       stats: '97.8k',
       statsTitle: 'Orders'
     },
@@ -17,6 +18,7 @@ export const db: CardStatsType = {
       avatarSize: 40,
       avatarIconSize: 24,
       avatarVariant: 'rounded',
+      avatarSkin: 'light',
       stats: '3.4k',
       statsTitle: 'Review'
     }
