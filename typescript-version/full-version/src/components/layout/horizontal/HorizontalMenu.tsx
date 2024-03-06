@@ -231,11 +231,11 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].charts} icon={<i className='tabler-chart-donut-2' />}>
-          <MenuItem href={`/${locale}/charts/recharts`} icon={<i className='tabler-chart-sankey' />}>
-            {dictionary['navigation'].recharts}
-          </MenuItem>
           <MenuItem href={`/${locale}/charts/apex-charts`} icon={<i className='tabler-chart-ppf' />}>
             {dictionary['navigation'].apex}
+          </MenuItem>
+          <MenuItem href={`/${locale}/charts/recharts`} icon={<i className='tabler-chart-sankey' />}>
+            {dictionary['navigation'].recharts}
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others} icon={<i className='tabler-dots' />}>

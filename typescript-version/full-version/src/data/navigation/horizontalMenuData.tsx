@@ -381,14 +381,14 @@ const horizontalMenuData = (
     icon: 'tabler-chart-donut-2',
     children: [
       {
-        label: dictionary['navigation'].recharts,
-        icon: 'tabler-chart-sankey',
-        href: '/charts/recharts'
-      },
-      {
         label: dictionary['navigation'].apex,
         icon: 'tabler-chart-ppf',
         href: '/charts/apex-charts'
+      },
+      {
+        label: dictionary['navigation'].recharts,
+        icon: 'tabler-chart-sankey',
+        href: '/charts/recharts'
       }
     ]
   },

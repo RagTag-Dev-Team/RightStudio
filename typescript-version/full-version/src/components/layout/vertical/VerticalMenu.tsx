@@ -245,8 +245,8 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         </MenuSection>
         <MenuSection label={dictionary['navigation'].chartsMisc}>
           <SubMenu label={dictionary['navigation'].charts} icon={<i className='tabler-chart-donut-2' />}>
-            <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
             <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
+            <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
           </SubMenu>
           <MenuItem
             icon={<i className='tabler-cards' />}

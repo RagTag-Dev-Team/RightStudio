@@ -392,14 +392,14 @@ const verticalMenuData = (
         icon: 'tabler-chart-donut-2',
         children: [
           {
-            label: dictionary['navigation'].recharts,
-            icon: 'tabler-circle',
-            href: '/charts/recharts'
-          },
-          {
             label: dictionary['navigation'].apex,
             icon: 'tabler-circle',
             href: '/charts/apex-charts'
+          },
+          {
+            label: dictionary['navigation'].recharts,
+            icon: 'tabler-circle',
+            href: '/charts/recharts'
           }
         ]
       },

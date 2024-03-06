@@ -330,16 +330,16 @@ const data: SearchData[] = [
   },
   {
     id: '47',
-    name: 'Recharts',
-    url: '/charts/recharts',
-    icon: 'tabler-chart-sankey',
+    name: 'Apex Charts',
+    url: '/charts/apex-charts',
+    icon: 'tabler-chart-ppf',
     section: 'Charts'
   },
   {
     id: '48',
-    name: 'Apex Charts',
-    url: '/charts/apex-charts',
-    icon: 'tabler-chart-ppf',
+    name: 'Recharts',
+    url: '/charts/recharts',
+    icon: 'tabler-chart-sankey',
     section: 'Charts'
   },
   {
