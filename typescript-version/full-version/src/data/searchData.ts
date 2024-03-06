@@ -358,15 +358,15 @@ const data: SearchData[] = [
   },
   {
     id: '51',
-    name: 'Recharts',
-    url: '/charts/recharts',
+    name: 'Apex Charts',
+    url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
     id: '52',
-    name: 'Apex Charts',
-    url: '/charts/apex-charts',
+    name: 'Recharts',
+    url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },

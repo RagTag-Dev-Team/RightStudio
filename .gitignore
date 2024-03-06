@@ -1,5 +1,6 @@
 /demo-*
 /*.zip
 /documentation
+/package
 /javascript-version
 /typescript-version/starter-kit

@@ -198,8 +198,8 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].charts}>
-          <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
           <MenuItem href={`/${locale}/charts/apex-charts`}>{dictionary['navigation'].apex}</MenuItem>
+          <MenuItem href={`/${locale}/charts/recharts`}>{dictionary['navigation'].recharts}</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].others}>
           <MenuItem
