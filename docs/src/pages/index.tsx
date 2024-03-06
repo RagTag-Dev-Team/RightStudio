@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
-import HomepageFeatures from '@docViews/home-page-features'
+import HomepageFeatures from '@site/src/pages/home-page-features'
 
 import './styles.scss'
 
