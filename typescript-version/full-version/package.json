@@ -55,6 +55,9 @@
     "tailwindcss-logical": "^3.0.1",
     "typescript": "^5.3.3"
   },
+  "overrides": {
+    "react": "^18.2.0"
+  },
   "prisma": {
     "schema": "./src/prisma/schema.prisma"
   }
