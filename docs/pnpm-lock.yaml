@@ -58,9 +58,6 @@ devDependencies:
   '@docusaurus/types':
     specifier: 3.1.1
     version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
-  '@iconify/iconify':
-    specifier: ^3.1.1
-    version: 3.1.1
   '@iconify/json':
     specifier: ^2.2.189
     version: 2.2.189
@@ -2741,13 +2738,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
-
-  /@iconify/iconify@3.1.1:
-    resolution: {integrity: sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==}
-    deprecated: no longer maintained, switch to modern iconify-icon web component
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
 
   /@iconify/json@2.2.189:
     resolution: {integrity: sha512-q0DxpGQuQhtoNXELlHKbkxTSOjuzf/3Qaqq5uuJ/dM62XH1GUUxlXsgH/Moh/CEcs3evzWFp2mjIQifZmihQTA==}
