@@ -91,6 +91,12 @@
     "typescript": "^5.3.3",
     "valibot": "^0.29.0"
   },
+  "resolutions": {
+    "immutable": "3.7.4"
+  },
+  "overrides": {
+    "react": "^18.2.0"
+  },
   "prisma": {
     "schema": "./src/prisma/schema.prisma"
   }
