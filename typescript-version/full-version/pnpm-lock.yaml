@@ -47,9 +47,6 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.0)
-  '@iconify/iconify':
-    specifier: ^3.1.1
-    version: 3.1.1
   '@iconify/json':
     specifier: ^2.2.189
     version: 2.2.189
@@ -867,13 +864,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
-    dev: false
-
-  /@iconify/iconify@3.1.1:
-    resolution: {integrity: sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==}
-    deprecated: no longer maintained, switch to modern iconify-icon web component
-    dependencies:
-      '@iconify/types': 2.0.0
     dev: false
 
   /@iconify/json@2.2.189:
