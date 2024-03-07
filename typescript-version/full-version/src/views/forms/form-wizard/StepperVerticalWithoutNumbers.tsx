@@ -20,7 +20,7 @@ import classNames from 'classnames'
 
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
+import StepperCustomDot from '@components/stepper-dot'
 
 // Vars
 const steps = [

@@ -30,7 +30,7 @@ import { email, object, minLength, string, array, forward, custom } from 'valibo
 
 // Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
+import StepperCustomDot from '@components/stepper-dot'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Vars
@@ -272,10 +272,19 @@ const StepperLinearWithValidation = () => {
                 />
               </Grid>
               <Grid item xs={12} className='flex justify-between'>
-                <Button variant='outlined' disabled color='secondary' startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}>
+                <Button
+                  variant='outlined'
+                  disabled
+                  color='secondary'
+                  startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                >
                   Back
                 </Button>
-                <Button variant='contained' type='submit' endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}>
+                <Button
+                  variant='contained'
+                  type='submit'
+                  endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                >
                   Next
                 </Button>
               </Grid>
@@ -382,7 +391,11 @@ const StepperLinearWithValidation = () => {
                 >
                   Back
                 </Button>
-                <Button variant='contained' type='submit' endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}>
+                <Button
+                  variant='contained'
+                  type='submit'
+                  endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                >
                   Next
                 </Button>
               </Grid>

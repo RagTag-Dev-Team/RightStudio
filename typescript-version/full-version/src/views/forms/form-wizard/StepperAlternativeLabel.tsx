@@ -28,7 +28,7 @@ import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
+import StepperCustomDot from '@components/stepper-dot'
 
 type FormDataType = {
   username: string
@@ -346,7 +346,9 @@ const StepperAlternativeLabel = () => {
                       disabled={activeStep === 0}
                       onClick={handleBack}
                       color='secondary'
-                      startIcon={<DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />}
+                      startIcon={
+                        <DirectionalIcon ltrIconClass='ri-arrow-left-line' rtlIconClass='ri-arrow-right-line' />
+                      }
                     >
                       Back
                     </Button>

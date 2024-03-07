@@ -14,7 +14,7 @@ import StepperWrapper from '@core/styles/stepper'
 import StepAccountDetails from './StepAccountDetails'
 import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
-import StepperCustomDot from '@views/forms/form-wizard/StepperCustomDot'
+import StepperCustomDot from '@/components/stepper-dot'
 
 // Vars
 const steps = [
