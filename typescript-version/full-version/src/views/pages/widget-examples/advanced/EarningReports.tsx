@@ -152,7 +152,7 @@ const EarningReports = () => {
                 <Typography variant='body2'>{item.subtitle}</Typography>
               </div>
               <div className='flex items-center gap-4'>
-                <Typography>{item.amount}</Typography>
+                <Typography variant='body2'>{item.amount}</Typography>
                 <div className='flex items-center gap-1'>
                   <i
                     className={classnames(

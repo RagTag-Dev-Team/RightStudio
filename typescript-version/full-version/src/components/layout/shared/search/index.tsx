@@ -121,7 +121,7 @@ const NavSearch = () => {
               <ComponentWithUseKBar
                 triggerClick
                 className='flex cursor-pointer'
-                icon={<i className='tabler-x text-textPrimary' />}
+                icon={<i className='tabler-x text-[22px] text-textPrimary' />}
               />
             </div>
             <SearchResults currentPath={pathName} data={data} />

@@ -19,6 +19,7 @@ const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
     ...(level === 0
       ? {
           [`& .${menuClasses.button}.${menuClasses.active}`]: {
+            color: 'var(--mui-palette-primary-contrastText) !important',
             background:
               theme.direction === 'ltr'
                 ? `linear-gradient(270deg,
@@ -61,7 +62,7 @@ const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
   },
   icon: ({ level }) => ({
     marginInlineEnd: theme.spacing(2),
-    ...(level < 2 ? { fontSize: '1.25rem' } : { fontSize: '0.75rem', color: 'var(--mui-palette-text-secondary)' }),
+    ...(level < 2 ? { fontSize: '1.375rem' } : { fontSize: '0.75rem', color: 'var(--mui-palette-text-secondary)' }),
     '& > i, & > svg': {
       fontSize: 'inherit'
     },

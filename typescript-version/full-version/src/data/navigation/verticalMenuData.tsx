@@ -22,6 +22,7 @@ const verticalMenuData = (
       // This is how you will normally render menu item
       {
         label: dictionary['navigation'].crm,
+        icon: 'tabler-circle',
         href: '/dashboards/crm'
       },
       {

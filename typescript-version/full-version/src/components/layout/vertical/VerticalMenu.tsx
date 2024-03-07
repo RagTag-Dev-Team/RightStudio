@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
-import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -16,6 +15,7 @@ import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Me
 
 // Component Imports
 import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
@@ -89,7 +89,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         <SubMenu
           label={dictionary['navigation'].dashboards}
           icon={<i className='tabler-smart-home' />}
-          suffix={<Chip label='3' size='small' color='error' />}
+          suffix={<CustomChip label='3' size='small' color='error' round='true' />}
         >
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
@@ -289,7 +289,9 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             {dictionary['navigation'].documentation}
           </MenuItem>
           <SubMenu label={dictionary['navigation'].others} icon={<i className='tabler-box' />}>
-            <MenuItem suffix='2️⃣'>{dictionary['navigation'].itemWithBadge}</MenuItem>
+            <MenuItem suffix={<CustomChip label='New' size='small' color='info' round='true' />}>
+              {dictionary['navigation'].itemWithBadge}
+            </MenuItem>
             <MenuItem
               href='https://themeselection.com'
               target='_blank'
@@ -310,7 +312,9 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
       </Menu>
       {/* <Menu
         popoutMenuOffset={{ mainAxis: 23 }}
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles(verticalNavOptions, theme, settings)}
+        renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
+        renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
         <GenerateVerticalMenu menuData={menuData(dictionary, params)} />

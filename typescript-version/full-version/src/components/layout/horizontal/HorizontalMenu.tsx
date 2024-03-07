@@ -6,20 +6,25 @@ import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
-import Chip from '@mui/material/Chip'
 
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
+import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
 import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
+import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Styled Component Imports
+import StyledHorizontalNavExpandIcon from '@menu/styles/horizontal/StyledHorizontalNavExpandIcon'
+import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNavExpandIcon'
 
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
@@ -31,6 +36,27 @@ import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'
 
+type RenderExpandIconProps = {
+  level?: number
+}
+
+type RenderVerticalExpandIconProps = {
+  open?: boolean
+  transitionDuration?: VerticalMenuContextProps['transitionDuration']
+}
+
+const RenderExpandIcon = ({ level }: RenderExpandIconProps) => (
+  <StyledHorizontalNavExpandIcon level={level}>
+    <i className='tabler-chevron-right' />
+  </StyledHorizontalNavExpandIcon>
+)
+
+const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalExpandIconProps) => (
+  <StyledVerticalNavExpandIcon open={open} transitionDuration={transitionDuration}>
+    <i className='tabler-chevron-right' />
+  </StyledVerticalNavExpandIcon>
+)
+
 const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const verticalNavOptions = useVerticalNav()
@@ -39,6 +65,8 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
   const params = useParams()
 
   // Vars
+  const { skin } = settings
+  const { transitionDuration } = verticalNavOptions
   const { lang: locale, id } = params
 
   return (
@@ -47,12 +75,13 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       verticalNavContent={VerticalNavContent}
       verticalNavProps={{
         customStyles: verticalNavigationCustomStyles(verticalNavOptions, theme),
-        backgroundColor: 'var(--mui-palette-background-paper)'
+        backgroundColor:
+          skin === 'bordered' ? 'var(--mui-palette-background-paper)' : 'var(--mui-palette-background-default)'
       }}
     >
       <Menu
-        triggerPopout='click'
         rootStyles={menuRootStyles(theme)}
+        renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
         menuItemStyles={menuItemStyles(settings, theme)}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
@@ -61,13 +90,18 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
         }}
         verticalMenuProps={{
           menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          renderExpandIcon: ({ open }) => (
+            <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
+          ),
           renderExpandedMenuItemIcon: { icon: <i className='tabler-circle text-xs' /> },
           menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >
         <SubMenu label={dictionary['navigation'].dashboards} icon={<i className='tabler-smart-home' />}>
-          <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
-          <MenuItem href={`/${locale}/dashboards/analytics`} icon={<i className='tabler-chart-pie-2' />}>
+          <MenuItem href={`/${locale}/dashboards/crm`} icon={<i className='tabler-chart-pie-2' />}>
+            {dictionary['navigation'].crm}
+          </MenuItem>
+          <MenuItem href={`/${locale}/dashboards/analytics`} icon={<i className='tabler-trending-up' />}>
             {dictionary['navigation'].analytics}
           </MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`} icon={<i className='tabler-shopping-cart' />}>
@@ -280,7 +314,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             {dictionary['navigation'].documentation}
           </MenuItem>
           <MenuItem
-            suffix={<Chip label='New' size='small' color='info' />}
+            suffix={<CustomChip label='New' size='small' color='info' round='true' />}
             icon={<i className='tabler-notification' />}
           >
             {dictionary['navigation'].itemWithBadge}
@@ -304,16 +338,20 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
         </SubMenu>
       </Menu>
       {/* <Menu
+        rootStyles={menuRootStyles(theme)}
+        renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
         menuItemStyles={menuItemStyles(settings, theme)}
+        renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
-          alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
+          alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: {
-            button: { paddingBlock: '12px' },
-            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-          },
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          renderExpandIcon: ({ open }) => (
+            <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
+          ),
+          renderExpandedMenuItemIcon: { icon: <i className='tabler-circle text-xs' /> },
           menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >

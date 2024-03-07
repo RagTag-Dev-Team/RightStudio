@@ -10,14 +10,14 @@ const data: SearchData[] = [
     id: '1',
     name: 'CRM Dashboard',
     url: '/dashboards/crm',
-    icon: 'tabler-3d-cube-sphere',
+    icon: 'tabler-chart-pie-2',
     section: 'Dashboards'
   },
   {
     id: '2',
     name: 'Analytics Dashboard',
     url: '/dashboards/analytics',
-    icon: 'tabler-chart-pie-2',
+    icon: 'tabler-trending-up',
     section: 'Dashboards'
   },
   {

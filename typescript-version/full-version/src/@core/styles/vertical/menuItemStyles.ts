@@ -43,6 +43,7 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme, sett
               }
             }
           : {
+              color: 'var(--mui-palette-primary-contrastText)',
               background:
                 theme.direction === 'ltr'
                   ? `linear-gradient(270deg,
@@ -53,7 +54,7 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme, sett
                      rgb(var(--mui-palette-primary-mainChannel) / 0.7) 100%) !important`,
               boxShadow: 'var(--mui-customShadows-primary-sm)',
               [`& .${menuClasses.icon}`]: {
-                color: 'var(--mui-palette-common-white)'
+                color: 'inherit'
               }
             })
       }
@@ -84,7 +85,7 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme, sett
     icon: ({ level }) => ({
       transition: `margin-inline-end ${transitionDuration}ms ease-in-out`,
       ...(level === 0 && {
-        fontSize: '1.25rem'
+        fontSize: '1.375rem'
       }),
       ...(level > 0 && {
         fontSize: '0.75rem',
