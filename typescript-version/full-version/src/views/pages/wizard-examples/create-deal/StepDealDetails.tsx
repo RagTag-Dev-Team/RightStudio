@@ -12,6 +12,7 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
 import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
@@ -115,8 +116,12 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
           <Grid item xs={12}>
             <CustomTextField select fullWidth label='Cart Condition' defaultValue=''>
               <MenuItem value=''>Select Condition</MenuItem>
-              <MenuItem value='all'>Cart must contain all selected Downloads</MenuItem>
-              <MenuItem value='any'>Cart needs one or more of the selected Downloads</MenuItem>
+              <MenuItem value='all'>
+                <Typography noWrap>Cart must contain all selected Downloads</Typography>
+              </MenuItem>
+              <MenuItem value='any'>
+                <Typography noWrap>Cart needs one or more of the selected Downloads</Typography>
+              </MenuItem>
             </CustomTextField>
           </Grid>
         </Grid>
