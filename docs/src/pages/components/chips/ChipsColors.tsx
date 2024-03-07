@@ -23,6 +23,15 @@ const ChipsColors = () => {
         <Chip label='Warning' color='warning' variant='outlined' />
         <Chip label='Info' color='info' variant='outlined' />
       </div>
+      <Typography className='font-medium'>Tonal Chips</Typography>
+      <div className='flex gap-4 flex-wrap'>
+        <Chip label='Primary' color='primary' variant='tonal' />
+        <Chip label='Secondary' color='secondary' variant='tonal' />
+        <Chip label='Success' color='success' variant='tonal' />
+        <Chip label='Error' color='error' variant='tonal' />
+        <Chip label='Warning' color='warning' variant='tonal' />
+        <Chip label='Info' color='info' variant='tonal' />
+      </div>
     </div>
   )
 }

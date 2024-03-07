@@ -9,6 +9,12 @@ const ChipsIcon = () => {
         label='Full Battery'
         color='primary'
         variant='outlined'
+        icon={<i className='ri-battery-charge-line' />}
+      />
+      <Chip
+        label='Full Battery'
+        color='primary'
+        variant='tonal'
         icon={<i className='ri-battery-fill' />}
       />
     </div>

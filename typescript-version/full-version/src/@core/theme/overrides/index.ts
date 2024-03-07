@@ -3,6 +3,7 @@ import Accordion from './accordion'
 import Autocomplete from './autocomplete'
 import avatar from './avatar'
 import button from './button'
+import chip from './chip'
 import input from './input'
 import paper from './paper'
 import Rating from './rating'
@@ -18,6 +19,7 @@ const overrides = () => {
     Autocomplete,
     avatar,
     button,
+    chip,
     input,
     paper,
     Rating,
