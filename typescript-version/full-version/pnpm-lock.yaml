@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  immutable: 3.7.4
+
 dependencies:
   '@auth/prisma-adapter':
     specifier: ^1.5.0
@@ -181,7 +184,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   react-draft-wysiwyg:
     specifier: ^1.15.0
-    version: 1.15.0(draft-js@0.11.7)(immutable@4.3.5)(react-dom@18.2.0)(react@18.2.0)
+    version: 1.15.0(draft-js@0.11.7)(immutable@3.7.4)(react-dom@18.2.0)(react@18.2.0)
   react-dropzone:
     specifier: ^14.2.3
     version: 14.2.3(react@18.2.0)
@@ -1507,7 +1510,7 @@ packages:
     resolution: {integrity: sha512-lP6yJ+EKv5tcG1dflWgDKeezdwBa8wJ7KkiNrrHqXuXhl/VGes1SKjEfKHDZqOz19KQbrAhFvNhDPWwnQXYZGQ==}
     dependencies:
       '@types/react': 18.2.63
-      immutable: 3.7.6
+      immutable: 3.7.4
     dev: false
 
   /@types/js-cookie@2.2.7:
@@ -2676,7 +2679,7 @@ packages:
       react-dom: '>=0.14.0'
     dependencies:
       fbjs: 2.0.0
-      immutable: 3.7.6
+      immutable: 3.7.4
       object-assign: 4.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2684,14 +2687,14 @@ packages:
       - encoding
     dev: false
 
-  /draftjs-utils@0.10.2(draft-js@0.11.7)(immutable@4.3.5):
+  /draftjs-utils@0.10.2(draft-js@0.11.7)(immutable@3.7.4):
     resolution: {integrity: sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==}
     peerDependencies:
       draft-js: ^0.11.x
-      immutable: 3.x.x || 4.x.x
+      immutable: 3.7.4
     dependencies:
       draft-js: 0.11.7(react-dom@18.2.0)(react@18.2.0)
-      immutable: 4.3.5
+      immutable: 3.7.4
     dev: false
 
   /eastasianwidth@0.2.0:
@@ -3746,14 +3749,14 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /html-to-draftjs@1.5.0(draft-js@0.11.7)(immutable@4.3.5):
+  /html-to-draftjs@1.5.0(draft-js@0.11.7)(immutable@3.7.4):
     resolution: {integrity: sha512-kggLXBNciKDwKf+KYsuE+V5gw4dZ7nHyGMX9m0wy7urzWjKGWyNFetmArRLvRV0VrxKN70WylFsJvMTJx02OBQ==}
     peerDependencies:
       draft-js: ^0.10.x || ^0.11.x
-      immutable: 3.x.x || 4.x.x
+      immutable: 3.7.4
     dependencies:
       draft-js: 0.11.7(react-dom@18.2.0)(react@18.2.0)
-      immutable: 4.3.5
+      immutable: 3.7.4
     dev: false
 
   /htmlparser2@8.0.2:
@@ -3779,13 +3782,9 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
-  /immutable@3.7.6:
-    resolution: {integrity: sha512-AizQPcaofEtO11RZhPPHBOJRdo/20MKQF9mBLnVkBoyHi1/zXK8fzVdnEpSV9gxqtnh6Qomfp3F0xT5qP/vThw==}
+  /immutable@3.7.4:
+    resolution: {integrity: sha512-ZiXl/ogqSHw1aqOSgjVHwKVFH72UGh6alU6123LrKfTzjgHlnjOK99gS+AR6KYbO3RSSPgGwIGdFXvhBL+1xOA==}
     engines: {node: '>=0.8.0'}
-    dev: false
-
-  /immutable@4.3.5:
-    resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
     dev: false
 
   /import-fresh@3.3.0:
@@ -5034,19 +5033,19 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-draft-wysiwyg@1.15.0(draft-js@0.11.7)(immutable@4.3.5)(react-dom@18.2.0)(react@18.2.0):
+  /react-draft-wysiwyg@1.15.0(draft-js@0.11.7)(immutable@3.7.4)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-p1cYZcWc6/ALFBVksbFoCM3b29fGQDlZLIMrXng0TU/UElxIOF2/AWWo4L5auIYVhmqKTZ0NkNjnXOzGGuxyeA==}
     peerDependencies:
       draft-js: ^0.10.x || ^0.11.x
-      immutable: 3.x.x || 4.x.x
+      immutable: 3.7.4
       react: 0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x
       react-dom: 0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x
     dependencies:
       classnames: 2.5.1
       draft-js: 0.11.7(react-dom@18.2.0)(react@18.2.0)
-      draftjs-utils: 0.10.2(draft-js@0.11.7)(immutable@4.3.5)
-      html-to-draftjs: 1.5.0(draft-js@0.11.7)(immutable@4.3.5)
-      immutable: 4.3.5
+      draftjs-utils: 0.10.2(draft-js@0.11.7)(immutable@3.7.4)
+      html-to-draftjs: 1.5.0(draft-js@0.11.7)(immutable@3.7.4)
+      immutable: 3.7.4
       linkify-it: 2.2.0
       prop-types: 15.8.1
       react: 18.2.0
