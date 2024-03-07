@@ -117,7 +117,7 @@ const TimelineCenter = () => {
           <Card>
             <CardContent>
               <Typography variant='h5' className='mbe-4'>
-                You've uploaded doc pdf to the Themeselection project
+                You've uploaded doc pdf to the Pixinvent project
               </Typography>
               <Typography className='mbe-3'>
                 The process of recording the key project details and producing the documents that are required to
@@ -195,7 +195,7 @@ const TimelineCenter = () => {
           <Card>
             <CardContent>
               <Typography variant='h5' className='mbe-4'>
-                Loretta write a review on Themeselection
+                Loretta write a review on Pixinvent
               </Typography>
               <div className='flex items-center gap-4 mbe-3'>
                 <Avatar src={useBaseUrl('/images/avatars/2.png')} className='bs-[38px] is-[38px]' />

@@ -293,7 +293,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
               {dictionary['navigation'].itemWithBadge}
             </MenuItem>
             <MenuItem
-              href='https://themeselection.com'
+              href='https://pixinvent.com'
               target='_blank'
               suffix={<i className='tabler-external-link text-xl' />}
             >

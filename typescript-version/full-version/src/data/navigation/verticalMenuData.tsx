@@ -455,7 +455,7 @@ const verticalMenuData = (
           {
             label: dictionary['navigation'].externalLink,
             icon: 'tabler-circle',
-            href: 'https://themeselection.com',
+            href: 'https://pixinvent.com',
             target: '_blank',
             suffix: <i className='tabler-external-link text-xl' />
           },

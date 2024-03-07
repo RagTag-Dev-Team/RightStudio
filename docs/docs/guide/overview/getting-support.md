@@ -60,7 +60,7 @@ Never upload our package or modified version of our package on public sites wher
 
 ## Accessing the Support Portal
 
-After purchasing our template, you can seek support by submitting tickets at our [support portal](https://themeselection.com/support/). Adhering to the ticket submission guidelines above will facilitate a smoother support experience.
+After purchasing our template, you can seek support by submitting tickets at our [support portal](https://pixinvent.ticksy.com). Adhering to the ticket submission guidelines above will facilitate a smoother support experience.
 
 :::note Want Quick Resolution?
 Crafting a detailed support ticket using our guide significantly increases the likelihood of resolving your issue swiftly and with fewer exchanges.

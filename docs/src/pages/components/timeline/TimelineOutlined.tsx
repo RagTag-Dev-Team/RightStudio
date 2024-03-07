@@ -79,7 +79,7 @@ const TimelineOutlined = () => {
               <Typography variant='body2' className='font-medium'>
                 Lester McCarthy (Client)
               </Typography>
-              <Typography variant='body2'>CEO of ThemeSelection</Typography>
+              <Typography variant='body2'>CEO of Pixinvent</Typography>
             </div>
           </div>
         </TimelineContent>

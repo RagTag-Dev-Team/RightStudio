@@ -321,7 +321,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           </MenuItem>
           <MenuItem
             icon={<i className='tabler-link' />}
-            href='https://themeselection.com'
+            href='https://pixinvent.com'
             target='_blank'
             suffix={<i className='tabler-external-link text-xl' />}
           >

@@ -8,7 +8,7 @@ Gain direct entry to our template's repository on GitHub with GitHub access. **E
 
 To request GitHub Access, kindly complete the form available at the following link:
 
-[Request GitHub Access Form](https://tools.themeselection.com/github/github-access) 📝
+[Request GitHub Access Form](https://tools.pixinvent.com/github/github-access) 📝
 
 Here are some **benefits** of having access to the GitHub repository of our template:
 
