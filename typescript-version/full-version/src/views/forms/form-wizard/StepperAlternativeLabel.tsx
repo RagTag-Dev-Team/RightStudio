@@ -25,7 +25,7 @@ import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
+import StepperCustomDot from '@components/stepper-dot'
 
 type FormDataType = {
   username: string

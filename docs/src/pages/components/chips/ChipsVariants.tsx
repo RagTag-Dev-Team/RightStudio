@@ -6,7 +6,7 @@ const ChipsVariants = () => {
     <div className='flex gap-4'>
       <Chip label='Basic' />
       <Chip label='Outlined' variant='outlined' />
-      <Chip label= 'Tonal' variant='tonal'/>
+      <Chip label='Tonal' variant='tonal' />
     </div>
   )
 }

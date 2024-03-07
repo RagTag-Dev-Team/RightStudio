@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
 import { useTheme } from '@mui/material/styles'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-import Checkbox from '@mui/material/Checkbox'
+import Switch from '@mui/material/Switch'
 import type { Breakpoint } from '@mui/material/styles'
 
 // Third-party Imports
@@ -347,7 +347,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                   <label className='font-medium cursor-pointer' htmlFor='customizer-semi-dark'>
                     Semi Dark
                   </label>
-                  <Checkbox
+                  <Switch
                     id='customizer-semi-dark'
                     checked={settings.semiDark === true}
                     onChange={() => handleChange('semiDark', !settings.semiDark)}

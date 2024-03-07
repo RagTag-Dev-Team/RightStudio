@@ -27,7 +27,7 @@ import { email, object, minLength, string, array, forward, custom } from 'valibo
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
 import StepperWrapper from '@core/styles/stepper'
-import StepperCustomDot from './StepperCustomDot'
+import StepperCustomDot from '@components/stepper-dot'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Vars

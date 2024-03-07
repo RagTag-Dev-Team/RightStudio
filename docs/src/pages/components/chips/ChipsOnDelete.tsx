@@ -49,6 +49,28 @@ const ChipsOnDelete = () => {
           deleteIcon={<i className='tabler-trash' />}
         />
       </div>
+      <Typography className='font-medium' color='text.primary'>Custom close with Tonal Variant</Typography>
+      <div className='flex gap-4'>
+        <Chip
+          label='Default'
+          variant='tonal'
+          onDelete={handleDelete}
+          deleteIcon={<i className='ri-delete-bin-5-line' />}
+        />
+        <Chip
+          label='Primary'
+          color='primary'
+          variant='tonal'
+          onDelete={handleDelete}
+          deleteIcon={<i className='ri-delete-bin-5-line' />}
+        />
+        <Chip
+          label='Secondary'
+          color='secondary'
+          variant='tonal' onDelete={handleDelete}
+          deleteIcon={<i className='ri-delete-bin-5-line' />}
+        />
+      </div>
     </div>
   )
 }

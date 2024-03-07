@@ -1,4 +1,4 @@
-'use server'
+import 'server-only'
 
 // Next Imports
 import { cookies, headers } from 'next/headers'

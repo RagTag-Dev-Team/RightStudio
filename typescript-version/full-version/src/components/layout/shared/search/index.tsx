@@ -115,7 +115,7 @@ const NavSearch = () => {
               <KBarSearch
                 defaultPlaceholder=''
                 name='search-input'
-                className='grow min-is-0 plb-1 pli-1.5 text-[16px] outline-0 border-0 bg-transparent text-inherit font-[inherit]'
+                className='grow min-is-0 plb-1 pli-1.5 text-[16px] outline-0 border-0 bg-transparent text-inherit font-[inherit] focus:outline-none focus-visible:outline-none'
               />
               <ComponentWithUseKBar className='select-none text-textDisabled'>{`[esc]`}</ComponentWithUseKBar>
               <ComponentWithUseKBar
