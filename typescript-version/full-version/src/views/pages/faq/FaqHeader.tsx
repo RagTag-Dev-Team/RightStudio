@@ -40,7 +40,6 @@ const FaqHeader = ({ searchValue, setSearchValue }: Props) => {
         </Typography>
         <Typography className='mbe-4'>or choose a category to quickly find the help you need</Typography>
         <CustomTextFieldStyled
-          size='medium'
           className='is-full sm:max-is-[55%] md:max-is-[600px]'
           placeholder='search articles...'
           value={searchValue}

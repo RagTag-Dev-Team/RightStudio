@@ -115,12 +115,20 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
           </Grid>
           <Grid item xs={12}>
             <CustomTextField select fullWidth label='Cart Condition' defaultValue=''>
-              <MenuItem value=''>Select Condition</MenuItem>
+              <MenuItem value=''>
+                <Typography color='text.primary' noWrap>
+                  Select Condition
+                </Typography>
+              </MenuItem>
               <MenuItem value='all'>
-                <Typography noWrap>Cart must contain all selected Downloads</Typography>
+                <Typography color='text.primary' noWrap>
+                  Cart must contain all selected Downloads
+                </Typography>
               </MenuItem>
               <MenuItem value='any'>
-                <Typography noWrap>Cart needs one or more of the selected Downloads</Typography>
+                <Typography color='text.primary' noWrap>
+                  Cart needs one or more of the selected Downloads
+                </Typography>
               </MenuItem>
             </CustomTextField>
           </Grid>
