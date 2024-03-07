@@ -10,6 +10,7 @@ import type { SystemMode } from '@core/types'
 
 // Theme Options Imports
 import overrides from './overrides'
+import colorSchemes from './colorSchemes'
 import spacing from './spacing'
 import typography from './typography'
 
@@ -19,6 +20,7 @@ const theme = (settings: Settings, mode: SystemMode, direction: Theme['direction
   return {
     direction,
     components: overrides(),
+    colorSchemes: colorSchemes(),
     ...spacing,
     shape: {
       customBorderRadius: {

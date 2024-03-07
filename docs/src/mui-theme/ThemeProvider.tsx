@@ -19,12 +19,14 @@ import themeConfig from "@configs/themeConfig";
 
 // Theme Overrides Imports
 import overrides from "@core/theme/overrides";
+import colorSchemes from '@core/theme/colorSchemes'
 import spacing from "@core/theme/spacing";
 import typography from "@core/theme/typography";
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const theme = extendTheme({
     components: overrides(),
+    colorSchemes: colorSchemes(),
     ...spacing,
     shape: {
       customBorderRadius: {
