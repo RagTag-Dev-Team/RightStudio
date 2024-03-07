@@ -1,38 +1,40 @@
 <p align="center"></p>
 
 <p align="center">
-   <a href="$product_page_url" target="_blank">
-      <img src="$product_logo_image_url" alt="$slugified_product_name-logo" width="40px" height="auto">
+   <a href="https://1.envato.market/vuexy_admin" target="_blank">
+      <img src="https://cdn.pixinvent.com/pi-assets/vuexy/admin-template/logo/logo.png" alt="vuexy-logo" width="40px" height="auto">
    </a>
 </p>
 
 <h1 align="center">
-   <a href="$product_page_url" target="_blank" align="center">
-      $product_name
+   <a href="https://1.envato.market/vuexy_admin" target="_blank" align="center">
+     Vuexy - MUI NextJS Admin Template
    </a>
 </h1>
 
-<p align="center">$product_punchline</p>
+<p align="center">Most Powerful & Comprehensive MUI NextJS Admin Dashboard Template built for developers!</p>
 
 <p align="center">
-   <a href="$product_page_url" target="_blank" align="center">
-      <img src="$product_banner_img_url" alt="$product_name">
+   <a href="https://1.envato.market/vuexy_admin" target="_blank" align="center">
+      <img src="https://cdn.jsdelivr.net/gh/pixinvent/pi-assets/vuexy/admin-template/banner/banner.png" alt="Vuexy - MUI NextJS Admin Template">
    </a>
 </p>
 
 ## Introduction
 
-$introduction_text
+If you’re a developer looking for most Powerful & comprehensive **MUI NextJS Admin Dashboard Template** built for developers, rich with features, and highly customizable, look no further than Vuexy. We’ve followed the highest industry standards to bring you the very best admin template that is not only easy to use but highly scalable. Offering ultimate convenience and flexibility, you’ll be able to build whatever application you want with very little hassle.
 
-[View Demo]($product_landing_page_url)
+Build premium quality applications with ease. Use our innovative admin template to create eye-catching, high-quality WebApps. Your apps will be completely responsive, ensuring they’ll look stunning and function flawlessly on desktops, tablets, and mobile devices.
+
+[View Demo](https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/)
 
 ## Installation ⚒️
 
-Please [visit]($installation_url_in_docs) our docs for installation guide.
+Please [visit](https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation/docs/guide/overview/installation) our docs for installation guide.
 
 ## Documentation 📜
 
-Check out our live [Documentation]($documentation_url)
+Check out our live [Documentation](https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation)
 
 ## Support 👨‍💻
 
@@ -51,11 +53,11 @@ Hence, as precautions we disabled forking our repo.
 However, you can still keep your repo even after your support expires by setting our repo as upstream:
 
 1. Create a new **private repo** in your GitHub. Make sure it's a private repo. You can't share our code publicly as per license.
-2. Clone our repo: `git clone $product_repo_url`
+2. Clone our repo: `git clone https://github.com/pixinvent/vuexy-nextjs-admin-template.git`
 3. Navigate to cloned directory
 4. Remove our repo as origin by running command: `git remote remove origin`
 5. Add your newly created repo as origin by running command: `git remote add origin YOUR_NEWLY_CREATE_REPO_GIT_URL`
-6. Add our repo as upstream by running command: `git remote add upstream $product_repo_url`
+6. Add our repo as upstream by running command: `git remote add upstream https://github.com/pixinvent/vuexy-nextjs-admin-template.git`
 7. Push the code to GitHub by running command: `git push -u origin main`
 
 Now, whenever you want to pull the latest changes from our repo just pull the changes by running command: `git pull upstream main`
@@ -66,7 +68,7 @@ Cheers 🥂
 
 Contributions are always welcome and recommended! Here is how:
 
-- Clone our repo `git clone $product_repo_url`
+- Clone our repo `git clone https://github.com/pixinvent/vuexy-nextjs-admin-template.git`
 - create a new branch based on branch you want to make Pull request to. For example if you want to make pull request to main branch, create new branch based on main branch.
 - Push your changes to new branch
 - Create pull request
