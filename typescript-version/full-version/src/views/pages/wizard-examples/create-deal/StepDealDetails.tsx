@@ -16,6 +16,7 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
 import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 import type { SelectChangeEvent } from '@mui/material/Select'
 
@@ -119,8 +120,12 @@ const StepDealDetails = ({ activeStep, handleNext, handlePrev, steps }: Props) =
             <FormControl fullWidth>
               <InputLabel id='select-cart-condition'>Cart Condition</InputLabel>
               <Select labelId='select-cart-condition' label='Cart Condition' defaultValue=''>
-                <MenuItem value='all'>Cart must contain all selected Downloads</MenuItem>
-                <MenuItem value='any'>Cart needs one or more of the selected Downloads</MenuItem>
+                <MenuItem value='all'>
+                  <Typography noWrap>Cart must contain all selected Downloads</Typography>
+                </MenuItem>
+                <MenuItem value='any'>
+                  <Typography noWrap>Cart needs one or more of the selected Downloads</Typography>
+                </MenuItem>
               </Select>
             </FormControl>
           </Grid>
