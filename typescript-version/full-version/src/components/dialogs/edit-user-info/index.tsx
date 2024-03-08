@@ -161,7 +161,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
                 <Select
                   label='Language'
                   multiple
-                  value={userData?.language}
+                  value={userData?.language?.map(lang => lang.toLowerCase().replace(/\s+/g, '-')) || []}
                   onChange={e => setUserData({ ...userData, language: e.target.value as string[] })}
                   renderValue={selected => (
                     <div className='flex items-center gap-2'>

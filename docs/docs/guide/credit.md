@@ -16,7 +16,6 @@
 | @fullcalendar/react                 | [https://github.com/fullcalendar/fullcalendar-react](https://github.com/fullcalendar/fullcalendar-react) | MIT |
 | @fullcalendar/timegrid              | [https://github.com/fullcalendar/fullcalendar](https://github.com/fullcalendar/fullcalendar) | MIT |
 | @hookform/resolvers                 | [https://github.com/react-hook-form/resolvers](https://github.com/react-hook-form/resolvers) | MIT |
-| @iconify/iconify                    | [https://github.com/iconify/iconify](https://github.com/iconify/iconify) | MIT |
 | @iconify/json                       | [https://github.com/iconify/icon-sets](https://github.com/iconify/icon-sets) | MIT |
 | @iconify/tools                      | [https://github.com/iconify/tools](https://github.com/iconify/tools) | MIT |
 | @iconify/types                      | [https://github.com/iconify/iconify](https://github.com/iconify/iconify) | MIT |

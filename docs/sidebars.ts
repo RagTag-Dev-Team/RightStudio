@@ -181,7 +181,6 @@ const sidebars: SidebarsConfig = {
             'guide/components/styled-libs/app-recharts',
           ]
         },
-        'guide/components/overriding-custom-components',
       ]
     },
     'guide/customizing-our-component',
@@ -199,8 +198,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'user-interface/foundation/colors',
         'user-interface/foundation/typography',
-        'user-interface/foundation/icons',
         'user-interface/foundation/shadows',
+        'user-interface/foundation/icons'
       ]
     },
     {

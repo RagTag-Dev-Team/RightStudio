@@ -45,7 +45,7 @@ To use Keen-Slider with our custom styles, wrap the slider or the entire page (i
 Example: Basic Keen-Slider Implementation
 
 ```tsx
-import AppKeenSlider from '@libs/styles/AppKeenSlider';
+import AppKeenSlider from '@/libs/styles/AppKeenSlider';
 
 const SwiperBasic = () => {
   // Keen-Slider hook for slider functionality
