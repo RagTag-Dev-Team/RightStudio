@@ -243,6 +243,7 @@ const AccountDetails = () => {
                 label='TimeZone'
                 value={formData.timezone}
                 onChange={e => handleFormChange('timezone', e.target.value)}
+                SelectProps={{ MenuProps: { PaperProps: { style: { maxHeight: 250 } } } }}
               >
                 <MenuItem value='gmt-12'>(GMT-12:00) International Date Line West</MenuItem>
                 <MenuItem value='gmt-11'>(GMT-11:00) Midway Island, Samoa</MenuItem>

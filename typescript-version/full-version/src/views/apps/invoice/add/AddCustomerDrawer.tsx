@@ -68,7 +68,7 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
       <div className='flex items-center justify-between plb-5 pli-6'>
-        <Typography variant='h6'>Add New Customer</Typography>
+        <Typography variant='h5'>Add New Customer</Typography>
         <IconButton onClick={handleReset}>
           <i className='tabler-x text-textPrimary' />
         </IconButton>

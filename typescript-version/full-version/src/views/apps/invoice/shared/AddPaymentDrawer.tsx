@@ -97,6 +97,7 @@ const AddPaymentDrawer = ({ open, handleClose }: Props) => {
             customInput={<CustomTextField fullWidth label='Payment Date' />}
           />
           <CustomTextField
+            select
             label='Payment Method'
             id='payment-method-select'
             value={formData.paymentMethod}
