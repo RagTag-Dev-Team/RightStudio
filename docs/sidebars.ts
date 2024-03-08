@@ -135,6 +135,7 @@ const sidebars: SidebarsConfig = {
             'guide/components/mui/autocomplete',
             'guide/components/mui/avatar',
             'guide/components/mui/badge',
+            'guide/components/mui/button',
             'guide/components/mui/card',
             'guide/components/mui/chip',
             'guide/components/mui/pagination',

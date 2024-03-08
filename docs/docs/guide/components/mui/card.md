@@ -8,13 +8,11 @@ If you are using a text button inside the `CardActions` component, you need to a
 
 - Without the `.card-actions-dense` class
 
-  {/* ![Card image 1]() */}
-  <img alt='img1' />
+  ![Card image 1](/images/misc/card-actions-with-no-class.png)
 
 - With the `.card-actions-dense` class
 
-  {/* ![Card image 2]() */}
-  <img alt='img2' />
+  ![Card image 2](/images/misc/card-actions-with-class.png)
 
 Here is the example of how to use the class mentioned above:
 
