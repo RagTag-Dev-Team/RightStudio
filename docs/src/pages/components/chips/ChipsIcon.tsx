@@ -6,7 +6,7 @@ const ChipsIcon = () => {
     <div className='flex gap-4'>
       <Chip label='Low Battery' icon={<i className='ri-battery-line' />} />
       <Chip
-        label='Full Battery'
+        label='Charging'
         color='primary'
         variant='outlined'
         icon={<i className='ri-battery-charge-line' />}

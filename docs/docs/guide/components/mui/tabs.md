@@ -16,7 +16,7 @@ This documentation covers only the additional properties we've introduced. You'r
 
 ### Tabs pills
 
-You can use the `pill = 'true'` prop to get the pills style. Here is an example of how to use the pills:
+You can use the `pill='true'` prop to get the pills style. Here is an example of how to use the pills:
 
 ```tsx
 // MUI Imports
@@ -53,10 +53,10 @@ import CustomTabList from '@core/components/mui/TabList'
 
 ### Props
 
-| Prop  | Type                                                                                | Default   | Required | Description                                             |
-|-------|-------------------------------------------------------------------------------------|-----------|----------|---------------------------------------------------------|
-| color | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | `primary` | No       | Color theme for badge (works only when `pill = 'true'`) |
-| pill  | `'true'` \| `'false'`                                                               | false     | No       | Set to 'true' to enable the pills style                 |
+| Prop  | Type                                                                                | Default     | Required | Description                                             |
+|-------|-------------------------------------------------------------------------------------|-------------|----------|---------------------------------------------------------|
+| color | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | `'primary'` | No       | Color theme for badge (works only when `pill='true'`) |
+| pill  | `'true'` \| `'false'`                                                               | `'false'`   | No       | Set to 'true' to enable the pills style                 |
 
 ### Styled Component
 
