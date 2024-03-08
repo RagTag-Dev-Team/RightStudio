@@ -155,6 +155,11 @@ const pagination: Theme['components'] = {
             borderRadius: 'var(--mui-shape-customBorderRadius-lg)'
           })
       }),
+      ellipsis: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
       sizeSmall: {
         height: '1.875rem',
         minWidth: '1.875rem'
