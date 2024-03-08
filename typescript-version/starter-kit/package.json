@@ -25,19 +25,19 @@
     "@mui/lab": "5.0.0-alpha.167",
     "@mui/material": "^5.15.12",
     "@mui/material-nextjs": "^5.15.11",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.63",
-    "@types/react-dom": "^18.2.20",
+    "@types/node": "^20.11.25",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "autoprefixer": "^10.4.18",
     "classnames": "^2.5.1",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.2",
+    "eslint-config-next": "^14.1.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "next": "^14.1.2",
+    "next": "^14.1.3",
     "postcss": "^8.4.35",
     "postcss-styled-syntax": "^0.6.4",
     "prettier": "^3.2.5",
@@ -55,7 +55,7 @@
     "tailwindcss": "^3.4.1",
     "tailwindcss-logical": "^3.0.1",
     "tsx": "^4.7.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "resolutions": {
     "immutable": "3.7.4"
