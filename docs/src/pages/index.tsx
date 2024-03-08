@@ -27,7 +27,7 @@ const Home = (): JSX.Element => {
   return (
     <Layout
       title='Welcome'
-      description='Master - MUI Next.js Admin Template Documentation'
+      description='Vuexy - MUI Next.js Admin Template Documentation'
     >
       <HomepageHeader />
       <main>

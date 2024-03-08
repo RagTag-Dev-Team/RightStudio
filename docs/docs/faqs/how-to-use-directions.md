@@ -4,9 +4,9 @@ hide_table_of_contents: true
 
 # How to use directions?
 
-### Implementing Directional Features in Master Template
+### Implementing Directional Features in Vuexy Template
 
-The Master template supports multilingual capabilities, including handling different directions like left-to-right (LTR) and right-to-left (RTL) for languages such as English and Arabic, respectively.
+The Vuexy template supports multilingual capabilities, including handling different directions like left-to-right (LTR) and right-to-left (RTL) for languages such as English and Arabic, respectively.
 This document outlines how to implement directional features in both server-side and client-side environments, as well as specific usage for directional icons.
 
 #### Server Side Implementation

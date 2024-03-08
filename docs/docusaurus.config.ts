@@ -4,7 +4,7 @@ import * as path from 'path';
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const config: Config = {
-  title: 'Master - MUI Next.js Admin Template Documentation',
+  title: 'Vuexy - MUI Next.js Admin Dashboard Template',
   tagline: 'Production Ready, Carefully Crafted, Extensive MUI Next.js Admin Template 🚀',
   favicon: 'images/favicon.ico',
 
@@ -18,8 +18,8 @@ const config: Config = {
   onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'throw',
   customFields: {
-    templateName: 'Master',
-    templateFullName: 'Master Next.js Admin Template'
+    templateName: 'Vuexy',
+    templateFullName: 'Vuexy Next.js Admin Template'
   },
 
   plugins: [
@@ -93,7 +93,7 @@ const config: Config = {
   themeConfig: {
     image: 'images/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Master',
+      title: 'Vuexy',
       logo: {
         alt: 'Logo',
         src: 'images/logo.svg',
@@ -115,7 +115,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'faqSidebar', label: 'FAQs', position: 'left', },
         { to: '/articles', label: 'Articles', position: 'left' },
         {
-          href: 'https://themeselection.com/changelog',
+          href: 'https://demos.pixinvent.com/vuexy/changelog.html',
           position: 'right',
           label: 'Changelog',
         },
@@ -125,31 +125,31 @@ const config: Config = {
           label: 'Hire Us',
         },
         {
-          href: 'https://themeselection.com/demo',
+          href: 'https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1',
           position: 'right',
           label: 'Live Demo',
         },
         {
-          href: 'https://themeselection.com/buy-now',
+          href: 'https://1.envato.market/vuexy_admin',
           position: 'right',
           label: 'Buy Now',
         },
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} <a href='https://themeselection.com' target='_blank'>ThemeSelection</a>, All rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href='https://pixinvent.com' target='_blank'>Pixinvent</a>, All rights Reserved.`,
       links: [
         {
           label: 'License',
-          href: 'https://themeselection.com/license',
+          href: 'https://themeforest.net/licenses/standard',
         },
         {
           label: 'More Themes',
-          href: 'https://themeselection.com',
+          href: 'https://themeforest.net/user/pixinvent/portfolio',
         },
         {
           label: 'Support',
-          href: 'https://themeselection.com/support',
+          href: 'https://pixinvent.ticksy.com',
         }
       ]
     },

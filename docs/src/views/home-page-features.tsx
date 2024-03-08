@@ -3,6 +3,7 @@ import React from 'react'
 import type { ReactNode } from 'react'
 
 // Docusaurus Imports
+import Admonition from '@theme/Admonition'
 import ThemedImage from '@theme/ThemedImage'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
@@ -70,15 +71,18 @@ const Feature = ({title, imgLightSrc, imgDarkSrc, imgAlt, description}: FeatureI
 
 const HomepageFeatures = (): JSX.Element => {
   return (
-    <section className='flex items-center is-full plb-8'>
+    <section className='flex items-center is-full plb-8 pli-4 mbe-8'>
       <div className="container">
-        <div className="row">
+        <Admonition type="warning" title='📣 Heads up' className='!mbe-8'>
+          <p>You are viewing <strong>Next.js App Directory Routing</strong> documentation of Vuexy admin template. For <strong>Next.js Pages Directory Routing</strong> documentation, please visit <a href="https://demos.pixinvent.com/vuexy-nextjs-admin-template-old/documentation" target='_blank'>this page</a>.</p>
+        </Admonition>
+        <div className="row gap-y-4">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>
       </div>
-    </section>
+  </section>
   )
 }
 

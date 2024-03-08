@@ -11,6 +11,7 @@ The `OptionMenu` component accepts the following props, structured to customize 
 | Prop              | Type              | Description                                                                 |
 | ----------------- | ----------------- | --------------------------------------------------------------------------- |
 | `icon`            | `ReactNode`       | Optional. A React node to be used as the icon for the menu button           |
+| `iconClassName`   | `string`          | Optional. A class name to be used for the icon.                             |
 | `options`         | `OptionType[]`    | An array of options to be displayed in the menu. Can be strings, dividers, or menu items. |
 | `leftAlignMenu`   | `boolean`         | Optional. If `true`, aligns the menu to the left of the button. Default is right-aligned. |
 | `iconButtonProps` | `IconButtonProps` | Optional. props for the Material-UI `IconButton` component.              |

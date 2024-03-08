@@ -88,7 +88,7 @@ export default Component
 | avatarSize     | `number`                                                                  | No       | The size of the avatar. Can be a predefined a number.     |
 | avatarIconSize | `number`                                                                  | No       | The font size of the icon within the avatar.              |
 | avatarSkin     | `'filled' \| 'light'\| 'light-static'`                                    | No       | The skin or variant for the avatar.                       |
-| chipText       | `string`                                                                  | No       | The text to be displayed on the chip.                     |
+| chipText       | `string`                                                                  | Yes      | The text to be displayed on the chip.                     |
 | chipColor      | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The color of the chip component.                          |
 | chipVariant    | `'filled' \| 'outlined'\| 'tonal'`                                        | No       | The visual style of the chip.                             |
 

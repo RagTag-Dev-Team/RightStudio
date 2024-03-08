@@ -47,4 +47,4 @@ import CustomBadge from '@core/components/mui/Badge';
 
 | Prop  | Type                  | Default   | Required | Description                            |
 |-------|-----------------------|-----------|----------|----------------------------------------|
-| tonal | `'true'` \| `'false'` | `false`   | No       | Set to 'true' to enable the tonal skin |
+| tonal | `'true'` \| `'false'` | `'false'`   | No       | Set to 'true' to enable the tonal skin |

@@ -47,7 +47,7 @@ const initialData: EditUserInfoProps['data'] = {
   status: 'active',
   taxId: 'Tax-8894',
   contact: '+ 1 609 933 4422',
-  language: ['english'],
+  language: ['English'],
   country: 'US',
   useAsBillingAddress: true
 }
