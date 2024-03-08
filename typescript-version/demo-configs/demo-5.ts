@@ -53,8 +53,8 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  templateName: 'Master',
-  settingsCookieName: 'master-mui-next-demo-5',
+  templateName: 'Vuexy',
+  settingsCookieName: 'vuexy-mui-next-demo-5',
   mode: 'light', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
@@ -64,7 +64,7 @@ const themeConfig: Config = {
   navbar: {
     type: 'fixed', // 'fixed', 'static'
     contentWidth: 'compact', // 'compact', 'wide'
-    floating: false, //! true, false (This will not work in the Horizontal Layout)
+    floating: true, //! true, false (This will not work in the Horizontal Layout)
     detached: true, //! true, false (This will not work in the Horizontal Layout or floating navbar is enabled)
     blur: true // true, false
   },
