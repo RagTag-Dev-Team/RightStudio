@@ -15,7 +15,7 @@ import classnames from 'classnames'
 import type { ApexOptions } from 'apexcharts'
 
 // Types Imports
-import type { ThemeColor } from '@core/types'
+import type { ThemeColor, SystemMode } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
@@ -56,13 +56,13 @@ const data: DataType[] = [
   }
 ]
 
-const SupportTracker = () => {
+const SupportTracker = ({ serverMode }: { serverMode: SystemMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
 
   const options: ApexOptions = {

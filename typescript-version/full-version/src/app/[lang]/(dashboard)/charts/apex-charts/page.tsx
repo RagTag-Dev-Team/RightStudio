@@ -17,7 +17,13 @@ import ApexHeatmapChart from '@views/charts/apex/ApexHeatmapChart'
 import ApexRadialBarChart from '@views/charts/apex/ApexRadialBarChart'
 import ApexCandlestickChart from '@views/charts/apex/ApexCandlestickChart'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const ApexCharts = () => {
+  // Vars
+  const serverMode = getServerMode()
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -36,34 +42,34 @@ const ApexCharts = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <ApexAreaChart />
+        <ApexAreaChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12}>
-        <ApexColumnChart />
+        <ApexColumnChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12}>
-        <ApexScatterChart />
+        <ApexScatterChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12}>
-        <ApexLineChart />
+        <ApexLineChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexBarChart />
+        <ApexBarChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexCandlestickChart />
+        <ApexCandlestickChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexHeatmapChart />
+        <ApexHeatmapChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexRadialBarChart />
+        <ApexRadialBarChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexRadarChart />
+        <ApexRadarChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ApexDonutChart />
+        <ApexDonutChart serverMode={serverMode} />
       </Grid>
     </Grid>
   )

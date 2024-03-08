@@ -13,6 +13,9 @@ import MonthlyCampaignState from '@views/dashboards/analytics/MonthlyCampaignSta
 import SourceVisits from '@views/dashboards/analytics/SourceVisits'
 import ProjectsTable from '@views/dashboards/analytics/ProjectsTable'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const getData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/pages/profile`)
@@ -27,6 +30,7 @@ const getData = async () => {
 const DashboardAnalytics = async () => {
   // Vars
   const data = await getData()
+  const serverMode = getServerMode()
 
   return (
     <Grid container spacing={6}>
@@ -40,16 +44,16 @@ const DashboardAnalytics = async () => {
         <SalesOverview />
       </Grid>
       <Grid item xs={12} md={6}>
-        <EarningReports />
+        <EarningReports serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
-        <SupportTracker />
+        <SupportTracker serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <SalesByCountries />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <TotalEarning />
+        <TotalEarning serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <MonthlyCampaignState />

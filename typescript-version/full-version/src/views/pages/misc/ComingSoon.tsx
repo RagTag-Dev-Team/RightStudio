@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -28,7 +28,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const ComingSoon = ({ mode }: { mode: Mode }) => {
+const ComingSoon = ({ mode }: { mode: SystemMode }) => {
   // Vars
   const darkImg = '/images/pages/misc-mask-dark.png'
   const lightImg = '/images/pages/misc-mask-light.png'

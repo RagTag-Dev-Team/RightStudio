@@ -16,7 +16,7 @@ import type { StepProps } from '@mui/material/Step'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
@@ -109,7 +109,7 @@ const getStepContent = (step: number, handleNext: () => void, handlePrev: () => 
   }
 }
 
-const RegisterMultiSteps = ({ mode }: { mode: Mode }) => {
+const RegisterMultiSteps = ({ mode }: { mode: SystemMode }) => {
   // States
   const [activeStep, setActiveStep] = useState<number>(0)
 

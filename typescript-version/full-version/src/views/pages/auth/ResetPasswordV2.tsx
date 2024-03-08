@@ -19,7 +19,7 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
@@ -58,7 +58,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const ResetPasswordV2 = ({ mode }: { mode: Mode }) => {
+const ResetPasswordV2 = ({ mode }: { mode: SystemMode }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)

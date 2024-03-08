@@ -29,7 +29,7 @@ import type { Input } from 'valibot'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 import type { Locale } from '@/configs/i18n'
 
 // Component Imports
@@ -84,7 +84,7 @@ const schema = object({
   ])
 })
 
-const Login = ({ mode }: { mode: Mode }) => {
+const Login = ({ mode }: { mode: SystemMode }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [errorState, setErrorState] = useState<ErrorType | null>(null)

@@ -14,7 +14,7 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
@@ -53,7 +53,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const ForgotPassword = ({ mode }: { mode: Mode }) => {
+const ForgotPassword = ({ mode }: { mode: SystemMode }) => {
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
   const lightImg = '/images/pages/auth-mask-light.png'

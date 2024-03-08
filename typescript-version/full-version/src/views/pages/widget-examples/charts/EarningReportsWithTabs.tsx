@@ -23,6 +23,9 @@ import { useColorScheme, useTheme } from '@mui/material/styles'
 import classnames from 'classnames'
 import type { ApexOptions } from 'apexcharts'
 
+// Types Imports
+import type { SystemMode } from '@core/types'
+
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
@@ -115,16 +118,16 @@ const renderTabPanels = (value: TabCategory, theme: Theme, options: ApexOptions,
   })
 }
 
-const EarningReportsWithTabs = () => {
+const EarningReportsWithTabs = ({ serverMode }: { serverMode: SystemMode }) => {
   // States
   const [value, setValue] = useState<TabCategory>('orders')
 
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
 
   const handleChange = (event: SyntheticEvent, newValue: TabCategory) => {

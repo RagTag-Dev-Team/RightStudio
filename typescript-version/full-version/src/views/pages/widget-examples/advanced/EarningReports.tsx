@@ -14,7 +14,8 @@ import Typography from '@mui/material/Typography'
 import type { ApexOptions } from 'apexcharts'
 import classnames from 'classnames'
 
-import type { ThemeColor } from '@core/types'
+// Types Imports
+import type { ThemeColor, SystemMode } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
@@ -66,13 +67,13 @@ const data: DataType[] = [
   }
 ]
 
-const EarningReports = () => {
+const EarningReports = ({ serverMode }: { serverMode: SystemMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const primaryColorWithOpacity = rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 0.16)`)
 
   const options: ApexOptions = {

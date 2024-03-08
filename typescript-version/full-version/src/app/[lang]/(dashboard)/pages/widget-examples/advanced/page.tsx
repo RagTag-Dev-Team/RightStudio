@@ -16,7 +16,13 @@ import ActivityTimeline from '@views/pages/widget-examples/advanced/ActivityTime
 import WebsiteAnalyticsSlider from '@views/pages/widget-examples/advanced/WebsiteAnalyticsSlider'
 import Congratulations from '@/views/pages/widget-examples/advanced/Congratulations'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const Advanced = () => {
+  // Vars
+  const serverMode = getServerMode()
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={6} lg={4}>
@@ -32,7 +38,7 @@ const Advanced = () => {
         <SalesByCountries />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <EarningReports />
+        <EarningReports serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <BrowserStates />
@@ -47,7 +53,7 @@ const Advanced = () => {
         <PopularProducts />
       </Grid>
       <Grid item xs={12} md={6}>
-        <LastTransaction />
+        <LastTransaction serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
         <ActivityTimeline />

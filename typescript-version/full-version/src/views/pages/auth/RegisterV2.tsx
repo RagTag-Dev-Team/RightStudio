@@ -22,7 +22,7 @@ import Divider from '@mui/material/Divider'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
@@ -60,7 +60,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const RegisterV2 = ({ mode }: { mode: Mode }) => {
+const RegisterV2 = ({ mode }: { mode: SystemMode }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 

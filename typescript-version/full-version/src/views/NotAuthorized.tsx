@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -28,7 +28,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const NotAuthorized = ({ mode }: { mode: Mode }) => {
+const NotAuthorized = ({ mode }: { mode: SystemMode }) => {
   // Vars
   const darkImg = '/images/pages/misc-mask-dark.png'
   const lightImg = '/images/pages/misc-mask-light.png'

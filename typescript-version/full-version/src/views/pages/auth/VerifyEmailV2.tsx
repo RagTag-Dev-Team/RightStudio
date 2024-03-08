@@ -13,7 +13,7 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
@@ -46,7 +46,7 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const VerifyEmailV2 = ({ mode }: { mode: Mode }) => {
+const VerifyEmailV2 = ({ mode }: { mode: SystemMode }) => {
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
   const lightImg = '/images/pages/auth-mask-light.png'

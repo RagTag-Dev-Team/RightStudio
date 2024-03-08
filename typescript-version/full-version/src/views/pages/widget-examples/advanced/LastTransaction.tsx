@@ -14,7 +14,8 @@ import classnames from 'classnames'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 
-import type { ThemeColor } from '@core/types'
+// Types Imports
+import type { ThemeColor, SystemMode } from '@core/types'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -87,12 +88,12 @@ const statusObj: StatusObj = {
   verified: { text: 'Verified', color: 'success' }
 }
 
-const LastTransaction = () => {
+const LastTransaction = ({ serverMode }: { serverMode: SystemMode }) => {
   // Hooks
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   return (
     <Card>

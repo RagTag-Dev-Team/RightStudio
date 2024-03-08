@@ -12,6 +12,9 @@ import { useColorScheme, useTheme } from '@mui/material/styles'
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
 
+// Types Imports
+import type { SystemMode } from '@core/types'
+
 // Util Imports
 import { rgbaToHex } from '@/utils/rgbaToHex'
 
@@ -20,13 +23,13 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 
 const series = [32, 41, 41, 70]
 
-const BarChartRevenueGrowth = () => {
+const BarChartRevenueGrowth = ({ serverMode }: { serverMode: SystemMode }) => {
   // Hook
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   // Vars
   const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)

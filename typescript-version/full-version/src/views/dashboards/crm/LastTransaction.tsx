@@ -12,7 +12,7 @@ import { useColorScheme } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Types Imports
-import type { ThemeColor } from '@core/types'
+import type { ThemeColor, SystemMode } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
@@ -88,12 +88,12 @@ const statusObj: StatusObj = {
   verified: { text: 'Verified', color: 'success' }
 }
 
-const LastTransaction = () => {
+const LastTransaction = ({ serverMode }: { serverMode: SystemMode }) => {
   // Hooks
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   return (
     <Card>
