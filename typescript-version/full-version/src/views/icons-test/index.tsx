@@ -40,13 +40,6 @@ const IconsTest = ({ data }: { data: string[] }) => {
         <code>ref</code>, <code>role</code>, <code>strokeLinecap</code>.
       </Typography>
 
-      <Typography className='mbe-4'>
-        Our logo wrapped with <code>Box</code> component
-        <Box component='span' className='mis-5 inline-flex text-primary'>
-          <i className='custom-logo' />
-        </Box>
-      </Typography>
-
       <Typography className='font-medium'>Material Line Icons with height</Typography>
       <i className='line-md-home-twotone-alt text-4xl' />
       <i className='line-md-github text-4xl' />
