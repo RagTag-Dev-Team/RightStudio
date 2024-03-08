@@ -162,7 +162,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
                 select
                 fullWidth
                 label='Language'
-                value={userData?.language}
+                value={userData?.language?.map(lang => lang.toLowerCase().replace(/\s+/g, '-')) || []}
                 SelectProps={{
                   multiple: true,
                   onChange: e => setUserData({ ...userData, language: e.target.value as string[] }),

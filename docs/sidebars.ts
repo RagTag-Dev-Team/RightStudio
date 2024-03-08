@@ -136,7 +136,9 @@ const sidebars: SidebarsConfig = {
             'guide/components/mui/avatar',
             'guide/components/mui/badge',
             'guide/components/mui/card',
+            'guide/components/mui/chip',
             'guide/components/mui/select',
+            'guide/components/mui/stepper',
             'guide/components/mui/tabs',
             'guide/components/mui/text-field'
           ]
@@ -186,7 +188,6 @@ const sidebars: SidebarsConfig = {
             'guide/components/styled-libs/app-recharts',
           ]
         },
-        'guide/components/overriding-custom-components',
       ]
     },
     'guide/customizing-our-component',
@@ -204,8 +205,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'user-interface/foundation/colors',
         'user-interface/foundation/typography',
-        'user-interface/foundation/icons',
         'user-interface/foundation/shadows',
+        'user-interface/foundation/icons'
       ]
     },
     {
