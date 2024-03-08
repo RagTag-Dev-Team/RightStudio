@@ -31,13 +31,13 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
       import type { ExampleType } from '@/types/**/exampleTypes'
 
       export const db: ExampleType[] = [
-      {
-        userId: 1,
-        id: 1,
-        title: 'delectus aut autem',
-        completed: false
-      }
-      ...
+        {
+          userId: 1,
+          id: 1,
+          title: 'delectus aut autem',
+          completed: false
+        }
+        ...
       ]
       ```
     - **Data Type:** Define the data types in `src/types/**/exampleTypes.tsx` file

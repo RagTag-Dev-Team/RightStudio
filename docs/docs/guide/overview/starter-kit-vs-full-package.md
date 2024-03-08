@@ -5,7 +5,8 @@
 The Starter Kit is your quick-launch platform, designed for developers who want to hit the ground running without the hassle of stripping away unused features. Here's what you need to know about the Starter Kit:
 
 - **Minimalistic Design:** Keeps your project lean with just the essentials.
-- **Efficient:** No unnecessary code or dependencies.
+- **Efficient:**
+  - No unnecessary code or dependencies.
   - No authentication system
   - No i18n (Internationalization / Translation)
   - No built-in theme customizer

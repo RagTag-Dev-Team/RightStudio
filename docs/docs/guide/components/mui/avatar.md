@@ -81,8 +81,8 @@ import CustomAvatar from '@core/components/mui/Avatar'
 
 ### Props
 
-| Prop  | Type                                                                                |  Default | Required | Description                     |
-|-------|-------------------------------------------------------------------------------------|----------|----------|---------------------------------|
+| Prop  | Type                                                                                |  Default   | Required | Description                     |
+|-------|-------------------------------------------------------------------------------------|------------|----------|---------------------------------|
 | color | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | `'primary'`| No       | Background color of the avatar  |
 | skin  | `'filled'` \| `'light'` \| `'light-static'`                                         | `'filled'` | No       | Skin of the avatar              |
-| size  | `number`                                                                            |   `40`   | No       | Size of the avatar (px)         |
+| size  | `number`                                                                            |    `40`    | No       | Size of the avatar (px)         |

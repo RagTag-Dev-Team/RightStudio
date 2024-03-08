@@ -12,7 +12,7 @@ This documentation covers only the additional properties we've introduced. You'r
 
 ### Badge Skins
 
-There is only one skin, you need to add `tonal = 'true'` to the `Badge` component to get the tonal skin.
+There is only one skin, you need to add `tonal='true'` to the `Badge` component to get the tonal skin.
 
 Here is an example of how to use the skin:
 

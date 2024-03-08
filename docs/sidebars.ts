@@ -137,10 +137,12 @@ const sidebars: SidebarsConfig = {
             'guide/components/mui/badge',
             'guide/components/mui/card',
             'guide/components/mui/chip',
+            'guide/components/mui/pagination',
             'guide/components/mui/select',
             'guide/components/mui/stepper',
             'guide/components/mui/tabs',
-            'guide/components/mui/text-field'
+            'guide/components/mui/text-field',
+            'guide/components/mui/timeline-dot'
           ]
         },
         {

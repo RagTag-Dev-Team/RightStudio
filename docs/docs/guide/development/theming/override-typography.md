@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 #### How to change font
 
-We have used [Inter](https://fonts.google.com/specimen/Inter?query=inter) font in our template. Now suppose you want to implement [Montserrat fonts](https://fonts.google.com/specimen/Montserrat?query=montserrat).<br/>
+We have used [Public Sans](https://fonts.google.com/specimen/Public+Sans?query=public+sans) font in our template. Now suppose you want to implement [Montserrat fonts](https://fonts.google.com/specimen/Montserrat?query=montserrat).<br/>
 You can change it by following these steps:
 
 1. Go to the file `src/components/theme/mergedTheme.ts` and import the Montserrat font and use like this:
