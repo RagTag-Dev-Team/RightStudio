@@ -49,7 +49,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'Master',
-  settingsCookieName: 'master-next-demo-1',
+  settingsCookieName: 'master-next-demo-4',
   mode: 'dark', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
