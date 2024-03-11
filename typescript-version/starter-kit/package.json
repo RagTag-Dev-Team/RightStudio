@@ -18,7 +18,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@floating-ui/react": "^0.26.9",
-    "@iconify/json": "^2.2.189",
+    "@iconify/json": "^2.2.190",
     "@iconify/tools": "^4.0.2",
     "@iconify/types": "^2.0.0",
     "@iconify/utils": "^2.1.22",
