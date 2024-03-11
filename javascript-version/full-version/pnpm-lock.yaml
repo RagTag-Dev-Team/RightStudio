@@ -52,7 +52,7 @@ dependencies:
     version: 3.3.4(react-hook-form@7.51.0)
   '@iconify/json':
     specifier: ^2.2.189
-    version: 2.2.190
+    version: 2.2.191
   '@iconify/tools':
     specifier: ^4.0.2
     version: 4.0.2
@@ -834,8 +834,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: false
 
-  /@iconify/json@2.2.190:
-    resolution: {integrity: sha512-ci0/3DQUoRNxuNC8s0rNke5JwsCzWuYfEl4BgOykx3EAWDWMvD8lCenrDiFa04mokzMwSF+jA6I1YjBRGWfyOw==}
+  /@iconify/json@2.2.191:
+    resolution: {integrity: sha512-s6gEvYgYCKce6qw6SXyLz7ChVKzhbCPiIsv3Fq/VLpYeYbU0ipFOeErIJP0dQwqTYydr9cxTvR6rPnHu6Sf3Fg==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2

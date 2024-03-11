@@ -16,12 +16,12 @@ const defaultSuggestions = [
       {
         label: 'Analytics',
         href: '/dashboards/analytics',
-        icon: 'tabler-chart-pie-2'
+        icon: 'tabler-trending-up'
       },
       {
         label: 'CRM',
         href: '/dashboards/crm',
-        icon: 'tabler-3d-cube-sphere'
+        icon: 'tabler-chart-pie-2'
       },
       {
         label: 'eCommerce',
