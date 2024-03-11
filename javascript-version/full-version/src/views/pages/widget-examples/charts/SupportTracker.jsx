@@ -45,13 +45,13 @@ const data = [
   }
 ]
 
-const SupportTracker = () => {
+const SupportTracker = ({ serverMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
 
   const options = {

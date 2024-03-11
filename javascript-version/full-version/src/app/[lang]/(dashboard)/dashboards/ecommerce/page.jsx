@@ -14,6 +14,9 @@ import Orders from '@/views/dashboards/ecommerce/Orders'
 import Transactions from '@/views/dashboards/ecommerce/Transactions'
 import InvoiceListTable from '@/views/dashboards/ecommerce/InvoiceListTable'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const getData = async () => {
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
@@ -27,6 +30,7 @@ const getData = async () => {
 const DashboardECommerce = async () => {
   // Vars
   const invoiceData = await getData()
+  const serverMode = getServerMode()
 
   return (
     <Grid container spacing={6}>
@@ -39,21 +43,21 @@ const DashboardECommerce = async () => {
       <Grid item xs={12} xl={4}>
         <Grid container spacing={6}>
           <Grid item xs={12} sm={6} md={3} xl={6}>
-            <LineChartProfit />
+            <LineChartProfit serverMode={serverMode} />
           </Grid>
           <Grid item xs={12} sm={6} md={3} xl={6}>
-            <RadialBarChart />
+            <RadialBarChart serverMode={serverMode} />
           </Grid>
           <Grid item xs={12} md={6} xl={12}>
-            <DonutChartGeneratedLeads />
+            <DonutChartGeneratedLeads serverMode={serverMode} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} xl={8}>
-        <RevenueReport />
+        <RevenueReport serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} sm={6} lg={4}>
-        <EarningReports />
+        <EarningReports serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} sm={6} lg={4}>
         <PopularProducts />

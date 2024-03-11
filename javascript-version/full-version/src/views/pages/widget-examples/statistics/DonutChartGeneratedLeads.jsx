@@ -16,13 +16,13 @@ import { rgbaToHex } from '@/utils/rgbaToHex'
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 const series = [32, 41, 41, 70]
 
-const BarChartRevenueGrowth = () => {
+const BarChartRevenueGrowth = ({ serverMode }) => {
   // Hook
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   // Vars
   const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)

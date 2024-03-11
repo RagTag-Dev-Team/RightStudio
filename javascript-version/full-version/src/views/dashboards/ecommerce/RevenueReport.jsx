@@ -36,7 +36,7 @@ const lineSeries = [
   { name: 'This Month', data: [50, 40, 60, 46, 54, 35, 70, 53, 58, 35, 60] }
 ]
 
-const RevenueReport = () => {
+const RevenueReport = ({ serverMode }) => {
   // States
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -50,10 +50,10 @@ const RevenueReport = () => {
 
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
 
   const barOptions = {

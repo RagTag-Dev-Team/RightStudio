@@ -28,7 +28,7 @@ const initialData = {
   status: 'active',
   taxId: 'Tax-8894',
   contact: '+ 1 609 933 4422',
-  language: ['english'],
+  language: ['English'],
   country: 'US',
   useAsBillingAddress: true
 }
@@ -141,7 +141,7 @@ const EditUserInfo = ({ open, setOpen, data }) => {
                 select
                 fullWidth
                 label='Language'
-                value={userData?.language}
+                value={userData?.language?.map(lang => lang.toLowerCase().replace(/\s+/g, '-')) || []}
                 SelectProps={{
                   multiple: true,
                   onChange: e => setUserData({ ...userData, language: e.target.value }),

@@ -68,12 +68,12 @@ const statusObj = {
   verified: { text: 'Verified', color: 'success' }
 }
 
-const LastTransaction = () => {
+const LastTransaction = ({ serverMode }) => {
   // Hooks
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   return (
     <Card>

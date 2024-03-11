@@ -24,13 +24,13 @@ const donutColors = {
   series5: '#ffa1a1'
 }
 
-const ApexDonutChart = () => {
+const ApexDonutChart = ({ serverMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
 
   const options = {

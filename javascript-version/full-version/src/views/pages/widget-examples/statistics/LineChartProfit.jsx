@@ -19,13 +19,13 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 // Vars
 const series = [{ data: [0, 19, 7, 27, 15, 40] }]
 
-const LineChartProfit = () => {
+const LineChartProfit = ({ serverMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const infoColor = theme.palette.info.main
 
   const options = {

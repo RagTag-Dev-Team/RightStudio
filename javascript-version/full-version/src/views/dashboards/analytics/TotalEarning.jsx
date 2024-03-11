@@ -46,13 +46,13 @@ const data = [
   }
 ]
 
-const TotalEarning = () => {
+const TotalEarning = ({ serverMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   const options = {
     chart: {

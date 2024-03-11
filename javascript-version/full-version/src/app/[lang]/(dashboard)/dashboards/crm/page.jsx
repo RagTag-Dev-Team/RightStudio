@@ -14,7 +14,13 @@ import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
 import LastTransaction from '@views/dashboards/crm/LastTransaction'
 import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const DashboardCRM = () => {
+  // Vars
+  const serverMode = getServerMode()
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} sm={6} md={4} lg={2}>
@@ -54,13 +60,13 @@ const DashboardCRM = () => {
         />
       </Grid>
       <Grid item xs={12} md={8} lg={4}>
-        <BarChartRevenueGrowth />
+        <BarChartRevenueGrowth serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} lg={8}>
-        <EarningReportsWithTabs />
+        <EarningReportsWithTabs serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <RadarSalesChart />
+        <RadarSalesChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <SalesByCountries />
@@ -72,7 +78,7 @@ const DashboardCRM = () => {
         <ActiveProjects />
       </Grid>
       <Grid item xs={12} md={6}>
-        <LastTransaction />
+        <LastTransaction serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6}>
         <ActivityTimeline />

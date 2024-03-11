@@ -20,6 +20,9 @@ import Vertical from '@views/pages/widget-examples/statistics/Vertical'
 import BarChartRevenueGrowth from '@views/pages/widget-examples/statistics/BarChartRevenueGrowth'
 import DonutChartGeneratedLeads from '@views/pages/widget-examples/statistics/DonutChartGeneratedLeads'
 
+// Server Action Imports
+import { getServerMode } from '@core/utils/serverHelpers'
+
 const getData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/pages/widget-examples`)
@@ -34,6 +37,7 @@ const getData = async () => {
 const Statistics = async () => {
   // Vars
   const data = await getData()
+  const serverMode = getServerMode()
 
   return (
     <Grid container spacing={6}>
@@ -50,13 +54,13 @@ const Statistics = async () => {
         <LineAreaYearlySalesChart />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
-        <LineChartProfit />
+        <LineChartProfit serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <BarChartSessionsWithNegativeValues />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
-        <RadialBarChart />
+        <RadialBarChart serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <LineChartImpression />
@@ -74,7 +78,7 @@ const Statistics = async () => {
         <SalesOverview />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <BarChartDailyTraffic />
+        <BarChartDailyTraffic serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
         <SubscribersOrders />
@@ -83,10 +87,10 @@ const Statistics = async () => {
         <Vertical data={data.statsVertical} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <BarChartRevenueGrowth />
+        <BarChartRevenueGrowth serverMode={serverMode} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <DonutChartGeneratedLeads />
+        <DonutChartGeneratedLeads serverMode={serverMode} />
       </Grid>
     </Grid>
   )

@@ -17,13 +17,13 @@ import { rgbaToHex } from '@/utils/rgbaToHex'
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 const series = [{ data: [40, 53, 66, 79, 92, 105, 118] }]
 
-const BarChartDailyTraffic = () => {
+const BarChartDailyTraffic = ({ serverMode }) => {
   // Hook
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
 
   const options = {
     chart: {

@@ -24,13 +24,13 @@ const radialBarColors = {
   series5: '#FFA1A1'
 }
 
-const ApexRadialBarChart = () => {
+const ApexRadialBarChart = ({ serverMode }) => {
   // Hooks
   const theme = useTheme()
-  const { mode, systemMode } = useColorScheme()
+  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? systemMode : mode) || 'light'
+  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
   const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
 
   const options = {
