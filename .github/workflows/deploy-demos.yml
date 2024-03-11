@@ -10,9 +10,6 @@ on:
       is_production:
         type: boolean
         description: Is production deployment
-      is_marketplace:
-        type: boolean
-        description: Is MUI marketplace deployment
 
 jobs:
   deployment:
