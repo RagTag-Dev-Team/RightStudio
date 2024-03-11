@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "vuexy-mui-nextjs-admin-template-docs",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
