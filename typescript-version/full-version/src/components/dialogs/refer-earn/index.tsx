@@ -96,9 +96,9 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
             <InputLabel htmlFor='refer-email' className='inline-flex whitespace-break-spaces'>
               Enter your friend&#39;s email address and invite them to join {themeConfig.templateName} 😍
             </InputLabel>
-            <div className='flex items-center w-full flex-wrap sm:flex-nowrap'>
+            <div className='flex items-center is-full flex-wrap sm:flex-nowrap'>
               <TextField fullWidth size='small' id='refer-email' placeholder='johnDoe@email.com' />
-              <Button variant='contained' className='w-full sm:w-auto'>
+              <Button variant='contained' className='is-full sm:is-auto'>
                 Send
               </Button>
             </div>

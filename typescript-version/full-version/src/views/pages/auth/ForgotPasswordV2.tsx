@@ -23,9 +23,9 @@ const ForgotPasswordV2 = () => {
   const { lang: locale } = useParams()
 
   return (
-    <div className='flex h-full justify-center'>
-      <div className='flex items-center justify-center h-full flex-1 max-md:hidden'>image</div>
-      <div className='flex justify-center items-center h-full is-[480px]'>
+    <div className='flex bs-full justify-center'>
+      <div className='flex items-center justify-center bs-full flex-1 max-md:hidden'>image</div>
+      <div className='flex justify-center items-center bs-full is-[480px]'>
         <div>
           <div className='absolute block-start-[33px] inline-start-[38px]'>Logo</div>
           <Typography>Forgot Password 🔒</Typography>

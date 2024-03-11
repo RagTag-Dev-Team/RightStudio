@@ -62,9 +62,9 @@ const RegisterMultiSteps = () => {
   }
 
   return (
-    <div className='flex h-full justify-between items-center'>
-      <div className='flex h-full items-center justify-center w-full max-is-[480px]'>image</div>
-      <div className='flex justify-center items-center h-full w-full'>
+    <div className='flex bs-full justify-between items-center'>
+      <div className='flex bs-full items-center justify-center is-full max-is-[480px]'>image</div>
+      <div className='flex justify-center items-center bs-full is-full'>
         <StepperWrapper className='is-[700px]'>
           <Stepper activeStep={activeStep}>
             {steps.map((step, index) => {

@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 
 const UnderMaintenance = () => {
   return (
-    <div className='flex h-full items-center justify-center'>
+    <div className='flex bs-full items-center justify-center'>
       <div className='flex items-center flex-col text-center'>
         <Typography>Under Maintenance! 🚧</Typography>
         <Typography>Sorry for the inconvenience but we&#39;re performing some maintenance at the moment</Typography>

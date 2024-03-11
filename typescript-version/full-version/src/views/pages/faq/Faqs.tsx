@@ -61,7 +61,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
     <TabContext value={activeTab}>
       <Grid container>
         <Grid item xs={12} sm={5} md={4} xl={3} className='flex flex-col items-center'>
-          <CustomTabList orientation='vertical' onChange={handleChange} className='w-full' pill='true'>
+          <CustomTabList orientation='vertical' onChange={handleChange} className='is-full' pill='true'>
             {filteredData.map((faq, index) => (
               <Tab
                 key={index}

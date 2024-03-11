@@ -171,14 +171,14 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
           <Typography variant='h6'>{`${data.length} Members`}</Typography>
           <div className='flex flex-col flex-wrap gap-4'>
             {data.map((member, index) => (
-              <div key={index} className='flex items-center w-full gap-4'>
+              <div key={index} className='flex items-center is-full gap-4'>
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />
-                <div className='flex justify-between items-center w-full overflow-hidden'>
+                <div className='flex justify-between items-center is-full overflow-hidden'>
                   <div className='flex flex-col items-start overflow-hidden'>
-                    <Typography variant='body2' className='truncate w-full' color='text.primary'>
+                    <Typography variant='body2' className='truncate is-full' color='text.primary'>
                       {member.name}
                     </Typography>
-                    <Typography variant='body2' className='truncate w-full'>
+                    <Typography variant='body2' className='truncate is-full'>
                       {member.email}
                     </Typography>
                   </div>

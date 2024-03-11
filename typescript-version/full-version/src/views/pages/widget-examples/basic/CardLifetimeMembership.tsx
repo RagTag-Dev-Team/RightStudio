@@ -55,7 +55,7 @@ const CardLifetimeMembership = () => {
           </CardContent>
         </Grid>
         <Grid item xs={12} sm={5}>
-          <CardContent className='flex items-center justify-center h-full bg-actionHover'>
+          <CardContent className='flex items-center justify-center bs-full bg-actionHover'>
             <div className='flex flex-col items-center justify-center gap-2'>
               <div className='flex items-baseline justify-center'>
                 <Typography variant='h5'>$</Typography>

@@ -10,9 +10,9 @@ import TextField from '@mui/material/TextField'
 
 const TwoStepsV2 = () => {
   return (
-    <div className='flex h-full justify-center'>
-      <div className='flex h-full items-center justify-center flex-1 max-md:hidden'>image</div>
-      <div className='flex justify-center items-center h-full is-[480px]'>
+    <div className='flex bs-full justify-center'>
+      <div className='flex bs-full items-center justify-center flex-1 max-md:hidden'>image</div>
+      <div className='flex justify-center items-center bs-full is-[480px]'>
         <div>
           <div className='absolute block-start-[33px] inline-start-[38px]'>Logo</div>
           <Typography>Two Step Verification 💬</Typography>

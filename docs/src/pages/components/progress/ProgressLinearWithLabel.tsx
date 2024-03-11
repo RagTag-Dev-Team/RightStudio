@@ -9,7 +9,7 @@ import type { LinearProgressProps } from '@mui/material/LinearProgress'
 const LinearProgressWithLabel = (props: LinearProgressProps & { value: number }) => {
   return (
     <div className='flex items-center gap-3'>
-      <div className='w-full'>
+      <div className='is-full'>
         <LinearProgress variant='determinate' {...props} />
       </div>
       <Typography variant='body2' color='text.secondary'>{`${Math.round(props.value)}%`}</Typography>

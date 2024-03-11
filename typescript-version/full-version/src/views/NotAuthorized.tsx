@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 
 const NotAuthorized = () => {
   return (
-    <div className='flex h-full items-center justify-center'>
+    <div className='flex bs-full items-center justify-center'>
       <div className='flex items-center flex-col text-center'>
         <Typography>401</Typography>
         <Typography>You are not authorized! 🔐</Typography>

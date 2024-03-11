@@ -84,8 +84,8 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   const renderData = () => {
     if (meta && title && content) {
       return (
-        <div className='flex flex-col h-full w-full gap-1.5'>
-          <div className='flex items-start justify-between w-full mbs-1.5'>
+        <div className='flex flex-col bs-full is-full gap-1.5'>
+          <div className='flex items-start justify-between is-full mbs-1.5'>
             {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
             {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
           </div>
@@ -94,14 +94,14 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
       )
     } else if (meta && title && !content) {
       return (
-        <div className='flex items-start justify-between w-full mbs-1.5'>
+        <div className='flex items-start justify-between is-full mbs-1.5'>
           {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
           {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
         </div>
       )
     } else if (!meta && title && content) {
       return (
-        <div className='flex flex-col h-full gap-1 mbs-1.5'>
+        <div className='flex flex-col bs-full gap-1 mbs-1.5'>
           {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
           {typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content}
         </div>

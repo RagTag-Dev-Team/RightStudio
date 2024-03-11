@@ -43,11 +43,11 @@ const RoleCards = () => {
   }
 
   const CardProps: CardProps = {
-    className: 'cursor-pointer h-full',
+    className: 'cursor-pointer bs-full',
     children: (
-      <Grid container className='h-full'>
+      <Grid container className='bs-full'>
         <Grid item xs={5}>
-          <div className='flex items-end justify-center h-full'>
+          <div className='flex items-end justify-center bs-full'>
             <img alt='add-role' src='/images/cards/pose_m1.png' />
           </div>
         </Grid>

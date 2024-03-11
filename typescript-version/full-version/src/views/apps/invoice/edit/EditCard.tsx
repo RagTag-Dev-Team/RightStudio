@@ -100,7 +100,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                 <div className='flex flex-col'>
                   <Typography>Invoice To:</Typography>
                   <Select
-                    className='w-1/2 sm:w-auto'
+                    className='is-1/2 sm:is-auto'
                     size='small'
                     value={selectData.id}
                     onChange={e => {

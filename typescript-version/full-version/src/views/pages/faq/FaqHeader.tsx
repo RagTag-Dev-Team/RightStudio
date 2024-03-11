@@ -15,11 +15,11 @@ type Props = {
 const FaqHeader = ({ searchValue, setSearchValue }: Props) => {
   return (
     <Card className='bg-cover' elevation={0}>
-      <CardContent className='flex flex-col items-center w-full text-center'>
+      <CardContent className='flex flex-col items-center is-full text-center'>
         <Typography>Hello, how can we help?</Typography>
         <Typography>or choose a category to quickly find the help you need</Typography>
         <TextField
-          className='w-full sm:max-is-[55%] md:max-is-[600px]'
+          className='is-full sm:max-is-[55%] md:max-is-[600px]'
           variant='outlined'
           placeholder='Ask a question...'
           value={searchValue}

@@ -43,7 +43,7 @@ const AccountDelete = () => {
       <CardHeader title='Delete Account' />
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl error={Boolean(errors.checkbox)} className='w-full'>
+          <FormControl error={Boolean(errors.checkbox)} className='is-full'>
             <Controller
               name='checkbox'
               control={control}

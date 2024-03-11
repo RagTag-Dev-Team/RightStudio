@@ -65,7 +65,7 @@ const SnackbarConsecutive = () => {
           elevation={3}
           variant='filled'
           onClose={handleClose}
-          className='w-full'
+          className='is-full'
           severity={messageInfo?.message === 'success' ? 'success' : 'error'}
         >
           This is {messageInfo?.message === 'success' ? 'a success' : 'an error'} message!

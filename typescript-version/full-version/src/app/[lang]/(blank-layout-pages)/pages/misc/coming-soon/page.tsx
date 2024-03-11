@@ -3,7 +3,7 @@ import ComingSoon from '@views/pages/misc/ComingSoon'
 
 const ComingSoonPage = () => {
   return (
-    <div className='flex h-full justify-center'>
+    <div className='flex bs-full justify-center'>
       <ComingSoon />
     </div>
   )

@@ -52,7 +52,7 @@ const StepConfirmation = () => {
       </Grid>
       <Grid item xs={12}>
         <div className='flex flex-col md:flex-row border rounded'>
-          <div className='flex flex-col w-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col is-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-map-pin-2-line' />
               <Typography className='font-medium'>Shipping</Typography>
@@ -63,7 +63,7 @@ const StepConfirmation = () => {
             <Typography>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
+          <div className='flex flex-col is-full items-center sm:items-start max-md:[&:not(:last-child)]:border-be md:[&:not(:last-child)]:border-ie'>
             <div className='flex items-center'>
               <i className='ri-bank-card-2-line' />
               <Typography className='font-medium'>Billing Address</Typography>
@@ -74,7 +74,7 @@ const StepConfirmation = () => {
             <Typography>USA</Typography>
             <Typography>+123456789</Typography>
           </div>
-          <div className='flex flex-col w-full items-center sm:items-start'>
+          <div className='flex flex-col is-full items-center sm:items-start'>
             <div className='flex items-center'>
               <i className='ri-archive-line' />
               <Typography className='font-medium'>Shipping Method</Typography>
@@ -90,7 +90,7 @@ const StepConfirmation = () => {
           {products.map((product, index) => (
             <div key={index} className='flex flex-col sm:flex-row items-center [&:not(:last-child)]:border-be'>
               <img height={80} width={80} src={product.imgSrc} alt={product.imgAlt} />
-              <div className='flex justify-between w-full flex-col sm:flex-row items-center sm:items-start'>
+              <div className='flex justify-between is-full flex-col sm:flex-row items-center sm:items-start'>
                 <div className='flex flex-col items-center sm:items-start'>
                   <Typography>{product.productName}</Typography>
                   <div className='flex items-center'>

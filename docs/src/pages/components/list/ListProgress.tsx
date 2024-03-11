@@ -83,11 +83,11 @@ const ListProgress = () => {
       {courseList.map((course, index) => {
         return (
           <ListItem key={index}>
-            <ListItemAvatar className='flex gap-5 items-center w-full'>
-              <Avatar variant='rounded' className='w-9 h-9'>
+            <ListItemAvatar className='flex gap-5 items-center is-full'>
+              <Avatar variant='rounded' className='is-9 bs-9'>
                 <i className={course.icon} />
               </Avatar>
-              <div className='w-full'>
+              <div className='is-full'>
                 <ListItemText primary={course.description}></ListItemText>
                 <LinearProgress value={course.progress} variant='determinate' color={course.color} />
               </div>

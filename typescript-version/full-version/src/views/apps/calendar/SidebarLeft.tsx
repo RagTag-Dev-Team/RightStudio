@@ -73,7 +73,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
         }}
         className={classnames('block', { static: mdAbove, absolute: !mdAbove })}
         PaperProps={{
-          className: classnames('items-start w-[280px] rounded shadow-none', {
+          className: classnames('items-start is-[280px] rounded shadow-none', {
             static: mdAbove,
             absolute: !mdAbove
           })
@@ -91,23 +91,23 @@ const SidebarLeft = (props: SidebarLeftProps) => {
           }
         }}
       >
-        <div className='w-full p-5'>
+        <div className='is-full p-5'>
           <Button fullWidth variant='contained' onClick={handleSidebarToggleSidebar}>
             Add Event
           </Button>
         </div>
-        <Divider className='w-full' />
+        <Divider className='is-full' />
         <AppReactDatepicker
           inline
           onChange={date => calendarApi.gotoDate(date)}
           boxProps={{
-            className: 'flex justify-center w-full',
+            className: 'flex justify-center is-full',
             sx: { '& .react-datepicker': { boxShadow: 'none !important', border: 'none !important' } }
           }}
         />
-        <Divider className='w-full' />
+        <Divider className='is-full' />
 
-        <div className='flex flex-col p-5 w-full'>
+        <div className='flex flex-col p-5 is-full'>
           <Typography variant='caption' className='uppercase mbe-4'>
             Event Filters
           </Typography>

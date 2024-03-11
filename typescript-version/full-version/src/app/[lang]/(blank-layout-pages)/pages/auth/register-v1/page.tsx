@@ -3,7 +3,7 @@ import RegisterV1 from '@views/pages/auth/RegisterV1'
 
 const RegisterV1Page = () => {
   return (
-    <div className='flex h-full justify-center items-center'>
+    <div className='flex bs-full justify-center items-center'>
       <RegisterV1 />
     </div>
   )

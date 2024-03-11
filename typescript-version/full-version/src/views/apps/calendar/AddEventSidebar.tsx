@@ -78,7 +78,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   // Refs
   const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
     return (
-      <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} className='w-full' error={props.error} />
+      <TextField
+        inputRef={ref}
+        fullWidth
+        {...props}
+        label={props.label || ''}
+        className='is-full'
+        error={props.error}
+      />
     )
   })
 

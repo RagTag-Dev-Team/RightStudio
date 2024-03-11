@@ -210,7 +210,7 @@ const ProjectListTable = () => {
               color={row.original.progressColor}
               value={row.original.progressValue}
               variant='determinate'
-              className='w-full'
+              className='is-full'
             />
           </>
         )

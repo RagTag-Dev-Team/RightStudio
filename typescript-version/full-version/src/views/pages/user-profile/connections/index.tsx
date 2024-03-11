@@ -42,7 +42,7 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                       </Link>
                     ))}
                   </div>
-                  <div className='flex w-full items-center justify-around flex-wrap'>
+                  <div className='flex is-full items-center justify-around flex-wrap'>
                     <div className='flex items-center flex-col'>
                       <Typography>{item.projects}</Typography>
                       <Typography>Projects</Typography>

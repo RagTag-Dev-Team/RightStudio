@@ -13,8 +13,8 @@ import styles from '../../styles.module.css'
 
 const HideMenu = () => {
   return (
-    <div className='flex flex-col w-full'>
-      <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
+    <div className='flex flex-col is-full'>
+      <div className={classnames('flex items-center plb-2.5 pli-6 is-full', styles.customStyles)}>
         <NavToggle />
         <HorizontalNav hideMenu breakpoint='md'>
           <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>

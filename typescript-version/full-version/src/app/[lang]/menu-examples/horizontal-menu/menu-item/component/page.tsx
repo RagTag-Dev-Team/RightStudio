@@ -9,7 +9,7 @@ import styles from '../../styles.module.css'
 
 const Component = () => {
   return (
-    <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
+    <div className={classnames('flex items-center plb-2.5 pli-6 is-full', styles.customStyles)}>
       <HorizontalNav>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <MenuItem component={<div></div>}>Analytics Dashboard</MenuItem>
