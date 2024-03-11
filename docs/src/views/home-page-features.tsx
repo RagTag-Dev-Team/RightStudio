@@ -74,7 +74,7 @@ const HomepageFeatures = (): JSX.Element => {
     <section className='flex items-center is-full plb-8 pli-4 mbe-8'>
       <div className="container">
         <Admonition type="warning" title='📣 Heads up' className='!mbe-8'>
-          <p>You are viewing <strong>Next.js App Directory Routing</strong> documentation of Vuexy admin template. For <strong>Next.js Pages Directory Routing</strong> documentation, please visit <a href="https://demos.pixinvent.com/vuexy-nextjs-admin-template-old/documentation" target='_blank'>this page</a>.</p>
+          <p>You are viewing <strong>Next.js App Directory Routing</strong> documentation of Vuexy admin template. For <strong>Next.js Pages Directory Routing</strong> documentation, please visit <a href="https://demos.pixinvent.com/vuexy-nextjs-admin-template-old/documentation" target='_blank'><strong>this page</strong></a>.</p>
         </Admonition>
         <div className="row gap-y-4">
           {FeatureList.map((props, idx) => (
