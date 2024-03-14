@@ -62,8 +62,8 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
       >
         Refer & Earn
         <Typography component='span' className='flex flex-col text-center'>
-          Invite your friend to {themeConfig.templateName}, if they sign up, you and your friend will get 30 days free
-          trial
+          {`Invite your friend to ${themeConfig.templateName}, if they sign up, you and your friend will get 30 days free
+          trial`}
         </Typography>
       </DialogTitle>
       <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
@@ -91,10 +91,10 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
         </Grid>
         <Divider className='mlb-6' />
         <div className='flex flex-col gap-5'>
-          <Typography variant='h6'>Invite your friends</Typography>
+          <Typography variant='h5'>Invite your friends</Typography>
           <div className='flex flex-col gap-2 flex-wrap'>
             <InputLabel htmlFor='refer-email' className='inline-flex whitespace-break-spaces'>
-              Enter your friend&#39;s email address and invite them to join {themeConfig.templateName} 😍
+              {`Enter your friend&#39;s email address and invite them to join ${themeConfig.templateName} 😍`}
             </InputLabel>
             <div className='flex items-center is-full flex-wrap sm:flex-nowrap'>
               <TextField fullWidth size='small' id='refer-email' placeholder='johnDoe@email.com' />
@@ -105,7 +105,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
           </div>
         </div>
         <div className='flex flex-col gap-5'>
-          <Typography variant='h6'>Share the referral link</Typography>
+          <Typography variant='h5'>Share the referral link</Typography>
           <div className='flex flex-col gap-2'>
             <InputLabel htmlFor='refer-social' className='inline-flex whitespace-break-spaces'>
               You can also copy and send it or share it on your social media. 🚀

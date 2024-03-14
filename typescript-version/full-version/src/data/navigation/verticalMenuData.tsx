@@ -14,7 +14,7 @@ const verticalMenuData = (
   {
     label: dictionary['navigation'].dashboards,
     suffix: {
-      label: '2',
+      label: '3',
       color: 'error'
     },
     children: [

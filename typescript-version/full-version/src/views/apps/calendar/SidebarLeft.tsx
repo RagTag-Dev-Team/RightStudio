@@ -73,7 +73,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
         }}
         className={classnames('block', { static: mdAbove, absolute: !mdAbove })}
         PaperProps={{
-          className: classnames('items-start is-[280px] rounded shadow-none', {
+          className: classnames('items-start is-[280px] shadow-none', {
             static: mdAbove,
             absolute: !mdAbove
           })
@@ -108,7 +108,7 @@ const SidebarLeft = (props: SidebarLeftProps) => {
         <Divider className='is-full' />
 
         <div className='flex flex-col p-5 is-full'>
-          <Typography variant='caption' className='uppercase mbe-4'>
+          <Typography variant='h5' className='mbe-4'>
             Event Filters
           </Typography>
           <FormControlLabel

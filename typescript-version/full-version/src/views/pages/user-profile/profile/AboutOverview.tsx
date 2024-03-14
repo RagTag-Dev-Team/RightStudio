@@ -63,7 +63,7 @@ const AboutOverview = ({ data }: { data?: ProfileTabType }) => {
         <Card>
           <CardContent>
             <div>
-              <Typography>OVERVIEW</Typography>
+              <Typography className='uppercase'>Overview</Typography>
               {data?.overview && renderList(data?.overview)}
             </div>
           </CardContent>

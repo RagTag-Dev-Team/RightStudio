@@ -78,7 +78,7 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
                 <Typography component='span' color='primary' variant='h1'>
                   99
                 </Typography>
-                <Typography component='sub' className='self-baseline'>
+                <Typography component='sub' className='self-baseline' variant='body2'>
                   /month
                 </Typography>
               </div>

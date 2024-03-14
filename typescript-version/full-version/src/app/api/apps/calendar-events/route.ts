@@ -49,6 +49,8 @@ export async function POST(request: NextRequest) {
     // Generate new event id
     event['id'] = events[events.length - 1].id + 1
 
+    events.push(event)
+
     // return new event
     return NextResponse.json(json_response)
   } catch (error) {

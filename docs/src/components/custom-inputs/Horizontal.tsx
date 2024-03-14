@@ -79,6 +79,7 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
   // Props
   const { type, data, name, selected, gridProps, handleChange, color = 'primary' } = props
 
+  // Vars
   const { meta, title, value, content } = data
 
   const renderData = () => {
@@ -107,7 +108,13 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
         </div>
       )
     } else if (!meta && !title && content) {
-      return typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content
+      return typeof content === 'string' ? (
+        <Content variant='body2' className='mbs-1.5'>
+          {content}
+        </Content>
+      ) : (
+        content
+      )
     } else if (!meta && title && !content) {
       return typeof title === 'string' ? (
         <Title variant='body1' className='mbs-1.5'>

@@ -45,7 +45,7 @@ const FileUploaderSingle = () => {
             <i className='ri-upload-2-line' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>Drop files here or click to upload.</Typography>
-          <Typography color='textSecondary'>
+          <Typography color='text.secondary'>
             Drop files here or click{' '}
             <a href='/' onClick={e => e.preventDefault()} className='text-textPrimary no-underline'>
               browse

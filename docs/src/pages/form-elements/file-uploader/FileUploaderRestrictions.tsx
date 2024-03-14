@@ -89,8 +89,8 @@ const FileUploaderRestrictions = () => {
             <i className='ri-upload-2-line' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>Drop files here or click to upload.</Typography>
-          <Typography color='textSecondary'>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
-          <Typography color='textSecondary'>Max 2 files and max size of 2 MB</Typography>
+          <Typography color='text.secondary'>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
+          <Typography color='text.secondary'>Max 2 files and max size of 2 MB</Typography>
         </div>
       </div>
       {files.length ? (

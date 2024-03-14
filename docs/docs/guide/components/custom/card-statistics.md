@@ -34,12 +34,12 @@ export default Component
 
 ### Props
 
-| Prop         | Type                                                                    | Required | Description                                  |
-|--------------|-------------------------------------------------------------------------|----------|----------------------------------------------|
+| Prop         | Type                                                                      | Required | Description                                  |
+|--------------|---------------------------------------------------------------------------|----------|----------------------------------------------|
 | title        | `string`                                                                  | Yes      | The title displayed on the card              |
 | subTitle     | `string`                                                                  | Yes      | The subtitle displayed on the card           |
-| value        | `string`                                                                  | Yes      | The primary statistic number displayed
-| avatarIcon         | `string`                                                                  | Yes      | Icon to display inside the avatar            |
+| value        | `string`                                                                  | Yes      | The primary statistic number displayed       |
+| avatarIcon   | `string`                                                                  | Yes      | Icon to display inside the avatar            |
 | avatarColor  | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | No       | Color theme for the avatar                   |
 | change       | `'positive' \| 'negative'`                                                | Yes      | Indicating change in the number of sessions  |
 | changeNumber | `string`                                                                  | Yes      | Numerical value indicating the trend         |

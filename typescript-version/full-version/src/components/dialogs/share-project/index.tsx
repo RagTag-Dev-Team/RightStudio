@@ -175,7 +175,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
                 <Avatar src={`/images/avatars/${member.avatar}`} alt={member.name} />
                 <div className='flex justify-between items-center is-full overflow-hidden'>
                   <div className='flex flex-col items-start overflow-hidden'>
-                    <Typography variant='body2' className='truncate is-full' color='text.primary'>
+                    <Typography className='truncate is-full' color='text.primary'>
                       {member.name}
                     </Typography>
                     <Typography variant='body2' className='truncate is-full'>
@@ -224,10 +224,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
         <div className='flex items-center justify-between flex-wrap'>
           <div className='flex items-center flex-grow gap-2'>
             <i className='ri-group-line text-xl' />
-            <Typography
-              variant='body2'
-              color='text.primary'
-            >{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
+            <Typography color='text.primary'>{`Public to ${themeConfig.templateName} - ThemeSelection`}</Typography>
           </div>
           <Button variant='outlined' className='flex' size='small'>
             <i className='ri-link text-xl' />
