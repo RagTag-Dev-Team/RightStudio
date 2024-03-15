@@ -23,7 +23,11 @@ const TabList = styled(MuiTabList)<CustomTabListProps>(({ color, pill }) => ({
     },
     '& .MuiTab-root': {
       minHeight: 38,
-      borderRadius: 'var(--mui-shape-borderRadius)'
+      borderRadius: 'var(--mui-shape-borderRadius)',
+      '&:hover': {
+        backgroundColor: `var(--mui-palette-${color}-lightOpacity)`,
+        color: `var(--mui-palette-${color}-main)`
+      }
     }
   })
 }))

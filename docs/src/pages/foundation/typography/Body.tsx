@@ -9,7 +9,7 @@ const Body = () => {
       <CardHeader title='Body' />
       <CardContent className='flex flex-col gap-3'>
         <div>
-          <Typography variant='body1'>body1. Cupcake ipsum dolor sit amet chocolate bar pastry sesame snaps.</Typography>
+          <Typography>body1. Cupcake ipsum dolor sit amet chocolate bar pastry sesame snaps.</Typography>
           <Typography variant='body2'>font-size: / line-height: / font-weight: 400</Typography>
         </div>
         <div>

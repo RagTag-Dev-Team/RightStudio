@@ -187,9 +187,11 @@ const TimelineCenter = () => {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-          <Typography variant='caption' component='div' className='mbs-3'>
-            6 days ago
-          </Typography>
+          {isBelowMdScreen && (
+            <Typography variant='caption' component='div' className='mbs-3'>
+              6 days ago
+            </Typography>
+          )}
           <Card>
             <CardContent>
               <Typography className='font-medium mbe-4'>
@@ -208,6 +210,7 @@ const TimelineCenter = () => {
                 <Rating name='read-only' value={5} readOnly />
                 <Chip
                   size='small'
+                  variant='tonal'
                   color='success'
                   label='Verified Buyer'
                   avatar={<Avatar alt='user' src={useBaseUrl('/images/avatars/1.png')} />}

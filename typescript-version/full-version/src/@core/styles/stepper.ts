@@ -25,6 +25,9 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         fontWeight: 'bold',
         marginRight: theme.spacing(2.5)
       },
+      '&:not(:has(.step-subtitle)) .step-number': {
+        ...theme.typography.h6
+      },
       '& .step-title': {
         ...theme.typography.body1,
         fontWeight: 500

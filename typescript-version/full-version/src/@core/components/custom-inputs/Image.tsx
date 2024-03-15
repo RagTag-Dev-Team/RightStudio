@@ -49,7 +49,9 @@ const CheckboxInput = styled(Checkbox, {
 const Image = styled('img', {
   name: 'MuiCustomImage',
   slot: 'Image'
-})({})
+})({
+  maxWidth: '100%'
+})
 
 const CustomCheckboxImg = (props: CustomInputImgProps) => {
   // Props

@@ -51,16 +51,16 @@ const Title = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'title'
 })(({ theme }) => ({
-  letterSpacing: '0.15px',
   fontWeight: theme.typography.fontWeightMedium
 }))
 
 const Content = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'content'
-})({
+})(({ theme }) => ({
+  ...theme.typography.body2,
   textAlign: 'center'
-})
+}))
 
 const RadioInput = styled(Radio, {
   name: 'MuiCustomInputVertical',
@@ -94,8 +94,8 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
           })}
         >
           {asset || null}
-          {title ? typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title : null}
-          {content ? typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content : null}
+          {title ? typeof title === 'string' ? <Title>{title}</Title> : title : null}
+          {content ? typeof content === 'string' ? <Content>{content}</Content> : content : null}
           {type === 'radio' ? (
             <RadioInput name={name} color={color} value={value} onChange={handleChange} checked={selected === value} />
           ) : (

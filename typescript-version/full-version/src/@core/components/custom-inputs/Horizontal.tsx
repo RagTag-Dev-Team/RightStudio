@@ -35,7 +35,10 @@ const Root = styled('div', {
     borderColor: 'var(--mui-palette-action-active)'
   },
   '&.active': {
-    borderColor: 'var(--mui-palette-primary-main)'
+    borderColor: 'var(--mui-palette-primary-main)',
+    '& > svg, & > i': {
+      color: 'var(--mui-palette-primary-main)'
+    }
   }
 }))
 
@@ -43,21 +46,24 @@ const Title = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'title'
 })(({ theme }) => ({
-  letterSpacing: '0.15px',
-  fontWeight: theme.typography.fontWeightMedium
+  fontWeight: theme.typography.fontWeightMedium,
+  color: 'var(--mui-palette-text-primary)'
 }))
 
 const Meta = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'meta'
-})({
+})(({ theme }) => ({
+  ...theme.typography.body2,
   color: 'var(--mui-palette-text-disabled)'
-})
+}))
 
 const Content = styled(Typography, {
   name: 'MuiCustomInputHorizontal',
   slot: 'content'
-})({})
+})(({ theme }) => ({
+  ...theme.typography.body2
+}))
 
 const RadioInput = styled(Radio, {
   name: 'MuiCustomInputHorizontal',
@@ -87,42 +93,30 @@ const CustomInputHorizontal = (props: CustomInputHorizontalProps) => {
       return (
         <div className='flex flex-col bs-full is-full gap-1.5'>
           <div className='flex items-start justify-between is-full mbs-1.5'>
-            {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
-            {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
+            {typeof title === 'string' ? <Title>{title}</Title> : title}
+            {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
           </div>
-          {typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content}
+          {typeof content === 'string' ? <Content>{content}</Content> : content}
         </div>
       )
     } else if (meta && title && !content) {
       return (
         <div className='flex items-start justify-between is-full mbs-1.5'>
-          {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
-          {typeof meta === 'string' ? <Meta variant='body2'>{meta}</Meta> : meta}
+          {typeof title === 'string' ? <Title>{title}</Title> : title}
+          {typeof meta === 'string' ? <Meta>{meta}</Meta> : meta}
         </div>
       )
     } else if (!meta && title && content) {
       return (
-        <div className='flex flex-col bs-full gap-1 mbs-1.5'>
-          {typeof title === 'string' ? <Title variant='body1'>{title}</Title> : title}
-          {typeof content === 'string' ? <Content variant='body2'>{content}</Content> : content}
+        <div className='flex flex-col bs-full gap-1.5 mbs-1.5'>
+          {typeof title === 'string' ? <Title>{title}</Title> : title}
+          {typeof content === 'string' ? <Content>{content}</Content> : content}
         </div>
       )
     } else if (!meta && !title && content) {
-      return typeof content === 'string' ? (
-        <Content variant='body2' className='mbs-1.5'>
-          {content}
-        </Content>
-      ) : (
-        content
-      )
+      return typeof content === 'string' ? <Content className='mbs-1.5'>{content}</Content> : content
     } else if (!meta && title && !content) {
-      return typeof title === 'string' ? (
-        <Title variant='body1' className='mbs-1.5'>
-          {title}
-        </Title>
-      ) : (
-        title
-      )
+      return typeof title === 'string' ? <Title className='mbs-1.5'>{title}</Title> : title
     } else {
       return null
     }
