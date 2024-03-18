@@ -7,7 +7,7 @@ hide_table_of_contents: true
 #### How to Change Colors
 
 :::info
-The instructions provided below will not change the primary color.<br/> 
+The instructions provided below will not change the primary color.<br/>
 If you want to change the primary color, please refer [How to change Primary Color](/docs/guide/development/theming/change-primary-color).
 :::
 
