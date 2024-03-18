@@ -10,7 +10,7 @@ While adding customizer in the starter-kit, you must add the `disableDirection` 
 
 ## Usage
 
-To use the Customizer component, import it into your Next.js page or component:
+You can find the customizer code in the `src/@core/components/customizer/index.tsx` file. To use the Customizer component, import it into your Next.js page or component:
 
 ```jsx
 import Customizer from '@core/components/customizer'
