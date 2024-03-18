@@ -15,14 +15,14 @@ export type UserDataType = {
   value: string
   avatarIcon: string
   avatarColor?: ThemeColor
-  change: string
-  changeNumber: string
-  subTitle: string
+  trend: string
+  trendNumber: string
+  subtitle: string
 }
 
 const HorizontalWithSubtitle = (props: UserDataType) => {
   // Props
-  const { title, value, avatarIcon, avatarColor, change, changeNumber, subTitle } = props
+  const { title, value, avatarIcon, avatarColor, trend: trend, trendNumber: trendNumber, subtitle: subtitle } = props
 
   return (
     <Card>
@@ -31,11 +31,11 @@ const HorizontalWithSubtitle = (props: UserDataType) => {
           <Typography color='text.primary'>{title}</Typography>
           <div className='flex items-center gap-2 flex-wrap'>
             <Typography variant='h4'>{value}</Typography>
-            <Typography color={change === 'negative' ? 'error.main' : 'success.main'}>
-              {`(${change === 'negative' ? '-' : '+'}${changeNumber})`}
+            <Typography color={trend === 'negative' ? 'error.main' : 'success.main'}>
+              {`(${trend === 'negative' ? '-' : '+'}${trendNumber})`}
             </Typography>
           </div>
-          <Typography variant='body2'>{subTitle}</Typography>
+          <Typography variant='body2'>{subtitle}</Typography>
         </div>
         <Avatar color={avatarColor} variant='rounded'>
           <i className={classnames(avatarIcon, 'text-[26px]')} />

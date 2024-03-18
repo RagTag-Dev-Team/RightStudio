@@ -15,6 +15,7 @@ import themeConfig from '@configs/themeConfig'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
+import './print.css'
 
 // Vars
 const data = [
@@ -50,7 +51,7 @@ const data = [
 
 const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }) => {
   return (
-    <Card>
+    <Card className='previewCard'>
       <CardContent>
         <Grid container>
           <Grid item xs={12}>

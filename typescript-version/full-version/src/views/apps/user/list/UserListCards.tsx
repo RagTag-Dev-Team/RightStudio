@@ -14,36 +14,36 @@ const data: UserDataType[] = [
     value: '21,459',
     avatarIcon: 'ri-group-line',
     avatarColor: 'primary',
-    change: 'positive',
-    changeNumber: '29%',
-    subTitle: 'Total User'
+    trend: 'positive',
+    trendNumber: '29%',
+    subtitle: 'Total User'
   },
   {
     title: 'Paid Users',
     value: '4,567',
     avatarIcon: 'ri-user-add-line',
     avatarColor: 'error',
-    change: 'positive',
-    changeNumber: '18%',
-    subTitle: 'Last week analytics'
+    trend: 'positive',
+    trendNumber: '18%',
+    subtitle: 'Last week analytics'
   },
   {
     title: 'Active Users',
     value: '19,860',
     avatarIcon: 'ri-user-follow-line',
     avatarColor: 'success',
-    change: 'negative',
-    changeNumber: '14%',
-    subTitle: 'Last week analytics'
+    trend: 'negative',
+    trendNumber: '14%',
+    subtitle: 'Last week analytics'
   },
   {
     title: 'Pending Users',
     value: '237',
     avatarIcon: 'ri-user-search-line',
     avatarColor: 'warning',
-    change: 'positive',
-    changeNumber: '42%',
-    subTitle: 'Last week analytics'
+    trend: 'positive',
+    trendNumber: '42%',
+    subtitle: 'Last week analytics'
   }
 ]
 

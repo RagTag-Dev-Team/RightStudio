@@ -2,6 +2,9 @@
 import { Fragment, forwardRef, useMemo } from 'react'
 import type { Ref } from 'react'
 
+// MUI Imports
+import { useTheme } from '@mui/material/styles'
+
 // Third-party Imports
 import classnames from 'classnames'
 import type { ActionId, ActionImpl } from 'kbar'
@@ -62,7 +65,18 @@ const Shortcut = ({ shortcut }: { shortcut: string[] }) => {
 }
 
 const EnterComponent = ({ active }: { active: boolean }) => {
-  return active && <i className='ri-corner-down-left-fill text-xl text-textSecondary' />
+  const theme = useTheme()
+
+  return (
+    active && (
+      <i
+        className={classnames({
+          'ri-corner-down-left-fill': theme.direction === 'ltr',
+          'ri-corner-down-right-fill': theme.direction === 'rtl'
+        })}
+      />
+    )
+  )
 }
 
 const SearchResultItem = forwardRef(
