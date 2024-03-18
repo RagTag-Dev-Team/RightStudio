@@ -84,7 +84,8 @@ const config: Config = {
       '@easyops-cn/docusaurus-search-local',
       {
         hashed: true,
-        highlightSearchTermsOnTargetPage: true
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
       }
     ],
   ],
