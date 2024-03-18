@@ -20,7 +20,7 @@ type PricingProps = {
 const PricingDialog = ({ open, setOpen, data }: PricingProps) => {
   return (
     <Dialog fullWidth maxWidth='lg' open={open} onClose={() => setOpen(false)} scroll='body'>
-      <DialogContent className='p-10 sm:p-16'>
+      <DialogContent className='sm:p-16'>
         <IconButton className='absolute block-start-4 inline-end-4' onClick={() => setOpen(false)}>
           <i className='ri-close-line' />
         </IconButton>

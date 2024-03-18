@@ -191,16 +191,13 @@ const cardList: CardList[] = [
 const PaymentProviders = ({ open, setOpen }: PaymentProvidersProps) => {
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='md' scroll='body'>
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-10 sm:pli-16'>
         Select Payment Providers
         <Typography component='span' className='flex flex-col text-center'>
           Third-party payment providers
         </Typography>
       </DialogTitle>
-      <DialogContent className='pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+      <DialogContent className='pbs-0 sm:pbe-20 sm:pli-16'>
         <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>

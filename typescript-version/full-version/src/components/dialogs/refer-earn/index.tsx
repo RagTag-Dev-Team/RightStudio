@@ -56,17 +56,14 @@ const options: Options[] = [
 const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='md' scroll='body'>
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-12 sm:pli-16'>
         Refer & Earn
         <Typography component='span' className='flex flex-col text-center'>
           {`Invite your friend to ${themeConfig.templateName}, if they sign up, you and your friend will get 30 days free
           trial`}
         </Typography>
       </DialogTitle>
-      <DialogContent className='flex flex-col gap-6 pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
+      <DialogContent className='flex flex-col gap-6 pbs-0 sm:pli-16 sm:pbe-16'>
         <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>

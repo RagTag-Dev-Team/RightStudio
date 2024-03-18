@@ -124,17 +124,14 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
         setSelected(initialSelected)
       }}
     >
-      <DialogTitle
-        variant='h4'
-        className='flex gap-2 flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-      >
+      <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         {data ? 'Edit Address' : 'Add New Address'}
         <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit Address for future billing' : 'Add address for billing address'}
         </Typography>
       </DialogTitle>
       <form onSubmit={e => e.preventDefault()}>
-        <DialogContent className='pbs-0 pbe-6 pli-10 sm:pli-16'>
+        <DialogContent className='pbs-0 sm:pli-16'>
           <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
@@ -263,7 +260,7 @@ const AddEditAddress = ({ open, setOpen, data }: AddEditAddressProps) => {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='gap-2 justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' onClick={() => setOpen(false)} type='submit'>
             {data ? 'Update' : 'Submit'}
           </Button>

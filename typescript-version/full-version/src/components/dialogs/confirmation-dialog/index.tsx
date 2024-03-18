@@ -43,7 +43,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
   return (
     <>
       <Dialog fullWidth maxWidth='xs' open={open} onClose={() => setOpen(false)}>
-        <DialogContent className='flex items-center flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
+        <DialogContent className='flex items-center flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           <i className='ri-error-warning-line text-[88px]' />
           <Wrapper
             {...(type === 'suspend-account' && {
@@ -58,7 +58,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
             {type === 'suspend-account' && <Typography>You won&#39;t be able to revert user!</Typography>}
           </Wrapper>
         </DialogContent>
-        <DialogActions className='gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='gap-2 justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' onClick={() => handleConfirmation(true)}>
             {type === 'suspend-account' ? 'Yes, Suspend User!' : 'Yes'}
           </Button>
@@ -76,7 +76,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
 
       {/* Delete Account Dialog */}
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
-        <DialogContent className='flex items-center flex-col text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
+        <DialogContent className='flex items-center flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           <i
             className={classnames('text-[88px]', {
               'ri-checkbox-circle-line': userInput,
@@ -104,7 +104,7 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
             )}
           </Typography>
         </DialogContent>
-        <DialogActions className='justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+        <DialogActions className='justify-center pbs-0 sm:pbe-16 sm:pli-16'>
           <Button variant='contained' color='success' onClick={handleSecondDialogClose}>
             Ok
           </Button>

@@ -26,14 +26,14 @@ type EditProps = {
 const AddContent = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <>
-      <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
+      <DialogContent className='overflow-visible pbs-0 sm:pli-16'>
         <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
           <i className='ri-close-line' />
         </IconButton>
         <TextField fullWidth label='Permission Name' variant='outlined' placeholder='Enter Permission Name' />
         <FormControlLabel control={<Checkbox />} label='Set as core permission' />
       </DialogContent>
-      <DialogActions className='max-sm:flex-col max-sm:items-center gap-2 justify-center pbs-0 pbe-10 pli-10 sm:pbe-16 sm:pli-16'>
+      <DialogActions className='max-sm:flex-col max-sm:items-center gap-2 justify-center pbs-0 sm:pbe-16 sm:pli-16'>
         <Button type='submit' variant='contained' onClick={handleClose}>
           Create Permission
         </Button>
@@ -47,7 +47,7 @@ const AddContent = ({ handleClose }: { handleClose: () => void }) => {
 
 const EditContent = ({ handleClose, data }: EditProps) => {
   return (
-    <DialogContent className='overflow-visible pbs-0 pbe-6 pli-10 sm:pli-16'>
+    <DialogContent className='overflow-visible pbs-0 sm:pli-16'>
       <IconButton onClick={handleClose} className='absolute block-start-4 inline-end-4'>
         <i className='ri-close-line' />
       </IconButton>
@@ -81,7 +81,7 @@ const PermissionDialog = ({ open, setOpen, data }: PermissionDialogProps) => {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'>
+      <DialogTitle className='flex flex-col gap-2 text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
         {data ? 'Edit Permission' : 'Add New Permission'}
         <Typography component='span' className='flex flex-col text-center'>
           {data ? 'Edit permission as per your requirements.' : 'Permissions you may use and assign to your users.'}

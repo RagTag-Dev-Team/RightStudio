@@ -35,16 +35,13 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
   return (
     <>
       <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle
-          variant='h4'
-          className='flex flex-col gap-2 text-center pbs-10 pbe-6 pli-10 sm:pbs-16 sm:pbe-6 sm:pli-16'
-        >
+        <DialogTitle variant='h4' className='flex flex-col gap-2 text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           Upgrade Plan
           <Typography component='span' className='flex flex-col text-center'>
             Choose the best plan for user
           </Typography>
         </DialogTitle>
-        <DialogContent className='overflow-visible pbs-0 pbe-10 pli-10 sm:pli-16 sm:pbe-16'>
+        <DialogContent className='overflow-visible pbs-0 sm:pli-16 sm:pbe-16'>
           <IconButton onClick={() => setOpen(false)} className='absolute block-start-4 inline-end-4'>
             <i className='ri-close-line' />
           </IconButton>
