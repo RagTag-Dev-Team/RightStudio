@@ -16,7 +16,6 @@ Welcome to the <TemplateName /> installation guide! 🎉 Leveraging [Create Next
 Before you begin, ensure [Node.js](https://nodejs.org/) is installed along with one of the following package managers: [pnpm](https://pnpm.io/), [yarn](https://yarnpkg.com/), or [npm](https://www.npmjs.com/).
 
 :::warning Recommendations & Requirements
-
 **Package Manager:** `pnpm` is our preferred choice for its speed and efficiency.
 
 **Node Version:** Stick to the LTS version recommended on the official Node.js site. Our template is optimized for this version to avoid compatibility issues.
@@ -25,6 +24,7 @@ Before you begin, ensure [Node.js](https://nodejs.org/) is installed along with 
 :::
 
 ### Project Setup:
+
 1. Download the <TemplateName /> zip and place it in your chosen directory before unzipping. This step prevents the loss of hidden files during transfer.
 
 2. Inside, you'll find `typescript-version` and `javascript-version` folders, each with `full-version` & `starter-kit`. Select the one that suits your project needs and open it in your code editor.
@@ -43,49 +43,45 @@ Before you begin, ensure [Node.js](https://nodejs.org/) is installed along with 
 
 Run the install command using your chosen package manager from the options below:
 
-  <Tabs
-    defaultValue="pnpm"
-    values={[
-      { label: 'pnpm (Highly Recommended)', value: 'pnpm' },
-      { label: 'yarn', value: 'yarn' },
-      { label: 'npm', value: 'npm' },
-    ]}>
-    <TabItem value="pnpm">
-     <CodeBlock language='bash'>pnpm install</CodeBlock>
-    </TabItem>
-    <TabItem value="yarn">
-     <CodeBlock language='bash'>yarn install</CodeBlock>
-    </TabItem>
-    <TabItem value="npm">
-     <CodeBlock language='bash'>npm install</CodeBlock>
-    </TabItem>
-  </Tabs>
+<Tabs
+  defaultValue="pnpm"
+  values={[
+    { label: 'pnpm (Highly Recommended)', value: 'pnpm' },
+    { label: 'yarn', value: 'yarn' },
+    { label: 'npm', value: 'npm' },
+  ]}>
+  <TabItem value="pnpm">
+    <CodeBlock language='bash'>pnpm install</CodeBlock>
+  </TabItem>
+  <TabItem value="yarn">
+    <CodeBlock language='bash'>yarn install</CodeBlock>
+  </TabItem>
+  <TabItem value="npm">
+    <CodeBlock language='bash'>npm install</CodeBlock>
+  </TabItem>
+</Tabs>
 
 ## Launch Project
 
 Initiate your project with the start command tailored for your package manager:
 
-  <Tabs
-    defaultValue="pnpm"
-    values={[
-      { label: 'pnpm (Highly Recommended)', value: 'pnpm' },
-      { label: 'yarn', value: 'yarn' },
-      { label: 'npm', value: 'npm' },
-    ]}>
-    <TabItem value="pnpm">
-      <CodeBlock language='bash'>pnpm dev</CodeBlock>
-    </TabItem>
-    <TabItem value="yarn">
-      <CodeBlock language='bash'>yarn dev</CodeBlock>
-    </TabItem>
-    <TabItem value="npm">
-      <CodeBlock language='bash'>npm run dev</CodeBlock>
-    </TabItem>
-  </Tabs>
-
-You will find following output after running above command in console:
-{/* ![CLI image](../../assets/cli-demo.png) */}
-<img alt='cli-demo' />
+<Tabs
+  defaultValue="pnpm"
+  values={[
+    { label: 'pnpm (Highly Recommended)', value: 'pnpm' },
+    { label: 'yarn', value: 'yarn' },
+    { label: 'npm', value: 'npm' },
+  ]}>
+  <TabItem value="pnpm">
+    <CodeBlock language='bash'>pnpm dev</CodeBlock>
+  </TabItem>
+  <TabItem value="yarn">
+    <CodeBlock language='bash'>yarn dev</CodeBlock>
+  </TabItem>
+  <TabItem value="npm">
+    <CodeBlock language='bash'>npm run dev</CodeBlock>
+  </TabItem>
+</Tabs>
 
 🎊 Success! Once the command runs successfully, your console will show the project is active. Visit `http://localhost:3000` to view your work in action.
 
