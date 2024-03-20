@@ -7,7 +7,17 @@ import Address from './Address'
 import PaymentMethod from './PaymentMethod'
 import InvoiceListTable from './InvoiceListTable'
 
-const getPricingData = async () => {
+// Data Imports
+import { getPricingData, getInvoiceData } from '@/app/server/actions'
+
+/**
+ * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
+ * ! `.env` file found at root of your project and also update the API endpoints like `/pages/pricing` in below example.
+ * ! Also, remove the above server action import and the action itself from the `src/app/server/actions.ts` file to clean up unused code
+ * ! because we've used the server action for getting our static data.
+ */
+
+/* const getPricingData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
@@ -16,9 +26,9 @@ const getPricingData = async () => {
   }
 
   return res.json()
-}
+} */
 
-const getInvoiceData = async () => {
+/* const getInvoiceData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/apps/invoice`)
 
@@ -27,7 +37,7 @@ const getInvoiceData = async () => {
   }
 
   return res.json()
-}
+} */
 
 const BillingPlans = async () => {
   // vars

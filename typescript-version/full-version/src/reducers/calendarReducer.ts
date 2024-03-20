@@ -1,4 +1,4 @@
-import { events } from './../app/api/fake-db/calendar/index'
+import { events } from '../fake-db/apps/calendar/index'
 
 // Type Imports
 import type { CalendarActionType, CalendarFiltersType, CalendarType, EventType } from '@/types/apps/calendarTypes'

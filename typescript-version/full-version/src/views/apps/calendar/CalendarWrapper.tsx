@@ -24,6 +24,8 @@ import Calendar from '@views/apps/calendar/Calendar'
 import SidebarLeft from '@views/apps/calendar/SidebarLeft'
 import AddEventSidebar from '@views/apps/calendar/AddEventSidebar'
 
+import { addCalendarEvent, deleteCalendarEvent, updateCalendarEvent } from '@/app/server/actions'
+
 // CalendarColors Object
 const calendarsColor: CalendarColors = {
   Personal: 'error',
@@ -57,7 +59,7 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
   // Add event handler
   const handleAddEvent = async (event: AddEventType) => {
     // Add event API
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
+    /* await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'POST',
       body: JSON.stringify(event)
     })
@@ -65,13 +67,24 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
       .then(data => {
         // Dispatch Add Event Action
         dispatch({ type: 'added', event: data.event })
-      })
+      }) */
+
+    /**
+     * ! If you need data using an API call, uncomment the above API code, update the `process.env.API_URL` variable in the
+     * ! `.env` file found at root of your project and also update the API endpoints like `/apps/calendar-events` in above example.
+     * ! Also, remove the below portion and also the server action import and the action itself from the `src/app/server/actions.ts`
+     * ! file to clean up unused code because we've used the server action for getting our static data.
+     */
+    const newEvent = await addCalendarEvent(event)
+
+    // Dispatch Add Event Action
+    dispatch({ type: 'added', event: newEvent })
   }
 
   // Update event handler
   const handleUpdateEvent = async (event: EventType) => {
     // Update event API
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
+    /* await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: {
@@ -82,13 +95,25 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
       .then(() => {
         // Dispatch Update Event Action
         dispatch({ type: 'updated', event })
-      })
+      }) */
+
+    /**
+     * ! If you need data using an API call, uncomment the above API code, update the `process.env.API_URL` variable in the
+     * ! `.env` file found at root of your project and also update the API endpoints like `/apps/calendar-events` in above example.
+     * ! Also, remove the below portion and also the server action import and the action itself from the `src/app/server/actions.ts`
+     * ! file to clean up unused code because we've used the server action for getting our static data.
+     */
+
+    const updatedEvent = await updateCalendarEvent(event)
+
+    // Dispatch Update Event Action
+    dispatch({ type: 'updated', event: updatedEvent })
   }
 
   // Delete event handler
   const handleDeleteEvent = async (eventId: EventType['id']) => {
     // Delete event API
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
+    /* await fetch(`${process.env.NEXT_PUBLIC_API_URL}/apps/calendar-events`, {
       method: 'DELETE',
       body: JSON.stringify({ id: eventId }),
       headers: {
@@ -99,7 +124,19 @@ const AppCalendar = ({ events }: { events: EventType[] }) => {
       .then(() => {
         // Dispatch Delete Event Action
         dispatch({ type: 'deleted', eventId })
-      })
+      }) */
+
+    /**
+     * ! If you need data using an API call, uncomment the above API code, update the `process.env.API_URL` variable in the
+     * ! `.env` file found at root of your project and also update the API endpoints like `/apps/calendar-events` in above example.
+     * ! Also, remove the below portion and also the server action import and the action itself from the `src/app/server/actions.ts`
+     * ! file to clean up unused code because we've used the server action for getting our static data.
+     */
+
+    const deletedEventId = await deleteCalendarEvent(eventId)
+
+    // Dispatch Delete Event Action
+    dispatch({ type: 'deleted', eventId: deletedEventId })
   }
 
   // Dispatch Select Event Action
