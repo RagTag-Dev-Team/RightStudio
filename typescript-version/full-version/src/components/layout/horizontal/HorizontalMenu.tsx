@@ -21,6 +21,7 @@ import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
+import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
 import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 
 // Menu Data Imports
@@ -51,10 +52,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
-          menuItemStyles: {
-            button: { paddingBlock: '12px' },
-            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-          }
+          menuItemStyles: verticalMenuItemStyles(settings, theme)
         }}
       >
         <SubMenu label={dictionary['navigation'].dashboards}>
@@ -254,10 +252,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
-          menuItemStyles: {
-            button: { paddingBlock: '12px' },
-            subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-          }
+          menuItemStyles: verticalMenuItemStyles(settings, theme)
         }}
       >
         <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
