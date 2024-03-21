@@ -41,8 +41,6 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
       const subMenuItem = item as VerticalSubMenuDataType
       const menuItem = item as VerticalMenuItemDataType
 
-      const icon = <i className={menuItem.icon} />
-
       // Check if the current item is a section
       if (menuSectionItem.isSection) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -58,7 +56,9 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
 
       // Check if the current item is a sub menu
       if (subMenuItem.children) {
-        const { children, prefix, suffix, ...rest } = subMenuItem
+        const { children, icon, prefix, suffix, ...rest } = subMenuItem
+
+        const Icon = icon ? <i className={icon} /> : null
 
         const subMenuPrefix: ReactNode =
           prefix && (prefix as ChipProps).label ? (
@@ -76,7 +76,13 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
 
         // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
         return (
-          <VerticalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest} icon={icon}>
+          <VerticalSubMenu
+            key={index}
+            prefix={subMenuPrefix}
+            suffix={subMenuSuffix}
+            {...rest}
+            {...(Icon && { icon: Icon })}
+          >
             {children && renderMenuItems(children)}
           </VerticalSubMenu>
         )
@@ -88,7 +94,9 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
         : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
 
       // If the current item is neither a section nor a sub menu, return a MenuItem component
-      const { prefix, suffix, ...rest } = menuItem
+      const { icon, prefix, suffix, ...rest } = menuItem
+
+      const Icon = icon ? <i className={icon} /> : null
 
       const menuItemPrefix: ReactNode =
         prefix && (prefix as ChipProps).label ? <Chip size='small' {...(prefix as ChipProps)} /> : (prefix as ReactNode)
@@ -97,7 +105,14 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
         suffix && (suffix as ChipProps).label ? <Chip size='small' {...(suffix as ChipProps)} /> : (suffix as ReactNode)
 
       return (
-        <VerticalMenuItem key={index} prefix={menuItemPrefix} suffix={menuItemSuffix} {...rest} href={href} icon={icon}>
+        <VerticalMenuItem
+          key={index}
+          prefix={menuItemPrefix}
+          suffix={menuItemSuffix}
+          {...rest}
+          href={href}
+          {...(Icon && { icon: Icon })}
+        >
           {menuItem.label}
         </VerticalMenuItem>
       )
@@ -118,11 +133,11 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
       const subMenuItem = item as HorizontalSubMenuDataType
       const menuItem = item as HorizontalMenuItemDataType
 
-      const icon = <i className={menuItem.icon} />
-
       // Check if the current item is a sub menu
       if (subMenuItem.children) {
-        const { children, prefix, suffix, ...rest } = subMenuItem
+        const { children, icon, prefix, suffix, ...rest } = subMenuItem
+
+        const Icon = icon ? <i className={icon} /> : null
 
         const subMenuPrefix: ReactNode =
           prefix && (prefix as ChipProps).label ? (
@@ -140,7 +155,13 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
 
         // If it is, return a SubMenu component and call generateMenu with the current subMenuItem's children
         return (
-          <HorizontalSubMenu key={index} prefix={subMenuPrefix} suffix={subMenuSuffix} {...rest} icon={icon}>
+          <HorizontalSubMenu
+            key={index}
+            prefix={subMenuPrefix}
+            suffix={subMenuSuffix}
+            {...rest}
+            {...(Icon && { icon: Icon })}
+          >
             {children && renderMenuItems(children)}
           </HorizontalSubMenu>
         )
@@ -152,7 +173,9 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
         : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
 
       // If the current item is not a sub menu, return a MenuItem component
-      const { prefix, suffix, ...rest } = menuItem
+      const { icon, prefix, suffix, ...rest } = menuItem
+
+      const Icon = icon ? <i className={icon} /> : null
 
       const menuItemPrefix: ReactNode =
         prefix && (prefix as ChipProps).label ? <Chip size='small' {...(prefix as ChipProps)} /> : (prefix as ReactNode)
@@ -167,7 +190,7 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
           suffix={menuItemSuffix}
           {...rest}
           href={href}
-          icon={icon}
+          {...(Icon && { icon: Icon })}
         >
           {menuItem.label}
         </HorizontalMenuItem>
