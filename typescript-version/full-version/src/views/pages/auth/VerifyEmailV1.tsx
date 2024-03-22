@@ -1,13 +1,11 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+
+// Component Imports
+import Link from '@components/Link'
 
 const VerifyEmailV1 = () => {
   return (
@@ -24,7 +22,7 @@ const VerifyEmailV1 = () => {
         </Button>
         <div className='flex justify-center items-center flex-wrap gap-2'>
           <Typography>Didn&#39;t get the mail?</Typography>
-          <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
+          <Typography color='primary' component={Link}>
             Resend
           </Typography>
         </div>

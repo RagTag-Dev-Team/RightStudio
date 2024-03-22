@@ -1,12 +1,11 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
+
+// Component Imports
+import Form from '@components/Form'
+import Link from '@components/Link'
 
 const TwoStepsV2 = () => {
   return (
@@ -20,7 +19,7 @@ const TwoStepsV2 = () => {
             We sent a verification code to your mobile. Enter the code from the mobile in the field below.
           </Typography>
           <Typography className='font-medium'>******1234</Typography>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
+          <Form noValidate autoComplete='off'>
             <Button fullWidth variant='contained' type='submit'>
               Skip For Now
             </Button>
@@ -34,11 +33,11 @@ const TwoStepsV2 = () => {
             </div>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>
-              <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
+              <Typography color='primary' component={Link}>
                 Resend
               </Typography>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({
         justifyContent: 'space-between',
         borderRadius: theme.shape.borderRadius,
         padding: theme.spacing(2.5, 2.4, 2.5, 6),
-        border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.14)' : 'rgba(247, 244, 254, 0.14)'}`,
+        border: '1px solid var(--mui-palette-divider)',
         '& .file-details': {
           display: 'flex',
           alignItems: 'center'
@@ -51,7 +51,7 @@ const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({
           height: 38,
           padding: theme.spacing(0.75),
           borderRadius: theme.shape.borderRadius,
-          border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.14)' : 'rgba(247, 244, 254, 0.14)'}`
+          border: '1px solid var(--mui-palette-divider)'
         },
         '& .file-name': {
           fontWeight: 600

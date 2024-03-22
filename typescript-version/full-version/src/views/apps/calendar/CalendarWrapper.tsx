@@ -19,11 +19,12 @@ import type {
 // Reducer Imports
 import calendarReducer from '@reducers/calendarReducer'
 
-// View Imports
-import Calendar from '@views/apps/calendar/Calendar'
-import SidebarLeft from '@views/apps/calendar/SidebarLeft'
-import AddEventSidebar from '@views/apps/calendar/AddEventSidebar'
+// Component Imports
+import Calendar from './Calendar'
+import SidebarLeft from './SidebarLeft'
+import AddEventSidebar from './AddEventSidebar'
 
+// Server Action Imports
 import { addCalendarEvent, deleteCalendarEvent, updateCalendarEvent } from '@/app/server/actions'
 
 // CalendarColors Object

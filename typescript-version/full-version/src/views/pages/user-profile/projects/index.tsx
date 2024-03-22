@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Avatar from '@mui/material/Avatar'
@@ -20,6 +15,7 @@ import type { ProjectsTabType } from '@/types/pages/profileTypes'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import Link from '@components/Link'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
@@ -34,12 +30,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                     <div className='flex items-center'>
                       <Avatar src={item.avatar} />
                       <div>
-                        <Typography
-                          href='/'
-                          component={Link}
-                          onClick={e => e.preventDefault()}
-                          className='hover:text-primary'
-                        >
+                        <Typography component={Link} className='hover:text-primary'>
                           {item.title}
                         </Typography>
                         <Typography>

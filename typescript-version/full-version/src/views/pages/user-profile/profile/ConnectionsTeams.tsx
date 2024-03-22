@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -19,6 +14,7 @@ import type { ProfileTeamsTechType, ProfileConnectionsType } from '@/types/pages
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import Link from '@components/Link'
 
 type Props = {
   teamsTech?: ProfileTeamsTechType[]
@@ -55,7 +51,7 @@ const ConnectionsTeams = (props: Props) => {
               ))}
           </CardContent>
           <CardActions className='flex justify-center'>
-            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+            <Typography component={Link} color='primary'>
               View all connections
             </Typography>
           </CardActions>
@@ -83,7 +79,7 @@ const ConnectionsTeams = (props: Props) => {
               ))}
           </CardContent>
           <CardActions className='flex justify-center'>
-            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+            <Typography component={Link} color='primary'>
               View all teams
             </Typography>
           </CardActions>

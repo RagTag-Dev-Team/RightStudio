@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import { useState } from 'react'
 import type { FormEvent } from 'react'

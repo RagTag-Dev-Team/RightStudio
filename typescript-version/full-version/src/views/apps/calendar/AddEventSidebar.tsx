@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import { useState, useEffect, forwardRef, useCallback } from 'react'
 
