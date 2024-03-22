@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import { useParams } from 'next/navigation'
 

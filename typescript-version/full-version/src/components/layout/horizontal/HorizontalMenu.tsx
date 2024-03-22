@@ -1,6 +1,3 @@
-// Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
-'use client'
-
 // Next Imports
 import { useParams } from 'next/navigation'
 
