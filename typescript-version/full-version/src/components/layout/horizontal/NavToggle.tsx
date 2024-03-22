@@ -1,5 +1,3 @@
-'use client'
-
 // Icon Imports
 import HamburgerMenuIcon from '@layouts/svg/HamburgerMenu'
 
