@@ -73,7 +73,7 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 }))
 
 const AppReactToastify = (props: Props) => {
-  const { boxProps, direction, ...rest } = props
+  const { boxProps, direction = 'ltr', ...rest } = props
 
   const positionMap: Partial<Record<ToastPosition, ToastPosition>> = {
     'top-right': 'top-left',
