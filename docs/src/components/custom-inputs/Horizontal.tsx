@@ -36,8 +36,8 @@ const Root = styled('div', {
   },
   '&.active': {
     borderColor: 'var(--mui-palette-primary-main)',
-    '& > svg, & > i': {
-      color: 'var(--mui-palette-primary-main)'
+    '& i, & svg': {
+      color: 'var(--mui-palette-primary-main) !important'
     }
   }
 }))
@@ -47,7 +47,7 @@ const Title = styled(Typography, {
   slot: 'title'
 })(({ theme }) => ({
   fontWeight: theme.typography.fontWeightMedium,
-  color: 'var(--mui-palette-text-primary)'
+  color: 'var(--mui-palette-text-primary) !important'
 }))
 
 const Meta = styled(Typography, {
@@ -55,7 +55,7 @@ const Meta = styled(Typography, {
   slot: 'meta'
 })(({ theme }) => ({
   ...theme.typography.body2,
-  color: 'var(--mui-palette-text-disabled)'
+  color: 'var(--mui-palette-text-disabled) !important'
 }))
 
 const Content = styled(Typography, {

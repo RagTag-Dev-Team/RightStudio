@@ -10,6 +10,7 @@ import Rating from './rating'
 import tablePagination from './table-pagination'
 import tabs from './tabs'
 import timeline from './timeline'
+import tooltip from './tooltip'
 import typography from './typography'
 
 const overrides = () => {
@@ -26,6 +27,7 @@ const overrides = () => {
     tablePagination,
     tabs,
     timeline,
+    tooltip,
     typography
   )
 }

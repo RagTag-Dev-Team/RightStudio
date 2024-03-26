@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
 
+// Component Imports
+import Link from '@components/Link'
+
 type ConnectedAccountsType = {
   title: string
   logo: string
@@ -119,7 +122,9 @@ const Connections = () => {
                   <div className='flex-grow'>
                     <Typography>{item.title}</Typography>
                     {item.isConnected ? (
-                      <Typography>{item.username}</Typography>
+                      <Typography color='primary' component={Link}>
+                        {item.username}
+                      </Typography>
                     ) : (
                       <Typography>Not Connected</Typography>
                     )}

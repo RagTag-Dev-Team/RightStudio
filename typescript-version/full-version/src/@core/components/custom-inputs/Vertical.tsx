@@ -34,7 +34,7 @@ const Root = styled('div', {
   '&.active': {
     borderColor: 'var(--mui-palette-primary-main)',
     '& > svg, & > i': {
-      color: 'var(--mui-palette-primary-main)'
+      color: 'var(--mui-palette-primary-main) !important'
     }
   },
   '&.radio-only .MuiRadio-root': {
@@ -49,7 +49,8 @@ const Title = styled(Typography, {
   name: 'MuiCustomInputVertical',
   slot: 'title'
 })(({ theme }) => ({
-  fontWeight: theme.typography.fontWeightMedium
+  fontWeight: theme.typography.fontWeightMedium,
+  color: 'var(--mui-palette-text-primary) !important'
 }))
 
 const Content = styled(Typography, {

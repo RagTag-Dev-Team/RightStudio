@@ -9,7 +9,7 @@ import type { BoxProps } from '@mui/material/Box'
 
 // Styled Components
 const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({
-  '&.dropzone, & .dropzone': {
+  '& .dropzone': {
     minHeight: 300,
     display: 'flex',
     flexWrap: 'wrap',
