@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -6,9 +9,6 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
 import Button from '@mui/material/Button'
-
-// Component Imports
-import Link from '@components/Link'
 
 type ConnectedAccountsType = {
   title: string
@@ -22,6 +22,7 @@ type SocialAccountsType = {
   logo: string
   username?: string
   isConnected: boolean
+  href?: string
 }
 
 // Vars
@@ -68,13 +69,15 @@ const socialAccountsArr: SocialAccountsType[] = [
     title: 'Twitter',
     isConnected: true,
     username: '@Theme_Selection',
-    logo: '/images/logos/twitter.png'
+    logo: '/images/logos/twitter.png',
+    href: 'https://twitter.com/Theme_Selection'
   },
   {
     title: 'Linkedin',
     isConnected: true,
     username: '@ThemeSelection',
-    logo: '/images/logos/linkedin.png'
+    logo: '/images/logos/linkedin.png',
+    href: 'https://in.linkedin.com/company/themeselection'
   },
   {
     title: 'Dribbble',
@@ -122,7 +125,7 @@ const Connections = () => {
                   <div className='flex-grow'>
                     <Typography>{item.title}</Typography>
                     {item.isConnected ? (
-                      <Typography color='primary' component={Link}>
+                      <Typography color='primary' component={Link} href={item.href || '/'} target='_blank'>
                         {item.username}
                       </Typography>
                     ) : (
