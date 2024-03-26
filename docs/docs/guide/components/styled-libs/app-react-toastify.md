@@ -28,7 +28,7 @@ const Providers = (/* props */) => {
     {/* Other providers in the wrapper */}
     <ThemeProvider {/* props of ThemeProvider */}>
       {children}
-      <AppReactToastify direction={direction} hideProgressBar />
+      <AppReactToastify {/* props of AppReactToastify */} />
     </ThemeProvider>
   )
 }

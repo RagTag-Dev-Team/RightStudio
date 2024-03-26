@@ -70,10 +70,13 @@ const EnterComponent = ({ active }: { active: boolean }) => {
   return (
     active && (
       <i
-        className={classnames({
-          'ri-corner-down-left-fill': theme.direction === 'ltr',
-          'ri-corner-down-right-fill': theme.direction === 'rtl'
-        })}
+        className={classnames(
+          {
+            'ri-corner-down-left-fill': theme.direction === 'ltr',
+            'ri-corner-down-right-fill': theme.direction === 'rtl'
+          },
+          'text-xl'
+        )}
       />
     )
   )
