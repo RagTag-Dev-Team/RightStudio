@@ -8,10 +8,17 @@ import type { BoxProps } from '@mui/material/Box'
 // Third-party Imports
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
-import type { ToastContainerProps } from 'react-toastify'
+import type { ToastContainerProps, ToastPosition } from 'react-toastify'
+
+// Type Imports
+import type { Direction } from '@core/types'
+
+// Config Imports
+import themeConfig from '@configs/themeConfig'
 
 type Props = ToastContainerProps & {
   boxProps?: BoxProps
+  direction?: Direction
 }
 
 // Styled Components
@@ -66,11 +73,22 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 }))
 
 const AppReactToastify = (props: Props) => {
-  const { boxProps, ...rest } = props
+  const { boxProps, direction, ...rest } = props
+
+  const positionMap: Partial<Record<ToastPosition, ToastPosition>> = {
+    'top-right': 'top-left',
+    'top-left': 'top-right',
+    'bottom-left': 'bottom-right',
+    'bottom-right': 'bottom-left',
+    'top-center': 'top-center',
+    'bottom-center': 'bottom-center'
+  }
+
+  const position = direction === 'rtl' ? positionMap[themeConfig.toastPosition] : themeConfig.toastPosition
 
   return (
     <ToastifyWrapper {...boxProps}>
-      <ToastContainer {...rest} />
+      <ToastContainer rtl={direction === 'rtl'} position={position} {...rest} />
     </ToastifyWrapper>
   )
 }
