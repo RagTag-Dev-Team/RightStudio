@@ -25,3 +25,11 @@ As you dive deeper into our documentation, you'll find comprehensive guides on s
 Feel free to explore, experiment, and adapt these methods to match your application's authentication needs. Let's empower your users with secure and hassle-free authentication using NextAuth.js!
 
 Happy authenticating! 🛡️🔐
+
+## Auth Other than NextAuth.js
+
+In case you do not want to use NextAuth.js and want to implement authentication from scratch, you may start your project with the starter-kit or follow the steps mentioned in the [Remove Authentication from full-version](/docs/guide/authentication/remove-auth) guide.
+
+You may refer to [this](https://blog.openreplay.com/how-to--authentication-middleware-in-nextjs) article if you do not want to use any of the third-party authentication providers and want to implement authentication using your own custom logic.
+
+If you're looking for alternatives to NextAuth.js, you might want to consider any third-party authentication providers such as Auth0, Firebase, Amazon Cognito, Supabase, etc.
