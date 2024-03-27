@@ -49,7 +49,7 @@ const HorizontalMenu = (/* { dictionary }: { dictionary: Awaited<ReturnType<type
           <MenuItem component={<RouterLink href='/' />}>Home</MenuItem>
           <MenuItem component='div'>About</MenuItem>
           <MenuItem href='/about'>About</MenuItem>
-          <MenuItem href='/email'>Email</MenuItem>
+          <MenuItem href='/apps/email'>Email</MenuItem>
           <MenuItem href='/chat'>Chat</MenuItem>
           <SubMenu label='Authentication'>
             <SubMenu label='Login'>

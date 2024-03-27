@@ -55,7 +55,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
         </SubMenu>
         <MenuItem href={`/${locale}/about`}>About</MenuItem>
         <MenuSection label={dictionary['navigation'].appsPages}>
-          <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`/${locale}/apps/email`}>{dictionary['navigation'].email}</MenuItem>
           <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>

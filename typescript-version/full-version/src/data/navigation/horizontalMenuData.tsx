@@ -38,7 +38,7 @@ const horizontalMenuData = (
     children: [
       {
         label: dictionary['navigation'].email,
-        href: '/email'
+        href: '/apps/email'
       },
       {
         label: dictionary['navigation'].chat,
