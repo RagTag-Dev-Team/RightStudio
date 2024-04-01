@@ -1,0 +1,84 @@
+name: 'Deploy - Documentation'
+run-name: ${{ inputs.is_production && '🚀' || '🧪' }} Deploy - Documentation
+
+on:
+  workflow_dispatch:
+    inputs:
+      is_production:
+        type: boolean
+        description: Is production deployment
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    env:
+      # We have intentionally saved the secrets in the environment variables
+      DEPLOY_PROD_DIR: ${{ secrets.PROD_DIR }}
+      DEPLOY_STAG_DIR: ${{ secrets.STAG_DIR }}
+      DEPLOY_DIR: ''
+      BRAND_NAME: ''
+
+    steps:
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: ⚙️ Set DEPLOY_DIR environment variable
+        run: echo DEPLOY_DIR=${{ inputs.is_production && env.DEPLOY_PROD_DIR || env.DEPLOY_STAG_DIR }} >> $GITHUB_ENV
+
+      - name: ⚙️ Set BRAND_NAME environment variable from repo name
+        run: echo BRAND_NAME=${{ github.event.repository.name }} | cut -d '-' -f1 >> $GITHUB_ENV
+
+      - name: ⬇️ Checkout current repo
+        uses: actions/checkout@v3
+        with:
+          path: ${{ env.BRAND_NAME }}/nextjs-mui
+
+      - name: ⬇️ Checkout automation-scripts repo
+        uses: actions/checkout@v3
+        with:
+          repository: themeselection/automation-scripts
+          token: ${{ secrets.GH_PAT }}
+          path: automation-scripts
+
+      - name: ⬇️ Install packages in automation-scripts/nextjs directory
+        working-directory: automation-scripts/nextjs
+        run: pnpm i
+
+      - name: ⬇️ Install packages in template docs directory
+        working-directory: ${{ env.BRAND_NAME }}/nextjs-mui/docs
+        run: pnpm i
+
+      - name: 📦 Generate documentation
+        working-directory: automation-scripts/nextjs
+        run: pnpm tsx ./src/generateDocs.ts --templateName ${{ env.BRAND_NAME }} $([[ "${{ inputs.is_production }}" == "true" ]] && echo -p)
+
+      - name: ⚙️ Zip old documentation & delete old documentation
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            mkdir -p ${{ env.DEPLOY_DIR }}
+            cd ${{ env.DEPLOY_DIR }}
+            rm -rf documentation-backup-*.zip
+            DOC_ZIP_NAME="documentation-backup-$(date +"%Y-%m-%d-%H-%M-%S").zip"
+            [[ "${{ inputs.is_production }}" == "true" ]] && rm -rf ${{ secrets.STAG_DIR }}/documentation && zip -r $DOC_ZIP_NAME documentation
+            rm -rf documentation
+
+      - name: ⚙️ Move documentation to github workspace directory
+        run: mv ${{ env.BRAND_NAME }}/nextjs-mui/docs/documentation $GITHUB_WORKSPACE
+
+      - name: Upload new documentation
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          source: documentation
+          target: ${{ env.DEPLOY_DIR }}
