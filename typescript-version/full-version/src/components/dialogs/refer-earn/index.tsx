@@ -21,6 +21,9 @@ import InputAdornment from '@mui/material/InputAdornment'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
+
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
@@ -122,15 +125,15 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                 }
               />
               <div className='flex items-center'>
-                <Button className='rounded text-white bg-[#4267b2]'>
-                  <i className='ri-facebook-circle-fill' />
-                </Button>
-                <Button className='rounded text-white bg-[#1da1f2]'>
-                  <i className='ri-twitter-fill' />
-                </Button>
-                <Button className='rounded text-white bg-[#0077b5]'>
-                  <i className='ri-linkedin-box-fill' />
-                </Button>
+                <CustomIconButton className='rounded text-white bg-[#4267b2]'>
+                  <i className='ri-facebook-circle-line' />
+                </CustomIconButton>
+                <CustomIconButton className='rounded text-white bg-[#1da1f2]'>
+                  <i className='ri-twitter-line' />
+                </CustomIconButton>
+                <CustomIconButton className='rounded text-white bg-[#007bb6]'>
+                  <i className='ri-linkedin-line' />
+                </CustomIconButton>
               </div>
             </div>
           </div>

@@ -8,7 +8,9 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
-import Button from '@mui/material/Button'
+
+// Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 
 type ConnectedAccountsType = {
   title: string
@@ -133,9 +135,9 @@ const Connections = () => {
                     )}
                   </div>
                 </div>
-                <Button variant='outlined' color='secondary'>
+                <CustomIconButton variant='outlined' color={item.isConnected ? 'error' : 'secondary'}>
                   <i className={item.isConnected ? 'ri-delete-bin-7-line' : 'ri-links-line'} />
-                </Button>
+                </CustomIconButton>
               </div>
             ))}
           </CardContent>

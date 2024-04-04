@@ -4,7 +4,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+
 import Avatar from '@mui/material/Avatar'
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
@@ -15,6 +15,7 @@ import type { ProfileTeamsTechType, ProfileConnectionsType } from '@/types/pages
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import Link from '@components/Link'
+import CustomIconButton from '@core/components/mui/IconButton'
 
 type Props = {
   teamsTech?: ProfileTeamsTechType[]
@@ -44,9 +45,9 @@ const ConnectionsTeams = (props: Props) => {
                       <Typography>{connection.connections} Connections</Typography>
                     </div>
                   </div>
-                  <Button variant={connection.isFriend ? 'contained' : 'outlined'}>
+                  <CustomIconButton color='primary' variant={connection.isFriend ? 'contained' : 'outlined'}>
                     <i className={connection.isFriend ? 'ri-user-3-line' : 'ri-user-add-line'} />
-                  </Button>
+                  </CustomIconButton>
                 </div>
               ))}
           </CardContent>

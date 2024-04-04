@@ -26,6 +26,8 @@ import ButtonsContained from '@docPages/components/buttons/ButtonsContained'
 import SourceCodeButtonsContained from '!!raw-loader!@docPages/components/buttons/ButtonsContained'
 import ButtonsCustomized from '@docPages/components/buttons/ButtonsCustomized'
 import SourceCodeButtonsCustomized from '!!raw-loader!@docPages/components/buttons/ButtonsCustomized'
+import CustomIconButtons from '@docPages/components/buttons/CustomIconButtons'
+import SourceCodeCustomIconButtons from '!!raw-loader!@docPages/components/buttons/CustomIconButtons'
 import ButtonsWithIconAndLabel from '@docPages/components/buttons/ButtonsWithIconAndLabel'
 import SourceCodeButtonsWithIconAndLabel from '!!raw-loader!@docPages/components/buttons/ButtonsWithIconAndLabel'
 
@@ -115,25 +117,46 @@ Please refer to MUI's official docs for more details on component's [usage guide
     </CardSnippet>
   </Grid>
   <Grid item xs={12}>
-    <CardSnippet
-      title="Button Colors"
-      code={SourceCodeButtonsColors}
-    >
-      {
-        <Typography className='mbe-4'>
-          Use <code>color</code> prop with <code>&lt;Button&gt;</code> component for different colored buttons.
-        </Typography>
-      }
-      <ButtonsColors />
-    </CardSnippet>
-  </Grid>
-  <Grid item xs={12}>
-    <CardSnippet
-      title="Customized Buttons"
-      code={SourceCodeButtonsCustomized}
-    >
-     <ButtonsCustomized />
-    </CardSnippet>
+    <Grid container spacing={6}>
+      <Grid item xs={12} lg={6}>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <CardSnippet
+              title="Button Colors"
+              code={SourceCodeButtonsColors}
+            >
+              {
+                <Typography className='mbe-4'>
+                  Use <code>color</code> prop with <code>&lt;Button&gt;</code> component for different colored buttons.
+                </Typography>
+              }
+              <ButtonsColors />
+            </CardSnippet>
+          </Grid>
+          <Grid item xs={12}>
+            <CardSnippet
+              title="Customized Buttons"
+              code={SourceCodeButtonsCustomized}
+            >
+            <ButtonsCustomized />
+            </CardSnippet>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={12} lg={6}>
+        <CardSnippet
+          title="Custom Icon Buttons"
+          code={SourceCodeCustomIconButtons}
+        >
+          {
+            <Typography className='mbe-4'>
+              Use <code>&lt;CustomIconButton&gt;</code> component to use our custom icon button. You can use all the props of the <code>&lt;Button&gt;</code> component and additionally, we have added <code>default</code> color.
+            </Typography>
+          }
+          <CustomIconButtons />
+        </CardSnippet>
+      </Grid>
+    </Grid>
   </Grid>
   <Grid item xs={12}>
     <CardSnippet

@@ -134,6 +134,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'guide/components/mui/card',
             'guide/components/mui/chip',
+            'guide/components/mui/iconButton',
             'guide/components/mui/stepper',
             'guide/components/mui/tabs'
           ]

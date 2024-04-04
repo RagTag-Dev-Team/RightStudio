@@ -13,6 +13,7 @@ import type { ConnectionsTabType } from '@/types/pages/profileTypes'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import Link from '@components/Link'
+import CustomIconButton from '@core/components/mui/IconButton'
 
 const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
   return (
@@ -63,9 +64,9 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                     >
                       {item.isConnected ? 'Connected' : 'Connect'}
                     </Button>
-                    <Button variant='outlined' color='secondary'>
+                    <CustomIconButton variant='outlined' color='secondary'>
                       <i className='ri-mail-line' />
-                    </Button>
+                    </CustomIconButton>
                   </div>
                 </CardContent>
               </Card>

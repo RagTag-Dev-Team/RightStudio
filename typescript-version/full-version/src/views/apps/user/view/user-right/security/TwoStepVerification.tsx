@@ -4,8 +4,10 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputLabel from '@mui/material/InputLabel'
 import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+
+// Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 
 const TwoStepVerification = () => {
   return (
@@ -16,12 +18,12 @@ const TwoStepVerification = () => {
         <div className='flex items-center'>
           <TextField id='sms' placeholder='+1(968) 819-2547' fullWidth size='small' />
           <div className='flex'>
-            <Button variant='outlined' color='secondary'>
-              <i className='ri-edit-box-line text-2xl' />
-            </Button>
-            <Button variant='outlined' color='secondary'>
-              <i className='ri-user-add-line text-2xl' />
-            </Button>
+            <CustomIconButton variant='outlined' color='secondary'>
+              <i className='ri-edit-box-line' />
+            </CustomIconButton>
+            <CustomIconButton variant='outlined' color='secondary'>
+              <i className='ri-user-add-line' />
+            </CustomIconButton>
           </div>
         </div>
         <Typography>
