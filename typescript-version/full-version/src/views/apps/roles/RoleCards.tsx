@@ -1,3 +1,5 @@
+'use client'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -36,7 +38,8 @@ const RoleCards = () => {
     children: 'Edit Role',
     variant: 'body2',
     component: Link,
-    className: 'text-primary'
+    className: 'text-primary',
+    onClick: e => e.preventDefault()
   }
 
   const CardProps: CardProps = {
