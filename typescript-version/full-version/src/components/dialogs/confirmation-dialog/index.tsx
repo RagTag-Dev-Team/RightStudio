@@ -26,6 +26,9 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
   const [secondDialog, setSecondDialog] = useState(false)
   const [userInput, setUserInput] = useState(false)
 
+  // Vars
+  const Wrapper = type === 'suspend-account' ? 'div' : Fragment
+
   const handleSecondDialogClose = () => {
     setSecondDialog(false)
     setOpen(false)
@@ -37,25 +40,24 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
     setOpen(false)
   }
 
-  // Vars
-  const Wrapper = type === 'suspend-account' ? 'div' : Fragment
-
   return (
     <>
       <Dialog fullWidth maxWidth='xs' open={open} onClose={() => setOpen(false)}>
         <DialogContent className='flex items-center flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
-          <i className='ri-error-warning-line text-[88px]' />
+          <i className='ri-error-warning-line text-[88px] mbe-6 text-warning' />
           <Wrapper
             {...(type === 'suspend-account' && {
-              className: 'flex flex-col items-center gap-5'
+              className: 'flex flex-col items-center gap-2'
             })}
           >
-            <Typography>
+            <Typography variant='h4'>
               {type === 'delete-account' && 'Are you sure you want to deactivate your account?'}
               {type === 'unsubscribe' && 'Are you sure to cancel your subscription?'}
               {type === 'suspend-account' && 'Are you sure?'}
             </Typography>
-            {type === 'suspend-account' && <Typography>You won&#39;t be able to revert user!</Typography>}
+            {type === 'suspend-account' && (
+              <Typography color='text.primary'>You won&#39;t be able to revert user!</Typography>
+            )}
           </Wrapper>
         </DialogContent>
         <DialogActions className='gap-2 justify-center pbs-0 sm:pbe-16 sm:pli-16'>
@@ -78,17 +80,19 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
         <DialogContent className='flex items-center flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           <i
-            className={classnames('text-[88px]', {
+            className={classnames('text-[88px] mbe-6', {
               'ri-checkbox-circle-line': userInput,
-              'ri-close-circle-line': !userInput
+              'text-success': userInput,
+              'ri-close-circle-line': !userInput,
+              'text-error': !userInput
             })}
           />
-          <Typography>
+          <Typography variant='h4' className='mbe-2'>
             {userInput
               ? `${type === 'delete-account' ? 'Deactivated' : type === 'unsubscribe' ? 'Unsubscribed' : 'Suspended!'}`
               : 'Cancelled'}
           </Typography>
-          <Typography>
+          <Typography color='text.primary'>
             {userInput ? (
               <>
                 {type === 'delete-account' && 'Your account has been deactivated successfully.'}

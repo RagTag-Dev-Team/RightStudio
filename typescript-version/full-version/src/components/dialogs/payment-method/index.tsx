@@ -7,6 +7,10 @@ import DialogContent from '@mui/material/DialogContent'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
+import { useColorScheme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 type PaymentMethodProps = {
   open: boolean
@@ -61,6 +65,9 @@ const cardList: CardList[] = [
 ]
 
 const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
+  // Hooks
+  const { mode } = useColorScheme()
+
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)} maxWidth='sm' scroll='body'>
       <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-10 sm:pli-16'>
@@ -80,7 +87,13 @@ const PaymentMethod = ({ open, setOpen }: PaymentMethodProps) => {
               className='flex gap-x-4 gap-y-1 flex-col sm:flex-row !items-start sm:items-center justify-between first:pbe-4 last:pbs-4 [&:not(:last-child):not(:first-child)]:plb-4 [&:not(:last-child)]:border-be'
             >
               <div className='flex items-center gap-4'>
-                <Avatar variant='rounded' className='bg-actionHover is-[50px] bs-[30px]'>
+                <Avatar
+                  variant='rounded'
+                  className={classnames('is-[50px] bs-[30px]', {
+                    'bg-white': mode === 'dark',
+                    'bg-actionHover': mode === 'light'
+                  })}
+                >
                   <img src={card.image} alt={card.alt} height={card.imgHeight} width={card.imgWidth} />
                 </Avatar>
                 <Typography className='font-medium'>{card.cardName}</Typography>

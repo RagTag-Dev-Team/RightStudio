@@ -139,6 +139,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         borderRightWidth: 0
       }
     },
+    '& colgroup col': {
+      width: '60px !important'
+    },
 
     // Event Colors
     '& .fc-event': {
@@ -319,6 +322,14 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         },
         '& .fc-timegrid-axis': {
           borderColor: theme.palette.divider
+        },
+        '& .fc-timegrid-axis-frame': {
+          justifyContent: 'center',
+          padding: theme.spacing(2),
+          alignItems: 'flex-start'
+        },
+        '&:has(.fc-timegrid-divider)': {
+          height: 0
         }
       },
       '& .fc-timegrid-axis': {
@@ -358,6 +369,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       '.fc-timegrid-col-events': {
         margin: 0
       }
+    },
+    '& .fc-timeGridWeek-view .fc-timegrid-slot-minor': {
+      borderBlockStart: 0
     },
 
     // List View

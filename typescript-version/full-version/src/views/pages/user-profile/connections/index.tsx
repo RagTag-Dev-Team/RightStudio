@@ -65,7 +65,7 @@ const Connections = ({ data }: { data?: ConnectionsTabType[] }) => {
                       {item.isConnected ? 'Connected' : 'Connect'}
                     </Button>
                     <CustomIconButton variant='outlined' color='secondary'>
-                      <i className='ri-mail-line' />
+                      <i className='ri-mail-open-line' />
                     </CustomIconButton>
                   </div>
                 </CardContent>
