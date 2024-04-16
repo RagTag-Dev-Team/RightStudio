@@ -49,6 +49,9 @@ const horizontalMenuData = (
         href: '/apps/calendar'
       },
       {
+        label: dictionary['navigation'].kanban
+      },
+      {
         label: dictionary['navigation'].invoice,
         children: [
           {

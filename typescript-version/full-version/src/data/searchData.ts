@@ -57,573 +57,580 @@ const data: SearchData[] = [
   },
   {
     id: '8',
+    name: 'Kanban',
+    url: '/apps/kanban',
+    icon: 'Icon',
+    section: 'Apps'
+  },
+  {
+    id: '9',
     name: 'Invoice List',
     url: '/apps/invoice/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '9',
+    id: '10',
     name: 'Invoice Preview',
     url: '/apps/invoice/preview/4987',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '10',
+    id: '11',
     name: 'Invoice Edit',
     url: '/apps/invoice/edit/4987',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '11',
+    id: '12',
     name: 'Invoice Add',
     url: '/apps/invoice/add',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '12',
+    id: '13',
     name: 'User List',
     url: '/apps/user/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '13',
+    id: '14',
     name: 'User View',
     url: '/apps/user/view',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '14',
+    id: '15',
     name: 'Roles',
     url: '/apps/roles',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '15',
+    id: '16',
     name: 'Permissions',
     url: '/apps/permissions',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '16',
+    id: '17',
     name: 'User Profile',
     url: '/pages/user-profile',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '17',
+    id: '18',
     name: 'Account Settings',
     url: '/pages/account-settings',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '18',
+    id: '19',
     name: 'FAQ',
     url: '/pages/faq',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '19',
+    id: '20',
     name: 'Pricing',
     url: '/pages/pricing',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '20',
+    id: '21',
     name: 'Coming Soon',
     url: '/pages/misc/coming-soon',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '21',
+    id: '22',
     name: 'Under Maintenance',
     url: '/pages/misc/under-maintenance',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '22',
+    id: '23',
     name: 'Page Not Found - 404',
     url: '/pages/misc/404-not-found',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '23',
+    id: '24',
     name: 'Not Authorized - 401',
     url: '/pages/misc/401-not-authorized',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '24',
+    id: '25',
     name: 'Login V1',
     url: '/pages/auth/login-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '25',
+    id: '26',
     name: 'Login V2',
     url: '/pages/auth/login-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '26',
+    id: '27',
     name: 'Register V1',
     url: '/pages/auth/register-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '27',
+    id: '28',
     name: 'Register V2',
     url: '/pages/auth/register-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '28',
+    id: '29',
     name: 'Register Multi-Steps',
     url: '/pages/auth/register-multi-steps',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '29',
+    id: '30',
     name: 'Forgot Password V1',
     url: '/pages/auth/forgot-password-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '30',
+    id: '31',
     name: 'Forgot Password V2',
     url: '/pages/auth/forgot-password-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '31',
+    id: '32',
     name: 'Reset Password V1',
     url: '/pages/auth/reset-password-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '32',
+    id: '33',
     name: 'Reset Password V2',
     url: '/pages/auth/reset-password-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '33',
+    id: '34',
     name: 'Verify Email V1',
     url: '/pages/auth/verify-email-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '34',
+    id: '35',
     name: 'Verify Email V2',
     url: '/pages/auth/verify-email-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '35',
+    id: '36',
     name: 'Two Steps V1',
     url: '/pages/auth/two-steps-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '36',
+    id: '37',
     name: 'Two Steps V2',
     url: '/pages/auth/two-steps-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '37',
+    id: '38',
     name: 'Wizard - Checkout',
     url: '/pages/wizard-examples/checkout',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '38',
+    id: '39',
     name: 'Wizard - Property Listing',
     url: '/pages/wizard-examples/property-listing',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '39',
+    id: '40',
     name: 'Wizard - Create Deal',
     url: '/pages/wizard-examples/create-deal',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '40',
+    id: '41',
     name: 'Dialog Examples',
     url: '/pages/dialog-examples',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '41',
+    id: '42',
     name: 'Widget - Basic',
     url: '/pages/widget-examples/basic',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '42',
+    id: '43',
     name: 'Widget - Advanced',
     url: '/pages/widget-examples/advanced',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '43',
+    id: '44',
     name: 'Widget - Statistics',
     url: '/pages/widget-examples/statistics',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '44',
+    id: '45',
     name: 'Widget - Charts',
     url: '/pages/widget-examples/charts',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '45',
+    id: '46',
     name: 'Widget - Actions',
     url: '/pages/widget-examples/actions',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '46',
+    id: '47',
     name: 'Icons Test',
     url: '/icons-test',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '47',
+    id: '48',
     name: 'Form Layouts',
     url: '/forms/form-layouts',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '48',
+    id: '49',
     name: 'Form Validation',
     url: '/forms/form-validation',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '49',
+    id: '50',
     name: 'Form Wizard',
     url: '/forms/form-wizard',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '50',
+    id: '51',
     name: 'React Table',
     url: '/react-table',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '51',
+    id: '52',
     name: 'Apex Charts',
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '52',
+    id: '53',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '53',
+    id: '54',
     name: 'Menu Examples',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
     icon: 'Icon',
     section: 'Others'
   },
   {
-    id: '54',
+    id: '55',
     name: 'Typography',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/typography`,
     icon: 'Icon',
     section: 'Foundation'
   },
   {
-    id: '55',
+    id: '56',
     name: 'Colors',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/colors`,
     icon: 'Icon',
     section: 'Foundation'
   },
   {
-    id: '56',
+    id: '57',
     name: 'Shadows',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/shadows`,
     icon: 'Icon',
     section: 'Foundation'
   },
   {
-    id: '57',
+    id: '58',
     name: 'Icons',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/foundation/icons`,
     icon: 'Icon',
     section: 'Foundation'
   },
   {
-    id: '58',
+    id: '59',
     name: 'Accordion',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/accordion`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '59',
+    id: '60',
     name: 'Alerts',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/alerts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '60',
+    id: '61',
     name: 'Avatars',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/avatars`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '61',
+    id: '62',
     name: 'Badges',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/badges`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '62',
+    id: '63',
     name: 'Buttons',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/buttons`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '63',
+    id: '64',
     name: 'Button Group',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/button-group`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '64',
+    id: '65',
     name: 'Chips',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/chips`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '65',
+    id: '66',
     name: 'Dialogs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/dialogs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '66',
+    id: '67',
     name: 'List',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/list`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '67',
+    id: '68',
     name: 'Menu',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/menu`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '68',
+    id: '69',
     name: 'Pagination',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/pagination`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '69',
+    id: '70',
     name: 'Progress',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/progress`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '70',
+    id: '71',
     name: 'Ratings',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/ratings`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '71',
+    id: '72',
     name: 'Snackbar',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/snackbar`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '72',
+    id: '73',
     name: 'Swiper',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/swiper`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '73',
+    id: '74',
     name: 'Tabs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/tabs`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '74',
+    id: '75',
     name: 'Timeline',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/timeline`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '75',
+    id: '76',
     name: 'Toasts',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/toasts`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '76',
+    id: '77',
     name: 'More Components',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/components/more`,
     icon: 'Icon',
     section: 'Components'
   },
   {
-    id: '77',
+    id: '78',
     name: 'Text Field',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/text-field`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '78',
+    id: '79',
     name: 'Select',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/select`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '79',
+    id: '80',
     name: 'Checkbox',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/checkbox`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '80',
+    id: '81',
     name: 'Radio',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/radio`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '81',
+    id: '82',
     name: 'Custom Inputs',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/custom-inputs`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '82',
+    id: '83',
     name: 'Textarea',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/textarea`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '83',
+    id: '84',
     name: 'Autocomplete',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/autocomplete`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '84',
+    id: '85',
     name: 'Picker',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/picker`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '85',
+    id: '86',
     name: 'Switch',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/switch`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '86',
+    id: '87',
     name: 'File Uploader',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/file-uploader`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '87',
+    id: '88',
     name: 'Editor',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/editor`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '88',
+    id: '89',
     name: 'Slider',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/slider`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '89',
+    id: '90',
     name: 'MUI Tables',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/mui-table`,
     icon: 'Icon',
