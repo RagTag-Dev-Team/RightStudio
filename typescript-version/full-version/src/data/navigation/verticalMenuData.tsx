@@ -54,6 +54,9 @@ const verticalMenuData = (
         label: dictionary['navigation'].calendar
       },
       {
+        label: dictionary['navigation'].kanban
+      },
+      {
         label: dictionary['navigation'].invoice,
         children: [
           {
