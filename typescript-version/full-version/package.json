@@ -30,6 +30,7 @@
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
     "@hookform/resolvers": "^3.3.4",
+    "@iconify/react": "^4.1.1",
     "@mui/lab": "5.0.0-alpha.168",
     "@mui/material": "^5.15.13",
     "@mui/material-nextjs": "^5.15.11",
