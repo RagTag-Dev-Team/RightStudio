@@ -92,7 +92,7 @@ const AccountDetails = () => {
   return (
     <Card>
       <CardContent>
-        <div className='flex items-center'>
+        <div className='flex max-sm:flex-col items-center'>
           <img height={120} width={120} className='rounded' src={imgSrc} alt='Profile' />
           <div className='flex flex-grow flex-col gap-4'>
             <div className='flex flex-col sm:flex-row gap-4'>

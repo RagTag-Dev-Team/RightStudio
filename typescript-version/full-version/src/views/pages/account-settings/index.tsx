@@ -26,51 +26,21 @@ const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
+            <Tab label='Account' icon={<i className='ri-user-3-line' />} iconPosition='start' value='account' />
+            <Tab label='Security' icon={<i className='ri-lock-unlock-line' />} iconPosition='start' value='security' />
             <Tab
-              label={
-                <div className='flex items-center'>
-                  <i className='ri-user-3-line' />
-                  Account
-                </div>
-              }
-              value='account'
-            />
-            <Tab
-              label={
-                <div className='flex items-center'>
-                  <i className='ri-lock-unlock-line' />
-                  Security
-                </div>
-              }
-              value='security'
-            />
-            <Tab
-              label={
-                <div className='flex items-center'>
-                  <i className='ri-bookmark-line' />
-                  Billing & Plans
-                </div>
-              }
+              label='Billing & Plans'
+              icon={<i className='ri-bookmark-line' />}
+              iconPosition='start'
               value='billing-plans'
             />
             <Tab
-              label={
-                <div className='flex items-center'>
-                  <i className='ri-notification-3-line' />
-                  Notifications
-                </div>
-              }
+              label='Notifications'
+              icon={<i className='ri-notification-3-line' />}
+              iconPosition='start'
               value='notifications'
             />
-            <Tab
-              label={
-                <div className='flex items-center'>
-                  <i className='ri-link' />
-                  Connections
-                </div>
-              }
-              value='connections'
-            />
+            <Tab label='Connections' icon={<i className='ri-link' />} iconPosition='start' value='connections' />
           </CustomTabList>
         </Grid>
         <Grid item xs={12}>

@@ -11,6 +11,11 @@
     border-color: var(--mui-palette-primary-main);
     background-color: var(--mui-palette-common-white);
   }
+
+  &.completedStepperCustomDot {
+    background-color: var(--mui-palette-primary-main);
+    border-color: var(--mui-palette-primary-main);
+  }
 }
 
 [data-mui-color-scheme='dark'] .activeStepperCustomDot {
