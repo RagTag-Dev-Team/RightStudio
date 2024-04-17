@@ -97,7 +97,7 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
         )}
         onClick={() => handleTaskClick()}
       >
-        <CardContent className='flex flex-col gap-y-2 items-start p-5 relative overflow-hidden'>
+        <CardContent className='flex flex-col gap-y-2 items-start relative overflow-hidden'>
           {task.badgeText && task.badgeText.length > 0 && (
             <div className='flex flex-wrap items-center justify-start gap-2 is-full'>
               {task.badgeText.map(
@@ -145,32 +145,44 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
 
           {task.image && <img src={task.image} alt='task Image' className='is-full rounded' />}
           <Typography className='max-is-[85%] break-words'>{task.title}</Typography>
-          <div className='flex justify-between items-center gap-4 is-full'>
-            {(task.attachments !== undefined && task.attachments > 0) ||
-            (task.comments !== undefined && task.comments > 0) ? (
-              <div className='flex gap-4'>
-                {task.attachments !== undefined && task.attachments > 0 && (
-                  <div className='flex items-center gap-1'>
-                    <i className='ri-attachment-2 text-xl text-textSecondary' />
-                    <Typography color='text.secondary'>{task.attachments}</Typography>
-                  </div>
-                )}
-                {task.comments !== undefined && task.comments > 0 && (
-                  <div className='flex items-center gap-1'>
-                    <i className='ri-wechat-line text-xl text-textSecondary' />
-                    <Typography color='text.secondary'>{task.comments}</Typography>
-                  </div>
-                )}
-              </div>
-            ) : null}
-            <AvatarGroup max={4} className='pull-up'>
-              {task.assigned?.map((avatar, index) => (
-                <Tooltip title={avatar.name} key={index}>
-                  <CustomAvatar key={index} src={avatar.src} alt={avatar.name} size={26} className='cursor-pointer' />
-                </Tooltip>
-              ))}
-            </AvatarGroup>
-          </div>
+          {(task.attachments !== undefined && task.attachments > 0) ||
+          (task.comments !== undefined && task.comments > 0) ||
+          (task.assigned !== undefined && task.assigned.length > 0) ? (
+            <div className='flex justify-between items-center gap-4 is-full'>
+              {(task.attachments !== undefined && task.attachments > 0) ||
+              (task.comments !== undefined && task.comments > 0) ? (
+                <div className='flex gap-4'>
+                  {task.attachments !== undefined && task.attachments > 0 && (
+                    <div className='flex items-center gap-1'>
+                      <i className='ri-attachment-2 text-xl text-textSecondary' />
+                      <Typography color='text.secondary'>{task.attachments}</Typography>
+                    </div>
+                  )}
+                  {task.comments !== undefined && task.comments > 0 && (
+                    <div className='flex items-center gap-1'>
+                      <i className='ri-wechat-line text-xl text-textSecondary' />
+                      <Typography color='text.secondary'>{task.comments}</Typography>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+              {task.assigned !== undefined && task.assigned.length > 0 && (
+                <AvatarGroup max={4} className='pull-up'>
+                  {task.assigned?.map((avatar, index) => (
+                    <Tooltip title={avatar.name} key={index}>
+                      <CustomAvatar
+                        key={index}
+                        src={avatar.src}
+                        alt={avatar.name}
+                        size={26}
+                        className='cursor-pointer'
+                      />
+                    </Tooltip>
+                  ))}
+                </AvatarGroup>
+              )}
+            </div>
+          ) : null}
         </CardContent>
       </Card>
     </>

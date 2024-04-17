@@ -68,7 +68,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/5.png', name: 'Tom Smith' },
         { src: '/images/avatars/4.png', name: 'Emily Davis' }
       ],
-      image: '/images/cards/4.png',
+      image: '/images/apps/kanban/plant.png',
       dueDate: new Date(new Date().getFullYear(), 9, 20).toISOString()
     },
     {
