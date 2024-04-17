@@ -261,10 +261,14 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
         '& .react-datepicker__month-dropdown, & .react-datepicker__year-dropdown': {
           paddingTop: theme.spacing(2),
           paddingBottom: theme.spacing(2),
-          borderColor: theme.palette.divider,
+          border: 'none',
           borderRadius: theme.shape.borderRadius,
           backgroundColor: theme.palette.background.paper,
-          boxShadow: theme.shadows[8]
+          boxShadow: theme.shadows[8],
+          '[data-skin="bordered"] &': {
+            boxShadow: 'none',
+            border: `1px solid var(--mui-palette-divider)`
+          }
         },
         '& .react-datepicker__month-option, & .react-datepicker__year-option': {
           paddingTop: theme.spacing(1),
@@ -479,7 +483,7 @@ const AppReactDatepicker = (props: Props) => {
 
   return (
     <StyledReactDatePicker {...boxProps}>
-      <ReactDatePickerComponent {...rest} />
+      <ReactDatePickerComponent popperPlacement='bottom-start' {...rest} />
     </StyledReactDatePicker>
   )
 }
