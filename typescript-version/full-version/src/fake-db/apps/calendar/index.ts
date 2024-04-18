@@ -1,19 +1,23 @@
-// Type Imports
-import type { EventType } from '@/types/apps/calendarTypes'
+// Third-party Imports
+import type { EventInput } from '@fullcalendar/core'
 
 // Vars
 const date = new Date()
-const nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+const nextDay = new Date(date.getTime() + 24 * 60 * 60 * 1000)
 
 const nextMonth =
-  date.getMonth() === 11 ? new Date(date.getFullYear() + 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() + 1, 1)
+  date.getMonth() === 11
+    ? new Date(date.getFullYear() + 1, 0, 1)
+    : new Date(date.getFullYear(), date.getMonth() + 1, 1)
 
 const prevMonth =
-  date.getMonth() === 11 ? new Date(date.getFullYear() - 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() - 1, 1)
+  date.getMonth() === 11
+    ? new Date(date.getFullYear() - 1, 0, 1)
+    : new Date(date.getFullYear(), date.getMonth() - 1, 1)
 
-export const events: EventType[] = [
+export const events: EventInput[] = [
   {
-    id: 1,
+    id: '1',
     url: '',
     title: 'Design Review',
     start: date,
@@ -24,7 +28,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 2,
+    id: '2',
     url: '',
     title: 'Meeting With Client',
     start: new Date(date.getFullYear(), date.getMonth() + 1, -11),
@@ -35,7 +39,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 3,
+    id: '3',
     url: '',
     title: 'Family Trip',
     allDay: true,
@@ -46,7 +50,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 4,
+    id: '4',
     url: '',
     title: "Doctor's Appointment",
     start: new Date(date.getFullYear(), date.getMonth() + 1, -11),
@@ -57,7 +61,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 5,
+    id: '5',
     url: '',
     title: 'Dart Game?',
     start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
@@ -68,7 +72,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 6,
+    id: '6',
     url: '',
     title: 'Meditation',
     start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
@@ -79,7 +83,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 7,
+    id: '7',
     url: '',
     title: 'Dinner',
     start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
@@ -90,7 +94,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 8,
+    id: '8',
     url: '',
     title: 'Product Review',
     start: new Date(date.getFullYear(), date.getMonth() + 1, -13),
@@ -101,7 +105,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 9,
+    id: '9',
     url: '',
     title: 'Monthly Meeting',
     start: nextMonth,
@@ -112,7 +116,7 @@ export const events: EventType[] = [
     }
   },
   {
-    id: 10,
+    id: '10',
     url: '',
     title: 'Monthly Checkup',
     start: prevMonth,

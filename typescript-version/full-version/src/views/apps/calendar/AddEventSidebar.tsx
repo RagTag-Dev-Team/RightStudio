@@ -20,10 +20,13 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import { useForm, Controller } from 'react-hook-form'
 
 // Type Imports
-import type { EventDateType, AddEventSidebarType } from '@/types/apps/calendarTypes'
+import type { EventDateType, AddEventSidebarType, AddEventType } from '@/types/apps/calendarTypes'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+
+// Slice Imports
+import { addEvent, deleteEvent, updateEvent, selectedEvent } from '@/redux-store/slices/calendar'
 
 interface PickerProps {
   label?: string
@@ -59,16 +62,7 @@ const defaultState: DefaultStateType = {
 
 const AddEventSidebar = (props: AddEventSidebarType) => {
   // Props
-  const {
-    calendars,
-    calendarApi,
-    handleAddEvent,
-    handleUpdateEvent,
-    handleDeleteEvent,
-    handleSelectEvent,
-    addEventSidebarOpen,
-    handleAddEventSidebarToggle
-  } = props
+  const { calendarStore, dispatch, addEventSidebarOpen, handleAddEventSidebarToggle } = props
 
   // States
   const [values, setValues] = useState<DefaultStateType>(defaultState)
@@ -97,8 +91,8 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   } = useForm({ defaultValues: { title: '' } })
 
   const resetToStoredValues = useCallback(() => {
-    if (calendars.selectedEvent !== null) {
-      const event = calendars.selectedEvent
+    if (calendarStore.selectedEvent !== null) {
+      const event = calendarStore.selectedEvent
 
       setValue('title', event.title || '')
       setValues({
@@ -112,22 +106,22 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         startDate: event.start !== null ? event.start : new Date()
       })
     }
-  }, [setValue, calendars.selectedEvent])
+  }, [setValue, calendarStore.selectedEvent])
 
   const resetToEmptyValues = useCallback(() => {
     setValue('title', '')
     setValues(defaultState)
   }, [setValue])
 
-  const handleSidebarClose = async () => {
+  const handleSidebarClose = () => {
     setValues(defaultState)
     clearErrors()
-    handleSelectEvent(null)
+    dispatch(selectedEvent(null))
     handleAddEventSidebarToggle()
   }
 
   const onSubmit = (data: { title: string }) => {
-    const modifiedEvent = {
+    const modifiedEvent: AddEventType = {
       url: values.url,
       display: 'block',
       title: data.title,
@@ -142,24 +136,23 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     }
 
     if (
-      calendars.selectedEvent === null ||
-      (calendars.selectedEvent !== null && !calendars.selectedEvent.title.length)
+      calendarStore.selectedEvent === null ||
+      (calendarStore.selectedEvent !== null && !calendarStore.selectedEvent.title.length)
     ) {
-      handleAddEvent(modifiedEvent)
+      dispatch(addEvent(modifiedEvent))
     } else {
-      handleUpdateEvent({ id: parseInt(calendars.selectedEvent.id), ...modifiedEvent })
+      dispatch(updateEvent({ ...modifiedEvent, id: calendarStore.selectedEvent.id }))
     }
 
-    calendarApi.refetchEvents()
     handleSidebarClose()
   }
 
   const handleDeleteButtonClick = () => {
-    if (calendars.selectedEvent) {
-      handleDeleteEvent(parseInt(calendars.selectedEvent.id))
+    if (calendarStore.selectedEvent) {
+      dispatch(deleteEvent(calendarStore.selectedEvent.id))
     }
 
-    calendarApi.getEventById(calendars.selectedEvent.id).remove()
+    // calendarApi.getEventById(calendarStore.selectedEvent.id).remove()
     handleSidebarClose()
   }
 
@@ -170,7 +163,10 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   }
 
   const RenderSidebarFooter = () => {
-    if (calendars.selectedEvent === null || (calendars.selectedEvent && !calendars.selectedEvent.title.length)) {
+    if (
+      calendarStore.selectedEvent === null ||
+      (calendarStore.selectedEvent && !calendarStore.selectedEvent.title.length)
+    ) {
       return (
         <div className='flex gap-4'>
           <Button size='large' type='submit' variant='contained'>
@@ -196,12 +192,12 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
   }
 
   useEffect(() => {
-    if (calendars.selectedEvent !== null) {
+    if (calendarStore.selectedEvent !== null) {
       resetToStoredValues()
     } else {
       resetToEmptyValues()
     }
-  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendars.selectedEvent])
+  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendarStore.selectedEvent])
 
   return (
     <Drawer
@@ -213,10 +209,10 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     >
       <Box className='flex justify-between sidebar-header p-3 pis-[1.31375rem] pie-[0.81375rem] bg-backgroundDefault'>
         <Typography variant='h6'>
-          {calendars.selectedEvent && calendars.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
+          {calendarStore.selectedEvent && calendarStore.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
         </Typography>
-        {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
-          <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
+        {calendarStore.selectedEvent && calendarStore.selectedEvent.title.length ? (
+          <Box className='flex items-center' sx={{ gap: calendarStore.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick}>
               <i className='ri-delete-bin-7-line text-xl' />
             </IconButton>
