@@ -44,7 +44,7 @@ const data: SearchData[] = [
   {
     id: '6',
     name: 'Chat',
-    url: '/chat',
+    url: '/apps/chat',
     icon: 'Icon',
     section: 'Apps'
   },

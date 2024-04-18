@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.0",
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
@@ -43,6 +45,7 @@
     "classnames": "^2.5.1",
     "date-fns": "^3.5.0",
     "draft-js": "^0.11.7",
+    "emoji-mart": "^5.5.2",
     "kbar": "0.1.0-beta.45",
     "keen-slider": "^6.8.6",
     "negotiator": "^0.6.3",

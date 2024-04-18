@@ -42,7 +42,7 @@ const horizontalMenuData = (
       },
       {
         label: dictionary['navigation'].chat,
-        href: '/chat'
+        href: '/apps/chat'
       },
       {
         label: dictionary['navigation'].calendar,

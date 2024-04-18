@@ -1,0 +1,176 @@
+// React Imports
+import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
+
+// MUI Import
+import Drawer from '@mui/material/Drawer'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import Switch from '@mui/material/Switch'
+import Backdrop from '@mui/material/Backdrop'
+
+// Third Party Imports
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import type { Dispatch } from '@reduxjs/toolkit'
+
+// Type Imports
+import type { ProfileUserType, StatusType } from '@/types/apps/chatTypes'
+
+// Component Imports
+import AvatarWithBadge from './AvatarWithBadge'
+import { statusObj } from '@views/apps/chat/SidebarLeft'
+
+// Slice Imports
+import { setUserStatus } from '@/redux-store/slices/chat'
+
+type Props = {
+  open: boolean
+  setUserSidebar: (open: boolean) => void
+  profileUserData: ProfileUserType
+  dispatch: Dispatch
+  isBelowLgScreen: boolean
+  isBelowSmScreen: boolean
+}
+
+const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isBelowLgScreen: boolean }) => {
+  if (isBelowLgScreen) {
+    return <div className='bs-full overflow-x-hidden overflow-y-auto'>{children}</div>
+  } else {
+    return <PerfectScrollbar options={{ wheelPropagation: false }}>{children}</PerfectScrollbar>
+  }
+}
+
+const UserProfileLeft = (props: Props) => {
+  // Props
+  const { open, setUserSidebar, profileUserData, dispatch, isBelowLgScreen, isBelowSmScreen } = props
+
+  // States
+  const [twoStepVerification, setTwoStepVerification] = useState<boolean>(true)
+  const [notification, setNotification] = useState<boolean>(false)
+
+  const handleTwoStepVerification = () => {
+    setTwoStepVerification(!twoStepVerification)
+  }
+
+  const handleNotification = () => {
+    setNotification(!notification)
+  }
+
+  const handleUserStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setUserStatus({ status: e.target.value as StatusType }))
+  }
+
+  useEffect(() => {
+    if (open) {
+      setUserSidebar(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return profileUserData ? (
+    <>
+      <Drawer
+        open={open}
+        anchor='left'
+        variant='persistent'
+        ModalProps={{ keepMounted: true }}
+        onClose={() => setUserSidebar(false)}
+        sx={{
+          zIndex: 13,
+          '& .MuiDrawer-paper': { width: isBelowSmScreen ? '100%' : '370px', position: 'absolute' }
+        }}
+      >
+        <IconButton className='absolute block-start-4 inline-end-4' onClick={() => setUserSidebar(false)}>
+          <i className='ri-close-line' />
+        </IconButton>
+        <div className='flex flex-col justify-center items-center gap-4 mbe-6'>
+          <AvatarWithBadge
+            alt={profileUserData.fullName}
+            src={profileUserData.avatar}
+            badgeColor={statusObj[profileUserData.status]}
+            className='bs-[84px] is-[84px]'
+            badgeSize={12}
+          />
+          <div className='text-center'>
+            <Typography variant='h5'>{profileUserData.fullName}</Typography>
+            <Typography>{profileUserData.role}</Typography>
+          </div>
+        </div>
+        <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
+          <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-1'>
+              <Typography className='uppercase'>About</Typography>
+              <TextField fullWidth rows={3} multiline id='about-textarea' defaultValue={profileUserData.about} />
+            </div>
+            <div className='flex flex-col gap-1'>
+              <FormLabel id='status-radio-buttons-group-label' className='uppercase'>
+                Status
+              </FormLabel>
+              <RadioGroup
+                value={profileUserData.status}
+                name='radio-buttons-group'
+                onChange={handleUserStatus}
+                aria-labelledby='status-radio-buttons-group-label'
+              >
+                <FormControlLabel value='online' control={<Radio size='small' color='success' />} label='Online' />
+                <FormControlLabel value='away' control={<Radio size='small' color='warning' />} label='Away' />
+                <FormControlLabel value='busy' control={<Radio size='small' color='error' />} label='Do not disturb' />
+                <FormControlLabel value='offline' control={<Radio size='small' color='secondary' />} label='Offline' />
+              </RadioGroup>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <Typography className='uppercase'>Settings</Typography>
+              <List dense>
+                <ListItem disablePadding secondaryAction={<Switch defaultChecked={twoStepVerification} />}>
+                  <ListItemButton onClick={handleTwoStepVerification}>
+                    <ListItemIcon>
+                      <i className='ri-lock-password-line text-[22px]' />
+                    </ListItemIcon>
+                    <ListItemText primary='Two-step Verification' />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding secondaryAction={<Switch defaultChecked={notification} />}>
+                  <ListItemButton onClick={handleNotification}>
+                    <ListItemIcon>
+                      <i className='ri-notification-line text-[22px]' />
+                    </ListItemIcon>
+                    <ListItemText primary='Notification' />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <i className='ri-user-add-line text-[22px]' />
+                    </ListItemIcon>
+                    <ListItemText primary='Invite Friends' />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <i className='ri-delete-bin-7-line text-[22px]' />
+                    </ListItemIcon>
+                    <ListItemText primary='Delete Account' />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </div>
+          </div>
+        </ScrollWrapper>
+      </Drawer>
+      <Backdrop open={open} onClick={() => setUserSidebar(false)} className='absolute z-[12]' />
+    </>
+  ) : null
+}
+
+export default UserProfileLeft
