@@ -50,7 +50,7 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
   return (
     <div className='flex flex-col gap-4 items-start is-[16.5rem]'>
       <Typography onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer is-[10rem]'>
-        <i className='ri-add-line text-base'></i>
+        <i className='ri-add-line text-base' />
         <span className='whitespace-nowrap'>Add New</span>
       </Typography>
       {display && (

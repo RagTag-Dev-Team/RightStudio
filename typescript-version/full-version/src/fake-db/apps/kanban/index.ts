@@ -30,7 +30,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/2.png', name: 'Jane Smith' },
         { src: '/images/avatars/3.png', name: 'Robert Johnson' }
       ],
-      dueDate: new Date(new Date().getFullYear(), 11, 30).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 11, 30)
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/4.png', name: 'Emily Davis' },
         { src: '/images/avatars/5.png', name: ' Tom Smith' }
       ],
-      dueDate: new Date(new Date().getFullYear(), 5, 30).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 5, 30)
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/6.png', name: 'David Smith' },
         { src: '/images/avatars/2.png', name: 'Jane Smith' }
       ],
-      dueDate: new Date(new Date().getFullYear(), 8, 15).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 8, 15)
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/4.png', name: 'Emily Davis' }
       ],
       image: '/images/apps/kanban/plant.png',
-      dueDate: new Date(new Date().getFullYear(), 9, 20).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 9, 20)
     },
     {
       id: 5,
@@ -82,7 +82,7 @@ export const db: KanbanType = {
         { src: '/images/avatars/2.png', name: 'Jane Smith' },
         { src: '/images/avatars/1.png', name: 'John Doe' }
       ],
-      dueDate: new Date(new Date().getFullYear(), 10, 10).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 10, 10)
     },
     {
       id: 6,
@@ -91,7 +91,7 @@ export const db: KanbanType = {
       attachments: 6,
       comments: 21,
       assigned: [{ src: '/images/avatars/1.png', name: 'John Doe' }],
-      dueDate: new Date(new Date().getFullYear(), 11, 5).toISOString()
+      dueDate: new Date(new Date().getFullYear(), 11, 5)
     }
   ]
 }

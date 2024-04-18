@@ -154,10 +154,10 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
         >
           <InputBase value={title} autoFocus onChange={handleChangeEdit} required />
           <IconButton color='success' size='small' type='submit'>
-            <i className='ri-check-line'></i>
+            <i className='ri-check-line' />
           </IconButton>
           <IconButton color='error' size='small' type='reset' onClick={cancelEdit}>
-            <i className='ri-close-line'></i>
+            <i className='ri-close-line' />
           </IconButton>
         </form>
       ) : (
@@ -172,7 +172,7 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
             {column.title}
           </Typography>
           <div className='flex items-center'>
-            <i className={classnames('ri-draggable text-secondary list-handle', styles.drag)}></i>
+            <i className={classnames('ri-drag-move-fill text-textSecondary list-handle', styles.drag)} />
             <OptionMenu
               iconClassName='text-xl text-textPrimary'
               options={[

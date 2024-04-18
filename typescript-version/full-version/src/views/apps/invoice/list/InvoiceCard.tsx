@@ -65,7 +65,7 @@ const InvoiceCard = () => {
                   <Typography>{item.subtitle}</Typography>
                 </div>
                 <Avatar variant='rounded'>
-                  <i className={item.icon}></i>
+                  <i className={item.icon} />
                 </Avatar>
               </div>
               {isBelowMdScreen && !isBelowSmScreen && index < data.length - 2 && (

@@ -99,7 +99,7 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
       >
         <CardContent className='flex flex-col gap-y-2 items-start relative overflow-hidden'>
           {task.badgeText && task.badgeText.length > 0 && (
-            <div className='flex flex-wrap items-center justify-start gap-2 is-full'>
+            <div className='flex flex-wrap items-center justify-start gap-2 is-full max-is-[85%]'>
               {task.badgeText.map(
                 (badge, index) =>
                   chipColor[badge]?.color && (
@@ -119,7 +119,7 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
               aria-haspopup='true'
               onClick={handleClick}
             >
-              <i className='ri-more-2-line text-xl'></i>
+              <i className='ri-more-2-line text-xl' />
             </IconButton>
             <Menu
               id='long-menu'

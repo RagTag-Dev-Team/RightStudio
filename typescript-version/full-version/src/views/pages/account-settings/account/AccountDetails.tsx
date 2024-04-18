@@ -221,7 +221,7 @@ const AccountDetails = () => {
                           key={value}
                           clickable
                           deleteIcon={
-                            <i className='ri-close-circle-fill' onMouseDown={event => event.stopPropagation()}></i>
+                            <i className='ri-close-circle-fill' onMouseDown={event => event.stopPropagation()} />
                           }
                           size='small'
                           label={value}

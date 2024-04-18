@@ -50,7 +50,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
   return (
     <div className='flex flex-col gap-4 items-start'>
       <Typography onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer'>
-        <i className='ri-add-line text-base'></i>
+        <i className='ri-add-line text-base' />
         <span>Add New Item</span>
       </Typography>
       {displayNewItem && (

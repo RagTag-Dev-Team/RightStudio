@@ -54,7 +54,7 @@ type Props = {
 
 function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setColumns }: Props) {
   // States
-  const [date, setDate] = useState<string | undefined>(task.dueDate)
+  const [date, setDate] = useState<Date | undefined>(task.dueDate)
   const [badgeText, setBadgeText] = useState(task.badgeText || [])
   const [fileName, setFileName] = useState<string>('')
   const [comment, setComment] = useState<string>('')
@@ -161,7 +161,7 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
               selected={date ? new Date(date) : new Date()}
               id='basic-input'
               onChange={(date: Date) => {
-                setDate(date.toISOString())
+                setDate(date)
               }}
               placeholderText='Click to select a date'
               customInput={<TextField label='Due Date' fullWidth />}

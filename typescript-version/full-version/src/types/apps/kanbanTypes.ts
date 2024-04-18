@@ -6,7 +6,7 @@ export type TaskType = {
   comments?: number
   assigned?: { src: string; name: string }[]
   image?: string
-  dueDate?: string
+  dueDate?: Date
 }
 
 export type ColumnType = {
