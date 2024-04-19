@@ -56,7 +56,6 @@ const AppCalendar = () => {
       />
       <div className='p-5 pbe-0 flex-grow overflow-visible bg-backgroundPaper'>
         <Calendar
-          mdAbove={mdAbove}
           dispatch={dispatch}
           calendarApi={calendarApi}
           calendarStore={calendarStore}

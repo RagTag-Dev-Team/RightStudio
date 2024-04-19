@@ -18,6 +18,7 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Switch from '@mui/material/Switch'
 import Backdrop from '@mui/material/Backdrop'
+import Button from '@mui/material/Button'
 
 // Third Party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -131,7 +132,7 @@ const UserProfileLeft = (props: Props) => {
             <div className='flex flex-col gap-1'>
               <Typography className='uppercase'>Settings</Typography>
               <List dense>
-                <ListItem disablePadding secondaryAction={<Switch defaultChecked={twoStepVerification} />}>
+                <ListItem disablePadding secondaryAction={<Switch checked={twoStepVerification} />}>
                   <ListItemButton onClick={handleTwoStepVerification}>
                     <ListItemIcon>
                       <i className='ri-lock-password-line text-[22px]' />
@@ -139,7 +140,7 @@ const UserProfileLeft = (props: Props) => {
                     <ListItemText primary='Two-step Verification' />
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding secondaryAction={<Switch defaultChecked={notification} />}>
+                <ListItem disablePadding secondaryAction={<Switch checked={notification} />}>
                   <ListItemButton onClick={handleNotification}>
                     <ListItemIcon>
                       <i className='ri-notification-line text-[22px]' />
@@ -165,6 +166,9 @@ const UserProfileLeft = (props: Props) => {
                 </ListItem>
               </List>
             </div>
+            <Button variant='contained' fullWidth className='mbs-auto' endIcon={<i className='ri-logout-box-r-line' />}>
+              Logout
+            </Button>
           </div>
         </ScrollWrapper>
       </Drawer>

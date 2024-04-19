@@ -35,7 +35,6 @@ const blankEvent: AddEventType = {
 }
 
 type CalenderProps = {
-  mdAbove: boolean
   calendarStore: CalendarType
   calendarApi: any
   setCalendarApi: (val: any) => void
@@ -66,7 +65,8 @@ const Calendar = (props: CalenderProps) => {
       // @ts-ignore
       setCalendarApi(calendarRef.current?.getApi())
     }
-  }, [calendarApi, setCalendarApi])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // calendarOptions(Props)
   const calendarOptions: CalendarOptions = {
@@ -170,12 +170,12 @@ const Calendar = (props: CalenderProps) => {
       dispatch(updateEvent(resizedEvent))
     },
 
-    // ref: calendarRef,
+    // @ts-ignore
+    ref: calendarRef,
 
     direction: theme.direction
   }
 
-  // @ts-ignore
   return <FullCalendar {...calendarOptions} />
 }
 

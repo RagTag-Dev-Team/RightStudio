@@ -13,6 +13,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
+import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
@@ -30,11 +31,23 @@ type Props = {
   isBelowSmScreen: boolean
 }
 
-const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isBelowLgScreen: boolean }) => {
+const ScrollWrapper = ({
+  children,
+  isBelowLgScreen,
+  className
+}: {
+  children: ReactNode
+  isBelowLgScreen: boolean
+  className?: string
+}) => {
   if (isBelowLgScreen) {
-    return <div className='bs-full overflow-x-hidden overflow-y-auto'>{children}</div>
+    return <div className={classnames('bs-full overflow-x-hidden overflow-y-auto', className)}>{children}</div>
   } else {
-    return <PerfectScrollbar options={{ wheelPropagation: false }}>{children}</PerfectScrollbar>
+    return (
+      <PerfectScrollbar options={{ wheelPropagation: false }} className={className}>
+        {children}
+      </PerfectScrollbar>
+    )
   }
 }
 
@@ -68,82 +81,80 @@ const UserProfileRight = (props: Props) => {
         </div>
       </div>
 
-      <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
-        <div className='flex flex-col gap-6 bs-full'>
-          <div className='flex flex-col gap-1'>
-            <Typography className='uppercase'>About</Typography>
-            <Typography>{activeUser.about}</Typography>
-          </div>
-          <div className='flex flex-col gap-1'>
-            <Typography className='uppercase'>Personal Information</Typography>
-            <List dense>
-              <ListItem>
-                <ListItemIcon>
-                  <i className='ri-mail-line' />
-                </ListItemIcon>
-                <ListItemText secondary={`${activeUser.fullName.toLowerCase().replace(/\s/g, '_')}@email.com`} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <i className='ri-phone-line' />
-                </ListItemIcon>
-                <ListItemText secondary='+1(123) 456 - 7890' />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <i className='ri-time-line' />
-                </ListItemIcon>
-                <ListItemText secondary='Mon - Fri 10AM - 8PM' />
-              </ListItem>
-            </List>
-          </div>
-          <div className='flex flex-col gap-1'>
-            <Typography className='uppercase'>Options</Typography>
-            <List dense>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <i className='ri-bookmark-line' />
-                  </ListItemIcon>
-                  <ListItemText primary='Add Tag' />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <i className='ri-user-star-line' />
-                  </ListItemIcon>
-                  <ListItemText primary='Important Contact' />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <i className='ri-image-2-line' />
-                  </ListItemIcon>
-                  <ListItemText primary='Shared Image' />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <i className='ri-forbid-2-line' />
-                  </ListItemIcon>
-                  <ListItemText primary='Block Contact' />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </div>
-          <Button
-            variant='contained'
-            color='error'
-            fullWidth
-            className='mbs-auto'
-            endIcon={<i className='ri-delete-bin-7-line' />}
-          >
-            Delete Contact
-          </Button>
+      <ScrollWrapper isBelowLgScreen={isBelowLgScreen} className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-1'>
+          <Typography className='uppercase'>About</Typography>
+          <Typography>{activeUser.about}</Typography>
         </div>
+        <div className='flex flex-col gap-1'>
+          <Typography className='uppercase'>Personal Information</Typography>
+          <List dense>
+            <ListItem>
+              <ListItemIcon>
+                <i className='ri-mail-line' />
+              </ListItemIcon>
+              <ListItemText secondary={`${activeUser.fullName.toLowerCase().replace(/\s/g, '_')}@email.com`} />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <i className='ri-phone-line' />
+              </ListItemIcon>
+              <ListItemText secondary='+1(123) 456 - 7890' />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <i className='ri-time-line' />
+              </ListItemIcon>
+              <ListItemText secondary='Mon - Fri 10AM - 8PM' />
+            </ListItem>
+          </List>
+        </div>
+        <div className='flex flex-col gap-1'>
+          <Typography className='uppercase'>Options</Typography>
+          <List dense>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <i className='ri-bookmark-line' />
+                </ListItemIcon>
+                <ListItemText primary='Add Tag' />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <i className='ri-user-star-line' />
+                </ListItemIcon>
+                <ListItemText primary='Important Contact' />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <i className='ri-image-2-line' />
+                </ListItemIcon>
+                <ListItemText primary='Shared Image' />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <i className='ri-forbid-2-line' />
+                </ListItemIcon>
+                <ListItemText primary='Block Contact' />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </div>
+        <Button
+          variant='contained'
+          color='error'
+          fullWidth
+          className='mbs-auto'
+          endIcon={<i className='ri-delete-bin-7-line' />}
+        >
+          Delete Contact
+        </Button>
       </ScrollWrapper>
     </Drawer>
   ) : null

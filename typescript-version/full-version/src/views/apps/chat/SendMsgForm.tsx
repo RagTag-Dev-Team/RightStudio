@@ -1,6 +1,6 @@
 // React Imports
 import { useRef, useState, useEffect } from 'react'
-import type { FormEvent, KeyboardEvent, RefObject } from 'react'
+import type { FormEvent, KeyboardEvent, RefObject, MouseEvent } from 'react'
 
 // MUI Imports
 import TextField from '@mui/material/TextField'
@@ -10,6 +10,8 @@ import Popper from '@mui/material/Popper'
 import Fade from '@mui/material/Fade'
 import Paper from '@mui/material/Paper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
 // Third-party Imports
 import Picker from '@emoji-mart/react'
@@ -31,32 +33,25 @@ type Props = {
 
 const EmojiPicker = ({
   onChange,
-  isBelowSmScreen
+  isBelowSmScreen,
+  openEmojiPicker,
+  setOpenEmojiPicker,
+  anchorRef
 }: {
   onChange: (value: string) => void
   isBelowSmScreen: boolean
+  openEmojiPicker: boolean
+  setOpenEmojiPicker: (value: boolean | ((prevVar: boolean) => boolean)) => void
+  anchorRef: RefObject<HTMLButtonElement>
 }) => {
-  // States
-  const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
-
-  // Refs
-  const anchorRef = useRef<HTMLButtonElement>(null)
-
-  const handleToggle = () => {
-    setOpenEmojiPicker(prevOpen => !prevOpen)
-  }
-
   return (
     <>
-      <IconButton ref={anchorRef} size='small' onClick={handleToggle}>
-        <i className='ri-emotion-happy-line cursor-pointer' />
-      </IconButton>
       <Popper
         open={openEmojiPicker}
         transition
         disablePortal
         placement='top-start'
-        className='z-[1]'
+        className='z-[12]'
         anchorEl={anchorRef.current}
       >
         {({ TransitionProps, placement }) => (
@@ -88,6 +83,25 @@ const EmojiPicker = ({
 const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }: Props) => {
   // States
   const [msg, setMsg] = useState('')
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
+  const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
+
+  // Refs
+  const anchorRef = useRef<HTMLButtonElement>(null)
+
+  const open = Boolean(anchorEl)
+
+  const handleToggle = () => {
+    setOpenEmojiPicker(prevOpen => !prevOpen)
+  }
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(prev => (prev ? null : event.currentTarget))
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   const handleSendMsg = (event: FormEvent | KeyboardEvent, msg: string) => {
     event.preventDefault()
@@ -122,23 +136,77 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
           InputProps={{
             endAdornment: (
               <div className='flex items-center gap-1'>
-                <EmojiPicker
-                  isBelowSmScreen={isBelowSmScreen}
-                  onChange={value => {
-                    setMsg(msg + value)
+                {isBelowSmScreen ? (
+                  <>
+                    <IconButton
+                      id='option-menu'
+                      aria-haspopup='true'
+                      {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
+                      onClick={handleClick}
+                      ref={anchorRef}
+                    >
+                      <i className='ri-more-2-line' />
+                    </IconButton>
+                    <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                      <MenuItem
+                        onClick={() => {
+                          handleToggle()
+                          handleClose()
+                        }}
+                      >
+                        <i className='ri-emotion-happy-line' />
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <i className='ri-mic-line' />
+                      </MenuItem>
+                      <MenuItem onClick={handleClose} className='p-0'>
+                        <label htmlFor='upload-img' className='plb-2 pli-5'>
+                          <i className='ri-attachment-2' />
+                          <input hidden type='file' id='upload-img' />
+                        </label>
+                      </MenuItem>
+                    </Menu>
+                    <EmojiPicker
+                      anchorRef={anchorRef}
+                      openEmojiPicker={openEmojiPicker}
+                      setOpenEmojiPicker={setOpenEmojiPicker}
+                      isBelowSmScreen={isBelowSmScreen}
+                      onChange={value => {
+                        setMsg(msg + value)
 
-                    if (messageInputRef.current) {
-                      messageInputRef.current.focus()
-                    }
-                  }}
-                />
-                <IconButton size='small'>
-                  <i className='ri-mic-line' />
-                </IconButton>
-                <IconButton size='small' component='label' htmlFor='upload-img'>
-                  <i className='ri-attachment-2' />
-                  <input hidden type='file' id='upload-img' />
-                </IconButton>
+                        if (messageInputRef.current) {
+                          messageInputRef.current.focus()
+                        }
+                      }}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <IconButton ref={anchorRef} size='small' onClick={handleToggle}>
+                      <i className='ri-emotion-happy-line cursor-pointer' />
+                    </IconButton>
+                    <EmojiPicker
+                      anchorRef={anchorRef}
+                      openEmojiPicker={openEmojiPicker}
+                      setOpenEmojiPicker={setOpenEmojiPicker}
+                      isBelowSmScreen={isBelowSmScreen}
+                      onChange={value => {
+                        setMsg(msg + value)
+
+                        if (messageInputRef.current) {
+                          messageInputRef.current.focus()
+                        }
+                      }}
+                    />
+                    <IconButton size='small'>
+                      <i className='ri-mic-line' />
+                    </IconButton>
+                    <IconButton size='small' component='label' htmlFor='upload-img'>
+                      <i className='ri-attachment-2' />
+                      <input hidden type='file' id='upload-img' />
+                    </IconButton>
+                  </>
+                )}
                 <Button
                   variant='contained'
                   color='primary'

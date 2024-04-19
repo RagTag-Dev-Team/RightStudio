@@ -169,6 +169,7 @@ const SidebarLeft = (props: Props) => {
       <Drawer
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        className='bs-full'
         variant={!isBelowMdScreen ? 'permanent' : 'persistent'}
         ModalProps={{
           disablePortal: true,

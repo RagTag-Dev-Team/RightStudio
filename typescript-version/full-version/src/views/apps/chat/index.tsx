@@ -54,6 +54,13 @@ const ChatWrapper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBelowMdScreen])
 
+  useEffect(() => {
+    if (!isBelowSmScreen && sidebarOpen) {
+      setBackdropOpen(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isBelowSmScreen])
+
   return (
     <>
       <SidebarLeft
