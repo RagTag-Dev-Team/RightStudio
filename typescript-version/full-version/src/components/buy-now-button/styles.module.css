@@ -2,7 +2,7 @@
   position: fixed;
   inset-inline-end: 6.5rem;
   inset-block-end: 3.5rem;
-  z-index: 11;
+  z-index: 18;
 }
 
 .button,

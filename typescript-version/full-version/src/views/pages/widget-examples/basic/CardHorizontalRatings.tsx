@@ -39,7 +39,7 @@ const CardHorizontalRatings = () => {
         </Grid>
         <Grid item xs={12} md={6} lg={5} className='flex items-center justify-center md:order-[unset] -order-1'>
           <CardContent className='flex items-center justify-center'>
-            <Img src='/images/cards/4.png' height={175} />
+            <Img src='/images/cards/5.png' height={175} />
           </CardContent>
         </Grid>
       </Grid>

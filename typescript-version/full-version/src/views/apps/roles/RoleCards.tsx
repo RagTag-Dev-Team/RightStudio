@@ -38,7 +38,7 @@ const RoleCards = () => {
     children: 'Edit Role',
     variant: 'body2',
     component: Link,
-    className: 'text-primary',
+    color: 'primary',
     onClick: e => e.preventDefault()
   }
 
