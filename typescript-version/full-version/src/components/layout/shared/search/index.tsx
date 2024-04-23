@@ -94,7 +94,7 @@ const NavSearch = () => {
       >
         <div className='flex items-center gap-4'>
           <Search fontSize='1.25rem' />
-          <div className='whitespace-nowrap'>Search ⌘K</div>
+          <div className='whitespace-nowrap select-none'>Search ⌘K</div>
         </div>
       </ComponentWithUseKBar>
       <KBarPortal>
