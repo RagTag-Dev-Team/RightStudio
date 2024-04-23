@@ -101,7 +101,7 @@ const NavSearch = () => {
           <IconButton className='text-textPrimary'>
             <i className='ri-search-line' />
           </IconButton>
-          <div className='whitespace-nowrap text-textDisabled'>Search ⌘K</div>
+          <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>
       </ComponentWithUseKBar>
       <KBarPortal>
