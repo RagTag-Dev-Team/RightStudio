@@ -29,9 +29,9 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
   return {
     ...(isSmallScreen && {
       '& .Toastify__toast-container': {
-        marginBlockStart: theme.spacing(5),
-        marginInline: theme.spacing(5),
-        width: 'calc(100vw - 40px)'
+        marginBlockStart: theme.spacing(3),
+        marginInline: theme.spacing(3),
+        width: 'calc(100dvw - 1.5rem)'
       }
     }),
     '& .Toastify__toast': {
