@@ -54,7 +54,7 @@ const AddActions = () => {
               color='secondary'
               variant='outlined'
               className='capitalize'
-              href={getLocalizedUrl('apps/invoice/preview/4987', locale as Locale)}
+              href={getLocalizedUrl('/apps/invoice/preview/4987', locale as Locale)}
             >
               Preview
             </Button>

@@ -65,7 +65,7 @@ const LoginV2 = () => {
                 className='text-end'
                 color='primary'
                 component={Link}
-                href={getLocalizedUrl('pages/auth/forgot-password-v2', locale as Locale)}
+                href={getLocalizedUrl('/pages/auth/forgot-password-v2', locale as Locale)}
               >
                 Forgot password?
               </Typography>
@@ -77,7 +77,7 @@ const LoginV2 = () => {
               <Typography>New on our platform?</Typography>
               <Typography
                 component={Link}
-                href={getLocalizedUrl('pages/auth/register-v2', locale as Locale)}
+                href={getLocalizedUrl('/pages/auth/register-v2', locale as Locale)}
                 color='primary'
               >
                 Create an account

@@ -57,7 +57,7 @@ const EditActions = ({ id }: { id: string }) => {
                 color='secondary'
                 variant='outlined'
                 className='capitalize'
-                href={getLocalizedUrl(`apps/invoice/preview/${id}`, locale as Locale)}
+                href={getLocalizedUrl(`/apps/invoice/preview/${id}`, locale as Locale)}
               >
                 Preview
               </Button>

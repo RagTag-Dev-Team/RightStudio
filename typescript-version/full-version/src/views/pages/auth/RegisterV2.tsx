@@ -77,7 +77,7 @@ const RegisterV2 = () => {
               <Typography>Already have an account?</Typography>
               <Typography
                 component={Link}
-                href={getLocalizedUrl('pages/auth/login-v2', locale as Locale)}
+                href={getLocalizedUrl('/pages/auth/login-v2', locale as Locale)}
                 color='primary'
               >
                 Sign in instead

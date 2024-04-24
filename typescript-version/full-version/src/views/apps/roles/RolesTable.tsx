@@ -230,7 +230,7 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
+              <Link href={getLocalizedUrl('/apps/user/view', locale as Locale)} className='flex'>
                 <i className='ri-eye-line text-[22px]' />
               </Link>
             </IconButton>

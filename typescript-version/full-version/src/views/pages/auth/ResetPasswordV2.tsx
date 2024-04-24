@@ -82,7 +82,7 @@ const ResetPasswordV2 = () => {
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
               <Link
-                href={getLocalizedUrl('pages/auth/login-v2', locale as Locale)}
+                href={getLocalizedUrl('/pages/auth/login-v2', locale as Locale)}
                 onClick={e => e.preventDefault()}
                 className='flex items-center'
               >

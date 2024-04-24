@@ -36,7 +36,7 @@ const ForgotPasswordV2 = () => {
               Send reset link
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
-              <Link href={getLocalizedUrl('pages/auth/login-v2', locale as Locale)} className='flex items-center'>
+              <Link href={getLocalizedUrl('/pages/auth/login-v2', locale as Locale)} className='flex items-center'>
                 <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
                 <span>Back to Login</span>
               </Link>
