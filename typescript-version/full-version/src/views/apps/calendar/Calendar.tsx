@@ -21,6 +21,16 @@ import type { AddEventType, CalendarColors, CalendarType } from '@/types/apps/ca
 // Slice Imports
 import { selectedEvent, updateEvent } from '@/redux-store/slices/calendar'
 
+type CalenderProps = {
+  calendarStore: CalendarType
+  calendarApi: any
+  setCalendarApi: (val: any) => void
+  calendarsColor: CalendarColors
+  dispatch: Dispatch
+  handleLeftSidebarToggle: () => void
+  handleAddEventSidebarToggle: () => void
+}
+
 const blankEvent: AddEventType = {
   title: '',
   start: '',
@@ -32,16 +42,6 @@ const blankEvent: AddEventType = {
     guests: [],
     description: ''
   }
-}
-
-type CalenderProps = {
-  calendarStore: CalendarType
-  calendarApi: any
-  setCalendarApi: (val: any) => void
-  calendarsColor: CalendarColors
-  dispatch: Dispatch
-  handleLeftSidebarToggle: () => void
-  handleAddEventSidebarToggle: () => void
 }
 
 const Calendar = (props: CalenderProps) => {
