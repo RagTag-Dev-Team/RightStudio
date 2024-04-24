@@ -264,7 +264,8 @@ const horizontalMenuData = (
         ]
       },
       {
-        label: dictionary['navigation'].dialogExamples
+        label: dictionary['navigation'].dialogExamples,
+        href: '/pages/dialog-examples'
       },
       {
         label: dictionary['navigation'].widgetExamples,
