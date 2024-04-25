@@ -38,6 +38,7 @@
 | autoprefixer                        | [https://github.com/postcss/autoprefixer](https://github.com/postcss/autoprefixer) | MIT |
 | bootstrap-icons                     | [https://github.com/twbs/icons](https://github.com/twbs/icons) | MIT |
 | classnames                          | [https://github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) | MIT |
+| consola                             | [https://github.com/unjs/consola](https://github.com/unjs/consola) | MIT |
 | date-fns                            | [https://github.com/date-fns/date-fns](https://github.com/date-fns/date-fns) | MIT |
 | dotenv-cli                          | [https://github.com/entropitor/dotenv-cli](https://github.com/entropitor/dotenv-cli) | MIT |
 | draft-js                            | [https://github.com/facebookarchive/draft-js](https://github.com/facebookarchive/draft-js) | MIT |
@@ -46,6 +47,7 @@
 | eslint-config-prettier              | [https://github.com/prettier/eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) | MIT |
 | eslint-import-resolver-typescript   | [https://github.com/import-js/eslint-import-resolver-typescript](https://github.com/import-js/eslint-import-resolver-typescript) | ISC |
 | eslint-plugin-import                | [https://github.com/import-js/eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) | MIT |
+| globby                              | [https://github.com/sindresorhus/globby](https://github.com/sindresorhus/globby) | MIT |
 | kbar                                | [https://github.com/timc1/kbar](https://github.com/timc1/kbar) | MIT |
 | keen-slider                         | [https://github.com/rcbyr/keen-slider](https://github.com/rcbyr/keen-slider) | MIT |
 | negotiator                          | [https://github.com/jshttp/negotiator](https://github.com/jshttp/negotiator) | MIT |

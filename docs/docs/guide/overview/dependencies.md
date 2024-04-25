@@ -125,6 +125,13 @@ You may add / update / remove any other dependencies according to your requireme
 "negotiator"
 ```
 
+## Remove i18n script
+
+```json
+"globby"
+"consola"
+```
+
 ## Right to Left (RTL)
 
 ```json
