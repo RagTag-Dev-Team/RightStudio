@@ -74,6 +74,15 @@ You may add / update / remove any other dependencies according to your requireme
 "recharts"
 ```
 
+## Chat
+
+```json
+// For emoji only
+"@emoji-mart/data"
+"@emoji-mart/react"
+"emoji-mart"
+```
+
 ## DataTable
 
 ```json
@@ -123,6 +132,19 @@ You may add / update / remove any other dependencies according to your requireme
 "@formatjs/intl-localematcher"
 "@types/negotiator" // Typescript version only
 "negotiator"
+```
+
+## Kanban
+
+```json
+"@formkit/drag-and-drop"
+```
+
+## Redux
+
+```json
+"@reduxjs/toolkit"
+"react-redux"
 ```
 
 ## Remove i18n script

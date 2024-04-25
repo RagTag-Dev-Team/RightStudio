@@ -47,9 +47,11 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   ├── migrations                  -> Database schema change history
 │   │   ├── dev.db                      -> SQLite database
 │   │   └── schema.prisma               -> Model and schema definitions for Prisma
+|   ├── redux-store                     -> Redux Store setup
+|   |   └── ReduxProvider.tsx           -> Redux provider
+|   |   └── index.ts                    -> Central Redux store configuration, combines all reducers and configures middleware
+|   |   └── slices                      -> Redux slices (individual pieces of state)
 │   ├── types                           -> Type definitions
-|   ├── reducers                        -> Reducers
-|   |   └── calendarReducer.ts          -> Reducer for calendar
 │   ├── utils                           -> Utility functions
 │   └── views                           -> Files that are included in app folder
 ├── .editorconfig                       -> Configuration file for the editor
