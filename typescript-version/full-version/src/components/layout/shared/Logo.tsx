@@ -1,5 +1,5 @@
 // React Imports
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
 // Next Imports
 // import Img from 'next/image'
@@ -37,7 +37,7 @@ const LogoText = styled.span<LogoTextProps>`
     isCollapsed && !isHovered ? 'opacity: 0; margin-inline-start: 0;' : 'opacity: 1; margin-inline-start: 10px;'}
 `
 
-const Logo = () => {
+const Logo = ({ component = false }: { component?: boolean }) => {
   // Refs
   const logoTextRef = useRef<HTMLSpanElement>(null)
 
@@ -48,6 +48,8 @@ const Logo = () => {
 
   // Vars
   const { layout } = settings
+
+  const LogoWrapper = useMemo(() => (component ? 'div' : Link), [component])
 
   useEffect(() => {
     if (layout !== 'collapsed') {
@@ -67,7 +69,9 @@ const Logo = () => {
   // You may return any JSX here to display a logo in the sidebar header
   // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
   return (
-    <Link href={getLocalizedUrl('/', locale as Locale)} className='flex items-center'>
+    // eslint-disable-next-line lines-around-comment
+    /* @ts-ignore */
+    <LogoWrapper className='flex items-center' {...(!component && { href: getLocalizedUrl('/', locale as Locale) })}>
       <svg width={22} height={24} viewBox='0 0 22.236 23.8' xmlns='http://www.w3.org/2000/svg' color='#765feb'>
         <g
           fontSize='9pt'
@@ -94,7 +98,7 @@ const Logo = () => {
       >
         {themeConfig.templateName}
       </LogoText>
-    </Link>
+    </LogoWrapper>
   )
 }
 

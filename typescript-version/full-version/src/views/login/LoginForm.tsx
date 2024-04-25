@@ -34,7 +34,7 @@ const LoginForm = () => {
     if (res && res.ok && res.error === null) {
       const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-      router.push(getLocalizedUrl(redirectURL, locale as Locale))
+      router.replace(getLocalizedUrl(redirectURL, locale as Locale))
     } else {
       if (res?.error) {
         const error = JSON.parse(res.error)
@@ -51,10 +51,10 @@ const LoginForm = () => {
 
   return (
     <div className='min-bs-full flex justify-center items-center'>
-      <form onSubmit={handleSubmit}>
+      <form method='post' onSubmit={handleSubmit}>
         <label>
           Email:
-          <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
+          <input autoFocus type='text' value={email} onChange={e => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
