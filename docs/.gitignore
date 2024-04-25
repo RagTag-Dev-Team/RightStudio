@@ -3,6 +3,7 @@
 
 # Production
 /build
+/documentation
 
 # Generated files
 .docusaurus
@@ -21,3 +22,6 @@ yarn-error.log*
 
 # icon generated file
 src/iconify-icons/generated-icons.css
+
+# Zip files
+*.zip
