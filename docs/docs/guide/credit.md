@@ -18,12 +18,14 @@
 | @typescript-eslint/parser           | [https://github.com/typescript-eslint/typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) | BSD-2-Clause |
 | autoprefixer                        | [https://github.com/postcss/autoprefixer](https://github.com/postcss/autoprefixer) | MIT |
 | classnames                          | [https://github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) | MIT |
+| consola                             | [https://github.com/unjs/consola](https://github.com/unjs/consola) | MIT |
 | dotenv-cli                          | [https://github.com/entropitor/dotenv-cli](https://github.com/entropitor/dotenv-cli) | MIT |
 | eslint                              | [https://github.com/eslint/eslint](https://github.com/eslint/eslint) | MIT |
 | eslint-config-next                  | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |
 | eslint-config-prettier              | [https://github.com/prettier/eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) | MIT |
 | eslint-import-resolver-typescript   | [https://github.com/import-js/eslint-import-resolver-typescript](https://github.com/import-js/eslint-import-resolver-typescript) | ISC |
 | eslint-plugin-import                | [https://github.com/import-js/eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) | MIT |
+| globby                              | [https://github.com/sindresorhus/globby](https://github.com/sindresorhus/globby) | MIT |
 | kbar                                | [https://github.com/timc1/kbar](https://github.com/timc1/kbar) | MIT |
 | negotiator                          | [https://github.com/jshttp/negotiator](https://github.com/jshttp/negotiator) | MIT |
 | next                                | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |

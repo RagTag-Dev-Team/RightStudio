@@ -41,7 +41,11 @@ const sidebars: SidebarsConfig = {
           type : 'category',
           label : 'Translations',
           items : [
-            'guide/development/translation/how-to-remove-i18n',
+            {
+              type : 'category',
+              label : 'How to remove i18n',
+              items: ['guide/development/translation/how-to-remove-i18n/using-script', 'guide/development/translation/how-to-remove-i18n/manually']
+            },
             'guide/development/translation/add-i18n-to-Starter-kit'
           ]
         },

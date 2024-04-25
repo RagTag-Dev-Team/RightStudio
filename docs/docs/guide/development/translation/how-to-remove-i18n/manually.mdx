@@ -1,5 +1,6 @@
 ---
 toc_max_heading_level: 4
+title: Manually
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,12 +11,14 @@ import CodeBlock from '@theme/CodeBlock';
 
 This guide provides steps to remove i18n (internationalization) from your project.
 
+:::tip
+We recommend you to start your project with [**starter-kit**](/docs/guide/overview/starter-kit-vs-full-package) version if you don't need i18n feature. If you are using full-version and you want to remove i18n feature, then this docs is for you.
+:::
+
 :::warning
-Please be aware that our template's support for Right-to-Left (RTL) languages like Arabic is directly tied to the language settings. This means that RTL formatting is automatically applied when an RTL language is selected. Conversely, languages like English (en) use Left-to-Right (LTR) formatting.
+Please be aware that our template supports Right-to-Left (RTL) languages like Arabic based on the language settings, automatically applying RTL formatting when an RTL language is selected. For languages like English, it uses Left-to-Right (LTR) formatting. 
 
-If you remove the internationalization (i18n) feature from our template, the automatic RTL support will also be disabled. This is because our RTL functionality is based on the language settings — it recognizes and formats RTL languages appropriately and does the same for LTR languages.
-
-In essence, without the i18n feature, the template will not automatically switch between RTL and LTR layouts based on the language. Please consider this carefully when modifying the template, especially if your audience includes users of RTL languages.
+If you remove the internationalization (i18n) feature, this automatic RTL support will be disabled, and the template will not switch between RTL and LTR layouts based on the language. 
 :::
 
 ### Step 1: Uninstall i18n Packages
@@ -25,19 +28,18 @@ First, uninstall the packages associated with i18n. These packages handle langua
 - `@formatjs/intl-localematcher`
 - `@types/negotiator`
 - `negotiator`
-- `server-only`
 
 Run the appropriate command in your project's root directory based on your package manager:
 
 <Tabs>
   <TabItem value="pnpm">
-    <CodeBlock language='bash'>pnpm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    <CodeBlock language='bash'>pnpm uninstall @formatjs/intl-localematcher @types/negotiator negotiator</CodeBlock>
   </TabItem>
   <TabItem value="yarn">
-    <CodeBlock language='bash'>yarn uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    <CodeBlock language='bash'>yarn uninstall @formatjs/intl-localematcher @types/negotiator negotiator</CodeBlock>
   </TabItem>
   <TabItem value="npm">
-    <CodeBlock language='bash'>npm uninstall @formatjs/intl-localematcher @types/negotiator negotiator server-only</CodeBlock>
+    <CodeBlock language='bash'>npm uninstall @formatjs/intl-localematcher @types/negotiator negotiator</CodeBlock>
   </TabItem>
 </Tabs>
 
