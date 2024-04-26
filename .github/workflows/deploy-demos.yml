@@ -2,7 +2,7 @@ name: Deploy - Demos
 run-name: ${{ inputs.is_production && '🚀' || '🧪' }} Deploy - Demos
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ inputs.is_marketplace && secrets.VERCEL_PROJECT_ID_MARKETPLACE || secrets.VERCEL_PROJECT_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
   workflow_dispatch:
@@ -10,9 +10,6 @@ on:
       is_production:
         type: boolean
         description: Is production deployment
-      is_marketplace:
-        type: boolean
-        description: Is MUI marketplace deployment
 
 jobs:
   deployment:
