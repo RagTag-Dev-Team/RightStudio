@@ -112,6 +112,87 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
     }
   }
 
+  const handleInputEndAdornment = () => {
+    return (
+      <div className='flex items-center gap-1'>
+        {isBelowSmScreen ? (
+          <>
+            <IconButton
+              id='option-menu'
+              aria-haspopup='true'
+              {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
+              onClick={handleClick}
+              ref={anchorRef}
+            >
+              <i className='ri-more-2-line' />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  handleToggle()
+                  handleClose()
+                }}
+              >
+                <i className='ri-emotion-happy-line' />
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <i className='ri-mic-line' />
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='p-0'>
+                <label htmlFor='upload-img' className='plb-2 pli-5'>
+                  <i className='ri-attachment-2' />
+                  <input hidden type='file' id='upload-img' />
+                </label>
+              </MenuItem>
+            </Menu>
+            <EmojiPicker
+              anchorRef={anchorRef}
+              openEmojiPicker={openEmojiPicker}
+              setOpenEmojiPicker={setOpenEmojiPicker}
+              isBelowSmScreen={isBelowSmScreen}
+              onChange={value => {
+                setMsg(msg + value)
+
+                if (messageInputRef.current) {
+                  messageInputRef.current.focus()
+                }
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <IconButton ref={anchorRef} size='small' onClick={handleToggle}>
+              <i className='ri-emotion-happy-line cursor-pointer' />
+            </IconButton>
+            <EmojiPicker
+              anchorRef={anchorRef}
+              openEmojiPicker={openEmojiPicker}
+              setOpenEmojiPicker={setOpenEmojiPicker}
+              isBelowSmScreen={isBelowSmScreen}
+              onChange={value => {
+                setMsg(msg + value)
+
+                if (messageInputRef.current) {
+                  messageInputRef.current.focus()
+                }
+              }}
+            />
+            <IconButton size='small'>
+              <i className='ri-mic-line' />
+            </IconButton>
+            <IconButton size='small' component='label' htmlFor='upload-img'>
+              <i className='ri-attachment-2' />
+              <input hidden type='file' id='upload-img' />
+            </IconButton>
+          </>
+        )}
+        <Button variant='contained' color='primary' type='submit' endIcon={<i className='ri-send-plane-line' />}>
+          Send
+        </Button>
+      </div>
+    )
+  }
+
   useEffect(() => {
     setMsg('')
   }, [activeUser.id])
@@ -133,91 +214,7 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
           }}
           size='small'
           inputRef={messageInputRef}
-          InputProps={{
-            endAdornment: (
-              <div className='flex items-center gap-1'>
-                {isBelowSmScreen ? (
-                  <>
-                    <IconButton
-                      id='option-menu'
-                      aria-haspopup='true'
-                      {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
-                      onClick={handleClick}
-                      ref={anchorRef}
-                    >
-                      <i className='ri-more-2-line' />
-                    </IconButton>
-                    <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                      <MenuItem
-                        onClick={() => {
-                          handleToggle()
-                          handleClose()
-                        }}
-                      >
-                        <i className='ri-emotion-happy-line' />
-                      </MenuItem>
-                      <MenuItem onClick={handleClose}>
-                        <i className='ri-mic-line' />
-                      </MenuItem>
-                      <MenuItem onClick={handleClose} className='p-0'>
-                        <label htmlFor='upload-img' className='plb-2 pli-5'>
-                          <i className='ri-attachment-2' />
-                          <input hidden type='file' id='upload-img' />
-                        </label>
-                      </MenuItem>
-                    </Menu>
-                    <EmojiPicker
-                      anchorRef={anchorRef}
-                      openEmojiPicker={openEmojiPicker}
-                      setOpenEmojiPicker={setOpenEmojiPicker}
-                      isBelowSmScreen={isBelowSmScreen}
-                      onChange={value => {
-                        setMsg(msg + value)
-
-                        if (messageInputRef.current) {
-                          messageInputRef.current.focus()
-                        }
-                      }}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <IconButton ref={anchorRef} size='small' onClick={handleToggle}>
-                      <i className='ri-emotion-happy-line cursor-pointer' />
-                    </IconButton>
-                    <EmojiPicker
-                      anchorRef={anchorRef}
-                      openEmojiPicker={openEmojiPicker}
-                      setOpenEmojiPicker={setOpenEmojiPicker}
-                      isBelowSmScreen={isBelowSmScreen}
-                      onChange={value => {
-                        setMsg(msg + value)
-
-                        if (messageInputRef.current) {
-                          messageInputRef.current.focus()
-                        }
-                      }}
-                    />
-                    <IconButton size='small'>
-                      <i className='ri-mic-line' />
-                    </IconButton>
-                    <IconButton size='small' component='label' htmlFor='upload-img'>
-                      <i className='ri-attachment-2' />
-                      <input hidden type='file' id='upload-img' />
-                    </IconButton>
-                  </>
-                )}
-                <Button
-                  variant='contained'
-                  color='primary'
-                  type='submit'
-                  endIcon={<i className='ri-send-plane-line' />}
-                >
-                  Send
-                </Button>
-              </div>
-            )
-          }}
+          InputProps={{ endAdornment: handleInputEndAdornment() }}
         />
       </form>
     </div>

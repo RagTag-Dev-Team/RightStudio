@@ -9,6 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
+import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Type Imports
@@ -18,11 +19,18 @@ import type { ChatDataType } from '@/types/apps/chatTypes'
 import SidebarLeft from './SidebarLeft'
 import ChatContent from './ChatContent'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { commonLayoutClasses } from '@layouts/utils/layoutClasses'
+
 // Slice Imports
 import { getActiveUserData } from '@/redux-store/slices/chat'
 
 const ChatWrapper = () => {
   // Hooks
+  const { settings } = useSettings()
   const dispatch = useDispatch()
   const chatStore = useSelector((state: { chatReducer: ChatDataType }) => state.chatReducer)
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
@@ -62,7 +70,16 @@ const ChatWrapper = () => {
   }, [isBelowSmScreen])
 
   return (
-    <>
+    <div
+      className={classNames(
+        commonLayoutClasses.contentHeightFixed,
+        'flex is-full overflow-hidden rounded-xl relative',
+        {
+          border: settings.skin === 'bordered',
+          'shadow-md': settings.skin !== 'bordered'
+        }
+      )}
+    >
       <SidebarLeft
         chatStore={chatStore}
         getActiveUserData={activeUser}
@@ -90,7 +107,7 @@ const ChatWrapper = () => {
       />
 
       <Backdrop open={backdropOpen} onClick={() => setBackdropOpen(false)} className='absolute z-10' />
-    </>
+    </div>
   )
 }
 
