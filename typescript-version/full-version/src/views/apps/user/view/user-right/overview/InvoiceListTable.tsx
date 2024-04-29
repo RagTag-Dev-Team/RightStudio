@@ -120,7 +120,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         cell: ({ row }) => (
           <Typography
             component={Link}
-            href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
+            href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale as Locale)}
             color='primary'
           >{`#${row.original.id}`}</Typography>
         )
@@ -170,7 +170,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
             </IconButton>
             <IconButton>
               <Link
-                href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
+                href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
                 <i className='tabler-eye text-[22px] text-textSecondary' />
@@ -187,7 +187,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 {
                   text: 'Edit',
                   icon: 'tabler-edit text-[22px]',
-                  href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale as Locale),
+                  href: getLocalizedUrl(`/apps/invoice/edit/${row.original.id}`, locale as Locale),
                   linkProps: {
                     className: classnames('flex items-center bs-[40px] plb-2 pli-4 is-full gap-2 text-textSecondary')
                   }

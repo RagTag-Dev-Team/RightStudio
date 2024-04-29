@@ -6,9 +6,7 @@ import { NextAuthProvider } from '@/contexts/nextAuthProvider'
 import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
-
-// Config Imports
-import themeConfig from '@configs/themeConfig'
+import ReduxProvider from '@/redux-store/ReduxProvider'
 
 // Styled Component Imports
 import AppReactToastify from '@/libs/styles/AppReactToastify'
@@ -35,8 +33,8 @@ const Providers = (props: Props) => {
       <VerticalNavProvider>
         <SettingsProvider settingsCookie={settingsCookie} mode={mode} demoName={demoName}>
           <ThemeProvider direction={direction} systemMode={systemMode}>
-            {children}
-            <AppReactToastify position={themeConfig.toastPosition} hideProgressBar />
+            <ReduxProvider>{children}</ReduxProvider>
+            <AppReactToastify direction={direction} hideProgressBar />
           </ThemeProvider>
         </SettingsProvider>
       </VerticalNavProvider>

@@ -16,6 +16,9 @@ import type { ActionId, ActionImpl } from 'kbar'
 import type { SearchData } from '@/data/searchData'
 import type { Locale } from '@configs/i18n'
 
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
+
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
@@ -86,10 +89,10 @@ const EnterComponent = ({
 
   return (
     active && (
-      <i
+      <DirectionalIcon
+        ltrIconClass='tabler-corner-down-left'
+        rtlIconClass='tabler-corner-down-right'
         className={classnames('text-xl', {
-          'tabler-corner-down-left': theme.direction === 'ltr',
-          'tabler-corner-down-right': theme.direction === 'rtl',
           'text-primary': currentPath === getLocalizedUrl(data.url, locale as Locale)
         })}
       />

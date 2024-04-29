@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -10,13 +8,14 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // Components Imports
 import CustomTextField from '@core/components/mui/TextField'
+import Form from '@components/Form'
 
 const FormLayoutsWithIcon = () => {
   return (
     <Card>
       <CardHeader title='Basic with Icons' />
       <CardContent>
-        <form onSubmit={e => e.preventDefault()}>
+        <Form>
           <Grid container spacing={6}>
             <Grid item xs={12}>
               <CustomTextField
@@ -84,7 +83,7 @@ const FormLayoutsWithIcon = () => {
               </Button>
             </Grid>
           </Grid>
-        </form>
+        </Form>
       </CardContent>
     </Card>
   )

@@ -7,7 +7,6 @@ hide_table_of_contents: true
 :::danger Heads up!
 For an optimal experience with our template, we suggest utilizing the default theme we've provided. Crafting a custom theme can be complex and demands considerable time and expertise.
 
-<br/>
 Please be aware that introducing a new theme may lead to runtime errors, given that our entire template is closely integrated with the existing theme settings. If you decide to create your own theme, please be aware that it may alter the intended appearance of the template. Should any issues arise, you may need to address them independently.
 :::
 

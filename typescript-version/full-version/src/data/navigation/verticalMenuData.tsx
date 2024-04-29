@@ -14,7 +14,7 @@ const verticalMenuData = (
   {
     label: dictionary['navigation'].dashboards,
     suffix: {
-      label: '2',
+      label: '3',
       color: 'error'
     },
     icon: 'tabler-smart-home',
@@ -44,9 +44,17 @@ const verticalMenuData = (
     isSection: true,
     children: [
       {
+        label: dictionary['navigation'].chat,
+        icon: 'tabler-brand-wechat',
+        href: '/apps/chat'
+      },
+      {
         label: dictionary['navigation'].calendar,
         icon: 'tabler-calendar',
         href: '/apps/calendar'
+      },
+      {
+        label: dictionary['navigation'].kanban
       },
       {
         label: dictionary['navigation'].invoice,

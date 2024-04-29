@@ -38,9 +38,17 @@ const horizontalMenuData = (
     icon: 'tabler-mail',
     children: [
       {
+        label: dictionary['navigation'].chat,
+        icon: 'tabler-brand-wechat',
+        href: '/apps/chat'
+      },
+      {
         label: dictionary['navigation'].calendar,
         icon: 'tabler-calendar',
         href: '/apps/calendar'
+      },
+      {
+        label: dictionary['navigation'].kanban
       },
       {
         label: dictionary['navigation'].invoice,
@@ -299,7 +307,8 @@ const horizontalMenuData = (
       },
       {
         label: dictionary['navigation'].dialogExamples,
-        icon: 'tabler-square'
+        icon: 'tabler-square',
+        href: '/pages/dialog-examples'
       },
       {
         label: dictionary['navigation'].widgetExamples,

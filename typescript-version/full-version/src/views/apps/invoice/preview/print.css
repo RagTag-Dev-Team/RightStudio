@@ -1,0 +1,28 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  [data-mui-color-scheme='dark'] {
+    --mui-palette-text-primary: rgba(0, 0, 0, 0.87);
+    --mui-palette-action-hover: rgba(0, 0, 0, 0.04);
+    --mui-palette-text-secondary: rgba(0, 0, 0, 0.6);
+    --mui-palette-divider: rgba(0, 0, 0, 0.12);
+  }
+
+  /* Only show the .preview-card element when printing */
+  .previewCard * {
+    visibility: visible;
+  }
+  .previewCard {
+    inline-size: 100%;
+    block-size: 100%;
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+  }
+  @media (max-width: 600px) {
+    .previewCard {
+      position: relative !important;
+    }
+  }
+}

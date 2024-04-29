@@ -3,11 +3,14 @@
 | Package                             | URL                                                            | License              |
 | ----------------------------------- | -------------------------------------------------------------- | -------------------- |
 | @auth/prisma-adapter                | [https://github.com/nextauthjs/next-auth](https://github.com/nextauthjs/next-auth) | ISC |
+| @emoji-mart/data                    | [https://github.com/missive/emoji-mart](https://github.com/missive/emoji-mart) | MIT |
+| @emoji-mart/react                   | [https://github.com/missive/emoji-mart](https://github.com/missive/emoji-mart) | MIT |
 | @emotion/cache                      | [https://github.com/emotion-js/emotion](https://github.com/emotion-js/emotion) | MIT |
 | @emotion/react                      | [https://github.com/emotion-js/emotion](https://github.com/emotion-js/emotion) | MIT |
 | @emotion/styled                     | [https://github.com/emotion-js/emotion](https://github.com/emotion-js/emotion) | MIT |
 | @floating-ui/react                  | [https://github.com/floating-ui/floating-ui](https://github.com/floating-ui/floating-ui) | MIT |
 | @formatjs/intl-localematcher        | [https://github.com/formatjs/formatjs](https://github.com/formatjs/formatjs) | MIT |
+| @formkit/drag-and-drop              | [https://github.com/formkit/drag-and-drop](https://github.com/formkit/drag-and-drop) | MIT |
 | @fullcalendar/common                | [https://github.com/fullcalendar/fullcalendar](https://github.com/fullcalendar/fullcalendar) | MIT |
 | @fullcalendar/core                  | [https://github.com/fullcalendar/fullcalendar](https://github.com/fullcalendar/fullcalendar) | MIT |
 | @fullcalendar/daygrid               | [https://github.com/fullcalendar/fullcalendar](https://github.com/fullcalendar/fullcalendar) | MIT |
@@ -38,15 +41,18 @@
 | autoprefixer                        | [https://github.com/postcss/autoprefixer](https://github.com/postcss/autoprefixer) | MIT |
 | bootstrap-icons                     | [https://github.com/twbs/icons](https://github.com/twbs/icons) | MIT |
 | classnames                          | [https://github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) | MIT |
+| consola                             | [https://github.com/unjs/consola](https://github.com/unjs/consola) | MIT |
 | date-fns                            | [https://github.com/date-fns/date-fns](https://github.com/date-fns/date-fns) | MIT |
 | dotenv-cli                          | [https://github.com/entropitor/dotenv-cli](https://github.com/entropitor/dotenv-cli) | MIT |
 | draft-js                            | [https://github.com/facebookarchive/draft-js](https://github.com/facebookarchive/draft-js) | MIT |
+| emoji-mart                          | [https://github.com/missive/emoji-mart](https://github.com/missive/emoji-mart) | MIT |
 | eslint                              | [https://github.com/eslint/eslint](https://github.com/eslint/eslint) | MIT |
 | eslint-config-next                  | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |
 | eslint-config-prettier              | [https://github.com/prettier/eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) | MIT |
 | eslint-import-resolver-typescript   | [https://github.com/import-js/eslint-import-resolver-typescript](https://github.com/import-js/eslint-import-resolver-typescript) | ISC |
 | eslint-plugin-import                | [https://github.com/import-js/eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) | MIT |
 | kbar                                | [https://github.com/timc1/kbar](https://github.com/timc1/kbar) | MIT |
+| globby                              | [https://github.com/sindresorhus/globby](https://github.com/sindresorhus/globby) | MIT |
 | keen-slider                         | [https://github.com/rcbyr/keen-slider](https://github.com/rcbyr/keen-slider) | MIT |
 | negotiator                          | [https://github.com/jshttp/negotiator](https://github.com/jshttp/negotiator) | MIT |
 | next                                | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |
@@ -55,6 +61,7 @@
 | postcss-styled-syntax               | [https://github.com/hudochenkov/postcss-styled-syntax](https://github.com/hudochenkov/postcss-styled-syntax) | MIT |
 | prettier                            | [https://github.com/prettier/prettier](https://github.com/prettier/prettier) | MIT |
 | prisma                              | [https://github.com/prisma/prisma](https://github.com/prisma/prisma) | Apache-2.0 |
+| @reduxjs/toolkit                    | [https://github.com/reduxjs/redux-toolkit](https://github.com/reduxjs/redux-toolkit) | MIT |
 | react                               | [https://github.com/facebook/react](https://github.com/facebook/react) | MIT |
 | react-apexcharts                    | [https://github.com/apexcharts/react-apexcharts](https://github.com/apexcharts/react-apexcharts) | MIT |
 | react-colorful                      | [https://github.com/omgovich/react-colorful](https://github.com/omgovich/react-colorful) | MIT |
@@ -64,6 +71,7 @@
 | react-dropzone                      | [https://github.com/react-dropzone/react-dropzone](https://github.com/react-dropzone/react-dropzone) | MIT |
 | react-hook-form                     | [https://github.com/react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form) | MIT |
 | react-perfect-scrollbar             | [https://github.com/goldenyz/react-perfect-scrollbar](https://github.com/goldenyz/react-perfect-scrollbar) | MIT |
+| react-redux                         | [https://github.com/reduxjs/react-redux](https://github.com/reduxjs/react-redux) | MIT |
 | react-toastify                      | [https://github.com/fkhadra/react-toastify](https://github.com/fkhadra/react-toastify) | MIT |
 | react-use                           | [https://github.com/streamich/react-use](https://github.com/streamich/react-use) | The Unlicense |
 | recharts                            | [https://github.com/recharts/recharts](https://github.com/recharts/recharts) | MIT |

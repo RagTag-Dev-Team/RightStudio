@@ -1,6 +1,3 @@
-// Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
-'use client'
-
 // Next Imports
 import { useParams } from 'next/navigation'
 
@@ -109,9 +106,11 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].apps} icon={<i className='tabler-mail' />}>
+          <MenuItem href={`/${locale}/apps/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`} icon={<i className='tabler-calendar' />}>
             {dictionary['navigation'].calendar}
           </MenuItem>
+          <MenuItem href={`/${locale}/apps/kanban`}>{dictionary['navigation'].kanban}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice} icon={<i className='tabler-file-description' />}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>

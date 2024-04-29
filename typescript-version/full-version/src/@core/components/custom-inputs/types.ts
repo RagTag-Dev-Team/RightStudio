@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import type { ChangeEvent, ReactNode } from 'react'
 

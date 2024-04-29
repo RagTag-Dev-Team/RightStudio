@@ -151,7 +151,7 @@ const ResetPasswordV2 = ({ mode }: { mode: SystemMode }) => {
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
               <Link
-                href={getLocalizedUrl('pages/auth/login-v2', locale as Locale)}
+                href={getLocalizedUrl('/pages/auth/login-v2', locale as Locale)}
                 className='flex items-center gap-1.5'
               >
                 <DirectionalIcon

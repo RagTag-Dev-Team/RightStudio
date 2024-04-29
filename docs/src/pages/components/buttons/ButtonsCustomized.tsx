@@ -8,8 +8,8 @@ import type { ButtonProps } from '@mui/material/Button'
 const CustomButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
   backgroundColor: purple[500],
-  '&:hover': {
-    backgroundColor: purple[700]
+  '&:hover, &:active, &.Mui-focusVisible:not(:has(span.MuiTouchRipple-root))': {
+    backgroundColor: `${purple[700]} !important`
   }
 }))
 

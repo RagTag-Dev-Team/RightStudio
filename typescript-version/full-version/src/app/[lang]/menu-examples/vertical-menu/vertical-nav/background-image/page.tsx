@@ -8,7 +8,7 @@ const BackgroundImage = () => {
     <VerticalNav
       customBreakpoint='200px'
       backgroundColor='rgba(248, 248, 248, 0.8)'
-      backgroundImage='https://wallpapers.com/images/high/road-in-between-iphone-landscape-8epxqsbuv4c1xqoi.webp'
+      backgroundImage='/images/menu-bg-image.png'
     >
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <SubMenu label='Dashboards'>

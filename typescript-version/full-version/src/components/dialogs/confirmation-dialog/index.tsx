@@ -47,10 +47,10 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
           <i className='tabler-alert-circle text-[88px] mbe-6 text-warning' />
           <Wrapper
             {...(type === 'suspend-account' && {
-              className: 'flex flex-col items-center gap-5'
+              className: 'flex flex-col items-center gap-2'
             })}
           >
-            <Typography variant='h5'>
+            <Typography variant='h4'>
               {type === 'delete-account' && 'Are you sure you want to deactivate your account?'}
               {type === 'unsubscribe' && 'Are you sure to cancel your subscription?'}
               {type === 'suspend-account' && 'Are you sure?'}
@@ -80,14 +80,14 @@ const ConfirmationDialog = ({ open, setOpen, type }: ConfirmationDialogProps) =>
       <Dialog open={secondDialog} onClose={handleSecondDialogClose}>
         <DialogContent className='flex items-center flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
           <i
-            className={classnames('text-[88px] mbe-5 sm:mbe-8', {
+            className={classnames('text-[88px] mbe-6', {
               'tabler-circle-check': userInput,
               'text-success': userInput,
               'tabler-circle-x': !userInput,
               'text-error': !userInput
             })}
           />
-          <Typography variant='h4' className='mbe-5'>
+          <Typography variant='h4' className='mbe-2'>
             {userInput
               ? `${type === 'delete-account' ? 'Deactivated' : type === 'unsubscribe' ? 'Unsubscribed' : 'Suspended!'}`
               : 'Cancelled'}

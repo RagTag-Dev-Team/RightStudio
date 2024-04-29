@@ -50,6 +50,10 @@ a:hover {
 p {
   margin: 0;
 }
+.theme-admonition p {
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+}
+
 // p:not([class]) {
 //   margin-bottom: var(--ifm-paragraph-margin-bottom);
 // }

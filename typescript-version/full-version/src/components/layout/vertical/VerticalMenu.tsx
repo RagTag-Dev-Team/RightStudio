@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import { useParams } from 'next/navigation'
 
@@ -96,9 +94,12 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
         </SubMenu>
         <MenuSection label={dictionary['navigation'].appsPages}>
+          <MenuItem href={`/${locale}/apps/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`/${locale}/apps/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`} icon={<i className='tabler-calendar' />}>
             {dictionary['navigation'].calendar}
           </MenuItem>
+          <MenuItem href={`/${locale}/apps/kanban`}>{dictionary['navigation'].kanban}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice} icon={<i className='tabler-file-description' />}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>

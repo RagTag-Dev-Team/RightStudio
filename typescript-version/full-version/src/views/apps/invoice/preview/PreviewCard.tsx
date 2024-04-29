@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -15,6 +13,7 @@ import Logo from '@components/layout/shared/Logo'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
+import './print.css'
 
 // Vars
 const data = [
@@ -50,7 +49,7 @@ const data = [
 
 const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }) => {
   return (
-    <Card>
+    <Card className='previewCard'>
       <CardContent className='sm:!p-12'>
         <Grid container spacing={6}>
           <Grid item xs={12}>

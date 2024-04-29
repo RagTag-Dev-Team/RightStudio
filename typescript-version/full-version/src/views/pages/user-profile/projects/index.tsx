@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
@@ -20,6 +15,7 @@ import type { ProjectsTabType } from '@/types/pages/profileTypes'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
+import Link from '@components/Link'
 
 const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
   return (
@@ -36,9 +32,7 @@ const Projects = ({ data }: { data?: ProjectsTabType[] }) => {
                       <div>
                         <Typography
                           variant='h5'
-                          href='/'
                           component={Link}
-                          onClick={e => e.preventDefault()}
                           className='hover:text-primary'
                         >
                           {item.title}

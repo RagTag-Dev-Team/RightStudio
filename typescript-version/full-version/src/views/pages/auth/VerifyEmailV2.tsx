@@ -1,13 +1,9 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -16,6 +12,7 @@ import classnames from 'classnames'
 import type { SystemMode } from '@core/types'
 
 // Component Imports
+import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
@@ -98,7 +95,7 @@ const VerifyEmailV2 = ({ mode }: { mode: SystemMode }) => {
           </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Didn&#39;t get the mail?</Typography>
-            <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
+            <Typography color='primary' component={Link}>
               Resend
             </Typography>
           </div>

@@ -34,7 +34,7 @@ const CardMobile = () => {
       <Grid container>
         <Grid item xs={12} md={5} className='flex items-center justify-center'>
           <CardContent className='flex items-center justify-center'>
-            <img alt='iPhone 11 Pro' src='/images/cards/iPhone-11-pro.png' height={175} />
+            <img alt='iPhone 11 Pro' src='/images/cards/4.png' height={175} />
           </CardContent>
         </Grid>
         <Grid item xs={12} md={7} className='md:border-is border-bs md:border-bs-0'>

@@ -4,6 +4,8 @@
 
 The `OptionMenu` component is a flexible and customizable menu component, using Material-UI (MUI) for styling and Next.js for navigation. It allows for the creation of a dropdown menu with various types of items, including links, dividers, and standard menu items. This component is ideal for implementing context menus, action lists, or more complex dropdowns in your web application.
 
+The component is placed inside the `src/@core/components/option-menu/index.tsx` file. You may refer to the `src/views/apps/invoice/list/InvoiceListTable.tsx` and `src/views/pages/user-profile/connections/index.tsx` files for examples of how to use the `OptionMenu` component.
+
 ## Props
 
 The `OptionMenu` component accepts the following props, structured to customize its behavior and appearance:
@@ -50,6 +52,7 @@ const Component = () => {
   return (
     ...
     <OptionMenu
+      iconClassName='text-[22px] text-textSecondary'
       options={[
         "Share Connection",
         "Block Connection",

@@ -239,7 +239,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
+              <Link href={getLocalizedUrl('/apps/user/view', locale as Locale)} className='flex'>
                 <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>

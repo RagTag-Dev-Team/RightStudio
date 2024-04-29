@@ -2,27 +2,44 @@
 
 // MUI Imports
 import Box from '@mui/material/Box'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled } from '@mui/material/styles'
 import type { BoxProps } from '@mui/material/Box'
+import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
-import type { ToastContainerProps } from 'react-toastify'
+import type { ToastContainerProps, ToastPosition } from 'react-toastify'
+
+// Type Imports
+import type { Direction } from '@core/types'
+
+// Config Imports
+import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
 type Props = ToastContainerProps & {
   boxProps?: BoxProps
+  direction?: Direction
 }
 
 // Styled Components
 const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
   // Hooks
+  const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(480))
   const { settings } = useSettings()
 
   return {
+    ...(isSmallScreen && {
+      '& .Toastify__toast-container': {
+        marginBlockStart: theme.spacing(3),
+        marginInline: theme.spacing(3),
+        width: 'calc(100dvw - 1.5rem)'
+      }
+    }),
     '& .Toastify__toast': {
       minBlockSize: 46,
       borderRadius: 'var(--mui-shape-borderRadius)',
@@ -30,6 +47,9 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
       backgroundColor: 'var(--mui-palette-background-paper)',
       boxShadow: settings.skin === 'bordered' ? 'none' : 'var(--mui-customShadows-md)',
       border: settings.skin === 'bordered' && `1px solid ${theme.palette.divider}`,
+      ...(isSmallScreen && {
+        marginBlockEnd: theme.spacing(4)
+      }),
       '&:not(.custom-toast)': {
         '& .Toastify__toast-body': {
           color: 'var(--mui-palette-text-primary)'
@@ -54,6 +74,10 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
             fill: 'var(--mui-palette-info-main)'
           }
         }
+      },
+      '[data-skin="bordered"] &': {
+        boxShadow: 'none',
+        border: `1px solid var(--mui-palette-divider)`
       }
     },
     '& .Toastify__toast-body': {
@@ -78,11 +102,22 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
 })
 
 const AppReactToastify = (props: Props) => {
-  const { boxProps, ...rest } = props
+  const { boxProps, direction = 'ltr', ...rest } = props
+
+  const positionMap: Partial<Record<ToastPosition, ToastPosition>> = {
+    'top-right': 'top-left',
+    'top-left': 'top-right',
+    'bottom-left': 'bottom-right',
+    'bottom-right': 'bottom-left',
+    'top-center': 'top-center',
+    'bottom-center': 'bottom-center'
+  }
+
+  const position = direction === 'rtl' ? positionMap[themeConfig.toastPosition] : themeConfig.toastPosition
 
   return (
     <ToastifyWrapper {...boxProps}>
-      <ToastContainer {...rest} />
+      <ToastContainer rtl={direction === 'rtl'} position={position} {...rest} />
     </ToastifyWrapper>
   )
 }

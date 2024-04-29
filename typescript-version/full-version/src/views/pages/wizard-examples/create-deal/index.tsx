@@ -25,6 +25,7 @@ import StepReview from './StepReview'
 
 // Styled Component Imports
 import StepperWrapper from '@core/styles/stepper'
+import StepperCustomDot from '@components/stepper-dot'
 
 // Vars
 const steps = [

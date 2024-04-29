@@ -4,12 +4,13 @@
 import { useState } from 'react'
 
 // MUI Imports
+import { styled } from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
-import Stepper from '@mui/material/Stepper'
+import MuiStepper from '@mui/material/Stepper'
 import MenuItem from '@mui/material/MenuItem'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
@@ -17,6 +18,7 @@ import CardContent from '@mui/material/CardContent'
 import FormHelperText from '@mui/material/FormHelperText'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
+import type { StepperProps } from '@mui/material/Stepper'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
@@ -45,6 +47,22 @@ const steps = [
     subtitle: 'Add Social Links'
   }
 ]
+
+// Styled Components
+const Stepper = styled(MuiStepper)<StepperProps>(({ theme }) => ({
+  justifyContent: 'center',
+  '& .MuiStep-root': {
+    '&:first-of-type': {
+      paddingInlineStart: 0
+    },
+    '&:last-of-type': {
+      paddingInlineEnd: 0
+    },
+    [theme.breakpoints.down('md')]: {
+      paddingInline: 0
+    }
+  }
+}))
 
 const accountSchema = object(
   {

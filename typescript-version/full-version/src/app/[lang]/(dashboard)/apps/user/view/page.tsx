@@ -14,6 +14,9 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 import UserLeftOverview from '@views/apps/user/view/user-left-overview'
 import UserRight from '@views/apps/user/view/user-right'
 
+// Data Imports
+import { getPricingData } from '@/app/server/actions'
+
 const OverViewTab = dynamic(() => import('@views/apps/user/view/user-right/overview'))
 const SecurityTab = dynamic(() => import('@views/apps/user/view/user-right/security'))
 const BillingPlans = dynamic(() => import('@views/apps/user/view/user-right/billing-plans'))
@@ -29,7 +32,14 @@ const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement 
   connections: <ConnectionsTab />
 })
 
-const getPricingData = async () => {
+/**
+ * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
+ * ! `.env` file found at root of your project and also update the API endpoints like `/pages/pricing` in below example.
+ * ! Also, remove the above server action import and the action itself from the `src/app/server/actions.ts` file to clean up unused code
+ * ! because we've used the server action for getting our static data.
+ */
+
+/* const getPricingData = async () => {
   // Vars
   const res = await fetch(`${process.env.API_URL}/pages/pricing`)
 
@@ -38,7 +48,7 @@ const getPricingData = async () => {
   }
 
   return res.json()
-}
+} */
 
 const UserViewTab = async () => {
   // Vars

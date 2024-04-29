@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
@@ -16,8 +11,10 @@ import classnames from 'classnames'
 import type { SystemMode } from '@core/types'
 
 // Component Imports
-import Logo from '@components/layout/shared/Logo'
 import CustomTextField from '@core/components/mui/TextField'
+import Form from '@components/Form'
+import Link from '@components/Link'
+import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -95,7 +92,7 @@ const TwoStepsV2 = ({ mode }: { mode: SystemMode }) => {
               ******1234
             </Typography>
           </div>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-6'>
+          <Form noValidate autoComplete='off' className='flex flex-col gap-6'>
             <div className='flex flex-col gap-2'>
               <Typography>Type your 6 digit security code</Typography>
               <div className='flex items-center justify-between gap-4'>
@@ -112,11 +109,11 @@ const TwoStepsV2 = ({ mode }: { mode: SystemMode }) => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>
-              <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
+              <Typography color='primary' component={Link}>
                 Resend
               </Typography>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

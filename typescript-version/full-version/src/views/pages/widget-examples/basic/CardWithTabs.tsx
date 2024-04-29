@@ -6,6 +6,7 @@ import type { SyntheticEvent } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import Tab from '@mui/material/Tab'

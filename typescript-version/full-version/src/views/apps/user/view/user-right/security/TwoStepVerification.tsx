@@ -5,10 +5,10 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputLabel from '@mui/material/InputLabel'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 // Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 import CustomTextField from '@core/components/mui/TextField'
 
 const TwoStepVerification = () => {
@@ -22,12 +22,12 @@ const TwoStepVerification = () => {
         <div className='flex items-center mbe-4 gap-5'>
           <CustomTextField id='sms' placeholder='+1(968) 819-2547' fullWidth />
           <div className='flex items-center gap-1'>
-            <Button variant='text' color='secondary' className='p-1.5 bs-[38px] is-[38px] min-is-0'>
-              <i className='tabler-edit text-[22px]' />
-            </Button>
-            <Button variant='text' color='secondary' className='p-1.5 bs-[38px] is-[38px] min-is-0'>
-              <i className='tabler-user-plus text-[22px]' />
-            </Button>
+            <CustomIconButton variant='outlined' color='secondary'>
+              <i className='tabler-edit' />
+            </CustomIconButton>
+            <CustomIconButton variant='outlined' color='secondary'>
+              <i className='tabler-user-plus' />
+            </CustomIconButton>
           </div>
         </div>
         <Typography>

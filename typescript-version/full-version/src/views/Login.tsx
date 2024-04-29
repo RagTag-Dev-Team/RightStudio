@@ -139,7 +139,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
       // Vars
       const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-      router.push(getLocalizedUrl(redirectURL, locale as Locale))
+      router.replace(getLocalizedUrl(redirectURL, locale as Locale))
     } else {
       if (res?.error) {
         const error = JSON.parse(res.error)
@@ -164,7 +164,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
       </div>
       <div className='flex justify-center items-center bs-full bg-backgroundPaper !min-is-full p-6 md:!min-is-[unset] md:p-12 md:is-[480px]'>
         <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
-          <Logo />
+          <Logo component />
         </div>
         <div className='flex flex-col gap-6 is-full sm:is-auto md:is-full sm:max-is-[400px] md:max-is-[unset] mbs-8 sm:mbs-11 md:mbs-0'>
           <div className='flex flex-col gap-1'>
@@ -177,7 +177,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
               <span className='font-medium'>admin</span>
             </Typography>
           </Alert>
-          <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
+          <form noValidate method='post' autoComplete='off' onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
             <Controller
               name='email'
               control={control}

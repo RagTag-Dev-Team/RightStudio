@@ -57,3 +57,8 @@ export const horizontalLayoutClasses = {
 export const blankLayoutClasses = {
   root: 'ts-blank-layout'
 }
+
+// Common classes for Vertical and Horizontal layouts
+export const commonLayoutClasses = {
+  contentHeightFixed: 'ts-layout-content-height-fixed'
+}

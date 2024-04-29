@@ -14,12 +14,12 @@ export type CustomBadgeProps = BadgeProps & {
 
 const Badge = styled(MuiBadge)<CustomBadgeProps>(({ tonal, color }) => {
   return {
-    '& .MuiBadge-badge.MuiBadge-standard': {
-      ...(tonal === 'true' && {
+    ...(tonal === 'true' && {
+      '& .MuiBadge-badge.MuiBadge-standard': {
         color: `var(--mui-palette-${color}-main)`,
         backgroundColor: `var(--mui-palette-${color}-lightOpacity)`
-      })
-    }
+      }
+    })
   }
 })
 
