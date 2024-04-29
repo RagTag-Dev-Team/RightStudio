@@ -8,7 +8,7 @@ import type { Settings } from '@core/contexts/settingsContext'
 // Util Imports
 import { menuClasses } from '@menu/utils/menuClasses'
 
-const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
+const menuItemStyles = (settings: Settings, theme: Theme, iconClass: string): MenuItemStyles => ({
   root: ({ level }) => ({
     ...(level === 0 && {
       borderRadius: 6
@@ -66,9 +66,12 @@ const menuItemStyles = (settings: Settings, theme: Theme): MenuItemStyles => ({
     '& > i, & > svg': {
       fontSize: 'inherit'
     },
-    '& .tabler-circle': {
+    [`& .${iconClass}`]: {
       fontSize: '0.75rem',
       color: 'var(--mui-palette-text-secondary)',
+      ...(level === 1 && {
+        marginInline: theme.spacing(1.25)
+      }),
       [`.${menuClasses.active} &`]: {
         color: 'var(--mui-palette-primary-main)'
       }

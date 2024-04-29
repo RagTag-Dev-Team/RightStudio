@@ -79,7 +79,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       <Menu
         rootStyles={menuRootStyles(theme)}
         renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles(settings, theme, 'tabler-circle')}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),

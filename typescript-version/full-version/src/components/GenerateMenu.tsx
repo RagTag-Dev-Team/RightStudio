@@ -78,7 +78,7 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
             key={index}
             prefix={subMenuPrefix}
             suffix={subMenuSuffix}
-            {...rest} icon={icon}
+            {...rest}
             {...(Icon && { icon: Icon })}
           >
             {children && renderMenuItems(children)}
@@ -108,7 +108,7 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
           prefix={menuItemPrefix}
           suffix={menuItemSuffix}
           {...rest}
-          icon={icon} href={href}
+          href={href}
           {...(Icon && { icon: Icon })}
         >
           {menuItem.label}
@@ -130,8 +130,6 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
     return data.map((item: HorizontalMenuDataType, index) => {
       const subMenuItem = item as HorizontalSubMenuDataType
       const menuItem = item as HorizontalMenuItemDataType
-
-      const icon = <i className={menuItem.icon} />
 
       // Check if the current item is a sub menu
       if (subMenuItem.children) {
@@ -159,7 +157,7 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
             key={index}
             prefix={subMenuPrefix}
             suffix={subMenuSuffix}
-            {...rest} icon={icon}
+            {...rest}
             {...(Icon && { icon: Icon })}
           >
             {children && renderMenuItems(children)}
@@ -185,19 +183,12 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
 
       return (
         <HorizontalMenuItem
-
           key={index}
-
           prefix={menuItemPrefix}
-
           suffix={menuItemSuffix}
-
           {...rest}
-
-          icon={icon}
           href={href}
           {...(Icon && { icon: Icon })}
-
         >
           {menuItem.label}
         </HorizontalMenuItem>
