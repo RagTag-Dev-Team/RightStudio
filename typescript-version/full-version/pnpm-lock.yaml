@@ -62,9 +62,6 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.3(react@18.2.0))
-      '@iconify/react':
-        specifier: ^4.1.1
-        version: 4.1.1(react@18.2.0)
       '@mui/lab':
         specifier: 5.0.0-alpha.170
         version: 5.0.0-alpha.170(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(@mui/material@5.15.15(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -645,11 +642,6 @@ packages:
 
   '@iconify/json@2.2.204':
     resolution: {integrity: sha512-sFlh+TIF54DZoEzsF5YVWY7XEzjN2ZSmCjtzvajk5EdNjvPAKr9Tvvptoyj6hcuylJsDxiU12FRDSdygW1c8bg==}
-
-  '@iconify/react@4.1.1':
-    resolution: {integrity: sha512-jed14EjvKjee8mc0eoscGxlg7mSQRkwQG3iX3cPBCO7UlOjz0DtlvTqxqEcHUJGh+z1VJ31Yhu5B9PxfO0zbdg==}
-    peerDependencies:
-      react: '>=16'
 
   '@iconify/tools@4.0.4':
     resolution: {integrity: sha512-hX1Z3i1Tm6JxyrDv45jNEijPpepZZfal/4leFGtUC04H9LsgRo597BOBFB9PUZsQdFGLOxVUUfv6lqU/dC+xXw==}
@@ -3858,11 +3850,6 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
-
-  '@iconify/react@4.1.1(react@18.2.0)':
-    dependencies:
-      '@iconify/types': 2.0.0
-      react: 18.2.0
 
   '@iconify/tools@4.0.4':
     dependencies:
