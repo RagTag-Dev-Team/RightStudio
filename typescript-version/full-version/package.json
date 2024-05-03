@@ -17,7 +17,7 @@
     "@auth/prisma-adapter": "^2.0.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@floating-ui/react": "^0.26.12",
+    "@floating-ui/react": "^0.26.13",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@prisma/client": "^5.13.0",
     "@tanstack/match-sorter-utils": "^8.15.1",
@@ -27,19 +27,19 @@
     "negotiator": "^0.6.3",
     "next": "^14.2.3",
     "next-auth": "^4.24.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-perfect-scrollbar": "^1.5.8",
     "react-use": "^17.5.0",
     "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.3",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
+    "@types/node": "^20.12.8",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
     "dotenv-cli": "^7.4.1",
     "eslint": "^8.57.0",
@@ -51,14 +51,14 @@
     "postcss-styled-syntax": "^0.6.4",
     "prettier": "^3.2.5",
     "prisma": "^5.13.0",
-    "stylelint": "^16.4.0",
+    "stylelint": "^16.5.0",
     "stylelint-use-logical-spec": "^5.0.1",
     "tailwindcss": "^3.4.3",
     "tailwindcss-logical": "^3.0.1",
     "typescript": "^5.4.5"
   },
   "overrides": {
-    "react": "^18.2.0"
+    "react": "^18.3.1"
   },
   "prisma": {
     "schema": "./src/prisma/schema.prisma"
