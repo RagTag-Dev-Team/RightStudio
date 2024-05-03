@@ -26,7 +26,6 @@ import StepperWrapper from '@core/styles/stepper'
 import StepAccountDetails from './StepAccountDetails'
 import StepPersonalInfo from './StepPersonalInfo'
 import StepBillingDetails from './StepBillingDetails'
-import StepperCustomDot from '@components/stepper-dot'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'

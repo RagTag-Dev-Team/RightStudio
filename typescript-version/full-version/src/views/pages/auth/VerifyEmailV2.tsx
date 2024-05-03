@@ -1,9 +1,10 @@
+'use client'
+
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-
 
 // Third-party Imports
 import classnames from 'classnames'

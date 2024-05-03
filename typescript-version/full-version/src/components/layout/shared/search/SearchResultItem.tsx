@@ -5,9 +5,6 @@ import type { Ref } from 'react'
 // Next Imports
 import { useParams } from 'next/navigation'
 
-// MUI Imports
-import { useTheme } from '@mui/material/styles'
-
 // Third-party Imports
 import classnames from 'classnames'
 import type { ActionId, ActionImpl } from 'kbar'
@@ -85,8 +82,6 @@ const EnterComponent = ({
   data: SearchData
   locale: Locale
 }) => {
-  const theme = useTheme()
-
   return (
     active && (
       <DirectionalIcon
