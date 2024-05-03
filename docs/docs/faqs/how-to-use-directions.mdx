@@ -2,7 +2,7 @@
 hide_table_of_contents: true
 ---
 
-import { TemplateName } from "@site/src/components/TemplateName";
+import { TemplateName } from '@site/src/components/TemplateName'
 
 # How to use directions?
 
@@ -20,25 +20,25 @@ Suppose you want to add a class `text-error` to the `div` element when the direc
 
 ```tsx title='page.tsx'
 // Third-party Imports
-import classnames from "classnames";
+import classnames from 'classnames'
 
 // Type Imports
-import type { Locale } from "@configs/i18n";
+import type { Locale } from '@configs/i18n'
 
 // Config Imports
-import { i18n } from "@configs/i18n";
+import { i18n } from '@configs/i18n'
 
 const Component = ({ params }: { params: { lang: Locale } }) => {
-  const direction = i18n.langDirection[params.lang];
+  const direction = i18n.langDirection[params.lang]
 
   return (
-    <div className={classnames({ "text-error": direction === "rtl" })}>
+    <div className={classnames({ 'text-error': direction === 'rtl' })}>
       Component
     </div>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 - The `direction` is obtained from the `i18n.langDirection` configuration based on the current language (`params.lang`).
@@ -52,20 +52,20 @@ The below code snippet shows how to add a class `text-error` to the `div` elemen
 
 ```tsx title='component.tsx'
 // MUI Imports
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from '@mui/material/styles'
 
 const Component = () => {
   // Hooks
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
-    <div className={theme.direction === "rtl" ? "text-error" : ""}>
+    <div className={theme.direction === 'rtl' ? 'text-error' : ''}>
       Component
     </div>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component
 ```
 
 - Here, the `useTheme` hook from MUI is used to access the current theme's direction property (`theme.direction`) and apply styles or functionality bases on it.
@@ -85,7 +85,7 @@ import DirectionalIcon from '@components/DirectionalIcon'
 const component = () => {
   return (
     ...
-    <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
+    <DirectionalIcon ltrIconClass='tabler-chevron-left' rtlIconClass='tabler-chevron-right' />
     ...
   )
 }
