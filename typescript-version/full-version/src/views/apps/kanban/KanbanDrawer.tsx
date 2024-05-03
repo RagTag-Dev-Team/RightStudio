@@ -125,6 +125,11 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
     setColumns(updatedColumns)
   }
 
+  // Handle Delete
+  const handleDelete = (value: string) => {
+    setBadgeText(current => current.filter(item => item !== value))
+  }
+
   return (
     <div>
       <Drawer
@@ -176,7 +181,15 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
                 renderValue={selected => (
                   <div className='flex flex-wrap gap-1'>
                     {selected.map(value => (
-                      <Chip variant='tonal' label={value} key={value} size='small' color={chipColor[value]?.color} />
+                      <Chip
+                        variant='tonal'
+                        label={value}
+                        key={value}
+                        onMouseDown={e => e.stopPropagation()}
+                        size='small'
+                        onDelete={() => handleDelete(value)}
+                        color={chipColor[value]?.color}
+                      />
                     ))}
                   </div>
                 )}

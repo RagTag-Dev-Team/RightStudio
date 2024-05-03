@@ -115,15 +115,17 @@ In the `middleware.js/ts` file, make these changes:
 
         <CodeBlock language='tsx'>
         {`<SubMenu label={dictionary['navigation'].dashboards} icon={<i className='tabler-smart-home' />}>
-        <MenuItem href={'/$locale}/dashboards/analytics'}>{dictionary['navigation'].analytics}</MenuItem>
-        </SubMenu>`}
+         <MenuItem href={'/$\{locale\}/dashboards/analytics'}>{dictionary['navigation'].analytics}</MenuItem>
+       </SubMenu>`}
         </CodeBlock>
 
         to:
 
-        <CodeBlock language='tsx'>{`<SubMenu label='dashboards' icon={<i className='tabler-smart-home' />}>
-        <MenuItem href={'/dashboards/analytics'}>analytics</MenuItem>
-        </SubMenu>`}</CodeBlock>
+        <CodeBlock language='tsx'>
+        {`<SubMenu label='dashboards' icon={<i className='tabler-smart-home' />}>
+         <MenuItem href='/dashboards/analytics'>analytics</MenuItem>
+       </SubMenu>`}
+        </CodeBlock>
         
     3. Remove the unused variable and it's releted import from the `VerticalMenu.tsx` file.
 

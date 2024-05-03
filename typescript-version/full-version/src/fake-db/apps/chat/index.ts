@@ -9,7 +9,7 @@ export const db: ChatDataType = {
     id: 1,
     avatar: '/images/avatars/1.png',
     fullName: 'John Doe',
-    role: 'admin',
+    role: 'Admin',
     about:
       'Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.',
     status: 'online',

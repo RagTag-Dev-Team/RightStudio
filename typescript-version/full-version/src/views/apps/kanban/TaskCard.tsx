@@ -16,11 +16,12 @@ import MenuItem from '@mui/material/MenuItem'
 import classnames from 'classnames'
 import type { Dispatch } from '@reduxjs/toolkit'
 
+// Type Imports
+import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
+
 // Slice Imports
 import { getCurrentTask, deleteTask } from '@/redux-store/slices/kanban'
 
-// Type Imports
-import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
 import type { ThemeColor } from '@core/types'
 
 // Component Imports

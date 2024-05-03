@@ -98,6 +98,9 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
   // Props
   const { profileUser, contacts } = chatStore
 
+  // Vars
+  const activeUserChat = chatStore.chats.find((chat: ChatType) => chat.userId === chatStore.activeUser?.id)
+
   // Refs
   const scrollRef = useRef(null)
 
@@ -113,9 +116,6 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
       }
     }
   }
-
-  // Vars
-  const activeUserChat = chatStore.chats.find((chat: ChatType) => chat.userId === chatStore.activeUser?.id)
 
   useEffect(() => {
     if (activeUserChat && activeUserChat.chat && activeUserChat.chat.length) {
