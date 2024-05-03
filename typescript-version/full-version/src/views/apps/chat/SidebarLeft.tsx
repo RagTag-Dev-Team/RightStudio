@@ -21,6 +21,9 @@ import type { Dispatch } from '@reduxjs/toolkit'
 import type { ThemeColor } from '@core/types'
 import type { ChatDataType, StatusObjType } from '@/types/apps/chatTypes'
 
+// Slice Imports
+import { addNewChat } from '@/redux-store/slices/chat'
+
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 import UserProfileLeft from './UserProfileLeft'
@@ -29,9 +32,6 @@ import AvatarWithBadge from './AvatarWithBadge'
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
 import { formatDateToMonthShort } from './utils'
-
-// Slice Imports
-import { addNewChat } from '@/redux-store/slices/chat'
 
 export const statusObj: StatusObjType = {
   busy: 'error',

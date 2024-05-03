@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from 'react-redux'
 // Type Imports
 import type { ChatDataType } from '@/types/apps/chatTypes'
 
+// Slice Imports
+import { getActiveUserData } from '@/redux-store/slices/chat'
+
 // Component Imports
 import SidebarLeft from './SidebarLeft'
 import ChatContent from './ChatContent'
@@ -25,10 +28,14 @@ import { useSettings } from '@core/hooks/useSettings'
 // Util Imports
 import { commonLayoutClasses } from '@layouts/utils/layoutClasses'
 
-// Slice Imports
-import { getActiveUserData } from '@/redux-store/slices/chat'
-
 const ChatWrapper = () => {
+  // States
+  const [backdropOpen, setBackdropOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  // Refs
+  const messageInputRef = useRef<HTMLDivElement>(null)
+
   // Hooks
   const { settings } = useSettings()
   const dispatch = useDispatch()
@@ -36,13 +43,6 @@ const ChatWrapper = () => {
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
-
-  // States
-  const [backdropOpen, setBackdropOpen] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-
-  // Refs
-  const messageInputRef = useRef<HTMLDivElement>(null)
 
   // function to get active user data
   const activeUser = (id: number) => {

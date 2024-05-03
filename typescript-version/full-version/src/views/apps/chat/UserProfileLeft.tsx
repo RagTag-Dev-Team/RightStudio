@@ -27,12 +27,12 @@ import type { Dispatch } from '@reduxjs/toolkit'
 // Type Imports
 import type { ProfileUserType, StatusType } from '@/types/apps/chatTypes'
 
+// Slice Imports
+import { setUserStatus } from '@/redux-store/slices/chat'
+
 // Component Imports
 import AvatarWithBadge from './AvatarWithBadge'
 import { statusObj } from '@views/apps/chat/SidebarLeft'
-
-// Slice Imports
-import { setUserStatus } from '@/redux-store/slices/chat'
 
 type Props = {
   open: boolean

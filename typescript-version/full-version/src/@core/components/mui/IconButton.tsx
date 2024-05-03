@@ -52,7 +52,19 @@ const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant
       },
       ...(variant === 'outlined' && {
         border: 'none !important',
-        padding: theme.spacing(1.5)
+        ...(size === 'small'
+          ? {
+              padding: theme.spacing(1.5)
+            }
+          : {
+              ...(size === 'large'
+                ? {
+                    padding: theme.spacing(2.25)
+                  }
+                : {
+                    padding: theme.spacing(1.75)
+                  })
+            })
       }),
       ...(variant === 'contained' && {
         boxShadow: 'none !important',

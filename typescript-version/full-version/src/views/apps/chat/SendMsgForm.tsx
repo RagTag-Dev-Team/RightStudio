@@ -24,6 +24,9 @@ import type { ContactType } from '@/types/apps/chatTypes'
 // Slice Imports
 import { sendMsg } from '@/redux-store/slices/chat'
 
+// Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
+
 type Props = {
   dispatch: Dispatch
   activeUser: ContactType
@@ -186,9 +189,15 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
             </IconButton>
           </>
         )}
-        <Button variant='contained' color='primary' type='submit' endIcon={<i className='ri-send-plane-line' />}>
-          Send
-        </Button>
+        {isBelowSmScreen ? (
+          <CustomIconButton variant='contained' color='primary' type='submit'>
+            <i className='ri-send-plane-line' />
+          </CustomIconButton>
+        ) : (
+          <Button variant='contained' color='primary' type='submit' endIcon={<i className='ri-send-plane-line' />}>
+            Send
+          </Button>
+        )}
       </div>
     )
   }

@@ -9,13 +9,13 @@ const  CustomIconButtons= () => {
 				<Typography className='font-medium'>Sizes</Typography>
 				<div className='flex gap-4 items-center flex-wrap'>
 					<CustomIconButton aria-label='capture screenshot' color='primary' size='small'>
-						<i className='ri-camera-lens-fill text-xl' />
+						<i className='ri-camera-lens-fill' />
 					</CustomIconButton>
 					<CustomIconButton aria-label='capture screenshot' color='primary'>
 						<i className='ri-camera-lens-fill' />
 					</CustomIconButton>
 					<CustomIconButton aria-label='capture screenshot' color='primary' size='large'>
-						<i className='ri-camera-lens-fill text-[28px]' />
+						<i className='ri-camera-lens-fill' />
 					</CustomIconButton>
 				</div>
 			</div>

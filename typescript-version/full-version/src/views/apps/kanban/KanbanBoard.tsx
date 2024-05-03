@@ -47,8 +47,8 @@ const KanbanBoard = () => {
   const currentTask = kanbanStore.tasks.find(task => task.id === kanbanStore.currentTaskId)
 
   return (
-    <div className='flex items-start gap-4'>
-      <div ref={boardRef as React.RefObject<HTMLDivElement>} className='flex gap-4'>
+    <div className='flex items-start gap-6'>
+      <div ref={boardRef as React.RefObject<HTMLDivElement>} className='flex gap-6'>
         {columns.map(column => (
           <KanbanList
             key={column.id}
