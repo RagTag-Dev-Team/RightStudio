@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Width from '@docPages/menu-examples/vertical-menu/vertical-nav/Width'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/width/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/Width'
 
 # Width
 
@@ -22,7 +24,11 @@ width={260}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/width ' />
+<BrowserWindow>
+  <Provider>
+    <Width />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Icon from '@docPages/menu-examples/vertical-menu/menu-item/Icon'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-item/icon/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-item/Icon'
 
 # Icon
 
@@ -18,7 +20,11 @@ icon?: ReactElement
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-item/icon' />
+<BrowserWindow>
+  <Provider>
+    <Icon />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import StaticMenu from '@docPages/menu-examples/vertical-menu/menu-render/StaticMenu'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-render/static-menu/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-render/StaticMenu'
 
 # Static Menu
 
@@ -12,7 +14,11 @@ The static menu is the simplest way to create a menu where you render the menu c
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-render/static-menu' />
+<BrowserWindow>
+  <Provider>
+    <StaticMenu />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

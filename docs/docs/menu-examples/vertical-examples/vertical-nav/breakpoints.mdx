@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Breakpoints from '@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoints'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/breakpoints/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoints'
 
 # Breakpoints
 
@@ -38,7 +40,11 @@ breakpoints = {
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/breakpoints' />
+<BrowserWindow>
+  <Provider>
+    <Breakpoints />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

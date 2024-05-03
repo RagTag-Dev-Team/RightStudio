@@ -10,6 +10,7 @@ import styles from './styles.module.css'
 type Props = {
   children: ReactNode
   minHeight?: number
+  maxHeight?: number
   url: string
   style?: CSSProperties
   bodyStyle?: CSSProperties
@@ -17,12 +18,12 @@ type Props = {
 
 const BrowserWindow = (props: Props) => {
   // Props
-  const { children, minHeight, style, bodyStyle, url = 'http://localhost:3000' } = props
+  const { children, minHeight = 400, maxHeight = 400, style, bodyStyle, url = 'http://localhost:3000' } = props
 
   const finalUrl = url.replace(/.*(menu-examples|hook-examples)(.*)/g, '$2')
 
   return (
-    <div className={styles.browserWindow} style={{ ...style, minHeight }}>
+    <div className={styles.browserWindow} style={{ minHeight, maxHeight, ...style }}>
       <div className={styles.browserWindowHeader}>
         <div className={styles.buttons}>
           <span className={styles.dot} style={{ background: '#f25f58' }} />

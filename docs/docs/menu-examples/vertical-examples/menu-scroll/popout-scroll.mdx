@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BrowserScroll from '@docPages/menu-examples/vertical-menu/menu-scroll/popout/BrowserScroll'
+import PerfectScroll from '@docPages/menu-examples/vertical-menu/menu-scroll/popout/PerfectScroll'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBrowserScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll/page'
-import SourceCodePerfectScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll/page'
+import SourceCodeBrowserScroll from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/popout/BrowserScroll'
+import SourceCodePerfectScroll from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/popout/PerfectScroll'
 
 # Popout Scroll
 
@@ -31,7 +34,12 @@ browserScroll={false}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll' />
+<BrowserWindow>
+  <Provider>
+    <BrowserScroll />
+  </Provider>
+</BrowserWindow>
+
 
 ### Source Code
 
@@ -43,7 +51,11 @@ The perfect scroll is the default scroll behavior for the vertical popout menu. 
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll' />
+<BrowserWindow>
+  <Provider>
+    <PerfectScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

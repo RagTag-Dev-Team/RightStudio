@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import VerticalMenuProps from '@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/vertical-menu-props/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps'
 
 # Vertical Menu Props
 
@@ -32,7 +34,11 @@ verticalMenuProps?: Pick<
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/vertical-menu-props' />
+<BrowserWindow>
+  <Provider>
+    <VerticalMenuProps />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

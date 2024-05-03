@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import CustomBreakpoint from '@docPages/menu-examples/vertical-menu/vertical-nav/CustomBreakpoint'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/custom-breakpoint/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/CustomBreakpoint'
 
 # Custom Breakpoint
 
@@ -18,7 +20,11 @@ customBreakpoint?: string
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/custom-breakpoint' />
+<BrowserWindow>
+  <Provider>
+    <CustomBreakpoint />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

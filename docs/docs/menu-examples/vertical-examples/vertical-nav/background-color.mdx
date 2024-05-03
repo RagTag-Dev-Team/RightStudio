@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BackgroundColor from '@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundColor'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/background-color/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundColor'
 
 # Background Color
 
@@ -22,7 +24,11 @@ backgroundColor='white'
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/background-color' />
+<BrowserWindow>
+  <Provider>
+    <BackgroundColor />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

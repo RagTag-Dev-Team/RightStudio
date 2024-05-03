@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import TextTruncate from '@docPages/menu-examples/horizontal-menu/menu/TextTruncate'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/text-truncate/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/TextTruncate'
 
 # Text Truncate
 
@@ -22,7 +24,11 @@ textTruncate={true}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/text-truncate' />
+<BrowserWindow>
+  <Provider>
+    <TextTruncate />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Prefix from '@docPages/menu-examples/vertical-menu/submenu/Prefix'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/prefix/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/Prefix'
 
 # Prefix
 
@@ -18,7 +20,11 @@ prefix?: ReactNode
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/submenu/prefix' />
+<BrowserWindow>
+  <Provider>
+    <Prefix />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

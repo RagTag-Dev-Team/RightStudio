@@ -2,9 +2,12 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BackdropColor from '@docPages/menu-examples/vertical-menu/vertical-nav/BackdropColor'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/backdrop-color/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackdropColor'
+
 
 # Backdrop Color
 
@@ -22,7 +25,11 @@ backdropColor='rgba(0, 0, 0, 0.3)'
 
 ### Examples
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/backdrop-color' />
+<BrowserWindow>
+  <Provider>
+    <BackdropColor />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

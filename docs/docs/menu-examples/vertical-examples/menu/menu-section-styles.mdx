@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import MenuSectionStyles from '@docPages/menu-examples/vertical-menu/menu/MenuSectionStyles'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-section-styles/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/MenuSectionStyles'
 
 # Menu Section Style
 
@@ -36,7 +38,11 @@ These properties can be customized by providing CSS objects with appropriate sty
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-section-styles' />
+<BrowserWindow>
+  <Provider>
+    <MenuSectionStyles />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

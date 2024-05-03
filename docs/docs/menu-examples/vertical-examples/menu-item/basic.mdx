@@ -2,13 +2,19 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Basic from '@docPages/menu-examples/vertical-menu/menu-item/Basic'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-item/basic/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-item/Basic'
 
 # Basic
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-item/basic' />
+<BrowserWindow>
+  <Provider>
+    <Basic />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

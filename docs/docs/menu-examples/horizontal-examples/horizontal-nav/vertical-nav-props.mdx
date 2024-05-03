@@ -1,9 +1,14 @@
-import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx";
-import SourceCodeWidth from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/width/page";
-import SourceCodeBackgroundColor from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/background-color/page";
-import SourceCodeBackgroundImage from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/background-image/page";
-import SourceCodeStyle from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/custom-styles/page";
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Width from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width'
+import BackgroundColor from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor'
+import BackgroundImage from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage'
+import CustomStyles from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles'
+import TsToJsCodeSnippet from '@docComponents/ts-js-code'
+import SourceCodeWidth from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width";
+import SourceCodeBackgroundColor from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor";
+import SourceCodeBackgroundImage from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage";
+import SourceCodeStyle from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles";
 
 # Vertical Nav Props
 
@@ -19,7 +24,11 @@ The `width` is used to change the width of the vertical navigation menu when bre
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/width" />
+<BrowserWindow>
+  <Provider>
+    <Width />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -31,7 +40,11 @@ The `backgroundColor` is used to change the background color of the vertical nav
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/background-color" />
+<BrowserWindow>
+  <Provider>
+    <BackgroundColor />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -43,7 +56,11 @@ The `backgroundImage` is used to change the background image of the vertical nav
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/background-image" />
+<BrowserWindow>
+  <Provider>
+    <BackgroundImage />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -55,7 +72,11 @@ The Custom Style feature provides the flexibility to apply custom styling to the
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/custom-styles" />
+<BrowserWindow>
+  <Provider>
+    <CustomStyles />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

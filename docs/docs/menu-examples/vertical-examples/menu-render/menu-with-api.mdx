@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import MenuWithApi from '@docPages/menu-examples/vertical-menu/menu-render/MenuWithApi'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-render/menu-with-api/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-render/MenuWithApi'
 
 # Menu With API
 
@@ -12,7 +14,11 @@ This example demonstrates how to create a dynamic menu by fetching menu data fro
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-render/menu-with-api' />
+<BrowserWindow>
+  <Provider>
+    <MenuWithApi />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

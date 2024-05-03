@@ -4,9 +4,11 @@ hide_table_of_contents: true
 
 # Nav Collpase Icons
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import NavCollapseIcons from '@docPages/menu-examples/vertical-menu/NavCollapseIcons'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/nav-collapse-icons/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/NavCollapseIcons'
 
 import VerticalNavCollapseIconsProps from '@site/src/components/props/vertical-props/VerticalNavCollapseIcons'
 
@@ -26,7 +28,11 @@ import VerticalNavCollapseIconsProps from '@site/src/components/props/vertical-p
   </tbody>
 </table>
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/nav-collapse-icons' />
+<BrowserWindow>
+  <Provider>
+    <NavCollapseIcons />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

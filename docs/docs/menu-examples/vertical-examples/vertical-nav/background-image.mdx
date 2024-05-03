@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BackgroundImage from '@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundImage'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/background-image/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundImage'
 
 # Background Image
 
@@ -18,7 +20,11 @@ backgroundImage?: string
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/background-image' />
+<BrowserWindow>
+  <Provider>
+    <BackgroundImage />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import ScrollWithContent from '@docPages/menu-examples/vertical-menu/menu-position/ScrollWithContent'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-position/scroll-with-content/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-position/ScrollWithContent'
 
 # Scroll With Content
 
@@ -22,7 +24,11 @@ scrollWithContent={false}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-position/scroll-with-content' />
+<BrowserWindow bodyStyle={{ overflow: 'auto' }}>
+  <Provider>
+    <ScrollWithContent />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
