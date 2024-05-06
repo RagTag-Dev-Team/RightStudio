@@ -127,7 +127,13 @@ const Connections = () => {
                   <div className='flex-grow'>
                     <Typography className='text-textPrimary font-medium'>{item.title}</Typography>
                     {item.isConnected ? (
-                      <Typography variant='body2' color='primary' component={Link} href={item.href || '/'} target='_blank'>
+                      <Typography
+                        variant='body2'
+                        color='primary'
+                        component={Link}
+                        href={item.href || '/'}
+                        target='_blank'
+                      >
                         {item.username}
                       </Typography>
                     ) : (
@@ -135,7 +141,7 @@ const Connections = () => {
                     )}
                   </div>
                 </div>
-                <CustomIconButton variant='outlined' color={item.isConnected ? 'error' : 'secondary'}>
+                <CustomIconButton variant='tonal' color={item.isConnected ? 'error' : 'secondary'}>
                   <i className={item.isConnected ? 'tabler-trash' : 'tabler-link'} />
                 </CustomIconButton>
               </div>

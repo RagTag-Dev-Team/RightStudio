@@ -58,7 +58,7 @@ const CardMobile = () => {
               {...(open && { 'aria-expanded': true, 'aria-controls': 'share-menu' })}
               onClick={handleClick}
             >
-              <i className='tabler-share text-xl' />
+              <i className='tabler-share' />
             </IconButton>
             <Menu
               anchorEl={anchorEl}

@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Third-party Imports
@@ -139,15 +138,15 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
               }}
             />
             <div className='flex items-center gap-1'>
-              <IconButton className='rounded text-white bg-facebook'>
+              <CustomIconButton className='rounded text-white bg-facebook'>
                 <i className='tabler-brand-facebook' />
-              </IconButton>
-              <IconButton className='rounded text-white bg-twitter'>
+              </CustomIconButton>
+              <CustomIconButton className='rounded text-white bg-twitter'>
                 <i className='tabler-brand-twitter' />
-              </IconButton>
-              <IconButton className='rounded text-white bg-linkedin'>
+              </CustomIconButton>
+              <CustomIconButton className='rounded text-white bg-linkedin'>
                 <i className='tabler-brand-linkedin' />
-              </IconButton>
+              </CustomIconButton>
             </div>
           </div>
         </div>

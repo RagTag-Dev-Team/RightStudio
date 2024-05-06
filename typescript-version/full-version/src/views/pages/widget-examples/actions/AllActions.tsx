@@ -14,9 +14,6 @@ import Typography from '@mui/material/Typography'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 const CardActionAll = () => {
   // States
   const [collapse, setCollapse] = useState(false)
@@ -39,13 +36,13 @@ const CardActionAll = () => {
           action={
             <div className='flex'>
               <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-                <i className={classnames(collapse ? 'tabler-chevron-down' : 'tabler-chevron-up', 'text-xl')} />
+                <i className={collapse ? 'tabler-chevron-down' : 'tabler-chevron-up'} />
               </IconButton>
               <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-                <i className='tabler-refresh text-xl' />
+                <i className='tabler-refresh' />
               </IconButton>
               <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-                <i className='tabler-x text-xl' />
+                <i className='tabler-x' />
               </IconButton>
             </div>
           }

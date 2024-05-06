@@ -190,7 +190,7 @@ const ShareProject = ({ open, setOpen }: ShareProjectProps) => {
                     </Typography>
                   </div>
 
-                  <IconButton className='sm:hidden' size='small' onClick={handleClick}>
+                  <IconButton className='sm:hidden' onClick={handleClick}>
                     <i className='tabler-chevron-down text-base' />
                   </IconButton>
 

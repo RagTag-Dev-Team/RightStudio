@@ -13,7 +13,6 @@ import Tab from '@mui/material/Tab'
 import TabPanel from '@mui/lab/TabPanel'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import CardContent from '@mui/material/CardContent'
 
 const CardWithTabsCenter = () => {
   // ** State
@@ -26,11 +25,7 @@ const CardWithTabsCenter = () => {
   return (
     <Card>
       <TabContext value={value}>
-        <TabList
-          centered
-          onChange={handleChange}
-          aria-label='card navigation examples'
-        >
+        <TabList centered onChange={handleChange} aria-label='card navigation examples'>
           <Tab value='1' label='Item One' />
           <Tab value='2' label='Item Two' />
           <Tab value='3' label='Item Three' />
@@ -41,8 +36,8 @@ const CardWithTabsCenter = () => {
               Header One
             </Typography>
             <Typography color='text.secondary' className='mbe-6'>
-              Pudding tiramisu caramels. Gingerbread gummies danish chocolate
-              bar toffee marzipan. Wafer wafer cake powder danish oat cake.
+              Pudding tiramisu caramels. Gingerbread gummies danish chocolate bar toffee marzipan. Wafer wafer cake
+              powder danish oat cake.
             </Typography>
             <Button variant='contained'>Button One</Button>
           </TabPanel>
@@ -51,8 +46,8 @@ const CardWithTabsCenter = () => {
               Header Two
             </Typography>
             <Typography color='text.secondary' className='mbe-6'>
-              Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake
-              marzipan. Carrot cake sweet roll gummi bears caramels jelly beans.
+              Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake marzipan. Carrot cake sweet roll gummi
+              bears caramels jelly beans.
             </Typography>
             <Button variant='contained'>Button Two</Button>
           </TabPanel>
@@ -61,9 +56,8 @@ const CardWithTabsCenter = () => {
               Header Three
             </Typography>
             <Typography color='text.secondary' className='mbe-6'>
-              Icing cake macaroon macaroon jelly chocolate bar. Chupa chups
-              dessert dessert soufflé chocolate bar jujubes gummi bears
-              lollipop.
+              Icing cake macaroon macaroon jelly chocolate bar. Chupa chups dessert dessert soufflé chocolate bar
+              jujubes gummi bears lollipop.
             </Typography>
             <Button variant='contained'>Button Three</Button>
           </TabPanel>

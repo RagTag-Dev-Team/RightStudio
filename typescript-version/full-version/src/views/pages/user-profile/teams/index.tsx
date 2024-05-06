@@ -31,10 +31,11 @@ const Teams = ({ data }: { data?: TeamsTabType[] }) => {
                       <Typography variant='h5'>{item.title}</Typography>
                     </div>
                     <div className='flex items-center'>
-                      <IconButton size='small'>
+                      <IconButton>
                         <i className='tabler-star text-textDisabled' />
                       </IconButton>
                       <OptionMenu
+                        iconButtonProps={{ size: 'medium' }}
                         iconClassName='text-textDisabled'
                         options={[
                           'Rename Team',

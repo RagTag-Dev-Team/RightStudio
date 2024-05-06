@@ -55,7 +55,7 @@ const ApiKeyList = () => {
               <Typography className='font-medium'>{item.key}</Typography>
               <div className='flex'>
                 <IconButton size='small'>
-                  <i className='tabler-copy text-xl text-textSecondary' />
+                  <i className='tabler-copy text-textSecondary' />
                 </IconButton>
               </div>
             </div>
