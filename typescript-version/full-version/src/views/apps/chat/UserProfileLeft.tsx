@@ -88,13 +88,13 @@ const UserProfileLeft = (props: Props) => {
         onClose={() => setUserSidebar(false)}
         sx={{
           zIndex: 13,
-          '& .MuiDrawer-paper': { width: isBelowSmScreen ? '100%' : '370px', position: 'absolute' }
+          '& .MuiDrawer-paper': { width: isBelowSmScreen ? '100%' : '370px', position: 'absolute', border: 0 }
         }}
       >
         <IconButton className='absolute block-start-4 inline-end-4' onClick={() => setUserSidebar(false)}>
-          <i className='ri-close-line' />
+          <i className='tabler-x text-2xl' />
         </IconButton>
-        <div className='flex flex-col justify-center items-center gap-4 mbe-6'>
+        <div className='flex flex-col justify-center items-center gap-4 mbs-6 pli-6 pbs-6 pbe-3'>
           <AvatarWithBadge
             alt={profileUserData.fullName}
             src={profileUserData.avatar}
@@ -108,13 +108,15 @@ const UserProfileLeft = (props: Props) => {
           </div>
         </div>
         <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
-          <div className='flex flex-col gap-6'>
+          <div className='flex flex-col gap-6 p-6 pbs-3'>
             <div className='flex flex-col gap-1'>
-              <Typography className='uppercase'>About</Typography>
+              <Typography className='uppercase' color='text.disabled'>
+                About
+              </Typography>
               <TextField fullWidth rows={3} multiline id='about-textarea' defaultValue={profileUserData.about} />
             </div>
             <div className='flex flex-col gap-1'>
-              <FormLabel id='status-radio-buttons-group-label' className='uppercase'>
+              <FormLabel id='status-radio-buttons-group-label' className='uppercase text-textDisabled'>
                 Status
               </FormLabel>
               <RadioGroup
@@ -123,50 +125,52 @@ const UserProfileLeft = (props: Props) => {
                 onChange={handleUserStatus}
                 aria-labelledby='status-radio-buttons-group-label'
               >
-                <FormControlLabel value='online' control={<Radio size='small' color='success' />} label='Online' />
-                <FormControlLabel value='away' control={<Radio size='small' color='warning' />} label='Away' />
-                <FormControlLabel value='busy' control={<Radio size='small' color='error' />} label='Do not disturb' />
-                <FormControlLabel value='offline' control={<Radio size='small' color='secondary' />} label='Offline' />
+                <FormControlLabel value='online' control={<Radio color='success' />} label='Online' />
+                <FormControlLabel value='away' control={<Radio color='warning' />} label='Away' />
+                <FormControlLabel value='busy' control={<Radio color='error' />} label='Do not disturb' />
+                <FormControlLabel value='offline' control={<Radio color='secondary' />} label='Offline' />
               </RadioGroup>
             </div>
             <div className='flex flex-col gap-1'>
-              <Typography className='uppercase'>Settings</Typography>
-              <List dense>
+              <Typography className='uppercase' color='text.disabled'>
+                Settings
+              </Typography>
+              <List className='plb-0'>
                 <ListItem disablePadding secondaryAction={<Switch checked={twoStepVerification} />}>
-                  <ListItemButton onClick={handleTwoStepVerification}>
+                  <ListItemButton onClick={handleTwoStepVerification} className='p-2'>
                     <ListItemIcon>
-                      <i className='ri-lock-password-line text-[22px]' />
+                      <i className='tabler-lock' />
                     </ListItemIcon>
                     <ListItemText primary='Two-step Verification' />
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding secondaryAction={<Switch checked={notification} />}>
-                  <ListItemButton onClick={handleNotification}>
+                  <ListItemButton onClick={handleNotification} className='p-2'>
                     <ListItemIcon>
-                      <i className='ri-notification-line text-[22px]' />
+                      <i className='tabler-bell' />
                     </ListItemIcon>
                     <ListItemText primary='Notification' />
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton className='p-2'>
                     <ListItemIcon>
-                      <i className='ri-user-add-line text-[22px]' />
+                      <i className='tabler-user-plus' />
                     </ListItemIcon>
                     <ListItemText primary='Invite Friends' />
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton className='p-2'>
                     <ListItemIcon>
-                      <i className='ri-delete-bin-7-line text-[22px]' />
+                      <i className='tabler-trash' />
                     </ListItemIcon>
                     <ListItemText primary='Delete Account' />
                   </ListItemButton>
                 </ListItem>
               </List>
             </div>
-            <Button variant='contained' fullWidth className='mbs-auto' endIcon={<i className='ri-logout-box-r-line' />}>
+            <Button variant='contained' fullWidth className='mbs-auto' endIcon={<i className='tabler-logout' />}>
               Logout
             </Button>
           </div>

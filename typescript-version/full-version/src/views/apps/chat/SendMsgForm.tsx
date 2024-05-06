@@ -92,6 +92,7 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
 
+  // Vars
   const open = Boolean(anchorEl)
 
   const handleToggle = () => {
@@ -127,7 +128,7 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
               onClick={handleClick}
               ref={anchorRef}
             >
-              <i className='ri-more-2-line' />
+              <i className='tabler-dots-vertical text-textPrimary' />
             </IconButton>
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
               <MenuItem
@@ -136,14 +137,14 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
                   handleClose()
                 }}
               >
-                <i className='ri-emotion-happy-line' />
+                <i className='tabler-mood-smile' />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <i className='ri-mic-line' />
+                <i className='tabler-microphone' />
               </MenuItem>
               <MenuItem onClick={handleClose} className='p-0'>
-                <label htmlFor='upload-img' className='plb-2 pli-5'>
-                  <i className='ri-attachment-2' />
+                <label htmlFor='upload-img' className='plb-2 pli-4'>
+                  <i className='tabler-paperclip' />
                   <input hidden type='file' id='upload-img' />
                 </label>
               </MenuItem>
@@ -164,8 +165,8 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
           </>
         ) : (
           <>
-            <IconButton ref={anchorRef} size='small' onClick={handleToggle}>
-              <i className='ri-emotion-happy-line cursor-pointer' />
+            <IconButton ref={anchorRef} onClick={handleToggle}>
+              <i className='tabler-mood-smile cursor-pointer text-textPrimary' />
             </IconButton>
             <EmojiPicker
               anchorRef={anchorRef}
@@ -180,21 +181,21 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
                 }
               }}
             />
-            <IconButton size='small'>
-              <i className='ri-mic-line' />
+            <IconButton>
+              <i className='tabler-microphone text-textPrimary' />
             </IconButton>
-            <IconButton size='small' component='label' htmlFor='upload-img'>
-              <i className='ri-attachment-2' />
+            <IconButton component='label' htmlFor='upload-img'>
+              <i className='tabler-paperclip text-textPrimary' />
               <input hidden type='file' id='upload-img' />
             </IconButton>
           </>
         )}
         {isBelowSmScreen ? (
           <CustomIconButton variant='contained' color='primary' type='submit'>
-            <i className='ri-send-plane-line' />
+            <i className='tabler-send' />
           </CustomIconButton>
         ) : (
-          <Button variant='contained' color='primary' type='submit' endIcon={<i className='ri-send-plane-line' />}>
+          <Button variant='contained' color='primary' type='submit' endIcon={<i className='tabler-send' />}>
             Send
           </Button>
         )}
@@ -207,26 +208,32 @@ const SendMsgForm = ({ dispatch, activeUser, isBelowSmScreen, messageInputRef }:
   }, [activeUser.id])
 
   return (
-    <div>
-      <form autoComplete='off' onSubmit={event => handleSendMsg(event, msg)}>
-        <TextField
-          fullWidth
-          multiline
-          maxRows={4}
-          placeholder='Type a message'
-          value={msg}
-          onChange={e => setMsg(e.target.value)}
-          onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              handleSendMsg(e, msg)
-            }
-          }}
-          size='small'
-          inputRef={messageInputRef}
-          InputProps={{ endAdornment: handleInputEndAdornment() }}
-        />
-      </form>
-    </div>
+    <form autoComplete='off' onSubmit={event => handleSendMsg(event, msg)}>
+      <TextField
+        fullWidth
+        multiline
+        maxRows={4}
+        placeholder='Type a message'
+        value={msg}
+        className='p-6'
+        onChange={e => setMsg(e.target.value)}
+        sx={{
+          '& fieldset': { border: '0' },
+          '& .MuiOutlinedInput-root': {
+            background: 'var(--mui-palette-background-paper)',
+            boxShadow: 'var(--mui-customShadows-xs) !important'
+          }
+        }}
+        onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            handleSendMsg(e, msg)
+          }
+        }}
+        size='small'
+        inputRef={messageInputRef}
+        InputProps={{ endAdornment: handleInputEndAdornment() }}
+      />
+    </form>
   )
 }
 

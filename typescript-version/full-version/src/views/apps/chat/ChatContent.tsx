@@ -58,7 +58,7 @@ const UserAvatar = ({
       badgeColor={statusObj[activeUser?.status || 'offline']}
     />
     <div>
-      <Typography>{activeUser?.fullName}</Typography>
+      <Typography color='text.primary'>{activeUser?.fullName}</Typography>
       <Typography variant='body2'>{activeUser?.role}</Typography>
     </div>
   </div>
@@ -78,10 +78,11 @@ const ChatContent = (props: Props) => {
     messageInputRef
   } = props
 
-  const { activeUser } = chatStore
-
   // States
   const [userProfileRightOpen, setUserProfileRightOpen] = useState(false)
+
+  // Vars
+  const { activeUser } = chatStore
 
   useEffect(() => {
     if (!backdropOpen && userProfileRightOpen) {
@@ -91,14 +92,15 @@ const ChatContent = (props: Props) => {
   }, [backdropOpen])
 
   return !chatStore.activeUser ? (
-    <CardContent className='flex flex-col flex-auto items-center justify-center bs-full gap-[18px]'>
+    <CardContent className='flex flex-col flex-auto items-center justify-center bs-full gap-[18px] bg-backgroundChat'>
       <CustomAvatar variant='circular' size={98} color='primary' skin='light'>
-        <i className='ri-wechat-line text-[50px]' />
+        <i className='tabler-message-2 text-[50px]' />
       </CustomAvatar>
       <Typography className='text-center'>Select a contact to start a conversation.</Typography>
       {isBelowMdScreen && (
         <Button
           variant='contained'
+          className='rounded-full'
           onClick={() => {
             setSidebarOpen(true)
             isBelowSmScreen ? setBackdropOpen(false) : setBackdropOpen(true)
@@ -111,17 +113,18 @@ const ChatContent = (props: Props) => {
   ) : (
     <>
       {activeUser && (
-        <div className='flex flex-col flex-grow bs-full'>
-          <div className='flex items-center justify-between border-be plb-4'>
+        <div className='flex flex-col flex-grow bs-full bg-backgroundChat'>
+          <div className='flex items-center justify-between border-be plb-[17px] pli-6 bg-backgroundPaper'>
             {isBelowMdScreen ? (
-              <div className='flex items-center'>
+              <div className='flex items-center gap-4'>
                 <IconButton
+                  color='secondary'
                   onClick={() => {
                     setSidebarOpen(true)
                     setBackdropOpen(true)
                   }}
                 >
-                  <i className='ri-menu-line text-2xl' />
+                  <i className='tabler-menu-2' />
                 </IconButton>
                 <UserAvatar
                   activeUser={activeUser}
@@ -138,6 +141,8 @@ const ChatContent = (props: Props) => {
             )}
             {isBelowMdScreen ? (
               <OptionMenu
+                iconButtonProps={{ size: 'medium' }}
+                iconClassName='text-secondary'
                 options={[
                   {
                     text: 'View Contact',
@@ -156,16 +161,18 @@ const ChatContent = (props: Props) => {
               />
             ) : (
               <div className='flex items-center gap-1'>
-                <IconButton size='small'>
-                  <i className='ri-phone-line' />
+                <IconButton color='secondary'>
+                  <i className='tabler-phone' />
                 </IconButton>
-                <IconButton size='small'>
-                  <i className='ri-video-on-line' />
+                <IconButton color='secondary'>
+                  <i className='tabler-video' />
                 </IconButton>
-                <IconButton size='small'>
-                  <i className='ri-search-line' />
+                <IconButton color='secondary'>
+                  <i className='tabler-search' />
                 </IconButton>
                 <OptionMenu
+                  iconButtonProps={{ size: 'medium' }}
+                  iconClassName='text-secondary'
                   options={[
                     {
                       text: 'View Contact',

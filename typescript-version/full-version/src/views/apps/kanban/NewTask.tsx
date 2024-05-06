@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 // MUI Imports
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
+import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
@@ -11,6 +11,16 @@ import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { object, string, minLength } from 'valibot'
 import type { Input } from 'valibot'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
+
+// Styled CustomTextField component
+const CustomTextFieldStyled = styled(CustomTextField)({
+  '& .MuiInputBase-root.MuiFilledInput-root': {
+    backgroundColor: 'var(--mui-palette-background-paper) !important'
+  }
+})
 
 type FormData = Input<typeof schema>
 
@@ -49,17 +59,17 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
 
   return (
     <div className='flex flex-col gap-4 items-start'>
-      <Typography onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer'>
-        <i className='ri-add-line text-base' />
+      <Typography onClick={handleDisplay} color='text.primary' className='flex items-center gap-1 cursor-pointer'>
+        <i className='tabler-plus text-base' />
         <span>Add New Item</span>
       </Typography>
       {displayNewItem && (
-        <form className='flex flex-col gap-2 min-is-[16.5rem]' onSubmit={handleSubmit(onSubmit)}>
+        <form className='flex flex-col gap-4 min-is-[16.5rem]' onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name='content'
             control={control}
             render={({ field }) => (
-              <TextField
+              <CustomTextFieldStyled
                 fullWidth
                 multiline
                 autoFocus
@@ -75,8 +85,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
                     reset({ content: '' })
                   }
                 }}
-                label='Add Content'
-                size='small'
+                placeholder='Add Content'
                 variant='outlined'
                 {...field}
                 error={Boolean(errors.content)}
@@ -89,7 +98,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
               Add
             </Button>
             <Button
-              variant='contained'
+              variant='tonal'
               size='small'
               color='secondary'
               onClick={() => {

@@ -73,21 +73,23 @@ const formatedChatData = (chats: ChatType['chat'], profileUser: ProfileUserType)
 const ScrollWrapper = ({
   children,
   isBelowLgScreen,
-  scrollRef
+  scrollRef,
+  className
 }: {
   children: ReactNode
   isBelowLgScreen: boolean
   scrollRef: MutableRefObject<null>
+  className?: string
 }) => {
   if (isBelowLgScreen) {
     return (
-      <div ref={scrollRef} className='bs-full overflow-y-auto overflow-x-hidden'>
+      <div ref={scrollRef} className={classnames('bs-full overflow-y-auto overflow-x-hidden', className)}>
         {children}
       </div>
     )
   } else {
     return (
-      <PerfectScrollbar ref={scrollRef} options={{ wheelPropagation: false }}>
+      <PerfectScrollbar ref={scrollRef} options={{ wheelPropagation: false }} className={className}>
         {children}
       </PerfectScrollbar>
     )
@@ -126,13 +128,13 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
 
   return (
     <ScrollWrapper isBelowLgScreen={isBelowLgScreen} scrollRef={scrollRef}>
-      <CardContent>
+      <CardContent className='p-0'>
         {activeUserChat &&
           formatedChatData(activeUserChat.chat, profileUser).map((msgGroup, index) => {
             const isSender = msgGroup.senderId === profileUser.id
 
             return (
-              <div key={index} className={classnames('flex gap-4', { 'flex-row-reverse': isSender })}>
+              <div key={index} className={classnames('flex gap-4 p-6', { 'flex-row-reverse': isSender })}>
                 {!isSender ? (
                   contacts.find(contact => contact.id === activeUserChat?.userId)?.avatar ? (
                     <Avatar
@@ -165,9 +167,9 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
                   {msgGroup.messages.map((msg, index) => (
                     <Typography
                       key={index}
-                      className={classnames('whitespace-pre-wrap pli-4 plb-2', {
-                        'bg-backgroundPaper': !isSender,
-                        'bg-primary text-[var(--mui-palette-primary-contrastText)]': isSender
+                      className={classnames('whitespace-pre-wrap pli-4 plb-2 shadow-xs', {
+                        'bg-backgroundPaper rounded-e rounded-b': !isSender,
+                        'bg-primary text-[var(--mui-palette-primary-contrastText)] rounded-s rounded-b': isSender
                       })}
                       style={{ wordBreak: 'break-word' }}
                     >
@@ -180,11 +182,11 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
                       (isSender ? (
                         <div key={index} className='flex items-center gap-2'>
                           {msg.msgStatus?.isSeen ? (
-                            <i className='ri-check-double-line text-success text-base' />
+                            <i className='tabler-checks text-success text-base' />
                           ) : msg.msgStatus?.isDelivered ? (
-                            <i className='ri-check-double-line text-base' />
+                            <i className='tabler-checks text-base' />
                           ) : (
-                            msg.msgStatus?.isSent && <i className='ri-check-line text-base' />
+                            msg.msgStatus?.isSent && <i className='tabler-check text-base' />
                           )}
                           {index === activeUserChat.chat.length - 1 ? (
                             <Typography variant='caption'>

@@ -5,10 +5,6 @@ import type { ChangeEvent } from 'react'
 // MUI Imports
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
@@ -32,6 +28,7 @@ import { editTask, deleteTask } from '@/redux-store/slices/kanban'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Data Imports
@@ -140,10 +137,10 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
         sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
         onClose={handleClose}
       >
-        <div className='flex justify-between items-center p-5 border-be'>
-          <Typography variant='h6'>Edit Task</Typography>
-          <IconButton onClick={handleClose}>
-            <i className='ri-close-line' />
+        <div className='flex justify-between items-center pli-6 plb-5 border-be'>
+          <Typography variant='h5'>Edit Task</Typography>
+          <IconButton size='small' onClick={handleClose}>
+            <i className='tabler-x text-2xl text-textPrimary' />
           </IconButton>
         </div>
         <div className='p-6'>
@@ -152,7 +149,7 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
               name='title'
               control={control}
               render={({ field }) => (
-                <TextField
+                <CustomTextField
                   fullWidth
                   label='Title'
                   {...field}
@@ -169,41 +166,44 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
                 setDate(date)
               }}
               placeholderText='Click to select a date'
-              customInput={<TextField label='Due Date' fullWidth />}
+              dateFormat={'d MMMM, yyyy'}
+              customInput={<CustomTextField label='Due Date' fullWidth />}
             />
-            <FormControl fullWidth>
-              <InputLabel id='demo-multiple-chip-label'>Label</InputLabel>
-              <Select
-                multiple
-                label='Label'
-                value={badgeText || []}
-                onChange={e => setBadgeText(e.target.value as string[])}
-                renderValue={selected => (
+            <CustomTextField
+              select
+              label='Label'
+              SelectProps={{
+                multiple: true,
+                value: badgeText || [],
+                onChange: e => setBadgeText(e.target.value as string[]),
+                renderValue: selected => (
                   <div className='flex flex-wrap gap-1'>
-                    {selected.map(value => (
+                    {(selected as string[]).map(value => (
                       <Chip
                         variant='tonal'
-                        label={value}
                         key={value}
-                        onMouseDown={e => e.stopPropagation()}
                         size='small'
-                        onDelete={() => handleDelete(value)}
+                        onMouseDown={e => e.stopPropagation()}
+                        label={value}
                         color={chipColor[value]?.color}
+                        onDelete={() => handleDelete(value)}
                       />
                     ))}
                   </div>
-                )}
-              >
-                {Object.keys(chipColor).map(chip => (
-                  <MenuItem key={chip} value={chip}>
-                    <Checkbox checked={badgeText && badgeText.indexOf(chip) > -1} />
-                    <ListItemText primary={chip} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                )
+              }}
+            >
+              {Object.keys(chipColor).map(chip => (
+                <MenuItem key={chip} value={chip}>
+                  <Checkbox checked={badgeText && badgeText.indexOf(chip) > -1} />
+                  <ListItemText primary={chip} />
+                </MenuItem>
+              ))}
+            </CustomTextField>
             <div>
-              <Typography variant='caption'>Assigned</Typography>
+              <Typography variant='caption' color='text.primary'>
+                Assigned
+              </Typography>
               <div className='flex gap-1'>
                 {task.assigned?.map((avatar, index) => (
                   <Tooltip title={avatar.name} key={index}>
@@ -211,26 +211,26 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
                   </Tooltip>
                 ))}
                 <CustomAvatar size={26} className='cursor-pointer'>
-                  <i className='ri-add-line text-base text-textSecondary' />
+                  <i className='tabler-plus text-base text-textSecondary' />
                 </CustomAvatar>
               </div>
             </div>
             <div className='flex items-center gap-4'>
-              <TextField
+              <CustomTextField
                 fullWidth
-                label='Choose File'
+                placeholder='Choose File'
                 variant='outlined'
                 value={fileName}
                 InputProps={{
                   readOnly: true
                 }}
               />
-              <Button component='label' variant='contained' htmlFor='contained-button-file'>
+              <Button component='label' variant='tonal' htmlFor='contained-button-file'>
                 Choose
                 <input hidden id='contained-button-file' type='file' onChange={handleFileUpload} ref={fileInputRef} />
               </Button>
             </div>
-            <TextField
+            <CustomTextField
               fullWidth
               label='Comment'
               value={comment}
@@ -243,7 +243,7 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
               <Button variant='contained' color='primary' type='submit'>
                 Update
               </Button>
-              <Button variant='outlined' color='error' type='reset' onClick={handleReset}>
+              <Button variant='tonal' color='error' type='reset' onClick={handleReset}>
                 Delete
               </Button>
             </div>

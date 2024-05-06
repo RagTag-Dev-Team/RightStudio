@@ -45,7 +45,7 @@ const verticalMenuData = (
     children: [
       {
         label: dictionary['navigation'].chat,
-        icon: 'tabler-brand-wechat',
+        icon: 'tabler-message-circle-2',
         href: '/apps/chat'
       },
       {
@@ -54,7 +54,9 @@ const verticalMenuData = (
         href: '/apps/calendar'
       },
       {
-        label: dictionary['navigation'].kanban
+        label: dictionary['navigation'].kanban,
+        icon: 'tabler-copy',
+        href: '/apps/kanban'
       },
       {
         label: dictionary['navigation'].invoice,

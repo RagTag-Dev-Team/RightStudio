@@ -152,12 +152,12 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
             }
           }}
         >
-          <InputBase value={title} autoFocus onChange={handleChangeEdit} required />
+          <InputBase value={title} autoFocus onChange={handleChangeEdit} required className='flex-auto' />
           <IconButton color='success' size='small' type='submit'>
-            <i className='ri-check-line' />
+            <i className='tabler-check' />
           </IconButton>
           <IconButton color='error' size='small' type='reset' onClick={cancelEdit}>
-            <i className='ri-close-line' />
+            <i className='tabler-x' />
           </IconButton>
         </form>
       ) : (
@@ -168,17 +168,17 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
             styles.kanbanColumn
           )}
         >
-          <Typography noWrap className='max-is-[80%]'>
+          <Typography variant='h5' noWrap className='max-is-[80%]'>
             {column.title}
           </Typography>
           <div className='flex items-center'>
-            <i className={classnames('ri-drag-move-fill text-textSecondary list-handle', styles.drag)} />
+            <i className={classnames('tabler-arrows-move text-textSecondary list-handle', styles.drag)} />
             <OptionMenu
               iconClassName='text-xl text-textPrimary'
               options={[
                 {
                   text: 'Edit',
-                  icon: 'ri-pencil-line text-base',
+                  icon: 'tabler-pencil',
                   menuItemProps: {
                     className: 'flex items-center gap-2',
                     onClick: onClickEditButton
@@ -186,7 +186,7 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
                 },
                 {
                   text: 'Delete',
-                  icon: 'ri-delete-bin-line text-base',
+                  icon: 'tabler-trash',
                   menuItemProps: { className: 'flex items-center gap-2', onClick: handleDeleteColumn }
                 }
               ]}

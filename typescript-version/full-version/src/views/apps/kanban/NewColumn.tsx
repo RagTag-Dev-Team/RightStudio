@@ -2,8 +2,8 @@
 import { useState } from 'react'
 
 // MUI Imports
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
@@ -11,6 +11,16 @@ import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { object, string, minLength } from 'valibot'
 import type { Input } from 'valibot'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
+
+// Styled CustomTextField component
+const CustomTextFieldStyled = styled(CustomTextField)({
+  '& .MuiInputBase-root.MuiFilledInput-root': {
+    backgroundColor: 'var(--mui-palette-background-paper) !important'
+  }
+})
 
 type FormData = Input<typeof schema>
 
@@ -49,13 +59,13 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
 
   return (
     <div className='flex flex-col gap-4 items-start is-[16.5rem]'>
-      <Typography onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer is-[10rem]'>
-        <i className='ri-add-line text-base' />
+      <Typography variant='h5' onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer is-[10rem]'>
+        <i className='tabler-plus text-base' />
         <span className='whitespace-nowrap'>Add New</span>
       </Typography>
       {display && (
         <form
-          className='flex flex-col gap-2 is-[16.5rem]'
+          className='flex flex-col gap-4 is-[16.5rem]'
           onSubmit={handleSubmit(onSubmit)}
           onKeyDown={e => {
             if (e.key === 'Escape') {
@@ -68,11 +78,11 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
             name='title'
             control={control}
             render={({ field }) => (
-              <TextField
+              <CustomTextFieldStyled
                 fullWidth
                 autoFocus
                 variant='outlined'
-                label='Board Title'
+                placeholder='Board Title'
                 {...field}
                 error={Boolean(errors.title)}
                 helperText={errors.title ? errors.title.message : null}
@@ -84,7 +94,7 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
               Add
             </Button>
             <Button
-              variant='contained'
+              variant='tonal'
               size='small'
               color='secondary'
               onClick={() => {

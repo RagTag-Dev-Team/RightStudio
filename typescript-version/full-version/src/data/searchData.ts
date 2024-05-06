@@ -31,7 +31,7 @@ const data: SearchData[] = [
     id: '5',
     name: 'Chat',
     url: '/apps/chat',
-    icon: 'ri-wechat-line',
+    icon: 'tabler-message-circle-2',
     section: 'Apps'
   },
   {
@@ -45,7 +45,7 @@ const data: SearchData[] = [
     id: '7',
     name: 'Kanban',
     url: '/apps/kanban',
-    icon: 'Icon',
+    icon: 'tabler-copy',
     section: 'Apps'
   },
   {

@@ -7,7 +7,6 @@ import Avatar from '@mui/material/Avatar'
 import TextField from '@mui/material/TextField'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
-import Chip from '@mui/material/Chip'
 import Autocomplete from '@mui/material/Autocomplete'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
@@ -26,6 +25,7 @@ import { addNewChat } from '@/redux-store/slices/chat'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomChip from '@core/components/mui/Chip'
 import UserProfileLeft from './UserProfileLeft'
 import AvatarWithBadge from './AvatarWithBadge'
 
@@ -74,8 +74,8 @@ const renderChat = (props: RenderChatType) => {
     return (
       <li
         key={chat.id}
-        className={classnames('flex items-center gap-4 pli-3 plb-2 cursor-pointer', {
-          'bg-primary': isChatActive,
+        className={classnames('flex items-start gap-4 pli-3 plb-2 cursor-pointer rounded mbe-1', {
+          'bg-primary shadow-primarySm': isChatActive,
           'text-[var(--mui-palette-primary-contrastText)]': isChatActive
         })}
         onClick={() => {
@@ -94,20 +94,26 @@ const renderChat = (props: RenderChatType) => {
         <div className='min-is-0 flex-auto'>
           <Typography color='inherit'>{contact?.fullName}</Typography>
           {chat.chat.length ? (
-            <Typography variant='body2' color='inherit' className='truncate'>
+            <Typography variant='body2' color={isChatActive ? 'inherit' : 'text.secondary'} className='truncate'>
               {chat.chat[chat.chat.length - 1].message}
             </Typography>
           ) : (
-            <Typography variant='body2' color='inherit' className='truncate'>
+            <Typography variant='body2' color={isChatActive ? 'inherit' : 'text.secondary'} className='truncate'>
               {contact.role}
             </Typography>
           )}
         </div>
         <div className='flex flex-col items-end justify-start'>
-          <Typography variant='body2' color='inherit' className='truncate'>
+          <Typography
+            variant='body2'
+            color='inherit'
+            className={classnames('truncate', {
+              'text-textDisabled': !isChatActive
+            })}
+          >
             {chat.chat.length ? formatDateToMonthShort(chat.chat[chat.chat.length - 1].time) : null}
           </Typography>
-          {chat.unseenMsgs > 0 ? <Chip label={chat.unseenMsgs} color='error' size='small' /> : null}
+          {chat.unseenMsgs > 0 ? <CustomChip round='true' label={chat.unseenMsgs} color='error' size='small' /> : null}
         </div>
       </li>
     )
@@ -181,12 +187,13 @@ const SidebarLeft = (props: Props) => {
           ...(isBelowSmScreen && sidebarOpen && { width: '100%' }),
           '& .MuiDrawer-paper': {
             overflow: 'hidden',
+            boxShadow: 'none',
             width: isBelowSmScreen ? '100%' : '370px',
             position: !isBelowMdScreen ? 'static' : 'absolute'
           }
         }}
       >
-        <div className='flex plb-[18px] gap-4 border-be'>
+        <div className='flex items-center plb-[18px] pli-6 gap-4 border-be'>
           <AvatarWithBadge
             alt={chatStore.profileUser.fullName}
             src={chatStore.profileUser.avatar}
@@ -195,7 +202,7 @@ const SidebarLeft = (props: Props) => {
               setUserSidebar(true)
             }}
           />
-          <div className='flex is-full items-center flex-auto gap-x-4 gap-y-2'>
+          <div className='flex is-full items-center flex-auto sm:gap-x-4'>
             <Autocomplete
               fullWidth
               size='small'
@@ -211,8 +218,8 @@ const SidebarLeft = (props: Props) => {
                   InputProps={{
                     ...params.InputProps,
                     startAdornment: (
-                      <InputAdornment position='start'>
-                        <i className='ri-search-line text-xl' />
+                      <InputAdornment position='end'>
+                        <i className='tabler-search' />
                       </InputAdornment>
                     )
                   }}
@@ -222,7 +229,11 @@ const SidebarLeft = (props: Props) => {
                 const contact = chatStore.contacts.find(contact => contact.fullName === option)
 
                 return (
-                  <li {...props} key={option.toLowerCase().replace(/\s+/g, '-')}>
+                  <li
+                    {...props}
+                    key={option.toLowerCase().replace(/\s+/g, '-')}
+                    className={classnames('gap-3 max-sm:pli-3', props.className)}
+                  >
                     {contact ? (
                       contact.avatar ? (
                         <Avatar
@@ -247,12 +258,14 @@ const SidebarLeft = (props: Props) => {
             />
             {isBelowMdScreen ? (
               <IconButton
+                className='mis-2'
+                size='small'
                 onClick={() => {
                   setSidebarOpen(false)
                   setBackdropOpen(false)
                 }}
               >
-                <i className='ri-close-line' />
+                <i className='tabler-x text-2xl' />
               </IconButton>
             ) : null}
           </div>

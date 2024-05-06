@@ -18,11 +18,10 @@ import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
+import type { ThemeColor } from '@core/types'
 
 // Slice Imports
 import { getCurrentTask, deleteTask } from '@/redux-store/slices/kanban'
-
-import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
@@ -120,7 +119,7 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
               aria-haspopup='true'
               onClick={handleClick}
             >
-              <i className='ri-more-2-line text-xl' />
+              <i className='tabler-dots-vertical' />
             </IconButton>
             <Menu
               id='long-menu'
@@ -145,7 +144,9 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
           </div>
 
           {task.image && <img src={task.image} alt='task Image' className='is-full rounded' />}
-          <Typography className='max-is-[85%] break-words'>{task.title}</Typography>
+          <Typography color='text.primary' className='max-is-[85%] break-words'>
+            {task.title}
+          </Typography>
           {(task.attachments !== undefined && task.attachments > 0) ||
           (task.comments !== undefined && task.comments > 0) ||
           (task.assigned !== undefined && task.assigned.length > 0) ? (
@@ -155,13 +156,13 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
                 <div className='flex gap-4'>
                   {task.attachments !== undefined && task.attachments > 0 && (
                     <div className='flex items-center gap-1'>
-                      <i className='ri-attachment-2 text-xl text-textSecondary' />
+                      <i className='tabler-paperclip text-xl text-textSecondary' />
                       <Typography color='text.secondary'>{task.attachments}</Typography>
                     </div>
                   )}
                   {task.comments !== undefined && task.comments > 0 && (
                     <div className='flex items-center gap-1'>
-                      <i className='ri-wechat-line text-xl text-textSecondary' />
+                      <i className='tabler-message-2 text-xl text-textSecondary' />
                       <Typography color='text.secondary'>{task.comments}</Typography>
                     </div>
                   )}
