@@ -103,10 +103,11 @@ const chip: Theme['components'] = {
     ],
     styleOverrides: {
       root: ({ ownerState, theme }) => ({
-        fontSize: theme.typography.body2.fontSize,
+        ...theme.typography.body2,
         fontWeight: theme.typography.fontWeightMedium,
-        lineHeight: theme.typography.body2.lineHeight,
-
+        '&.MuiChip-outlined:not(.MuiChip-colorDefault)': {
+          borderColor: `var(--mui-palette-${ownerState.color}-main)`
+        },
         ...(ownerState.size === 'small'
           ? {
               borderRadius: 'var(--mui-shape-customBorderRadius-sm)'
@@ -129,8 +130,6 @@ const chip: Theme['components'] = {
               })
         },
         '& .MuiChip-avatar, & .MuiChip-icon': {
-          blockSize: 20,
-          inlineSize: 20,
           '& i, & svg': {
             ...(ownerState.size === 'small'
               ? {
@@ -142,10 +141,14 @@ const chip: Theme['components'] = {
           },
           ...(ownerState.size === 'small'
             ? {
+                blockSize: 16,
+                inlineSize: 16,
                 marginInlineStart: theme.spacing(1),
-                marginInlineEnd: theme.spacing(-2)
+                marginInlineEnd: theme.spacing(-1.5)
               }
             : {
+                blockSize: 20,
+                inlineSize: 20,
                 marginInlineStart: theme.spacing(1.5),
                 marginInlineEnd: theme.spacing(-2)
               })

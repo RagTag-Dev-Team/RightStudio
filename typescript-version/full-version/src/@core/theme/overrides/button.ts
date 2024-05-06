@@ -34,7 +34,7 @@ const button: Theme['components'] = {
         '&.Mui-disabled': {
           opacity: 0.45
         },
-        transform: 'scale(1.001)',
+        transform: 'scale(1)',
         transition: theme.transitions.create('all', {
           duration: theme.transitions.duration.short
         }),

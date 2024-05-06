@@ -21,7 +21,7 @@ const OutsideBreadcrumb = () => {
         <a href='/' onClick={handleClick}>
           Core
         </a>
-        <Typography color='text.primary'>Breadcrumb</Typography>
+        <Typography>Breadcrumb</Typography>
       </Breadcrumbs>
 
       <Breadcrumbs separator='-' aria-label='breadcrumb'>
@@ -31,7 +31,7 @@ const OutsideBreadcrumb = () => {
         <a href='/' onClick={handleClick}>
           Core
         </a>
-        <Typography color='text.primary'>Breadcrumb</Typography>
+        <Typography>Breadcrumb</Typography>
       </Breadcrumbs>
 
       <Breadcrumbs aria-label='breadcrumb' separator={<i className='tabler-chevron-right' />}>
@@ -41,7 +41,7 @@ const OutsideBreadcrumb = () => {
         <a href='/' onClick={handleClick}>
           Core
         </a>
-        <Typography color='text.primary'>Breadcrumb</Typography>
+        <Typography>Breadcrumb</Typography>
       </Breadcrumbs>
 
       <Breadcrumbs aria-label='breadcrumb' className='mbs-2'>
@@ -53,7 +53,7 @@ const OutsideBreadcrumb = () => {
           <i className='tabler-bookmark text-xl' />
           Core
         </a>
-        <Typography className='flex gap-1' color='text.primary'>
+        <Typography className='flex gap-1'>
           <i className='tabler-file text-xl' />
           Breadcrumb
         </Typography>

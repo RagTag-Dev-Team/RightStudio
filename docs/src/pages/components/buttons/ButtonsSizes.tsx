@@ -51,13 +51,13 @@ const ButtonsSizes = () => {
       </div>
       <div className='flex gap-4 items-center'>
         <IconButton aria-label='capture screenshot' color='primary' size='small'>
-          <i className='tabler-aperture text-xl' />
+          <i className='tabler-aperture' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='primary'>
           <i className='tabler-aperture' />
         </IconButton>
         <IconButton aria-label='capture screenshot' color='primary' size='large'>
-          <i className='tabler-aperture text-[28px]' />
+          <i className='tabler-aperture' />
         </IconButton>
       </div>
     </div>

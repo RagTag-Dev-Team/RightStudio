@@ -44,6 +44,9 @@ const list: Theme['components'] = {
         paddingInlineStart: theme.spacing(5),
         '&.Mui-selected': {
           backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
+          '&:hover, &.Mui-focused, &.Mui-focusVisible': {
+            backgroundColor: 'var(--mui-palette-primary-mainOpacity)'
+          },
           '& .MuiTypography-root': {
             color: 'var(--mui-palette-primary-main)'
           },
