@@ -9,13 +9,13 @@ const  CustomIconButtons= () => {
 				<Typography className='font-medium'>Sizes</Typography>
 				<div className='flex gap-4 items-center flex-wrap'>
 					<CustomIconButton aria-label='capture screenshot' color='primary' size='small'>
-						<i className='ri-camera-lens-fill' />
+						<i className='tabler-aperture' />
 					</CustomIconButton>
 					<CustomIconButton aria-label='capture screenshot' color='primary'>
-						<i className='ri-camera-lens-fill' />
+						<i className='tabler-aperture' />
 					</CustomIconButton>
 					<CustomIconButton aria-label='capture screenshot' color='primary' size='large'>
-						<i className='ri-camera-lens-fill' />
+						<i className='tabler-aperture' />
 					</CustomIconButton>
 				</div>
 			</div>
@@ -24,71 +24,94 @@ const  CustomIconButtons= () => {
 				<div className='flex flex-col gap-4'>
 					<div className='flex gap-4 items-center flex-wrap'>
 						<CustomIconButton aria-label='capture screenshot'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='primary'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='secondary'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='error'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='warning'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='info'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='success'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 					</div>
 					<div className='flex gap-4 items-center flex-wrap'>
 						<CustomIconButton aria-label='capture screenshot' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='primary' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='secondary' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='error' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='warning' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='info' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='success' variant='outlined'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+					</div>
+					<div className='flex gap-4 items-center flex-wrap'>
+						<CustomIconButton aria-label='capture screenshot' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='primary' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='secondary' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='error' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='warning' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='info' variant='tonal'>
+							<i className='tabler-aperture' />
+						</CustomIconButton>
+						<CustomIconButton aria-label='capture screenshot' color='success' variant='tonal'>
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 					</div>
 					<div className='flex gap-4 items-center flex-wrap'>
 						<CustomIconButton aria-label='capture screenshot' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='primary' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='secondary' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='error' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='warning' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='info' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 						<CustomIconButton aria-label='capture screenshot' color='success' variant='contained'>
-							<i className='ri-camera-lens-fill' />
+							<i className='tabler-aperture' />
 						</CustomIconButton>
 					</div>
 				</div>
@@ -98,4 +121,3 @@ const  CustomIconButtons= () => {
 }
 
 export default CustomIconButtons
-

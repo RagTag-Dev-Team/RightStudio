@@ -23,14 +23,14 @@ const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant
           ...(size === 'large'
             ? {
                 fontSize: '24px',
-                padding: theme.spacing(variant === 'outlined' ? 2 : 2.25),
+                padding: theme.spacing(variant === 'outlined' ? 2.75 : 3),
                 '& i, & svg': {
                   fontSize: 'inherit'
                 }
               }
             : {
                 fontSize: '22px',
-                padding: theme.spacing(variant === 'outlined' ? 1.5 : 1.75),
+                padding: theme.spacing(variant === 'outlined' ? 1.75 : 2),
                 '& i, & svg': {
                   fontSize: 'inherit'
                 }
@@ -54,20 +54,23 @@ const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant
         border: 'none !important',
         ...(size === 'small'
           ? {
-              padding: theme.spacing(1.5)
+              padding: theme.spacing(1.25)
             }
           : {
               ...(size === 'large'
                 ? {
-                    padding: theme.spacing(2.25)
+                    padding: theme.spacing(3)
                   }
                 : {
-                    padding: theme.spacing(1.75)
+                    padding: theme.spacing(2)
                   })
             })
       }),
       ...(variant === 'contained' && {
         boxShadow: 'none !important',
+        backgroundColor: 'transparent'
+      }),
+      ...(variant === 'tonal' && {
         backgroundColor: 'transparent'
       })
     })
