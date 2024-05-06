@@ -254,7 +254,7 @@ const sidebars: SidebarsConfig = {
         'user-interface/form-elements/custom-inputs',
         'user-interface/form-elements/textarea',
         'user-interface/form-elements/autocomplete',
-        'user-interface/form-elements/picker',
+        'user-interface/form-elements/pickers',
         'user-interface/form-elements/switch',
         'user-interface/form-elements/file-uploader',
         'user-interface/form-elements/editor',
