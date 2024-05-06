@@ -68,7 +68,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 <div className='flex justify-between gap-4 flex-col sm:flex-row'>
                   <div className='flex flex-col gap-6'>
                     <div className='flex items-center gap-2.5'>
-                      <Logo />
+                      <Logo component />
                     </div>
                     <div>
                       <Typography color='text.primary'>Office 149, 450 South Brand Brooklyn</Typography>
@@ -275,7 +275,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                   </Grid>
                   <div className='flex flex-col justify-start border-is'>
                     <IconButton size='small' onClick={deleteForm}>
-                      <i className='tabler-x text-actionActive' />
+                      <i className='tabler-x text-2xl text-actionActive' />
                     </IconButton>
                   </div>
                 </div>

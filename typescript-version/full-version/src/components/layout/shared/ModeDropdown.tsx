@@ -91,7 +91,7 @@ const ModeDropdown = () => {
                     onClick={() => handleModeSwitch('light')}
                     selected={settings.mode === 'light'}
                   >
-                    <i className='tabler-sun  text-[22px]' />
+                    <i className='tabler-sun' />
                     Light
                   </MenuItem>
                   <MenuItem
@@ -99,7 +99,7 @@ const ModeDropdown = () => {
                     onClick={() => handleModeSwitch('dark')}
                     selected={settings.mode === 'dark'}
                   >
-                    <i className='tabler-moon-stars text-[22px]' />
+                    <i className='tabler-moon-stars' />
                     Dark
                   </MenuItem>
                   <MenuItem
@@ -107,7 +107,7 @@ const ModeDropdown = () => {
                     onClick={() => handleModeSwitch('system')}
                     selected={settings.mode === 'system'}
                   >
-                    <i className='tabler-device-laptop text-[22px]' />
+                    <i className='tabler-device-laptop' />
                     System
                   </MenuItem>
                 </MenuList>

@@ -92,7 +92,7 @@ const RoleCards = () => {
                       dialogProps={{ title: item.title }}
                     />
                   </div>
-                  <IconButton className='p-[7px]'>
+                  <IconButton>
                     <i className='tabler-copy text-secondary' />
                   </IconButton>
                 </div>

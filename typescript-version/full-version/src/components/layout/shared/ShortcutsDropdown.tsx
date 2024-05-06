@@ -49,10 +49,10 @@ export type ShortcutsType = {
 
 const ScrollWrapper = ({ children, hidden }: { children: ReactNode; hidden: boolean }) => {
   if (hidden) {
-    return <div className='overflow-x-hidden max-bs-[434px]'>{children}</div>
+    return <div className='overflow-x-hidden max-bs-[458px]'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar className='max-bs-[434px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
+      <PerfectScrollbar className='max-bs-[458px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
         {children}
       </PerfectScrollbar>
     )
@@ -110,7 +110,7 @@ const ShortcutsDropdown = ({ shortcuts }: { shortcuts: ShortcutsType[] }) => {
             <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
-                  <div className='flex items-center justify-between plb-3 pli-4 is-full gap-2'>
+                  <div className='flex items-center justify-between plb-3.5 pli-4 is-full gap-2'>
                     <Typography variant='h6' className='flex-auto'>
                       Shortcuts
                     </Typography>

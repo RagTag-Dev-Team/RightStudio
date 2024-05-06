@@ -22,10 +22,10 @@ const TwoStepVerification = () => {
         <div className='flex items-center mbe-4 gap-5'>
           <CustomTextField id='sms' placeholder='+1(968) 819-2547' fullWidth />
           <div className='flex items-center gap-1'>
-            <CustomIconButton variant='outlined' color='secondary'>
+            <CustomIconButton color='secondary'>
               <i className='tabler-edit' />
             </CustomIconButton>
-            <CustomIconButton variant='outlined' color='secondary'>
+            <CustomIconButton color='secondary'>
               <i className='tabler-user-plus' />
             </CustomIconButton>
           </div>

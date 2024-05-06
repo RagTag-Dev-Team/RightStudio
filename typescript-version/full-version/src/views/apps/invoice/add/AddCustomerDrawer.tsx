@@ -67,8 +67,8 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
     >
       <div className='flex items-center justify-between plb-5 pli-6'>
         <Typography variant='h5'>Add New Customer</Typography>
-        <IconButton onClick={handleReset}>
-          <i className='tabler-x text-textPrimary' />
+        <IconButton size='small' onClick={handleReset}>
+          <i className='tabler-x text-2xl text-textPrimary' />
         </IconButton>
       </div>
       <Divider />

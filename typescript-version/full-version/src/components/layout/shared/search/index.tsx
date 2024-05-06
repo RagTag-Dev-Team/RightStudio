@@ -100,7 +100,7 @@ const NavSearch = () => {
       >
         <div className='flex items-center gap-2'>
           <IconButton className='text-textPrimary'>
-            <i className='tabler-search' />
+            <i className='tabler-search text-2xl' />
           </IconButton>
           <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>

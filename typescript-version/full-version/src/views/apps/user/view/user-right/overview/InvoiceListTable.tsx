@@ -166,27 +166,28 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-[22px] text-textSecondary' />
+              <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
               <Link
                 href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
               >
-                <i className='tabler-eye text-[22px] text-textSecondary' />
+                <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-[22px] text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-[22px]',
+                  icon: 'tabler-download',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-[22px]',
+                  icon: 'tabler-edit',
                   href: getLocalizedUrl(`/apps/invoice/edit/${row.original.id}`, locale as Locale),
                   linkProps: {
                     className: classnames('flex items-center bs-[40px] plb-2 pli-4 is-full gap-2 text-textSecondary')
@@ -194,7 +195,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                 },
                 {
                   text: 'Duplicate',
-                  icon: 'tabler-copy text-[22px]',
+                  icon: 'tabler-copy',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}

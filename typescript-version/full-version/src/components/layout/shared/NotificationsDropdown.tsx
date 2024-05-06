@@ -198,7 +198,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
             <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={handleClose}>
                 <div>
-                  <div className='flex items-center justify-between plb-3 pli-4 is-full gap-2'>
+                  <div className='flex items-center justify-between plb-3.5 pli-4 is-full gap-2'>
                     <Typography variant='h6' className='flex-auto'>
                       Notifications
                     </Typography>

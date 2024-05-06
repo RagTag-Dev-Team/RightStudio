@@ -175,10 +175,10 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton onClick={() => handleEditPermission(row.original.name)}>
-              <i className='tabler-edit text-[22px] text-textSecondary' />
+              <i className='tabler-edit text-textSecondary' />
             </IconButton>
             <IconButton>
-              <i className='tabler-dots-vertical text-[22px] text-textSecondary' />
+              <i className='tabler-dots-vertical text-textSecondary' />
             </IconButton>
           </div>
         ),
