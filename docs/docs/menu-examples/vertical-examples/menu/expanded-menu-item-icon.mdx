@@ -2,14 +2,24 @@
 toc_max_heading_level: 2
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Basic from '@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/Basic'
+import IconWithLevel from '@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithLevel'
+import IconWithParam from '@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithParam'
+import IconWithParamLevel from '@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithParamLevel'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBasic from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expanded-menu-item-icon/basic/page'
-import SourceCodeIconWithLevel from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-level/page'
-import SourceCodeIconWithParam from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-param/page'
-import SourceCodeIconWithParamLevel from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-param-level/page'
+import SourceCodeBasic from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/Basic'
+import SourceCodeIconWithLevel from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithLevel'
+import SourceCodeIconWithParam from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithParam'
+import SourceCodeIconWithParamLevel from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expanded-menu-item-icon/IconWithParamLevel'
 
 # Expanded MenuItem Icon
+
+export const updatedSourceCodeBasic = SourceCodeBasic.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithLevel = SourceCodeIconWithLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithParam = SourceCodeIconWithParam.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithParamLevel = SourceCodeIconWithParamLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `expandedMenuItemIcon` prop allows customization of the icon for expanded submenu items.
 
@@ -33,11 +43,15 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/expanded-menu-item-icon/basic' />
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/basic'>
+  <Provider>
+    <Basic />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBasic}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeBasic}</TsToJsCodeSnippet>
 
 ## Icon With Level
 
@@ -45,11 +59,15 @@ This example shows using a ReactElement as the icon and passing the level parame
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-level' />
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-level'>
+  <Provider>
+    <IconWithLevel />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithLevel}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithLevel}</TsToJsCodeSnippet>
 
 ## Icon With Params
 
@@ -57,7 +75,11 @@ This example uses a function as the icon
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-param' />
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-param'>
+  <Provider>
+    <IconWithParam />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -69,7 +91,11 @@ This example utilizes a function as the icon and passes the level parameter.
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/expanded-menu-item-icon/icon-with-param-level' />
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-param-level'>
+  <Provider>
+    <IconWithParamLevel />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

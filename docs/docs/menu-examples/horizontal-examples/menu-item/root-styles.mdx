@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import RootStyles from '@docPages/menu-examples/horizontal-menu/menu-item/RootStyles'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu-item/root-styles/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu-item/RootStyles'
 
 # Root Styles
 
@@ -20,7 +22,11 @@ type RootStylesType = {
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu-item/root-styles' />
+<BrowserWindow url='/horizontal-menu/menu-item/root-styles'>
+  <Provider>
+    <RootStyles />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

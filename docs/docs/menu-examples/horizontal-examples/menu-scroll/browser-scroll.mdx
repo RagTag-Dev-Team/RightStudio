@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BrowserScroll from '@docPages/menu-examples/horizontal-menu/menu-scroll/BrowserScroll'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu-scroll/browser-scroll/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu-scroll/BrowserScroll'
 
 # Browser Scroll
 
@@ -22,7 +24,11 @@ browserScroll={false}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu-scroll/browser-scroll' />
+<BrowserWindow url='/horizontal-menu/menu-scroll/browser-scroll'>
+  <Provider>
+    <BrowserScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

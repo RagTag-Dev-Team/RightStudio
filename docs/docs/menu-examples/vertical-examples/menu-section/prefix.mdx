@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Prefix from '@docPages/menu-examples/vertical-menu/menu-section/Prefix'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-section/prefix/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-section/Prefix'
 
 # Prefix
+
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `prefix` prop allows you to add additional content or elements before the label of a menu section.
 
@@ -18,8 +22,12 @@ prefix?: ReactNode | ChipProps
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-section/prefix' />
+<BrowserWindow url='/vertical-menu/menu-section/prefix'>
+  <Provider>
+    <Prefix />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BackgroundColor from '@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundColor'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/background-color/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackgroundColor'
 
 # Background Color
+
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `backgroundColor` prop allows you to add a custom background color for the navigation sidebar. The value of this prop can be any valid CSS value for background-color.
 
@@ -22,8 +26,12 @@ backgroundColor='white'
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/vertical-nav/background-color' />
+<BrowserWindow url='/vertical-menu/vertical-nav/background-color'>
+  <Provider>
+    <BackgroundColor />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

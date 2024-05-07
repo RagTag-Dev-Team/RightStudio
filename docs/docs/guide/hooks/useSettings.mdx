@@ -41,75 +41,74 @@ The `updateCookie` prop allows you to update the settings of your app in the bro
 To utilize the `useSettings()` hook, please refer to the following examples:
 
 import TsToJsCodeSnippet from "@docComponents/ts-js-code"
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx"
 
 ### Mode
 
-import SourceCodeMode from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-mode/page"
+The `mode` property in the Settings type is used to define the visual mode of your application. It can be used to switch between different mode, such as a `light`, `dark`, or a `system` mode defined within your application.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-mode" />
+Here's an example of how you can use the `mode` property:
 
-#### Source Code
+import SourceCodeMode from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsMode"
 
 <TsToJsCodeSnippet>{SourceCodeMode}</TsToJsCodeSnippet>
 
 ### Skin
 
-import SourceCodeSkin from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-skin/page"
+The `skin` property in the Settings type is used to define the visual skin of your application. It can be used to switch between different skins, such as `default` and `bordered`.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-skin" />
+Here's an example of how you can use the `skin` property:
 
-#### Source Code
+import SourceCodeSkin from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsSkin"
 
 <TsToJsCodeSnippet>{SourceCodeSkin}</TsToJsCodeSnippet>
 
 ### SemiDark
 
-import SourceCodeSemiDark from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-semi-dark/page"
+The `semiDark` property in the Settings type is used to define a `semi-dark` mode in your application.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-semi-dark" />
+Here's an example of how you can use the `semiDark` property:
 
-#### Source Code
+import SourceCodeSemiDark from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsSemiDark"
 
 <TsToJsCodeSnippet>{SourceCodeSemiDark}</TsToJsCodeSnippet>
 
 ### Layout
 
-import SourceCodeLayout from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-layout/page"
+The `layout` property in the Settings type is used to define the layout structure of your application. It can be used to switch between different layout styles such as `vertical`, `horizontal`, and `collapsed`.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-layout" />
+Here's an example of how you can use the `layout` property:
 
-#### Source Code
+import SourceCodeLayout from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsLayout"
 
 <TsToJsCodeSnippet>{SourceCodeLayout}</TsToJsCodeSnippet>
 
 ### navbarContentWidth
 
-import SourceCodeNavbarContentWidth from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-navbar-content-width/page"
+The `navbarContentWidth` property in the Settings type is used to define the width of the navigation bar content in your application. It can be used to switch between different width styles such as `compact` and `wide`.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-navbar-content-width" />
+Here's an example of how you can use the `navbarContentWidth` property:
 
-#### Source Code
+import SourceCodeNavbarContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsNavbarContentWidth"
 
 <TsToJsCodeSnippet>{SourceCodeNavbarContentWidth}</TsToJsCodeSnippet>
 
 ### ContentWidth
 
-import SourceCodeContentWidth from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-content-width/page"
+The `contentWidth` property in the Settings type is used to define the width of the main content area in your application. It can be used to switch between different width styles such as `compact` and `wide`.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-content-width" />
+Here's an example of how you can use the `contentWidth` property:
 
-#### Source Code
+import SourceCodeContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsContentWidth"
 
 <TsToJsCodeSnippet>{SourceCodeContentWidth}</TsToJsCodeSnippet>
 
 ### footerContentWidth
 
-import SourceCodeFooterContentWidth from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-footer-content-width/page"
+The `footerContentWidth` property in the Settings type is used to define the width of the footer content in your application. It can be used to switch between different width styles such as `compact` and `wide`.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-footer-content-width" />
+Here's an example of how you can use the `footerContentWidth` property:
 
-#### Source Code
+import SourceCodeFooterContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsFooterContentWidth"
 
 <TsToJsCodeSnippet>{SourceCodeFooterContentWidth}</TsToJsCodeSnippet>
 
@@ -125,10 +124,10 @@ import SourceCodePrimaryColor from "!!raw-loader!@/app/[lang]/hook-examples/use-
 
 ### Change/Reset SettingsMode
 
-import SourceCodeChangeSettingsMode from "!!raw-loader!@/app/[lang]/hook-examples/use-settings/settings-changed/page"
+In your application, you may need to change or reset the settings properties based on user interactions or other requirements. This can be achieved using the resetSettings function provided by the useSettings hook.
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-settings/settings-changed" />
+Here's an example of how you can change a setting:
 
-#### Source Code
+import SourceCodeChangeSettingsMode from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsChanged"
 
 <TsToJsCodeSnippet>{SourceCodeChangeSettingsMode}</TsToJsCodeSnippet>

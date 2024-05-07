@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Disabled from '@docPages/menu-examples/vertical-menu/menu-item/Disabled'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-item/disable/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-item/Disabled'
 
 # Disabled
 
@@ -24,7 +26,11 @@ disabled={false}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-item/disable' />
+<BrowserWindow url='/vertical-menu/menu-item/disabled'>
+  <Provider>
+    <Disabled />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

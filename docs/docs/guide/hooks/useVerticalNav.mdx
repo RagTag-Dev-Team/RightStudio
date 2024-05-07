@@ -28,84 +28,142 @@ The `useVerticalNav()` hook provides the following variables that can be used to
 
 To utilize the `useVerticalNav()` hook, please refer to the following examples:
 
-import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx";
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import CollapsedFunction from '@docPages/hook-examples/use-vertical-nav/CollapsedFunction'
+import HoverFunction from '@docPages/hook-examples/use-vertical-nav/HoverFunction'
+import IsBreakpointReached from '@docPages/hook-examples/use-vertical-nav/IsBreakpointReached'
+import IsCollapsed from '@docPages/hook-examples/use-vertical-nav/IsCollapsed'
+import IsHovered from '@docPages/hook-examples/use-vertical-nav/IsHovered'
+import IsPopoutWhenCollapsed from '@docPages/hook-examples/use-vertical-nav/IsPopoutWhenCollapsed'
+import IsScrollWithContent from '@docPages/hook-examples/use-vertical-nav/IsScrollWithContent'
+import IsToggled from '@docPages/hook-examples/use-vertical-nav/IsToggled'
+import ToggleFunction from '@docPages/hook-examples/use-vertical-nav/ToggleFunction'
+import TsToJsCodeSnippet from '@docComponents/ts-js-code'
 
 ### toggleVerticalNav
 
-import SourceCodeToggleFunction from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/toggle-function/page";
+import SourceCodeToggleFunction from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/ToggleFunction'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/toggle-function" />
+export const updatedSourceCodeToggleFunction = SourceCodeToggleFunction.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/toggle-function'>
+  <Provider>
+    <ToggleFunction />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeToggleFunction}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeToggleFunction}</TsToJsCodeSnippet>
 
 ### isToggled
 
-import SourceCodeIsToggled from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-toggled/page";
+import SourceCodeIsToggled from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/ToggleFunction'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-toggled" />
+export const updatedSourceCodeIsToggled = SourceCodeIsToggled.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/is-toggled'>
+  <Provider>
+    <IsToggled />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIsToggled}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIsToggled}</TsToJsCodeSnippet>
 
 ### collapseVerticalNav
 
-import SourceCodeCollapsedFunction from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/collapsed-function/page";
+import SourceCodeCollapsedFunction from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/CollapsedFunction'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/collapsed-function" />
+export const updatedSourceCodeCollapsedFunction = SourceCodeCollapsedFunction.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/collapsed-function'>
+  <Provider>
+    <CollapsedFunction />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeCollapsedFunction}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeCollapsedFunction}</TsToJsCodeSnippet>
 
 ### isCollapsed
 
-import SourceCodeIsCollapsed from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-collapsed/page";
+import SourceCodeIsCollapsed from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/IsCollapsed'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-collapsed" />
+export const updatedSourceCodeIsCollapsed = SourceCodeIsCollapsed.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '') 
+
+<BrowserWindow url='/use-vertical-nav/is-collapsed'>
+  <Provider>
+    <IsCollapsed />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIsCollapsed}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIsCollapsed}</TsToJsCodeSnippet>
 
 ### hoverVerticalNav
 
-import SourceCodeHoverFunction from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/hover-function/page";
+import SourceCodeHoverFunction from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/HoverFunction'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/hover-function" />
+export const updatedSourceCodeHoverFunction = SourceCodeHoverFunction.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '') 
+
+<BrowserWindow url='/use-vertical-nav/hover-function'>
+  <Provider>
+    <HoverFunction />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeHoverFunction}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeHoverFunction}</TsToJsCodeSnippet>
 
 ### isHovered
 
-import SourceCodeIsHovered from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-hovered/page";
+import SourceCodeIsHovered from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/IsHovered'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-hovered" />
+export const updatedSourceCodeIsHovered = SourceCodeIsHovered.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '') 
+
+<BrowserWindow url='/use-vertical-nav/is-hovered'>
+  <Provider>
+    <IsHovered />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIsHovered}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIsHovered}</TsToJsCodeSnippet>
 
 ### isScrollWithContent
 
-import SourceCodeIsScrollWithContent from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-scroll-with-content/page";
+import SourceCodeIsScrollWithContent from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/IsScrollWithContent'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-scroll-with-content" />
+export const updatedSourceCodeIsScrollWithContent = SourceCodeIsScrollWithContent.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/is-scroll-with-content'>
+  <Provider>
+    <IsScrollWithContent />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIsScrollWithContent}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIsScrollWithContent}</TsToJsCodeSnippet>
 
 ### isPopoutWhenCollapsed
 
-import SourceCodeIsPopoutWhenCollapsed from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-popout-when-collapsed/page";
+import SourceCodeIsPopoutWhenCollapsed from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/IsPopoutWhenCollapsed'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-popout-when-collapsed" />
+export const updatedSourceCodeIsPopoutWhenCollapsed = SourceCodeIsPopoutWhenCollapsed.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/is-popout-when-collapsed'>
+  <Provider>
+    <IsPopoutWhenCollapsed />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 
@@ -113,9 +171,15 @@ import SourceCodeIsPopoutWhenCollapsed from "!!raw-loader!@/app/[lang]/hook-exam
 
 ### isBreakpointReached
 
-import SourceCodeIsBreakpointReached from "!!raw-loader!@/app/[lang]/hook-examples/use-vertical-nav/is-breakpoint-reached/page";
+import SourceCodeIsBreakpointReached from '!!raw-loader!@docPages/hook-examples/use-vertical-nav/IsBreakpointReached'
 
-<IframeWindow url="http://localhost:3000/en/hook-examples/use-vertical-nav/is-breakpoint-reached" />
+export const updatedSourceCodeIsBreakpointReached = SourceCodeIsBreakpointReached.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/use-vertical-nav/is-breakpoint-reached'>
+  <Provider>
+    <IsBreakpointReached />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 

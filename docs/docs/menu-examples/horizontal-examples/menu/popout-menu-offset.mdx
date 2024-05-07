@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import WithParams from '@docPages/menu-examples/horizontal-menu/menu/popout-menu-offset/WithParams'
+import WithoutParams from '@docPages/menu-examples/horizontal-menu/menu/popout-menu-offset/WithoutParams'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/popout-menu-offset/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/popout-menu-offset/without-params/page'
+import SourceCodeWithParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/popout-menu-offset/WithParams'
+import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/popout-menu-offset/WithoutParams'
 
 # Popout Menu Offset
 
@@ -37,7 +40,11 @@ The `popoutMenuOffset` prop accepts a function that receives an object with the 
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/popout-menu-offset/with-params' />
+<BrowserWindow url='/horizontal-menu/menu/popout-menu-offset/with-params'>
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -49,7 +56,11 @@ The `popoutMenuOffset` prop accepts a number that will be used as the offset dis
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/popout-menu-offset/without-params' />
+<BrowserWindow url='/horizontal-menu/menu/popout-menu-offset/without-params'>
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
