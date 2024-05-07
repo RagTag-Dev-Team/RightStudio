@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Suffix
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `suffix` prop allows you to add additional content or elements after the label of a submenu.
 
 ### Props
@@ -20,7 +22,7 @@ suffix?: ReactNode
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/submenu/suffix'>
   <Provider>
     <Suffix />
   </Provider>
@@ -28,4 +30,4 @@ suffix?: ReactNode
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

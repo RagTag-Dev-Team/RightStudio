@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Root Styles
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The Root Style feature provides the flexibility to apply custom styling to the submenu. With the `rootStyles` prop, you can pass a set of CSS properties to customize the appearance of the submenu according to your design preferences. The `rootStyles` prop accepts a CSSObject from the [Emotion](https://emotion.sh/docs/introduction) library.
 
 ### Props
@@ -22,7 +24,7 @@ type RootStylesType = {
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/submenu/root-styles'>
   <Provider>
     <RootStyles />
   </Provider>
@@ -30,4 +32,4 @@ type RootStylesType = {
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

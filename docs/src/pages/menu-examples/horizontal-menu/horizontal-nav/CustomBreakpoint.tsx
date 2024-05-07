@@ -19,7 +19,19 @@ const CustomBreakPoint = () => {
         switchToVertical
         customBreakpoint='700px'
         verticalNavContent={VerticalNavContent}
-        verticalNavProps={{ customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } } }}
+        verticalNavProps={{ 
+          customStyles: {
+            '& .ts-menu-button': { paddingBlock: '12px' },
+            // The following customStyles prop is used to show this example properly in the documentation.
+            // You need to remove this prop in your implementation.
+            position: 'absolute !important',
+            '& .ts-vertical-nav-backdrop': {
+              position: 'absolute',
+              insetInlineEnd: '-600%'
+            }
+            // Remove the code till here 
+          }
+        }}
       >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>

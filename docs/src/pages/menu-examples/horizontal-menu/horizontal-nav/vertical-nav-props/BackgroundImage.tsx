@@ -21,8 +21,18 @@ const BackgroundImage = () => {
         verticalNavContent={VerticalNavContent}
         verticalNavProps={{
           backgroundColor: 'rgba(255, 255, 255, 0.55)',
-          customStyles: { '& .ts-menu-button': { paddingBlock: '12px' } },
-          backgroundImage: 'https://wallpapers.com/images/high/road-in-between-iphone-landscape-8epxqsbuv4c1xqoi.webp'
+          customStyles: { 
+            '& .ts-menu-button': { paddingBlock: '12px' },
+            // The following customStyles prop is used to show this example properly in the documentation.
+            // You need to remove this prop in your implementation.
+            position: 'absolute !important',
+            '& .ts-vertical-nav-backdrop': {
+              position: 'absolute',
+              insetInlineEnd: '-600%'
+            }
+            // Remove the code till here 
+          },
+          backgroundImage: 'https://wallpapers.com/images/high/road-in-between-iphone-landscape-8epxqsbuv4c1xqoi.webp',
         }}
       >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>

@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Sub Menu Open Behavior
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `subMenuOpenBehavior` prop allows you to control how submenus behave when opened. It provides two options for controlling the behavior of submenus: `accordion` and `collapse`.
 
 | Behavior  | Description                                                                                                                        |
@@ -29,7 +31,7 @@ subMenuOpenBehavior='accordion'
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/sub-menu-open-behavior'>
   <Provider>
     <SubMenuOpenBehavior />
   </Provider>
@@ -37,4 +39,4 @@ subMenuOpenBehavior='accordion'
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

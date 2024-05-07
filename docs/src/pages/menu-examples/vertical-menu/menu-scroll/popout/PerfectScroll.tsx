@@ -6,7 +6,14 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 const PopoutPerfectScroll = () => {
   return (
     <VerticalNav customBreakpoint='200px' defaultCollapsed>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} triggerPopout='hover' popoutWhenCollapsed>
+      <Menu 
+        menuItemStyles={{ 
+          button: { paddingBlock: '12px' }, 
+          subMenuContent: { maxHeight: 300, '& .scrollbar-container': { maxBlockSize: '300px !important' } }
+        }}
+        triggerPopout='hover'
+        popoutWhenCollapsed
+       >
         <SubMenu label='Dashboards'>
           <MenuItem>Analytics</MenuItem>
           <MenuItem>eCommerce</MenuItem>

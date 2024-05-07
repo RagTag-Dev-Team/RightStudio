@@ -8,6 +8,8 @@ import VerticalMenuProps from '@docPages/menu-examples/horizontal-menu/menu/Vert
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
 import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps'
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+
 # Vertical Menu Props
 
 :::warning
@@ -34,7 +36,7 @@ verticalMenuProps?: Pick<
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/horizontal-menu/menu/vertical-menu-props'>
   <Provider>
     <VerticalMenuProps />
   </Provider>
@@ -42,4 +44,4 @@ verticalMenuProps?: Pick<
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

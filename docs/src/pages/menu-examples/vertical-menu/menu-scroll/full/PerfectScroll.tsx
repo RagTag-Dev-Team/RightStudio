@@ -3,13 +3,24 @@
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
+import claassnames from 'classnames'
 
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
 const FullMenuPerfectScroll = () => {
   return (
-    <VerticalNav customBreakpoint='200px'>
+    <VerticalNav 
+      customBreakpoint='200px' 
+      // The following customStyles prop is used to show this example properly in the documentation.
+      // You need to remove this prop in your implementation.
+      customStyles={{
+        '& .scrollbar-container': {
+          height: '400px'
+        }
+      }}
+      // Remove the code till here
+    >
       <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <MenuSection label='Dashboards'>

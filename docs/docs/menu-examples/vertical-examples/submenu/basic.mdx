@@ -10,7 +10,9 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Basic
 
-<BrowserWindow>
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
+<BrowserWindow url='/vertical-menu/submenu/basic'>
   <Provider>
     <Basic />
   </Provider>
@@ -18,4 +20,4 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

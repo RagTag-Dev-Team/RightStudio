@@ -7,7 +7,7 @@ const PopoutBrowserScroll = () => {
   return (
     <VerticalNav customBreakpoint='200px' defaultCollapsed>
       <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        menuItemStyles={{ button: { paddingBlock: '12px' }, subMenuContent: { maxHeight: 300 } }}
         triggerPopout='hover'
         popoutWhenCollapsed
         browserScroll

@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Custom Breakpoint
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+
 The `customBreakpoint` prop lets you choose your own size for when the navigation menu changes. Normally, this happens on a large screen (1200px), but you can set it to a different size if you want. This way, you don't have to use the default breakpoint values listed [here](/docs/menu-examples/vertical-examples/vertical-nav/breakpoint).
 
 ### Props
@@ -20,7 +22,7 @@ customBreakpoint?: string
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/vertical-nav/custom-breakpoint'>
   <Provider>
     <CustomBreakpoint />
   </Provider>
@@ -28,4 +30,4 @@ customBreakpoint?: string
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

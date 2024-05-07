@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import ContentClassname from '@docPages/menu-examples/horizontal-menu/submenu/ContentClassname'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/submenu/content-classname/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/submenu/ContentClassname'
 
 # Content Classname
 
@@ -18,7 +20,11 @@ contentClassName?: string
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/submenu/content-classname' />
+<BrowserWindow url='/horizontal-menu/submenu/content-classname'>
+  <Provider>
+    <ContentClassname />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

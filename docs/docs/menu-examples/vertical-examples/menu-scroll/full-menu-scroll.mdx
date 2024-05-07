@@ -12,13 +12,16 @@ import SourceCodePerfectScroll from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Full Menu Scroll
 
+export const updatedCodeBrowserScroll = SourceCodeBrowserScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCodePerfectScroll = SourceCodePerfectScroll.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+
 ## Browser scroll
 
 The browser scroll is the default scroll behavior for the vertical menu. When the menu items exceed the available vertical space, the browser's built-in scrollbar is used to scroll through the menu content. This scroll behavior is automatically enabled without any additional configuration.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu-scroll/full/browser-scroll'>
   <Provider>
     <BrowserScroll />
   </Provider>
@@ -26,7 +29,7 @@ The browser scroll is the default scroll behavior for the vertical menu. When th
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodeBrowserScroll}</TsToJsCodeSnippet>
 
 ## PerfectScrollBar
 
@@ -42,7 +45,7 @@ This will replace the default browser scrollbar with the custom perfect scrollba
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu-scroll/full/perfect-scroll'>
   <Provider>
     <PerfectScroll />
   </Provider>
@@ -50,4 +53,4 @@ This will replace the default browser scrollbar with the custom perfect scrollba
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodePerfectScroll}</TsToJsCodeSnippet>

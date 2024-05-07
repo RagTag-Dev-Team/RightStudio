@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Width
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `width` prop allows you to customize the width of the navigation sidebar according to your needs. You can set it to a number value, which represents the width in pixels.
 
 ### Props
@@ -24,7 +26,7 @@ width={260}
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/vertical-nav/width'>
   <Provider>
     <Width />
   </Provider>
@@ -32,4 +34,4 @@ width={260}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

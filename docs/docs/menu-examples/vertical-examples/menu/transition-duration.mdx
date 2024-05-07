@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Transition Duration
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `transitionDuration` prop allows you to customize the duration of the animation when opening or closing submenus. The value is in milliseconds (ms).
 
 ### Props
@@ -24,7 +26,7 @@ transitionDuration=300 // milliseconds
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/transition-duration'>
   <Provider>
     <TransitionDuration />
   </Provider>
@@ -32,4 +34,4 @@ transitionDuration=300 // milliseconds
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

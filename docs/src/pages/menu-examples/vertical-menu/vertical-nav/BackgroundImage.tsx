@@ -9,6 +9,7 @@ const BackgroundImage = () => {
       customBreakpoint='200px'
       backgroundColor='rgba(248, 248, 248, 0.8)'
       backgroundImage='/images/menu-bg-image.png'
+      customStyles={{ minHeight: '100%' }}
     >
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <SubMenu label='Dashboards'>

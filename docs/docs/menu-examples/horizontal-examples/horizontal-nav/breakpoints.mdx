@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/hor
 
 # Breakpoints
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
+
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
 :::
@@ -44,7 +46,7 @@ breakpoints = {
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/horizontal-menu/horizontal-nav/breakpoints'>
   <Provider>
     <Breakpoints />
   </Provider>
@@ -52,4 +54,4 @@ breakpoints = {
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

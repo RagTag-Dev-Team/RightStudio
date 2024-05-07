@@ -6,8 +6,21 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const BackdropColor = () => {
   return (
-    <div className='flex h-full bg-indigo-50'>
-      <VerticalNav breakpoint='always' backdropColor='rgba(84, 75, 126, 0.5)'>
+    <div className='flex h-dvh bg-indigo-50'>
+      <VerticalNav 
+        breakpoint='always'
+        backdropColor='rgba(84, 75, 126, 0.5)'
+        // The following customStyles prop is used to show this example properly in the documentation.
+        // You need to remove this prop in your implementation.
+        customStyles={{
+          position: 'absolute !important',
+          '& .ts-vertical-nav-backdrop': {
+            position: 'absolute',
+            insetInlineEnd: '-600%'
+          }
+        }}
+        // Remove the code till here
+      >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

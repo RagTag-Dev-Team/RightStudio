@@ -61,7 +61,7 @@ const menuData: VerticalMenuDataType[] = [
 
 const DynamicMenu = () => {
   return (
-    <VerticalNav customBreakpoint='200px'>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
       <Menu
         popoutMenuOffset={{ mainAxis: 10 }}
         menuItemStyles={{

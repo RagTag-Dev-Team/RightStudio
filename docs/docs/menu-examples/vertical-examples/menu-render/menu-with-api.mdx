@@ -10,11 +10,13 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Menu With API
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 This example demonstrates how to create a dynamic menu by fetching menu data from an API endpoint. This approach allows you to retrieve menu items from a server or database, making it easy to manage and update the menu content.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu-render/menu-with-api'>
   <Provider>
     <MenuWithApi />
   </Provider>
@@ -22,4 +24,4 @@ This example demonstrates how to create a dynamic menu by fetching menu data fro
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

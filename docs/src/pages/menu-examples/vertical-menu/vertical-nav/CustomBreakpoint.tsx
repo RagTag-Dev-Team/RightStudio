@@ -7,7 +7,20 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 const CustomBreakpoint = () => {
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='800px'>
+      <VerticalNav 
+        customBreakpoint='800px'
+        // The following customStyles prop is used to show this example properly in the documentation.
+        // You need to remove this prop in your implementation.
+        customStyles={{
+          height: '100%',
+          position: 'absolute !important',
+          '& .ts-vertical-nav-backdrop': {
+            position: 'absolute',
+            insetInlineEnd: '-600%'
+          }
+        }}
+        // Remove the code till here
+      >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

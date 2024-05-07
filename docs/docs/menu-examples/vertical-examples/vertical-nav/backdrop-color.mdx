@@ -8,8 +8,9 @@ import BackdropColor from '@docPages/menu-examples/vertical-menu/vertical-nav/Ba
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
 import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackdropColor'
 
-
 # Backdrop Color
+
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
 
 The backdrop color is the background color of the overlay that appears behind the navigation sidebar when it is open. The backdrop color can be changed by setting the `backdropColor` prop to any valid CSS value for background-color.
 
@@ -25,7 +26,7 @@ backdropColor='rgba(0, 0, 0, 0.3)'
 
 ### Examples
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/vertical-nav/backdrop-color'>
   <Provider>
     <BackdropColor />
   </Provider>
@@ -33,4 +34,4 @@ backdropColor='rgba(0, 0, 0, 0.3)'
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

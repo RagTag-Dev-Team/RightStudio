@@ -5,7 +5,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 
 const Prefix = () => {
   return (
-    <VerticalNav customBreakpoint='200px'>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <MenuSection label='Dashbaords & Apps' prefix='😁'>
           <SubMenu label='Dashboards'>

@@ -8,7 +8,7 @@ import classnames from 'classnames'
 
 // Component Imports
 import HorizontalNav, { Menu } from '@menu/horizontal-menu'
-import { GenerateHorizontalMenu } from '@components/GenerateMenu'
+import { GenerateHorizontalMenu } from '@docComponents/GenerateMenu'
 
 // Style Imports
 import styles from '../styles.module.css'
@@ -20,7 +20,7 @@ const MenuWithAPI = () => {
 
   useEffect(() => {
     const fetchMenuData = async () => {
-      const response = await fetch('https://mocki.io/v1/ea08dba9-a940-4388-9789-2d0b8fa9a475')
+      const response = await fetch('https://mocki.io/v1/bed77a1c-baa2-4a06-95f9-ee6423913b71')
       const data = await response.json()
 
       setSidebarMenuData(data)

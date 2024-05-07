@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Content Classname
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `contentClassName` prop is used to add custom class for the content area of the submenu. This is useful for styling the content area of the submenu.
 
 ### Props
@@ -20,7 +22,7 @@ contentClassName?: string
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/submenu/content-classname'>
   <Provider>
     <ContentClassname />
   </Provider>
@@ -28,4 +30,4 @@ contentClassName?: string
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Disabled
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The Disabled feature allows you to disable a submenu, preventing user interaction and indicating that the item is currently inactive or unavailable. The `disabled` prop is used to control the disabled state of a menu item.
 
 By setting the `disabled` prop to true, the corresponding submenu will be visually disabled and user interactions, such as clicks or hover effects, will be prevented.
@@ -26,7 +28,7 @@ disabled={false}
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/submenu/disabled'>
   <Provider>
     <Disabled />
   </Provider>
@@ -34,4 +36,4 @@ disabled={false}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

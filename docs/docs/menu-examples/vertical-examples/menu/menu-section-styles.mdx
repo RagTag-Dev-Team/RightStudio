@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Menu Section Style
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The Menu Section Style feature provides the flexibility to apply custom styling to the navigation sidebar. With the `menuSectionStyle` prop, you can pass a set of CSS properties to customize different elements within the menu section according to your design preferences. 
 
 ### Props
@@ -38,7 +40,7 @@ These properties can be customized by providing CSS objects with appropriate sty
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/menu-section-styles'>
   <Provider>
     <MenuSectionStyles />
   </Provider>
@@ -46,4 +48,4 @@ These properties can be customized by providing CSS objects with appropriate sty
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

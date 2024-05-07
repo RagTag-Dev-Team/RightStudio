@@ -5,7 +5,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const CollapsedWidth = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed collapsedWidth={120}>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed collapsedWidth={120} customStyles={{ minHeight: '100%' }}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <SubMenu label='Dashboards'>
           <MenuItem>Analytics</MenuItem>

@@ -25,7 +25,7 @@ const MenuWithAPI = () => {
   }, [])
 
   return (
-    <VerticalNav customBreakpoint='200px'>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         {isLoading ? (
           <div className='p-4'>Loading...</div>

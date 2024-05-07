@@ -4,11 +4,11 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { HorizontalMenuDataType } from '@/types/menuTypes'
+import type { HorizontalMenuDataType } from '@site/src/types/menuTypes'
 
 // Component Imports
 import HorizontalNav, { Menu } from '@menu/horizontal-menu'
-import { GenerateHorizontalMenu } from '@components/GenerateMenu'
+import { GenerateHorizontalMenu } from '@docComponents/GenerateMenu'
 
 // Style Imports
 import styles from '../styles.module.css'

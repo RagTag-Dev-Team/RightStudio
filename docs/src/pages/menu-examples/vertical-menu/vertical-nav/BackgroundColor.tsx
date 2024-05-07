@@ -5,7 +5,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const BackgroundColor = () => {
   return (
-    <VerticalNav customBreakpoint='200px' backgroundColor='#F8F8F8'>
+    <VerticalNav customBreakpoint='200px' backgroundColor='#F8F8F8' customStyles={{ minHeight: '100%' }}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
         <SubMenu label='Dashboards'>
           <MenuItem>Analytics</MenuItem>

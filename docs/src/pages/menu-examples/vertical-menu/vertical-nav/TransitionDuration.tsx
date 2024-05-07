@@ -10,8 +10,8 @@ const TransitionDuration = () => {
   const { isBreakpointReached, updateVerticalNavState, isCollapsed } = useVerticalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px' transitionDuration={1000}>
+    <div className='flex min-bs-full'>
+      <VerticalNav customBreakpoint='200px' transitionDuration={1000} customStyles={{ minHeight: '100%' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

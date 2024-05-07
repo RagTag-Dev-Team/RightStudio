@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/hor
 
 # Hide Menu
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
+
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
 :::
@@ -20,7 +22,7 @@ For implementing this functionality, You need to pass the `hidemenu` prop to the
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/horizontal-menu/horizontal-nav/hide-menu'>
   <Provider>
     <HideMenu />
   </Provider>
@@ -28,4 +30,4 @@ For implementing this functionality, You need to pass the `hidemenu` prop to the
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Breakpoints
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+
 The `breakpoints` prop is used to override the default breakpoints by providing your own custom object. Users can pass in an object that only includes specific breakpoints they want to customize, while the rest will be the default values. You can also override all the breakpoints by passing in an object with all the breakpoints.
 
 ### Props
@@ -40,7 +42,7 @@ breakpoints = {
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/vertical-nav/breakpoints'>
   <Provider>
     <Breakpoints />
   </Provider>
@@ -48,4 +50,4 @@ breakpoints = {
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

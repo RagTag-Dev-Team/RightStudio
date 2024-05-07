@@ -5,7 +5,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 
 const CollapsedMenuSectionLabel = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ minHeight: '100%' }}>
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} collapsedMenuSectionLabel={<>...</>}>
         <MenuSection label='Dashboards & Apps'>
           <SubMenu label='Dashboards'>

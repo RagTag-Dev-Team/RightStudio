@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Icons
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `icon` prop allows you to add an icon to the menu section. The icon prop accepts a React element, which can be any valid JSX or component that represents the desired icon. This gives you the flexibility to use popular icon libraries, custom SVG icons, or any other icon implementation you prefer.
 
 ### Props
@@ -20,7 +22,7 @@ icon?: ReactElement
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu-section/icon'>
   <Provider>
     <Icon />
   </Provider>
@@ -28,4 +30,4 @@ icon?: ReactElement
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

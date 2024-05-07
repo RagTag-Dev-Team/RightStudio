@@ -23,7 +23,23 @@ const HorizontalNavbar = () => {
       <div className='flex w-full items-center justify-between'>
         <NavToggle />
         {!isBreakpointReached && 'Logo'}
-        <HorizontalNav hideMenu switchToVertical verticalNavContent={VerticalNavContent}>
+        <HorizontalNav 
+          hideMenu
+          switchToVertical
+          verticalNavContent={VerticalNavContent}
+          // The following customStyles prop is used to show this example properly in the documentation.
+          // You need to remove this prop in your implementation.
+          verticalNavProps={{
+            customStyles:{
+              position: 'absolute !important',
+              '& .ts-vertical-nav-backdrop': {
+                position: 'absolute',
+                insetInlineEnd: '-600%'
+              }
+            }
+          }}
+          // Remove the code till here 
+        >
           <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
             <MenuItem>Home</MenuItem>
             <MenuItem component='div'>About</MenuItem>

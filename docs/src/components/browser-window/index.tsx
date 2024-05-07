@@ -18,9 +18,7 @@ type Props = {
 
 const BrowserWindow = (props: Props) => {
   // Props
-  const { children, minHeight = 400, maxHeight = 400, style, bodyStyle, url = 'http://localhost:3000' } = props
-
-  const finalUrl = url.replace(/.*(menu-examples|hook-examples)(.*)/g, '$2')
+  const { children, minHeight = 450, maxHeight = 450, style, bodyStyle, url } = props
 
   return (
     <div className={styles.browserWindow} style={{ minHeight, maxHeight, ...style }}>
@@ -30,7 +28,7 @@ const BrowserWindow = (props: Props) => {
           <span className={styles.dot} style={{ background: '#fbbe3c' }} />
           <span className={styles.dot} style={{ background: '#58cb42' }} />
         </div>
-        <div className={clsx(styles.browserWindowAddressBar, 'text--truncate')}>{finalUrl}</div>
+        <div className={clsx(styles.browserWindowAddressBar, 'text--truncate')}>{url}</div>
         <div className={styles.browserWindowMenuIcon}>
           <div>
             <span className={styles.bar} />

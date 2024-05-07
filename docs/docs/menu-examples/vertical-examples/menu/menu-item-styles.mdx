@@ -8,6 +8,9 @@ import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Menu Item Styles
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `menuItemStyles` prop allows you to customize the style of the menu items.
 
 ### Props
@@ -70,7 +73,7 @@ By using the MenuItemStylesParams object, you can dynamically apply styles based
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/menu-item-styles/with-params'>
   <Provider>
     <WithParams />
   </Provider>
@@ -78,7 +81,7 @@ By using the MenuItemStylesParams object, you can dynamically apply styles based
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
@@ -86,7 +89,7 @@ The `menuItemStyles` prop directly returns a `CSSObject` without any parameters.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/menu-item-styles/without-params'>
   <Provider>
     <WithoutParams />
   </Provider>
@@ -94,4 +97,4 @@ The `menuItemStyles` prop directly returns a `CSSObject` without any parameters.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

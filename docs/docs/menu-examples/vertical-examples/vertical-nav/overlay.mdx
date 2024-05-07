@@ -10,11 +10,13 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Overlay Menu
 
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+
 The overlay menu is a navigation sidebar that slides in from the left side of the screen. It is a full screen menu that covers the entire page along with a backdrop. The backdrop is a semi-transparent layer that covers the entire page and prevents the user from interacting with the page while the menu is open. The backdrop is also clickable and will close the menu when clicked. This is a great option for mobile devices. To make the overlay menu visible on all screen sizes, you can set the `breakpoint` prop to `always`.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/vertical-nav/overlay'>
   <Provider>
     <Overlay />
   </Provider>
@@ -22,4 +24,4 @@ The overlay menu is a navigation sidebar that slides in from the left side of th
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

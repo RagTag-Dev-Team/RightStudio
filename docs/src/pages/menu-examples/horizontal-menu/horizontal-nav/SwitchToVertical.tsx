@@ -15,7 +15,23 @@ const SwitchToVertical = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <NavToggle />
-      <HorizontalNav switchToVertical breakpoint='md' verticalNavContent={VerticalNavContent}>
+      <HorizontalNav 
+        switchToVertical
+        breakpoint='md'
+        verticalNavContent={VerticalNavContent}
+        // The following customStyles prop is used to show this example properly in the documentation.
+        // You need to remove this prop in your implementation.
+        verticalNavProps={{
+          customStyles:{
+            position: 'absolute !important',
+            '& .ts-vertical-nav-backdrop': {
+              position: 'absolute',
+              insetInlineEnd: '-600%'
+            }
+          }
+        }}
+        // Remove the code till here 
+      >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

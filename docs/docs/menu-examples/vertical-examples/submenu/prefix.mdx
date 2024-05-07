@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Prefix
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `prefix` prop allows you to add additional content or elements before the label of a submenu.
 
 ### Props
@@ -20,7 +22,7 @@ prefix?: ReactNode
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/submenu/prefix'>
   <Provider>
     <Prefix />
   </Provider>
@@ -28,4 +30,4 @@ prefix?: ReactNode
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

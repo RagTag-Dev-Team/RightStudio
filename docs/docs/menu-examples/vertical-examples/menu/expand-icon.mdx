@@ -12,6 +12,9 @@ import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Expand Menu Icon
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `renderExpandIcon` prop allows you to customize the icon used for expanding the menu. The `renderExpandIcon` prop takes a `RenderExpandIconParams` object as a parameter. This function allows you to fully customize the expand menu icon based on different conditions or states.
 
 ### Props
@@ -42,7 +45,7 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expand-icon/with-params'>
   <Provider>
     <WithParams />
   </Provider>
@@ -50,7 +53,7 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
@@ -58,7 +61,7 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expand-icon/without-params'>
   <Provider>
     <WithoutParams />
   </Provider>
@@ -66,4 +69,4 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

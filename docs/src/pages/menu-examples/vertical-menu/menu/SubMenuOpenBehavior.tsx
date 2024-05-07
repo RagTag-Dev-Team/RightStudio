@@ -20,7 +20,7 @@ const SubMenuOpenBehavior = () => {
 
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px'>
+      <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} subMenuOpenBehavior={openBehavior}>
           <MenuSection label='Dashboards & Apps'>
             <SubMenu label='Dashboards'>

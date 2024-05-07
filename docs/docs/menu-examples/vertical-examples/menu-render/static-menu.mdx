@@ -10,11 +10,13 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Static Menu
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The static menu is the simplest way to create a menu where you render the menu components directly in your code without any dynamic data source. It is useful when you have a fixed set of menu items that do not change based on external factors.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu-render/static-menu'>
   <Provider>
     <StaticMenu />
   </Provider>
@@ -22,4 +24,4 @@ The static menu is the simplest way to create a menu where you render the menu c
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

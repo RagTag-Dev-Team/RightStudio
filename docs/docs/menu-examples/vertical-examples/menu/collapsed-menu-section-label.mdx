@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Collapsed Menu Section Label
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 When the menu is collapsed, the `collapsedMenuSectionLabel` prop can be used to display a custom label for each menu section. 
 
 ### Props
@@ -20,7 +22,7 @@ collapsedMenuSectionLabel?: ReactNode;
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/collapsed-menu-section-label'>
   <Provider>
     <CollapsedMenuSectionLabel />
   </Provider>
@@ -28,4 +30,4 @@ collapsedMenuSectionLabel?: ReactNode;
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

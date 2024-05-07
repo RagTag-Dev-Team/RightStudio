@@ -12,7 +12,7 @@ const SubMenuWithParams = () => {
 
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px'>
+      <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu
             label='Dashboards'

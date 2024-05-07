@@ -16,6 +16,11 @@ import SourceCodeIconWithParamLevel from '!!raw-loader!@docPages/menu-examples/v
 
 # Expanded MenuItem Icon
 
+export const updatedSourceCodeBasic = SourceCodeBasic.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithLevel = SourceCodeIconWithLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithParam = SourceCodeIconWithParam.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeIconWithParamLevel = SourceCodeIconWithParamLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+
 The `expandedMenuItemIcon` prop allows customization of the icon for expanded submenu items.
 
 ### Props
@@ -38,7 +43,7 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/basic'>
   <Provider>
     <Basic />
   </Provider>
@@ -46,7 +51,7 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBasic}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeBasic}</TsToJsCodeSnippet>
 
 ## Icon With Level
 
@@ -54,7 +59,7 @@ This example shows using a ReactElement as the icon and passing the level parame
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-level'>
   <Provider>
     <IconWithLevel />
   </Provider>
@@ -62,7 +67,7 @@ This example shows using a ReactElement as the icon and passing the level parame
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithLevel}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithLevel}</TsToJsCodeSnippet>
 
 ## Icon With Params
 
@@ -70,7 +75,7 @@ This example uses a function as the icon
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-param'>
   <Provider>
     <IconWithParam />
   </Provider>
@@ -86,7 +91,7 @@ This example utilizes a function as the icon and passes the level parameter.
 
 ### Example
 
-<BrowserWindow>
+<BrowserWindow url='/vertical-menu/menu/expanded-menu-item-icon/icon-with-param-level'>
   <Provider>
     <IconWithParamLevel />
   </Provider>
