@@ -38,10 +38,6 @@ const MenuWithAPI = () => {
             button: { paddingBlock: '12px' },
             subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
           }}
-          popoutMenuOffset={{
-            mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
-            alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
-          }}
           verticalMenuProps={{
             menuItemStyles: {
               button: { paddingBlock: '12px' },

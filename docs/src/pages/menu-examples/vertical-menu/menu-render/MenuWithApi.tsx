@@ -31,7 +31,6 @@ const MenuWithAPI = () => {
           <div className='p-4'>Loading...</div>
         ) : (
           <Menu
-            popoutMenuOffset={{ mainAxis: 10 }}
             menuItemStyles={{
               button: { paddingBlock: '12px' },
               subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }

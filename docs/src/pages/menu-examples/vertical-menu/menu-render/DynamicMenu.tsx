@@ -63,7 +63,6 @@ const DynamicMenu = () => {
   return (
     <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
       <Menu
-        popoutMenuOffset={{ mainAxis: 10 }}
         menuItemStyles={{
           button: { paddingBlock: '12px' },
           subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
