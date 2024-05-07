@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import ContentClassname from '@docPages/menu-examples/vertical-menu/submenu/ContentClassname'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/content-classname/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/ContentClassname'
 
 # Content Classname
+
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `contentClassName` prop is used to add custom class for the content area of the submenu. This is useful for styling the content area of the submenu.
 
@@ -18,8 +22,12 @@ contentClassName?: string
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/submenu/content-classname' />
+<BrowserWindow url='/vertical-menu/submenu/content-classname'>
+  <Provider>
+    <ContentClassname />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

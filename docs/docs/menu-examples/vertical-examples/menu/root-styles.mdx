@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import RootStyles from '@docPages/menu-examples/vertical-menu/menu/RootStyles'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/root-styles/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/RootStyles'
 
 # Root Styles
+
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The Root Style feature provides the flexibility to apply custom styling to the navigation sidebar. With the `rootStyles` prop, you can pass a set of CSS properties to customize the appearance of the sidebar according to your design preferences. The `rootStyles` prop accepts a CSSObject from the [Emotion](https://emotion.sh/docs/introduction) library.
 
@@ -20,8 +24,12 @@ type RootStylesType = {
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/root-styles' />
+<BrowserWindow url='/vertical-menu/menu/root-styles'>
+  <Provider>
+    <RootStyles />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import WithParams from '@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithParams'
+import WithoutParams from '@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithoutParams'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expand-icon/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expand-icon/without-params/page'
+import SourceCodeWithParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithParams'
+import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithoutParams'
 
 # Expand Menu Icon
 
@@ -39,7 +42,11 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expand-icon/with-params' />
+<BrowserWindow url='/horizontal-menu/menu/expand-icon/with-params'>
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -51,7 +58,11 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expand-icon/without-params' />
+<BrowserWindow url='/horizontal-menu/menu/expand-icon/without-params'>
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

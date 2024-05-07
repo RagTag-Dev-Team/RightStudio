@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import WithParams from '@docPages/menu-examples/horizontal-menu/submenu/on-open-change/WithParams'
+import WithoutParams from '@docPages/menu-examples/horizontal-menu/submenu/on-open-change/WithoutParams'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/submenu/on-open-change/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/submenu/on-open-change/without-params/page'
+import SourceCodeWithParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/submenu/on-open-change/WithParams'
+import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/submenu/on-open-change/WithoutParams'
 
 # On Open Change
 
@@ -23,7 +26,11 @@ This example demonstrates the `onOpenChange` prop with a boolean parameter. When
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/submenu/on-open-change/with-params' />
+<BrowserWindow url='/horizontal-menu/submenu/on-open-change/with-params'>
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -35,7 +42,11 @@ This example illustrates the `onOpenChange` prop without any parameters.
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/submenu/on-open-change/without-params' />
+<BrowserWindow url='/horizontal-menu/submenu/on-open-change/without-params'>
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

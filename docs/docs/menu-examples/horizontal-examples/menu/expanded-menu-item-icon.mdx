@@ -2,12 +2,18 @@
 toc_max_heading_level: 2
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Basic from '@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/Basic'
+import IconWithLevel from '@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithLevel'
+import IconWithParam from '@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithParam'
+import IconWithParamLevel from '@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithParamLevel'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBasic from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/basic/page'
-import SourceCodeIconWithLevel from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-level/page'
-import SourceCodeIconWithParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param/page'
-import SourceCodeIconWithParamsLevel from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param-level/page'
+
+import SourceCodeBasic from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/Basic'
+import SourceCodeIconWithLevel from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithLevel'
+import SourceCodeIconWithParams from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithParam'
+import SourceCodeIconWithParamsLevel from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/IconWithParamLevel'
 
 # Expanded MenuItem Icon
 
@@ -33,7 +39,11 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/basic' />
+<BrowserWindow url='/horizontal-menu/menu/expanded-menu-item-icon/basic'>
+  <Provider>
+    <Basic />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -43,7 +53,11 @@ This example demonstrates using a ReactElement as the icon.
 
 This example shows using a ReactElement as the icon and passing the level parameter.
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-level' />
+<BrowserWindow url='/horizontal-menu/menu/expanded-menu-item-icon/icon-with-level'>
+  <Provider>
+    <IconWithLevel />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -53,7 +67,11 @@ This example shows using a ReactElement as the icon and passing the level parame
 
 This example uses a function as the icon
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param' />
+<BrowserWindow url='/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param'>
+  <Provider>
+    <IconWithParam />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -63,7 +81,11 @@ This example uses a function as the icon
 
 This example utilizes a function as the icon and passes the level parameter.
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param-level' />
+<BrowserWindow url='/horizontal-menu/menu/expanded-menu-item-icon/icon-with-param-level'>
+  <Provider>
+    <IconWithParamLevel />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

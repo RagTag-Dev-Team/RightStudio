@@ -2,12 +2,18 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import BrowserScroll from '@docPages/menu-examples/vertical-menu/menu-scroll/full/BrowserScroll'
+import PerfectScroll from '@docPages/menu-examples/vertical-menu/menu-scroll/full/PerfectScroll'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBrowserScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/browser-scroll/page'
-import SourceCodePerfectScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll/page'
+import SourceCodeBrowserScroll from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/full/BrowserScroll'
+import SourceCodePerfectScroll from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/full/PerfectScroll'
 
 # Full Menu Scroll
+
+export const updatedCodeBrowserScroll = SourceCodeBrowserScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCodePerfectScroll = SourceCodePerfectScroll.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
 
 ## Browser scroll
 
@@ -15,11 +21,15 @@ The browser scroll is the default scroll behavior for the vertical menu. When th
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-scroll/full/browser-scroll' />
+<BrowserWindow url='/vertical-menu/menu-scroll/full/browser-scroll'>
+  <Provider>
+    <BrowserScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodeBrowserScroll}</TsToJsCodeSnippet>
 
 ## PerfectScrollBar
 
@@ -35,8 +45,12 @@ This will replace the default browser scrollbar with the custom perfect scrollba
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll' />
+<BrowserWindow url='/vertical-menu/menu-scroll/full/perfect-scroll'>
+  <Provider>
+    <PerfectScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodePerfectScroll}</TsToJsCodeSnippet>

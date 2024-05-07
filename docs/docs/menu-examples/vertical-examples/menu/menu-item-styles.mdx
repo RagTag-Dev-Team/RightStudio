@@ -1,9 +1,15 @@
-import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx";
-import SourceCodeWithParams from "!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/with-params/page";
-import SourceCodeWithoutParams from "!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/menu-item-styles/without-params/page";
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import WithParams from '@docPages/menu-examples/vertical-menu/menu/menu-item-styles/WithParams'
+import WithoutParams from '@docPages/menu-examples/vertical-menu/menu/menu-item-styles/WithoutParams'
+import TsToJsCodeSnippet from '@docComponents/ts-js-code'
+import SourceCodeWithParams from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/menu-item-styles/WithParams'
+import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/menu-item-styles/WithoutParams'
 
 # Menu Item Styles
+
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `menuItemStyles` prop allows you to customize the style of the menu items.
 
@@ -67,11 +73,15 @@ By using the MenuItemStylesParams object, you can dynamically apply styles based
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/with-params" />
+<BrowserWindow url='/vertical-menu/menu/menu-item-styles/with-params'>
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
@@ -79,8 +89,12 @@ The `menuItemStyles` prop directly returns a `CSSObject` without any parameters.
 
 ### Example
 
-<IframeWindow url="http://localhost:3000/en/menu-examples/vertical-menu/menu/menu-item-styles/without-params" />
+<BrowserWindow url='/vertical-menu/menu/menu-item-styles/without-params'>
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

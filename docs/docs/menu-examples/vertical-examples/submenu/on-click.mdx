@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import OnClick from '@docPages/menu-examples/vertical-menu/submenu/OnClick'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/on-click/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/OnClick'
 
 # On Click
+
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
 
 The `onClick` prop allows you to define a custom function that will be called when the submenu is clicked. It provides a way to handle the click event and perform specific actions or logic in response to the click.
 
@@ -18,8 +22,12 @@ onClick?: (event: React.MouseEvent<HTMLElement>) => void
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/submenu/on-click' />
+<BrowserWindow url='/vertical-menu/submenu/on-click'>
+  <Provider>
+    <OnClick />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

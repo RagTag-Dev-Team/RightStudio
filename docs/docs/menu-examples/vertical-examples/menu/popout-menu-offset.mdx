@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import PopoutMenuOffset from '@docPages/menu-examples/vertical-menu/menu/PopoutMenuOffset'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/popout-menu-offset/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/PopoutMenuOffset'
 
 # Popout Menu Offset
 
@@ -28,7 +30,11 @@ The `popoutMenuOffset` prop accepts an object with two optional properties:
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu/popout-menu-offset' />
+<BrowserWindow url='/vertical-menu/menu/popout-menu-offset'>
+  <Provider>
+    <PopoutMenuOffset />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

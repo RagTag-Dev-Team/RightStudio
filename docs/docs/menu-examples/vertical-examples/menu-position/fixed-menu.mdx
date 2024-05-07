@@ -2,9 +2,11 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import FixedMenu from '@docPages/menu-examples/vertical-menu/menu-position/FixedMenu'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-position/fixed-menu/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-position/FixedMenu'
 
 # Fixed Menu
 
@@ -22,7 +24,11 @@ scrollWithContent={false}
 
 ### Examples
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/vertical-menu/menu-position/fixed-menu' />
+<BrowserWindow bodyStyle={{ overflow: 'auto' }} url='/vertical-menu/menu-position/fixed-menu'>
+  <Provider>
+    <FixedMenu />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

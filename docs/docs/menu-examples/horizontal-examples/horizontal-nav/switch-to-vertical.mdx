@@ -2,11 +2,15 @@
 hide_table_of_contents: true
 ---
 
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import SwitchToVertical from '@docPages/menu-examples/horizontal-menu/horizontal-nav/SwitchToVertical'
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/switch-to-vertical/page'
+import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/SwitchToVertical'
 
 # Switch To Vertical
+
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
 
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
@@ -29,8 +33,12 @@ switchToVertical={false}
 
 ### Example
 
-<IframeWindow url='http://localhost:3000/en/menu-examples/horizontal-menu/horizontal-nav/switch-to-vertical' />
+<BrowserWindow url='/horizontal-menu/horizontal-nav/switch-to-vertical'>
+  <Provider>
+    <SwitchToVertical />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>
