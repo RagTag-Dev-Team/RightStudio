@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Toggle
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex')
+
 The toggle menu type refers to a vertical menu that can be toggled open and closed. It provides a way for the user to control the visibility of the navigation sidebar by clicking on a toggle button or icon.
 
 ### Example
@@ -22,4 +24,4 @@ The toggle menu type refers to a vertical menu that can be toggled open and clos
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

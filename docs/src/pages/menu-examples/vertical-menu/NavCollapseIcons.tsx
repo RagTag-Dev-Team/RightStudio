@@ -13,8 +13,8 @@ const NavCollapseIcon = () => {
   const { isBreakpointReached } = useHorizontalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='1100px'>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='1100px' customStyles={{ blockSize: 'auto' }}>
         <NavHeader>
           {!isBreakpointReached && 'Logo'}
           <NavCollapseIcons

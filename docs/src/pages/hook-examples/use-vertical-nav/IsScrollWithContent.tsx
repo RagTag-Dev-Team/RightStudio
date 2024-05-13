@@ -11,8 +11,8 @@ const IsScrollWithContent = () => {
   const { isScrollWithContent, updateVerticalNavState } = useVerticalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px' scrollWithContent={isScrollWithContent}>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='200px' scrollWithContent={isScrollWithContent} customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

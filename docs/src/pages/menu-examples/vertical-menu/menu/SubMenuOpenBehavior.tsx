@@ -19,8 +19,8 @@ const SubMenuOpenBehavior = () => {
   }
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} subMenuOpenBehavior={openBehavior}>
           <MenuSection label='Dashboards & Apps'>
             <SubMenu label='Dashboards'>
