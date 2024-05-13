@@ -11,8 +11,8 @@ const BreakPoint = () => {
   const { isBreakpointReached, isToggled, toggleVerticalNav } = useVerticalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav breakpoint='md'>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav breakpoint='md' customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

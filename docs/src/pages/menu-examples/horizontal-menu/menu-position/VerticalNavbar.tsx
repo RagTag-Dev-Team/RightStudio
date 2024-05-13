@@ -27,7 +27,9 @@ const VerticalNavbar = () => {
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
-          position: 'absolute !important',
+          '@media (max-width: 900px)': {
+            position: 'absolute !important',
+          },
           '& .ts-vertical-nav-backdrop': {
             position: 'absolute',
             insetInlineEnd: '-600%'

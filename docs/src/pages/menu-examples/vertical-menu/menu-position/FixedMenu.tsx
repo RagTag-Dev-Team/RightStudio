@@ -6,7 +6,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 const FixedMenu = () => {
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px' scrollWithContent={false}>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: '400px' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

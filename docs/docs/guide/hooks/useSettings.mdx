@@ -48,9 +48,64 @@ The `mode` property in the Settings type is used to define the visual mode of yo
 
 Here's an example of how you can use the `mode` property:
 
-import SourceCodeMode from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsMode"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeMode}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsMode = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Mode:</p>
+        <input
+          type='radio'
+          id='dark'
+          name='mode'
+          value='dark'
+          checked={settings.mode === 'dark'}
+          onChange={() => handleChange('mode', 'dark')}
+        />
+        <label htmlFor='dark'>Dark</label>
+        <input
+          type='radio'
+          id='light'
+          name='mode'
+          value='light'
+          checked={settings.mode === 'light'}
+          onChange={() => handleChange('mode', 'light')}
+        />
+        <label htmlFor='light'>Light</label>
+        <input
+          type='radio'
+          id='system'
+          name='mode'
+          value='system'
+          checked={settings.mode === 'system'}
+          onChange={() => handleChange('mode', 'system')}
+        />
+        <label htmlFor='system'>System</label>
+      </form>
+      <p>value:{settings.mode}</p>
+    </div>
+  )
+}
+
+export default SettingsMode
+`}</TsToJsCodeSnippet>
 
 ### Skin
 
@@ -58,9 +113,55 @@ The `skin` property in the Settings type is used to define the visual skin of yo
 
 Here's an example of how you can use the `skin` property:
 
-import SourceCodeSkin from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsSkin"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeSkin}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsSkin = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Skin:</p>
+        <input
+          type='radio'
+          id='default'
+          name='skin'
+          value='default'
+          checked={settings.skin === 'default'}
+          onChange={() => handleChange('skin', 'default')}
+        />
+        <label htmlFor='default'>Default</label>
+        <input
+          type='radio'
+          id='border'
+          name='skin'
+          value='bordered'
+          checked={settings.skin === 'bordered'}
+          onChange={() => handleChange('skin', 'bordered')}
+        />
+        <label htmlFor='border'>Border</label>
+      </form>
+      <p>value:{settings.skin}</p>
+    </div>
+  )
+}
+
+export default SettingsSkin
+`}</TsToJsCodeSnippet>
 
 ### SemiDark
 
@@ -68,9 +169,44 @@ The `semiDark` property in the Settings type is used to define a `semi-dark` mod
 
 Here's an example of how you can use the `semiDark` property:
 
-import SourceCodeSemiDark from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsSemiDark"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeSemiDark}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsSemiDark = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <input
+          type='checkbox'
+          id='semiDark'
+          name='semiDark'
+          checked={settings.semiDark}
+          onChange={() => handleChange('semiDark', !settings.semiDark)}
+        />
+        <label id='semiDark'>Semi Dark</label>
+      </form>
+      <p>Value:{settings.semiDark?.toString()}</p>
+    </div>
+  )
+}
+
+export default SettingsSemiDark
+`}</TsToJsCodeSnippet>
 
 ### Layout
 
@@ -78,9 +214,64 @@ The `layout` property in the Settings type is used to define the layout structur
 
 Here's an example of how you can use the `layout` property:
 
-import SourceCodeLayout from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsLayout"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeLayout}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsLayout = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Layout:</p>
+        <input
+          type='radio'
+          id='vertical'
+          name='layout'
+          value='vertical'
+          checked={settings.layout === 'vertical'}
+          onChange={() => handleChange('layout', 'vertical')}
+        />
+        <label htmlFor='vertical'>Vertical</label>
+        <input
+          type='radio'
+          id='collapsed'
+          name='layout'
+          value='collapsed'
+          checked={settings.layout === 'collapsed'}
+          onChange={() => handleChange('layout', 'collapsed')}
+        />
+        <label htmlFor='collapsed'>Collapsed</label>
+        <input
+          type='radio'
+          id='horizontal'
+          name='layout'
+          value='horizontal'
+          checked={settings.layout === 'horizontal'}
+          onChange={() => handleChange('layout', 'horizontal')}
+        />
+        <label htmlFor='horizontal'>Horizontal</label>
+      </form>
+      <p>Value:{settings.layout}</p>
+    </div>
+  )
+}
+
+export default SettingsLayout
+`}</TsToJsCodeSnippet>
 
 ### navbarContentWidth
 
@@ -88,9 +279,55 @@ The `navbarContentWidth` property in the Settings type is used to define the wid
 
 Here's an example of how you can use the `navbarContentWidth` property:
 
-import SourceCodeNavbarContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsNavbarContentWidth"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeNavbarContentWidth}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsNavbarContentWidth = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Navbar Content:</p>
+        <input
+          type='radio'
+          id='compact'
+          name='content'
+          value='compact'
+          checked={settings.navbarContentWidth === 'compact'}
+          onChange={() => handleChange('navbarContentWidth', 'compact')}
+        />
+        <label htmlFor='compact'>Compact</label>
+        <input
+          type='radio'
+          id='wide'
+          name='content'
+          value='wide'
+          checked={settings.navbarContentWidth === 'wide'}
+          onChange={() => handleChange('navbarContentWidth', 'wide')}
+        />
+        <label htmlFor='wide'>Wide</label>
+      </form>
+      <p>Value:{settings.navbarContentWidth}</p>
+    </div>
+  )
+}
+
+export default SettingsNavbarContentWidth
+`}</TsToJsCodeSnippet>
 
 ### ContentWidth
 
@@ -98,9 +335,55 @@ The `contentWidth` property in the Settings type is used to define the width of 
 
 Here's an example of how you can use the `contentWidth` property:
 
-import SourceCodeContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsContentWidth"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeContentWidth}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsContentWidth = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Content:</p>
+        <input
+          type='radio'
+          id='compact'
+          name='content'
+          value='compact'
+          checked={settings.contentWidth === 'compact'}
+          onChange={() => handleChange('contentWidth', 'compact')}
+        />
+        <label htmlFor='compact'>Compact</label>
+        <input
+          type='radio'
+          id='wide'
+          name='content'
+          value='wide'
+          checked={settings.contentWidth === 'wide'}
+          onChange={() => handleChange('contentWidth', 'wide')}
+        />
+        <label htmlFor='wide'>Wide</label>
+      </form>
+      <p>Value:{settings.contentWidth}</p>
+    </div>
+  )
+}
+
+export default SettingsContentWidth
+`}</TsToJsCodeSnippet>
 
 ### footerContentWidth
 
@@ -108,9 +391,55 @@ The `footerContentWidth` property in the Settings type is used to define the wid
 
 Here's an example of how you can use the `footerContentWidth` property:
 
-import SourceCodeFooterContentWidth from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsFooterContentWidth"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeFooterContentWidth}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsFooterContentWidth = () => {
+  // Hooks
+  const { settings, updateSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <div className='flex justify-between'>
+      <form>
+        <p>Footer Content:</p>
+        <input
+          type='radio'
+          id='compact'
+          name='content'
+          value='compact'
+          checked={settings.footerContentWidth === 'compact'}
+          onChange={() => handleChange('footerContentWidth', 'compact')}
+        />
+        <label htmlFor='compact'>Compact</label>
+        <input
+          type='radio'
+          id='wide'
+          name='content'
+          value='wide'
+          checked={settings.footerContentWidth === 'wide'}
+          onChange={() => handleChange('footerContentWidth', 'wide')}
+        />
+        <label htmlFor='wide'>Wide</label>
+      </form>
+      <p>Value:{settings.footerContentWidth}</p>
+    </div>
+  )
+}
+
+export default SettingsFooterContentWidth
+`}</TsToJsCodeSnippet>
 
 ### primaryColor
 
@@ -128,6 +457,64 @@ In your application, you may need to change or reset the settings properties bas
 
 Here's an example of how you can change a setting:
 
-import SourceCodeChangeSettingsMode from "!!raw-loader!@docPages/hook-examples/use-settings/SettingsChanged"
+<TsToJsCodeSnippet>{`
+'use client'
 
-<TsToJsCodeSnippet>{SourceCodeChangeSettingsMode}</TsToJsCodeSnippet>
+// Type Imports
+import type { Settings } from '@core/contexts/settingsContext'
+
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
+const SettingsChanged = () => {
+  // Hooks
+  const { settings, updateSettings, isSettingsChanged, resetSettings } = useSettings()
+
+  const handleChange = (field: keyof Settings, value: Settings[keyof Settings]) => {
+    updateSettings({
+      [field]: value
+    })
+  }
+
+  return (
+    <main className='p-4 flex-grow'>
+      <div className='flex justify-between'>
+        <form>
+          <p>Mode:</p>
+          <input
+            type='radio'
+            id='dark'
+            name='mode'
+            value='dark'
+            checked={settings.mode === 'dark'}
+            onChange={() => handleChange('mode', 'dark')}
+          />
+          <label htmlFor='dark'>Dark</label>
+          <input
+            type='radio'
+            id='light'
+            name='mode'
+            value='light'
+            checked={settings.mode === 'light'}
+            onChange={() => handleChange('mode', 'light')}
+          />
+          <label htmlFor='light'>Light</label>
+          <input
+            type='radio'
+            id='system'
+            name='mode'
+            value='system'
+            checked={settings.mode === 'system'}
+            onChange={() => handleChange('mode', 'system')}
+          />
+          <label htmlFor='system'>System</label>
+        </form>
+        <p>{isSettingsChanged && 'value:' + settings.mode}</p>
+      </div>
+      {isSettingsChanged && <button onClick={resetSettings}>Reset</button>}
+    </main>
+  )
+}
+
+export default SettingsChanged
+`}</TsToJsCodeSnippet>

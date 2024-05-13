@@ -11,8 +11,8 @@ const IsPopoutWhenCollapsed = () => {
   const { updateVerticalNavState, isPopoutWhenCollapsed } = useVerticalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px' defaultCollapsed>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} popoutWhenCollapsed={isPopoutWhenCollapsed}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

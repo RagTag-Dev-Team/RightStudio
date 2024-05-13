@@ -56,9 +56,57 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
         </SubMenu>
         <MenuItem href={`/${locale}/about`}>About</MenuItem>
         <SubMenu label={dictionary['navigation'].apps}>
+          <SubMenu label={dictionary['navigation'].eCommerce}>
+            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <SubMenu label={dictionary['navigation'].products}>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/list`} target='_blank'>
+                {dictionary['navigation'].list}
+              </MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/add`} target='_blank'>
+                {dictionary['navigation'].add}
+              </MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/category`} target='_blank'>
+                {dictionary['navigation'].category}
+              </MenuItem>
+            </SubMenu>
+            <SubMenu label={dictionary['navigation'].orders}>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`} target='_blank'>
+                {dictionary['navigation'].list}
+              </MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/details`} target='_blank'>
+                {dictionary['navigation'].details}
+              </MenuItem>
+            </SubMenu>
+            <SubMenu label={dictionary['navigation'].customers}>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`} target='_blank'>
+                {dictionary['navigation'].list}
+              </MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/details`} target='_blank'>
+                {dictionary['navigation'].details}
+              </MenuItem>
+            </SubMenu>
+            <MenuItem href={`/${locale}/apps/ecommerce/manage-reviews`}>
+              {dictionary['navigation'].manageReviews}
+            </MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/referrals`}>{dictionary['navigation'].referrals}</MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/settings`}>{dictionary['navigation'].settings}</MenuItem>
+          </SubMenu>
+          <SubMenu label={dictionary['navigation'].academy}>
+            <MenuItem href={`/${locale}/apps/academy/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/apps/academy/my-courses`}>{dictionary['navigation'].myCourses}</MenuItem>
+            <MenuItem href={`/${locale}/apps/academy/course-details`}>
+              {dictionary['navigation'].courseDetails}
+            </MenuItem>
+          </SubMenu>
+          <SubMenu label={dictionary['navigation'].logistics}>
+            <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
+          </SubMenu>
           <MenuItem href={`/${locale}/apps/email`}>{dictionary['navigation'].email}</MenuItem>
           <MenuItem href={`/${locale}/apps/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>

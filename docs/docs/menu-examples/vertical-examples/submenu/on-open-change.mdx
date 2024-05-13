@@ -22,6 +22,8 @@ onOpenChange?: (open: boolean) => void
 
 ## With Parameter
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex')
+
 This example demonstrates the `onOpenChange` prop with a boolean parameter. When the submenu is opened or closed, the `onOpenChange` function is called with a boolean parameter indicating the new state of the submenu.
 
 ### Example
@@ -34,9 +36,11 @@ This example demonstrates the `onOpenChange` prop with a boolean parameter. When
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
+
+export const updatedSourceCodeWithoutParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex')
 
 This example illustrates the `onOpenChange` prop without any parameters.
 
@@ -50,4 +54,4 @@ This example illustrates the `onOpenChange` prop without any parameters.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

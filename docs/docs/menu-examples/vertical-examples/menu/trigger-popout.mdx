@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Trigger Popout
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex')
+
 The `triggerPopout` prop is used to define whether submenus should pop out on hover or click when the navigation sidebar is collapsed.
 
 To enable this feature, you also need to set the `popoutWhenCollapsed` prop to `true`, indicating that submenus should pop out when the navigation sidebar is collapsed.
@@ -41,4 +43,4 @@ triggerPopout='hover'
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>
