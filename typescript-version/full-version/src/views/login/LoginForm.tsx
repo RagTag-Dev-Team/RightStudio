@@ -51,7 +51,7 @@ const LoginForm = () => {
 
   return (
     <div className='min-bs-full flex justify-center items-center'>
-      <form method='post' onSubmit={handleSubmit}>
+      <form action={() => {}} onSubmit={handleSubmit}>
         <label>
           Email:
           <input autoFocus type='text' value={email} onChange={e => setEmail(e.target.value)} />
