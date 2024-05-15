@@ -4,11 +4,19 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Type imports
 import type { MenuProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
+
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 
 const SubMenuOpenBehavior = () => {
   // States
@@ -20,8 +28,8 @@ const SubMenuOpenBehavior = () => {
 
   return (
     <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} subMenuOpenBehavior={openBehavior}>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()} subMenuOpenBehavior={openBehavior}>
           <MenuSection label='Dashboards & Apps'>
             <SubMenu label='Dashboards'>
               <MenuItem>Analytics</MenuItem>
@@ -43,24 +51,10 @@ const SubMenuOpenBehavior = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        <input
-          type='radio'
-          id='accordion'
-          value='accordion'
-          name='triggerPopout'
-          checked={openBehavior === 'accordion'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='accordion'>Accordion</label>
-        <input
-          type='radio'
-          id='collapse'
-          value='collapse'
-          name='triggerPopout'
-          checked={openBehavior === 'collapse'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='collapse'>Collapse</label>
+        <RadioGroup row value={openBehavior} onChange={handleTriggerChange}>
+          <FormControlLabel value='accordion' control={<Radio />} label='Accordion' />
+          <FormControlLabel value='collapse' control={<Radio />} label='Collapse' />
+        </RadioGroup>
       </main>
     </div>
   )

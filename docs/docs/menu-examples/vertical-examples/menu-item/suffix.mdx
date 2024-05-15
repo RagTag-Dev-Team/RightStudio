@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Suffix
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 The `suffix` prop allows you to add additional content or elements after the label of a menu item.
 
 ### Props
@@ -28,4 +30,4 @@ suffix?: ReactNode | ChipProps
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

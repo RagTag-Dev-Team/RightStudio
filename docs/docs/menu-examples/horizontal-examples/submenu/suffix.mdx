@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/sub
 
 # Suffix
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `suffix` prop allows you to add additional content or elements after the label of a submenu.
 
 ### Props
@@ -28,4 +30,4 @@ suffix?: ReactNode | ChipProps
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

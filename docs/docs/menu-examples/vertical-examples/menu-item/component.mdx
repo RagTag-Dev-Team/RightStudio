@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Component
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 The `component` prop allows you to change the wrapper component of a menu item. The `component` prop accepts either a string or a ReactElement. If you pass a string, it will be used as the HTML tag for the wrapping component. If you pass a ReactElement, it will be rendered as the wrapping component itself; for example, `<Link>` component from a routing library.
 
 ### Props
@@ -32,5 +34,5 @@ component=<a></a>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>import { Component } from 'react'
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>
 

@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Custom Style
 
-export const updatedCode = SourceCode.replace(/\{\s*\.\.\.(\(isCollapsed \? \{ color: 'red' \} : \{ color: 'blue' \}\)),[^}]*\}/, '$1').replace('flex min-bs-full bs-dvh', 'flex')
+export const updatedCode = SourceCode.replace(/\{\s*\.\.\.(\(isCollapsed \? \{ color: 'red' \} : \{ color: 'blue' \}\)),[^}]*\}\}/, '$1').replace('flex min-bs-full bs-dvh', 'flex').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '').replace(/backgroundColor='.*'/, '')
 
 The Custom Style feature provides the flexibility to apply custom styling to the navigation sidebar. With the `customStyles` prop, you can pass a set of CSS properties to customize the appearance of the sidebar according to your design preferences. The `customStyles` prop accepts a CSSObject from the [Emotion](https://emotion.sh/docs/introduction) library.
 

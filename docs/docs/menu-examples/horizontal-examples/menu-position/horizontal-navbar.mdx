@@ -9,7 +9,7 @@ import HorizontalNavbar from '@docPages/menu-examples/horizontal-menu/menu-posit
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
 import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu-position/HorizontalNavbar'
 
-export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
 # Horizontal Menu In Horizontal Navbar
 

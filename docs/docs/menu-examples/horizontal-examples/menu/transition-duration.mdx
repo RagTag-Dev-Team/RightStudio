@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Transition Duration
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `transitionDuration` prop allows you to set the duration of the animation when the submenu is opened or closed. The value is in milliseconds (ms).
 
 ### Props
@@ -32,4 +34,4 @@ transitionDuration=300 // milliseconds
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

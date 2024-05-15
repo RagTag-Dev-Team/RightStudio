@@ -3,10 +3,12 @@
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
-import claassnames from 'classnames'
 
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
+
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 
 const FullMenuPerfectScroll = () => {
   return (
@@ -15,14 +17,16 @@ const FullMenuPerfectScroll = () => {
       // The following customStyles prop is used to show this example properly in the documentation.
       // You need to remove this prop in your implementation.
       customStyles={{
+        '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
         '& .scrollbar-container': {
           height: '400px'
         }
       }}
+      backgroundColor='var(--mui-palette-background-paper)'
       // Remove the code till here
     >
       <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()}>
           <MenuSection label='Dashboards'>
             <SubMenu label='Dashboards'>
               <MenuItem>Analytics</MenuItem>

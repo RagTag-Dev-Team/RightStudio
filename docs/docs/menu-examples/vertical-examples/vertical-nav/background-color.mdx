@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Background Color
 
-export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `backgroundColor` prop allows you to add a custom background color for the navigation sidebar. The value of this prop can be any valid CSS value for background-color.
 

@@ -1,13 +1,19 @@
 'use client'
 
+// MUI Imports
+import { deepmerge } from '@mui/utils'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const PopoutBrowserScroll = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ minHeight: '100%', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
       <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' }, subMenuContent: { maxHeight: 300 } }}
+        menuItemStyles={deepmerge(menuItemStyles(), { subMenuContent: { maxHeight: 300 }})}
         triggerPopout='hover'
         popoutWhenCollapsed
         browserScroll

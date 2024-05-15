@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Popout When Collapsed
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 :::danger Warning
 Please note that the `defaultCollapsed` prop is meant for internal use only. It is not recommended to use this prop in your application because the layout configuration will always override the menu configuration. If you want to `collapse` the menu, please set the `layout` prop to `collapsed` in the `src/config/themeConfig.ts` file.
 :::
@@ -36,4 +38,4 @@ defaultCollapsed={false}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

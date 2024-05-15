@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # PerfectScrollBar
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The perfect scroll is the default scroll behavior for the horizontal menu. When the menu items of submenu exceed the available vertical space, the perfect scrollbar is used to scroll through the menu content. This scroll behavior is automatically enabled without any additional configuration.
 
 ### Example
@@ -22,4 +24,4 @@ The perfect scroll is the default scroll behavior for the horizontal menu. When 
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -10,6 +10,8 @@ import VerticalNavContent from '../VerticalNavContent'
 
 // Style Imports
 import styles from '../styles.module.css'
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const VerticalMenuProps = () => {
   return (
@@ -23,19 +25,21 @@ const VerticalMenuProps = () => {
         // You need to remove this prop in your implementation.
         verticalNavProps={{
           customStyles:{
+            '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
             position: 'absolute !important',
             '& .ts-vertical-nav-backdrop': {
               position: 'absolute',
               insetInlineEnd: '-600%'
             }
-          }
+          },
+          backgroundColor: 'var(--mui-palette-background-paper)'
         }}
         // Remove the code till here 
       >
         <Menu
-          menuItemStyles={{ button: { paddingBlock: '12px' } }}
+          menuItemStyles={menuItemStyles()}
           verticalMenuProps={{
-            menuItemStyles: { label: { color: '#1058e9' } },
+            menuItemStyles: { ...verticalMenuItemStyles(), label: { color: '#1058e9' } },
             menuSectionStyles: { label: { color: '#ec0e0e' } },
             renderExpandedMenuItemIcon: { icon: <>🥶</> },
             renderExpandIcon: ({ open }) => <>{open ? '🔥' : '💧'}</>,

@@ -8,13 +8,14 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const OnClick = () => {
   return (
     <div className='flex flex-col w-full h-full'>
       <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
         <HorizontalNav>
-          <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+          <Menu menuItemStyles={menuItemStyles()}>
             <SubMenu
               label='Dashboards'
               onClick={() => {

@@ -1,16 +1,21 @@
 'use client'
 
+// MUI Imports
+import { deepmerge } from '@mui/utils'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const PopoutPerfectScroll = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
       <Menu 
-        menuItemStyles={{ 
-          button: { paddingBlock: '12px' }, 
+        menuItemStyles={deepmerge(menuItemStyles(), { 
           subMenuContent: { maxHeight: 300, '& .scrollbar-container': { maxBlockSize: '300px !important' } }
-        }}
+        })}
         triggerPopout='hover'
         popoutWhenCollapsed
        >

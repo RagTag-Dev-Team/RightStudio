@@ -9,12 +9,13 @@ import { menuClasses } from '@menu/utils/menuClasses'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const RootStyles = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu
             label='Dashboards'
             rootStyles={{

@@ -12,8 +12,8 @@ import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Expand Menu Icon
 
-export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `renderExpandIcon` prop allows you to customize the icon used for expanding the menu. The `renderExpandIcon` prop takes a `RenderExpandIconParams` object as a parameter. This function allows you to fully customize the expand menu icon based on different conditions or states.
 

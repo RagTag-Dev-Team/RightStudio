@@ -6,12 +6,13 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const TrnasitionDuration = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} transitionDuration={500}>
+        <Menu menuItemStyles={menuItemStyles()} transitionDuration={500}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

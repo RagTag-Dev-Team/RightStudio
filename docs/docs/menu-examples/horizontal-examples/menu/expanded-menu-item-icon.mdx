@@ -39,6 +39,8 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Example
 
+export const updatedSourceCodeBasic = SourceCodeBasic.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/horizontal-menu/menu/expanded-menu-item-icon/basic'>
   <Provider>
     <Basic />
@@ -47,9 +49,11 @@ This example demonstrates using a ReactElement as the icon.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBasic}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeBasic}</TsToJsCodeSnippet>
 
 ## Icon With Level
+
+export const updatedSourceCodeIconWithLevel = SourceCodeIconWithLevel.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
 
 This example shows using a ReactElement as the icon and passing the level parameter.
 
@@ -61,9 +65,11 @@ This example shows using a ReactElement as the icon and passing the level parame
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithLevel}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithLevel}</TsToJsCodeSnippet>
 
 ## Icon With Params
+
+export const updatedSourceCodeIconWithParams = SourceCodeIconWithParams.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
 
 This example uses a function as the icon
 
@@ -75,9 +81,11 @@ This example uses a function as the icon
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithParams}</TsToJsCodeSnippet>
 
 ## Icon WIth Param Level
+
+export const updatedSourceCodeIconWithParamsLevel = SourceCodeIconWithParamsLevel.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
 
 This example utilizes a function as the icon and passes the level parameter.
 
@@ -89,4 +97,4 @@ This example utilizes a function as the icon and passes the level parameter.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithParamsLevel}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithParamsLevel}</TsToJsCodeSnippet>

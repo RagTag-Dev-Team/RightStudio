@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Collapsed Width
 
-export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `collapsedWidth` prop is used to set the width of the navigation sidebar when it is in the collapsed state. You can set it to a number value, which represents the width in pixels.
 

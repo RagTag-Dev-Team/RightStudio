@@ -3,10 +3,13 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const FullMenuBrowserScroll = () => {
   return (
-    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%', overflow: 'auto'}}>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%', overflow: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'}}} backgroundColor='var(--mui-palette-background-paper)'>
+      <Menu menuItemStyles={menuItemStyles()}>
         <MenuSection label='Dashboards'>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

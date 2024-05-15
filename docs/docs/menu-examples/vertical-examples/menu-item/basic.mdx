@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Basic
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/vertical-menu/menu-item/basic'>
   <Provider>
     <Basic />
@@ -18,4 +20,4 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

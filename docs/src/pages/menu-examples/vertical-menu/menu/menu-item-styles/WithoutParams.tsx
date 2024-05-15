@@ -5,7 +5,7 @@ import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertica
 
 const MenuItemStylesWithOutParams = () => {
   return (
-    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
       <Menu
         menuItemStyles={{
           button: {

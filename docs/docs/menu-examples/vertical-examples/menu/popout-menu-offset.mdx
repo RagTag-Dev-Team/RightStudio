@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu/
 
 # Popout Menu Offset
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 The `popoutMenuOffset` prop used to adjust the distance or position at which the pop-out menu is displayed or positioned in relation to its trigger or parent element.
 
 ### Props
@@ -38,4 +40,4 @@ The `popoutMenuOffset` prop accepts an object with two optional properties:
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

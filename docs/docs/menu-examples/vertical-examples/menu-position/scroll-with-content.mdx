@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/menu-
 
 # Scroll With Content
 
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+
 The `scrollWithContent` prop enables the navigation sidebar to be scrolled along with the page content. By default, the sidebar remains fixed and does not move when the page content is scrolled. However, when the `scrollWithContent` prop is set to `true`, the sidebar will scroll with the page content.
 
 ### Props
@@ -32,4 +34,4 @@ scrollWithContent={false}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

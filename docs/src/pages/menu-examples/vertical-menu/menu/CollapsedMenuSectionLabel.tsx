@@ -3,10 +3,13 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const CollapsedMenuSectionLabel = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ minHeight: '100%' }}>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} collapsedMenuSectionLabel={<>...</>}>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ minHeight: '100%', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+      <Menu menuItemStyles={menuItemStyles()} collapsedMenuSectionLabel={<>...</>}>
         <MenuSection label='Dashboards & Apps'>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

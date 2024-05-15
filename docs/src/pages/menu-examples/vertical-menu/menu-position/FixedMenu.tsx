@@ -3,11 +3,14 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const FixedMenu = () => {
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: '400px' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: '400px', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

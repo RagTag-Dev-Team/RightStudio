@@ -34,6 +34,8 @@ browserScroll={false}
 
 ### Example
 
+export const updatedSourceCodeBrowserScroll = SourceCodeBrowserScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/\s*\/\/\sMUI.*\s*import\s{ deepmerge.*/,'').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/vertical-menu/menu-scroll/popout/browser-scroll'>
   <Provider>
     <BrowserScroll />
@@ -43,13 +45,15 @@ browserScroll={false}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeBrowserScroll}</TsToJsCodeSnippet>
 
 ## Perfect Scroll
 
 The perfect scroll is the default scroll behavior for the vertical popout menu. When the menu items exceed the available vertical space, the perfect scrollbar is used to scroll through the menu content. This scroll behavior is automatically enabled without any additional configuration.
 
 ### Example
+
+export const updatedSourceCodePerfectScroll = SourceCodePerfectScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/\s*\/\/\sMUI.*\s*import\s{ deepmerge.*/,'').replace(/menuItemStyles={([\s\S]*?)\)\}/, '')
 
 <BrowserWindow url='/vertical-menu/menu-scroll/popout/perfect-scroll'>
   <Provider>
@@ -59,4 +63,4 @@ The perfect scroll is the default scroll behavior for the vertical popout menu. 
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodePerfectScroll}</TsToJsCodeSnippet>

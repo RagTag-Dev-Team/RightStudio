@@ -1,5 +1,5 @@
 .customStyles {
-  border-block-end: 1px solid #efefef;
+  border-block-end: 1px solid var(--mui-palette-divider);
   min-block-size: 65px;
 
   & > i,

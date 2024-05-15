@@ -3,10 +3,13 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const BackgroundColor = () => {
   return (
-    <VerticalNav customBreakpoint='200px' backgroundColor='#F8F8F8' customStyles={{ minHeight: '100%' }}>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+    <VerticalNav customBreakpoint='200px' backgroundColor='#b1b0b0' customStyles={{ minHeight: '100%', '& .ts-submenu-content': { backgroundColor: 'transparent'} }}>
+      <Menu menuItemStyles={menuItemStyles()}>
         <SubMenu label='Dashboards'>
           <MenuItem>Analytics</MenuItem>
           <MenuItem>eCommerce</MenuItem>

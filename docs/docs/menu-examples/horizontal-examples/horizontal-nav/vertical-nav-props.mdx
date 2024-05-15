@@ -12,10 +12,13 @@ import SourceCodeStyle from "!!raw-loader!@docPages/menu-examples/horizontal-men
 
 # Vertical Nav Props
 
-export const updatedSourceCodeWidth = SourceCodeWidth.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
-export const updatedSourceCodeBackgroundColor = SourceCodeBackgroundColor.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
-export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
-export const updatedSourceCodeStyle = SourceCodeStyle.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
+export const updatedSourceCodeWidth = SourceCodeWidth.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '').replace(/(verticalNavProps={{)\s*/, '$1')
+
+export const updatedSourceCodeBackgroundColor = SourceCodeBackgroundColor.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '').replace(/(verticalNavProps={{)\s*/, '$1')
+
+export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
+
+export const updatedSourceCodeStyle = SourceCodeStyle.replace(/,\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/backgroundColor:\s*'.*'/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.

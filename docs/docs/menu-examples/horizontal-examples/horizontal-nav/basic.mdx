@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/hor
 
 # Basic
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 Here we have used static menu example to render the horizontal menu. You may refer to the [Dynamic Menu](/docs/menu-examples/horizontal-examples/menu-render/dynamic-menu) or [Using API](/docs/menu-examples/horizontal-examples/menu-render/menu-with-api) examples for more information on the dynamic menu rendering.
 
 <BrowserWindow url='/horizontal-menu/horizontal-nav/basic'>
@@ -20,4 +22,4 @@ Here we have used static menu example to render the horizontal menu. You may ref
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -9,12 +9,15 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 // Hook
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const NavCollapseIcon = () => {
   const { isBreakpointReached } = useHorizontalNav()
 
   return (
     <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav customBreakpoint='1100px' customStyles={{ blockSize: 'auto' }}>
+      <VerticalNav customBreakpoint='1100px' customStyles={{ blockSize: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
         <NavHeader>
           {!isBreakpointReached && 'Logo'}
           <NavCollapseIcons
@@ -25,7 +28,7 @@ const NavCollapseIcon = () => {
             onClose={() => console.log('closed')}
           />
         </NavHeader>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

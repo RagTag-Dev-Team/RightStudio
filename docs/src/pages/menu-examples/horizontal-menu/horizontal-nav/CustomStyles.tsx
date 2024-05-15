@@ -6,6 +6,7 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const CustomStyles = () => {
   return (
@@ -18,7 +19,7 @@ const CustomStyles = () => {
           padding: '0.25rem'
         }}
       >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

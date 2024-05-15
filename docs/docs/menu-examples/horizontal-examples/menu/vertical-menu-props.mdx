@@ -8,7 +8,7 @@ import VerticalMenuProps from '@docPages/menu-examples/horizontal-menu/menu/Vert
 import TsToJsCodeSnippet from '@docComponents/ts-js-code'
 import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps'
 
-export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/g, '').replace(/verticalMenuProps={.*}/, '').replace(' ...verticalMenuItemStyles(), ','')
 
 # Vertical Menu Props
 

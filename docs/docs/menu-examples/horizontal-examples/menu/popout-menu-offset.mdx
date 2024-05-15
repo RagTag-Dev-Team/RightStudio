@@ -40,6 +40,8 @@ The `popoutMenuOffset` prop accepts a function that receives an object with the 
 
 ### Example
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/horizontal-menu/menu/popout-menu-offset/with-params'>
   <Provider>
     <WithParams />
@@ -48,13 +50,15 @@ The `popoutMenuOffset` prop accepts a function that receives an object with the 
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
 The `popoutMenuOffset` prop accepts a number that will be used as the offset distance along the main axis of the menu.
 
 ### Example
+
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
 
 <BrowserWindow url='/horizontal-menu/menu/popout-menu-offset/without-params'>
   <Provider>
@@ -64,4 +68,4 @@ The `popoutMenuOffset` prop accepts a number that will be used as the offset dis
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

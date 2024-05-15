@@ -42,6 +42,8 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Example
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/horizontal-menu/menu/expand-icon/with-params'>
   <Provider>
     <WithParams />
@@ -50,13 +52,15 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
 The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the expand menu icon without any parameters.
 
 ### Example
+
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
 
 <BrowserWindow url='/horizontal-menu/menu/expand-icon/without-params'>
   <Provider>
@@ -66,4 +70,4 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

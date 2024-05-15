@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/sub
 
 # component
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `component` prop allows you to change the wrapper component of a submenu. The `component` prop accepts either a string or a ReactElement. If you pass a string, it will be used as the HTML tag for the wrapping component. If you pass a ReactElement, it will be rendered as the wrapping component itself.
 
 ### Props
@@ -32,4 +34,4 @@ component=<a></a>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

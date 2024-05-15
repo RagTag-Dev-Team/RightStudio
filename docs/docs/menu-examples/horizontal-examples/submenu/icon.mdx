@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/sub
 
 # Icon
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `icon` prop allows you to add an icon to the submenu. The icon prop accepts a React element, which can be any valid JSX or component that represents the desired icon. This gives you the flexibility to use popular icon libraries, custom SVG icons, or any other icon implementation you prefer.
 
 ### Props
@@ -28,4 +30,4 @@ icon?: ReactElement
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

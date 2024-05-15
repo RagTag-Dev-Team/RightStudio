@@ -27,7 +27,7 @@ To utilize the `useHorizontalNav()` hook, please refer to the example provided b
 
 ### isBreakpointReached
 
-export const updatedSourceCodeIsBreakpointReached = SourceCodeIsBreakpointReached.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
+export const updatedSourceCodeIsBreakpointReached = SourceCodeIsBreakpointReached.replace(/\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 <BrowserWindow url='/use-horizontal-nav/is-breakpoint-reached'>
   <Provider>

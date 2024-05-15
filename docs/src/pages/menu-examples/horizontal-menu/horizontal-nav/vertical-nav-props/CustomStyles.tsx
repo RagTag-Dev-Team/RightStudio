@@ -10,6 +10,8 @@ import VerticalNavContent from '../../VerticalNavContent'
 
 // Style Imports
 import styles from '../../styles.module.css'
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const BackgroundColor = () => {
   return (
@@ -22,19 +24,20 @@ const BackgroundColor = () => {
         verticalNavProps={{
           customStyles: {
             color: '#b056ff',
-            '& .ts-menu-button': { paddingBlock: '12px' },
             // The following customStyles prop is used to show this example properly in the documentation.
             // You need to remove this prop in your implementation.
+            '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
             position: 'absolute !important',
             '& .ts-vertical-nav-backdrop': {
               position: 'absolute',
               insetInlineEnd: '-600%'
             }
-            // Remove the code till here 
-          }
+            // Remove the code till here
+          },
+          backgroundColor: 'var(--mui-palette-background-paper)'
         }}
       >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()} verticalMenuProps={{ menuItemStyles: verticalMenuItemStyles() }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

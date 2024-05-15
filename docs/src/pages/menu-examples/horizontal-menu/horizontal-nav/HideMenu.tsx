@@ -10,6 +10,8 @@ import VerticalNavContent from '../VerticalNavContent'
 
 // Style Imports
 import styles from '../styles.module.css'
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const HideMenu = () => {
   return (
@@ -17,7 +19,7 @@ const HideMenu = () => {
       <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
         <NavToggle />
         <HorizontalNav hideMenu breakpoint='md'>
-          <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+          <Menu menuItemStyles={verticalMenuItemStyles()}>
             <MenuItem>Home</MenuItem>
             <MenuItem>About</MenuItem>
             <MenuItem>Contact Us</MenuItem>
@@ -28,22 +30,23 @@ const HideMenu = () => {
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
         switchToVertical
-        customStyles={{ padding: '10px 24px', borderBottom: '1px solid #efefef' }}
+        customStyles={{ padding: '10px 24px', borderBottom: '1px solid var(--mui-palette-divider)' }}
+        // The following customStyles prop is used to show this example properly in the documentation.
+        // You need to remove this prop in your implementation.
         verticalNavProps={{ 
-          customStyles: { 
-            '& .ts-menu-button': { paddingBlock: '12px' },
-            // The following customStyles prop is used to show this example properly in the documentation.
-            // You need to remove this prop in your implementation.
+          customStyles: {
+            '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
             position: 'absolute !important',
             '& .ts-vertical-nav-backdrop': {
               position: 'absolute',
               insetInlineEnd: '-600%'
             }
-            // Remove the code till here 
-          }
-         }}
+          },
+          backgroundColor: 'var(--mui-palette-background-paper)'
+        }}
+        // Remove the code till here 
       >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()} verticalMenuProps={{ menuItemStyles: verticalMenuItemStyles() }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

@@ -4,6 +4,9 @@
 import NavToggle from '@components/layout/vertical/NavToggle'
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const BackdropColor = () => {
   return (
     <div className='flex h-dvh bg-indigo-50'>
@@ -13,15 +16,17 @@ const BackdropColor = () => {
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
+          '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
           position: 'absolute !important',
           '& .ts-vertical-nav-backdrop': {
             position: 'absolute',
             insetInlineEnd: '-600%'
           }
         }}
+        backgroundColor='var(--mui-palette-background-paper)'
         // Remove the code till here
       >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

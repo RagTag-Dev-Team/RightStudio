@@ -1,10 +1,17 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 
 const ToggleFunction = () => {
   // Hooks
@@ -12,8 +19,8 @@ const ToggleFunction = () => {
 
   return (
     <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -31,9 +38,7 @@ const ToggleFunction = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        <button onClick={() => toggleVerticalNav(!isToggled)} className='cursor-pointer'>
-          Click here to toggle menu
-        </button>
+      <FormControlLabel label='Toggle Menu' control={<Checkbox onChange={() => toggleVerticalNav(!isToggled)} />} />
       </main>
     </div>
   )

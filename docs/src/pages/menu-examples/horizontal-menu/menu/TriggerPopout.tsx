@@ -4,6 +4,11 @@
 import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -15,6 +20,7 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const TriggerPopout = () => {
   // States
@@ -28,7 +34,7 @@ const TriggerPopout = () => {
     <div className='flex flex-col w-full h-full'>
       <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
         <HorizontalNav>
-          <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} triggerPopout={trigger}>
+          <Menu menuItemStyles={menuItemStyles()} triggerPopout={trigger}>
             <SubMenu label='Dashboards'>
               <MenuItem>Analytics</MenuItem>
               <MenuItem>eCommerce</MenuItem>
@@ -47,24 +53,10 @@ const TriggerPopout = () => {
         </HorizontalNav>
       </div>
       <main className='p-4 flex-grow'>
-        <input
-          id='hover'
-          type='radio'
-          value='hover'
-          name='trigger'
-          checked={trigger === 'hover'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='hover'>Hover</label>
-        <input
-          id='click'
-          type='radio'
-          value='click'
-          name='trigger'
-          checked={trigger === 'click'}
-          onChange={handleTriggerChange}
-        />
-        <label htmlFor='click'>Click</label>
+        <RadioGroup row value={trigger} onChange={handleTriggerChange}>
+          <FormControlLabel value='hover' control={<Radio />} label='Hover' />
+          <FormControlLabel value='click' control={<Radio />} label='Click' />
+        </RadioGroup>
       </main>
     </div>
   )

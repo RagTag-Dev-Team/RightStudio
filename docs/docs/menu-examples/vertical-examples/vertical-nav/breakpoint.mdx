@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Breakpoint
 
-export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+export const updatedCode = SourceCode.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `breakpoint` prop is used to determine when the navigation sidebar should trigger responsive behavior. The responsive behavior typically involves hiding the navigation sidebar and showing a hamburger menu button instead. When the hamburger menu button is clicked, the navigation sidebar is shown as an overlay. The default value for the `breakpoint` prop is `lg`, which means that the navigation sidebar will be hidden when the screen size is less than 1200px. The `breakpoint` prop can be set to `always` to always show the hamburger menu button, regardless of the screen size.
 

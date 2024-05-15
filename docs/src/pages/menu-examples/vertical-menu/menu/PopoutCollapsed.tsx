@@ -3,10 +3,13 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const PopoutWhenCollapsed = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} popoutWhenCollapsed>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+      <Menu menuItemStyles={menuItemStyles()} popoutWhenCollapsed>
         <SubMenu label='Dashboards'>
           <MenuItem>Analytics</MenuItem>
           <MenuItem>eCommerce</MenuItem>

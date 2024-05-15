@@ -3,11 +3,14 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const OnClick = () => {
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px'>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <VerticalNav customBreakpoint='200px' customStyles={{ '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()}>
           <MenuItem
             onClick={() => {
               console.log('Analytics Dashboard clicked')

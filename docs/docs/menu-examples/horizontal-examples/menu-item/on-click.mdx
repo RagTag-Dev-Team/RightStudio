@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # On Click
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `onClick` prop allows you to define a custom function that will be called when the menu item is clicked. It provides a way to handle the click event and perform specific actions or logic in response to the click.
 
 ### Props
@@ -28,4 +30,4 @@ onClick?: (event: React.MouseEvent<HTMLElement>) => void
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

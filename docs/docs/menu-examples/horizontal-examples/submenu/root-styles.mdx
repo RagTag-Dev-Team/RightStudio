@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/sub
 
 # Root Styles
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The Root Style feature provides the flexibility to apply custom styling to the submenu. With the `rootStyles` prop, you can pass a set of CSS properties to customize the appearance of the submenu according to your design preferences. The `rootStyles` prop accepts a CSSObject from the [Emotion](https://emotion.sh/docs/introduction) library.
 
 ### Props
@@ -30,4 +32,4 @@ type RootStylesType = {
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

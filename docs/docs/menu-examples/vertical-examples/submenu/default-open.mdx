@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Default Open
 
-export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `defaultOpen` prop is used to specify whether a submenu should be open by default when the page loads. By setting the `defaultOpen` prop to true, you can indicate that a specific submenu should be initially open.
 

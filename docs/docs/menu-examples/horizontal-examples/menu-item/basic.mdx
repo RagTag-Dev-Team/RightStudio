@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Basic
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 <BrowserWindow url='/horizontal-menu/menu-item/basic'>
   <Provider>
     <Basic />
@@ -19,4 +21,4 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

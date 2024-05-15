@@ -1,10 +1,17 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 
 const IsPopoutWhenCollapsed = () => {
   // Hooks
@@ -12,8 +19,8 @@ const IsPopoutWhenCollapsed = () => {
 
   return (
     <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ blockSize: 'auto' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} popoutWhenCollapsed={isPopoutWhenCollapsed}>
+      <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ blockSize: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()} popoutWhenCollapsed={isPopoutWhenCollapsed}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -32,12 +39,12 @@ const IsPopoutWhenCollapsed = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button
-            onClick={() => updateVerticalNavState({ isPopoutWhenCollapsed: !isPopoutWhenCollapsed })}
-            className='cursor-pointer'
-          >
-            Click here to pop out
-          </button>
+          <FormControlLabel
+            label='Popout menu'
+            control={
+              <Checkbox onChange={() => updateVerticalNavState({ isPopoutWhenCollapsed: !isPopoutWhenCollapsed })} />
+            }
+          />
           <p>{`isPopoutWhenCollapsed: ${isPopoutWhenCollapsed}`}</p>
         </div>
       </main>

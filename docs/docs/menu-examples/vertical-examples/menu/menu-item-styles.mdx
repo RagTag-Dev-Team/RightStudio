@@ -8,8 +8,8 @@ import SourceCodeWithoutParams from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Menu Item Styles
 
-export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '')
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '')
 
 The `menuItemStyles` prop allows you to customize the style of the menu items.
 

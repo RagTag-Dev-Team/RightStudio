@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Trigger Popout
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The Trigger Pop Out feature enables a functionality where a submenu can be triggered to open or close when the corresponding menu item is hovered over or clicked.
 
 The `triggerPopout` prop accepts two values:
@@ -41,4 +43,4 @@ triggerPopout='hover'
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

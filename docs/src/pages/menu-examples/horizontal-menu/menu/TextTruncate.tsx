@@ -1,3 +1,6 @@
+// MUI Imports
+import { deepmerge } from '@mui/utils'
+
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -6,12 +9,13 @@ import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const TextTruncate = () => {
   return (
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px', maxInlineSize: '300px' } }}>
+        <Menu menuItemStyles={deepmerge(menuItemStyles(), { button: { maxInlineSize: '300px' } })}>
           <SubMenu label='Dashboards Dashboards Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Target
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `target` prop is used to specify the target of a link within a menu item. It determines how the link will be opened when clicked. Additionally, you can use the `rel` prop to set the rel attribute of the link, which specifies the relationship between the current document and the linked document.
 
 The `target` prop accepts a string value that represents the target option for the link. The most commonly used target options are:
@@ -42,4 +44,4 @@ target='_self'
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

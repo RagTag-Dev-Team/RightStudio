@@ -3,11 +3,14 @@
 // Component Imports
 import VerticalNav, { Menu, MenuItem, MenuSection, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const PopoutMenuOffset = () => {
   return (
-    <VerticalNav customBreakpoint='200px' defaultCollapsed>
+    <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'}}} backgroundColor='var(--mui-palette-background-paper)'>
       <Menu
-        menuItemStyles={{ button: { paddingBlock: '12px' } }}
+        menuItemStyles={menuItemStyles()}
         popoutMenuOffset={{ mainAxis: 20, alignmentAxis: -5 }}
         popoutWhenCollapsed
       >

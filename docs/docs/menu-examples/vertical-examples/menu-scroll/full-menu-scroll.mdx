@@ -12,8 +12,8 @@ import SourceCodePerfectScroll from '!!raw-loader!@docPages/menu-examples/vertic
 
 # Full Menu Scroll
 
-export const updatedCodeBrowserScroll = SourceCodeBrowserScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedCodePerfectScroll = SourceCodePerfectScroll.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*\/\/.*/, '')
+export const updatedCodeBrowserScroll = SourceCodeBrowserScroll.replace(/customStyles=\{\{([\s\S]*?)\}\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+export const updatedCodePerfectScroll = SourceCodePerfectScroll.replace(/\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 ## Browser scroll
 

@@ -1,11 +1,17 @@
 'use client'
 
+// MUI Imports
+import { deepmerge } from '@mui/utils'
+
 // React imports
 import { useEffect, useState } from 'react'
 
 // Component imports
 import VerticalNav, { Menu } from '@menu/vertical-menu'
 import { GenerateVerticalMenu } from '@docComponents/GenerateMenu'
+
+// Style Imports
+import menuItemStyles from '@site/src/components/styles/vertical/menuItemStyles'
 
 const MenuWithAPI = () => {
   // States
@@ -14,7 +20,7 @@ const MenuWithAPI = () => {
 
   useEffect(() => {
     const fetchMenuData = async () => {
-      const response = await fetch('https://mocki.io/v1/52954c56-974e-4977-8bc0-1c0fc3a1e4d3')
+      const response = await fetch('https://mocki.io/v1/7eccec25-2c67-4da3-9ab5-02835e1b1d45')
       const data = await response.json()
 
       setSidebarMenuData(data)
@@ -25,16 +31,15 @@ const MenuWithAPI = () => {
   }, [])
 
   return (
-    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
-      <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+    <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+      <Menu menuItemStyles={menuItemStyles()}>
         {isLoading ? (
           <div className='p-4'>Loading...</div>
         ) : (
           <Menu
-            menuItemStyles={{
-              button: { paddingBlock: '12px' },
+            menuItemStyles={deepmerge(menuItemStyles(), {
               subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-            }}
+            })}
           >
             <GenerateVerticalMenu menuData={sidebarMenuData} />
           </Menu>

@@ -76,7 +76,7 @@
 }
 
 .browserWindowBody {
-  background-color: var(--ifm-background-color);
+  background-color: var(--mui-palette-background-default);
   border-end-start-radius: inherit;
   border-end-end-radius: inherit;
   overflow: hidden;

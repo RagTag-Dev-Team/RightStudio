@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/subme
 
 # Icon
 
-export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `icon` prop allows you to add an icon to the submenu. The icon prop accepts a React element, which can be any valid JSX or component that represents the desired icon. This gives you the flexibility to use popular icon libraries, custom SVG icons, or any other icon implementation you prefer.
 

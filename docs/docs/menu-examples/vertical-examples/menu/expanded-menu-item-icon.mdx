@@ -16,10 +16,10 @@ import SourceCodeIconWithParamLevel from '!!raw-loader!@docPages/menu-examples/v
 
 # Expanded MenuItem Icon
 
-export const updatedSourceCodeBasic = SourceCodeBasic.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedSourceCodeIconWithLevel = SourceCodeIconWithLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedSourceCodeIconWithParam = SourceCodeIconWithParam.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
-export const updatedSourceCodeIconWithParamLevel = SourceCodeIconWithParamLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '')
+export const updatedSourceCodeBasic = SourceCodeBasic.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+export const updatedSourceCodeIconWithLevel = SourceCodeIconWithLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+export const updatedSourceCodeIconWithParam = SourceCodeIconWithParam.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
+export const updatedSourceCodeIconWithParamLevel = SourceCodeIconWithParamLevel.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `expandedMenuItemIcon` prop allows customization of the icon for expanded submenu items.
 
@@ -83,7 +83,7 @@ This example uses a function as the icon
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithParam}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithParam}</TsToJsCodeSnippet>
 
 ## Icon With Params Level
 
@@ -99,4 +99,4 @@ This example utilizes a function as the icon and passes the level parameter.
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeIconWithParamLevel}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeIconWithParamLevel}</TsToJsCodeSnippet>

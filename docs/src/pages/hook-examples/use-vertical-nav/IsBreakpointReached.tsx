@@ -1,10 +1,16 @@
 'use client'
 
+// MUI Imports
+import Button from '@mui/material/Button'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 
 const BreakPoint = () => {
   // Hooks
@@ -12,8 +18,18 @@ const BreakPoint = () => {
 
   return (
     <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav breakpoint='md' customStyles={{ blockSize: 'auto' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+      <VerticalNav breakpoint='md' customStyles={{ 
+        blockSize: '100%',
+        '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
+        position: 'absolute !important',
+        '& .ts-vertical-nav-backdrop': {
+          position: 'absolute',
+          insetInlineEnd: '-600%'
+        }
+        }} 
+        backgroundColor='var(--mui-palette-background-paper)'
+      >
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -32,9 +48,7 @@ const BreakPoint = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         {isBreakpointReached && (
-          <div onClick={() => toggleVerticalNav(isBreakpointReached ? !isToggled : true)} className='cursor-pointer'>
-            Menu Toggle
-          </div>
+          <Button onClick={() => toggleVerticalNav(isBreakpointReached ? !isToggled : true)}>Menu Toggle</Button>
         )}
       </main>
     </div>

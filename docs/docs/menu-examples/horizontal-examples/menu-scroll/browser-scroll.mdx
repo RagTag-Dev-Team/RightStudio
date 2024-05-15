@@ -10,6 +10,8 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Browser Scroll
 
+export const updatedCode = SourceCode.replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '')
+
 The `browserScroll` prop allows you to use the browser scroll bar. When the menu items of submenu exceed the available vertical space, the browser's scrollbar is used to scroll through the menu content.
 
 ### Props
@@ -32,4 +34,4 @@ browserScroll={false}
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

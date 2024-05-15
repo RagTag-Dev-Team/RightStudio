@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Transition Duration
 
-export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex')
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace('flex min-bs-full bs-dvh', 'flex').replace(/backgroundColor='.*'/, '').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `transitionDuration` prop allows you to set the duration of the animation when the navigation sidebar is being collapsed, expanded or toggled. The value is in milliseconds (ms).
 

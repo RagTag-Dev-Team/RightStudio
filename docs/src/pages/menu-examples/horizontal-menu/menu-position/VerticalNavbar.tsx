@@ -18,6 +18,8 @@ import HorizontalNav, {
 
 // Style Imports
 import styles from '../styles.module.css'
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const VerticalNavbar = () => {
   return (
@@ -27,6 +29,8 @@ const VerticalNavbar = () => {
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
+          blockSize: '400px',
+          '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
           '@media (max-width: 900px)': {
             position: 'absolute !important',
           },
@@ -35,9 +39,10 @@ const VerticalNavbar = () => {
             insetInlineEnd: '-600%'
           }
         }}
+        backgroundColor='var(--mui-palette-background-paper)'
         // Remove the code till here 
       >
-        <VerticalMenu>
+        <VerticalMenu menuItemStyles={verticalMenuItemStyles()}>
           <VerticalMenuItem>Email</VerticalMenuItem>
           <VerticalMenuItem>Chat</VerticalMenuItem>
           <VerticalSubMenu label='User'>
@@ -62,7 +67,7 @@ const VerticalNavbar = () => {
         <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
           <NavToggle />
           <HorizontalNav hideMenu breakpoint='md'>
-            <HorizontalMenu>
+            <HorizontalMenu menuItemStyles={menuItemStyles()}>
               <HorizontalSubMenu label='Dashboards'>
                 <HorizontalMenuItem>Analytics</HorizontalMenuItem>
                 <HorizontalMenuItem>eCommerce</HorizontalMenuItem>

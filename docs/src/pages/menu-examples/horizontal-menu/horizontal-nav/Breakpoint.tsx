@@ -10,6 +10,8 @@ import VerticalNavContent from '../VerticalNavContent'
 
 // Styled Component Imports
 import styles from '../styles.module.css'
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const BreakPoint = () => {
   return (
@@ -19,21 +21,22 @@ const BreakPoint = () => {
         switchToVertical
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
+        // The following customStyles prop is used to show this example properly in the documentation.
+        // You need to remove this prop in your implementation.
         verticalNavProps={{ 
           customStyles: {
-            '& .ts-menu-button': { paddingBlock: '12px' },
-            // The following customStyles prop is used to show this example properly in the documentation.
-            // You need to remove this prop in your implementation.
+            '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},  
             position: 'absolute !important',
             '& .ts-vertical-nav-backdrop': {
               position: 'absolute',
               insetInlineEnd: '-600%'
             }
-            // Remove the code till here 
-          }
+          },
+          backgroundColor: 'var(--mui-palette-background-paper)'
         }}
+        // Remove the code till here 
       >
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+        <Menu menuItemStyles={menuItemStyles()} verticalMenuProps={{ menuItemStyles: verticalMenuItemStyles() }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>

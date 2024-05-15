@@ -1,19 +1,26 @@
 'use client'
 
+// MUI Imports
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const IsScrollWithContent = () => {
   // Hooks
   const { isScrollWithContent, updateVerticalNavState } = useVerticalNav()
 
   return (
-    <div className='flex min-bs-full bs-dvh'>
-      <VerticalNav customBreakpoint='200px' scrollWithContent={isScrollWithContent} customStyles={{ blockSize: 'auto' }}>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
+    <div className='flex min-bs-full bs-dvh overflow-auto'>
+      <VerticalNav customBreakpoint='200px' scrollWithContent={isScrollWithContent} customStyles={{ blockSize: 'auto', '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'} }} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -32,12 +39,12 @@ const IsScrollWithContent = () => {
       </VerticalNav>
       <main className='p-4 flex-grow'>
         <div className='flex justify-between'>
-          <button
-            onClick={() => updateVerticalNavState({ isScrollWithContent: !isScrollWithContent })}
-            className='cursor-pointer'
-          >
-            Scroll With Content
-          </button>
+          <FormControlLabel
+            label='Scroll With Content'
+            control={
+              <Checkbox onChange={() => updateVerticalNavState({ isScrollWithContent: !isScrollWithContent })} />
+            }
+          />
           <p>{`Status : ${isScrollWithContent}`}</p>
         </div>
         <p className='mt-4'>

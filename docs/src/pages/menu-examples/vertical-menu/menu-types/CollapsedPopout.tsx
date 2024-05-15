@@ -2,18 +2,34 @@
 
 // React Imports
 import { useState } from 'react'
+import type { ChangeEvent } from 'react'
+
+// MUI Imports
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+
+// Type Imports
+import type { MenuProps } from '@menu/vertical-menu'
 
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
+// Style Imports
+import menuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
 const CollapsedPopout = () => {
   // States
-  const [trigger, setTrigger] = useState<'click' | 'hover'>('click')
+  const [trigger, setTrigger] = useState<MenuProps['triggerPopout']>('hover')
+
+  const handleTriggerChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTrigger(event.target.value as MenuProps['triggerPopout'])
+  }
 
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px' defaultCollapsed>
-        <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }} triggerPopout={trigger} popoutWhenCollapsed>
+      <VerticalNav customBreakpoint='200px' defaultCollapsed customStyles={{ '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'}}} backgroundColor='var(--mui-palette-background-paper)'>
+        <Menu menuItemStyles={menuItemStyles()} triggerPopout={trigger} popoutWhenCollapsed>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
             <MenuItem>eCommerce</MenuItem>
@@ -31,28 +47,10 @@ const CollapsedPopout = () => {
         </Menu>
       </VerticalNav>
       <main className='p-4 flex-grow'>
-        <label>
-          <input
-            id='hover'
-            type='radio'
-            value='hover'
-            name='triggerPopout'
-            checked={trigger === 'hover'}
-            onChange={() => setTrigger('hover')}
-          />
-          Hover
-        </label>
-        <label>
-          <input
-            id='click'
-            type='radio'
-            value='click'
-            name='triggerPopout'
-            checked={trigger === 'click'}
-            onChange={() => setTrigger('click')}
-          />
-          Click
-        </label>
+        <RadioGroup row value={trigger} onChange={handleTriggerChange}>
+          <FormControlLabel value='hover' control={<Radio />} label='Hover' />
+          <FormControlLabel value='click' control={<Radio />} label='Click' />
+        </RadioGroup>
       </main>
     </div>
   )
