@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 
 const ToastsProgrammatically = () => {
-  const toastId = useRef(null);
+  const toastId = useRef<number | string>('')
 
   const notify = () => (toastId.current = toast("Lorem ipsum dolor"));
 
@@ -24,7 +24,7 @@ const ToastsProgrammatically = () => {
       <i className='ri-braces-line mbe-2 text-[42px]'/>
       <Typography className='mbe-4' variant='h5'>Remove Programmatically</Typography>
       <Typography className='mbe-3'>Remove last or all toast(s) programmatically</Typography>
-      <div className='flex gap-4'>
+      <div className='flex gap-4 items-center'>
         <Button variant='contained' onClick={notify}>Notify</Button>
         <Button variant='contained' onClick={dismiss}>Dismiss</Button>
         <Button variant='contained' onClick={dismissAll}>Dismiss All</Button>
