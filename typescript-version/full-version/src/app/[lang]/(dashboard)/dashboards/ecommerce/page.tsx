@@ -1,5 +1,7 @@
+import EcommerceDashboard from '../../apps/ecommerce/dashboard/page'
+
 const DashboardECommerce = () => {
-  return <div>eCommerce</div>
+  return <EcommerceDashboard />
 }
 
 export default DashboardECommerce

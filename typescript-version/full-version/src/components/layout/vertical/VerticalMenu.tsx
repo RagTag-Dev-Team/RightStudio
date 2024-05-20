@@ -74,7 +74,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
               <MenuItem href={`/${locale}/apps/ecommerce/orders/list`} target='_blank'>
                 {dictionary['navigation'].list}
               </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/details`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`} target='_blank'>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
@@ -82,7 +82,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
               <MenuItem href={`/${locale}/apps/ecommerce/customers/list`} target='_blank'>
                 {dictionary['navigation'].list}
               </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/details`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`} target='_blank'>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>

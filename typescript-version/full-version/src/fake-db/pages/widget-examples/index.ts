@@ -30,5 +30,38 @@ export const db: CardStatsType = {
       avatarIcon: 'ri-time-line',
       color: 'info'
     }
+  ],
+  customerStats: [
+    {
+      color: 'primary',
+      avatarIcon: 'ri-money-dollar-circle-line',
+      title: 'account balance',
+      value: '$7480',
+      content: ' Credit Left',
+      description: 'Account balance for next purchase'
+    },
+    {
+      color: 'success',
+      avatarIcon: 'ri-gift-line',
+      title: 'loyalty program',
+      chipLable: 'Platinum member',
+      description: '3000 points to next tier'
+    },
+    {
+      color: 'warning',
+      avatarIcon: 'ri-star-smile-line',
+      title: 'wishlist',
+      value: '15',
+      content: 'Items in wishlist',
+      description: 'Receive notification when items go on sale'
+    },
+    {
+      color: 'info',
+      avatarIcon: 'ri-vip-crown-line',
+      title: 'coupons',
+      value: '21',
+      content: 'Coupons you win',
+      description: 'Use coupon on next purchase'
+    }
   ]
 }

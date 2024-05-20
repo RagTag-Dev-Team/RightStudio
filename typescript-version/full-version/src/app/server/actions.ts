@@ -6,6 +6,7 @@
 'use server'
 
 // Data Imports
+import { db as eCommerceData } from '@/fake-db/apps/ecommerce'
 import { db as academyData } from '@/fake-db/apps/academy'
 import { db as vehicleData } from '@/fake-db/apps/logistics'
 import { db as invoiceData } from '@/fake-db/apps/invoice'
@@ -16,6 +17,10 @@ import { db as faqData } from '@/fake-db/pages/faq'
 import { db as pricingData } from '@/fake-db/pages/pricing'
 import { db as statisticsData } from '@/fake-db/pages/widget-examples'
 import { icons as iconTest } from '@/fake-db/icons-test'
+
+export const getEcommerceData = async () => {
+  return eCommerceData
+}
 
 export const getAcademyData = async () => {
   return academyData
