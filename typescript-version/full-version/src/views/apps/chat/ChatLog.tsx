@@ -70,6 +70,7 @@ const formatedChatData = (chats: ChatType['chat'], profileUser: ProfileUserType)
   return formattedChatData
 }
 
+// Wrapper for the chat log to handle scrolling
 const ScrollWrapper = ({
   children,
   isBelowLgScreen,
@@ -117,6 +118,7 @@ const ChatLog = ({ chatStore, isBelowLgScreen, isBelowMdScreen, isBelowSmScreen 
     }
   }
 
+  // Scroll to bottom on new message
   useEffect(() => {
     if (activeUserChat && activeUserChat.chat && activeUserChat.chat.length) {
       scrollToBottom()

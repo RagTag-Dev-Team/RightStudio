@@ -13,7 +13,7 @@ import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Type Imports
-import type { ChatDataType } from '@/types/apps/chatTypes'
+import type { RootState } from '@/redux-store'
 
 // Slice Imports
 import { getActiveUserData } from '@/redux-store/slices/chat'
@@ -39,22 +39,24 @@ const ChatWrapper = () => {
   // Hooks
   const { settings } = useSettings()
   const dispatch = useDispatch()
-  const chatStore = useSelector((state: { chatReducer: ChatDataType }) => state.chatReducer)
+  const chatStore = useSelector((state: RootState) => state.chatReducer)
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
   const isBelowSmScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
 
-  // function to get active user data
+  // Get active user’s data
   const activeUser = (id: number) => {
     dispatch(getActiveUserData(id))
   }
 
+  // Focus on message input when active user changes
   useEffect(() => {
     if (chatStore.activeUser?.id !== null && messageInputRef.current) {
       messageInputRef.current.focus()
     }
   }, [chatStore.activeUser])
 
+  // Close backdrop when sidebar is open on below md screen
   useEffect(() => {
     if (!isBelowMdScreen && backdropOpen && sidebarOpen) {
       setBackdropOpen(false)
@@ -62,12 +64,21 @@ const ChatWrapper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBelowMdScreen])
 
+  // Open backdrop when sidebar is open on below sm screen
   useEffect(() => {
     if (!isBelowSmScreen && sidebarOpen) {
       setBackdropOpen(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBelowSmScreen])
+
+  // Close sidebar when backdrop is closed on below md screen
+  useEffect(() => {
+    if (!backdropOpen && sidebarOpen) {
+      setSidebarOpen(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [backdropOpen])
 
   return (
     <div
