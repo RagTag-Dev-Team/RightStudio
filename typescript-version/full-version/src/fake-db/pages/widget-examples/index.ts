@@ -1,6 +1,32 @@
 import type { CardStatsType } from '@/types/pages/widgetTypes'
 
 export const db: CardStatsType = {
+  statsHorizontalWithAvatar: [
+    {
+      stats: '$24,983',
+      title: 'Total Earning',
+      avatarIcon: 'ri-money-dollar-circle-line',
+      avatarColor: 'primary'
+    },
+    {
+      stats: '$8,647',
+      title: 'Unpaid Earning',
+      avatarIcon: 'ri-gift-line',
+      avatarColor: 'success'
+    },
+    {
+      stats: '2,367',
+      title: 'Signups',
+      avatarIcon: 'ri-group-line',
+      avatarColor: 'error'
+    },
+    {
+      stats: '4.5%',
+      title: 'Conversion Rate',
+      avatarIcon: 'ri-refresh-line',
+      avatarColor: 'info'
+    }
+  ],
   statsHorizontalWithBorder: [
     {
       title: 'On route vehicles',

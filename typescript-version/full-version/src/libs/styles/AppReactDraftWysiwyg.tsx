@@ -52,6 +52,9 @@ const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
           backgroundColor: theme.vars.palette.action.selected
         }
       },
+      '& .rdw-option-wrapper': {
+        boxSizing: 'initial'
+      },
       '& .rdw-option-wrapper, & .rdw-dropdown-wrapper': {
         borderColor: theme.vars.palette.divider,
         background: theme.vars.palette.background.paper,
