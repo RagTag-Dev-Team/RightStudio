@@ -9,6 +9,6 @@ export type Vehicle = {
   progress: number
 }
 
-export type DB = {
+export type logisticsType = {
   vehicles: Vehicle[]
 }

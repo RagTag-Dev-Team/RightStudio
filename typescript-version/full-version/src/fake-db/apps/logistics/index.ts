@@ -1,6 +1,6 @@
-import type { DB } from '@/types/apps/logisticsTypes'
+import type { logisticsType } from '@/types/apps/logisticsTypes'
 
-export const db: DB = {
+export const db: logisticsType = {
   vehicles: [
     {
       id: 1,

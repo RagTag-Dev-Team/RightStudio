@@ -53,11 +53,6 @@ const MonthButton = () => {
   // Refs
   const anchorRef = useRef<HTMLDivElement | null>(null)
 
-  const handleClick = () => {
-    // eslint-disable-next-line no-console
-    console.info(`You clicked '${options[selectedIndex]}'`)
-  }
-
   const handleMenuItemClick = (event: SyntheticEvent, index: number) => {
     setSelectedIndex(index)
     setOpen(false)
@@ -74,7 +69,7 @@ const MonthButton = () => {
   return (
     <>
       <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button'>
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button>{options[selectedIndex]}</Button>
         <Button
           className='pli-0'
           aria-haspopup='menu'
@@ -88,10 +83,7 @@ const MonthButton = () => {
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>
         {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'right bottom' }}
-          >
+          <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
             <Paper className='shadow-lg'>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id='split-button-menu'>

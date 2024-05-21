@@ -10,6 +10,8 @@ import classnames from 'classnames'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
+
+// Types Imports
 import type { ThemeColor } from '@core/types'
 
 type dataTypes = {

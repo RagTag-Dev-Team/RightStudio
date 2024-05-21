@@ -1,5 +1,8 @@
 'use client'
 
+// React Imports
+import type { ReactNode } from 'react'
+
 // Next Imports
 import dynamic from 'next/dynamic'
 
@@ -29,7 +32,7 @@ type DataType = {
   title: string
   value: string
   color: ThemeColor
-  icon: JSX.Element
+  icon: ReactNode
 }
 
 // Vars

@@ -24,7 +24,6 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  getFilteredRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFacetedMinMaxValues,
@@ -188,7 +187,6 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData: Vehicle[] }) => 
     // enableRowSelection: row => row.original.age > 18, // or enable row selection conditionally per row
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
@@ -258,7 +256,7 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData: Vehicle[] }) => 
         rowsPerPageOptions={[5, 10, 25]}
         component='div'
         className='border-bs'
-        count={table.getFilteredRowModel().rows.length}
+        count={table.getRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
         onPageChange={(_, page) => {

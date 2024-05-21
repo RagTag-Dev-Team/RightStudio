@@ -1,8 +1,8 @@
-//React Imports
+// React Imports
 import { useEffect } from 'react'
-import type { SyntheticEvent } from 'react'
+import type { ReactNode, SyntheticEvent } from 'react'
 
-//Mui Imports
+// Mui Imports
 import Accordion from '@mui/material/Accordion'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
@@ -19,13 +19,13 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
-//Third-party Imports
+// Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Types Imports
 import type { viewStateType } from './index'
 
-//Components Imports
+// Components Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 
 type Props = {
@@ -68,7 +68,15 @@ const Timeline = styled(MuiTimeline)<TimelineProps>({
   }
 })
 
-const vehicleTrackingData = [
+type VehicleTrackingDataType = {
+  name: string
+  location: string
+  progress: number
+  driverName: string
+  passengerName: string
+}
+
+const vehicleTrackingData: VehicleTrackingDataType[] = [
   {
     name: 'VOL-342808',
     location: 'Chelsea, NY, USA',
@@ -99,6 +107,111 @@ const vehicleTrackingData = [
   }
 ]
 
+const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isBelowLgScreen: boolean }) => {
+  if (isBelowLgScreen) {
+    return <div className='bs-full overflow-y-auto overflow-x-hidden pbe-5 pli-5'>{children}</div>
+  } else {
+    return (
+      <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }} className='pbe-5 pli-5'>
+        {children}
+      </PerfectScrollbar>
+    )
+  }
+}
+
+const VehicleTracking = ({
+  vehicleTrackingData,
+  index,
+  expanded,
+  handleChange
+}: {
+  vehicleTrackingData: VehicleTrackingDataType
+  index: number
+  expanded: number | false
+  handleChange: (panel: number) => (event: SyntheticEvent, isExpanded: boolean) => void
+}) => {
+  return (
+    <Accordion expanded={expanded === index} onChange={handleChange(index)} className='shadow-none before:border-0'>
+      <AccordionSummary>
+        <div className='flex gap-4 items-center'>
+          <CustomAvatar skin='light' color='secondary'>
+            <i className='ri-car-line' />
+          </CustomAvatar>
+          <div className='flex flex-col gap-1'>
+            <Typography color='text.primary'>{vehicleTrackingData.name}</Typography>
+            <Typography>{vehicleTrackingData.location}</Typography>
+          </div>
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <div className='flex flex-col gap-1'>
+          <div className='flex items-center justify-between'>
+            <Typography color='text.primary'>Delivery Process</Typography>
+            <Typography>{vehicleTrackingData.progress}%</Typography>
+          </div>
+          <LinearProgress variant='determinate' className='bg-black' value={vehicleTrackingData.progress} />
+        </div>
+        <Timeline>
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot variant='outlined' className='mlb-0'>
+                <i className='ri-checkbox-circle-line text-xl text-success' />
+              </TimelineDot>
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
+              <Typography variant='caption' className='uppercase' color='success.main'>
+                Tracking Number Created
+              </Typography>
+              <Typography color='text.primary' className='font-medium'>
+                {vehicleTrackingData.driverName}
+              </Typography>
+              <Typography variant='body2'>Sep 01, 7:53 AM</Typography>
+            </TimelineContent>
+          </TimelineItem>
+        </Timeline>
+        <Timeline>
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot variant='outlined' className='mlb-0'>
+                <i className='ri-checkbox-circle-line text-xl text-success' />
+              </TimelineDot>
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
+              <Typography variant='caption' className='uppercase' color='success.main'>
+                Out For Delivery
+              </Typography>
+              <Typography color='text.primary' className='font-medium'>
+                {vehicleTrackingData.driverName}
+              </Typography>
+              <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
+            </TimelineContent>
+          </TimelineItem>
+        </Timeline>
+        <Timeline>
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot variant='outlined' className='mlb-0'>
+                <i className='ri-map-pin-line text-xl text-primary' />
+              </TimelineDot>
+            </TimelineSeparator>
+            <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
+              <Typography variant='caption' className='uppercase' color='primary.main'>
+                Arrived
+              </Typography>
+              <Typography color='text.primary' className='font-medium'>
+                {vehicleTrackingData.passengerName}
+              </Typography>
+              <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
+            </TimelineContent>
+          </TimelineItem>
+        </Timeline>
+      </AccordionDetails>
+    </Accordion>
+  )
+}
+
 const FleetSidebar = (props: Props) => {
   // Props
   const {
@@ -114,8 +227,6 @@ const FleetSidebar = (props: Props) => {
     setViewState,
     geojson
   } = props
-
-  const ScrollWrapper = isBelowLgScreen ? 'div' : PerfectScrollbar
 
   const handleChange = (panel: number) => (event: SyntheticEvent, isExpanded: boolean) => {
     if (isExpanded) {
@@ -171,95 +282,15 @@ const FleetSidebar = (props: Props) => {
           </IconButton>
         ) : null}
       </div>
-      <ScrollWrapper
-        {...(isBelowLgScreen
-          ? { className: 'bs-full overflow-y-auto overflow-x-hidden pbe-5 pli-5' }
-          : { options: { wheelPropagation: false, suppressScrollX: true }, className: 'pbe-5 pli-5' })}
-      >
+      <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
         {vehicleTrackingData.map((item, index) => (
-          <Accordion
+          <VehicleTracking
+            vehicleTrackingData={item}
+            index={index}
+            expanded={expanded}
+            handleChange={handleChange}
             key={index}
-            expanded={expanded === index}
-            onChange={handleChange(index)}
-            className='shadow-none before:border-0'
-          >
-            <AccordionSummary>
-              <div className='flex gap-4 items-center'>
-                <CustomAvatar skin='light' color='secondary'>
-                  <i className='ri-car-line' />
-                </CustomAvatar>
-                <div className='flex flex-col gap-1'>
-                  <Typography color='text.primary'>{item.name}</Typography>
-                  <Typography>{item.location}</Typography>
-                </div>
-              </div>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div className='flex flex-col gap-1'>
-                <div className='flex items-center justify-between'>
-                  <Typography color='text.primary'>Delivery Process</Typography>
-                  <Typography>{item.progress}%</Typography>
-                </div>
-                <LinearProgress variant='determinate' className='bg-black' value={item.progress} />
-              </div>
-              <Timeline>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot variant='outlined' className='mlb-0'>
-                      <i className='ri-checkbox-circle-line text-xl text-success' />
-                    </TimelineDot>
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-                    <Typography variant='caption' className='uppercase' color='success.main'>
-                      Tracking Number Created
-                    </Typography>
-                    <Typography color='text.primary' className='font-medium'>
-                      {item.driverName}
-                    </Typography>
-                    <Typography variant='body2'>Sep 01, 7:53 AM</Typography>
-                  </TimelineContent>
-                </TimelineItem>
-              </Timeline>
-              <Timeline>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot variant='outlined' className='mlb-0'>
-                      <i className='ri-checkbox-circle-line text-xl text-success' />
-                    </TimelineDot>
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-                    <Typography variant='caption' className='uppercase' color='success.main'>
-                      Out For Delivery
-                    </Typography>
-                    <Typography color='text.primary' className='font-medium'>
-                      {item.driverName}
-                    </Typography>
-                    <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
-                  </TimelineContent>
-                </TimelineItem>
-              </Timeline>
-              <Timeline>
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot variant='outlined' className='mlb-0'>
-                      <i className='ri-map-pin-line text-xl text-primary' />
-                    </TimelineDot>
-                  </TimelineSeparator>
-                  <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-                    <Typography variant='caption' className='uppercase' color='primary.main'>
-                      Arrived
-                    </Typography>
-                    <Typography color='text.primary' className='font-medium'>
-                      {item.passengerName}
-                    </Typography>
-                    <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
-                  </TimelineContent>
-                </TimelineItem>
-              </Timeline>
-            </AccordionDetails>
-          </Accordion>
+          />
         ))}
       </ScrollWrapper>
     </Drawer>

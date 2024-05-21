@@ -112,18 +112,11 @@ const Fleet = () => {
       {isBelowMdScreen ? (
         <CustomIconButton
           variant='contained'
-          color='secondary'
-          className='absolute top-4 left-4 z-10'
+          color='primary'
+          className='absolute top-4 left-4 z-10 bg-backgroundPaper text-textPrimary hover:bg-backgroundPaper focus:bg-backgroundPaper active:bg-backgroundPaper'
           onClick={() => {
             setSidebarOpen(true)
             setBackdropOpen(true)
-          }}
-          sx={{
-            backgroundColor: 'var(--mui-palette-background-paper)',
-            color: 'var(--mui-palette-text-primary)',
-            '&:hover, &:active, &:focus': {
-              backgroundColor: 'var(--mui-palette-background-paper)'
-            }
           }}
         >
           <i className='ri-menu-line text-2xl' />

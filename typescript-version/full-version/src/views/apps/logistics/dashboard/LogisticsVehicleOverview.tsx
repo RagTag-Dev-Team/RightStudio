@@ -78,10 +78,10 @@ const LogisticsVehicleOverview = () => {
                 key={index}
                 className={classnames(item.widthClass, styles.linearRound, 'flex flex-col gap-[34px] relative')}
               >
-                <Typography className={classnames(styles.header, 'relative')}>{item.heading}</Typography>
+                <Typography className={classnames(styles.header, 'relative max-sm:hidden')}>{item.heading}</Typography>
                 <LinearProgress
                   variant='determinate'
-                  value={0}
+                  value={-1}
                   className={classnames('progress bs-[46px]')}
                   // eslint-disable-next-line lines-around-comment
                   // @ts-ignore
