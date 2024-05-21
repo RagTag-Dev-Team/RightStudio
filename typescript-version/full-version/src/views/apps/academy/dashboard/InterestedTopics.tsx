@@ -24,6 +24,12 @@ import { rgbaToHex } from '@/utils/rgbaToHex'
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
+type DataType = {
+  title: string
+  value: number
+  colorClass: string
+}
+
 // Vars
 const series = [
   {
@@ -31,13 +37,13 @@ const series = [
   }
 ]
 
-const data1 = [
+const data1: DataType[] = [
   { title: 'UI Design', value: 35, colorClass: 'text-primary' },
   { title: 'UX Design', value: 20, colorClass: 'text-info' },
   { title: 'Music', value: 14, colorClass: 'text-success' }
 ]
 
-const data2 = [
+const data2: DataType[] = [
   { title: 'Animation', value: 12, colorClass: 'text-secondary' },
   { title: 'Vue', value: 10, colorClass: 'text-error' },
   { title: 'SEO', value: 9, colorClass: 'text-warning' }
@@ -160,7 +166,7 @@ const InterestedTopics = () => {
               <div className='flex flex-col gap-y-12'>
                 {data1.map((item, i) => (
                   <div key={i} className='flex gap-2'>
-                    <i className={classnames('ri-circle-fill text-xs m-1', item.colorClass)} />
+                    <i className={classnames('ri-circle-fill text-xs m-[5px]', item.colorClass)} />
                     <div>
                       <Typography>{item.title}</Typography>
                       <Typography variant='h5'>{`${item.value}%`}</Typography>
@@ -171,7 +177,7 @@ const InterestedTopics = () => {
               <div className='flex flex-col gap-y-12'>
                 {data2.map((item, i) => (
                   <div key={i} className='flex gap-2'>
-                    <i className={classnames('ri-circle-fill text-xs m-1', item.colorClass)} />
+                    <i className={classnames('ri-circle-fill text-xs m-[5px]', item.colorClass)} />
                     <div>
                       <Typography>{item.title}</Typography>
                       <Typography variant='h5'>{`${item.value}%`}</Typography>

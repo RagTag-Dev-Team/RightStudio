@@ -33,7 +33,7 @@ import DirectionalIcon from '@components/DirectionalIcon'
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
-type chipColorType = {
+type ChipColorType = {
   color: ThemeColor
 }
 
@@ -42,7 +42,7 @@ type Props = {
   searchValue: string
 }
 
-const chipColor: { [key: string]: chipColorType } = {
+const chipColor: { [key: string]: ChipColorType } = {
   Web: { color: 'primary' },
   Art: { color: 'success' },
   'UI/UX': { color: 'error' },
@@ -106,12 +106,12 @@ const Courses = (props: Props) => {
                 label='Courses'
                 labelId='course-select'
               >
+                <MenuItem value='All'>All Courses</MenuItem>
                 <MenuItem value='Web'>Web</MenuItem>
                 <MenuItem value='Art'>Art</MenuItem>
                 <MenuItem value='UI/UX'>UI/UX</MenuItem>
                 <MenuItem value='Psychology'>Psychology</MenuItem>
                 <MenuItem value='Design'>Design</MenuItem>
-                <MenuItem value='All'>All Courses</MenuItem>
               </Select>
             </FormControl>
             <FormControlLabel

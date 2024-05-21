@@ -42,7 +42,7 @@ const MyCourseHeader = (props: Props) => {
         </Typography>
         <div className='flex items-center gap-4 max-sm:is-full'>
           <TextField
-            label='Find your course'
+            placeholder='Find your course'
             size='small'
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}

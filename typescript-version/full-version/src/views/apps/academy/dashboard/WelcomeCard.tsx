@@ -177,7 +177,7 @@ const WelcomeCard = () => {
           <Typography>Your progress this week is Awesome. let&apos;s keep it up</Typography>
           <Typography>and get a lot of points reward!</Typography>
         </div>
-        <div className='flex max-md:flex-col justify-between gap-6'>
+        <div className='flex flex-wrap max-md:flex-col justify-between gap-6'>
           {data.map((item, i) => (
             <div key={i} className='flex gap-4'>
               <CustomAvatar variant='rounded' skin='light' size={54} color={item.color}>

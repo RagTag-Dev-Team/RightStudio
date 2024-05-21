@@ -1,5 +1,9 @@
+// MUI Imports
+import Grid from '@mui/material/Grid'
+
 // Component Imports
-import AcademyCourseDetails from '@views/apps/academy/course-details'
+import Details from '@views/apps/academy/course-details/Details'
+import Sidebar from '@views/apps/academy/course-details/Sidebar'
 
 // Data Imports
 import { getAcademyData } from '@/app/server/actions'
@@ -26,7 +30,16 @@ const CourseDetailsPage = async () => {
   // Vars
   const data = await getAcademyData()
 
-  return <AcademyCourseDetails courseDetails={data.courseDetails} />
+  return (
+    <Grid container spacing={6}>
+      <Grid item xs={12} md={8}>
+        <Details data={data.courseDetails} />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <Sidebar content={data.courseDetails.content} />
+      </Grid>
+    </Grid>
+  )
 }
 
 export default CourseDetailsPage

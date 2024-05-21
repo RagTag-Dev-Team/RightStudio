@@ -9,8 +9,15 @@ import Typography from '@mui/material/Typography'
 import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
 
+type DataType = {
+  name: string
+  profession: string
+  totalCourses: number
+  avatar: string
+}
+
 // Vars
-const data = [
+const data: DataType[] = [
   { name: 'Jordan Stevenson', profession: 'Business Intelligence', totalCourses: 33, avatar: '/images/avatars/1.png' },
   { name: 'Bentlee Emblin', profession: 'Digital Marketing', totalCourses: 52, avatar: '/images/avatars/2.png' },
   { name: 'Benedetto Rossiter', profession: 'UI/UX Design', totalCourses: 12, avatar: '/images/avatars/3.png' },
