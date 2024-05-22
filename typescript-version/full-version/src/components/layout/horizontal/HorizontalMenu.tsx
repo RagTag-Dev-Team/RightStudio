@@ -53,29 +53,21 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           <SubMenu label={dictionary['navigation'].eCommerce}>
             <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <SubMenu label={dictionary['navigation'].products}>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/add`} target='_blank'>
-                {dictionary['navigation'].add}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/category`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/add`}>{dictionary['navigation'].add}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/category`}>
                 {dictionary['navigation'].category}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].orders}>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/details`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`}>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].customers}>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/details`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`}>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
@@ -110,7 +102,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
             <MenuItem href={`/${locale}/apps/user/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/user/view`}>{dictionary['navigation'].view}</MenuItem>
+            <MenuItem href={`/${locale}/apps/user/view/${id || '1'}`}>{dictionary['navigation'].view}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].rolesPermissions}>
             <MenuItem href={`/${locale}/apps/roles`}>{dictionary['navigation'].roles}</MenuItem>

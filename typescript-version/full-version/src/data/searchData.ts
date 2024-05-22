@@ -86,7 +86,7 @@ const data: SearchData[] = [
   {
     id: '12',
     name: 'eCommerce - Order Details',
-    url: '/apps/ecommerce/orders/details',
+    url: '/apps/ecommerce/orders/details/5434',
     icon: 'Icon',
     section: 'Apps'
   },
@@ -100,7 +100,7 @@ const data: SearchData[] = [
   {
     id: '14',
     name: 'eCommerce - Customer Details',
-    url: '/apps/ecommerce/customers/details',
+    url: '/apps/ecommerce/customers/details/879861',
     icon: 'Icon',
     section: 'Apps'
   },
@@ -226,7 +226,7 @@ const data: SearchData[] = [
   {
     id: '32',
     name: 'User View',
-    url: '/apps/user/view',
+    url: '/apps/user/view/1',
     icon: 'Icon',
     section: 'Apps'
   },
