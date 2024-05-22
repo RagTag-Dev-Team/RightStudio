@@ -11,8 +11,8 @@ const IsHovered = () => {
   const { updateVerticalNavState, isHovered, isCollapsed } = useVerticalNav()
 
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px'>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>

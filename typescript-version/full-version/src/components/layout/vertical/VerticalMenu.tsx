@@ -60,29 +60,21 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           <SubMenu label={dictionary['navigation'].eCommerce}>
             <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <SubMenu label={dictionary['navigation'].products}>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/add`} target='_blank'>
-                {dictionary['navigation'].add}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/products/category`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/add`}>{dictionary['navigation'].add}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/category`}>
                 {dictionary['navigation'].category}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].orders}>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`}>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].customers}>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`} target='_blank'>
-                {dictionary['navigation'].list}
-              </MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`} target='_blank'>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`}>
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
@@ -103,8 +95,8 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
             <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
-          <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
+          <MenuItem href={`/${locale}/apps/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`/${locale}/apps/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <MenuItem href={`/${locale}/apps/kanban`}>{dictionary['navigation'].kanban}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
@@ -117,7 +109,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
             <MenuItem href={`/${locale}/apps/user/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/user/view`}>{dictionary['navigation'].view}</MenuItem>
+            <MenuItem href={`/${locale}/apps/user/view/${id || '1'}`}>{dictionary['navigation'].view}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].rolesPermissions}>
             <MenuItem href={`/${locale}/apps/roles`}>{dictionary['navigation'].roles}</MenuItem>

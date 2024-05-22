@@ -5,8 +5,8 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
 const SubMenuWithOutParams = () => {
   return (
-    <div className='flex'>
-      <VerticalNav customBreakpoint='200px' customStyles={{ minHeight: '100%' }}>
+    <div className='flex min-bs-full bs-dvh'>
+      <VerticalNav customBreakpoint='200px' customStyles={{ blockSize: 'auto' }}>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards' onOpenChange={() => console.log('onOpenChange called')}>
             <MenuItem>Analytics</MenuItem>

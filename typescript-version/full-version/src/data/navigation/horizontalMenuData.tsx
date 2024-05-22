@@ -77,7 +77,7 @@ const horizontalMenuData = (
               },
               {
                 label: dictionary['navigation'].details,
-                href: '/apps/ecommerce/orders/details'
+                href: `/apps/ecommerce/orders/details/${params.id || '5434'}`
               }
             ]
           },
@@ -90,7 +90,7 @@ const horizontalMenuData = (
               },
               {
                 label: dictionary['navigation'].details,
-                href: '/apps/ecommerce/customers/details'
+                href: `/apps/ecommerce/customers/details/${params.id || '879861'}`
               }
             ]
           },
@@ -183,7 +183,7 @@ const horizontalMenuData = (
           },
           {
             label: dictionary['navigation'].view,
-            href: '/apps/user/view'
+            href: `/apps/user/view/${params.id || '1'}`
           }
         ]
       },

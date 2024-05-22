@@ -6,7 +6,7 @@ import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 const ScrollWithContent = () => {
   return (
     <div className='flex'>
-      <VerticalNav customBreakpoint='200px' scrollWithContent={true}>
+      <VerticalNav customBreakpoint='200px' scrollWithContent>
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
           <SubMenu label='Dashboards'>
             <MenuItem>Analytics</MenuItem>
