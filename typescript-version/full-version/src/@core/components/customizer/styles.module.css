@@ -1,5 +1,8 @@
 .customizer {
+  block-size: 100%;
   inline-size: 400px;
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-color);
   position: fixed;
   inset-block-start: 0;
@@ -31,6 +34,10 @@
 }
 
 .toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   position: absolute;
   inset-block-start: 20%;
   inset-inline-end: 100%;
@@ -43,6 +50,9 @@
 }
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-block: 16px;
   padding-inline: 24px;
   border-block-end: 1px solid var(--border-color);
@@ -66,12 +76,15 @@
   transition-property: transform;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-}
-.dotStyles.show {
-  transform: scale(1);
+
+  &.show {
+    transform: scale(1);
+  }
 }
 
 .customizerBody {
+  display: flex;
+  flex-direction: column;
   padding-block: 20px;
   padding-inline: 24px;
   gap: 32px;
@@ -88,10 +101,11 @@
   min-inline-size: 106px;
   min-block-size: 68px;
   cursor: pointer;
-}
-.itemWrapper.active {
-  border-color: var(--primary-color);
-  outline: 1px solid var(--primary-color);
+
+  &.active {
+    border-color: var(--primary-color);
+    outline: 1px solid var(--primary-color);
+  }
 }
 
 .itemLabel {
@@ -112,6 +126,7 @@
   padding: 8px;
   cursor: pointer;
 }
+
 .primaryColor {
   block-size: 100%;
   inline-size: 100%;
