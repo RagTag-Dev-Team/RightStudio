@@ -40,7 +40,7 @@ import { getPricingData, getInvoiceData } from '@/app/server/actions'
 } */
 
 const BillingPlans = async () => {
-  // vars
+  // Vars
   const data = await getPricingData()
   const invoiceData = await getInvoiceData()
 

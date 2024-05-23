@@ -31,7 +31,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
   const params = useParams()
 
   // Vars
-  const { lang: locale, id } = params
+  const { lang: locale, id, folder, label } = params
 
   return (
     <HorizontalNav
@@ -99,7 +99,17 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/apps/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem
+            href={
+              label
+                ? `/${locale}/apps/email/label/${label || 'personal'}`
+                : folder
+                  ? `/${locale}/apps/email/${folder || 'inbox'}`
+                  : `/${locale}/apps/email`
+            }
+          >
+            {dictionary['navigation'].email}
+          </MenuItem>
           <MenuItem href={`/${locale}/apps/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <MenuItem href={`/${locale}/apps/kanban`}>{dictionary['navigation'].kanban}</MenuItem>

@@ -82,14 +82,10 @@ const ChatWrapper = () => {
 
   return (
     <div
-      className={classNames(
-        commonLayoutClasses.contentHeightFixed,
-        'flex is-full overflow-hidden rounded-xl relative',
-        {
-          border: settings.skin === 'bordered',
-          'shadow-md': settings.skin !== 'bordered'
-        }
-      )}
+      className={classNames(commonLayoutClasses.contentHeightFixed, 'flex is-full overflow-hidden rounded relative', {
+        border: settings.skin === 'bordered',
+        'shadow-md': settings.skin !== 'bordered'
+      })}
     >
       <SidebarLeft
         chatStore={chatStore}

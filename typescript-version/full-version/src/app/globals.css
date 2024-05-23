@@ -14,6 +14,11 @@
   --customizer-z-index: var(--mui-zIndex-drawer);
   --search-z-index: var(--mui-zIndex-tooltip);
   --drawer-z-index: var(--mui-zIndex-drawer);
+  --mui-mainColorChannels-shadow: var(--mui-mainColorChannels-lightShadow);
+}
+
+[data-mui-color-scheme='dark'] {
+  --mui-mainColorChannels-shadow: var(--mui-mainColorChannels-darkShadow);
 }
 
 *,
