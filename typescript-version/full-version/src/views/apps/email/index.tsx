@@ -79,6 +79,10 @@ const EmailWrapper = ({ folder, label }: { folder?: string; label?: string }) =>
     if (backdropOpen && !isBelowMdScreen) {
       setBackdropOpen(false)
     }
+
+    if (sidebarOpen && !isBelowMdScreen) {
+      setSidebarOpen(false)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBelowMdScreen])
 

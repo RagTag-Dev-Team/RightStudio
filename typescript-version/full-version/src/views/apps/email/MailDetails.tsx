@@ -21,11 +21,12 @@ import type { AppDispatch } from '@/redux-store'
 import type { Email } from '@/types/apps/emailTypes'
 
 // Slice Imports
-import { navigateEmails, toggleLabel } from '@/redux-store/slices/email'
+import { moveEmailsToFolder, navigateEmails, toggleLabel } from '@/redux-store/slices/email'
 
 // Components Imports
 import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
 import OptionMenu from '@core/components/option-menu'
+import DirectionalIcon from '@components/DirectionalIcon'
 import MailCard from './MailCard'
 
 // Styles Imports
@@ -33,18 +34,18 @@ import styles from './styles.module.css'
 
 // Data Imports
 import { labelColors } from './SidebarLeft'
+import CustomIconButton from '@/@core/components/mui/IconButton'
 
 type Props = {
   drawerOpen: boolean
   setDrawerOpen: (value: boolean) => void
   currentEmail?: Email
+  isBelowSmScreen: boolean
   isBelowLgScreen: boolean
   emails: Email[]
   folder?: string
   label?: string
   dispatch: AppDispatch
-  handleMoveAllToSpam: () => void
-  handleMoveAllToInbox: () => void
   handleSingleEmailDelete: (e: MouseEvent, emailIds: number) => void
   handleToggleIsReadStatus: (e: MouseEvent, emailId: number) => void
   handleToggleStarEmail: (e: MouseEvent, emailId: number) => void
@@ -81,14 +82,13 @@ const MailDetails = (props: Props) => {
   const {
     drawerOpen,
     setDrawerOpen,
+    isBelowSmScreen,
     isBelowLgScreen,
     currentEmail,
     emails,
     folder,
     label,
     dispatch,
-    handleMoveAllToSpam,
-    handleMoveAllToInbox,
     handleSingleEmailDelete,
     handleToggleIsReadStatus,
     handleToggleStarEmail
@@ -116,6 +116,18 @@ const MailDetails = (props: Props) => {
     }
   }
 
+  // Move all selected emails to spam
+  const handleMoveAllToSpam = () => {
+    dispatch(moveEmailsToFolder({ emailIds: [currentEmail?.id], folder: 'spam' }))
+    setDrawerOpen(false)
+  }
+
+  // Move all selected emails to inbox
+  const handleMoveAllToInbox = () => {
+    dispatch(moveEmailsToFolder({ emailIds: [currentEmail?.id], folder: 'inbox' }))
+    setDrawerOpen(false)
+  }
+
   // Handle click on label option from menu list
   const handleLabelClick = (value: string) => {
     dispatch(toggleLabel({ emailIds: [currentEmail?.id], label: value }))
@@ -130,7 +142,7 @@ const MailDetails = (props: Props) => {
             <div className='flex justify-between gap-2'>
               <div className='flex gap-4 items-center overflow-hidden'>
                 <IconButton onClick={handleCloseDrawer}>
-                  <i className='ri-arrow-left-s-line' />
+                  <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
                 </IconButton>
                 <div className='flex items-center flex-wrap gap-2 overflow-hidden'>
                   <Typography noWrap>{currentEmail.subject}</Typography>
@@ -154,13 +166,13 @@ const MailDetails = (props: Props) => {
               </div>
               <div className='flex items-center gap-2'>
                 <IconButton disabled={currentEmail.id === emails[0].id} onClick={() => handleEmailNavigation('prev')}>
-                  <i className='ri-arrow-left-s-line' />
+                  <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
                 </IconButton>
                 <IconButton
                   disabled={currentEmail.id === emails[emails.length - 1].id}
                   onClick={() => handleEmailNavigation('next')}
                 >
-                  <i className='ri-arrow-right-s-line' />
+                  <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
                 </IconButton>
               </div>
             </div>
@@ -307,17 +319,39 @@ const MailDetails = (props: Props) => {
                             link: { options: ['link'] },
                             list: { options: ['ordered', 'unordered'] }
                           }}
+                          boxProps={{
+                            sx: {
+                              '& .rdw-editor-wrapper': { border: 0, '& .rdw-editor-toolbar': { border: 0 } },
+                              '& .rdw-option-wrapper': {
+                                border: 'none',
+                                '&:hover, &.rdw-option-active': { boxShadow: 'none' }
+                              },
+                              '& .rdw-editor-main': { maxBlockSize: '10rem' }
+                            }
+                          }}
                         />
                         <div className='flex items-center justify-end gap-4'>
                           <IconButton>
                             <i className='ri-delete-bin-7-line' onClick={() => setReply(false)} />
                           </IconButton>
-                          <Button color='secondary' startIcon={<i className='ri-attachment-2' />}>
-                            Attachments
-                          </Button>
-                          <Button variant='contained' color='primary' endIcon={<i className='ri-send-plane-line' />}>
-                            Send
-                          </Button>
+                          {isBelowSmScreen ? (
+                            <CustomIconButton color='secondary'>
+                              <i className='ri-attachment-2' />
+                            </CustomIconButton>
+                          ) : (
+                            <Button color='secondary' startIcon={<i className='ri-attachment-2' />}>
+                              Attachments
+                            </Button>
+                          )}
+                          {isBelowSmScreen ? (
+                            <CustomIconButton variant='contained' color='primary'>
+                              <i className='ri-send-plane-line' />
+                            </CustomIconButton>
+                          ) : (
+                            <Button variant='contained' color='primary' endIcon={<i className='ri-send-plane-line' />}>
+                              Send
+                            </Button>
+                          )}
                         </div>
                       </div>
                     )}

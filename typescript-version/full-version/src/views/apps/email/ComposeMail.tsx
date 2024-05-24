@@ -7,58 +7,24 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
-import Autocomplete from '@mui/material/Autocomplete'
-import TextField from '@mui/material/TextField'
-import Chip from '@mui/material/Chip'
 
 // Component Imports
 import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
-import CustomAvatar from '@core/components/mui/Avatar'
+import CustomIconButton from '@/@core/components/mui/IconButton'
 
 type Props = {
   openCompose: boolean
   setOpenCompose: (value: boolean) => void
+  isBelowSmScreen: boolean
   isBelowMdScreen: boolean
 }
 
-// Data
-const emailAvatars = [
-  {
-    name: 'Ross Geller',
-    value: 'ross',
-    src: '/images/avatars/1.png'
-  },
-  {
-    name: 'Pheobe Buffay',
-    value: 'pheobe',
-    src: '/images/avatars/2.png'
-  },
-  {
-    name: 'Joey Tribbiani',
-    value: 'joey',
-    src: '/images/avatars/3.png'
-  },
-  {
-    name: 'Rachel Green',
-    value: 'rachel',
-    src: '/images/avatars/4.png'
-  },
-  {
-    name: 'Chandler Bing',
-    value: 'chandler',
-    src: '/images/avatars/5.png'
-  },
-  {
-    name: 'Monica Geller',
-    value: 'monica',
-    src: '/images/avatars/8.png'
-  }
-]
+const ComposeMail = (props: Props) => {
+  // Props
+  const { openCompose, setOpenCompose, isBelowSmScreen, isBelowMdScreen } = props
 
-const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) => {
   // States
   const [visibility, setVisibility] = useState({ cc: false, bcc: false })
-  const [selected, setSelected] = useState('')
 
   const toggleVisibility = (value: 'cc' | 'bcc') => {
     setVisibility(prev => ({ ...prev, [value]: !prev[value] }))
@@ -96,46 +62,11 @@ const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) =>
           </IconButton>
         </div>
       </div>
-      <div className='flex items-center gap-2 pli-6'>
+      <div className='flex items-center gap-2 pli-6 plb-0.5'>
         <Typography className='font-medium' color='text.disabled'>
           To:
         </Typography>
-        <Autocomplete
-          multiple
-          fullWidth
-          filterSelectedOptions
-          options={emailAvatars.map(option => option.name)}
-          freeSolo
-          defaultValue={[]}
-          sx={{ '& .MuiOutlinedInput-notchedOutline': { border: 'none' } }}
-          renderTags={(value, getTagProps) =>
-            value.map((option, index) => (
-              <Chip size='small' variant='filled' label={option} {...getTagProps({ index })} key={index} />
-            ))
-          }
-          renderInput={params => (
-            <TextField
-              {...params}
-              size='small'
-              InputLabelProps={{ shrink: true }}
-              value={selected}
-              variant='outlined'
-              onChange={e => setSelected(e.target.value)}
-            />
-          )}
-          renderOption={(props, option) => {
-            const avatar = emailAvatars.find(av => av.name === option)
-
-            return (
-              <li {...props} key={option}>
-                <div className='flex items-center gap-2'>
-                  <CustomAvatar src={avatar?.src} size={25} />
-                  <Typography>{option}</Typography>
-                </div>
-              </li>
-            )
-          }}
-        />
+        <InputBase fullWidth />
         <div className='text-textSecondary'>
           <span className='cursor-pointer' onClick={() => toggleVisibility('cc')}>
             Cc
@@ -148,7 +79,7 @@ const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) =>
       </div>
       {visibility.cc && (
         <InputBase
-          className='plb-[0.22rem] pli-6 border-bs'
+          className='plb-0.5 pli-6 border-bs'
           startAdornment={
             <Typography className='font-medium mie-2' color='text.disabled'>
               Cc:
@@ -158,7 +89,7 @@ const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) =>
       )}
       {visibility.bcc && (
         <InputBase
-          className='plb-[0.22rem] pli-6 border-bs'
+          className='plb-0.5 pli-6 border-bs'
           startAdornment={
             <Typography className='font-medium mie-2' color='text.disabled'>
               Bcc:
@@ -167,7 +98,7 @@ const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) =>
         />
       )}
       <InputBase
-        className='plb-[0.22rem] pli-6 border-bs'
+        className='plb-0.5 pli-6 border-bs'
         startAdornment={
           <Typography className='font-medium mie-2' color='text.disabled'>
             Subject:
@@ -193,14 +124,20 @@ const ComposeMail = ({ openCompose, setOpenCompose, isBelowMdScreen }: Props) =>
         }}
       />
       <div className='plb-4 pli-5 flex justify-between items-center gap-4'>
-        <div className='flex gap-4'>
-          <Button
-            variant='contained'
-            endIcon={<i className='ri-send-plane-line' />}
-            onClick={() => setOpenCompose(false)}
-          >
-            Send
-          </Button>
+        <div className='flex items-center gap-4 max-sm:gap-3'>
+          {isBelowSmScreen ? (
+            <CustomIconButton color='primary' variant='contained'>
+              <i className='ri-send-plane-line' />
+            </CustomIconButton>
+          ) : (
+            <Button
+              variant='contained'
+              endIcon={<i className='ri-send-plane-line' />}
+              onClick={() => setOpenCompose(false)}
+            >
+              Send
+            </Button>
+          )}
           <IconButton>
             <i className='ri-attachment-2' />
           </IconButton>

@@ -4,12 +4,12 @@ import type { ReactNode } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Drawer from '@mui/material/Drawer'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 
@@ -20,9 +20,13 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Types Imports
 import type { Email, EmailState } from '@/types/apps/emailTypes'
 import type { ThemeColor } from '@core/types'
+import type { Locale } from '@/configs/i18n'
 
 // Components Imports
 import ComposeMail from './ComposeMail'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -86,6 +90,9 @@ const SidebarLeft = (props: Props) => {
   // States
   const [openCompose, setOpenCompose] = useState(false)
 
+  // Hooks
+  const { lang: locale } = useParams()
+
   const folderCounts = store.emails.reduce((counts: Record<string, number>, email: Email) => {
     if (!email.isRead && email.folder !== 'trash') {
       counts[email.folder] = (counts[email.folder] || 0) + 1
@@ -107,30 +114,24 @@ const SidebarLeft = (props: Props) => {
         sx={{
           zIndex: isBelowMdScreen && sidebarOpen ? 11 : 10,
           position: !isBelowMdScreen ? 'static' : 'absolute',
-          ...(isBelowSmScreen && sidebarOpen && { width: '100%' }),
           '& .MuiDrawer-paper': {
             overflow: 'hidden',
-            width: isBelowSmScreen ? '100%' : '300px',
+            width: isBelowSmScreen ? '260px' : '300px',
             position: !isBelowMdScreen ? 'static' : 'absolute'
           }
         }}
       >
-        <CardContent {...(isBelowMdScreen && { className: 'flex items-center gap-3' })}>
+        <CardContent>
           <Button color='primary' variant='contained' fullWidth onClick={() => setOpenCompose(true)}>
             Compose
           </Button>
-          {isBelowMdScreen && (
-            <IconButton onClick={() => setSidebarOpen(false)}>
-              <i className='ri-close-line' />
-            </IconButton>
-          )}
         </CardContent>
         <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
           <div className='flex flex-col gap-1 plb-4'>
             {Object.entries(icons).map(([key, value]) => (
               <Link
                 key={key}
-                href={`/apps/email/${key}`}
+                href={getLocalizedUrl(`/apps/email/${key}`, locale as Locale)}
                 prefetch
                 className={classnames('flex items-center justify-between plb-1 pli-5 gap-2.5 cursor-pointer', {
                   [styles.activeSidebarListItem]: key === folder && !label
@@ -163,7 +164,7 @@ const SidebarLeft = (props: Props) => {
               {uniqueLabels.map(labelName => (
                 <Link
                   key={labelName}
-                  href={`/apps/email/label/${labelName}`}
+                  href={getLocalizedUrl(`/apps/email/label/${labelName}`, locale as Locale)}
                   prefetch
                   className={classnames('flex items-center gap-x-2 pli-5 cursor-pointer', {
                     [styles.activeSidebarListItem]: labelName === label
@@ -179,7 +180,12 @@ const SidebarLeft = (props: Props) => {
           </div>
         </ScrollWrapper>
       </Drawer>
-      <ComposeMail openCompose={openCompose} setOpenCompose={setOpenCompose} isBelowMdScreen={isBelowMdScreen} />
+      <ComposeMail
+        openCompose={openCompose}
+        setOpenCompose={setOpenCompose}
+        isBelowSmScreen={isBelowSmScreen}
+        isBelowMdScreen={isBelowMdScreen}
+      />
     </>
   )
 }

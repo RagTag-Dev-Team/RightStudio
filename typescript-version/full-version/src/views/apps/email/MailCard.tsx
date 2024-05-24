@@ -1,7 +1,6 @@
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import CardHeader from '@mui/material/CardHeader'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
@@ -56,14 +55,16 @@ const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean
 const MailCard = ({ data, isReplies }: { data: Email; isReplies: boolean }) => {
   return (
     <Card>
-      <CardHeader
-        title={data.from.name}
-        titleTypographyProps={{ variant: 'body1' }}
-        subheaderTypographyProps={{ variant: 'body2' }}
-        subheader={data.from.email}
-        avatar={<CustomAvatar src={data.from.avatar} size={38} alt={data.from.name} />}
-        action={<CardHeaderAction data={data} isReplies={isReplies} />}
-      />
+      <CardContent className='flex is-full gap-4'>
+        <CustomAvatar src={data.from.avatar} size={38} alt={data.from.name} />
+        <div className='flex items-center justify-between flex-wrap grow gap-x-4 gap-y-2'>
+          <div className='flex flex-col'>
+            <Typography>{data.from.name}</Typography>
+            <Typography variant='body2'>{data.from.email}</Typography>
+          </div>
+          <CardHeaderAction data={data} isReplies={isReplies} />
+        </div>
+      </CardContent>
       <Divider />
       <CardContent>
         <div

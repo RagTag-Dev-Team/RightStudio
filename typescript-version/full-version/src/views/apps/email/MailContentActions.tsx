@@ -26,8 +26,6 @@ type Props = {
   dispatch: AppDispatch
   setReload: (value: boolean) => void
   setSelectedEmails: (value: Set<number>) => void
-  handleMoveAllToSpam: () => void
-  handleMoveAllToInbox: () => void
 }
 
 const MailContentActions = (props: Props) => {
@@ -41,9 +39,7 @@ const MailContentActions = (props: Props) => {
     label,
     uniqueLabels,
     setReload,
-    dispatch,
-    handleMoveAllToSpam,
-    handleMoveAllToInbox
+    dispatch
   } = props
 
   // Vars
@@ -103,6 +99,22 @@ const MailContentActions = (props: Props) => {
     setSelectedEmails(new Set())
   }
 
+  // Move all selected emails to spam
+  const handleMoveAllToSpam = () => {
+    const emailIds = emails.filter(email => selectedEmails.has(email.id)).map(email => email.id)
+
+    dispatch(moveEmailsToFolder({ emailIds, folder: 'spam' }))
+    setSelectedEmails(new Set())
+  }
+
+  // Move all selected emails to inbox
+  const handleMoveAllToInbox = () => {
+    const emailIds = emails.filter(email => selectedEmails.has(email.id)).map(email => email.id)
+
+    dispatch(moveEmailsToFolder({ emailIds, folder: 'inbox' }))
+    setSelectedEmails(new Set())
+  }
+
   // Handle click on label option from menu list
   const handleLabelClick = (label: string) => {
     const emailIds = emails.filter(email => selectedEmails.has(email.id)).map(email => email.id)
@@ -112,8 +124,8 @@ const MailContentActions = (props: Props) => {
   }
 
   return (
-    <div className='flex items-center justify-between gap-4 is-full pli-4 plb-2 border-be'>
-      <div className='flex items-center gap-1'>
+    <div className='flex items-center justify-between gap-4 max-sm:gap-0.5 is-full pli-4 plb-2 border-be'>
+      <div className='flex items-center gap-1 max-sm:gap-0.5'>
         <Checkbox
           indeterminate={isIndeterminate}
           checked={areAllSelected}
@@ -193,7 +205,7 @@ const MailContentActions = (props: Props) => {
           </>
         )}
       </div>
-      <div className='flex gap-1'>
+      <div className='flex gap-1 max-sm:gap-0.5'>
         <Tooltip title='Refresh' placement='top'>
           <IconButton onClick={handleReload}>
             <i className='ri-refresh-line' />

@@ -156,7 +156,11 @@ const MailContentList = (props: Props) => {
                     </div>
                   </div>
                   {!isBelowSmScreen && (
-                    <div className={classnames('flex items-center gap-2', styles.emailInfo)}>
+                    <div
+                      className={classnames('flex items-center gap-2', styles.emailInfo, {
+                        [styles.show]: isBelowLgScreen
+                      })}
+                    >
                       <div className='flex items-center gap-2'>
                         {email.labels.map(label => (
                           <i
@@ -174,30 +178,32 @@ const MailContentList = (props: Props) => {
                       </Typography>
                     </div>
                   )}
-                  <div className={styles.emailActions}>
-                    <Tooltip title={folder === 'trash' ? 'Delete' : 'Move to trash'} placement='top'>
-                      <IconButton onClick={e => handleSingleEmailDelete(e, email.id)}>
-                        <i className='ri-delete-bin-7-line' />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title={email.isRead ? 'Mark as unread' : 'Mark as read'} placement='top'>
-                      <IconButton
-                        onClick={e => {
-                          handleToggleIsReadStatus(e, email.id)
-                          setSelectedEmails(new Set())
-                        }}
-                      >
-                        <i className={email.isRead ? 'ri-mail-unread-line' : 'ri-mail-open-line'} />
-                      </IconButton>
-                    </Tooltip>
-                    {(folder === 'inbox' || folder === 'trash') && (
-                      <Tooltip title='Move to spam' placement='top'>
-                        <IconButton onClick={e => handleMoveToSpam(e, email.id)}>
-                          <i className='ri-error-warning-line' />
+                  {!isBelowLgScreen && (
+                    <div className={styles.emailActions}>
+                      <Tooltip title={folder === 'trash' ? 'Delete' : 'Move to trash'} placement='top'>
+                        <IconButton onClick={e => handleSingleEmailDelete(e, email.id)}>
+                          <i className='ri-delete-bin-7-line' />
                         </IconButton>
                       </Tooltip>
-                    )}
-                  </div>
+                      <Tooltip title={email.isRead ? 'Mark as unread' : 'Mark as read'} placement='top'>
+                        <IconButton
+                          onClick={e => {
+                            handleToggleIsReadStatus(e, email.id)
+                            setSelectedEmails(new Set())
+                          }}
+                        >
+                          <i className={email.isRead ? 'ri-mail-unread-line' : 'ri-mail-open-line'} />
+                        </IconButton>
+                      </Tooltip>
+                      {(folder === 'inbox' || folder === 'trash') && (
+                        <Tooltip title='Move to spam' placement='top'>
+                          <IconButton onClick={e => handleMoveToSpam(e, email.id)}>
+                            <i className='ri-error-warning-line' />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

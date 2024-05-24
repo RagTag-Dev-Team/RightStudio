@@ -93,22 +93,6 @@ const MailContent = (props: Props) => {
     dispatch(toggleStarEmail({ emailId: id }))
   }
 
-  // Move all selected emails to spam
-  const handleMoveAllToSpam = () => {
-    const emailIds = emails.filter(email => selectedEmails.has(email.id)).map(email => email.id)
-
-    dispatch(moveEmailsToFolder({ emailIds, folder: 'spam' }))
-    setSelectedEmails(new Set())
-  }
-
-  // Move all selected emails to inbox
-  const handleMoveAllToInbox = () => {
-    const emailIds = emails.filter(email => selectedEmails.has(email.id)).map(email => email.id)
-
-    dispatch(moveEmailsToFolder({ emailIds, folder: 'inbox' }))
-    setSelectedEmails(new Set())
-  }
-
   return (
     <div className='flex flex-col items-center justify-center is-full bs-full relative overflow-hidden'>
       <MailContentSearch
@@ -128,8 +112,6 @@ const MailContent = (props: Props) => {
         uniqueLabels={uniqueLabels}
         setReload={setReload}
         dispatch={dispatch}
-        handleMoveAllToSpam={handleMoveAllToSpam}
-        handleMoveAllToInbox={handleMoveAllToInbox}
       />
       <MailContentList
         isInitialMount={isInitialMount}
@@ -152,14 +134,13 @@ const MailContent = (props: Props) => {
       <MailDetails
         drawerOpen={drawerOpen}
         setDrawerOpen={setDrawerOpen}
+        isBelowSmScreen={isBelowSmScreen}
         isBelowLgScreen={isBelowLgScreen}
         currentEmail={currentEmail}
         emails={emails}
         folder={folder}
         label={label}
         dispatch={dispatch}
-        handleMoveAllToSpam={handleMoveAllToSpam}
-        handleMoveAllToInbox={handleMoveAllToInbox}
         handleSingleEmailDelete={handleSingleEmailDelete}
         handleToggleIsReadStatus={handleToggleIsReadStatus}
         handleToggleStarEmail={handleToggleStarEmail}
