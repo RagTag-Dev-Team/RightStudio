@@ -12,64 +12,106 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
+import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { useForm, Controller } from 'react-hook-form'
+
+// Types Imports
+import type { Customer } from '@/types/apps/ecommerceTypes'
 
 type Props = {
   open: boolean
   handleClose: () => void
+  setData: (data: Customer[]) => void
+  customerData: Customer[]
 }
 
-type FormDataType = {
+type FormValidateType = {
   fullName: string
   email: string
+  country: string
+}
+
+type FormNonValidateType = {
   contact: string
   address1: string
   address2: string
   town: string
   state: string
   postcode: string
+}
+
+type countryType = {
   country: string
+}
+
+export const country: { [key: string]: countryType } = {
+  india: { country: 'India' },
+  australia: { country: 'Australia' },
+  france: { country: 'France' },
+  brazil: { country: 'Brazil' },
+  us: { country: 'United States' },
+  china: { country: 'China' }
 }
 
 // Vars
 const initialData = {
-  fullName: '',
-  email: '',
   contact: '',
   address1: '',
   address2: '',
   town: '',
   state: '',
-  postcode: '',
-  country: ''
+  postcode: ''
 }
 
-const AddCustomerDrawer = ({ open, handleClose }: Props) => {
-  // States
-  const [formData, setFormData] = useState<FormDataType>(initialData)
+const AddCustomerDrawer = (props: Props) => {
+  // Props
+  const { open, handleClose, setData, customerData } = props
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    handleClose()
+  // States
+  const [formData, setFormData] = useState<FormNonValidateType>(initialData)
+
+  // Hooks
+  const {
+    control,
+    reset: resetForm,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValidateType>({
+    defaultValues: {
+      fullName: '',
+      email: '',
+      country: ''
+    }
+  })
+
+  const onSubmit = (data: FormValidateType) => {
+    const newData: Customer = {
+      id: customerData.length + 1,
+      customer: data.fullName,
+      customerId: customerData[Math.floor(Math.random() * 100) + 1].customerId,
+      email: data.email,
+      country: `${country[data.country].country}`,
+      countryCode: 'st',
+      countryFlag: `/images/cards/${data.country}.png`,
+      order: Math.floor(Math.random() * 1000) + 1,
+      totalSpent: Math.random() * (10000 - 500 + 1) + 500,
+      avatar: `/images/avatars/${Math.floor(Math.random() * 8) + 1}.png`
+    }
+
+    setData([...customerData, newData])
+    resetForm({ fullName: '', email: '', country: '' })
     setFormData(initialData)
+    handleClose()
   }
 
   const handleReset = () => {
     handleClose()
-    setFormData({
-      fullName: '',
-      email: '',
-      contact: '',
-      address1: '',
-      address2: '',
-      town: '',
-      state: '',
-      postcode: '',
-      country: ''
-    })
+    resetForm({ fullName: '', email: '', country: '' })
+    setFormData(initialData)
   }
 
   return (
@@ -90,32 +132,60 @@ const AddCustomerDrawer = ({ open, handleClose }: Props) => {
       <Divider />
       <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
         <div className='p-5'>
-          <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+          <form onSubmit={handleSubmit(data => onSubmit(data))} className='flex flex-col gap-5'>
             <Typography color='text.primary' className='font-medium'>
               Basic Information
             </Typography>
-            <TextField
-              label='Full Name'
-              fullWidth
-              placeholder='John Doe'
-              value={formData.fullName}
-              onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+            <Controller
+              name='fullName'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  label='First Name'
+                  placeholder='John'
+                  {...(errors.fullName && { error: true, helperText: 'This field is required.' })}
+                />
+              )}
             />
-            <TextField
-              label='Email Address'
-              fullWidth
-              placeholder='johndoe@gmail.com'
-              value={formData.email}
-              onChange={e => setFormData({ ...formData, email: e.target.value })}
+            <Controller
+              name='email'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  type='email'
+                  label='Email Address'
+                  placeholder='johndoe@gmail.com'
+                  {...(errors.email && { error: true, helperText: 'This field is required.' })}
+                />
+              )}
             />
-            <TextField
-              label='Mobile Number'
-              type='number'
-              fullWidth
-              placeholder='(397) 294-5153'
-              value={formData.contact}
-              onChange={e => setFormData({ ...formData, contact: e.target.value })}
-            />
+            <FormControl fullWidth>
+              <InputLabel id='country' error={Boolean(errors.country)}>
+                Country*
+              </InputLabel>
+              <Controller
+                name='country'
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select label='Country*' {...field} error={Boolean(errors.country)}>
+                    <MenuItem value='india'>India</MenuItem>
+                    <MenuItem value='australia'>Australia</MenuItem>
+                    <MenuItem value='france'>France</MenuItem>
+                    <MenuItem value='brazil'>Brazil</MenuItem>
+                    <MenuItem value='us'>USA</MenuItem>
+                    <MenuItem value='china'>China</MenuItem>
+                  </Select>
+                )}
+              />
+              {errors.country && <FormHelperText error>This field is required.</FormHelperText>}
+            </FormControl>
             <Typography color='text.primary' className='font-medium'>
               Shipping Information
             </Typography>
@@ -159,23 +229,14 @@ const AddCustomerDrawer = ({ open, handleClose }: Props) => {
               value={formData.postcode}
               onChange={e => setFormData({ ...formData, postcode: e.target.value })}
             />
-            <FormControl fullWidth>
-              <InputLabel id='country'>Country*</InputLabel>
-              <Select
-                fullWidth
-                id='country'
-                value={formData.country}
-                onChange={e => setFormData({ ...formData, country: e.target.value })}
-                label='Select Country'
-                labelId='country'
-                inputProps={{ placeholder: 'Country' }}
-              >
-                <MenuItem value='UK'>UK</MenuItem>
-                <MenuItem value='USA'>USA</MenuItem>
-                <MenuItem value='Australia'>Australia</MenuItem>
-                <MenuItem value='Germany'>Germany</MenuItem>
-              </Select>
-            </FormControl>
+            <TextField
+              label='Mobile Number'
+              type='number'
+              fullWidth
+              placeholder='(397) 294-5153'
+              value={formData.contact}
+              onChange={e => setFormData({ ...formData, contact: e.target.value })}
+            />
             <div className='flex justify-between'>
               <div className='flex flex-col gap-1'>
                 <Typography color='text.primary' className='font-medium'>
@@ -189,7 +250,7 @@ const AddCustomerDrawer = ({ open, handleClose }: Props) => {
               <Button variant='contained' type='submit'>
                 Add
               </Button>
-              <Button variant='outlined' color='error' type='reset' onClick={() => handleReset()}>
+              <Button variant='outlined' color='error' type='reset' onClick={handleReset}>
                 Discard
               </Button>
             </div>

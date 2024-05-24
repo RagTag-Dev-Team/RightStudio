@@ -19,11 +19,11 @@ type Props = CardProps & {
 }
 
 const Card = styled(MuiCard)<Props>(({ color }) => ({
-  transition: 'border 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  transition: 'border 0.3s ease-in-out, box-shadow 0.3s ease-in-out, margin 0.3s ease-in-out',
   borderBottomWidth: '2px',
   borderBottomColor: `var(--mui-palette-${color}-darkerOpacity)`,
   '&:hover': {
-    borderBottomWidth: '3px !important',
+    borderBottomWidth: '3px',
     borderBottomColor: `var(--mui-palette-${color}-main) !important`,
     boxShadow: 'var(--mui-customShadows-xl)',
     marginBlockEnd: '-1px'

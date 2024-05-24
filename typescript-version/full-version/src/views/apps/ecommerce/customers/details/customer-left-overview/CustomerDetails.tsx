@@ -23,78 +23,76 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
   }
 
   return (
-    <>
-      <Card>
-        <CardContent className='flex flex-col pbs-12 gap-6'>
-          <div className='flex flex-col justify-self-center items-center gap-6'>
-            <div className='flex flex-col items-center gap-4'>
-              <CustomAvatar variant='rounded' alt='Customer Avatar' size={120} />
-              <div className='flex flex-col items-center'>
-                <Typography variant='h5'>{customerData.customer}</Typography>
-                <Typography>Customer ID #{customerData.customerId}</Typography>
+    <Card>
+      <CardContent className='flex flex-col pbs-12 gap-6'>
+        <div className='flex flex-col justify-self-center items-center gap-6'>
+          <div className='flex flex-col items-center gap-4'>
+            <CustomAvatar variant='rounded' alt='Customer Avatar' size={120} />
+            <div className='flex flex-col items-center'>
+              <Typography variant='h5'>{customerData.customer}</Typography>
+              <Typography>Customer ID #{customerData.customerId}</Typography>
+            </div>
+          </div>
+          <div className='flex items-center gap-12'>
+            <div className='flex items-center gap-4'>
+              <CustomAvatar variant='rounded' skin='light' color='primary'>
+                <i className='ri-shopping-cart-2-line' />
+              </CustomAvatar>
+              <div>
+                <Typography>{customerData.order}</Typography>
+                <Typography>Orders</Typography>
               </div>
             </div>
-            <div className='flex items-center gap-12'>
-              <div className='flex items-center gap-4'>
-                <CustomAvatar variant='rounded' skin='light' color='primary'>
-                  <i className='ri-shopping-cart-2-line' />
-                </CustomAvatar>
-                <div>
-                  <Typography>{customerData.order}</Typography>
-                  <Typography>Orders</Typography>
-                </div>
-              </div>
-              <div className='flex items-center gap-4'>
-                <CustomAvatar variant='rounded' skin='light' color='primary'>
-                  <i className='ri-money-dollar-circle-line' />
-                </CustomAvatar>
-                <div>
-                  <Typography>${customerData.totalSpent}</Typography>
-                  <Typography>Spent</Typography>
-                </div>
+            <div className='flex items-center gap-4'>
+              <CustomAvatar variant='rounded' skin='light' color='primary'>
+                <i className='ri-money-dollar-circle-line' />
+              </CustomAvatar>
+              <div>
+                <Typography>${customerData.totalSpent}</Typography>
+                <Typography>Spent</Typography>
               </div>
             </div>
           </div>
-          <div className='flex flex-col gap-4'>
-            <Typography variant='h5'>Details</Typography>
-            <Divider />
-            <div className='flex flex-col gap-2'>
-              <div className='flex items-center gap-1'>
-                <Typography color='text.primary' className='font-medium'>
-                  Username:
-                </Typography>
-                <Typography>{customerData.customer}</Typography>
-              </div>
-              <div className='flex items-center gap-1'>
-                <Typography color='text.primary' className='font-medium'>
-                  Billing Email:
-                </Typography>
-                <Typography>{customerData.email}</Typography>
-              </div>
-              <div className='flex items-center gap-1'>
-                <Typography color='text.primary' className='font-medium'>
-                  Status:
-                </Typography>
-                <Chip label='Active' variant='tonal' color='success' size='small' />
-              </div>
-              <div className='flex items-center gap-1'>
-                <Typography color='text.primary' className='font-medium'>
-                  Contact:
-                </Typography>
-                <Typography>+1 (234) 464-0600</Typography>
-              </div>
-              <div className='flex items-center gap-1'>
-                <Typography color='text.primary' className='font-medium'>
-                  Country:
-                </Typography>
-                <Typography>{customerData.country}</Typography>
-              </div>
+        </div>
+        <div className='flex flex-col gap-4'>
+          <Typography variant='h5'>Details</Typography>
+          <Divider />
+          <div className='flex flex-col gap-2'>
+            <div className='flex items-center gap-1'>
+              <Typography color='text.primary' className='font-medium'>
+                Username:
+              </Typography>
+              <Typography>{customerData.customer}</Typography>
+            </div>
+            <div className='flex items-center gap-1'>
+              <Typography color='text.primary' className='font-medium'>
+                Billing Email:
+              </Typography>
+              <Typography>{customerData.email}</Typography>
+            </div>
+            <div className='flex items-center gap-1'>
+              <Typography color='text.primary' className='font-medium'>
+                Status:
+              </Typography>
+              <Chip label='Active' variant='tonal' color='success' size='small' />
+            </div>
+            <div className='flex items-center gap-1'>
+              <Typography color='text.primary' className='font-medium'>
+                Contact:
+              </Typography>
+              <Typography>+1 (234) 464-0600</Typography>
+            </div>
+            <div className='flex items-center gap-1'>
+              <Typography color='text.primary' className='font-medium'>
+                Country:
+              </Typography>
+              <Typography>{customerData.country}</Typography>
             </div>
           </div>
-          <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={EditUserInfo} />
-        </CardContent>
-      </Card>
-    </>
+        </div>
+        <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={EditUserInfo} />
+      </CardContent>
+    </Card>
   )
 }
 

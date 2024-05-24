@@ -29,7 +29,7 @@ const getAvatar = (params: Pick<OrderType, 'avatar' | 'customer'>) => {
 
 // Vars
 const userData = {
-  firstName: 'Gabrielle ',
+  firstName: 'Gabrielle',
   lastName: 'Feyer',
   userName: '@gabriellefeyer',
   billingEmail: 'gfeyer0@nyu.edu',

@@ -34,8 +34,6 @@ const OrderDetailsPage = async ({ params }: { params: { id: string } }) => {
 
   const filteredData = data.orderData.filter((item: OrderType) => item.order === params.id)[0]
 
-  console.log('filteredData', filteredData)
-
   if (!filteredData) {
     redirect('/not-found')
   }

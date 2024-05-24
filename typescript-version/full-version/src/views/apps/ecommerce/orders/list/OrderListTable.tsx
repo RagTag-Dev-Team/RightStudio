@@ -134,7 +134,6 @@ const columnHelper = createColumnHelper<ECommerceOrderTypeWithAction>()
 const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[orderData])
   const [globalFilter, setGlobalFilter] = useState('')
 
@@ -191,7 +190,12 @@ const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
           <div className='flex items-center gap-3'>
             {getAvatar({ avatar: row.original.avatar, customer: row.original.customer })}
             <div className='flex flex-col'>
-              <Typography color='text.primary' className='font-medium'>
+              <Typography
+                component={Link}
+                href={getLocalizedUrl('/apps/ecommerce/customers/details/879861', locale as Locale)}
+                color='text.primary'
+                className='font-medium hover:text-primary'
+              >
                 {row.original.customer}
               </Typography>
               <Typography>{row.original.email}</Typography>
@@ -205,8 +209,8 @@ const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
           <div className='flex items-center gap-1'>
             <i
               className={classnames(
-                `text-${paymentStatus[row.original.payment].color}`,
-                'ri-circle-fill bs-2.5 is-2.5'
+                'ri-circle-fill bs-2.5 is-2.5',
+                `text-${paymentStatus[row.original.payment].color}`
               )}
             />
             <Typography color={`${paymentStatus[row.original.payment].color}.main`}>
@@ -245,19 +249,23 @@ const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
       }),
       columnHelper.accessor('action', {
         header: 'Action',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
             <OptionMenu
               options={[
                 {
-                  text: 'Download',
-                  icon: 'ri-download-line text-[22px]',
-                  menuItemProps: { className: 'flex items-center' }
+                  text: 'View',
+                  icon: 'ri-eye-line',
+                  href: getLocalizedUrl(`/apps/ecommerce/orders/details/${row.original.order}`, locale as Locale),
+                  linkProps: { className: 'flex items-center is-full plb-2 pli-4' }
                 },
                 {
                   text: 'Delete',
                   icon: 'ri-delete-bin-7-line text-[22px]',
-                  menuItemProps: { className: 'flex items-center' }
+                  menuItemProps: {
+                    onClick: () => setData(data.filter(order => order.id !== row.original.id)),
+                    className: 'flex items-center'
+                  }
                 }
               ]}
             />
@@ -267,7 +275,7 @@ const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data]
   )
 
   const table = useReactTable({

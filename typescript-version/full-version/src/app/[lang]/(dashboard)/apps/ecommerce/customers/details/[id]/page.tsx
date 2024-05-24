@@ -34,8 +34,6 @@ const CustomerDetailsPage = async ({ params }: { params: { id: string } }) => {
 
   const filteredData = data.customerData.filter((item: Customer) => item.customerId === params.id)[0]
 
-  console.log('filteredData', filteredData)
-
   if (!filteredData) {
     redirect('/not-found')
   }

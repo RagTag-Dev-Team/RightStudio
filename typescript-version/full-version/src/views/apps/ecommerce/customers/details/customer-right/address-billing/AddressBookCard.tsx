@@ -58,11 +58,11 @@ const propData: propsType[] = [
 
 // Vars
 const data = {
-  firstName: 'Violet  ',
+  firstName: 'Violet',
   lastName: 'Mendoza',
   email: 'sbaser0@boston.com',
   country: 'UK',
-  address1: '23 Shatinon Mekalan,',
+  address1: '23 Shatinon Mekalan',
   address2: 'Melbourne, VIC 3000',
   landmark: 'Near Water Plant',
   city: 'LondonUK',

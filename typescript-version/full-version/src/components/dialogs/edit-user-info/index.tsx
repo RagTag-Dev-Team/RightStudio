@@ -65,7 +65,7 @@ const EditUserInfo = ({ open, setOpen, data }: EditUserInfoProps) => {
 
   const handleClose = () => {
     setOpen(false)
-    setUserData(initialData)
+    setUserData(data || initialData)
   }
 
   return (

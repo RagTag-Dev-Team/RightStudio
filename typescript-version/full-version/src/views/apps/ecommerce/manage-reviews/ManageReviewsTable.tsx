@@ -115,7 +115,6 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
   // States
   const [status, setStatus] = useState<ReviewType['status']>('All')
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [allData, setAllData] = useState(...[reviewsData])
   const [data, setData] = useState(allData)
   const [globalFilter, setGlobalFilter] = useState('')

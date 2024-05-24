@@ -136,7 +136,6 @@ const CustomerListTable = ({ customerData }: { customerData: Customer[] }) => {
   // States
   const [customerUserOpen, setCustomerUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[customerData])
   const [globalFilter, setGlobalFilter] = useState('')
 
@@ -177,7 +176,7 @@ const CustomerListTable = ({ customerData }: { customerData: Customer[] }) => {
                 component={Link}
                 color='text.primary'
                 href={getLocalizedUrl(`/apps/ecommerce/customers/details/${row.original.customerId}`, locale as Locale)}
-                className='font-medium'
+                className='font-medium hover:text-primary'
               >
                 {row.original.customer}
               </Typography>
@@ -350,7 +349,12 @@ const CustomerListTable = ({ customerData }: { customerData: Customer[] }) => {
           onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
-      <AddCustomerDrawer open={customerUserOpen} handleClose={() => setCustomerUserOpen(!customerUserOpen)} />
+      <AddCustomerDrawer
+        open={customerUserOpen}
+        handleClose={() => setCustomerUserOpen(!customerUserOpen)}
+        setData={setData}
+        customerData={data}
+      />
     </>
   )
 }

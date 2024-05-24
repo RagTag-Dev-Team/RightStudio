@@ -11,6 +11,23 @@ import type { ThemeColor } from '@core/types'
 import AddAddress from '@components/dialogs/add-edit-address'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
+// Vars
+const data = {
+  firstName: 'Roker',
+  lastName: 'Terrace',
+  email: 'sbaser0@boston.com',
+  country: 'UK',
+  address1: 'Latheronwheel',
+  address2: 'KW5 8NW, London',
+  landmark: 'Near Water Plant',
+  city: 'LondonUK',
+  state: 'Capholim',
+  zipCode: '403114',
+  taxId: 'TAX-875623',
+  vatNumber: 'SDF754K77',
+  contact: '+1 (609) 972-22-22'
+}
+
 const BillingAddress = () => {
   // Vars
   const typographyProps = (children: string, color: ThemeColor, className: string): TypographyProps => ({
@@ -24,12 +41,12 @@ const BillingAddress = () => {
       <CardContent className='flex flex-col gap-6'>
         <div className='flex flex-col'>
           <div className='flex justify-between items-center'>
-            <Typography variant='h5'>Shipping Address</Typography>
+            <Typography variant='h5'>Billing Address</Typography>
             <OpenDialogOnElementClick
               element={Typography}
               elementProps={typographyProps('Edit', 'primary', 'cursor-pointer font-medium')}
               dialog={AddAddress}
-              dialogProps={{ type: 'Add address for billing address' }}
+              dialogProps={{ type: 'Add address for billing address', data }}
             />
           </div>
           <div className='flex flex-col'>

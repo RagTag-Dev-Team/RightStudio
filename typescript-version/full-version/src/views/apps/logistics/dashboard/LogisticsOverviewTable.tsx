@@ -256,7 +256,7 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData: Vehicle[] }) => 
         rowsPerPageOptions={[5, 10, 25]}
         component='div'
         className='border-bs'
-        count={table.getRowModel().rows.length}
+        count={table.getExpandedRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
         onPageChange={(_, page) => {
