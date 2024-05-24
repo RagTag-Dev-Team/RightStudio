@@ -14,46 +14,73 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
+// Third-party Imports
+import { useForm, Controller } from 'react-hook-form'
+
+// Type Imports
+import type { categoryType } from './ProductCategoryTable'
+
 type Props = {
   open: boolean
   handleClose: () => void
+  categoryData: categoryType[]
+  setData: (data: categoryType[]) => void
 }
 
-type FormDataType = {
+type FormValues = {
   title: string
-  slug: string
-  fileName: string
-  category: string
-  comment: string
-  status: string
+  description: string
 }
 
-// Vars
-const initialData = {
-  title: '',
-  slug: '',
-  fileName: '',
-  category: '',
-  comment: '',
-  status: ''
-}
+const AddCategoryDrawer = (props: Props) => {
+  // Props
+  const { open, handleClose, categoryData, setData } = props
 
-const AddCategoryDrawer = ({ open, handleClose }: Props) => {
   // States
-  const [formData, setFormData] = useState<FormDataType>(initialData)
+  const [fileName, setFileName] = useState('')
+  const [category, setCategory] = useState('')
+  const [comment, setComment] = useState('')
+  const [status, setStatus] = useState('')
 
   // Refs
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    handleClose()
-    setFormData(initialData)
+  // Hooks
+  const {
+    control,
+    reset: resetForm,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValues>({
+    defaultValues: {
+      title: '',
+      description: ''
+    }
+  })
+
+  // Handle Form Submit
+  const handleFormSubmit = (data: FormValues) => {
+    const newData = {
+      id: categoryData.length + 1,
+      categoryTitle: data.title,
+      description: data.description,
+      totalProduct: Math.floor(Math.random() * 9000) + 1000,
+      totalEarning: Math.floor(Math.random() * 90000) + 10000,
+      image: `/images/apps/ecommerce/product-${Math.floor(Math.random() * 20) + 1}.png`
+    }
+
+    setData([...categoryData, newData])
+    handleReset()
   }
 
+  // Handle Form Reset
   const handleReset = () => {
     handleClose()
-    setFormData(initialData)
+    resetForm({ title: '', description: '' })
+    setFileName('')
+    setCategory('')
+    setComment('')
+    setStatus('')
   }
 
   // Handle File Upload
@@ -61,7 +88,7 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
     const { files } = event.target
 
     if (files && files.length !== 0) {
-      setFormData({ ...formData, fileName: files[0].name })
+      setFileName(files[0].name)
     }
   }
 
@@ -82,27 +109,41 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
       </div>
       <Divider />
       <div className='p-5'>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
-          <TextField
-            label='Title'
-            fullWidth
-            placeholder='Fashion'
-            value={formData.title}
-            onChange={e => setFormData({ ...formData, title: e.target.value })}
+        <form onSubmit={handleSubmit(data => handleFormSubmit(data))} className='flex flex-col gap-5'>
+          <Controller
+            name='title'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                label='Title'
+                placeholder='Fashion'
+                {...(errors.title && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
-          <TextField
-            label='Slug'
-            fullWidth
-            placeholder='Trends fashion'
-            value={formData.slug}
-            onChange={e => setFormData({ ...formData, slug: e.target.value })}
+          <Controller
+            name='description'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                label='Description'
+                placeholder='Enter a description...'
+                {...(errors.description && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
           <div className='flex items-center gap-4'>
             <TextField
               size='small'
               placeholder='No file chosen'
               variant='outlined'
-              value={formData.fileName}
+              value={fileName}
               className='flex-auto'
               InputProps={{
                 readOnly: true
@@ -118,8 +159,8 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
             <Select
               fullWidth
               id='category'
-              value={formData.category}
-              onChange={e => setFormData({ ...formData, category: e.target.value })}
+              value={category}
+              onChange={e => setCategory(e.target.value)}
               label='Parent Category'
               labelId='category'
             >
@@ -133,8 +174,8 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
           <TextField
             fullWidth
             label='Comment'
-            value={formData.comment}
-            onChange={e => setFormData({ ...formData, comment: e.target.value })}
+            value={comment}
+            onChange={e => setComment(e.target.value)}
             multiline
             rows={4}
             placeholder='Write a Comment...'
@@ -144,8 +185,8 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
             <Select
               fullWidth
               id='select-status'
-              value={formData.status}
-              onChange={e => setFormData({ ...formData, status: e.target.value })}
+              value={status}
+              onChange={e => setStatus(e.target.value)}
               label='Parent Status'
               labelId='status-select'
             >
@@ -158,7 +199,7 @@ const AddCategoryDrawer = ({ open, handleClose }: Props) => {
             <Button variant='contained' type='submit'>
               Add
             </Button>
-            <Button variant='outlined' color='error' type='reset' onClick={() => handleClose()}>
+            <Button variant='outlined' color='error' type='reset' onClick={handleReset}>
               Discard
             </Button>
           </div>

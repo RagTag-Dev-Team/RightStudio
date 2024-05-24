@@ -116,7 +116,8 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
   const [status, setStatus] = useState<ReviewType['status']>('All')
   const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setData] = useState(...[reviewsData])
+  const [allData, setAllData] = useState(...[reviewsData])
+  const [data, setData] = useState(allData)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -234,7 +235,26 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
       }),
       columnHelper.accessor('actions', {
         header: 'Actions',
-        cell: () => <OptionMenu options={['View', 'Delete']} />,
+        cell: ({ row }) => (
+          <OptionMenu
+            options={[
+              {
+                text: 'View',
+                icon: 'ri-eye-line',
+                href: getLocalizedUrl('/apps/ecommerce/orders/details/5434', locale as Locale),
+                linkProps: { className: 'flex items-center is-full plb-1.5 pli-4' }
+              },
+              {
+                text: 'Delete',
+                icon: 'ri-delete-bin-7-line',
+                menuItemProps: {
+                  onClick: () => setAllData(allData.filter(review => review.id !== row.original.id)),
+                  className: 'flex items-center'
+                }
+              }
+            ]}
+          />
+        ),
         enableSorting: false
       })
     ],
@@ -272,14 +292,14 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
   })
 
   useEffect(() => {
-    const filteredData = reviewsData?.filter(review => {
+    const filteredData = allData?.filter(review => {
       if (status !== 'All' && review.status !== status) return false
 
       return true
     })
 
     setData(filteredData)
-  }, [status, reviewsData, setData])
+  }, [status, allData, setData])
 
   return (
     <>

@@ -23,7 +23,12 @@ const CustomerInformation = () => {
       <CardContent className='flex flex-col gap-4'>
         <div>
           <FormLabel id='name-radio-buttons-group-label'>Full name</FormLabel>
-          <RadioGroup value={name} onChange={e => setName(e.target.value)} aria-labelledby='name-radio-buttons-group'>
+          <RadioGroup
+            value={name}
+            onChange={e => setName(e.target.value)}
+            aria-labelledby='name-radio-buttons-group'
+            className='items-start'
+          >
             <FormControlLabel value='last-name' control={<Radio />} label='Only require last name' />
             <FormControlLabel value='first-last-name' control={<Radio />} label='Require first and last name' />
           </RadioGroup>
@@ -34,6 +39,7 @@ const CustomerInformation = () => {
             value={company}
             onChange={e => setCompany(e.target.value)}
             aria-labelledby='company-radio-buttons-group'
+            className='items-start'
           >
             <FormControlLabel value='dont' control={<Radio />} label='Don’t include' />
             <FormControlLabel value='optional' control={<Radio />} label='Optional' />
@@ -46,6 +52,7 @@ const CustomerInformation = () => {
             value={address}
             onChange={e => setAddress(e.target.value)}
             aria-labelledby='address-radio-buttons-group'
+            className='items-start'
           >
             <FormControlLabel value='dont' control={<Radio />} label='Don’t include' />
             <FormControlLabel value='optional' control={<Radio />} label='Optional' />
@@ -58,6 +65,7 @@ const CustomerInformation = () => {
             value={shipping}
             onChange={e => setShipping(e.target.value)}
             aria-labelledby='shipping-radio-buttons-group'
+            className='items-start'
           >
             <FormControlLabel value='dont' control={<Radio />} label='Don’t include' />
             <FormControlLabel value='optional' control={<Radio />} label='Optional' />

@@ -146,8 +146,8 @@ const columnHelper = createColumnHelper<ProductWithActionsType>()
 const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[productData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -234,7 +234,7 @@ const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
       }),
       columnHelper.accessor('actions', {
         header: 'Actions',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton size='small'>
               <i className='ri-edit-box-line' />
@@ -242,7 +242,11 @@ const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
             <OptionMenu
               options={[
                 { text: 'Download', icon: 'ri-download-line' },
-                { text: 'Delete', icon: 'ri-delete-bin-line' },
+                {
+                  text: 'Delete',
+                  icon: 'ri-delete-bin-7-line',
+                  menuItemProps: { onClick: () => setData(data.filter(product => product.id !== row.original.id)) }
+                },
                 { text: 'Duplicate', icon: 'ri-stack-line' }
               ]}
             />
@@ -252,11 +256,11 @@ const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data]
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data as ProductType[],
+    data: filteredData as ProductType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -288,7 +292,7 @@ const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
     <>
       <Card>
         <CardHeader title='Filters' />
-        <TableFilters setData={setData} productData={productData} />
+        <TableFilters setData={setFilteredData} productData={data} />
         <Divider />
         <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4 p-5'>
           <DebouncedInput

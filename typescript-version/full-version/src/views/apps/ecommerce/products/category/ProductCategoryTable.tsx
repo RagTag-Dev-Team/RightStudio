@@ -47,7 +47,8 @@ declare module '@tanstack/table-core' {
   }
 }
 
-type categoryType = {
+export type categoryType = {
+  id: number
   categoryTitle: string
   description: string
   totalProduct: number
@@ -104,6 +105,7 @@ const DebouncedInput = ({
 // Vars
 const categoryData: categoryType[] = [
   {
+    id: 1,
     categoryTitle: 'Smart Phone',
     description: 'Choose from wide range of smartphones online at best prices.',
     totalProduct: 12548,
@@ -111,6 +113,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-1.png'
   },
   {
+    id: 2,
     categoryTitle: 'Clothing, Shoes, and jewellery',
     description: 'Fashion for a wide selection of clothing, shoes, jewellery and watches.',
     totalProduct: 4689,
@@ -118,6 +121,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-9.png'
   },
   {
+    id: 3,
     categoryTitle: 'Home and Kitchen',
     description: 'Browse through the wide range of Home and kitchen products.',
     totalProduct: 12548,
@@ -125,6 +129,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-10.png'
   },
   {
+    id: 4,
     categoryTitle: 'Beauty and Personal Care',
     description: 'Explore beauty and personal care products, shop makeup and etc.',
     totalProduct: 12548,
@@ -132,6 +137,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-19.png'
   },
   {
+    id: 5,
     categoryTitle: 'Books',
     description: 'Over 25 million titles across categories such as business  and etc.',
     totalProduct: 12548,
@@ -139,6 +145,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-25.png'
   },
   {
+    id: 6,
     categoryTitle: 'Games',
     description: 'Every month, get exclusive in-game loot, free games, a free subscription.',
     totalProduct: 12548,
@@ -146,6 +153,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-12.png'
   },
   {
+    id: 7,
     categoryTitle: 'Baby Products',
     description: 'Buy baby products across different categories from top brands.',
     totalProduct: 12548,
@@ -153,6 +161,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-14.png'
   },
   {
+    id: 8,
     categoryTitle: 'Growsari',
     description: 'Shop grocery Items through at best prices in India.',
     totalProduct: 12548,
@@ -160,6 +169,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-26.png'
   },
   {
+    id: 9,
     categoryTitle: 'Computer Accessories',
     description: 'Enhance your computing experience with our range of computer accessories.',
     totalProduct: 9876,
@@ -167,6 +177,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-17.png'
   },
   {
+    id: 10,
     categoryTitle: 'Fitness Tracker',
     description: 'Monitor your health and fitness goals with our range of advanced fitness trackers.',
     totalProduct: 1987,
@@ -174,6 +185,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-10.png'
   },
   {
+    id: 11,
     categoryTitle: 'Smart Home Devices',
     description: 'Transform your home into a smart home with our innovative smart home devices.',
     totalProduct: 2345,
@@ -181,6 +193,7 @@ const categoryData: categoryType[] = [
     image: '/images/apps/ecommerce/product-11.png'
   },
   {
+    id: 12,
     categoryTitle: 'Audio Speakers',
     description: 'Immerse yourself in rich audio quality with our wide range of speakers.',
     totalProduct: 5678,
@@ -196,7 +209,6 @@ const ProductCategoryTable = () => {
   // States
   const [addCategoryOpen, setAddCategoryOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[categoryData])
   const [globalFilter, setGlobalFilter] = useState('')
 
@@ -252,7 +264,7 @@ const ProductCategoryTable = () => {
       }),
       columnHelper.accessor('actions', {
         header: 'Actions',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton size='small'>
               <i className='ri-edit-box-line' />
@@ -260,7 +272,11 @@ const ProductCategoryTable = () => {
             <OptionMenu
               options={[
                 { text: 'Download', icon: 'ri-download-line' },
-                { text: 'Edit', icon: 'ri-pencil-line' },
+                {
+                  text: 'Delete',
+                  icon: 'ri-delete-bin-7-line',
+                  menuItemProps: { onClick: () => setData(data.filter(category => category.id !== row.original.id)) }
+                },
                 { text: 'Duplicate', icon: 'ri-stack-line' }
               ]}
             />
@@ -270,7 +286,7 @@ const ProductCategoryTable = () => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data]
   )
 
   const table = useReactTable({
@@ -392,7 +408,12 @@ const ProductCategoryTable = () => {
           onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
-      <AddCategoryDrawer open={addCategoryOpen} handleClose={() => setAddCategoryOpen(!addCategoryOpen)} />
+      <AddCategoryDrawer
+        open={addCategoryOpen}
+        categoryData={data}
+        setData={setData}
+        handleClose={() => setAddCategoryOpen(!addCategoryOpen)}
+      />
     </>
   )
 }

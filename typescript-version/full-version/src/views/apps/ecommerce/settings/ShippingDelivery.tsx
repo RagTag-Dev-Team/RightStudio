@@ -55,7 +55,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
           <i className='ri-delete-bin-7-line' />
         </IconButton>
       </div>
-      <div className='is-full border rounded'>
+      <div className='is-full border rounded overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>
             <tr>
@@ -75,7 +75,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
                   <OptionMenu
                     options={[
                       { text: 'Edit', icon: 'ri-pencil-line' },
-                      { text: 'Delete', icon: 'ri-delete-bin-line' }
+                      { text: 'Delete', icon: 'ri-delete-bin-7-line' }
                     ]}
                   />
                 </td>

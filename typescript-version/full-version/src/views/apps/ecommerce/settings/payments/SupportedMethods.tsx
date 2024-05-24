@@ -7,11 +7,20 @@ import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
+import type { ButtonProps } from '@mui/material/Button'
 
 // Component Imports
 import Link from '@components/Link'
+import PaymentMethod from '@components/dialogs/payment-method'
+import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
 const SupportedMethods = () => {
+  // Vars
+  const buttonProps: ButtonProps = {
+    variant: 'outlined',
+    children: 'Add Payment Methods'
+  }
+
   return (
     <Card>
       <CardHeader
@@ -63,7 +72,7 @@ const SupportedMethods = () => {
             </Grid>
           </Grid>
         </div>
-        <Button variant='outlined'>Add Payment Methods</Button>
+        <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={PaymentMethod} />
       </CardContent>
     </Card>
   )

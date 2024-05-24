@@ -126,7 +126,7 @@ const ProductInventory = () => {
                     name='radio-buttons-group'
                     value={shipping}
                     onChange={e => setShipping(e.target.value)}
-                    className='flex flex-col gap-4'
+                    className='items-start gap-4'
                     aria-labelledby='shipping-type-radio-buttons-group-label'
                   >
                     <FormControlLabel
@@ -169,7 +169,7 @@ const ProductInventory = () => {
                     name='radio-buttons-group'
                     value={delivery}
                     onChange={e => setDelivery(e.target.value)}
-                    className='flex flex-col gap-4'
+                    className='items-start gap-4'
                     aria-labelledby='global-delivery-radio-buttons-group-label'
                   >
                     <FormControlLabel
@@ -218,7 +218,7 @@ const ProductInventory = () => {
                 </div>
               </TabPanel>
               <TabPanel value='attributes'>
-                <FormGroup>
+                <FormGroup className='items-start'>
                   <Typography className='font-medium'>Attributes</Typography>
                   <FormControlLabel control={<Checkbox />} label='Fragile Product' />
                   <FormControlLabel control={<Checkbox />} label='Biodegradable' />

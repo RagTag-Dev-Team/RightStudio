@@ -20,7 +20,13 @@ const productStockObj: ProductStockType = {
   'Out of Stock': false
 }
 
-const TableFilters = ({ setData, productData }: { setData: any; productData?: ProductType[] }) => {
+const TableFilters = ({
+  setData,
+  productData
+}: {
+  setData: (data: ProductType[]) => void
+  productData?: ProductType[]
+}) => {
   // States
   const [category, setCategory] = useState<ProductType['category']>('')
   const [stock, setStock] = useState('')
@@ -36,7 +42,7 @@ const TableFilters = ({ setData, productData }: { setData: any; productData?: Pr
         return true
       })
 
-      setData(filteredData)
+      setData(filteredData || [])
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [category, stock, status, productData]

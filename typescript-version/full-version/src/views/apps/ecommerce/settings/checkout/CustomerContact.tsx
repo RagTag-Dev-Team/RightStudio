@@ -22,7 +22,7 @@ const CustomerContact = () => {
           value={method}
           onChange={e => setMethod(e.target.value)}
           aria-labelledby='method-radio-buttons-group'
-          className='mbe-4'
+          className='items-start mbe-4'
         >
           <FormControlLabel value='phone' control={<Radio />} label='Phone number' />
           <FormControlLabel value='email' control={<Radio />} label='Email' />

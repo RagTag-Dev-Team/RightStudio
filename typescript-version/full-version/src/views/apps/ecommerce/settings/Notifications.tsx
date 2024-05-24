@@ -42,13 +42,13 @@ const TableCard = (props: CardProps) => {
   return (
     <div className='flex flex-col gap-4'>
       <Typography variant='h5'>{title}</Typography>
-      <div className='border rounded'>
+      <div className='border rounded overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>
             <tr>
               <th className='is-2/4'>Type</th>
-              <th>Email</th>
-              <th>App</th>
+              <th className='is-1/4'>Email</th>
+              <th className='is-1/4'>App</th>
             </tr>
           </thead>
           <tbody>

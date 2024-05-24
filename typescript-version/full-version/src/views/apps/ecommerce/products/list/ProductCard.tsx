@@ -74,7 +74,7 @@ const ProductCard = () => {
                 '[&:not(:last-child)>div]:pie-6 [&:not(:last-child)>div]:border-ie': !isBelowMdScreen
               })}
             >
-              <div className='flex justify-between items-start'>
+              <div className='flex justify-between'>
                 <div className='flex flex-col gap-1'>
                   <Typography>{item.title}</Typography>
                   <Typography variant='h4'>{item.value}</Typography>

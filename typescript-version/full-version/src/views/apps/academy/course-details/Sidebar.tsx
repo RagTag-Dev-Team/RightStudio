@@ -113,7 +113,6 @@ const Sidebar = ({ content }: { content: CourseContent[] }) => {
     <>
       {content.map((item, index) => {
         const totalTime = items[index]
-          .filter(topic => topic.isCompleted)
           .reduce((sum, topic) => {
             const time = parseFloat(topic.time || '0')
 

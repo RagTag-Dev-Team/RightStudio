@@ -10,9 +10,9 @@ import Settings from '@views/apps/ecommerce/settings'
 const StoreDetailsTab = dynamic(() => import('@views/apps/ecommerce/settings/store-details'))
 const PaymentsTab = dynamic(() => import('@views/apps/ecommerce/settings/payments'))
 const CheckoutTab = dynamic(() => import('@views/apps/ecommerce/settings/checkout'))
-const ShippingDeliveryTab = dynamic(() => import('@views/apps/ecommerce/settings/shipping-delivery'))
+const ShippingDeliveryTab = dynamic(() => import('@views/apps/ecommerce/settings/ShippingDelivery'))
 const LocationsTab = dynamic(() => import('@views/apps/ecommerce/settings/locations'))
-const NotificationsTab = dynamic(() => import('@views/apps/ecommerce/settings/notifications'))
+const NotificationsTab = dynamic(() => import('@views/apps/ecommerce/settings/Notifications'))
 
 // Vars
 const tabContentList = (): { [key: string]: ReactElement } => ({

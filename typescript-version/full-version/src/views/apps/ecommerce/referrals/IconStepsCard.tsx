@@ -1,3 +1,6 @@
+// React Imports
+import type { ReactNode } from 'react'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -7,7 +10,7 @@ import Typography from '@mui/material/Typography'
 type DataType = {
   description: string
   value: string
-  icon: JSX.Element
+  icon: ReactNode
 }
 
 // Vars
@@ -80,18 +83,16 @@ const IconStepsCard = () => {
   return (
     <Card>
       <CardHeader title='How to use' subheader='Integrate your referral code in 3 easy steps.' className='pbe-6' />
-      <CardContent className='flex flex-col gap-6'>
-        <div className='flex flex-col sm:flex-row items-center justify-around gap-6'>
-          {data.map((item, index) => (
-            <div key={index} className='flex flex-col items-center gap-2 max-is-[185px]'>
-              <div className='flex border border-dashed border-primary rounded-full p-3.5'>{item.icon}</div>
-              <Typography className='text-wrap text-center'>{item.description}</Typography>
-              <Typography variant='h6' color='primary'>
-                {item.value}
-              </Typography>
-            </div>
-          ))}
-        </div>
+      <CardContent className='flex flex-col sm:flex-row items-center justify-around gap-6'>
+        {data.map((item, index) => (
+          <div key={index} className='flex flex-col items-center gap-2 max-is-[185px]'>
+            <div className='flex border border-dashed border-primary rounded-full p-3.5'>{item.icon}</div>
+            <Typography className='text-wrap text-center'>{item.description}</Typography>
+            <Typography variant='h6' color='primary'>
+              {item.value}
+            </Typography>
+          </div>
+        ))}
       </CardContent>
     </Card>
   )
