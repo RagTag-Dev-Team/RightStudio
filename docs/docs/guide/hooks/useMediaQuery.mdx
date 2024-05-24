@@ -8,14 +8,19 @@ The `useMediaQuery()` is a custom hook used to determine if the current viewport
 
 To utilize the `useMediaQuery()` hook, please refer to the example provided below:
 
-import TsToJsCodeSnippet from "@docComponents/ts-js-code"
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx"
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import MediaQuery from "@docPages/hook-examples/use-media-query";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeMediaQuery from "!raw-loader!@docPages/hook-examples/use-media-query/index";
 
 ### Example
 
-import SourceCodeMediaQuery from "!raw-loader!@/app/[lang]/hook-examples/use-media-query/page";
-
-<IframeWindow url="https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/hook-examples/use-media-query" />
+<BrowserWindow url="/use-media-query">
+  <Provider>
+    <MediaQuery />
+  </Provider>
+</BrowserWindow>
 
 #### Source Code
 

@@ -23,14 +23,14 @@ const data: ChipData[] = [
 ];
 
 // Separate component for rendering each chip
-const ChipItem = ({ data, onDelete }: { data: ChipData; onDelete: () => void }) => {
+const ChipItem = ({ data, onDelete }: { data: ChipData; onDelete?: () => void }) => {
   const avatarUrl = data.avatar ? useBaseUrl(data.avatar) : undefined;
 
   return (
     <Chip
       key={data.key}
       label={data.label}
-      avatar={avatarUrl ? <Avatar src={avatarUrl} alt={data.avatarAlt} /> : null}
+      avatar={avatarUrl ? <Avatar src={avatarUrl} alt={data.avatarAlt} /> : <></>}
       onDelete={onDelete}
     />
   );

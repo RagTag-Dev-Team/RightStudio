@@ -2,11 +2,22 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/custom-styles/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import CustomStyles from "@docPages/menu-examples/vertical-menu/vertical-nav/CustomStyles";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/CustomStyles";
 
 # Custom Style
+
+export const updatedCode = SourceCode.replace(
+  /\{\s*\.\.\.(\(isCollapsed \? \{ color: 'red' \} : \{ color: 'blue' \}\)),[^}]*\}\}/,
+  "$1"
+)
+  .replace("flex min-bs-full bs-dvh", "flex")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "")
+  .replace(/backgroundColor='.*'/, "");
 
 The Custom Style feature provides the flexibility to apply custom styling to the navigation sidebar. With the `customStyles` prop, you can pass a set of CSS properties to customize the appearance of the sidebar according to your design preferences. The `customStyles` prop accepts a CSSObject from the [Emotion](https://emotion.sh/docs/introduction) library.
 
@@ -18,8 +29,11 @@ customStyles?: CSSObject
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/vertical-nav/custom-styles' />
-
+<BrowserWindow url="/vertical-menu/vertical-nav/custom-styles">
+  <Provider>
+    <CustomStyles />
+  </Provider>
+</BrowserWindow>
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

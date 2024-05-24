@@ -2,12 +2,30 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expand-icon/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/expand-icon/without-params/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import WithParams from "@docPages/menu-examples/vertical-menu/menu/expand-icon/WithParams";
+import WithoutParams from "@docPages/menu-examples/vertical-menu/menu/expand-icon/WithoutParams";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeWithParams from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expand-icon/WithParams";
+import SourceCodeWithoutParams from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu/expand-icon/WithoutParams";
 
 # Expand Menu Icon
+
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `renderExpandIcon` prop allows you to customize the icon used for expanding the menu. The `renderExpandIcon` prop takes a `RenderExpandIconParams` object as a parameter. This function allows you to fully customize the expand menu icon based on different conditions or states.
 
@@ -39,11 +57,15 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu/expand-icon/with-params' />
+<BrowserWindow url="/vertical-menu/menu/expand-icon/with-params">
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
@@ -51,8 +73,12 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu/expand-icon/without-params' />
+<BrowserWindow url="/vertical-menu/menu/expand-icon/without-params">
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

@@ -1,5 +1,5 @@
 // React Imports
-import type { MouseEvent } from 'react'
+import type { MouseEvent, RefObject } from 'react'
 
 // MUI Imports
 import Badge from '@mui/material/Badge'
@@ -30,7 +30,7 @@ const BadgeContentSpan = styled('span', {
 }))
 
 type AvatarWithBadgeProps = {
-  ref?: React.RefObject<HTMLDivElement>
+  ref?: RefObject<HTMLDivElement>
   alt?: string
   src?: string
   color?: ThemeColor

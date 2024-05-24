@@ -2,18 +2,32 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-render/static-menu/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import StaticMenu from "@docPages/menu-examples/vertical-menu/menu-render/StaticMenu";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-render/StaticMenu";
 
 # Static Menu
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The static menu is the simplest way to create a menu where you render the menu components directly in your code without any dynamic data source. It is useful when you have a fixed set of menu items that do not change based on external factors.
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-render/static-menu' />
+<BrowserWindow url="/vertical-menu/menu-render/static-menu">
+  <Provider>
+    <StaticMenu />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

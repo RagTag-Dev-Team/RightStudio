@@ -2,11 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/default-open/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import DefaultOpen from "@docPages/menu-examples/vertical-menu/submenu/DefaultOpen";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/DefaultOpen";
 
 # Default Open
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `defaultOpen` prop is used to specify whether a submenu should be open by default when the page loads. By setting the `defaultOpen` prop to true, you can indicate that a specific submenu should be initially open.
 
@@ -22,8 +32,12 @@ defaultOpen={false}
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/submenu/default-open' />
+<BrowserWindow url="/vertical-menu/submenu/default-open">
+  <Provider>
+    <DefaultOpen />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

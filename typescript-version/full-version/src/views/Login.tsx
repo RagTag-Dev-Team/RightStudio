@@ -177,7 +177,14 @@ const Login = ({ mode }: { mode: SystemMode }) => {
               <span className='font-medium'>admin</span>
             </Typography>
           </Alert>
-          <form noValidate method='post' autoComplete='off' onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
+          <form
+            noValidate
+            method='post'
+            autoComplete='off'
+            action={() => {}}
+            onSubmit={handleSubmit(onSubmit)}
+            className='flex flex-col gap-6'
+          >
             <Controller
               name='email'
               control={control}

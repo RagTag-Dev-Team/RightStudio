@@ -2,11 +2,18 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/submenu/prefix/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Prefix from "@docPages/menu-examples/horizontal-menu/submenu/Prefix";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/submenu/Prefix";
 
 # Prefix
+
+export const updatedCode = SourceCode.replace(
+  /import menuItemStyles.*\n/,
+  ""
+).replace(/menuItemStyles={.*}/, "");
 
 The `prefix` prop allows you to add additional content or elements before the label of a submenu.
 
@@ -18,8 +25,12 @@ prefix?: ReactNode | ChipProps
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/submenu/prefix' />
+<BrowserWindow url="/horizontal-menu/submenu/prefix">
+  <Provider>
+    <Prefix />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

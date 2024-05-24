@@ -2,12 +2,29 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBrowserScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/browser-scroll/page'
-import SourceCodePerfectScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import BrowserScroll from "@docPages/menu-examples/vertical-menu/menu-scroll/full/BrowserScroll";
+import PerfectScroll from "@docPages/menu-examples/vertical-menu/menu-scroll/full/PerfectScroll";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeBrowserScroll from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/full/BrowserScroll";
+import SourceCodePerfectScroll from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/full/PerfectScroll";
 
 # Full Menu Scroll
+
+export const updatedCodeBrowserScroll = SourceCodeBrowserScroll.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
+export const updatedCodePerfectScroll = SourceCodePerfectScroll.replace(
+  /\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 ## Browser scroll
 
@@ -15,11 +32,15 @@ The browser scroll is the default scroll behavior for the vertical menu. When th
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-scroll/full/browser-scroll' />
+<BrowserWindow url="/vertical-menu/menu-scroll/full/browser-scroll">
+  <Provider>
+    <BrowserScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodeBrowserScroll}</TsToJsCodeSnippet>
 
 ## PerfectScrollBar
 
@@ -28,15 +49,19 @@ The perfect scrollbar is a custom scrollbar implementation that provides a more 
 You need to import the `PerfectScrollbar` component and wrap the menu component with it. Also import the associated CSS styles into the file where you want to use the perfect scrollbar. To import the CSS styles, you can use the following import statement:
 
 ```ts
-import 'react-perfect-scrollbar/dist/css/styles.css'
+import "react-perfect-scrollbar/dist/css/styles.css";
 ```
 
 This will replace the default browser scrollbar with the custom perfect scrollbar.
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-scroll/full/perfect-scroll' />
+<BrowserWindow url="/vertical-menu/menu-scroll/full/perfect-scroll">
+  <Provider>
+    <PerfectScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCodePerfectScroll}</TsToJsCodeSnippet>

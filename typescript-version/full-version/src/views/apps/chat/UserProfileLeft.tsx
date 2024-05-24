@@ -1,6 +1,6 @@
 // React Imports
-import { useEffect, useState } from 'react'
-import type { ReactNode } from 'react'
+import { useState } from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 
 // MUI Import
 import Drawer from '@mui/material/Drawer'
@@ -22,9 +22,9 @@ import Button from '@mui/material/Button'
 
 // Third Party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
+import type { AppDispatch } from '@/redux-store'
 import type { ProfileUserType, StatusType } from '@/types/apps/chatTypes'
 
 // Slice Imports
@@ -35,10 +35,10 @@ import AvatarWithBadge from './AvatarWithBadge'
 import { statusObj } from '@views/apps/chat/SidebarLeft'
 
 type Props = {
-  open: boolean
+  userSidebar: boolean
   setUserSidebar: (open: boolean) => void
   profileUserData: ProfileUserType
-  dispatch: Dispatch
+  dispatch: AppDispatch
   isBelowLgScreen: boolean
   isBelowSmScreen: boolean
 }
@@ -53,7 +53,7 @@ const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isB
 
 const UserProfileLeft = (props: Props) => {
   // Props
-  const { open, setUserSidebar, profileUserData, dispatch, isBelowLgScreen, isBelowSmScreen } = props
+  const { userSidebar, setUserSidebar, profileUserData, dispatch, isBelowLgScreen, isBelowSmScreen } = props
 
   // States
   const [twoStepVerification, setTwoStepVerification] = useState<boolean>(true)
@@ -67,21 +67,14 @@ const UserProfileLeft = (props: Props) => {
     setNotification(!notification)
   }
 
-  const handleUserStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUserStatus = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setUserStatus({ status: e.target.value as StatusType }))
   }
-
-  useEffect(() => {
-    if (open) {
-      setUserSidebar(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return profileUserData ? (
     <>
       <Drawer
-        open={open}
+        open={userSidebar}
         anchor='left'
         variant='persistent'
         ModalProps={{ keepMounted: true }}
@@ -136,7 +129,10 @@ const UserProfileLeft = (props: Props) => {
                 Settings
               </Typography>
               <List className='plb-0'>
-                <ListItem disablePadding secondaryAction={<Switch checked={twoStepVerification} />}>
+                <ListItem
+                  disablePadding
+                  secondaryAction={<Switch checked={twoStepVerification} onChange={handleTwoStepVerification} />}
+                >
                   <ListItemButton onClick={handleTwoStepVerification} className='p-2'>
                     <ListItemIcon>
                       <i className='tabler-lock' />
@@ -144,7 +140,10 @@ const UserProfileLeft = (props: Props) => {
                     <ListItemText primary='Two-step Verification' />
                   </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding secondaryAction={<Switch checked={notification} />}>
+                <ListItem
+                  disablePadding
+                  secondaryAction={<Switch checked={notification} onChange={handleNotification} />}
+                >
                   <ListItemButton onClick={handleNotification} className='p-2'>
                     <ListItemIcon>
                       <i className='tabler-bell' />
@@ -176,7 +175,7 @@ const UserProfileLeft = (props: Props) => {
           </div>
         </ScrollWrapper>
       </Drawer>
-      <Backdrop open={open} onClick={() => setUserSidebar(false)} className='absolute z-[12]' />
+      <Backdrop open={userSidebar} onClick={() => setUserSidebar(false)} className='absolute z-[12]' />
     </>
   ) : null
 }

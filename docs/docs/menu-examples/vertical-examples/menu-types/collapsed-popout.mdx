@@ -2,11 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-types/collapsed-popout/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import CollapsedPopout from "@docPages/menu-examples/vertical-menu/menu-types/CollapsedPopout";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-types/CollapsedPopout";
 
 # Collpased + Popout
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 :::danger Warning
 Please note that the `defaultCollapsed` prop is meant for internal use only. It is recommended not to use this prop in your project because the settings configuration will always override the `defaultCollapsed` prop. If you want to `collapse` the menu, set the value of `layout` to `collapsed` in the `src/config/themeConfig.ts` file.
@@ -32,8 +42,12 @@ triggerPopout?: 'hover' | 'click'
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-types/collapsed-popout' />
+<BrowserWindow url="/vertical-menu/menu-types/collapsed-popout">
+  <Provider>
+    <CollapsedPopout />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

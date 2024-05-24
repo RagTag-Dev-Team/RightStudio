@@ -2,11 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/component/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Component from "@docPages/menu-examples/vertical-menu/submenu/Component";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/Component";
 
 # Component
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `component` prop allows you to change the wrapper component of a submenu. The `component` prop accepts either a string or a ReactElement. If you pass a string, it will be used as the HTML tag for the wrapping component. If you pass a ReactElement, it will be rendered as the wrapping component itself.
 
@@ -17,13 +27,17 @@ component?: string | ReactElement
 ```
 
 ```ts noCopy title='Default Value'
-component=<a></a>
+component = <a></a>;
 ```
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/submenu/component' />
+<BrowserWindow url="/vertical-menu/submenu/component">
+  <Provider>
+    <Component />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -2,11 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-position/fixed-menu/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import FixedMenu from "@docPages/menu-examples/vertical-menu/menu-position/FixedMenu";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-position/FixedMenu";
 
 # Fixed Menu
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 By default, the navigation sidebar is fixed and does not scroll with the content of the page. This means that as you scroll the page, the navigation sidebar remains in a fixed position. However, you can customize this behavior by using the `scrollWithContent` prop.
 
@@ -22,8 +32,15 @@ scrollWithContent={false}
 
 ### Examples
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-position/fixed-menu' />
+<BrowserWindow
+  bodyStyle={{ overflow: "auto" }}
+  url="/vertical-menu/menu-position/fixed-menu"
+>
+  <Provider>
+    <FixedMenu />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

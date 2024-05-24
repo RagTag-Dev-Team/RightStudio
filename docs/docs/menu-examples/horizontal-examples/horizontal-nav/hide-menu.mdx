@@ -2,11 +2,22 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/hide-menu/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import HideMenu from "@docPages/menu-examples/horizontal-menu/horizontal-nav/HideMenu";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/HideMenu";
 
 # Hide Menu
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/import menuItemStyles.*\n/, "")
+  .replace(/import verticalMenuItemStyles.*\n/, "")
+  .replace(/menuItemStyles={.*}/g, "")
+  .replace(/verticalMenuProps={.*}/, "");
 
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
@@ -18,8 +29,12 @@ For implementing this functionality, You need to pass the `hidemenu` prop to the
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/horizontal-nav/hide-menu' />
+<BrowserWindow url="/horizontal-menu/horizontal-nav/hide-menu">
+  <Provider>
+    <HideMenu />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

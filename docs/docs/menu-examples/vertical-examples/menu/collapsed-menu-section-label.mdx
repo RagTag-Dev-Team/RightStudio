@@ -2,13 +2,23 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu/collapsed-menu-section-label/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import CollapsedMenuSectionLabel from "@docPages/menu-examples/vertical-menu/menu/CollapsedMenuSectionLabel";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu/CollapsedMenuSectionLabel";
 
 # Collapsed Menu Section Label
 
-When the menu is collapsed, the `collapsedMenuSectionLabel` prop can be used to display a custom label for each menu section. 
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
+
+When the menu is collapsed, the `collapsedMenuSectionLabel` prop can be used to display a custom label for each menu section.
 
 ### Props
 
@@ -18,8 +28,12 @@ collapsedMenuSectionLabel?: ReactNode;
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu/collapsed-menu-section-label' />
+<BrowserWindow url="/vertical-menu/menu/collapsed-menu-section-label">
+  <Provider>
+    <CollapsedMenuSectionLabel />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeBrowserScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll/page'
-import SourceCodePerfectScroll from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import BrowserScroll from "@docPages/menu-examples/vertical-menu/menu-scroll/popout/BrowserScroll";
+import PerfectScroll from "@docPages/menu-examples/vertical-menu/menu-scroll/popout/PerfectScroll";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeBrowserScroll from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/popout/BrowserScroll";
+import SourceCodePerfectScroll from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-scroll/popout/PerfectScroll";
 
 # Popout Scroll
 
@@ -13,7 +16,7 @@ This feature is specifically designed for a collapsed navigation sidebar where t
 
 The `popoutWhenCollapsed` prop controls the behavior of the navigation sidebar when it is collapsed. It enables the popout functionality, allowing the menu items to be displayed in a popout menu when the available space is insufficient.
 
-The `triggerPopout` prop specifies the event that triggers the popout menu. It can be set to either "hover" or "click" to define how the popout menu is triggered. 
+The `triggerPopout` prop specifies the event that triggers the popout menu. It can be set to either "hover" or "click" to define how the popout menu is triggered.
 
 ## Browser scroll
 
@@ -31,11 +34,24 @@ browserScroll={false}
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-scroll/popout/browser-scroll' />
+export const updatedSourceCodeBrowserScroll = SourceCodeBrowserScroll.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/\s*\/\/\sMUI.*\s*import\s{ deepmerge.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
+
+<BrowserWindow url="/vertical-menu/menu-scroll/popout/browser-scroll">
+  <Provider>
+    <BrowserScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeBrowserScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeBrowserScroll}</TsToJsCodeSnippet>
 
 ## Perfect Scroll
 
@@ -43,8 +59,21 @@ The perfect scroll is the default scroll behavior for the vertical popout menu. 
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-scroll/popout/perfect-scroll' />
+export const updatedSourceCodePerfectScroll = SourceCodePerfectScroll.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/\s*\/\/\sMUI.*\s*import\s{ deepmerge.*/, "")
+  .replace(/menuItemStyles={([\s\S]*?)\)\}/, "");
+
+<BrowserWindow url="/vertical-menu/menu-scroll/popout/perfect-scroll">
+  <Provider>
+    <PerfectScroll />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodePerfectScroll}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodePerfectScroll}</TsToJsCodeSnippet>

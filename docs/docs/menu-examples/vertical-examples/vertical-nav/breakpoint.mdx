@@ -2,11 +2,20 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/breakpoint/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Breakpoint from "@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoint";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoint";
 
 # Breakpoint
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `breakpoint` prop is used to determine when the navigation sidebar should trigger responsive behavior. The responsive behavior typically involves hiding the navigation sidebar and showing a hamburger menu button instead. When the hamburger menu button is clicked, the navigation sidebar is shown as an overlay. The default value for the `breakpoint` prop is `lg`, which means that the navigation sidebar will be hidden when the screen size is less than 1200px. The `breakpoint` prop can be set to `always` to always show the hamburger menu button, regardless of the screen size.
 
@@ -17,7 +26,7 @@ breakpoint? : 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
 ```
 
 ```ts noCopy title='Default Value'
-breakpoint='lg'
+breakpoint = "lg";
 ```
 
 | Value  | Description                                                                        |
@@ -32,8 +41,12 @@ breakpoint='lg'
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/vertical-nav/breakpoint' />
+<BrowserWindow url="/vertical-menu/vertical-nav/breakpoint">
+  <Provider>
+    <Breakpoint />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

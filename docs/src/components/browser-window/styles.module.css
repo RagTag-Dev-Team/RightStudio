@@ -3,6 +3,9 @@
   border-radius: var(--ifm-global-radius);
   box-shadow: var(--ifm-global-shadow-lw);
   margin-block-end: var(--ifm-leading);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .browserWindowHeader {
@@ -73,9 +76,14 @@
 }
 
 .browserWindowBody {
-  background-color: var(--ifm-background-color);
+  background-color: var(--mui-palette-background-default);
   border-end-start-radius: inherit;
   border-end-end-radius: inherit;
+  overflow: hidden;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .browserWindowBody > *:last-child {

@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 
 const ToastsPreventDuplicate = () => {
-    const toastId = useRef(null);
+    const toastId = useRef<number | string>('')
   
     const notify = () => {
       if(! toast.isActive(toastId.current)) {

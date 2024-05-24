@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expand-icon/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/expand-icon/without-params/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import WithParams from "@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithParams";
+import WithoutParams from "@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithoutParams";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeWithParams from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithParams";
+import SourceCodeWithoutParams from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/expand-icon/WithoutParams";
 
 # Expand Menu Icon
 
@@ -39,11 +42,20 @@ The `renderExpandIcon` prop is a function that takes a `RenderExpandIconParams` 
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu/expand-icon/with-params' />
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(
+  /import menuItemStyles.*\n/,
+  ""
+).replace(/menuItemStyles={.*}/, "");
+
+<BrowserWindow url="/horizontal-menu/menu/expand-icon/with-params">
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
 
@@ -51,8 +63,17 @@ The `renderExpandIcon` prop takes a `ReactElement`. You can also customize the e
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu/expand-icon/without-params' />
+export const updatedSourceCodeWithoutParams = SourceCodeWithoutParams.replace(
+  /import menuItemStyles.*\n/,
+  ""
+).replace(/menuItemStyles={.*}/, "");
+
+<BrowserWindow url="/horizontal-menu/menu/expand-icon/without-params">
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

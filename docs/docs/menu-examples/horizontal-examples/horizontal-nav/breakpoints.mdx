@@ -2,11 +2,22 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/horizontal-nav/breakpoints/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Breakpoints from "@docPages/menu-examples/horizontal-menu/horizontal-nav/Breakpoints";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/Breakpoints";
 
 # Breakpoints
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/import menuItemStyles.*\n/, "")
+  .replace(/import verticalMenuItemStyles.*\n/, "")
+  .replace(/menuItemStyles={.*}/, "")
+  .replace(/verticalMenuProps={.*}/, "");
 
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
@@ -42,8 +53,12 @@ breakpoints = {
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/horizontal-nav/breakpoints' />
+<BrowserWindow url="/horizontal-menu/horizontal-nav/breakpoints">
+  <Provider>
+    <Breakpoints />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

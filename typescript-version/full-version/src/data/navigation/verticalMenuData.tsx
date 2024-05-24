@@ -34,6 +34,14 @@ const verticalMenuData = (
         label: dictionary['navigation'].eCommerce,
         icon: 'tabler-circle',
         href: '/dashboards/ecommerce'
+      },
+      {
+        label: dictionary['navigation'].academy,
+        href: '/dashboards/academy'
+      },
+      {
+        label: dictionary['navigation'].logistics,
+        href: '/dashboards/logistics'
       }
     ]
   },
@@ -43,6 +51,104 @@ const verticalMenuData = (
     label: dictionary['navigation'].appsPages,
     isSection: true,
     children: [
+      {
+        label: dictionary['navigation'].eCommerce,
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/ecommerce/dashboard'
+          },
+          {
+            label: dictionary['navigation'].products,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/products/list'
+              },
+              {
+                label: dictionary['navigation'].add,
+                href: '/apps/ecommerce/products/add'
+              },
+              {
+                label: dictionary['navigation'].category,
+                href: '/apps/ecommerce/products/category'
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].orders,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/orders/list'
+              },
+              {
+                label: dictionary['navigation'].details,
+                href: `/apps/ecommerce/orders/details/${params.id || '5434'}`
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].customers,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/customers/list'
+              },
+              {
+                label: dictionary['navigation'].details,
+                href: `/apps/ecommerce/customers/details/${params.id || '879861'}`
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].manageReviews,
+            href: '/apps/ecommerce/manage-reviews'
+          },
+          {
+            label: dictionary['navigation'].referrals,
+            href: '/apps/ecommerce/referrals'
+          },
+          {
+            label: dictionary['navigation'].settings,
+            href: '/apps/ecommerce/settings'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].academy,
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/academy/dashboard'
+          },
+          {
+            label: dictionary['navigation'].myCourses,
+            href: '/apps/academy/my-courses'
+          },
+          {
+            label: dictionary['navigation'].courseDetails,
+            href: '/apps/academy/course-details'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].logistics,
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/logistics/dashboard'
+          },
+          {
+            label: dictionary['navigation'].fleet,
+            href: '/apps/logistics/fleet'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].email,
+        href: '/apps/email'
+      },
       {
         label: dictionary['navigation'].chat,
         icon: 'tabler-message-circle-2',

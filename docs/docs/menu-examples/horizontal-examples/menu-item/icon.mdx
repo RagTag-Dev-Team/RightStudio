@@ -2,11 +2,18 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu-item/icon/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Icon from "@docPages/menu-examples/horizontal-menu/menu-item/Icon";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu-item/Icon";
 
 # Icon
+
+export const updatedCode = SourceCode.replace(
+  /import menuItemStyles.*\n/,
+  ""
+).replace(/menuItemStyles={.*}/, "");
 
 The `icon` prop allows you to add an icon to the menu item. The icon prop accepts a React element, which can be any valid JSX or component that represents the desired icon. This gives you the flexibility to use popular icon libraries, custom SVG icons, or any other icon implementation you prefer.
 
@@ -18,8 +25,12 @@ icon?: ReactElement
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu-item/icon' />
+<BrowserWindow url="/horizontal-menu/menu-item/icon">
+  <Provider>
+    <Icon />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -1,7 +1,10 @@
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import WithParams from "@docPages/menu-examples/horizontal-menu/menu/menu-item-styles/WithParams";
+import WithoutParams from "@docPages/menu-examples/horizontal-menu/menu/menu-item-styles/WithoutParams";
 import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import IframeWindow from "@docComponents/browser-window/IframeWindow.tsx";
-import SourceCodeWithParams from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/menu-item-styles/with-params/page";
-import SourceCodeWithoutParams from "!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/menu-item-styles/without-params/page";
+import SourceCodeWithParams from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/menu-item-styles/WithParams";
+import SourceCodeWithoutParams from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/menu-item-styles/WithoutParams";
 
 # Menu Item Styles
 
@@ -67,7 +70,11 @@ By using the MenuItemStylesParams object, you can dynamically apply styles based
 
 ### Example
 
-<IframeWindow url="https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu/menu-item-styles/with-params" />
+<BrowserWindow url="/horizontal-menu/menu/menu-item-styles/with-params">
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -79,7 +86,11 @@ The `menuItemStyles` prop directly returns a `CSSObject` without any parameters.
 
 ### Example
 
-<IframeWindow url="https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu/menu-item-styles/without-params" />
+<BrowserWindow url="/horizontal-menu/menu/menu-item-styles/without-params">
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 

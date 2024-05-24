@@ -2,10 +2,13 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCodeWithParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/on-open-change/with-params/page'
-import SourceCodeWithoutParams from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/submenu/on-open-change/without-params/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import WithParams from "@docPages/menu-examples/vertical-menu/submenu/on-open-change/WithParams";
+import WithoutParams from "@docPages/menu-examples/vertical-menu/submenu/on-open-change/WithoutParams";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCodeWithParams from "!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/on-open-change/WithParams";
+import SourceCodeWithoutParams from "!!raw-loader!@docPages/menu-examples/vertical-menu/submenu/on-open-change/WithoutParams";
 
 # On Open Change
 
@@ -19,24 +22,50 @@ onOpenChange?: (open: boolean) => void
 
 ## With Parameter
 
+export const updatedSourceCodeWithParams = SourceCodeWithParams.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace("flex min-bs-full bs-dvh", "flex")
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
+
 This example demonstrates the `onOpenChange` prop with a boolean parameter. When the submenu is opened or closed, the `onOpenChange` function is called with a boolean parameter indicating the new state of the submenu.
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/submenu/on-open-change/with-params' />
+<BrowserWindow url="/vertical-menu/submenu/on-open-change/with-params">
+  <Provider>
+    <WithParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithParams}</TsToJsCodeSnippet>
 
 ## Without Parameter
+
+export const updatedSourceCodeWithoutParams = SourceCodeWithParams.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace("flex min-bs-full bs-dvh", "flex")
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 This example illustrates the `onOpenChange` prop without any parameters.
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/submenu/on-open-change/without-params' />
+<BrowserWindow url="/vertical-menu/submenu/on-open-change/without-params">
+  <Provider>
+    <WithoutParams />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCodeWithoutParams}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedSourceCodeWithoutParams}</TsToJsCodeSnippet>

@@ -2,11 +2,20 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/breakpoints/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Breakpoints from "@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoints";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/Breakpoints";
 
 # Breakpoints
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `breakpoints` prop is used to override the default breakpoints by providing your own custom object. Users can pass in an object that only includes specific breakpoints they want to customize, while the rest will be the default values. You can also override all the breakpoints by passing in an object with all the breakpoints.
 
@@ -38,8 +47,12 @@ breakpoints = {
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/vertical-nav/breakpoints' />
+<BrowserWindow url="/vertical-menu/vertical-nav/breakpoints">
+  <Provider>
+    <Breakpoints />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -16,10 +16,10 @@ import MenuItem from '@mui/material/MenuItem'
 // Third-party Imports
 import Picker from '@emoji-mart/react'
 import data from '@emoji-mart/data'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { ContactType } from '@/types/apps/chatTypes'
+import type { AppDispatch } from '@/redux-store'
 
 // Slice Imports
 import { sendMsg } from '@/redux-store/slices/chat'
@@ -28,12 +28,13 @@ import { sendMsg } from '@/redux-store/slices/chat'
 import CustomIconButton from '@core/components/mui/IconButton'
 
 type Props = {
-  dispatch: Dispatch
+  dispatch: AppDispatch
   activeUser: ContactType
   isBelowSmScreen: boolean
   messageInputRef: RefObject<HTMLDivElement>
 }
 
+// Emoji Picker Component for selecting emojis
 const EmojiPicker = ({
   onChange,
   isBelowSmScreen,

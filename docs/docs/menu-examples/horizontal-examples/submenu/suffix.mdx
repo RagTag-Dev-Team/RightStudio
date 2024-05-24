@@ -2,11 +2,18 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/submenu/suffix/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import Suffix from "@docPages/menu-examples/horizontal-menu/submenu/Suffix";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/submenu/Suffix";
 
 # Suffix
+
+export const updatedCode = SourceCode.replace(
+  /import menuItemStyles.*\n/,
+  ""
+).replace(/menuItemStyles={.*}/, "");
 
 The `suffix` prop allows you to add additional content or elements after the label of a submenu.
 
@@ -18,8 +25,12 @@ suffix?: ReactNode | ChipProps
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/submenu/suffix' />
+<BrowserWindow url="/horizontal-menu/submenu/suffix">
+  <Provider>
+    <Suffix />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

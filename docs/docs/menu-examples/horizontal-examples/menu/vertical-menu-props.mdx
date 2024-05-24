@@ -2,9 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu/vertical-menu-props/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import VerticalMenuProps from "@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu/VerticalMenuProps";
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/,
+  ""
+)
+  .replace(/import menuItemStyles.*\n/, "")
+  .replace(/import verticalMenuItemStyles.*\n/, "")
+  .replace(/menuItemStyles={.*}/g, "")
+  .replace(/verticalMenuProps={.*}/, "")
+  .replace(" ...verticalMenuItemStyles(), ", "");
 
 # Vertical Menu Props
 
@@ -32,8 +44,12 @@ verticalMenuProps?: Pick<
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu/vertical-menu-props' />
+<BrowserWindow url="/horizontal-menu/menu/vertical-menu-props">
+  <Provider>
+    <VerticalMenuProps />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

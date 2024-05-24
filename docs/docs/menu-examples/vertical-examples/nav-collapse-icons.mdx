@@ -4,11 +4,22 @@ hide_table_of_contents: true
 
 # Nav Collpase Icons
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/nav-collapse-icons/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import NavCollapseIcons from "@docPages/menu-examples/vertical-menu/NavCollapseIcons";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/NavCollapseIcons";
 
-import VerticalNavCollapseIconsProps from '@site/src/components/props/vertical-props/VerticalNavCollapseIcons'
+import VerticalNavCollapseIconsProps from "@site/src/components/props/vertical-props/VerticalNavCollapseIcons";
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}/,
+  ""
+)
+  .replace("flex min-bs-full bs-dvh", "flex")
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 ## Props with types
 
@@ -26,7 +37,11 @@ import VerticalNavCollapseIconsProps from '@site/src/components/props/vertical-p
   </tbody>
 </table>
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/nav-collapse-icons' />
+<BrowserWindow url="/vertical-menu/nav-collapse-icons">
+  <Provider>
+    <NavCollapseIcons />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
@@ -43,6 +58,7 @@ The `onClick={() => console.log('clicked')}` prop written below in the `NavColla
 - <NavCollapseIcons onClick={() => console.log('clicked')} />
 + <NavCollapseIcons onClick={() => updateSettings({ layout: !isCollapsed ? 'collapsed' : 'vertical' })} />
 ```
+
 :::
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

@@ -2,11 +2,20 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/vertical-nav/backdrop-color/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import BackdropColor from "@docPages/menu-examples/vertical-menu/vertical-nav/BackdropColor";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/vertical-nav/BackdropColor";
 
 # Backdrop Color
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*customStyles=\{\{([\s\S]*?)\}\}\s*.*\s*.*\/\/.*/,
+  ""
+)
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The backdrop color is the background color of the overlay that appears behind the navigation sidebar when it is open. The backdrop color can be changed by setting the `backdropColor` prop to any valid CSS value for background-color.
 
@@ -17,13 +26,17 @@ backdropColor?: string
 ```
 
 ```ts noCopy title='Default Value'
-backdropColor='rgba(0, 0, 0, 0.3)'
+backdropColor = "rgba(0, 0, 0, 0.3)";
 ```
 
 ### Examples
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/vertical-nav/backdrop-color' />
+<BrowserWindow url="/vertical-menu/vertical-nav/backdrop-color">
+  <Provider>
+    <BackdropColor />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

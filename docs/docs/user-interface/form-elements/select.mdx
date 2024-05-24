@@ -1,6 +1,6 @@
 ---
 hide_table_of_contents: true
-title: ''
+title: '
 sidebar_label: Select
 ---
 
@@ -38,29 +38,26 @@ Please refer to MUI's official docs for more details on component's [usage guide
     <CardSnippet
       title='Custom'
       code={SourceCodeSelectCustom}
-    >
-      {
+    > 
         <Typography className='mbe-4'>
           To use the custom <code>select</code>, use select prop with the <code>CustomTextField</code> component and pass multiple <code>MenuItem</code> components as children of the <code>CustomTextField</code> component for the multiple options.
 
           <br/>
-          
-          To use the custom <code>select</code>, use the <code>SelectProps=&#123;&#123; native: true &#125;&#125;</code> prop with the <code>CustomTextField</code> component and pass multiple <code>&lt;option&gt;</code> elements as children of the <code>CustomTextField</code> component for the multiple options. 
+
+          To use the custom <code>select</code>, use the <code>SelectProps=&#123&#123 native: true &#125&#125</code> prop with the <code>CustomTextField</code> component and pass multiple <code>&ltoption&gt</code> elements as children of the <code>CustomTextField</code> component for the multiple options.
         </Typography>
-      }
       <SelectCustom />
     </CardSnippet>
+
   </Grid>
   <Grid item xs={12} md={6}>
     <CardSnippet
       title='Variants'
       code={SourceCodeSelectVariants}
     >
-      {
-        <Typography className='mbe-4'>
-          Use <code>variant={`{'filled' | 'standard'}`}</code> prop with <code>FormControl</code> component for different variants of select and use <code>MenuItem</code> component as children of <code>Select</code> component.
-        </Typography>
-      }
+      <Typography className='mbe-4'>
+        Use <code>variant={`{'filled' | 'standard'}`}</code> prop with <code>FormControl</code> component for different variants of select and use <code>MenuItem</code> component as children of <code>Select</code> component.
+      </Typography>
       <SelectVariants />
     </CardSnippet>
   </Grid>
@@ -69,11 +66,9 @@ Please refer to MUI's official docs for more details on component's [usage guide
       title='Native Select'
       code={SourceCodeSelectNative}
     >
-     {
-        <Typography className='mbe-4'>
-          Use <code>native</code> prop with <code>Select</code> component and <code>&lt;option&gt;</code> element inside <code>Select</code> component for native select.
-        </Typography>
-      }
+      <Typography className='mbe-4'>
+        Use <code>native</code> prop with <code>Select</code> component and <code>&ltoption&gt</code> element inside <code>Select</code> component for native select.
+      </Typography>
       <SelectNative />
     </CardSnippet>
   </Grid>
@@ -82,11 +77,9 @@ Please refer to MUI's official docs for more details on component's [usage guide
       title='Select Props'
       code={SourceCodeSelectProps}
     >
-      {
-        <Typography className='mbe-4'>
-          Use <code>label</code>, <code>helperText</code>, <code>disabled</code>, <code>error</code>, <code>required</code>, <code>inputProps</code> and <code>SelectProps</code> props with the <code>CustomTextField</code> component for different states of <code>select</code>.
-        </Typography>
-      }
+      <Typography className='mbe-4'>
+        Use <code>label</code>, <code>helperText</code>, <code>disabled</code>, <code>error</code>, <code>required</code>, <code>inputProps</code> and <code>SelectProps</code> props with the <code>CustomTextField</code> component for different states of <code>select</code>.
+      </Typography>
       <SelectProps />
     </CardSnippet>
   </Grid>
@@ -94,12 +87,10 @@ Please refer to MUI's official docs for more details on component's [usage guide
     <CardSnippet
       title='Controlled and Uncontrolled'
       code={SourceCodeSelectControlledUncontrolled}
-    >
-      {
+    > 
         <Typography className='mbe-4'>
           Manage value with the help of a state and pass it in the <code>SelectProps</code> prop with the <code>CustomTextField</code> component for controlled select and use <code>defaultValue</code> prop with the <code>CustomTextField</code> component for uncontrolled Select.
-        </Typography>
-      }
+        </Typography> 
       <SelectControlledUncontrolled />
     </CardSnippet>
   </Grid>
@@ -108,11 +99,9 @@ Please refer to MUI's official docs for more details on component's [usage guide
       title='Sizes'
       code={SourceCodeSelectSize}
     >
-      {
-        <Typography className='mbe-4'>
-         Use <code>size='small' | 'medium'</code> prop with <code>CustomTextField</code> component for different sizes of select.
-        </Typography>
-      }
+      <Typography className='mbe-4'>
+       Use <code>size='small' | 'medium'</code> prop with <code>CustomTextField</code> component for different sizes of select.
+      </Typography>
       <SelectSize />
     </CardSnippet>
   </Grid>
@@ -121,11 +110,9 @@ Please refer to MUI's official docs for more details on component's [usage guide
       title='Multiple Select'
       code={SourceCodeSelectMultiple}
     >
-      {
-        <Typography className='mbe-4'>
-          Use <code>SelectProps=&#123;&#123; multiple: true &#125;&#125;</code> prop with the <code>CustomTextField</code> component for multiple selections.
-        </Typography>
-      }
+      <Typography className='mbe-4'>
+        Use <code>SelectProps=&#123&#123 multiple: true &#125&#125</code> prop with the <code>CustomTextField</code> component for multiple selections.
+      </Typography>
       <SelectMultiple />
     </CardSnippet>
   </Grid>
@@ -144,11 +131,9 @@ Please refer to MUI's official docs for more details on component's [usage guide
           title='Grouping'
           code={SourceCodeSelectGrouping}
         >
-          {
-            <Typography className='mbe-4'>
-              Display categories with the <code>ListSubheader</code> component or the native <code>&lt;optgroup&gt;</code> element.
-            </Typography>
-          }
+          <Typography className='mbe-4'>
+            Display categories with the <code>ListSubheader</code> component or the native <code>&ltoptgroup&gt</code> element.
+          </Typography>
           <SelectGrouping />
         </CardSnippet>
       </Grid>

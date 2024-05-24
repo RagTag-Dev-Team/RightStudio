@@ -2,11 +2,21 @@
 hide_table_of_contents: true
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/vertical-menu/menu-position/scroll-with-content/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import ScrollWithContent from "@docPages/menu-examples/vertical-menu/menu-position/ScrollWithContent";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/menu-position/ScrollWithContent";
 
 # Scroll With Content
+
+export const updatedCode = SourceCode.replace(
+  /customStyles=\{\{([\s\S]*?)\}\}\}/,
+  ""
+)
+  .replace(/backgroundColor='.*'/, "")
+  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
+  .replace(/menuItemStyles={.*}/, "");
 
 The `scrollWithContent` prop enables the navigation sidebar to be scrolled along with the page content. By default, the sidebar remains fixed and does not move when the page content is scrolled. However, when the `scrollWithContent` prop is set to `true`, the sidebar will scroll with the page content.
 
@@ -22,8 +32,15 @@ scrollWithContent={false}
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/vertical-menu/menu-position/scroll-with-content' />
+<BrowserWindow
+  bodyStyle={{ overflow: "auto" }}
+  url="/vertical-menu/menu-position/scroll-with-content"
+>
+  <Provider>
+    <ScrollWithContent />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

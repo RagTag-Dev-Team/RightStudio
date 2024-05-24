@@ -1,5 +1,5 @@
 // React Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { ReactNode, RefObject } from 'react'
 
 // MUI Imports
@@ -14,11 +14,11 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
 import type { ChatDataType, StatusObjType } from '@/types/apps/chatTypes'
+import type { AppDispatch } from '@/redux-store'
 
 // Slice Imports
 import { addNewChat } from '@/redux-store/slices/chat'
@@ -43,7 +43,7 @@ export const statusObj: StatusObjType = {
 type Props = {
   chatStore: ChatDataType
   getActiveUserData: (id: number) => void
-  dispatch: Dispatch
+  dispatch: AppDispatch
   backdropOpen: boolean
   setBackdropOpen: (value: boolean) => void
   sidebarOpen: boolean
@@ -58,6 +58,7 @@ type RenderChatType = {
   chatStore: ChatDataType
   getActiveUserData: (id: number) => void
   setSidebarOpen: (value: boolean) => void
+  backdropOpen: boolean
   setBackdropOpen: (value: boolean) => void
   isBelowMdScreen: boolean
 }
@@ -65,7 +66,7 @@ type RenderChatType = {
 // Render chat list
 const renderChat = (props: RenderChatType) => {
   // Props
-  const { chatStore, getActiveUserData, setSidebarOpen, setBackdropOpen, isBelowMdScreen } = props
+  const { chatStore, getActiveUserData, setSidebarOpen, backdropOpen, setBackdropOpen, isBelowMdScreen } = props
 
   return chatStore.chats.map(chat => {
     const contact = chatStore.contacts.find(contact => contact.id === chat.userId) || chatStore.contacts[0]
@@ -81,7 +82,7 @@ const renderChat = (props: RenderChatType) => {
         onClick={() => {
           getActiveUserData(chat.userId)
           isBelowMdScreen && setSidebarOpen(false)
-          setBackdropOpen(false)
+          isBelowMdScreen && backdropOpen && setBackdropOpen(false)
         }}
       >
         <AvatarWithBadge
@@ -120,6 +121,7 @@ const renderChat = (props: RenderChatType) => {
   })
 }
 
+// Scroll wrapper for chat list
 const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isBelowLgScreen: boolean }) => {
   if (isBelowLgScreen) {
     return <div className='bs-full overflow-y-auto overflow-x-hidden'>{children}</div>
@@ -148,9 +150,6 @@ const SidebarLeft = (props: Props) => {
   const [userSidebar, setUserSidebar] = useState(false)
   const [searchValue, setSearchValue] = useState<string | null>()
 
-  // Vars
-  const contactData = chatStore.contacts.map(contact => contact.fullName)
-
   const handleChange = (event: any, newValue: string | null) => {
     setSearchValue(newValue)
     dispatch(addNewChat({ id: chatStore.contacts.find(contact => contact.fullName === newValue)?.id }))
@@ -162,13 +161,6 @@ const SidebarLeft = (props: Props) => {
     setSearchValue(null)
     messageInputRef.current?.focus()
   }
-
-  useEffect(() => {
-    if (!backdropOpen && sidebarOpen) {
-      setSidebarOpen(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [backdropOpen])
 
   return (
     <>
@@ -202,12 +194,12 @@ const SidebarLeft = (props: Props) => {
               setUserSidebar(true)
             }}
           />
-          <div className='flex is-full items-center flex-auto sm:gap-x-4'>
+          <div className='flex is-full items-center flex-auto sm:gap-x-3'>
             <Autocomplete
               fullWidth
               size='small'
               id='select-contact'
-              options={contactData || []}
+              options={chatStore.contacts.map(contact => contact.fullName) || []}
               value={searchValue || null}
               onChange={handleChange}
               renderInput={params => (
@@ -272,13 +264,20 @@ const SidebarLeft = (props: Props) => {
         </div>
         <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
           <ul className='p-3 pbs-4'>
-            {renderChat({ chatStore, getActiveUserData, setSidebarOpen, isBelowMdScreen, setBackdropOpen })}
+            {renderChat({
+              chatStore,
+              getActiveUserData,
+              backdropOpen,
+              setSidebarOpen,
+              isBelowMdScreen,
+              setBackdropOpen
+            })}
           </ul>
         </ScrollWrapper>
       </Drawer>
 
       <UserProfileLeft
-        open={userSidebar}
+        userSidebar={userSidebar}
         setUserSidebar={setUserSidebar}
         profileUserData={chatStore.profileUser}
         dispatch={dispatch}

@@ -3,9 +3,20 @@ hide_table_of_contents: true
 title: Horizontal Navbar
 ---
 
-import TsToJsCodeSnippet from '@docComponents/ts-js-code'
-import IframeWindow from '@docComponents/browser-window/IframeWindow.tsx'
-import SourceCode from '!!raw-loader!@/app/[lang]/menu-examples/horizontal-menu/menu-position/horizontal-navbar/page'
+import BrowserWindow from "@docComponents/browser-window";
+import Provider from "@docComponents/Providers";
+import HorizontalNavbar from "@docPages/menu-examples/horizontal-menu/menu-position/HorizontalNavbar";
+import TsToJsCodeSnippet from "@docComponents/ts-js-code";
+import SourceCode from "!!raw-loader!@docPages/menu-examples/horizontal-menu/menu-position/HorizontalNavbar";
+
+export const updatedCode = SourceCode.replace(
+  /\s*\/\/.*\s*\/\/.*\s*verticalNavProps=\{\{([\s\S]*?)\}\}\s*\/\/.*/,
+  ""
+)
+  .replace(/import menuItemStyles.*\n/, "")
+  .replace(/import verticalMenuItemStyles.*\n/, "")
+  .replace(/menuItemStyles={.*}/, "")
+  .replace(/verticalMenuProps={.*}/, "");
 
 # Horizontal Menu In Horizontal Navbar
 
@@ -17,8 +28,12 @@ The following example demonstrates the rendering of a horizontal menu within a h
 
 ### Example
 
-<IframeWindow url='https://demos.pixinvent.com/vuexy-nextjs-admin-template/demo-1/en/menu-examples/horizontal-menu/menu-position/horizontal-navbar' />
+<BrowserWindow url="/horizontal-menu/menu-position/horizontal-navbar">
+  <Provider>
+    <HorizontalNavbar />
+  </Provider>
+</BrowserWindow>
 
 ### Source Code
 
-<TsToJsCodeSnippet>{SourceCode}</TsToJsCodeSnippet>
+<TsToJsCodeSnippet>{updatedCode}</TsToJsCodeSnippet>

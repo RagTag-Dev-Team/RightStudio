@@ -8,10 +8,8 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import CardContent from '@mui/material/CardContent'
 
-// Third-party Imports
-import type { Dispatch } from '@reduxjs/toolkit'
-
 // Type Imports
+import type { AppDispatch } from '@/redux-store'
 import type { ChatDataType, ContactType } from '@/types/apps/chatTypes'
 
 // Component Imports
@@ -25,7 +23,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 
 type Props = {
   chatStore: ChatDataType
-  dispatch: Dispatch
+  dispatch: AppDispatch
   backdropOpen: boolean
   setBackdropOpen: (open: boolean) => void
   setSidebarOpen: (open: boolean) => void
@@ -35,6 +33,7 @@ type Props = {
   messageInputRef: RefObject<HTMLDivElement>
 }
 
+// Renders the user avatar with badge and user information
 const UserAvatar = ({
   activeUser,
   setUserProfileLeftOpen,
