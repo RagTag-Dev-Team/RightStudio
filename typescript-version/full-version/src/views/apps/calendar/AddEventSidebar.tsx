@@ -26,7 +26,7 @@ import type { EventDateType, AddEventSidebarType, AddEventType } from '@/types/a
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Slice Imports
-import { addEvent, deleteEvent, updateEvent, selectedEvent } from '@/redux-store/slices/calendar'
+import { addEvent, deleteEvent, updateEvent, selectedEvent, filterEvents } from '@/redux-store/slices/calendar'
 
 interface PickerProps {
   label?: string
@@ -144,12 +144,15 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
       dispatch(updateEvent({ ...modifiedEvent, id: calendarStore.selectedEvent.id }))
     }
 
+    dispatch(filterEvents())
+
     handleSidebarClose()
   }
 
   const handleDeleteButtonClick = () => {
     if (calendarStore.selectedEvent) {
       dispatch(deleteEvent(calendarStore.selectedEvent.id))
+      dispatch(filterEvents())
     }
 
     // calendarApi.getEventById(calendarStore.selectedEvent.id).remove()
