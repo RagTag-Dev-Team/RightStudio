@@ -14,7 +14,7 @@ Our template's support for Right-to-Left (RTL) languages like Arabic is directly
 
 We have provided RTL support for `Arabic` language in our template. You can check it in `src/i18n.ts` file:
 
-```tsx
+```ts
 export const i18n = {
   ...
   langDirection: {
