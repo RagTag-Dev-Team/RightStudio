@@ -141,7 +141,7 @@ const userStatusObj: UserStatusType = {
 // Column Definitions
 const columnHelper = createColumnHelper<UsersTypeWithAction>()
 
-const UserListTable = ({ tableData }: { tableData: UsersType[] }) => {
+const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // States
   const [addUserOpen, setAddUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
@@ -226,7 +226,7 @@ const UserListTable = ({ tableData }: { tableData: UsersType[] }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton onClick={() => setData(data.filter(product => product.id !== row.original.id))}>
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>

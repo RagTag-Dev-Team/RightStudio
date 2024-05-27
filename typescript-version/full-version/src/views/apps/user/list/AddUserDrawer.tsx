@@ -23,7 +23,7 @@ import type { UsersType } from '@/types/apps/userTypes'
 type Props = {
   open: boolean
   handleClose: () => void
-  userData: UsersType[]
+  userData?: UsersType[]
   setData: (data: UsersType[]) => void
 }
 
@@ -75,7 +75,7 @@ const AddUserDrawer = (props: Props) => {
 
   const onSubmit = (data: FormValidateType) => {
     const newUser: UsersType = {
-      id: userData.length + 1,
+      id: (userData?.length && userData?.length + 1) || 1,
       avatar: `/images/avatars/${Math.floor(Math.random() * 8) + 1}.png`,
       fullName: data.fullName,
       username: data.username,
@@ -88,7 +88,7 @@ const AddUserDrawer = (props: Props) => {
       contact: formData.contact
     }
 
-    setData([...userData, newUser])
+    setData([...(userData ?? []), newUser])
     handleClose()
     setFormData(initialData)
     resetForm({ fullName: '', username: '', email: '', role: '', plan: '', status: '' })

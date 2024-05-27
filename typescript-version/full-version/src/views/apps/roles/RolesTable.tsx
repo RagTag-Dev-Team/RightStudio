@@ -142,7 +142,7 @@ const userStatusObj: UserStatusType = {
 // Column Definitions
 const columnHelper = createColumnHelper<UsersTypeWithAction>()
 
-const RolesTable = ({ tableData }: { tableData: UsersType[] }) => {
+const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // States
   const [role, setRole] = useState<UsersType['role']>('')
   const [rowSelection, setRowSelection] = useState({})
@@ -227,7 +227,7 @@ const RolesTable = ({ tableData }: { tableData: UsersType[] }) => {
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton onClick={() => setData(data.filter(product => product.id !== row.original.id))}>
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
