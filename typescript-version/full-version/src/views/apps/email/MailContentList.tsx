@@ -113,7 +113,7 @@ const MailContentList = (props: Props) => {
       <Typography>Loading...</Typography>
     </div>
   ) : areFilteredEmailsNone ? (
-    <div className='relative flex justify-center gap-2 grow is-full'>
+    <div className='relative flex justify-center gap-2 grow is-full bg-backgroundPaper'>
       <Typography className='m-3'>No emails found!</Typography>
       {reload && (
         <Backdrop open={reload} className='absolute text-white z-10 bg-textDisabled'>
@@ -145,11 +145,15 @@ const MailContentList = (props: Props) => {
                       onClick={e => e.stopPropagation()}
                     />
                     <IconButton onClick={e => handleToggleStarEmail(e, email.id)}>
-                      <i className={classnames('ri-star-line', { 'text-warning': email.isStarred })} />
+                      <i
+                        className={classnames('tabler-star', email.isStarred ? 'text-warning' : 'text-textSecondary')}
+                      />
                     </IconButton>
                     <CustomAvatar src={email.from.avatar} alt={email.from.name} size={32} />
                     <div className='flex gap-4 justify-between items-center overflow-hidden'>
-                      <Typography className='font-medium whitespace-nowrap'>{email.from.name}</Typography>
+                      <Typography className='font-medium whitespace-nowrap' color='text.primary'>
+                        {email.from.name}
+                      </Typography>
                       <Typography variant='body2' noWrap>
                         {email.subject}
                       </Typography>
@@ -165,7 +169,7 @@ const MailContentList = (props: Props) => {
                         {email.labels.map(label => (
                           <i
                             key={label}
-                            className={classnames('ri-circle-fill text-[10px]', labelColors[label].colorClass)}
+                            className={classnames('tabler-circle-filled text-[10px]', labelColors[label].colorClass)}
                           />
                         ))}
                       </div>
@@ -182,7 +186,7 @@ const MailContentList = (props: Props) => {
                     <div className={styles.emailActions}>
                       <Tooltip title={folder === 'trash' ? 'Delete' : 'Move to trash'} placement='top'>
                         <IconButton onClick={e => handleSingleEmailDelete(e, email.id)}>
-                          <i className='ri-delete-bin-7-line' />
+                          <i className='tabler-trash text-textSecondary' />
                         </IconButton>
                       </Tooltip>
                       <Tooltip title={email.isRead ? 'Mark as unread' : 'Mark as read'} placement='top'>
@@ -192,13 +196,18 @@ const MailContentList = (props: Props) => {
                             setSelectedEmails(new Set())
                           }}
                         >
-                          <i className={email.isRead ? 'ri-mail-unread-line' : 'ri-mail-open-line'} />
+                          <i
+                            className={classnames(
+                              'text-textSecondary',
+                              email.isRead ? 'tabler-mail' : 'tabler-mail-opened'
+                            )}
+                          />
                         </IconButton>
                       </Tooltip>
                       {(folder === 'inbox' || folder === 'trash') && (
                         <Tooltip title='Move to spam' placement='top'>
                           <IconButton onClick={e => handleMoveToSpam(e, email.id)}>
-                            <i className='ri-error-warning-line' />
+                            <i className='tabler-info-circle text-textSecondary' />
                           </IconButton>
                         </Tooltip>
                       )}

@@ -1,7 +1,7 @@
 .activeSidebarListItem {
   color: var(--mui-palette-primary-main);
   border-inline-start: 3px solid var(--mui-palette-primary-main);
-  padding-inline-start: 1.0625rem !important;
+  padding-inline-start: 1.3125rem !important;
 }
 
 .emailList {
@@ -19,7 +19,7 @@
     .emailActions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.25rem;
     }
   }
 }
@@ -30,6 +30,10 @@
 
 .message p:not(:last-child) {
   margin-block-end: 1rem;
+}
+
+.message p:first-child {
+  font-weight: 500;
 }
 
 .mailReplyLayer {

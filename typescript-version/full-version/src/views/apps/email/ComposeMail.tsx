@@ -51,18 +51,20 @@ const ComposeMail = (props: Props) => {
         }
       }}
     >
-      <div className='flex items-center justify-between plb-2 pli-6 bg-actionHover'>
-        <Typography>Compose Mail</Typography>
+      <div className='flex items-center justify-between plb-3.5 pli-6 bg-actionHover'>
+        <Typography variant='h5' color='text.secondary'>
+          Compose Mail
+        </Typography>
         <div className='flex gap-2'>
-          <IconButton onClick={() => setOpenCompose(false)}>
-            <i className='ri-subtract-line' />
+          <IconButton size='small' onClick={() => setOpenCompose(false)}>
+            <i className='tabler-minus text-textSecondary' />
           </IconButton>
-          <IconButton onClick={() => setOpenCompose(false)}>
-            <i className='ri-close-line' />
+          <IconButton size='small' onClick={() => setOpenCompose(false)}>
+            <i className='tabler-x text-textSecondary' />
           </IconButton>
         </div>
       </div>
-      <div className='flex items-center gap-2 pli-6 plb-0.5'>
+      <div className='flex items-center gap-2 pli-6 plb-1'>
         <Typography className='font-medium' color='text.disabled'>
           To:
         </Typography>
@@ -79,7 +81,7 @@ const ComposeMail = (props: Props) => {
       </div>
       {visibility.cc && (
         <InputBase
-          className='plb-0.5 pli-6 border-bs'
+          className='plb-1 pli-6 border-bs'
           startAdornment={
             <Typography className='font-medium mie-2' color='text.disabled'>
               Cc:
@@ -89,7 +91,7 @@ const ComposeMail = (props: Props) => {
       )}
       {visibility.bcc && (
         <InputBase
-          className='plb-0.5 pli-6 border-bs'
+          className='plb-1 pli-6 border-bs'
           startAdornment={
             <Typography className='font-medium mie-2' color='text.disabled'>
               Bcc:
@@ -98,7 +100,7 @@ const ComposeMail = (props: Props) => {
         />
       )}
       <InputBase
-        className='plb-0.5 pli-6 border-bs'
+        className='plb-1 pli-6 border-bs'
         startAdornment={
           <Typography className='font-medium mie-2' color='text.disabled'>
             Subject:
@@ -119,35 +121,34 @@ const ComposeMail = (props: Props) => {
               border: 'none',
               '&:hover, &.rdw-option-active': { boxShadow: 'none' }
             },
-            '& .rdw-editor-main': { maxBlockSize: '10rem' }
+            '& .rdw-editor-main': {
+              paddingInline: '24px !important',
+              maxBlockSize: '10rem'
+            }
           }
         }}
       />
-      <div className='plb-4 pli-5 flex justify-between items-center gap-4'>
+      <div className='plb-4 pli-6 flex justify-between items-center gap-4'>
         <div className='flex items-center gap-4 max-sm:gap-3'>
           {isBelowSmScreen ? (
             <CustomIconButton color='primary' variant='contained'>
-              <i className='ri-send-plane-line' />
+              <i className='tabler-send' />
             </CustomIconButton>
           ) : (
-            <Button
-              variant='contained'
-              endIcon={<i className='ri-send-plane-line' />}
-              onClick={() => setOpenCompose(false)}
-            >
+            <Button variant='contained' endIcon={<i className='tabler-send' />} onClick={() => setOpenCompose(false)}>
               Send
             </Button>
           )}
-          <IconButton>
-            <i className='ri-attachment-2' />
+          <IconButton size='small'>
+            <i className='tabler-paperclip text-textSecondary' />
           </IconButton>
         </div>
         <div className='flex gap-2'>
-          <IconButton>
-            <i className='ri-more-2-line' />
+          <IconButton size='small'>
+            <i className='tabler-dots-vertical text-textSecondary' />
           </IconButton>
-          <IconButton onClick={() => setOpenCompose(false)}>
-            <i className='ri-delete-bin-7-line' />
+          <IconButton size='small' onClick={() => setOpenCompose(false)}>
+            <i className='tabler-trash text-textSecondary' />
           </IconButton>
         </div>
       </div>

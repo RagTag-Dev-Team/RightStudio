@@ -10,7 +10,6 @@ import { useParams } from 'next/navigation'
 import Drawer from '@mui/material/Drawer'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
@@ -24,6 +23,7 @@ import type { Locale } from '@/configs/i18n'
 
 // Components Imports
 import ComposeMail from './ComposeMail'
+import CustomChip from '@core/components/mui/Chip'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -50,12 +50,12 @@ type LabelColor = {
 
 // Constants
 const icons = {
-  inbox: 'ri-mail-line',
-  sent: 'ri-edit-box-line',
-  draft: 'ri-send-plane-line',
-  starred: 'ri-star-line',
-  spam: 'ri-spam-2-line',
-  trash: 'ri-delete-bin-7-line'
+  inbox: 'tabler-mail',
+  sent: 'tabler-send',
+  draft: 'tabler-edit',
+  starred: 'tabler-star',
+  spam: 'tabler-alert-octagon',
+  trash: 'tabler-trash'
 }
 
 export const labelColors: { [key: string]: LabelColor } = {
@@ -133,7 +133,7 @@ const SidebarLeft = (props: Props) => {
                 key={key}
                 href={getLocalizedUrl(`/apps/email/${key}`, locale as Locale)}
                 prefetch
-                className={classnames('flex items-center justify-between plb-1 pli-5 gap-2.5 cursor-pointer', {
+                className={classnames('flex items-center justify-between plb-1 pli-6 gap-2.5 cursor-pointer', {
                   [styles.activeSidebarListItem]: key === folder && !label
                 })}
               >
@@ -144,9 +144,10 @@ const SidebarLeft = (props: Props) => {
                   </Typography>
                 </div>
                 {folderCounts[key] && (
-                  <Chip
+                  <CustomChip
                     label={folderCounts[key]}
                     size='small'
+                    round='true'
                     variant='tonal'
                     color={
                       key === 'inbox' ? 'primary' : key === 'draft' ? 'warning' : key === 'spam' ? 'error' : 'default'
@@ -157,7 +158,7 @@ const SidebarLeft = (props: Props) => {
             ))}
           </div>
           <div className='flex flex-col gap-4 plb-4'>
-            <Typography variant='caption' color='text.disabled' className='uppercase pli-5'>
+            <Typography variant='caption' className='uppercase pli-6'>
               Labels
             </Typography>
             <div className='flex flex-col gap-3'>
@@ -166,11 +167,11 @@ const SidebarLeft = (props: Props) => {
                   key={labelName}
                   href={getLocalizedUrl(`/apps/email/label/${labelName}`, locale as Locale)}
                   prefetch
-                  className={classnames('flex items-center gap-x-2 pli-5 cursor-pointer', {
+                  className={classnames('flex items-center gap-x-2 pli-6 cursor-pointer', {
                     [styles.activeSidebarListItem]: labelName === label
                   })}
                 >
-                  <i className={classnames('ri-circle-fill text-xs', labelColors[labelName].colorClass)} />
+                  <i className={classnames('tabler-circle-filled text-xs', labelColors[labelName].colorClass)} />
                   <Typography className='capitalize' color='inherit'>
                     {labelName}
                   </Typography>

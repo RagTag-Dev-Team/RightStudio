@@ -20,7 +20,7 @@ import styles from './styles.module.css'
 
 const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean }) => {
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex items-center gap-4'>
       <Typography color='text.disabled'>
         {new Intl.DateTimeFormat('en-US', {
           year: 'numeric',
@@ -31,23 +31,27 @@ const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean
           hour12: true
         }).format(new Date(data.time))}
       </Typography>
-      {data.attachments.length ? (
-        <IconButton>
-          <i className='ri-attachment-2' />
-        </IconButton>
-      ) : null}
-      {isReplies ? (
-        <OptionMenu
-          options={[
-            { text: 'Reply', icon: 'ri-reply-line' },
-            { text: 'Forward', icon: 'ri-share-forward-line' }
-          ]}
-        />
-      ) : (
-        <IconButton>
-          <i className='ri-more-2-line' />
-        </IconButton>
-      )}
+      <div className='flex items-center gap-1'>
+        {data.attachments.length ? (
+          <IconButton>
+            <i className='tabler-paperclip text-textSecondary' />
+          </IconButton>
+        ) : null}
+        {isReplies ? (
+          <OptionMenu
+            iconClassName='text-textSecondary'
+            iconButtonProps={{ size: 'medium' }}
+            options={[
+              { text: 'Reply', icon: 'tabler-arrow-back-up' },
+              { text: 'Forward', icon: 'tabler-arrow-forward-up' }
+            ]}
+          />
+        ) : (
+          <IconButton>
+            <i className='tabler-dots-vertical text-textSecondary' />
+          </IconButton>
+        )}
+      </div>
     </div>
   )
 }
@@ -59,7 +63,7 @@ const MailCard = ({ data, isReplies }: { data: Email; isReplies: boolean }) => {
         <CustomAvatar src={data.from.avatar} size={38} alt={data.from.name} />
         <div className='flex items-center justify-between flex-wrap grow gap-x-4 gap-y-2'>
           <div className='flex flex-col'>
-            <Typography>{data.from.name}</Typography>
+            <Typography color='text.primary'>{data.from.name}</Typography>
             <Typography variant='body2'>{data.from.email}</Typography>
           </div>
           <CardHeaderAction data={data} isReplies={isReplies} />
@@ -73,7 +77,7 @@ const MailCard = ({ data, isReplies }: { data: Email; isReplies: boolean }) => {
         />
         {data.attachments.length ? (
           <div className='flex flex-col gap-4'>
-            <hr className='border-be -mli-4 mbs-4' />
+            <hr className='border-be -mli-6 mbs-4' />
             <Typography variant='caption'>Attachments</Typography>
             {data.attachments.map(attachment => (
               <div key={attachment.fileName} className='flex items-center gap-2'>

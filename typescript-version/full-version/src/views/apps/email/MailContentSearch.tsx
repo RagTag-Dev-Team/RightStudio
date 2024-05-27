@@ -21,17 +21,17 @@ const MailContentSearch = (props: Props) => {
   }
 
   return (
-    <div className='flex items-center gap-1 is-full pli-4 border-be'>
+    <div className='flex items-center gap-1 is-full pli-6 border-be'>
       {isBelowScreen && (
         <IconButton onClick={handleToggleSidebar}>
-          <i className='ri-menu-line' />
+          <i className='tabler-menu-2 text-textSecondary' />
         </IconButton>
       )}
       <InputBase
         fullWidth
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        startAdornment={<i className='ri-search-line mie-4' />}
+        startAdornment={<i className='tabler-search text-textSecondary mie-4' />}
         placeholder='Search mail'
         className='bs-[56px]'
       />

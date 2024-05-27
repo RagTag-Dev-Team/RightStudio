@@ -5,7 +5,6 @@ import type { MouseEvent, ReactNode } from 'react'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import Chip from '@mui/material/Chip'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
@@ -25,6 +24,7 @@ import { moveEmailsToFolder, navigateEmails, toggleLabel } from '@/redux-store/s
 
 // Components Imports
 import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
+import CustomChip from '@core/components/mui/Chip'
 import OptionMenu from '@core/components/option-menu'
 import DirectionalIcon from '@components/DirectionalIcon'
 import MailCard from './MailCard'
@@ -138,21 +138,28 @@ const MailDetails = (props: Props) => {
     <DetailsDrawer drawerOpen={drawerOpen}>
       {currentEmail && (
         <>
-          <div className='plb-4 pli-5'>
+          <div className='plb-4 pli-6'>
             <div className='flex justify-between gap-2'>
-              <div className='flex gap-4 items-center overflow-hidden'>
+              <div className='flex gap-2 items-center overflow-hidden'>
                 <IconButton onClick={handleCloseDrawer}>
-                  <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
+                  <DirectionalIcon
+                    ltrIconClass='tabler-chevron-left'
+                    rtlIconClass='tabler-chevron-right'
+                    className='text-textSecondary'
+                  />
                 </IconButton>
                 <div className='flex items-center flex-wrap gap-2 overflow-hidden'>
-                  <Typography noWrap>{currentEmail.subject}</Typography>
+                  <Typography color='text.primary' noWrap>
+                    {currentEmail.subject}
+                  </Typography>
                   <div className='flex items-center flex-wrap gap-2'>
                     {currentEmail.labels && currentEmail.labels.length
                       ? currentEmail.labels.map(label => {
                           return (
-                            <Chip
+                            <CustomChip
                               key={label}
                               variant='tonal'
+                              round='true'
                               size='small'
                               label={label}
                               color={labelColors[label].color}
@@ -166,18 +173,26 @@ const MailDetails = (props: Props) => {
               </div>
               <div className='flex items-center gap-2'>
                 <IconButton disabled={currentEmail.id === emails[0].id} onClick={() => handleEmailNavigation('prev')}>
-                  <DirectionalIcon ltrIconClass='ri-arrow-left-s-line' rtlIconClass='ri-arrow-right-s-line' />
+                  <DirectionalIcon
+                    ltrIconClass='tabler-chevron-left'
+                    rtlIconClass='tabler-chevron-right'
+                    className='text-textSecondary'
+                  />
                 </IconButton>
                 <IconButton
                   disabled={currentEmail.id === emails[emails.length - 1].id}
                   onClick={() => handleEmailNavigation('next')}
                 >
-                  <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
+                  <DirectionalIcon
+                    ltrIconClass='tabler-chevron-right'
+                    rtlIconClass='tabler-chevron-left'
+                    className='text-textSecondary'
+                  />
                 </IconButton>
               </div>
             </div>
           </div>
-          <div className='flex items-center justify-between gap-4 plb-2 pli-5 border-y'>
+          <div className='flex items-center justify-between gap-4 plb-2 pli-6 border-y'>
             <div className='flex gap-1'>
               <Tooltip title={folder === 'trash' ? 'Delete' : 'Move to trash'} placement='top'>
                 <IconButton
@@ -186,7 +201,7 @@ const MailDetails = (props: Props) => {
                     handleSingleEmailDelete(e, currentEmail.id)
                   }}
                 >
-                  <i className='ri-delete-bin-7-line' />
+                  <i className='tabler-trash text-textSecondary' />
                 </IconButton>
               </Tooltip>
               <Tooltip title='Mark as unread' placement='top'>
@@ -196,37 +211,37 @@ const MailDetails = (props: Props) => {
                     handleToggleIsReadStatus(e, currentEmail.id)
                   }}
                 >
-                  <i className='ri-mail-unread-line' />
+                  <i className='tabler-mail text-textSecondary' />
                 </IconButton>
               </Tooltip>
               {folder === 'inbox' && (
                 <Tooltip title='Move to spam' placement='top'>
                   <IconButton onClick={handleMoveAllToSpam}>
-                    <i className='ri-error-warning-line' />
+                    <i className='tabler-info-circle text-textSecondary' />
                   </IconButton>
                 </Tooltip>
               )}
               {folder === 'spam' && (
                 <Tooltip title='Move to inbox' placement='top'>
                   <IconButton onClick={handleMoveAllToInbox}>
-                    <i className='ri-inbox-line' />
+                    <i className='tabler-inbox text-textSecondary' />
                   </IconButton>
                 </Tooltip>
               )}
               {folder === 'trash' && (
                 <OptionMenu
                   tooltipProps={{ title: 'Move to folder', placement: 'top' }}
-                  icon={<i className='ri-folder-3-line' />}
+                  icon={<i className='tabler-folder text-textSecondary' />}
                   iconButtonProps={{ size: 'medium' }}
                   options={[
                     {
                       text: 'Spam',
-                      icon: <i className='ri-error-warning-line mie-2' />,
+                      icon: <i className='tabler-info-circle' />,
                       menuItemProps: { onClick: handleMoveAllToSpam }
                     },
                     {
                       text: 'Inbox',
-                      icon: <i className='ri-inbox-line mie-2' />,
+                      icon: <i className='tabler-inbox' />,
                       menuItemProps: { onClick: handleMoveAllToInbox }
                     }
                   ]}
@@ -234,12 +249,12 @@ const MailDetails = (props: Props) => {
               )}
               <OptionMenu
                 tooltipProps={{ title: 'Toggle label', placement: 'top' }}
-                icon={<i className='ri-price-tag-3-line' />}
+                icon={<i className='tabler-tag text-textSecondary' />}
                 iconButtonProps={{ size: 'medium' }}
                 options={Object.entries(labelColors).map(([key, value]) => ({
                   text: key.charAt(0).toUpperCase() + key.slice(1),
                   menuItemProps: { onClick: () => handleLabelClick(key) },
-                  icon: <i className={`ri-circle-fill mie-2 text-xs text-${value.color}`} />
+                  icon: <i className={`tabler-circle-filled text-xs text-${value.color}`} />
                 }))}
               />
             </div>
@@ -250,32 +265,29 @@ const MailDetails = (props: Props) => {
                   folder === 'starred' && setDrawerOpen(false)
                 }}
               >
-                <i className={classnames('ri-star-line', { 'text-warning': currentEmail.isStarred })} />
+                <i
+                  className={classnames('tabler-star', currentEmail.isStarred ? 'text-warning' : 'text-textSecondary')}
+                />
               </IconButton>
               {currentEmail.replies.length ? (
                 <IconButton onClick={() => setShowReplies(!showReplies)}>
                   <i
-                    className={classnames({
-                      'ri-expand-height-line': !showReplies,
-                      'ri-contract-up-down-line': showReplies
+                    className={classnames('text-textSecondary', {
+                      'tabler-arrows-move-vertical': !showReplies,
+                      'tabler-fold': showReplies
                     })}
                   />
                 </IconButton>
               ) : null}
               <IconButton>
-                <i className='ri-more-2-line' />
+                <i className='tabler-dots-vertical text-textSecondary' />
               </IconButton>
             </div>
           </div>
           <ScrollWrapper isBelowLgScreen={isBelowLgScreen}>
             <div className='plb-5 pli-8 flex flex-col gap-4'>
               {currentEmail.replies.length && !showReplies ? (
-                <Typography
-                  variant='body1'
-                  color='text.secondary'
-                  className='self-center text-center cursor-pointer'
-                  onClick={() => setShowReplies(true)}
-                >
+                <Typography className='self-center text-center cursor-pointer' onClick={() => setShowReplies(true)}>
                   {`${currentEmail.replies.length} Earlier Messages`}
                 </Typography>
               ) : null}
@@ -310,7 +322,7 @@ const MailDetails = (props: Props) => {
                       </Typography>
                     ) : (
                       <div className='flex flex-col gap-y-6'>
-                        <Typography>{`Reply to ${currentEmail.from.name}`}</Typography>
+                        <Typography color='text.primary'>{`Reply to ${currentEmail.from.name}`}</Typography>
                         <AppReactDraftWysiwyg
                           placeholder='Type your message...'
                           toolbar={{
@@ -332,23 +344,23 @@ const MailDetails = (props: Props) => {
                         />
                         <div className='flex items-center justify-end gap-4'>
                           <IconButton>
-                            <i className='ri-delete-bin-7-line' onClick={() => setReply(false)} />
+                            <i className='tabler-trash text-textSecondary' onClick={() => setReply(false)} />
                           </IconButton>
                           {isBelowSmScreen ? (
                             <CustomIconButton color='secondary'>
-                              <i className='ri-attachment-2' />
+                              <i className='tabler-paperclip text-textPrimary' />
                             </CustomIconButton>
                           ) : (
-                            <Button color='secondary' startIcon={<i className='ri-attachment-2' />}>
+                            <Button color='secondary' startIcon={<i className='tabler-paperclip text-textPrimary' />}>
                               Attachments
                             </Button>
                           )}
                           {isBelowSmScreen ? (
                             <CustomIconButton variant='contained' color='primary'>
-                              <i className='ri-send-plane-line' />
+                              <i className='tabler-send' />
                             </CustomIconButton>
                           ) : (
-                            <Button variant='contained' color='primary' endIcon={<i className='ri-send-plane-line' />}>
+                            <Button variant='contained' color='primary' endIcon={<i className='tabler-send' />}>
                               Send
                             </Button>
                           )}

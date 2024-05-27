@@ -3,6 +3,9 @@ import Checkbox from '@mui/material/Checkbox'
 import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { AppDispatch } from '@/redux-store'
 import type { Email } from '@/types/apps/emailTypes'
@@ -136,7 +139,7 @@ const MailContentActions = (props: Props) => {
           <>
             <Tooltip title={folder === 'trash' ? 'Delete' : 'Move to trash'} placement='top'>
               <IconButton onClick={handleEmailDelete}>
-                <i className='ri-delete-bin-7-line' />
+                <i className='tabler-trash text-textSecondary' />
               </IconButton>
             </Tooltip>
             <Tooltip
@@ -150,43 +153,44 @@ const MailContentActions = (props: Props) => {
             >
               <IconButton onClick={handleToggleAllReadEmails}>
                 <i
-                  className={
+                  className={classnames(
+                    'text-textSecondary',
                     selectedEmails.size > 0 &&
-                    emails.filter(email => selectedEmails.has(email.id)).every(email => email.isRead)
-                      ? 'ri-mail-unread-line'
-                      : 'ri-mail-open-line'
-                  }
+                      emails.filter(email => selectedEmails.has(email.id)).every(email => email.isRead)
+                      ? 'tabler-mail'
+                      : 'tabler-mail-opened'
+                  )}
                 />
               </IconButton>
             </Tooltip>
             {folder === 'inbox' && (
               <Tooltip title='Move to spam' placement='top'>
                 <IconButton onClick={handleMoveAllToSpam}>
-                  <i className='ri-error-warning-line' />
+                  <i className='tabler-info-circle text-textSecondary' />
                 </IconButton>
               </Tooltip>
             )}
             {folder === 'spam' && (
               <Tooltip title='Move to inbox' placement='top'>
                 <IconButton onClick={handleMoveAllToInbox}>
-                  <i className='ri-inbox-line' />
+                  <i className='tabler-inbox text-textSecondary' />
                 </IconButton>
               </Tooltip>
             )}
             {folder === 'trash' && (
               <OptionMenu
                 tooltipProps={{ title: 'Move to folder', placement: 'top' }}
-                icon={<i className='ri-folder-3-line' />}
+                icon={<i className='tabler-folder text-textSecondary' />}
                 iconButtonProps={{ size: 'medium' }}
                 options={[
                   {
                     text: 'Spam',
-                    icon: <i className='ri-error-warning-line mie-2' />,
+                    icon: <i className='tabler-info-circle' />,
                     menuItemProps: { onClick: handleMoveAllToSpam }
                   },
                   {
                     text: 'Inbox',
-                    icon: <i className='ri-inbox-line mie-2' />,
+                    icon: <i className='tabler-inbox' />,
                     menuItemProps: { onClick: handleMoveAllToInbox }
                   }
                 ]}
@@ -194,12 +198,12 @@ const MailContentActions = (props: Props) => {
             )}
             <OptionMenu
               tooltipProps={{ title: 'Toggle label', placement: 'top' }}
-              icon={<i className='ri-price-tag-3-line' />}
+              icon={<i className='tabler-tag text-textSecondary' />}
               iconButtonProps={{ size: 'medium' }}
               options={Object.entries(labelColors).map(([key, value]) => ({
                 text: key.charAt(0).toUpperCase() + key.slice(1),
                 menuItemProps: { onClick: () => handleLabelClick(key) },
-                icon: <i className={`ri-circle-fill mie-2 text-xs text-${value.color}`} />
+                icon: <i className={`tabler-circle-filled text-xs text-${value.color}`} />
               }))}
             />
           </>
@@ -208,11 +212,11 @@ const MailContentActions = (props: Props) => {
       <div className='flex gap-1 max-sm:gap-0.5'>
         <Tooltip title='Refresh' placement='top'>
           <IconButton onClick={handleReload}>
-            <i className='ri-refresh-line' />
+            <i className='tabler-refresh text-textSecondary' />
           </IconButton>
         </Tooltip>
         <IconButton>
-          <i className='ri-more-2-line' />
+          <i className='tabler-dots-vertical text-textSecondary' />
         </IconButton>
       </div>
     </div>
