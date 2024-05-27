@@ -85,7 +85,7 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
 // Column Definitions
 const columnHelper = createColumnHelper<Vehicle>()
 
-const LogisticsOverviewTable = ({ vehicleData }: { vehicleData: Vehicle[] }) => {
+const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

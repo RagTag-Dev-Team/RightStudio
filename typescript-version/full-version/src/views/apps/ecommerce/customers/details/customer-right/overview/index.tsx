@@ -52,10 +52,10 @@ const Overview = async () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <CustomerStatisticsCard customerStatData={data.customerStats} />
+        <CustomerStatisticsCard customerStatData={data?.customerStats} />
       </Grid>
       <Grid item xs={12}>
-        <OrderListTable orderData={tableData.orderData} />
+        <OrderListTable orderData={tableData?.orderData} />
       </Grid>
     </Grid>
   )

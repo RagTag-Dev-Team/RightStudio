@@ -32,7 +32,7 @@ const CustomerDetailsPage = async ({ params }: { params: { id: string } }) => {
   // Vars
   const data = await getEcommerceData()
 
-  const filteredData = data.customerData.filter((item: Customer) => item.customerId === params.id)[0]
+  const filteredData = data?.customerData.filter((item: Customer) => item.customerId === params.id)[0]
 
   if (!filteredData) {
     redirect('/not-found')

@@ -28,7 +28,7 @@ const tabContentList = (): { [key: string]: ReactElement } => ({
   notifications: <NotificationsTab />
 })
 
-const CustomerDetails = ({ customerData, customerId }: { customerData: Customer; customerId: string }) => {
+const CustomerDetails = ({ customerData, customerId }: { customerData?: Customer; customerId: string }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>

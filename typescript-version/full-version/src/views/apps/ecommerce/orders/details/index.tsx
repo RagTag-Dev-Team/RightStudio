@@ -12,7 +12,7 @@ import CustomerDetails from './CustomerDetailsCard'
 import ShippingAddress from './ShippingAddressCard'
 import BillingAddress from './BillingAddressCard'
 
-const OrderDetails = ({ orderData, order }: { orderData: OrderType; order: string }) => {
+const OrderDetails = ({ orderData, order }: { orderData?: OrderType; order: string }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>

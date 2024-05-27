@@ -7,7 +7,7 @@ import type { CardStatsHorizontalWithBorderProps } from '@/types/pages/widgetTyp
 // Components Imports
 import HorizontalWithBorder from '@components/card-statistics/HorizontalWithBorder'
 
-const LogisticsStatisticsCard = ({ data }: { data: CardStatsHorizontalWithBorderProps[] }) => {
+const LogisticsStatisticsCard = ({ data }: { data?: CardStatsHorizontalWithBorderProps[] }) => {
   return (
     data && (
       <Grid container spacing={6}>

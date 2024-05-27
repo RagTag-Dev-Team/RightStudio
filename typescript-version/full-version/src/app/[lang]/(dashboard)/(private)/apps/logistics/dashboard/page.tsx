@@ -57,7 +57,7 @@ const LogisticsDashboard = async () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <LogisticsStatisticsCard data={data.statsHorizontalWithBorder} />
+        <LogisticsStatisticsCard data={data?.statsHorizontalWithBorder} />
       </Grid>
       <Grid item xs={12} md={6}>
         <LogisticsVehicleOverview />
@@ -75,7 +75,7 @@ const LogisticsDashboard = async () => {
         <LogisticsOrdersByCountries />
       </Grid>
       <Grid item xs={12}>
-        <LogisticsOverviewTable vehicleData={vehicleData.vehicles} />
+        <LogisticsOverviewTable vehicleData={vehicleData?.vehicles} />
       </Grid>
     </Grid>
   )

@@ -35,7 +35,7 @@ export const statusChipColor: { [key: string]: StatusChipColorType } = {
   Dispatched: { color: 'warning' }
 }
 
-const OrderDetailHeader = ({ orderData, order }: { orderData: OrderType; order: string }) => {
+const OrderDetailHeader = ({ orderData, order }: { orderData?: OrderType; order: string }) => {
   // Vars
   const buttonProps = (children: string, color: ThemeColor, variant: ButtonProps['variant']): ButtonProps => ({
     children,
@@ -48,14 +48,14 @@ const OrderDetailHeader = ({ orderData, order }: { orderData: OrderType; order: 
       <div className='flex flex-col gap-2'>
         <div className='flex items-center gap-2'>
           <Typography variant='h5'>{`Order #${order}`}</Typography>
-          <Chip variant='tonal' label={orderData.status} color={statusChipColor[orderData.status].color} />
+          <Chip variant='tonal' label={orderData?.status} color={statusChipColor[orderData?.status || ''].color} />
           <Chip
             variant='tonal'
-            label={paymentStatus[orderData.payment].text}
-            color={paymentStatus[orderData.payment].color}
+            label={paymentStatus[orderData?.payment ?? 0].text}
+            color={paymentStatus[orderData?.payment ?? 0].color}
           />
         </div>
-        <Typography>{`${new Date(orderData.date).toDateString()}, ${orderData.time} (ET)`}</Typography>
+        <Typography>{`${new Date(orderData?.date ?? '').toDateString()}, ${orderData?.time} (ET)`}</Typography>
       </div>
       <OpenDialogOnElementClick
         element={Button}

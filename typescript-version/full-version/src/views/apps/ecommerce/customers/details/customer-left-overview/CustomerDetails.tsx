@@ -15,7 +15,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 import EditUserInfo from '@components/dialogs/edit-user-info'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
+const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
   // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
@@ -29,8 +29,8 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
           <div className='flex flex-col items-center gap-4'>
             <CustomAvatar variant='rounded' alt='Customer Avatar' size={120} />
             <div className='flex flex-col items-center'>
-              <Typography variant='h5'>{customerData.customer}</Typography>
-              <Typography>Customer ID #{customerData.customerId}</Typography>
+              <Typography variant='h5'>{customerData?.customer}</Typography>
+              <Typography>Customer ID #{customerData?.customerId}</Typography>
             </div>
           </div>
           <div className='flex items-center gap-12'>
@@ -39,7 +39,7 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
                 <i className='ri-shopping-cart-2-line' />
               </CustomAvatar>
               <div>
-                <Typography>{customerData.order}</Typography>
+                <Typography>{customerData?.order}</Typography>
                 <Typography>Orders</Typography>
               </div>
             </div>
@@ -48,7 +48,7 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
                 <i className='ri-money-dollar-circle-line' />
               </CustomAvatar>
               <div>
-                <Typography>${customerData.totalSpent}</Typography>
+                <Typography>${customerData?.totalSpent}</Typography>
                 <Typography>Spent</Typography>
               </div>
             </div>
@@ -62,13 +62,13 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
               <Typography color='text.primary' className='font-medium'>
                 Username:
               </Typography>
-              <Typography>{customerData.customer}</Typography>
+              <Typography>{customerData?.customer}</Typography>
             </div>
             <div className='flex items-center gap-1'>
               <Typography color='text.primary' className='font-medium'>
                 Billing Email:
               </Typography>
-              <Typography>{customerData.email}</Typography>
+              <Typography>{customerData?.email}</Typography>
             </div>
             <div className='flex items-center gap-1'>
               <Typography color='text.primary' className='font-medium'>
@@ -86,7 +86,7 @@ const CustomerDetails = ({ customerData }: { customerData: Customer }) => {
               <Typography color='text.primary' className='font-medium'>
                 Country:
               </Typography>
-              <Typography>{customerData.country}</Typography>
+              <Typography>{customerData?.country}</Typography>
             </div>
           </div>
         </div>

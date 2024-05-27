@@ -42,7 +42,7 @@ const userData = {
   useAsBillingAddress: true
 }
 
-const CustomerDetails = ({ orderData }: { orderData: OrderType }) => {
+const CustomerDetails = ({ orderData }: { orderData?: OrderType }) => {
   // Vars
   const typographyProps = (children: string, color: ThemeColor, className: string): TypographyProps => ({
     children,
@@ -55,10 +55,10 @@ const CustomerDetails = ({ orderData }: { orderData: OrderType }) => {
       <CardContent className='flex flex-col gap-6'>
         <Typography variant='h5'>Customer details</Typography>
         <div className='flex items-center gap-3'>
-          {getAvatar({ avatar: orderData.avatar, customer: orderData.customer })}
+          {getAvatar({ avatar: orderData?.avatar ?? '', customer: orderData?.customer ?? '' })}
           <div className='flex flex-col'>
             <Typography color='text.primary' className='font-medium'>
-              {orderData.customer}
+              {orderData?.customer}
             </Typography>
             <Typography>Customer ID: #47389</Typography>
           </div>
@@ -83,7 +83,7 @@ const CustomerDetails = ({ orderData }: { orderData: OrderType }) => {
               dialogProps={{ data: userData }}
             />
           </div>
-          <Typography>Email: {orderData.email}</Typography>
+          <Typography>Email: {orderData?.email}</Typography>
           <Typography>Mobile: +1 (609) 972-22-22</Typography>
         </div>
       </CardContent>

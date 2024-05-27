@@ -131,7 +131,7 @@ const DebouncedInput = ({
 // Column Definitions
 const columnHelper = createColumnHelper<ECommerceOrderTypeWithAction>()
 
-const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
+const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   const [data, setData] = useState(...[orderData])
@@ -263,7 +263,7 @@ const OrderListTable = ({ orderData }: { orderData: OrderType[] }) => {
                   text: 'Delete',
                   icon: 'ri-delete-bin-7-line text-[22px]',
                   menuItemProps: {
-                    onClick: () => setData(data.filter(order => order.id !== row.original.id)),
+                    onClick: () => setData(data?.filter(order => order.id !== row.original.id)),
                     className: 'flex items-center'
                   }
                 }

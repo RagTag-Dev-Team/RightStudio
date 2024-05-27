@@ -10,7 +10,7 @@ import type { OrderType } from '@/types/apps/ecommerceTypes'
 import OrderCard from './OrderCard'
 import OrderListTable from './OrderListTable'
 
-const OrderList = ({ orderData }: { orderData: OrderType[] }) => {
+const OrderList = ({ orderData }: { orderData?: OrderType[] }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>

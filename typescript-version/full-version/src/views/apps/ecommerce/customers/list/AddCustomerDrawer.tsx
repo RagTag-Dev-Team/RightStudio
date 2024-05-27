@@ -26,7 +26,7 @@ type Props = {
   open: boolean
   handleClose: () => void
   setData: (data: Customer[]) => void
-  customerData: Customer[]
+  customerData?: Customer[]
 }
 
 type FormValidateType = {
@@ -90,9 +90,9 @@ const AddCustomerDrawer = (props: Props) => {
 
   const onSubmit = (data: FormValidateType) => {
     const newData: Customer = {
-      id: customerData.length + 1,
+      id: (customerData?.length && customerData?.length + 1) || 1,
       customer: data.fullName,
-      customerId: customerData[Math.floor(Math.random() * 100) + 1].customerId,
+      customerId: customerData?.[Math.floor(Math.random() * 100) + 1].customerId ?? '1',
       email: data.email,
       country: `${country[data.country].country}`,
       countryCode: 'st',
@@ -102,7 +102,7 @@ const AddCustomerDrawer = (props: Props) => {
       avatar: `/images/avatars/${Math.floor(Math.random() * 8) + 1}.png`
     }
 
-    setData([...customerData, newData])
+    setData([...(customerData ?? []), newData])
     resetForm({ fullName: '', email: '', country: '' })
     setFormData(initialData)
     handleClose()

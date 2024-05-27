@@ -25,7 +25,7 @@ const CustomerListTablePage = async () => {
   // Vars
   const data = await getEcommerceData()
 
-  return <CustomerListTable customerData={data.customerData} />
+  return <CustomerListTable customerData={data?.customerData} />
 }
 
 export default CustomerListTablePage

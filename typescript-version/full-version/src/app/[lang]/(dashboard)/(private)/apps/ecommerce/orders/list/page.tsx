@@ -26,7 +26,7 @@ const OrdersListPage = async () => {
   // Vars
   const data = await getEcommerceData()
 
-  return <OrderList orderData={data.orderData} />
+  return <OrderList orderData={data?.orderData} />
 }
 
 export default OrdersListPage

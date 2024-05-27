@@ -132,7 +132,7 @@ const DebouncedInput = ({
 // Column Definitions
 const columnHelper = createColumnHelper<ECommerceOrderTypeWithAction>()
 
-const CustomerListTable = ({ customerData }: { customerData: Customer[] }) => {
+const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   // States
   const [customerUserOpen, setCustomerUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
