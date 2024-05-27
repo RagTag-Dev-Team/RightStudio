@@ -134,8 +134,8 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   // States
   const [status, setStatus] = useState<InvoiceType['invoiceStatus']>('')
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[invoiceData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -187,7 +187,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
+            <IconButton onClick={() => setData(data.filter(product => product.id !== row.original.id))}>
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
@@ -216,11 +216,11 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data as InvoiceType[],
+    data: filteredData as InvoiceType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -249,14 +249,14 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
   })
 
   useEffect(() => {
-    const filteredData = invoiceData?.filter(invoice => {
+    const filteredData = data?.filter(invoice => {
       if (status && invoice.invoiceStatus.toLowerCase().replace(/\s+/g, '-') !== status) return false
 
       return true
     })
 
-    setData(filteredData)
-  }, [status, invoiceData, setData])
+    setFilteredData(filteredData)
+  }, [status, data, setFilteredData])
 
   return (
     <Card>

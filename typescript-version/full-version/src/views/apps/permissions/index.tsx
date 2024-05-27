@@ -143,10 +143,15 @@ const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[]
         header: 'Assigned To',
         cell: ({ row }) =>
           typeof row.original.assignedTo === 'string' ? (
-            <Chip label={row.original.assignedTo} color={colors[row.original.assignedTo]} size='small' />
+            <Chip
+              variant='tonal'
+              label={row.original.assignedTo}
+              color={colors[row.original.assignedTo]}
+              size='small'
+            />
           ) : (
             row.original.assignedTo.map((item, index) => (
-              <Chip key={index} label={item} color={colors[item]} size='small' />
+              <Chip variant='tonal' key={index} label={item} color={colors[item]} size='small' />
             ))
           )
       }),

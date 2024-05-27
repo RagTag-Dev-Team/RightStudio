@@ -141,12 +141,12 @@ const userStatusObj: UserStatusType = {
 // Column Definitions
 const columnHelper = createColumnHelper<UsersTypeWithAction>()
 
-const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
+const UserListTable = ({ tableData }: { tableData: UsersType[] }) => {
   // States
   const [addUserOpen, setAddUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[tableData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -213,19 +213,20 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <Chip
-              className='capitalize'
+              variant='tonal'
               label={row.original.status}
-              color={userStatusObj[row.original.status]}
               size='small'
+              color={userStatusObj[row.original.status]}
+              className='capitalize'
             />
           </div>
         )
       }),
       columnHelper.accessor('action', {
         header: 'Action',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
+            <IconButton onClick={() => setData(data.filter(product => product.id !== row.original.id))}>
               <i className='ri-delete-bin-7-line text-[22px]' />
             </IconButton>
             <IconButton>
@@ -253,11 +254,11 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data as UsersType[],
+    data: filteredData as UsersType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -299,7 +300,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
     <>
       <Card>
         <CardHeader title='Filters' />
-        <TableFilters setData={setData} tableData={tableData} />
+        <TableFilters setData={setFilteredData} tableData={data} />
         <Divider />
         <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center'>
           <Button
@@ -393,7 +394,12 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
-      <AddUserDrawer open={addUserOpen} handleClose={() => setAddUserOpen(!addUserOpen)} />
+      <AddUserDrawer
+        open={addUserOpen}
+        handleClose={() => setAddUserOpen(!addUserOpen)}
+        userData={data}
+        setData={setData}
+      />
     </>
   )
 }
