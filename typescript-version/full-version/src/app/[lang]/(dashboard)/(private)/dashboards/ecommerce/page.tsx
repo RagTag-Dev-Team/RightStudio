@@ -1,4 +1,4 @@
-import EcommerceDashboard from '../../../apps/ecommerce/dashboard/page'
+import EcommerceDashboard from '../../apps/ecommerce/dashboard/page'
 
 const DashboardECommerce = () => {
   return <EcommerceDashboard />
