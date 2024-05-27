@@ -18,7 +18,7 @@ const schema = object({
   title: string([minLength(1, 'Title is required')])
 })
 
-const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
+const NewColumn = ({ addNewColumn }: { addNewColumn: (title: string) => void }) => {
   // States
   const [display, setDisplay] = useState(false)
 
@@ -36,20 +36,26 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
   })
 
   // Display the Add New form
-  const handleDisplay = () => {
+  const toggleDisplay = () => {
     setDisplay(!display)
   }
 
   // Handle the Add New form
   const onSubmit = (data: FormData) => {
-    addColumn(data.title)
+    addNewColumn(data.title)
     setDisplay(false)
     reset({ title: '' })
   }
 
+  // Handle reset
+  const handleReset = () => {
+    toggleDisplay()
+    reset({ title: '' })
+  }
+
   return (
-    <div className='flex flex-col gap-4 items-start is-[16.5rem]'>
-      <Typography onClick={handleDisplay} className='flex items-center gap-1 cursor-pointer is-[10rem]'>
+    <div className='flex flex-col gap-4 items-start min-is-[16.5rem] is-[16.5rem]'>
+      <Typography onClick={toggleDisplay} className='flex items-center gap-1 cursor-pointer'>
         <i className='ri-add-line text-base' />
         <span className='whitespace-nowrap'>Add New</span>
       </Typography>
@@ -59,8 +65,7 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
           onSubmit={handleSubmit(onSubmit)}
           onKeyDown={e => {
             if (e.key === 'Escape') {
-              handleDisplay()
-              reset({ title: '' })
+              handleReset()
             }
           }}
         >
@@ -88,8 +93,7 @@ const NewColumn = ({ addColumn }: { addColumn: (title: string) => void }) => {
               size='small'
               color='secondary'
               onClick={() => {
-                handleDisplay()
-                reset({ title: '' })
+                handleReset()
               }}
             >
               Cancel

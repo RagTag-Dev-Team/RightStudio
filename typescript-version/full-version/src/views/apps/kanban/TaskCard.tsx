@@ -14,15 +14,14 @@ import MenuItem from '@mui/material/MenuItem'
 
 // Third-Party Imports
 import classnames from 'classnames'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
+import type { AppDispatch } from '@/redux-store'
+import type { ThemeColor } from '@core/types'
 
 // Slice Imports
 import { getCurrentTask, deleteTask } from '@/redux-store/slices/kanban'
-
-import type { ThemeColor } from '@core/types'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
@@ -34,6 +33,17 @@ type chipColorType = {
   color: ThemeColor
 }
 
+type TaskCardProps = {
+  task: TaskType
+  dispatch: AppDispatch
+  column: ColumnType
+  setColumns: (value: ColumnType[]) => void
+  columns: ColumnType[]
+  setDrawerOpen: (value: boolean) => void
+  tasksList: (TaskType | undefined)[]
+  setTasksList: (value: (TaskType | undefined)[]) => void
+}
+
 export const chipColor: { [key: string]: chipColorType } = {
   UX: { color: 'success' },
   'Code Review': { color: 'error' },
@@ -43,18 +53,10 @@ export const chipColor: { [key: string]: chipColorType } = {
   'Charts & Map': { color: 'primary' }
 }
 
-type Props = {
-  task: TaskType
-  dispatch: Dispatch
-  column: ColumnType
-  setColumns: (value: ColumnType[]) => void
-  columns: ColumnType[]
-  setDrawerOpen: (value: boolean) => void
-  tasksList: (TaskType | undefined)[]
-  setTasksList: (value: (TaskType | undefined)[]) => void
-}
+const TaskCard = (props: TaskCardProps) => {
+  // Props
+  const { task, dispatch, column, setColumns, columns, setDrawerOpen, tasksList, setTasksList } = props
 
-const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, tasksList, setTasksList }: Props) => {
   // States
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -87,6 +89,12 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
     const newColumns = columns.map(col => (col.id === column.id ? newColumn : col))
 
     setColumns(newColumns)
+  }
+
+  // Handle Delete
+  const handleDelete = () => {
+    handleClose()
+    handleDeleteTask()
   }
 
   return (
@@ -135,8 +143,7 @@ const TaskCard = ({ task, dispatch, column, setColumns, columns, setDrawerOpen, 
               <MenuItem onClick={handleClose}>Copy Task Link</MenuItem>
               <MenuItem
                 onClick={() => {
-                  handleClose()
-                  handleDeleteTask()
+                  handleDelete()
                 }}
               >
                 Delete
