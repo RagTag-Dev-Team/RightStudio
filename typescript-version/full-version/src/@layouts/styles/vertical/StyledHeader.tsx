@@ -13,6 +13,11 @@ type StyledHeaderProps = {
 }
 
 const StyledHeader = styled.header<StyledHeaderProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  flex-shrink: 0;
   min-block-size: var(--header-height);
 
   &.${verticalLayoutClasses.headerContentCompact} {

@@ -46,14 +46,14 @@ import { TemplateName } from '@site/src/components/TemplateName'
 
 4. Import `getDictionary` and type `{ locale }` in the page where you want to translate the content
 
-  ```jsx
+  ```ts
   import { getDictionary } from '@/utils/get-dictionary'
   import type { Locale } from '@configs/i18n'
   ```
 
 5. You can now initialize the `getDictionary` and pass the locale as a parameter. This will return a promise which you can use to get the dictionary
 
-  ```jsx
+  ```tsx
   // Type Imports
   import type { Locale } from '@configs/i18n'
 

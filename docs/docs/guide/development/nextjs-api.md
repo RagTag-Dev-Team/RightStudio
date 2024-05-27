@@ -27,21 +27,21 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
 4. **Creating an Example API Route:**
     - **Data File:** Create a data file at `src/app/api/fake-db/**/example/example.tsx`
 
-      ```tsx
+      ```ts
       import type { ExampleType } from '@/types/**/exampleTypes'
 
       export const db: ExampleType[] = [
-      {
-        userId: 1,
-        id: 1,
-        title: 'delectus aut autem',
-        completed: false
-      }
-      ...
+        {
+          userId: 1,
+          id: 1,
+          title: 'delectus aut autem',
+          completed: false
+        }
+        ...
       ]
       ```
     - **Data Type:** Define the data types in `src/types/**/exampleTypes.tsx` file
-      ```tsx
+      ```ts
       export type ExampleType = {
         userId: number
         id: number
@@ -51,7 +51,7 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
       ```
 
     - **API Routes:** Establish your API routes in `src/app/api/**/example/routes.ts` file
-      ```tsx
+      ```ts
       // Next Imports
       import { NextResponse } from 'next/server'
 
