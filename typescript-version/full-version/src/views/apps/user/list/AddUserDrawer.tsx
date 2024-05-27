@@ -10,62 +10,93 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
+import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+
+// Third-party Imports
+import { useForm, Controller } from 'react-hook-form'
+
+// Types Imports
+import type { UsersType } from '@/types/apps/userTypes'
 
 type Props = {
   open: boolean
   handleClose: () => void
+  userData: UsersType[]
+  setData: (data: UsersType[]) => void
 }
 
-type FormDataType = {
+type FormValidateType = {
   fullName: string
   username: string
   email: string
-  company: string
-  country: string
-  contact: string
   role: string
   plan: string
   status: string
 }
 
-// Vars
-const initialData = {
-  fullName: '',
-  username: '',
-  email: '',
-  company: '',
-  country: '',
-  contact: '',
-  role: '',
-  plan: '',
-  status: ''
+type FormNonValidateType = {
+  company: string
+  country: string
+  contact: string
 }
 
-const AddUserDrawer = ({ open, handleClose }: Props) => {
-  // States
-  const [formData, setFormData] = useState<FormDataType>(initialData)
+// Vars
+const initialData = {
+  company: '',
+  country: '',
+  contact: ''
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+const AddUserDrawer = (props: Props) => {
+  // Props
+  const { open, handleClose, userData, setData } = props
+
+  // States
+  const [formData, setFormData] = useState<FormNonValidateType>(initialData)
+
+  // Hooks
+  const {
+    control,
+    reset: resetForm,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValidateType>({
+    defaultValues: {
+      fullName: '',
+      username: '',
+      email: '',
+      role: '',
+      plan: '',
+      status: ''
+    }
+  })
+
+  const onSubmit = (data: FormValidateType) => {
+    const newUser: UsersType = {
+      id: userData.length + 1,
+      avatar: `/images/avatars/${Math.floor(Math.random() * 8) + 1}.png`,
+      fullName: data.fullName,
+      username: data.username,
+      email: data.email,
+      role: data.role,
+      currentPlan: data.plan,
+      status: data.status,
+      company: formData.company,
+      country: formData.country,
+      contact: formData.contact
+    }
+
+    setData([...userData, newUser])
     handleClose()
     setFormData(initialData)
+    resetForm({ fullName: '', username: '', email: '', role: '', plan: '', status: '' })
   }
 
   const handleReset = () => {
     handleClose()
-    setFormData({
-      fullName: '',
-      username: '',
-      email: '',
-      company: '',
-      country: '',
-      contact: '',
-      role: '',
-      plan: '',
-      status: ''
-    })
+    setFormData(initialData)
   }
 
   return (
@@ -77,36 +108,115 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between pli-5 plb-4'>
         <Typography variant='h6'>Add New User</Typography>
-        <IconButton onClick={handleReset}>
-          <i className='ri-close-line' />
+        <IconButton size='small' onClick={handleReset}>
+          <i className='ri-close-line text-2xl' />
         </IconButton>
       </div>
       <Divider />
-      <div>
-        <form onSubmit={handleSubmit} className='flex flex-col'>
-          <TextField
-            label='Full Name'
-            fullWidth
-            placeholder='John Doe'
-            value={formData.fullName}
-            onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+      <div className='p-5'>
+        <form onSubmit={handleSubmit(data => onSubmit(data))} className='flex flex-col gap-5'>
+          <Controller
+            name='fullName'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                label='Full Name'
+                placeholder='John Doe'
+                {...(errors.fullName && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
-          <TextField
-            label='Username'
-            fullWidth
-            placeholder='johndoe'
-            value={formData.username}
-            onChange={e => setFormData({ ...formData, username: e.target.value })}
+          <Controller
+            name='username'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                label='Username'
+                placeholder='johndoe'
+                {...(errors.username && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
-          <TextField
-            label='Email'
-            fullWidth
-            placeholder='johndoe@gmail.com'
-            value={formData.email}
-            onChange={e => setFormData({ ...formData, email: e.target.value })}
+          <Controller
+            name='email'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                type='email'
+                label='Email'
+                placeholder='johndoe@gmail.com'
+                {...(errors.email && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
+          <FormControl fullWidth>
+            <InputLabel id='country' error={Boolean(errors.role)}>
+              Select Role
+            </InputLabel>
+            <Controller
+              name='role'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Select label='Select Role' {...field} error={Boolean(errors.role)}>
+                  <MenuItem value='admin'>Admin</MenuItem>
+                  <MenuItem value='author'>Author</MenuItem>
+                  <MenuItem value='editor'>Editor</MenuItem>
+                  <MenuItem value='maintainer'>Maintainer</MenuItem>
+                  <MenuItem value='subscriber'>Subscriber</MenuItem>
+                </Select>
+              )}
+            />
+            {errors.role && <FormHelperText error>This field is required.</FormHelperText>}
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id='country' error={Boolean(errors.plan)}>
+              Select Plan
+            </InputLabel>
+            <Controller
+              name='plan'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Select label='Select Plan' {...field} error={Boolean(errors.plan)}>
+                  <MenuItem value='basic'>Basic</MenuItem>
+                  <MenuItem value='company'>Company</MenuItem>
+                  <MenuItem value='enterprise'>Enterprise</MenuItem>
+                  <MenuItem value='team'>Team</MenuItem>
+                </Select>
+              )}
+            />
+            {errors.plan && <FormHelperText error>This field is required.</FormHelperText>}
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id='country' error={Boolean(errors.status)}>
+              Select Status
+            </InputLabel>
+            <Controller
+              name='status'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Select label='Select Status' {...field} error={Boolean(errors.status)}>
+                  <MenuItem value='pending'>Pending</MenuItem>
+                  <MenuItem value='active'>Active</MenuItem>
+                  <MenuItem value='inactive'>Inactive</MenuItem>
+                </Select>
+              )}
+            />
+            {errors.status && <FormHelperText error>This field is required.</FormHelperText>}
+          </FormControl>
           <TextField
             label='Company'
             fullWidth
@@ -123,9 +233,8 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
               onChange={e => setFormData({ ...formData, country: e.target.value })}
               label='Select Country'
               labelId='country'
-              inputProps={{ placeholder: 'Country' }}
             >
-              <MenuItem value='UK'>UK</MenuItem>
+              <MenuItem value='India'>India</MenuItem>
               <MenuItem value='USA'>USA</MenuItem>
               <MenuItem value='Australia'>Australia</MenuItem>
               <MenuItem value='Germany'>Germany</MenuItem>
@@ -139,57 +248,6 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
             value={formData.contact}
             onChange={e => setFormData({ ...formData, contact: e.target.value })}
           />
-          <FormControl fullWidth>
-            <InputLabel id='role-select'>Select Role</InputLabel>
-            <Select
-              fullWidth
-              id='select-role'
-              value={formData.role}
-              onChange={e => setFormData({ ...formData, role: e.target.value })}
-              label='Select Role'
-              labelId='role-select'
-              inputProps={{ placeholder: 'Select Role' }}
-            >
-              <MenuItem value='admin'>Admin</MenuItem>
-              <MenuItem value='author'>Author</MenuItem>
-              <MenuItem value='editor'>Editor</MenuItem>
-              <MenuItem value='maintainer'>Maintainer</MenuItem>
-              <MenuItem value='subscriber'>Subscriber</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id='plan-select'>Select Plan</InputLabel>
-            <Select
-              fullWidth
-              id='select-plan'
-              value={formData.plan}
-              onChange={e => setFormData({ ...formData, plan: e.target.value })}
-              label='Select Plan'
-              labelId='plan-select'
-              inputProps={{ placeholder: 'Select Plan' }}
-            >
-              <MenuItem value='basic'>Basic</MenuItem>
-              <MenuItem value='company'>Company</MenuItem>
-              <MenuItem value='enterprise'>Enterprise</MenuItem>
-              <MenuItem value='team'>Team</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id='plan-select'>Select Status</InputLabel>
-            <Select
-              fullWidth
-              id='select-status'
-              value={formData.status}
-              onChange={e => setFormData({ ...formData, status: e.target.value })}
-              label='Select Status'
-              labelId='status-select'
-              inputProps={{ placeholder: 'Select Status' }}
-            >
-              <MenuItem value='pending'>Pending</MenuItem>
-              <MenuItem value='active'>Active</MenuItem>
-              <MenuItem value='inactive'>Inactive</MenuItem>
-            </Select>
-          </FormControl>
           <div className='flex items-center gap-4'>
             <Button variant='contained' type='submit'>
               Submit
