@@ -15,6 +15,7 @@ import Navbar from '@components/layout/vertical/Navbar'
 import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 import Customizer from '@core/components/customizer'
+import AuthGuard from '@/hocs/AuthGuard'
 
 // Config Imports
 import { i18n } from '@configs/i18n'
@@ -29,23 +30,25 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
 
   return (
     <Providers>
-      <LayoutWrapper
-        verticalLayout={
-          <VerticalLayout
-            navigation={<Navigation dictionary={dictionary} />}
-            navbar={<Navbar />}
-            footer={<VerticalFooter />}
-          >
-            {children}
-          </VerticalLayout>
-        }
-        horizontalLayout={
-          <HorizontalLayout header={<Header dictionary={dictionary} />} footer={<HorizontalFooter />}>
-            {children}
-          </HorizontalLayout>
-        }
-      />
-      <Customizer dir={direction} />
+      <AuthGuard locale={params.lang}>
+        <LayoutWrapper
+          verticalLayout={
+            <VerticalLayout
+              navigation={<Navigation dictionary={dictionary} />}
+              navbar={<Navbar />}
+              footer={<VerticalFooter />}
+            >
+              {children}
+            </VerticalLayout>
+          }
+          horizontalLayout={
+            <HorizontalLayout header={<Header dictionary={dictionary} />} footer={<HorizontalFooter />}>
+              {children}
+            </HorizontalLayout>
+          }
+        />
+        <Customizer dir={direction} />
+      </AuthGuard>
     </Providers>
   )
 }
