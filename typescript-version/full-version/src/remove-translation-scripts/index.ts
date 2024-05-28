@@ -59,6 +59,7 @@ async function main() {
   consola.start('Run pnpm format command to format all the files using prettier')
 
   await exec('pnpm run format')
+  await exec('pnpm run lint:fix')
 
   consola.success('Formatted all the files successfully!\n')
 
