@@ -56,7 +56,7 @@ const AcademyDashboard = async () => {
         <AssignmentProgress />
       </Grid>
       <Grid item xs={12}>
-        <CourseTable courseData={data.courses} />
+        <CourseTable courseData={data?.courses} />
       </Grid>
     </Grid>
   )

@@ -38,7 +38,7 @@ type ChipColorType = {
 }
 
 type Props = {
-  courseData: Course[]
+  courseData?: Course[]
   searchValue: string
 }
 
@@ -64,11 +64,12 @@ const Courses = (props: Props) => {
   const { lang: locale } = useParams()
 
   useEffect(() => {
-    let newData = courseData.filter(courseItem => {
-      if (course === 'All') return !hideCompleted || courseItem.completedTasks !== courseItem.totalTasks
+    let newData =
+      courseData?.filter(courseItem => {
+        if (course === 'All') return !hideCompleted || courseItem.completedTasks !== courseItem.totalTasks
 
-      return courseItem.tags === course && (!hideCompleted || courseItem.completedTasks !== courseItem.totalTasks)
-    })
+        return courseItem.tags === course && (!hideCompleted || courseItem.completedTasks !== courseItem.totalTasks)
+      }) ?? []
 
     if (searchValue) {
       newData = newData.filter(category => category.courseTitle.toLowerCase().includes(searchValue.toLowerCase()))

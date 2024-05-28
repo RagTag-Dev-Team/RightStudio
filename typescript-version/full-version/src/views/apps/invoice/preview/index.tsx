@@ -10,7 +10,7 @@ import type { InvoiceType } from '@/types/apps/invoiceTypes'
 import PreviewActions from './PreviewActions'
 import PreviewCard from './PreviewCard'
 
-const Preview = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }) => {
+const Preview = ({ invoiceData, id }: { invoiceData?: InvoiceType; id: string }) => {
   // Handle Print Button Click
   const handleButtonClick = () => {
     window.print()

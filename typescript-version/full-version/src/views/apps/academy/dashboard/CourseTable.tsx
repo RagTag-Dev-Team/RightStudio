@@ -106,7 +106,7 @@ const DebouncedInput = ({
 // Column Definitions
 const columnHelper = createColumnHelper<CourseWithProgress>()
 
-const CourseTable = ({ courseData }: { courseData: Course[] }) => {
+const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

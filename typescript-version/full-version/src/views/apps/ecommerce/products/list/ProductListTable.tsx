@@ -143,7 +143,7 @@ const productStatusObj: productStatusType = {
 // Column Definitions
 const columnHelper = createColumnHelper<ProductWithActionsType>()
 
-const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
+const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   const [data, setData] = useState(...[productData])
@@ -245,7 +245,7 @@ const ProductListTable = ({ productData }: { productData: ProductType[] }) => {
                 {
                   text: 'Delete',
                   icon: 'ri-delete-bin-7-line',
-                  menuItemProps: { onClick: () => setData(data.filter(product => product.id !== row.original.id)) }
+                  menuItemProps: { onClick: () => setData(data?.filter(product => product.id !== row.original.id)) }
                 },
                 { text: 'Duplicate', icon: 'ri-stack-line' }
               ]}

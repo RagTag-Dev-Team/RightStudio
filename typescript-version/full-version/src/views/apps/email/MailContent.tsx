@@ -94,7 +94,7 @@ const MailContent = (props: Props) => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center is-full bs-full relative overflow-hidden'>
+    <div className='flex flex-col items-center justify-center is-full bs-full relative overflow-hidden bg-backgroundPaper'>
       <MailContentSearch
         isBelowScreen={isBelowMdScreen}
         searchTerm={searchTerm}

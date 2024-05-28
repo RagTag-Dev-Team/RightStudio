@@ -40,7 +40,7 @@ const eCommerceManageReviews = async () => {
         <ReviewsStatistics />
       </Grid>
       <Grid item xs={12}>
-        <ManageReviewsTable reviewsData={data.reviews} />
+        <ManageReviewsTable reviewsData={data?.reviews} />
       </Grid>
     </Grid>
   )

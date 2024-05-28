@@ -32,7 +32,7 @@ import themeConfig from '@configs/themeConfig'
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
-const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
+const AddAction = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
   // States
   const [open, setOpen] = useState(false)
   const [count, setCount] = useState(1)
@@ -76,7 +76,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       <TextField
                         fullWidth
                         size='small'
-                        value={invoiceData[0].id}
+                        value={invoiceData?.[0].id}
                         InputProps={{
                           disabled: true,
                           startAdornment: <InputAdornment position='start'>#</InputAdornment>
@@ -117,7 +117,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                     value={selectData?.id || ''}
                     onChange={e => {
                       setFormData({} as FormDataType)
-                      setSelectData(invoiceData.slice(0, 5).filter(item => item.id === e.target.value)[0])
+                      setSelectData(invoiceData?.slice(0, 5).filter(item => item.id === e.target.value)[0] || null)
                     }}
                   >
                     <MenuItem
@@ -131,7 +131,7 @@ const AddAction = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
                       <i className='ri-add-line' />
                       Add New Customer
                     </MenuItem>
-                    {invoiceData.slice(0, 5).map((invoice: InvoiceType, index) => (
+                    {invoiceData?.slice(0, 5).map((invoice: InvoiceType, index) => (
                       <MenuItem key={index} value={invoice.id}>
                         {invoice.name}
                       </MenuItem>

@@ -33,10 +33,10 @@ const CourseDetailsPage = async () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={8}>
-        <Details data={data.courseDetails} />
+        <Details data={data?.courseDetails} />
       </Grid>
       <Grid item xs={12} md={4}>
-        <Sidebar content={data.courseDetails.content} />
+        <Sidebar content={data?.courseDetails.content} />
       </Grid>
     </Grid>
   )

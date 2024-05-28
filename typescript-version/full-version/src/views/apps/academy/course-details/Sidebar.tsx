@@ -82,10 +82,10 @@ export const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProp
   padding: `${theme.spacing(4)} !important`
 }))
 
-const Sidebar = ({ content }: { content: CourseContent[] }) => {
+const Sidebar = ({ content }: { content?: CourseContent[] }) => {
   // States
   const [expanded, setExpanded] = useState<number | false>(0)
-  const [items, setItems] = useState<ItemsType[]>(content.map(item => item.topics))
+  const [items, setItems] = useState<ItemsType[]>(content?.map(item => item.topics) ?? [])
 
   const handleChange = (panel: number) => (event: SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
@@ -111,7 +111,7 @@ const Sidebar = ({ content }: { content: CourseContent[] }) => {
 
   return (
     <>
-      {content.map((item, index) => {
+      {content?.map((item, index) => {
         const totalTime = items[index]
           .reduce((sum, topic) => {
             const time = parseFloat(topic.time || '0')

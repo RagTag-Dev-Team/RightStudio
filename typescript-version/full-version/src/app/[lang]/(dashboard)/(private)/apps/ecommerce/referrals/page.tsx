@@ -54,7 +54,7 @@ const eCommerceReferrals = async () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <HorizontalStatisticsCard data={statsData.statsHorizontalWithAvatar} />
+        <HorizontalStatisticsCard data={statsData?.statsHorizontalWithAvatar} />
       </Grid>
       <Grid item xs={12} md={8}>
         <IconStepsCard />
@@ -63,7 +63,7 @@ const eCommerceReferrals = async () => {
         <InviteAndShare />
       </Grid>
       <Grid item xs={12}>
-        <ReferredUsersTable referralsData={ecommerceData.referrals} />
+        <ReferredUsersTable referralsData={ecommerceData?.referrals} />
       </Grid>
     </Grid>
   )

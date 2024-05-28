@@ -223,13 +223,13 @@ const KanbanDrawer = (props: KanbanDrawerProps) => {
                 value={fileName}
                 InputProps={{
                   readOnly: true,
-                  endAdornment: (
+                  endAdornment: fileName ? (
                     <InputAdornment position='end'>
                       <IconButton size='small' edge='end' onClick={() => setFileName('')}>
                         <i className='ri-close-line' />
                       </IconButton>
                     </InputAdornment>
-                  )
+                  ) : null
                 }}
               />
               <Button component='label' variant='contained' htmlFor='contained-button-file'>

@@ -111,7 +111,7 @@ const DebouncedInput = ({
 // Column Definitions
 const columnHelper = createColumnHelper<ReviewWithActionsType>()
 
-const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
+const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => {
   // States
   const [status, setStatus] = useState<ReviewType['status']>('All')
   const [rowSelection, setRowSelection] = useState({})
@@ -247,7 +247,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData: ReviewType[] }) => {
                 text: 'Delete',
                 icon: 'ri-delete-bin-7-line',
                 menuItemProps: {
-                  onClick: () => setAllData(allData.filter(review => review.id !== row.original.id)),
+                  onClick: () => setAllData(allData?.filter(review => review.id !== row.original.id)),
                   className: 'flex items-center'
                 }
               }

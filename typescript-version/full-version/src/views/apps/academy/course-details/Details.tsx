@@ -21,7 +21,7 @@ import type { CourseDetails } from '@/types/apps/academyTypes'
 import CustomAvatar from '@core/components/mui/Avatar'
 import CustomIconButton from '@core/components/mui/IconButton'
 
-const Details = ({ data }: { data: CourseDetails }) => {
+const Details = ({ data }: { data?: CourseDetails }) => {
   // Hooks
   const theme = useTheme()
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -69,7 +69,7 @@ const Details = ({ data }: { data: CourseDetails }) => {
           <div className='flex flex-col gap-6 p-5'>
             <div className='flex flex-col gap-4'>
               <Typography variant='h5'>About this course</Typography>
-              <Typography>{data.about}</Typography>
+              <Typography>{data?.about}</Typography>
             </div>
             <Divider />
             <div className='flex flex-col gap-4'>
@@ -78,29 +78,29 @@ const Details = ({ data }: { data: CourseDetails }) => {
                 <List role='list' component='div' className='flex flex-col gap-2 plb-0'>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-check-line text-xl text-textSecondary' />
-                    <Typography>Skill level: {data.skillLevel}</Typography>
+                    <Typography>Skill level: {data?.skillLevel}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-group-line text-xl text-textSecondary' />
-                    <Typography>Students: {data.totalStudents.toLocaleString()}</Typography>
+                    <Typography>Students: {data?.totalStudents.toLocaleString()}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-global-line text-xl text-textSecondary' />
-                    <Typography>Languages: {data.language}</Typography>
+                    <Typography>Languages: {data?.language}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-pages-line text-xl text-textSecondary' />
-                    <Typography>Captions: {data.isCaptions ? 'Yes' : 'No'}</Typography>
+                    <Typography>Captions: {data?.isCaptions ? 'Yes' : 'No'}</Typography>
                   </ListItem>
                 </List>
                 <List role='list' component='div' className='flex flex-col gap-2 plb-0'>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-video-upload-line text-xl text-textSecondary' />
-                    <Typography>Lectures: {data.totalLectures}</Typography>
+                    <Typography>Lectures: {data?.totalLectures}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
                     <i className='ri-time-line text-xl text-textSecondary' />
-                    <Typography>Video: {data.length}</Typography>
+                    <Typography>Video: {data?.length}</Typography>
                   </ListItem>
                 </List>
               </div>
@@ -108,20 +108,18 @@ const Details = ({ data }: { data: CourseDetails }) => {
             <Divider />
             <div className='flex flex-col gap-4'>
               <Typography variant='h5'>Description</Typography>
-              {data.description.map((value, index) => (
-                <Typography key={index}>{value}</Typography>
-              ))}
+              {data?.description.map((value, index) => <Typography key={index}>{value}</Typography>)}
             </div>
             <Divider />
             <div className='flex flex-col gap-4'>
               <Typography variant='h5'>Instructor</Typography>
               <div className='flex items-center gap-4'>
-                <CustomAvatar src={data.instructorAvatar} size={38} />
+                <CustomAvatar src={data?.instructorAvatar} size={38} />
                 <div className='flex flex-col gap-1'>
                   <Typography className='font-medium' color='text.primary'>
-                    {data.instructor}
+                    {data?.instructor}
                   </Typography>
-                  <Typography variant='body2'>{data.instructorPosition}</Typography>
+                  <Typography variant='body2'>{data?.instructorPosition}</Typography>
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ import type { Data } from '@/types/pages/profileTypes'
 import UserProfileHeader from './UserProfileHeader'
 import CustomTabList from '@core/components/mui/TabList'
 
-const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]: ReactElement }; data: Data }) => {
+const UserProfile = ({ tabContentList, data }: { tabContentList: { [key: string]: ReactElement }; data?: Data }) => {
   // States
   const [activeTab, setActiveTab] = useState('profile')
 

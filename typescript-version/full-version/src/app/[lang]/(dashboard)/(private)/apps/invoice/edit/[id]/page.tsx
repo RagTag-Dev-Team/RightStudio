@@ -36,7 +36,7 @@ const EditPage = async ({ params }: { params: { id: string } }) => {
   // Vars
   const data = await getInvoiceData()
 
-  const filteredData = data.filter((invoice: InvoiceType) => invoice.id === params.id)[0]
+  const filteredData = data?.filter((invoice: InvoiceType) => invoice.id === params.id)[0]
 
   if (!filteredData) {
     redirect('/not-found')

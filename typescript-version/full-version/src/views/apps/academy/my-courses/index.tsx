@@ -17,7 +17,7 @@ import ColoredCards from './ColoredCards'
 import FreeCourses from './FreeCourses'
 
 type Props = {
-  courseData: Course[]
+  courseData?: Course[]
   mode: Mode
 }
 

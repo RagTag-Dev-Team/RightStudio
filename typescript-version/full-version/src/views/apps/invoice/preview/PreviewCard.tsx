@@ -47,7 +47,7 @@ const data = [
   }
 ]
 
-const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string }) => {
+const PreviewCard = ({ invoiceData, id }: { invoiceData?: InvoiceType; id: string }) => {
   return (
     <Card className='previewCard'>
       <CardContent>
@@ -68,8 +68,8 @@ const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string
                 <div className='flex flex-col'>
                   <Typography>{`Invoice #${id}`}</Typography>
                   <div>
-                    <Typography>{`Date Issued: ${invoiceData.issuedDate}`}</Typography>
-                    <Typography>{`Date Due: ${invoiceData.dueDate}`}</Typography>
+                    <Typography>{`Date Issued: ${invoiceData?.issuedDate}`}</Typography>
+                    <Typography>{`Date Due: ${invoiceData?.dueDate}`}</Typography>
                   </div>
                 </div>
               </div>
@@ -81,11 +81,11 @@ const PreviewCard = ({ invoiceData, id }: { invoiceData: InvoiceType; id: string
                 <div className='flex flex-col'>
                   <Typography>Invoice To:</Typography>
                   <div>
-                    <Typography>{invoiceData.name}</Typography>
-                    <Typography>{invoiceData.company}</Typography>
-                    <Typography>{invoiceData.address}</Typography>
-                    <Typography>{invoiceData.contact}</Typography>
-                    <Typography>{invoiceData.companyEmail}</Typography>
+                    <Typography>{invoiceData?.name}</Typography>
+                    <Typography>{invoiceData?.company}</Typography>
+                    <Typography>{invoiceData?.address}</Typography>
+                    <Typography>{invoiceData?.contact}</Typography>
+                    <Typography>{invoiceData?.companyEmail}</Typography>
                   </div>
                 </div>
               </Grid>

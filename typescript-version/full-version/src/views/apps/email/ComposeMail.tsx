@@ -43,10 +43,12 @@ const ComposeMail = (props: Props) => {
           maxWidth: 600,
           position: 'absolute',
           height: 'auto',
-          inset: 'auto 1.5rem 1.5rem auto',
+          insetInlineStart: 'auto',
+          insetInlineEnd: '1.5rem',
+          insetBlockEnd: '1.5rem',
           borderRadius: 'var(--mui-shape-borderRadius)',
           borderTop: 0,
-          boxShadow: 16,
+          boxShadow: 'var(--mui-customShadows-xl)',
           zIndex: 12
         }
       }}
@@ -114,9 +116,21 @@ const ComposeMail = (props: Props) => {
         }}
         boxProps={{
           sx: {
-            '& .rdw-editor-wrapper': { borderInline: 0 },
+            '& .rdw-editor-wrapper': {
+              borderInline: 0,
+              '.rdw-editor-toolbar': {
+                paddingInline: 4,
+                paddingBlock: 2,
+                '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
+                  margin: 0
+                }
+              }
+            },
             '& .rdw-option-wrapper': {
+              minWidth: '1.25rem',
               border: 'none',
+              padding: 1.75,
+              margin: 0,
               '&:hover, &.rdw-option-active': { boxShadow: 'none' }
             },
             '& .rdw-editor-main': { maxBlockSize: '10rem' }

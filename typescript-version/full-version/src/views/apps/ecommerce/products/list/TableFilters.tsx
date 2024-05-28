@@ -42,7 +42,7 @@ const TableFilters = ({
         return true
       })
 
-      setData(filteredData || [])
+      setData(filteredData ?? [])
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [category, stock, status, productData]

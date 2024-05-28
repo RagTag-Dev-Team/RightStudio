@@ -7,7 +7,7 @@ import type { CardStatsHorizontalWithAvatarProps } from '@/types/pages/widgetTyp
 // Component Imports
 import CardStatsHorizontalWithAvatar from '@components/card-statistics/HorizontalWithAvatar'
 
-const HorizontalStatisticsCard = ({ data }: { data: CardStatsHorizontalWithAvatarProps[] }) => {
+const HorizontalStatisticsCard = ({ data }: { data?: CardStatsHorizontalWithAvatarProps[] }) => {
   return (
     data && (
       <Grid container spacing={6}>

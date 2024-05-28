@@ -115,6 +115,7 @@ const SidebarLeft = (props: Props) => {
           zIndex: isBelowMdScreen && sidebarOpen ? 11 : 10,
           position: !isBelowMdScreen ? 'static' : 'absolute',
           '& .MuiDrawer-paper': {
+            boxShadow: 'none',
             overflow: 'hidden',
             width: isBelowSmScreen ? '260px' : '300px',
             position: !isBelowMdScreen ? 'static' : 'absolute'

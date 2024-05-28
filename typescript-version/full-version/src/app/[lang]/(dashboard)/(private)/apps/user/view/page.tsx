@@ -24,7 +24,7 @@ const NotificationsTab = dynamic(() => import('@views/apps/user/view/user-right/
 const ConnectionsTab = dynamic(() => import('@views/apps/user/view/user-right/connections'))
 
 // Vars
-const tabContentList = (data: PricingPlanType[]): { [key: string]: ReactElement } => ({
+const tabContentList = (data?: PricingPlanType[]): { [key: string]: ReactElement } => ({
   overview: <OverViewTab />,
   security: <SecurityTab />,
   'billing-plans': <BillingPlans data={data} />,

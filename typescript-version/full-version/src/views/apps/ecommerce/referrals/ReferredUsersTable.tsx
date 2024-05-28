@@ -83,7 +83,7 @@ const userStatusObj: userStatusType = {
 // Column Definitions
 const columnHelper = createColumnHelper<ReferralsType>()
 
-const ReferredUsersTable = ({ referralsData }: { referralsData: ReferralsType[] }) => {
+const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
