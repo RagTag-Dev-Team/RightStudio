@@ -12,7 +12,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "build:icons": "tsx src/assets/iconify-icons/bundle-icons-css.ts",
     "migrate": "dotenv -e .env -- npx prisma migrate dev",
-    "postinstall": "prisma generate && npm run build:icons"
+    "postinstall": "prisma generate && npm run build:icons",
+    "removeI18n": "tsx src/remove-translation-scripts/index.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.0.0",
@@ -84,12 +85,14 @@
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "autoprefixer": "^10.4.19",
+    "consola": "^3.2.3",
     "dotenv-cli": "^7.4.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
+    "globby": "^14.0.1",
     "postcss": "^8.4.38",
     "postcss-styled-syntax": "^0.6.4",
     "prettier": "^3.2.5",
