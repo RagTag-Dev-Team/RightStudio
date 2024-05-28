@@ -17,8 +17,11 @@ import CustomerRight from './customer-right'
 
 const OverViewTab = dynamic(() => import('@views/apps/ecommerce/customers/details/customer-right/overview'))
 const SecurityTab = dynamic(() => import('@views/apps/ecommerce/customers/details/customer-right/security'))
-const AddressBillingTab = dynamic(() => import('@views/apps/ecommerce/customers/details/customer-right/address-billing'))
 const NotificationsTab = dynamic(() => import('@views/apps/ecommerce/customers/details/customer-right/notification'))
+
+const AddressBillingTab = dynamic(
+  () => import('@views/apps/ecommerce/customers/details/customer-right/address-billing')
+)
 
 // Vars
 const tabContentList = (): { [key: string]: ReactElement } => ({

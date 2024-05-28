@@ -28,6 +28,7 @@ const removeTranslationInNavigation = async (path: string) => {
   fileContent = fileContent
     .replace(/label=\{dictionary\['navigation'\]\.(\w+)\}/g, "label='$1'")
     .replace(/\{dictionary\['navigation'\]\.(\w+)\}/g, '$1')
+    .replace(/\${locale}\//g, '')
 
   await fs.writeFile(path, fileContent)
   consola.success('Removed translation in navigation files successfully\n')

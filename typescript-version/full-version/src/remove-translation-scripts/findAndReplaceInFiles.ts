@@ -29,6 +29,8 @@ const removeDictionaryDestructuringPattern = /dictionary(,| )/g
 // Pattern to match Props type definitions including `params`
 const removeParamsFromPropsPattern = /&\s*{\s*params:\s*{\s*lang:\s*Locale\s*}\s*}/g
 
+const removeParamsFromPropsPattern2 = /\{ params \}: \{ params: \{ lang: Locale \} \}/
+
 const removeParamsFromFunctionPattern = /(?<={ .*)params,?(?=.* }: [A-Z][A-Za-z]+)/g
 
 async function replacePatternInFile(filePath: string) {
@@ -46,6 +48,7 @@ async function replacePatternInFile(filePath: string) {
     replaceDirectionPattern.test(data) ||
     removeDictionaryDestructuringPattern.test(data) ||
     removeParamsFromPropsPattern.test(data) ||
+    removeParamsFromPropsPattern2.test(data) ||
     removeParamsFromFunctionPattern.test(data)
   ) {
     // Perform replacements
@@ -60,6 +63,7 @@ async function replacePatternInFile(filePath: string) {
       .replace(replaceDirectionPattern, "const direction = 'ltr'")
       .replace(removeDictionaryDestructuringPattern, '')
       .replace(removeParamsFromPropsPattern, '')
+      .replace(removeParamsFromPropsPattern2, '')
       .replace(removeParamsFromFunctionPattern, '')
       .replace(/const\s*{\s*lang:\s*locale\s*}\s*=\s*useParams\(\)/g, '')
       .replace(/(\w+: )?locale,/g, '')
