@@ -37,7 +37,7 @@ const LogoText = styled.span<LogoTextProps>`
     isCollapsed && !isHovered ? 'opacity: 0; margin-inline-start: 0;' : 'opacity: 1; margin-inline-start: 10px;'}
 `
 
-const Logo = ({ component = false }: { component?: boolean }) => {
+const Logo = ({ component = false, href = '/' }: { component?: boolean; href?: string }) => {
   // Refs
   const logoTextRef = useRef<HTMLSpanElement>(null)
 
@@ -71,7 +71,7 @@ const Logo = ({ component = false }: { component?: boolean }) => {
   return (
     // eslint-disable-next-line lines-around-comment
     /* @ts-ignore */
-    <LogoWrapper className='flex items-center' {...(!component && { href: getLocalizedUrl('/', locale as Locale) })}>
+    <LogoWrapper className='flex items-center' {...(!component && { href: getLocalizedUrl(href, locale as Locale) })}>
       <svg width={22} height={24} viewBox='0 0 22.236 23.8' xmlns='http://www.w3.org/2000/svg' color='#765feb'>
         <g
           fontSize='9pt'
