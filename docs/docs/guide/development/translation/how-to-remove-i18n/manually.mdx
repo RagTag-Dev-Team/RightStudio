@@ -51,55 +51,14 @@ Move all content from the language-specific directories `[lang]` folder to the m
 2. After moving the content, ensure that all links and references in your project are updated to reflect the new locations.
 3. Delete the `[lang]` folder.
 
-### Step 3: Modify Middleware File
-
-In the `middleware.js/ts` file, make these changes:
-
-1. Remove the `getLocale` and `localizedRedirect` functions from the file.
-
-2. Add a new redirect function `_redirect` above the `withAuth` function:
-
-    ```ts
-    const _redirect = (url: string, request: NextRequestWithAuth) => {
-      const _url = ensurePrefix(url, `${process.env.BASEPATH}`)
-
-      const redirectUrl = new URL(_url, request.url).toString()
-
-      return NextResponse.redirect(redirectUrl)
-    }
-    ```
-
-3. Replace the followings lines in the `middleware` function:
-
-    ```diff
-    - const locale = getLocale(request)
-
-    - if (!(pathname === '/' || pathname === `/${locale}`)) {
-    + if (pathname !== '/') {
-
-    - return localizedRedirect(redirectUrl, locale, request)
-    + return _redirect(redirectUrl, request)
-
-    - return localizedRedirect(HOME_PAGE_URL, locale, request)
-    + return _redirect(HOME_PAGE_URL, request)
-
-    - if (pathname === '/' || pathname === `/${locale}`) {
-    + if (pathname === '/') {
-
-    - return isUrlMissingLocale(pathname) ? localizedRedirect(pathname, locale, request) : NextResponse.next()
-    + return NextResponse.next()
-    ```
-
-4. Remove the unused imports from the `middleware.js/ts` file.
-
-### Step 4: Additional Modifications
+### Step 3: Additional Modifications
 
 #### Common Changes
 
 - Replace the `getLocalizedUrl` function with the actual URL in the whole project like below:
 
     ```diff
-    - getLocalizedUrl('/your-url', locale as Locale)
+    - getLocalizedUrl('/your-url', locale as Locale) or getLocalizedUrl('/your-url', lang)
     + '/your-url'
     ```
 
@@ -151,11 +110,13 @@ In the `middleware.js/ts` file, make these changes:
 
 - Go to the `src/app/layout.tsx` file and make the following changes.
 
-    1. Remove `lang` param from the `<html>` tag.
+    1. Remove the `TranslationWrapper` component and it's related import.
+    
+    2. Remove `lang` param from the `<html>` tag.
 
-    2. Remove the `params` from the `Layout` function.
+    3. Remove the `params` from the `Layout` function.
 
-    3. Replace the following:
+    4. Replace the following:
 
         ```diff
         - const direction = i18n.langDirection[params.lang]
@@ -164,7 +125,7 @@ In the `middleware.js/ts` file, make these changes:
 
 - Please note that you have to replace `const direction = 'ltr'` as mentioned above in all the files where `const direction = i18n.langDirection[params.lang]` is used.
 
-- Go to the `src/app/(dashboard)/layout.tsx` file and make the above changes and also make the following changes:
+- Go to the `src/app/(dashboard)/(private)/layout.tsx` file and make the above changes and also make the following changes:
 
     1. Add the `disableDirection` prop in the `<Customizer>` component.
 
@@ -174,7 +135,33 @@ In the `middleware.js/ts` file, make these changes:
 
     2. Remove the `dictionary={dictionary}` from the `<Navigation>` and `<Header>` components and it's related variable and imports.
 
-#### Login and other components changes:
+    3. Remove the `params` from the `Layout` function.
+
+    4. Remove `locale` from the `AuthGuard` component.
+
+- Go to the `src/app/(blank-layout-pages)/(guest-only)/layout.tsx` file and make the following changes:
+
+    1. Remove the `params` from the `Layout` function.
+
+    2. Remove the `lang` from the `GuestOnlyRoute` component
+
+#### HOC(Higher Order Component) changes
+
+- Go to the `src/hocs/AuthGuard.tsx` file and make the following changes.
+
+    1. Remove the `locale` from the `AuthGaurd` function.
+
+    2. Remove `lang` from the `AuthRedirect` component.
+
+- Remove the `src/hocs/TranslationWrapper.tsx` file and it's related import from the whole project.
+
+#### Other Components Changes:
+
+- Go to the `src/components/AuthRedirect.tsx` file and make the following changes.
+
+    1. Remove the `lang` from the `AuthRedirect` function.
+
+- Remove the `src/components/LangRedirect.tsx` file and it's related import from the whole project.
 
 - Go to the `src/components/GenerateMenu.tsx` and make the following changes.
 
@@ -199,16 +186,15 @@ In the `middleware.js/ts` file, make these changes:
 
 #### next.config Modifications:
 
-- Go to the `next.config` file and remove the following code:
+- Go to the `next.config` file and replace the redirects with the following code:
 
     ```ts
     redirects: async () => {
       return [
         {
           source: '/',
-          destination: '/en',
-          permanent: true,
-          locale: false
+          destination: '/dashboards/crm', // replace with your default route
+          permanent: true
         }
       ]
      }

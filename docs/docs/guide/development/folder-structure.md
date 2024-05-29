@@ -15,7 +15,7 @@ Before checking folder structure it is better you know some stuff related to fol
 
 - `src/@core`, `src/@layout` and `src/@menu` folders contains core files of template which shall not get modified unless our support team guide you to do it.
 - Outside of `src/@core`, `src/@layout` and `src/@menu` folders are files you can move and modify as per your wish. Basically that is your playground where you can modify anything.
-- `src/app/api/fake-db` folder just contains dummy data which we get in response of API call. This enables us to take step forward in providing API ready template.
+- `src/fake-db` folder just contains dummy data which we get in response of API call. This enables us to take step forward in providing API ready template.
 - `src/components` folder outside of `src/@layout` are your layouts which you can modify however you like. Template will always render these layouts.
 
 ```plaintext
@@ -33,16 +33,18 @@ Before checking folder structure it is better you know some stuff related to fol
 │   │   └── themeConfig.ts              -> Template configurations
 │   ├── contexts                        -> Your context files go here
 │   ├── data                            -> Data files (navigation structure, search data, etc.)
+│   │   ├── dictionaries                -> Translation data for localization
 │   │   ├── navigation                  -> Vertical & Horizontal static navigation menu data
-│   │   ├── translation                 -> Translation data for localization
 │   │   └── searchData.ts               -> Data related to search
-│   ├── libs                            -> 
+│   ├── fake-db                         -> A mock database setup, usually for testing or development purposes
+│   ├── hocs                            -> Higher Order Components
+│   ├── libs                            -> External libraries 
 │   │   └── auth.ts                     -> Authentication using NextAuth.js
-│   ├── middleware.ts                   -> Middleware logic for Next.js
 │   ├── prisma                          -> Prisma ORM files, including database schema
 │   │   ├── migrations                  -> Database schema change history
 │   │   ├── dev.db                      -> SQLite database
 │   │   └── schema.prisma               -> Model and schema definitions for Prisma
+│   ├── remove-translation-scripts      -> Script for removing translations from the template
 │   ├── types                           -> Type definitions
 │   ├── utils                           -> Utility functions
 │   └── views                           -> Files that are included in app folder
@@ -53,11 +55,11 @@ Before checking folder structure it is better you know some stuff related to fol
 ├── .npmrc                              -> Configuration for npm
 ├── .prettierrc.json                    -> Prettier configuration for code formatting
 ├── .stylelintrc.json                   -> Stylelint configuration for style files
-├── next.config.js                      -> Configuration file for Next.js
+├── next.config.mjs                     -> Configuration file for Next.js
 ├── package.json                        -> Lists dependencies and project metadata
 ├── pnpm-lock.yaml                      -> Lock file for pnpm, ensuring consistent installations
-├── postcss.config.js                   -> Configuration for PostCSS.
-├── tailwind.config.js                  -> Configuration for Tailwind CSS
+├── postcss.config.mjs                   -> Configuration for PostCSS.
+├── tailwind.config.ts                  -> Configuration for Tailwind CSS
 └── tsconfig.json                       -> TypeScript configuration file
 ```
 
@@ -160,10 +162,9 @@ app
 │   ├── (dashboard)             -> Houses the main template pages, central to your admin interface
 │   ├── [...not-found]          -> A catch-all directory for handling 404 or 'page not found' scenarios
 │   ├── layout.tsx              -> The main layout component, which wraps all pages
-│   └── page.tsx                -> Manages authentication-based redirection for user access control
 ├── api                         -> Central location for API-related scripts and services
 │   ├── auth                    -> Authentication-related scripts and services
-|   ├── fake db                 -> A mock database setup, usually for testing or development purposes
 │   └── login                   -> Specific scripts or functions related to the login process
-└── globals.css                 -> A CSS file that contains global styles applicable across the entire application
+├── globals.css                 -> A CSS file that contains global styles applicable across the entire application
+└── favicon.ico                 -> The application's favicon 
 ```

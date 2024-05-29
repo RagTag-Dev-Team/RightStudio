@@ -84,6 +84,7 @@ const sidebars: SidebarsConfig = {
         'guide/authentication/intro',
         'guide/authentication/credentials-provider',
         'guide/authentication/google-prisma',
+        'guide/authentication/securing-page',
         'guide/authentication/remove-auth',
         'guide/authentication/add-auth'
       ]
@@ -413,6 +414,7 @@ const sidebars: SidebarsConfig = {
     "faqs/intro",
     "faqs/installation-errors",
     "faqs/installation-warning",
+    "faqs/why-should-I-not-upgrade-the-package-manually",
     "faqs/remove-nextjs",
     "faqs/how-to-update-this-template",
     "faqs/how-to-hide-menu",
