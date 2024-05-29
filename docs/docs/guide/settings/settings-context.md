@@ -8,12 +8,13 @@ Settings Context has been created so that the template is independent of the red
 
 Following are the properties and their values that are stored in the Settings Context:
 
-| Property          | Values                                                                   | Description                                       |
-| ----------------- | ------------------------------------------------------------------------ | ------------------------------------------------- |
-| settings          | `Settings`                                                               | Stores the settings.                              |
-| updateSettings    | `(settings: Partial<Settings>, options?: UpdateSettingsOptions) => void` | Function to update settings with provided values. |
-| isSettingsChanged | `boolean`                                                                | Indicates if settings have been modified.         |
-| resetSettings     | `() => void`                                                             | Resets settings to default values.                |
+| Property           | Values                                                                   | Description                                                 |
+| ------------------ | ------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| settings           | `Settings`                                                               | Stores the settings.                                        |
+| updateSettings     | `(settings: Partial<Settings>, options?: UpdateSettingsOptions) => void` | Function to update settings with provided values.           |
+| isSettingsChanged  | `boolean`                                                                | Indicates if settings have been modified.                   |
+| resetSettings      | `() => void`                                                             | Resets settings to default values.                          |
+| updatePageSettings | `(settings: Partial<Settings>) => () => void`                            | A function that updates the settings of a specific page.    |
 
 ## Settings
 

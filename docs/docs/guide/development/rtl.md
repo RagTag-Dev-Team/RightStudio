@@ -12,7 +12,7 @@ There is 2 scenarios in your project accordingly you need to implement RTL:
 
 Our template's support for Right-to-Left (RTL) languages like Arabic is directly tied to the language settings. This means that RTL formatting is automatically applied when an RTL language is selected. Conversely, languages like English (en) use Left-to-Right (LTR) formatting.
 
-We have provided RTL support for `Arabic` language in our template. You can check it in `src/i18n.ts` file:
+We have provided RTL support for `Arabic` language in our template. You can check it in `src/configs/i18n.ts` file:
 
 ```ts
 export const i18n = {

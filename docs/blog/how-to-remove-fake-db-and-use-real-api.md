@@ -5,7 +5,7 @@ We are using Next.js API routes to fetch data from the database. You can find al
 ### How to remove Fake DB
 However, you won't need fake DB if you are using real API. In this case please follow below steps to remove fake DB from the template.
 
-- If you are not using the fake DB then you can remove `src/app/api/fake-db` folder.
+- If you are not using the fake DB then you can remove `src/fake-db` folder.
 
 - Remove imports related to fake DB.
     :::warning NOTE
@@ -20,7 +20,7 @@ Make sure you've built the APIs in your backend and connected them to your datab
 :::warning NOTE
 If the structure of the data you receive from the API is different from the sample data, you will need to update the code in the components that use the data.
 
-You can refer to the data structure in `src/app/api/fake-db` folder.
+You can refer to the data structure in `src/fake-db` folder.
 :::
 
 - For example you want to fetch data from `https://fakedata.example.com/` then you can create a file `src/app/**/page.tsx` and add following code:
