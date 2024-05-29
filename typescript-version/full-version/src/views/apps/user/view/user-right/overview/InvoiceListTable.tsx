@@ -1,7 +1,8 @@
 'use client'
 
 // React Imports
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
+import type { MouseEvent } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -9,19 +10,15 @@ import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
+import Menu from '@mui/material/Menu'
 import Avatar from '@mui/material/Avatar'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
-import type { TextFieldProps } from '@mui/material/TextField'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -88,35 +85,6 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   return itemRank.passed
 }
 
-const DebouncedInput = ({
-  value: initialValue,
-  onChange,
-  debounce = 500,
-  ...props
-}: {
-  value: string | number
-  onChange: (value: string | number) => void
-  debounce?: number
-} & Omit<TextFieldProps, 'onChange'>) => {
-  // States
-  const [value, setValue] = useState(initialValue)
-
-  useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(value)
-    }, debounce)
-
-    return () => clearTimeout(timeout)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
-
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
-}
-
 // Vars
 const invoiceStatusObj: InvoiceStatusObj = {
   Sent: { color: 'secondary', icon: 'ri-send-plane-2-line' },
@@ -132,11 +100,13 @@ const columnHelper = createColumnHelper<InvoiceTypeWithAction>()
 
 const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
   // States
-  const [status, setStatus] = useState<InvoiceType['invoiceStatus']>('')
   const [rowSelection, setRowSelection] = useState({})
   const [data, setData] = useState(...[invoiceData])
-  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
+  // Vars
+  const open = Boolean(anchorEl)
 
   // Hooks
   const { lang: locale } = useParams()
@@ -216,11 +186,11 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data, filteredData]
+    []
   )
 
   const table = useReactTable({
-    data: filteredData as InvoiceType[],
+    data: data as InvoiceType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -248,56 +218,45 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
     getFacetedMinMaxValues: getFacetedMinMaxValues()
   })
 
-  useEffect(() => {
-    const filteredData = data?.filter(invoice => {
-      if (status && invoice.invoiceStatus.toLowerCase().replace(/\s+/g, '-') !== status) return false
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
 
-      return true
-    })
-
-    setFilteredData(filteredData)
-  }, [status, data, setFilteredData])
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <Card>
-      <CardContent className='flex justify-between flex-col sm:flex-row items-start sm:items-center'>
-        <Button
-          variant='contained'
-          component={Link}
-          startIcon={<i className='ri-add-line' />}
-          href={getLocalizedUrl('apps/invoice/add', locale as Locale)}
-          className='is-full sm:is-auto'
-        >
-          Create Invoice
-        </Button>
-        <div className='flex items-center gap-x-4 flex-col sm:flex-row is-full sm:is-auto'>
-          <DebouncedInput
-            value={globalFilter ?? ''}
-            onChange={value => setGlobalFilter(String(value))}
-            placeholder='Search Invoice'
-            className='is-full sm:is-auto'
-          />
-          <FormControl fullWidth size='small'>
-            <InputLabel id='status-select'>Invoice Status</InputLabel>
-            <Select
-              fullWidth
-              id='select-status'
-              value={status}
-              onChange={e => setStatus(e.target.value)}
-              label='Invoice Status'
-              labelId='status-select'
+      <CardHeader
+        title='Invoice List'
+        sx={{ '& .MuiCardHeader-action': { m: 0 } }}
+        action={
+          <>
+            <Button
+              variant='contained'
+              aria-haspopup='true'
+              onClick={handleClick}
+              aria-expanded={open ? 'true' : undefined}
+              endIcon={<i className='ri-arrow-down-s-line' />}
+              aria-controls={open ? 'user-view-overview-export' : undefined}
             >
-              <MenuItem value=''>none</MenuItem>
-              <MenuItem value='downloaded'>Downloaded</MenuItem>
-              <MenuItem value='draft'>Draft</MenuItem>
-              <MenuItem value='paid'>Paid</MenuItem>
-              <MenuItem value='partial-payment'>Partial Payment</MenuItem>
-              <MenuItem value='past-due'>Past Due</MenuItem>
-              <MenuItem value='sent'>Sent</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-      </CardContent>
+              Export
+            </Button>
+            <Menu open={open} anchorEl={anchorEl} onClose={handleClose} id='user-view-overview-export'>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                pdf
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                xlsx
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                csv
+              </MenuItem>
+            </Menu>
+          </>
+        }
+      />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
           <thead>
