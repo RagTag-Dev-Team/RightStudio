@@ -12,14 +12,54 @@ export const kanbanSlice = createSlice({
   initialState: db,
   reducers: {
     addColumn: (state, action) => {
+      const maxId = Math.max(...state.columns.map(column => column.id))
+
       const newColumn: ColumnType = {
-        id: state.columns[state.columns.length - 1].id + 1,
+        id: maxId + 1,
         title: action.payload,
         taskIds: []
       }
 
       state.columns.push(newColumn)
     },
+
+    editColumn: (state, action) => {
+      const { id, title } = action.payload
+
+      const column = state.columns.find(column => column.id === id)
+
+      if (column) {
+        column.title = title
+      }
+    },
+
+    deleteColumn: (state, action) => {
+      const { columnId } = action.payload
+      const column = state.columns.find(column => column.id === columnId)
+
+      state.columns = state.columns.filter(column => column.id !== columnId)
+
+      if (column) {
+        state.tasks = state.tasks.filter(task => !column.taskIds.includes(task.id))
+      }
+    },
+
+    updateColumns: (state, action) => {
+      state.columns = action.payload
+    },
+
+    updateColumnTaskIds: (state, action) => {
+      const { id, tasksList } = action.payload
+
+      state.columns = state.columns.map(column => {
+        if (column.id === id) {
+          return { ...column, taskIds: tasksList.map((task: TaskType) => task.id) }
+        }
+
+        return column
+      })
+    },
+
     addTask: (state, action) => {
       const { columnId, title } = action.payload
 
@@ -38,25 +78,7 @@ export const kanbanSlice = createSlice({
 
       return state
     },
-    editColumn: (state, action) => {
-      const { id, title } = action.payload
 
-      const column = state.columns.find(column => column.id === id)
-
-      if (column) {
-        column.title = title
-      }
-    },
-    deleteColumn: (state, action) => {
-      const { columnId } = action.payload
-      const column = state.columns.find(column => column.id === columnId)
-
-      state.columns = state.columns.filter(column => column.id !== columnId)
-
-      if (column) {
-        state.tasks = state.tasks.filter(task => !column.taskIds.includes(task.id))
-      }
-    },
     editTask: (state, action) => {
       const { id, title, badgeText, dueDate } = action.payload
 
@@ -68,6 +90,7 @@ export const kanbanSlice = createSlice({
         task.dueDate = dueDate
       }
     },
+
     deleteTask: (state, action) => {
       const taskId = action.payload
 
@@ -79,36 +102,23 @@ export const kanbanSlice = createSlice({
         }
       })
     },
+
     getCurrentTask: (state, action) => {
       state.currentTaskId = action.payload
-    },
-    updatedColumns: (state, action) => {
-      state.columns = action.payload
-    },
-    updateColumnTaskIds: (state, action) => {
-      const { id, tasksList } = action.payload
-
-      state.columns = state.columns.map(column => {
-        if (column.id === id) {
-          return { ...column, taskIds: tasksList.map((task: TaskType) => task.id) }
-        }
-
-        return column
-      })
     }
   }
 })
 
 export const {
   addColumn,
-  addTask,
   editColumn,
   deleteColumn,
+  updateColumns,
+  updateColumnTaskIds,
+  addTask,
   editTask,
   deleteTask,
-  getCurrentTask,
-  updatedColumns,
-  updateColumnTaskIds
+  getCurrentTask
 } = kanbanSlice.actions
 
 export default kanbanSlice.reducer

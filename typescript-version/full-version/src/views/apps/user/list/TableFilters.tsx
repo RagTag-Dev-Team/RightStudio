@@ -12,7 +12,7 @@ import type { UsersType } from '@/types/apps/userTypes'
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
 
-const TableFilters = ({ setData, tableData }: { setData: any; tableData?: UsersType[] }) => {
+const TableFilters = ({ setData, tableData }: { setData: (data: UsersType[]) => void; tableData?: UsersType[] }) => {
   // States
   const [role, setRole] = useState<UsersType['role']>('')
   const [plan, setPlan] = useState<UsersType['currentPlan']>('')
@@ -27,7 +27,7 @@ const TableFilters = ({ setData, tableData }: { setData: any; tableData?: UsersT
       return true
     })
 
-    setData(filteredData)
+    setData(filteredData || [])
   }, [role, plan, status, tableData, setData])
 
   return (

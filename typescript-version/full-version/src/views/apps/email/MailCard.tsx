@@ -58,7 +58,7 @@ const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean
 
 const MailCard = ({ data, isReplies }: { data: Email; isReplies: boolean }) => {
   return (
-    <Card>
+    <Card className='border'>
       <CardContent className='flex is-full gap-4'>
         <CustomAvatar src={data.from.avatar} size={38} alt={data.from.name} />
         <div className='flex items-center justify-between flex-wrap grow gap-x-4 gap-y-2'>

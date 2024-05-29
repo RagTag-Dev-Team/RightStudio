@@ -79,14 +79,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       <Menu
         rootStyles={menuRootStyles(theme)}
         renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-        menuItemStyles={menuItemStyles(settings, theme, 'tabler-circle')}
+        menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
           alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
           renderExpandIcon: ({ open }) => (
             <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
           ),
@@ -394,7 +394,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       {/* <Menu
         rootStyles={menuRootStyles(theme)}
         renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),

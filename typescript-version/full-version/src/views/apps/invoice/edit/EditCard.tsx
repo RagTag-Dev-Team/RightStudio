@@ -32,12 +32,12 @@ import CustomTextField from '@core/components/mui/TextField'
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
-const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: string; data: InvoiceType[] }) => {
+const EditCard = ({ invoiceData, id, data }: { invoiceData?: InvoiceType; id: string; data?: InvoiceType[] }) => {
   // States
-  const [selectData, setSelectData] = useState<InvoiceType>(data[0])
+  const [selectData, setSelectData] = useState<InvoiceType | null>(data?.[0] || null)
   const [count, setCount] = useState(1)
-  const [issueDate, setIssueDate] = useState(new Date(invoiceData.issuedDate))
-  const [dueDate, setDueDate] = useState(new Date(invoiceData.dueDate))
+  const [issueDate, setIssueDate] = useState(new Date(invoiceData?.issuedDate ?? ''))
+  const [dueDate, setDueDate] = useState(new Date(invoiceData?.dueDate ?? ''))
 
   // Hooks
   const isBelowMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
@@ -118,23 +118,23 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData: InvoiceType; id: str
                   <CustomTextField
                     select
                     className='is-1/2 min-is-[220px] sm:is-auto'
-                    value={selectData.id}
+                    value={selectData?.id}
                     onChange={e => {
-                      setSelectData(data.slice(0, 5).filter(item => item.id === e.target.value)[0])
+                      setSelectData(data?.slice(0, 5).filter(item => item.id === e.target.value)[0] || null)
                     }}
                   >
-                    {data.slice(0, 5).map((invoice: InvoiceType, index) => (
+                    {data?.slice(0, 5).map((invoice: InvoiceType, index) => (
                       <MenuItem key={index} value={invoice.id}>
                         {invoice.name}
                       </MenuItem>
                     ))}
                   </CustomTextField>
                   <div>
-                    <Typography>{selectData.name}</Typography>
-                    <Typography>{selectData.company}</Typography>
-                    <Typography>{selectData.address}</Typography>
-                    <Typography>{selectData.contact}</Typography>
-                    <Typography>{selectData.companyEmail}</Typography>
+                    <Typography>{selectData?.name}</Typography>
+                    <Typography>{selectData?.company}</Typography>
+                    <Typography>{selectData?.address}</Typography>
+                    <Typography>{selectData?.contact}</Typography>
+                    <Typography>{selectData?.companyEmail}</Typography>
                   </div>
                 </div>
                 <div className='flex flex-col gap-4'>

@@ -102,9 +102,9 @@ const RechartsScatterChart = () => {
                 <CartesianGrid />
                 <XAxis type='number' dataKey='x' reversed={theme.direction === 'rtl'} />
                 <YAxis type='number' dataKey='y' orientation={theme.direction === 'rtl' ? 'right' : 'left'} />
-                <Scatter name='Angular' data={angularData} fill={theme.palette.error.main} />
-                <Scatter name='Vue' data={vueData} fill={theme.palette.success.main} />
-                <Scatter name='React' data={reactData} fill={theme.palette.primary.main} />
+                <Scatter name='Angular' data={angularData} fill='var(--mui-palette-error-main)' />
+                <Scatter name='Vue' data={vueData} fill='var(--mui-palette-success-main)' />
+                <Scatter name='React' data={reactData} fill='var(--mui-palette-primary-main)' />
               </ScatterChart>
             </ResponsiveContainer>
           </div>

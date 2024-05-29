@@ -21,12 +21,12 @@ type Props = EditorProps & {
 // Styled Components
 const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
   '& .rdw-editor-wrapper': {
-    border: `1px solid ${theme.vars.palette.divider}`,
+    border: '1px solid var(--mui-palette-divider)',
     '& .rdw-editor-toolbar': {
       border: 0,
       marginBottom: 0,
-      background: theme.vars.palette.background.paper,
-      borderBottom: `1px solid ${theme.vars.palette.divider}`,
+      background: 'var(--mui-palette-background-paper)',
+      borderBottom: '1px solid var(--mui-palette-divider)',
       '& .rdw-fontsize-dropdown': {
         minWidth: 50
       },
@@ -34,36 +34,39 @@ const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
         height: 'auto'
       },
       '& .rdw-dropdown-selectedtext': {
-        color: theme.vars.palette.text.primary
+        color: 'var(--mui-palette-text-primary)'
       },
       '& .rdw-colorpicker-modal, & .rdw-link-modal, & .rdw-embedded-modal, & .rdw-emoji-modal, & .rdw-image-modal': {
-        boxShadow: theme.vars.shadows[8],
-        borderColor: theme.vars.palette.divider,
-        backgroundColor: theme.vars.palette.background.paper
+        boxShadow: 'var(--mui-shadows-8)',
+        borderColor: 'var(--mui-palette-divider)',
+        backgroundColor: 'var(--mui-palette-background-paper)'
       },
       '& .rdw-dropdown-optionwrapper': {
-        boxShadow: theme.vars.shadows[8],
-        borderColor: theme.vars.palette.divider,
-        backgroundColor: theme.vars.palette.background.paper,
+        boxShadow: 'var(--mui-shadows-8)',
+        borderColor: 'var(--mui-palette-divider)',
+        backgroundColor: 'var(--mui-palette-background-paper)',
         '& .rdw-dropdownoption-highlighted': {
-          backgroundColor: theme.vars.palette.action.hover
+          backgroundColor: 'var(--mui-palette-action-hover)'
         },
         '& .rdw-dropdownoption-active': {
-          backgroundColor: theme.vars.palette.action.selected
+          backgroundColor: 'var(--mui-palette-action-selected)'
         }
       },
+      '& .rdw-option-wrapper': {
+        boxSizing: 'initial'
+      },
       '& .rdw-option-wrapper, & .rdw-dropdown-wrapper': {
-        borderColor: theme.vars.palette.divider,
-        background: theme.vars.palette.background.paper,
+        borderColor: 'var(--mui-palette-divider)',
+        background: 'var(--mui-palette-background-paper)',
         '& .rdw-dropdown-carettoopen': {
           left: 'auto',
           right: '10%',
-          borderTopColor: theme.vars.palette.text.disabled
+          borderTopColor: 'var(--mui-palette-text-disabled)'
         },
         '& .rdw-dropdown-carettoclose': {
           left: 'auto',
           right: '10%',
-          borderBottomColor: theme.vars.palette.text.disabled
+          borderBottomColor: 'var(--mui-palette-text-disabled)'
         },
         '[data-mui-color-scheme="dark"] & img': {
           filter: 'invert(1)'
@@ -81,14 +84,14 @@ const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
           fontSize: '1rem',
           background: 'none',
           padding: theme.spacing(0, 3.5),
-          color: theme.vars.palette.text.primary,
-          borderColor: theme.vars.palette.divider,
+          color: 'var(--mui-palette-text-primary)',
+          borderColor: 'var(--mui-palette-divider)',
           borderRadius: theme.vars.shape.borderRadius,
           '&:focus': {
-            borderColor: theme.vars.palette.primary.main
+            borderColor: 'var(--mui-palette-primary-main)'
           },
           '&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder': {
-            color: theme.vars.palette.text.disabled
+            color: 'var(--mui-palette-text-disabled)'
           }
         },
       '& .rdw-link-modal-btn, & .rdw-embedded-modal-btn, & .rdw-image-modal-btn': {
@@ -99,34 +102,34 @@ const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
         textTransform: 'uppercase',
         fontWeight: theme.typography.fontWeightMedium,
         '&:first-of-type:not([disabled])': {
-          boxShadow: theme.vars.shadows[3],
-          color: theme.vars.palette.primary.contrastText,
-          backgroundColor: theme.vars.palette.primary.main,
+          boxShadow: 'var(--mui-shadows-3)',
+          color: 'var(--mui-palette-primary-contrastText)',
+          backgroundColor: 'var(--mui-palette-primary-main)',
           '&:hover': {
-            boxShadow: theme.vars.shadows[4],
-            backgroundColor: theme.vars.palette.primary.dark
+            boxShadow: 'var(--mui-shadows-4)',
+            backgroundColor: 'var(--mui-palette-primary-dark)'
           },
           '&:active': {
-            boxShadow: theme.vars.shadows[3]
+            boxShadow: 'var(--mui-shadows-3)'
           }
         },
         '&:last-child': {
-          boxShadow: theme.vars.shadows[3],
-          color: theme.vars.palette.secondary.contrastText,
-          backgroundColor: theme.vars.palette.secondary.main,
+          boxShadow: 'var(--mui-shadows-3)',
+          color: 'var(--mui-palette-secondary-contrastText)',
+          backgroundColor: 'var(--mui-palette-secondary-main)',
           '&:hover': {
-            boxShadow: theme.vars.shadows[4],
-            backgroundColor: theme.vars.palette.secondary.dark
+            boxShadow: 'var(--mui-shadows-4)',
+            backgroundColor: 'var(--mui-palette-secondary-dark)'
           },
           '&:active': {
-            boxShadow: theme.vars.shadows[3]
+            boxShadow: 'var(--mui-shadows-3)'
           }
         },
         '&[disabled]': {
           cursor: 'default',
           boxShadow: 'none',
-          color: theme.vars.palette.text.disabled,
-          backgroundColor: theme.vars.palette.action.disabledBackground
+          color: 'var(--mui-palette-text-disabled)',
+          backgroundColor: 'var(--mui-palette-action-disabledBackground)'
         }
       }
     },
@@ -134,7 +137,7 @@ const EditorWrapper = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
       cursor: 'text',
       padding: '0 1rem',
       minHeight: '10rem',
-      color: theme.vars.palette.text.primary,
+      color: 'var(--mui-palette-text-primary)',
 
       ...(theme.direction === 'rtl'
         ? {

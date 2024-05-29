@@ -5,18 +5,12 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
-
-// Type Imports
-import type { SystemMode } from '@core/types'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -30,14 +24,12 @@ const donutColors = {
   series5: '#ffa1a1'
 }
 
-const ApexDonutChart = ({ serverMode }: { serverMode: SystemMode }) => {
+const ApexDonutChart = () => {
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
+  const textSecondary = 'var(--mui-palette-text-secondary)'
 
   const options: ApexOptions = {
     stroke: { width: 0 },
@@ -76,7 +68,7 @@ const ApexDonutChart = ({ serverMode }: { serverMode: SystemMode }) => {
               fontSize: '1.2rem',
               label: 'Operational',
               formatter: () => '31%',
-              color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)
+              color: 'var(--mui-palette-text-primary)'
             }
           }
         }

@@ -10,7 +10,7 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 // Component Imports
 import Pricing from '@components/pricing'
 
-const PricingPage = ({ data }: { data: PricingPlanType[] }) => {
+const PricingPage = ({ data }: { data?: PricingPlanType[] }) => {
   return (
     <Card>
       <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>

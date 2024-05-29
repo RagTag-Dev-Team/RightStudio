@@ -46,7 +46,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
   })
 
   // Display the Add New Task form
-  const handleDisplay = () => {
+  const toggleDisplay = () => {
     setDisplayNewItem(!displayNewItem)
   }
 
@@ -57,9 +57,15 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
     reset({ content: '' })
   }
 
+  // Handle reset
+  const handleReset = () => {
+    toggleDisplay()
+    reset({ content: '' })
+  }
+
   return (
     <div className='flex flex-col gap-4 items-start'>
-      <Typography onClick={handleDisplay} color='text.primary' className='flex items-center gap-1 cursor-pointer'>
+      <Typography onClick={toggleDisplay} color='text.primary' className='flex items-center gap-1 cursor-pointer'>
         <i className='tabler-plus text-base' />
         <span>Add New Item</span>
       </Typography>
@@ -81,8 +87,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
                   }
 
                   if (e.key === 'Escape') {
-                    handleDisplay()
-                    reset({ content: '' })
+                    handleReset()
                   }
                 }}
                 placeholder='Add Content'
@@ -102,8 +107,7 @@ const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {
               size='small'
               color='secondary'
               onClick={() => {
-                handleDisplay()
-                reset({ content: '' })
+                handleReset()
               }}
             >
               Cancel

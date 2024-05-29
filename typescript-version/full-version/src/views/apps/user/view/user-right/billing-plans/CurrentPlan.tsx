@@ -22,7 +22,7 @@ import ConfirmationDialog from '@components/dialogs/confirmation-dialog'
 import UpgradePlan from '@components/dialogs/upgrade-plan'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 
-const CurrentPlan = ({ data }: { data: PricingPlanType[] }) => {
+const CurrentPlan = ({ data }: { data?: PricingPlanType[] }) => {
   const buttonProps = (children: string, variant: ButtonProps['variant'], color: ThemeColor): ButtonProps => ({
     children,
     variant,

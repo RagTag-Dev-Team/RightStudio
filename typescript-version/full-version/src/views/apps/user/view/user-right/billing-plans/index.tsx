@@ -9,7 +9,7 @@ import CurrentPlan from './CurrentPlan'
 import PaymentMethod from './PaymentMethod'
 import BillingAddress from './BillingAddress'
 
-const BillingPlans = ({ data }: { data: PricingPlanType[] }) => {
+const BillingPlans = ({ data }: { data?: PricingPlanType[] }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>

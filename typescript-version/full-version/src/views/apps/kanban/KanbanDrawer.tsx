@@ -12,16 +12,17 @@ import Chip from '@mui/material/Chip'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
+import InputAdornment from '@mui/material/InputAdornment'
 
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { object, string, minLength } from 'valibot'
 import type { Input } from 'valibot'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
+import type { AppDispatch } from '@/redux-store'
 
 // Slice Imports
 import { editTask, deleteTask } from '@/redux-store/slices/kanban'
@@ -34,22 +35,25 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 // Data Imports
 import { chipColor } from './TaskCard'
 
-type FormData = Input<typeof schema>
-
-const schema = object({
-  title: string([minLength(1, 'Title is required')])
-})
-
-type Props = {
+type KanbanDrawerProps = {
   drawerOpen: boolean
-  dispatch: Dispatch
+  dispatch: AppDispatch
   setDrawerOpen: (value: boolean) => void
   task: TaskType
   columns: ColumnType[]
   setColumns: (value: ColumnType[]) => void
 }
 
-function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setColumns }: Props) {
+type FormData = Input<typeof schema>
+
+const schema = object({
+  title: string([minLength(1, 'Title is required')])
+})
+
+const KanbanDrawer = (props: KanbanDrawerProps) => {
+  // Props
+  const { drawerOpen, dispatch, setDrawerOpen, task, columns, setColumns } = props
+
   // States
   const [date, setDate] = useState<Date | undefined>(task.dueDate)
   const [badgeText, setBadgeText] = useState(task.badgeText || [])
@@ -71,12 +75,6 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
     },
     resolver: valibotResolver(schema)
   })
-
-  useEffect(() => {
-    reset({ title: task.title })
-    setBadgeText(task.badgeText || [])
-    setDate(task.dueDate)
-  }, [task, reset])
 
   // Handle File Upload
   const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -122,10 +120,12 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
     setColumns(updatedColumns)
   }
 
-  // Handle Delete
-  const handleDelete = (value: string) => {
-    setBadgeText(current => current.filter(item => item !== value))
-  }
+  // To set the initial values according to the task
+  useEffect(() => {
+    reset({ title: task.title })
+    setBadgeText(task.badgeText || [])
+    setDate(task.dueDate)
+  }, [task, reset])
 
   return (
     <div>
@@ -186,7 +186,7 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
                         onMouseDown={e => e.stopPropagation()}
                         label={value}
                         color={chipColor[value]?.color}
-                        onDelete={() => handleDelete(value)}
+                        onDelete={() => setBadgeText(current => current.filter(item => item !== value))}
                       />
                     ))}
                   </div>
@@ -222,7 +222,14 @@ function KanbanDrawer({ drawerOpen, dispatch, setDrawerOpen, task, columns, setC
                 variant='outlined'
                 value={fileName}
                 InputProps={{
-                  readOnly: true
+                  readOnly: true,
+                  endAdornment: fileName ? (
+                    <InputAdornment position='end'>
+                      <IconButton size='small' edge='end' onClick={() => setFileName('')}>
+                        <i className='ri-close-line' />
+                      </IconButton>
+                    </InputAdornment>
+                  ) : null
                 }}
               />
               <Button component='label' variant='tonal' htmlFor='contained-button-file'>

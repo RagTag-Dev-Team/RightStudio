@@ -5,18 +5,12 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
-
-// Type Imports
-import type { SystemMode } from '@core/types'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -39,15 +33,13 @@ const series = [
   }
 ]
 
-const ApexColumnChart = ({ serverMode }: { serverMode: SystemMode }) => {
+const ApexColumnChart = () => {
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
-  const textDisabled = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const divider = 'var(--mui-palette-divider)'
+  const textDisabled = 'var(--mui-palette-text-disabled)'
 
   const options: ApexOptions = {
     chart: {
@@ -63,7 +55,7 @@ const ApexColumnChart = ({ serverMode }: { serverMode: SystemMode }) => {
       position: 'top',
       horizontalAlign: 'left',
       fontSize: '13px',
-      labels: { colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`) },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       markers: {
         offsetY: 2,
         offsetX: theme.direction === 'rtl' ? 7 : -4,

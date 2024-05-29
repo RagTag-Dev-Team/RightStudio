@@ -12,7 +12,7 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 
 type Props = {
   pricingPlan: 'monthly' | 'annually'
-  data: PricingPlanType
+  data?: PricingPlanType
 }
 
 const PlanDetails = ({ data, pricingPlan }: Props) => {

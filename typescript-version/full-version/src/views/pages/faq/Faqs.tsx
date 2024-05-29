@@ -23,7 +23,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 import CustomTabList from '@core/components/mui/TabList'
 
 type props = {
-  faqData: FaqType[]
+  faqData?: FaqType[]
   searchValue: string
 }
 
@@ -36,19 +36,20 @@ const FAQ = ({ faqData, searchValue }: props) => {
     let returnVal = faqData
 
     if (searchValue) {
-      returnVal = faqData
-        .filter(category =>
-          category.questionsAnswers.some(item => item.question.toLowerCase().includes(searchValue.toLowerCase()))
-        )
-        .map(category => ({
-          ...category,
-          questionsAnswers: category.questionsAnswers.filter(item =>
-            item.question.toLowerCase().includes(searchValue.toLowerCase())
+      returnVal =
+        faqData
+          ?.filter(category =>
+            category.questionsAnswers.some(item => item.question.toLowerCase().includes(searchValue.toLowerCase()))
           )
-        }))
+          .map(category => ({
+            ...category,
+            questionsAnswers: category.questionsAnswers.filter(item =>
+              item.question.toLowerCase().includes(searchValue.toLowerCase())
+            )
+          })) ?? []
     }
 
-    setActiveTab(returnVal[0]?.id ?? '')
+    setActiveTab(returnVal?.[0]?.id ?? '')
 
     return returnVal
   }, [faqData, searchValue])
@@ -57,12 +58,12 @@ const FAQ = ({ faqData, searchValue }: props) => {
     setActiveTab(newValue)
   }
 
-  return filteredData.length > 0 ? (
+  return filteredData && filteredData.length > 0 ? (
     <TabContext value={activeTab}>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={5} md={4} xl={3} className='flex flex-col items-center gap-4'>
           <CustomTabList orientation='vertical' onChange={handleChange} className='is-full' pill='true'>
-            {filteredData.map((faq, index) => (
+            {filteredData?.map((faq, index) => (
               <Tab
                 key={index}
                 label={faq.title}
@@ -79,7 +80,7 @@ const FAQ = ({ faqData, searchValue }: props) => {
           />
         </Grid>
         <Grid item xs={12} sm={7} md={8} xl={9}>
-          {filteredData.map((faq, index) => (
+          {filteredData?.map((faq, index) => (
             <TabPanel key={index} value={faq.id} className='p-0'>
               <div className='flex items-center gap-4 mbe-4'>
                 <CustomAvatar skin='light' color='primary' variant='rounded' size={50}>

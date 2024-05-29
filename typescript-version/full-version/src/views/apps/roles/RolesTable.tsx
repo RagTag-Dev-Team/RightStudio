@@ -143,8 +143,8 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // States
   const [role, setRole] = useState<UsersType['role']>('')
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[tableData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -222,17 +222,17 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
               variant='tonal'
               className='capitalize'
               label={row.original.status}
-              color={userStatusObj[row.original.status]}
               size='small'
+              color={userStatusObj[row.original.status]}
             />
           </div>
         )
       }),
       columnHelper.accessor('action', {
         header: 'Actions',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
               <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
@@ -262,11 +262,11 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data as UsersType[],
+    data: filteredData as UsersType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -309,14 +309,14 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
   }
 
   useEffect(() => {
-    const filteredData = tableData?.filter(user => {
+    const filteredData = data?.filter(user => {
       if (role && user.role !== role) return false
 
       return true
     })
 
-    setData(filteredData)
-  }, [role, tableData, setData])
+    setFilteredData(filteredData)
+  }, [role, data, setFilteredData])
 
   return (
     <Card>

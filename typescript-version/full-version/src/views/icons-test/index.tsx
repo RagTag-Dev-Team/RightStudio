@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 // Third-party Imports
 import classnames from 'classnames'
 
-const IconsTest = ({ data }: { data: string[] }) => {
+const IconsTest = ({ data }: { data?: string[] }) => {
   return (
     <>
       <Typography variant='h5'>All the icons are made with the help of our custom component.</Typography>
@@ -28,9 +28,7 @@ const IconsTest = ({ data }: { data: string[] }) => {
       <Typography className='mbe-4'>
         Remix icons coming from our API (Next.js API) and SVGs are from the Iconify Bundle
       </Typography>
-      {data.map((icon: string, index: number) => (
-        <i key={index} className={classnames(icon, 'text-4xl')} />
-      ))}
+      {data?.map((icon: string, index: number) => <i key={index} className={classnames(icon, 'text-4xl')} />)}
 
       <Typography variant='h4' className='mbs-8 mbe-4'>
         Offline Icons

@@ -18,7 +18,6 @@ import CustomChip from '@core/components/mui/Chip'
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Styled Component Imports
@@ -51,7 +50,6 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
-  const { settings } = useSettings()
   const params = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
@@ -79,7 +77,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
       {/* Vertical Menu */}
       <Menu
         popoutMenuOffset={{ mainAxis: 23 }}
-        menuItemStyles={menuItemStyles(verticalNavOptions, theme, settings)}
+        menuItemStyles={menuItemStyles(verticalNavOptions, theme)}
         renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
@@ -367,7 +365,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
       </Menu>
       {/* <Menu
         popoutMenuOffset={{ mainAxis: 23 }}
-        menuItemStyles={menuItemStyles(verticalNavOptions, theme, settings)}
+        menuItemStyles={menuItemStyles(verticalNavOptions, theme)}
         renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}

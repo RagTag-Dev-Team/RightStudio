@@ -1,6 +1,6 @@
 // React Imports
 import { useEffect, useState } from 'react'
-import type { ChangeEvent, FormEvent } from 'react'
+import type { FormEvent, RefObject } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -11,10 +11,10 @@ import IconButton from '@mui/material/IconButton'
 import { useDragAndDrop } from '@formkit/drag-and-drop/react'
 import { animations } from '@formkit/drag-and-drop'
 import classnames from 'classnames'
-import type { Dispatch } from '@reduxjs/toolkit'
 
 // Type Imports
 import type { TaskType, ColumnType, KanbanType } from '@/types/apps/kanbanTypes'
+import type { AppDispatch } from '@/redux-store'
 
 // Slice Imports
 import { addTask, editColumn, deleteColumn, updateColumnTaskIds } from '@/redux-store/slices/kanban'
@@ -27,10 +27,10 @@ import NewTask from './NewTask'
 // Styles Imports
 import styles from './styles.module.css'
 
-type Props = {
+type KanbanListProps = {
   column: ColumnType
   tasks: (TaskType | undefined)[]
-  dispatch: Dispatch
+  dispatch: AppDispatch
   store: KanbanType
   setDrawerOpen: (value: boolean) => void
   columns: ColumnType[]
@@ -38,7 +38,10 @@ type Props = {
   currentTask: TaskType | undefined
 }
 
-const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, setColumns, currentTask }: Props) => {
+const KanbanList = (props: KanbanListProps) => {
+  // Props
+  const { column, tasks, dispatch, store, setDrawerOpen, columns, setColumns, currentTask } = props
+
   // States
   const [editDisplay, setEditDisplay] = useState(false)
   const [title, setTitle] = useState(column.title)
@@ -49,45 +52,6 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
     plugins: [animations()],
     draggable: el => el.classList.contains('item-draggable')
   })
-
-  useEffect(() => {
-    // Update column taskIds on tasksList change
-    dispatch(updateColumnTaskIds({ id: column.id, tasksList }))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tasksList])
-
-  useEffect(() => {
-    const newTasks = tasksList.map(task => {
-      if (task?.id === currentTask?.id) {
-        return currentTask
-      }
-
-      return task
-    })
-
-    if (currentTask !== tasksList.find(task => task?.id === currentTask?.id)) {
-      setTasksList(newTasks)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTask])
-
-  useEffect(() => {
-    let taskIds: ColumnType['taskIds'] = []
-
-    columns.map(col => {
-      taskIds = [...taskIds, ...col.taskIds]
-    })
-
-    const newTasksList = tasksList.filter(task => task && taskIds.includes(task.id))
-
-    setTasksList(newTasksList)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [columns])
-
-  // OnClick Edit Button
-  const onClickEditButton = () => {
-    setEditDisplay(!editDisplay)
-  }
 
   // Add New Task
   const addNewTask = (title: string) => {
@@ -104,11 +68,6 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
     })
 
     setColumns(newColumns)
-  }
-
-  // OnChange edit title
-  const handleChangeEdit = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setTitle(e.target.value)
   }
 
   // Handle Submit Edit
@@ -140,8 +99,46 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
     setColumns(columns.filter(col => col.id !== column.id))
   }
 
+  // Update column taskIds on drag and drop
+  useEffect(() => {
+    if (tasksList !== tasks) {
+      dispatch(updateColumnTaskIds({ id: column.id, tasksList }))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tasksList])
+
+  // To update the tasksList when a task is edited
+  useEffect(() => {
+    const newTasks = tasksList.map(task => {
+      if (task?.id === currentTask?.id) {
+        return currentTask
+      }
+
+      return task
+    })
+
+    if (currentTask !== tasksList.find(task => task?.id === currentTask?.id)) {
+      setTasksList(newTasks)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTask])
+
+  // To update the tasksList when columns are updated
+  useEffect(() => {
+    let taskIds: ColumnType['taskIds'] = []
+
+    columns.map(col => {
+      taskIds = [...taskIds, ...col.taskIds]
+    })
+
+    const newTasksList = tasksList.filter(task => task && taskIds.includes(task.id))
+
+    setTasksList(newTasksList)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [columns])
+
   return (
-    <div ref={tasksListRef as React.RefObject<HTMLDivElement>} className='flex flex-col is-[16.5rem]'>
+    <div ref={tasksListRef as RefObject<HTMLDivElement>} className='flex flex-col is-[16.5rem]'>
       {editDisplay ? (
         <form
           className='flex items-center mbe-4'
@@ -152,7 +149,7 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
             }
           }}
         >
-          <InputBase value={title} autoFocus onChange={handleChangeEdit} required className='flex-auto' />
+          <InputBase value={title} autoFocus onChange={e => setTitle(e.target.value)} required className='flex-auto' />
           <IconButton color='success' size='small' type='submit'>
             <i className='tabler-check' />
           </IconButton>
@@ -181,7 +178,7 @@ const KanbanList = ({ column, tasks, dispatch, store, setDrawerOpen, columns, se
                   icon: 'tabler-pencil',
                   menuItemProps: {
                     className: 'flex items-center gap-2',
-                    onClick: onClickEditButton
+                    onClick: () => setEditDisplay(!editDisplay)
                   }
                 },
                 {

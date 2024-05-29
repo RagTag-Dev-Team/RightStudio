@@ -43,10 +43,12 @@ const ComposeMail = (props: Props) => {
           maxWidth: 600,
           position: 'absolute',
           height: 'auto',
-          inset: 'auto 1.5rem 1.5rem auto',
+          insetInlineStart: 'auto',
+          insetInlineEnd: '1.5rem',
+          insetBlockEnd: '1.5rem',
           borderRadius: 'var(--mui-shape-borderRadius)',
           borderTop: 0,
-          boxShadow: 16,
+          boxShadow: 'var(--mui-customShadows-xl)',
           zIndex: 12
         }
       }}
@@ -116,10 +118,37 @@ const ComposeMail = (props: Props) => {
         }}
         boxProps={{
           sx: {
-            '& .rdw-editor-wrapper': { borderInline: 0 },
+            '& .rdw-editor-wrapper': {
+              borderInline: 0,
+              '.rdw-editor-toolbar': {
+                paddingInline: 4,
+                paddingBlock: 2,
+                gap: 1,
+                '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
+                  margin: 0,
+                  gap: 1,
+                  overflow: 'hidden'
+                }
+              }
+            },
             '& .rdw-option-wrapper': {
+              minWidth: '1.25rem',
               border: 'none',
-              '&:hover, &.rdw-option-active': { boxShadow: 'none' }
+              borderRadius: 'var(--mui-shape-customBorderRadius-md)',
+              padding: 1.75,
+              margin: 0,
+              '&:hover': {
+                boxShadow: 'none',
+                background: 'var(--mui-palette-action-hover) !important'
+              },
+              '&.rdw-option-active': {
+                boxShadow: 'none',
+                background: 'var(--mui-palette-primary-lightOpacity) !important',
+                '& img': {
+                  filter: 'drop-shadow(0px 34px 0 var(--mui-palette-primary-main))',
+                  transform: 'translateY(-34px)'
+                }
+              }
             },
             '& .rdw-editor-main': {
               paddingInline: '24px !important',

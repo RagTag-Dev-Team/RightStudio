@@ -16,7 +16,7 @@ const initialState: CalendarType = {
   selectedCalendars: ['Personal', 'Business', 'Family', 'Holiday', 'ETC']
 }
 
-const filterEvents = (events: EventInput[], selectedCalendars: CalendarFiltersType[]) => {
+const filterEventsUsingCheckbox = (events: EventInput[], selectedCalendars: CalendarFiltersType[]) => {
   return events.filter(event => selectedCalendars.includes(event.extendedProps?.calendar as CalendarFiltersType))
 }
 
@@ -24,11 +24,14 @@ export const calendarSlice = createSlice({
   name: 'calendar',
   initialState: initialState,
   reducers: {
+    filterEvents: state => {
+      state.filteredEvents = state.events
+    },
+
     addEvent: (state, action) => {
       const newEvent = { ...action.payload, id: `${parseInt(state.events[state.events.length - 1]?.id ?? '') + 1}` }
 
       state.events.push(newEvent)
-      state.filteredEvents.push(newEvent)
     },
 
     updateEvent: (state, action: PayloadAction<EventInput>) => {
@@ -49,28 +52,10 @@ export const calendarSlice = createSlice({
           return event
         }
       })
-      state.filteredEvents = state.filteredEvents.map(event => {
-        if (action.payload._def && event.id === action.payload._def.publicId) {
-          return {
-            id: event.id,
-            url: action.payload._def.url,
-            title: action.payload._def.title,
-            allDay: action.payload._def.allDay,
-            end: action.payload._instance.range.end,
-            start: action.payload._instance.range.start,
-            extendedProps: action.payload._def.extendedProps
-          }
-        } else if (event.id === action.payload.id) {
-          return action.payload
-        } else {
-          return event
-        }
-      })
     },
 
     deleteEvent: (state, action) => {
       state.events = state.events.filter(event => event.id !== action.payload)
-      state.filteredEvents = state.filteredEvents.filter(event => event.id !== action.payload)
     },
 
     selectedEvent: (state, action) => {
@@ -86,17 +71,24 @@ export const calendarSlice = createSlice({
         state.selectedCalendars.push(action.payload)
       }
 
-      state.events = filterEvents(state.filteredEvents, state.selectedCalendars)
+      state.events = filterEventsUsingCheckbox(state.filteredEvents, state.selectedCalendars)
     },
 
     filterAllCalendarLabels: (state, action) => {
       state.selectedCalendars = action.payload ? ['Personal', 'Business', 'Family', 'Holiday', 'ETC'] : []
-      state.events = filterEvents(state.filteredEvents, state.selectedCalendars)
+      state.events = filterEventsUsingCheckbox(state.filteredEvents, state.selectedCalendars)
     }
   }
 })
 
-export const { addEvent, updateEvent, deleteEvent, selectedEvent, filterCalendarLabel, filterAllCalendarLabels } =
-  calendarSlice.actions
+export const {
+  filterEvents,
+  addEvent,
+  updateEvent,
+  deleteEvent,
+  selectedEvent,
+  filterCalendarLabel,
+  filterAllCalendarLabels
+} = calendarSlice.actions
 
 export default calendarSlice.reducer

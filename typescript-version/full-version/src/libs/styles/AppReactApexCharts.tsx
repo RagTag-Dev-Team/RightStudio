@@ -22,9 +22,9 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
       display: 'none'
     },
     '& .apexcharts-tooltip': {
-      boxShadow: theme.customShadows.xs,
-      borderColor: theme.palette.divider,
-      background: theme.palette.background.paper,
+      boxShadow: 'var(--mui-customShadows-xs)',
+      borderColor: 'var(--mui-palette-divider)',
+      background: 'var(--mui-palette-background-paper)',
       ...(theme.direction === 'rtl' && {
         '.apexcharts-tooltip-marker': {
           marginInlineEnd: 10,
@@ -37,14 +37,14 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
       }),
       '& .apexcharts-tooltip-title': {
         fontWeight: 600,
-        borderColor: theme.palette.divider,
-        background: theme.palette.background.paper
+        borderColor: 'var(--mui-palette-divider)',
+        background: 'var(--mui-palette-background-paper)'
       },
       '&.apexcharts-theme-light': {
-        color: theme.palette.text.primary
+        color: 'var(--mui-palette-text-primary)'
       },
       '&.apexcharts-theme-dark': {
-        color: theme.palette.common.white
+        color: 'var(--mui-palette-common-white)'
       },
       '& .apexcharts-tooltip-series-group:first-of-type': {
         paddingBottom: 0
@@ -54,27 +54,27 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
       }
     },
     '& .apexcharts-xaxistooltip': {
-      borderColor: theme.palette.divider,
+      borderColor: 'var(--mui-palette-divider)',
       background: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg,
       '&:after': {
         borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg
       },
       '&:before': {
-        borderBottomColor: theme.palette.divider
+        borderBottomColor: 'var(--mui-palette-divider)'
       }
     },
     '& .apexcharts-yaxistooltip': {
-      borderColor: theme.palette.divider,
+      borderColor: 'var(--mui-palette-divider)',
       background: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg,
       '&:after': {
         borderLeftColor: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg
       },
       '&:before': {
-        borderLeftColor: theme.palette.divider
+        borderLeftColor: 'var(--mui-palette-divider)'
       }
     },
     '& .apexcharts-xaxistooltip-text, & .apexcharts-yaxistooltip-text': {
-      color: theme.palette.text.primary
+      color: 'var(--mui-palette-text-primary)'
     },
     '& .apexcharts-yaxis .apexcharts-yaxis-texts-g .apexcharts-yaxis-label': {
       textAnchor: theme.direction === 'rtl' ? 'start' : undefined

@@ -146,8 +146,8 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
   // States
   const [addUserOpen, setAddUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[tableData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -223,19 +223,19 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           <div className='flex items-center gap-3'>
             <Chip
               variant='tonal'
-              className='capitalize'
               label={row.original.status}
-              color={userStatusObj[row.original.status]}
               size='small'
+              color={userStatusObj[row.original.status]}
+              className='capitalize'
             />
           </div>
         )
       }),
       columnHelper.accessor('action', {
         header: 'Action',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
               <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
@@ -265,11 +265,11 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data as UsersType[],
+    data: filteredData as UsersType[],
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -311,7 +311,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
     <>
       <Card>
         <CardHeader title='Filters' className='pbe-4' />
-        <TableFilters setData={setData} tableData={tableData} />
+        <TableFilters setData={setFilteredData} tableData={data} />
         <div className='flex justify-between flex-col items-start md:flex-row md:items-center p-6 border-bs gap-4'>
           <CustomTextField
             select
@@ -413,7 +413,12 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           }}
         />
       </Card>
-      <AddUserDrawer open={addUserOpen} handleClose={() => setAddUserOpen(!addUserOpen)} />
+      <AddUserDrawer
+        open={addUserOpen}
+        handleClose={() => setAddUserOpen(!addUserOpen)}
+        userData={data}
+        setData={setData}
+      />
     </>
   )
 }

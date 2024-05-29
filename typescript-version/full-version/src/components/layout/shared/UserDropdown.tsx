@@ -75,10 +75,7 @@ const UserDropdown = () => {
   const handleUserLogout = async () => {
     try {
       // Sign out from the app
-      await signOut({ redirect: false })
-
-      // Redirect to login page
-      router.push(getLocalizedUrl('/login', locale as Locale))
+      await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
     } catch (error) {
       console.error(error)
 

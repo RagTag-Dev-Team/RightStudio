@@ -99,10 +99,9 @@ const invoiceStatusObj: InvoiceStatusObj = {
 // Column Definitions
 const columnHelper = createColumnHelper<InvoiceTypeWithAction>()
 
-const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
+const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(...[invoiceData])
   const [globalFilter, setGlobalFilter] = useState('')
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -165,7 +164,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
+            <IconButton onClick={() => setData(data?.filter(invoice => invoice.id !== row.original.id))}>
               <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
@@ -206,7 +205,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data]
   )
 
   const table = useReactTable({

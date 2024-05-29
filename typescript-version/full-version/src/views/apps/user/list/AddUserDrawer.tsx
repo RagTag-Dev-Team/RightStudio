@@ -6,8 +6,15 @@ import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
+import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+
+// Third-party Imports
+import { useForm, Controller } from 'react-hook-form'
+
+// Types Imports
+import type { UsersType } from '@/types/apps/userTypes'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -15,56 +22,80 @@ import CustomTextField from '@core/components/mui/TextField'
 type Props = {
   open: boolean
   handleClose: () => void
+  userData?: UsersType[]
+  setData: (data: UsersType[]) => void
 }
 
-type FormDataType = {
+type FormValidateType = {
   fullName: string
   username: string
   email: string
-  company: string
-  country: string
-  contact: string
   role: string
   plan: string
   status: string
 }
 
-// Vars
-const initialData = {
-  fullName: '',
-  username: '',
-  email: '',
-  company: '',
-  country: '',
-  contact: '',
-  role: '',
-  plan: '',
-  status: ''
+type FormNonValidateType = {
+  company: string
+  country: string
+  contact: string
 }
 
-const AddUserDrawer = ({ open, handleClose }: Props) => {
-  // States
-  const [formData, setFormData] = useState<FormDataType>(initialData)
+// Vars
+const initialData = {
+  company: '',
+  country: '',
+  contact: ''
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+const AddUserDrawer = (props: Props) => {
+  // Props
+  const { open, handleClose, userData, setData } = props
+
+  // States
+  const [formData, setFormData] = useState<FormNonValidateType>(initialData)
+
+  // Hooks
+  const {
+    control,
+    reset: resetForm,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValidateType>({
+    defaultValues: {
+      fullName: '',
+      username: '',
+      email: '',
+      role: '',
+      plan: '',
+      status: ''
+    }
+  })
+
+  const onSubmit = (data: FormValidateType) => {
+    const newUser: UsersType = {
+      id: (userData?.length && userData?.length + 1) || 1,
+      avatar: `/images/avatars/${Math.floor(Math.random() * 8) + 1}.png`,
+      fullName: data.fullName,
+      username: data.username,
+      email: data.email,
+      role: data.role,
+      currentPlan: data.plan,
+      status: data.status,
+      company: formData.company,
+      country: formData.country,
+      contact: formData.contact
+    }
+
+    setData([...(userData ?? []), newUser])
     handleClose()
     setFormData(initialData)
+    resetForm({ fullName: '', username: '', email: '', role: '', plan: '', status: '' })
   }
 
   const handleReset = () => {
     handleClose()
-    setFormData({
-      fullName: '',
-      username: '',
-      email: '',
-      company: '',
-      country: '',
-      contact: '',
-      role: '',
-      plan: '',
-      status: ''
-    })
+    setFormData(initialData)
   }
 
   return (
@@ -76,7 +107,7 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between plb-5 pli-6'>
+      <div className='flex items-center justify-between plb-5 pli-4'>
         <Typography variant='h5'>Add New User</Typography>
         <IconButton size='small' onClick={handleReset}>
           <i className='tabler-x text-2xl text-textPrimary' />
@@ -84,28 +115,114 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
       </div>
       <Divider />
       <div>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-6 p-6'>
-          <CustomTextField
-            label='Full Name'
-            fullWidth
-            placeholder='John Doe'
-            value={formData.fullName}
-            onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+        <form onSubmit={handleSubmit(data => onSubmit(data))} className='flex flex-col gap-6 p-6'>
+          <Controller
+            name='fullName'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                {...field}
+                fullWidth
+                label='Full Name'
+                placeholder='John Doe'
+                {...(errors.fullName && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
-          <CustomTextField
-            label='Username'
-            fullWidth
-            placeholder='johndoe'
-            value={formData.username}
-            onChange={e => setFormData({ ...formData, username: e.target.value })}
+          <Controller
+            name='username'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                {...field}
+                fullWidth
+                label='Username'
+                placeholder='johndoe'
+                {...(errors.username && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
-          <CustomTextField
-            label='Email'
-            fullWidth
-            placeholder='johndoe@gmail.com'
-            value={formData.email}
-            onChange={e => setFormData({ ...formData, email: e.target.value })}
+          <Controller
+            name='email'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                {...field}
+                fullWidth
+                type='email'
+                label='Email'
+                placeholder='johndoe@gmail.com'
+                {...(errors.email && { error: true, helperText: 'This field is required.' })}
+              />
+            )}
           />
+          <Controller
+            name='role'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                select
+                fullWidth
+                id='select-role'
+                label='Select Role'
+                {...field}
+                error={Boolean(errors.role)}
+              >
+                <MenuItem value='admin'>Admin</MenuItem>
+                <MenuItem value='author'>Author</MenuItem>
+                <MenuItem value='editor'>Editor</MenuItem>
+                <MenuItem value='maintainer'>Maintainer</MenuItem>
+                <MenuItem value='subscriber'>Subscriber</MenuItem>
+              </CustomTextField>
+            )}
+          />
+          {errors.role && <FormHelperText error>This field is required.</FormHelperText>}
+          <Controller
+            name='plan'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                select
+                fullWidth
+                id='select-plan'
+                label='Select Plan'
+                {...field}
+                inputProps={{ placeholder: 'Select Plan' }}
+                error={Boolean(errors.plan)}
+              >
+                <MenuItem value='basic'>Basic</MenuItem>
+                <MenuItem value='company'>Company</MenuItem>
+                <MenuItem value='enterprise'>Enterprise</MenuItem>
+                <MenuItem value='team'>Team</MenuItem>
+              </CustomTextField>
+            )}
+          />
+          {errors.plan && <FormHelperText error>This field is required.</FormHelperText>}
+          <Controller
+            name='status'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <CustomTextField
+                select
+                fullWidth
+                id='select-status'
+                label='Select Status'
+                {...field}
+                error={Boolean(errors.status)}
+              >
+                <MenuItem value='pending'>Pending</MenuItem>
+                <MenuItem value='active'>Active</MenuItem>
+                <MenuItem value='inactive'>Inactive</MenuItem>
+              </CustomTextField>
+            )}
+          />
+          {errors.status && <FormHelperText error>This field is required.</FormHelperText>}
           <CustomTextField
             label='Company'
             fullWidth
@@ -122,7 +239,7 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
             label='Select Country'
             inputProps={{ placeholder: 'Country' }}
           >
-            <MenuItem value='UK'>UK</MenuItem>
+            <MenuItem value='India'>India</MenuItem>
             <MenuItem value='USA'>USA</MenuItem>
             <MenuItem value='Australia'>Australia</MenuItem>
             <MenuItem value='Germany'>Germany</MenuItem>
@@ -135,46 +252,6 @@ const AddUserDrawer = ({ open, handleClose }: Props) => {
             value={formData.contact}
             onChange={e => setFormData({ ...formData, contact: e.target.value })}
           />
-          <CustomTextField
-            select
-            fullWidth
-            id='select-role'
-            value={formData.role}
-            onChange={e => setFormData({ ...formData, role: e.target.value })}
-            label='Select Role'
-          >
-            <MenuItem value='admin'>Admin</MenuItem>
-            <MenuItem value='author'>Author</MenuItem>
-            <MenuItem value='editor'>Editor</MenuItem>
-            <MenuItem value='maintainer'>Maintainer</MenuItem>
-            <MenuItem value='subscriber'>Subscriber</MenuItem>
-          </CustomTextField>
-          <CustomTextField
-            select
-            fullWidth
-            id='select-plan'
-            value={formData.plan}
-            onChange={e => setFormData({ ...formData, plan: e.target.value })}
-            label='Select Plan'
-            inputProps={{ placeholder: 'Select Plan' }}
-          >
-            <MenuItem value='basic'>Basic</MenuItem>
-            <MenuItem value='company'>Company</MenuItem>
-            <MenuItem value='enterprise'>Enterprise</MenuItem>
-            <MenuItem value='team'>Team</MenuItem>
-          </CustomTextField>
-          <CustomTextField
-            select
-            fullWidth
-            id='select-status'
-            value={formData.status}
-            onChange={e => setFormData({ ...formData, status: e.target.value })}
-            label='Select Status'
-          >
-            <MenuItem value='pending'>Pending</MenuItem>
-            <MenuItem value='active'>Active</MenuItem>
-            <MenuItem value='inactive'>Inactive</MenuItem>
-          </CustomTextField>
           <div className='flex items-center gap-4'>
             <Button variant='contained' type='submit'>
               Submit

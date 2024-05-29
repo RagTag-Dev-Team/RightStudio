@@ -117,7 +117,7 @@ const DebouncedInput = ({
 // Column Definitions
 const columnHelper = createColumnHelper<PermissionsTypeWithAction>()
 
-const Permissions = ({ permissionsData }: { permissionsData: PermissionRowType[] }) => {
+const Permissions = ({ permissionsData }: { permissionsData?: PermissionRowType[] }) => {
   // States
   const [open, setOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})

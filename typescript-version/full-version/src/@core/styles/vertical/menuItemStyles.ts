@@ -3,13 +3,12 @@ import type { Theme } from '@mui/material/styles'
 
 // Type Imports
 import type { MenuItemStyles } from '@menu/types'
-import type { Settings } from '@core/contexts/settingsContext'
 import type { VerticalNavState } from '@menu/contexts/verticalNavContext'
 
 // Util Imports
 import { menuClasses } from '@menu/utils/menuClasses'
 
-const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme, settings: Settings): MenuItemStyles => {
+const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme): MenuItemStyles => {
   // Vars
   const { isCollapsed, isHovered, isPopoutWhenCollapsed, transitionDuration } = verticalNavOptions
 
@@ -147,14 +146,11 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme, sett
           }
         },
         ...(level === 0 && {
-          ...(settings.skin === 'bordered'
-            ? {
-                boxShadow: 'none',
-                border: '1px solid var(--mui-palette-divider)'
-              }
-            : {
-                boxShadow: 'var(--mui-customShadows-sm)'
-              }),
+          boxShadow: 'var(--mui-customShadows-sm)',
+          '[data-skin="bordered"] &': {
+            boxShadow: 'none',
+            border: '1px solid var(--mui-palette-divider)'
+          },
           [`& .${menuClasses.button}`]: {
             paddingInline: theme.spacing(4)
           },

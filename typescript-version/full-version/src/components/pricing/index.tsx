@@ -20,7 +20,7 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 import PlanDetails from './PlanDetails'
 import DirectionalIcon from '@components/DirectionalIcon'
 
-const Pricing = ({ data }: { data: PricingPlanType[] }) => {
+const Pricing = ({ data }: { data?: PricingPlanType[] }) => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
 

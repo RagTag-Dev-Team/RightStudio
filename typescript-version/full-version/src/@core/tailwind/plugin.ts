@@ -55,8 +55,12 @@ module.exports = plugin(function () {}, {
       },
       colors: {
         primary: 'var(--primary-color)',
+        primaryLight: 'var(--mui-palette-primary-lightOpacity)',
+        primaryLighter: 'var(--mui-palette-primary-lighterOpacity)',
         secondary: 'var(--mui-palette-secondary-main)',
         error: 'var(--mui-palette-error-main)',
+        errorLight: 'var(--mui-palette-error-lightOpacity)',
+        errorLighter: 'var(--mui-palette-error-lighterOpacity)',
         warning: 'var(--mui-palette-warning-main)',
         info: 'var(--mui-palette-info-main)',
         success: 'var(--mui-palette-success-main)',

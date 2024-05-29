@@ -73,7 +73,7 @@ const DetailsDrawer = styled('div')<{ drawerOpen: boolean }>(({ drawerOpen }) =>
   right: drawerOpen ? 0 : '-100%',
   zIndex: 11,
   overflow: 'hidden',
-  background: 'var(--mui-palette-background-default)',
+  background: 'var(--mui-palette-background-paper)',
   transition: 'right 0.3s ease'
 }))
 
@@ -309,7 +309,7 @@ const MailDetails = (props: Props) => {
                   </>
                 ) : null}
                 <MailCard data={currentEmail} isReplies={true} />
-                <Card className='mbs-4'>
+                <Card className='border mbs-4'>
                   <CardContent>
                     {!reply ? (
                       <Typography>
@@ -333,12 +333,31 @@ const MailDetails = (props: Props) => {
                           }}
                           boxProps={{
                             sx: {
-                              '& .rdw-editor-wrapper': { border: 0, '& .rdw-editor-toolbar': { border: 0 } },
+                              '& .rdw-editor-wrapper': {
+                                border: 0,
+                                '.rdw-editor-toolbar': {
+                                  gap: 2,
+                                  border: 0,
+                                  padding: 0,
+                                  '& .rdw-inline-wrapper, & .rdw-list-wrapper, & .rdw-link-wrapper, & .rdw-image-wrapper':
+                                    {
+                                      gap: 2,
+                                      margin: 0
+                                    }
+                                }
+                              },
                               '& .rdw-option-wrapper': {
+                                minWidth: '1.25rem',
                                 border: 'none',
+                                padding: 0,
+                                margin: 0,
                                 '&:hover, &.rdw-option-active': { boxShadow: 'none' }
                               },
-                              '& .rdw-editor-main': { maxBlockSize: '10rem' }
+                              '& .rdw-editor-main': {
+                                paddingInline: '0 !important',
+                                paddingBlockStart: '0.5rem !important',
+                                maxBlockSize: '10rem'
+                              }
                             }
                           }}
                         />

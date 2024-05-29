@@ -14,7 +14,7 @@ import FaqHeader from '@views/pages/faq/FaqHeader'
 import Faqs from '@views/pages/faq/Faqs'
 import FaqFooter from '@views/pages/faq/FaqFooter'
 
-const FAQ = ({ data }: { data: FaqType[] }) => {
+const FAQ = ({ data }: { data?: FaqType[] }) => {
   // States
   const [searchValue, setSearchValue] = useState('')
 

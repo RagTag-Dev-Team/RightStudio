@@ -3,12 +3,11 @@ import type { Theme } from '@mui/material/styles'
 
 // Type Imports
 import type { MenuItemStyles } from '@menu/types'
-import type { Settings } from '@core/contexts/settingsContext'
 
 // Util Imports
 import { menuClasses } from '@menu/utils/menuClasses'
 
-const menuItemStyles = (settings: Settings, theme: Theme, iconClass: string): MenuItemStyles => ({
+const menuItemStyles = (theme: Theme, iconClass: string): MenuItemStyles => ({
   root: ({ level }) => ({
     ...(level === 0 && {
       borderRadius: 6
@@ -96,14 +95,11 @@ const menuItemStyles = (settings: Settings, theme: Theme, iconClass: string): Me
   subMenuContent: {
     borderRadius: 'var(--border-radius)',
     backgroundColor: 'var(--mui-palette-background-paper)',
-    ...(settings.skin === 'bordered'
-      ? {
-          boxShadow: 'none',
-          border: '1px solid var(--mui-palette-divider)'
-        }
-      : {
-          boxShadow: 'var(--mui-customShadows-lg)'
-        }),
+    boxShadow: 'var(--mui-customShadows-lg)',
+    '[data-skin="bordered"] &': {
+      boxShadow: 'none',
+      border: '1px solid var(--mui-palette-divider)'
+    },
     '& > ul, & > div > ul': {
       padding: theme.spacing(2),
       '& > li:not(:last-child)': {
