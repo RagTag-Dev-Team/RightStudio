@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 
 const ProductAddHeader = () => {
   return (
-    <div className='flex items-center justify-between gap-6'>
+    <div className='flex flex-wrap items-center justify-between gap-6'>
       <div>
         <Typography variant='h4' className='mbe-1'>
           Add a new product

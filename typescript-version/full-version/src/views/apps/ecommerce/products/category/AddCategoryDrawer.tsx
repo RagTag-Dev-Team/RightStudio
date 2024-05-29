@@ -13,6 +13,7 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+import InputAdornment from '@mui/material/InputAdornment'
 
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
@@ -146,10 +147,17 @@ const AddCategoryDrawer = (props: Props) => {
               value={fileName}
               className='flex-auto'
               InputProps={{
-                readOnly: true
+                readOnly: true,
+                endAdornment: fileName ? (
+                  <InputAdornment position='end'>
+                    <IconButton size='small' edge='end' onClick={() => setFileName('')}>
+                      <i className='ri-close-line' />
+                    </IconButton>
+                  </InputAdornment>
+                ) : null
               }}
             />
-            <Button component='label' variant='outlined' htmlFor='contained-button-file'>
+            <Button component='label' variant='outlined' htmlFor='contained-button-file' className='min-is-fit'>
               Choose
               <input hidden id='contained-button-file' type='file' onChange={handleFileUpload} ref={fileInputRef} />
             </Button>

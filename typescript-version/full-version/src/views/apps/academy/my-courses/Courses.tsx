@@ -166,7 +166,7 @@ const Courses = (props: Props) => {
                       color='primary'
                       value={Math.floor((item.completedTasks / item.totalTasks) * 100)}
                       variant='determinate'
-                      className='is-full'
+                      className='is-full bs-2'
                     />
                   </div>
                   {item.completedTasks === item.totalTasks ? (

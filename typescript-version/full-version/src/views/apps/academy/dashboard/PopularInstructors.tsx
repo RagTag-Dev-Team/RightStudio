@@ -27,10 +27,7 @@ const data: DataType[] = [
 const PopularInstructors = () => {
   return (
     <Card>
-      <CardHeader
-        title='Topic you are interested in'
-        action={<OptionMenu options={['Refresh', 'Update', 'Share']} />}
-      />
+      <CardHeader title='Popular Instructors' action={<OptionMenu options={['Refresh', 'Update', 'Share']} />} />
       <Divider />
       <div className='flex justify-between plb-4 pli-5'>
         <Typography variant='overline'>instructors</Typography>
@@ -43,7 +40,9 @@ const PopularInstructors = () => {
             <CustomAvatar size={34} src={item.avatar} />
             <div className='flex justify-between items-center is-full gap-4'>
               <div className='flex flex-col gap-1'>
-                <Typography className='font-medium'>{item.name}</Typography>
+                <Typography className='font-medium' color='text.primary'>
+                  {item.name}
+                </Typography>
                 <Typography>{item.profession}</Typography>
               </div>
               <Typography color='text.primary'>{item.totalCourses}</Typography>

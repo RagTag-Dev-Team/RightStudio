@@ -57,11 +57,11 @@ const ColoredCards = () => {
                 {item.title}
               </Typography>
               <Typography className='mbe-4'>{item.description}</Typography>
-              <Button variant='contained' color={item.color}>{`View ${item.type}`}</Button>
+              <Button variant='contained' size='small' color={item.color}>{`View ${item.type}`}</Button>
             </div>
             <div
               className={classnames(
-                'relative flex justify-center rounded min-is-[180px] max-sm:-order-1',
+                'flex justify-center rounded min-is-[180px] max-sm:-order-1 pbs-[7px]',
                 item.imageColorClass
               )}
             >

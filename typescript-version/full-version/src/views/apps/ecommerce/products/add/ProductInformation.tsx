@@ -66,6 +66,7 @@ const ProductInformation = () => {
         <Typography className='mbe-1'>Description (Optional)</Typography>
         <AppReactDraftWysiwyg
           editorState={value}
+          placeholder='Enter a description...'
           onEditorStateChange={(data: EditorState) => setValue(data)}
           toolbar={toolbarOptions}
           boxProps={{
@@ -75,8 +76,11 @@ const ProductInformation = () => {
                 padding: 5,
                 '& .rdw-editor-toolbar': {
                   padding: 0,
+                  gap: 1,
                   '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
-                    marginBlockEnd: 4
+                    marginBlockEnd: 4,
+                    gap: 1,
+                    overflow: 'hidden'
                   },
                   '& .rdw-option-wrapper': {
                     minWidth: '1.25rem',
@@ -90,8 +94,11 @@ const ProductInformation = () => {
                     },
                     '&.rdw-option-active': {
                       boxShadow: 'none',
-                      color: 'var(--mui-palette-primary-main)',
-                      background: 'var(--mui-palette-primary-lightOpacity) !important'
+                      background: 'var(--mui-palette-primary-lightOpacity) !important',
+                      '& img': {
+                        filter: 'drop-shadow(0px 34px 0 var(--mui-palette-primary-main))',
+                        transform: 'translateY(-34px)'
+                      }
                     }
                   }
                 },

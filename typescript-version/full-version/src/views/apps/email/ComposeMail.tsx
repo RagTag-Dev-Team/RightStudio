@@ -121,17 +121,32 @@ const ComposeMail = (props: Props) => {
               '.rdw-editor-toolbar': {
                 paddingInline: 4,
                 paddingBlock: 2,
+                gap: 1,
                 '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
-                  margin: 0
+                  margin: 0,
+                  gap: 1,
+                  overflow: 'hidden'
                 }
               }
             },
             '& .rdw-option-wrapper': {
               minWidth: '1.25rem',
               border: 'none',
+              borderRadius: 'var(--mui-shape-customBorderRadius-md)',
               padding: 1.75,
               margin: 0,
-              '&:hover, &.rdw-option-active': { boxShadow: 'none' }
+              '&:hover': {
+                boxShadow: 'none',
+                background: 'var(--mui-palette-action-hover) !important'
+              },
+              '&.rdw-option-active': {
+                boxShadow: 'none',
+                background: 'var(--mui-palette-primary-lightOpacity) !important',
+                '& img': {
+                  filter: 'drop-shadow(0px 34px 0 var(--mui-palette-primary-main))',
+                  transform: 'translateY(-34px)'
+                }
+              }
             },
             '& .rdw-editor-main': { maxBlockSize: '10rem' }
           }

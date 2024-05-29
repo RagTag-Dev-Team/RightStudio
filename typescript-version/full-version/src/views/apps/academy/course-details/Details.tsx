@@ -28,19 +28,17 @@ const Details = ({ data }: { data?: CourseDetails }) => {
 
   return (
     <Card>
-      <CardContent>
-        <div className='flex flex-wrap items-center justify-between gap-4'>
-          <div>
-            <Typography variant='h5'>UI/UX Basic Fundamentals</Typography>
-            <Typography>
-              Prof. <span className='font-medium text-textPrimary'>Devonne Wallbridge</span>
-            </Typography>
-          </div>
-          <div className='flex items-center gap-4'>
-            <Chip label='UI/UX' variant='tonal' size='small' color='error' />
-            <i className='ri-share-forward-line text-textSecondary' />
-            <i className='ri-bookmark-line text-textSecondary' />
-          </div>
+      <CardContent className='flex flex-wrap items-center justify-between gap-4'>
+        <div>
+          <Typography variant='h5'>UI/UX Basic Fundamentals</Typography>
+          <Typography>
+            Prof. <span className='font-medium text-textPrimary'>Devonne Wallbridge</span>
+          </Typography>
+        </div>
+        <div className='flex items-center gap-4'>
+          <Chip label='UI/UX' variant='tonal' size='small' color='error' />
+          <i className='ri-share-forward-line cursor-pointer' />
+          <i className='ri-bookmark-line cursor-pointer' />
         </div>
       </CardContent>
       <CardContent>

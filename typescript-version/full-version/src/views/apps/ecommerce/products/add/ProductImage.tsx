@@ -74,11 +74,13 @@ const ProductImage = () => {
   }
 
   const fileList = files.map((file: FileProp) => (
-    <ListItem key={file.name}>
+    <ListItem key={file.name} className='pis-4 plb-3'>
       <div className='file-details'>
         <div className='file-preview'>{renderFilePreview(file)}</div>
         <div>
-          <Typography className='file-name'>{file.name}</Typography>
+          <Typography className='file-name font-medium' color='text.primary'>
+            {file.name}
+          </Typography>
           <Typography className='file-size' variant='body2'>
             {Math.round(file.size / 100) / 10 > 1000
               ? `${(Math.round(file.size / 100) / 10000).toFixed(1)} mb`
@@ -112,6 +114,7 @@ const ProductImage = () => {
               Add media from URL
             </Typography>
           }
+          sx={{ '& .MuiCardHeader-action': { alignSelf: 'center' } }}
         />
         <CardContent>
           <div {...getRootProps({ className: 'dropzone' })}>
@@ -121,8 +124,10 @@ const ProductImage = () => {
                 <i className='ri-upload-2-line' />
               </CustomAvatar>
               <Typography variant='h4'>Drag and Drop Your Image Here.</Typography>
-              <Typography>or</Typography>
-              <Button variant='outlined'>Browse Image</Button>
+              <Typography color='text.disabled'>or</Typography>
+              <Button variant='outlined' size='small'>
+                Browse Image
+              </Button>
             </div>
           </div>
           {files.length ? (

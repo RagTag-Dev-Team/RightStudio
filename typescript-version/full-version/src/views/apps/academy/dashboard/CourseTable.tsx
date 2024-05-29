@@ -152,6 +152,7 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
                 component={Link}
                 href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
                 className='font-medium hover:text-primary'
+                color='text.primary'
               >
                 {row.original.courseTitle}
               </Typography>
@@ -165,7 +166,11 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
       }),
       columnHelper.accessor('time', {
         header: 'Time',
-        cell: ({ row }) => <Typography className='font-medium'>{row.original.time}</Typography>,
+        cell: ({ row }) => (
+          <Typography className='font-medium' color='text.primary'>
+            {row.original.time}
+          </Typography>
+        ),
         enableSorting: false
       }),
       columnHelper.accessor('progressValue', {
@@ -184,12 +189,15 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
         },
         cell: ({ row }) => (
           <div className='flex items-center gap-4 min-is-48'>
-            <Typography>{`${Math.floor((row.original.completedTasks / row.original.totalTasks) * 100)}%`}</Typography>
+            <Typography
+              className='font-medium'
+              color='text.primary'
+            >{`${Math.floor((row.original.completedTasks / row.original.totalTasks) * 100)}%`}</Typography>
             <LinearProgress
               color='primary'
               value={Math.floor((row.original.completedTasks / row.original.totalTasks) * 100)}
               variant='determinate'
-              className='is-full'
+              className='is-full bs-2'
             />
             <Typography variant='body2'>{`${row.original.completedTasks}/${row.original.totalTasks}`}</Typography>
           </div>
@@ -260,6 +268,7 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
             placeholder='Search Course'
           />
         }
+        className='flex-wrap gap-4'
       />
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>

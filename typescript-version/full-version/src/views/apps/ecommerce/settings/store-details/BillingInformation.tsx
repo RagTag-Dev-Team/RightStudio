@@ -56,7 +56,6 @@ const BillingInformation = () => {
           <Grid item xs={12} md={4}>
             <TextField fullWidth type='number' label='PIN Code' placeholder='111011' />
           </Grid>
-          <Grid item xs={12}></Grid>
         </Grid>
       </CardContent>
     </Card>

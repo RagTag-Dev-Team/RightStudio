@@ -56,7 +56,9 @@ const AssignmentProgress = () => {
             </div>
             <div className='flex justify-between items-center is-full gap-4'>
               <div>
-                <Typography className='font-medium line-clamp-2'>{item.title}</Typography>
+                <Typography className='font-medium line-clamp-2' color='text.primary'>
+                  {item.title}
+                </Typography>
                 <Typography variant='body2'>{`${item.tasks} Tasks`}</Typography>
               </div>
               <CustomIconButton variant='outlined' color='secondary' className='min-is-fit'>

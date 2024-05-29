@@ -124,48 +124,48 @@ const categoryData: categoryType[] = [
     id: 3,
     categoryTitle: 'Home and Kitchen',
     description: 'Browse through the wide range of Home and kitchen products.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 11297,
+    totalEarning: 51097,
     image: '/images/apps/ecommerce/product-10.png'
   },
   {
     id: 4,
     categoryTitle: 'Beauty and Personal Care',
     description: 'Explore beauty and personal care products, shop makeup and etc.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 9474,
+    totalEarning: 74829,
     image: '/images/apps/ecommerce/product-19.png'
   },
   {
     id: 5,
     categoryTitle: 'Books',
     description: 'Over 25 million titles across categories such as business  and etc.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 10257,
+    totalEarning: 63618,
     image: '/images/apps/ecommerce/product-25.png'
   },
   {
     id: 6,
     categoryTitle: 'Games',
     description: 'Every month, get exclusive in-game loot, free games, a free subscription.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 14501,
+    totalEarning: 65920,
     image: '/images/apps/ecommerce/product-12.png'
   },
   {
     id: 7,
     categoryTitle: 'Baby Products',
     description: 'Buy baby products across different categories from top brands.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 8624,
+    totalEarning: 38838,
     image: '/images/apps/ecommerce/product-14.png'
   },
   {
     id: 8,
     categoryTitle: 'Growsari',
     description: 'Shop grocery Items through at best prices in India.',
-    totalProduct: 12548,
-    totalEarning: 98784,
+    totalProduct: 7389,
+    totalEarning: 72652,
     image: '/images/apps/ecommerce/product-26.png'
   },
   {
@@ -267,9 +267,10 @@ const ProductCategoryTable = () => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton size='small'>
-              <i className='ri-edit-box-line' />
+              <i className='ri-edit-box-line text-textSecondary' />
             </IconButton>
             <OptionMenu
+              iconClassName='text-textSecondary'
               options={[
                 { text: 'Download', icon: 'ri-download-line' },
                 {

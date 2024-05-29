@@ -219,15 +219,32 @@ const ProductInventory = () => {
               </TabPanel>
               <TabPanel value='attributes'>
                 <FormGroup className='items-start'>
-                  <Typography className='font-medium'>Attributes</Typography>
-                  <FormControlLabel control={<Checkbox />} label='Fragile Product' />
-                  <FormControlLabel control={<Checkbox />} label='Biodegradable' />
+                  <Typography className='font-medium mbe-2'>Attributes</Typography>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label={
+                      <Typography className='font-medium' color='text.primary'>
+                        Fragile Product
+                      </Typography>
+                    }
+                  />
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    className='mbe-2'
+                    label={
+                      <Typography className='font-medium' color='text.primary'>
+                        Biodegradable
+                      </Typography>
+                    }
+                  />
                   <FormControlLabel
                     control={<Checkbox />}
                     className='mbe-4'
                     label={
                       <>
-                        <Typography color='text.primary'>Frozen Product</Typography>
+                        <Typography className='font-medium' color='text.primary'>
+                          Frozen Product
+                        </Typography>
                         <TextField placeholder='40 C' size='small' />
                       </>
                     }
@@ -236,7 +253,9 @@ const ProductInventory = () => {
                     control={<Checkbox />}
                     label={
                       <>
-                        <Typography color='text.primary'>Expiry Date of Product</Typography>
+                        <Typography className='font-medium' color='text.primary'>
+                          Expiry Date of Product
+                        </Typography>
                         <AppReactDatepicker
                           selected={date}
                           onChange={(date: Date) => setDate(date)}
@@ -251,7 +270,7 @@ const ProductInventory = () => {
               <TabPanel value='advanced'>
                 <FormGroup className='flex flex-col gap-4'>
                   <Typography className='font-medium'>Advanced</Typography>
-                  <Grid container spacing={6}>
+                  <Grid container spacing={4}>
                     <Grid item xs={12} sm={6} md={7}>
                       <FormControl fullWidth>
                         <InputLabel size='small'>Product ID Type</InputLabel>

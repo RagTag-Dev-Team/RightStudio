@@ -198,7 +198,7 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
             <CustomAvatar skin='light' color={productCategoryObj[row.original.category].color} size={30}>
               <i className={classnames(productCategoryObj[row.original.category].icon, 'text-lg')} />
             </CustomAvatar>
-            <Typography>{row.original.category}</Typography>
+            <Typography color='text.primary'>{row.original.category}</Typography>
           </div>
         )
       }),
@@ -237,9 +237,10 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton size='small'>
-              <i className='ri-edit-box-line' />
+              <i className='ri-edit-box-line text-textSecondary' />
             </IconButton>
             <OptionMenu
+              iconClassName='text-textSecondary'
               options={[
                 { text: 'Download', icon: 'ri-download-line' },
                 {

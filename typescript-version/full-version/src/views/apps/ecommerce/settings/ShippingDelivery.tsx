@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 
 // Component Imports
+import Link from '@components/Link'
 import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
 
@@ -73,6 +74,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
                 <td>{data.price}</td>
                 <td className='text-end'>
                   <OptionMenu
+                    iconClassName='text-textSecondary'
                     options={[
                       { text: 'Edit', icon: 'ri-pencil-line' },
                       { text: 'Delete', icon: 'ri-delete-bin-7-line' }
@@ -97,6 +99,12 @@ const ShippingDelivery = () => {
       <CardHeader
         title='Shipping zones'
         subheader='Choose where you ship and how much you charge for shipping at checkout.'
+        action={
+          <Typography component={Link} color='primary' className='font-medium'>
+            Create zone
+          </Typography>
+        }
+        sx={{ '& .MuiCardHeader-action': { alignSelf: 'center' } }}
       />
       <CardContent className='flex flex-col gap-6'>
         <ShippingRateCard title='Domestic' avatar='/images/avatars/1.png' data={domesticTableData} />

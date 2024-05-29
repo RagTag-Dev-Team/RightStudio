@@ -2,6 +2,10 @@
 import Card from '@mui/material/Card'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { Mode } from '@core/types'
@@ -27,6 +31,7 @@ const MyCourseHeader = (props: Props) => {
   const darkIllustration = '/images/apps/academy/hand-with-bulb-dark.png'
 
   // Hooks
+  const theme = useTheme()
   const leftIllustration = useImageVariant(mode, lightIllustration, darkIllustration)
 
   return (
@@ -53,7 +58,12 @@ const MyCourseHeader = (props: Props) => {
           </CustomIconButton>
         </div>
       </div>
-      <img src='/images/apps/academy/9.png' className='max-md:hidden absolute max-bs-[180px] bottom-0 end-0' />
+      <img
+        src='/images/apps/academy/9.png'
+        className={classnames('max-md:hidden absolute max-bs-[180px] bottom-0 end-0', {
+          'scale-x-[-1]': theme.direction === 'rtl'
+        })}
+      />
     </Card>
   )
 }

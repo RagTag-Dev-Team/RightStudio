@@ -45,11 +45,11 @@ const data1: DataType[] = [
 
 const data2: DataType[] = [
   { title: 'Animation', value: 12, colorClass: 'text-secondary' },
-  { title: 'Vue', value: 10, colorClass: 'text-error' },
+  { title: 'React', value: 10, colorClass: 'text-error' },
   { title: 'SEO', value: 9, colorClass: 'text-warning' }
 ]
 
-const labels = ['UI Design', 'UX Design', 'Music', 'Animation', 'Vue', 'SEO']
+const labels = ['UI Design', 'UX Design', 'Music', 'Animation', 'React', 'SEO']
 
 const InterestedTopics = () => {
   // Hooks

@@ -39,7 +39,9 @@ const TopCourses = () => {
               <i className={item.icon} />
             </CustomAvatar>
             <div className='flex justify-between items-center gap-4 is-full'>
-              <Typography className='font-medium text-wrap line-clamp-2'>{item.title}</Typography>
+              <Typography className='font-medium text-wrap line-clamp-2' color='text.primary'>
+                {item.title}
+              </Typography>
               <Chip label={`${item.views} Views`} variant='tonal' size='small' color='secondary' />
             </div>
           </div>

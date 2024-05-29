@@ -49,7 +49,7 @@ const FreeCourses = () => {
                   }
                 />
               </div>
-              <div className='flex flex-col gap-4 p-5'>
+              <div className='flex flex-col gap-2 p-5'>
                 <Typography variant='h5'>Your First Singing Lesson</Typography>
                 <Typography>
                   In the same way as any other artistic domain, singing lends itself perfectly to self-teaching.

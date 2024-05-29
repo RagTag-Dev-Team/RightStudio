@@ -54,7 +54,7 @@ const TableCard = (props: CardProps) => {
           <tbody>
             {data.map((data, index) => (
               <tr key={index}>
-                <td>{data.type}</td>
+                <td className='text-textPrimary'>{data.type}</td>
                 <td>
                   <Checkbox defaultChecked={data.email} />
                 </td>

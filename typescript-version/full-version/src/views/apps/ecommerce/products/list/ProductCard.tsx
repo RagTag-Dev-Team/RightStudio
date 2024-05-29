@@ -4,7 +4,6 @@
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
@@ -13,6 +12,9 @@ import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
+
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
 
 type DataType = {
   title: string
@@ -74,25 +76,27 @@ const ProductCard = () => {
                 '[&:not(:last-child)>div]:pie-6 [&:not(:last-child)>div]:border-ie': !isBelowMdScreen
               })}
             >
-              <div className='flex justify-between'>
-                <div className='flex flex-col gap-1'>
-                  <Typography>{item.title}</Typography>
-                  <Typography variant='h4'>{item.value}</Typography>
-                  <div className='flex items-start gap-2'>
-                    <Typography>{item.desc} orders</Typography>
-                    {item.change && (
-                      <Chip
-                        variant='tonal'
-                        label={`${item.change}%`}
-                        size='small'
-                        color={item.change > 0 ? 'success' : 'error'}
-                      />
-                    )}
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <div className='flex flex-col gap-1'>
+                    <Typography>{item.title}</Typography>
+                    <Typography variant='h4'>{item.value}</Typography>
                   </div>
+                  <CustomAvatar variant='rounded' size={44}>
+                    <i className={classnames('text-[28px]', item.icon)} />
+                  </CustomAvatar>
                 </div>
-                <Avatar variant='rounded'>
-                  <i className={item.icon} />
-                </Avatar>
+                <div className='flex items-start gap-2'>
+                  <Typography>{item.desc} orders</Typography>
+                  {item.change && (
+                    <Chip
+                      variant='tonal'
+                      label={`${item.change}%`}
+                      size='small'
+                      color={item.change > 0 ? 'success' : 'error'}
+                    />
+                  )}
+                </div>
               </div>
               {isBelowMdScreen && !isSmallScreen && index < data.length - 2 && (
                 <Divider
