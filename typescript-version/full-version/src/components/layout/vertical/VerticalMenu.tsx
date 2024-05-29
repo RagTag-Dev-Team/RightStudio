@@ -287,7 +287,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           </SubMenu>
         </MenuSection>
       </Menu>
-      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
+      {/* <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles()}>
         <GenerateVerticalMenu menuData={menuData(dictionary, params)} />
       </Menu> */}
     </ScrollWrapper>

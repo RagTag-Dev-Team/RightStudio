@@ -1,9 +1,6 @@
 // Next Imports
 import { useParams } from 'next/navigation'
 
-// MUI Imports
-import { useTheme } from '@mui/material/styles'
-
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
 
@@ -12,9 +9,6 @@ import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
-
-// Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
@@ -25,9 +19,6 @@ import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCust
 // import menuData from '@/data/navigation/horizontalMenuData'
 
 const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
-  // Hooks
-  const theme = useTheme()
-  const { settings } = useSettings()
   const params = useParams()
 
   // Vars
@@ -43,13 +34,13 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
       }}
     >
       <Menu
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles()}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(settings, theme)
+          menuItemStyles: verticalMenuItemStyles()
         }}
       >
         <SubMenu label={dictionary['navigation'].dashboards}>
@@ -294,13 +285,13 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
         </SubMenu>
       </Menu>
       {/* <Menu
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles()}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 10 : 8),
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(settings, theme)
+          menuItemStyles: verticalMenuItemStyles()
         }}
       >
         <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
