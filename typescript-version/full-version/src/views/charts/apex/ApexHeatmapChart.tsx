@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -71,9 +70,6 @@ const series = [
 ]
 
 const ApexHeatmapChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     chart: {
@@ -88,7 +84,7 @@ const ApexHeatmapChart = () => {
     legend: {
       position: 'bottom',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: 'var(--mui-palette-text-secondary)'
       },
       markers: {
         offsetY: 0,
@@ -120,7 +116,7 @@ const ApexHeatmapChart = () => {
     yaxis: {
       labels: {
         style: {
-          colors: theme.palette.text.disabled
+          colors: 'var(--mui-palette-text-disabled)'
         }
       }
     },

@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -77,9 +76,6 @@ const series = [
 ]
 
 const ApexScatterChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     chart: {
@@ -94,7 +90,7 @@ const ApexScatterChart = () => {
       position: 'top',
       horizontalAlign: 'left',
       markers: { offsetX: -3 },
-      labels: { colors: theme.palette.text.secondary },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       itemMargin: {
         vertical: 3,
         horizontal: 10
@@ -102,25 +98,25 @@ const ApexScatterChart = () => {
     },
     colors: [scatterColors.series1, scatterColors.series2, scatterColors.series3],
     grid: {
-      borderColor: theme.palette.divider,
+      borderColor: 'var(--mui-palette-divider)',
       xaxis: {
         lines: { show: true }
       }
     },
     yaxis: {
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: 'var(--mui-palette-text-disabled)' }
       }
     },
     xaxis: {
       tickAmount: 10,
       axisBorder: { show: false },
-      axisTicks: { color: theme.palette.divider },
+      axisTicks: { color: 'var(--mui-palette-divider)' },
       crosshairs: {
-        stroke: { color: theme.palette.divider }
+        stroke: { color: 'var(--mui-palette-divider)' }
       },
       labels: {
-        style: { colors: theme.palette.text.disabled },
+        style: { colors: 'var(--mui-palette-text-disabled)' },
         formatter: (val: string) => parseFloat(val).toFixed(1)
       }
     }

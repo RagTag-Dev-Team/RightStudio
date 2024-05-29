@@ -2,7 +2,6 @@
 import { useParams } from 'next/navigation'
 
 // MUI Imports
-import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -16,7 +15,6 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Style Imports
@@ -27,8 +25,6 @@ import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 
 const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
-  const theme = useTheme()
-  const { settings } = useSettings()
   const params = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
@@ -47,7 +43,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
     >
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(settings, theme)}>
+      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles()}>
         <SubMenu label={dictionary['navigation'].dashboards}>
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>

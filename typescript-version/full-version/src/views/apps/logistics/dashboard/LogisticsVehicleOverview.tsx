@@ -85,7 +85,7 @@ const LogisticsVehicleOverview = () => {
                   className={classnames('progress bs-[46px]')}
                   // eslint-disable-next-line lines-around-comment
                   // @ts-ignore
-                  sx={{ backgroundColor: theme => theme.palette[item.progressColor][item.progressColorVariant] }}
+                  sx={{ backgroundColor: `var(--mui-palette-${item.progressColor}-${item.progressColorVariant})` }}
                 />
                 <Typography
                   variant='body2'

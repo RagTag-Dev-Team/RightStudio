@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -34,9 +33,6 @@ const series = [
 ]
 
 const ApexColumnChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     chart: {
@@ -51,7 +47,7 @@ const ApexColumnChart = () => {
     legend: {
       position: 'top',
       horizontalAlign: 'left',
-      labels: { colors: theme.palette.text.secondary },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       markers: {
         offsetY: 1,
         offsetX: -3
@@ -75,25 +71,25 @@ const ApexColumnChart = () => {
       }
     },
     grid: {
-      borderColor: theme.palette.divider,
+      borderColor: 'var(--mui-palette-divider)',
       xaxis: {
         lines: { show: true }
       }
     },
     yaxis: {
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: 'var(--mui-palette-text-disabled)' }
       }
     },
     xaxis: {
       axisBorder: { show: false },
-      axisTicks: { color: theme.palette.divider },
+      axisTicks: { color: 'var(--mui-palette-divider)' },
       categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12'],
       crosshairs: {
-        stroke: { color: theme.palette.divider }
+        stroke: { color: 'var(--mui-palette-divider)' }
       },
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: 'var(--mui-palette-text-disabled)' }
       }
     },
     responsive: [

@@ -112,7 +112,7 @@ const Details = ({ data }: { data?: CourseDetails }) => {
             <div className='flex flex-col gap-4'>
               <Typography variant='h5'>Instructor</Typography>
               <div className='flex items-center gap-4'>
-                <CustomAvatar src={data?.instructorAvatar} size={38} />
+                <CustomAvatar skin='light-static' color='error' src={data?.instructorAvatar} size={38} />
                 <div className='flex flex-col gap-1'>
                   <Typography className='font-medium' color='text.primary'>
                     {data?.instructor}

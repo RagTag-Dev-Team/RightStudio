@@ -81,7 +81,7 @@ const Stepper = styled(MuiStepper)<StepperProps>(({ theme }) => ({
   '& .MuiStep-root': {
     '& + svg': {
       display: 'none',
-      color: theme.palette.text.disabled
+      color: 'var(--mui-palette-text-disabled)'
     },
     '& .MuiStepLabel-label': {
       display: 'flex',
@@ -89,14 +89,14 @@ const Stepper = styled(MuiStepper)<StepperProps>(({ theme }) => ({
       alignItems: 'center',
       svg: {
         marginRight: theme.spacing(1.5),
-        fill: theme.palette.text.primary
+        fill: 'var(--mui-palette-text-primary)'
       },
       '&.Mui-active, &.Mui-completed': {
         '& .MuiTypography-root': {
-          color: theme.palette.primary.main
+          color: 'var(--mui-palette-primary-main)'
         },
         '& svg': {
-          fill: theme.palette.primary.main
+          fill: 'var(--mui-palette-primary-main)'
         }
       }
     },

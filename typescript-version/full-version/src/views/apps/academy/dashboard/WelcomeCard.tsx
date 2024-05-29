@@ -22,9 +22,6 @@ import type { ThemeColor } from '@core/types'
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
-
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
@@ -154,13 +151,13 @@ const WelcomeCard = () => {
               fontWeight: 500,
               fontSize: '1.125rem',
               formatter: value => `${value}%`,
-              color: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.9)`)
+              color: 'var(--mui-palette-text-primary)'
             },
             total: {
               show: true,
               fontSize: '0.8125rem',
               label: 'Total',
-              color: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.4)`),
+              color: 'var(--mui-palette-text-disabled)',
               formatter: () => '231h'
             }
           }

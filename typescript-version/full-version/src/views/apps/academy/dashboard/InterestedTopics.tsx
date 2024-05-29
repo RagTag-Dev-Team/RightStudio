@@ -18,9 +18,6 @@ import type { ApexOptions } from 'apexcharts'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
-
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
@@ -72,16 +69,16 @@ const InterestedTopics = () => {
     },
 
     colors: [
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.info.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.secondary.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.error.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.warning.mainChannel} / 1)`)
+      'var(--mui-palette-primary-main)',
+      'var(--mui-palette-info-main)',
+      'var(--mui-palette-success-main)',
+      'var(--mui-palette-secondary-main)',
+      'var(--mui-palette-error-main)',
+      'var(--mui-palette-warning-main)'
     ],
     grid: {
       strokeDashArray: 8,
-      borderColor: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.12)`),
+      borderColor: 'var(--mui-palette-divider)',
       xaxis: {
         lines: { show: true }
       },
@@ -133,7 +130,7 @@ const InterestedTopics = () => {
         formatter: val => `${val}%`,
         style: {
           fontSize: '0.8125rem',
-          colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.4)`)
+          colors: 'var(--mui-palette-text-disabled)'
         }
       }
     },
@@ -143,7 +140,7 @@ const InterestedTopics = () => {
         style: {
           fontWeight: 500,
           fontSize: '0.8125rem',
-          colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.9)`)
+          colors: 'var(--mui-palette-text-disabled)'
         },
         offsetX: theme.direction === 'rtl' ? -15 : -30
       }

@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -24,9 +23,6 @@ const donutColors = {
 }
 
 const ApexDonutChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     stroke: { width: 0 },
@@ -39,7 +35,7 @@ const ApexDonutChart = () => {
     legend: {
       position: 'bottom',
       markers: { offsetX: -3 },
-      labels: { colors: theme.palette.text.secondary },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       itemMargin: {
         vertical: 3,
         horizontal: 10
@@ -55,7 +51,7 @@ const ApexDonutChart = () => {
             },
             value: {
               fontSize: '1.2rem',
-              color: theme.palette.text.secondary,
+              color: 'var(--mui-palette-text-secondary)',
               formatter: (val: string) => `${parseInt(val, 10)}`
             },
             total: {
@@ -63,7 +59,7 @@ const ApexDonutChart = () => {
               fontSize: '1.2rem',
               label: 'Operational',
               formatter: () => '31%',
-              color: theme.palette.text.primary
+              color: 'var(--mui-palette-text-primary)'
             }
           }
         }
@@ -115,7 +111,7 @@ const ApexDonutChart = () => {
       <CardHeader
         title='Expense Ratio'
         subheader='Spending on various categories'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+        subheaderTypographyProps={{ sx: { color: 'var(--mui-palette-text-disabled) !important' } }}
       />
       <CardContent>
         <AppReactApexCharts type='donut' width='100%' height={400} options={options} series={[85, 16, 50, 50]} />

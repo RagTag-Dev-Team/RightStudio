@@ -24,9 +24,6 @@ import { useTheme } from '@mui/material/styles'
 // Third Party Imports
 import type { ApexOptions } from 'apexcharts'
 
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
-
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
@@ -138,7 +135,7 @@ const LogisticsShipmentStatistics = () => {
     markers: {
       size: 5,
       colors: '#fff',
-      strokeColors: rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
+      strokeColors: 'var(--mui-palette-primary-main)',
       hover: {
         size: 6
       },
@@ -167,17 +164,14 @@ const LogisticsShipmentStatistics = () => {
       fontFamily: 'Open Sans',
       fontWeight: 400,
       labels: {
-        colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.9)`)
+        colors: 'var(--mui-palette-text-primary)'
       },
       offsetY: 10
     },
     grid: {
       strokeDashArray: 8
     },
-    colors: [
-      rgbaToHex(`rgb(${theme.palette.warning.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`)
-    ],
+    colors: ['var(--mui-palette-warning-main)', 'var(--mui-palette-primary-main)'],
     fill: {
       opacity: [1, 1]
     },
@@ -196,7 +190,7 @@ const LogisticsShipmentStatistics = () => {
       categories: ['1 Jan', '2 Jan', '3 Jan', '4 Jan', '5 Jan', '6 Jan', '7 Jan', '8 Jan', '9 Jan', '10 Jan'],
       labels: {
         style: {
-          colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.7)`),
+          colors: 'var(--mui-palette-text-secondary)',
           fontSize: '13px',
           fontWeight: 400
         }
@@ -211,7 +205,7 @@ const LogisticsShipmentStatistics = () => {
     yaxis: {
       labels: {
         style: {
-          colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.7)`),
+          colors: 'var(--mui-palette-text-secondary)',
           fontSize: '13px',
           fontWeight: 400
         }

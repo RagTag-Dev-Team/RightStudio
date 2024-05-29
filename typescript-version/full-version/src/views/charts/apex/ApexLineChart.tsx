@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -23,9 +22,6 @@ const series = [
 ]
 
 const ApexLineChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     chart: {
@@ -44,7 +40,7 @@ const ApexLineChart = () => {
     },
     grid: {
       padding: { top: -10 },
-      borderColor: theme.palette.divider,
+      borderColor: 'var(--mui-palette-divider)',
       xaxis: {
         lines: { show: true }
       }
@@ -58,17 +54,17 @@ const ApexLineChart = () => {
     },
     yaxis: {
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: 'var(--mui-palette-text-disabled)' }
       }
     },
     xaxis: {
       axisBorder: { show: false },
-      axisTicks: { color: theme.palette.divider },
+      axisTicks: { color: 'var(--mui-palette-divider)' },
       crosshairs: {
-        stroke: { color: theme.palette.divider }
+        stroke: { color: 'var(--mui-palette-divider)' }
       },
       labels: {
-        style: { colors: theme.palette.text.disabled }
+        style: { colors: 'var(--mui-palette-text-disabled)' }
       },
       categories: [
         '7/12',

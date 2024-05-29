@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -33,9 +32,6 @@ const series = [
 ]
 
 const ApexRadarChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     chart: {
@@ -58,7 +54,7 @@ const ApexRadarChart = () => {
     },
     legend: {
       labels: {
-        colors: theme.palette.text.secondary
+        colors: 'var(--mui-palette-text-secondary)'
       },
       markers: {
         offsetX: -3
@@ -71,8 +67,8 @@ const ApexRadarChart = () => {
     plotOptions: {
       radar: {
         polygons: {
-          strokeColors: theme.palette.divider,
-          connectorColors: theme.palette.divider
+          strokeColors: 'var(--mui-palette-divider)',
+          connectorColors: 'var(--mui-palette-divider)'
         }
       }
     },
@@ -89,14 +85,14 @@ const ApexRadarChart = () => {
       labels: {
         style: {
           colors: [
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled,
-            theme.palette.text.disabled
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)',
+            'var(--mui-palette-text-disabled)'
           ]
         }
       }

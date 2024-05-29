@@ -14,9 +14,6 @@ import { useTheme } from '@mui/material/styles'
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
 
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
-
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
@@ -28,7 +25,7 @@ const ReviewsStatistics = () => {
   const theme = useTheme()
 
   // Vars
-  const successLightOpacity = rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.16)`)
+  const successLightOpacity = 'var(--mui-palette-success-lightOpacity)'
 
   const options: ApexOptions = {
     chart: {
@@ -50,7 +47,7 @@ const ReviewsStatistics = () => {
       successLightOpacity,
       successLightOpacity,
       successLightOpacity,
-      theme.palette.success.main,
+      'var(--mui-palette-success-main)',
       successLightOpacity,
       successLightOpacity
     ],
@@ -78,7 +75,7 @@ const ReviewsStatistics = () => {
       tickPlacement: 'on',
       labels: {
         style: {
-          colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.4)`),
+          colors: 'var(--mui-palette-text-disabled)',
           fontFamily: theme.typography.fontFamily,
           fontSize: theme.typography.body2.fontSize as string
         }

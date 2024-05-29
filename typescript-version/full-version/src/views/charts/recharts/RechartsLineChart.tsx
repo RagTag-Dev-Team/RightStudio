@@ -60,7 +60,7 @@ const RechartsLineChart = () => {
       <CardHeader
         title='Balance'
         subheader='Commercial networks & enterprises'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+        subheaderTypographyProps={{ sx: { color: 'var(--mui-palette-text-disabled) !important' } }}
         sx={{
           flexDirection: ['column', 'row'],
           alignItems: ['flex-start', 'center'],

@@ -15,9 +15,6 @@ import type { ApexOptions } from 'apexcharts'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
-
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
@@ -33,7 +30,7 @@ const LogisticsDeliveryExceptions = () => {
       width: 0
     },
     colors: [
-      theme.palette.success.main,
+      'var(--mui-palette-success-main)',
       lighten(theme.palette.success.main, 0.2),
       lighten(theme.palette.success.main, 0.4),
       lighten(theme.palette.success.main, 0.6)
@@ -61,7 +58,7 @@ const LogisticsDeliveryExceptions = () => {
       fontSize: '13px',
       fontWeight: 400,
       labels: {
-        colors: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.9)`),
+        colors: 'var()',
         useSeriesColors: false
       }
     },
@@ -78,7 +75,7 @@ const LogisticsDeliveryExceptions = () => {
             show: true,
             value: {
               fontSize: '24px',
-              color: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.9)`),
+              color: 'var()',
               fontWeight: 500,
               offsetY: -20
             },
@@ -88,7 +85,7 @@ const LogisticsDeliveryExceptions = () => {
               fontSize: '0.9375rem',
               fontWeight: 400,
               label: 'AVG. Exceptions',
-              color: rgbaToHex(`rgb(${theme.palette.text.primaryChannel} / 0.7)`),
+              color: 'var(--mui-palette-text-secondary)',
               formatter() {
                 return '30%'
               }

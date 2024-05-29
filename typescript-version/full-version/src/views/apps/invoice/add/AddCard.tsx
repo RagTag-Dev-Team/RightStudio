@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { SyntheticEvent } from 'react'
 
 // MUI Imports
@@ -25,6 +25,7 @@ import type { FormDataType } from './AddCustomerDrawer'
 
 // Component Imports
 import AddCustomerDrawer, { initialFormData } from './AddCustomerDrawer'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -33,6 +34,15 @@ import themeConfig from '@configs/themeConfig'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 const AddAction = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
+  const { updatePageSettings } = useSettings()
+
+  useEffect(() => {
+    return updatePageSettings({
+      mode: 'dark'
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // States
   const [open, setOpen] = useState(false)
   const [count, setCount] = useState(1)

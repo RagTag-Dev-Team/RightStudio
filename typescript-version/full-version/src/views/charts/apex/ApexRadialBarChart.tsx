@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 
@@ -25,9 +24,6 @@ const radialBarColors = {
 }
 
 const ApexRadialBarChart = () => {
-  // Hooks
-  const theme = useTheme()
-
   // Vars
   const options: ApexOptions = {
     stroke: { lineCap: 'round' },
@@ -36,7 +32,7 @@ const ApexRadialBarChart = () => {
       show: true,
       position: 'bottom',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: 'var(--mui-palette-text-secondary)'
       },
       markers: {
         offsetX: -3
@@ -61,14 +57,14 @@ const ApexRadialBarChart = () => {
           },
           value: {
             fontSize: '1rem',
-            color: theme.palette.text.secondary
+            color: 'var(--mui-palette-text-secondary)'
           },
           total: {
             show: true,
             fontWeight: 400,
             label: 'Comments',
             fontSize: '1.125rem',
-            color: theme.palette.text.primary,
+            color: 'var(--mui-palette-text-primary)',
             formatter: function (w) {
               const totalValue =
                 w.globals.seriesTotals.reduce((a: any, b: any) => {

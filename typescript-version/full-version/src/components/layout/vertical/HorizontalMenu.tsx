@@ -1,8 +1,5 @@
 'use client'
 
-// MUI Imports
-import { useTheme } from '@mui/material/styles'
-
 // Next Imports
 // import { useParams } from 'next/navigation'
 
@@ -18,9 +15,6 @@ import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
-// Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
-
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
 
@@ -30,15 +24,13 @@ import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
 const HorizontalMenu = (/* { dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> } */) => {
   // Hooks
   // const params = useParams()
-  const theme = useTheme()
-  const { settings } = useSettings()
 
   return (
     <HorizontalNavProvider>
       <HorizontalNav hideMenu>
         <Menu
           menuItemStyles={{
-            ...menuItemStyles(settings, theme),
+            ...menuItemStyles(),
             ...{ subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' } }
           }}
           popoutMenuOffset={{

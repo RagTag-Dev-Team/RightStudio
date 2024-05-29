@@ -57,7 +57,7 @@ const RechartsPieChart = () => {
       <CardHeader
         title='Expense Ratio'
         subheader='Spending on various categories'
-        subheaderTypographyProps={{ sx: { color: theme => `${theme.palette.text.disabled} !important` } }}
+        subheaderTypographyProps={{ sx: { color: 'var(--mui-palette-text-disabled) !important' } }}
       />
       <CardContent>
         <AppRecharts>

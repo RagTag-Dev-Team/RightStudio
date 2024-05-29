@@ -19,7 +19,7 @@ const AppReactDropzone = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: 'center',
     padding: theme.spacing(4),
     borderRadius: theme.shape.borderRadius,
-    border: `2px dashed ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.22)' : 'rgba(247, 244, 254, 0.14)'}`,
+    border: '2px dashed var(--mui-palette-divider)',
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center'
     },
