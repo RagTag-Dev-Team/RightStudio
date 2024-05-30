@@ -16,9 +16,9 @@ When adding new apps that require dependencies not included in our package, it's
 
 #### Location and Structure
 
-- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/apps/`.
+- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/(private)/apps` (if `translation` (i18n) feature is implemented) or `src/app/(dashboard)/(private)/apps` (if `translation` (i18n) feature is not implemented).
 
-- Example: For the invoice app, find the server file at `src/app/[lang]/(dashboard)/apps/invoice/preview/[id]/page.tsx`.
+- Example: For the invoice app, find the server file at `src/app/[lang]/(dashboard)/(private)/apps/invoice/preview/[id]/page.tsx`.
 
 #### API Call Implementation
 
@@ -26,7 +26,7 @@ When adding new apps that require dependencies not included in our package, it's
 
 ```tsx
 const getData = async () => {
-  const res = await fetch(`${process.env.API_URL}/apps/invoice`);
+  const res = await fetch(`${process.env.API_URL}/apps/invoice`) // Your API URL
   if (!res.ok) {
     throw new Error('Failed to fetch invoice data');
   }
@@ -53,7 +53,7 @@ export default PreviewPage;
 
 For more on Next.js routing conventions, visit [Next.js Routing](https://nextjs.org/docs/app/building-your-application/routing).
 
-- Path: APIs specific to apps are created in `src/app/api/apps/`.
+- Path: APIs specific to apps are created in `src/app/api/apps`.
 
 - Routing: The API routing adheres to Next.js app router conventions.
 
@@ -72,9 +72,9 @@ export async function GET() {
 
 #### Storing Fake Data
 
-- Path: Fake database files for apps are stored at `src/app/api/fake-db/apps/`.
+- Path: Fake database files for apps are stored at `src/fake-db/apps`.
 
-- Example: The Invoice app's fake database is located at `src/app/api/fake-db/apps/invoice/index.ts`.
+- Example: The Invoice app's fake database is located at `src/fake-db/apps/invoice/index.ts`.
 
 ```ts
 import type { InvoiceType } from '@/types/apps/invoiceTypes';
@@ -90,9 +90,9 @@ For steps on integrating real databases and API calls, refer to [Using Real APIs
 
 #### Component Location
 
-- Path: The components for apps are located at `src/app/[lang]/(dashboard)/apps/`.
+- Path: The components for apps are located at `src/views/apps`.
 
-- Example: The Invoice app's components are located at `src/app/[lang]/(dashboard)/apps/invoice/`.
+- Example: The Invoice app's components are located at `src/views/apps/invoice`.
 
 #### Styling Approach
 

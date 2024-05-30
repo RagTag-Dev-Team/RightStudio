@@ -16,9 +16,9 @@ When adding new pages that require dependencies not included in our package, it'
 
 #### Location and Structure
 
-- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/pages/`.
+- Path: The server files for pages are located at `src/app/[lang]/(dashboard)/(private)/pages` (if `translation` (i18n) feature is implemented) or `src/app/(dashboard)/(private)/pages` (if `translation` (i18n) feature is not implemented).
 
-- Example: For the FAQ page, find the server file at `src/app/[lang]/(dashboard)/pages/faq/page.tsx`.
+- Example: For the FAQ page, find the server file at `src/app/[lang]/(dashboard)/(private)/pages/faq/page.tsx`.
 
 #### API Call Implementation
 
@@ -26,7 +26,7 @@ When adding new pages that require dependencies not included in our package, it'
 
   ```tsx
   const getFaqData = async () => {
-    const res = await fetch(`${process.env.API_URL}/pages/faq`);
+    const res = await fetch(`${process.env.API_URL}/pages/faq`); // Your API URL
     if (!res.ok) {
       throw new Error('Failed to fetch faqData');
     }
@@ -45,7 +45,7 @@ When adding new pages that require dependencies not included in our package, it'
 
 #### API File Location
 
-- Path: APIs specific to pages are created in `src/app/api/pages/`.
+- Path: APIs specific to pages are created in `src/app/api/pages`.
 
 #### Routing and Functionality
 
@@ -68,9 +68,9 @@ You may refer to the Next.js routing conventions [here](https://nextjs.org/docs/
 
 #### Storing Fake Data
 
-- Path: Fake database files are stored at `src/app/api/fake-db/pages/`.
+- Path: Fake database files are stored at `src/fake-db/pages`.
 
-- Example: FAQ Page Fake Database is located in `src/app/api/fake-db/pages/faq/index.ts`.
+- Example: FAQ Page Fake Database is located in `src/fake-db/pages/faq/index.ts`.
 
   ```ts
   import type { FaqType } from '@/types/pages/faqTypes';
@@ -86,7 +86,7 @@ You may refer to the Next.js routing conventions [here](https://nextjs.org/docs/
 
 #### Component Location
 
-- Path: Page-related components are in `src/views/pages/`.
+- Path: Page-related components are in `src/views/pages`.
 
 #### Styling Approach
 

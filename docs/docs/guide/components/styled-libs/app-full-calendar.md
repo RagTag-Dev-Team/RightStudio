@@ -44,12 +44,11 @@ import Card from '@mui/material/Card'
 import CalendarWrapper from '@views/apps/calendar/CalendarWrapper'
 import AppFullCalendar from '@/libs/styles/AppFullCalendar'
 
-const CalendarApp = async () => {
-  const res = (await fetchEvents()) || []
+const CalendarApp = () => {
   return (
     <Card>
       <AppFullCalendar className='app-calendar'>
-        <CalendarWrapper events={res.events} />
+        <CalendarWrapper />
       </AppFullCalendar>
     </Card>
   )
