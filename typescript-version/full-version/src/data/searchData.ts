@@ -43,454 +43,503 @@ const data: SearchData[] = [
   },
   {
     id: '6',
+    name: 'Landing Front',
+    url: '/front-pages/landing-page',
+    icon: 'Icon',
+    section: 'Front Pages'
+  },
+  {
+    id: '7',
+    name: 'Pricing Front',
+    url: '/front-pages/pricing',
+    icon: 'Icon',
+    section: 'Front Pages'
+  },
+  {
+    id: '8',
+    name: 'Payment Front',
+    url: '/front-pages/payment',
+    icon: 'Icon',
+    section: 'Front Pages'
+  },
+  {
+    id: '9',
+    name: 'Checkout Front',
+    url: '/front-pages/checkout',
+    icon: 'Icon',
+    section: 'Front Pages'
+  },
+  {
+    id: '10',
+    name: 'Help Center Front',
+    url: '/front-pages/help-center',
+    icon: 'Icon',
+    section: 'Front Pages'
+  },
+  {
+    id: '11',
     name: 'About',
     url: '/about',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '7',
+    id: '12',
     name: 'eCommerce - Dashboard',
     url: '/apps/ecommerce/dashboard',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '8',
+    id: '13',
     name: 'eCommerce - Product List',
     url: '/apps/ecommerce/products/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '9',
+    id: '14',
     name: 'eCommerce - Add New Product',
     url: '/apps/ecommerce/products/add',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '10',
+    id: '15',
     name: 'eCommerce - Product Category',
     url: '/apps/ecommerce/products/category',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '11',
+    id: '16',
     name: 'eCommerce - Order List',
     url: '/apps/ecommerce/orders/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '12',
+    id: '17',
     name: 'eCommerce - Order Details',
     url: '/apps/ecommerce/orders/details/5434',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '13',
+    id: '18',
     name: 'eCommerce - Customer List',
     url: '/apps/ecommerce/customers/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '14',
+    id: '19',
     name: 'eCommerce - Customer Details',
     url: '/apps/ecommerce/customers/details/879861',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '15',
+    id: '20',
     name: 'eCommerce - Manage Reviews',
     url: '/apps/ecommerce/manage-reviews',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '16',
+    id: '21',
     name: 'eCommerce - Referrals',
     url: '/apps/ecommerce/referrals',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '17',
+    id: '22',
     name: 'eCommerce - Settings',
     url: '/apps/ecommerce/settings',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '18',
+    id: '23',
     name: 'Academy - Dashboard',
     url: '/apps/academy/dashboard',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '19',
+    id: '24',
     name: 'Academy - My Courses',
     url: '/apps/academy/my-courses',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '20',
+    id: '25',
     name: 'Academy - Course Details',
     url: '/apps/academy/course-details',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '21',
+    id: '26',
     name: 'Logistics - Dashboard',
     url: '/apps/logistics/dashboard',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '22',
+    id: '27',
     name: 'Logistics - Fleet',
     url: '/apps/logistics/fleet',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '23',
+    id: '28',
     name: 'Email',
     url: '/email',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '24',
+    id: '29',
     name: 'Chat',
     url: '/chat',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '25',
+    id: '30',
     name: 'Calendar',
     url: '/apps/calendar',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '26',
+    id: '31',
     name: 'Kanban',
     url: '/apps/kanban',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '27',
+    id: '32',
     name: 'Invoice List',
     url: '/apps/invoice/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '28',
+    id: '33',
     name: 'Invoice Preview',
     url: '/apps/invoice/preview/4987',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '29',
+    id: '34',
     name: 'Invoice Edit',
     url: '/apps/invoice/edit/4987',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '30',
+    id: '35',
     name: 'Invoice Add',
     url: '/apps/invoice/add',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '31',
+    id: '36',
     name: 'User List',
     url: '/apps/user/list',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '32',
+    id: '37',
     name: 'User View',
     url: '/apps/user/view/1',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '33',
+    id: '38',
     name: 'Roles',
     url: '/apps/roles',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '34',
+    id: '39',
     name: 'Permissions',
     url: '/apps/permissions',
     icon: 'Icon',
     section: 'Apps'
   },
   {
-    id: '35',
+    id: '40',
     name: 'User Profile',
     url: '/pages/user-profile',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '36',
+    id: '41',
     name: 'Account Settings',
     url: '/pages/account-settings',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '37',
+    id: '42',
     name: 'FAQ',
     url: '/pages/faq',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '38',
+    id: '43',
     name: 'Pricing',
     url: '/pages/pricing',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '39',
+    id: '44',
     name: 'Coming Soon',
     url: '/pages/misc/coming-soon',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '40',
+    id: '45',
     name: 'Under Maintenance',
     url: '/pages/misc/under-maintenance',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '41',
+    id: '46',
     name: 'Page Not Found - 404',
     url: '/pages/misc/404-not-found',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '42',
+    id: '47',
     name: 'Not Authorized - 401',
     url: '/pages/misc/401-not-authorized',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '43',
+    id: '48',
     name: 'Login V1',
     url: '/pages/auth/login-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '44',
+    id: '49',
     name: 'Login V2',
     url: '/pages/auth/login-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '45',
+    id: '50',
     name: 'Register V1',
     url: '/pages/auth/register-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '46',
+    id: '51',
     name: 'Register V2',
     url: '/pages/auth/register-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '47',
+    id: '52',
     name: 'Register Multi-Steps',
     url: '/pages/auth/register-multi-steps',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '48',
+    id: '53',
     name: 'Forgot Password V1',
     url: '/pages/auth/forgot-password-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '49',
+    id: '54',
     name: 'Forgot Password V2',
     url: '/pages/auth/forgot-password-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '50',
+    id: '55',
     name: 'Reset Password V1',
     url: '/pages/auth/reset-password-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '51',
+    id: '56',
     name: 'Reset Password V2',
     url: '/pages/auth/reset-password-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '52',
+    id: '57',
     name: 'Verify Email V1',
     url: '/pages/auth/verify-email-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '53',
+    id: '58',
     name: 'Verify Email V2',
     url: '/pages/auth/verify-email-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '54',
+    id: '59',
     name: 'Two Steps V1',
     url: '/pages/auth/two-steps-v1',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '55',
+    id: '60',
     name: 'Two Steps V2',
     url: '/pages/auth/two-steps-v2',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '56',
+    id: '61',
     name: 'Wizard - Checkout',
     url: '/pages/wizard-examples/checkout',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '57',
+    id: '62',
     name: 'Wizard - Property Listing',
     url: '/pages/wizard-examples/property-listing',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '58',
+    id: '63',
     name: 'Wizard - Create Deal',
     url: '/pages/wizard-examples/create-deal',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '59',
+    id: '64',
     name: 'Dialog Examples',
     url: '/pages/dialog-examples',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '60',
+    id: '65',
+    name: 'Widget - Basic',
+    url: '/pages/widget-examples/basic',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '66',
     name: 'Widget - Advanced',
     url: '/pages/widget-examples/advanced',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '61',
+    id: '67',
     name: 'Widget - Statistics',
     url: '/pages/widget-examples/statistics',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '62',
+    id: '68',
     name: 'Widget - Charts',
     url: '/pages/widget-examples/charts',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '63',
+    id: '69',
+    name: 'Widget - Actions',
+    url: '/pages/widget-examples/actions',
+    icon: 'Icon',
+    section: 'Pages'
+  },
+  {
+    id: '70',
     name: 'Icons Test',
     url: '/icons-test',
     icon: 'Icon',
     section: 'Pages'
   },
   {
-    id: '64',
+    id: '71',
     name: 'Form Layouts',
     url: '/forms/form-layouts',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '65',
+    id: '72',
     name: 'Form Validation',
     url: '/forms/form-validation',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '66',
+    id: '73',
     name: 'Form Wizard',
     url: '/forms/form-wizard',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '67',
+    id: '74',
     name: 'React Table',
     url: '/react-table',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '68',
+    id: '75',
     name: 'Apex Charts',
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '69',
+    id: '76',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '70',
+    id: '77',
     name: 'Menu Examples',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
     icon: 'Icon',

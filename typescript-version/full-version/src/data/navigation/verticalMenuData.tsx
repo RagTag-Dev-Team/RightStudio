@@ -41,6 +41,36 @@ const verticalMenuData = (
     ]
   },
   {
+    label: dictionary['navigation'].frontPages,
+    children: [
+      {
+        label: dictionary['navigation'].landing,
+        href: '/front-pages/landing-page',
+        target: '_blank'
+      },
+      {
+        label: dictionary['navigation'].pricing,
+        href: '/front-pages/pricing',
+        target: '_blank'
+      },
+      {
+        label: dictionary['navigation'].payment,
+        href: '/front-pages/payment',
+        target: '_blank'
+      },
+      {
+        label: dictionary['navigation'].checkout,
+        href: '/front-pages/checkout',
+        target: '_blank'
+      },
+      {
+        label: dictionary['navigation'].helpCenter,
+        href: '/front-pages/help-center',
+        target: '_blank'
+      }
+    ]
+  },
+  {
     label: 'About',
     href: '/about'
   },
@@ -376,6 +406,10 @@ const verticalMenuData = (
         label: dictionary['navigation'].widgetExamples,
         children: [
           {
+            label: dictionary['navigation'].basic,
+            href: '/pages/widget-examples/basic'
+          },
+          {
             label: dictionary['navigation'].advanced,
             href: '/pages/widget-examples/advanced'
           },
@@ -386,6 +420,10 @@ const verticalMenuData = (
           {
             label: dictionary['navigation'].charts,
             href: '/pages/widget-examples/charts'
+          },
+          {
+            label: dictionary['navigation'].actions,
+            href: '/pages/widget-examples/actions'
           }
         ]
       },
