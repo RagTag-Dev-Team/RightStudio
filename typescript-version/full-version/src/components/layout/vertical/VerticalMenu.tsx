@@ -2,6 +2,7 @@
 import { useParams } from 'next/navigation'
 
 // MUI Imports
+import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -44,7 +45,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
       <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles()}>
-        <SubMenu label={dictionary['navigation'].dashboards}>
+        <SubMenu label={dictionary['navigation'].dashboards} suffix={<Chip label='5' size='small' color='error' />}>
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
