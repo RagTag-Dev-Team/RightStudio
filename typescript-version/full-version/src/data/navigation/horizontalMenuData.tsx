@@ -393,6 +393,36 @@ const horizontalMenuData = (
         ]
       },
       {
+        label: dictionary['navigation'].frontPages,
+        children: [
+          {
+            label: dictionary['navigation'].landing,
+            href: '/front-pages/landing-page',
+            target: '_blank'
+          },
+          {
+            label: dictionary['navigation'].pricing,
+            href: '/front-pages/pricing',
+            target: '_blank'
+          },
+          {
+            label: dictionary['navigation'].payment,
+            href: '/front-pages/payment',
+            target: '_blank'
+          },
+          {
+            label: dictionary['navigation'].checkout,
+            href: '/front-pages/checkout',
+            target: '_blank'
+          },
+          {
+            label: dictionary['navigation'].helpCenter,
+            href: '/front-pages/help-center',
+            target: '_blank'
+          }
+        ]
+      },
+      {
         label: 'Icons Test',
         href: '/icons-test'
       }

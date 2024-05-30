@@ -212,6 +212,23 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
+          <SubMenu label={dictionary['navigation'].frontPages}>
+            <MenuItem href={`/${locale}/front-pages/landing-page`} target='_blank'>
+              {dictionary['navigation'].landing}
+            </MenuItem>
+            <MenuItem href={`/${locale}/front-pages/pricing`} target='_blank'>
+              {dictionary['navigation'].pricing}
+            </MenuItem>
+            <MenuItem href={`/${locale}/front-pages/payment`} target='_blank'>
+              {dictionary['navigation'].payment}
+            </MenuItem>
+            <MenuItem href={`/${locale}/front-pages/checkout`} target='_blank'>
+              {dictionary['navigation'].checkout}
+            </MenuItem>
+            <MenuItem href={`/${locale}/front-pages/help-center`} target='_blank'>
+              {dictionary['navigation'].helpCenter}
+            </MenuItem>
+          </SubMenu>
           <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].formsAndTables}>

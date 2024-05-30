@@ -51,6 +51,23 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
         </SubMenu>
+        <SubMenu label={dictionary['navigation'].frontPages}>
+          <MenuItem href={`/${locale}/front-pages/landing-page`} target='_blank'>
+            {dictionary['navigation'].landing}
+          </MenuItem>
+          <MenuItem href={`/${locale}/front-pages/pricing`} target='_blank'>
+            {dictionary['navigation'].pricing}
+          </MenuItem>
+          <MenuItem href={`/${locale}/front-pages/payment`} target='_blank'>
+            {dictionary['navigation'].payment}
+          </MenuItem>
+          <MenuItem href={`/${locale}/front-pages/checkout`} target='_blank'>
+            {dictionary['navigation'].checkout}
+          </MenuItem>
+          <MenuItem href={`/${locale}/front-pages/help-center`} target='_blank'>
+            {dictionary['navigation'].helpCenter}
+          </MenuItem>
+        </SubMenu>
         <MenuItem href={`/${locale}/about`}>About</MenuItem>
         <MenuSection label={dictionary['navigation'].appsPages}>
           <SubMenu label={dictionary['navigation'].eCommerce}>
