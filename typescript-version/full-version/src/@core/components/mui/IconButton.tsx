@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
-
+// MUI Imports
 import MuiButton from '@mui/material/Button'
-import type { ButtonProps } from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
+import type { ButtonProps } from '@mui/material/Button'
 
+// Config Imports
 import themeConfig from '@configs/themeConfig'
 
 const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant }) => {
