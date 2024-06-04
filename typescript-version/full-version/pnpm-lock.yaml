@@ -36,37 +36,37 @@ importers:
         specifier: ^0.5.4
         version: 0.5.4
       '@formkit/drag-and-drop':
-        specifier: ^0.0.38
-        version: 0.0.38
+        specifier: ^0.1.0
+        version: 0.1.0
       '@fullcalendar/common':
         specifier: ^5.11.5
         version: 5.11.5
       '@fullcalendar/core':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13
       '@fullcalendar/daygrid':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13(@fullcalendar/core@6.1.13)
       '@fullcalendar/interaction':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13(@fullcalendar/core@6.1.13)
       '@fullcalendar/list':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13(@fullcalendar/core@6.1.13)
       '@fullcalendar/react':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13(@fullcalendar/core@6.1.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@fullcalendar/timegrid':
-        specifier: ^6.1.11
+        specifier: ^6.1.13
         version: 6.1.13(@fullcalendar/core@6.1.13)
       '@hookform/resolvers':
-        specifier: ^3.3.4
+        specifier: ^3.4.2
         version: 3.4.2(react-hook-form@7.51.5(react@18.3.1))
       '@mui/lab':
         specifier: 5.0.0-alpha.170
         version: 5.0.0-alpha.170(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.15.19(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material':
-        specifier: ^5.15.16
+        specifier: ^5.15.19
         version: 5.15.19(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material-nextjs':
         specifier: ^5.15.11
@@ -75,7 +75,7 @@ importers:
         specifier: ^5.14.0
         version: 5.14.0(prisma@5.14.0)
       '@reduxjs/toolkit':
-        specifier: ^2.2.3
+        specifier: ^2.2.5
         version: 2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
       '@tanstack/match-sorter-utils':
         specifier: ^8.15.1
@@ -84,7 +84,7 @@ importers:
         specifier: ^8.17.3
         version: 8.17.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       apexcharts:
-        specifier: ^3.49.0
+        specifier: ^3.49.1
         version: 3.49.1
       bootstrap-icons:
         specifier: ^1.11.3
@@ -108,7 +108,7 @@ importers:
         specifier: ^6.8.6
         version: 6.8.6
       mapbox-gl:
-        specifier: ^3.3.0
+        specifier: ^3.4.0
         version: 3.4.0
       negotiator:
         specifier: ^0.6.3
@@ -141,7 +141,7 @@ importers:
         specifier: ^14.2.3
         version: 14.2.3(react@18.3.1)
       react-hook-form:
-        specifier: ^7.51.3
+        specifier: ^7.51.5
         version: 7.51.5(react@18.3.1)
       react-map-gl:
         specifier: ^7.1.7
@@ -162,7 +162,7 @@ importers:
         specifier: ^17.5.0
         version: 17.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       recharts:
-        specifier: ^2.12.6
+        specifier: ^2.12.7
         version: 2.12.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       server-only:
         specifier: ^0.0.1
@@ -172,7 +172,7 @@ importers:
         version: 0.30.0
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.206
+        specifier: ^2.2.216
         version: 2.2.216
       '@iconify/tools':
         specifier: ^4.0.4
@@ -181,7 +181,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@iconify/utils':
-        specifier: ^2.1.23
+        specifier: ^2.1.24
         version: 2.1.24
       '@types/mapbox-gl':
         specifier: ^3.1.0
@@ -268,7 +268,7 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(postcss@8.4.38)
       tsx:
-        specifier: ^4.8.2
+        specifier: ^4.11.2
         version: 4.11.2
       typescript:
         specifier: ^5.4.5
@@ -602,8 +602,8 @@ packages:
   '@formatjs/intl-localematcher@0.5.4':
     resolution: {integrity: sha512-zTwEpWOzZ2CiKcB93BLngUX59hQkuZjT2+SAQEscSm52peDW/getsawMcWF1rGRpMCX6D7nSJA3CzJ8gn13N/g==}
 
-  '@formkit/drag-and-drop@0.0.38':
-    resolution: {integrity: sha512-3uJFcqz1xL7x/5pClDnyqEDfyFRDFH+75MFpJYXnVF17oekxLrwbUaOBN7ttKGn1jW2MdojRw4WMnSN1iLryvw==}
+  '@formkit/drag-and-drop@0.1.0':
+    resolution: {integrity: sha512-VOAqJAJ+Qa6i8sUiA26Bg9MkSJVDyE7azPYjP+CTokHrz1t4rK8irVlR2QKSdEopBpa2Mgfnj+NexCjt3AA24g==}
 
   '@fullcalendar/common@5.11.5':
     resolution: {integrity: sha512-3iAYiUbHXhjSVXnYWz27Od2cslztUPsOwiwKlfGvQxBixv2Kl6a8IPwaijKFYJHXdwYmfPoEgK7rvqAGVoIYwA==}
@@ -4053,7 +4053,7 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  '@formkit/drag-and-drop@0.0.38': {}
+  '@formkit/drag-and-drop@0.1.0': {}
 
   '@fullcalendar/common@5.11.5':
     dependencies:
