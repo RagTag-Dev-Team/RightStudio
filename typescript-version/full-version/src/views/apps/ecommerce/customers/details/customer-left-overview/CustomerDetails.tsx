@@ -27,7 +27,7 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
       <CardContent className='flex flex-col pbs-12 gap-6'>
         <div className='flex flex-col justify-self-center items-center gap-6'>
           <div className='flex flex-col items-center gap-4'>
-            <CustomAvatar variant='rounded' alt='Customer Avatar' size={120} />
+            <CustomAvatar src={customerData?.avatar} variant='rounded' alt='Customer Avatar' size={120} />
             <div className='flex flex-col items-center'>
               <Typography variant='h5'>{customerData?.customer}</Typography>
               <Typography>Customer ID #{customerData?.customerId}</Typography>
@@ -39,7 +39,7 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
                 <i className='ri-shopping-cart-2-line' />
               </CustomAvatar>
               <div>
-                <Typography>{customerData?.order}</Typography>
+                <Typography variant='h5'>{customerData?.order}</Typography>
                 <Typography>Orders</Typography>
               </div>
             </div>
@@ -48,7 +48,7 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
                 <i className='ri-money-dollar-circle-line' />
               </CustomAvatar>
               <div>
-                <Typography>${customerData?.totalSpent}</Typography>
+                <Typography variant='h5'>${customerData?.totalSpent}</Typography>
                 <Typography>Spent</Typography>
               </div>
             </div>

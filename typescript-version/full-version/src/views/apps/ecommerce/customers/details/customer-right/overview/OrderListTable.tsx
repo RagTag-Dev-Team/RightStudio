@@ -170,10 +170,11 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
         cell: ({ row }) => <Typography>${row.original.spent}</Typography>
       }),
       columnHelper.accessor('action', {
-        header: 'Action',
+        header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
             <OptionMenu
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'View',
@@ -231,7 +232,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex justify-between max-sm:flex-col sm:items-center'>
+      <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4'>
         <Typography variant='h5'>Orders Placed</Typography>
         <DebouncedInput
           value={globalFilter ?? ''}

@@ -65,11 +65,11 @@ const Notification = () => {
               <th>App</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='border-be'>
             {tableData.map((data, index) => (
               <tr key={index}>
                 <td>
-                  <Typography>{data.type}</Typography>
+                  <Typography color='text.primary'>{data.type}</Typography>
                 </td>
                 <td>
                   <Checkbox defaultChecked={data.email} />

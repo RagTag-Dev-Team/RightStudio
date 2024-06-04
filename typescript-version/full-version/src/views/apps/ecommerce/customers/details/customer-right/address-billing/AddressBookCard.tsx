@@ -83,7 +83,7 @@ const CustomerAddress = (props: propsType) => {
   // Vars
   const iconButtonProps: IconButtonProps = {
     children: <i className='ri-edit-box-line' />,
-    size: 'large'
+    className: 'text-textSecondary'
   }
 
   // Hooks
@@ -91,9 +91,10 @@ const CustomerAddress = (props: propsType) => {
 
   return (
     <>
-      <div className='flex justify-between items-center mlb-3'>
+      <div className='flex flex-wrap justify-between items-center mlb-3 gap-y-2'>
         <div className='flex items-center gap-2'>
           <IconButton
+            size='large'
             sx={{
               '& i': {
                 transition: 'transform 0.3s',
@@ -102,7 +103,7 @@ const CustomerAddress = (props: propsType) => {
             }}
             onClick={() => setExpanded(!expanded)}
           >
-            <i className='ri-arrow-down-s-line' />
+            <i className='ri-arrow-down-s-line text-textPrimary' />
           </IconButton>
           <div className='flex flex-col gap-1'>
             <div className='flex items-center gap-2'>
@@ -114,17 +115,21 @@ const CustomerAddress = (props: propsType) => {
             <Typography>{streetAddress}</Typography>
           </div>
         </div>
-        <div>
+        <div className='mis-10'>
           <OpenDialogOnElementClick
             element={IconButton}
             elementProps={iconButtonProps}
             dialog={AddNewAddress}
             dialogProps={{ data }}
           />
-          <IconButton size='large'>
-            <i className='ri-delete-bin-7-line' />
+          <IconButton>
+            <i className='ri-delete-bin-7-line text-textSecondary' />
           </IconButton>
-          <OptionMenu iconButtonProps={{ size: 'large' }} options={['Set as Default Address']} />
+          <OptionMenu
+            iconClassName='text-textSecondary'
+            iconButtonProps={{ size: 'medium' }}
+            options={['Set as Default Address']}
+          />
         </div>
       </div>
       <Collapse in={expanded} timeout={300}>

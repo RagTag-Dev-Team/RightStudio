@@ -21,7 +21,7 @@ const CustomerPlan = () => {
   // Vars
   const buttonProps: ButtonProps = {
     variant: 'contained',
-    children: 'Upgrade Plan'
+    children: 'Upgrade To Premium'
   }
 
   return (

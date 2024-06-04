@@ -33,9 +33,9 @@ const CustomerStats = (props: CardStatsCustomerStatsProps) => {
               <Typography>{content}</Typography>
             </div>
           ) : (
-            <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-2' />
+            <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-1' />
           )}
-          <Typography>{description}</Typography>
+          <Typography className='sm:line-clamp-1'>{description}</Typography>
         </div>
       </CardContent>
     </Card>

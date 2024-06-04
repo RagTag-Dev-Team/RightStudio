@@ -59,9 +59,9 @@ const RecentDevice = () => {
             {recentDeviceData.map((device, index) => (
               <tr key={index}>
                 <td>
-                  <div className='flex items-center'>
+                  <div className='flex items-center gap-4'>
                     <img alt='Chrome' width='22px' src='/images/logos/chrome.png' />
-                    <Typography>{device.browser}</Typography>
+                    <Typography color='text.primary'>{device.browser}</Typography>
                   </div>
                 </td>
                 <td>
