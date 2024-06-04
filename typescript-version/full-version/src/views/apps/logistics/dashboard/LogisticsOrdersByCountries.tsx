@@ -163,7 +163,7 @@ const LogisticsOrdersByCountries = () => {
                         <Typography color='text.primary' className='font-medium'>
                           {item.sender.name}
                         </Typography>
-                        <Typography>{item.sender.address}</Typography>
+                        <Typography className='line-clamp-1'>{item.sender.address}</Typography>
                       </TimelineContent>
                     </TimelineItem>
                     <TimelineItem>
@@ -179,7 +179,7 @@ const LogisticsOrdersByCountries = () => {
                         <Typography color='text.primary' className='font-medium'>
                           {item.receiver.name}
                         </Typography>
-                        <Typography>{item.receiver.address}</Typography>
+                        <Typography className='line-clamp-1'>{item.receiver.address}</Typography>
                       </TimelineContent>
                     </TimelineItem>
                   </Timeline>

@@ -75,7 +75,7 @@ const LogisticsDeliveryExceptions = () => {
             show: true,
             value: {
               fontSize: '24px',
-              color: 'var()',
+              color: 'var(--mui-palette-text-primary)',
               fontWeight: 500,
               offsetY: -20
             },

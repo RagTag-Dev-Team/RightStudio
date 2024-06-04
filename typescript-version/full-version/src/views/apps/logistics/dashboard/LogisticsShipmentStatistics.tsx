@@ -169,7 +169,8 @@ const LogisticsShipmentStatistics = () => {
       offsetY: 10
     },
     grid: {
-      strokeDashArray: 8
+      strokeDashArray: 8,
+      borderColor: 'var(--mui-palette-divider)'
     },
     colors: ['var(--mui-palette-warning-main)', 'var(--mui-palette-primary-main)'],
     fill: {
@@ -190,7 +191,7 @@ const LogisticsShipmentStatistics = () => {
       categories: ['1 Jan', '2 Jan', '3 Jan', '4 Jan', '5 Jan', '6 Jan', '7 Jan', '8 Jan', '9 Jan', '10 Jan'],
       labels: {
         style: {
-          colors: 'var(--mui-palette-text-secondary)',
+          colors: 'var(--mui-palette-text-disabled)',
           fontSize: '13px',
           fontWeight: 400
         }
@@ -205,7 +206,7 @@ const LogisticsShipmentStatistics = () => {
     yaxis: {
       labels: {
         style: {
-          colors: 'var(--mui-palette-text-secondary)',
+          colors: 'var(--mui-palette-text-disabled)',
           fontSize: '13px',
           fontWeight: 400
         }
