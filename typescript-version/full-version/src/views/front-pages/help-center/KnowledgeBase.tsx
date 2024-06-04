@@ -1,3 +1,6 @@
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -5,8 +8,21 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 // Component Imports
 import CustomAvatar from '@/@core/components/mui/Avatar'
+import DirectionalIcon from '@components/DirectionalIcon'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Types
 type popularArticlesType = {
@@ -92,8 +108,14 @@ const allArticles: popularArticlesType[] = [
 ]
 
 const KnowledgeBase = () => {
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
+
   return (
-    <div className='flex flex-col gap-6 md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className={classnames('flex flex-col gap-6 md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
       <Typography variant='h4' className='text-center'>
         Knowledge Base
       </Typography>
@@ -114,19 +136,30 @@ const KnowledgeBase = () => {
                       return (
                         <div key={index} className='flex justify-between items-center gap-2'>
                           <Typography>{data.title}</Typography>
-                          <i className='ri-arrow-right-s-line text-textSecondary' />
+                          <DirectionalIcon
+                            ltrIconClass='ri-arrow-right-s-line text-textSecondary'
+                            rtlIconClass='ri-arrow-left-s-line text-textSecondary'
+                          />
                         </div>
                       )
                     })}
                   </div>
-                  <Button endIcon={<i className='ri-arrow-right-line' />}>See all 6 articles</Button>
+                  <Button
+                    href={getLocalizedUrl(
+                      '/front-pages/help-center/article/how-to-add-product-in-cart',
+                      locale as Locale
+                    )}
+                    endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                  >
+                    See all 6 articles
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>
           )
         })}
       </Grid>
-    </div>
+    </section>
   )
 }
 

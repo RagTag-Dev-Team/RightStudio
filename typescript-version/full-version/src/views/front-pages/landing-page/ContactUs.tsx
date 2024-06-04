@@ -9,11 +9,17 @@ import CardContent from '@mui/material/CardContent'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
 // Svg Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 const ContactUs = () => {
   // Refs
@@ -37,14 +43,14 @@ const ContactUs = () => {
       { threshold: 0.35 }
     )
 
-    observer.observe(ref.current)
+    ref.current && observer.observe(ref.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div
+    <section
       id='contact-us'
-      className='flex flex-col gap-14 pli-6 plb-[100px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'
+      className={classnames('flex flex-col gap-14 plb-[100px]', frontCommonStyles.layoutSpacing)}
       ref={ref}
     >
       <div className='flex flex-col items-center justify-center'>
@@ -100,7 +106,7 @@ const ContactUs = () => {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </section>
   )
 }
 

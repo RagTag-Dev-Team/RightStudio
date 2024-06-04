@@ -24,46 +24,49 @@ import Eckerd from '@assets/svg/front-pages/landing-page/Eckerd'
 import Dribbble from '@assets/svg/front-pages/landing-page/Dribbble'
 import Airbnb from '@assets/svg/front-pages/landing-page/Airbnb'
 
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
 // Data
 const data = [
   {
     desc: "I've never used a theme as versatile and flexible as Vuexy. It's my go to for building dashboard sites on almost any project.",
-    svg: <Eckerd fill='#2882C3' />,
+    svg: <Eckerd color='#2882C3' />,
     rating: 5,
     name: 'Eugenia Moore',
     position: 'Founder of Hubspot'
   },
   {
     desc: 'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.',
-    svg: <Levis fill='#A8112E' />,
+    svg: <Levis color='#A8112E' />,
     rating: 5,
     name: 'Tommy haffman',
     position: 'Founder of Levis'
   },
   {
     desc: "This template is superior in so many ways. The code, the design, the regular updates, the support.. It's the whole package. Excellent Work.",
-    svg: <Airbnb fill='#FF5A60' />,
+    svg: <Airbnb color='#FF5A60' />,
     rating: 4,
     name: 'Eugenia Moore',
     position: 'CTO of Airbnb'
   },
   {
     desc: "All the requirements for developers have been taken into consideration, so I'm able to build any interface I want.",
-    svg: <Continental fill='#F39409' />,
+    svg: <Continental color='#F39409' />,
     rating: 5,
     name: 'Sara Smith',
     position: 'Founder of Continental'
   },
   {
     desc: "I've never used a theme as versatile and flexible as Vuexy. It's my go to for building dashboard sites on almost any project.",
-    svg: <Dribbble fill='#ea4c89' />,
+    svg: <Dribbble color='#ea4c89' />,
     rating: 5,
     name: 'Tommy haffman',
     position: 'Founder of Hubspot'
   },
   {
     desc: "I've never used a theme as versatile and flexible as Vuexy. It's my go to for building dashboard sites on almost any project.",
-    svg: <Eckerd fill='#2882C3' />,
+    svg: <Eckerd color='#2882C3' />,
     rating: 5,
     name: 'Eugenia Moore',
     position: 'Founder of Hubspot',
@@ -71,28 +74,28 @@ const data = [
   },
   {
     desc: 'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.',
-    svg: <Levis fill='#A8112E' />,
+    svg: <Levis color='#A8112E' />,
     rating: 5,
     name: 'Tommy haffman',
     position: 'Founder of Levis'
   },
   {
     desc: "This template is superior in so many ways. The code, the design, the regular updates, the support.. It's the whole package. Excellent Work.",
-    svg: <Airbnb fill='#FF5A60' />,
+    svg: <Airbnb color='#FF5A60' />,
     rating: 4,
     name: 'Eugenia Moore',
     position: 'CTO of Airbnb'
   },
   {
     desc: "All the requirements for developers have been taken into consideration, so I'm able to build any interface I want.",
-    svg: <Continental fill='#F39409' />,
+    svg: <Continental color='#F39409' />,
     rating: 5,
     name: 'Sara Smith',
     position: 'Founder of Continental'
   },
   {
     desc: 'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.',
-    svg: <Dribbble fill='#ea4c89' />,
+    svg: <Dribbble color='#ea4c89' />,
     rating: 5,
     name: 'Tommy haffman',
     position: 'Founder of Levis'
@@ -176,8 +179,8 @@ const CustomerReviews = () => {
   }
 
   return (
-    <div className='flex flex-col gap-16 plb-[100px]'>
-      <div className='flex flex-col items-center justify-center md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className='flex flex-col gap-16 plb-[100px]'>
+      <div className={classnames('flex flex-col items-center justify-center', frontCommonStyles.layoutSpacing)}>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />
           <Typography className='font-medium'>Real Customers Reviews</Typography>
@@ -229,13 +232,13 @@ const CustomerReviews = () => {
         </>
       </AppKeenSlider>
       <div className='flex flex-wrap items-center justify-center gap-x-16 gap-y-6 mli-3'>
-        <Levis fill='var(--mui-palette-text-secondary)' />
-        <Continental fill='var(--mui-palette-text-secondary)' />
-        <Airbnb fill='var(--mui-palette-text-secondary)' />
-        <Eckerd fill='var(--mui-palette-text-secondary)' />
-        <Dribbble fill='var(--mui-palette-text-secondary)' />
+        <Levis color='var(--mui-palette-text-secondary)' />
+        <Continental color='var(--mui-palette-text-secondary)' />
+        <Airbnb color='var(--mui-palette-text-secondary)' />
+        <Eckerd color='var(--mui-palette-text-secondary)' />
+        <Dribbble color='var(--mui-palette-text-secondary)' />
       </div>
-    </div>
+    </section>
   )
 }
 

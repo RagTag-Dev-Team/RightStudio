@@ -86,7 +86,7 @@ const authData = [
     href: '/register-v2'
   },
   {
-    title: 'Register (Multi-steps',
+    title: 'Register (Multi-steps)',
     href: '/register-multi-steps'
   },
   {
@@ -154,7 +154,7 @@ const MenuWrapper = (props: MenuWrapperProps) => {
                 overflowY: 'auto',
                 background: 'var(--mui-palette-background-paper)',
                 minWidth: 100,
-                borderRadius: 'var(--mui-shape-borderRadius',
+                borderRadius: 'var(--mui-shape-borderRadius)',
                 outline: 0,
                 boxShadow: 'var(--mui-shadows-3)',
                 maxBlockSize: `calc((var(--vh, 1vh) * 100) - ${top}px)`
@@ -267,7 +267,8 @@ const DropdownMenu = (props: Props) => {
             pathname === `/${locale}/front-pages/payment` ||
             pathname === `/${locale}/front-pages/pricing` ||
             pathname === `/${locale}/front-pages/checkout` ||
-            pathname === `/${locale}/front-pages/help-center`
+            pathname === `/${locale}/front-pages/help-center` ||
+            pathname === `/${locale}/front-pages/help-center/article/how-to-add-product-in-cart`
         })}
         {...(isBelowLgScreen
           ? {
@@ -314,7 +315,7 @@ const DropdownMenu = (props: Props) => {
               key={index}
               href={`/${locale}/front-pages` + page.href}
               className={classnames('flex items-center gap-3 focus:outline-none', {
-                'text-primary': pathname === `/${locale}/front-pages` + page.href
+                'text-primary': pathname.includes(`/${locale}/front-pages` + page.href)
               })}
               onClick={handleLinkClick}
             >

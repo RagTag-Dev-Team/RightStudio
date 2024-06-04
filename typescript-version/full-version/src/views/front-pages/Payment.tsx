@@ -20,6 +20,9 @@ import Divider from '@mui/material/Divider'
 import type { SelectChangeEvent } from '@mui/material/Select'
 import type { ButtonProps } from '@mui/material/Button'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 import type { PricingPlanType } from '@/types/pages/pricingTypes'
@@ -28,6 +31,10 @@ import type { PricingPlanType } from '@/types/pages/pricingTypes'
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 import PricingDialog from '@components/dialogs/pricing'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
+import DirectionalIcon from '@components/DirectionalIcon'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Data
 const cardData: CustomInputHorizontalData[] = [
@@ -100,12 +107,12 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
   }
 
   return (
-    <div className='md:plb-[100px] plb-6 md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className={classnames('md:plb-[100px] plb-6', frontCommonStyles.layoutSpacing)}>
       <Card>
         <CardContent className='p-0'>
           <Grid container>
             <Grid item md={12} lg={7}>
-              <div className='flex flex-col gap-y-8 p-8 border-be lg:border-e'>
+              <div className='flex flex-col gap-y-8 p-8 border-be lg:border-be-0 lg:border-e bs-full'>
                 <div>
                   <Typography variant='h4'>Checkout</Typography>
                   <Typography color='text.secondary'>
@@ -161,23 +168,25 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                     />
                   </div>
                 </div>
-                <div className='flex flex-col gap-6 mbe-1'>
-                  <Typography variant='h4'>Credit Card Info</Typography>
-                  <TextField
-                    fullWidth
-                    id='card-number-input'
-                    placeholder='8763 2345 3478'
-                    label='Card Number'
-                    type='number'
-                  />
-                  <div className='flex sm:flex-row flex-col gap-5'>
-                    <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
-                    <div className='flex gap-5'>
-                      <TextField fullWidth id='expiry-date' placeholder='05/2026' label='EXP. date' type='number' />
-                      <TextField fullWidth id='cvv' placeholder='734' label='CVV' type='number' />
+                {selectInput === 'credit-card' && (
+                  <div className='flex flex-col gap-6 mbe-1'>
+                    <Typography variant='h4'>Credit Card Info</Typography>
+                    <TextField
+                      fullWidth
+                      id='card-number-input'
+                      placeholder='8763 2345 3478'
+                      label='Card Number'
+                      type='number'
+                    />
+                    <div className='flex sm:flex-row flex-col gap-5'>
+                      <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
+                      <div className='flex gap-5'>
+                        <TextField fullWidth id='expiry-date' placeholder='05/2026' label='EXP. date' type='number' />
+                        <TextField fullWidth id='cvv' placeholder='734' label='CVV' type='number' />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </Grid>
             <Grid item md={12} lg={5}>
@@ -219,7 +228,11 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                       <Typography className='font-medium'>$90.98</Typography>
                     </div>
                   </div>
-                  <Button variant='contained' color='success' endIcon={<i className='ri-arrow-right-line' />}>
+                  <Button
+                    variant='contained'
+                    color='success'
+                    endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                  >
                     Proceed With Payment
                   </Button>
                 </div>
@@ -232,7 +245,7 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
           </Grid>
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }
 

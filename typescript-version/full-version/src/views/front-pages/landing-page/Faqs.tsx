@@ -8,15 +8,22 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Grid from '@mui/material/Grid'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
 // Svg Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
 type FaqsDataTypes = {
   id: string
   question: string
+  active?: boolean
   answer: string
 }
 
@@ -30,6 +37,7 @@ const FaqsData: FaqsDataTypes[] = [
   {
     id: 'panel2',
     question: 'What is regular license?',
+    active: true,
     answer:
       'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'
   },
@@ -69,15 +77,15 @@ const Faqs = () => {
       { threshold: 0.35 }
     )
 
-    observer.observe(ref.current)
+    ref.current && observer.observe(ref.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div
+    <section
       id='faq'
       ref={ref}
-      className='flex flex-col gap-16 plb-[100px] pli-6 md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'
+      className={classnames('flex flex-col gap-16 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
@@ -107,7 +115,7 @@ const Faqs = () => {
             <div>
               {FaqsData.map((data, index) => {
                 return (
-                  <Accordion key={index}>
+                  <Accordion key={index} defaultExpanded={data.active}>
                     <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
                       {data.question}
                     </AccordionSummary>
@@ -119,7 +127,7 @@ const Faqs = () => {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </section>
   )
 }
 

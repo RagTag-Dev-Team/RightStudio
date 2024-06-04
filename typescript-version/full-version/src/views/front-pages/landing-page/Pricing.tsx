@@ -1,6 +1,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -13,6 +16,15 @@ import Divider from '@mui/material/Divider'
 
 // Third-party Imports
 import classnames from 'classnames'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Svg Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
@@ -67,12 +79,21 @@ function PricingPlan() {
   // States
   const [val, setVal] = useState<number>(458)
 
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
+
   const handleChange = (_: Event, newValue: number | number[]) => {
     setVal(newValue as number)
   }
 
   return (
-    <div className='flex flex-col gap-8 lg:gap-12 plb-[100px] pli-6 md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'>
+    <section
+      id='pricing-plans'
+      className={classnames('flex flex-col gap-8 lg:gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
+    >
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />
@@ -153,13 +174,18 @@ function PricingPlan() {
                     <Chip variant='tonal' size='small' color='primary' label={plan.respondTime} />
                   </div>
                 </div>
-                <Button variant={plan.current ? 'contained' : 'outlined'}>Get Started</Button>
+                <Button
+                  href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
+                  variant={plan.current ? 'contained' : 'outlined'}
+                >
+                  Get Started
+                </Button>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
-    </div>
+    </section>
   )
 }
 

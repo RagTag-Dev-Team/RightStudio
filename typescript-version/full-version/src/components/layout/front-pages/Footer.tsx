@@ -2,6 +2,9 @@
 import type { ChangeEvent } from 'react'
 import { useState } from 'react'
 
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
@@ -10,18 +13,32 @@ import Chip from '@mui/material/Chip'
 import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Component Imports
 import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
 
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
 // Util Imports
 import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import styles from './styles.module.css'
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 function Footer() {
   const [value, setValue] = useState('')
+
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value)
@@ -35,7 +52,7 @@ function Footer() {
           alt='footer bg'
           className='absolute inset-0 is-full bs-full object-cover -z-[1]'
         />
-        <div className='md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6 plb-12 text-white'>
+        <div className={classnames('plb-12 text-white', frontCommonStyles.layoutSpacing)}>
           <Grid container rowSpacing={10} columnSpacing={12}>
             <Grid item xs={12} md={5}>
               <div className='flex flex-col items-start gap-6'>
@@ -52,6 +69,11 @@ function Footer() {
                     placeholder='Your email'
                     value={value}
                     onChange={handleChange}
+                    sx={{
+                      ' & .MuiInputBase-root:hover:not(.Mui-focused) fieldset': {
+                        borderColor: 'white'
+                      }
+                    }}
                   />
                   <Button variant='contained' color='primary'>
                     Subscribe
@@ -64,13 +86,34 @@ function Footer() {
                 Pages
               </Typography>
               <div className='flex flex-col gap-4'>
-                <Typography color='white'>Pricing</Typography>
-                <div className='flex items-center gap-[10px]'>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/front-pages/pricing', locale as Locale)}
+                  color='white'
+                >
+                  Pricing
+                </Typography>
+                <Link
+                  href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
+                  className='flex items-center gap-[10px]'
+                >
                   <Typography color='white'>Payment</Typography>
                   <Chip label='New' color='primary' size='small' />
-                </div>
-                <Typography color='white'>Maintenance</Typography>
-                <Typography color='white'>Coming Soon</Typography>
+                </Link>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/pages/misc/under-maintenance', locale as Locale)}
+                  color='white'
+                >
+                  Maintenance
+                </Typography>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/pages/misc/coming-soon', locale as Locale)}
+                  color='white'
+                >
+                  Coming Soon
+                </Typography>
               </div>
             </Grid>
             <Grid item xs={12} sm={3} md={2}>
@@ -78,10 +121,34 @@ function Footer() {
                 Products
               </Typography>
               <div className='flex flex-col gap-4'>
-                <Typography color='white'>Page builder</Typography>
-                <Typography color='white'>Admin Dashboards</Typography>
-                <Typography color='white'>UI Kits</Typography>
-                <Typography color='white'>Illustrations</Typography>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
+                  color='white'
+                >
+                  Page builder
+                </Typography>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
+                  color='white'
+                >
+                  Admin Dashboards
+                </Typography>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
+                  color='white'
+                >
+                  UI Kits
+                </Typography>
+                <Typography
+                  component={Link}
+                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
+                  color='white'
+                >
+                  Illustrations
+                </Typography>
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>

@@ -4,7 +4,7 @@
   position: absolute;
   inline-size: 100%;
   block-size: 100%;
-  inset-block-start: -10%;
+  inset-block-start: -12%;
   pointer-events: none;
   z-index: -2;
 }

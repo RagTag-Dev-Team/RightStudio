@@ -8,6 +8,9 @@ import MuiCard from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { styled } from '@mui/material/styles'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
@@ -16,6 +19,9 @@ import { useIntersection } from '@/hooks/useIntersection'
 
 // Svg Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Data
 const team = [
@@ -73,16 +79,12 @@ const OurTeam = () => {
       { threshold: 0.35 }
     )
 
-    observer.observe(ref.current)
+    ref.current && observer.observe(ref.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div
-      id='team'
-      className='plb-[100px] pli-6 md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'
-      ref={ref}
-    >
+    <section id='team' className={classnames('plb-[100px]', frontCommonStyles.layoutSpacing)} ref={ref}>
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />
@@ -125,7 +127,7 @@ const OurTeam = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </section>
   )
 }
 

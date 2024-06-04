@@ -22,6 +22,7 @@ import Document from '@assets/svg/front-pages/landing-page/Document'
 
 // Styles Imports
 import styles from './styles.module.css'
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Data
 const feature = [
@@ -79,15 +80,15 @@ const UsefulFeature = () => {
       { threshold: 0.35 }
     )
 
-    observer.observe(ref.current)
+    ref.current && observer.observe(ref.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div
+    <section
       id='features'
       ref={ref}
-      className='flex flex-col gap-12 pli-6 pbe-[100px] pbs-[26px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'
+      className={classnames('flex flex-col gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
       <div className={classnames('flex flex-col items-center justify-center')}>
         <div className='flex items-center justify-center mbe-4 gap-3'>
@@ -119,7 +120,7 @@ const UsefulFeature = () => {
           ))}
         </Grid>
       </div>
-    </div>
+    </section>
   )
 }
 

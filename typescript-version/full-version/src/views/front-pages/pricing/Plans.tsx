@@ -1,3 +1,6 @@
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -6,9 +9,16 @@ import Chip from '@mui/material/Chip'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 // Styles Imports
 import tableStyles from '@core/styles/table.module.css'
 import styles from './styles.module.css'
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Types
 type FeatureType = {
@@ -127,8 +137,14 @@ const plans: PlanType[] = [
 ]
 
 function Plans() {
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
+
   return (
-    <div className='md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className={classnames('md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
       <div className='flex flex-col text-center gap-2 mbe-6'>
         <Typography variant='h4'>Pick a plan that works best for you</Typography>
         <Typography>Stay cool, we have a 48-hour money back guarantee!</Typography>
@@ -187,14 +203,16 @@ function Plans() {
               <td></td>
               {plans.map((plan, index) => (
                 <td key={index} className='text-center'>
-                  <Button variant={plan.variant}>{plan.label}</Button>
+                  <Button href={getLocalizedUrl('/front-pages/payment', locale as Locale)} variant={plan.variant}>
+                    {plan.label}
+                  </Button>
                 </td>
               ))}
             </tr>
           </tfoot>
         </table>
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -2,9 +2,20 @@
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
 const NeedHelp = () => {
   return (
-    <div className='flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section
+      className={classnames(
+        'flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px]',
+        frontCommonStyles.layoutSpacing
+      )}
+    >
       <Typography variant='h4' className='text-center'>
         Still need help?
       </Typography>
@@ -16,7 +27,7 @@ const NeedHelp = () => {
         <Button variant='contained'>Visit our community</Button>
         <Button variant='contained'>Contact Us</Button>
       </div>
-    </div>
+    </section>
   )
 }
 

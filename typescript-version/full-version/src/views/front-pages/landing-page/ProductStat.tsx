@@ -1,3 +1,6 @@
+// React Imports
+import { useState } from 'react'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -10,6 +13,9 @@ import type { ThemeColor } from '@/@core/types'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Type
 type StatData = {
@@ -53,21 +59,23 @@ const statData: StatData[] = [
 ]
 
 const ProductStat = () => {
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null)
+
   return (
-    <div className='plb-[64px] pli-6 md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto'>
+    <section className={classnames('plb-[64px]', frontCommonStyles.layoutSpacing)}>
       <Grid container rowSpacing={6} columnSpacing={6}>
         {statData.map((stat, index) => (
           <Grid item key={index} xs={6} md={3}>
             <div
               className='flex flex-col items-center justify-center gap-6'
               onMouseEnter={() => {
-                stat.isHover = true
+                setHoverIndex(index)
               }}
               onMouseLeave={() => {
-                stat.isHover = false
+                setHoverIndex(null)
               }}
             >
-              <CustomAvatar skin='light' color={stat.color} size={82}>
+              <CustomAvatar skin={hoverIndex === index ? 'filled' : 'light'} color={stat.color} size={82}>
                 <i className={classnames(stat.icon, 'text-[2.625rem]')} />
               </CustomAvatar>
               <div className='text-center'>
@@ -80,7 +88,7 @@ const ProductStat = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </section>
   )
 }
 

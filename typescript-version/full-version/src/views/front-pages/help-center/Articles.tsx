@@ -1,6 +1,9 @@
 // React Imports
 import type { ReactNode } from 'react'
 
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -8,10 +11,22 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
 // Svgs
 import Gift from '@assets/svg/front-pages/help-center/Gift'
 import Rocket from '@assets/svg/front-pages/help-center/Rocket'
 import File from '@assets/svg/front-pages/help-center/File'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Types
 type popularArticlesType = {
@@ -44,8 +59,14 @@ const popularArticles: popularArticlesType[] = [
 ]
 
 const Articles = () => {
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
+
   return (
-    <div className='md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className={classnames('md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
       <Typography variant='h4' className='text-center'>
         Popular Articles
       </Typography>
@@ -58,14 +79,22 @@ const Articles = () => {
                   {article.svg}
                   <Typography variant='h5'>{article.title}</Typography>
                   <Typography>{article.subtitle}</Typography>
-                  <Button variant='outlined'>Read More</Button>
+                  <Button
+                    href={getLocalizedUrl(
+                      '/front-pages/help-center/article/how-to-add-product-in-cart',
+                      locale as Locale
+                    )}
+                    variant='outlined'
+                  >
+                    Read More
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>
           )
         })}
       </Grid>
-    </div>
+    </section>
   )
 }
 

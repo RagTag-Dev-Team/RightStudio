@@ -1,3 +1,8 @@
+'use client'
+
+// Next Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
@@ -7,6 +12,18 @@ import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import FormControl from '@mui/material/FormControl'
+
+// Third-party Imports
+import classnames from 'classnames'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Data
 const articleList = [
@@ -19,19 +36,34 @@ const articleList = [
 ]
 
 const Questions = () => {
+  // Hooks
+  const params = useParams()
+
+  // Vars
+  const { lang: locale } = params
+
   return (
-    <div className='flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section
+      className={classnames(
+        'flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px]',
+        frontCommonStyles.layoutSpacing
+      )}
+    >
       <Grid container spacing={6}>
         <Grid item xs={12} lg={8}>
           <div className='flex flex-col gap-2'>
             <Breadcrumbs aria-label='breadcrumb'>
-              <Link underline='hover' color='inherit' href='/'>
+              <Link
+                underline='none'
+                color='inherit'
+                className='hover:text-primary'
+                href={getLocalizedUrl('/front-pages/help-center', locale as Locale)}
+              >
                 Help Center
               </Link>
-              <Link underline='hover' color='inherit' href='/'>
-                Buying and item support
+              <Link underline='none' className='text-textPrimary'>
+                How to add product in cart
               </Link>
-              <Typography color='textPrimary'>Template Kits</Typography>
             </Breadcrumbs>
             <Typography variant='h4'>How to add product in cart?</Typography>
             <Typography>1 month ago - Updated</Typography>
@@ -86,7 +118,7 @@ const Questions = () => {
           </div>
         </Grid>
       </Grid>
-    </div>
+    </section>
   )
 }
 

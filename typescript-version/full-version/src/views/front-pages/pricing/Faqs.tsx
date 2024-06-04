@@ -4,6 +4,12 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 
+// Third-party Imports
+import classnames from 'classnames'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
 // Types
 type faqsDataTypes = {
   id: string
@@ -46,7 +52,7 @@ const faqsData: faqsDataTypes[] = [
 
 const Faqs = () => {
   return (
-    <div className='md:plb-[100px] plb-[50px] md:max-is-[900px] lg:max-is-[1200px] 2xl:max-is-[1440px] mli-auto pli-6'>
+    <section className={classnames('md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
       <div className='flex flex-col text-center gap-2 mbe-6'>
         <Typography variant='h4'>FAQ&apos;s</Typography>
         <Typography>Let us help answer the most common questions.</Typography>
@@ -63,7 +69,7 @@ const Faqs = () => {
           )
         })}
       </div>
-    </div>
+    </section>
   )
 }
 

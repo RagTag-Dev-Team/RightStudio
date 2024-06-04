@@ -1,3 +1,5 @@
+'use client'
+
 // Component Imports
 import PricingSection from '@views/front-pages/pricing/PricingSection'
 import FreeTrial from './FreeTrial'
