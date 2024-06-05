@@ -1,7 +1,8 @@
 'use client'
 
 // React Imports
-import type { ElementType, ReactNode } from 'react'
+import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 
 // Next Imports
 import { useParams, useRouter } from 'next/navigation'
@@ -10,129 +11,237 @@ import { useParams, useRouter } from 'next/navigation'
 import { IconButton } from '@mui/material'
 
 // Third-party Imports
-import { useMedia } from 'react-use'
-import { KBarProvider, KBarPortal, KBarPositioner, KBarSearch, useKBar } from 'kbar'
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk'
 
 // Type Imports
-import type { ChildrenType } from '@core/types'
-import type { Locale } from '@configs/i18n'
+import type { Locale } from '@/configs/i18n'
 
 // Component Imports
-import SearchResults from './SearchResults'
+import DefaultSuggestions from './DefaultSuggestions'
+import NoResult from './NoResult'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
-import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
-// Styled Component Imports
-import StyledKBarAnimator from './StyledKBarAnimator'
+// Style Imports
+import './styles.css'
 
 // Data Imports
 import data from '@/data/searchData'
 
-type ComponentWithUseKBarProps = Partial<ChildrenType> & {
-  className?: string
-  icon?: ReactNode
-  tag?: ElementType
-  triggerClick?: boolean
+type Item = {
+  id: string
+  name: string
+  url: string
+  icon: string
+  shortcut?: string
 }
 
-const ComponentWithUseKBar = (props: ComponentWithUseKBarProps) => {
-  // Props
-  const { children, className, icon, tag, triggerClick = false } = props
+type Section = {
+  title: string
+  items: Item[]
+}
 
-  // Hooks
-  const { isBreakpointReached, isToggled, toggleVerticalNav } = useVerticalNav()
+type SearchItemProps = {
+  children: ReactNode
+  shortcut?: string
+  value: string
+  onSelect?: () => void
+}
 
-  const { query } = useKBar(state => {
-    if (isBreakpointReached && isToggled && state.visualState === 'showing') {
-      toggleVerticalNav(false)
-    }
-  })
+// Transform the data to group items by their sections
+const transformedData = data.reduce((acc: Section[], item) => {
+  const existingSection = acc.find(section => section.title === item.section)
 
-  // Vars
-  const Tag = tag || 'div'
+  const newItem = {
+    id: item.id,
+    name: item.name,
+    url: item.url,
+    icon: item.icon,
+    shortcut: item.shortcut
+  }
 
+  if (existingSection) {
+    existingSection.items.push(newItem)
+  } else {
+    acc.push({ title: item.section, items: [newItem] })
+  }
+
+  return acc
+}, [])
+
+// SearchItem Component for introduce the shortcut keys
+const SearchItem = ({ children, shortcut, value, onSelect = () => {} }: SearchItemProps) => {
   return (
-    <Tag className={className} {...(triggerClick && { onClick: query.toggle })}>
-      {icon || children}
-    </Tag>
+    <CommandItem onSelect={onSelect} value={value}>
+      {children}
+      {shortcut && (
+        <div cmdk-vercel-shortcuts=''>
+          {shortcut.split(' ').map(key => {
+            return <kbd key={key}>{key}</kbd>
+          })}
+        </div>
+      )}
+    </CommandItem>
   )
 }
 
-// NavSearch Component
+// Helper function to filter and limit results per section based on the number of sections
+const getFilteredResults = (sections: Section[]) => {
+  const limit = sections.length > 1 ? 3 : 5
+
+  return sections.map(section => ({
+    ...section,
+    items: section.items.slice(0, limit)
+  }))
+}
+
+// Footer component for the search menu
+const CommandFooter = () => {
+  return (
+    <div cmdk-footer=''>
+      <div className='flex items-center gap-1'>
+        <kbd>Icon</kbd>
+        <kbd>Icon</kbd>
+        <span>to navigate</span>
+      </div>
+      <div className='flex items-center gap-1'>
+        <kbd>Icon</kbd>
+        <span>to open</span>
+      </div>
+      <div className='flex items-center gap-1'>
+        <kbd>esc</kbd>
+        <span>to close</span>
+      </div>
+    </div>
+  )
+}
+
 const NavSearch = () => {
+  // States
+  const [open, setOpen] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+
   // Hooks
   const router = useRouter()
-  const { settings } = useSettings()
-  const { isBreakpointReached } = useVerticalNav()
-  const isSmallScreen = useMedia('(max-width: 600px)', false)
   const { lang: locale } = useParams()
+  const { isBreakpointReached } = useVerticalNav()
 
-  // Vars
-  // Search Actions Data with 'perform' method
-  const searchActions = data.map(item => ({
-    ...item,
-    url: undefined, // Remove the 'url' key
-    // Add 'perform' method
-    perform: () =>
-      item.url.startsWith('http')
-        ? window.open(item.url, '_blank')
-        : router.push(getLocalizedUrl(item.url, locale as Locale))
-  }))
+  // When an item is selected from the search results
+  const onSearchItemSelect = (item: Item) => {
+    item.url.startsWith('http')
+      ? window.open(item.url, '_blank')
+      : router.push(getLocalizedUrl(item.url, locale as Locale))
+    setOpen(false)
+  }
+
+  // Filter the data based on the search query
+  const filteredData = (sections: Section[], query: string) => {
+    const searchQuery = query.trim().toLowerCase()
+
+    return sections
+      .filter(section => {
+        const sectionMatches = section.title.toLowerCase().includes(searchQuery)
+
+        const itemsMatch = section.items.some(
+          item =>
+            item.name.toLowerCase().includes(searchQuery) ||
+            (item.shortcut && item.shortcut.toLowerCase().includes(searchQuery))
+        )
+
+        return sectionMatches || itemsMatch
+      })
+      .map(section => ({
+        ...section,
+        items: section.items.filter(
+          item =>
+            section.title.toLowerCase().includes(searchQuery) ||
+            item.name.toLowerCase().includes(searchQuery) ||
+            (item.shortcut && item.shortcut.toLowerCase().includes(searchQuery))
+        )
+      }))
+  }
+
+  const limitedData = getFilteredResults(filteredData(transformedData, searchValue))
+
+  // Toggle the menu when ⌘K is pressed
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen(open => !open)
+      }
+    }
+
+    document.addEventListener('keydown', down)
+
+    return () => document.removeEventListener('keydown', down)
+  }, [])
+
+  // Reset the search value when the menu is closed
+  useEffect(() => {
+    if (!open && searchValue !== '') {
+      setSearchValue('')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
 
   return (
-    <KBarProvider actions={searchActions}>
-      <ComponentWithUseKBar
-        triggerClick
-        className='ts-nav-search-icon flex cursor-pointer'
-        {...((settings.layout === 'horizontal' || isBreakpointReached) && {
-          icon: (
-            <IconButton className='text-textPrimary'>
-              <i className='ri-search-line' />
-            </IconButton>
-          )
-        })}
-      >
-        <div className='flex items-center gap-2'>
-          <IconButton className='text-textPrimary'>
+    <>
+      {isBreakpointReached ? (
+        <IconButton onClick={() => setOpen(true)}>
+          <i className='ri-search-line' />
+        </IconButton>
+      ) : (
+        <div className='flex items-center gap-4 cursor-pointer' onClick={() => setOpen(true)}>
+          <IconButton onClick={() => setOpen(true)}>
             <i className='ri-search-line' />
           </IconButton>
-          <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
+          <div className='whitespace-nowrap select-none'>Search ⌘K</div>
         </div>
-      </ComponentWithUseKBar>
-      <KBarPortal>
-        <KBarPositioner className='!p-0 !items-center z-[calc(var(--search-z-index)+1)]'>
-          <StyledKBarAnimator skin={settings.skin} isSmallScreen={isSmallScreen}>
-            <div className='flex items-center gap-2 plb-5 pli-6 border-be'>
-              <div className='flex'>
-                <i className='ri-search-line' />
-              </div>
-              <KBarSearch
-                defaultPlaceholder=''
-                name='search-input'
-                className='grow min-is-0 plb-1 pli-1.5 text-[16px] outline-0 border-0 bg-transparent text-inherit font-[inherit] focus:outline-none focus-visible:outline-none'
-              />
-              <ComponentWithUseKBar className='select-none text-textDisabled'>{`[esc]`}</ComponentWithUseKBar>
-              <ComponentWithUseKBar
-                triggerClick
-                className='flex cursor-pointer'
-                icon={<i className='ri-close-line text-textSecondary' />}
-              />
-            </div>
-            <SearchResults />
-          </StyledKBarAnimator>
-        </KBarPositioner>
-        <div
-          className='ts-nav-search-backdrop fixed inset-0 z-search bg-[rgba(0,0,0,0.3)]'
-          role='button'
-          aria-label='backdrop'
-        />
-      </KBarPortal>
-    </KBarProvider>
+      )}
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <div className='flex items-center justify-between border-be pli-4 plb-3 gap-2'>
+          <i className='ri-search-line' />
+          <CommandInput value={searchValue} onValueChange={setSearchValue} />
+          <span>[esc]</span>
+          <i className='ri-close-line' onClick={() => setOpen(false)} />
+        </div>
+        <CommandList>
+          {searchValue ? (
+            limitedData.length > 0 ? (
+              limitedData.map((section, index) => (
+                <CommandGroup key={index} heading={section.title.toUpperCase()} className='text-xs'>
+                  {section.items.map((item, index) => {
+                    return (
+                      <SearchItem
+                        shortcut={item.shortcut}
+                        key={index}
+                        value={`${item.name} ${section.title} ${item.shortcut}`}
+                        onSelect={() => onSearchItemSelect(item)}
+                      >
+                        {item.icon && <div className='flex text-xl'>{item.icon}</div>}
+                        {item.name}
+                      </SearchItem>
+                    )
+                  })}
+                </CommandGroup>
+              ))
+            ) : (
+              <CommandEmpty>
+                <NoResult searchValue={searchValue} setOpen={setOpen} />
+              </CommandEmpty>
+            )
+          ) : (
+            <DefaultSuggestions setOpen={setOpen} />
+          )}
+        </CommandList>
+        <CommandFooter />
+      </CommandDialog>
+    </>
   )
 }
 

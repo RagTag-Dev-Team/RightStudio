@@ -1,8 +1,10 @@
-// Third-party Imports
-import type { Action } from 'kbar'
-
-type SearchData = Action & {
+type SearchData = {
+  id: string
+  name: string
   url: string
+  icon: string
+  section: string
+  shortcut?: string
 }
 
 const data: SearchData[] = [
