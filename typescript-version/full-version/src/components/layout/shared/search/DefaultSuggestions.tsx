@@ -5,9 +5,6 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-// Third-party Imports
-import { useKBar } from 'kbar'
-
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
@@ -126,13 +123,12 @@ const defaultSuggestions: DefaultSuggestionsType[] = [
   }
 ]
 
-const DefaultSuggestions = () => {
+const DefaultSuggestions = ({ setOpen }: { setOpen: (value: boolean) => void }) => {
   // Hooks
-  const { query } = useKBar()
   const { lang: locale } = useParams()
 
   return (
-    <div className='flex grow flex-wrap gap-x-[48px] gap-y-8 plb-14 pli-16 overflow-y-auto overflow-x-hidden'>
+    <div className='flex grow flex-wrap gap-x-[48px] gap-y-8 plb-14 pli-16 overflow-y-auto overflow-x-hidden bs-full'>
       {defaultSuggestions.map((section, index) => (
         <div
           key={index}
@@ -144,8 +140,8 @@ const DefaultSuggestions = () => {
               <li key={i} className='flex'>
                 <Link
                   href={getLocalizedUrl(item.href, locale as Locale)}
-                  onClick={query.toggle}
                   className='flex items-center overflow-x-hidden cursor-pointer gap-2 hover:text-primary focus-visible:text-primary focus-visible:outline-0'
+                  onClick={() => setOpen(false)}
                 >
                   {item.icon && <div className='flex text-xl'>{item.icon}</div>}
                   <p className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>

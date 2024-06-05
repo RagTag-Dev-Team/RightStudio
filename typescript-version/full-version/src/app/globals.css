@@ -14,6 +14,7 @@
   --customizer-z-index: 20;
   --search-z-index: 100;
   --drawer-z-index: 100;
+  --backdrop-color: rgba(0, 0, 0, 0.5);
 }
 
 *,
