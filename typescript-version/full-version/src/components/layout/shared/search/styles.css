@@ -6,9 +6,8 @@
   inset-inline-start: 50%;
   transform: translate(-50%, -50%);
   inline-size: 600px;
-  block-size: 580px;
-  background-color: #fff;
-  color: #000;
+  block-size: 585px;
+  background-color: var(--mui-palette-background-paper);
   border-radius: var(--border-radius);
   overflow: hidden;
   z-index: var(--search-z-index);
@@ -40,7 +39,8 @@
   font-size: 14px;
   padding-block: 10px;
   outline: none;
-  color: #000;
+  color: inherit;
+  background-color: transparent;
 }
 
 [cmdk-input]::placeholder {
@@ -59,12 +59,14 @@
 [cmdk-group-heading] {
   padding-block: 16px 8px;
   padding-inline: 16px;
+  letter-spacing: 0.8px;
+  color: var(--mui-palette-text-disabled);
 }
 
 [cmdk-item] {
   cursor: pointer;
   block-size: 38px;
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -72,7 +74,7 @@
 }
 
 [cmdk-item][data-selected='true'] {
-  background: #eee;
+  background: var(--mui-palette-action-hover);
 }
 
 [cmdk-empty],
@@ -91,8 +93,8 @@
   align-items: center;
   padding-block: 8px;
   padding-inline: 16px;
+  color: var(--mui-palette-text-secondary);
   border-block-start: 1px solid var(--border-color);
-  color: #000;
   font-size: 12px;
   user-select: none;
 }
@@ -104,14 +106,12 @@
 }
 
 kbd {
-  font-family: 20px;
   font-size: 12px;
   min-inline-size: 20px;
   padding: 4px;
   block-size: 20px;
   border-radius: 4px;
-  color: #000000;
-  background: #d9d9d9;
+  background: var(--mui-palette-action-focus);
   display: inline-flex;
   align-items: center;
   justify-content: center;

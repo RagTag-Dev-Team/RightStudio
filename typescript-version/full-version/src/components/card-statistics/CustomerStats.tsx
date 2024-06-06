@@ -35,7 +35,7 @@ const CustomerStats = (props: CardStatsCustomerStatsProps) => {
           ) : (
             <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-1' />
           )}
-          <Typography className='sm:line-clamp-1'>{description}</Typography>
+          <Typography>{description}</Typography>
         </div>
       </CardContent>
     </Card>

@@ -79,7 +79,7 @@ export const db: CardStatsType = {
       title: 'wishlist',
       value: '15',
       content: 'Items in wishlist',
-      description: 'Receive notification when items go on sale'
+      description: 'Receive notifications on price drops'
     },
     {
       color: 'info',

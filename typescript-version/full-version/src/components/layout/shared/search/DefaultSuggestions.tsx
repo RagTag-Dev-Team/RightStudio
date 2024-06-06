@@ -134,7 +134,7 @@ const DefaultSuggestions = ({ setOpen }: { setOpen: (value: boolean) => void }) 
           key={index}
           className='flex flex-col justify-center overflow-x-hidden gap-4 basis-full sm:basis-[calc((100%-3rem)/2)]'
         >
-          <p className='text-xs uppercase text-textDisabled'>{section.sectionLabel}</p>
+          <p className='text-xs uppercase text-textDisabled tracking-[0.8px]'>{section.sectionLabel}</p>
           <ul className='flex flex-col gap-4'>
             {section.items.map((item, i) => (
               <li key={i} className='flex'>
@@ -144,7 +144,7 @@ const DefaultSuggestions = ({ setOpen }: { setOpen: (value: boolean) => void }) 
                   onClick={() => setOpen(false)}
                 >
                   {item.icon && <i className={classnames(item.icon, 'flex text-xl')} />}
-                  <p className='text-sm overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>
+                  <p className='text-[15px] overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.label}</p>
                 </Link>
               </li>
             ))}

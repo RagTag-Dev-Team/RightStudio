@@ -14,15 +14,14 @@ import type { Locale } from '@/configs/i18n'
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
-const NotAuthorized = () => {
+const UnderMaintenance = () => {
   const { lang: locale } = useParams()
 
   return (
     <div className='flex bs-full items-center justify-center'>
       <div className='flex items-center flex-col text-center'>
-        <Typography>401</Typography>
-        <Typography>You are not authorized! 🔐</Typography>
-        <Typography>You don&#39;t have permission to access this page. Go Home!</Typography>
+        <Typography>Under Maintenance! 🚧</Typography>
+        <Typography>Sorry for the inconvenience but we&#39;re performing some maintenance at the moment</Typography>
         <div>Image Here</div>
         <Button href={getLocalizedUrl('/', locale as Locale)} component={Link} variant='contained'>
           Back to Home
@@ -32,4 +31,4 @@ const NotAuthorized = () => {
   )
 }
 
-export default NotAuthorized
+export default UnderMaintenance
