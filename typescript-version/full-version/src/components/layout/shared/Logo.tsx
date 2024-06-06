@@ -30,6 +30,7 @@ type LogoTextProps = {
 }
 
 const LogoText = styled.span<LogoTextProps>`
+  color: var(--mui-palette-text-primary);
   transition: ${({ transitionDuration }) =>
     `margin-inline-start ${transitionDuration}ms ease-in-out, opacity ${transitionDuration}ms ease-in-out`};
 
