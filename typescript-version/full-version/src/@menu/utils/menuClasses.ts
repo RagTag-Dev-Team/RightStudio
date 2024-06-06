@@ -14,7 +14,6 @@ export const menuClasses = {
   menuSectionLabel: 'ts-menu-section-label',
   subMenuContent: 'ts-submenu-content',
   subMenuExpandIcon: 'ts-submenu-expand-icon',
-  openActive: 'ts-open-active',
   disabled: 'ts-disabled',
   active: 'ts-active',
   open: 'ts-open'

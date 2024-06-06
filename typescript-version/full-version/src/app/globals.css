@@ -49,7 +49,7 @@ ul:not([class]) {
   padding-inline-start: 40px;
 }
 
-/*! Do note remove following style */
+/*! Do not remove the following styles */
 /*
   Fix the popout / submenu closing issue when using hover trigger to open the menu and using
   perfectscrollbar where the bridge create with safe polygon by floating ui was not working

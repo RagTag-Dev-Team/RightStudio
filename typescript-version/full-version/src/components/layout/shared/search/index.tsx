@@ -36,6 +36,7 @@ type Item = {
   id: string
   name: string
   url: string
+  excludeLang?: boolean
   icon: string
   shortcut?: string
 }
@@ -140,7 +141,7 @@ const NavSearch = () => {
   const onSearchItemSelect = (item: Item) => {
     item.url.startsWith('http')
       ? window.open(item.url, '_blank')
-      : router.push(getLocalizedUrl(item.url, locale as Locale))
+      : router.push(item.excludeLang ? item.url : getLocalizedUrl(item.url, locale as Locale))
     setOpen(false)
   }
 
