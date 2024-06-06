@@ -13,7 +13,10 @@ import type {
 } from '@menu/horizontal-menu'
 
 // Vertical Menu Data
-export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & { label: ReactNode }
+export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children'> & {
+  label: ReactNode
+  excludeLang?: boolean
+}
 export type VerticalSubMenuDataType = Omit<VerticalSubMenuProps, 'children'> & { children: VerticalMenuDataType[] }
 export type VerticalSectionDataType = Omit<VerticalMenuSectionProps, 'children'> & {
   isSection: boolean
@@ -22,7 +25,10 @@ export type VerticalSectionDataType = Omit<VerticalMenuSectionProps, 'children'>
 export type VerticalMenuDataType = VerticalMenuItemDataType | VerticalSubMenuDataType | VerticalSectionDataType
 
 // Horizontal Menu Data
-export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children'> & { label: ReactNode }
+export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children'> & {
+  label: ReactNode
+  excludeLang?: boolean
+}
 export type HorizontalSubMenuDataType = Omit<HorizontalSubMenuProps, 'children'> & {
   children: HorizontalMenuDataType[]
 }

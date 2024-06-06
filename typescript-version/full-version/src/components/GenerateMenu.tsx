@@ -57,15 +57,17 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
         )
       }
 
+      const { label, excludeLang, ...rest } = menuItem
+
       // Localize the href
-      const href = menuItem.href?.startsWith('http')
-        ? menuItem.href
-        : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
+      const href = rest.href?.startsWith('http')
+        ? rest.href
+        : rest.href && (excludeLang ? rest.href : getLocalizedUrl(rest.href, locale as Locale))
 
       // If the current item is neither a section nor a sub menu, return a MenuItem component
       return (
-        <VerticalMenuItem key={index} {...menuItem} href={href}>
-          {menuItem.label}
+        <VerticalMenuItem key={index} {...rest} href={href}>
+          {label}
         </VerticalMenuItem>
       )
     })
@@ -97,15 +99,17 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
         )
       }
 
+      const { label, excludeLang, ...rest } = menuItem
+
       // Localize the href
-      const href = menuItem.href?.startsWith('http')
-        ? menuItem.href
-        : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
+      const href = rest.href?.startsWith('http')
+        ? rest.href
+        : rest.href && (excludeLang ? rest.href : getLocalizedUrl(rest.href, locale as Locale))
 
       // If the current item is not a sub menu, return a MenuItem component
       return (
-        <HorizontalMenuItem key={index} {...menuItem} href={href}>
-          {menuItem.label}
+        <HorizontalMenuItem key={index} {...rest} href={href}>
+          {label}
         </HorizontalMenuItem>
       )
     })
