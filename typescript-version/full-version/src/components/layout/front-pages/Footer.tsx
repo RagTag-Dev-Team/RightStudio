@@ -54,10 +54,10 @@ function Footer() {
         />
         <div className={classnames('plb-12 text-white', frontCommonStyles.layoutSpacing)}>
           <Grid container rowSpacing={10} columnSpacing={12}>
-            <Grid item xs={12} md={5}>
+            <Grid item xs={12} lg={5}>
               <div className='flex flex-col items-start gap-6'>
                 <Logo href='/front-pages/landing-page' />
-                <Typography color='white' className='md:max-is-[390px]'>
+                <Typography color='white' className='md:max-is-[390px] opacity-75'>
                   Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique
                   Layouts.
                 </Typography>
@@ -71,7 +71,13 @@ function Footer() {
                     onChange={handleChange}
                     sx={{
                       ' & .MuiInputBase-root:hover:not(.Mui-focused) fieldset': {
-                        borderColor: 'white'
+                        borderColor: 'rgb(var(--mui-mainColorChannels-dark) / 0.6) !important'
+                      },
+                      '& .MuiInputBase-root.Mui-focused fieldset': {
+                        borderColor: 'var(--mui-palette-primary-main)!important'
+                      },
+                      '& .MuiFormLabel-root.Mui-focused': {
+                        color: 'var(--mui-palette-primary-main) !important'
                       }
                     }}
                   />
@@ -81,8 +87,8 @@ function Footer() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} sm={3} md={2}>
-              <Typography color='white' className='font-medium mbe-6'>
+            <Grid item xs={12} sm={3} lg={2}>
+              <Typography color='white' className='font-medium mbe-6 opacity-90'>
                 Pages
               </Typography>
               <div className='flex flex-col gap-4'>
@@ -90,6 +96,7 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/front-pages/pricing', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Pricing
                 </Typography>
@@ -97,13 +104,16 @@ function Footer() {
                   href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
                   className='flex items-center gap-[10px]'
                 >
-                  <Typography color='white'>Payment</Typography>
+                  <Typography color='white' className='opacity-75'>
+                    Payment
+                  </Typography>
                   <Chip label='New' color='primary' size='small' />
                 </Link>
                 <Typography
                   component={Link}
                   href={getLocalizedUrl('/pages/misc/under-maintenance', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Maintenance
                 </Typography>
@@ -111,13 +121,14 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/pages/misc/coming-soon', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Coming Soon
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={12} sm={3} md={2}>
-              <Typography color='white' className='font-medium mbe-6'>
+            <Grid item xs={12} sm={3} lg={2}>
+              <Typography color='white' className='font-medium mbe-6 opacity-90'>
                 Products
               </Typography>
               <div className='flex flex-col gap-4'>
@@ -125,6 +136,7 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Page builder
                 </Typography>
@@ -132,6 +144,7 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Admin Dashboards
                 </Typography>
@@ -139,6 +152,7 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   UI Kits
                 </Typography>
@@ -146,13 +160,14 @@ function Footer() {
                   component={Link}
                   href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
                   color='white'
+                  className='opacity-75'
                 >
                   Illustrations
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Typography color='white' className='font-medium mbe-6'>
+            <Grid item xs={12} sm={6} lg={3}>
+              <Typography color='white' className='font-medium mbe-6 opacity-90'>
                 Download our App
               </Typography>
               <div className='flex flex-col gap-4'>
@@ -160,10 +175,10 @@ function Footer() {
                   <div className='flex items-center pli-5 plb-[7px] gap-6'>
                     <img src='/images/front-pages/apple-icon.png' alt='apple store' className='bs-[34px]' />
                     <div className='flex flex-col items-start'>
-                      <Typography variant='body2' color='white' className='capitalize'>
+                      <Typography variant='body2' color='white' className='capitalize opacity-80'>
                         Download on the
                       </Typography>
-                      <Typography color='white' className='font-medium capitalize'>
+                      <Typography color='white' className='font-medium capitalize opacity-90'>
                         App Store
                       </Typography>
                     </div>
@@ -173,10 +188,10 @@ function Footer() {
                   <div className='flex items-center pli-5 plb-[7px] gap-6'>
                     <img src='/images/front-pages/google-play-icon.png' alt='Google play' className='bs-[34px]' />
                     <div className='flex flex-col items-start'>
-                      <Typography variant='body2' color='white'>
+                      <Typography variant='body2' color='white' className='opacity-80'>
                         Download on the
                       </Typography>
-                      <Typography color='white' className='font-medium'>
+                      <Typography color='white' className='font-medium opacity-90'>
                         Google Play
                       </Typography>
                     </div>
@@ -188,7 +203,12 @@ function Footer() {
         </div>
       </div>
       <div className='bg-[#211B2C]'>
-        <div className='flex flex-wrap items-center justify-center sm:justify-between gap-4 xl:mli-[150px] md:mli-[60px] mli-6 plb-[15px]'>
+        <div
+          className={classnames(
+            'flex flex-wrap items-center justify-center sm:justify-between gap-4 plb-[15px]',
+            frontCommonStyles.layoutSpacing
+          )}
+        >
           <p className='text-white text-[13px]'>
             <span>{`© ${new Date().getFullYear()}, Made with `}</span>
             <span>{`❤️`}</span>

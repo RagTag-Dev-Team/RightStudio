@@ -59,7 +59,7 @@ const Wrapper = (props: WrapperProps) => {
         sx={{ '& .MuiDrawer-paper': { width: ['100%', 300] } }}
         className={classnames('p-5', className)}
       >
-        <div className='p-4 flex flex-col gap-3'>
+        <div className='p-4 flex flex-col gap-x-3'>
           <IconButton onClick={() => setIsDrawerOpen(false)} className='absolute inline-end-4 block-start-2'>
             <i className='ri-close-line' />
           </IconButton>
@@ -69,7 +69,7 @@ const Wrapper = (props: WrapperProps) => {
     )
   }
 
-  return <div className={classnames('flex items-center flex-wrap gap-x-7 gap-y-3', className)}>{children}</div>
+  return <div className={classnames('flex items-center flex-wrap gap-x-4 gap-y-3', className)}>{children}</div>
 }
 
 const FrontMenu = (props: Props) => {
@@ -97,7 +97,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
-        className={classnames('font-medium', {
+        className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary':
             !intersections.features &&
             !intersections.team &&
@@ -111,7 +111,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href={getLocalizedUrl('/front-pages/landing-page#features', locale as Locale)}
-        className={classnames('font-medium', {
+        className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.features
         })}
       >
@@ -120,7 +120,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href={getLocalizedUrl('/front-pages/landing-page#team', locale as Locale)}
-        className={classnames('font-medium', {
+        className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.team
         })}
       >
@@ -129,7 +129,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href={getLocalizedUrl('/front-pages/landing-page#faq', locale as Locale)}
-        className={classnames('font-medium', {
+        className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.faq
         })}
       >
@@ -138,7 +138,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href={getLocalizedUrl('/front-pages/landing-page#contact-us', locale as Locale)}
-        className={classnames('font-medium', {
+        className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections['contact-us']
         })}
       >
@@ -149,7 +149,7 @@ const FrontMenu = (props: Props) => {
         component={Link}
         href={getLocalizedUrl('/', locale as Locale)}
         target='_blank'
-        className='font-medium'
+        className='font-medium plb-3 pli-1.5'
       >
         Admin
       </Typography>

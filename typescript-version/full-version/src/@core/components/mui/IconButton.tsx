@@ -1,14 +1,12 @@
 'use client'
 
-// MUI Imports
 import MuiButton from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
-import type { ButtonProps } from '@mui/material/Button'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
 
-const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant }) => {
+const CustomIconButton = styled(MuiButton)(({ color, size, theme, variant }) => {
   return {
     minInlineSize: 0,
     ...(size === 'small'
@@ -72,8 +70,6 @@ const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant
       })
     })
   }
-})
-
-const CustomIconButton = (props: ButtonProps) => <IconButton {...props} />
+}) as typeof MuiButton
 
 export default CustomIconButton

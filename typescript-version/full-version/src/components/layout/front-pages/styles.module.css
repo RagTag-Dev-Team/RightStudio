@@ -10,7 +10,7 @@
 
   .navbar {
     inline-size: calc(100% - 48px);
-    padding-block: 0.75rem;
+    padding-block: 0.407rem;
     padding-inline: 1.5rem;
     margin-inline: auto;
     pointer-events: auto;
@@ -54,10 +54,10 @@
 
 .inputBorder {
   fieldset {
-    border-color: white;
+    border-color: rgb(var(--mui-mainColorChannels-dark) / 0.22) !important;
   }
   label,
   input {
-    color: white;
+    color: rgb(var(--mui-mainColorChannels-dark) / 0.9) !important;
   }
 }

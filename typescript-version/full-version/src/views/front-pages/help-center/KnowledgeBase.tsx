@@ -1,4 +1,5 @@
 // Next Imports
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 // MUI Imports
@@ -135,7 +136,15 @@ const KnowledgeBase = () => {
                     {article.articles.map((data, index) => {
                       return (
                         <div key={index} className='flex justify-between items-center gap-2'>
-                          <Typography>{data.title}</Typography>
+                          <Typography
+                            component={Link}
+                            href={getLocalizedUrl(
+                              '/front-pages/help-center/article/how-to-add-product-in-cart',
+                              locale as Locale
+                            )}
+                          >
+                            {data.title}
+                          </Typography>
                           <DirectionalIcon
                             ltrIconClass='ri-arrow-right-s-line text-textSecondary'
                             rtlIconClass='ri-arrow-left-s-line text-textSecondary'

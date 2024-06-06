@@ -85,40 +85,38 @@ const UsefulFeature = () => {
   }, [])
 
   return (
-    <section
-      id='features'
-      ref={ref}
-      className={classnames('flex flex-col gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
-    >
-      <div className={classnames('flex flex-col items-center justify-center')}>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium'>Useful Feature</Typography>
-        </div>
-        <div className='flex items-center justify-center flex-wrap gap-2 mbe-3 sm:mbe-1'>
-          <Typography variant='h5' className='font-bold'>
-            Everything you need
+    <section id='features' ref={ref}>
+      <div className={classnames('flex flex-col gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}>
+        <div className={classnames('flex flex-col items-center justify-center')}>
+          <div className='flex items-center justify-center mbe-4 gap-3'>
+            <Lines />
+            <Typography className='font-medium uppercase'>Useful Feature</Typography>
+          </div>
+          <div className='flex items-center justify-center flex-wrap gap-2 mbe-3 sm:mbe-1'>
+            <Typography variant='h5' className='font-bold'>
+              Everything you need
+            </Typography>
+            <Typography className='text-[18px]'>to start your next project</Typography>
+          </div>
+          <Typography color='text.secondary' className='font-medium text-center'>
+            Not just a set of tools, the package includes ready-to-deploy conceptual application.
           </Typography>
-          <Typography className='text-[18px]'>to start your next project</Typography>
         </div>
-        <Typography color='text.secondary' className='font-medium text-center'>
-          Not just a set of tools, the package includes ready-to-deploy conceptual application.
-        </Typography>
-      </div>
-      <div>
-        <Grid container spacing={6}>
-          {feature.map((item, index) => (
-            <Grid item xs={12} sm={6} lg={4} key={index}>
-              <div className='flex flex-col gap-2 justify-center items-center'>
-                <div className={classnames('mbe-2', styles.featureIcon)}>
-                  <div className='flex items-center border-2 rounded-full p-5 is-[82px] bs-[82px]'>{item.icon}</div>
+        <div>
+          <Grid container spacing={6}>
+            {feature.map((item, index) => (
+              <Grid item xs={12} sm={6} lg={4} key={index}>
+                <div className='flex flex-col gap-2 justify-center items-center'>
+                  <div className={classnames('mbe-2', styles.featureIcon)}>
+                    <div className='flex items-center border-2 rounded-full p-5 is-[82px] bs-[82px]'>{item.icon}</div>
+                  </div>
+                  <Typography variant='h5'>{item.title}</Typography>
+                  <Typography className='max-is-[364px] text-center'>{item.description}</Typography>
                 </div>
-                <Typography variant='h5'>{item.title}</Typography>
-                <Typography className='max-is-[364px] text-center'>{item.description}</Typography>
-              </div>
-            </Grid>
-          ))}
-        </Grid>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     </section>
   )

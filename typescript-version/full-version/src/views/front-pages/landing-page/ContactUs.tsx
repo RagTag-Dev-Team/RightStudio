@@ -21,6 +21,9 @@ import Lines from '@assets/svg/front-pages/landing-page/Lines'
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
+// Svg Imports
+import ElementTwo from '@/assets/svg/front-pages/landing-page/ElementTwo'
+
 const ContactUs = () => {
   // Refs
   const skipIntersection = useRef(true)
@@ -53,6 +56,7 @@ const ContactUs = () => {
       className={classnames('flex flex-col gap-14 plb-[100px]', frontCommonStyles.layoutSpacing)}
       ref={ref}
     >
+      <ElementTwo />
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />

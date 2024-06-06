@@ -11,9 +11,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 // Type Imports
 import type { Locale } from '@/configs/i18n'
 
@@ -48,7 +45,7 @@ const popularArticles: popularArticlesType[] = [
     slug: 'first-steps',
     title: 'First Steps',
     svg: <Gift />,
-    subtitle: 'Are you a new customer wondering how to get started?'
+    subtitle: 'Are you a new customer & wondering how to get started?'
   },
   {
     slug: 'external-content',
@@ -66,34 +63,36 @@ const Articles = () => {
   const { lang: locale } = params
 
   return (
-    <section className={classnames('md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
-      <Typography variant='h4' className='text-center'>
-        Popular Articles
-      </Typography>
-      <Grid container spacing={6}>
-        {popularArticles.map((article, index) => {
-          return (
-            <Grid item xs={12} lg={4} key={index}>
-              <Card>
-                <CardContent className='flex flex-col items-center justify-center gap-3 text-center'>
-                  {article.svg}
-                  <Typography variant='h5'>{article.title}</Typography>
-                  <Typography>{article.subtitle}</Typography>
-                  <Button
-                    href={getLocalizedUrl(
-                      '/front-pages/help-center/article/how-to-add-product-in-cart',
-                      locale as Locale
-                    )}
-                    variant='outlined'
-                  >
-                    Read More
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          )
-        })}
-      </Grid>
+    <section className='md:plb-[100px] plb-[50px]'>
+      <div className={frontCommonStyles.layoutSpacing}>
+        <Typography variant='h4' className='text-center mbe-6'>
+          Popular Articles
+        </Typography>
+        <Grid container spacing={6}>
+          {popularArticles.map((article, index) => {
+            return (
+              <Grid item xs={12} lg={4} key={index}>
+                <Card className='shadow-none border'>
+                  <CardContent className='flex flex-col items-center justify-center gap-3 text-center'>
+                    {article.svg}
+                    <Typography variant='h5'>{article.title}</Typography>
+                    <Typography>{article.subtitle}</Typography>
+                    <Button
+                      href={getLocalizedUrl(
+                        '/front-pages/help-center/article/how-to-add-product-in-cart',
+                        locale as Locale
+                      )}
+                      variant='outlined'
+                    >
+                      Read More
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )
+          })}
+        </Grid>
+      </div>
     </section>
   )
 }

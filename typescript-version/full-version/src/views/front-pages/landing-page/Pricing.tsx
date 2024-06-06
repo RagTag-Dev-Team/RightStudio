@@ -30,6 +30,7 @@ import frontCommonStyles from '@views/front-pages/styles.module.css'
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 import Curve from '@assets/svg/front-pages/landing-page/Curve'
 import Arrow from '@assets/svg/front-pages/landing-page/Arrow'
+import ElementTwo from '@/assets/svg/front-pages/landing-page/ElementTwo'
 
 const pricingPlans = [
   {
@@ -94,6 +95,7 @@ function PricingPlan() {
       id='pricing-plans'
       className={classnames('flex flex-col gap-8 lg:gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
+      <ElementTwo />
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />
@@ -127,7 +129,7 @@ function PricingPlan() {
           <Grid item key={index} xs={12} lg={4}>
             <Card
               className={classnames(
-                'border',
+                'border shadow-none',
                 ` ${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`
               )}
             >

@@ -8,6 +8,9 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Component Imports
+import DirectionalIcon from '@components/DirectionalIcon'
+
 // Type Imports
 import type { Locale } from '@/configs/i18n'
 
@@ -37,17 +40,19 @@ const GetStarted = () => {
           frontCommonStyles.layoutSpacing
         )}
       >
-        <div className='flex flex-col items-start gap-y-4 gap-x-8 pbs-9 lg:plb-9 z-[1]'>
+        <div className='flex flex-col items-start gap-y-8 gap-x-4 pbs-9 lg:plb-9 z-[1]'>
           <div className='flex flex-col gap-1'>
             <Typography variant='h5' color='primary' className='font-bold'>
               Ready to Get Started?
             </Typography>
-            <Typography color='text.secondary'>Start your project with a 14-day free trial</Typography>
+            <Typography className='font-medium' color='text.secondary'>
+              Start your project with a 14-day free trial
+            </Typography>
           </div>
           <Button
             href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
             variant='contained'
-            endIcon={<i className='ri-arrow-right-line' />}
+            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
           >
             Get Started
           </Button>

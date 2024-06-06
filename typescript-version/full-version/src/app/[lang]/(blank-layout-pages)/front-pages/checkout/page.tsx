@@ -1,15 +1,8 @@
 // Component Imports
-import Checkout from '@/app/[lang]/(dashboard)/(private)/pages/wizard-examples/checkout/page'
-
-// Styles Imports
-import frontCommonStyles from '@views/front-pages/styles.module.css'
+import Checkout from '@views/front-pages/CheckoutPage'
 
 const CheckoutPage = () => {
-  return (
-    <section className={frontCommonStyles.layoutSpacing}>
-      <Checkout />
-    </section>
-  )
+  return <Checkout />
 }
 
 export default CheckoutPage

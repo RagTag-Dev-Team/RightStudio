@@ -62,32 +62,39 @@ const ProductStat = () => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
 
   return (
-    <section className={classnames('plb-[64px]', frontCommonStyles.layoutSpacing)}>
-      <Grid container rowSpacing={6} columnSpacing={6}>
-        {statData.map((stat, index) => (
-          <Grid item key={index} xs={6} md={3}>
-            <div
-              className='flex flex-col items-center justify-center gap-6'
-              onMouseEnter={() => {
-                setHoverIndex(index)
-              }}
-              onMouseLeave={() => {
-                setHoverIndex(null)
-              }}
-            >
-              <CustomAvatar skin={hoverIndex === index ? 'filled' : 'light'} color={stat.color} size={82}>
-                <i className={classnames(stat.icon, 'text-[2.625rem]')} />
-              </CustomAvatar>
-              <div className='text-center'>
-                <Typography variant='h4' className='font-bold'>
-                  {stat.value}+
-                </Typography>
-                <Typography color='text.secondary'>{stat.title}</Typography>
+    <section className='plb-[64px]'>
+      <div className={frontCommonStyles.layoutSpacing}>
+        <Grid container spacing={6}>
+          {statData.map((stat, index) => (
+            <Grid item key={index} xs={6} md={3}>
+              <div className='flex flex-col items-center justify-center gap-6'>
+                <CustomAvatar
+                  onMouseEnter={() => {
+                    setHoverIndex(index)
+                  }}
+                  onMouseLeave={() => {
+                    setHoverIndex(null)
+                  }}
+                  skin={hoverIndex === index ? 'filled' : 'light'}
+                  color={stat.color}
+                  size={82}
+                  className='cursor-pointer'
+                >
+                  <i className={classnames(stat.icon, 'text-[2.625rem]')} />
+                </CustomAvatar>
+                <div className='text-center'>
+                  <Typography variant='h4' className='font-bold'>
+                    {stat.value}+
+                  </Typography>
+                  <Typography className='font-medium' color='text.secondary'>
+                    {stat.title}
+                  </Typography>
+                </div>
               </div>
-            </div>
-          </Grid>
-        ))}
-      </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </section>
   )
 }

@@ -195,7 +195,7 @@ const DropdownMenu = (props: Props) => {
     ...(!isBelowLgScreen && { onOpenChange: setIsOpen }),
     whileElementsMounted: autoUpdate,
     middleware: [
-      offset(18),
+      offset(14),
       flip({ padding: 10 }),
       size({
         apply({ rects, elements, availableHeight }) {
@@ -262,7 +262,7 @@ const DropdownMenu = (props: Props) => {
     <Tag {...(isBelowLgScreen && { className: 'flex flex-col' })}>
       <Typography
         component={Link}
-        className={classnames('flex items-center gap-2 font-medium', {
+        className={classnames('flex items-center gap-2 font-medium plb-3 pli-1.5', {
           'text-primary':
             pathname === `/${locale}/front-pages/payment` ||
             pathname === `/${locale}/front-pages/pricing` ||

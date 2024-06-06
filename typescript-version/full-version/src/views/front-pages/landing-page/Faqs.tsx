@@ -20,6 +20,9 @@ import Lines from '@assets/svg/front-pages/landing-page/Lines'
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
+// Svg Imports
+import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
+
 type FaqsDataTypes = {
   id: string
   question: string
@@ -87,6 +90,9 @@ const Faqs = () => {
       ref={ref}
       className={classnames('flex flex-col gap-16 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
+      <div className='text-end'>
+        <ElementOne />
+      </div>
       <div className='flex flex-col items-center justify-center'>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />

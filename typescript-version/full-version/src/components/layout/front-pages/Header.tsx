@@ -71,17 +71,19 @@ const Header = () => {
             {isBelowLgScreen ? (
               <CustomIconButton
                 variant='contained'
-                href='https://themeselection.com/item/materio-mui-nextjs-admin-template/'
+                href='https://themeselection.com/item-page'
                 color='primary'
+                target='_blank'
               >
                 <i className='ri-shopping-cart-line text-xl' />
               </CustomIconButton>
             ) : (
               <Button
                 variant='contained'
-                href='https://themeselection.com/item/materio-mui-nextjs-admin-template/'
+                href='https://themeselection.com/item-page'
                 startIcon={<i className='ri-shopping-cart-line text-xl' />}
                 className='whitespace-nowrap'
+                target='_blank'
               >
                 Purchase Now
               </Button>

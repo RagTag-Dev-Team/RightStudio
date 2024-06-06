@@ -183,7 +183,7 @@ const CustomerReviews = () => {
       <div className={classnames('flex flex-col items-center justify-center', frontCommonStyles.layoutSpacing)}>
         <div className='flex items-center justify-center mbe-4 gap-3'>
           <Lines />
-          <Typography className='font-medium'>Real Customers Reviews</Typography>
+          <Typography className='font-medium uppercase'>Real Customers Reviews</Typography>
         </div>
         <div className='flex items-center gap-2 mbe-1'>
           <Typography variant='h5' className='font-bold'>

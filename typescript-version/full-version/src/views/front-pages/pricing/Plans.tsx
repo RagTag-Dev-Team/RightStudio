@@ -144,73 +144,75 @@ function Plans() {
   const { lang: locale } = params
 
   return (
-    <section className={classnames('md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
-      <div className='flex flex-col text-center gap-2 mbe-6'>
-        <Typography variant='h4'>Pick a plan that works best for you</Typography>
-        <Typography>Stay cool, we have a 48-hour money back guarantee!</Typography>
-      </div>
-      <div className='overflow-x-auto border rounded'>
-        <table className={tableStyles.table}>
-          <thead className={styles.tableHead}>
-            <tr>
-              <th>Time</th>
-              <th className=''>
-                <Typography>STARTER</Typography>
-                <Typography variant='body2'>Free</Typography>
-              </th>
-              <th className=''>
-                <Typography>Pro</Typography>
-                <Typography variant='body2'>$7.5/Month</Typography>
-              </th>
-              <th className=''>
-                <Typography>ENTERPRISE</Typography>
-                <Typography variant='body2'>$16/Month</Typography>
-              </th>
-            </tr>
-          </thead>
-          <tbody className={classnames('border-be', styles.tableBody)}>
-            {features.map((feature, index) => (
-              <tr key={index}>
-                <td>{feature.feature}</td>
-                <td>
-                  {feature.starter ? (
-                    <i className='ri-checkbox-circle-line text-primary' />
-                  ) : (
-                    <i className='ri-close-circle-line' />
-                  )}
-                </td>
-                <td>
-                  {feature.pro ? (
-                    <i className='ri-checkbox-circle-line text-primary' />
-                  ) : feature.addOnAvailable.pro && !feature.pro ? (
-                    <Chip variant='tonal' size='small' color='primary' label='Add-on-Available' />
-                  ) : (
-                    <i className='ri-close-circle-line' />
-                  )}
-                </td>
-                <td>
-                  {feature.enterprise ? (
-                    <i className='ri-checkbox-circle-line text-primary' />
-                  ) : (
-                    <i className='ri-close-circle-line' />
-                  )}
-                </td>
+    <section className='md:plb-[100px] plb-[50px]'>
+      <div className={frontCommonStyles.layoutSpacing}>
+        <div className='flex flex-col text-center gap-2 mbe-6'>
+          <Typography variant='h4'>Pick a plan that works best for you</Typography>
+          <Typography>Stay cool, we have a 48-hour money back guarantee!</Typography>
+        </div>
+        <div className='overflow-x-auto border rounded'>
+          <table className={tableStyles.table}>
+            <thead className={styles.tableHead}>
+              <tr>
+                <th>Time</th>
+                <th className=''>
+                  <Typography>STARTER</Typography>
+                  <Typography variant='body2'>Free</Typography>
+                </th>
+                <th className=''>
+                  <Typography>Pro</Typography>
+                  <Typography variant='body2'>$7.5/Month</Typography>
+                </th>
+                <th className=''>
+                  <Typography>ENTERPRISE</Typography>
+                  <Typography variant='body2'>$16/Month</Typography>
+                </th>
               </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td></td>
-              {plans.map((plan, index) => (
-                <td key={index} className='text-center'>
-                  <Button href={getLocalizedUrl('/front-pages/payment', locale as Locale)} variant={plan.variant}>
-                    {plan.label}
-                  </Button>
-                </td>
+            </thead>
+            <tbody className={classnames('border-be', styles.tableBody)}>
+              {features.map((feature, index) => (
+                <tr key={index}>
+                  <td>{feature.feature}</td>
+                  <td>
+                    {feature.starter ? (
+                      <i className='ri-checkbox-circle-line text-primary' />
+                    ) : (
+                      <i className='ri-close-circle-line' />
+                    )}
+                  </td>
+                  <td>
+                    {feature.pro ? (
+                      <i className='ri-checkbox-circle-line text-primary' />
+                    ) : feature.addOnAvailable.pro && !feature.pro ? (
+                      <Chip variant='tonal' size='small' color='primary' label='Add-on-Available' />
+                    ) : (
+                      <i className='ri-close-circle-line' />
+                    )}
+                  </td>
+                  <td>
+                    {feature.enterprise ? (
+                      <i className='ri-checkbox-circle-line text-primary' />
+                    ) : (
+                      <i className='ri-close-circle-line' />
+                    )}
+                  </td>
+                </tr>
               ))}
-            </tr>
-          </tfoot>
-        </table>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                {plans.map((plan, index) => (
+                  <td key={index} className='text-center'>
+                    <Button href={getLocalizedUrl('/front-pages/payment', locale as Locale)} variant={plan.variant}>
+                      {plan.label}
+                    </Button>
+                  </td>
+                ))}
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </section>
   )

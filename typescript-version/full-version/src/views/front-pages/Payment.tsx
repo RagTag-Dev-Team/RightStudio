@@ -2,7 +2,7 @@
 
 // React Imports
 import type { ChangeEvent } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -32,6 +32,7 @@ import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
 import PricingDialog from '@components/dialogs/pricing'
 import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 import DirectionalIcon from '@components/DirectionalIcon'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
@@ -94,6 +95,9 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
   const [selectCountry, setSelectCountry] = useState('')
   const [selectInput, setSelectInput] = useState<string>(initialSelected)
 
+  // Hooks
+  const { updatePageSettings } = useSettings()
+
   const handleCountryChange = (event: SelectChangeEvent) => {
     setSelectCountry(event.target.value)
   }
@@ -105,6 +109,14 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
       setSelectInput((prop.target as HTMLInputElement).value)
     }
   }
+
+  // For Page specific settings
+  useEffect(() => {
+    return updatePageSettings({
+      skin: 'default'
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <section className={classnames('md:plb-[100px] plb-6', frontCommonStyles.layoutSpacing)}>
