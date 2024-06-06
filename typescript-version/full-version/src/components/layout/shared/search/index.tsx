@@ -62,6 +62,7 @@ const transformedData = data.reduce((acc: Section[], item) => {
     id: item.id,
     name: item.name,
     url: item.url,
+    excludeLang: item.excludeLang,
     icon: item.icon,
     shortcut: item.shortcut
   }
