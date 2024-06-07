@@ -14,14 +14,12 @@ import classnames from 'classnames'
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// Svg Imports
+// SVG Imports
+import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
-
-// Svg Imports
-import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
 
 type FaqsDataTypes = {
   id: string

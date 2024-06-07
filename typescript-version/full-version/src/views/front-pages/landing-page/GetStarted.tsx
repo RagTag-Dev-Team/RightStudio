@@ -1,6 +1,3 @@
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -11,22 +8,10 @@ import classnames from 'classnames'
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
-
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 const GetStarted = () => {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className='relative'>
       <img
@@ -50,7 +35,7 @@ const GetStarted = () => {
             </Typography>
           </div>
           <Button
-            href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
+            href='/front-pages/payment'
             variant='contained'
             endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
           >

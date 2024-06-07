@@ -1,9 +1,6 @@
 // React Imports
 import { useState } from 'react'
 
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -17,16 +14,10 @@ import Divider from '@mui/material/Divider'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
-
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
-// Svg Imports
+// SVG Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 import Curve from '@assets/svg/front-pages/landing-page/Curve'
 import Arrow from '@assets/svg/front-pages/landing-page/Arrow'
@@ -79,12 +70,6 @@ const pricingPlans = [
 function PricingPlan() {
   // States
   const [val, setVal] = useState<number>(458)
-
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
 
   const handleChange = (_: Event, newValue: number | number[]) => {
     setVal(newValue as number)
@@ -176,10 +161,7 @@ function PricingPlan() {
                     <Chip variant='tonal' size='small' color='primary' label={plan.respondTime} />
                   </div>
                 </div>
-                <Button
-                  href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
-                  variant={plan.current ? 'contained' : 'outlined'}
-                >
+                <Button href='/front-pages/payment' variant={plan.current ? 'contained' : 'outlined'}>
                   Get Started
                 </Button>
               </CardContent>

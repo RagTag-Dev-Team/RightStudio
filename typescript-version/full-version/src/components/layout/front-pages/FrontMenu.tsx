@@ -4,7 +4,7 @@
 import { useEffect } from 'react'
 
 // Next Imports
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 // MUI Imports
@@ -17,17 +17,11 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
 // Component Imports
 import DropdownMenu from './DropdownMenu'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 type Props = {
   isDrawerOpen: boolean
@@ -77,13 +71,9 @@ const FrontMenu = (props: Props) => {
   const { isDrawerOpen, setIsDrawerOpen } = props
 
   // Hooks
-  const params = useParams()
   const pathname = usePathname()
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
   const { intersections } = useIntersection()
-
-  // Vars
-  const { lang: locale } = params
 
   useEffect(() => {
     if (!isBelowLgScreen && isDrawerOpen) {
@@ -96,21 +86,21 @@ const FrontMenu = (props: Props) => {
     <Wrapper isBelowLgScreen={isBelowLgScreen} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}>
       <Typography
         component={Link}
-        href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
+        href='/front-pages/landing-page'
         className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary':
             !intersections.features &&
             !intersections.team &&
             !intersections.faq &&
             !intersections['contact-us'] &&
-            pathname === `/${locale}/front-pages/landing-page`
+            pathname === '/front-pages/landing-page'
         })}
       >
         Home
       </Typography>
       <Typography
         component={Link}
-        href={getLocalizedUrl('/front-pages/landing-page#features', locale as Locale)}
+        href='/front-pages/landing-page#features'
         className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.features
         })}
@@ -119,7 +109,7 @@ const FrontMenu = (props: Props) => {
       </Typography>
       <Typography
         component={Link}
-        href={getLocalizedUrl('/front-pages/landing-page#team', locale as Locale)}
+        href='/front-pages/landing-page#team'
         className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.team
         })}
@@ -128,7 +118,7 @@ const FrontMenu = (props: Props) => {
       </Typography>
       <Typography
         component={Link}
-        href={getLocalizedUrl('/front-pages/landing-page#faq', locale as Locale)}
+        href='/front-pages/landing-page#faq'
         className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections.faq
         })}
@@ -137,7 +127,7 @@ const FrontMenu = (props: Props) => {
       </Typography>
       <Typography
         component={Link}
-        href={getLocalizedUrl('/front-pages/landing-page#contact-us', locale as Locale)}
+        href='/front-pages/landing-page#contact-us'
         className={classnames('font-medium plb-3 pli-1.5', {
           'text-primary': intersections['contact-us']
         })}
@@ -145,12 +135,7 @@ const FrontMenu = (props: Props) => {
         Contact us
       </Typography>
       <DropdownMenu isBelowLgScreen={isBelowLgScreen} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-      <Typography
-        component={Link}
-        href={getLocalizedUrl('/', locale as Locale)}
-        target='_blank'
-        className='font-medium plb-3 pli-1.5'
-      >
+      <Typography component={Link} href='/' target='_blank' className='font-medium plb-3 pli-1.5'>
         Admin
       </Typography>
     </Wrapper>

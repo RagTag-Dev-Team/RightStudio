@@ -1,5 +1,3 @@
-'use client'
-
 // Component Imports
 import Footer from '@components/layout/front-pages/Footer'
 import Header from '@components/layout/front-pages/Header'

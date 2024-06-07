@@ -1,12 +1,9 @@
-'use client'
-
 // Next Imports
-import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
-import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -18,12 +15,6 @@ import classnames from 'classnames'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
-
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
@@ -39,12 +30,6 @@ const articleList = [
 ]
 
 const Questions = () => {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className='flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px] pbs-[70px] -mbs-[70px]'>
       <div className={classnames('pbs-10 md:pbs-16', frontCommonStyles.layoutSpacing)}>
@@ -52,17 +37,10 @@ const Questions = () => {
           <Grid item xs={12} lg={8}>
             <div className='flex flex-col gap-2'>
               <Breadcrumbs aria-label='breadcrumb'>
-                <Link
-                  underline='none'
-                  color='inherit'
-                  className='hover:text-primary'
-                  href={getLocalizedUrl('/front-pages/help-center', locale as Locale)}
-                >
+                <Link className='hover:text-primary' href='/front-pages/help-center'>
                   Help Center
                 </Link>
-                <Link underline='none' className='text-textPrimary'>
-                  How to add product in cart
-                </Link>
+                <Typography className='text-textPrimary'>How to add product in cart</Typography>
               </Breadcrumbs>
               <Typography variant='h4'>How to add product in cart?</Typography>
               <Typography>1 month ago - Updated</Typography>

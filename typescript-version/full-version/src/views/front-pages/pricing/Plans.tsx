@@ -1,6 +1,3 @@
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -8,12 +5,6 @@ import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import classnames from 'classnames'
-
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -137,12 +128,6 @@ const plans: PlanType[] = [
 ]
 
 function Plans() {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className='md:plb-[100px] plb-[50px]'>
       <div className={frontCommonStyles.layoutSpacing}>
@@ -204,7 +189,7 @@ function Plans() {
                 <td></td>
                 {plans.map((plan, index) => (
                   <td key={index} className='text-center'>
-                    <Button href={getLocalizedUrl('/front-pages/payment', locale as Locale)} variant={plan.variant}>
+                    <Button href='/front-pages/payment' variant={plan.variant}>
                       {plan.label}
                     </Button>
                   </td>

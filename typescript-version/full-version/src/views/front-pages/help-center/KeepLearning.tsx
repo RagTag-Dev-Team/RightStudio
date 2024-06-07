@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 // Next Imports
-import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -10,13 +10,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
-
-// Svgs
+// SVG Imports
 import Laptop from '@assets/svg/front-pages/help-center/Laptop'
 import Bulb from '@assets/svg/front-pages/help-center/Bulb'
 import Discord from '@assets/svg/front-pages/help-center/Discord'
@@ -55,12 +49,6 @@ const keepLearning: keepLearningType[] = [
 ]
 
 const KeepLearning = () => {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className='flex flex-col md:plb-[100px] plb-[50px]'>
       <div className={frontCommonStyles.layoutSpacing}>
@@ -77,10 +65,8 @@ const KeepLearning = () => {
                     <Typography variant='h5'>{article.title}</Typography>
                     <Typography>{article.subtitle}</Typography>
                     <Button
-                      href={getLocalizedUrl(
-                        '/front-pages/help-center/article/how-to-add-product-in-cart',
-                        locale as Locale
-                      )}
+                      component={Link}
+                      href='/front-pages/help-center/article/how-to-add-product-in-cart'
                       variant='outlined'
                     >
                       Read More

@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from 'react'
 import type { CSSProperties, MouseEvent, ReactNode } from 'react'
 
 // Next Imports
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -183,11 +183,7 @@ const DropdownMenu = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   // hooks
-  const params = useParams()
   const pathname = usePathname()
-
-  // vars
-  const { lang: locale } = params
 
   const { y, refs, floatingStyles, context } = useFloating<HTMLElement>({
     placement: 'bottom',
@@ -264,11 +260,11 @@ const DropdownMenu = (props: Props) => {
         component={Link}
         className={classnames('flex items-center gap-2 font-medium plb-3 pli-1.5', {
           'text-primary':
-            pathname === `/${locale}/front-pages/payment` ||
-            pathname === `/${locale}/front-pages/pricing` ||
-            pathname === `/${locale}/front-pages/checkout` ||
-            pathname === `/${locale}/front-pages/help-center` ||
-            pathname === `/${locale}/front-pages/help-center/article/how-to-add-product-in-cart`
+            pathname === '/front-pages/payment' ||
+            pathname === '/front-pages/pricing' ||
+            pathname === '/front-pages/checkout' ||
+            pathname === '/front-pages/help-center' ||
+            pathname === '/front-pages/help-center/article/how-to-add-product-in-cart'
         })}
         {...(isBelowLgScreen
           ? {
@@ -313,9 +309,9 @@ const DropdownMenu = (props: Props) => {
           {pageData.map((page, index) => (
             <Link
               key={index}
-              href={`/${locale}/front-pages` + page.href}
+              href={'/front-pages' + page.href}
               className={classnames('flex items-center gap-3 focus:outline-none', {
-                'text-primary': pathname.includes(`/${locale}/front-pages` + page.href)
+                'text-primary': pathname.includes('/front-pages' + page.href)
               })}
               onClick={handleLinkClick}
             >
@@ -334,7 +330,7 @@ const DropdownMenu = (props: Props) => {
           {authData.map((page, index) => (
             <Link
               key={index}
-              href={`/${locale}/pages/auth` + page.href}
+              href={'/pages/auth' + page.href}
               target='_blank'
               className='flex items-center gap-3'
               onClick={handleLinkClick}
@@ -354,7 +350,7 @@ const DropdownMenu = (props: Props) => {
           {othersData.map((page, index) => (
             <Link
               key={index}
-              href={`/${locale}/pages` + page.href}
+              href={'/pages' + page.href}
               target='_blank'
               className='flex items-center gap-3'
               onClick={handleLinkClick}

@@ -15,14 +15,12 @@ import classnames from 'classnames'
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// Svg Imports
+// SVG Imports
+import ElementTwo from '@assets/svg/front-pages/landing-page/ElementTwo'
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
-
-// Svg Imports
-import ElementTwo from '@/assets/svg/front-pages/landing-page/ElementTwo'
 
 const ContactUs = () => {
   // Refs

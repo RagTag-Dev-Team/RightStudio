@@ -1,9 +1,6 @@
 // React Imports
 import { useState, useEffect } from 'react'
 
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -13,13 +10,12 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { Mode } from '@core/types'
-import type { Locale } from '@/configs/i18n'
+
+// Component Imports
+import Link from '@components/Link'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -30,10 +26,7 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
   const [dashboardPosition, setDashboardPosition] = useState({ x: 0, y: 0 })
   const [elementsPosition, setElementsPosition] = useState({ x: 0, y: 0 })
 
-  const params = useParams()
-
   // Vars
-  const { lang: locale } = params
   const dashboardImageLight = '/images/front-pages/landing-page/hero-dashboard-light.png'
   const dashboardImageDark = '/images/front-pages/landing-page/hero-dashboard-dark.png'
   const elementsImageLight = '/images/front-pages/landing-page/hero-elements-light.png'
@@ -83,17 +76,13 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
             No coding required to make customizations. The live customizer has everything your marketing need.
           </Typography>
           <div className='mbs-8'>
-            <Button
-              href={getLocalizedUrl('/front-pages/landing-page#pricing-plans', locale as Locale)}
-              variant='contained'
-              color='primary'
-            >
+            <Button href='/front-pages/landing-page#pricing-plans' variant='contained' color='primary'>
               Get Early Access
             </Button>
           </div>
         </div>
       </div>
-      <a href='/' target='_blank'>
+      <Link target='_blank'>
         <div
           className={classnames('relative text-center overflow-hidden', frontCommonStyles.layoutSpacing)}
           style={{ transform: `translate(${dashboardPosition.x}px, ${dashboardPosition.y}px)` }}
@@ -107,7 +96,7 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
             />
           </div>
         </div>
-      </a>
+      </Link>
     </section>
   )
 }

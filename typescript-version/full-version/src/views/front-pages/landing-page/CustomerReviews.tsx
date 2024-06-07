@@ -16,7 +16,7 @@ import classnames from 'classnames'
 // Styled Component Imports
 import AppKeenSlider from '@/libs/styles/AppKeenSlider'
 
-// Svg Imports
+// SVG Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 import Levis from '@assets/svg/front-pages/landing-page/Levis'
 import Continental from '@assets/svg/front-pages/landing-page/Continental'

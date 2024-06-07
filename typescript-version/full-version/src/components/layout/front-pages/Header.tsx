@@ -1,8 +1,7 @@
+'use client'
+
 // React Imports
 import { useState } from 'react'
-
-// Next Imports
-import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Button from '@mui/material/Button'
@@ -14,9 +13,6 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
 import ModeDropdown from '@components/layout/shared/ModeDropdown'
@@ -25,7 +21,6 @@ import CustomIconButton from '@core/components/mui/IconButton'
 
 // Util Imports
 import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -35,11 +30,7 @@ const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   // Hooks
-  const params = useParams()
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
-
-  // Vars
-  const { lang: locale } = params
 
   // Detect window scroll
   const trigger = useScrollTrigger({
@@ -57,12 +48,12 @@ const Header = () => {
                 <i className='ri-menu-line' />
               </IconButton>
 
-              <Logo href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)} />
+              <Logo href='/front-pages/landing-page' />
               <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           ) : (
             <div className='flex items-center gap-10'>
-              <Logo href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)} />
+              <Logo href='/front-pages/landing-page' />
               <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           )}

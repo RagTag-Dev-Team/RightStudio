@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react'
 
 // Next Imports
-import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -11,13 +11,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
-
-// Svgs
+// SVG Imports
 import Gift from '@assets/svg/front-pages/help-center/Gift'
 import Rocket from '@assets/svg/front-pages/help-center/Rocket'
 import File from '@assets/svg/front-pages/help-center/File'
@@ -56,12 +50,6 @@ const popularArticles: popularArticlesType[] = [
 ]
 
 const Articles = () => {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className='md:plb-[100px] plb-[50px]'>
       <div className={frontCommonStyles.layoutSpacing}>
@@ -78,10 +66,8 @@ const Articles = () => {
                     <Typography variant='h5'>{article.title}</Typography>
                     <Typography>{article.subtitle}</Typography>
                     <Button
-                      href={getLocalizedUrl(
-                        '/front-pages/help-center/article/how-to-add-product-in-cart',
-                        locale as Locale
-                      )}
+                      component={Link}
+                      href='/front-pages/help-center/article/how-to-add-product-in-cart'
                       variant='outlined'
                     >
                       Read More

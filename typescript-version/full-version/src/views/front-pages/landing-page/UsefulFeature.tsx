@@ -11,7 +11,7 @@ import classnames from 'classnames'
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// Svg Imports
+// SVG Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 import LaptopCharging from '@assets/svg/front-pages/landing-page/LaptopCharging'
 import TransitionUp from '@assets/svg/front-pages/landing-page/TransitionUp'

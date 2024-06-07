@@ -1,10 +1,3 @@
-// React Imports
-import type { ChangeEvent } from 'react'
-import { useState } from 'react'
-
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
@@ -20,30 +13,14 @@ import classnames from 'classnames'
 import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
 
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
 // Util Imports
 import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styles Imports
 import styles from './styles.module.css'
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 function Footer() {
-  const [value, setValue] = useState('')
-
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-  }
-
   return (
     <footer className={frontLayoutClasses.footer}>
       <div className='relative'>
@@ -67,8 +44,6 @@ function Footer() {
                     className={styles.inputBorder}
                     label='Subscribe to newsletter'
                     placeholder='Your email'
-                    value={value}
-                    onChange={handleChange}
                     sx={{
                       ' & .MuiInputBase-root:hover:not(.Mui-focused) fieldset': {
                         borderColor: 'rgb(var(--mui-mainColorChannels-dark) / 0.6) !important'
@@ -92,37 +67,19 @@ function Footer() {
                 Pages
               </Typography>
               <div className='flex flex-col gap-4'>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/front-pages/pricing', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/front-pages/pricing' color='white' className='opacity-75'>
                   Pricing
                 </Typography>
-                <Link
-                  href={getLocalizedUrl('/front-pages/payment', locale as Locale)}
-                  className='flex items-center gap-[10px]'
-                >
+                <Link href='/front-pages/payment' className='flex items-center gap-[10px]'>
                   <Typography color='white' className='opacity-75'>
                     Payment
                   </Typography>
                   <Chip label='New' color='primary' size='small' />
                 </Link>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/pages/misc/under-maintenance', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/pages/misc/under-maintenance' color='white' className='opacity-75'>
                   Maintenance
                 </Typography>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/pages/misc/coming-soon', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/pages/misc/coming-soon' color='white' className='opacity-75'>
                   Coming Soon
                 </Typography>
               </div>
@@ -132,36 +89,16 @@ function Footer() {
                 Products
               </Typography>
               <div className='flex flex-col gap-4'>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/front-pages/landing-page' color='white' className='opacity-75'>
                   Page builder
                 </Typography>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/front-pages/landing-page' color='white' className='opacity-75'>
                   Admin Dashboards
                 </Typography>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/front-pages/landing-page' color='white' className='opacity-75'>
                   UI Kits
                 </Typography>
-                <Typography
-                  component={Link}
-                  href={getLocalizedUrl('/front-pages/landing-page', locale as Locale)}
-                  color='white'
-                  className='opacity-75'
-                >
+                <Typography component={Link} href='/front-pages/landing-page' color='white' className='opacity-75'>
                   Illustrations
                 </Typography>
               </div>

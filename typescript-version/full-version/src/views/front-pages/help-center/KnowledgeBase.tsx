@@ -1,6 +1,5 @@
 // Next Imports
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -11,12 +10,6 @@ import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import classnames from 'classnames'
-
-// Type Imports
-import type { Locale } from '@/configs/i18n'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Component Imports
 import CustomAvatar from '@/@core/components/mui/Avatar'
@@ -109,12 +102,6 @@ const allArticles: popularArticlesType[] = [
 ]
 
 const KnowledgeBase = () => {
-  // Hooks
-  const params = useParams()
-
-  // Vars
-  const { lang: locale } = params
-
   return (
     <section className={classnames('flex flex-col gap-6 md:plb-[100px] plb-[50px]', frontCommonStyles.layoutSpacing)}>
       <Typography variant='h4' className='text-center'>
@@ -138,10 +125,7 @@ const KnowledgeBase = () => {
                         <div key={index} className='flex justify-between items-center gap-2'>
                           <Typography
                             component={Link}
-                            href={getLocalizedUrl(
-                              '/front-pages/help-center/article/how-to-add-product-in-cart',
-                              locale as Locale
-                            )}
+                            href='/front-pages/help-center/article/how-to-add-product-in-cart'
                           >
                             {data.title}
                           </Typography>
@@ -154,10 +138,8 @@ const KnowledgeBase = () => {
                     })}
                   </div>
                   <Button
-                    href={getLocalizedUrl(
-                      '/front-pages/help-center/article/how-to-add-product-in-cart',
-                      locale as Locale
-                    )}
+                    component={Link}
+                    href='/front-pages/help-center/article/how-to-add-product-in-cart'
                     endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
                   >
                     See all 6 articles
