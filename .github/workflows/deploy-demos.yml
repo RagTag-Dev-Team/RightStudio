@@ -26,7 +26,7 @@ jobs:
       - name: ⬇️ Checkout template
         uses: actions/checkout@v4
         with:
-          path: ${{ env.BRAND_NAME }}/nextjs
+          path: ${{ env.BRAND_NAME }}/nextjs-mui
 
       - name: ⬇️ Checkout scripts
         uses: actions/checkout@v4
@@ -40,7 +40,7 @@ jobs:
         run: pnpm i
 
       - name: ⬇️ Install packages in typescript full version
-        working-directory: ${{ env.BRAND_NAME }}/nextjs/typescript-version/full-version
+        working-directory: ${{ env.BRAND_NAME }}/nextjs-mui/typescript-version/full-version
         run: pnpm i
 
       - name: 📦 Build
@@ -48,5 +48,5 @@ jobs:
         run: pnpm tsx ./src/generateBuild.ts ${{ env.BRAND_NAME }} $([[ "${{ inputs.is_production }}" == "true" ]] && echo --prod) --vercel-token ${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Deploy to Vercel
-        working-directory: ${{ env.BRAND_NAME }}/nextjs
+        working-directory: ${{ env.BRAND_NAME }}/nextjs-mui
         run: vercel $([[ "${{ inputs.is_production }}" == "true" ]] && echo --prod) --prebuilt --token ${{ secrets.VERCEL_TOKEN }}
