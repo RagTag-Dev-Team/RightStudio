@@ -33,11 +33,12 @@ const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean
       </Typography>
       {data.attachments.length ? (
         <IconButton>
-          <i className='ri-attachment-2' />
+          <i className='ri-attachment-2 text-textSecondary' />
         </IconButton>
       ) : null}
       {isReplies ? (
         <OptionMenu
+          iconClassName='text-textSecondary'
           options={[
             { text: 'Reply', icon: 'ri-reply-line' },
             { text: 'Forward', icon: 'ri-share-forward-line' }
@@ -45,7 +46,7 @@ const CardHeaderAction = ({ data, isReplies }: { data: Email; isReplies: boolean
         />
       ) : (
         <IconButton>
-          <i className='ri-more-2-line' />
+          <i className='ri-more-2-line text-textSecondary' />
         </IconButton>
       )}
     </div>

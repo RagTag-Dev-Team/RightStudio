@@ -2,6 +2,7 @@
 
 // React Imports
 import { useEffect, useMemo, useRef } from 'react'
+import type { CSSProperties } from 'react'
 
 // Next Imports
 // import Img from 'next/image'
@@ -20,14 +21,21 @@ import themeConfig from '@configs/themeConfig'
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
+type LogoProps = {
+  component?: boolean
+  href?: string
+  color?: CSSProperties['color']
+}
+
 type LogoTextProps = {
   isHovered?: VerticalNavContextProps['isHovered']
   isCollapsed?: VerticalNavContextProps['isCollapsed']
   transitionDuration?: VerticalNavContextProps['transitionDuration']
+  color?: LogoProps['color']
 }
 
 const LogoText = styled.span<LogoTextProps>`
-  color: var(--mui-palette-text-primary);
+  color: ${({ color }) => color ?? 'var(--mui-palette-text-primary)'};
   transition: ${({ transitionDuration }) =>
     `margin-inline-start ${transitionDuration}ms ease-in-out, opacity ${transitionDuration}ms ease-in-out`};
 
@@ -35,7 +43,7 @@ const LogoText = styled.span<LogoTextProps>`
     isCollapsed && !isHovered ? 'opacity: 0; margin-inline-start: 0;' : 'opacity: 1; margin-inline-start: 10px;'}
 `
 
-const Logo = ({ component = false, href = '/' }: { component?: boolean; href?: string }) => {
+const Logo = ({ component = false, href = '/', color }: LogoProps) => {
   // Refs
   const logoTextRef = useRef<HTMLSpanElement>(null)
 
@@ -88,6 +96,7 @@ const Logo = ({ component = false, href = '/' }: { component?: boolean; href?: s
         </g>
       </svg>
       <LogoText
+        color={color}
         ref={logoTextRef}
         isHovered={isHovered}
         isCollapsed={layout === 'collapsed'}

@@ -12,6 +12,9 @@ import InputBase from '@mui/material/InputBase'
 import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
 import CustomIconButton from '@/@core/components/mui/IconButton'
 
+// Hook Imports
+import { useSettings } from '@core/hooks/useSettings'
+
 type Props = {
   openCompose: boolean
   setOpenCompose: (value: boolean) => void
@@ -25,6 +28,9 @@ const ComposeMail = (props: Props) => {
 
   // States
   const [visibility, setVisibility] = useState({ cc: false, bcc: false })
+
+  // Hooks
+  const { settings } = useSettings()
 
   const toggleVisibility = (value: 'cc' | 'bcc') => {
     setVisibility(prev => ({ ...prev, [value]: !prev[value] }))
@@ -48,7 +54,8 @@ const ComposeMail = (props: Props) => {
           insetBlockEnd: '1.5rem',
           borderRadius: 'var(--mui-shape-borderRadius)',
           borderTop: 0,
-          boxShadow: 'var(--mui-customShadows-xl)',
+          boxShadow: settings.skin === 'bordered' ? 'none' : 'var(--mui-customShadows-xl)',
+          border: settings.skin === 'bordered' ? '1px solid var(--mui-palette-divider)' : undefined,
           zIndex: 12
         }
       }}
