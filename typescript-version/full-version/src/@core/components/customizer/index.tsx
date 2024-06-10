@@ -187,13 +187,10 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
           </div>
           <div className='flex gap-4'>
             <div onClick={resetSettings} className='relative flex cursor-pointer'>
-              <i className={classnames('ri-refresh-line', styles.actionActiveColor)} />
+              <i className='ri-refresh-line text-actionActive' />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
-            <i
-              className={classnames('ri-close-line cursor-pointer', styles.actionActiveColor)}
-              onClick={handleToggle}
-            />
+            <i className='ri-close-line text-actionActive cursor-pointer' onClick={handleToggle} />
           </div>
         </div>
         <ScrollWrapper
@@ -203,7 +200,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
         >
           <div className={styles.customizerBody}>
             <div className='flex flex-col gap-6'>
-              <Chip label='Theming' size='small' color='primary' className={classnames('self-start', styles.chip)} />
+              <Chip label='Theming' size='small' color='primary' className='self-start rounded-sm' />
               <div className='flex flex-col gap-2.5'>
                 <p className='font-medium'>Primary Color</p>
                 <div className='flex items-center justify-between'>
@@ -353,7 +350,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
             </div>
             <hr className={styles.hr} />
             <div className='flex flex-col gap-6'>
-              <Chip label='Layout' size='small' color='primary' className={classnames('self-start', styles.chip)} />
+              <Chip label='Layout' size='small' color='primary' className='self-start rounded-sm' />
               <div className='flex flex-col gap-2.5'>
                 <p className='font-medium'>Layouts</p>
                 <div className='flex items-center justify-between'>

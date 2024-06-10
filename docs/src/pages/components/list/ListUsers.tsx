@@ -89,7 +89,7 @@ const ListUsers = () => {
           <div>
             <ListItemText primary={user.name} />
             <div className='flex items-center flex-wrap'>
-              <Box className='mie-3 flex items-center gap-1' sx={{ '& svg': { color: user.statusColor } }}>
+              <Box className='mie-3 flex items-center gap-1' sx={{ '& i, & svg': { color: user.statusColor } }}>
                 <i className='ri-circle-fill text-[10px]' />
                 <Typography variant='body2'>{user.status}</Typography>
               </Box>

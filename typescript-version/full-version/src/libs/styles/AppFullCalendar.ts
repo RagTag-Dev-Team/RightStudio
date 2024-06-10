@@ -8,7 +8,7 @@ import type { Theme } from '@mui/material/styles'
 const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: 'var(--mui-shape-borderRadius)',
   '& .fc': {
     zIndex: 1,
 
@@ -21,6 +21,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       flexWrap: 'wrap',
       flexDirection: 'row !important',
       '&.fc-header-toolbar': {
+        gap: theme.spacing(2),
         marginBottom: theme.spacing(4.7)
       },
       '& .fc-sidebarToggle-button': {
@@ -103,7 +104,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           padding: theme.spacing(2.2, 6),
 
           '&:last-of-type, &:first-of-type': {
-            borderRadius: theme.shape.borderRadius
+            borderRadius: 'var(--mui-shape-borderRadius)'
           },
           '&:first-of-type': {
             borderTopRightRadius: 0,
@@ -145,55 +146,73 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
 
     // Event Colors
     '& .fc-event': {
+      '& .fc-event-title-container, .fc-event-main-frame': {
+        lineHeight: 1
+      },
       '&:not(.fc-list-event)': {
         '&.event-bg-primary': {
-          borderColor: 'transparent',
+          border: 0,
           color: 'var(--mui-palette-primary-main)',
 
           // backgroundColor: bgColors.primaryLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            color: 'var(--mui-palette-primary-main)'
+            fontSize: theme.typography.caption.fontSize,
+            fontWeight: 500,
+            color: 'var(--mui-palette-primary-main)',
+            padding: 0
           }
         },
         '&.event-bg-success': {
-          borderColor: 'transparent',
+          border: 0,
           color: 'var(--mui-palette-success-main)',
 
           // backgroundColor: bgColors.successLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-success-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            color: 'var(--mui-palette-success-main)'
+            fontSize: theme.typography.caption.fontSize,
+            fontWeight: 500,
+            color: 'var(--mui-palette-success-main)',
+            padding: 0
           }
         },
         '&.event-bg-error': {
-          borderColor: 'transparent',
+          border: 0,
           color: 'var(--mui-palette-error-main)',
 
           // backgroundColor: bgColors.errorLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-error-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            color: 'var(--mui-palette-error-main)'
+            fontSize: theme.typography.caption.fontSize,
+            fontWeight: 500,
+            color: 'var(--mui-palette-error-main)',
+            padding: 0
           }
         },
         '&.event-bg-warning': {
-          borderColor: 'transparent',
+          border: 0,
           color: 'var(--mui-palette-warning-main)',
 
           // backgroundColor: bgColors.warningLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-warning-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            color: 'var(--mui-palette-warning-main)'
+            fontSize: theme.typography.caption.fontSize,
+            fontWeight: 500,
+            color: 'var(--mui-palette-warning-main)',
+            padding: 0
           }
         },
         '&.event-bg-info': {
-          borderColor: 'transparent',
+          border: 0,
           color: 'var(--mui-palette-info-main)',
 
           // backgroundColor: bgColors.infoLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-info-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            color: 'var(--mui-palette-info-main)'
+            fontSize: theme.typography.caption.fontSize,
+            fontWeight: 500,
+            color: 'var(--mui-palette-info-main)',
+            padding: 0
           }
         }
       },
@@ -243,8 +262,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         }
       },
       '&.fc-daygrid-event': {
-        marginLeft: '4px',
-        marginRight: '4px'
+        margin: 0
       }
     },
 
@@ -260,6 +278,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         fontSize: '.875rem',
         color: 'var(--mui-palette-text-primary)',
         '& .fc-col-header-cell-cushion': {
+          ...theme.typography.body1,
+          fontWeight: 500,
           padding: theme.spacing(2),
           textDecoration: 'none !important'
         }
@@ -272,19 +292,17 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     },
     '& .fc-daygrid-event-harness': {
       '& .fc-event': {
-        fontWeight: 600,
-        fontSize: '0.8rem',
-        padding: theme.spacing(0, 1)
+        padding: theme.spacing(1, 1)
       },
-      '&:not(:last-of-type)': {
-        marginBottom: theme.spacing(1.2)
+      '&:not(:last-of-type) .fc-event': {
+        marginBottom: `${theme.spacing(2.5)} !important`
       }
     },
     '& .fc-daygrid-day-bottom': {
-      marginTop: theme.spacing(1.2)
+      marginTop: theme.spacing(2.5)
     },
     '& .fc-daygrid-day': {
-      padding: '5px',
+      padding: '8px',
       '& .fc-daygrid-day-top': {
         flexDirection: 'row'
       }
@@ -293,18 +311,26 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       borderColor: 'var(--mui-palette-divider)',
       borderInlineStart: 0
     },
-    '& .fc-day-past, & .fc-day-future': {
-      '&.fc-daygrid-day-number': {
-        color: 'var(--mui-palette-text-disabled)'
+    '& .fc-daygrid-day-events': {
+      marginTop: theme.spacing(2.5),
+      minHeight: '5rem !important'
+    },
+    '& .fc-day-other .fc-daygrid-day-top': {
+      opacity: 1,
+      '& .fc-daygrid-day-number': {
+        color: 'var(--mui-palette-text-disabled) !important'
       }
     },
 
     // All Views Event
-    '& .fc-daygrid-day-number': {
-      padding: theme.spacing(2, 4)
-    },
     '& .fc-daygrid-day-number, & .fc-timegrid-slot-label-cushion, & .fc-list-event-time': {
-      textDecoration: 'none !important',
+      textDecoration: 'none !important'
+    },
+    '& .fc-daygrid-day-number': {
+      color: 'var(--mui-palette-text-secondary) !important',
+      padding: 0
+    },
+    '& .fc-timegrid-slot-label-cushion, & .fc-list-event-time': {
       color: 'var(--mui-palette-text-primary) !important'
     },
     '& .fc-day-today:not(.fc-popover)': {
@@ -335,7 +361,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       '& .fc-timegrid-axis': {
         '&.fc-scrollgrid-shrink': {
           '& .fc-timegrid-axis-cushion': {
-            fontSize: '.75rem',
+            ...theme.typography.body2,
+            padding: 0,
             textTransform: 'capitalize',
             color: 'var(--mui-palette-text-disabled)'
           }
@@ -346,7 +373,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           height: '3rem',
           borderColor: 'var(--mui-palette-divider)',
           '&.fc-timegrid-slot-label': {
-            borderRight: 0
+            borderRight: 0,
+            padding: theme.spacing(2),
+            verticalAlign: 'top'
           },
           '&.fc-timegrid-slot-lane': {
             borderLeft: 0
@@ -354,7 +383,9 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           '& .fc-timegrid-slot-label-frame': {
             textAlign: 'center',
             '& .fc-timegrid-slot-label-cushion': {
-              fontSize: '.75rem',
+              display: 'block',
+              padding: 0,
+              ...theme.typography.body2,
               textTransform: 'uppercase'
             }
           }
@@ -364,10 +395,20 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         display: 'none'
       },
       '& .fc-timegrid-event': {
+        '& .fc-event-time': {
+          ...theme.typography.caption,
+          marginBlockEnd: 2
+        },
+        '& .fc-event-title': {
+          lineHeight: 1.5385
+        },
         boxShadow: 'none'
       },
       '.fc-timegrid-col-events': {
-        margin: 0
+        margin: 0,
+        '& .fc-event-main': {
+          padding: theme.spacing(2)
+        }
       }
     },
     '& .fc-timeGridWeek-view .fc-timegrid-slot-minor': {
@@ -381,7 +422,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         position: 'relative'
       },
       '& .fc-list-day-cushion': {
-        background: 'transparent'
+        background: 'transparent',
+        padding: theme.spacing(2, 4)
       },
       '.fc-list-event': {
         cursor: 'pointer',
@@ -394,11 +436,15 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           borderColor: 'var(--mui-palette-divider)'
         }
       },
+      '& .fc-list-event-graphic': {
+        paddingBlock: theme.spacing(2)
+      },
       '& .fc-list-day': {
         backgroundColor: 'var(--mui-palette-action-hover)',
 
         '& .fc-list-day-text, & .fc-list-day-side-text': {
-          fontSize: '.875rem',
+          ...theme.typography.body1,
+          fontWeight: 500,
           textDecoration: 'none'
         },
 
@@ -408,12 +454,14 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         }
       },
       '& .fc-list-event-title': {
-        fontSize: '.875rem',
-        color: 'var(--mui-palette-text-primary)'
+        ...theme.typography.body1,
+        color: 'var(--mui-palette-text-secondary) !important',
+        padding: theme.spacing(2, 4, 2, 2)
       },
       '& .fc-list-event-time': {
-        fontSize: '.875rem',
-        color: 'var(--mui-palette-text-disabled)'
+        ...theme.typography.body1,
+        color: 'var(--mui-palette-text-secondary) !important',
+        padding: theme.spacing(2, 4)
       },
       '.fc-list-table tbody > tr:first-child th': {
         borderTop: '1px solid var(--mui-palette-divider)'
@@ -431,17 +479,15 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       },
       boxShadow: 1,
       borderColor: 'var(--mui-palette-divider)',
+      borderRadius: 'var(--mui-shape-borderRadius)',
       background: 'var(--mui-palette-background-paper)',
       '& .fc-popover-header': {
         padding: theme.spacing(2),
+        borderStartStartRadius: 'var(--mui-shape-borderRadius)',
+        borderStartEndRadius: 'var(--mui-shape-borderRadius)',
         background: 'var(--mui-palette-action-hover)',
         '& .fc-popover-title, & .fc-popover-close': {
           color: 'var(--mui-palette-text-primary)'
-        }
-      },
-      '& .fc-popover-body': {
-        '& *:not(.fc-event-main):not(:last-of-type)': {
-          marginBottom: theme.spacing(1.2)
         }
       }
     },
@@ -453,11 +499,6 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       },
       '& .fc-toolbar-title': {
         marginLeft: 0
-      }
-    },
-    '@media (max-width:610px)': {
-      '& .fc-header-toolbar .fc-toolbar-chunk:last-of-type': {
-        marginTop: theme.spacing(4)
       }
     }
   }
