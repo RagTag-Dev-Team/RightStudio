@@ -16,7 +16,7 @@ const FreeTrial = () => {
         <Grid container spacing={2}>
           <Grid xs={12} md={6}>
             <div className='flex flex-col gap-11 md:mis-2 items-center md:items-start justify-center plb-10'>
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 mis-2 md:mis-0'>
                 <Typography variant='h5' color='primary' className='font-medium'>
                   Still not convinced? Start with a 14-day FREE trial!
                 </Typography>

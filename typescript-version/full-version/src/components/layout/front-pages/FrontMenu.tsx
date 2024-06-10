@@ -17,6 +17,9 @@ import IconButton from '@mui/material/IconButton'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Mode } from '@core/types'
+
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
@@ -24,6 +27,7 @@ import { useIntersection } from '@/hooks/useIntersection'
 import DropdownMenu from './DropdownMenu'
 
 type Props = {
+  mode: Mode
   isDrawerOpen: boolean
   setIsDrawerOpen: (open: boolean) => void
 }
@@ -68,7 +72,7 @@ const Wrapper = (props: WrapperProps) => {
 
 const FrontMenu = (props: Props) => {
   // Props
-  const { isDrawerOpen, setIsDrawerOpen } = props
+  const { isDrawerOpen, setIsDrawerOpen, mode } = props
 
   // Hooks
   const pathname = usePathname()
@@ -87,7 +91,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href='/front-pages/landing-page'
-        className={classnames('font-medium plb-3 pli-1.5', {
+        className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary':
             !intersections.features &&
             !intersections.team &&
@@ -101,7 +105,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href='/front-pages/landing-page#features'
-        className={classnames('font-medium plb-3 pli-1.5', {
+        className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary': intersections.features
         })}
       >
@@ -110,7 +114,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href='/front-pages/landing-page#team'
-        className={classnames('font-medium plb-3 pli-1.5', {
+        className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary': intersections.team
         })}
       >
@@ -119,7 +123,7 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href='/front-pages/landing-page#faq'
-        className={classnames('font-medium plb-3 pli-1.5', {
+        className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary': intersections.faq
         })}
       >
@@ -128,14 +132,19 @@ const FrontMenu = (props: Props) => {
       <Typography
         component={Link}
         href='/front-pages/landing-page#contact-us'
-        className={classnames('font-medium plb-3 pli-1.5', {
+        className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary': intersections['contact-us']
         })}
       >
         Contact us
       </Typography>
-      <DropdownMenu isBelowLgScreen={isBelowLgScreen} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-      <Typography component={Link} href='/' target='_blank' className='font-medium plb-3 pli-1.5'>
+      <DropdownMenu
+        mode={mode}
+        isBelowLgScreen={isBelowLgScreen}
+        isDrawerOpen={isDrawerOpen}
+        setIsDrawerOpen={setIsDrawerOpen}
+      />
+      <Typography component={Link} href='/' target='_blank' className='font-medium plb-3 pli-1.5 hover:text-primary'>
         Admin
       </Typography>
     </Wrapper>

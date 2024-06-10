@@ -26,11 +26,18 @@ import {
   useTransitionStyles
 } from '@floating-ui/react'
 
+// Type Imports
+import type { Mode } from '@core/types'
+
 // Component Imports
 import Link from '@components/Link'
 import CustomAvatar from '@core/components/mui/Avatar'
 
+// Hook Imports
+import { useImageVariant } from '@core/hooks/useImageVariant'
+
 type Props = {
+  mode: Mode
   isBelowLgScreen: boolean
   isDrawerOpen: boolean
   setIsDrawerOpen: (open: boolean) => void
@@ -177,13 +184,18 @@ const MenuWrapper = (props: MenuWrapperProps) => {
 
 const DropdownMenu = (props: Props) => {
   // Props
-  const { isBelowLgScreen, isDrawerOpen, setIsDrawerOpen } = props
+  const { isBelowLgScreen, isDrawerOpen, setIsDrawerOpen, mode } = props
 
   // states
   const [isOpen, setIsOpen] = useState(false)
 
+  // Vars
+  const dropdownImageLight = '/images/front-pages/dropdown-image-light.png'
+  const dropdownImageDark = '/images/front-pages/dropdown-image-dark.png'
+
   // hooks
   const pathname = usePathname()
+  const dropdownImage = useImageVariant(mode, dropdownImageLight, dropdownImageDark)
 
   const { y, refs, floatingStyles, context } = useFloating<HTMLElement>({
     placement: 'bottom',
@@ -258,7 +270,7 @@ const DropdownMenu = (props: Props) => {
     <Tag {...(isBelowLgScreen && { className: 'flex flex-col' })}>
       <Typography
         component={Link}
-        className={classnames('flex items-center gap-2 font-medium plb-3 pli-1.5', {
+        className={classnames('flex items-center gap-2 font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary':
             pathname === '/front-pages/payment' ||
             pathname === '/front-pages/pricing' ||
@@ -310,12 +322,12 @@ const DropdownMenu = (props: Props) => {
             <Link
               key={index}
               href={'/front-pages' + page.href}
-              className={classnames('flex items-center gap-3 focus:outline-none', {
+              className={classnames('flex items-center gap-3 focus:outline-none hover:text-primary', {
                 'text-primary': pathname.includes('/front-pages' + page.href)
               })}
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px] text-primary' />
+              <i className='ri-circle-line text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
@@ -332,10 +344,10 @@ const DropdownMenu = (props: Props) => {
               key={index}
               href={'/pages/auth' + page.href}
               target='_blank'
-              className='flex items-center gap-3'
+              className='flex items-center gap-3 hover:text-primary'
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px] text-primary' />
+              <i className='ri-circle-line text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
@@ -352,17 +364,17 @@ const DropdownMenu = (props: Props) => {
               key={index}
               href={'/pages' + page.href}
               target='_blank'
-              className='flex items-center gap-3'
+              className='flex items-center gap-3 hover:text-primary'
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px] text-primary' />
+              <i className='ri-circle-line text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
         </div>
         {!isBelowLgScreen && (
           <div>
-            <img src='/images/front-pages/dropdown-image.png' alt='dropdown image' />
+            <img src={dropdownImage} alt='dropdown image' className='rounded' />
           </div>
         )}
       </MenuWrapper>

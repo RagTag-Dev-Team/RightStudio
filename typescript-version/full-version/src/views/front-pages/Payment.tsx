@@ -234,7 +234,7 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                       <Typography color='text.secondary'>Tax</Typography>
                       <Typography className='font-medium'>$4.99</Typography>
                     </div>
-                    <Divider className='mlb-4 border' />
+                    <Divider className='mlb-4' />
                     <div className='flex gap-2 items-center justify-between'>
                       <Typography color='text.secondary'>Total</Typography>
                       <Typography className='font-medium'>$90.98</Typography>
