@@ -17,6 +17,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-primary-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-primary-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       },
@@ -33,6 +37,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-secondary-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-secondary-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       },
@@ -49,6 +57,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-error-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-error-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       },
@@ -65,6 +77,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-warning-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-warning-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       },
@@ -81,6 +97,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-info-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-info-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       },
@@ -97,6 +117,10 @@ const chip: Theme['components'] = {
             '&:hover': {
               color: 'var(--mui-palette-success-main)'
             }
+          },
+          '&.MuiChip-clickable:hover': {
+            backgroundColor: 'var(--mui-palette-success-main)',
+            color: 'var(--mui-palette-common-white)'
           }
         }
       }
