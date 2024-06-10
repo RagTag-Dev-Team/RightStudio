@@ -284,6 +284,23 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
+          <SubMenu label={dictionary['navigation'].frontPages}>
+            <MenuItem href='/front-pages/landing-page' target='_blank'>
+              {dictionary['navigation'].landing}
+            </MenuItem>
+            <MenuItem href='/front-pages/pricing' target='_blank'>
+              {dictionary['navigation'].pricing}
+            </MenuItem>
+            <MenuItem href='/front-pages/payment' target='_blank'>
+              {dictionary['navigation'].payment}
+            </MenuItem>
+            <MenuItem href='/front-pages/checkout' target='_blank'>
+              {dictionary['navigation'].checkout}
+            </MenuItem>
+            <MenuItem href='/front-pages/help-center' target='_blank'>
+              {dictionary['navigation'].helpCenter}
+            </MenuItem>
+          </SubMenu>
           <MenuItem href={`/${locale}/icons-test`} icon={<i className='tabler-icons' />}>
             Icons Test
           </MenuItem>
@@ -401,7 +418,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
           renderExpandIcon: ({ open }) => (
             <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
           ),

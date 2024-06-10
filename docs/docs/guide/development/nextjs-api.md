@@ -19,13 +19,13 @@ If you are not utilizing multiple languages in your app, you can bypass the `[la
 API routes reside in the `src/app/api` folder. To establish a new API route, create a new file within this directory.
 
 2. **Managing the Data:**
-Data for the API routes is located in the `src/app/api/fake-db` folder by default. You can use your own database and API endpoints. Refer how you can use your own database and API endpoints and how you can remove the fake-db [here](/articles/how-to-remove-fake-db-and-use-real-api)
+Data for the API routes is located in the `src/fake-db` folder by default. You can use your own database and API endpoints. Refer how you can use your own database and API endpoints and how you can remove the fake-db [here](/articles/how-to-remove-fake-db-and-use-real-api)
 
 3. **Configuring the Routing:**
 Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're encouraged to develop your API endpoints within this area.
 
 4. **Creating an Example API Route:**
-    - **Data File:** Create a data file at `src/app/api/fake-db/**/example/example.tsx`
+    - **Data File:** Create a data file at `src/fake-db/**/example/example.tsx`
 
       ```ts
       import type { ExampleType } from '@/types/**/exampleTypes'
@@ -40,7 +40,9 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
         ...
       ]
       ```
+
     - **Data Type:** Define the data types in `src/types/**/exampleTypes.tsx` file
+
       ```ts
       export type ExampleType = {
         userId: number
@@ -51,19 +53,21 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
       ```
 
     - **API Routes:** Establish your API routes in `src/app/api/**/example/routes.ts` file
+
       ```ts
       // Next Imports
       import { NextResponse } from 'next/server'
 
       // Data Imports
-      import { db } from '@/app/api/fake-db/**/example'
+      import { db } from '@/fake-db/**/example'
 
       export async function GET() {
         return NextResponse.json(db)
       }
       ```
-    
+
     - **API Endpoints:** Define your API endpoints in `src/app/[lang]/**/**/example/page.tsx` file
+
       ```tsx
       import type { ExampleType } from '@/types/**/exampleTypes'
 
@@ -97,7 +101,7 @@ Routes and API endpoints are managed in the `src/app/[lang]/` folder. You're enc
 
       export default ComponentName
       ```
-    - **Finalizing Your API Route:**
+      - **Finalizing Your API Route:**
       - After completing these steps, your data is ready to be manipulated as required.
       - Your new API route will be accessible at `http://localhost:3000/**/**/example`.
 

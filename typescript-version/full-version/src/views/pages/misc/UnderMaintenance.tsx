@@ -2,6 +2,7 @@
 
 // Next Imports
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -14,9 +15,13 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
+import type { Locale } from '@/configs/i18n'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Components
 const MaskImg = styled('img')({
@@ -35,6 +40,7 @@ const UnderMaintenance = ({ mode }: { mode: SystemMode }) => {
 
   // Hooks
   const theme = useTheme()
+  const { lang: locale } = useParams()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
   const miscBackground = useImageVariant(mode, lightImg, darkImg)
 
@@ -45,7 +51,7 @@ const UnderMaintenance = ({ mode }: { mode: SystemMode }) => {
           <Typography variant='h4'>Under Maintenance! 🚧</Typography>
           <Typography>Sorry for the inconvenience but we&#39;re performing some maintenance at the moment</Typography>
         </div>
-        <Button href='/' component={Link} variant='contained'>
+        <Button href={getLocalizedUrl('/', locale as Locale)} component={Link} variant='contained'>
           Back To Home
         </Button>
         <img

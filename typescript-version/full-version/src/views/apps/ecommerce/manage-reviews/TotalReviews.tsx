@@ -17,11 +17,11 @@ type DataType = {
 
 // Vars
 const totalReviewsData: DataType[] = [
-  { rating: 5, value: 124 },
+  { rating: 5, value: 109 },
   { rating: 4, value: 40 },
-  { rating: 3, value: 12 },
-  { rating: 2, value: 7 },
-  { rating: 1, value: 2 }
+  { rating: 3, value: 18 },
+  { rating: 2, value: 12 },
+  { rating: 1, value: 8 }
 ]
 
 const TotalReviews = () => {

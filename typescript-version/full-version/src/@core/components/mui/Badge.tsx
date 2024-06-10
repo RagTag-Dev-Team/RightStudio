@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import MuiBadge from '@mui/material/Badge'
 import type { BadgeProps } from '@mui/material/Badge'

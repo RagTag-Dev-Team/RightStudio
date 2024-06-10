@@ -36,7 +36,9 @@ const CourseDetailsPage = async () => {
         <Details data={data?.courseDetails} />
       </Grid>
       <Grid item xs={12} md={4}>
-        <Sidebar content={data?.courseDetails.content} />
+        <div className='sticky top-20'>
+          <Sidebar content={data?.courseDetails.content} />
+        </div>
       </Grid>
     </Grid>
   )

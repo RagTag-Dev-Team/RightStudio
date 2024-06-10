@@ -44,15 +44,21 @@ const OrderDetailHeader = ({ orderData, order }: { orderData?: OrderType; order:
   })
 
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex flex-wrap justify-between items-center gap-y-4'>
       <div className='flex flex-col gap-2'>
         <div className='flex items-center gap-2'>
           <Typography variant='h5'>{`Order #${order}`}</Typography>
-          <Chip variant='tonal' label={orderData?.status} color={statusChipColor[orderData?.status || ''].color} />
+          <Chip
+            variant='tonal'
+            label={orderData?.status}
+            color={statusChipColor[orderData?.status || ''].color}
+            size='small'
+          />
           <Chip
             variant='tonal'
             label={paymentStatus[orderData?.payment ?? 0].text}
             color={paymentStatus[orderData?.payment ?? 0].color}
+            size='small'
           />
         </div>
         <Typography>{`${new Date(orderData?.date ?? '').toDateString()}, ${orderData?.time} (ET)`}</Typography>

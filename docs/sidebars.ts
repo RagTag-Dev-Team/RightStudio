@@ -114,12 +114,13 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Authentication",
       items: [
-        "guide/authentication/intro",
-        "guide/authentication/credentials-provider",
-        "guide/authentication/google-prisma",
-        "guide/authentication/remove-auth",
-        "guide/authentication/add-auth",
-      ],
+        'guide/authentication/intro',
+        'guide/authentication/credentials-provider',
+        'guide/authentication/google-prisma',
+        'guide/authentication/securing-page',
+        'guide/authentication/remove-auth',
+        'guide/authentication/add-auth'
+      ]
     },
     "guide/logo",
     {
@@ -544,6 +545,7 @@ const sidebars: SidebarsConfig = {
     "faqs/intro",
     "faqs/installation-errors",
     "faqs/installation-warning",
+    "faqs/why-should-I-not-upgrade-the-package-manually",
     "faqs/remove-nextjs",
     "faqs/how-to-update-this-template",
     "faqs/how-to-hide-menu",

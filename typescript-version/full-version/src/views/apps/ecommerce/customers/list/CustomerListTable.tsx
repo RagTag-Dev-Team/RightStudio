@@ -180,7 +180,7 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
               >
                 {row.original.customer}
               </Typography>
-              <Typography>{row.original.email}</Typography>
+              <Typography variant='body2'>{row.original.email}</Typography>
             </div>
           </div>
         )
@@ -204,7 +204,11 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
       }),
       columnHelper.accessor('totalSpent', {
         header: 'Total Spent',
-        cell: ({ row }) => <Typography>${row.original.totalSpent.toLocaleString()}</Typography>
+        cell: ({ row }) => (
+          <Typography className='font-medium' color='text.primary'>
+            ${row.original.totalSpent.toLocaleString()}
+          </Typography>
+        )
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -257,14 +261,13 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between flex-col items-center sm:flex-row'>
+        <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
-            className='is-full sm:is-auto'
           />
-          <div className='flex gap-4'>
+          <div className='flex gap-x-4'>
             <Button variant='outlined' color='secondary' startIcon={<i className='ri-upload-2-line' />}>
               Export
             </Button>

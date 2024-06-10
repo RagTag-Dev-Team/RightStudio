@@ -33,7 +33,7 @@ const CustomerStats = (props: CardStatsCustomerStatsProps) => {
               <Typography>{content}</Typography>
             </div>
           ) : (
-            <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-2' />
+            <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-1' />
           )}
           <Typography>{description}</Typography>
         </div>

@@ -18,6 +18,7 @@ import type {
 // Vertical Menu Data
 export type VerticalMenuItemDataType = Omit<VerticalMenuItemProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   label: ReactNode
+  excludeLang?: boolean
   icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps
@@ -37,6 +38,7 @@ export type VerticalMenuDataType = VerticalMenuItemDataType | VerticalSubMenuDat
 // Horizontal Menu Data
 export type HorizontalMenuItemDataType = Omit<HorizontalMenuItemProps, 'children' | 'icon' | 'prefix' | 'suffix'> & {
   label: ReactNode
+  excludeLang?: boolean
   icon?: string
   prefix?: ReactNode | ChipProps
   suffix?: ReactNode | ChipProps

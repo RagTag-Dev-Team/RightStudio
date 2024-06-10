@@ -22,6 +22,9 @@ const Card = styled(MuiCard)<Props>(({ color }) => ({
   transition: 'border 0.3s ease-in-out, box-shadow 0.3s ease-in-out, margin 0.3s ease-in-out',
   borderBottomWidth: '2px',
   borderBottomColor: `var(--mui-palette-${color}-darkerOpacity)`,
+  '[data-skin="bordered"] &:hover': {
+    boxShadow: 'none'
+  },
   '&:hover': {
     borderBottomWidth: '3px',
     borderBottomColor: `var(--mui-palette-${color}-main) !important`,

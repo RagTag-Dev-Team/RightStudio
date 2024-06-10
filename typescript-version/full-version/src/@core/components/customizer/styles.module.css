@@ -69,10 +69,6 @@
   color: var(--mui-palette-text-secondary);
 }
 
-.textPrimaryColor {
-  color: var(--mui-palette-text-primary);
-}
-
 .dotStyles {
   position: absolute;
   inset-block-start: 0;
@@ -96,10 +92,6 @@
   flex-direction: column;
   padding: 24px;
   gap: 32px;
-}
-
-.chip {
-  border-radius: 4px;
 }
 
 .itemWrapper {

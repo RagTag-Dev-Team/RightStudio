@@ -14,6 +14,7 @@ import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
@@ -205,7 +206,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data]
+    []
   )
 
   const table = useReactTable({
@@ -241,6 +242,10 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
     setAnchorEl(event.currentTarget)
   }
 
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <Card>
       <CardHeader
@@ -273,6 +278,17 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
             >
               Export
             </Button>
+            <Menu open={open} anchorEl={anchorEl} onClose={handleClose} id='user-view-overview-export'>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                pdf
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                xlsx
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                csv
+              </MenuItem>
+            </Menu>
           </div>
         }
       />

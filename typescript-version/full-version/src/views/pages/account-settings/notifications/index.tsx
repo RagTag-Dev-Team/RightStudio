@@ -28,27 +28,27 @@ type TableDataType = {
 // Vars
 const tableData: TableDataType[] = [
   {
-    app: false,
+    app: true,
     email: true,
-    browser: false,
+    browser: true,
     type: 'New for you'
   },
   {
-    app: false,
-    email: false,
+    app: true,
+    email: true,
     browser: true,
     type: 'Account activity'
   },
   {
-    app: true,
-    email: false,
-    browser: false,
+    app: false,
+    email: true,
+    browser: true,
     type: 'A new browser used to sign in'
   },
   {
     app: false,
-    email: false,
-    browser: true,
+    email: true,
+    browser: false,
     type: 'A new device is linked'
   }
 ]

@@ -33,8 +33,9 @@ By following these steps, you can set up and manage your environment variables e
 We have use the `fake-db` and fake-db API calls are not supported to access the environment variables. Hence, we have used `NEXT_PUBLIC` prefix with our environment variables. You can find the environment variables' file `.env` in the root of the project. The environment variables that we have used in the `.env` file are as follows:
 
 ```bash
-API_URL=http://localhost:3000/api
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+BASEPATH=
+API_URL=http://localhost:3000${BASEPATH}/api
+NEXT_PUBLIC_APP_URL=http://localhost:3000${BASEPATH}
 ```
 
 ### Authentication
@@ -50,7 +51,8 @@ We have used the [NextAuth.js](https://next-auth.js.org/) library for authentica
 
 ```bash
 # NextAuth Configuration
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_BASEPATH=${BASEPATH}/api/auth
+NEXTAUTH_URL=http://localhost:3000${BASEPATH}/api/auth
 NEXTAUTH_SECRET=
 
 # Google OAuth 2.0 Credentials

@@ -27,6 +27,9 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
+// Style Imports
+import './styles.css'
+
 const options = [
   'January',
   'February',
@@ -65,7 +68,7 @@ const MonthButton = () => {
 
   return (
     <>
-      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button'>
+      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button' size='small'>
         <Button>{options[selectedIndex]}</Button>
         <Button
           className='pli-0'
@@ -75,7 +78,7 @@ const MonthButton = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <i className='ri-arrow-down-s-line' />
+          <i className='ri-arrow-down-s-line text-lg' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>
@@ -169,7 +172,8 @@ const LogisticsShipmentStatistics = () => {
       offsetY: 10
     },
     grid: {
-      strokeDashArray: 8
+      strokeDashArray: 8,
+      borderColor: 'var(--mui-palette-divider)'
     },
     colors: ['var(--mui-palette-warning-main)', 'var(--mui-palette-primary-main)'],
     fill: {
@@ -190,7 +194,7 @@ const LogisticsShipmentStatistics = () => {
       categories: ['1 Jan', '2 Jan', '3 Jan', '4 Jan', '5 Jan', '6 Jan', '7 Jan', '8 Jan', '9 Jan', '10 Jan'],
       labels: {
         style: {
-          colors: 'var(--mui-palette-text-secondary)',
+          colors: 'var(--mui-palette-text-disabled)',
           fontSize: '13px',
           fontWeight: 400
         }
@@ -205,7 +209,7 @@ const LogisticsShipmentStatistics = () => {
     yaxis: {
       labels: {
         style: {
-          colors: 'var(--mui-palette-text-secondary)',
+          colors: 'var(--mui-palette-text-disabled)',
           fontSize: '13px',
           fontWeight: 400
         }
@@ -217,7 +221,7 @@ const LogisticsShipmentStatistics = () => {
     <Card>
       <CardHeader title='Shipment Statistics' subheader='Total number of deliveries 23.8k' action={<MonthButton />} />
       <CardContent>
-        <AppReactApexCharts type='line' height={320} series={series} options={options} />
+        <AppReactApexCharts id='shipment-statistics' type='line' height={320} series={series} options={options} />
       </CardContent>
     </Card>
   )

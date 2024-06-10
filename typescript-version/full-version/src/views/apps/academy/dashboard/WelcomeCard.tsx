@@ -209,7 +209,7 @@ const WelcomeCard = () => {
             <Chip label='+18.4%' variant='tonal' size='small' color='success' />
           </div>
         </div>
-        <AppReactApexCharts type='donut' height={189} width={150} options={options} series={[23, 35, 10, 20, 35, 23]} />
+        <AppReactApexCharts type='donut' height={230} width={209} options={options} series={[23, 35, 10, 20, 35, 23]} />
       </div>
     </div>
   )

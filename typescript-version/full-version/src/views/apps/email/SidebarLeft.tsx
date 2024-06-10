@@ -117,7 +117,7 @@ const SidebarLeft = (props: Props) => {
           '& .MuiDrawer-paper': {
             boxShadow: 'none',
             overflow: 'hidden',
-            width: isBelowSmScreen ? '260px' : '300px',
+            width: '260px',
             position: !isBelowMdScreen ? 'static' : 'absolute'
           }
         }}

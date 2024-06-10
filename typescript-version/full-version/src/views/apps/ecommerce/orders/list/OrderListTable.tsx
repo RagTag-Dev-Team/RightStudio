@@ -198,7 +198,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
               >
                 {row.original.customer}
               </Typography>
-              <Typography>{row.original.email}</Typography>
+              <Typography variant='body2'>{row.original.email}</Typography>
             </div>
           </div>
         )
@@ -213,7 +213,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
                 `text-${paymentStatus[row.original.payment].color}`
               )}
             />
-            <Typography color={`${paymentStatus[row.original.payment].color}.main`}>
+            <Typography color={`${paymentStatus[row.original.payment].color}.main`} className='font-medium'>
               {paymentStatus[row.original.payment].text}
             </Typography>
           </div>
@@ -252,6 +252,8 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <OptionMenu
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-[22px]'
               options={[
                 {
                   text: 'View',
@@ -323,12 +325,12 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex justify-between flex-col items-center sm:flex-row'>
+      <CardContent className='flex justify-between items-center gap-4'>
         <DebouncedInput
           value={globalFilter ?? ''}
           onChange={value => setGlobalFilter(String(value))}
           placeholder='Search Order'
-          className='is-full sm:is-auto'
+          className='sm:is-auto'
         />
         <Button variant='outlined' color='secondary' startIcon={<i className='ri-upload-2-line' />}>
           Export

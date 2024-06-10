@@ -10,7 +10,6 @@ The Starter Kit is your quick-launch platform, designed for developers who want 
   - No authentication system
   - No i18n (Internationalization / Translation)
   - No built-in theme customizer
-  - No Middleware
   - Simplified navbar
   - Comes with four pages: two sample pages, a 404 error page, and a login page
 

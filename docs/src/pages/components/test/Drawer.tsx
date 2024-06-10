@@ -32,7 +32,11 @@ const DrawerComponent = () => {
       <Button variant='outlined' onClick={toggleDrawer(true)}>
         Left
       </Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}  sx={{ '& .MuiDrawer-paper': { width: '370px' } }}>
+      <Drawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        PaperProps={{ sx: { width: 370 } }}
+      >
         <div role='presentation' className='is-[260]' onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <List>
             <ListItem disablePadding>

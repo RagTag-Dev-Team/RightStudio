@@ -8,7 +8,7 @@ import type { Theme } from '@mui/material/styles'
 const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: 'var(--mui-shape-borderRadius)',
   '& .fc': {
     zIndex: 1,
 
@@ -106,7 +106,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           padding: theme.spacing(2.2, 6),
 
           '&:last-of-type, &:first-of-type': {
-            borderRadius: theme.shape.borderRadius
+            borderRadius: 'var(--mui-shape-borderRadius)'
           },
           '&:first-of-type': {
             borderTopRightRadius: 0,
@@ -158,7 +158,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           // backgroundColor: bgColors.primaryLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            ...theme.typography.caption,
+            fontSize: theme.typography.caption.fontSize,
             fontWeight: 500,
             color: 'var(--mui-palette-primary-main)',
             padding: 0
@@ -171,7 +171,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           // backgroundColor: bgColors.successLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-success-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            ...theme.typography.caption,
+            fontSize: theme.typography.caption.fontSize,
             fontWeight: 500,
             color: 'var(--mui-palette-success-main)',
             padding: 0
@@ -184,7 +184,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           // backgroundColor: bgColors.errorLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-error-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            ...theme.typography.caption,
+            fontSize: theme.typography.caption.fontSize,
             fontWeight: 500,
             color: 'var(--mui-palette-error-main)',
             padding: 0
@@ -197,7 +197,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           // backgroundColor: bgColors.warningLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-warning-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            ...theme.typography.caption,
+            fontSize: theme.typography.caption.fontSize,
             fontWeight: 500,
             color: 'var(--mui-palette-warning-main)',
             padding: 0
@@ -210,7 +210,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           // backgroundColor: bgColors.infoLight.backgroundColor,
           backgroundColor: 'var(--mui-palette-info-lightOpacity)',
           '& .fc-event-title, & .fc-event-time': {
-            ...theme.typography.caption,
+            fontSize: theme.typography.caption.fontSize,
             fontWeight: 500,
             color: 'var(--mui-palette-info-main)',
             padding: 0
@@ -263,8 +263,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         }
       },
       '&.fc-daygrid-event': {
-        marginLeft: '0px',
-        marginRight: '0px',
+        margin: 0,
         borderRadius: '500px'
       }
     },
@@ -297,12 +296,12 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         padding: theme.spacing(1, 3),
         borderRadius: 4
       },
-      '&:not(:last-of-type)': {
-        marginBottom: theme.spacing(2.5)
+      '&:not(:last-of-type) .fc-event': {
+        marginBottom: `${theme.spacing(2.5)} !important`
       }
     },
     '& .fc-daygrid-day-bottom': {
-      marginTop: theme.spacing(1.2)
+      marginTop: theme.spacing(2.5)
     },
     '& .fc-daygrid-day': {
       padding: '8px',
@@ -314,13 +313,15 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       borderColor: 'var(--mui-palette-divider)',
       borderInlineStart: 0
     },
-    '& .fc-day-past, & .fc-day-future': {
-      '&.fc-daygrid-day-number': {
-        color: 'var(--mui-palette-text-disabled)'
-      }
-    },
     '& .fc-daygrid-day-events': {
-      marginTop: theme.spacing(2)
+      marginTop: theme.spacing(2.5),
+      minHeight: '5rem !important'
+    },
+    '& .fc-day-other .fc-daygrid-day-top': {
+      opacity: 1,
+      '& .fc-daygrid-day-number': {
+        color: 'var(--mui-palette-text-disabled) !important'
+      }
     },
 
     // All Views Event
@@ -328,7 +329,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       textDecoration: 'none !important'
     },
     '& .fc-daygrid-day-number': {
-      color: `${theme.palette.text.secondary} !important`
+      color: 'var(--mui-palette-text-secondary) !important',
+      padding: 0
     },
     '& .fc-timegrid-slot-label-cushion, & .fc-list-event-time': {
       color: 'var(--mui-palette-text-primary) !important'
@@ -395,11 +397,18 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         display: 'none'
       },
       '& .fc-timegrid-event': {
+        '& .fc-event-time': {
+          ...theme.typography.caption,
+          marginBlockEnd: 2
+        },
+        '& .fc-event-title': {
+          lineHeight: 1.5385
+        },
         boxShadow: 'none'
       },
       '.fc-timegrid-col-events': {
         margin: 0,
-        '& .fc-event-main-frame': {
+        '& .fc-event-main': {
           padding: theme.spacing(2)
         }
       }
@@ -472,17 +481,15 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
       },
       boxShadow: 1,
       borderColor: 'var(--mui-palette-divider)',
+      borderRadius: 'var(--mui-shape-borderRadius)',
       background: 'var(--mui-palette-background-paper)',
       '& .fc-popover-header': {
         padding: theme.spacing(2),
+        borderStartStartRadius: 'var(--mui-shape-borderRadius)',
+        borderStartEndRadius: 'var(--mui-shape-borderRadius)',
         background: 'var(--mui-palette-action-hover)',
         '& .fc-popover-title, & .fc-popover-close': {
           color: 'var(--mui-palette-text-primary)'
-        }
-      },
-      '& .fc-popover-body': {
-        '& *:not(.fc-event-main):not(:last-of-type)': {
-          marginBottom: theme.spacing(1.2)
         }
       }
     },

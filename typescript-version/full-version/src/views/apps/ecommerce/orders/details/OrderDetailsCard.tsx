@@ -130,7 +130,9 @@ const OrderTable = () => {
           <div className='flex items-center gap-3'>
             <img src={row.original.productImage} alt={row.original.productName} height={34} />
             <div>
-              <Typography>{row.original.productName}</Typography>
+              <Typography color='text.primary' className='font-medium'>
+                {row.original.productName}
+              </Typography>
               <Typography variant='body2' color='textSecondary'>
                 {row.original.brand}
               </Typography>
@@ -231,7 +233,9 @@ const OrderTable = () => {
                 return (
                   <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                     {row.getVisibleCells().map(cell => (
-                      <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                      <td key={cell.id} className='first:is-14'>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
                     ))}
                   </tr>
                 )

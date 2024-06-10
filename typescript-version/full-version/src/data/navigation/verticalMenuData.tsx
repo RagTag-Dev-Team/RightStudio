@@ -14,7 +14,7 @@ const verticalMenuData = (
   {
     label: dictionary['navigation'].dashboards,
     suffix: {
-      label: '3',
+      label: '5',
       color: 'error'
     },
     icon: 'tabler-smart-home',
@@ -42,6 +42,41 @@ const verticalMenuData = (
       {
         label: dictionary['navigation'].logistics,
         href: '/dashboards/logistics'
+      }
+    ]
+  },
+  {
+    label: dictionary['navigation'].frontPages,
+    children: [
+      {
+        label: dictionary['navigation'].landing,
+        href: '/front-pages/landing-page',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].pricing,
+        href: '/front-pages/pricing',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].payment,
+        href: '/front-pages/payment',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].checkout,
+        href: '/front-pages/checkout',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].helpCenter,
+        href: '/front-pages/help-center',
+        target: '_blank',
+        excludeLang: true
       }
     ]
   },

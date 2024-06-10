@@ -3,9 +3,9 @@ import { useEffect } from 'react'
 import type { ReactNode, SyntheticEvent } from 'react'
 
 // Mui Imports
-import Accordion from '@mui/material/Accordion'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import AccordionSummary from '@mui/material/AccordionSummary'
+import MuiAccordion from '@mui/material/Accordion'
+import MuiAccordionDetails from '@mui/material/AccordionDetails'
+import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -17,6 +17,9 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineDot from '@mui/lab/TimelineDot'
 import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
+import type { AccordionProps } from '@mui/material/Accordion'
+import type { AccordionSummaryProps } from '@mui/material/AccordionSummary'
+import type { AccordionDetailsProps } from '@mui/material/AccordionDetails'
 import type { TimelineProps } from '@mui/lab/Timeline'
 
 // Third-party Imports
@@ -51,6 +54,25 @@ type Props = {
     }[]
   }
 }
+
+// Styled component for Accordion component
+const Accordion = styled(MuiAccordion)<AccordionProps>({
+  boxShadow: 'none !important',
+  border: 'none',
+  '&:before': {
+    content: 'none'
+  }
+})
+
+// Styled component for AccordionSummary component
+const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(({ theme }) => ({
+  padding: theme.spacing(4, 0)
+}))
+
+// Styled component for AccordionDetails component
+const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>({
+  padding: 0
+})
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -131,7 +153,7 @@ const VehicleTracking = ({
   handleChange: (panel: number) => (event: SyntheticEvent, isExpanded: boolean) => void
 }) => {
   return (
-    <Accordion expanded={expanded === index} onChange={handleChange(index)} className='shadow-none before:border-0'>
+    <Accordion expanded={expanded === index} onChange={handleChange(index)}>
       <AccordionSummary>
         <div className='flex gap-4 items-center'>
           <CustomAvatar skin='light' color='secondary'>
@@ -144,14 +166,14 @@ const VehicleTracking = ({
         </div>
       </AccordionSummary>
       <AccordionDetails>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col gap-1 plb-4'>
           <div className='flex items-center justify-between'>
             <Typography color='text.primary'>Delivery Process</Typography>
             <Typography>{vehicleTrackingData.progress}%</Typography>
           </div>
-          <LinearProgress variant='determinate' className='bg-black' value={vehicleTrackingData.progress} />
+          <LinearProgress variant='determinate' value={vehicleTrackingData.progress} />
         </div>
-        <Timeline>
+        <Timeline className='pbs-4'>
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot variant='outlined' className='mlb-0'>
@@ -262,6 +284,7 @@ const FleetSidebar = (props: Props) => {
         position: !isBelowMdScreen ? 'static' : 'absolute',
         ...(isBelowSmScreen && sidebarOpen && { width: '100%' }),
         '& .MuiDrawer-paper': {
+          boxShadow: 'none',
           overflow: 'hidden',
           width: isBelowSmScreen ? '100%' : '360px',
           position: !isBelowMdScreen ? 'static' : 'absolute'
