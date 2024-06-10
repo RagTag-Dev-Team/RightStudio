@@ -12,7 +12,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 
 const CustomerStats = (props: CardStatsCustomerStatsProps) => {
   // Props
-  const { title, avatarIcon, color, description, value, content, chipLable } = props
+  const { title, avatarIcon, color, description, stats, content, chipLabel } = props
 
   return (
     <Card>
@@ -25,15 +25,15 @@ const CustomerStats = (props: CardStatsCustomerStatsProps) => {
         </Typography>
 
         <div className='flex flex-col items-start'>
-          {value ? (
+          {stats ? (
             <div className='flex items-center gap-1'>
               <Typography variant='h5' color={`${color}.main`}>
-                {value}
+                {stats}
               </Typography>
               <Typography>{content}</Typography>
             </div>
           ) : (
-            <Chip variant='tonal' label={chipLable} color={color} size='small' className='mbe-1' />
+            <Chip variant='tonal' label={chipLabel} color={color} size='small' className='mbe-1' />
           )}
           <Typography>{description}</Typography>
         </div>

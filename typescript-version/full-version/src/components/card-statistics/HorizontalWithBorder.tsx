@@ -35,7 +35,7 @@ const Card = styled(MuiCard)<Props>(({ color }) => ({
 
 const HorizontalWithBorder = (props: CardStatsHorizontalWithBorderProps) => {
   // Props
-  const { title, value, change, avatarIcon, color } = props
+  const { title, stats, trendNumber, avatarIcon, color } = props
 
   return (
     <Card color={color || 'primary'}>
@@ -44,12 +44,12 @@ const HorizontalWithBorder = (props: CardStatsHorizontalWithBorderProps) => {
           <CustomAvatar color={color} skin='light' variant='rounded'>
             <i className={avatarIcon} />
           </CustomAvatar>
-          <Typography variant='h4'>{value}</Typography>
+          <Typography variant='h4'>{stats}</Typography>
         </div>
         <div className='flex flex-col'>
           <Typography>{title}</Typography>
           <div className='flex items-center gap-2'>
-            <Typography className='font-medium'>{`${change > 0 ? '+' : ''}${change}%`}</Typography>
+            <Typography className='font-medium'>{`${trendNumber > 0 ? '+' : ''}${trendNumber}%`}</Typography>
             <Typography variant='body2' color='text.disabled'>
               than last week
             </Typography>

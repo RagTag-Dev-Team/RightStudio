@@ -18,8 +18,8 @@ export type CardStatsHorizontalWithAvatarProps = {
 
 export type CardStatsHorizontalWithBorderProps = {
   title: string
-  value: number
-  change: number
+  stats: number
+  trendNumber: number
   avatarIcon: string
   color?: ThemeColor
 }
@@ -31,13 +31,13 @@ export type CardStatsCustomerStatsProps = {
   description: string
 } & (
   | {
-      value?: string
+      stats?: string
       content?: string
-      chipLable?: never
+      chipLabel?: never
     }
   | {
-      chipLable?: string
-      value?: never
+      chipLabel?: string
+      stats?: never
       content?: never
     }
 )
