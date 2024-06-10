@@ -62,35 +62,35 @@ const ProductInventory = () => {
                   label='Restock'
                   icon={<i className='ri-add-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start'
+                  className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='shipping'
                   label='Shipping'
                   icon={<i className='ri-car-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start'
+                  className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='global-delivery'
                   label='Global Delivery'
                   icon={<i className='ri-global-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start'
+                  className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='attributes'
                   label='Attributes'
                   icon={<i className='ri-link-m' />}
                   iconPosition='start'
-                  className='flex-row justify-start'
+                  className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='advanced'
                   label='Advanced'
                   icon={<i className='ri-lock-unlock-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start'
+                  className='flex-row justify-start min-is-full'
                 />
               </CustomTabList>
             </div>
@@ -105,18 +105,10 @@ const ProductInventory = () => {
                   </Button>
                 </div>
                 <div className='flex flex-col gap-2'>
-                  <Typography color='text.primary'>
-                    Product in stock now: <span className='font-medium'>54</span>
-                  </Typography>
-                  <Typography color='text.primary'>
-                    Product in transit: <span className='font-medium'>390</span>
-                  </Typography>
-                  <Typography color='text.primary'>
-                    Last time restocked: <span className='font-medium'>24th June, 2022</span>
-                  </Typography>
-                  <Typography color='text.primary'>
-                    Total stock over lifetime: <span className='font-medium'>2,430</span>
-                  </Typography>
+                  <Typography color='text.primary'>Product in stock now: 54</Typography>
+                  <Typography color='text.primary'>Product in transit: 390</Typography>
+                  <Typography color='text.primary'>Last time restocked: 24th June, 2022</Typography>
+                  <Typography color='text.primary'>Total stock over lifetime: 2,430</Typography>
                 </div>
               </TabPanel>
               <TabPanel value='shipping'>

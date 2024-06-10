@@ -19,6 +19,7 @@ const OrderIdFormat = () => {
           <Grid item xs={12} md={6}>
             <TextField
               fullWidth
+              label='Prefix'
               placeholder='Prefix'
               InputProps={{
                 startAdornment: <InputAdornment position='start'>#</InputAdornment>
@@ -28,6 +29,7 @@ const OrderIdFormat = () => {
           <Grid item xs={12} md={6}>
             <TextField
               fullWidth
+              label='Suffix'
               placeholder='Suffix'
               InputProps={{
                 endAdornment: <InputAdornment position='end'>$</InputAdornment>

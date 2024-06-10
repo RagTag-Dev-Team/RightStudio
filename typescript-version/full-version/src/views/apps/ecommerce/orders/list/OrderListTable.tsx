@@ -253,6 +253,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
           <div className='flex items-center'>
             <OptionMenu
               iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-[22px]'
               options={[
                 {
                   text: 'View',

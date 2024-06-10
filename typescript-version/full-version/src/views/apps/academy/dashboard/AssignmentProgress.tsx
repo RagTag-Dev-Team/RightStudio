@@ -11,6 +11,7 @@ import type { ThemeColor } from '@core/types'
 // Components Imports
 import CustomIconButton from '@core/components/mui/IconButton'
 import OptionMenu from '@core/components/option-menu'
+import DirectionalIcon from '@components/DirectionalIcon'
 
 type DataType = {
   title: string
@@ -56,13 +57,13 @@ const AssignmentProgress = () => {
             </div>
             <div className='flex justify-between items-center is-full gap-4'>
               <div>
-                <Typography className='font-medium line-clamp-2' color='text.primary'>
+                <Typography className='font-medium' color='text.primary'>
                   {item.title}
                 </Typography>
                 <Typography variant='body2'>{`${item.tasks} Tasks`}</Typography>
               </div>
               <CustomIconButton variant='outlined' color='secondary' className='min-is-fit'>
-                <i className='ri-arrow-right-s-line' />
+                <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
               </CustomIconButton>
             </div>
           </div>

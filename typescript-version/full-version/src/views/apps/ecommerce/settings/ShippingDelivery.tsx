@@ -63,7 +63,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
               <th>Rate Name</th>
               <th>Condition</th>
               <th>Price</th>
-              <th className='text-end'>Actions</th>
+              <th className='is-[100px]'>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -72,9 +72,10 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
                 <td>{data.rate}</td>
                 <td>{data.condition}</td>
                 <td>{data.price}</td>
-                <td className='text-end'>
+                <td className='is-[100px]'>
                   <OptionMenu
-                    iconClassName='text-textSecondary'
+                    iconButtonProps={{ size: 'medium' }}
+                    iconClassName='text-textSecondary text-[22px]'
                     options={[
                       { text: 'Edit', icon: 'ri-pencil-line' },
                       { text: 'Delete', icon: 'ri-delete-bin-7-line' }

@@ -236,7 +236,8 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         header: 'Actions',
         cell: ({ row }) => (
           <OptionMenu
-            iconClassName='text-textSecondary'
+            iconButtonProps={{ size: 'medium' }}
+            iconClassName='text-textSecondary text-[22px]'
             options={[
               {
                 text: 'View',

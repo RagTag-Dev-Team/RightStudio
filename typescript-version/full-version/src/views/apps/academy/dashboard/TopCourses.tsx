@@ -38,8 +38,8 @@ const TopCourses = () => {
             <CustomAvatar variant='rounded' skin='light' color={item.color}>
               <i className={item.icon} />
             </CustomAvatar>
-            <div className='flex justify-between items-center gap-4 is-full'>
-              <Typography className='font-medium text-wrap line-clamp-2' color='text.primary'>
+            <div className='flex justify-between items-center gap-4 is-full flex-wrap'>
+              <Typography className='font-medium flex-1' color='text.primary'>
                 {item.title}
               </Typography>
               <Chip label={`${item.views} Views`} variant='tonal' size='small' color='secondary' />

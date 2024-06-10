@@ -121,95 +121,99 @@ const Courses = (props: Props) => {
             />
           </div>
         </div>
-        <Grid container spacing={6}>
-          {data.slice(activePage * 6, activePage * 6 + 6).map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <div className='border rounded bs-full'>
-                <div className='pli-2 pbs-2'>
-                  <Link href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)} className='flex'>
-                    <img src={item.tutorImg} alt={item.courseTitle} className='is-full' />
-                  </Link>
-                </div>
-                <div className='flex flex-col gap-4 p-5'>
-                  <div className='flex items-center justify-between'>
-                    <Chip label={item.tags} variant='tonal' size='small' color={chipColor[item.tags].color} />
-                    <div className='flex items-start'>
-                      <Typography className='font-medium mie-1'>{item.rating}</Typography>
-                      <i className='ri-star-fill text-warning mie-2' />
-                      <Typography>{`(${item.ratingCount})`}</Typography>
+        {data.length > 0 ? (
+          <Grid container spacing={6}>
+            {data.slice(activePage * 6, activePage * 6 + 6).map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <div className='border rounded bs-full'>
+                  <div className='pli-2 pbs-2'>
+                    <Link href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)} className='flex'>
+                      <img src={item.tutorImg} alt={item.courseTitle} className='is-full' />
+                    </Link>
+                  </div>
+                  <div className='flex flex-col gap-4 p-5'>
+                    <div className='flex items-center justify-between'>
+                      <Chip label={item.tags} variant='tonal' size='small' color={chipColor[item.tags].color} />
+                      <div className='flex items-start'>
+                        <Typography className='font-medium mie-1'>{item.rating}</Typography>
+                        <i className='ri-star-fill text-warning mie-2' />
+                        <Typography>{`(${item.ratingCount})`}</Typography>
+                      </div>
                     </div>
-                  </div>
-                  <div className='flex flex-col gap-1'>
-                    <Typography
-                      variant='h5'
-                      component={Link}
-                      href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
-                      className='hover:text-primary'
-                    >
-                      {item.courseTitle}
-                    </Typography>
-                    <Typography>{item.desc}</Typography>
-                  </div>
-                  <div className='flex flex-col gap-1'>
+                    <div className='flex flex-col gap-1'>
+                      <Typography
+                        variant='h5'
+                        component={Link}
+                        href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
+                        className='hover:text-primary'
+                      >
+                        {item.courseTitle}
+                      </Typography>
+                      <Typography>{item.desc}</Typography>
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                      {item.completedTasks === item.totalTasks ? (
+                        <div className='flex items-center gap-1'>
+                          <i className='ri-check-line text-xl text-success' />
+                          <Typography color='success.main'>Completed</Typography>
+                        </div>
+                      ) : (
+                        <div className='flex items-center gap-1'>
+                          <i className='ri-time-line text-xl' />
+                          <Typography>{`${item.time}`}</Typography>
+                        </div>
+                      )}
+                      <LinearProgress
+                        color='primary'
+                        value={Math.floor((item.completedTasks / item.totalTasks) * 100)}
+                        variant='determinate'
+                        className='is-full bs-2'
+                      />
+                    </div>
                     {item.completedTasks === item.totalTasks ? (
-                      <div className='flex items-center gap-1'>
-                        <i className='ri-check-line text-xl text-success' />
-                        <Typography color='success.main'>Completed</Typography>
-                      </div>
-                    ) : (
-                      <div className='flex items-center gap-1'>
-                        <i className='ri-time-line text-xl' />
-                        <Typography>{`${item.time}`}</Typography>
-                      </div>
-                    )}
-                    <LinearProgress
-                      color='primary'
-                      value={Math.floor((item.completedTasks / item.totalTasks) * 100)}
-                      variant='determinate'
-                      className='is-full bs-2'
-                    />
-                  </div>
-                  {item.completedTasks === item.totalTasks ? (
-                    <Button
-                      variant='outlined'
-                      startIcon={<i className='ri-refresh-line' />}
-                      component={Link}
-                      href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
-                    >
-                      Start Over
-                    </Button>
-                  ) : (
-                    <div className='flex flex-wrap gap-4'>
                       <Button
-                        fullWidth
                         variant='outlined'
-                        color='secondary'
                         startIcon={<i className='ri-refresh-line' />}
                         component={Link}
                         href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
-                        className='is-auto flex-auto'
                       >
                         Start Over
                       </Button>
-                      <Button
-                        fullWidth
-                        variant='outlined'
-                        endIcon={
-                          <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
-                        }
-                        component={Link}
-                        href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
-                        className='is-auto flex-auto'
-                      >
-                        Continue
-                      </Button>
-                    </div>
-                  )}
+                    ) : (
+                      <div className='flex flex-wrap gap-4'>
+                        <Button
+                          fullWidth
+                          variant='outlined'
+                          color='secondary'
+                          startIcon={<i className='ri-refresh-line' />}
+                          component={Link}
+                          href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
+                          className='is-auto flex-auto'
+                        >
+                          Start Over
+                        </Button>
+                        <Button
+                          fullWidth
+                          variant='outlined'
+                          endIcon={
+                            <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                          }
+                          component={Link}
+                          href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
+                          className='is-auto flex-auto'
+                        >
+                          Continue
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </Grid>
-          ))}
-        </Grid>
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Typography className='text-center'>No courses found</Typography>
+        )}
         <div className='flex justify-center'>
           <Pagination
             count={Math.ceil(data.length / 6)}

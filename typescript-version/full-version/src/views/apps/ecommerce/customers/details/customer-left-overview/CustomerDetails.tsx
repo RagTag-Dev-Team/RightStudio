@@ -33,7 +33,7 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
               <Typography>Customer ID #{customerData?.customerId}</Typography>
             </div>
           </div>
-          <div className='flex items-center gap-12'>
+          <div className='flex items-center gap-x-12 gap-y-3 flex-wrap'>
             <div className='flex items-center gap-4'>
               <CustomAvatar variant='rounded' skin='light' color='primary'>
                 <i className='ri-shopping-cart-2-line' />

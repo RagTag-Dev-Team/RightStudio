@@ -237,10 +237,11 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton size='small'>
-              <i className='ri-edit-box-line text-textSecondary' />
+              <i className='ri-edit-box-line text-[22px] text-textSecondary' />
             </IconButton>
             <OptionMenu
-              iconClassName='text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary text-[22px]'
               options={[
                 { text: 'Download', icon: 'ri-download-line' },
                 {

@@ -27,6 +27,9 @@ import type { ApexOptions } from 'apexcharts'
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
+// Style Imports
+import './styles.css'
+
 const options = [
   'January',
   'February',
@@ -65,7 +68,7 @@ const MonthButton = () => {
 
   return (
     <>
-      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button'>
+      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button' size='small'>
         <Button>{options[selectedIndex]}</Button>
         <Button
           className='pli-0'
@@ -75,7 +78,7 @@ const MonthButton = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <i className='ri-arrow-down-s-line' />
+          <i className='ri-arrow-down-s-line text-lg' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>
@@ -218,7 +221,7 @@ const LogisticsShipmentStatistics = () => {
     <Card>
       <CardHeader title='Shipment Statistics' subheader='Total number of deliveries 23.8k' action={<MonthButton />} />
       <CardContent>
-        <AppReactApexCharts type='line' height={320} series={series} options={options} />
+        <AppReactApexCharts id='shipment-statistics' type='line' height={320} series={series} options={options} />
       </CardContent>
     </Card>
   )

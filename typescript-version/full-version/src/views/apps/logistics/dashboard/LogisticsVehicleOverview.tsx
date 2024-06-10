@@ -97,9 +97,11 @@ const LogisticsVehicleOverview = () => {
                     color: theme =>
                       index === 0
                         ? 'var(--mui-palette-text-primary)'
-                        : // eslint-disable-next-line lines-around-comment
-                          // @ts-ignore
-                          theme.palette.getContrastText(theme.palette[item.progressColor][item.progressColorVariant])
+                        : item.progressColor === 'info'
+                          ? 'var(--mui-palette-common-white)'
+                          : // eslint-disable-next-line lines-around-comment
+                            // @ts-ignore
+                            theme.palette.getContrastText(theme.palette[item.progressColor][item.progressColorVariant])
                   }}
                 >
                   {item.progressData}
@@ -112,8 +114,8 @@ const LogisticsVehicleOverview = () => {
               <tbody>
                 {data.map((item, index) => (
                   <tr key={index}>
-                    <td className='flex items-center gap-2'>
-                      <i className={classnames(item.icon, 'text-[1.5rem]')}></i>
+                    <td className='flex items-center gap-2 pis-0'>
+                      <i className={classnames(item.icon, 'text-textPrimary text-[1.5rem]')}></i>
                       <Typography color='text.primary'>{item.heading}</Typography>
                     </td>
                     <td className='text-end'>
@@ -121,7 +123,7 @@ const LogisticsVehicleOverview = () => {
                         {item.time}
                       </Typography>
                     </td>
-                    <td className='text-end'>
+                    <td className='text-end pie-0'>
                       <Typography>{item.progressData}</Typography>
                     </td>
                   </tr>

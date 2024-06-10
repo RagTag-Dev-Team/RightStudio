@@ -231,7 +231,11 @@ const NavSearch = () => {
                         value={`${item.name} ${section.title} ${item.shortcut}`}
                         onSelect={() => onSearchItemSelect(item)}
                       >
-                        {item.icon && <div className='flex text-xl'>{item.icon}</div>}
+                        {item.icon && (
+                          <div className='flex text-xl'>
+                            <i className={item.icon} />
+                          </div>
+                        )}
                         {item.name}
                       </SearchItem>
                     )

@@ -174,7 +174,8 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center'>
             <OptionMenu
-              iconClassName='text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary text-[22px]'
               options={[
                 {
                   text: 'View',
