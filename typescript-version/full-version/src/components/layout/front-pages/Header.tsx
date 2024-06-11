@@ -13,6 +13,9 @@ import type { Theme } from '@mui/material/styles'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Mode } from '@core/types'
+
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
 import ModeDropdown from '@components/layout/shared/ModeDropdown'
@@ -25,7 +28,7 @@ import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
 // Styles Imports
 import styles from './styles.module.css'
 
-const Header = () => {
+const Header = ({ mode }: { mode: Mode }) => {
   // States
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -49,12 +52,12 @@ const Header = () => {
               </IconButton>
 
               <Logo href='/front-pages/landing-page' />
-              <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           ) : (
             <div className='flex items-center gap-10'>
               <Logo href='/front-pages/landing-page' />
-              <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           )}
           <div className='flex items-center gap-2 sm:gap-4'>
