@@ -406,7 +406,7 @@ const MailDetails = (props: Props) => {
                   ) : (
                     <div className='flex flex-col gap-y-6'>
                       <CardContent className='pbe-0'>
-                        <Typography>{`Reply to ${currentEmail.from.name}`}</Typography>
+                        <Typography color='text.primary'>{`Reply to ${currentEmail.from.name}`}</Typography>
                       </CardContent>
                       <div>
                         <EditorToolbar editor={editor} />
