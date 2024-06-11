@@ -7,6 +7,7 @@ settings:
 overrides:
   immutable: 3.7.4
   rimraf: ^5.0.7
+  '@tiptap/core': ^2.0.0
 
 importers:
 
@@ -43,25 +44,25 @@ importers:
         specifier: ^5.11.5
         version: 5.11.5
       '@fullcalendar/core':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14
       '@fullcalendar/daygrid':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14(@fullcalendar/core@6.1.14)
       '@fullcalendar/interaction':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14(@fullcalendar/core@6.1.14)
       '@fullcalendar/list':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14(@fullcalendar/core@6.1.14)
       '@fullcalendar/react':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14(@fullcalendar/core@6.1.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@fullcalendar/timegrid':
-        specifier: ^6.1.13
+        specifier: ^6.1.14
         version: 6.1.14(@fullcalendar/core@6.1.14)
       '@hookform/resolvers':
-        specifier: ^3.4.2
+        specifier: ^3.6.0
         version: 3.6.0(react-hook-form@7.51.5(react@18.3.1))
       '@mui/lab':
         specifier: 5.0.0-alpha.170
@@ -190,11 +191,11 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       valibot:
-        specifier: ^0.30.0
-        version: 0.30.0
+        specifier: ^0.31.1
+        version: 0.31.1
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.216
+        specifier: ^2.2.218
         version: 2.2.218
       '@iconify/tools':
         specifier: ^4.0.4
@@ -263,7 +264,7 @@ importers:
         specifier: ^0.6.4
         version: 0.6.4(postcss@8.4.38)
       prettier:
-        specifier: ^3.3.1
+        specifier: ^3.3.2
         version: 3.3.2
       prisma:
         specifier: ^5.15.0
@@ -287,7 +288,7 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(postcss@8.4.38)
       tsx:
-        specifier: ^4.11.2
+        specifier: ^4.15.2
         version: 4.15.2
       typescript:
         specifier: ^5.4.5
@@ -3339,8 +3340,8 @@ packages:
   prosemirror-transform@1.9.0:
     resolution: {integrity: sha512-5UXkr1LIRx3jmpXXNKDhv8OyAOeLTGuXNwdVfg8x27uASna/wQkr9p6fD3eupGOi4PLJfbezxTyi/7fSJypXHg==}
 
-  prosemirror-view@1.33.7:
-    resolution: {integrity: sha512-jo6eMQCtPRwcrA2jISBCnm0Dd2B+szS08BU1Ay+XGiozHo5EZMHfLQE8R5nO4vb1spTH2RW1woZIYXRiQsuP8g==}
+  prosemirror-view@1.33.8:
+    resolution: {integrity: sha512-4PhMr/ufz2cdvFgpUAnZfs+0xij3RsFysreeG9V/utpwX7AJtYCDVyuRxzWoMJIEf4C7wVihuBNMPpFLPCiLQw==}
 
   protocol-buffers-schema@3.6.0:
     resolution: {integrity: sha512-TdDRD+/QNdrCGCE7v8340QyuXd4kIWIgapsE2+n/SaGiSSbomYl4TjHlvIoCWRpE7wFt02EpB35VVA2ImcBVqw==}
@@ -4068,8 +4069,8 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
-  valibot@0.30.0:
-    resolution: {integrity: sha512-5POBdbSkM+3nvJ6ZlyQHsggisfRtyT4tVTo1EIIShs6qCdXJnyWU5TJ68vr8iTg5zpOLjXLRiBqNx+9zwZz/rA==}
+  valibot@0.31.1:
+    resolution: {integrity: sha512-2YYIhPrnVSz/gfT2/iXVTrSj92HwchCt9Cga/6hX4B26iCz9zkIsGTS0HjDYTZfTi1Un0X6aRvhBi1cfqs/i0Q==}
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
@@ -5126,9 +5127,9 @@ snapshots:
       prosemirror-schema-list: 1.4.0
       prosemirror-state: 1.4.3
       prosemirror-tables: 1.3.7
-      prosemirror-trailing-node: 2.0.8(prosemirror-model@1.21.1)(prosemirror-state@1.4.3)(prosemirror-view@1.33.7)
+      prosemirror-trailing-node: 2.0.8(prosemirror-model@1.21.1)(prosemirror-state@1.4.3)(prosemirror-view@1.33.8)
       prosemirror-transform: 1.9.0
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
   '@tiptap/react@2.4.0(@tiptap/core@2.4.0(@tiptap/pm@2.4.0))(@tiptap/pm@2.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -7374,20 +7375,20 @@ snapshots:
     dependencies:
       prosemirror-state: 1.4.3
       prosemirror-transform: 1.9.0
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
   prosemirror-gapcursor@1.3.2:
     dependencies:
       prosemirror-keymap: 1.2.2
       prosemirror-model: 1.21.1
       prosemirror-state: 1.4.3
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
   prosemirror-history@1.4.0:
     dependencies:
       prosemirror-state: 1.4.3
       prosemirror-transform: 1.9.0
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
       rope-sequence: 1.3.4
 
   prosemirror-inputrules@1.4.0:
@@ -7430,7 +7431,7 @@ snapshots:
     dependencies:
       prosemirror-model: 1.21.1
       prosemirror-transform: 1.9.0
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
   prosemirror-tables@1.3.7:
     dependencies:
@@ -7438,21 +7439,21 @@ snapshots:
       prosemirror-model: 1.21.1
       prosemirror-state: 1.4.3
       prosemirror-transform: 1.9.0
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
-  prosemirror-trailing-node@2.0.8(prosemirror-model@1.21.1)(prosemirror-state@1.4.3)(prosemirror-view@1.33.7):
+  prosemirror-trailing-node@2.0.8(prosemirror-model@1.21.1)(prosemirror-state@1.4.3)(prosemirror-view@1.33.8):
     dependencies:
       '@remirror/core-constants': 2.0.2
       escape-string-regexp: 4.0.0
       prosemirror-model: 1.21.1
       prosemirror-state: 1.4.3
-      prosemirror-view: 1.33.7
+      prosemirror-view: 1.33.8
 
   prosemirror-transform@1.9.0:
     dependencies:
       prosemirror-model: 1.21.1
 
-  prosemirror-view@1.33.7:
+  prosemirror-view@1.33.8:
     dependencies:
       prosemirror-model: 1.21.1
       prosemirror-state: 1.4.3
@@ -8296,7 +8297,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  valibot@0.30.0: {}
+  valibot@0.31.1: {}
 
   victory-vendor@36.9.2:
     dependencies:

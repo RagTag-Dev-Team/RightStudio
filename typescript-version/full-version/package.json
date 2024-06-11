@@ -26,13 +26,13 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@formkit/drag-and-drop": "^0.1.0",
     "@fullcalendar/common": "^5.11.5",
-    "@fullcalendar/core": "^6.1.13",
-    "@fullcalendar/daygrid": "^6.1.13",
-    "@fullcalendar/interaction": "^6.1.13",
-    "@fullcalendar/list": "^6.1.13",
-    "@fullcalendar/react": "^6.1.13",
-    "@fullcalendar/timegrid": "^6.1.13",
-    "@hookform/resolvers": "^3.4.2",
+    "@fullcalendar/core": "^6.1.14",
+    "@fullcalendar/daygrid": "^6.1.14",
+    "@fullcalendar/interaction": "^6.1.14",
+    "@fullcalendar/list": "^6.1.14",
+    "@fullcalendar/react": "^6.1.14",
+    "@fullcalendar/timegrid": "^6.1.14",
+    "@hookform/resolvers": "^3.6.0",
     "@mui/lab": "5.0.0-alpha.170",
     "@mui/material": "^5.15.19",
     "@mui/material-nextjs": "^5.15.11",
@@ -75,10 +75,10 @@
     "react-use": "^17.5.0",
     "recharts": "^2.12.7",
     "server-only": "^0.0.1",
-    "valibot": "^0.30.0"
+    "valibot": "^0.31.1"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.216",
+    "@iconify/json": "^2.2.218",
     "@iconify/tools": "^4.0.4",
     "@iconify/types": "^2.0.0",
     "@iconify/utils": "^2.1.24",
@@ -101,7 +101,7 @@
     "globby": "^14.0.1",
     "postcss": "^8.4.38",
     "postcss-styled-syntax": "^0.6.4",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "prisma": "^5.15.0",
     "stylelint": "^16.6.1",
     "stylelint-use-logical-spec": "^5.0.1",
@@ -109,12 +109,13 @@
     "stylis-plugin-rtl": "^2.1.1",
     "tailwindcss": "^3.4.4",
     "tailwindcss-logical": "^3.0.1",
-    "tsx": "^4.11.2",
+    "tsx": "^4.15.2",
     "typescript": "^5.4.5"
   },
   "resolutions": {
     "immutable": "3.7.4",
-    "rimraf": "^5.0.7"
+    "rimraf": "^5.0.7",
+    "@tiptap/core": "^2.0.0"
   },
   "overrides": {
     "react": "^18.3.1",

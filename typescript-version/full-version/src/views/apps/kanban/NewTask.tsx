@@ -9,13 +9,13 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { object, string, minLength } from 'valibot'
-import type { Input } from 'valibot'
+import { object, string, minLength, pipe, nonEmpty } from 'valibot'
+import type { InferInput } from 'valibot'
 
-type FormData = Input<typeof schema>
+type FormData = InferInput<typeof schema>
 
 const schema = object({
-  content: string([minLength(1, 'Content is required')])
+  content: pipe(string(), nonEmpty('Content is required'), minLength(1))
 })
 
 const NewTask = ({ addTask }: { addTask: (content: string) => void }) => {

@@ -21,8 +21,8 @@ import InputAdornment from '@mui/material/InputAdornment'
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { object, string, minLength } from 'valibot'
-import type { Input } from 'valibot'
+import { minLength, nonEmpty, object, pipe, string } from 'valibot'
+import type { InferInput } from 'valibot'
 
 // Type Imports
 import type { ColumnType, TaskType } from '@/types/apps/kanbanTypes'
@@ -47,10 +47,10 @@ type KanbanDrawerProps = {
   setColumns: (value: ColumnType[]) => void
 }
 
-type FormData = Input<typeof schema>
+type FormData = InferInput<typeof schema>
 
 const schema = object({
-  title: string([minLength(1, 'Title is required')])
+  title: pipe(string(), nonEmpty('Title is required'), minLength(1))
 })
 
 const KanbanDrawer = (props: KanbanDrawerProps) => {
