@@ -1,6 +1,9 @@
 // React Imports
 import { useState, useEffect } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -10,9 +13,6 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { Mode } from '@core/types'
-
-// Component Imports
-import Link from '@components/Link'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -85,11 +85,11 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
           </div>
         </div>
       </div>
-      <Link target='_blank'>
-        <div
-          className={classnames('relative text-center', frontCommonStyles.layoutSpacing)}
-          style={{ transform: `translate(${dashboardPosition.x}px, ${dashboardPosition.y}px)` }}
-        >
+      <div
+        className={classnames('relative text-center', frontCommonStyles.layoutSpacing)}
+        style={{ transform: `translate(${dashboardPosition.x}px, ${dashboardPosition.y}px)` }}
+      >
+        <Link href='/' target='_blank'>
           <img src={dashboardImage} alt='dashboard-image' className={classnames('mli-auto', styles.heroSecDashboard)} />
           <div className={classnames('absolute', styles.heroSectionElements)}>
             <img
@@ -98,8 +98,8 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
               style={{ transform: `translate(${elementsPosition.x}px, ${elementsPosition.y}px)` }}
             />
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </section>
   )
 }
