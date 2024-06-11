@@ -141,16 +141,22 @@ function Plans() {
               <tr>
                 <th>Time</th>
                 <th className=''>
-                  <Typography>STARTER</Typography>
-                  <Typography variant='body2'>Free</Typography>
+                  <>STARTER</>
+                  <Typography variant='body2' className='capitalize'>
+                    Free
+                  </Typography>
                 </th>
                 <th className=''>
-                  <Typography>Pro</Typography>
-                  <Typography variant='body2'>$7.5/Month</Typography>
+                  <>Pro</>
+                  <Typography variant='body2' className='capitalize'>
+                    $7.5/Month
+                  </Typography>
                 </th>
                 <th className=''>
-                  <Typography>ENTERPRISE</Typography>
-                  <Typography variant='body2'>$16/Month</Typography>
+                  <>ENTERPRISE</>
+                  <Typography variant='body2' className='capitalize'>
+                    $16/Month
+                  </Typography>
                 </th>
               </tr>
             </thead>

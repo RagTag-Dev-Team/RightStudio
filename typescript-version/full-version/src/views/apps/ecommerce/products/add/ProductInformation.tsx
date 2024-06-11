@@ -1,9 +1,7 @@
 'use client'
 
-// React Imports
-import { useState } from 'react'
-
 // MUI Imports
+import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -12,41 +10,113 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
-import { EditorState, convertFromRaw } from 'draft-js'
+import { useEditor, EditorContent } from '@tiptap/react'
+import { StarterKit } from '@tiptap/starter-kit'
+import { Underline } from '@tiptap/extension-underline'
+import { Placeholder } from '@tiptap/extension-placeholder'
+import { TextAlign } from '@tiptap/extension-text-align'
+import type { Editor } from '@tiptap/core'
 
-// Styled Component Imports
-import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
+// Components Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 
-// Vars
-const defaultContent = {
-  entityMap: {},
-  blocks: [
-    {
-      key: '1',
-      text: 'Keep your account secure with authentication step.',
-      type: 'unstyled',
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {}
-    }
-  ]
+// Style Imports
+import '@/libs/styles/tiptapEditor.css'
+
+const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
+  if (!editor) {
+    return null
+  }
+
+  return (
+    <div className='flex flex-wrap gap-x-3 gap-y-1 pbs-5 pbe-4 pli-5'>
+      <CustomIconButton
+        {...(editor.isActive('bold') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleBold().run()}
+      >
+        <i className='ri-bold' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('underline') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+      >
+        <i className='ri-underline' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('italic') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+      >
+        <i className='ri-italic' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('strike') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+      >
+        <i className='ri-strikethrough' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+      >
+        <i className='ri-align-left' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+      >
+        <i className='ri-align-center' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+      >
+        <i className='ri-align-right' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+      >
+        <i className='ri-align-justify' />
+      </CustomIconButton>
+    </div>
+  )
 }
 
 const ProductInformation = () => {
-  // States
-  const [value, setValue] = useState(EditorState.createWithContent(convertFromRaw(defaultContent)))
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: 'Write something here...'
+      }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph']
+      }),
+      Underline
+    ],
 
-  // Vars
-  const toolbarOptions = {
-    options: ['inline', 'textAlign'],
-    inline: {
-      options: ['bold', 'italic', 'underline', 'strikethrough']
-    },
-    textAlign: {
-      options: ['left', 'center', 'right', 'justify']
-    }
-  }
+    content: `
+      <p>
+        Keep your account secure with authentication step.
+      </p>
+    `
+  })
 
   return (
     <Card>
@@ -64,51 +134,13 @@ const ProductInformation = () => {
           </Grid>
         </Grid>
         <Typography className='mbe-1'>Description (Optional)</Typography>
-        <AppReactDraftWysiwyg
-          editorState={value}
-          placeholder='Enter a description...'
-          onEditorStateChange={(data: EditorState) => setValue(data)}
-          toolbar={toolbarOptions}
-          boxProps={{
-            sx: {
-              '& .rdw-editor-wrapper': {
-                borderRadius: 'var(--mui-shape-customBorderRadius-md)',
-                padding: 5,
-                '& .rdw-editor-toolbar': {
-                  padding: 0,
-                  gap: 1,
-                  '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
-                    marginBlockEnd: 4,
-                    gap: 1,
-                    overflow: 'hidden'
-                  },
-                  '& .rdw-option-wrapper': {
-                    minWidth: '1.25rem',
-                    border: 'none',
-                    borderRadius: 'var(--mui-shape-customBorderRadius-md)',
-                    padding: 1.75,
-                    margin: 0,
-                    '&:hover': {
-                      boxShadow: 'none',
-                      background: 'var(--mui-palette-action-hover) !important'
-                    },
-                    '&.rdw-option-active': {
-                      boxShadow: 'none',
-                      background: 'var(--mui-palette-primary-lightOpacity) !important',
-                      '& img': {
-                        filter: 'drop-shadow(0px 34px 0 var(--mui-palette-primary-main))',
-                        transform: 'translateY(-34px)'
-                      }
-                    }
-                  }
-                },
-                '& .rdw-editor-main': {
-                  paddingInline: 0
-                }
-              }
-            }
-          }}
-        />
+        <Card className='p-0 border shadow-none'>
+          <CardContent className='p-0'>
+            <EditorToolbar editor={editor} />
+            <Divider className='mli-5' />
+            <EditorContent editor={editor} className='bs-[135px] overflow-y-auto flex ' />
+          </CardContent>
+        </Card>
       </CardContent>
     </Card>
   )

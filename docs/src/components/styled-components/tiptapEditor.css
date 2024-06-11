@@ -1,7 +1,7 @@
 /* Basic editor styles */
 .tiptap {
   outline: none;
-  block-size: 200px;
+  min-block-size: 100px;
   overflow-y: auto;
   padding: 1.25rem;
   inline-size: 100%;

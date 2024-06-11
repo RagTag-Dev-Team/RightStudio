@@ -155,16 +155,16 @@ function Footer() {
             </Link>
           </p>
           <div className='flex gap-6 items-center'>
-            <IconButton size='small' href='https://github.com/themeselection'>
+            <IconButton size='small' href='https://github.com/themeselection' target='_blank'>
               <i className='ri-github-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small' href='https://www.facebook.com/ThemeSelections/'>
+            <IconButton size='small' href='https://www.facebook.com/ThemeSelections/' target='_blank'>
               <i className='ri-facebook-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small' href='https://twitter.com/Theme_Selection'>
+            <IconButton size='small' href='https://twitter.com/Theme_Selection' target='_blank'>
               <i className='ri-twitter-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small' href='https://in.linkedin.com/company/themeselection'>
+            <IconButton size='small' href='https://in.linkedin.com/company/themeselection' target='_blank'>
               <i className='ri-linkedin-fill text-white text-lg' />
             </IconButton>
           </div>

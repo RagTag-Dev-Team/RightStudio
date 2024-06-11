@@ -171,8 +171,7 @@ const sidebars: SidebarsConfig = {
           label: 'Libs',
           items: [
             'guide/components/libs/apex-charts',
-            'guide/components/libs/recharts',
-            'guide/components/libs/editor'
+            'guide/components/libs/recharts'
           ]
         },
         {
@@ -183,7 +182,6 @@ const sidebars: SidebarsConfig = {
             'guide/components/styled-libs/app-keen-slider',
             'guide/components/styled-libs/app-react-apex-charts',
             'guide/components/styled-libs/app-react-datepicker',
-            'guide/components/styled-libs/app-react-draft-wysiwyg',
             'guide/components/styled-libs/app-react-dropzone',
             'guide/components/styled-libs/app-react-toastify',
             'guide/components/styled-libs/app-recharts',

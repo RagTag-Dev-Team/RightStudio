@@ -101,9 +101,15 @@ You may add / update / remove any other dependencies according to your requireme
 ## Editor
 
 ```json
-"@types/react-draft-wysiwyg" // Typescript version only
-"draft-js"
-"react-draft-wysiwyg"
+"@tiptap/extension-color": "^2.4.0",
+"@tiptap/extension-list-item": "^2.4.0",
+"@tiptap/extension-placeholder": "^2.4.0",
+"@tiptap/extension-text-align": "^2.4.0",
+"@tiptap/extension-text-style": "^2.4.0",
+"@tiptap/extension-underline": "^2.4.0",
+"@tiptap/pm": "^2.4.0",
+"@tiptap/react": "^2.4.0",
+"@tiptap/starter-kit": "^2.4.0",
 ```
 
 ## Eslint
