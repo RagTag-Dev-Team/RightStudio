@@ -100,7 +100,7 @@ const LogisticsDeliveryExceptions = () => {
     <Card>
       <CardHeader title='Delivery exceptions' action={<OptionMenu options={['Select All', 'Refresh', 'Share']} />} />
       <CardContent>
-        <AppReactApexCharts type='donut' height={400} series={deliveryExceptionsChartSeries} options={options} />
+        <AppReactApexCharts type='donut' height={400} width='100%' series={deliveryExceptionsChartSeries} options={options} />
       </CardContent>
     </Card>
   )

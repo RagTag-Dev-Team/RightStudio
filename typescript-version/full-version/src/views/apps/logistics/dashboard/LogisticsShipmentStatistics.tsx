@@ -221,7 +221,7 @@ const LogisticsShipmentStatistics = () => {
     <Card>
       <CardHeader title='Shipment Statistics' subheader='Total number of deliveries 23.8k' action={<MonthButton />} />
       <CardContent>
-        <AppReactApexCharts id='shipment-statistics' type='line' height={320} series={series} options={options} />
+        <AppReactApexCharts id='shipment-statistics' type='line' height={320} width='100%' series={series} options={options} />
       </CardContent>
     </Card>
   )
