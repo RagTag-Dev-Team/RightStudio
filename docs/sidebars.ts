@@ -291,6 +291,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "menu-examples/vertical-examples/menu-render/static-menu",
             "menu-examples/vertical-examples/menu-render/dynamic-menu",
+            "menu-examples/vertical-examples/menu-render/exclude-lang",
             "menu-examples/vertical-examples/menu-render/menu-with-api",
           ],
         },
@@ -396,6 +397,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "menu-examples/horizontal-examples/menu-render/static-menu",
             "menu-examples/horizontal-examples/menu-render/dynamic-menu",
+            "menu-examples/horizontal-examples/menu-render/exclude-lang",
             "menu-examples/horizontal-examples/menu-render/menu-with-api",
           ],
         },
