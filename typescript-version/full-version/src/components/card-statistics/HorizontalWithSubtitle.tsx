@@ -12,7 +12,7 @@ import type { ThemeColor } from '@core/types'
 
 export type UserDataType = {
   title: string
-  value: string
+  stats: string
   avatarIcon: string
   avatarColor?: ThemeColor
   trend: string
@@ -22,7 +22,7 @@ export type UserDataType = {
 
 const HorizontalWithSubtitle = (props: UserDataType) => {
   // Props
-  const { title, value, avatarIcon, avatarColor, trend: trend, trendNumber: trendNumber, subtitle: subtitle } = props
+  const { title, stats, avatarIcon, avatarColor, trend: trend, trendNumber: trendNumber, subtitle: subtitle } = props
 
   return (
     <Card>
@@ -30,7 +30,7 @@ const HorizontalWithSubtitle = (props: UserDataType) => {
         <div className='flex flex-col gap-1 flex-grow'>
           <Typography color='text.primary'>{title}</Typography>
           <div className='flex items-center gap-2 flex-wrap'>
-            <Typography variant='h4'>{value}</Typography>
+            <Typography variant='h4'>{stats}</Typography>
             <Typography color={trend === 'negative' ? 'error.main' : 'success.main'}>
               {`(${trend === 'negative' ? '-' : '+'}${trendNumber})`}
             </Typography>

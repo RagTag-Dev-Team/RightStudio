@@ -55,7 +55,7 @@ async function replacePatternInFile(filePath: string) {
     excludeLangPattern.test(data)
   ) {
     // Perform replacements
-    let newData = data
+    const newData = data
       .replace(getUrlPattern, '$1$2$3')
       .replace(getUrlPattern2, '$1')
       .replace(getUrlPattern3, '$1')
@@ -75,12 +75,6 @@ async function replacePatternInFile(filePath: string) {
       .replace(/\${lang}\//g, '')
       .replace(/excludeLang\??:\s.*,?/g, '')
       .replace(/item\.excludeLang.*?:/, '')
-
-    if (filePath === 'src/data/searchData.ts') {
-      console.log(newData)
-      newData = newData.replace(/excludeLang\??:\s.*,?/g, '')
-      console.log(newData)
-    }
 
     // Only write back if changes were made
     if (data !== newData) {
