@@ -43,6 +43,7 @@ In this guide, we'll walk you through the process of adding authentication partl
 
 - add the following environment variables from the full-version's `.env` file to your project's `.env` file:
 
+  - `BASEPATH`
   - `NEXTAUTH_BASEPATH`
   - `NEXTAUTH_URL`
   - `NEXTAUTH_SECRET`
@@ -54,14 +55,40 @@ In this guide, we'll walk you through the process of adding authentication partl
   - `src/app/api/auth/[...nextauth]/route.ts`
   - `src/contexts/nextAuthProvider.tsx`
 
-- add the `NextAuthProvider` import statement and its usage from full-version's `src/components/Providers.tsx` to your project's `src/components/Providers.tsx` file
-- add the `src/middleware.ts` file from the full-version to your project
+- Add the `NextAuthProvider` import statement and its usage from the full-version's `src/components/Providers.tsx` file to your project's `src/components/Providers.tsx` file
 
-  :::warning Note!
-  In the `src/middleware.ts` file, the code for i18n has also been implemented. If you don't need i18n, you can remove its code by following [this guide](/docs/guide/development/translation/how-to-remove-i18n/manually#step-3-modify-middleware-file).
+#### Folder Structure Changes
 
-  After adding the `src/middleware.ts` file in your project, you need to remove the `src/app/page.tsx` file from your project as the `src/middleware.ts` file will manage the redirection to your desired home page. Please refer to [this guide](/docs/guide/development/home-page-url) to change your home page's redirection (URL).
-  :::
+- Create a new folder named (private) inside the (dashboard) folder and move all the content of the (dashboard) folder to the (private) folder.
+
+- Create another folder named (guest-only) inside the (blank-layout-pages) folder and move the login and register folders (if available) to the (guest-only) folder. You can find more details about public routes, private routes, and guest-only routes in this guide.
+
+#### Additional File Copying
+
+Copy the following files from the full-version to your project:
+
+- `src/hocs/AuthGuard.tsx`
+- `src/components/AuthRedirect.tsx`
+- `src/hocs/GuestOnlyRoute.tsx`
+- `(blank-layout-pages)/(guest-only)/layout.tsx`
+
+Add the `AuthGuard` import statement and its usage from the full-version's `(dashboard)/(private)/layout.tsx` file to your project's `(dashboard)/(private)/layout.tsx` file
+
+#### Adjustments for Projects Without i18n
+
+If you haven't added `i18n` to your project, make the following changes:
+
+- **AuthGuard.tsx**: Remove `Locale` and its related code.
+- **AuthRedirect.tsx**:
+  1. Remove `lang` from the `AuthRedirect` function and its related code.
+  2. Replace the `getLocalizedUrl` function with the actual URL throughout the project, as shown below:
+      
+      ```diff
+      - getLocalizedUrl('/your-url', lang)
+      + '/your-url'
+      ```
+- **GuestOnlyRoute.tsx**: Remove `lang` and its related code, and replace the `getLocalizedUrl` as above.
+- **(guest-only)/layout.tsx**: Remove `lang` and its related code.
 
 ### Add Credentials Provider
 
@@ -144,7 +171,7 @@ If you want to use Google for authentication, you need to add a Google provider.
 - copy the `src/views/Login.tsx` file from the full-version to your project. In this file, the code for logging in with email and password has also been implemented. If you don't need this feature, you can remove its code by following the steps related to the `src/views/Login.tsx` file from [this guide](/docs/guide/authentication/remove-auth#remove-credentials-provider-from-the-full-version)
 
   :::warning Note!
-  The code for i18n has been implemented in the `src/views/Login.tsx` file. If you don't have i18n in your project, you can remove its code from this file
+  The code for i18n has been implemented in the `src/views/Login.tsx` file. If you don't have i18n in your project, you can remove its code from this file. Also we have added validation code in the `src/views/Login.tsx` file. If you don't need validation, you can remove it from this file or else you need to install the packages required for validation
   :::
 
 - copy the `src/prisma/schema.prisma` file from the full-version to your project

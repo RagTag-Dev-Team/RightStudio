@@ -170,7 +170,7 @@ You may add / update / remove any other dependencies according to your requireme
 ## Search
 
 ```json
-"kbar"
+"cmdk"
 ```
 
 ## Swiper

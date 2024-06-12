@@ -91,7 +91,7 @@ Move all content from the language-specific directories `[lang]` folder to the m
     4. You need to remove `dictionary` parameter from `menuData` function in `<GenerateVerticalMenu menuData={menuData(dictionary, params)} />` from `src/components/layout/vertical/VerticalMenu.tsx` file.
 
 - Go to the `src/components/layout/horizontal/HorizontalMenu.tsx` file and make the same changes above in the `VerticalMenu.tsx` file. 
-- Also you need to remove the `dictionary: Awaited<ReturnType<typeof getDictionary>>` from the parameter and replace the `label` as above mentioned in `src/data/navigation/verticalMenuData.tsx` and `src/data/navigation/horizontalMenuData.tsx` files.
+- Also you need to remove the `dictionary: Awaited<ReturnType<typeof getDictionary>>` from the parameter and replace the `label` as above mentioned and remove `excludeLang` from the `src/data/navigation/verticalMenuData.tsx` and `src/data/navigation/horizontalMenuData.tsx` files.
 
 
 - Go to the `src/components/layout/horizontal/Header.tsx` file and make the following changes.
@@ -157,6 +157,8 @@ Move all content from the language-specific directories `[lang]` folder to the m
 
 #### Other Components Changes:
 
+- Remove the `excludeLang` related code from the `src/components/layout/shared/search/index.tsx` and `src/components/layout/shared/search/index.tsx` files.
+
 - Go to the `src/components/AuthRedirect.tsx` file and make the following changes.
 
     1. Remove the `lang` from the `AuthRedirect` function.
@@ -168,7 +170,7 @@ Move all content from the language-specific directories `[lang]` folder to the m
     1. Remove the following statement:
 
         ```diff
-        - const href = menuItem.href?.startsWith('http') ? menuItem.href : menuItem.href && getLocalizedUrl(menuItem.href, locale as Locale)
+        - const href = rest.href?.startsWith('http') ? rest.href : rest.href && (excludeLang ? rest.href : getLocalizedUrl(rest.href, locale as Locale))
         ```
 
     2. Replace the `href={href}` with `href={menuItem.href}` in the `<VerticalMenuItem>` and `<HorizontalMenuItem>` components.
