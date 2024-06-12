@@ -52,7 +52,6 @@
 | consola                             | [https://github.com/unjs/consola](https://github.com/unjs/consola) | MIT |
 | date-fns                            | [https://github.com/date-fns/date-fns](https://github.com/date-fns/date-fns) | MIT |
 | dotenv-cli                          | [https://github.com/entropitor/dotenv-cli](https://github.com/entropitor/dotenv-cli) | MIT |
-| draft-js                            | [https://github.com/facebookarchive/draft-js](https://github.com/facebookarchive/draft-js) | MIT |
 | emoji-mart                          | [https://github.com/missive/emoji-mart](https://github.com/missive/emoji-mart) | MIT |
 | eslint                              | [https://github.com/eslint/eslint](https://github.com/eslint/eslint) | MIT |
 | eslint-config-next                  | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |
@@ -75,6 +74,7 @@
 | react-colorful                      | [https://github.com/omgovich/react-colorful](https://github.com/omgovich/react-colorful) | MIT |
 | react-datepicker                    | [https://github.com/Hacker0x01/react-datepicker](https://github.com/Hacker0x01/react-datepicker) | MIT |
 | react-dropzone                      | [https://github.com/react-dropzone/react-dropzone](https://github.com/react-dropzone/react-dropzone) | MIT |
+| react-dom                           | [https://github.com/facebook/react](https://github.com/facebook/react) | MIT |
 | react-hook-form                     | [https://github.com/react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form) | MIT |
 | react-perfect-scrollbar             | [https://github.com/goldenyz/react-perfect-scrollbar](https://github.com/goldenyz/react-perfect-scrollbar) | MIT |
 | react-redux                         | [https://github.com/reduxjs/react-redux](https://github.com/reduxjs/react-redux) | MIT |

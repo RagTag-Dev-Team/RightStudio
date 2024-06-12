@@ -44,7 +44,6 @@ Before checking folder structure it is better you know some stuff related to fol
 │   ├── libs                            -> External libraries Third party libraries
 │   │   ├── styles                      -> Styles for third party libraries
 │   │   ├── ApexCharts                  -> Renders charts in client side
-│   │   ├── Editor                      -> Renders editor in client side
 │   │   ├── Recharts                    -> Renders charts in client side
 │   │   ├── ReactPlayer                 -> Renders video player in client side
 │   │   └── auth.ts                     -> Authentication using NextAuth.js
