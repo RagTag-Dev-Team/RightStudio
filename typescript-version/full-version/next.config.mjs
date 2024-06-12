@@ -22,10 +22,7 @@ const nextConfig = {
         locale: false
       }
     ]
-  },
-
-  // TODO: below line is added to resolve twice event dispatch in the calendar reducer
-  reactStrictMode: false
+  }
 }
 
 export default nextConfig
