@@ -5,14 +5,7 @@ import type { getDictionary } from '@/utils/getDictionary'
 // Icon Imports
 import LinkExternalIcon from '@layouts/svg/LinkExternal'
 
-type Params = {
-  [key: string]: string | string[]
-}
-
-const horizontalMenuData = (
-  dictionary: Awaited<ReturnType<typeof getDictionary>>,
-  params: Params
-): HorizontalMenuDataType[] => [
+const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>): HorizontalMenuDataType[] => [
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,
@@ -80,7 +73,9 @@ const horizontalMenuData = (
               },
               {
                 label: dictionary['navigation'].details,
-                href: `/apps/ecommerce/orders/details/${params.id || '5434'}`
+                href: '/apps/ecommerce/orders/details/5434',
+                exactMatch: false,
+                activeUrl: '/apps/ecommerce/orders/details'
               }
             ]
           },
@@ -93,7 +88,9 @@ const horizontalMenuData = (
               },
               {
                 label: dictionary['navigation'].details,
-                href: `/apps/ecommerce/customers/details/${params.id || '879861'}`
+                href: '/apps/ecommerce/customers/details/879861',
+                exactMatch: false,
+                activeUrl: '/apps/ecommerce/customers/details'
               }
             ]
           },
@@ -143,7 +140,9 @@ const horizontalMenuData = (
       },
       {
         label: dictionary['navigation'].email,
-        href: '/email'
+        href: '/email',
+        exactMatch: false,
+        activeUrl: '/email'
       },
       {
         label: dictionary['navigation'].chat,
@@ -164,11 +163,15 @@ const horizontalMenuData = (
           },
           {
             label: dictionary['navigation'].preview,
-            href: `/apps/invoice/preview/${params.id || '4987'}`
+            href: '/apps/invoice/preview/4987',
+            exactMatch: false,
+            activeUrl: '/apps/invoice/preview'
           },
           {
             label: dictionary['navigation'].edit,
-            href: `/apps/invoice/edit/${params.id || '4987'}`
+            href: '/apps/invoice/edit/4987',
+            exactMatch: false,
+            activeUrl: '/apps/invoice/edit'
           },
           {
             label: dictionary['navigation'].add,
@@ -185,7 +188,7 @@ const horizontalMenuData = (
           },
           {
             label: dictionary['navigation'].view,
-            href: `/apps/user/view/${params.id || '1'}`
+            href: '/apps/user/view'
           }
         ]
       },

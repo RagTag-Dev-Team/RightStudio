@@ -27,7 +27,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
   const { isBreakpointReached } = useVerticalNav()
 
   // Vars
-  const { lang: locale, id } = params
+  const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
@@ -85,13 +85,21 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
             </SubMenu>
             <SubMenu label={dictionary['navigation'].orders}>
               <MenuItem href={`/${locale}/apps/ecommerce/orders/list`}>{dictionary['navigation'].list}</MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`}>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/orders/details/5434`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/orders/details'
+              >
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].customers}>
               <MenuItem href={`/${locale}/apps/ecommerce/customers/list`}>{dictionary['navigation'].list}</MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`}>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/customers/details/879861`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/customers/details'
+              >
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
@@ -112,21 +120,29 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
             <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/email`}>{dictionary['navigation'].email}</MenuItem>
+          <MenuItem href={`/${locale}/email`} exactMatch={false} activeUrl='/email'>
+            {dictionary['navigation'].email}
+          </MenuItem>
           <MenuItem href={`/${locale}/chat`}>{dictionary['navigation'].chat}</MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`}>{dictionary['navigation'].calendar}</MenuItem>
           <MenuItem href={`/${locale}/apps/kanban`}>{dictionary['navigation'].kanban}</MenuItem>
           <SubMenu label={dictionary['navigation'].invoice}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
+            <MenuItem
+              href={`/${locale}/apps/invoice/preview/4987`}
+              exactMatch={false}
+              activeUrl='/apps/invoice/preview'
+            >
               {dictionary['navigation'].preview}
             </MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
+            <MenuItem href={`/${locale}/apps/invoice/edit/4987`} exactMatch={false} activeUrl='/apps/invoice/edit'>
+              {dictionary['navigation'].edit}
+            </MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user}>
             <MenuItem href={`/${locale}/apps/user/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/user/view/${id || '1'}`}>{dictionary['navigation'].view}</MenuItem>
+            <MenuItem href={`/${locale}/apps/user/view`}>{dictionary['navigation'].view}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].rolesPermissions}>
             <MenuItem href={`/${locale}/apps/roles`}>{dictionary['navigation'].roles}</MenuItem>
@@ -305,7 +321,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
           subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
         }}
       >
-        <GenerateVerticalMenu menuData={menuData(dictionary, params)} />
+        <GenerateVerticalMenu menuData={menuData(dictionary)} />
       </Menu> */}
     </ScrollWrapper>
   )

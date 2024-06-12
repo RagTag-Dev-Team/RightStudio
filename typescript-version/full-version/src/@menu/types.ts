@@ -11,6 +11,21 @@ export type ChildrenType = {
 // Breakpoints
 export type BreakpointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'always'
 
+// Exact match for active URL in menu item
+export type MenuItemExactMatchUrlProps =
+  | {
+      exactMatch: true
+      activeUrl?: never
+    }
+  | {
+      exactMatch: false
+      activeUrl: string
+    }
+  | {
+      exactMatch?: never
+      activeUrl?: never
+    }
+
 // Menu Item Elements for styling
 export type MenuItemElement = 'root' | 'button' | 'icon' | 'label' | 'prefix' | 'suffix'
 

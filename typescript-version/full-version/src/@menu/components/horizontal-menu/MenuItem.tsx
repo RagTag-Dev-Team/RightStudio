@@ -14,7 +14,7 @@ import type { CSSObject } from '@emotion/styled'
 import { useFloatingTree } from '@floating-ui/react'
 
 // Type Imports
-import type { ChildrenType, MenuItemElement, RootStylesType } from '../../types'
+import type { ChildrenType, MenuItemElement, MenuItemExactMatchUrlProps, RootStylesType } from '../../types'
 
 // Context Imports
 import { HorizontalSubMenuContext } from './SubMenu'
@@ -41,7 +41,8 @@ import styles from '../../styles/horizontal/horizontalUl.module.css'
 
 export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
-  Partial<ChildrenType> & {
+  Partial<ChildrenType> &
+  MenuItemExactMatchUrlProps & {
     icon?: ReactElement
     prefix?: ReactNode
     suffix?: ReactNode
@@ -67,6 +68,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     suffix,
     level = 0,
     disabled = false,
+    exactMatch = true,
+    activeUrl,
     component,
     onActiveChange,
     rootStyles,
@@ -113,7 +116,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
 
     if (href) {
       // Check if the current url matches any of the children urls
-      if (pathname === href) {
+      if (exactMatch ? pathname === href : activeUrl && pathname.includes(activeUrl)) {
         setActive(true)
       } else {
         setActive(false)
