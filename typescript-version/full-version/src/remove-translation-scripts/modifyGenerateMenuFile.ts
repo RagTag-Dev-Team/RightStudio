@@ -7,9 +7,10 @@ export const modifyGenerateMenuFile = async () => {
 
   let content = await fs.readFile(filePath, 'utf8')
 
-  content = content.replace(/const href = menuItem\.href\?.*?menuItem\.href && menuItem\.href\n\s*/gs, '')
-
-  content = content.replace(/href={href}/g, 'href={menuItem.href}')
+  content = content
+    .replace(/const href = .*?:.*?\n/gs, '')
+    .replace(/href={href}/g, 'href={menuItem.href}')
+    .replace(/excludeLang,/g, '')
 
   await fs.writeFile(filePath, content)
   consola.success('GenerateMenu.tsx file modified\n')

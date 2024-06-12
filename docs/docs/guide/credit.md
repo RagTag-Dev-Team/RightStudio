@@ -26,7 +26,7 @@
 | eslint-import-resolver-typescript   | [https://github.com/import-js/eslint-import-resolver-typescript](https://github.com/import-js/eslint-import-resolver-typescript) | ISC |
 | eslint-plugin-import                | [https://github.com/import-js/eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) | MIT |
 | globby                              | [https://github.com/sindresorhus/globby](https://github.com/sindresorhus/globby) | MIT |
-| kbar                                | [https://github.com/timc1/kbar](https://github.com/timc1/kbar) | MIT |
+| cmdk                                | [https://github.com/pacocoursey/cmdk](https://github.com/pacocoursey/cmdk) | MIT |
 | negotiator                          | [https://github.com/jshttp/negotiator](https://github.com/jshttp/negotiator) | MIT |
 | next                                | [https://github.com/vercel/next.js](https://github.com/vercel/next.js) | MIT |
 | next-auth                           | [https://github.com/nextauthjs/next-auth](https://github.com/nextauthjs/next-auth) | ISC |
