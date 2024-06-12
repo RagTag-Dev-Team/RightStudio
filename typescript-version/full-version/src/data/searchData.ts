@@ -269,7 +269,7 @@ const data: SearchData[] = [
   {
     id: '37',
     name: 'User View',
-    url: '/apps/user/view/1',
+    url: '/apps/user/view',
     icon: 'Icon',
     section: 'Apps'
   },
