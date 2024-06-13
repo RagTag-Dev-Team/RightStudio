@@ -2,8 +2,6 @@
 
 // MUI Imports
 import Divider from '@mui/material/Divider'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 
 // Third-party imports
 import { useEditor, EditorContent } from '@tiptap/react'
@@ -118,13 +116,11 @@ const EditorBasic = ({ content }: { content?: string }) => {
   })
 
   return (
-    <Card className='p-0'>
-      <CardContent className='p-0'>
-        <EditorToolbar editor={editor} />
-        <Divider />
-        <EditorContent editor={editor} className='bs-[200px] overflow-y-auto flex' />
-      </CardContent>
-    </Card>
+    <div className='border rounded-md'>
+      <EditorToolbar editor={editor} />
+      <Divider />
+      <EditorContent editor={editor} className='bs-[200px] overflow-y-auto flex' />
+    </div>
   )
 }
 

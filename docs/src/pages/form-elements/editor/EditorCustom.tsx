@@ -3,8 +3,6 @@
 // MUI Imports
 import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 
 // Third-party imports
 import { Color } from '@tiptap/extension-color'
@@ -28,98 +26,98 @@ const EditorToolbar = () => {
         disabled={!editor.can().chain().focus().toggleBold().run()}
         {...(editor.isActive('bold') && { variant: 'tonal', color: 'primary' })}
         label='bold'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         {...(editor.isActive('italic') && { variant: 'tonal', color: 'primary' })}
         label='italic'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         {...(editor.isActive('strike') && { variant: 'tonal', color: 'primary' })}
         label='strike'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         {...(editor.isActive('code') && { variant: 'tonal', color: 'primary' })}
         label='code'
-      ></Chip>
-      <Chip onClick={() => editor.chain().focus().unsetAllMarks().run()} label='clear marks'></Chip>
-      <Chip onClick={() => editor.chain().focus().clearNodes().run()} label='clear nodes'></Chip>
+      />
+      <Chip onClick={() => editor.chain().focus().unsetAllMarks().run()} label='clear marks'/>
+      <Chip onClick={() => editor.chain().focus().clearNodes().run()} label='clear nodes'/>
       <Chip
         onClick={() => editor.chain().focus().setParagraph().run()}
         {...(editor.isActive('paragraph') && { variant: 'tonal', color: 'primary' })}
         label='paragraph'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         {...(editor.isActive('heading', { level: 1 }) && { variant: 'tonal', color: 'primary' })}
         label='h1'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         {...(editor.isActive('heading', { level: 2 }) && { variant: 'tonal', color: 'primary' })}
         label='h2'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         {...(editor.isActive('heading', { level: 3 }) && { variant: 'tonal', color: 'primary' })}
         label='h3'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
         {...(editor.isActive('heading', { level: 4 }) && { variant: 'tonal', color: 'primary' })}
         label='h4'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
         {...(editor.isActive('heading', { level: 5 }) && { variant: 'tonal', color: 'primary' })}
         label='h5'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
         {...(editor.isActive('heading', { level: 6 }) && { variant: 'tonal', color: 'primary' })}
         label='h6'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         {...(editor.isActive('bulletList') && { variant: 'tonal', color: 'primary' })}
         label=' bulletlist'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         {...(editor.isActive('orderedList') && { variant: 'tonal', color: 'primary' })}
         label=' orderedlist'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         {...(editor.isActive('codeBlock') && { variant: 'tonal', color: 'primary' })}
         label=' codeblock'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         {...(editor.isActive('blockquote') && { variant: 'tonal', color: 'primary' })}
         label='blockquote'
-      ></Chip>
-      <Chip onClick={() => editor.chain().focus().setHorizontalRule().run()} label='horizontal rule'></Chip>
-      <Chip onClick={() => editor.chain().focus().setHardBreak().run()} label='hard break'></Chip>
+      />
+      <Chip onClick={() => editor.chain().focus().setHorizontalRule().run()} label='horizontal rule'/>
+      <Chip onClick={() => editor.chain().focus().setHardBreak().run()} label='hard break'/>
       <Chip
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
         label='undo'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
         label='redo'
-      ></Chip>
+      />
       <Chip
         onClick={() => editor.chain().focus().setColor('var(--mui-palette-primary-main)').run()}
         label='primary'
-      ></Chip>
+      />
     </div>
   )
 }
@@ -176,20 +174,18 @@ const content = `
 
 const EditorCustom = () => {
   return (
-    <Card className='p-0'>
-      <CardContent className='p-0'>
-        <EditorProvider
-          slotBefore={
-            <>
-              <EditorToolbar />
-              <Divider />
-            </>
-          }
-          extensions={extensions}
-          content={content}
-        />
-      </CardContent>
-    </Card>
+    <div className='border rounded-md'>
+      <EditorProvider
+        slotBefore={
+          <>
+            <EditorToolbar />
+            <Divider />
+          </>
+        }
+        extensions={extensions}
+        content={content}
+      />
+    </div>
   )
 }
 
