@@ -3,6 +3,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
@@ -50,13 +53,16 @@ const Header = ({ mode }: { mode: Mode }) => {
               <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
                 <i className='ri-menu-line' />
               </IconButton>
-
-              <Logo href='/front-pages/landing-page' />
+              <Link href='/front-pages/landing-page'>
+                <Logo />
+              </Link>
               <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           ) : (
             <div className='flex items-center gap-10'>
-              <Logo href='/front-pages/landing-page' />
+              <Link href='/front-pages/landing-page'>
+                <Logo />
+              </Link>
               <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           )}
