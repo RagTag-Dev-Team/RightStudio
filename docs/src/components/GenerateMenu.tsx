@@ -1,3 +1,4 @@
+// Type Imports
 import type {
   VerticalMenuDataType,
   VerticalSectionDataType,
@@ -5,15 +6,26 @@ import type {
   VerticalMenuItemDataType,
   HorizontalMenuDataType,
   HorizontalSubMenuDataType,
-  HorizontalMenuItemDataType
-} from '@site/src/types/menuTypes'
+  HorizontalMenuItemDataType,
+} from '@/types/menuTypes'
 
 // Component Imports
-import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu/horizontal-menu'
-import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu/vertical-menu'
+import {
+  SubMenu as HorizontalSubMenu,
+  MenuItem as HorizontalMenuItem,
+} from '@menu/horizontal-menu'
+import {
+  SubMenu as VerticalSubMenu,
+  MenuItem as VerticalMenuItem,
+  MenuSection,
+} from '@menu/vertical-menu'
 
 // Generate a menu from the menu data array
-export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataType[] }) => {
+export const GenerateVerticalMenu = ({
+  menuData,
+}: {
+  menuData: VerticalMenuDataType[]
+}) => {
   const renderMenuItems = (data: VerticalMenuDataType[]) => {
     // Use the map method to iterate through the array of menu data
     return data.map((item: VerticalMenuDataType, index) => {
@@ -46,15 +58,15 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
         )
       }
 
+      const { label, excludeLang, ...rest } = menuItem
+
       // Localize the href
-      const href = menuItem.href?.startsWith('http')
-        ? menuItem.href
-        : menuItem.href && menuItem.href
+      const href = rest.href
 
       // If the current item is neither a section nor a sub menu, return a MenuItem component
       return (
-        <VerticalMenuItem key={index} {...menuItem} href={href}>
-          {menuItem.label}
+        <VerticalMenuItem key={index} {...rest} href={href}>
+          {label}
         </VerticalMenuItem>
       )
     })
@@ -64,7 +76,11 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
 }
 
 // Generate a menu from the menu data array
-export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuDataType[] }) => {
+export const GenerateHorizontalMenu = ({
+  menuData,
+}: {
+  menuData: HorizontalMenuDataType[]
+}) => {
   const renderMenuItems = (data: HorizontalMenuDataType[]) => {
     // Use the map method to iterate through the array of menu data
     return data.map((item: HorizontalMenuDataType, index) => {
@@ -83,15 +99,15 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
         )
       }
 
+      const { label, excludeLang, ...rest } = menuItem
+
       // Localize the href
-      const href = menuItem.href?.startsWith('http')
-        ? menuItem.href
-        : menuItem.href && menuItem.href
+      const href = rest.href
 
       // If the current item is not a sub menu, return a MenuItem component
       return (
-        <HorizontalMenuItem key={index} {...menuItem} href={href}>
-          {menuItem.label}
+        <HorizontalMenuItem key={index} {...rest} href={href}>
+          {label}
         </HorizontalMenuItem>
       )
     })
