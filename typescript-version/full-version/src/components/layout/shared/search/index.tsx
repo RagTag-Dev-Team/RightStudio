@@ -23,6 +23,7 @@ import Close from '@menu/svg/Close'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -130,6 +131,7 @@ const NavSearch = () => {
 
   // Hooks
   const router = useRouter()
+  const { settings } = useSettings()
   const { lang: locale } = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
@@ -194,7 +196,7 @@ const NavSearch = () => {
 
   return (
     <>
-      {isBreakpointReached ? (
+      {isBreakpointReached || settings.layout === 'horizontal' ? (
         <Search fontSize='1.25rem' onClick={() => setOpen(true)} />
       ) : (
         <div className='flex items-center gap-4 cursor-pointer' onClick={() => setOpen(true)}>
