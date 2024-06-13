@@ -236,6 +236,7 @@ const sidebars: SidebarsConfig = {
             "menu-examples/vertical-examples/menu-item/target",
             "menu-examples/vertical-examples/menu-item/on-click",
             "menu-examples/vertical-examples/menu-item/root-styles",
+             "menu-examples/vertical-examples/menu-item/exact-match-and-active-url"
           ],
         },
         {
@@ -361,6 +362,7 @@ const sidebars: SidebarsConfig = {
             "menu-examples/horizontal-examples/menu-item/target",
             "menu-examples/horizontal-examples/menu-item/on-click",
             "menu-examples/horizontal-examples/menu-item/root-styles",
+            "menu-examples/horizontal-examples/menu-item/exact-match-and-active-url"
           ],
         },
         {
