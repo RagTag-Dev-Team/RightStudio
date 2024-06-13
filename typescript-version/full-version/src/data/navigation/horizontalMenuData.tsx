@@ -431,10 +431,6 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
             excludeLang: true
           }
         ]
-      },
-      {
-        label: 'Icons Test',
-        href: '/icons-test'
       }
     ]
   },
