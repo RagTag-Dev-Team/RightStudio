@@ -1,5 +1,8 @@
 'use client'
 
+// MUI Imports
+import { deepmerge } from '@mui/utils'
+
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -12,6 +15,7 @@ import { GenerateHorizontalMenu } from '@docComponents/GenerateMenu'
 
 // Style Imports
 import styles from '../styles.module.css'
+import menuItemStyles from "@docComponents/styles/horizontal/menuItemStyles";
 
 const menuData: HorizontalMenuDataType[] = [
   {
@@ -61,16 +65,9 @@ const ExcludeLang = () => {
     <div className={classnames('flex items-center plb-2.5 pli-6 w-full', styles.customStyles)}>
       <HorizontalNav>
         <Menu
-          menuItemStyles={{
-            button: { paddingBlock: '12px' },
+          menuItemStyles={deepmerge(menuItemStyles(), {
             subMenuStyles: { zIndex: 'calc(var(--header-z-index) + 1)' }
-          }}
-          verticalMenuProps={{
-            menuItemStyles: {
-              button: { paddingBlock: '12px' },
-              subMenuContent: { zIndex: 'calc(var(--drawer-z-index) + 1)' }
-            }
-          }}
+          })}
         >
           <GenerateHorizontalMenu menuData={menuData} />
         </Menu>

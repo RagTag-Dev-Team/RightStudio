@@ -22,7 +22,7 @@ const Component = () => {
     <HorizontalWithSubtitle
       title="Session"
       subtitle="Total User"
-      value="21,459"
+      stats="21,459"
       avatarIcon="ri-user-3-line"
       avatarColor="primary"
       trend="positive"
@@ -40,7 +40,7 @@ export default Component
 |--------------|-------------------------------------------------------------------------------------|----------|----------------------------------------------|
 | title        | `string`                                                                            | Yes      | The title displayed on the card              |
 | subtitle     | `string`                                                                            | Yes      | The subtitle displayed on the card           |
-| value        | `string`                                                                            | Yes      | The primary statistic number displayed       |
+| stats        | `string`                                                                            | Yes      | The primary statistic number displayed       |
 | avatarIcon   | `string`                                                                            | Yes      | Icon to display inside the avatar            |
 | trend       | `'positive'` \| `'negative'`                                                         | Yes      | The trend of the statistic                   |
 | trendNumber | `string`                                                                             | Yes      | Numerical value indicating the trend         |

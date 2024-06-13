@@ -10,7 +10,7 @@ import SourceCode from '!!raw-loader!@docPages/menu-examples/horizontal-menu/men
 
 # Exclude Lang
 
-export const updatedCode = SourceCode.replace('@docComponents/GenerateMenu', '@compnoents/GenerateMenu').replace('@site/src/types/menuTypes', '@/types/menuTypes').replace(/(label: 'Analytics')/, "$1,href: '/dashboards/analytics'").replace(/(label: 'eCommerce')/, "$1,href: '/dashboards/ecommerce'").replace(/(label: 'Front Pages')/, "$1,href: '/front-pages/landing-page', target='_blank'")
+export const updatedCode = SourceCode.replace('@docComponents/GenerateMenu', '@compnoents/GenerateMenu').replace('@site/src/types/menuTypes', '@/types/menuTypes').replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/\s*\/\/\sMUI.*\s*import\s{ deepmerge.*/,'').replace(/import menuItemStyles.*\n/, '').replace(/menuItemStyles={([\s\S]*?)\}\)\}/, '').replace(/(label: 'Analytics')/, "$1,href: '/dashboards/analytics'").replace(/(label: 'eCommerce')/, "$1,href: '/dashboards/ecommerce'").replace(/(label: 'Front Pages')/, "$1,href: '/front-pages/landing-page', target='_blank'")
 
 The `excludeLang` prop allows you to exclude the localization of URLs in the menu. This is useful when you want to render menu items with URLs that are not localized. The `excludeLang` prop can only be used with dynamic menus.
 
