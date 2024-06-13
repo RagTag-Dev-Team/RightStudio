@@ -16,7 +16,6 @@ import { db as profileData } from '@/fake-db/pages/user-profile'
 import { db as faqData } from '@/fake-db/pages/faq'
 import { db as pricingData } from '@/fake-db/pages/pricing'
 import { db as statisticsData } from '@/fake-db/pages/widget-examples'
-import { icons as iconTest } from '@/fake-db/icons-test'
 
 export const getEcommerceData = async () => {
   return eCommerceData
@@ -56,8 +55,4 @@ export const getPricingData = async () => {
 
 export const getStatisticsData = async () => {
   return statisticsData
-}
-
-export const getIconTest = async () => {
-  return iconTest
 }
