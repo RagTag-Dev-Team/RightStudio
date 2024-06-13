@@ -15,7 +15,7 @@ import {
   Menu as HorizontalMenu
 } from '../horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, Menu as VerticalMenu } from '../vertical-menu'
-import { GenerateVerticalMenu } from '@components/GenerateMenu'
+import { GenerateVerticalMenu } from '@docComponents/GenerateMenu'
 
 // Util Imports
 import { menuClasses } from './menuClasses'
