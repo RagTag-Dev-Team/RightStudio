@@ -436,10 +436,6 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
             href: '/pages/widget-examples/actions'
           }
         ]
-      },
-      {
-        label: 'Icons Test',
-        href: '/icons-test'
       }
     ]
   },

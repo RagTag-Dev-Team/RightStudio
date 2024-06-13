@@ -499,55 +499,48 @@ const data: SearchData[] = [
   },
   {
     id: '70',
-    name: 'Icons Test',
-    url: '/icons-test',
-    icon: 'Icon',
-    section: 'Pages'
-  },
-  {
-    id: '71',
     name: 'Form Layouts',
     url: '/forms/form-layouts',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '72',
+    id: '71',
     name: 'Form Validation',
     url: '/forms/form-validation',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '73',
+    id: '72',
     name: 'Form Wizard',
     url: '/forms/form-wizard',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '74',
+    id: '73',
     name: 'React Table',
     url: '/react-table',
     icon: 'Icon',
     section: 'Forms & Tables'
   },
   {
-    id: '75',
+    id: '74',
     name: 'Apex Charts',
     url: '/charts/apex-charts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '76',
+    id: '75',
     name: 'Recharts',
     url: '/charts/recharts',
     icon: 'Icon',
     section: 'Charts'
   },
   {
-    id: '77',
+    id: '76',
     name: 'Menu Examples',
     url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/menu-examples/overview`,
     icon: 'Icon',

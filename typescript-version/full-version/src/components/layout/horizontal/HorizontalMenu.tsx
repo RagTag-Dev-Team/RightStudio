@@ -235,7 +235,6 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
               {dictionary['navigation'].helpCenter}
             </MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/icons-test`}>Icons Test</MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].formsAndTables}>
           <MenuItem href={`/${locale}/forms/form-layouts`}>{dictionary['navigation'].formLayouts}</MenuItem>
