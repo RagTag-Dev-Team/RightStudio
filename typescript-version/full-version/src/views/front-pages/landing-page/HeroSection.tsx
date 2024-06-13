@@ -79,7 +79,7 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
             No coding required to make customizations. The live customizer has everything your marketing need.
           </Typography>
           <div className='mbs-8'>
-            <Button href='/front-pages/landing-page#pricing-plans' variant='contained' color='primary'>
+            <Button component={Link} href='/front-pages/landing-page#pricing-plans' variant='contained' color='primary'>
               Get Early Access
             </Button>
           </div>

@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -35,6 +38,7 @@ const GetStarted = () => {
             </Typography>
           </div>
           <Button
+            component={Link}
             href='/front-pages/payment'
             variant='contained'
             endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}

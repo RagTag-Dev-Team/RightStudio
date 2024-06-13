@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -24,7 +27,7 @@ const FreeTrial = () => {
                   You will get full access to with all the features for 14 days.
                 </Typography>
               </div>
-              <Button href='/front-pages/payment' variant='contained'>
+              <Button component={Link} href='/front-pages/payment' variant='contained'>
                 Start 14-Days Free Trial
               </Button>
             </div>

@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -195,7 +198,7 @@ function Plans() {
                 <td></td>
                 {plans.map((plan, index) => (
                   <td key={index} className='text-center'>
-                    <Button href='/front-pages/payment' variant={plan.variant}>
+                    <Button component={Link} href='/front-pages/payment' variant={plan.variant}>
                       {plan.label}
                     </Button>
                   </td>
