@@ -1,5 +1,5 @@
 /* Basic editor styles */
-.tiptap {
+.ProseMirror {
   outline: none;
   min-block-size: 100px;
   overflow-y: auto;
