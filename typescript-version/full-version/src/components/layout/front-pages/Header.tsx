@@ -70,6 +70,7 @@ const Header = ({ mode }: { mode: Mode }) => {
             <ModeDropdown />
             {isBelowLgScreen ? (
               <CustomIconButton
+                component={Link}
                 variant='contained'
                 href='https://themeselection.com/item-page'
                 color='primary'
@@ -79,6 +80,7 @@ const Header = ({ mode }: { mode: Mode }) => {
               </CustomIconButton>
             ) : (
               <Button
+                component={Link}
                 variant='contained'
                 href='https://themeselection.com/item-page'
                 startIcon={<i className='ri-shopping-cart-line text-xl' />}
