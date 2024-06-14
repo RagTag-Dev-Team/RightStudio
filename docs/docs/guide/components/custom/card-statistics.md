@@ -10,7 +10,9 @@ The `HorizontalWithSubtitle` component enriches the presentation of statistics b
 
 This component is placed inside the `src/components/card-statistics/HorizontalWithSubtitle.tsx` file. You may refer to the `src/views/apps/user/list/UserListCards.tsx` file for it's usage.
 
-Usage: Here's an example of how to use the `HorizontalWithSubtitle` component:
+### Usage
+
+Here's an example of how to use the `HorizontalWithSubtitle` component:
 
 ```tsx
 import HorizontalWithSubtitle from "@components/card-statistics/HorizontalWithSubtitle";
@@ -20,199 +22,169 @@ const Component = () => {
     <HorizontalWithSubtitle
       title="Session"
       subtitle="Total User"
-      value="21,459"
+      stats="21,459"
       avatarIcon="tabler-user"
       avatarColor="primary"
       trend="positive"
       trendNumber="29%"
     />
-  )
-}
+  );
+};
 
-export default Component
+export default Component;
 ```
 
 ### Props
 
-| Prop         | Type                                                                      | Required | Description                                 |
-| ------------ | ------------------------------------------------------------------------- | -------- | ------------------------------------------- |
-| title        | `string`                                                                  | Yes      | The title displayed on the card             |
-| subTitle     | `string`                                                                  | Yes      | The subtitle displayed on the card          |
-| value        | `string`                                                                  | Yes      | The primary statistic number displayed      |
-| avatarIcon   | `string`                                                                  | Yes      | Icon to display inside the avatar           |
-| avatarColor  | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | No       | Color theme for the avatar                  |
-| change       | `'positive' \| 'negative'`                                                | Yes      | Indicating change in the number of sessions |
-| changeNumber | `string`                                                                  | Yes      | Numerical value indicating the trend        |
+| Prop        | Type                                                                                | Required | Description                            |
+| ----------- | ----------------------------------------------------------------------------------- | -------- | -------------------------------------- |
+| title       | `string`                                                                            | Yes      | The title displayed on the card        |
+| subtitle    | `string`                                                                            | Yes      | The subtitle displayed on the card     |
+| stats       | `string`                                                                            | Yes      | The primary statistic number displayed |
+| avatarIcon  | `string`                                                                            | Yes      | Icon to display inside the avatar      |
+| trend       | `'positive'` \| `'negative'`                                                        | Yes      | The trend of the statistic             |
+| trendNumber | `string`                                                                            | Yes      | Numerical value indicating the trend   |
+| avatarColor | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | No       | Color theme for the avatar             |
 
-## Card Statistics Vertical
+## Card Statistics Horizontal with border
 
-The `CardStatVertical` component offers a minimalist and modern design to showcase important statistics like financial gains or user growth. It features a custom avatar, contextual title and subtitle, and a highlight chip for percentage changes, providing a quick visual summary of key data.
+The `HorizontalWithBorder` component is designed to enhance the presentation of statistics by incorporating a horizontal layout with a bordered card design. This component is ideal for displaying comprehensive metrics, such as user engagement figures, financial statistics, or any key performance indicators, with an emphasis on changes or trends over time. The border and shadow effects add a visually appealing dynamic when users interact with the component.
 
-This component is placed inside the `src/components/card-statistics/Vertical.tsx` file. You may refer to the `src/views/pages/widget-examples/statistics/Vertical.tsx` file for it's usage.
+This component is placed inside the `src/components/card-statistics/HorizontalWithBorder.tsx` file. You may refer to the `src/views/apps/logistics/dashboard/LogisticsStatisticsCard.tsx` file for its usage.
 
-Usage: Here's an example of how to use the `CardStatVertical` component:
+### Usage
+
+Here's an example of how to use the `HorizontalWithBorder` component:
 
 ```tsx
-import CardStatVertical from "@/components/card-statistics/Vertical";
+import HorizontalWithBorder from "@components/card-statistics/HorizontalWithBorder";
 
 const Component = () => {
   return (
-    <CardStatVertical
-      title="Total Profit"
-      subtitle="Last Week"
-      stats="1.28k"
-      avatarColor="error"
-      avatarIcon="tabler-credit-card"
-      avatarSkin="light"
-      avatarSize={44}
-      avatarIconSize={28}
-      chipText="-12.2%"
-      chipColor="error"
-      chipVariant="tonal"
+    <HorizontalWithBorder
+      title="Active Users"
+      stats={15278}
+      change={12.5}
+      avatarIcon="ri-user-line"
+      color="success"
     />
-  )
-}
+  );
+};
 
-export default Component
+export default Component;
 ```
 
 ### Props
 
-| Prop           | Type                                                                      | Required | Description                                               |
-| -------------- | ------------------------------------------------------------------------- | -------- | --------------------------------------------------------- |
-| title          | `string`                                                                  | Yes      | The title of the card, providing the main context.        |
-| subtitle       | `string`                                                                  | Yes      | A secondary line of text offering additional context.     |
-| stats          | `string`                                                                  | Yes      | The primary statistic number to be displayed prominently. |
-| avatarIcon     | `string`                                                                  | Yes      | The icon class to be used within the avatar component.    |
-| avatarColor    | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The background color for the avatar.                      |
-| avatarSize     | `number`                                                                  | No       | The size of the avatar. Can be a predefined a number.     |
-| avatarIconSize | `number`                                                                  | No       | The font size of the icon within the avatar.              |
-| avatarSkin     | `'filled' \| 'light'\| 'light-static'`                                    | No       | The skin or variant for the avatar.                       |
-| chipText       | `string`                                                                  | Yes      | The text to be displayed on the chip.                     |
-| chipColor      | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The color of the chip component.                          |
-| chipVariant    | `'filled' \| 'outlined'\| 'tonal'`                                        | No       | The visual style of the chip.                             |
+| Prop        | Type                                                                                | Required | Description                            |
+| ----------- | ----------------------------------------------------------------------------------- | -------- | -------------------------------------- |
+| title       | `string`                                                                            | Yes      | The title displayed on the card        |
+| stats       | `number`                                                                            | Yes      | The primary statistic number displayed |
+| trendNumber | `number`                                                                            | Yes      | The change in the statistic            |
+| avatarIcon  | `string`                                                                            | Yes      | Icon to display inside the avatar      |
+| color       | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | No       | Color theme for the avatar             |
 
-## Card Statistics Horizontal
+## Card Statistics Horizontal with avatar
 
-The `CardStatHorizontal` component is a versatile and compact way to present key statistics in a horizontal layout. It's perfect for dashboards and summary sections where space is at a premium but information density is important.
+The `HorizontalWithAvatar` component is designed to present statistical data in a horizontal layout, enhanced by a customizable avatar. This component is ideal for showcasing key metrics such as user statistics, performance indicators, or financial data, with an emphasis on visually appealing and informative displays.
 
-This component is placed inside the `src/components/card-statistics/Horizontal.tsx` file. You may refer to the `src/views/pages/widget-examples/statistics/Horizontal.tsx` file for it's usage.
+This component is located in the `src/components/card-statistics/HorizontalWithAvatar.tsx` file. For usage examples, refer to the `src/views/apps/ecommerce/referrals/HorizontalStatisticsCard.tsx` file.
 
-Usage: Here's an example of how to use the `CardStatHorizontal` component:
+### Usage
+
+Here's an example of how to use the `HorizontalWithAvatar` component:
 
 ```tsx
-import CardStatHorizontal from "@components/card-statistics/CardStatHorizontal";
+import HorizontalWithAvatar from "@components/card-statistics/HorizontalWithAvatar";
 
-const Component = () => {
+const ExampleComponent = () => {
   return (
-    <CardStatHorizontal
-      title="Total Users"
-      stats="1.28k"
-      avatarIcon="tabler-user"
+    <HorizontalWithAvatar
+      stats="$15,362"
+      title="Total Earning"
+      avatarIcon="ri-money-dollar-circle-line"
       avatarColor="primary"
+      avatarVariant="rounded"
       avatarSkin="light"
-      avatarSize={44}
-      avatarIconSize={28}
-    />
-  )
-}
-
-export default Component
-```
-
-### Props
-
-| Prop           | Type                                                                      | Required | Description                                               |
-| -------------- | ------------------------------------------------------------------------- | -------- | --------------------------------------------------------- |
-| title          | `string`                                                                  | Yes      | The title of the card, providing the main context.        |
-| stats          | `string`                                                                  | Yes      | The primary statistic number to be displayed prominently. |
-| avatarIcon     | `string`                                                                  | Yes      | The icon class to be used within the avatar component.    |
-| avatarColor    | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The background color for the avatar.                      |
-| avatarSize     | `number`                                                                  | No       | The size of the avatar. Can be a predefined a number.     |
-| avatarIconSize | `number`                                                                  | No       | The font size of the icon within the avatar.              |
-| avatarSkin     | `'filled' \| 'light'\| 'light-static'`                                    | No       | The skin for the avatar.                                  |
-
-## Card Statistics With Chart
-
-The `CardStatsWithAreaChart` component is a powerful way to present key statistics along with a visual representation in the form of an area chart. It's perfect for dashboards and summary sections where you need to display trends or changes over the time in a compact space.
-
-The component is placed inside the `src/components/card-statistics/StatsWithAreaChart.tsx` file. You may refer to the `src/views/pages/widget-examples/statistics/CardStatsLineAreaCharts.tsx` file for it's usage.
-
-Usage: Here's an example of how to use the `CardStatsWithAreaChart` component:
-
-```tsx
-import CardStatsWithAreaChart from "@components/card-statistics/StatsWithAreaChart";
-
-const Component = () => {
-  return (
-    <CardStatsWithAreaChart
-      title="Total Users"
-      stats="1.28k"
-      avatarIcon="tabler-user"
-      chartSeries={[{ data: [30, 40, 35, 50, 49, 60, 70, 91, 125] }]}
-      avatarColor="primary"
-      avatarSize={44}
-      avatarIconSize={28}
-      avatarSkin="light"
-    />
-  )
-}
-
-export default Component
-```
-
-### Props
-
-| Prop           | Type                                                                      | Required | Description                                               |
-| -------------- | ------------------------------------------------------------------------- | -------- | --------------------------------------------------------- |
-| title          | `string`                                                                  | Yes      | The title of the card, providing the main context.        |
-| stats          | `string`                                                                  | Yes      | The primary statistic number to be displayed prominently. |
-| chartColor     | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The color of the chart.                                   |
-| chartSeries    | `ApexOptions['series']`                                                   | Yes      | The data series for the chart.                            |
-| avatarIcon     | `string`                                                                  | Yes      | The icon class to be used within the avatar component.    |
-| avatarColor    | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning'` | No       | The background color for the avatar.                      |
-| avatarSize     | `number`                                                                  | No       | The size of the avatar. Can be a predefined a number.     |
-| avatarIconSize | `number`                                                                  | No       | The font size of the icon within the avatar.              |
-| avatarSkin     | `'filled' \| 'light'\| 'light-static'`                                    | No       | The skin for the avatar.                                  |
-
-## Card Statistics Square
-
-The `CardStatSquare` component is a compact way to present key statistics with an accompanying icon. It's perfect for dashboards and summary sections where you need to display key metrics in a compact space.
-
-This component is placed inside the `src/components/card-statistics/CardStatsSquare.tsx` file. You may refer to the `src/views/pages/widget-examples/statistics/Square.tsx` file for it's usage.
-
-Usage: Here's an example of how to use the `CardStatSquare` component:
-
-```tsx
-import CardStatsSquare from '@components/card-statistics/CardStatsSquare'
-
-cost Component = () => {
-  return (
-    <CardStatsSquare
-      stats='345'
-      statsTitle='Subscribers'
-      avatarIcon='tabler-users'
       avatarIconSize={24}
-      avatarSize={40}
-      avatarVariant='rounded'
-      avatarColor='primary'
-      avatarSkin='light'
+      avatarSize={42}
     />
-  )
-}
+  );
+};
 
-export default Component
+export default ExampleComponent;
 ```
 
 ### Props
 
-| Prop              | Type                                                                       | Required | Description                                                      |
-|-------------------|----------------------------------------------------------------------------|----------|------------------------------------------------------------------|
-| stats           | `string`                                                                     | Yes      | The primary statistic number to be displayed prominently.        |
-| statsTitle      | `string`                                                                     | Yes      | The title of the card, providing the main context.                |
-| avatarIcon      | `string`                                                                     | Yes      | The icon class to be used within the avatar component.            |
-| avatarColor     | `ThemeColor`                                                                 | No       | The background color for the avatar.                              |
-| avatarSize      | `number`                                                                     | No       | The size of the avatar.                                           |
-| avatarIconSize  | `number`                                                                     | No       | The font size of the icon within the avatar.                      |
-| avatarVariant   | `CustomAvatarProps['variant']`                                               | No       | The variant of the avatar.                                       |
-| avatarSkin      | `CustomAvatarProps['skin']`                                                  | No       | The skin or variant for the avatar.                               |
+| Prop           | Type                                                                                | Required | Description                               |
+| -------------- | ----------------------------------------------------------------------------------- | -------- | ----------------------------------------- |
+| stats          | `string`                                                                            | Yes      | The statistic value displayed on the card |
+| title          | `string`                                                                            | Yes      | The title displayed on the card           |
+| avatarIcon     | `string`                                                                            | Yes      | Icon to display inside the avatar         |
+| avatarColor    | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | No       | Color theme for the avatar                |
+| avatarVariant  | `'circular'` \| `'rounded'` \| `'square'`                                           | No       | Variant for the avatar                    |
+| avatarSkin     | `'light'` \| `'filled'` \| `'light-static'`                                         | No       | Skin for the avatar                       |
+| avatarIconSize | `number`                                                                            | No       | Size of the icon inside the avatar        |
+| avatarSize     | `number`                                                                            | No       | Size of the avatar                        |
+
+## Card Customer Statistics
+
+The `CustomerStats` component is designed to display customer-related statistics in a visually appealing card format. This component is ideal for showcasing key customer metrics, such as customer Account Balance, Wishlist, or any other pertinent customer data, with customizable options for icons, colors, and descriptions.
+
+This component is placed inside the `src/components/card-statistics/CustomerStats.tsx` file. You may refer to the `src/views/apps/ecommerce/customers/details/customer-right/overview/CustomerStatisticsCard.tsx` file for its usage.
+
+### Usage
+
+Here's an example of how to use the `CustomerStats` component with `value` and `content` props:
+
+```tsx
+import CustomerStats from "@components/card-statistics/CustomerStats";
+
+const CustomerDashboard = () => {
+  return (
+    <CustomerStats
+      title="customer satisfaction"
+      avatarIcon="ri-emotion-happy-line"
+      color="warning"
+      stats="94%"
+      content="Satisfaction Rate"
+      description="based on recent feedback"
+    />
+  );
+};
+
+export default CustomerDashboard;
+```
+
+Here's an example of how to use the `CustomerStats` component with `chipLabel` prop:
+
+```tsx
+import CustomerStats from "@components/card-statistics/CustomerStats";
+
+const CustomerDashboard = () => {
+  return (
+    <CustomerStats
+      title="loyalty program"
+      avatarIcon="ri-gift-line"
+      color="success"
+      chipLabel="Platinum member"
+      description="3000 points to next tier"
+    />
+  );
+};
+
+export default CustomerDashboard;
+```
+
+### Props
+
+| Prop        | Type                                                                                | Required | Description                              |
+| ----------- | ----------------------------------------------------------------------------------- | -------- | ---------------------------------------- |
+| title       | `string`                                                                            | Yes      | The title displayed on the card          |
+| avatarIcon  | `string`                                                                            | Yes      | Icon to display inside the avatar        |
+| description | `string`                                                                            | Yes      | Description displayed on the card        |
+| stats       | `string`                                                                            | No       | The primary statistic number displayed   |
+| content     | `string`                                                                            | No       | Additional content displayed on the card |
+| chipLabel   | `string`                                                                            | No       | Label displayed on the chip              |
+| color       | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | No       | Color theme for the avatar               |

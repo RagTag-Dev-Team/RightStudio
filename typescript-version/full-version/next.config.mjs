@@ -16,16 +16,13 @@ const nextConfig = {
         locale: false
       },
       {
-        source: '/((?!(?:en|fr|ar|front-pages)\\b)):path',
+        source: '/((?!(?:en|fr|ar|front-pages|favicon.ico)\\b)):path',
         destination: '/en/:path',
         permanent: true,
         locale: false
       }
     ]
-  },
-
-  // TODO: below line is added to resolve twice event dispatch in the calendar reducer
-  reactStrictMode: false
+  }
 }
 
 export default nextConfig

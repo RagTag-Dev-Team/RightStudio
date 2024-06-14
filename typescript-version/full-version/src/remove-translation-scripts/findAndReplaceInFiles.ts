@@ -33,6 +33,8 @@ const removeParamsFromPropsPattern2 = /\{ params \}: \{ params: \{ lang: Locale 
 
 const removeParamsFromFunctionPattern = /(?<={ .*)params,?(?=.* }: [A-Z][A-Za-z]+)/g
 
+const excludeLangPattern = /excludeLang\??:\s.*,?/g
+
 async function replacePatternInFile(filePath: string) {
   const data = await readFile(filePath, 'utf8')
 
@@ -49,7 +51,8 @@ async function replacePatternInFile(filePath: string) {
     removeDictionaryDestructuringPattern.test(data) ||
     removeParamsFromPropsPattern.test(data) ||
     removeParamsFromPropsPattern2.test(data) ||
-    removeParamsFromFunctionPattern.test(data)
+    removeParamsFromFunctionPattern.test(data) ||
+    excludeLangPattern.test(data)
   ) {
     // Perform replacements
     const newData = data
@@ -70,6 +73,8 @@ async function replacePatternInFile(filePath: string) {
       .replace(/,\s*(\w+: )?locale/g, '')
       .replace(/\{ lang \}: \{ lang: Locale \}/g, '')
       .replace(/\${lang}\//g, '')
+      .replace(/excludeLang\??:\s.*,?/g, '')
+      .replace(/item\.excludeLang.*?:/, '')
 
     // Only write back if changes were made
     if (data !== newData) {

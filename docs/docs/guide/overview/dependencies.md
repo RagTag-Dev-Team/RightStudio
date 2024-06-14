@@ -101,9 +101,15 @@ You may add / update / remove any other dependencies according to your requireme
 ## Editor
 
 ```json
-"@types/react-draft-wysiwyg" // Typescript version only
-"draft-js"
-"react-draft-wysiwyg"
+"@tiptap/extension-color",
+"@tiptap/extension-list-item",
+"@tiptap/extension-placeholder",
+"@tiptap/extension-text-align",
+"@tiptap/extension-text-style",
+"@tiptap/extension-underline",
+"@tiptap/pm",
+"@tiptap/react",
+"@tiptap/starter-kit",
 ```
 
 ## Eslint
@@ -164,7 +170,7 @@ You may add / update / remove any other dependencies according to your requireme
 ## Search
 
 ```json
-"kbar"
+"cmdk"
 ```
 
 ## Swiper

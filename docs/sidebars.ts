@@ -114,13 +114,13 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Authentication",
       items: [
-        'guide/authentication/intro',
-        'guide/authentication/credentials-provider',
-        'guide/authentication/google-prisma',
-        'guide/authentication/securing-page',
-        'guide/authentication/remove-auth',
-        'guide/authentication/add-auth'
-      ]
+        "guide/authentication/intro",
+        "guide/authentication/credentials-provider",
+        "guide/authentication/google-prisma",
+        "guide/authentication/securing-page",
+        "guide/authentication/remove-auth",
+        "guide/authentication/add-auth",
+      ],
     },
     "guide/logo",
     {
@@ -186,7 +186,6 @@ const sidebars: SidebarsConfig = {
           items: [
             "guide/components/libs/apex-charts",
             "guide/components/libs/recharts",
-            "guide/components/libs/editor",
           ],
         },
         {
@@ -197,7 +196,6 @@ const sidebars: SidebarsConfig = {
             "guide/components/styled-libs/app-keen-slider",
             "guide/components/styled-libs/app-react-apex-charts",
             "guide/components/styled-libs/app-react-datepicker",
-            "guide/components/styled-libs/app-react-draft-wysiwyg",
             "guide/components/styled-libs/app-react-dropzone",
             "guide/components/styled-libs/app-react-toastify",
             "guide/components/styled-libs/app-recharts",
@@ -367,6 +365,7 @@ const sidebars: SidebarsConfig = {
             "menu-examples/vertical-examples/menu-item/target",
             "menu-examples/vertical-examples/menu-item/on-click",
             "menu-examples/vertical-examples/menu-item/root-styles",
+            "menu-examples/vertical-examples/menu-item/exact-match-and-active-url",
           ],
         },
         {
@@ -422,6 +421,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "menu-examples/vertical-examples/menu-render/static-menu",
             "menu-examples/vertical-examples/menu-render/dynamic-menu",
+            "menu-examples/vertical-examples/menu-render/exclude-lang",
             "menu-examples/vertical-examples/menu-render/menu-with-api",
           ],
         },
@@ -491,6 +491,7 @@ const sidebars: SidebarsConfig = {
             "menu-examples/horizontal-examples/menu-item/target",
             "menu-examples/horizontal-examples/menu-item/on-click",
             "menu-examples/horizontal-examples/menu-item/root-styles",
+            "menu-examples/horizontal-examples/menu-item/exact-match-and-active-url",
           ],
         },
         {
@@ -527,6 +528,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "menu-examples/horizontal-examples/menu-render/static-menu",
             "menu-examples/horizontal-examples/menu-render/dynamic-menu",
+            "menu-examples/horizontal-examples/menu-render/exclude-lang",
             "menu-examples/horizontal-examples/menu-render/menu-with-api",
           ],
         },

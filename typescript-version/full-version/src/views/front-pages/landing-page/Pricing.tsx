@@ -1,6 +1,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -161,7 +164,7 @@ function PricingPlan() {
                     <Chip variant='tonal' size='small' color='primary' label={plan.respondTime} />
                   </div>
                 </div>
-                <Button href='/front-pages/payment' variant={plan.current ? 'contained' : 'outlined'}>
+                <Button component={Link} href='/front-pages/payment' variant={plan.current ? 'contained' : 'outlined'}>
                   Get Started
                 </Button>
               </CardContent>

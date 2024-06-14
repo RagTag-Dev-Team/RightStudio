@@ -156,7 +156,7 @@ const InterestedTopics = () => {
       <CardContent>
         <Grid container>
           <Grid item xs={12} sm={6} className='max-sm:mbe-6'>
-            <AppReactApexCharts type='bar' height={268} series={series} options={options} />
+            <AppReactApexCharts type='bar' height={268} width='100%' series={series} options={options} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <div className='flex justify-around items-start'>

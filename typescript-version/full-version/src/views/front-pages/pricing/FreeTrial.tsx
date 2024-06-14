@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -16,7 +19,7 @@ const FreeTrial = () => {
         <Grid container spacing={2}>
           <Grid xs={12} md={6}>
             <div className='flex flex-col gap-11 md:mis-2 items-center md:items-start justify-center plb-10'>
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 mis-2 md:mis-0'>
                 <Typography variant='h5' color='primary' className='font-medium'>
                   Still not convinced? Start with a 14-day FREE trial!
                 </Typography>
@@ -24,7 +27,7 @@ const FreeTrial = () => {
                   You will get full access to with all the features for 14 days.
                 </Typography>
               </div>
-              <Button href='/front-pages/payment' variant='contained'>
+              <Button component={Link} href='/front-pages/payment' variant='contained'>
                 Start 14-Days Free Trial
               </Button>
             </div>

@@ -171,7 +171,7 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             {getAvatar({ avatar: row.original.avatar, customer: row.original.customer })}
-            <div className='flex flex-col'>
+            <div className='flex flex-col items-start'>
               <Typography
                 component={Link}
                 color='text.primary'

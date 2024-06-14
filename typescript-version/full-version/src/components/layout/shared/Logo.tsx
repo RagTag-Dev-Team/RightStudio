@@ -1,12 +1,8 @@
 'use client'
 
 // React Imports
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
-
-// Next Imports
-// import Img from 'next/image'
-import Link from 'next/link'
 
 // Third-party Imports
 import styled from '@emotion/styled'
@@ -24,17 +20,11 @@ import themeConfig from '@configs/themeConfig'
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
-type LogoProps = {
-  component?: boolean
-  href?: string
-  color?: CSSProperties['color']
-}
-
 type LogoTextProps = {
   isHovered?: VerticalNavContextProps['isHovered']
   isCollapsed?: VerticalNavContextProps['isCollapsed']
   transitionDuration?: VerticalNavContextProps['transitionDuration']
-  color?: LogoProps['color']
+  color?: CSSProperties['color']
 }
 
 const LogoText = styled.span<LogoTextProps>`
@@ -50,7 +40,7 @@ const LogoText = styled.span<LogoTextProps>`
     isCollapsed && !isHovered ? 'opacity: 0; margin-inline-start: 0;' : 'opacity: 1; margin-inline-start: 12px;'}
 `
 
-const Logo = ({ component = false, href = '/', color }: LogoProps) => {
+const Logo = ({ color }: { color?: CSSProperties['color'] }) => {
   // Refs
   const logoTextRef = useRef<HTMLSpanElement>(null)
 
@@ -60,8 +50,6 @@ const Logo = ({ component = false, href = '/', color }: LogoProps) => {
 
   // Vars
   const { layout } = settings
-
-  const LogoWrapper = useMemo(() => (component ? 'div' : Link), [component])
 
   useEffect(() => {
     if (layout !== 'collapsed') {
@@ -78,12 +66,8 @@ const Logo = ({ component = false, href = '/', color }: LogoProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered, layout])
 
-  // You may return any JSX here to display a logo in the sidebar header
-  // return <Img src='/next.svg' width={100} height={25} alt='logo' /> // for example
   return (
-    // eslint-disable-next-line lines-around-comment
-    /* @ts-ignore */
-    <LogoWrapper className='flex items-center' {...(!component && { href })}>
+    <div className='flex items-center'>
       <VuexyLogo className='text-2xl text-primary' />
       <LogoText
         color={color}
@@ -94,7 +78,7 @@ const Logo = ({ component = false, href = '/', color }: LogoProps) => {
       >
         {themeConfig.templateName}
       </LogoText>
-    </LogoWrapper>
+    </div>
   )
 }
 

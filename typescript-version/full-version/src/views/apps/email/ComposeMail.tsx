@@ -8,18 +8,103 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 
+// Third-party Imports
+import { useEditor, EditorContent } from '@tiptap/react'
+import { StarterKit } from '@tiptap/starter-kit'
+import { Underline } from '@tiptap/extension-underline'
+import { Placeholder } from '@tiptap/extension-placeholder'
+import { TextAlign } from '@tiptap/extension-text-align'
+import type { Editor } from '@tiptap/core'
+
 // Component Imports
-import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
-import CustomIconButton from '@/@core/components/mui/IconButton'
+import CustomIconButton from '@core/components/mui/IconButton'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
+
+// Style Imports
+import '@/libs/styles/tiptapEditor.css'
 
 type Props = {
   openCompose: boolean
   setOpenCompose: (value: boolean) => void
   isBelowSmScreen: boolean
   isBelowMdScreen: boolean
+}
+
+const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
+  if (!editor) {
+    return null
+  }
+
+  return (
+    <div className='flex flex-wrap gap-x-3 gap-y-1 plb-2 pli-4 border-bs'>
+      <CustomIconButton
+        {...(editor.isActive('bold') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleBold().run()}
+      >
+        <i className='ri-bold text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('underline') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+      >
+        <i className='ri-underline text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('italic') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+      >
+        <i className='ri-italic text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('strike') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+      >
+        <i className='ri-strikethrough text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+      >
+        <i className='ri-align-left text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+      >
+        <i className='ri-align-center text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+      >
+        <i className='ri-align-right text-textSecondary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+      >
+        <i className='ri-align-justify text-textSecondary' />
+      </CustomIconButton>
+    </div>
+  )
 }
 
 const ComposeMail = (props: Props) => {
@@ -35,6 +120,19 @@ const ComposeMail = (props: Props) => {
   const toggleVisibility = (value: 'cc' | 'bcc') => {
     setVisibility(prev => ({ ...prev, [value]: !prev[value] }))
   }
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: 'Message'
+      }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph']
+      }),
+      Underline
+    ]
+  })
 
   return (
     <Drawer
@@ -116,55 +214,9 @@ const ComposeMail = (props: Props) => {
           </Typography>
         }
       />
-      <AppReactDraftWysiwyg
-        placeholder='Type your message...'
-        toolbar={{
-          options: ['inline', 'textAlign'],
-          inline: { options: ['bold', 'italic', 'underline', 'strikethrough'] },
-          link: { options: ['link'] }
-        }}
-        boxProps={{
-          sx: {
-            '& .rdw-editor-wrapper': {
-              borderInline: 0,
-              '.rdw-editor-toolbar': {
-                paddingInline: 4,
-                paddingBlock: 2,
-                gap: 1,
-                '& .rdw-inline-wrapper, & .rdw-text-align-wrapper': {
-                  margin: 0,
-                  gap: 1,
-                  overflow: 'hidden'
-                }
-              }
-            },
-            '& .rdw-option-wrapper': {
-              minWidth: '1.25rem',
-              border: 'none',
-              borderRadius: 'var(--mui-shape-customBorderRadius-md)',
-              padding: 1.75,
-              margin: 0,
-              '&:hover': {
-                boxShadow: 'none',
-                background: 'var(--mui-palette-action-hover) !important'
-              },
-              '&.rdw-option-active': {
-                boxShadow: 'none',
-                background: 'var(--mui-palette-primary-lightOpacity) !important',
-                '& img': {
-                  filter: 'drop-shadow(0px 34px 0 var(--mui-palette-primary-main))',
-                  transform: 'translateY(-34px)'
-                }
-              }
-            },
-            '& .rdw-editor-main': {
-              paddingInline: '24px !important',
-              maxBlockSize: '10rem'
-            }
-          }
-        }}
-      />
-      <div className='plb-4 pli-6 flex justify-between items-center gap-4'>
+      <EditorToolbar editor={editor} />
+      <EditorContent editor={editor} className='bs-[105px] overflow-y-auto flex border-bs' />
+      <div className='plb-4 pli-5 flex justify-between items-center gap-4'>
         <div className='flex items-center gap-4 max-sm:gap-3'>
           {isBelowSmScreen ? (
             <CustomIconButton color='primary' variant='contained'>

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import { styled } from '@mui/material'
@@ -14,6 +15,12 @@ import { styled } from '@mui/material'
 // Third-party Imports
 import classnames from 'classnames'
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { useEditor, EditorContent } from '@tiptap/react'
+import { StarterKit } from '@tiptap/starter-kit'
+import { Underline } from '@tiptap/extension-underline'
+import { Placeholder } from '@tiptap/extension-placeholder'
+import { TextAlign } from '@tiptap/extension-text-align'
+import type { Editor } from '@tiptap/core'
 
 // Types Imports
 import type { AppDispatch } from '@/redux-store'
@@ -23,7 +30,7 @@ import type { Email } from '@/types/apps/emailTypes'
 import { moveEmailsToFolder, navigateEmails, toggleLabel } from '@/redux-store/slices/email'
 
 // Components Imports
-import AppReactDraftWysiwyg from '@/libs/styles/AppReactDraftWysiwyg'
+import CustomIconButton from '@core/components/mui/IconButton'
 import CustomChip from '@core/components/mui/Chip'
 import OptionMenu from '@core/components/option-menu'
 import DirectionalIcon from '@components/DirectionalIcon'
@@ -34,7 +41,6 @@ import styles from './styles.module.css'
 
 // Data Imports
 import { labelColors } from './SidebarLeft'
-import CustomIconButton from '@/@core/components/mui/IconButton'
 
 type Props = {
   drawerOpen: boolean
@@ -76,6 +82,81 @@ const DetailsDrawer = styled('div')<{ drawerOpen: boolean }>(({ drawerOpen }) =>
   background: 'var(--mui-palette-background-paper)',
   transition: 'right 0.3s ease'
 }))
+
+const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
+  if (!editor) {
+    return null
+  }
+
+  return (
+    <div className='flex flex-wrap gap-x-3 gap-y-1 pli-5'>
+      <CustomIconButton
+        {...(editor.isActive('bold') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleBold().run()}
+      >
+        <i className='ri-bold text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('underline') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+      >
+        <i className='ri-underline text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('italic') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+      >
+        <i className='ri-italic text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive('strike') && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+      >
+        <i className='ri-strikethrough text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+      >
+        <i className='ri-align-left text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+      >
+        <i className='ri-align-center text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+      >
+        <i className='ri-align-right text-textPrimary' />
+      </CustomIconButton>
+      <CustomIconButton
+        {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
+        variant='outlined'
+        size='small'
+        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+      >
+        <i className='ri-align-justify text-textPrimary' />
+      </CustomIconButton>
+    </div>
+  )
+}
 
 const MailDetails = (props: Props) => {
   // Props
@@ -133,6 +214,19 @@ const MailDetails = (props: Props) => {
     dispatch(toggleLabel({ emailIds: [currentEmail?.id], label: value }))
     label === value && setDrawerOpen(false)
   }
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: 'Write your message...'
+      }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph']
+      }),
+      Underline
+    ]
+  })
 
   return (
     <DetailsDrawer drawerOpen={drawerOpen}>
@@ -310,8 +404,8 @@ const MailDetails = (props: Props) => {
                 ) : null}
                 <MailCard data={currentEmail} isReplies={true} />
                 <Card className='border mbs-4'>
-                  <CardContent>
-                    {!reply ? (
+                  {!reply ? (
+                    <CardContent>
                       <Typography>
                         Click here to
                         <span className='text-primary cursor-pointer mli-1' onClick={() => setReply(true)}>
@@ -320,47 +414,17 @@ const MailDetails = (props: Props) => {
                         or
                         <span className='text-primary cursor-pointer mis-1'>Forward</span>
                       </Typography>
-                    ) : (
-                      <div className='flex flex-col gap-y-6'>
+                    </CardContent>
+                  ) : (
+                    <div className='flex flex-col gap-y-6'>
+                      <CardContent className='pbe-0'>
                         <Typography color='text.primary'>{`Reply to ${currentEmail.from.name}`}</Typography>
-                        <AppReactDraftWysiwyg
-                          placeholder='Type your message...'
-                          toolbar={{
-                            options: ['inline', 'list', 'link', 'image'],
-                            inline: { options: ['bold', 'italic', 'underline', 'strikethrough'] },
-                            link: { options: ['link'] },
-                            list: { options: ['ordered', 'unordered'] }
-                          }}
-                          boxProps={{
-                            sx: {
-                              '& .rdw-editor-wrapper': {
-                                border: 0,
-                                '.rdw-editor-toolbar': {
-                                  gap: 2,
-                                  border: 0,
-                                  padding: 0,
-                                  '& .rdw-inline-wrapper, & .rdw-list-wrapper, & .rdw-link-wrapper, & .rdw-image-wrapper':
-                                    {
-                                      gap: 2,
-                                      margin: 0
-                                    }
-                                }
-                              },
-                              '& .rdw-option-wrapper': {
-                                minWidth: '1.25rem',
-                                border: 'none',
-                                padding: 0,
-                                margin: 0,
-                                '&:hover, &.rdw-option-active': { boxShadow: 'none' }
-                              },
-                              '& .rdw-editor-main': {
-                                paddingInline: '0 !important',
-                                paddingBlockStart: '0.5rem !important',
-                                maxBlockSize: '10rem'
-                              }
-                            }
-                          }}
-                        />
+                      </CardContent>
+                      <div>
+                        <EditorToolbar editor={editor} />
+                        <EditorContent editor={editor} className='overflow-y-auto flex mbs-1' />
+                      </div>
+                      <CardActions className='pbs-0'>
                         <div className='flex items-center justify-end gap-4'>
                           <IconButton>
                             <i className='tabler-trash text-textSecondary' onClick={() => setReply(false)} />
@@ -384,9 +448,9 @@ const MailDetails = (props: Props) => {
                             </Button>
                           )}
                         </div>
-                      </div>
-                    )}
-                  </CardContent>
+                      </CardActions>
+                    </div>
+                  )}
                 </Card>
               </div>
             </div>

@@ -22,6 +22,7 @@ import NoResult from './NoResult'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -135,6 +136,7 @@ const NavSearch = () => {
 
   // Hooks
   const router = useRouter()
+  const { settings } = useSettings()
   const { lang: locale } = useParams()
   const { isBreakpointReached } = useVerticalNav()
 
@@ -199,7 +201,7 @@ const NavSearch = () => {
 
   return (
     <>
-      {isBreakpointReached ? (
+      {isBreakpointReached || settings.layout === 'horizontal' ? (
         <IconButton onClick={() => setOpen(true)}>
           <i className='tabler-search' />
         </IconButton>

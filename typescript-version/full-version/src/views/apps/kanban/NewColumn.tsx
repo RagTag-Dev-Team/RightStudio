@@ -9,8 +9,8 @@ import Typography from '@mui/material/Typography'
 // Third-party Imports
 import { useForm, Controller } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { object, string, minLength } from 'valibot'
-import type { Input } from 'valibot'
+import { object, string, minLength, pipe, nonEmpty } from 'valibot'
+import type { InferInput } from 'valibot'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -22,10 +22,10 @@ const CustomTextFieldStyled = styled(CustomTextField)({
   }
 })
 
-type FormData = Input<typeof schema>
+type FormData = InferInput<typeof schema>
 
 const schema = object({
-  title: string([minLength(1, 'Title is required')])
+  title: pipe(string(), nonEmpty('Title is required'), minLength(1))
 })
 
 const NewColumn = ({ addNewColumn }: { addNewColumn: (title: string) => void }) => {

@@ -33,7 +33,9 @@ function Footer() {
           <Grid container rowSpacing={10} columnSpacing={12}>
             <Grid item xs={12} lg={5}>
               <div className='flex flex-col items-start gap-6'>
-                <Logo href='/front-pages/landing-page' color='var(--mui-palette-common-white)' />
+                <Link href='/front-pages/landing-page'>
+                  <Logo color='var(--mui-palette-common-white)' />
+                </Link>
                 <Typography color='white' className='md:max-is-[390px] opacity-75'>
                   Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique
                   Layouts.
@@ -155,17 +157,22 @@ function Footer() {
             </Link>
           </p>
           <div className='flex gap-6 items-center'>
-            <IconButton size='small'>
+            <IconButton component={Link} size='small' href='https://github.com/themeselection' target='_blank'>
               <i className='ri-github-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small'>
+            <IconButton component={Link} size='small' href='https://www.facebook.com/ThemeSelections/' target='_blank'>
               <i className='ri-facebook-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small'>
+            <IconButton component={Link} size='small' href='https://twitter.com/Theme_Selection' target='_blank'>
               <i className='ri-twitter-fill text-white text-lg' />
             </IconButton>
-            <IconButton size='small'>
-              <i className='ri-google-fill text-white text-lg' />
+            <IconButton
+              component={Link}
+              size='small'
+              href='https://in.linkedin.com/company/themeselection'
+              target='_blank'
+            >
+              <i className='ri-linkedin-fill text-white text-lg' />
             </IconButton>
           </div>
         </div>

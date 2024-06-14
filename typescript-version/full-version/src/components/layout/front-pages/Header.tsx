@@ -3,6 +3,9 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
@@ -12,6 +15,9 @@ import type { Theme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
+
+// Type Imports
+import type { Mode } from '@core/types'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
@@ -25,7 +31,7 @@ import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
 // Styles Imports
 import styles from './styles.module.css'
 
-const Header = () => {
+const Header = ({ mode }: { mode: Mode }) => {
   // States
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -47,20 +53,24 @@ const Header = () => {
               <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
                 <i className='ri-menu-line' />
               </IconButton>
-
-              <Logo href='/front-pages/landing-page' />
-              <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              <Link href='/front-pages/landing-page'>
+                <Logo />
+              </Link>
+              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           ) : (
             <div className='flex items-center gap-10'>
-              <Logo href='/front-pages/landing-page' />
-              <FrontMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              <Link href='/front-pages/landing-page'>
+                <Logo />
+              </Link>
+              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
             </div>
           )}
           <div className='flex items-center gap-2 sm:gap-4'>
             <ModeDropdown />
             {isBelowLgScreen ? (
               <CustomIconButton
+                component={Link}
                 variant='contained'
                 href='https://themeselection.com/item-page'
                 color='primary'
@@ -70,6 +80,7 @@ const Header = () => {
               </CustomIconButton>
             ) : (
               <Button
+                component={Link}
                 variant='contained'
                 href='https://themeselection.com/item-page'
                 startIcon={<i className='ri-shopping-cart-line text-xl' />}

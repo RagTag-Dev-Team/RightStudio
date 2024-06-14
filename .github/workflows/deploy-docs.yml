@@ -21,9 +21,9 @@ jobs:
 
     steps:
       - name: ⚙️ Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: ⚙️ Set DEPLOY_DIR environment variable
         run: echo DEPLOY_DIR=${{ inputs.is_production && env.DEPLOY_PROD_DIR || env.DEPLOY_STAG_DIR }} >> $GITHUB_ENV

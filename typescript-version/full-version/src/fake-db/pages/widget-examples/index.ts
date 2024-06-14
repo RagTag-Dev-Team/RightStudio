@@ -30,29 +30,29 @@ export const db: CardStatsType = {
   statsHorizontalWithBorder: [
     {
       title: 'On route vehicles',
-      value: 42,
-      change: 18.2,
+      stats: 42,
+      trendNumber: 18.2,
       avatarIcon: 'ri-car-line',
       color: 'primary'
     },
     {
       title: 'Vehicles with errors',
-      value: 8,
-      change: -8.7,
+      stats: 8,
+      trendNumber: -8.7,
       avatarIcon: 'ri-alert-line',
       color: 'warning'
     },
     {
       title: 'Deviated from route',
-      value: 27,
-      change: 4.3,
+      stats: 27,
+      trendNumber: 4.3,
       avatarIcon: 'ri-route-line',
       color: 'error'
     },
     {
       title: 'Late vehicles',
-      value: 13,
-      change: 2.5,
+      stats: 13,
+      trendNumber: 2.5,
       avatarIcon: 'ri-time-line',
       color: 'info'
     }
@@ -62,7 +62,7 @@ export const db: CardStatsType = {
       color: 'primary',
       avatarIcon: 'ri-money-dollar-circle-line',
       title: 'account balance',
-      value: '$7480',
+      stats: '$7480',
       content: ' Credit Left',
       description: 'Account balance for next purchase'
     },
@@ -70,14 +70,14 @@ export const db: CardStatsType = {
       color: 'success',
       avatarIcon: 'ri-gift-line',
       title: 'loyalty program',
-      chipLable: 'Platinum member',
+      chipLabel: 'Platinum member',
       description: '3000 points to next tier'
     },
     {
       color: 'warning',
       avatarIcon: 'ri-star-smile-line',
       title: 'wishlist',
-      value: '15',
+      stats: '15',
       content: 'Items in wishlist',
       description: 'Receive notifications on price drops'
     },
@@ -85,7 +85,7 @@ export const db: CardStatsType = {
       color: 'info',
       avatarIcon: 'ri-vip-crown-line',
       title: 'coupons',
-      value: '21',
+      stats: '21',
       content: 'Coupons you win',
       description: 'Use coupon on next purchase'
     }

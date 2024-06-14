@@ -55,7 +55,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
 
   // Vars
   const { transitionDuration } = verticalNavOptions
-  const { lang: locale, id, folder, label } = params
+  const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
@@ -122,13 +122,21 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             </SubMenu>
             <SubMenu label={dictionary['navigation'].orders}>
               <MenuItem href={`/${locale}/apps/ecommerce/orders/list`}>{dictionary['navigation'].list}</MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/orders/details/${id || '5434'}`}>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/orders/details/5434`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/orders/details'
+              >
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
             <SubMenu label={dictionary['navigation'].customers}>
               <MenuItem href={`/${locale}/apps/ecommerce/customers/list`}>{dictionary['navigation'].list}</MenuItem>
-              <MenuItem href={`/${locale}/apps/ecommerce/customers/details/${id || '879861'}`}>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/customers/details/879861`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/customers/details'
+              >
                 {dictionary['navigation'].details}
               </MenuItem>
             </SubMenu>
@@ -149,15 +157,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
           </SubMenu>
-          <MenuItem
-            href={
-              label
-                ? `/${locale}/apps/email/label/${label || 'personal'}`
-                : folder
-                  ? `/${locale}/apps/email/${folder || 'inbox'}`
-                  : `/${locale}/apps/email`
-            }
-          >
+          <MenuItem href={`/${locale}/apps/email`} exactMatch={false} activeUrl='/apps/email'>
             {dictionary['navigation'].email}
           </MenuItem>
           <MenuItem href={`/${locale}/apps/chat`} icon={<i className='tabler-message-circle-2' />}>
@@ -171,10 +171,16 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           </MenuItem>
           <SubMenu label={dictionary['navigation'].invoice} icon={<i className='tabler-file-description' />}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
+            <MenuItem
+              href={`/${locale}/apps/invoice/preview/4987`}
+              exactMatch={false}
+              activeUrl='/apps/invoice/preview'
+            >
               {dictionary['navigation'].preview}
             </MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
+            <MenuItem href={`/${locale}/apps/invoice/edit/4987`} exactMatch={false} activeUrl='/apps/invoice/edit'>
+              {dictionary['navigation'].edit}
+            </MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user} icon={<i className='tabler-user' />}>
@@ -279,9 +285,6 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/icons-test`} icon={<i className='tabler-icons' />}>
-            Icons Test
-          </MenuItem>
         </MenuSection>
         <MenuSection label={dictionary['navigation'].formsAndTables}>
           <MenuItem href={`/${locale}/forms/form-layouts`} icon={<i className='tabler-layout' />}>
@@ -387,7 +390,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <GenerateVerticalMenu menuData={menuData(dictionary, params)} />
+        <GenerateVerticalMenu menuData={menuData(dictionary)} />
       </Menu> */}
     </ScrollWrapper>
   )
