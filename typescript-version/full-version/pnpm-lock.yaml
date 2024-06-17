@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  immutable: 3.7.4
   rimraf: ^5.0.7
   '@tiptap/core': ^2.0.0
 
