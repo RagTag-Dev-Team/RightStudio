@@ -6,7 +6,6 @@ import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
-import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
@@ -84,7 +83,8 @@ const AddUserDrawer = (props: Props) => {
       status: data.status,
       company: formData.company,
       country: formData.country,
-      contact: formData.contact
+      contact: formData.contact,
+      billing: userData?.[Math.floor(Math.random() * 50) + 1].billing ?? 'Auto Debit'
     }
 
     setData([...(userData ?? []), newUser])
@@ -170,7 +170,7 @@ const AddUserDrawer = (props: Props) => {
                 id='select-role'
                 label='Select Role'
                 {...field}
-                error={Boolean(errors.role)}
+                {...(errors.role && { error: true, helperText: 'This field is required.' })}
               >
                 <MenuItem value='admin'>Admin</MenuItem>
                 <MenuItem value='author'>Author</MenuItem>
@@ -180,7 +180,6 @@ const AddUserDrawer = (props: Props) => {
               </CustomTextField>
             )}
           />
-          {errors.role && <FormHelperText error>This field is required.</FormHelperText>}
           <Controller
             name='plan'
             control={control}
@@ -193,7 +192,7 @@ const AddUserDrawer = (props: Props) => {
                 label='Select Plan'
                 {...field}
                 inputProps={{ placeholder: 'Select Plan' }}
-                error={Boolean(errors.plan)}
+                {...(errors.plan && { error: true, helperText: 'This field is required.' })}
               >
                 <MenuItem value='basic'>Basic</MenuItem>
                 <MenuItem value='company'>Company</MenuItem>
@@ -202,7 +201,6 @@ const AddUserDrawer = (props: Props) => {
               </CustomTextField>
             )}
           />
-          {errors.plan && <FormHelperText error>This field is required.</FormHelperText>}
           <Controller
             name='status'
             control={control}
@@ -214,7 +212,7 @@ const AddUserDrawer = (props: Props) => {
                 id='select-status'
                 label='Select Status'
                 {...field}
-                error={Boolean(errors.status)}
+                {...(errors.status && { error: true, helperText: 'This field is required.' })}
               >
                 <MenuItem value='pending'>Pending</MenuItem>
                 <MenuItem value='active'>Active</MenuItem>
@@ -222,7 +220,6 @@ const AddUserDrawer = (props: Props) => {
               </CustomTextField>
             )}
           />
-          {errors.status && <FormHelperText error>This field is required.</FormHelperText>}
           <CustomTextField
             label='Company'
             fullWidth
