@@ -59,7 +59,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData?: InvoiceType; id: st
                 <div className='flex justify-between gap-4 flex-col sm:flex-row'>
                   <div className='flex flex-col gap-6'>
                     <div className='flex items-center gap-2.5'>
-                      <Logo component />
+                      <Logo />
                     </div>
                     <div>
                       <Typography color='text.primary'>Office 149, 450 South Brand Brooklyn</Typography>

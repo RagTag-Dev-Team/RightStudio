@@ -23,9 +23,9 @@ import Alert from '@mui/material/Alert'
 import { signIn } from 'next-auth/react'
 import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { object, minLength, string, email } from 'valibot'
+import { email, object, minLength, string, pipe, nonEmpty } from 'valibot'
 import type { SubmitHandler } from 'react-hook-form'
-import type { Input } from 'valibot'
+import type { InferInput } from 'valibot'
 import classnames from 'classnames'
 
 // Type Imports
@@ -74,14 +74,15 @@ type ErrorType = {
   message: string[]
 }
 
-type FormData = Input<typeof schema>
+type FormData = InferInput<typeof schema>
 
 const schema = object({
-  email: string([minLength(1, 'This field is required'), email('Email is invalid')]),
-  password: string([
-    minLength(1, 'This field is required'),
+  email: pipe(string(), minLength(1, 'This field is required'), email('Email is invalid')),
+  password: pipe(
+    string(),
+    nonEmpty('This field is required'),
     minLength(5, 'Password must be at least 5 characters long')
-  ])
+  )
 })
 
 const Login = ({ mode }: { mode: SystemMode }) => {
@@ -164,7 +165,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
       </div>
       <div className='flex justify-center items-center bs-full bg-backgroundPaper !min-is-full p-6 md:!min-is-[unset] md:p-12 md:is-[480px]'>
         <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
-          <Logo component />
+          <Logo />
         </div>
         <div className='flex flex-col gap-6 is-full sm:is-auto md:is-full sm:max-is-[400px] md:max-is-[unset] mbs-8 sm:mbs-11 md:mbs-0'>
           <div className='flex flex-col gap-1'>
@@ -179,7 +180,6 @@ const Login = ({ mode }: { mode: SystemMode }) => {
           </Alert>
           <form
             noValidate
-            method='post'
             autoComplete='off'
             action={() => {}}
             onSubmit={handleSubmit(onSubmit)}
