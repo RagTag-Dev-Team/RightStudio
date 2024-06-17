@@ -16,16 +16,10 @@ import Grid from '@mui/material/Grid'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import type { ApexOptions } from 'apexcharts'
-
-// Types Imports
-import type { SystemMode } from '@core/types'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -43,7 +37,7 @@ const lineSeries = [
   { name: 'This Month', data: [50, 40, 60, 46, 54, 35, 70, 53, 58, 35, 60] }
 ]
 
-const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
+const RevenueReport = () => {
   // States
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -57,11 +51,9 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
 
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const disabledText = 'var(--mui-palette-text-disabled)'
 
   const barOptions: ApexOptions = {
     chart: {
@@ -73,12 +65,9 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
     dataLabels: { enabled: false },
     stroke: {
       width: 6,
-      colors: [theme.palette.background.paper]
+      colors: ['var(--mui-palette-background-paper)']
     },
-    colors: [
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.warning.mainChannel} / 1)`)
-    ],
+    colors: ['var(--mui-palette-primary-main)', 'var(--mui-palette-warning-main)'],
     legend: {
       offsetY: -4,
       offsetX: -35,
@@ -86,7 +75,7 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
       horizontalAlign: 'left',
       fontSize: '13px',
       fontFamily: theme.typography.fontFamily,
-      labels: { colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`) },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       itemMargin: {
         horizontal: 9
       },
@@ -115,7 +104,7 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
       }
     },
     grid: {
-      borderColor: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`),
+      borderColor: 'var(--mui-palette-divider)',
       yaxis: {
         lines: { show: false }
       },
@@ -221,10 +210,7 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
       curve: 'smooth',
       dashArray: [5, 0]
     },
-    colors: [
-      rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`),
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`)
-    ],
+    colors: ['var(--mui-palette-divider)', 'var(--mui-palette-primary-main)'],
     legend: {
       show: false
     },
@@ -288,7 +274,7 @@ const RevenueReport = ({ serverMode }: { serverMode: SystemMode }) => {
                 <span className='font-medium text-textPrimary'>Budget: </span>56,800
               </Typography>
             </div>
-            <AppReactApexCharts type='line' height={80} series={lineSeries} options={lineOptions} />
+            <AppReactApexCharts type='line' height={80} width='100%' series={lineSeries} options={lineOptions} />
             <Button variant='contained'>Increase Budget</Button>
           </CardContent>
         </Grid>

@@ -57,7 +57,7 @@ const LineAreaDailySalesChart = () => {
             {
               opacity: 0,
               offset: 100,
-              color: theme.palette.background.paper
+              color: 'var(--mui-palette-background-paper)'
             }
           ]
         ]
@@ -86,7 +86,7 @@ const LineAreaDailySalesChart = () => {
         <Typography>Total Sales This Month</Typography>
         <Typography variant='h4'>$28,450</Typography>
       </CardContent>
-      <AppReactApexCharts type='area' height={88} series={series} options={options} />
+      <AppReactApexCharts type='area' height={88} width='100%' series={series} options={options} />
     </Card>
   )
 }

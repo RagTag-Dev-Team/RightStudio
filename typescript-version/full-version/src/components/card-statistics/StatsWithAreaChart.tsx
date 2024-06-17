@@ -74,7 +74,7 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
             {
               offset: 100,
               opacity: 0.1,
-              color: theme.palette.background.paper
+              color: 'var(--mui-palette-background-paper)'
             }
           ]
         ]
@@ -107,7 +107,7 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
           <Typography variant='body2'>{title}</Typography>
         </div>
       </CardContent>
-      <AppReactApexCharts type='area' height={100} options={options} series={chartSeries} />
+      <AppReactApexCharts type='area' height={100} width='100%' options={options} series={chartSeries} />
     </Card>
   )
 }

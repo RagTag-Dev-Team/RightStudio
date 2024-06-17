@@ -38,7 +38,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       display: 'none'
     },
     '&.MuiInputBase-sizeSmall': {
-      borderRadius: theme.shape.borderRadius
+      borderRadius: 'var(--mui-shape-borderRadius)'
     },
     '&.Mui-error': {
       borderColor: 'var(--mui-palette-error-main)'

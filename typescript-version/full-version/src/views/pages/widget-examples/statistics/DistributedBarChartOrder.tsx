@@ -24,7 +24,7 @@ const DistributedBarChartOrder = () => {
   const theme = useTheme()
 
   // Vars
-  const actionSelectedColor = theme.palette.action.selected
+  const actionSelectedColor = 'var(--mui-palette-action-selected)'
 
   const options: ApexOptions = {
     chart: {
@@ -37,7 +37,7 @@ const DistributedBarChartOrder = () => {
     tooltip: { enabled: false },
     legend: { show: false },
     dataLabels: { enabled: false },
-    colors: [theme.palette.primary.main],
+    colors: ['var(--mui-palette-primary-main)'],
     states: {
       hover: {
         filter: { type: 'none' }

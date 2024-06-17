@@ -40,7 +40,7 @@ const tabs: Theme['components'] = {
                     })
               }),
           '& .MuiTabScrollButton-root': {
-            borderRadius: theme.shape.borderRadius
+            borderRadius: 'var(--mui-shape-borderRadius)'
           }
         },
         '& ~ .MuiTabPanel-root': {

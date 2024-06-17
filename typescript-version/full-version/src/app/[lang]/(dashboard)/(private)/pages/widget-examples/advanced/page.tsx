@@ -38,7 +38,7 @@ const Advanced = () => {
         <SalesByCountries />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <EarningReports serverMode={serverMode} />
+        <EarningReports />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <BrowserStates />

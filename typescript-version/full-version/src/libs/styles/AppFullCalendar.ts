@@ -25,7 +25,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         marginBottom: theme.spacing(6)
       },
       '& .fc-sidebarToggle-button': {
-        color: `${theme.palette.text.secondary} !important`,
+        color: 'var(--mui-palette-text-secondary) !important',
         marginInlineEnd: theme.spacing(2)
       },
       '& .fc-button-group:has(.fc-next-button)': {

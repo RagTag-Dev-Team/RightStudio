@@ -8,32 +8,22 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import type { ApexOptions } from 'apexcharts'
-
-// Types Imports
-import type { SystemMode } from '@core/types'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
 const series = [{ data: [32, 52, 72, 94, 116, 94, 72] }]
 
-const BarChartRevenueGrowth = ({ serverMode }: { serverMode: SystemMode }) => {
+const BarChartRevenueGrowth = () => {
   // Hook
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-
-  // Vars
-  const successColorWithOpacity = rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.16)`)
+  const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
 
   const options: ApexOptions = {
     chart: {
@@ -55,7 +45,7 @@ const BarChartRevenueGrowth = ({ serverMode }: { serverMode: SystemMode }) => {
       successColorWithOpacity,
       successColorWithOpacity,
       successColorWithOpacity,
-      theme.palette.success.main,
+      'var(--mui-palette-success-main)',
       successColorWithOpacity,
       successColorWithOpacity
     ],
@@ -83,7 +73,7 @@ const BarChartRevenueGrowth = ({ serverMode }: { serverMode: SystemMode }) => {
       tickPlacement: 'on',
       labels: {
         style: {
-          colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`),
+          colors: 'var(--mui-palette-text-disabled)',
           fontFamily: theme.typography.fontFamily,
           fontSize: theme.typography.body2.fontSize as string
         }

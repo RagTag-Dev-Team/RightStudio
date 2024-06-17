@@ -47,7 +47,7 @@ const cardData: CustomInputHorizontalData[] = [
           className='is-[58px] bs-[34px]'
           sx={{
             backgroundColor: theme =>
-              theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.action.hover
+              theme.palette.mode === 'dark' ? 'var(--mui-palette-common-white)' : 'var(--mui-palette-action-hover)'
           }}
         >
           <img src='/images/logos/visa.png' alt='plan' className='bs-3' />
@@ -66,7 +66,7 @@ const cardData: CustomInputHorizontalData[] = [
           className='is-[58px] bs-[34px]'
           sx={{
             backgroundColor: theme =>
-              theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.action.hover
+              theme.palette.mode === 'dark' ? 'var(--mui-palette-common-white)' : 'var(--mui-palette-action-hover)'
           }}
         >
           <img src='/images/logos/paypal.png' alt='plan' className='bs-5' />

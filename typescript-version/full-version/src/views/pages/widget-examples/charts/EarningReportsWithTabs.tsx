@@ -17,21 +17,15 @@ import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
 import type { Theme } from '@mui/material/styles'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import classnames from 'classnames'
 import type { ApexOptions } from 'apexcharts'
 
-// Types Imports
-import type { SystemMode } from '@core/types'
-
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -101,15 +95,14 @@ const renderTabPanels = (value: TabCategory, theme: Theme, options: ApexOptions,
     const max = Math.max(...((item.series[0] as ApexChartSeriesData).data as number[]))
     const seriesIndex = ((item.series[0] as ApexChartSeriesData).data as number[]).indexOf(max)
 
-    const finalColors = colors.map((color, i) =>
-      seriesIndex === i ? rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`) : color
-    )
+    const finalColors = colors.map((color, i) => (seriesIndex === i ? 'var(--mui-palette-primary-main)' : color))
 
     return (
       <TabPanel key={index} value={item.type} className='!p-0'>
         <AppReactApexCharts
           type='bar'
           height={230}
+          width='100%'
           options={{ ...options, colors: finalColors }}
           series={item.series}
         />
@@ -118,23 +111,21 @@ const renderTabPanels = (value: TabCategory, theme: Theme, options: ApexOptions,
   })
 }
 
-const EarningReportsWithTabs = ({ serverMode }: { serverMode: SystemMode }) => {
+const EarningReportsWithTabs = () => {
   // States
   const [value, setValue] = useState<TabCategory>('orders')
 
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const disabledText = 'var(--mui-palette-text-disabled)'
 
   const handleChange = (event: SyntheticEvent, newValue: TabCategory) => {
     setValue(newValue)
   }
 
-  const colors = Array(9).fill(rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 0.16)`))
+  const colors = Array(9).fill('var(--mui-palette-primary-lightOpacity)')
 
   const options: ApexOptions = {
     chart: {
@@ -157,7 +148,7 @@ const EarningReportsWithTabs = ({ serverMode }: { serverMode: SystemMode }) => {
       formatter: val => `${val}k`,
       style: {
         fontWeight: 500,
-        colors: [rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)],
+        colors: ['var(--mui-palette-text-primary)'],
         fontSize: theme.typography.body1.fontSize as string
       }
     },
@@ -181,7 +172,7 @@ const EarningReportsWithTabs = ({ serverMode }: { serverMode: SystemMode }) => {
     },
     xaxis: {
       axisTicks: { show: false },
-      axisBorder: { color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`) },
+      axisBorder: { color: 'var(--mui-palette-divider)' },
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
       labels: {
         style: {

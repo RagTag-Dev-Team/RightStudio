@@ -20,13 +20,13 @@ const AppRecharts = styled('div')(({ theme }) => ({
   '& .recharts-default-tooltip': {
     border: 'none !important',
     boxShadow: 'var(--mui-customShadows-xs)',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 'var(--mui-shape-borderRadius)',
     backgroundColor: 'var(--mui-palette-background-paper) !important'
   },
   '& .recharts-custom-tooltip': {
     padding: theme.spacing(2.5),
     boxShadow: 'var(--mui-customShadows-xs)',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 'var(--mui-shape-borderRadius)',
     backgroundColor: 'var(--mui-palette-background-paper)'
   },
   '& .recharts-tooltip-cursor': {

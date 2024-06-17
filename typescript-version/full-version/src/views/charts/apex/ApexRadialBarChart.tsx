@@ -54,7 +54,7 @@ const ApexRadialBarChart = () => {
         hollow: { size: '30%' },
         track: {
           margin: 15,
-          background: theme.palette.customColors.trackBg
+          background: 'var(--mui-palette-customColors-trackBg)'
         },
         dataLabels: {
           name: {

@@ -60,13 +60,13 @@ const DashboardCRM = () => {
         />
       </Grid>
       <Grid item xs={12} md={8} lg={4}>
-        <BarChartRevenueGrowth serverMode={serverMode} />
+        <BarChartRevenueGrowth />
       </Grid>
       <Grid item xs={12} lg={8}>
-        <EarningReportsWithTabs serverMode={serverMode} />
+        <EarningReportsWithTabs />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <RadarSalesChart serverMode={serverMode} />
+        <RadarSalesChart />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <SalesByCountries />

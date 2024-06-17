@@ -70,7 +70,7 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
   paddingInline: theme.spacing(7),
   paddingBlock: theme.spacing(1),
   '& + i': {
-    color: theme.palette.text.secondary
+    color: 'var(--mui-palette-text-secondary)'
   },
   '&:first-of-type': {
     paddingInlineStart: 0
@@ -82,10 +82,10 @@ const Step = styled(MuiStep)<StepProps>(({ theme }) => ({
     display: 'none'
   },
   '&.Mui-completed .step-title, &.Mui-completed .step-subtitle': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   },
   '&.Mui-completed + i': {
-    color: theme.palette.primary.main
+    color: 'var(--mui-palette-primary-main)'
   },
   [theme.breakpoints.down('md')]: {
     padding: 0,

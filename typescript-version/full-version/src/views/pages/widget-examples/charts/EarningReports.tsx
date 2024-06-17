@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import dynamic from 'next/dynamic'
 
@@ -10,21 +8,17 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import LinearProgress from '@mui/material/LinearProgress'
 import Chip from '@mui/material/Chip'
-import { useColorScheme, useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import classnames from 'classnames'
 import type { ApexOptions } from 'apexcharts'
 
 // Types Imports
-import type { ThemeColor, SystemMode } from '@core/types'
+import type { ThemeColor } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -68,14 +62,9 @@ const data: DataType[] = [
   }
 ]
 
-const EarningReports = ({ serverMode }: { serverMode: SystemMode }) => {
-  // Hooks
-  const theme = useTheme()
-  const { mode } = useColorScheme()
-
+const EarningReports = () => {
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const primaryColorWithOpacity = rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 0.16)`)
+  const primaryColorWithOpacity = 'var(--mui-palette-primary-lightOpacity)'
 
   const options: ApexOptions = {
     chart: {
@@ -106,7 +95,7 @@ const EarningReports = ({ serverMode }: { serverMode: SystemMode }) => {
       primaryColorWithOpacity,
       primaryColorWithOpacity,
       primaryColorWithOpacity,
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
+      'var(--mui-palette-primary-main)',
       primaryColorWithOpacity,
       primaryColorWithOpacity
     ],
@@ -125,7 +114,7 @@ const EarningReports = ({ serverMode }: { serverMode: SystemMode }) => {
       labels: {
         style: {
           fontSize: '13px',
-          colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+          colors: 'var(--mui-palette-text-disabled)'
         }
       }
     },

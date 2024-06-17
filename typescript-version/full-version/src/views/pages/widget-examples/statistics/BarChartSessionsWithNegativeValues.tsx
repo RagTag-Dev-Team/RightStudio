@@ -56,10 +56,10 @@ const BarChartSessionsWithNegativeValues = () => {
     stroke: {
       lineCap: 'round',
       width: 3,
-      colors: [theme.palette.background.paper]
+      colors: ['var(--mui-palette-background-paper)']
     },
     dataLabels: { enabled: false },
-    colors: [theme.palette.primary.main, theme.palette.success.main],
+    colors: ['var(--mui-palette-primary-main)', 'var(--mui-palette-success-main)'],
     plotOptions: {
       bar: {
         borderRadius: 5,

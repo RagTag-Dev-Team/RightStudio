@@ -55,9 +55,11 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     },
     '& .apexcharts-xaxistooltip': {
       borderColor: 'var(--mui-palette-divider)',
-      background: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg,
+      background:
+        theme.palette.mode === 'light' ? 'var(--mui-palette-grey-50)' : 'var(--mui-palette-customColors-bodyBg)',
       '&:after': {
-        borderBottomColor: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg
+        borderBottomColor:
+          theme.palette.mode === 'light' ? 'var(--mui-palette-grey-50)' : 'var(--mui-palette-customColors-bodyBg)'
       },
       '&:before': {
         borderBottomColor: 'var(--mui-palette-divider)'
@@ -65,9 +67,11 @@ const ApexChartWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     },
     '& .apexcharts-yaxistooltip': {
       borderColor: 'var(--mui-palette-divider)',
-      background: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg,
+      background:
+        theme.palette.mode === 'light' ? 'var(--mui-palette-grey-50)' : 'var(--mui-palette-customColors-bodyBg)',
       '&:after': {
-        borderLeftColor: theme.palette.mode === 'light' ? theme.palette.grey[50] : theme.palette.customColors.bodyBg
+        borderLeftColor:
+          theme.palette.mode === 'light' ? 'var(--mui-palette-grey-50)' : 'var(--mui-palette-customColors-bodyBg)'
       },
       '&:before': {
         borderLeftColor: 'var(--mui-palette-divider)'

@@ -117,7 +117,7 @@ const WelcomeCard = () => {
     colors: [
       darken(theme.palette.success.main, 0.15),
       darken(theme.palette.success.main, 0.1),
-      theme.palette.success.main,
+      'var(--mui-palette-success-main)',
       lighten(theme.palette.success.main, 0.2),
       lighten(theme.palette.success.main, 0.4),
       lighten(theme.palette.success.main, 0.6)

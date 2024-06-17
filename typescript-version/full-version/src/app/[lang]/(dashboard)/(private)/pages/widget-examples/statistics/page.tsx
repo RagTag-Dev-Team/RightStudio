@@ -24,9 +24,6 @@ import CustomerStatisticsCard from '@views/pages/widget-examples/statistics/Cust
 import LogisticsStatisticsCard from '@views/apps/logistics/dashboard/LogisticsStatisticsCard'
 import UserListCards from '@views/pages/widget-examples/statistics/UserListCards'
 
-// Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
-
 // Data Imports
 import { getStatisticsData } from '@/app/server/actions'
 
@@ -51,7 +48,6 @@ import { getStatisticsData } from '@/app/server/actions'
 const Statistics = async () => {
   // Vars
   const statsData = await getStatisticsData()
-  const serverMode = getServerMode()
 
   return (
     <Grid container spacing={6}>
@@ -68,13 +64,13 @@ const Statistics = async () => {
         <LineAreaYearlySalesChart />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
-        <LineChartProfit serverMode={serverMode} />
+        <LineChartProfit />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <BarChartSessionsWithNegativeValues />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
-        <RadialBarChart serverMode={serverMode} />
+        <RadialBarChart />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <LineChartImpression />
@@ -98,7 +94,7 @@ const Statistics = async () => {
         <SalesOverview />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <BarChartDailyTraffic serverMode={serverMode} />
+        <BarChartDailyTraffic />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
         <SubscribersOrders />
@@ -113,10 +109,10 @@ const Statistics = async () => {
         <Vertical data={statsData.statsVertical} />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <BarChartRevenueGrowth serverMode={serverMode} />
+        <BarChartRevenueGrowth />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <DonutChartGeneratedLeads serverMode={serverMode} />
+        <DonutChartGeneratedLeads />
       </Grid>
     </Grid>
   )

@@ -8,21 +8,18 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import classnames from 'classnames'
 import type { ApexOptions } from 'apexcharts'
 
 // Types Imports
-import type { ThemeColor, SystemMode } from '@core/types'
+import type { ThemeColor } from '@core/types'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -59,14 +56,11 @@ const data: DataType[] = [
   }
 ]
 
-const TotalEarning = ({ serverMode }: { serverMode: SystemMode }) => {
+const TotalEarning = () => {
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-
   const options: ApexOptions = {
     chart: {
       stacked: true,
@@ -81,12 +75,9 @@ const TotalEarning = ({ serverMode }: { serverMode: SystemMode }) => {
     dataLabels: { enabled: false },
     stroke: {
       width: 5,
-      colors: [theme.palette.background.paper]
+      colors: ['var(--mui-palette-background-paper)']
     },
-    colors: [
-      rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`),
-      rgbaToHex(`rgb(${theme.palette.secondary.mainChannel} / 1)`)
-    ],
+    colors: ['var(--mui-palette-primary-main)', 'var(--mui-palette-secondary-main)'],
     states: {
       hover: {
         filter: { type: 'none' }
@@ -104,7 +95,7 @@ const TotalEarning = ({ serverMode }: { serverMode: SystemMode }) => {
       }
     },
     grid: {
-      borderColor: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`),
+      borderColor: 'var(--mui-palette-divider)',
       yaxis: {
         lines: { show: false }
       },
@@ -206,7 +197,7 @@ const TotalEarning = ({ serverMode }: { serverMode: SystemMode }) => {
         }
       />
       <CardContent className='flex flex-col gap-4'>
-        <AppReactApexCharts type='bar' height={189} series={series} options={options} />
+        <AppReactApexCharts type='bar' height={189} width='100%' series={series} options={options} />
         {data.map((item, index) => (
           <div key={index} className='flex items-center gap-4'>
             <CustomAvatar skin='light' variant='rounded' color={item.avatarColor} size={38}>

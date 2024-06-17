@@ -46,7 +46,7 @@ const ToastifyWrapper = styled(Box)<BoxProps>(({ theme }) => {
       padding: theme.spacing(1.5, 2.5),
       backgroundColor: 'var(--mui-palette-background-paper)',
       boxShadow: settings.skin === 'bordered' ? 'none' : 'var(--mui-customShadows-md)',
-      border: settings.skin === 'bordered' && `1px solid ${theme.palette.divider}`,
+      border: settings.skin === 'bordered' && '1px solid var(--mui-palette-divider)',
       ...(isSmallScreen && {
         marginBlockEnd: theme.spacing(4)
       }),

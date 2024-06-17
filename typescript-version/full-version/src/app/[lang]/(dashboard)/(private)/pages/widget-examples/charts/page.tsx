@@ -10,35 +10,29 @@ import ProjectStatus from '@views/pages/widget-examples/charts/ProjectStatus'
 import EarningReportsWithTabs from '@views/pages/widget-examples/charts/EarningReportsWithTabs'
 import TotalEarning from '@views/pages/widget-examples/charts/TotalEarning'
 
-// Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
-
 const Charts = () => {
-  // Vars
-  const serverMode = getServerMode()
-
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={6}>
-        <EarningReports serverMode={serverMode} />
+        <EarningReports />
       </Grid>
       <Grid item xs={12} md={6}>
-        <SupportTracker serverMode={serverMode} />
+        <SupportTracker />
       </Grid>
       <Grid item xs={12} md={4}>
-        <Sales serverMode={serverMode} />
+        <Sales />
       </Grid>
       <Grid item xs={12} md={8}>
-        <RevenueReport serverMode={serverMode} />
+        <RevenueReport />
       </Grid>
       <Grid item xs={12} md={4}>
         <ProjectStatus />
       </Grid>
       <Grid item xs={12} md={8}>
-        <EarningReportsWithTabs serverMode={serverMode} />
+        <EarningReportsWithTabs />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <TotalEarning serverMode={serverMode} />
+        <TotalEarning />
       </Grid>
     </Grid>
   )
