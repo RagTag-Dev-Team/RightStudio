@@ -1,4 +1,4 @@
-name: 'Deploy - Documentation'
+name: Deploy - Documentation
 run-name: ${{ inputs.is_production && '🚀' || '🧪' }} Deploy - Documentation
 
 on:
@@ -67,7 +67,7 @@ jobs:
             cd ${{ env.DEPLOY_DIR }}
             rm -rf documentation-backup-*.zip
             DOC_ZIP_NAME="documentation-backup-$(date +"%Y-%m-%d-%H-%M-%S").zip"
-            [[ "${{ inputs.is_production }}" == "true" ]] && rm -rf ${{ secrets.STAG_DIR }}/documentation && zip -r $DOC_ZIP_NAME documentation
+            [[ "${{ inputs.is_production }}" == "true" ]] && rm -rf ${{ env.DEPLOY_STAG_DIR }}/documentation && zip -r $DOC_ZIP_NAME documentation
             rm -rf documentation
 
       - name: ⚙️ Move documentation to github workspace directory
