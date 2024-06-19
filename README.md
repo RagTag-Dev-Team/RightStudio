@@ -16,7 +16,7 @@
 
 <p align="center">
    <a href="https://1.envato.market/vuexy_admin" target="_blank" align="center">
-      <img src="https://cdn.jsdelivr.net/gh/pixinvent/pi-assets/vuexy/admin-template/banner/banner.png" alt="Vuexy - MUI NextJS Admin Template">
+      <img src="https://cdn.pixinvent.com/pi-assets/vuexy/admin-template/banner/banner.png" alt="Vuexy - MUI NextJS Admin Template">
    </a>
 </p>
 
