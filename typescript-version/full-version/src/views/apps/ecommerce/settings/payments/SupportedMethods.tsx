@@ -17,7 +17,7 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 const SupportedMethods = () => {
   // Vars
   const buttonProps: ButtonProps = {
-    variant: 'outlined',
+    variant: 'tonal',
     children: 'Add Payment Methods'
   }
 
@@ -31,7 +31,7 @@ const SupportedMethods = () => {
         <Typography className='font-medium' color='text.primary'>
           Default
         </Typography>
-        <div className='bg-actionHover rounded is-full p-5'>
+        <div className='bg-actionHover rounded is-full p-6'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center justify-center rounded bg-white shadow-sm min-is-[58px] min-bs-[37px]'>
               <img src='/images/apps/ecommerce/paypal.png' height={25} />

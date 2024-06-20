@@ -205,8 +205,8 @@ const OrderTable = () => {
                       >
                         {flexRender(header.column.columnDef.header, header.getContext())}
                         {{
-                          asc: <i className='ri-arrow-up-s-line text-xl' />,
-                          desc: <i className='ri-arrow-down-s-line text-xl' />
+                          asc: <i className='tabler-chevron-up text-xl' />,
+                          desc: <i className='tabler-chevron-down text-xl' />
                         }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                       </div>
                     </>

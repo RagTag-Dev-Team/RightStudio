@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import { lighten, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import type { ApexOptions } from 'apexcharts'
@@ -31,9 +31,9 @@ const LogisticsDeliveryExceptions = () => {
     },
     colors: [
       'var(--mui-palette-success-main)',
-      lighten(theme.palette.success.main, 0.2),
-      lighten(theme.palette.success.main, 0.4),
-      lighten(theme.palette.success.main, 0.6)
+      'rgba(var(--mui-palette-success-mainChannel) / 0.8)',
+      'rgba(var(--mui-palette-success-mainChannel) / 0.6)',
+      'rgba(var(--mui-palette-success-mainChannel) / 0.4)'
     ],
     dataLabels: {
       enabled: false,
@@ -97,10 +97,16 @@ const LogisticsDeliveryExceptions = () => {
   }
 
   return (
-    <Card>
+    <Card className='bs-full'>
       <CardHeader title='Delivery exceptions' action={<OptionMenu options={['Select All', 'Refresh', 'Share']} />} />
       <CardContent>
-        <AppReactApexCharts type='donut' height={400} width='100%' series={deliveryExceptionsChartSeries} options={options} />
+        <AppReactApexCharts
+          type='donut'
+          height={452}
+          width='100%'
+          series={deliveryExceptionsChartSeries}
+          options={options}
+        />
       </CardContent>
     </Card>
   )

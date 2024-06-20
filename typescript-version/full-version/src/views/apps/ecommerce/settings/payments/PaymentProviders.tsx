@@ -13,7 +13,7 @@ import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementCli
 const PaymentProviders = () => {
   // Vars
   const buttonProps: ButtonProps = {
-    variant: 'outlined',
+    variant: 'tonal',
     children: 'Choose A Provider'
   }
 

@@ -27,7 +27,7 @@ const CustomerContact = () => {
           <FormControlLabel value='phone' control={<Radio />} label='Phone number' />
           <FormControlLabel value='email' control={<Radio />} label='Email' />
         </RadioGroup>
-        <Alert severity='warning' icon={<i className='ri-information-line' />}>
+        <Alert severity='info' icon={<i className='tabler-info-circle' />} className='font-medium text-lg'>
           To send SMS updates, you need to install an SMS App.
         </Alert>
       </CardContent>

@@ -3,12 +3,12 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputLabel from '@mui/material/InputLabel'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 // Component Imports
 import Link from '@components/Link'
 import CustomIconButton from '@core/components/mui/IconButton'
+import CustomTextField from '@core/components/mui/TextField'
 
 const TwoStepVerification = () => {
   return (
@@ -18,14 +18,14 @@ const TwoStepVerification = () => {
         <InputLabel htmlFor='sms' className='font-medium text-textPrimary mbe-1'>
           SMS
         </InputLabel>
-        <div className='flex items-center mbe-4'>
-          <TextField id='sms' placeholder='+1(968) 819-2547' fullWidth size='small' />
+        <div className='flex items-center gap-4 mbe-4'>
+          <CustomTextField id='sms' placeholder='+1(968) 819-2547' fullWidth />
           <div className='flex'>
-            <CustomIconButton variant='outlined' color='secondary'>
-              <i className='ri-edit-box-line' />
+            <CustomIconButton>
+              <i className='tabler-edit text-textPrimary' />
             </CustomIconButton>
-            <CustomIconButton variant='outlined' color='secondary'>
-              <i className='ri-user-add-line' />
+            <CustomIconButton>
+              <i className='tabler-user-plus text-textPrimary' />
             </CustomIconButton>
           </div>
         </div>

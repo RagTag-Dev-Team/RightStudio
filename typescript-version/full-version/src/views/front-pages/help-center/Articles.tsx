@@ -39,7 +39,7 @@ const popularArticles: popularArticlesType[] = [
     slug: 'first-steps',
     title: 'First Steps',
     svg: <Gift />,
-    subtitle: 'Are you a new customer & wondering how to get started?'
+    subtitle: 'Are you a new customer and wondering how to get started?'
   },
   {
     slug: 'external-content',
@@ -51,7 +51,7 @@ const popularArticles: popularArticlesType[] = [
 
 const Articles = () => {
   return (
-    <section className='md:plb-[100px] plb-[50px]'>
+    <section className='md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>
         <Typography variant='h4' className='text-center mbe-6'>
           Popular Articles
@@ -68,7 +68,8 @@ const Articles = () => {
                     <Button
                       component={Link}
                       href='/front-pages/help-center/article/how-to-add-product-in-cart'
-                      variant='outlined'
+                      variant='tonal'
+                      size='small'
                     >
                       Read More
                     </Button>

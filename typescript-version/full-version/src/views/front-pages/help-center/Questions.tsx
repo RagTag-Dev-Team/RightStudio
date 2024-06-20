@@ -7,14 +7,13 @@ import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import FormControl from '@mui/material/FormControl'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
@@ -31,7 +30,7 @@ const articleList = [
 
 const Questions = () => {
   return (
-    <section className='flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px] pbs-[70px] -mbs-[70px]'>
+    <section className='flex flex-col justify-center items-center gap-4 md:plb-[100px] plb-[50px] pbs-[70px] -mbs-[70px] bg-backgroundPaper'>
       <div className={classnames('pbs-10 md:pbs-16', frontCommonStyles.layoutSpacing)}>
         <Grid container spacing={6}>
           <Grid item xs={12} lg={8}>
@@ -70,21 +69,16 @@ const Questions = () => {
             </div>
           </Grid>
           <Grid item xs={12} lg={4} className='flex flex-col gap-6'>
-            <FormControl fullWidth variant='outlined'>
-              <OutlinedInput
-                id='outlined-adornment-weight'
-                placeholder='Search...'
-                startAdornment={
+            <CustomTextField
+              placeholder='Search...'
+              InputProps={{
+                startAdornment: (
                   <InputAdornment position='start'>
-                    <i className='ri-search-line' />
+                    <i className='tabler-search' />
                   </InputAdornment>
-                }
-                aria-describedby='outlined-weight-helper-text'
-                inputProps={{
-                  'aria-label': 'weight'
-                }}
-              />
-            </FormControl>
+                )
+              }}
+            />
             <div className='flex flex-col gap-4'>
               <div className='pli-5 plb-2 bg-actionHover rounded'>
                 <Typography variant='h5'>Articles in this section</Typography>
@@ -92,8 +86,11 @@ const Questions = () => {
               <div className='flex flex-col gap-4'>
                 {articleList.map((article, index) => (
                   <div key={index} className='flex gap-2 justify-between'>
-                    <Typography>{article}</Typography>
-                    <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
+                    <Typography color='text.primary'>{article}</Typography>
+                    <DirectionalIcon
+                      ltrIconClass='tabler-chevron-right text-textDisabled text-xl'
+                      rtlIconClass='tabler-chevron-left text-textDisabled text-xl'
+                    />
                   </div>
                 ))}
               </div>

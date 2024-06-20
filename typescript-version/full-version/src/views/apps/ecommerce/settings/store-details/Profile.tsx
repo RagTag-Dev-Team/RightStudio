@@ -4,28 +4,30 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Alert from '@mui/material/Alert'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 const Profile = () => {
   return (
     <Card>
       <CardHeader title='Profile' />
       <CardContent>
-        <Grid container spacing={5}>
+        <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Store name' placeholder='ABCD' />
+            <CustomTextField fullWidth label='Store name' placeholder='ABCD' />
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Phone' placeholder='+(123) 456-7890' />
+            <CustomTextField fullWidth label='Phone' placeholder='+(123) 456-7890' />
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Store contact email' placeholder='johndoe@email.com' />
+            <CustomTextField fullWidth label='Store contact email' placeholder='johndoe@email.com' />
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Sender email' placeholder='johndoe@email.com' />
+            <CustomTextField fullWidth label='Sender email' placeholder='johndoe@email.com' />
           </Grid>
           <Grid item xs={12}>
-            <Alert severity='warning' icon={<i className='ri-notification-3-line' />}>
+            <Alert severity='warning' icon={<i className='tabler-bell' />} className='font-medium text-lg'>
               Confirm that you have access to johndoe@gmail.com in sender email settings.
             </Alert>
           </Grid>

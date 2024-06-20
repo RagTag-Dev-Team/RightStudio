@@ -4,8 +4,10 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputAdornment from '@mui/material/InputAdornment'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 const OrderIdFormat = () => {
   return (
@@ -15,9 +17,9 @@ const OrderIdFormat = () => {
         subheader='Shown on the Orders page, customer pages, and customer order notifications to identify orders.'
       />
       <CardContent>
-        <Grid container spacing={5}>
+        <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <TextField
+            <CustomTextField
               fullWidth
               label='Prefix'
               placeholder='Prefix'
@@ -27,7 +29,7 @@ const OrderIdFormat = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField
+            <CustomTextField
               fullWidth
               label='Suffix'
               placeholder='Suffix'

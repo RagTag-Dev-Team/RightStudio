@@ -128,6 +128,7 @@ const RevenueReport = () => {
       }
     },
     yaxis: {
+      tickAmount: 5,
       labels: {
         offsetX: -14,
         style: {

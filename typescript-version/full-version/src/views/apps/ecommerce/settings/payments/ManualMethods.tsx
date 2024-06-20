@@ -44,7 +44,7 @@ const PaymentMethodButton = () => {
 
   return (
     <>
-      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button'>
+      <ButtonGroup variant='tonal' ref={anchorRef} aria-label='split button'>
         <Button>Add Manual Payment Method</Button>
         <Button
           className='pli-0'
@@ -54,7 +54,7 @@ const PaymentMethodButton = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <i className='ri-arrow-down-s-line' />
+          <i className='tabler-chevron-down' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>

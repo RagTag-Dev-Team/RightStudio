@@ -6,11 +6,10 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 const BillingInformation = () => {
   // States
@@ -20,41 +19,39 @@ const BillingInformation = () => {
     <Card>
       <CardHeader title='Billing Information' />
       <CardContent>
-        <Grid container spacing={5}>
+        <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Legal business name' placeholder='Pixinvent' />
+            <CustomTextField fullWidth label='Legal business name' placeholder='Pixinvent' />
           </Grid>
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel>Country*</InputLabel>
-              <Select
-                label='Country*'
-                name='country'
-                variant='outlined'
-                value={country}
-                onChange={e => setCountry(e.target.value)}
-              >
-                <MenuItem value='India'>India</MenuItem>
-                <MenuItem value='Canada'>Canada</MenuItem>
-                <MenuItem value='UK'>UK</MenuItem>
-                <MenuItem value='United States'>United States</MenuItem>
-              </Select>
-            </FormControl>
+            <CustomTextField
+              select
+              fullWidth
+              label='Country/Region'
+              value={country}
+              onChange={e => setCountry(e.target.value)}
+            >
+              <MenuItem value=''>Select Country</MenuItem>
+              <MenuItem value='India'>India</MenuItem>
+              <MenuItem value='Canada'>Canada</MenuItem>
+              <MenuItem value='UK'>UK</MenuItem>
+              <MenuItem value='United States'>United States</MenuItem>
+            </CustomTextField>
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Address' placeholder='126, New Street' />
+            <CustomTextField fullWidth label='Address' placeholder='126, New Street' />
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label='Apartment,suit, etc.' placeholder='Empire Heights' />
+            <CustomTextField fullWidth label='Apartment,suit, etc.' placeholder='Empire Heights' />
           </Grid>
           <Grid item xs={12} md={4}>
-            <TextField fullWidth label='City' placeholder='New York' />
+            <CustomTextField fullWidth label='City' placeholder='New York' />
           </Grid>
           <Grid item xs={12} md={4}>
-            <TextField fullWidth label='State' placeholder='New York' />
+            <CustomTextField fullWidth label='State' placeholder='New York' />
           </Grid>
           <Grid item xs={12} md={4}>
-            <TextField fullWidth type='number' label='PIN Code' placeholder='111011' />
+            <CustomTextField fullWidth type='number' label='PIN Code' placeholder='111011' />
           </Grid>
         </Grid>
       </CardContent>

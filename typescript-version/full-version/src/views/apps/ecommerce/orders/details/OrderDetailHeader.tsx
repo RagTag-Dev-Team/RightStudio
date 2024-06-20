@@ -45,7 +45,7 @@ const OrderDetailHeader = ({ orderData, order }: { orderData?: OrderType; order:
 
   return (
     <div className='flex flex-wrap justify-between items-center gap-y-4'>
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-1'>
         <div className='flex items-center gap-2'>
           <Typography variant='h5'>{`Order #${order}`}</Typography>
           <Chip
@@ -65,7 +65,7 @@ const OrderDetailHeader = ({ orderData, order }: { orderData?: OrderType; order:
       </div>
       <OpenDialogOnElementClick
         element={Button}
-        elementProps={buttonProps('Delete Order', 'error', 'outlined')}
+        elementProps={buttonProps('Delete Order', 'error', 'tonal')}
         dialog={ConfirmationDialog}
         dialogProps={{ type: 'delete-order' }}
       />

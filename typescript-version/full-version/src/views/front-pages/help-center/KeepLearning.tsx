@@ -50,7 +50,7 @@ const keepLearning: keepLearningType[] = [
 
 const KeepLearning = () => {
   return (
-    <section className='flex flex-col md:plb-[100px] plb-[50px]'>
+    <section className='flex flex-col md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>
         <Typography variant='h4' className='text-center mbe-6'>
           Keep Learning
@@ -67,7 +67,8 @@ const KeepLearning = () => {
                     <Button
                       component={Link}
                       href='/front-pages/help-center/article/how-to-add-product-in-cart'
-                      variant='outlined'
+                      variant='tonal'
+                      size='small'
                     >
                       Read More
                     </Button>

@@ -63,7 +63,7 @@ const CustomerAddress = (props: dataType) => {
 
   // Vars
   const iconButtonProps: IconButtonProps = {
-    children: <i className='ri-edit-box-line' />,
+    children: <i className='tabler-edit' />,
     className: 'text-textSecondary'
   }
 
@@ -88,7 +88,7 @@ const CustomerAddress = (props: dataType) => {
             }}
             onClick={() => setExpanded(!expanded)}
           >
-            <i className='ri-arrow-down-s-line text-textPrimary' />
+            <i className='tabler-chevron-down text-textPrimary' />
           </IconButton>
           <div className='flex items-center gap-4'>
             <div className='flex justify-center items-center bg-[#F6F8FA] rounded-sm is-[50px] bs-[30px]'>
@@ -119,7 +119,7 @@ const CustomerAddress = (props: dataType) => {
             dialogProps={{ data: editCardData }}
           />
           <IconButton>
-            <i className='ri-delete-bin-7-line text-textSecondary' />
+            <i className='tabler-trash text-textSecondary' />
           </IconButton>
           <OptionMenu
             iconClassName='text-textSecondary'
@@ -199,7 +199,7 @@ const CustomerAddress = (props: dataType) => {
                       Passed
                     </Typography>
                     <CustomAvatar skin='light' size={20} color='success'>
-                      <i className='ri-check-line text-xs' />
+                      <i className='tabler-check text-xs' />
                     </CustomAvatar>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const CustomerAddress = (props: dataType) => {
 const PaymentMethod = () => {
   // Vars
   const buttonProps: ButtonProps = {
-    variant: 'outlined',
+    variant: 'tonal',
     children: 'New Payment Methods',
     size: 'small'
   }

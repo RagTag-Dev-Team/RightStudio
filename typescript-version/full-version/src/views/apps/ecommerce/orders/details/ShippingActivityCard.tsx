@@ -119,7 +119,7 @@ const ShippingActivity = ({ order }: { order: string }) => {
           </TimelineItem>
           <TimelineItem>
             <TimelineSeparator>
-              <TimelineDot color='primary' />
+              <TimelineDot color='secondary' />
             </TimelineSeparator>
             <TimelineContent>
               <Typography color='text.primary' className='font-medium'>

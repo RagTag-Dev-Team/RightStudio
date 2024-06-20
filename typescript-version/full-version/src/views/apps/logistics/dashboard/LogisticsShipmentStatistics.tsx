@@ -68,7 +68,7 @@ const MonthButton = () => {
 
   return (
     <>
-      <ButtonGroup variant='outlined' ref={anchorRef} aria-label='split button' size='small'>
+      <ButtonGroup variant='tonal' ref={anchorRef} aria-label='split button' size='small'>
         <Button>{options[selectedIndex]}</Button>
         <Button
           className='pli-0'
@@ -78,7 +78,7 @@ const MonthButton = () => {
           aria-expanded={open ? 'true' : undefined}
           aria-controls={open ? 'split-button-menu' : undefined}
         >
-          <i className='ri-arrow-down-s-line text-lg' />
+          <i className='tabler-chevron-down text-xl' />
         </Button>
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition placement='bottom-end'>
@@ -207,6 +207,7 @@ const LogisticsShipmentStatistics = () => {
       }
     },
     yaxis: {
+      tickAmount: 5,
       labels: {
         style: {
           colors: 'var(--mui-palette-text-disabled)',
@@ -221,7 +222,14 @@ const LogisticsShipmentStatistics = () => {
     <Card>
       <CardHeader title='Shipment Statistics' subheader='Total number of deliveries 23.8k' action={<MonthButton />} />
       <CardContent>
-        <AppReactApexCharts id='shipment-statistics' type='line' height={320} width='100%' series={series} options={options} />
+        <AppReactApexCharts
+          id='shipment-statistics'
+          type='line'
+          height={310}
+          width='100%'
+          series={series}
+          options={options}
+        />
       </CardContent>
     </Card>
   )

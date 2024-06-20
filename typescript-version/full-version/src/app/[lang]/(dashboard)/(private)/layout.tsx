@@ -60,7 +60,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
             variant='contained'
             className='is-10 bs-10 rounded-full p-0 min-is-0 flex items-center justify-center'
           >
-            <i className='ri-arrow-up-line' />
+            <i className='tabler-arrow-up' />
           </Button>
         </ScrollToTop>
         <Customizer dir={direction} />

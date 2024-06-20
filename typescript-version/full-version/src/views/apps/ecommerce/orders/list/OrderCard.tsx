@@ -18,22 +18,22 @@ const data = [
   {
     value: 56,
     title: 'Pending Payment',
-    icon: 'ri-calendar-2-line'
+    icon: 'tabler-calendar-stats'
   },
   {
     value: 12689,
     title: 'Completed',
-    icon: 'ri-check-double-line'
+    icon: 'tabler-checks'
   },
   {
     value: 124,
     title: 'Refunded',
-    icon: 'ri-wallet-3-line'
+    icon: 'tabler-wallet'
   },
   {
     value: 32,
     title: 'Failed',
-    icon: 'ri-error-warning-line'
+    icon: 'tabler-alert-octagon'
   }
 ]
 

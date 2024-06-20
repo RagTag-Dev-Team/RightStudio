@@ -214,10 +214,10 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton size='small'>
+            <IconButton>
               <i className='tabler-trash text-textSecondary' />
             </IconButton>
-            <IconButton size='small'>
+            <IconButton>
               <Link
                 href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale as Locale)}
                 className='flex'
@@ -226,6 +226,7 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: InvoiceType[] }) => {
               </Link>
             </IconButton>
             <OptionMenu
+              iconButtonProps={{ size: 'medium' }}
               iconClassName='text-textSecondary'
               options={[
                 {

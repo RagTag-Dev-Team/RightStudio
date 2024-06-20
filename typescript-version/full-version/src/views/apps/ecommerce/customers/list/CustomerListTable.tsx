@@ -13,9 +13,9 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
-import TextField from '@mui/material/TextField'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -43,6 +43,8 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import AddCustomerDrawer from './AddCustomerDrawer'
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/TextField'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -126,7 +128,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -261,20 +263,33 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4'>
+        <CardContent className='flex justify-between flex-col sm:flex-row sm:items-center gap-y-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
           />
-          <div className='flex gap-x-4'>
-            <Button variant='outlined' color='secondary' startIcon={<i className='ri-upload-2-line' />}>
-              Export
-            </Button>
+          <div className='flex max-sm:flex-col items-start sm:items-center gap-4'>
+            <div className='flex item-center gap-4'>
+              <CustomTextField
+                select
+                value={table.getState().pagination.pageSize}
+                onChange={e => table.setPageSize(Number(e.target.value))}
+                className='is-[70px]'
+              >
+                <MenuItem value='10'>10</MenuItem>
+                <MenuItem value='25'>25</MenuItem>
+                <MenuItem value='50'>50</MenuItem>
+                <MenuItem value='100'>100</MenuItem>
+              </CustomTextField>
+              <Button variant='tonal' color='secondary' startIcon={<i className='tabler-upload' />}>
+                Export
+              </Button>
+            </div>
             <Button
               variant='contained'
               color='primary'
-              startIcon={<i className='ri-add-line' />}
+              startIcon={<i className='tabler-plus' />}
               onClick={() => setCustomerUserOpen(!customerUserOpen)}
             >
               Add Customer
@@ -299,8 +314,8 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
                           >
                             {flexRender(header.column.columnDef.header, header.getContext())}
                             {{
-                              asc: <i className='ri-arrow-up-s-line text-xl' />,
-                              desc: <i className='ri-arrow-down-s-line text-xl' />
+                              asc: <i className='tabler-chevron-up text-xl' />,
+                              desc: <i className='tabler-chevron-down text-xl' />
                             }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
                         </>
@@ -337,19 +352,13 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
           </table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50, 100]}
-          component='div'
-          className='border-bs'
+          component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}
-          SelectProps={{
-            inputProps: { 'aria-label': 'rows per page' }
-          }}
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
       <AddCustomerDrawer

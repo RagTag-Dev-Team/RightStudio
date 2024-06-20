@@ -39,17 +39,20 @@ const HorizontalWithBorder = (props: CardStatsHorizontalWithBorderProps) => {
 
   return (
     <Card color={color || 'primary'}>
-      <CardContent className='flex flex-col'>
+      <CardContent className='flex flex-col gap-1'>
         <div className='flex items-center gap-4'>
           <CustomAvatar color={color} skin='light' variant='rounded'>
             <i className={avatarIcon} />
           </CustomAvatar>
           <Typography variant='h4'>{stats}</Typography>
         </div>
-        <div className='flex flex-col'>
+        <div className='flex flex-col gap-1'>
           <Typography>{title}</Typography>
           <div className='flex items-center gap-2'>
-            <Typography className='font-medium'>{`${trendNumber > 0 ? '+' : ''}${trendNumber}%`}</Typography>
+            <Typography
+              color='text.primary'
+              className='font-medium'
+            >{`${trendNumber > 0 ? '+' : ''}${trendNumber}%`}</Typography>
             <Typography variant='body2' color='text.disabled'>
               than last week
             </Typography>

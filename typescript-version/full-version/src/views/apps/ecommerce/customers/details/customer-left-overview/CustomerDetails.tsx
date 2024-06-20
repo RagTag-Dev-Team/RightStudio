@@ -33,10 +33,10 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
               <Typography>Customer ID #{customerData?.customerId}</Typography>
             </div>
           </div>
-          <div className='flex items-center gap-x-12 gap-y-3 flex-wrap'>
+          <div className='flex items-center justify-center gap-x-12 gap-y-3 flex-wrap'>
             <div className='flex items-center gap-4'>
               <CustomAvatar variant='rounded' skin='light' color='primary'>
-                <i className='ri-shopping-cart-2-line' />
+                <i className='tabler-shopping-cart' />
               </CustomAvatar>
               <div>
                 <Typography variant='h5'>{customerData?.order}</Typography>
@@ -45,7 +45,7 @@ const CustomerDetails = ({ customerData }: { customerData?: Customer }) => {
             </div>
             <div className='flex items-center gap-4'>
               <CustomAvatar variant='rounded' skin='light' color='primary'>
-                <i className='ri-money-dollar-circle-line' />
+                <i className='tabler-currency-dollar' />
               </CustomAvatar>
               <div>
                 <Typography variant='h5'>${customerData?.totalSpent}</Typography>

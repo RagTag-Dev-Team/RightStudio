@@ -119,7 +119,7 @@ const Fleet = () => {
             setBackdropOpen(true)
           }}
         >
-          <i className='ri-menu-line text-2xl' />
+          <i className='tabler-menu-2' />
         </CustomIconButton>
       ) : null}
       <FleetSidebar

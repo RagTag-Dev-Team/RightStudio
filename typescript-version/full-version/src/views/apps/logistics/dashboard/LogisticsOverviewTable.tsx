@@ -41,6 +41,7 @@ import type { Vehicle } from '@/types/apps/logisticsTypes'
 // Components Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -123,7 +124,7 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) =>
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <CustomAvatar skin='light' color='secondary'>
-              <i className='ri-car-line text-[28px]' />
+              <i className='tabler-car text-[28px]' />
             </CustomAvatar>
             <Typography
               component={Link}
@@ -215,8 +216,8 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) =>
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -253,16 +254,13 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) =>
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component='div'
-        className='border-bs'
-        count={table.getExpandedRowModel().rows.length}
+        component={() => <TablePaginationComponent table={table as any} />}
+        count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

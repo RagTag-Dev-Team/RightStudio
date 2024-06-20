@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid'
 import classnames from 'classnames'
 
 // Component Imports
-import CustomAvatar from '@/@core/components/mui/Avatar'
+import CustomAvatar from '@core/components/mui/Avatar'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styles Imports
@@ -29,7 +29,7 @@ type popularArticlesType = {
 const allArticles: popularArticlesType[] = [
   {
     title: 'Buying',
-    icon: 'ri-shopping-cart-line',
+    icon: 'tabler-shopping-cart',
     articles: [
       { title: 'What are Favourites?' },
       { title: 'How do I purchase an item?' },
@@ -41,7 +41,7 @@ const allArticles: popularArticlesType[] = [
   },
   {
     title: 'Item Support',
-    icon: 'ri-question-line',
+    icon: 'tabler-help',
     articles: [
       { title: 'What is Item Support?' },
       { title: 'How to contact an author?' },
@@ -53,7 +53,7 @@ const allArticles: popularArticlesType[] = [
   },
   {
     title: 'Licenses',
-    icon: 'ri-file-text-line',
+    icon: 'tabler-currency-dollar',
     articles: [
       { title: 'Can I use the same license for the...' },
       { title: 'How to contact an author?' },
@@ -65,7 +65,7 @@ const allArticles: popularArticlesType[] = [
   },
   {
     title: 'Template Kits',
-    icon: 'ri-palette-line',
+    icon: 'tabler-color-swatch',
     articles: [
       { title: 'Template Kits' },
       { title: 'Elementor Template Kits: PHP Zip ...' },
@@ -77,7 +77,7 @@ const allArticles: popularArticlesType[] = [
   },
   {
     title: 'Account & Password',
-    icon: 'ri-lock-line',
+    icon: 'tabler-lock-open',
     articles: [
       { title: 'Signing in with a social account' },
       { title: 'Locked Out of Account' },
@@ -89,7 +89,7 @@ const allArticles: popularArticlesType[] = [
   },
   {
     title: 'Account Settings',
-    icon: 'ri-user-line',
+    icon: 'tabler-user',
     articles: [
       { title: 'How do I change my password?' },
       { title: 'How do I change my username?' },
@@ -115,7 +115,7 @@ const KnowledgeBase = () => {
                 <CardContent className='flex flex-col items-start gap-6 text-center'>
                   <div className='flex gap-3 items-center'>
                     <CustomAvatar skin='light' variant='rounded' color='primary' size={32}>
-                      <i className={article.icon} />
+                      <i className={classnames('text-xl', article.icon)} />
                     </CustomAvatar>
                     <Typography variant='h5'>{article.title}</Typography>
                   </div>
@@ -124,14 +124,15 @@ const KnowledgeBase = () => {
                       return (
                         <div key={index} className='flex justify-between items-center gap-2'>
                           <Typography
+                            color='text.primary'
                             component={Link}
                             href='/front-pages/help-center/article/how-to-add-product-in-cart'
                           >
                             {data.title}
                           </Typography>
                           <DirectionalIcon
-                            ltrIconClass='ri-arrow-right-s-line text-textSecondary'
-                            rtlIconClass='ri-arrow-left-s-line text-textSecondary'
+                            ltrIconClass='tabler-chevron-right text-textDisabled text-xl'
+                            rtlIconClass='tabler-chevron-left text-textDisabled text-xl'
                           />
                         </div>
                       )
@@ -140,7 +141,7 @@ const KnowledgeBase = () => {
                   <Button
                     component={Link}
                     href='/front-pages/help-center/article/how-to-add-product-in-cart'
-                    endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                    endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
                   >
                     See all 6 articles
                   </Button>

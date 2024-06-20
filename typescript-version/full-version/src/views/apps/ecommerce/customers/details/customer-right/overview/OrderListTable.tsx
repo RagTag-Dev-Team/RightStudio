@@ -12,7 +12,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
-import TextField from '@mui/material/TextField'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -41,6 +40,8 @@ import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
+import TablePaginationComponent from '@components/TablePaginationComponent'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -123,7 +124,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -179,13 +180,13 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
               options={[
                 {
                   text: 'View',
-                  icon: 'ri-eye-line',
+                  icon: 'tabler-eye',
                   href: getLocalizedUrl(`/apps/ecommerce/orders/details/${row.original.order}`, locale as Locale),
                   linkProps: { className: 'flex items-center is-full plb-1.5 pli-4' }
                 },
                 {
                   text: 'Delete',
-                  icon: 'ri-delete-bin-7-line text-[22px]',
+                  icon: 'tabler-trash text-[22px]',
                   menuItemProps: {
                     onClick: () => setData(data?.filter(order => order.id !== row.original.id)),
                     className: 'flex items-center'
@@ -214,7 +215,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
     },
     initialState: {
       pagination: {
-        pageSize: 10
+        pageSize: 6
       }
     },
     enableRowSelection: true, //enable row selection for all rows
@@ -260,8 +261,8 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -298,19 +299,13 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50, 100]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

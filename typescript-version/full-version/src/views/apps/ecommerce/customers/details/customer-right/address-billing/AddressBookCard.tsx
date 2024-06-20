@@ -82,7 +82,7 @@ const CustomerAddress = (props: propsType) => {
 
   // Vars
   const iconButtonProps: IconButtonProps = {
-    children: <i className='ri-edit-box-line' />,
+    children: <i className='tabler-edit' />,
     className: 'text-textSecondary'
   }
 
@@ -103,7 +103,7 @@ const CustomerAddress = (props: propsType) => {
             }}
             onClick={() => setExpanded(!expanded)}
           >
-            <i className='ri-arrow-down-s-line text-textPrimary' />
+            <i className='tabler-chevron-down text-textPrimary' />
           </IconButton>
           <div className='flex flex-col gap-1'>
             <div className='flex items-center gap-2'>
@@ -123,7 +123,7 @@ const CustomerAddress = (props: propsType) => {
             dialogProps={{ data }}
           />
           <IconButton>
-            <i className='ri-delete-bin-7-line text-textSecondary' />
+            <i className='tabler-trash text-textSecondary' />
           </IconButton>
           <OptionMenu
             iconClassName='text-textSecondary'
@@ -133,7 +133,7 @@ const CustomerAddress = (props: propsType) => {
         </div>
       </div>
       <Collapse in={expanded} timeout={300}>
-        <div className='flex flex-col gap-1 pb-3 pis-12'>
+        <div className='flex flex-col gap-1 pb-3 pis-14'>
           <Typography color='text.primary' className='font-medium'>
             {name}
           </Typography>
@@ -151,7 +151,7 @@ const CustomerAddress = (props: propsType) => {
 const AddressBook = () => {
   // Vars
   const buttonProps: ButtonProps = {
-    variant: 'outlined',
+    variant: 'tonal',
     children: 'Add New Address',
     size: 'small'
   }

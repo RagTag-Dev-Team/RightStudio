@@ -5,22 +5,20 @@ import { useState } from 'react'
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import Divider from '@mui/material/Divider'
-import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
 import Switch from '@mui/material/Switch'
-import TextField from '@mui/material/TextField'
-import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useForm, Controller } from 'react-hook-form'
 
-// Types Imports
+// Type Imports
 import type { Customer } from '@/types/apps/ecommerceTypes'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 type Props = {
   open: boolean
@@ -123,10 +121,10 @@ const AddCustomerDrawer = (props: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between pli-5 plb-4'>
+      <div className='flex items-center justify-between pli-6 plb-4'>
         <Typography variant='h5'>Add a Customer</Typography>
         <IconButton size='small' onClick={handleReset}>
-          <i className='ri-close-line text-2xl' />
+          <i className='tabler-x text-2xl' />
         </IconButton>
       </div>
       <Divider />
@@ -141,11 +139,11 @@ const AddCustomerDrawer = (props: Props) => {
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <TextField
+                <CustomTextField
                   {...field}
                   fullWidth
-                  label='First Name'
-                  placeholder='John'
+                  label='Name'
+                  placeholder='John Doe'
                   {...(errors.fullName && { error: true, helperText: 'This field is required.' })}
                 />
               )}
@@ -155,85 +153,86 @@ const AddCustomerDrawer = (props: Props) => {
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <TextField
+                <CustomTextField
                   {...field}
                   fullWidth
                   type='email'
-                  label='Email Address'
+                  label='Email'
                   placeholder='johndoe@gmail.com'
                   {...(errors.email && { error: true, helperText: 'This field is required.' })}
                 />
               )}
             />
-            <FormControl fullWidth>
-              <InputLabel id='country' error={Boolean(errors.country)}>
-                Country*
-              </InputLabel>
-              <Controller
-                name='country'
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <Select label='Country*' {...field} error={Boolean(errors.country)}>
-                    <MenuItem value='india'>India</MenuItem>
-                    <MenuItem value='australia'>Australia</MenuItem>
-                    <MenuItem value='france'>France</MenuItem>
-                    <MenuItem value='brazil'>Brazil</MenuItem>
-                    <MenuItem value='us'>USA</MenuItem>
-                    <MenuItem value='china'>China</MenuItem>
-                  </Select>
-                )}
-              />
-              {errors.country && <FormHelperText error>This field is required.</FormHelperText>}
-            </FormControl>
+            <Controller
+              name='country'
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <CustomTextField
+                  select
+                  fullWidth
+                  id='country'
+                  label='Country'
+                  {...field}
+                  {...(errors.country && { error: true, helperText: 'This field is required.' })}
+                >
+                  <MenuItem value='india'>India</MenuItem>
+                  <MenuItem value='australia'>Australia</MenuItem>
+                  <MenuItem value='france'>France</MenuItem>
+                  <MenuItem value='brazil'>Brazil</MenuItem>
+                  <MenuItem value='us'>USA</MenuItem>
+                  <MenuItem value='china'>China</MenuItem>
+                </CustomTextField>
+              )}
+            />
             <Typography color='text.primary' className='font-medium'>
               Shipping Information
             </Typography>
-            <TextField
+            <CustomTextField
               fullWidth
-              label='Address Line 1*'
+              label='Address Line 1'
               name='address1'
-              variant='outlined'
+              placeholder='45 Roker Terrace'
               value={formData.address1}
               onChange={e => setFormData({ ...formData, address1: e.target.value })}
             />
-            <TextField
+            <CustomTextField
               fullWidth
-              label='Address Line 2*'
+              label='Address Line 2'
               name='address2'
-              variant='outlined'
+              placeholder='Street 69'
               value={formData.address2}
               onChange={e => setFormData({ ...formData, address2: e.target.value })}
             />
-            <TextField
+            <CustomTextField
               fullWidth
-              label='Town*'
+              label='Town'
               name='town'
-              variant='outlined'
+              placeholder='New York'
               value={formData.town}
               onChange={e => setFormData({ ...formData, town: e.target.value })}
             />
-            <TextField
+            <CustomTextField
               fullWidth
-              label='State/Province*'
+              label='State/Province'
               name='state'
-              variant='outlined'
+              placeholder='Southern tip'
               value={formData.state}
               onChange={e => setFormData({ ...formData, state: e.target.value })}
             />
-            <TextField
+            <CustomTextField
               fullWidth
-              label='Post Code*'
+              label='Post Code'
               name='postcode'
-              variant='outlined'
+              placeholder='734990'
               value={formData.postcode}
               onChange={e => setFormData({ ...formData, postcode: e.target.value })}
             />
-            <TextField
-              label='Mobile Number'
+            <CustomTextField
+              label='Mobile'
               type='number'
               fullWidth
-              placeholder='(397) 294-5153'
+              placeholder='+(123) 456-7890'
               value={formData.contact}
               onChange={e => setFormData({ ...formData, contact: e.target.value })}
             />
@@ -250,7 +249,7 @@ const AddCustomerDrawer = (props: Props) => {
               <Button variant='contained' type='submit'>
                 Add
               </Button>
-              <Button variant='outlined' color='error' type='reset' onClick={handleReset}>
+              <Button variant='tonal' color='error' type='reset' onClick={handleReset}>
                 Discard
               </Button>
             </div>

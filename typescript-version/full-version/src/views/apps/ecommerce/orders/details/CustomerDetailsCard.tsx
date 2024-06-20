@@ -65,7 +65,7 @@ const CustomerDetails = ({ orderData }: { orderData?: OrderType }) => {
         </div>
         <div className='flex items-center gap-3'>
           <CustomAvatar skin='light' color='success' size={40}>
-            <i className='ri-shopping-cart-2-line' />
+            <i className='tabler-shopping-cart' />
           </CustomAvatar>
           <Typography color='text.primary' className='font-medium'>
             12 Orders

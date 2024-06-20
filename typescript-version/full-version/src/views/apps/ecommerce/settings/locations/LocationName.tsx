@@ -5,16 +5,18 @@ import CardContent from '@mui/material/CardContent'
 import Alert from '@mui/material/Alert'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import TextField from '@mui/material/TextField'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 const LocationName = () => {
   return (
     <Card>
       <CardHeader title='Location Name' />
       <CardContent className='flex flex-col items-start gap-4'>
-        <TextField fullWidth label='Location Name' placeholder='Empire Hub' />
-        <FormControlLabel control={<Checkbox />} label='Fulfill online orders from this location' />
-        <Alert severity='info' icon={<i className='ri-information-line' />}>
+        <CustomTextField fullWidth label='Location Name' placeholder='Empire Hub' />
+        <FormControlLabel control={<Checkbox defaultChecked />} label='Fulfill online orders from this location' />
+        <Alert severity='info' icon={<i className='tabler-info-circle' />}>
           This is your default location. To change whether you fulfill online orders from this location, select another
           default location first.
         </Alert>

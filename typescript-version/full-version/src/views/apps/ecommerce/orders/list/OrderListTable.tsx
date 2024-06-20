@@ -13,8 +13,8 @@ import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
 import Chip from '@mui/material/Chip'
 import TablePagination from '@mui/material/TablePagination'
-import TextField from '@mui/material/TextField'
 import type { TextFieldProps } from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -42,6 +42,8 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
+import CustomTextField from '@core/components/mui/TextField'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -125,7 +127,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -209,7 +211,7 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
           <div className='flex items-center gap-1'>
             <i
               className={classnames(
-                'ri-circle-fill bs-2.5 is-2.5',
+                'tabler-circle-filled bs-2.5 is-2.5',
                 `text-${paymentStatus[row.original.payment].color}`
               )}
             />
@@ -253,17 +255,17 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
           <div className='flex items-center'>
             <OptionMenu
               iconButtonProps={{ size: 'medium' }}
-              iconClassName='text-[22px]'
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'View',
-                  icon: 'ri-eye-line',
+                  icon: 'tabler-eye',
                   href: getLocalizedUrl(`/apps/ecommerce/orders/details/${row.original.order}`, locale as Locale),
-                  linkProps: { className: 'flex items-center is-full plb-2 pli-4' }
+                  linkProps: { className: 'flex items-center gap-2 is-full plb-2 pli-4' }
                 },
                 {
                   text: 'Delete',
-                  icon: 'ri-delete-bin-7-line text-[22px]',
+                  icon: 'tabler-trash',
                   menuItemProps: {
                     onClick: () => setData(data?.filter(order => order.id !== row.original.id)),
                     className: 'flex items-center'
@@ -325,16 +327,29 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
 
   return (
     <Card>
-      <CardContent className='flex justify-between items-center gap-4'>
+      <CardContent className='flex max-sm:flex-col justify-between items-start sm:items-center gap-4'>
         <DebouncedInput
           value={globalFilter ?? ''}
           onChange={value => setGlobalFilter(String(value))}
           placeholder='Search Order'
           className='sm:is-auto'
         />
-        <Button variant='outlined' color='secondary' startIcon={<i className='ri-upload-2-line' />}>
-          Export
-        </Button>
+        <div className='flex items-center gap-4'>
+          <CustomTextField
+            select
+            value={table.getState().pagination.pageSize}
+            onChange={e => table.setPageSize(Number(e.target.value))}
+            className='is-[70px]'
+          >
+            <MenuItem value='10'>10</MenuItem>
+            <MenuItem value='25'>25</MenuItem>
+            <MenuItem value='50'>50</MenuItem>
+            <MenuItem value='100'>100</MenuItem>
+          </CustomTextField>
+          <Button variant='tonal' color='secondary' startIcon={<i className='tabler-upload' />}>
+            Export
+          </Button>
+        </div>
       </CardContent>
       <div className='overflow-x-auto'>
         <table className={tableStyles.table}>
@@ -354,8 +369,8 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -392,19 +407,13 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50, 100]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
-        SelectProps={{
-          inputProps: { 'aria-label': 'rows per page' }
-        }}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

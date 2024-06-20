@@ -26,7 +26,7 @@ const CustomerPlan = () => {
 
   return (
     <Card>
-      <CardContent className='flex flex-col gap-3 bg-primary'>
+      <CardContent className='flex flex-col gap-3 bg-gradient-to-tr	from-primary to-[#9E95F5]'>
         <div className='flex items-center justify-between'>
           <div className='flex flex-col gap-4'>
             <Typography variant='h5' color='common.white'>
@@ -34,7 +34,7 @@ const CustomerPlan = () => {
             </Typography>
             <Typography color='common.white'>Upgrade customer to premium membership to access pro features.</Typography>
           </div>
-          <img src='/images/apps/ecommerce/3d-rocket.png' height={108} />
+          <img src='/images/apps/ecommerce/3d-rocket.png' height={138} />
         </div>
         <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={UpgradePlan} />
       </CardContent>

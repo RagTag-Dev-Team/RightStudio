@@ -49,11 +49,11 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
           </Typography>
           <Typography variant='body2'>United states of America</Typography>
         </div>
-        <IconButton size='small'>
-          <i className='ri-pencil-line' />
+        <IconButton color='secondary' size='small'>
+          <i className='tabler-pencil' />
         </IconButton>
-        <IconButton size='small'>
-          <i className='ri-delete-bin-7-line' />
+        <IconButton color='secondary' size='small'>
+          <i className='tabler-trash' />
         </IconButton>
       </div>
       <div className='is-full border rounded overflow-x-auto'>
@@ -77,8 +77,8 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
                     iconButtonProps={{ size: 'medium' }}
                     iconClassName='text-textSecondary text-[22px]'
                     options={[
-                      { text: 'Edit', icon: 'ri-pencil-line' },
-                      { text: 'Delete', icon: 'ri-delete-bin-7-line' }
+                      { text: 'Edit', icon: 'tabler-edit' },
+                      { text: 'Delete', icon: 'tabler-trash' }
                     ]}
                   />
                 </td>
@@ -87,7 +87,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
           </tbody>
         </table>
       </div>
-      <Button variant='outlined' size='small'>
+      <Button variant='tonal' size='small'>
         Add Rate
       </Button>
     </div>

@@ -39,7 +39,7 @@ const BillingAddress = () => {
   return (
     <Card>
       <CardContent className='flex flex-col gap-6'>
-        <div className='flex flex-col'>
+        <div className='flex flex-col gap-2'>
           <div className='flex justify-between items-center'>
             <Typography variant='h5'>Billing Address</Typography>
             <OpenDialogOnElementClick

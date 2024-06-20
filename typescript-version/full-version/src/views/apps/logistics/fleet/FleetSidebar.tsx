@@ -61,18 +61,21 @@ const Accordion = styled(MuiAccordion)<AccordionProps>({
   border: 'none',
   '&:before': {
     content: 'none'
-  }
+  },
+  marginBlockEnd: '0px !important'
 })
 
 // Styled component for AccordionSummary component
 const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(({ theme }) => ({
-  padding: theme.spacing(4, 0)
+  paddingBlock: theme.spacing(0, 6),
+  paddingInline: theme.spacing(0)
 }))
 
 // Styled component for AccordionDetails component
-const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>({
-  padding: 0
-})
+const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>(({ theme }) => ({
+  paddingBlock: theme.spacing(0, 1),
+  paddingInline: theme.spacing(0)
+}))
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -131,10 +134,10 @@ const vehicleTrackingData: VehicleTrackingDataType[] = [
 
 const ScrollWrapper = ({ children, isBelowLgScreen }: { children: ReactNode; isBelowLgScreen: boolean }) => {
   if (isBelowLgScreen) {
-    return <div className='bs-full overflow-y-auto overflow-x-hidden pbe-5 pli-5'>{children}</div>
+    return <div className='bs-full overflow-y-auto overflow-x-hidden pbe-6 pli-6'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }} className='pbe-5 pli-5'>
+      <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }} className='pbe-6 pli-6'>
         {children}
       </PerfectScrollbar>
     )
@@ -157,18 +160,18 @@ const VehicleTracking = ({
       <AccordionSummary>
         <div className='flex gap-4 items-center'>
           <CustomAvatar skin='light' color='secondary'>
-            <i className='ri-car-line' />
+            <i className='tabler-car' />
           </CustomAvatar>
           <div className='flex flex-col gap-1'>
-            <Typography color='text.primary'>{vehicleTrackingData.name}</Typography>
-            <Typography>{vehicleTrackingData.location}</Typography>
+            <Typography className='font-normal'>{vehicleTrackingData.name}</Typography>
+            <Typography className='font-normal !text-textSecondary'>{vehicleTrackingData.location}</Typography>
           </div>
         </div>
       </AccordionSummary>
       <AccordionDetails>
         <div className='flex flex-col gap-1 plb-4'>
           <div className='flex items-center justify-between'>
-            <Typography color='text.primary'>Delivery Process</Typography>
+            <Typography className='!text-textPrimary'>Delivery Process</Typography>
             <Typography>{vehicleTrackingData.progress}%</Typography>
           </div>
           <LinearProgress variant='determinate' value={vehicleTrackingData.progress} />
@@ -177,17 +180,15 @@ const VehicleTracking = ({
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot variant='outlined' className='mlb-0'>
-                <i className='ri-checkbox-circle-line text-xl text-success' />
+                <i className='tabler-circle-check text-xl text-success' />
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-              <Typography variant='caption' className='uppercase' color='success.main'>
+              <Typography variant='caption' className='uppercase !text-success'>
                 Tracking Number Created
               </Typography>
-              <Typography color='text.primary' className='font-medium'>
-                {vehicleTrackingData.driverName}
-              </Typography>
+              <Typography className='font-medium !text-textPrimary'>{vehicleTrackingData.driverName}</Typography>
               <Typography variant='body2'>Sep 01, 7:53 AM</Typography>
             </TimelineContent>
           </TimelineItem>
@@ -196,17 +197,15 @@ const VehicleTracking = ({
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot variant='outlined' className='mlb-0'>
-                <i className='ri-checkbox-circle-line text-xl text-success' />
+                <i className='tabler-circle-check text-xl text-success' />
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-              <Typography variant='caption' className='uppercase' color='success.main'>
+              <Typography variant='caption' className='uppercase !text-success'>
                 Out For Delivery
               </Typography>
-              <Typography color='text.primary' className='font-medium'>
-                {vehicleTrackingData.driverName}
-              </Typography>
+              <Typography className='font-medium !text-textPrimary'>{vehicleTrackingData.driverName}</Typography>
               <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
             </TimelineContent>
           </TimelineItem>
@@ -215,16 +214,14 @@ const VehicleTracking = ({
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot variant='outlined' className='mlb-0'>
-                <i className='ri-map-pin-line text-xl text-primary' />
+                <i className='tabler-map-pin text-xl text-primary' />
               </TimelineDot>
             </TimelineSeparator>
             <TimelineContent className='flex flex-col gap-0.5 pbs-0 pis-4 pbe-5'>
-              <Typography variant='caption' className='uppercase' color='primary.main'>
+              <Typography variant='caption' className='uppercase !text-primary'>
                 Arrived
               </Typography>
-              <Typography color='text.primary' className='font-medium'>
-                {vehicleTrackingData.passengerName}
-              </Typography>
+              <Typography className='font-medium !text-textPrimary'>{vehicleTrackingData.passengerName}</Typography>
               <Typography variant='body2'>Sep 03, 8:02 AM</Typography>
             </TimelineContent>
           </TimelineItem>
@@ -284,6 +281,7 @@ const FleetSidebar = (props: Props) => {
         position: !isBelowMdScreen ? 'static' : 'absolute',
         ...(isBelowSmScreen && sidebarOpen && { width: '100%' }),
         '& .MuiDrawer-paper': {
+          borderRight: 'none',
           boxShadow: 'none',
           overflow: 'hidden',
           width: isBelowSmScreen ? '100%' : '360px',
@@ -291,7 +289,7 @@ const FleetSidebar = (props: Props) => {
         }
       }}
     >
-      <div className='flex justify-between p-5'>
+      <div className='flex justify-between items-center p-6'>
         <Typography variant='h5'>Fleet</Typography>
 
         {isBelowMdScreen ? (
@@ -301,7 +299,7 @@ const FleetSidebar = (props: Props) => {
               setBackdropOpen(false)
             }}
           >
-            <i className='ri-close-line' />
+            <i className='tabler-x' />
           </IconButton>
         ) : null}
       </div>

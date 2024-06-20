@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
+
+// Component Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 const TimeZone = () => {
   // States
@@ -24,55 +24,43 @@ const TimeZone = () => {
         subheader='Used to calculate product prices, shipping weights, and order times.'
       />
       <CardContent>
-        <Grid container spacing={5}>
+        <Grid container spacing={6}>
           <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel>Time zone</InputLabel>
-              <Select
-                label='Time zone'
-                name='timezone'
-                variant='outlined'
-                value={timezone}
-                onChange={e => setTimezone(e.target.value)}
-              >
-                <MenuItem value='International Date Line West'>(UTC-12:00) International Date Line West</MenuItem>
-                <MenuItem value='Coordinated Universal Time-11'>(UTC-11:00) Coordinated Universal Time-11</MenuItem>
-                <MenuItem value='Alaska'>(UTC-09:00) Alaska</MenuItem>
-                <MenuItem value='Baja California'>(UTC-08:00) Baja California</MenuItem>
-              </Select>
-            </FormControl>
+            <CustomTextField
+              select
+              fullWidth
+              label='Timezone'
+              value={timezone}
+              onChange={e => setTimezone(e.target.value)}
+            >
+              <MenuItem value=''>Select Timezone</MenuItem>
+              <MenuItem value='International Date Line West'>(UTC-12:00) International Date Line West</MenuItem>
+              <MenuItem value='Coordinated Universal Time-11'>(UTC-11:00) Coordinated Universal Time-11</MenuItem>
+              <MenuItem value='Alaska'>(UTC-09:00) Alaska</MenuItem>
+              <MenuItem value='Baja California'>(UTC-08:00) Baja California</MenuItem>
+            </CustomTextField>
           </Grid>
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel>Unit system</InputLabel>
-              <Select
-                label='Unit system'
-                name='unit'
-                variant='outlined'
-                value={unit}
-                onChange={e => setUnit(e.target.value)}
-              >
-                <MenuItem value='Metric System'>Metric System</MenuItem>
-                <MenuItem value='Imperial'>Imperial</MenuItem>
-                <MenuItem value='International System'>International System</MenuItem>
-              </Select>
-            </FormControl>
+            <CustomTextField select fullWidth label='Unit system' value={unit} onChange={e => setUnit(e.target.value)}>
+              <MenuItem value=''>Select Unit</MenuItem>
+              <MenuItem value='Metric System'>Metric System</MenuItem>
+              <MenuItem value='Imperial'>Imperial</MenuItem>
+              <MenuItem value='International System'>International System</MenuItem>
+            </CustomTextField>
           </Grid>
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth>
-              <InputLabel>Default weight unit</InputLabel>
-              <Select
-                label='Default weight unit'
-                name='default'
-                variant='outlined'
-                value={defaultWeight}
-                onChange={e => setDefaultWeight(e.target.value)}
-              >
-                <MenuItem value='Kilogram'>Kilogram</MenuItem>
-                <MenuItem value='Pounds'>Pounds</MenuItem>
-                <MenuItem value='Gram'>Gram</MenuItem>
-              </Select>
-            </FormControl>
+            <CustomTextField
+              select
+              fullWidth
+              label='Default weight unit'
+              value={defaultWeight}
+              onChange={e => setDefaultWeight(e.target.value)}
+            >
+              <MenuItem value=''>Select Weight Unit</MenuItem>
+              <MenuItem value='Kilogram'>Kilogram</MenuItem>
+              <MenuItem value='Pounds'>Pounds</MenuItem>
+              <MenuItem value='Gram'>Gram</MenuItem>
+            </CustomTextField>
           </Grid>
         </Grid>
       </CardContent>

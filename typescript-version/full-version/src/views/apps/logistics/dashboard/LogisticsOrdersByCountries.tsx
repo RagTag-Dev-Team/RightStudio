@@ -152,7 +152,7 @@ const LogisticsOrdersByCountries = () => {
                     <TimelineItem>
                       <TimelineSeparator>
                         <TimelineDot variant='outlined' className='mlb-0'>
-                          <i className='ri-checkbox-circle-line text-xl text-success' />
+                          <i className='tabler-circle-check text-xl text-success' />
                         </TimelineDot>
                         <TimelineConnector />
                       </TimelineSeparator>
@@ -169,7 +169,7 @@ const LogisticsOrdersByCountries = () => {
                     <TimelineItem>
                       <TimelineSeparator>
                         <TimelineDot variant='outlined' className='mlb-0'>
-                          <i className='ri-map-pin-line text-xl text-primary' />
+                          <i className='tabler-map-pin text-xl text-primary' />
                         </TimelineDot>
                       </TimelineSeparator>
                       <TimelineContent className='flex flex-col pbe-0 gap-0.5 pbs-0 pis-5'>
