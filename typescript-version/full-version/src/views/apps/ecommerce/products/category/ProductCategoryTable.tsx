@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import TablePagination from '@mui/material/TablePagination'
-import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -34,6 +34,8 @@ import type { RankingInfo } from '@tanstack/match-sorter-utils'
 // Component Imports
 import AddCategoryDrawer from './AddCategoryDrawer'
 import OptionMenu from '@core/components/option-menu'
+import CustomTextField from '@core/components/mui/TextField'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
@@ -99,7 +101,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Vars
@@ -241,7 +243,7 @@ const ProductCategoryTable = () => {
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <img src={row.original.image} width={38} height={38} className='rounded bg-actionHover' />
-            <div className='flex flex-col'>
+            <div>
               <Typography className='font-medium' color='text.primary'>
                 {row.original.categoryTitle}
               </Typography>
@@ -266,20 +268,20 @@ const ProductCategoryTable = () => {
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton size='small'>
-              <i className='ri-edit-box-line text-[22px] text-textSecondary' />
+            <IconButton>
+              <i className='tabler-edit text-textSecondary' />
             </IconButton>
             <OptionMenu
               iconButtonProps={{ size: 'medium' }}
-              iconClassName='text-textSecondary text-[22px]'
+              iconClassName='text-textSecondary'
               options={[
-                { text: 'Download', icon: 'ri-download-line' },
+                { text: 'Download', icon: 'tabler-download' },
                 {
                   text: 'Delete',
-                  icon: 'ri-delete-bin-7-line',
+                  icon: 'tabler-trash',
                   menuItemProps: { onClick: () => setData(data.filter(category => category.id !== row.original.id)) }
                 },
-                { text: 'Duplicate', icon: 'ri-stack-line' }
+                { text: 'Duplicate', icon: 'tabler-copy' }
               ]}
             />
           </div>
@@ -323,20 +325,27 @@ const ProductCategoryTable = () => {
   return (
     <>
       <Card>
-        <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4 p-5'>
+        <div className='flex flex-wrap justify-between gap-4 p-6'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
           />
           <div className='flex items-center gap-x-4'>
-            <Button color='secondary' variant='outlined' startIcon={<i className='ri-upload-2-line' />}>
-              Export
-            </Button>
+            <CustomTextField
+              select
+              value={table.getState().pagination.pageSize}
+              onChange={e => table.setPageSize(Number(e.target.value))}
+              className='flex-auto is-[70px]'
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='15'>15</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+            </CustomTextField>
             <Button
               variant='contained'
               onClick={() => setAddCategoryOpen(!addCategoryOpen)}
-              startIcon={<i className='ri-add-line' />}
+              startIcon={<i className='tabler-plus' />}
             >
               Add Category
             </Button>
@@ -360,8 +369,8 @@ const ProductCategoryTable = () => {
                           >
                             {flexRender(header.column.columnDef.header, header.getContext())}
                             {{
-                              asc: <i className='ri-arrow-up-s-line text-xl' />,
-                              desc: <i className='ri-arrow-down-s-line text-xl' />
+                              asc: <i className='tabler-chevron-up text-xl' />,
+                              desc: <i className='tabler-chevron-down text-xl' />
                             }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
                         </>
@@ -398,16 +407,13 @@ const ProductCategoryTable = () => {
           </table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[10, 15, 25]}
-          component='div'
-          className='border-bs'
+          component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
       <AddCategoryDrawer

@@ -16,8 +16,8 @@ import Checkbox from '@mui/material/Checkbox'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Switch from '@mui/material/Switch'
+import MenuItem from '@mui/material/MenuItem'
 import TablePagination from '@mui/material/TablePagination'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -47,7 +47,9 @@ import type { ProductType } from '@/types/apps/ecommerceTypes'
 // Component Imports
 import TableFilters from './TableFilters'
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/TextField'
 import OptionMenu from '@core/components/option-menu'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -121,17 +123,17 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Vars
 const productCategoryObj: ProductCategoryType = {
-  Accessories: { icon: 'ri-headphone-line', color: 'error' },
-  'Home Decor': { icon: 'ri-home-6-line', color: 'info' },
-  Electronics: { icon: 'ri-computer-line', color: 'primary' },
-  Shoes: { icon: 'ri-footprint-line', color: 'success' },
-  Office: { icon: 'ri-briefcase-line', color: 'warning' },
-  Games: { icon: 'ri-gamepad-line', color: 'secondary' }
+  Accessories: { icon: 'tabler-headphones', color: 'error' },
+  'Home Decor': { icon: 'tabler-smart-home', color: 'info' },
+  Electronics: { icon: 'tabler-device-laptop', color: 'primary' },
+  Shoes: { icon: 'tabler-shoe', color: 'success' },
+  Office: { icon: 'tabler-briefcase', color: 'warning' },
+  Games: { icon: 'tabler-device-gamepad-2', color: 'secondary' }
 }
 
 const productStatusObj: productStatusType = {
@@ -180,7 +182,7 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
       columnHelper.accessor('productName', {
         header: 'Product',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <img src={row.original.image} width={38} height={38} className='rounded bg-actionHover' />
             <div className='flex flex-col'>
               <Typography className='font-medium' color='text.primary'>
@@ -236,20 +238,20 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton size='small'>
-              <i className='ri-edit-box-line text-[22px] text-textSecondary' />
+            <IconButton>
+              <i className='tabler-edit text-textSecondary' />
             </IconButton>
             <OptionMenu
               iconButtonProps={{ size: 'medium' }}
-              iconClassName='text-textSecondary text-[22px]'
+              iconClassName='text-textSecondary'
               options={[
-                { text: 'Download', icon: 'ri-download-line' },
+                { text: 'Download', icon: 'tabler-download' },
                 {
                   text: 'Delete',
-                  icon: 'ri-delete-bin-7-line',
+                  icon: 'tabler-trash',
                   menuItemProps: { onClick: () => setData(data?.filter(product => product.id !== row.original.id)) }
                 },
-                { text: 'Duplicate', icon: 'ri-stack-line' }
+                { text: 'Duplicate', icon: 'tabler-copy' }
               ]}
             />
           </div>
@@ -296,21 +298,31 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
         <CardHeader title='Filters' />
         <TableFilters setData={setFilteredData} productData={data} />
         <Divider />
-        <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4 p-5'>
+        <div className='flex flex-wrap justify-between gap-4 p-6'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
           />
-          <div className='flex items-center gap-x-4'>
-            <Button color='secondary' variant='outlined' startIcon={<i className='ri-upload-2-line' />}>
+          <div className='flex flex-wrap items-center gap-4'>
+            <CustomTextField
+              select
+              value={table.getState().pagination.pageSize}
+              onChange={e => table.setPageSize(Number(e.target.value))}
+              className='flex-auto is-[70px]'
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+              <MenuItem value='50'>50</MenuItem>
+            </CustomTextField>
+            <Button color='secondary' variant='tonal' startIcon={<i className='tabler-upload' />}>
               Export
             </Button>
             <Button
               variant='contained'
               component={Link}
               href={getLocalizedUrl('/apps/ecommerce/products/add', locale as Locale)}
-              startIcon={<i className='ri-add-line' />}
+              startIcon={<i className='tabler-plus' />}
             >
               Add Product
             </Button>
@@ -334,8 +346,8 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
                           >
                             {flexRender(header.column.columnDef.header, header.getContext())}
                             {{
-                              asc: <i className='ri-arrow-up-s-line text-xl' />,
-                              desc: <i className='ri-arrow-down-s-line text-xl' />
+                              asc: <i className='tabler-chevron-up text-xl' />,
+                              desc: <i className='tabler-chevron-down text-xl' />
                             }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
                         </>
@@ -372,16 +384,13 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
           </table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
-          component='div'
-          className='border-bs'
+          component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
     </>

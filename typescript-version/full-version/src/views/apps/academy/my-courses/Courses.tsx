@@ -14,7 +14,6 @@ import Chip from '@mui/material/Chip'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import InputLabel from '@mui/material/InputLabel'
 import LinearProgress from '@mui/material/LinearProgress'
 import MenuItem from '@mui/material/MenuItem'
 import Pagination from '@mui/material/Pagination'
@@ -95,7 +94,6 @@ const Courses = (props: Props) => {
           </div>
           <div className='flex flex-wrap items-center gap-y-4 gap-x-6'>
             <FormControl fullWidth size='small' className='is-[250px] flex-auto'>
-              <InputLabel id='course-select'>Courses</InputLabel>
               <Select
                 fullWidth
                 id='select-course'
@@ -104,7 +102,6 @@ const Courses = (props: Props) => {
                   setCourse(e.target.value)
                   setActivePage(0)
                 }}
-                label='Courses'
                 labelId='course-select'
               >
                 <MenuItem value='All'>All Courses</MenuItem>
@@ -136,7 +133,7 @@ const Courses = (props: Props) => {
                       <Chip label={item.tags} variant='tonal' size='small' color={chipColor[item.tags].color} />
                       <div className='flex items-start'>
                         <Typography className='font-medium mie-1'>{item.rating}</Typography>
-                        <i className='ri-star-fill text-warning mie-2' />
+                        <i className='tabler-star-filled text-warning mie-2' />
                         <Typography>{`(${item.ratingCount})`}</Typography>
                       </div>
                     </div>
@@ -154,12 +151,12 @@ const Courses = (props: Props) => {
                     <div className='flex flex-col gap-1'>
                       {item.completedTasks === item.totalTasks ? (
                         <div className='flex items-center gap-1'>
-                          <i className='ri-check-line text-xl text-success' />
+                          <i className='tabler-check text-xl text-success' />
                           <Typography color='success.main'>Completed</Typography>
                         </div>
                       ) : (
                         <div className='flex items-center gap-1'>
-                          <i className='ri-time-line text-xl' />
+                          <i className='tabler-clock text-xl' />
                           <Typography>{`${item.time}`}</Typography>
                         </div>
                       )}
@@ -172,8 +169,8 @@ const Courses = (props: Props) => {
                     </div>
                     {item.completedTasks === item.totalTasks ? (
                       <Button
-                        variant='outlined'
-                        startIcon={<i className='ri-refresh-line' />}
+                        variant='tonal'
+                        startIcon={<i className='tabler-rotate-clockwise-2' />}
                         component={Link}
                         href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
                       >
@@ -183,9 +180,9 @@ const Courses = (props: Props) => {
                       <div className='flex flex-wrap gap-4'>
                         <Button
                           fullWidth
-                          variant='outlined'
+                          variant='tonal'
                           color='secondary'
-                          startIcon={<i className='ri-refresh-line' />}
+                          startIcon={<i className='tabler-rotate-clockwise-2' />}
                           component={Link}
                           href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
                           className='is-auto flex-auto'
@@ -194,9 +191,9 @@ const Courses = (props: Props) => {
                         </Button>
                         <Button
                           fullWidth
-                          variant='outlined'
+                          variant='tonal'
                           endIcon={
-                            <DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />
+                            <DirectionalIcon ltrIconClass='tabler-chevron-right' rtlIconClass='tabler-chevron-left' />
                           }
                           component={Link}
                           href={getLocalizedUrl('/apps/academy/course-details', locale as Locale)}
@@ -220,7 +217,8 @@ const Courses = (props: Props) => {
             page={activePage + 1}
             showFirstButton
             showLastButton
-            variant='outlined'
+            shape='rounded'
+            variant='tonal'
             color='primary'
             onChange={(e, page) => setActivePage(page - 1)}
           />

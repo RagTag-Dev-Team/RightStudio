@@ -31,8 +31,8 @@ const data: DataType[] = [
 const AssignmentProgress = () => {
   return (
     <Card>
-      <CardHeader title='Assignment progress' action={<OptionMenu options={['Refresh', 'Update', 'Share']} />} />
-      <CardContent>
+      <CardHeader title='Assignment Progress' action={<OptionMenu options={['Refresh', 'Update', 'Share']} />} />
+      <CardContent className='flex flex-col gap-8'>
         {data.map((item, i) => (
           <div key={i} className='flex items-center gap-4'>
             <div className='relative flex items-center justify-center'>
@@ -57,13 +57,13 @@ const AssignmentProgress = () => {
             </div>
             <div className='flex justify-between items-center is-full gap-4'>
               <div>
-                <Typography className='font-medium' color='text.primary'>
+                <Typography className='font-medium mbe-1.5' color='text.primary'>
                   {item.title}
                 </Typography>
                 <Typography variant='body2'>{`${item.tasks} Tasks`}</Typography>
               </div>
-              <CustomIconButton variant='outlined' color='secondary' className='min-is-fit'>
-                <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
+              <CustomIconButton size='small' variant='tonal' color='secondary' className='min-is-fit'>
+                <DirectionalIcon ltrIconClass='tabler-chevron-right' rtlIconClass='tabler-chevron-left' />
               </CustomIconButton>
             </div>
           </div>

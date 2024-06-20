@@ -34,14 +34,14 @@ const data: SearchData[] = [
     id: '4',
     name: 'Academy Dashboard',
     url: '/dashboards/academy',
-    icon: 'Icon',
+    icon: 'tabler-school',
     section: 'Dashboards'
   },
   {
     id: '5',
     name: 'Logistics Dashboard',
     url: '/dashboards/logistics',
-    icon: 'Icon',
+    icon: 'tabler-truck',
     section: 'Dashboards'
   },
   {
@@ -49,7 +49,7 @@ const data: SearchData[] = [
     name: 'Landing Front',
     url: '/front-pages/landing-page',
     excludeLang: true,
-    icon: 'Icon',
+    icon: 'tabler-file-description',
     section: 'Front Pages'
   },
   {
@@ -57,7 +57,7 @@ const data: SearchData[] = [
     name: 'Pricing Front',
     url: '/front-pages/pricing',
     excludeLang: true,
-    icon: 'Icon',
+    icon: 'tabler-file-description',
     section: 'Front Pages'
   },
   {
@@ -65,7 +65,7 @@ const data: SearchData[] = [
     name: 'Payment Front',
     url: '/front-pages/payment',
     excludeLang: true,
-    icon: 'Icon',
+    icon: 'tabler-file-description',
     section: 'Front Pages'
   },
   {
@@ -73,7 +73,7 @@ const data: SearchData[] = [
     name: 'Checkout Front',
     url: '/front-pages/checkout',
     excludeLang: true,
-    icon: 'Icon',
+    icon: 'tabler-file-description',
     section: 'Front Pages'
   },
   {
@@ -81,126 +81,126 @@ const data: SearchData[] = [
     name: 'Help Center Front',
     url: '/front-pages/help-center',
     excludeLang: true,
-    icon: 'Icon',
+    icon: 'tabler-file-description',
     section: 'Front Pages'
   },
   {
     id: '11',
     name: 'eCommerce - Dashboard',
     url: '/apps/ecommerce/dashboard',
-    icon: 'Icon',
+    icon: 'tabler-shopping-cart',
     section: 'Apps'
   },
   {
     id: '12',
     name: 'eCommerce - Product List',
     url: '/apps/ecommerce/products/list',
-    icon: 'Icon',
+    icon: 'tabler-list',
     section: 'Apps'
   },
   {
     id: '13',
     name: 'eCommerce - Add New Product',
     url: '/apps/ecommerce/products/add',
-    icon: 'Icon',
+    icon: 'tabler-circle-plus',
     section: 'Apps'
   },
   {
     id: '14',
     name: 'eCommerce - Product Category',
     url: '/apps/ecommerce/products/category',
-    icon: 'Icon',
+    icon: 'tabler-list-details',
     section: 'Apps'
   },
   {
     id: '15',
     name: 'eCommerce - Order List',
     url: '/apps/ecommerce/orders/list',
-    icon: 'Icon',
+    icon: 'tabler-list',
     section: 'Apps'
   },
   {
     id: '16',
     name: 'eCommerce - Order Details',
     url: '/apps/ecommerce/orders/details/5434',
-    icon: 'Icon',
+    icon: 'tabler-list-check',
     section: 'Apps'
   },
   {
     id: '17',
     name: 'eCommerce - Customer List',
     url: '/apps/ecommerce/customers/list',
-    icon: 'Icon',
+    icon: 'tabler-user',
     section: 'Apps'
   },
   {
     id: '18',
     name: 'eCommerce - Customer Details',
     url: '/apps/ecommerce/customers/details/879861',
-    icon: 'Icon',
+    icon: 'tabler-list',
     section: 'Apps'
   },
   {
     id: '19',
     name: 'eCommerce - Manage Reviews',
     url: '/apps/ecommerce/manage-reviews',
-    icon: 'Icon',
+    icon: 'tabler-quote',
     section: 'Apps'
   },
   {
     id: '20',
     name: 'eCommerce - Referrals',
     url: '/apps/ecommerce/referrals',
-    icon: 'Icon',
+    icon: 'tabler-users-group',
     section: 'Apps'
   },
   {
     id: '21',
     name: 'eCommerce - Settings',
     url: '/apps/ecommerce/settings',
-    icon: 'Icon',
+    icon: 'tabler-settings-automation',
     section: 'Apps'
   },
   {
     id: '22',
     name: 'Academy - Dashboard',
     url: '/apps/academy/dashboard',
-    icon: 'Icon',
+    icon: 'tabler-book',
     section: 'Apps'
   },
   {
     id: '23',
     name: 'Academy - My Courses',
     url: '/apps/academy/my-courses',
-    icon: 'Icon',
+    icon: 'tabler-list',
     section: 'Apps'
   },
   {
     id: '24',
     name: 'Academy - Course Details',
     url: '/apps/academy/course-details',
-    icon: 'Icon',
+    icon: 'tabler-list',
     section: 'Apps'
   },
   {
     id: '25',
     name: 'Logistics - Dashboard',
     url: '/apps/logistics/dashboard',
-    icon: 'Icon',
+    icon: 'tabler-truck',
     section: 'Apps'
   },
   {
     id: '26',
     name: 'Logistics - Fleet',
     url: '/apps/logistics/fleet',
-    icon: 'Icon',
+    icon: 'tabler-car',
     section: 'Apps'
   },
   {
     id: '27',
     name: 'Email',
     url: '/apps/email',
-    icon: 'Icon',
+    icon: 'tabler-mail',
     section: 'Apps'
   },
   {

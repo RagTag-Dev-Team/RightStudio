@@ -86,10 +86,10 @@ const InterestedTopics = () => {
         lines: { show: false }
       },
       padding: {
-        top: -30,
+        top: -25,
         left: 21,
         right: 25,
-        bottom: -5
+        bottom: 0
       }
     },
     dataLabels: {
@@ -156,14 +156,14 @@ const InterestedTopics = () => {
       <CardContent>
         <Grid container>
           <Grid item xs={12} sm={6} className='max-sm:mbe-6'>
-            <AppReactApexCharts type='bar' height={268} width='100%' series={series} options={options} />
+            <AppReactApexCharts type='bar' height={296} width='100%' series={series} options={options} />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} alignSelf='center'>
             <div className='flex justify-around items-start'>
               <div className='flex flex-col gap-y-12'>
                 {data1.map((item, i) => (
                   <div key={i} className='flex gap-2'>
-                    <i className={classnames('ri-circle-fill text-xs m-[5px]', item.colorClass)} />
+                    <i className={classnames('tabler-circle-filled text-xs m-[5px]', item.colorClass)} />
                     <div>
                       <Typography>{item.title}</Typography>
                       <Typography variant='h5'>{`${item.value}%`}</Typography>
@@ -174,7 +174,7 @@ const InterestedTopics = () => {
               <div className='flex flex-col gap-y-12'>
                 {data2.map((item, i) => (
                   <div key={i} className='flex gap-2'>
-                    <i className={classnames('ri-circle-fill text-xs m-[5px]', item.colorClass)} />
+                    <i className={classnames('tabler-circle-filled text-xs m-[5px]', item.colorClass)} />
                     <div>
                       <Typography>{item.title}</Typography>
                       <Typography variant='h5'>{`${item.value}%`}</Typography>

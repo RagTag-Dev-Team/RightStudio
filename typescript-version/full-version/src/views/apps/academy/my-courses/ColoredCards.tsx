@@ -2,6 +2,7 @@
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -25,7 +26,7 @@ const data: DataType[] = [
     title: 'Earn a Certificate',
     description: 'Get the right professional certificate program for you.',
     type: 'Programs',
-    image: '/images/illustrations/characters/1.png',
+    image: '/images/illustrations/characters/8.png',
     color: 'primary',
     imageColorClass: 'bg-primaryLight',
     bgColorClass: 'bg-primaryLighter'
@@ -34,7 +35,7 @@ const data: DataType[] = [
     title: 'Best Rated Courses',
     description: 'Enroll now in the most popular and best rated courses.',
     type: 'Courses',
-    image: '/images/illustrations/characters/2.png',
+    image: '/images/illustrations/characters/9.png',
     color: 'error',
     imageColorClass: 'bg-errorLight',
     bgColorClass: 'bg-errorLighter'
@@ -42,13 +43,16 @@ const data: DataType[] = [
 ]
 
 const ColoredCards = () => {
+  // Hooks
+  const theme = useTheme()
+
   return (
     <Grid container spacing={6}>
       {data.map((item, index) => (
         <Grid item xs={12} md={6} key={index}>
           <div
             className={classnames(
-              'flex max-sm:flex-col items-center sm:items-start justify-between gap-6 rounded p-5',
+              'flex max-sm:flex-col items-center sm:items-start justify-between gap-6 rounded p-6',
               item.bgColorClass
             )}
           >
@@ -65,7 +69,11 @@ const ColoredCards = () => {
                 item.imageColorClass
               )}
             >
-              <img src={item.image} alt={item.title} className='bs-[120px]' />
+              <img
+                src={item.image}
+                alt={item.title}
+                className={classnames('bs-[120px]', { 'scale-x-[-1]': theme.direction === 'rtl' })}
+              />
             </div>
           </div>
         </Grid>

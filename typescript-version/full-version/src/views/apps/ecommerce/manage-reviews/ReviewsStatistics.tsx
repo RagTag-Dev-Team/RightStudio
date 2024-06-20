@@ -34,7 +34,7 @@ const ReviewsStatistics = () => {
     },
     plotOptions: {
       bar: {
-        borderRadius: 7,
+        borderRadius: 6,
         distributed: true,
         columnWidth: '40%'
       }
@@ -63,8 +63,8 @@ const ReviewsStatistics = () => {
       show: false,
       padding: {
         top: -30,
-        left: -10,
-        right: -7,
+        left: 0,
+        right: 0,
         bottom: -12
       }
     },
@@ -97,7 +97,7 @@ const ReviewsStatistics = () => {
   return (
     <Card>
       <CardContent>
-        <Grid container rowGap={6}>
+        <Grid container spacing={6}>
           <Grid item xs={12} sm={6}>
             <div className='bs-full flex flex-col items-start justify-between gap-6'>
               <div className='flex flex-col gap-2'>
@@ -116,7 +116,7 @@ const ReviewsStatistics = () => {
             </div>
           </Grid>
           <Grid item xs={12} sm={6} className='flex justify-center'>
-            <AppReactApexCharts type='bar' width='100%' height={152} series={series} options={options} />
+            <AppReactApexCharts type='bar' width='100%' height={156} series={series} options={options} />
           </Grid>
         </Grid>
       </CardContent>

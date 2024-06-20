@@ -4,7 +4,6 @@ import type { ReactNode, RefObject } from 'react'
 
 // MUI Imports
 import Avatar from '@mui/material/Avatar'
-import TextField from '@mui/material/TextField'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Autocomplete from '@mui/material/Autocomplete'
@@ -28,6 +27,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 import CustomChip from '@core/components/mui/Chip'
 import UserProfileLeft from './UserProfileLeft'
 import AvatarWithBadge from './AvatarWithBadge'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getInitials } from '@/utils/getInitials'
@@ -203,14 +203,14 @@ const SidebarLeft = (props: Props) => {
               value={searchValue || null}
               onChange={handleChange}
               renderInput={params => (
-                <TextField
+                <CustomTextField
                   {...params}
                   variant='outlined'
                   placeholder='Search Contacts'
                   InputProps={{
                     ...params.InputProps,
                     startAdornment: (
-                      <InputAdornment position='end'>
+                      <InputAdornment position='start'>
                         <i className='tabler-search' />
                       </InputAdornment>
                     )

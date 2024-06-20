@@ -10,14 +10,11 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
-import TextField from '@mui/material/TextField'
 
 // Components Imports
 import CustomIconButton from '@core/components/mui/IconButton'
+import CustomTextField from '@core/components/mui/TextField'
 
 const ProductVariants = () => {
   // States
@@ -39,21 +36,18 @@ const ProductVariants = () => {
             <Grid key={index} item xs={12} className='repeater-item'>
               <Grid container spacing={6}>
                 <Grid item xs={12} md={4}>
-                  <FormControl fullWidth>
-                    <InputLabel>Select Variant</InputLabel>
-                    <Select label='Select Variant' defaultValue='Size'>
-                      <MenuItem value='Size'>Size</MenuItem>
-                      <MenuItem value='Color'>Color</MenuItem>
-                      <MenuItem value='Weight'>Weight</MenuItem>
-                      <MenuItem value='Smell'>Smell</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <CustomTextField select fullWidth label='Options' defaultValue='Size'>
+                    <MenuItem value='Size'>Size</MenuItem>
+                    <MenuItem value='Color'>Color</MenuItem>
+                    <MenuItem value='Weight'>Weight</MenuItem>
+                    <MenuItem value='Smell'>Smell</MenuItem>
+                  </CustomTextField>
                 </Grid>
-                <Grid item xs={12} md={8}>
+                <Grid item xs={12} md={8} alignSelf='end'>
                   <div className='flex items-center gap-6'>
-                    <TextField fullWidth label='Variant Value' placeholder='Enter Variant Value' />
+                    <CustomTextField fullWidth placeholder='Enter Variant Value' />
                     <CustomIconButton onClick={deleteForm} className='min-is-fit'>
-                      <i className='ri-close-line' />
+                      <i className='tabler-x' />
                     </CustomIconButton>
                   </div>
                 </Grid>
@@ -61,7 +55,7 @@ const ProductVariants = () => {
             </Grid>
           ))}
           <Grid item xs={12}>
-            <Button variant='contained' onClick={() => setCount(count + 1)} startIcon={<i className='ri-add-line' />}>
+            <Button variant='contained' onClick={() => setCount(count + 1)} startIcon={<i className='tabler-plus' />}>
               Add Another Option
             </Button>
           </Grid>

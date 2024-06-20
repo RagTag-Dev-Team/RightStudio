@@ -9,10 +9,11 @@ import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import Chip from '@mui/material/Chip'
+import MenuItem from '@mui/material/MenuItem'
 import TablePagination from '@mui/material/TablePagination'
 import Typography from '@mui/material/Typography'
 
@@ -40,6 +41,8 @@ import type { ReferralsType } from '@/types/apps/ecommerceTypes'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/TextField'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -119,7 +122,7 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
       columnHelper.accessor('user', {
         header: 'Users',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <CustomAvatar src={row.original.avatar} size={34} />
             <div>
               <Typography
@@ -137,7 +140,7 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
       }),
       columnHelper.accessor('referredId', {
         header: 'Referred ID',
-        cell: ({ row }) => <Typography color='text.primary'>{row.original.referredId}</Typography>
+        cell: ({ row }) => <Typography>{row.original.referredId}</Typography>
       }),
       columnHelper.accessor('status', {
         header: 'Status',
@@ -151,7 +154,7 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
       }),
       columnHelper.accessor('earning', {
         header: 'Earning',
-        cell: ({ row }) => <Typography>{row.original.earning}</Typography>
+        cell: ({ row }) => <Typography color='text.primary'>{row.original.earning}</Typography>
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -187,14 +190,24 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
   return (
     <>
       <Card>
-        <CardHeader
-          title='Referred users'
-          action={
-            <Button variant='contained' startIcon={<i className='ri-upload-2-line' />}>
+        <CardContent className='flex flex-wrap justify-between items-center gap-4'>
+          <Typography variant='h5'>Referred Users</Typography>
+          <div className='flex flex-wrap items-center gap-4'>
+            <CustomTextField
+              select
+              value={table.getState().pagination.pageSize}
+              onChange={e => table.setPageSize(Number(e.target.value))}
+              className='flex-auto is-[70px]'
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+              <MenuItem value='50'>50</MenuItem>
+            </CustomTextField>
+            <Button variant='tonal' startIcon={<i className='tabler-upload' />} color='secondary'>
               Export
             </Button>
-          }
-        />
+          </div>
+        </CardContent>
         <div className='overflow-x-auto'>
           <table className={tableStyles.table}>
             <thead>
@@ -213,8 +226,8 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
                           >
                             {flexRender(header.column.columnDef.header, header.getContext())}
                             {{
-                              asc: <i className='ri-arrow-up-s-line text-xl' />,
-                              desc: <i className='ri-arrow-down-s-line text-xl' />
+                              asc: <i className='tabler-chevron-up text-xl' />,
+                              desc: <i className='tabler-chevron-down text-xl' />
                             }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
                         </>
@@ -253,16 +266,13 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
           </table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
-          component='div'
-          className='border-bs'
+          component={() => <TablePaginationComponent table={table} />}
           count={table.getExpandedRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
     </>

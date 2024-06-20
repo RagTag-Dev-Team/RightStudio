@@ -5,12 +5,8 @@ import type { ChangeEvent } from 'react'
 // MUI Imports
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
-import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -20,6 +16,9 @@ import { useForm, Controller } from 'react-hook-form'
 
 // Type Imports
 import type { categoryType } from './ProductCategoryTable'
+
+// Components Imports
+import CustomTextField from '@core/components/mui/TextField'
 
 type Props = {
   open: boolean
@@ -102,10 +101,10 @@ const AddCategoryDrawer = (props: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between pli-5 plb-4'>
+      <div className='flex items-center justify-between pli-6 plb-4'>
         <Typography variant='h5'>Add Category</Typography>
         <IconButton size='small' onClick={handleReset}>
-          <i className='ri-close-line text-2xl' />
+          <i className='tabler-x text-2xl' />
         </IconButton>
       </div>
       <Divider />
@@ -116,7 +115,7 @@ const AddCategoryDrawer = (props: Props) => {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <TextField
+              <CustomTextField
                 {...field}
                 fullWidth
                 label='Title'
@@ -130,7 +129,7 @@ const AddCategoryDrawer = (props: Props) => {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <TextField
+              <CustomTextField
                 {...field}
                 fullWidth
                 label='Description'
@@ -140,10 +139,8 @@ const AddCategoryDrawer = (props: Props) => {
             )}
           />
           <div className='flex items-center gap-4'>
-            <TextField
-              size='small'
+            <CustomTextField
               placeholder='No file chosen'
-              variant='outlined'
               value={fileName}
               className='flex-auto'
               InputProps={{
@@ -151,35 +148,31 @@ const AddCategoryDrawer = (props: Props) => {
                 endAdornment: fileName ? (
                   <InputAdornment position='end'>
                     <IconButton size='small' edge='end' onClick={() => setFileName('')}>
-                      <i className='ri-close-line' />
+                      <i className='tabler-x' />
                     </IconButton>
                   </InputAdornment>
                 ) : null
               }}
             />
-            <Button component='label' variant='outlined' htmlFor='contained-button-file' className='min-is-fit'>
+            <Button component='label' variant='tonal' htmlFor='contained-button-file' className='min-is-fit'>
               Choose
               <input hidden id='contained-button-file' type='file' onChange={handleFileUpload} ref={fileInputRef} />
             </Button>
           </div>
-          <FormControl fullWidth>
-            <InputLabel id='category'>Parent Category</InputLabel>
-            <Select
-              fullWidth
-              id='category'
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-              label='Parent Category'
-              labelId='category'
-            >
-              <MenuItem value='HouseHold'>HouseHold</MenuItem>
-              <MenuItem value='Management'>Management</MenuItem>
-              <MenuItem value='Electronics'>Electronics</MenuItem>
-              <MenuItem value='Office'>Office</MenuItem>
-              <MenuItem value='Accessories'>Accessories</MenuItem>
-            </Select>
-          </FormControl>
-          <TextField
+          <CustomTextField
+            select
+            fullWidth
+            label='Parent Category'
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+          >
+            <MenuItem value='HouseHold'>HouseHold</MenuItem>
+            <MenuItem value='Management'>Management</MenuItem>
+            <MenuItem value='Electronics'>Electronics</MenuItem>
+            <MenuItem value='Office'>Office</MenuItem>
+            <MenuItem value='Accessories'>Accessories</MenuItem>
+          </CustomTextField>
+          <CustomTextField
             fullWidth
             label='Comment'
             value={comment}
@@ -188,26 +181,22 @@ const AddCategoryDrawer = (props: Props) => {
             rows={4}
             placeholder='Write a Comment...'
           />
-          <FormControl fullWidth>
-            <InputLabel id='plan-select'>Parent Status</InputLabel>
-            <Select
-              fullWidth
-              id='select-status'
-              value={status}
-              onChange={e => setStatus(e.target.value)}
-              label='Parent Status'
-              labelId='status-select'
-            >
-              <MenuItem value='Published'>Published</MenuItem>
-              <MenuItem value='Inactive'>Inactive</MenuItem>
-              <MenuItem value='Scheduled'>Scheduled</MenuItem>
-            </Select>
-          </FormControl>
+          <CustomTextField
+            select
+            fullWidth
+            label='Parent Status'
+            value={status}
+            onChange={e => setStatus(e.target.value)}
+          >
+            <MenuItem value='Published'>Published</MenuItem>
+            <MenuItem value='Inactive'>Inactive</MenuItem>
+            <MenuItem value='Scheduled'>Scheduled</MenuItem>
+          </CustomTextField>
           <div className='flex items-center gap-4'>
             <Button variant='contained' type='submit'>
               Add
             </Button>
-            <Button variant='outlined' color='error' type='reset' onClick={handleReset}>
+            <Button variant='tonal' color='error' type='reset' onClick={handleReset}>
               Discard
             </Button>
           </div>

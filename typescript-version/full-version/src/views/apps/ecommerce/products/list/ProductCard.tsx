@@ -29,27 +29,27 @@ const data: DataType[] = [
   {
     title: 'In-Store Sales',
     value: '$5,345',
-    icon: 'ri-home-6-line',
+    icon: 'tabler-smart-home',
     desc: '5k',
     change: 5.7
   },
   {
     title: 'Website Sales',
     value: '$74,347',
-    icon: 'ri-computer-line',
+    icon: 'tabler-device-laptop',
     desc: '21k',
     change: 12.4
   },
   {
     title: 'Discount',
     value: '$14,235',
-    icon: 'ri-gift-line',
+    icon: 'tabler-gift',
     desc: '6k'
   },
   {
     title: 'Affiliate',
     value: '$8,345',
-    icon: 'ri-money-dollar-circle-line',
+    icon: 'tabler-wallet',
     desc: '150',
     change: -3.5
   }

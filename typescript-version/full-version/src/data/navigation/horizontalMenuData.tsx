@@ -26,10 +26,12 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].academy,
+        icon: 'tabler-school',
         href: '/dashboards/academy'
       },
       {
         label: dictionary['navigation'].logistics,
+        icon: 'tabler-truck',
         href: '/dashboards/logistics'
       }
     ]
@@ -40,6 +42,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
     children: [
       {
         label: dictionary['navigation'].eCommerce,
+        icon: 'tabler-shopping-cart',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -108,6 +111,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].academy,
+        icon: 'tabler-school',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -125,6 +129,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].logistics,
+        icon: 'tabler-truck',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -138,6 +143,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].email,
+        icon: 'tabler-mail',
         href: '/apps/email',
         exactMatch: false,
         activeUrl: '/apps/email'
@@ -232,7 +238,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].accountSettings,
-        icon: 'tabler-setting',
+        icon: 'tabler-settings',
         href: '/pages/account-settings'
       },
       {
@@ -452,6 +458,7 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
       },
       {
         label: dictionary['navigation'].frontPages,
+        icon: 'tabler-files',
         children: [
           {
             label: dictionary['navigation'].landing,

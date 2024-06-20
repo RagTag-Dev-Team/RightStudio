@@ -12,24 +12,21 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import Divider from '@mui/material/Divider'
-import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
-import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
-import Select from '@mui/material/Select'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabPanel from '@mui/lab/TabPanel'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Component Imports
 import CustomTabList from '@core/components/mui/TabList'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -60,35 +57,35 @@ const ProductInventory = () => {
                 <Tab
                   value='restock'
                   label='Restock'
-                  icon={<i className='ri-add-line' />}
+                  icon={<i className='tabler-box' />}
                   iconPosition='start'
                   className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='shipping'
                   label='Shipping'
-                  icon={<i className='ri-car-line' />}
+                  icon={<i className='tabler-car' />}
                   iconPosition='start'
                   className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='global-delivery'
                   label='Global Delivery'
-                  icon={<i className='ri-global-line' />}
+                  icon={<i className='tabler-world' />}
                   iconPosition='start'
                   className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='attributes'
                   label='Attributes'
-                  icon={<i className='ri-link-m' />}
+                  icon={<i className='tabler-link' />}
                   iconPosition='start'
                   className='flex-row justify-start min-is-full'
                 />
                 <Tab
                   value='advanced'
                   label='Advanced'
-                  icon={<i className='ri-lock-unlock-line' />}
+                  icon={<i className='tabler-lock' />}
                   iconPosition='start'
                   className='flex-row justify-start min-is-full'
                 />
@@ -98,11 +95,9 @@ const ProductInventory = () => {
             <div className='md:is-8/12'>
               <TabPanel value='restock' className='flex flex-col gap-4'>
                 <Typography className='font-medium'>Options</Typography>
-                <div className='flex items-center gap-4'>
-                  <TextField label='Add to stock' placeholder='100' size='small' className='flex-auto' />
-                  <Button variant='contained' startIcon={<i className='ri-check-line' />}>
-                    Confirm
-                  </Button>
+                <div className='flex items-end gap-4'>
+                  <CustomTextField label='Add to stock' placeholder='Quantity' size='small' className='flex-auto' />
+                  <Button variant='contained'>Confirm</Button>
                 </div>
                 <div className='flex flex-col gap-2'>
                   <Typography color='text.primary'>Product in stock now: 54</Typography>
@@ -187,7 +182,7 @@ const ProductInventory = () => {
                           <Typography className='font-medium' color='text.primary'>
                             Selected Countries
                           </Typography>
-                          <TextField placeholder='USA' size='small' />
+                          <CustomTextField placeholder='USA' size='small' />
                         </>
                       }
                     />
@@ -237,7 +232,7 @@ const ProductInventory = () => {
                         <Typography className='font-medium' color='text.primary'>
                           Frozen Product
                         </Typography>
-                        <TextField placeholder='40 C' size='small' />
+                        <CustomTextField placeholder='40 C' size='small' />
                       </>
                     }
                   />
@@ -252,7 +247,7 @@ const ProductInventory = () => {
                           selected={date}
                           onChange={(date: Date) => setDate(date)}
                           placeholderText='MM/DD/YYYY'
-                          customInput={<TextField fullWidth size='small' />}
+                          customInput={<CustomTextField fullWidth size='small' />}
                         />
                       </>
                     }
@@ -264,18 +259,15 @@ const ProductInventory = () => {
                   <Typography className='font-medium'>Advanced</Typography>
                   <Grid container spacing={4}>
                     <Grid item xs={12} sm={6} md={7}>
-                      <FormControl fullWidth>
-                        <InputLabel size='small'>Product ID Type</InputLabel>
-                        <Select size='small' label='Product ID Type' defaultValue='ISBN'>
-                          <MenuItem value='ISBN'>ISBN</MenuItem>
-                          <MenuItem value='UPC'>UPC</MenuItem>
-                          <MenuItem value='EAN'>EAN</MenuItem>
-                          <MenuItem value='JAN'>JAN</MenuItem>
-                        </Select>
-                      </FormControl>
+                      <CustomTextField select fullWidth label='Product ID Type' defaultValue='ISBN'>
+                        <MenuItem value='ISBN'>ISBN</MenuItem>
+                        <MenuItem value='UPC'>UPC</MenuItem>
+                        <MenuItem value='EAN'>EAN</MenuItem>
+                        <MenuItem value='JAN'>JAN</MenuItem>
+                      </CustomTextField>
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
-                      <TextField fullWidth label='Product ID' placeholder='100023' size='small' />
+                      <CustomTextField fullWidth label='Product ID' placeholder='100023' size='small' />
                     </Grid>
                   </Grid>
                 </FormGroup>

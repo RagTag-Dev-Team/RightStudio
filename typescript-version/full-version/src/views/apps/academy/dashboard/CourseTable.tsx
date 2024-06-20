@@ -13,7 +13,6 @@ import CardHeader from '@mui/material/CardHeader'
 import Checkbox from '@mui/material/Checkbox'
 import LinearProgress from '@mui/material/LinearProgress'
 import TablePagination from '@mui/material/TablePagination'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -41,6 +40,8 @@ import type { Locale } from '@configs/i18n'
 
 // Components Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+import TablePaginationComponent from '@components/TablePaginationComponent'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -100,7 +101,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -208,15 +209,15 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
         cell: ({ row }) => (
           <div className='flex items-center justify-between gap-5'>
             <div className='flex items-center gap-1.5'>
-              <i className='ri-group-line text-primary' />
+              <i className='tabler-users text-primary' />
               <Typography>{row.original.userCount}</Typography>
             </div>
             <div className='flex items-center gap-1.5'>
-              <i className='ri-computer-line text-info' />
+              <i className='tabler-book text-info' />
               <Typography>{row.original.note}</Typography>
             </div>
             <div className='flex items-center gap-1.5'>
-              <i className='ri-video-upload-line text-error' />
+              <i className='tabler-video text-error' />
               <Typography>{row.original.view}</Typography>
             </div>
           </div>
@@ -288,8 +289,8 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
-                            asc: <i className='ri-arrow-up-s-line text-xl' />,
-                            desc: <i className='ri-arrow-down-s-line text-xl' />
+                            asc: <i className='tabler-chevron-up text-xl' />,
+                            desc: <i className='tabler-chevron-down text-xl' />
                           }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                         </div>
                       </>
@@ -326,16 +327,13 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
         </table>
       </div>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component='div'
-        className='border-bs'
+        component={() => <TablePaginationComponent table={table} />}
         count={table.getFilteredRowModel().rows.length}
         rowsPerPage={table.getState().pagination.pageSize}
         page={table.getState().pagination.pageIndex}
         onPageChange={(_, page) => {
           table.setPageIndex(page)
         }}
-        onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
       />
     </Card>
   )

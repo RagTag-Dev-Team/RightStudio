@@ -20,7 +20,7 @@ const FreeCourses = () => {
           <Grid item xs={12} md={4}>
             <div className='flex flex-col items-center justify-center gap-y-4 bs-full text-center'>
               <CustomAvatar variant='rounded' skin='light' color='primary' size={52}>
-                <i className='ri-gift-line text-4xl' />
+                <i className='tabler-gift text-4xl' />
               </CustomAvatar>
               <Typography variant='h4'>Today&apos;s Free Courses</Typography>
               <Typography>
@@ -44,12 +44,12 @@ const FreeCourses = () => {
                   }
                   playIcon={
                     <CustomIconButton variant='contained' color='error' className='absolute rounded-full'>
-                      <i className='ri-play-line' />
+                      <i className='tabler-player-play' />
                     </CustomIconButton>
                   }
                 />
               </div>
-              <div className='flex flex-col gap-2 p-5'>
+              <div className='flex flex-col gap-2 p-6'>
                 <Typography variant='h5'>Your First Singing Lesson</Typography>
                 <Typography>
                   In the same way as any other artistic domain, singing lends itself perfectly to self-teaching.
@@ -71,12 +71,12 @@ const FreeCourses = () => {
                   }
                   playIcon={
                     <CustomIconButton variant='contained' color='error' className='absolute rounded-full'>
-                      <i className='ri-play-line' />
+                      <i className='tabler-player-play' />
                     </CustomIconButton>
                   }
                 />
               </div>
-              <div className='flex flex-col gap-2 p-5'>
+              <div className='flex flex-col gap-2 p-6'>
                 <Typography variant='h5'>Guitar for Beginners</Typography>
                 <Typography>
                   The Fender Acoustic Guitar is the best choice for both beginners and professionals offering a great

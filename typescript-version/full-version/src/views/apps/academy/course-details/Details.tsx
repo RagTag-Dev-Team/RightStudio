@@ -37,8 +37,8 @@ const Details = ({ data }: { data?: CourseDetails }) => {
         </div>
         <div className='flex items-center gap-4'>
           <Chip label='UI/UX' variant='tonal' size='small' color='error' />
-          <i className='ri-share-forward-line cursor-pointer' />
-          <i className='ri-bookmark-line cursor-pointer' />
+          <i className='tabler-share cursor-pointer' />
+          <i className='tabler-bookmarks cursor-pointer' />
         </div>
       </CardContent>
       <CardContent>
@@ -59,7 +59,7 @@ const Details = ({ data }: { data?: CourseDetails }) => {
               }
               playIcon={
                 <CustomIconButton variant='contained' color='error' className='absolute rounded-full'>
-                  <i className='ri-play-line text-2xl' />
+                  <i className='tabler-player-play text-2xl' />
                 </CustomIconButton>
               }
             />
@@ -75,29 +75,29 @@ const Details = ({ data }: { data?: CourseDetails }) => {
               <div className='flex flex-wrap gap-x-12 gap-y-2'>
                 <List role='list' component='div' className='flex flex-col gap-2 plb-0'>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-check-line text-xl text-textSecondary' />
+                    <i className='tabler-check text-xl text-textSecondary' />
                     <Typography>Skill level: {data?.skillLevel}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-group-line text-xl text-textSecondary' />
+                    <i className='tabler-users text-xl text-textSecondary' />
                     <Typography>Students: {data?.totalStudents.toLocaleString()}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-global-line text-xl text-textSecondary' />
+                    <i className='tabler-world text-xl text-textSecondary' />
                     <Typography>Languages: {data?.language}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-pages-line text-xl text-textSecondary' />
+                    <i className='tabler-file text-xl text-textSecondary' />
                     <Typography>Captions: {data?.isCaptions ? 'Yes' : 'No'}</Typography>
                   </ListItem>
                 </List>
                 <List role='list' component='div' className='flex flex-col gap-2 plb-0'>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-video-upload-line text-xl text-textSecondary' />
+                    <i className='tabler-video text-xl text-textSecondary' />
                     <Typography>Lectures: {data?.totalLectures}</Typography>
                   </ListItem>
                   <ListItem role='listitem' className='flex items-center gap-2 p-0'>
-                    <i className='ri-time-line text-xl text-textSecondary' />
+                    <i className='tabler-clock text-xl text-textSecondary' />
                     <Typography>Video: {data?.length}</Typography>
                   </ListItem>
                 </List>

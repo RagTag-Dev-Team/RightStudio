@@ -26,26 +26,28 @@ const data: DataType[] = [
 
 const PopularInstructors = () => {
   return (
-    <Card>
+    <Card className='bs-full'>
       <CardHeader title='Popular Instructors' action={<OptionMenu options={['Refresh', 'Update', 'Share']} />} />
       <Divider />
-      <div className='flex justify-between plb-4 pli-5'>
-        <Typography variant='overline'>instructors</Typography>
-        <Typography variant='overline'>courses</Typography>
+      <div className='flex justify-between plb-4 pli-6'>
+        <Typography className='uppercase'>instructors</Typography>
+        <Typography className='uppercase'>courses</Typography>
       </div>
       <Divider />
-      <CardContent>
+      <CardContent className='flex flex-col gap-4'>
         {data.map((item, i) => (
           <div key={i} className='flex items-center gap-4'>
             <CustomAvatar size={34} src={item.avatar} />
             <div className='flex justify-between items-center is-full gap-4'>
-              <div className='flex flex-col gap-1'>
+              <div>
                 <Typography className='font-medium' color='text.primary'>
                   {item.name}
                 </Typography>
-                <Typography>{item.profession}</Typography>
+                <Typography variant='body2'>{item.profession}</Typography>
               </div>
-              <Typography color='text.primary'>{item.totalCourses}</Typography>
+              <Typography className='font-medium' color='text.primary'>
+                {item.totalCourses}
+              </Typography>
             </div>
           </div>
         ))}

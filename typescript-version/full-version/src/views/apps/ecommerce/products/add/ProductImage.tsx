@@ -62,7 +62,7 @@ const ProductImage = () => {
     if (file.type.startsWith('image')) {
       return <img width={38} height={38} alt={file.name} src={URL.createObjectURL(file as any)} />
     } else {
-      return <i className='ri-file-text-line' />
+      return <i className='tabler-file-description' />
     }
   }
 
@@ -89,7 +89,7 @@ const ProductImage = () => {
         </div>
       </div>
       <IconButton onClick={() => handleRemoveFile(file)}>
-        <i className='ri-close-line text-xl' />
+        <i className='tabler-x text-xl' />
       </IconButton>
     </ListItem>
   ))
@@ -121,11 +121,11 @@ const ProductImage = () => {
             <input {...getInputProps()} />
             <div className='flex items-center flex-col gap-2 text-center'>
               <CustomAvatar variant='rounded' skin='light' color='secondary'>
-                <i className='ri-upload-2-line' />
+                <i className='tabler-upload' />
               </CustomAvatar>
               <Typography variant='h4'>Drag and Drop Your Image Here.</Typography>
               <Typography color='text.disabled'>or</Typography>
-              <Button variant='outlined' size='small'>
+              <Button variant='tonal' size='small'>
                 Browse Image
               </Button>
             </div>
@@ -134,7 +134,7 @@ const ProductImage = () => {
             <>
               <List>{fileList}</List>
               <div className='buttons'>
-                <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
+                <Button color='error' variant='tonal' onClick={handleRemoveAllFiles}>
                   Remove All
                 </Button>
                 <Button variant='contained'>Upload Files</Button>

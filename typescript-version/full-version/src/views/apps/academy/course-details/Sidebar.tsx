@@ -29,57 +29,42 @@ type ItemsType = {
 
 // Styled component for Accordion component
 export const Accordion = styled(MuiAccordion)<AccordionProps>({
+  margin: '0 !important',
   boxShadow: 'none !important',
-  border: '1px solid var(--mui-palette-divider)',
+  border: '1px solid var(--mui-palette-divider) !important',
+  borderRadius: '0 !important',
+  overflow: 'hidden',
   background: 'none',
   '&:not(:last-of-type)': {
-    borderBottom: 0
+    borderBottom: '0 !important'
   },
   '&:before': {
     display: 'none'
   },
-  '&.Mui-expanded': {
-    margin: 'auto'
-  },
   '&:first-of-type': {
-    '& .MuiButtonBase-root': {
-      borderTopLeftRadius: 'var(--mui-shape-borderRadius)',
-      borderTopRightRadius: 'var(--mui-shape-borderRadius)'
-    }
+    borderTopLeftRadius: 'var(--mui-shape-borderRadius) !important',
+    borderTopRightRadius: 'var(--mui-shape-borderRadius) !important'
   },
   '&:last-of-type': {
-    '& .MuiAccordionSummary-root:not(.Mui-expanded)': {
-      borderBottomLeftRadius: 'var(--mui-shape-borderRadius)',
-      borderBottomRightRadius: 'var(--mui-shape-borderRadius)'
-    }
+    borderBottomLeftRadius: 'var(--mui-shape-borderRadius) !important',
+    borderBottomRightRadius: 'var(--mui-shape-borderRadius) !important'
   }
 })
 
 // Styled component for AccordionSummary component
 export const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(({ theme }) => ({
-  marginBottom: -1,
-  padding: theme.spacing(0, 4),
-  minHeight: theme.spacing(12),
-  transition: 'min-height 0.15s ease-in-out',
+  padding: theme.spacing(3, 6),
+  transition: 'none',
   backgroundColor: 'var(--mui-palette-action-hover)',
-  borderBottom: '1px solid var(--mui-palette-divider)',
+  borderBlockEnd: '0 !important',
   '&.Mui-expanded': {
-    minHeight: theme.spacing(12),
-    '& .MuiAccordionSummary-expandIconWrapper': {
-      transform: 'rotate(90deg)'
-    }
-  },
-  '& .MuiAccordionSummary-expandIconWrapper': {
-    transform: theme.direction === 'rtl' && 'rotate(180deg)'
-  },
-  '& .MuiAccordionSummary-content.Mui-expanded': {
-    margin: '12px 0'
+    borderBlockEnd: '1px solid var(--mui-palette-divider) !important'
   }
 }))
 
 // Styled component for AccordionDetails component
 export const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>(({ theme }) => ({
-  padding: `${theme.spacing(4)} !important`,
+  padding: `${theme.spacing(4, 3)} !important`,
   backgroundColor: 'var(--mui-palette-background-paper)'
 }))
 
@@ -127,7 +112,7 @@ const Sidebar = ({ content }: { content?: CourseContent[] }) => {
           <Accordion key={index} expanded={expanded === index} onChange={handleChange(index)}>
             <AccordionSummary
               id='customized-panel-header-1'
-              expandIcon={<i className='ri-arrow-right-s-line text-textSecondary' />}
+              expandIcon={<i className='tabler-chevron-right text-textSecondary' />}
               aria-controls={'sd'}
             >
               <div>
@@ -143,14 +128,13 @@ const Sidebar = ({ content }: { content?: CourseContent[] }) => {
                       <ListItemIcon>
                         <Checkbox
                           tabIndex={-1}
-                          disableRipple
                           checked={items[index][i].isCompleted}
                           onChange={e => handleCheckboxChange(e, index, i)}
                         />
                       </ListItemIcon>
                       <div>
                         <Typography className='font-medium !text-textPrimary'>{`${i + 1}. ${topic.title}`}</Typography>
-                        <Typography>{topic.time}</Typography>
+                        <Typography variant='body2'>{topic.time}</Typography>
                       </div>
                     </ListItem>
                   )

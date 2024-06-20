@@ -6,7 +6,6 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
@@ -19,6 +18,7 @@ import type { Editor } from '@tiptap/core'
 
 // Components Imports
 import CustomIconButton from '@core/components/mui/IconButton'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Style Imports
 import '@/libs/styles/tiptapEditor.css'
@@ -122,15 +122,15 @@ const ProductInformation = () => {
     <Card>
       <CardHeader title='Product Information' />
       <CardContent>
-        <Grid container spacing={5} className='mbe-5'>
+        <Grid container spacing={6} className='mbe-6'>
           <Grid item xs={12}>
-            <TextField fullWidth label='Product Name' placeholder='iPhone 14' />
+            <CustomTextField fullWidth label='Product Name' placeholder='iPhone 14' />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='SKU' placeholder='FXSK123U' />
+            <CustomTextField fullWidth label='SKU' placeholder='FXSK123U' />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='Barcode' placeholder='0123-4567' />
+            <CustomTextField fullWidth label='Barcode' placeholder='0123-4567' />
           </Grid>
         </Grid>
         <Typography className='mbe-1'>Description (Optional)</Typography>

@@ -5,25 +5,25 @@ export const db: CardStatsType = {
     {
       stats: '$24,983',
       title: 'Total Earning',
-      avatarIcon: 'ri-money-dollar-circle-line',
+      avatarIcon: 'tabler-currency-dollar',
       avatarColor: 'primary'
     },
     {
       stats: '$8,647',
       title: 'Unpaid Earning',
-      avatarIcon: 'ri-gift-line',
+      avatarIcon: 'tabler-gift',
       avatarColor: 'success'
     },
     {
       stats: '2,367',
       title: 'Signups',
-      avatarIcon: 'ri-group-line',
+      avatarIcon: 'tabler-users',
       avatarColor: 'error'
     },
     {
       stats: '4.5%',
       title: 'Conversion Rate',
-      avatarIcon: 'ri-refresh-line',
+      avatarIcon: 'tabler-infinity',
       avatarColor: 'info'
     }
   ],

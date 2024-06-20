@@ -7,18 +7,11 @@ import type { Theme } from '@mui/material/styles'
 const Icon = () => {
   return (
     <svg width='1em' height='1em' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <g clipPath='url(#a)'>
-        <path
-          d='M4 7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7Z'
-          stroke='var(--mui-palette-text-disabled)'
-          strokeWidth='2'
-        />
-      </g>
-      <defs>
-        <clipPath id='a'>
-          <path fill='var(--mui-palette-common-white)' d='M0 0h24v24H0z' />
-        </clipPath>
-      </defs>
+      <path
+        d='M4 7C4 5.34315 5.34315 4 7 4H17C18.6569 4 20 5.34315 20 7V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7Z'
+        stroke='var(--mui-palette-text-disabled)'
+        strokeWidth='2'
+      />
     </svg>
   )
 }

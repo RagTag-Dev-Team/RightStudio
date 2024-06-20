@@ -30,16 +30,19 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
       },
       {
         label: dictionary['navigation'].academy,
+        icon: 'tabler-circle',
         href: '/dashboards/academy'
       },
       {
         label: dictionary['navigation'].logistics,
+        icon: 'tabler-circle',
         href: '/dashboards/logistics'
       }
     ]
   },
   {
     label: dictionary['navigation'].frontPages,
+    icon: 'tabler-files',
     children: [
       {
         label: dictionary['navigation'].landing,
@@ -81,6 +84,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
     children: [
       {
         label: dictionary['navigation'].eCommerce,
+        icon: 'tabler-shopping-cart',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -149,6 +153,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
       },
       {
         label: dictionary['navigation'].academy,
+        icon: 'tabler-school',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -166,6 +171,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
       },
       {
         label: dictionary['navigation'].logistics,
+        icon: 'tabler-truck',
         children: [
           {
             label: dictionary['navigation'].dashboard,
@@ -179,6 +185,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
       },
       {
         label: dictionary['navigation'].email,
+        icon: 'tabler-mail',
         href: '/apps/email',
         exactMatch: false,
         activeUrl: '/apps/email'

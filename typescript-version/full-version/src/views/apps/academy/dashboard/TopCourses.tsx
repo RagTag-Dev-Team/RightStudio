@@ -21,18 +21,18 @@ type DataType = {
 
 // Vars
 const data: DataType[] = [
-  { title: 'Videography Basic Design Course', views: '1.2k', icon: 'ri-video-download-line', color: 'primary' },
-  { title: 'Basic Front-end Development Course', views: '834', icon: 'ri-code-view', color: 'info' },
-  { title: 'Basic Fundamentals of Photography', views: '3.7k', icon: 'ri-image-2-line', color: 'success' },
-  { title: 'Advance Dribble Base Visual Design', views: '2.5k', icon: 'ri-palette-line', color: 'warning' },
-  { title: 'Your First Singing Lesson', views: '948', icon: 'ri-music-2-line', color: 'error' }
+  { title: 'Videography Basic Design Course', views: '1.2k', icon: 'tabler-video', color: 'primary' },
+  { title: 'Basic Front-end Development Course', views: '834', icon: 'tabler-code', color: 'info' },
+  { title: 'Basic Fundamentals of Photography', views: '3.7k', icon: 'tabler-camera', color: 'success' },
+  { title: 'Advance Dribble Base Visual Design', views: '2.5k', icon: 'tabler-brand-dribbble', color: 'warning' },
+  { title: 'Your First Singing Lesson', views: '948', icon: 'tabler-microphone-2', color: 'error' }
 ]
 
 const TopCourses = () => {
   return (
     <Card>
-      <CardHeader title='Top courses' action={<OptionMenu options={['Last 28 Days', 'Last Month', 'Last Year']} />} />
-      <CardContent>
+      <CardHeader title='Top Courses' action={<OptionMenu options={['Last 28 Days', 'Last Month', 'Last Year']} />} />
+      <CardContent className='flex flex-col gap-6'>
         {data.map((item, i) => (
           <div key={i} className='flex items-center gap-4'>
             <CustomAvatar variant='rounded' skin='light' color={item.color}>

@@ -226,7 +226,7 @@ const KanbanDrawer = (props: KanbanDrawerProps) => {
                   endAdornment: fileName ? (
                     <InputAdornment position='end'>
                       <IconButton size='small' edge='end' onClick={() => setFileName('')}>
-                        <i className='ri-close-line' />
+                        <i className='tabler-x' />
                       </IconButton>
                     </InputAdornment>
                   ) : null

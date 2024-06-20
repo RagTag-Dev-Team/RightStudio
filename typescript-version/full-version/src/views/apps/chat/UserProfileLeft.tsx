@@ -6,7 +6,6 @@ import type { ChangeEvent, ReactNode } from 'react'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -33,6 +32,7 @@ import { setUserStatus } from '@/redux-store/slices/chat'
 // Component Imports
 import AvatarWithBadge from './AvatarWithBadge'
 import { statusObj } from '@views/apps/chat/SidebarLeft'
+import CustomTextField from '@core/components/mui/TextField'
 
 type Props = {
   userSidebar: boolean
@@ -106,7 +106,7 @@ const UserProfileLeft = (props: Props) => {
               <Typography className='uppercase' color='text.disabled'>
                 About
               </Typography>
-              <TextField fullWidth rows={3} multiline id='about-textarea' defaultValue={profileUserData.about} />
+              <CustomTextField fullWidth rows={3} multiline id='about-textarea' defaultValue={profileUserData.about} />
             </div>
             <div className='flex flex-col gap-1'>
               <FormLabel id='status-radio-buttons-group-label' className='uppercase text-textDisabled'>

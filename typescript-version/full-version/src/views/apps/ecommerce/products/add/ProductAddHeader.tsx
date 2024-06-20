@@ -12,10 +12,10 @@ const ProductAddHeader = () => {
         <Typography>Orders placed across your store</Typography>
       </div>
       <div className='flex flex-wrap gap-4'>
-        <Button variant='outlined' color='secondary'>
+        <Button variant='tonal' color='secondary'>
           Discard
         </Button>
-        <Button variant='outlined'>Save Draft</Button>
+        <Button variant='tonal'>Save Draft</Button>
         <Button variant='contained'>Publish Product</Button>
       </div>
     </div>

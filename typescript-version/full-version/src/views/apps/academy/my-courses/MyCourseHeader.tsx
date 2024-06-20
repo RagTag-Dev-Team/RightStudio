@@ -1,6 +1,5 @@
 // MUI Imports
 import Card from '@mui/material/Card'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
 
@@ -12,6 +11,7 @@ import type { Mode } from '@core/types'
 
 // Component Imports
 import CustomIconButton from '@core/components/mui/IconButton'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -46,15 +46,14 @@ const MyCourseHeader = (props: Props) => {
           programming, and data science.
         </Typography>
         <div className='flex items-center gap-4 max-sm:is-full'>
-          <TextField
+          <CustomTextField
             placeholder='Find your course'
-            size='small'
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
             className='sm:is-[350px] max-sm:flex-1'
           />
           <CustomIconButton variant='contained' color='primary'>
-            <i className='ri-search-2-line' />
+            <i className='tabler-search' />
           </CustomIconButton>
         </div>
       </div>

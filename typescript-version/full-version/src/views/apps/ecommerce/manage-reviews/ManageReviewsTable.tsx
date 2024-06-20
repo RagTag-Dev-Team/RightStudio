@@ -12,12 +12,9 @@ import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import Chip from '@mui/material/Chip'
-import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 import Rating from '@mui/material/Rating'
-import Select from '@mui/material/Select'
 import TablePagination from '@mui/material/TablePagination'
-import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -46,6 +43,8 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
 import OptionMenu from '@core/components/option-menu'
+import CustomTextField from '@core/components/mui/TextField'
+import TablePaginationComponent from '@components/TablePaginationComponent'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -105,7 +104,7 @@ const DebouncedInput = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
-  return <TextField {...props} value={value} onChange={e => setValue(e.target.value)} size='small' />
+  return <CustomTextField {...props} value={value} onChange={e => setValue(e.target.value)} />
 }
 
 // Column Definitions
@@ -149,9 +148,9 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
       columnHelper.accessor('product', {
         header: 'Product',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <img src={row.original.productImage} width={38} height={38} className='rounded bg-actionHover' />
-            <div className='flex flex-col'>
+            <div>
               <Typography className='font-medium' color='text.primary'>
                 {row.original.product}
               </Typography>
@@ -165,7 +164,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
       columnHelper.accessor('reviewer', {
         header: 'Reviewer',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <CustomAvatar src={row.original.avatar} size={34} />
             <div>
               <Typography
@@ -190,7 +189,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
               name='product-review'
               readOnly
               value={row.original.review}
-              emptyIcon={<i className='ri-star-fill' />}
+              emptyIcon={<i className='tabler-star-filled' />}
             />
             <Typography className='font-medium' color='text.primary'>
               {row.original.head}
@@ -237,17 +236,17 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         cell: ({ row }) => (
           <OptionMenu
             iconButtonProps={{ size: 'medium' }}
-            iconClassName='text-textSecondary text-[22px]'
+            iconClassName='text-textSecondary'
             options={[
               {
                 text: 'View',
-                icon: 'ri-eye-line',
+                icon: 'tabler-eye',
                 href: getLocalizedUrl('/apps/ecommerce/orders/details/5434', locale as Locale),
-                linkProps: { className: 'flex items-center is-full plb-1.5 pli-4' }
+                linkProps: { className: 'flex items-center gap-2 is-full plb-2 pli-4' }
               },
               {
                 text: 'Delete',
-                icon: 'ri-delete-bin-7-line',
+                icon: 'tabler-trash',
                 menuItemProps: {
                   onClick: () => setAllData(allData?.filter(review => review.id !== row.original.id)),
                   className: 'flex items-center'
@@ -305,27 +304,35 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
   return (
     <>
       <Card>
-        <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4 p-5'>
+        <div className='flex flex-wrap justify-between gap-4 p-6'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
           />
-          <div className='flex items-center gap-x-4'>
-            <FormControl fullWidth size='small' className='is-[140px] flex-auto'>
-              <Select
-                fullWidth
-                id='select-status'
-                value={status}
-                onChange={e => setStatus(e.target.value)}
-                labelId='status-select'
-              >
-                <MenuItem value='All'>All</MenuItem>
-                <MenuItem value='Published'>Published</MenuItem>
-                <MenuItem value='Pending'>Pending</MenuItem>
-              </Select>
-            </FormControl>
-            <Button variant='contained' startIcon={<i className='ri-upload-2-line' />}>
+          <div className='flex flex-wrap items-center gap-4'>
+            <CustomTextField
+              select
+              value={table.getState().pagination.pageSize}
+              onChange={e => table.setPageSize(Number(e.target.value))}
+              className='flex-auto is-[70px]'
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+              <MenuItem value='50'>50</MenuItem>
+            </CustomTextField>
+            <CustomTextField
+              select
+              fullWidth
+              value={status}
+              onChange={e => setStatus(e.target.value)}
+              className='is-[140px] flex-auto'
+            >
+              <MenuItem value='All'>All</MenuItem>
+              <MenuItem value='Published'>Published</MenuItem>
+              <MenuItem value='Pending'>Pending</MenuItem>
+            </CustomTextField>
+            <Button variant='tonal' startIcon={<i className='tabler-upload' />} color='secondary'>
               Export
             </Button>
           </div>
@@ -348,8 +355,8 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
                           >
                             {flexRender(header.column.columnDef.header, header.getContext())}
                             {{
-                              asc: <i className='ri-arrow-up-s-line text-xl' />,
-                              desc: <i className='ri-arrow-down-s-line text-xl' />
+                              asc: <i className='tabler-chevron-up text-xl' />,
+                              desc: <i className='tabler-chevron-down text-xl' />
                             }[header.column.getIsSorted() as 'asc' | 'desc'] ?? null}
                           </div>
                         </>
@@ -386,16 +393,13 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
           </table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
-          component='div'
-          className='border-bs'
+          component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
           page={table.getState().pagination.pageIndex}
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-          onRowsPerPageChange={e => table.setPageSize(Number(e.target.value))}
         />
       </Card>
     </>

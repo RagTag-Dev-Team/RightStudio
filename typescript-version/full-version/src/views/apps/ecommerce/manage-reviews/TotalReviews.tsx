@@ -30,7 +30,7 @@ const TotalReviews = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <Card>
+    <Card className='bs-full'>
       <CardContent>
         <div className='flex max-sm:flex-col items-center gap-6'>
           <div className='flex flex-col items-start gap-2 is-full sm:is-6/12'>
@@ -38,7 +38,7 @@ const TotalReviews = () => {
               <Typography variant='h3' color='primary'>
                 4.89
               </Typography>
-              <i className='ri-star-smile-line text-[32px] text-primary' />
+              <i className='tabler-star-filled text-[32px] text-primary' />
             </div>
             <Typography className='font-medium' color='text.primary'>
               Total 187 reviews

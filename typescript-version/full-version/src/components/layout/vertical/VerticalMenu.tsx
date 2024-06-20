@@ -93,7 +93,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
         </SubMenu>
-        <SubMenu label={dictionary['navigation'].frontPages}>
+        <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>
           <MenuItem href='/front-pages/landing-page' target='_blank'>
             {dictionary['navigation'].landing}
           </MenuItem>
@@ -111,7 +111,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           </MenuItem>
         </SubMenu>
         <MenuSection label={dictionary['navigation'].appsPages}>
-          <SubMenu label={dictionary['navigation'].eCommerce}>
+          <SubMenu label={dictionary['navigation'].eCommerce} icon={<i className='tabler-shopping-cart' />}>
             <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <SubMenu label={dictionary['navigation'].products}>
               <MenuItem href={`/${locale}/apps/ecommerce/products/list`}>{dictionary['navigation'].list}</MenuItem>
@@ -146,18 +146,23 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             <MenuItem href={`/${locale}/apps/ecommerce/referrals`}>{dictionary['navigation'].referrals}</MenuItem>
             <MenuItem href={`/${locale}/apps/ecommerce/settings`}>{dictionary['navigation'].settings}</MenuItem>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].academy}>
+          <SubMenu label={dictionary['navigation'].academy} icon={<i className='tabler-school' />}>
             <MenuItem href={`/${locale}/apps/academy/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/academy/my-courses`}>{dictionary['navigation'].myCourses}</MenuItem>
             <MenuItem href={`/${locale}/apps/academy/course-details`}>
               {dictionary['navigation'].courseDetails}
             </MenuItem>
           </SubMenu>
-          <SubMenu label={dictionary['navigation'].logistics}>
+          <SubMenu label={dictionary['navigation'].logistics} icon={<i className='tabler-truck' />}>
             <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
             <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/apps/email`} exactMatch={false} activeUrl='/apps/email'>
+          <MenuItem
+            href={`/${locale}/apps/email`}
+            icon={<i className='tabler-mail' />}
+            exactMatch={false}
+            activeUrl='/apps/email'
+          >
             {dictionary['navigation'].email}
           </MenuItem>
           <MenuItem href={`/${locale}/apps/chat`} icon={<i className='tabler-message-circle-2' />}>
