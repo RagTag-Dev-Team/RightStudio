@@ -51,7 +51,7 @@ const Header = ({ mode }: { mode: Mode }) => {
           {isBelowLgScreen ? (
             <div className='flex items-center gap-2 sm:gap-4'>
               <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
-                <i className='ri-menu-line' />
+                <i className='tabler-menu-2 text-textPrimary' />
               </IconButton>
               <Link href='/front-pages/landing-page'>
                 <Logo />
@@ -72,18 +72,18 @@ const Header = ({ mode }: { mode: Mode }) => {
               <CustomIconButton
                 component={Link}
                 variant='contained'
-                href='https://themeselection.com/item-page'
+                href='https://1.envato.market/vuexy_admin'
                 color='primary'
                 target='_blank'
               >
-                <i className='ri-shopping-cart-line text-xl' />
+                <i className='tabler-shopping-cart text-xl' />
               </CustomIconButton>
             ) : (
               <Button
                 component={Link}
                 variant='contained'
-                href='https://themeselection.com/item-page'
-                startIcon={<i className='ri-shopping-cart-line text-xl' />}
+                href='https://1.envato.market/vuexy_admin'
+                startIcon={<i className='tabler-shopping-cart text-xl' />}
                 className='whitespace-nowrap'
                 target='_blank'
               >

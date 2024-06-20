@@ -8,21 +8,30 @@
   inline-size: 100%;
   pointer-events: none;
 
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 100%;
+    backdrop-filter: saturate(100%) blur(6px);
+  }
+
   .navbar {
     inline-size: calc(100% - 48px);
-    padding-block: 0.407rem;
+    padding-block: 0.5rem;
     padding-inline: 1.5rem;
     margin-inline: auto;
+    margin-block-start: 1rem;
     pointer-events: auto;
     transition:
       background-color 0.3s ease-in-out,
       border-color 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out;
     background-color: rgb(var(--mui-palette-background-paperChannel) / 0.64);
-    border-inline: 1px solid rgb(var(--mui-palette-background-paperChannel) / 0.78);
-    border-block-end: 1px solid rgb(var(--mui-palette-background-paperChannel) / 0.78);
-    border-end-start-radius: var(--mui-shape-borderRadius);
-    border-end-end-radius: var(--mui-shape-borderRadius);
+    border: 1px solid rgb(var(--mui-palette-background-paperChannel) / 0.78);
+    border-radius: var(--mui-shape-borderRadius);
 
     &.headerScrolled {
       background-color: var(--mui-palette-background-paper);
@@ -60,4 +69,9 @@
   input {
     color: rgb(var(--mui-mainColorChannels-dark) / 0.9) !important;
   }
+}
+
+.footerRadius {
+  border-start-start-radius: 3.75rem;
+  border-start-end-radius: 3.75rem;
 }

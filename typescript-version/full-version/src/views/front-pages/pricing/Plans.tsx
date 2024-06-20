@@ -9,6 +9,9 @@ import Chip from '@mui/material/Chip'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Component Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+
 // Styles Imports
 import tableStyles from '@core/styles/table.module.css'
 import styles from './styles.module.css'
@@ -27,7 +30,7 @@ type FeatureType = {
   }
 }
 type PlanType = {
-  variant: 'outlined' | 'contained'
+  variant: 'tonal' | 'contained'
   label: string
   plan: 'starter' | 'pro' | 'enterprise'
 }
@@ -125,14 +128,14 @@ const features: FeatureType[] = [
 ]
 
 const plans: PlanType[] = [
-  { variant: 'outlined', label: 'Choose Plan', plan: 'starter' },
+  { variant: 'tonal', label: 'Choose Plan', plan: 'starter' },
   { variant: 'contained', label: 'Choose Plan', plan: 'pro' },
-  { variant: 'outlined', label: 'Choose Plan', plan: 'enterprise' }
+  { variant: 'tonal', label: 'Choose Plan', plan: 'enterprise' }
 ]
 
 function Plans() {
   return (
-    <section className='md:plb-[100px] plb-[50px]'>
+    <section className='md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>
         <div className='flex flex-col text-center gap-2 mbe-6'>
           <Typography variant='h4'>Pick a plan that works best for you</Typography>
@@ -143,19 +146,24 @@ function Plans() {
             <thead className={styles.tableHead}>
               <tr>
                 <th>Time</th>
-                <th className=''>
+                <th>
                   <>STARTER</>
                   <Typography variant='body2' className='capitalize'>
                     Free
                   </Typography>
                 </th>
-                <th className=''>
-                  <>Pro</>
+                <th>
+                  <div className='flex justify-center gap-x-2'>
+                    <>Pro</>
+                    <CustomAvatar size={20} color='primary'>
+                      <i className='tabler-star text-[14px]' />
+                    </CustomAvatar>
+                  </div>
                   <Typography variant='body2' className='capitalize'>
                     $7.5/Month
                   </Typography>
                 </th>
-                <th className=''>
+                <th>
                   <>ENTERPRISE</>
                   <Typography variant='body2' className='capitalize'>
                     $16/Month
@@ -167,27 +175,41 @@ function Plans() {
               {features.map((feature, index) => (
                 <tr key={index}>
                   <td>{feature.feature}</td>
-                  <td>
+                  <td className='flex items-center justify-center'>
                     {feature.starter ? (
-                      <i className='ri-checkbox-circle-line text-primary' />
+                      <CustomAvatar skin='light' color='primary' size={20}>
+                        <i className='tabler-check text-primary text-[14px]' />
+                      </CustomAvatar>
                     ) : (
-                      <i className='ri-close-circle-line' />
+                      <CustomAvatar skin='light' color='secondary' size={20}>
+                        <i className='tabler-x text-[14px]' />
+                      </CustomAvatar>
                     )}
                   </td>
                   <td>
-                    {feature.pro ? (
-                      <i className='ri-checkbox-circle-line text-primary' />
-                    ) : feature.addOnAvailable.pro && !feature.pro ? (
-                      <Chip variant='tonal' size='small' color='primary' label='Add-on-Available' />
-                    ) : (
-                      <i className='ri-close-circle-line' />
-                    )}
+                    <div className='flex items-center justify-center'>
+                      {feature.pro ? (
+                        <CustomAvatar skin='light' color='primary' size={20}>
+                          <i className='tabler-check text-primary text-[14px]' />
+                        </CustomAvatar>
+                      ) : feature.addOnAvailable.pro && !feature.pro ? (
+                        <Chip variant='tonal' size='small' color='primary' label='Add-on-Available' />
+                      ) : (
+                        <CustomAvatar skin='light' color='secondary' size={20}>
+                          <i className='tabler-x text-[14px]' />
+                        </CustomAvatar>
+                      )}
+                    </div>
                   </td>
-                  <td>
+                  <td className='flex items-center justify-center'>
                     {feature.enterprise ? (
-                      <i className='ri-checkbox-circle-line text-primary' />
+                      <CustomAvatar skin='light' color='primary' size={20}>
+                        <i className='tabler-check text-primary text-[14px]' />
+                      </CustomAvatar>
                     ) : (
-                      <i className='ri-close-circle-line' />
+                      <CustomAvatar skin='light' color='secondary' size={20}>
+                        <i className='tabler-x text-[14px]' />
+                      </CustomAvatar>
                     )}
                   </td>
                 </tr>
@@ -197,7 +219,7 @@ function Plans() {
               <tr>
                 <td></td>
                 {plans.map((plan, index) => (
-                  <td key={index} className='text-center'>
+                  <td key={index} className='text-center plb-[9px]'>
                     <Button component={Link} href='/front-pages/payment' variant={plan.variant}>
                       {plan.label}
                     </Button>

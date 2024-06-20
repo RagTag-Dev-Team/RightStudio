@@ -7,6 +7,7 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Grid from '@mui/material/Grid'
+import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -14,12 +15,9 @@ import classnames from 'classnames'
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// SVG Imports
-import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
-
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
+import styles from './styles.module.css'
 
 type FaqsDataTypes = {
   id: string
@@ -83,53 +81,54 @@ const Faqs = () => {
   }, [])
 
   return (
-    <section
-      id='faq'
-      ref={ref}
-      className={classnames('flex flex-col gap-16 plb-[100px]', frontCommonStyles.layoutSpacing)}
-    >
-      <div className='text-end'>
-        <ElementOne />
-      </div>
-      <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Faq</Typography>
-        </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
-          <Typography variant='h5' className='font-bold'>
-            Frequently asked
-          </Typography>
-          <Typography className='text-[18px]'> questions</Typography>
-        </div>
-        <Typography color='text.secondary' className='font-medium text-center'>
-          Browse through these FAQs to find answers to commonly asked questions.
-        </Typography>
-      </div>
-      <div>
-        <Grid container>
-          <Grid item xs={12} lg={5} className='text-center'>
-            <img
-              src='/images/front-pages/landing-page/sitting-girl-with-laptop.png'
-              alt='girl with laptop'
-              className='is-[80%] max-is-[320px]'
-            />
-          </Grid>
-          <Grid item xs={12} lg={7}>
-            <div>
-              {FaqsData.map((data, index) => {
-                return (
-                  <Accordion key={index} defaultExpanded={data.active}>
-                    <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
-                      {data.question}
-                    </AccordionSummary>
-                    <AccordionDetails>{data.answer}</AccordionDetails>
-                  </Accordion>
-                )
-              })}
+    <section id='faq' ref={ref} className={classnames('plb-[100px] bg-backgroundDefault', styles.cardStartRadius)}>
+      <div className={classnames('flex flex-col gap-16', frontCommonStyles.layoutSpacing)}>
+        <div className='flex flex-col gap-y-4 items-center justify-center'>
+          <Chip size='small' variant='tonal' color='primary' label='FAQ' />
+          <div className='flex flex-col items-center gap-y-1 justify-center flex-wrap'>
+            <div className='flex items-center gap-x-2'>
+              <Typography color='text.primary' variant='h4'>
+                Frequently asked
+                <span className='relative z-[1] font-extrabold'>
+                  <img
+                    src='/images/front-pages/landing-page/bg-shape.png'
+                    alt='bg-shape'
+                    className='absolute block-end-0 z-[1] bs-[40%] is-[132%] -inline-start-[8%] block-start-[17px]'
+                  />{' '}
+                  questions
+                </span>
+              </Typography>
             </div>
+            <Typography className='font-medium text-center'>
+              Browse through these FAQs to find answers to commonly asked questions.
+            </Typography>
+          </div>
+        </div>
+        <div>
+          <Grid container spacing={6}>
+            <Grid item xs={12} lg={5} className='text-center'>
+              <img
+                src='/images/front-pages/landing-page/boy-sitting-with-laptop.png'
+                alt='boy with laptop'
+                className='is-[80%] max-is-[320px]'
+              />
+            </Grid>
+            <Grid item xs={12} lg={7}>
+              <div>
+                {FaqsData.map((data, index) => {
+                  return (
+                    <Accordion key={index} defaultExpanded={data.active}>
+                      <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
+                        {data.question}
+                      </AccordionSummary>
+                      <AccordionDetails className='text-textSecondary'>{data.answer}</AccordionDetails>
+                    </Accordion>
+                  )
+                })}
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
+        </div>
       </div>
     </section>
   )

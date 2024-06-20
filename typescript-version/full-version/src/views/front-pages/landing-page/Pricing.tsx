@@ -1,5 +1,6 @@
 // React Imports
 import { useState } from 'react'
+import type { ChangeEvent } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -9,36 +10,37 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Slider from '@mui/material/Slider'
+import Switch from '@mui/material/Switch'
 import Chip from '@mui/material/Chip'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
+import InputLabel from '@mui/material/InputLabel'
 
 // Third-party Imports
 import classnames from 'classnames'
 
+// Components Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
-
-// SVG Imports
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
-import Curve from '@assets/svg/front-pages/landing-page/Curve'
-import Arrow from '@assets/svg/front-pages/landing-page/Arrow'
-import ElementTwo from '@/assets/svg/front-pages/landing-page/ElementTwo'
+import styles from './styles.module.css'
 
 const pricingPlans = [
   {
-    title: 'Basic Plan',
-    price: 20,
+    title: 'Basic',
+    img: '/images/front-pages/landing-page/pricing-basic.png',
+    monthlyPay: 19,
+    annualPay: 14,
+    perYearPay: 168,
     features: ['Timeline', 'Basic search', 'Live chat widget', 'Email marketing', 'Custom Forms', 'Traffic analytics'],
-    supportType: 'Basic',
-    supportMedium: 'Only Email',
-    respondTime: 'AVG. Time: 24h',
     current: false
   },
   {
-    title: 'Favourite Plan',
-    price: 51,
+    title: 'Team',
+    img: '/images/front-pages/landing-page/pricing-team.png',
+    monthlyPay: 29,
+    annualPay: 22,
+    perYearPay: 264,
     features: [
       'Everything in basic',
       'Timeline with database',
@@ -47,14 +49,14 @@ const pricingPlans = [
       'Advanced chatbot',
       'Campaign management'
     ],
-    supportType: 'Standard',
-    supportMedium: 'Email & Chat',
-    respondTime: 'AVG. Time: 6h',
     current: true
   },
   {
-    title: 'Standard Plan',
-    price: 99,
+    title: 'Enterprise',
+    img: '/images/front-pages/landing-page/pricing-enterprise.png',
+    monthlyPay: 49,
+    annualPay: 37,
+    perYearPay: 444,
     features: [
       'Campaign management',
       'Timeline with database',
@@ -63,115 +65,112 @@ const pricingPlans = [
       'Custom permissions',
       'Social media automation'
     ],
-    supportType: 'Exclusive',
-    supportMedium: 'Email, Chat & Google Meet',
-    respondTime: 'Live Support',
     current: false
   }
 ]
 
 function PricingPlan() {
   // States
-  const [val, setVal] = useState<number>(458)
+  const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
 
-  const handleChange = (_: Event, newValue: number | number[]) => {
-    setVal(newValue as number)
+  const handleChange = (e: ChangeEvent<{ checked: boolean }>) => {
+    if (e.target.checked) {
+      setPricingPlan('annually')
+    } else {
+      setPricingPlan('monthly')
+    }
   }
 
   return (
     <section
       id='pricing-plans'
-      className={classnames('flex flex-col gap-8 lg:gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
+      className={classnames(
+        'flex flex-col gap-8 lg:gap-12 plb-[100px] bg-backgroundDefault rounded-[60px]',
+        styles.cardStartRadius
+      )}
     >
-      <ElementTwo />
-      <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Pricing Plans</Typography>
+      <div className={classnames('is-full', frontCommonStyles.layoutSpacing)}>
+        <div className='flex flex-col gap-y-4 items-center justify-center'>
+          <Chip size='small' variant='tonal' color='primary' label='Pricing Plans' />
+          <div className='flex flex-col items-center gap-y-1 justify-center flex-wrap'>
+            <div className='flex items-center gap-x-2'>
+              <Typography color='text.primary' variant='h4' className='text-center'>
+                <span className='relative z-[1] font-extrabold'>
+                  Tailored pricing plans
+                  <img
+                    src='/images/front-pages/landing-page/bg-shape.png'
+                    alt='bg-shape'
+                    className='absolute block-end-0 z-[1] bs-[40%] is-[125%] sm:is-[132%] -inline-start-[10%] sm:inline-start-[-19%] block-start-[17px]'
+                  />
+                </span>{' '}
+                designed for you
+              </Typography>
+            </div>
+            <Typography className='font-medium text-center'>
+              All plans include 40+ advanced tools and features to boost your product.
+              <br />
+              Choose the best plan to fit your needs.
+            </Typography>
+          </div>
         </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
-          <Typography variant='h5' className='font-bold'>
-            Tailored pricing plans
-          </Typography>
-          <Typography className='text-[18px] font-medium'>designed for you</Typography>
+        <div className='flex justify-center items-center max-sm:mlb-3'>
+          <InputLabel htmlFor='pricing-switch' className='cursor-pointer'>
+            Pay Monthly
+          </InputLabel>
+          <Switch id='pricing-switch' onChange={handleChange} checked={pricingPlan === 'annually'} />
+          <InputLabel htmlFor='pricing-switch' className='cursor-pointer'>
+            Pay Annually
+          </InputLabel>
+          <div className='flex gap-x-1 items-start max-sm:hidden mis-2 mbe-5'>
+            <img src='/images/front-pages/landing-page/pricing-arrow.png' width='50' />
+            <Typography className='font-medium'>Save 25%</Typography>
+          </div>
         </div>
-        <Typography color='text.secondary' className='font-medium text-center'>
-          All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit your
-          needs.
-        </Typography>
+        <Grid container spacing={6}>
+          {pricingPlans.map((plan, index) => (
+            <Grid item key={index} xs={12} lg={4}>
+              <Card className={`${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`}>
+                <CardContent className='flex flex-col gap-8 p-8'>
+                  <div className='is-full flex flex-col items-center gap-3'>
+                    <img src={plan.img} alt={plan.img} height='88' width='86' className='text-center' />
+                  </div>
+                  <div className='flex flex-col items-center gap-y-[2px] relative'>
+                    <Typography className='text-center' variant='h5'>
+                      {plan.title}
+                    </Typography>
+                    <div className='flex items-baseline gap-x-1'>
+                      <Typography variant='h2' color='primary' className='font-extrabold'>
+                        ${pricingPlan === 'monthly' ? plan.monthlyPay : plan.annualPay}
+                      </Typography>
+                      <Typography color='text.disabled'>/mo</Typography>
+                    </div>
+                    {pricingPlan === 'annually' && (
+                      <Typography color='text.disabled' className='absolute block-start-[100%]'>
+                        ${plan.perYearPay} / year
+                      </Typography>
+                    )}
+                  </div>
+                  <div>
+                    <div className='flex flex-col gap-3 mbs-3'>
+                      {plan.features.map((feature, index) => (
+                        <div key={index} className='flex items-center gap-[12px]'>
+                          <CustomAvatar color='primary' skin={plan.current ? 'filled' : 'light'} size={20}>
+                            <i className='tabler-check text-sm' />
+                          </CustomAvatar>
+                          <Typography variant='h6'>{feature}</Typography>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <Button component={Link} href='/front-pages/payment' variant={plan.current ? 'contained' : 'tonal'}>
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </div>
-      <div className='text-center'>
-        <Slider
-          min={100}
-          max={999}
-          valueLabelDisplay='on'
-          step={10}
-          value={val}
-          onChange={handleChange}
-          className='is-[65%]'
-        />
-      </div>
-
-      <Grid container spacing={6}>
-        {pricingPlans.map((plan, index) => (
-          <Grid item key={index} xs={12} lg={4}>
-            <Card
-              className={classnames(
-                'border shadow-none',
-                ` ${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`
-              )}
-            >
-              <CardContent className='flex flex-col gap-8 p-8'>
-                <div className='is-full flex flex-col gap-3'>
-                  <Typography className='text-center' variant='h5'>
-                    {plan.title}
-                  </Typography>
-                  <div className='flex items-center gap-3'>
-                    <div className='flex items-start'>
-                      <Typography component='sup' className='text-lg font-medium'>
-                        $
-                      </Typography>
-                      <Typography variant='h3' className='font-bold'>
-                        {plan.price}
-                      </Typography>
-                    </div>
-                    <div className='flex flex-col gap-1'>
-                      <Typography className='font-medium'>Per month</Typography>
-                      <Typography variant='body2' color='text.secondary'>
-                        10% off for yearly subscription
-                      </Typography>
-                    </div>
-                  </div>
-                  <Curve />
-                </div>
-                <div>
-                  <div className='flex flex-col gap-3'>
-                    {plan.features.map((feature, index) => (
-                      <div key={index} className='flex items-center gap-[12px]'>
-                        <Arrow />
-                        <Typography variant='h6'>{feature}</Typography>
-                      </div>
-                    ))}
-                  </div>
-                  <Divider className='border mlb-4' />
-                  <div className='flex gap-1 items-center justify-between'>
-                    <div className='flex flex-col gap-0.25'>
-                      <Typography className='font-medium'>{plan.supportType} Support</Typography>
-                      <Typography variant='body2' color='text.secondary'>
-                        {plan.supportMedium}
-                      </Typography>
-                    </div>
-                    <Chip variant='tonal' size='small' color='primary' label={plan.respondTime} />
-                  </div>
-                </div>
-                <Button component={Link} href='/front-pages/payment' variant={plan.current ? 'contained' : 'outlined'}>
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
     </section>
   )
 }

@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -12,47 +13,45 @@ import classnames from 'classnames'
 import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
+import Paper from '@assets/svg/front-pages/landing-page/Paper'
+import Check from '@assets/svg/front-pages/landing-page/Check'
+import User from '@assets/svg/front-pages/landing-page/User'
 import LaptopCharging from '@assets/svg/front-pages/landing-page/LaptopCharging'
-import TransitionUp from '@assets/svg/front-pages/landing-page/TransitionUp'
-import Edit from '@assets/svg/front-pages/landing-page/Edit'
-import Cube from '@assets/svg/front-pages/landing-page/Cube'
-import LifeBuoy from '@assets/svg/front-pages/landing-page/Lifebuoy'
+import Rocket from '@assets/svg/front-pages/landing-page/Rocket'
 import Document from '@assets/svg/front-pages/landing-page/Document'
 
 // Styles Imports
-import styles from './styles.module.css'
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // Data
 const feature = [
   {
-    icon: <LaptopCharging />,
+    icon: <LaptopCharging color='var(--mui-palette-primary-main)' />,
     title: 'Quality Code',
     description: 'Code structure that all developers will easily understand and fall in love with.'
   },
   {
-    icon: <TransitionUp />,
+    icon: <Rocket color='var(--mui-palette-primary-main)' />,
     title: 'Continuous Updates',
     description: 'Free updates for the next 12 months, including new demos and features.'
   },
   {
-    icon: <Edit />,
+    icon: <Paper color='var(--mui-palette-primary-main)' />,
     title: 'Stater-Kit',
     description: 'Start your project quickly without having to remove unnecessary features.'
   },
   {
-    icon: <Cube />,
+    icon: <Check color='var(--mui-palette-primary-main)' />,
     title: 'API Ready',
     description: 'Just change the endpoint and see your own data loaded within seconds.'
   },
   {
-    icon: <LifeBuoy />,
+    icon: <User color='var(--mui-palette-primary-main)' />,
     title: 'Excellent Support',
     description: 'An easy-to-follow doc with lots of references and code examples.'
   },
   {
-    icon: <Document />,
+    icon: <Document color='var(--mui-palette-primary-main)' />,
     title: 'Well Documented',
     description: 'An easy-to-follow doc with lots of references and code examples.'
   }
@@ -85,31 +84,35 @@ const UsefulFeature = () => {
   }, [])
 
   return (
-    <section id='features' ref={ref}>
-      <div className={classnames('flex flex-col gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}>
-        <div className={classnames('flex flex-col items-center justify-center')}>
-          <div className='flex items-center justify-center mbe-4 gap-3'>
-            <Lines />
-            <Typography className='font-medium uppercase'>Useful Feature</Typography>
-          </div>
-          <div className='flex items-center justify-center flex-wrap gap-2 mbe-3 sm:mbe-1'>
-            <Typography variant='h5' className='font-bold'>
-              Everything you need
+    <section id='features' ref={ref} className='bg-backgroundPaper'>
+      <div className={classnames('flex flex-col gap-12 pbs-12 pbe-[100px]', frontCommonStyles.layoutSpacing)}>
+        <div className='flex flex-col gap-y-4 items-center justify-center'>
+          <Chip size='small' variant='tonal' color='primary' label='Useful Feature' />
+          <div className='flex flex-col items-center gap-y-1 justify-center flex-wrap'>
+            <div className='flex items-center gap-x-2'>
+              <Typography color='text.primary' variant='h4' className='text-center'>
+                <span className='relative z-[1] font-extrabold'>
+                  Everything you need
+                  <img
+                    src='/images/front-pages/landing-page/bg-shape.png'
+                    alt='bg-shape'
+                    className='absolute block-end-0 z-[1] bs-[40%] is-[125%] sm:is-[132%] -inline-start-[13%] sm:inline-start-[-19%] block-start-[17px]'
+                  />
+                </span>{' '}
+                to start your next project
+              </Typography>
+            </div>
+            <Typography className='font-medium text-center'>
+              Not just a set of tools, the package includes ready-to-deploy conceptual application.
             </Typography>
-            <Typography className='text-[18px]'>to start your next project</Typography>
           </div>
-          <Typography color='text.secondary' className='font-medium text-center'>
-            Not just a set of tools, the package includes ready-to-deploy conceptual application.
-          </Typography>
         </div>
         <div>
           <Grid container spacing={6}>
             {feature.map((item, index) => (
               <Grid item xs={12} sm={6} lg={4} key={index}>
                 <div className='flex flex-col gap-2 justify-center items-center'>
-                  <div className={classnames('mbe-2', styles.featureIcon)}>
-                    <div className='flex items-center border-2 rounded-full p-5 is-[82px] bs-[82px]'>{item.icon}</div>
-                  </div>
+                  {item.icon}
                   <Typography variant='h5'>{item.title}</Typography>
                   <Typography className='max-is-[364px] text-center'>{item.description}</Typography>
                 </div>

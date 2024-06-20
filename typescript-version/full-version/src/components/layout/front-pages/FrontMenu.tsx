@@ -59,7 +59,7 @@ const Wrapper = (props: WrapperProps) => {
       >
         <div className='p-4 flex flex-col gap-x-3'>
           <IconButton onClick={() => setIsDrawerOpen(false)} className='absolute inline-end-4 block-start-2'>
-            <i className='ri-close-line' />
+            <i className='tabler-x' />
           </IconButton>
           {children}
         </div>
@@ -89,6 +89,7 @@ const FrontMenu = (props: Props) => {
   return (
     <Wrapper isBelowLgScreen={isBelowLgScreen} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}>
       <Typography
+        color='text.primary'
         component={Link}
         href='/front-pages/landing-page'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
@@ -103,6 +104,7 @@ const FrontMenu = (props: Props) => {
         Home
       </Typography>
       <Typography
+        color='text.primary'
         component={Link}
         href='/front-pages/landing-page#features'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
@@ -112,6 +114,7 @@ const FrontMenu = (props: Props) => {
         Features
       </Typography>
       <Typography
+        color='text.primary'
         component={Link}
         href='/front-pages/landing-page#team'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
@@ -121,6 +124,7 @@ const FrontMenu = (props: Props) => {
         Team
       </Typography>
       <Typography
+        color='text.primary'
         component={Link}
         href='/front-pages/landing-page#faq'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
@@ -130,6 +134,7 @@ const FrontMenu = (props: Props) => {
         FAQ
       </Typography>
       <Typography
+        color='text.primary'
         component={Link}
         href='/front-pages/landing-page#contact-us'
         className={classnames('font-medium plb-3 pli-1.5 hover:text-primary', {
@@ -144,7 +149,13 @@ const FrontMenu = (props: Props) => {
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
       />
-      <Typography component={Link} href='/' target='_blank' className='font-medium plb-3 pli-1.5 hover:text-primary'>
+      <Typography
+        component={Link}
+        color='text.primary'
+        href='/'
+        target='_blank'
+        className='font-medium plb-3 pli-1.5 hover:text-primary'
+      >
         Admin
       </Typography>
     </Wrapper>

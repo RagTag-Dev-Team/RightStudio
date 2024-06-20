@@ -20,7 +20,7 @@ const FreeTrial = () => {
           <Grid xs={12} md={6}>
             <div className='flex flex-col gap-11 md:mis-2 items-center md:items-start justify-center plb-10'>
               <div className='flex flex-col gap-2 mis-2 md:mis-0'>
-                <Typography variant='h5' color='primary' className='font-medium'>
+                <Typography variant='h4' color='primary' className='font-medium'>
                   Still not convinced? Start with a 14-day FREE trial!
                 </Typography>
                 <Typography color='text.secondary'>
@@ -34,7 +34,7 @@ const FreeTrial = () => {
           </Grid>
           <Grid xs={12} md={6}>
             <div className='md:absolute md:inline-end-[90px] xl:inline-end-[2%] flex justify-center block-end-[-1px]'>
-              <img src='/images/front-pages/landing-page/chris.png' alt='girl with laptop' className='bs-[270px]' />
+              <img src='/images/illustrations/characters/4.png' alt='girl with laptop' className='bs-[270px]' />
             </div>
           </Grid>
         </Grid>

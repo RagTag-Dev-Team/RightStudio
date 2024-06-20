@@ -8,19 +8,20 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import classnames from 'classnames'
 
+// Components Imports
+import CustomAvatar from '@core/components/mui/Avatar'
+
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// SVG Imports
-import ElementTwo from '@assets/svg/front-pages/landing-page/ElementTwo'
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
-
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
+import styles from './styles.module.css'
 
 const ContactUs = () => {
   // Refs
@@ -49,64 +50,91 @@ const ContactUs = () => {
   }, [])
 
   return (
-    <section
-      id='contact-us'
-      className={classnames('flex flex-col gap-14 plb-[100px]', frontCommonStyles.layoutSpacing)}
-      ref={ref}
-    >
-      <ElementTwo />
-      <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Contact Us</Typography>
+    <section id='contact-us' className='plb-[100px] bg-backgroundDefault' ref={ref}>
+      <div className={classnames('flex flex-col gap-14', frontCommonStyles.layoutSpacing)}>
+        <div className='flex flex-col gap-y-4 items-center justify-center'>
+          <Chip size='small' variant='tonal' color='primary' label='Contact Us' />
+          <div className='flex flex-col items-center gap-y-1 justify-center flex-wrap'>
+            <div className='flex items-center gap-x-2'>
+              <Typography color='text.primary' variant='h4'>
+                <span className='relative z-[1] font-extrabold'>
+                  Let&#39;s work
+                  <img
+                    src='/images/front-pages/landing-page/bg-shape.png'
+                    alt='bg-shape'
+                    className='absolute block-end-0 z-[1] bs-[40%] is-[132%] -inline-start-[19%] block-start-[17px]'
+                  />
+                </span>{' '}
+                together
+              </Typography>
+            </div>
+            <Typography className='font-medium text-center'>Any question or remark? just write us a message</Typography>
+          </div>
         </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
-          <Typography variant='h5' className='font-bold'>
-            Lets work
-          </Typography>
-          <Typography className='text-[18px]'>together</Typography>
-        </div>
-        <Typography color='text.secondary' className='font-medium text-center'>
-          Any question or remark? just write us a message
-        </Typography>
-      </div>
-      <div>
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6} lg={4}>
-            <Card className='bg-primary'>
-              <CardContent className='flex flex-col gap-5 pli-8 pbs-8 pbe-7'>
-                <div className='flex flex-col gap-[6px]'>
-                  <Typography className='font-medium text-white'>Let’s contact with us</Typography>
-                  <Typography variant='h5' className='text-white'>
-                    Share your ideas or requirement with our experts.
-                  </Typography>
-                </div>
-                <img src='/images/front-pages/landing-page/chat.png' alt='chat' className='is-full' />
-                <Typography className='text-white'>
-                  Looking for more customisation, more features, and more anything? Don’t worry, We’ve provide you with
-                  an entire team of experienced professionals.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={8}>
-            <Card>
-              <CardContent>
-                <Typography variant='h5' className='mbe-5'>
-                  Share your ideas
-                </Typography>
-                <form className='flex flex-col items-start gap-5'>
-                  <div className='flex gap-5 is-full'>
-                    <TextField fullWidth label='Full name' id='name-input' />
-                    <TextField fullWidth label='Email address' id='email-input' type='email' />
+        <div className='lg:pis-[38px]'>
+          <Grid container spacing={6}>
+            <Grid item xs={12} md={6} lg={5}>
+              <div className={classnames('border p-[10px] relative', styles.contactRadius)}>
+                <img
+                  src='/images/front-pages/landing-page/contact-border.png'
+                  className='absolute -block-start-[8%] -inline-start-[10%] max-is-full max-lg:hidden '
+                  alt='contact-border'
+                  width='180'
+                />
+                <img
+                  src='/images/front-pages/landing-page/customer-service.png'
+                  alt='customer-service'
+                  className={classnames('is-full', styles.contactRadius)}
+                />
+                <div className='flex justify-between flex-wrap gap-4 pli-6 pbs-4 pbe-[10px]'>
+                  <div className='flex gap-3'>
+                    <CustomAvatar variant='rounded' skin='light' color='primary'>
+                      <i className='tabler-mail' />
+                    </CustomAvatar>
+                    <div>
+                      <Typography>Email</Typography>
+                      <Typography color='text.primary' className='font-medium'>
+                        example@gamil.com
+                      </Typography>
+                    </div>
                   </div>
-                  <TextField fullWidth multiline rows={6} label='Message' id='message-input' />
-                  <Button variant='contained'>Send Inquiry</Button>
-                </form>
-              </CardContent>
-            </Card>
+                  <div className='flex gap-3'>
+                    <CustomAvatar variant='rounded' skin='light' color='success'>
+                      <i className='tabler-phone' />
+                    </CustomAvatar>
+                    <div>
+                      <Typography>Phone</Typography>
+                      <Typography color='text.primary' className='font-medium'>
+                        +123 568 963
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6} lg={7}>
+              <Card>
+                <CardContent>
+                  <div className='flex flex-col gap-y-[6px] mbe-6'>
+                    <Typography variant='h4'>Send a message</Typography>
+                    <Typography>
+                      If you would like to discuss anything related to payment, account, licensing, partnerships, or
+                      have pre-sales questions, you&#39;re at the right place.
+                    </Typography>
+                  </div>
+                  <form className='flex flex-col items-start gap-5'>
+                    <div className='flex gap-5 is-full'>
+                      <TextField fullWidth label='Full name' id='name-input' />
+                      <TextField fullWidth label='Email address' id='email-input' type='email' />
+                    </div>
+                    <TextField fullWidth multiline rows={4} label='Message' id='message-input' />
+                    <Button variant='contained'>Send Inquiry</Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
+        </div>
       </div>
     </section>
   )

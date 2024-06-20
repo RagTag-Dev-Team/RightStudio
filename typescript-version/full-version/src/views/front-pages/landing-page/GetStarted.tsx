@@ -8,17 +8,30 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import classnames from 'classnames'
 
+// Type Imports
+import type { Mode } from '@core/types'
+
 // Component Imports
 import DirectionalIcon from '@components/DirectionalIcon'
+
+// Hooks Imports
+import { useImageVariant } from '@core/hooks/useImageVariant'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
-const GetStarted = () => {
+const GetStarted = ({ mode }: { mode: Mode }) => {
+  // Vars
+  const getStartedImageLight = '/images/front-pages/landing-page/get-started-bg-light.png'
+  const getStartedImageDark = '/images/front-pages/landing-page/get-started-bg-dark.png'
+
+  // Hooks
+  const getStartedImage = useImageVariant(mode, getStartedImageLight, getStartedImageDark)
+
   return (
     <section className='relative'>
       <img
-        src='/images/front-pages/landing-page/get-started-bg.png'
+        src={getStartedImage}
         alt='background-image'
         className='absolute is-full flex -z-1 pointer-events-none bs-full block-end-0'
       />
@@ -41,7 +54,7 @@ const GetStarted = () => {
             component={Link}
             href='/front-pages/payment'
             variant='contained'
-            endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+            endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
           >
             Get Started
           </Button>
@@ -50,7 +63,7 @@ const GetStarted = () => {
           <img
             src='/images/front-pages/landing-page/crm-dashboard.png'
             alt='dashboard-image'
-            className='max-is-[600px] is-full'
+            className='max-is-[600px] is-full rounded-bs'
           />
         </div>
       </div>

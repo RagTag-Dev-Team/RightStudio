@@ -33,9 +33,6 @@ import type { Mode } from '@core/types'
 import Link from '@components/Link'
 import CustomAvatar from '@core/components/mui/Avatar'
 
-// Hook Imports
-import { useImageVariant } from '@core/hooks/useImageVariant'
-
 type Props = {
   mode: Mode
   isBelowLgScreen: boolean
@@ -184,18 +181,13 @@ const MenuWrapper = (props: MenuWrapperProps) => {
 
 const DropdownMenu = (props: Props) => {
   // Props
-  const { isBelowLgScreen, isDrawerOpen, setIsDrawerOpen, mode } = props
+  const { isBelowLgScreen, isDrawerOpen, setIsDrawerOpen } = props
 
   // states
   const [isOpen, setIsOpen] = useState(false)
 
-  // Vars
-  const dropdownImageLight = '/images/front-pages/dropdown-image-light.png'
-  const dropdownImageDark = '/images/front-pages/dropdown-image-dark.png'
-
   // hooks
   const pathname = usePathname()
-  const dropdownImage = useImageVariant(mode, dropdownImageLight, dropdownImageDark)
 
   const { y, refs, floatingStyles, context } = useFloating<HTMLElement>({
     placement: 'bottom',
@@ -270,6 +262,7 @@ const DropdownMenu = (props: Props) => {
     <Tag {...(isBelowLgScreen && { className: 'flex flex-col' })}>
       <Typography
         component={Link}
+        color='text.primary'
         className={classnames('flex items-center gap-2 font-medium plb-3 pli-1.5 hover:text-primary', {
           'text-primary':
             pathname === '/front-pages/payment' ||
@@ -294,8 +287,8 @@ const DropdownMenu = (props: Props) => {
         <i
           className={classnames(
             {
-              'ri-arrow-down-s-line': !isBelowLgScreen || (isBelowLgScreen && !isOpen),
-              'ri-arrow-up-s-line': isBelowLgScreen && isOpen
+              'tabler-chevron-down': !isBelowLgScreen || (isBelowLgScreen && !isOpen),
+              'tabler-chevron-up': isBelowLgScreen && isOpen
             },
             'text-xl'
           )}
@@ -314,7 +307,7 @@ const DropdownMenu = (props: Props) => {
         <div className='flex flex-col gap-4'>
           <div className='flex gap-3 items-center'>
             <CustomAvatar variant='rounded' color='primary' skin='light'>
-              <i className='ri-grid-line' />
+              <i className='tabler-layout-grid' />
             </CustomAvatar>
             <Typography variant='h6'>Page</Typography>
           </div>
@@ -327,7 +320,7 @@ const DropdownMenu = (props: Props) => {
               })}
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px]' />
+              <i className='tabler-circle text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
@@ -335,7 +328,7 @@ const DropdownMenu = (props: Props) => {
         <div className='flex flex-col gap-4'>
           <div className='flex gap-3 items-center'>
             <CustomAvatar variant='rounded' color='primary' skin='light'>
-              <i className='ri-lock-line' />
+              <i className='tabler-lock' />
             </CustomAvatar>
             <Typography variant='h6'>Auth Demo</Typography>
           </div>
@@ -347,7 +340,7 @@ const DropdownMenu = (props: Props) => {
               className='flex items-center gap-3 hover:text-primary'
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px]' />
+              <i className='tabler-circle text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
@@ -355,7 +348,7 @@ const DropdownMenu = (props: Props) => {
         <div className='flex flex-col gap-4'>
           <div className='flex items-center gap-3'>
             <CustomAvatar variant='rounded' color='primary' skin='light'>
-              <i className='ri-image-line' />
+              <i className='tabler-photo' />
             </CustomAvatar>
             <Typography variant='h6'>Auth Demo</Typography>
           </div>
@@ -367,14 +360,14 @@ const DropdownMenu = (props: Props) => {
               className='flex items-center gap-3 hover:text-primary'
               onClick={handleLinkClick}
             >
-              <i className='ri-circle-line text-[10px]' />
+              <i className='tabler-circle text-[10px]' />
               <span>{page.title}</span>
             </Link>
           ))}
         </div>
         {!isBelowLgScreen && (
-          <div>
-            <img src={dropdownImage} alt='dropdown image' className='rounded' />
+          <div className='bg-backgroundDefault p-2 rounded'>
+            <img src='/images/front-pages/dropdown-image.png' width='385' alt='dropdown image' className='rounded' />
           </div>
         )}
       </MenuWrapper>

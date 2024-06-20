@@ -6,7 +6,11 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import MuiCard from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
 import { styled } from '@mui/material/styles'
+
+// Third-party Imports
+import classnames from 'classnames'
 
 // Type Imports
 import type { ThemeColor } from '@core/types'
@@ -14,12 +18,9 @@ import type { ThemeColor } from '@core/types'
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
 
-// SVG Imports
-import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
-
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
+import styles from './styles.module.css'
 
 // Data
 const team = [
@@ -28,6 +29,12 @@ const team = [
     position: 'Project Manager',
     image: '/images/front-pages/landing-page/sophie.png',
     color: 'var(--mui-palette-primary-mainOpacity)'
+  },
+  {
+    name: 'Paul Miles',
+    position: 'UI Designer',
+    image: '/images/front-pages/landing-page/paul.png',
+    color: 'var(--mui-palette-info-mainOpacity)'
   },
   {
     name: 'Nannie Ford',
@@ -40,29 +47,13 @@ const team = [
     position: 'Marketing Manager',
     image: '/images/front-pages/landing-page/chris.png',
     color: 'var(--mui-palette-success-mainOpacity)'
-  },
-  {
-    name: 'Paul Miles',
-    position: 'UI Designer',
-    image: '/images/front-pages/landing-page/paul.png',
-    color: 'var(--mui-palette-info-mainOpacity)'
   }
 ]
 
 const Card = styled(MuiCard)`
-  &:hover {
-    border-color: ${(props: { color: ThemeColor }) => props.color};
-
-    & i:nth-child(1) {
-      color: rgb(59, 89, 152) !important;
-    }
-    & i:nth-child(2) {
-      color: rgb(0, 172, 238) !important;
-    }
-    & i:nth-child(3) {
-      color: rgb(0, 119, 181) !important;
-    }
-  }
+  border-color: ${(props: { color: ThemeColor }) => props.color};
+  border-start-start-radius: 90px;
+  border-start-end-radius: 20px;
 `
 
 const OurTeam = () => {
@@ -92,33 +83,37 @@ const OurTeam = () => {
   }, [])
 
   return (
-    <section id='team' className='plb-[100px]' ref={ref}>
+    <section id='team' className='plb-[100px] bg-backgroundPaper' ref={ref}>
       <div className={frontCommonStyles.layoutSpacing}>
-        <div className='text-end'>
-          <ElementOne />
-        </div>
-        <div className='flex flex-col items-center justify-center'>
-          <div className='flex items-center justify-center mbe-4 gap-3'>
-            <Lines />
-            <Typography className='font-medium uppercase'>Our Great Team</Typography>
+        <div className='flex flex-col gap-y-4 items-center justify-center'>
+          <Chip size='small' variant='tonal' color='primary' label='Our Great Team' />
+          <div className='flex flex-col items-center gap-y-1 justify-center flex-wrap'>
+            <div className='flex items-center gap-x-2'>
+              <Typography color='text.primary' variant='h4'>
+                <span className='relative z-[1] font-extrabold'>
+                  Supported
+                  <img
+                    src='/images/front-pages/landing-page/bg-shape.png'
+                    alt='bg-shape'
+                    className='absolute block-end-0 z-[1] bs-[40%] is-[132%] -inline-start-[19%] block-start-[17px]'
+                  />
+                </span>{' '}
+                by Real People
+              </Typography>
+            </div>
+            <Typography className='font-medium text-center'>Who is behind these great-looking interfaces?</Typography>
           </div>
-          <div className='flex items-center justify-center flex-wrap gap-2 mbe-3 sm:mbe-1'>
-            <Typography variant='h5' className='font-bold'>
-              Supported
-            </Typography>
-            <Typography className='text-[18px]'> by Real People</Typography>
-          </div>
-          <Typography color='text.secondary' className='font-medium text-center'>
-            Who is behind these great-looking interfaces?
-          </Typography>
         </div>
-        <Grid container rowSpacing={16} columnSpacing={6} className='mbe-8 pbs-[100px]'>
+        <Grid container rowSpacing={16} columnSpacing={6} className='pbs-[100px]'>
           {team.map((member, index) => (
             <Grid item xs={12} md={6} lg={3} key={index}>
               <Card className='shadow-none border overflow-visible' color={member.color as ThemeColor}>
                 <CardContent className='flex flex-col items-center justify-center p-0'>
                   <div
-                    className='flex justify-center is-full mli-auto text-center bs-[189px] relative overflow-visible'
+                    className={classnames(
+                      'flex justify-center is-full mli-auto text-center bs-[189px] relative overflow-visible',
+                      styles.teamCard
+                    )}
                     style={{ backgroundColor: member.color }}
                   >
                     <img src={member.image} alt={member.name} className='bs-[240px] absolute block-start-[-50px]' />
@@ -126,12 +121,7 @@ const OurTeam = () => {
                   <div className='flex flex-col gap-3 p-5 is-full'>
                     <div className='text-center'>
                       <Typography variant='h5'>{member.name}</Typography>
-                      <Typography color='text.secondary'>{member.position}</Typography>
-                    </div>
-                    <div className='flex gap-3 item-center justify-center'>
-                      <i className='ri-facebook-circle-line text-[22px]' />
-                      <i className='ri-twitter-line text-[22px]' />
-                      <i className='ri-linkedin-box-line text-[22px]' />
+                      <Typography color='text.disabled'>{member.position}</Typography>
                     </div>
                   </div>
                 </CardContent>

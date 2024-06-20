@@ -64,7 +64,7 @@ const Faqs = () => {
               <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
                 {data.question}
               </AccordionSummary>
-              <AccordionDetails>{data.answer}</AccordionDetails>
+              <AccordionDetails className='text-textSecondary'>{data.answer}</AccordionDetails>
             </Accordion>
           )
         })}

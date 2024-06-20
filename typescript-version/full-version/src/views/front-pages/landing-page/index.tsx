@@ -31,7 +31,7 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
   }, [])
 
   return (
-    <>
+    <div className='bg-backgroundPaper'>
       <HeroSection mode={mode} />
       <UsefulFeature />
       <CustomerReviews />
@@ -39,9 +39,9 @@ const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
       <Pricing />
       <ProductStat />
       <Faqs />
-      <GetStarted />
+      <GetStarted mode={mode} />
       <ContactUs />
-    </>
+    </div>
   )
 }
 
