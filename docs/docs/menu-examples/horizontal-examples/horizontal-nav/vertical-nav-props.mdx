@@ -14,7 +14,7 @@ import SourceCodeStyle from "!!raw-loader!@docPages/menu-examples/horizontal-men
 
 export const updatedSourceCodeWidth = SourceCodeWidth.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
 export const updatedSourceCodeBackgroundColor = SourceCodeBackgroundColor.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
-export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
+export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import useBaseUrl.*/, '').replace(/useBaseUrl\((.*)\)/, '$1')
 export const updatedSourceCodeStyle = SourceCodeStyle.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '')
 
 :::warning

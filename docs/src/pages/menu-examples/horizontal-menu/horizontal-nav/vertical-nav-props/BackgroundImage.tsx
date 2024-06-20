@@ -1,5 +1,7 @@
 'use client'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -20,7 +22,7 @@ const BackgroundImage = () => {
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
         verticalNavProps={{
-          backgroundColor: 'rgba(255, 255, 255, 0.55)',
+          backgroundColor: 'rgba(248, 248, 248, 0.8)',
           customStyles: { 
             '& .ts-menu-button': { paddingBlock: '12px' },
             // The following customStyles prop is used to show this example properly in the documentation.
@@ -32,7 +34,7 @@ const BackgroundImage = () => {
             }
             // Remove the code till here 
           },
-          backgroundImage: 'https://wallpapers.com/images/high/road-in-between-iphone-landscape-8epxqsbuv4c1xqoi.webp',
+          backgroundImage: useBaseUrl('/images/menu-bg-image.png'),
         }}
       >
         <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>

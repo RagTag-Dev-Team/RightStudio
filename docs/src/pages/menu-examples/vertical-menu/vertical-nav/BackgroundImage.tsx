@@ -1,5 +1,7 @@
 'use client'
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 // Component Imports
 import VerticalNav, { Menu, MenuItem, SubMenu } from '@menu/vertical-menu'
 
@@ -8,7 +10,7 @@ const BackgroundImage = () => {
     <VerticalNav
       customBreakpoint='200px'
       backgroundColor='rgba(248, 248, 248, 0.8)'
-      backgroundImage='/images/menu-bg-image.png'
+      backgroundImage={useBaseUrl('/images/menu-bg-image.png')}
       customStyles={{ minHeight: '100%' }}
     >
       <Menu menuItemStyles={{ button: { paddingBlock: '12px' } }}>
