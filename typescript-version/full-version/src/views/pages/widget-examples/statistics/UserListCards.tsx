@@ -12,7 +12,7 @@ const data: UserDataType[] = [
   {
     title: 'Session',
     stats: '21,459',
-    avatarIcon: 'ri-group-line',
+    avatarIcon: 'tabler-users',
     avatarColor: 'primary',
     trend: 'positive',
     trendNumber: '29%',
@@ -21,7 +21,7 @@ const data: UserDataType[] = [
   {
     title: 'Paid Users',
     stats: '4,567',
-    avatarIcon: 'ri-user-add-line',
+    avatarIcon: 'tabler-user-plus',
     avatarColor: 'error',
     trend: 'positive',
     trendNumber: '18%',
@@ -30,7 +30,7 @@ const data: UserDataType[] = [
   {
     title: 'Active Users',
     stats: '19,860',
-    avatarIcon: 'ri-user-follow-line',
+    avatarIcon: 'tabler-user-check',
     avatarColor: 'success',
     trend: 'negative',
     trendNumber: '14%',
@@ -39,7 +39,7 @@ const data: UserDataType[] = [
   {
     title: 'Pending Users',
     stats: '237',
-    avatarIcon: 'ri-user-search-line',
+    avatarIcon: 'tabler-user-search',
     avatarColor: 'warning',
     trend: 'positive',
     trendNumber: '42%',
