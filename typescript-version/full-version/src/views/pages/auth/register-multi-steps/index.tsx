@@ -3,6 +3,10 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
@@ -17,6 +21,7 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
+import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import CustomAvatar from '@core/components/mui/Avatar'
@@ -30,6 +35,9 @@ import StepBillingDetails from './StepBillingDetails'
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Custom Components
 const RegisterIllustration = styled('img')(({ theme }) => ({
@@ -120,6 +128,7 @@ const RegisterMultiSteps = ({ mode }: { mode: SystemMode }) => {
   // Hooks
   const { settings } = useSettings()
   const theme = useTheme()
+  const { lang: locale } = useParams()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
@@ -158,9 +167,12 @@ const RegisterMultiSteps = ({ mode }: { mode: SystemMode }) => {
         )}
       </div>
       <div className='flex flex-1 justify-center items-center bs-full bg-backgroundPaper'>
-        <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
+        <Link
+          href={getLocalizedUrl('/', locale as Locale)}
+          className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'
+        >
           <Logo />
-        </div>
+        </Link>
         <StepperWrapper className='p-6 sm:p-8 max-is-[46.25rem] mbs-11 sm:mbs-14 lg:mbs-0'>
           <Stepper
             activeStep={activeStep}

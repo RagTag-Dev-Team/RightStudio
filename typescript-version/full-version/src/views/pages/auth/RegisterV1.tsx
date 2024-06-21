@@ -44,9 +44,9 @@ const RegisterV1 = () => {
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='sm:!p-12'>
-          <div className='flex justify-center mbe-6'>
+          <Link href={getLocalizedUrl('/', locale as Locale)} className='flex justify-center mbe-6'>
             <Logo />
-          </div>
+          </Link>
           <div className='flex flex-col gap-1 mbe-6'>
             <Typography variant='h4'>Adventure starts here 🚀</Typography>
             <Typography>Make your app management easy and fun!</Typography>
