@@ -69,7 +69,7 @@ const pricingPlans = [
   }
 ]
 
-function PricingPlan() {
+const PricingPlan = () => {
   // States
   const [pricingPlan, setPricingPlan] = useState<'monthly' | 'annually'>('annually')
 

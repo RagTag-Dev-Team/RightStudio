@@ -133,7 +133,7 @@ const plans: PlanType[] = [
   { variant: 'tonal', label: 'Choose Plan', plan: 'enterprise' }
 ]
 
-function Plans() {
+const Plans = () => {
   return (
     <section className='md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>

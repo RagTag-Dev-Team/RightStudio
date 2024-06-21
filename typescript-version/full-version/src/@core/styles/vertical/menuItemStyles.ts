@@ -30,7 +30,10 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme): Men
           backgroundColor: 'var(--mui-palette-action-selected) !important'
         },
       [`&.${menuClasses.disabled} > .${menuClasses.button}`]: {
-        color: 'var(--mui-palette-text-disabled)'
+        color: 'var(--mui-palette-text-disabled)',
+        '& *': {
+          color: 'inherit'
+        }
       },
       [`&:not(.${menuClasses.subMenuRoot}) > .${menuClasses.button}.${menuClasses.active}`]: {
         ...(popoutCollapsed && level > 0

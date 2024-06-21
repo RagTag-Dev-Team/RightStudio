@@ -39,11 +39,7 @@ const Footer = ({ mode }: { mode: Mode }) => {
   return (
     <footer className={frontLayoutClasses.footer}>
       <div className='relative'>
-        <img
-          src={dashboardImage}
-          alt='footer bg'
-          className={classnames('absolute inset-0 is-full bs-full object-cover -z-[1]', styles.footerRadius)}
-        />
+        <img src={dashboardImage} alt='footer bg' className='absolute inset-0 is-full bs-full object-cover -z-[1]' />
         <div className={classnames('plb-12 text-white', frontCommonStyles.layoutSpacing)}>
           <Grid container rowSpacing={10} columnSpacing={12}>
             <Grid item xs={12} lg={5}>
