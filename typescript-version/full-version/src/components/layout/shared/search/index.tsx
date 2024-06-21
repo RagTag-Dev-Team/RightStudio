@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 // Next Imports
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter, usePathname } from 'next/navigation'
 
 // MUI Imports
 import { IconButton } from '@mui/material'
 
 // Third-party Imports
+import classnames from 'classnames'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk'
 
 // Type Imports
@@ -51,6 +52,8 @@ type SearchItemProps = {
   children: ReactNode
   shortcut?: string
   value: string
+  url: string
+  currentPath: string
   onSelect?: () => void
 }
 
@@ -77,9 +80,15 @@ const transformedData = data.reduce((acc: Section[], item) => {
 }, [])
 
 // SearchItem Component for introduce the shortcut keys
-const SearchItem = ({ children, shortcut, value, onSelect = () => {} }: SearchItemProps) => {
+const SearchItem = ({ children, shortcut, value, currentPath, url, onSelect = () => {} }: SearchItemProps) => {
   return (
-    <CommandItem onSelect={onSelect} value={value}>
+    <CommandItem
+      onSelect={onSelect}
+      value={value}
+      className={classnames({
+        active: currentPath === url
+      })}
+    >
       {children}
       {shortcut && (
         <div cmdk-vercel-shortcuts=''>
@@ -136,6 +145,7 @@ const NavSearch = () => {
 
   // Hooks
   const router = useRouter()
+  const pathName = usePathname()
   const { settings } = useSettings()
   const { lang: locale } = useParams()
   const { isBreakpointReached } = useVerticalNav()
@@ -230,6 +240,8 @@ const NavSearch = () => {
                       <SearchItem
                         shortcut={item.shortcut}
                         key={index}
+                        currentPath={pathName}
+                        url={getLocalizedUrl(item.url, locale as Locale)}
                         value={`${item.name} ${section.title} ${item.shortcut}`}
                         onSelect={() => onSearchItemSelect(item)}
                       >
