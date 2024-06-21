@@ -3,7 +3,7 @@
   outline: none;
   min-block-size: 100px;
   overflow-y: auto;
-  padding: 1.25rem;
+  padding: 1.5rem;
   inline-size: 100%;
 
   > * + * {

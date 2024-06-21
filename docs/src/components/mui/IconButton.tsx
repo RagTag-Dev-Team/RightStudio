@@ -11,6 +11,7 @@ import themeConfig from '@configs/themeConfig'
 const IconButton = styled(MuiButton)<ButtonProps>(({ color, size, theme, variant }) => {
   return {
     minInlineSize: 0,
+    transition: 'none',
     ...(size === 'small'
       ? {
           fontSize: '20px',

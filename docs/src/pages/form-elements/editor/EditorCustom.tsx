@@ -20,7 +20,7 @@ const EditorToolbar = () => {
   }
 
   return (
-    <div className='flex flex-wrap gap-x-4 gap-y-2 p-5'>
+    <div className='flex flex-wrap gap-x-4 gap-y-2 p-6'>
       <Chip
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}

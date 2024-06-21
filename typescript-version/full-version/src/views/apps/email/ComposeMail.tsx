@@ -41,67 +41,67 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
     <div className='flex flex-wrap gap-x-3 gap-y-1 plb-2 pli-4 border-bs'>
       <CustomIconButton
         {...(editor.isActive('bold') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
-        <i className='ri-bold text-textSecondary' />
+        <i className='tabler-bold text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('underline') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
       >
-        <i className='ri-underline text-textSecondary' />
+        <i className='tabler-underline text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('italic') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
-        <i className='ri-italic text-textSecondary' />
+        <i className='tabler-italic text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('strike') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleStrike().run()}
       >
-        <i className='ri-strikethrough text-textSecondary' />
+        <i className='tabler-strikethrough text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
-        <i className='ri-align-left text-textSecondary' />
+        <i className='tabler-align-left text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
-        <i className='ri-align-center text-textSecondary' />
+        <i className='tabler-align-center text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
-        <i className='ri-align-right text-textSecondary' />
+        <i className='tabler-align-right text-textSecondary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
-        <i className='ri-align-justify text-textSecondary' />
+        <i className='tabler-align-justified text-textSecondary' />
       </CustomIconButton>
     </div>
   )

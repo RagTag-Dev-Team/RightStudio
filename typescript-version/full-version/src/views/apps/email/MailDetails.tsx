@@ -89,70 +89,70 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
   }
 
   return (
-    <div className='flex flex-wrap gap-x-3 gap-y-1 pli-5'>
+    <div className='flex flex-wrap gap-x-3 gap-y-1 pli-6'>
       <CustomIconButton
         {...(editor.isActive('bold') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
-        <i className='ri-bold text-textPrimary' />
+        <i className='tabler-bold text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('underline') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
       >
-        <i className='ri-underline text-textPrimary' />
+        <i className='tabler-underline text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('italic') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
-        <i className='ri-italic text-textPrimary' />
+        <i className='tabler-italic text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('strike') && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().toggleStrike().run()}
       >
-        <i className='ri-strikethrough text-textPrimary' />
+        <i className='tabler-strikethrough text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
-        <i className='ri-align-left text-textPrimary' />
+        <i className='tabler-align-left text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
-        <i className='ri-align-center text-textPrimary' />
+        <i className='tabler-align-center text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
-        <i className='ri-align-right text-textPrimary' />
+        <i className='tabler-align-right text-textPrimary' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
-        variant='outlined'
+        variant='tonal'
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
-        <i className='ri-align-justify text-textPrimary' />
+        <i className='tabler-align-justified text-textPrimary' />
       </CustomIconButton>
     </div>
   )
@@ -422,10 +422,10 @@ const MailDetails = (props: Props) => {
                       </CardContent>
                       <div>
                         <EditorToolbar editor={editor} />
-                        <EditorContent editor={editor} className='overflow-y-auto flex mbs-1' />
+                        <EditorContent editor={editor} className='overflow-y-auto' />
                       </div>
                       <CardActions className='pbs-0'>
-                        <div className='flex items-center justify-end gap-4'>
+                        <div className='flex items-center justify-end'>
                           <IconButton>
                             <i className='tabler-trash text-textSecondary' onClick={() => setReply(false)} />
                           </IconButton>

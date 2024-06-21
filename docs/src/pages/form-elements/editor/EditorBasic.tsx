@@ -20,14 +20,14 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
   }
 
   return (
-    <div className='flex flex-wrap gap-x-3 gap-y-1 p-5'>
+    <div className='flex flex-wrap gap-x-3 gap-y-1 p-6'>
       <CustomIconButton
         {...(editor.isActive('bold') && { color: 'primary' })}
         variant='outlined'
         size='small'
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
-        <i className='ri-bold' />
+        <i className='tabler-bold' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('underline') && { color: 'primary' })}
@@ -35,7 +35,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
       >
-        <i className='ri-underline' />
+        <i className='tabler-underline' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('italic') && { color: 'primary' })}
@@ -43,7 +43,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
-        <i className='ri-italic' />
+        <i className='tabler-italic' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('strike') && { color: 'primary' })}
@@ -51,7 +51,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleStrike().run()}
       >
-        <i className='ri-strikethrough' />
+        <i className='tabler-strikethrough' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
@@ -59,7 +59,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
-        <i className='ri-align-left' />
+        <i className='tabler-align-left' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
@@ -67,7 +67,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
-        <i className='ri-align-center' />
+        <i className='tabler-align-center' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
@@ -75,7 +75,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
-        <i className='ri-align-right' />
+        <i className='tabler-align-right' />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
@@ -83,7 +83,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
-        <i className='ri-align-justify' />
+        <i className='tabler-align-justified' />
       </CustomIconButton>
     </div>
   )
