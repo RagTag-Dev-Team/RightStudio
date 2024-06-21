@@ -44,7 +44,7 @@ const AppKeenSlider = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: theme.vars.palette.background.default
+      backgroundColor: 'var(--mui-palette-background-default)'
     }
   },
 
@@ -77,12 +77,12 @@ const AppKeenSlider = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
       cursor: 'pointer',
       position: 'absolute',
       transform: 'translateY(-50%)',
-      color: theme.vars.palette.common.white,
+      color: 'var(--mui-palette-common-white)',
       ...(theme.direction === 'rtl' ? { transform: 'translateY(-50%) rotate(180deg)' } : {}),
       '&.arrow-disabled': {
         cursor: 'not-allowed',
         pointerEvents: 'none',
-        color: theme.vars.palette.action.disabled
+        color: 'var(--mui-palette-action-disabled)'
       },
       '&.arrow-left': {
         left: 0
@@ -108,10 +108,10 @@ const AppKeenSlider = styled(Box)<BoxProps>(({ theme }: { theme: Theme }) => ({
         height: 10,
         cursor: 'pointer',
         borderRadius: '50%',
-        backgroundColor: theme.vars.palette.action.disabled
+        backgroundColor: 'var(--mui-palette-action-disabled)'
       },
       '&.active .MuiBadge-dot': {
-        backgroundColor: theme.vars.palette.primary.main
+        backgroundColor: 'var(--mui-palette-primary-main)'
       }
     }
   }

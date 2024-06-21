@@ -42,8 +42,10 @@ const cardData: CustomInputHorizontalData[] = [
           variant='rounded'
           className='is-[58px] bs-[34px]'
           sx={{
-            backgroundColor: theme =>
-              theme.palette.mode === 'dark' ? 'var(--mui-palette-common-white)' : 'var(--mui-palette-action-hover)'
+            backgroundColor: 'var(--mui-palette-action-hover)',
+            '[data-mui-color-scheme="dark"] &': {
+              backgroundColor: 'var(--mui-palette-common-white)'
+            }
           }}
         >
           <img src='/images/logos/visa.png' alt='plan' className='bs-3' />
@@ -63,8 +65,10 @@ const cardData: CustomInputHorizontalData[] = [
           variant='rounded'
           className='is-[58px] bs-[34px]'
           sx={{
-            backgroundColor: theme =>
-              theme.palette.mode === 'dark' ? 'var(--mui-palette-common-white)' : 'var(--mui-palette-action-hover)'
+            backgroundColor: 'var(--mui-palette-action-hover)',
+            '[data-mui-color-scheme="dark"] &': {
+              backgroundColor: 'var(--mui-palette-common-white)'
+            }
           }}
         >
           <img src='/images/logos/paypal.png' alt='plan' className='bs-5' />
