@@ -16,7 +16,7 @@ export const updatedSourceCodeWidth = SourceCodeWidth.replace(/\s*\/\/.*\s*\/\/.
 
 export const updatedSourceCodeBackgroundColor = SourceCodeBackgroundColor.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '').replace(/(verticalNavProps={{)\s*/, '$1')
 
-export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
+export const updatedSourceCodeBackgroundImage = SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import useBaseUrl.*/, '').replace(/useBaseUrl\((.*)\)/, '$1').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
 export const updatedSourceCodeStyle = SourceCodeStyle.replace(/,\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/backgroundColor:\s*'.*'/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
