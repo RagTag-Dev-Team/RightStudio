@@ -5,7 +5,6 @@ import type { ReactNode } from 'react'
 import { useParams } from 'next/navigation'
 
 // MUI Imports
-import Chip from '@mui/material/Chip'
 import type { ChipProps } from '@mui/material/Chip'
 
 // Type Imports
@@ -23,6 +22,7 @@ import type {
 // Component Imports
 import { SubMenu as HorizontalSubMenu, MenuItem as HorizontalMenuItem } from '@menu/horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, MenuSection } from '@menu/vertical-menu'
+import CustomChip from '@core/components/mui/Chip'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -60,14 +60,14 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
 
         const subMenuPrefix: ReactNode =
           prefix && (prefix as ChipProps).label ? (
-            <Chip size='small' {...(prefix as ChipProps)} />
+            <CustomChip size='small' round='true' {...(prefix as ChipProps)} />
           ) : (
             (prefix as ReactNode)
           )
 
         const subMenuSuffix: ReactNode =
           suffix && (suffix as ChipProps).label ? (
-            <Chip size='small' {...(suffix as ChipProps)} />
+            <CustomChip size='small' round='true' {...(suffix as ChipProps)} />
           ) : (
             (suffix as ReactNode)
           )
@@ -97,10 +97,18 @@ export const GenerateVerticalMenu = ({ menuData }: { menuData: VerticalMenuDataT
       const Icon = icon ? <i className={icon} /> : null
 
       const menuItemPrefix: ReactNode =
-        prefix && (prefix as ChipProps).label ? <Chip size='small' {...(prefix as ChipProps)} /> : (prefix as ReactNode)
+        prefix && (prefix as ChipProps).label ? (
+          <CustomChip size='small' round='true' {...(prefix as ChipProps)} />
+        ) : (
+          (prefix as ReactNode)
+        )
 
       const menuItemSuffix: ReactNode =
-        suffix && (suffix as ChipProps).label ? <Chip size='small' {...(suffix as ChipProps)} /> : (suffix as ReactNode)
+        suffix && (suffix as ChipProps).label ? (
+          <CustomChip size='small' round='true' {...(suffix as ChipProps)} />
+        ) : (
+          (suffix as ReactNode)
+        )
 
       return (
         <VerticalMenuItem
@@ -139,14 +147,14 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
 
         const subMenuPrefix: ReactNode =
           prefix && (prefix as ChipProps).label ? (
-            <Chip size='small' {...(prefix as ChipProps)} />
+            <CustomChip size='small' round='true' {...(prefix as ChipProps)} />
           ) : (
             (prefix as ReactNode)
           )
 
         const subMenuSuffix: ReactNode =
           suffix && (suffix as ChipProps).label ? (
-            <Chip size='small' {...(suffix as ChipProps)} />
+            <CustomChip size='small' round='true' {...(suffix as ChipProps)} />
           ) : (
             (suffix as ReactNode)
           )
@@ -176,10 +184,18 @@ export const GenerateHorizontalMenu = ({ menuData }: { menuData: HorizontalMenuD
       const Icon = icon ? <i className={icon} /> : null
 
       const menuItemPrefix: ReactNode =
-        prefix && (prefix as ChipProps).label ? <Chip size='small' {...(prefix as ChipProps)} /> : (prefix as ReactNode)
+        prefix && (prefix as ChipProps).label ? (
+          <CustomChip size='small' round='true' {...(prefix as ChipProps)} />
+        ) : (
+          (prefix as ReactNode)
+        )
 
       const menuItemSuffix: ReactNode =
-        suffix && (suffix as ChipProps).label ? <Chip size='small' {...(suffix as ChipProps)} /> : (suffix as ReactNode)
+        suffix && (suffix as ChipProps).label ? (
+          <CustomChip size='small' round='true' {...(suffix as ChipProps)} />
+        ) : (
+          (suffix as ReactNode)
+        )
 
       return (
         <HorizontalMenuItem
