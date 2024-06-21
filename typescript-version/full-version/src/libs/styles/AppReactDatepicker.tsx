@@ -68,11 +68,21 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
           height: 30,
           border: 'none',
           top: 12,
-          ...(theme.direction === 'ltr' ? { left: 'auto', right: '57px' } : { right: 15 }),
-          backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E\")".replace(
-            'currentColor',
-            theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
-          )}`,
+          left: 'auto',
+          right: '57px',
+          ...(theme.direction === 'ltr'
+            ? {
+                backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' d='M17.5 10L12.5 15L17.5 20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E\")".replace(
+                  'currentColor',
+                  theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
+                )}`
+              }
+            : {
+                backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' d='M12.5 10L17.5 15L12.5 20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E\")".replace(
+                  'currentColor',
+                  theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
+                )}`
+              }),
           '& .react-datepicker__navigation-icon': {
             display: 'none'
           },
@@ -84,11 +94,21 @@ const StyledReactDatePicker = styled(Box)<BoxProps>(({ theme }) => {
           height: 30,
           border: 'none',
           top: 12,
-          ...(theme.direction === 'ltr' ? { right: 15 } : { left: 15 }),
-          backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z' /%3E%3C/svg%3E\")".replace(
-            'currentColor',
-            theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
-          )}`,
+          right: 15,
+          left: 'auto',
+          ...(theme.direction === 'ltr'
+            ? {
+                backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' d='M12.5 10L17.5 15L12.5 20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E\")".replace(
+                  'currentColor',
+                  theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
+                )}`
+              }
+            : {
+                backgroundImage: `${"url(\"data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' d='M17.5 10L12.5 15L17.5 20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E\")".replace(
+                  'currentColor',
+                  theme.palette.mode === 'dark' ? 'rgb(231 227 252 / 0.7)' : 'rgb(46 38 61 / 0.7)'
+                )}`
+              }),
           '& .react-datepicker__navigation-icon': {
             display: 'none'
           }
