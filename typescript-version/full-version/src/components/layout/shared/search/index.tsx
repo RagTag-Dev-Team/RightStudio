@@ -11,6 +11,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { IconButton } from '@mui/material'
 
 // Third-party Imports
+import classnames from 'classnames'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk'
 
 // Type Imports
@@ -79,7 +80,7 @@ const transformedData = data.reduce((acc: Section[], item) => {
 // SearchItem Component for introduce the shortcut keys
 const SearchItem = ({ children, shortcut, value, onSelect = () => {} }: SearchItemProps) => {
   return (
-    <CommandItem onSelect={onSelect} value={value}>
+    <CommandItem onSelect={onSelect} value={value} className='mli-2 mbe-px last:mbe-0 rounded'>
       {children}
       {shortcut && (
         <div cmdk-vercel-shortcuts=''>
@@ -233,11 +234,7 @@ const NavSearch = () => {
                         value={`${item.name} ${section.title} ${item.shortcut}`}
                         onSelect={() => onSearchItemSelect(item)}
                       >
-                        {item.icon && (
-                          <div className='flex text-xl'>
-                            <i className={item.icon} />
-                          </div>
-                        )}
+                        {item.icon && <i className={classnames('text-xl', item.icon)} />}
                         {item.name}
                       </SearchItem>
                     )
