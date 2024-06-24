@@ -54,9 +54,7 @@ const TwoStepsV1 = () => {
         </Typography>
         <Typography className='font-medium'>******1234</Typography>
         <Form noValidate autoComplete='off'>
-          <Button fullWidth variant='contained' type='submit'>
-            Skip For Now
-          </Button>
+          <Typography>Type your 6 digit security code</Typography>
           <OTPInput
             onChange={setOtp}
             value={otp ?? ''}
@@ -70,6 +68,9 @@ const TwoStepsV1 = () => {
               </div>
             )}
           />
+          <Button fullWidth variant='contained' type='submit'>
+            Verify my account
+          </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Didn&#39;t get the code?</Typography>
             <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
