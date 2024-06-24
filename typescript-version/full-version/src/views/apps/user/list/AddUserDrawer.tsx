@@ -107,7 +107,7 @@ const AddUserDrawer = (props: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between plb-5 pli-4'>
+      <div className='flex items-center justify-between plb-5 pli-6'>
         <Typography variant='h5'>Add New User</Typography>
         <IconButton size='small' onClick={handleReset}>
           <i className='tabler-x text-2xl text-textPrimary' />

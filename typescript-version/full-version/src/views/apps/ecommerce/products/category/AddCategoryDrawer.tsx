@@ -101,14 +101,14 @@ const AddCategoryDrawer = (props: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between pli-6 plb-4'>
+      <div className='flex items-center justify-between pli-6 plb-5'>
         <Typography variant='h5'>Add Category</Typography>
         <IconButton size='small' onClick={handleReset}>
-          <i className='tabler-x text-2xl' />
+          <i className='tabler-x text-textSecondary text-2xl' />
         </IconButton>
       </div>
       <Divider />
-      <div className='p-5'>
+      <div className='p-6'>
         <form onSubmit={handleSubmit(data => handleFormSubmit(data))} className='flex flex-col gap-5'>
           <Controller
             name='title'
@@ -138,8 +138,9 @@ const AddCategoryDrawer = (props: Props) => {
               />
             )}
           />
-          <div className='flex items-center gap-4'>
+          <div className='flex items-end gap-4'>
             <CustomTextField
+              label='Attachment'
               placeholder='No file chosen'
               value={fileName}
               className='flex-auto'

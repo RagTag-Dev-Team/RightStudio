@@ -424,30 +424,28 @@ const MailDetails = (props: Props) => {
                         <EditorToolbar editor={editor} />
                         <EditorContent editor={editor} className='overflow-y-auto' />
                       </div>
-                      <CardActions className='pbs-0'>
-                        <div className='flex items-center justify-end'>
-                          <IconButton>
-                            <i className='tabler-trash text-textSecondary' onClick={() => setReply(false)} />
-                          </IconButton>
-                          {isBelowSmScreen ? (
-                            <CustomIconButton color='secondary'>
-                              <i className='tabler-paperclip text-textPrimary' />
-                            </CustomIconButton>
-                          ) : (
-                            <Button color='secondary' startIcon={<i className='tabler-paperclip text-textPrimary' />}>
-                              Attachments
-                            </Button>
-                          )}
-                          {isBelowSmScreen ? (
-                            <CustomIconButton variant='contained' color='primary'>
-                              <i className='tabler-send' />
-                            </CustomIconButton>
-                          ) : (
-                            <Button variant='contained' color='primary' endIcon={<i className='tabler-send' />}>
-                              Send
-                            </Button>
-                          )}
-                        </div>
+                      <CardActions className='flex items-center justify-end pbs-0'>
+                        <IconButton>
+                          <i className='tabler-trash text-textSecondary' onClick={() => setReply(false)} />
+                        </IconButton>
+                        {isBelowSmScreen ? (
+                          <CustomIconButton color='secondary'>
+                            <i className='tabler-paperclip text-textPrimary' />
+                          </CustomIconButton>
+                        ) : (
+                          <Button color='secondary' startIcon={<i className='tabler-paperclip text-textPrimary' />}>
+                            Attachments
+                          </Button>
+                        )}
+                        {isBelowSmScreen ? (
+                          <CustomIconButton variant='contained' color='primary'>
+                            <i className='tabler-send' />
+                          </CustomIconButton>
+                        ) : (
+                          <Button variant='contained' color='primary' endIcon={<i className='tabler-send' />}>
+                            Send
+                          </Button>
+                        )}
                       </CardActions>
                     </div>
                   )}

@@ -94,10 +94,10 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       paddingInlineStart: '0px !important'
     }
   },
-  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedStart': {
+  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedStart:not(.MuiAutocomplete-inputRoot)': {
     paddingInlineStart: '14px'
   },
-  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd': {
+  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd:not(.MuiAutocomplete-inputRoot)': {
     paddingInlineEnd: '14px'
   },
   '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.Mui-focused:not(.MuiAutocomplete-inputRoot)': {

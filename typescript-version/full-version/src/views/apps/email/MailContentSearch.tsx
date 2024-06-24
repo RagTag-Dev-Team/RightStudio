@@ -21,7 +21,7 @@ const MailContentSearch = (props: Props) => {
   }
 
   return (
-    <div className='flex items-center gap-1 is-full pli-6 border-be'>
+    <div className='flex items-center gap-1 is-full pli-4 border-be'>
       {isBelowScreen && (
         <IconButton onClick={handleToggleSidebar}>
           <i className='tabler-menu-2 text-textSecondary' />

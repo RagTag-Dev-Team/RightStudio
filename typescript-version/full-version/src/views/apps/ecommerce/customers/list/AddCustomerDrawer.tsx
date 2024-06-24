@@ -121,7 +121,7 @@ const AddCustomerDrawer = (props: Props) => {
       ModalProps={{ keepMounted: true }}
       sx={{ '& .MuiDrawer-paper': { width: { xs: 300, sm: 400 } } }}
     >
-      <div className='flex items-center justify-between pli-6 plb-4'>
+      <div className='flex items-center justify-between pli-6 plb-5'>
         <Typography variant='h5'>Add a Customer</Typography>
         <IconButton size='small' onClick={handleReset}>
           <i className='tabler-x text-2xl' />
@@ -129,7 +129,7 @@ const AddCustomerDrawer = (props: Props) => {
       </div>
       <Divider />
       <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
-        <div className='p-5'>
+        <div className='p-6'>
           <form onSubmit={handleSubmit(data => onSubmit(data))} className='flex flex-col gap-5'>
             <Typography color='text.primary' className='font-medium'>
               Basic Information

@@ -159,7 +159,9 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
               </Typography>
               <div className='flex items-center gap-2'>
                 <CustomAvatar src={row.original.image} size={22} />
-                <Typography variant='body2'>{row.original.user}</Typography>
+                <Typography variant='body2' color='text.primary'>
+                  {row.original.user}
+                </Typography>
               </div>
             </div>
           </div>

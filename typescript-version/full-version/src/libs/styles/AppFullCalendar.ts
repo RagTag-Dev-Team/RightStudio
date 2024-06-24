@@ -75,7 +75,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
             textTransform: 'capitalize',
             backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
             padding: theme.spacing(1.75, 4),
-            color: 'var(--mui-palette-text-primary)',
+            color: 'var(--mui-palette-primary-main)',
             borderColor: 'transparent',
             '&.fc-button-active, &:hover': {
               color: 'var(--mui-palette-primary-main)',

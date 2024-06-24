@@ -196,7 +196,7 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
       columnHelper.accessor('category', {
         header: 'Category',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <CustomAvatar skin='light' color={productCategoryObj[row.original.category].color} size={30}>
               <i className={classnames(productCategoryObj[row.original.category].icon, 'text-lg')} />
             </CustomAvatar>
