@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 // Next Imports
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter, usePathname } from 'next/navigation'
 
 // MUI Imports
 import { IconButton } from '@mui/material'
@@ -52,6 +52,8 @@ type SearchItemProps = {
   children: ReactNode
   shortcut?: string
   value: string
+  url: string
+  currentPath: string
   onSelect?: () => void
 }
 
@@ -78,9 +80,15 @@ const transformedData = data.reduce((acc: Section[], item) => {
 }, [])
 
 // SearchItem Component for introduce the shortcut keys
-const SearchItem = ({ children, shortcut, value, onSelect = () => {} }: SearchItemProps) => {
+const SearchItem = ({ children, shortcut, value, currentPath, url, onSelect = () => {} }: SearchItemProps) => {
   return (
-    <CommandItem onSelect={onSelect} value={value} className='mli-2 mbe-px last:mbe-0 rounded'>
+    <CommandItem
+      onSelect={onSelect}
+      value={value}
+      className={classnames('mli-2 mbe-px last:mbe-0 rounded', {
+        active: currentPath === url
+      })}
+    >
       {children}
       {shortcut && (
         <div cmdk-vercel-shortcuts=''>
@@ -137,6 +145,7 @@ const NavSearch = () => {
 
   // Hooks
   const router = useRouter()
+  const pathName = usePathname()
   const { settings } = useSettings()
   const { lang: locale } = useParams()
   const { isBreakpointReached } = useVerticalNav()
@@ -204,14 +213,14 @@ const NavSearch = () => {
     <>
       {isBreakpointReached || settings.layout === 'horizontal' ? (
         <IconButton onClick={() => setOpen(true)}>
-          <i className='tabler-search' />
+          <i className='tabler-search text-textPrimary' />
         </IconButton>
       ) : (
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setOpen(true)}>
           <IconButton onClick={() => setOpen(true)}>
-            <i className='tabler-search' />
+            <i className='tabler-search text-textPrimary' />
           </IconButton>
-          <div className='whitespace-nowrap select-none'>Search ⌘K</div>
+          <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>
       )}
       <CommandDialog open={open} onOpenChange={setOpen}>
@@ -231,6 +240,8 @@ const NavSearch = () => {
                       <SearchItem
                         shortcut={item.shortcut}
                         key={index}
+                        currentPath={pathName}
+                        url={getLocalizedUrl(item.url, locale as Locale)}
                         value={`${item.name} ${section.title} ${item.shortcut}`}
                         onSelect={() => onSearchItemSelect(item)}
                       >

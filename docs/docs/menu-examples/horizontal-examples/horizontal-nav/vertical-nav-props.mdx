@@ -1,57 +1,26 @@
-import BrowserWindow from "@docComponents/browser-window";
-import Provider from "@docComponents/Providers";
-import Width from "@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width";
-import BackgroundColor from "@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor";
-import BackgroundImage from "@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage";
-import CustomStyles from "@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles";
-import TsToJsCodeSnippet from "@docComponents/ts-js-code";
-import SourceCodeWidth from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width";
-import SourceCodeBackgroundColor from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor";
-import SourceCodeBackgroundImage from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage";
-import SourceCodeStyle from "!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles";
+import BrowserWindow from '@docComponents/browser-window'
+import Provider from '@docComponents/Providers'
+import Width from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width'
+import BackgroundColor from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor'
+import BackgroundImage from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage'
+import CustomStyles from '@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles'
+import TsToJsCodeSnippet from '@docComponents/ts-js-code'
+import SourceCodeWidth from '!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/Width'
+import SourceCodeBackgroundColor from '!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundColor'
+import SourceCodeBackgroundImage from '!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/BackgroundImage'
+import SourceCodeStyle from '!!raw-loader!@docPages/menu-examples/horizontal-menu/horizontal-nav/vertical-nav-props/CustomStyles'
 
 # Vertical Nav Props
 
-export const updatedSourceCodeWidth = SourceCodeWidth.replace(
-  /\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/,
-  ""
-)
-  .replace(/import menuItemStyles.*\n/, "")
-  .replace(/import verticalMenuItemStyles.*\n/, "")
-  .replace(/menuItemStyles={.*}/, "")
-  .replace(/verticalMenuProps={.*}/, "")
-  .replace(/(verticalNavProps={{)\s*/, "$1");
+export const updatedSourceCodeWidth = SourceCodeWidth.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '').replace(/(verticalNavProps={{)\s*/, '$1')
 
 export const updatedSourceCodeBackgroundColor =
-  SourceCodeBackgroundColor.replace(
-    /\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/,
-    ""
-  )
-    .replace(/import menuItemStyles.*\n/, "")
-    .replace(/import verticalMenuItemStyles.*\n/, "")
-    .replace(/menuItemStyles={.*}/, "")
-    .replace(/verticalMenuProps={.*}/, "")
-    .replace(/(verticalNavProps={{)\s*/, "$1");
+  SourceCodeBackgroundColor.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '').replace(/(verticalNavProps={{)\s*/, '$1')
 
 export const updatedSourceCodeBackgroundImage =
-  SourceCodeBackgroundImage.replace(
-    /\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/,
-    ""
-  )
-    .replace(/import menuItemStyles.*\n/, "")
-    .replace(/import verticalMenuItemStyles.*\n/, "")
-    .replace(/menuItemStyles={.*}/, "")
-    .replace(/verticalMenuProps={.*}/, "");
+  SourceCodeBackgroundImage.replace(/\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/,'').replace(/import useBaseUrl.*/, '').replace(/useBaseUrl\((.*)\)/, '$1').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
-export const updatedSourceCodeStyle = SourceCodeStyle.replace(
-  /,\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/,
-  ""
-)
-  .replace(/backgroundColor:\s*'.*'/, "")
-  .replace(/import menuItemStyles.*\n/, "")
-  .replace(/import verticalMenuItemStyles.*\n/, "")
-  .replace(/menuItemStyles={.*}/, "")
-  .replace(/verticalMenuProps={.*}/, "");
+export const updatedSourceCodeStyle = SourceCodeStyle.replace(/,\s*\/\/.*\s*\/\/.*\s*([\s\S]*?)\s*\/\/.*/, '').replace(/backgroundColor:\s*'.*'/, '').replace(/import menuItemStyles.*\n/, '').replace(/import verticalMenuItemStyles.*\n/, '').replace(/menuItemStyles={.*}/, '').replace(/verticalMenuProps={.*}/, '')
 
 :::warning
 Please note that the `VerticalNavContent` used in this example is only for documentation purposes. If you want to use it in your own component, please import it from `src/components/layout/horizontal/VerticalNavContent.tsx` and use it accordingly.
@@ -65,7 +34,7 @@ The `width` is used to change the width of the vertical navigation menu when bre
 
 ### Example
 
-<BrowserWindow url="/horizontal-menu/horizontal-nav/vertical-nav-props/width">
+<BrowserWindow url='/horizontal-menu/horizontal-nav/vertical-nav-props/width'>
   <Provider>
     <Width />
   </Provider>
@@ -81,7 +50,7 @@ The `backgroundColor` is used to change the background color of the vertical nav
 
 ### Example
 
-<BrowserWindow url="/horizontal-menu/horizontal-nav/vertical-nav-props/background-color">
+<BrowserWindow url='/horizontal-menu/horizontal-nav/vertical-nav-props/background-color'>
   <Provider>
     <BackgroundColor />
   </Provider>
@@ -97,7 +66,7 @@ The `backgroundImage` is used to change the background image of the vertical nav
 
 ### Example
 
-<BrowserWindow url="/horizontal-menu/horizontal-nav/vertical-nav-props/background-image">
+<BrowserWindow url='/horizontal-menu/horizontal-nav/vertical-nav-props/background-image'>
   <Provider>
     <BackgroundImage />
   </Provider>
@@ -113,7 +82,7 @@ The Custom Style feature provides the flexibility to apply custom styling to the
 
 ### Example
 
-<BrowserWindow url="/horizontal-menu/horizontal-nav/vertical-nav-props/custom-styles">
+<BrowserWindow url='/horizontal-menu/horizontal-nav/vertical-nav-props/custom-styles'>
   <Provider>
     <CustomStyles />
   </Provider>

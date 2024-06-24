@@ -13,6 +13,9 @@
   z-index: var(--search-z-index);
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 }
+[dir='rtl'] [cmdk-root] {
+  transform: translate(50%, -50%);
+}
 @media (max-width: 600px) {
   [cmdk-root] {
     min-block-size: 100dvh;
@@ -73,8 +76,18 @@
   padding-inline: 16px;
 }
 
+.active {
+  background: var(--mui-palette-primary-lightOpacity);
+  color: var(--primary-color);
+}
+
 [cmdk-item][data-selected='true'] {
   background: var(--mui-palette-action-hover);
+}
+
+[cmdk-item][data-selected='true'].active {
+  background: var(--mui-palette-primary-mainOpacity);
+  color: var(--primary-color);
 }
 
 [cmdk-empty],

@@ -134,7 +134,7 @@ const SidebarLeft = (props: Props) => {
                 key={key}
                 href={getLocalizedUrl(`/apps/email/${key}`, locale as Locale)}
                 prefetch
-                className={classnames('flex items-center justify-between plb-1 pli-6 gap-2.5 cursor-pointer', {
+                className={classnames('flex items-center justify-between plb-1 pli-6 gap-2.5 min-bs-8 cursor-pointer', {
                   [styles.activeSidebarListItem]: key === folder && !label
                 })}
               >

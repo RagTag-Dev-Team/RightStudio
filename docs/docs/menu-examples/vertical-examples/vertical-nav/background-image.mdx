@@ -10,12 +10,7 @@ import SourceCode from "!!raw-loader!@docPages/menu-examples/vertical-menu/verti
 
 # Background Image
 
-export const updatedCode = SourceCode.replace(
-  /customStyles=\{\{([\s\S]*?)\}\}/,
-  ""
-)
-  .replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, "")
-  .replace(/menuItemStyles={.*}/, "");
+export const updatedCode = SourceCode.replace(/customStyles=\{\{([\s\S]*?)\}\}/, '').replace(/import useBaseUrl.*/, '').replace(/{useBaseUrl\((.*)\)}/, '$1').replace(/\s*\/\/\sStyle.*\s*import menuItemStyles.*/, '').replace(/menuItemStyles={.*}/, '')
 
 The `backgroundImage` prop is used to set the background image of the navigation sidebar. To make the background image visible, you also need to provide the `backgroundColor` prop. The `backgroundImage` prop accepts a string value that can be a URL or a relative path to the image.
 

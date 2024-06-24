@@ -1,7 +1,9 @@
 'use client'
 
+// React Imports
+import { useState } from 'react'
+
 // Next Imports
-import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 // MUI Imports
@@ -10,12 +12,17 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 
+// Third-party Imports
+import { OTPInput } from 'input-otp'
+import type { SlotProps } from 'input-otp'
+import classnames from 'classnames'
+
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
+import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/TextField'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
@@ -23,7 +30,30 @@ import { getLocalizedUrl } from '@/utils/i18n'
 // Styled Component Imports
 import AuthIllustrationWrapper from './AuthIllustrationWrapper'
 
+// Style Imports
+import styles from '@/libs/styles/inputOtp.module.css'
+
+const Slot = (props: SlotProps) => {
+  return (
+    <div className={classnames(styles.slot, { [styles.slotActive]: props.isActive })}>
+      {props.char !== null && <div>{props.char}</div>}
+      {props.hasFakeCaret && <FakeCaret />}
+    </div>
+  )
+}
+
+const FakeCaret = () => {
+  return (
+    <div className={styles.fakeCaret}>
+      <div className='w-px h-5 bg-textPrimary' />
+    </div>
+  )
+}
+
 const TwoStepsV1 = () => {
+  // States
+  const [otp, setOtp] = useState<string | null>(null)
+
   // Hooks
   const { lang: locale } = useParams()
 
@@ -46,17 +76,22 @@ const TwoStepsV1 = () => {
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-6'>
             <div className='flex flex-col gap-2'>
               <Typography>Type your 6 digit security code</Typography>
-              <div className='flex items-center justify-between gap-4'>
-                <CustomTextField size='medium' autoFocus className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-              </div>
+              <OTPInput
+                onChange={setOtp}
+                value={otp ?? ''}
+                maxLength={6}
+                containerClassName='flex items-center'
+                render={({ slots }) => (
+                  <div className='flex items-center justify-between w-full gap-4'>
+                    {slots.slice(0, 6).map((slot, idx) => (
+                      <Slot key={idx} {...slot} />
+                    ))}
+                  </div>
+                )}
+              />
             </div>
             <Button fullWidth variant='contained' type='submit'>
-              Skip For Now
+              Verify my account
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>

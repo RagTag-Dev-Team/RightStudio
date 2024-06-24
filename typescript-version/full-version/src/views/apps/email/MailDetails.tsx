@@ -96,7 +96,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
-        <i className='tabler-bold text-textPrimary' />
+        <i className={classnames('tabler-bold', { 'text-textPrimary': !editor.isActive('bold') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('underline') && { color: 'primary' })}
@@ -104,7 +104,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
       >
-        <i className='tabler-underline text-textPrimary' />
+        <i className={classnames('tabler-underline', { 'text-textPrimary': !editor.isActive('underline') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('italic') && { color: 'primary' })}
@@ -112,7 +112,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
-        <i className='tabler-italic text-textPrimary' />
+        <i className={classnames('tabler-italic', { 'text-textPrimary': !editor.isActive('italic') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('strike') && { color: 'primary' })}
@@ -120,7 +120,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleStrike().run()}
       >
-        <i className='tabler-strikethrough text-textPrimary' />
+        <i className={classnames('tabler-strikethrough', { 'text-textPrimary': !editor.isActive('strike') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
@@ -128,7 +128,9 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
-        <i className='tabler-align-left text-textPrimary' />
+        <i
+          className={classnames('tabler-align-left', { 'text-textPrimary': !editor.isActive({ textAlign: 'left' }) })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
@@ -136,7 +138,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
-        <i className='tabler-align-center text-textPrimary' />
+        <i
+          className={classnames('tabler-align-center', {
+            'text-textPrimary': !editor.isActive({ textAlign: 'center' })
+          })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
@@ -144,7 +150,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
-        <i className='tabler-align-right text-textPrimary' />
+        <i
+          className={classnames('tabler-align-right', {
+            'text-textPrimary': !editor.isActive({ textAlign: 'right' })
+          })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
@@ -152,7 +162,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
-        <i className='tabler-align-justified text-textPrimary' />
+        <i
+          className={classnames('tabler-align-justified', {
+            'text-textPrimary': !editor.isActive({ textAlign: 'justify' })
+          })}
+        />
       </CustomIconButton>
     </div>
   )

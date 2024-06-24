@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
+import classnames from 'classnames'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { StarterKit } from '@tiptap/starter-kit'
 import { Underline } from '@tiptap/extension-underline'
@@ -36,7 +37,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
-        <i className='tabler-bold text-textSecondary' />
+        <i className={classnames('tabler-bold', { 'text-textSecondary': !editor.isActive('bold') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('underline') && { color: 'primary' })}
@@ -44,7 +45,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleUnderline().run()}
       >
-        <i className='tabler-underline text-textSecondary' />
+        <i className={classnames('tabler-underline', { 'text-textSecondary': !editor.isActive('underline') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('italic') && { color: 'primary' })}
@@ -52,7 +53,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
-        <i className='tabler-italic text-textSecondary' />
+        <i className={classnames('tabler-italic', { 'text-textSecondary': !editor.isActive('italic') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive('strike') && { color: 'primary' })}
@@ -60,7 +61,7 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().toggleStrike().run()}
       >
-        <i className='tabler-strikethrough text-textSecondary' />
+        <i className={classnames('tabler-strikethrough', { 'text-textSecondary': !editor.isActive('strike') })} />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'left' }) && { color: 'primary' })}
@@ -68,7 +69,9 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
-        <i className='tabler-align-left text-textSecondary' />
+        <i
+          className={classnames('tabler-align-left', { 'text-textSecondary': !editor.isActive({ textAlign: 'left' }) })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'center' }) && { color: 'primary' })}
@@ -76,7 +79,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
-        <i className='tabler-align-center text-textSecondary' />
+        <i
+          className={classnames('tabler-align-center', {
+            'text-textSecondary': !editor.isActive({ textAlign: 'center' })
+          })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'right' }) && { color: 'primary' })}
@@ -84,7 +91,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
-        <i className='tabler-align-right text-textSecondary' />
+        <i
+          className={classnames('tabler-align-right', {
+            'text-textSecondary': !editor.isActive({ textAlign: 'right' })
+          })}
+        />
       </CustomIconButton>
       <CustomIconButton
         {...(editor.isActive({ textAlign: 'justify' }) && { color: 'primary' })}
@@ -92,7 +103,11 @@ const EditorToolbar = ({ editor }: { editor: Editor | null }) => {
         size='small'
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
-        <i className='tabler-align-justified text-textSecondary' />
+        <i
+          className={classnames('tabler-align-justified', {
+            'text-textSecondary': !editor.isActive({ textAlign: 'justify' })
+          })}
+        />
       </CustomIconButton>
     </div>
   )
