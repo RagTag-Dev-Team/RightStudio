@@ -58,7 +58,7 @@ const ShippingRateCard = (props: ShippingRateCardProps) => {
       </div>
       <div className='is-full border rounded overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead>
+          <thead className='border-0'>
             <tr>
               <th>Rate Name</th>
               <th>Condition</th>

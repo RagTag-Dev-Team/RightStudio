@@ -43,7 +43,7 @@ const LogisticsDeliveryPerformance = () => {
         {deliveryData.map((data, index) => (
           <div key={index} className='flex items-center gap-4'>
             <CustomAvatar skin='light' color={data.color} variant='rounded' size={38}>
-              <i className={data.icon} />
+              <i className={classnames(data.icon, 'text-[26px]')} />
             </CustomAvatar>
             <div className='flex justify-between items-center gap-4 is-full'>
               <div>

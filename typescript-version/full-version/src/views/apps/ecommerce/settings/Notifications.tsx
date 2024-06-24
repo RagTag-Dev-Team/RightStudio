@@ -44,7 +44,7 @@ const TableCard = (props: CardProps) => {
       <Typography variant='h5'>{title}</Typography>
       <div className='border rounded overflow-x-auto'>
         <table className={tableStyles.table}>
-          <thead>
+          <thead className='border-0'>
             <tr>
               <th className='is-2/4'>Type</th>
               <th className='is-1/4'>Email</th>

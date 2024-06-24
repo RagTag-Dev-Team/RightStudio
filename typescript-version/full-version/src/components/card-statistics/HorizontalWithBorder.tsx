@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import type { CardProps } from '@mui/material/Card'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Types Imports
 import type { ThemeColor } from '@core/types'
 import type { CardStatsHorizontalWithBorderProps } from '@/types/pages/widgetTypes'
@@ -28,7 +31,7 @@ const Card = styled(MuiCard)<Props>(({ color }) => ({
   '&:hover': {
     borderBottomWidth: '3px',
     borderBottomColor: `var(--mui-palette-${color}-main) !important`,
-    boxShadow: 'var(--mui-customShadows-xl)',
+    boxShadow: 'var(--mui-customShadows-lg)',
     marginBlockEnd: '-1px'
   }
 }))
@@ -42,7 +45,7 @@ const HorizontalWithBorder = (props: CardStatsHorizontalWithBorderProps) => {
       <CardContent className='flex flex-col gap-1'>
         <div className='flex items-center gap-4'>
           <CustomAvatar color={color} skin='light' variant='rounded'>
-            <i className={avatarIcon} />
+            <i className={classnames(avatarIcon, 'text-[28px]')} />
           </CustomAvatar>
           <Typography variant='h4'>{stats}</Typography>
         </div>

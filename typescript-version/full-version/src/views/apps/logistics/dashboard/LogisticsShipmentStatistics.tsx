@@ -71,7 +71,7 @@ const MonthButton = () => {
       <ButtonGroup variant='tonal' ref={anchorRef} aria-label='split button' size='small'>
         <Button>{options[selectedIndex]}</Button>
         <Button
-          className='pli-0'
+          className='pli-0 plb-[5px]'
           aria-haspopup='menu'
           onClick={handleToggle}
           aria-label='select merge strategy'

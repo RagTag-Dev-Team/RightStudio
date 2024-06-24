@@ -122,7 +122,7 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) =>
       columnHelper.accessor('location', {
         header: 'Location',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-4'>
             <CustomAvatar skin='light' color='secondary'>
               <i className='tabler-car text-[28px]' />
             </CustomAvatar>
@@ -160,7 +160,12 @@ const LogisticsOverviewTable = ({ vehicleData }: { vehicleData?: Vehicle[] }) =>
         header: 'Progress',
         cell: ({ row }) => (
           <div className='flex items-center gap-2 min-is-48'>
-            <LinearProgress color='primary' value={row.original.progress} variant='determinate' className='is-full' />
+            <LinearProgress
+              color='primary'
+              value={row.original.progress}
+              variant='determinate'
+              className='bs-2 is-full'
+            />
             <Typography>{`${row.original.progress}%`}</Typography>
           </div>
         )

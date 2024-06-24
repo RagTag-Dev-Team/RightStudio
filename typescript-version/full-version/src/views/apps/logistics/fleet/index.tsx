@@ -113,7 +113,7 @@ const Fleet = () => {
         <CustomIconButton
           variant='contained'
           color='primary'
-          className='absolute top-4 left-4 z-10 bg-backgroundPaper text-textPrimary hover:bg-backgroundPaper focus:bg-backgroundPaper active:bg-backgroundPaper'
+          className='absolute top-4 left-4 z-10 bg-backgroundPaper text-textPrimary shadow-xs shadow-gray-500 hover:bg-backgroundPaper focus:bg-backgroundPaper active:bg-backgroundPaper'
           onClick={() => {
             setSidebarOpen(true)
             setBackdropOpen(true)
