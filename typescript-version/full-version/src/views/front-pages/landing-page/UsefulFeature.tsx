@@ -102,7 +102,7 @@ const UsefulFeature = () => {
                 to start your next project
               </Typography>
             </div>
-            <Typography className='font-medium text-center'>
+            <Typography className='text-center'>
               Not just a set of tools, the package includes ready-to-deploy conceptual application.
             </Typography>
           </div>
@@ -113,7 +113,9 @@ const UsefulFeature = () => {
               <Grid item xs={12} sm={6} lg={4} key={index}>
                 <div className='flex flex-col gap-2 justify-center items-center'>
                   {item.icon}
-                  <Typography variant='h5'>{item.title}</Typography>
+                  <Typography className='mbs-2' variant='h5'>
+                    {item.title}
+                  </Typography>
                   <Typography className='max-is-[364px] text-center'>{item.description}</Typography>
                 </div>
               </Grid>

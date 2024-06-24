@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
-import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 
 // Third-party Imports
@@ -17,6 +16,7 @@ import type { Mode } from '@core/types'
 // Component Imports
 import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Hooks Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -51,25 +51,33 @@ const Footer = ({ mode }: { mode: Mode }) => {
                   Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique
                   Layouts.
                 </Typography>
-                <div className='flex gap-4'>
-                  <TextField
+                <div className='flex items-end'>
+                  <CustomTextField
                     size='small'
                     className={styles.inputBorder}
                     label='Subscribe to newsletter'
                     placeholder='Your email'
                     sx={{
-                      ' & .MuiInputBase-root:hover:not(.Mui-focused) fieldset': {
-                        borderColor: 'rgb(var(--mui-mainColorChannels-dark) / 0.6) !important'
-                      },
-                      '& .MuiInputBase-root.Mui-focused fieldset': {
-                        borderColor: 'var(--mui-palette-primary-main)!important'
-                      },
-                      '& .MuiFormLabel-root.Mui-focused': {
-                        color: 'var(--mui-palette-primary-main) !important'
+                      '& .MuiInputBase-root': {
+                        borderStartEndRadius: '0 !important',
+                        borderEndEndRadius: '0 !important',
+                        '&:not(.Mui-focused)': {
+                          borderColor: 'rgb(var(--mui-mainColorChannels-dark) / 0.22)'
+                        },
+                        '&:hover:not(.Mui-focused)': {
+                          borderColor: 'rgb(var(--mui-palette-background-paperChannel)/0.6) !important'
+                        }
                       }
                     }}
                   />
-                  <Button variant='contained' color='primary'>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    sx={{
+                      borderStartStartRadius: 0,
+                      borderEndStartRadius: 0
+                    }}
+                  >
                     Subscribe
                   </Button>
                 </div>
@@ -174,13 +182,13 @@ const Footer = ({ mode }: { mode: Mode }) => {
           </p>
           <div className='flex gap-6 items-center'>
             <IconButton component={Link} size='small' href='https://github.com/pixinvent' target='_blank'>
-              <i className='tabler-brand-github text-white text-lg' />
+              <i className='tabler-brand-github-filled text-white text-lg' />
             </IconButton>
             <IconButton component={Link} size='small' href='https://www.facebook.com/pixinvents/' target='_blank'>
-              <i className='tabler-brand-facebook text-white text-lg' />
+              <i className='tabler-brand-facebook-filled text-white text-lg' />
             </IconButton>
             <IconButton component={Link} size='small' href='https://x.com/pixinvents' target='_blank'>
-              <i className='tabler-brand-twitter text-white text-lg' />
+              <i className='tabler-brand-twitter-filled text-white text-lg' />
             </IconButton>
             <IconButton
               component={Link}
@@ -188,7 +196,7 @@ const Footer = ({ mode }: { mode: Mode }) => {
               href='https://www.youtube.com/channel/UClOcB3o1goJ293ri_Hxpklg'
               target='_blank'
             >
-              <i className='tabler-brand-youtube text-white text-lg' />
+              <i className='tabler-brand-youtube-filled text-white text-lg' />
             </IconButton>
           </div>
         </div>

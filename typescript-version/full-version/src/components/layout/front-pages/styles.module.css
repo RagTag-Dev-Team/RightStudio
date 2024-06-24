@@ -20,7 +20,7 @@
 
   .navbar {
     inline-size: calc(100% - 48px);
-    padding-block: 0.5rem;
+    padding-block: 0.438rem;
     padding-inline: 1.5rem;
     margin-inline: auto;
     margin-block-start: 1rem;
@@ -29,14 +29,14 @@
       background-color 0.3s ease-in-out,
       border-color 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out;
-    background-color: rgb(var(--mui-palette-background-paperChannel) / 0.64);
-    border: 1px solid rgb(var(--mui-palette-background-paperChannel) / 0.78);
+    background-color: rgb(var(--mui-palette-background-paperChannel) / 0.38);
+    border: 2px solid rgb(var(--mui-palette-background-paperChannel) / 0.68);
     border-radius: var(--mui-shape-borderRadius);
 
     &.headerScrolled {
       background-color: var(--mui-palette-background-paper);
       border-color: var(--mui-palette-background-paper);
-      box-shadow: var(--mui-shadows-2);
+      box-shadow: var(--mui-customShadows-sm);
     }
 
     @media (min-width: 600px) {

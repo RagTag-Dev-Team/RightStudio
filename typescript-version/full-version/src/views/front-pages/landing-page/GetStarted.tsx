@@ -11,9 +11,6 @@ import classnames from 'classnames'
 // Type Imports
 import type { Mode } from '@core/types'
 
-// Component Imports
-import DirectionalIcon from '@components/DirectionalIcon'
-
 // Hooks Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
 
@@ -42,20 +39,15 @@ const GetStarted = ({ mode }: { mode: Mode }) => {
         )}
       >
         <div className='flex flex-col items-start gap-y-8 gap-x-4 pbs-9 lg:plb-9 z-[1]'>
-          <div className='flex flex-col gap-1'>
-            <Typography variant='h5' color='primary' className='font-bold'>
+          <div className='flex flex-col'>
+            <Typography variant='h3' color='primary' className='font-bold text-[2.125rem]'>
               Ready to Get Started?
             </Typography>
-            <Typography className='font-medium' color='text.secondary'>
+            <Typography variant='h5' color='text.secondary'>
               Start your project with a 14-day free trial
             </Typography>
           </div>
-          <Button
-            component={Link}
-            href='/front-pages/payment'
-            variant='contained'
-            endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
-          >
+          <Button component={Link} href='/front-pages/payment' variant='contained'>
             Get Started
           </Button>
         </div>

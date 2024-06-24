@@ -61,7 +61,7 @@ const Faqs = () => {
         {faqsData.map((data, index) => {
           return (
             <Accordion key={index} defaultExpanded={data.defaultExpanded}>
-              <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
+              <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'} className='font-medium'>
                 {data.question}
               </AccordionSummary>
               <AccordionDetails className='text-textSecondary'>{data.answer}</AccordionDetails>

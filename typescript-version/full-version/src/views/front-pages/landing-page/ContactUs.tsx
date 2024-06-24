@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 
@@ -15,6 +14,7 @@ import classnames from 'classnames'
 
 // Components Imports
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
 import { useIntersection } from '@/hooks/useIntersection'
@@ -68,7 +68,7 @@ const ContactUs = () => {
                 together
               </Typography>
             </div>
-            <Typography className='font-medium text-center'>Any question or remark? just write us a message</Typography>
+            <Typography className='text-center'>Any question or remark? just write us a message</Typography>
           </div>
         </div>
         <div className='lg:pis-[38px]'>
@@ -77,7 +77,7 @@ const ContactUs = () => {
               <div className={classnames('border p-[10px] relative', styles.contactRadius)}>
                 <img
                   src='/images/front-pages/landing-page/contact-border.png'
-                  className='absolute -block-start-[8%] -inline-start-[10%] max-is-full max-lg:hidden '
+                  className='absolute -block-start-[7%] -inline-start-[8%] max-is-full max-lg:hidden '
                   alt='contact-border'
                   width='180'
                 />
@@ -88,7 +88,7 @@ const ContactUs = () => {
                 />
                 <div className='flex justify-between flex-wrap gap-4 pli-6 pbs-4 pbe-[10px]'>
                   <div className='flex gap-3'>
-                    <CustomAvatar variant='rounded' skin='light' color='primary'>
+                    <CustomAvatar variant='rounded' size={36} skin='light' color='primary'>
                       <i className='tabler-mail' />
                     </CustomAvatar>
                     <div>
@@ -99,7 +99,7 @@ const ContactUs = () => {
                     </div>
                   </div>
                   <div className='flex gap-3'>
-                    <CustomAvatar variant='rounded' skin='light' color='success'>
+                    <CustomAvatar variant='rounded' size={36} skin='light' color='success'>
                       <i className='tabler-phone' />
                     </CustomAvatar>
                     <div>
@@ -122,12 +122,12 @@ const ContactUs = () => {
                       have pre-sales questions, you&#39;re at the right place.
                     </Typography>
                   </div>
-                  <form className='flex flex-col items-start gap-5'>
+                  <form className='flex flex-col items-start gap-6'>
                     <div className='flex gap-5 is-full'>
-                      <TextField fullWidth label='Full name' id='name-input' />
-                      <TextField fullWidth label='Email address' id='email-input' type='email' />
+                      <CustomTextField fullWidth label='Full name' id='name-input' />
+                      <CustomTextField fullWidth label='Email address' id='email-input' type='email' />
                     </div>
-                    <TextField fullWidth multiline rows={4} label='Message' id='message-input' />
+                    <CustomTextField fullWidth multiline rows={7} label='Message' id='message-input' />
                     <Button variant='contained'>Send Inquiry</Button>
                   </form>
                 </CardContent>

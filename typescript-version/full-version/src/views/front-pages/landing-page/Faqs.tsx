@@ -81,7 +81,7 @@ const Faqs = () => {
   }, [])
 
   return (
-    <section id='faq' ref={ref} className={classnames('plb-[100px] bg-backgroundDefault', styles.cardStartRadius)}>
+    <section id='faq' ref={ref} className={classnames('plb-[100px] bg-backgroundDefault', styles.sectionStartRadius)}>
       <div className={classnames('flex flex-col gap-16', frontCommonStyles.layoutSpacing)}>
         <div className='flex flex-col gap-y-4 items-center justify-center'>
           <Chip size='small' variant='tonal' color='primary' label='FAQ' />
@@ -99,7 +99,7 @@ const Faqs = () => {
                 </span>
               </Typography>
             </div>
-            <Typography className='font-medium text-center'>
+            <Typography className='text-center'>
               Browse through these FAQs to find answers to commonly asked questions.
             </Typography>
           </div>
@@ -118,7 +118,12 @@ const Faqs = () => {
                 {FaqsData.map((data, index) => {
                   return (
                     <Accordion key={index} defaultExpanded={data.active}>
-                      <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
+                      <AccordionSummary
+                        aria-controls={data.id + '-content'}
+                        id={data.id + '-header'}
+                        className='font-medium'
+                        color='text.primary'
+                      >
                         {data.question}
                       </AccordionSummary>
                       <AccordionDetails className='text-textSecondary'>{data.answer}</AccordionDetails>

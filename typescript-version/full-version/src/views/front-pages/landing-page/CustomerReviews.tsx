@@ -172,7 +172,7 @@ const CustomerReviews = () => {
   )
 
   return (
-    <section className={classnames('flex flex-col gap-8 plb-[100px] bg-backgroundDefault', styles.cardStartRadius)}>
+    <section className={classnames('flex flex-col gap-8 plb-[100px] bg-backgroundDefault', styles.sectionStartRadius)}>
       <div
         className={classnames('flex max-md:flex-col max-sm:flex-wrap is-full gap-6', frontCommonStyles.layoutSpacing)}
       >
@@ -191,7 +191,7 @@ const CustomerReviews = () => {
             </Typography>
             <Typography>See what our customers have to say about their experience.</Typography>
           </div>
-          <div className='flex gap-x-6 mbs-11'>
+          <div className='flex gap-x-4 mbs-11'>
             <CustomIconButton color='primary' variant='tonal' onClick={() => instanceRef.current?.prev()}>
               <i className='tabler-chevron-left' />
             </CustomIconButton>

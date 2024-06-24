@@ -127,6 +127,7 @@ const KnowledgeBase = () => {
                             color='text.primary'
                             component={Link}
                             href='/front-pages/help-center/article/how-to-add-product-in-cart'
+                            className='truncate'
                           >
                             {data.title}
                           </Typography>
@@ -141,7 +142,13 @@ const KnowledgeBase = () => {
                   <Button
                     component={Link}
                     href='/front-pages/help-center/article/how-to-add-product-in-cart'
-                    endIcon={<DirectionalIcon ltrIconClass='tabler-arrow-right' rtlIconClass='tabler-arrow-left' />}
+                    endIcon={
+                      <DirectionalIcon
+                        className='text-lg'
+                        ltrIconClass='tabler-arrow-right'
+                        rtlIconClass='tabler-arrow-left'
+                      />
+                    }
                   >
                     See all 6 articles
                   </Button>

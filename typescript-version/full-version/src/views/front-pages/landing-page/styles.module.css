@@ -64,7 +64,7 @@
   border-end-start-radius: var(--mui-shape-borderRadius);
 }
 
-.cardStartRadius {
+.sectionStartRadius {
   border-start-start-radius: 3.75rem;
   border-start-end-radius: 3.75rem;
 }

@@ -101,7 +101,7 @@ const OurTeam = () => {
                 by Real People
               </Typography>
             </div>
-            <Typography className='font-medium text-center'>Who is behind these great-looking interfaces?</Typography>
+            <Typography className='text-center'>Who is behind these great-looking interfaces?</Typography>
           </div>
         </div>
         <Grid container rowSpacing={16} columnSpacing={6} className='pbs-[100px]'>

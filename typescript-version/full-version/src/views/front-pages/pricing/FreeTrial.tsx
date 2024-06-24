@@ -14,11 +14,11 @@ import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 const FreeTrial = () => {
   return (
-    <section className='bg-[var(--mui-palette-primary-mainOpacity)]'>
+    <section className='bg-[var(--mui-palette-primary-lightOpacity)]'>
       <div className={classnames('flex justify-between flex-wrap md:relative', frontCommonStyles.layoutSpacing)}>
         <Grid container spacing={2}>
           <Grid xs={12} md={6}>
-            <div className='flex flex-col gap-11 md:mis-2 items-center md:items-start justify-center plb-10'>
+            <div className='flex flex-col gap-11 md:mis-2 items-center md:items-start justify-center plb-12'>
               <div className='flex flex-col gap-2 mis-2 md:mis-0'>
                 <Typography variant='h4' color='primary' className='font-medium'>
                   Still not convinced? Start with a 14-day FREE trial!

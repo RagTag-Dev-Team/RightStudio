@@ -86,7 +86,7 @@ const PricingPlan = () => {
       id='pricing-plans'
       className={classnames(
         'flex flex-col gap-8 lg:gap-12 plb-[100px] bg-backgroundDefault rounded-[60px]',
-        styles.cardStartRadius
+        styles.sectionStartRadius
       )}
     >
       <div className={classnames('is-full', frontCommonStyles.layoutSpacing)}>
@@ -106,7 +106,7 @@ const PricingPlan = () => {
                 designed for you
               </Typography>
             </div>
-            <Typography className='font-medium text-center'>
+            <Typography className='text-center'>
               All plans include 40+ advanced tools and features to boost your product.
               <br />
               Choose the best plan to fit your needs.
@@ -129,20 +129,22 @@ const PricingPlan = () => {
         <Grid container spacing={6}>
           {pricingPlans.map((plan, index) => (
             <Grid item key={index} xs={12} lg={4}>
-              <Card className={`${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`}>
+              <Card className={`${plan.current && 'border-2 border-[var(--mui-palette-primary-main)] shadow-xl'}`}>
                 <CardContent className='flex flex-col gap-8 p-8'>
                   <div className='is-full flex flex-col items-center gap-3'>
                     <img src={plan.img} alt={plan.img} height='88' width='86' className='text-center' />
                   </div>
                   <div className='flex flex-col items-center gap-y-[2px] relative'>
-                    <Typography className='text-center' variant='h5'>
+                    <Typography className='text-center' variant='h4'>
                       {plan.title}
                     </Typography>
                     <div className='flex items-baseline gap-x-1'>
                       <Typography variant='h2' color='primary' className='font-extrabold'>
                         ${pricingPlan === 'monthly' ? plan.monthlyPay : plan.annualPay}
                       </Typography>
-                      <Typography color='text.disabled'>/mo</Typography>
+                      <Typography color='text.disabled' className='font-medium'>
+                        /mo
+                      </Typography>
                     </div>
                     {pricingPlan === 'annually' && (
                       <Typography color='text.disabled' className='absolute block-start-[100%]'>

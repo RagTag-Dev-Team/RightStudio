@@ -75,11 +75,17 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
             No coding required to make customizations. The live customizer has everything your marketing need.
           </Typography>
           <div className='flex mbs-6 items-baseline justify-center relative'>
-            <div className='flex gap-2 absolute inline-start-[2%] block-start-[41%] max-md:hidden'>
+            <div className='flex gap-2 absolute inline-start-[0%] block-start-[41%] max-md:hidden'>
               <Typography className='font-medium'>Join community</Typography>
               <img src='/images/front-pages/landing-page/join-community-arrow.png' alt='arrow' height='48' width='60' />
             </div>
-            <Button component={Link} href='/front-pages/landing-page#pricing-plans' variant='contained' color='primary'>
+            <Button
+              component={Link}
+              size='large'
+              href='/front-pages/landing-page#pricing-plans'
+              variant='contained'
+              color='primary'
+            >
               Get Early Access
             </Button>
           </div>

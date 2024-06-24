@@ -154,13 +154,13 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                 <div className='flex flex-col gap-6 mbe-1'>
                   <Typography variant='h4'>Billing Details</Typography>
                   <div className='flex sm:flex-row flex-col gap-5'>
-                    <CustomTextField fullWidth label='Email Address' defaultValue='admin@master.com' type='email' />
+                    <CustomTextField fullWidth label='Email Address' placeholder='john.deo@gmail.com' type='email' />
                     <CustomTextField
                       fullWidth
                       type='password'
                       id='password-input'
                       label='Password'
-                      defaultValue='admin'
+                      placeholder='Password'
                     />
                   </div>
                   <div className='flex sm:flex-row flex-col gap-5'>
@@ -183,7 +183,7 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                     <CustomTextField
                       label='Billing Zip / Postal Code'
                       id='postal-code-input'
-                      placeholder='123456'
+                      placeholder='Billing Zip / Postal Code'
                       fullWidth
                       type='number'
                     />

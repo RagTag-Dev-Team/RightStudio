@@ -138,14 +138,19 @@ const Plans = () => {
     <section className='md:plb-[100px] plb-[50px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>
         <div className='flex flex-col text-center gap-2 mbe-6'>
-          <Typography variant='h4'>Pick a plan that works best for you</Typography>
+          <Typography variant='h3'>Pick a plan that works best for you</Typography>
           <Typography>Stay cool, we have a 48-hour money back guarantee!</Typography>
         </div>
-        <div className='overflow-x-auto border rounded'>
+        <div className='overflow-x-auto border-x border-be rounded'>
           <table className={tableStyles.table}>
             <thead className={styles.tableHead}>
               <tr>
-                <th>Time</th>
+                <th>
+                  <>FEATURES</>
+                  <Typography variant='body2' className='capitalize'>
+                    Native Front Features
+                  </Typography>
+                </th>
                 <th>
                   <>STARTER</>
                   <Typography variant='body2' className='capitalize'>
@@ -174,7 +179,9 @@ const Plans = () => {
             <tbody className={classnames('border-be', styles.tableBody)}>
               {features.map((feature, index) => (
                 <tr key={index}>
-                  <td>{feature.feature}</td>
+                  <td>
+                    <Typography color='text.primary'>{feature.feature}</Typography>
+                  </td>
                   <td className='flex items-center justify-center'>
                     {feature.starter ? (
                       <CustomAvatar skin='light' color='primary' size={20}>

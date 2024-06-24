@@ -319,7 +319,9 @@ const CourseTable = ({ courseData }: { courseData?: Course[] }) => {
                   return (
                     <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                       {row.getVisibleCells().map(cell => (
-                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                        <td key={cell.id} className='first:is-12'>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
                       ))}
                     </tr>
                   )
