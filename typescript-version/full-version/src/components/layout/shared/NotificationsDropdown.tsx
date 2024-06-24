@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
 
 // MUI Imports
@@ -58,10 +58,10 @@ export type NotificationsType = {
 
 const ScrollWrapper = ({ children, hidden }: { children: ReactNode; hidden: boolean }) => {
   if (hidden) {
-    return <div className='overflow-x-hidden max-bs-[420px]'>{children}</div>
+    return <div className='overflow-x-hidden bs-full'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar className='max-bs-[420px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
+      <PerfectScrollbar className='bs-full' options={{ wheelPropagation: false, suppressScrollX: true }}>
         {children}
       </PerfectScrollbar>
     )
@@ -95,6 +95,7 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
 
   // Refs
   const anchorRef = useRef<HTMLButtonElement>(null)
+  const ref = useRef<HTMLDivElement | null>(null)
 
   // Hooks
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
@@ -137,6 +138,19 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
     setNotificationsState(newNotifications)
   }
 
+  useEffect(() => {
+    const adjustPopoverHeight = () => {
+      if (ref.current) {
+        // Calculate available height, subtracting any fixed UI elements' height as necessary
+        const availableHeight = window.innerHeight - 100
+
+        ref.current.style.height = `${Math.min(availableHeight, 550)}px`
+      }
+    }
+
+    window.addEventListener('resize', adjustPopoverHeight)
+  }, [])
+
   return (
     <>
       <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
@@ -156,10 +170,11 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
         transition
         disablePortal
         placement='bottom-end'
+        ref={ref}
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: 'is-full !mbs-4 z-[1]',
+              className: 'is-full !mbs-4 z-[1] max-bs-[550px] bs-[550px]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -169,16 +184,17 @@ const NotificationDropdown = ({ notifications }: { notifications: NotificationsT
                 }
               ]
             }
-          : { className: 'is-96 !mbs-4 z-[1]' })}
+          : { className: 'is-96 !mbs-4 z-[1] max-bs-[550px] bs-[550px]' })}
       >
         {({ TransitionProps, placement }) => (
           <Fade {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
             <Paper
               elevation={settings.skin === 'bordered' ? 0 : 8}
+              className='bs-full'
               {...(settings.skin === 'bordered' && { className: 'border' })}
             >
               <ClickAwayListener onClickAway={handleClose}>
-                <div>
+                <div className='bs-full flex flex-col'>
                   <div className='flex items-center justify-between plb-2 pli-4 is-full gap-4'>
                     <Typography variant='h6' className='flex-auto'>
                       Notifications

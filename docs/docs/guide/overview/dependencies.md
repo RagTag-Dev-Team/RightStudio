@@ -190,3 +190,9 @@ You may add / update / remove any other dependencies according to your requireme
 ```json
 "react-dropzone"
 ```
+
+## Input otp
+
+```json
+"input-otp"
+```

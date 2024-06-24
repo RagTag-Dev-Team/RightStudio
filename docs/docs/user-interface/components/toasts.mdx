@@ -16,7 +16,7 @@ import SourceCodeToastsEmoji from '!!raw-loader!@docPages/components/toasts/Toas
 import ToastsThemed from '@docPages/components/toasts/ToastsThemed'
 import SourceCodeToastsThemed from '!!raw-loader!@docPages/components/toasts/ToastsThemed'
 import ToastsCustom from '@docPages/components/toasts/ToastsCustom'
-import SourceCodeToastsCustom from '!!raw-loader!@docPages/../source-code/toasts/ToastsCustom'
+import SourceCodeToastsCustom from '!!raw-loader!@docPages/components/toasts/ToastsCustom'
 import ToastsSuccess from '@docPages/components/toasts/ToastsSuccess'
 import SourceCodeToastsSuccess from '!!raw-loader!@docPages/components/toasts/ToastsSuccess'
 import ToastsPromise from '@docPages/components/toasts/ToastsPromise'
@@ -31,6 +31,8 @@ import ToastsPreventDuplicate from '@docPages/components/toasts/ToastsPreventDup
 import SourceCodeToastsPreventDuplicate from '!!raw-loader!@docPages/components/toasts/ToastsPreventDuplicate'
 import ToastsFlip from '@docPages/components/toasts/ToastsFlip'
 import SourceCodeToastsFlip from '!!raw-loader!@docPages/components/toasts/ToastsFlip'
+
+export const updatedSourceCodeToastsCustom = SourceCodeToastsCustom.replace(/const avatarUrl.*/, '').replace(/src={avatarUrl}/, "src='/images/avatars/3.png'")
 
 <h1 className='!m-0'>React Toastify</h1>
 
@@ -75,7 +77,7 @@ import SourceCodeToastsFlip from '!!raw-loader!@docPages/components/toasts/Toast
     </CardSnippet>
   </Grid>
   <Grid item xs={12} sm={6} md={4}>
-    <CardSnippet code={SourceCodeToastsCustom} showIconInCardContent>
+    <CardSnippet code={updatedSourceCodeToastsCustom} showIconInCardContent>
       <ToastsCustom />
     </CardSnippet>
   </Grid>
