@@ -20,7 +20,7 @@ import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
 import styles from './styles.module.css'
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className={frontLayoutClasses.footer}>
       <div className='relative'>

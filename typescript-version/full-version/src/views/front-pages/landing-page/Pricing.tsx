@@ -70,7 +70,7 @@ const pricingPlans = [
   }
 ]
 
-function PricingPlan() {
+const PricingPlan = () => {
   // States
   const [val, setVal] = useState<number>(458)
 
