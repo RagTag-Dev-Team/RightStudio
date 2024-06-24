@@ -213,14 +213,14 @@ const NavSearch = () => {
     <>
       {isBreakpointReached || settings.layout === 'horizontal' ? (
         <IconButton onClick={() => setOpen(true)}>
-          <i className='ri-search-line' />
+          <i className='ri-search-line text-textPrimary' />
         </IconButton>
       ) : (
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setOpen(true)}>
           <IconButton onClick={() => setOpen(true)}>
-            <i className='ri-search-line' />
+            <i className='ri-search-line text-textPrimary' />
           </IconButton>
-          <div className='whitespace-nowrap select-none'>Search ⌘K</div>
+          <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>
       )}
       <CommandDialog open={open} onOpenChange={setOpen}>
