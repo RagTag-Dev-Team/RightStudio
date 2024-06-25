@@ -7,6 +7,7 @@ import Link from 'next/link'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import { useColorScheme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -16,7 +17,6 @@ import type { SystemMode } from '@core/types'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
-import { useSettings } from '@core/hooks/useSettings'
 
 // Styles Imports
 import styles from './styles.module.css'
@@ -35,12 +35,12 @@ const HeroSection = ({ mode }: { mode: SystemMode }) => {
   const heroSectionBgDark = '/images/front-pages/landing-page/hero-bg-dark.png'
 
   // Hooks
-  const { settings } = useSettings()
+  const { mode: muiMode } = useColorScheme()
   const dashboardImage = useImageVariant(mode, dashboardImageLight, dashboardImageDark)
   const elementsImage = useImageVariant(mode, elementsImageLight, elementsImageDark)
   const heroSectionBg = useImageVariant(mode, heroSectionBgLight, heroSectionBgDark)
 
-  const _mode = (settings.mode === 'system' ? mode : settings.mode) || mode
+  const _mode = (muiMode === 'system' ? mode : muiMode) || mode
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
