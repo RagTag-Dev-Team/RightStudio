@@ -38,6 +38,7 @@ type Footer = {
 
 export type Config = {
   templateName: string
+  homePageUrl: string
   settingsCookieName: string
   mode: Mode
   skin: Skin
@@ -54,6 +55,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'Vuexy',
+  homePageUrl: '/dashboards/crm',
   settingsCookieName: 'vuexy-mui-next-demo-6',
   mode: 'dark', // 'system', 'light', 'dark'
   skin: 'bordered', // 'default', 'bordered'
