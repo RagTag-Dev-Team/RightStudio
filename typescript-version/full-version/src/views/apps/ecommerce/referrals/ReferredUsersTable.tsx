@@ -254,9 +254,7 @@ const ReferredUsersTable = ({ referralsData }: { referralsData?: ReferralsType[]
                     return (
                       <tr key={row.id} className={classnames({ selected: row.getIsSelected() })}>
                         {row.getVisibleCells().map(cell => (
-                          <td key={cell.id} className='first:is-14'>
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          </td>
+                          <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                         ))}
                       </tr>
                     )

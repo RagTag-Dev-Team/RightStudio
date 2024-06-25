@@ -131,6 +131,7 @@
   inline-size: 50px;
   padding: 8px;
   cursor: pointer;
+
   &.active {
     border-color: var(--primary-color);
     outline: 1px solid var(--primary-color);
@@ -148,11 +149,8 @@
 
   &.active {
     color: var(--primary-color);
+    background-color: var(--mui-palette-primary-lighterOpacity);
   }
-}
-.modeWrapper.active {
-  color: var(--primary-color);
-  background-color: var(--mui-palette-primary-lighterOpacity);
 }
 
 .hr {
