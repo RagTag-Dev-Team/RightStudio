@@ -76,7 +76,7 @@
   padding-inline: 16px;
 }
 
-.active {
+.active-searchItem {
   background: var(--mui-palette-primary-lightOpacity);
   color: var(--primary-color);
 }
@@ -85,7 +85,7 @@
   background: var(--mui-palette-action-hover);
 }
 
-[cmdk-item][data-selected='true'].active {
+[cmdk-item][data-selected='true'].active-searchItem {
   background: var(--mui-palette-primary-mainOpacity);
   color: var(--primary-color);
 }
