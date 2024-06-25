@@ -92,7 +92,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'images/docusaurus-social-card.jpg',
+    image: 'images/docusaurus-social-card.png',
     navbar: {
       title: 'Vuexy',
       logo: {

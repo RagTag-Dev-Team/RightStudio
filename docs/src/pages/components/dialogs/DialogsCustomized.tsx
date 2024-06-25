@@ -28,7 +28,7 @@ const DialogsCustomized = () => {
         onClose={handleClose}
         aria-labelledby='customized-dialog-title'
         open={open}
-        sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}
+        PaperProps={{ sx: { overflow: 'visible' } }}
       >
         <DialogTitle id='customized-dialog-title'>
           <Typography variant='h5' component='span'>
