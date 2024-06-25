@@ -10,12 +10,12 @@ import { db as eCommerceData } from '@/fake-db/apps/ecommerce'
 import { db as academyData } from '@/fake-db/apps/academy'
 import { db as vehicleData } from '@/fake-db/apps/logistics'
 import { db as invoiceData } from '@/fake-db/apps/invoice'
-import { db as userData } from '@/fake-db/apps/user-list'
+import { db as userData } from '@/fake-db/apps/userList'
 import { db as permissionData } from '@/fake-db/apps/permissions'
-import { db as profileData } from '@/fake-db/pages/user-profile'
+import { db as profileData } from '@/fake-db/pages/userProfile'
 import { db as faqData } from '@/fake-db/pages/faq'
 import { db as pricingData } from '@/fake-db/pages/pricing'
-import { db as statisticsData } from '@/fake-db/pages/widget-examples'
+import { db as statisticsData } from '@/fake-db/pages/widgetExamples'
 
 export const getEcommerceData = async () => {
   return eCommerceData

@@ -10,7 +10,7 @@
 import { NextResponse } from 'next/server'
 
 // Data Imports
-import { db } from '@/fake-db/pages/userProfile'
+import { db } from '@/fake-db/pages/widgetExamples'
 
 export async function GET() {
   return NextResponse.json(db)
