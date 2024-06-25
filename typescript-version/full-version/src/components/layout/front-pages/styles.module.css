@@ -25,10 +25,6 @@
     margin-inline: auto;
     margin-block-start: 1rem;
     pointer-events: auto;
-    transition:
-      background-color 0.3s ease-in-out,
-      border-color 0.3s ease-in-out,
-      box-shadow 0.3s ease-in-out;
     background-color: rgb(var(--mui-palette-background-paperChannel) / 0.38);
     border: 2px solid rgb(var(--mui-palette-background-paperChannel) / 0.68);
     border-radius: var(--mui-shape-borderRadius);

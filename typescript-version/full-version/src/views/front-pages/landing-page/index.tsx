@@ -4,7 +4,7 @@
 import { useEffect } from 'react'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Component Imports
 import HeroSection from './HeroSection'
@@ -18,7 +18,7 @@ import GetStarted from './GetStarted'
 import ContactUs from './ContactUs'
 import { useSettings } from '@core/hooks/useSettings'
 
-const LandingPageWrapper = ({ mode }: { mode: Mode }) => {
+const LandingPageWrapper = ({ mode }: { mode: SystemMode }) => {
   // Hooks
   const { updatePageSettings } = useSettings()
 

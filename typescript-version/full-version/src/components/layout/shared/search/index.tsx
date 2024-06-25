@@ -213,12 +213,12 @@ const NavSearch = () => {
     <>
       {isBreakpointReached || settings.layout === 'horizontal' ? (
         <IconButton onClick={() => setOpen(true)}>
-          <i className='tabler-search text-textPrimary' />
+          <i className='tabler-search text-textPrimary text-2xl' />
         </IconButton>
       ) : (
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setOpen(true)}>
           <IconButton onClick={() => setOpen(true)}>
-            <i className='tabler-search text-textPrimary' />
+            <i className='tabler-search text-textPrimary text-2xl' />
           </IconButton>
           <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>

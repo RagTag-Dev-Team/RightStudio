@@ -141,7 +141,7 @@ const menuItemStyles = (verticalNavOptions: VerticalNavState, theme: Theme): Men
     subMenuContent: ({ level }) => ({
       zIndex: 'calc(var(--drawer-z-index) + 1)',
       borderRadius: 'var(--border-radius)',
-      backgroundColor: 'var(--mui-palette-background-paper)',
+      backgroundColor: popoutCollapsed ? 'var(--mui-palette-background-paper)' : 'transparent',
       ...(popoutCollapsed && {
         '& > ul, & > div > ul': {
           [`& > li:not(:last-child), & > li > .${menuClasses.button}:not(:last-child)`]: {

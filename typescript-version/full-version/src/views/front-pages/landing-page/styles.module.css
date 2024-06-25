@@ -8,24 +8,23 @@
   z-index: 0;
   border-end-start-radius: 3.5rem;
   border-end-end-radius: 3.5rem;
-  & {
+  &.bgLight {
     background: linear-gradient(138.18deg, #eae8fd 0%, #fce5e6 94.44%);
   }
-  [data-mui-color-scheme='dark'] & {
+  &.bgDark {
     background: var(--mui-palette-background-default);
   }
 }
 
 .heroSecDashboard {
-  inline-size: 85%;
-  z-index: -1;
+  inline-size: 100%;
 }
 
 .heroSectionElements {
-  inset-block-start: 4%;
+  inset-block-start: 0%;
   inset-inline-end: 0%;
   img {
-    inline-size: 76%;
+    inline-size: 100%;
   }
 }
 

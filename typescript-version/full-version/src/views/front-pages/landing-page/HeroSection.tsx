@@ -12,16 +12,17 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
+import { useSettings } from '@core/hooks/useSettings'
 
 // Styles Imports
 import styles from './styles.module.css'
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
-const HeroSection = ({ mode }: { mode: Mode }) => {
+const HeroSection = ({ mode }: { mode: SystemMode }) => {
   // States
   const [transform, setTransform] = useState('')
 
@@ -34,9 +35,12 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
   const heroSectionBgDark = '/images/front-pages/landing-page/hero-bg-dark.png'
 
   // Hooks
+  const { settings } = useSettings()
   const dashboardImage = useImageVariant(mode, dashboardImageLight, dashboardImageDark)
   const elementsImage = useImageVariant(mode, elementsImageLight, elementsImageDark)
   const heroSectionBg = useImageVariant(mode, heroSectionBgLight, heroSectionBgDark)
+
+  const _mode = (settings.mode === 'system' ? mode : settings.mode) || mode
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -62,7 +66,10 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
       <img
         src={heroSectionBg}
         alt='hero-bg'
-        className={classnames('bs-[95%] sm:bs-[85%] md:bs-[80%]', styles.heroSectionBg)}
+        className={classnames('bs-[95%] sm:bs-[85%] md:bs-[80%]', styles.heroSectionBg, {
+          [styles.bgLight]: _mode === 'light',
+          [styles.bgDark]: _mode === 'dark'
+        })}
       />
       <div className={classnames('pbs-[88px] overflow-hidden', frontCommonStyles.layoutSpacing)}>
         <div className='md:max-is-[550px] mbs-0 mbe-7 mli-auto text-center relative'>
@@ -95,7 +102,7 @@ const HeroSection = ({ mode }: { mode: Mode }) => {
         className={classnames('relative text-center', frontCommonStyles.layoutSpacing)}
         style={{ transform: transform }}
       >
-        <Link href='/' target='_blank'>
+        <Link href='/' target='_blank' className='block relative'>
           <img src={dashboardImage} alt='dashboard-image' className={classnames('mli-auto', styles.heroSecDashboard)} />
           <div className={classnames('absolute', styles.heroSectionElements)}>
             <img src={elementsImage} alt='dashboard-elements' />

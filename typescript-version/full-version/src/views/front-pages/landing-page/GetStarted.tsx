@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+import type { SystemMode } from '@core/types'
 
 // Hooks Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -17,7 +17,7 @@ import { useImageVariant } from '@core/hooks/useImageVariant'
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
-const GetStarted = ({ mode }: { mode: Mode }) => {
+const GetStarted = ({ mode }: { mode: SystemMode }) => {
   // Vars
   const getStartedImageLight = '/images/front-pages/landing-page/get-started-bg-light.png'
   const getStartedImageDark = '/images/front-pages/landing-page/get-started-bg-dark.png'
