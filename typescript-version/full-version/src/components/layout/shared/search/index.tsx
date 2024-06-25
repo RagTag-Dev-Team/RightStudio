@@ -8,7 +8,7 @@ import type { ReactNode } from 'react'
 import { useParams, useRouter, usePathname } from 'next/navigation'
 
 // MUI Imports
-import { IconButton } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -86,7 +86,7 @@ const SearchItem = ({ children, shortcut, value, currentPath, url, onSelect = ()
       onSelect={onSelect}
       value={value}
       className={classnames({
-        active: currentPath === url
+        'active-searchItem': currentPath === url
       })}
     >
       {children}
@@ -212,13 +212,13 @@ const NavSearch = () => {
   return (
     <>
       {isBreakpointReached || settings.layout === 'horizontal' ? (
-        <IconButton onClick={() => setOpen(true)}>
-          <i className='ri-search-line text-textPrimary' />
+        <IconButton className='text-textPrimary' onClick={() => setOpen(true)}>
+          <i className='ri-search-line' />
         </IconButton>
       ) : (
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setOpen(true)}>
-          <IconButton onClick={() => setOpen(true)}>
-            <i className='ri-search-line text-textPrimary' />
+          <IconButton className='text-textPrimary' onClick={() => setOpen(true)}>
+            <i className='ri-search-line' />
           </IconButton>
           <div className='whitespace-nowrap select-none text-textDisabled'>Search ⌘K</div>
         </div>
