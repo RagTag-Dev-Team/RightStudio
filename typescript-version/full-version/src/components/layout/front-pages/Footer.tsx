@@ -64,8 +64,8 @@ const Footer = ({ mode }: { mode: Mode }) => {
                         '&:not(.Mui-focused)': {
                           borderColor: 'rgb(var(--mui-mainColorChannels-dark) / 0.22)'
                         },
-                        '&:hover:not(.Mui-focused)': {
-                          borderColor: 'rgb(var(--mui-palette-background-paperChannel)/0.6) !important'
+                        '&.MuiFilledInput-root:not(.Mui-focused):not(.Mui-disabled):hover': {
+                          borderColor: 'rgba(255 255 255 / 0.6) !important'
                         }
                       }
                     }}
