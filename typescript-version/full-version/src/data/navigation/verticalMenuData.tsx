@@ -594,7 +594,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         icon: 'tabler-book-2',
         suffix: <i className='tabler-external-link text-xl' />,
         target: '_blank',
-        href: 'https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}`
       },
       {
         label: dictionary['navigation'].others,

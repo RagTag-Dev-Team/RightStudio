@@ -392,7 +392,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
             suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
             icon={<i className='tabler-book-2' />}
-            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}`}
           >
             {dictionary['navigation'].documentation}
           </MenuItem>
