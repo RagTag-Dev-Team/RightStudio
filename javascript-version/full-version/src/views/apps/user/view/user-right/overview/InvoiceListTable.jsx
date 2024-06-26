@@ -13,6 +13,7 @@ import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import TablePagination from '@mui/material/TablePagination'
@@ -74,7 +75,6 @@ const columnHelper = createColumnHelper()
 const InvoiceListTable = ({ invoiceData }) => {
   // States
   const [rowSelection, setRowSelection] = useState({})
-
   const [data, setData] = useState(...[invoiceData])
   const [globalFilter, setGlobalFilter] = useState('')
   const [anchorEl, setAnchorEl] = useState(null)
@@ -92,7 +92,7 @@ const InvoiceListTable = ({ invoiceData }) => {
         cell: ({ row }) => (
           <Typography
             component={Link}
-            href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale)}
+            href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale)}
             color='primary'
           >{`#${row.original.id}`}</Typography>
         )
@@ -137,33 +137,34 @@ const InvoiceListTable = ({ invoiceData }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
-              <i className='tabler-trash text-[22px] text-textSecondary' />
+            <IconButton onClick={() => setData(data?.filter(invoice => invoice.id !== row.original.id))}>
+              <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale)} className='flex'>
-                <i className='tabler-eye text-[22px] text-textSecondary' />
+              <Link href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale)} className='flex'>
+                <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-[22px] text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-[22px]',
+                  icon: 'tabler-download',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-[22px]',
-                  href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale),
+                  icon: 'tabler-edit',
+                  href: getLocalizedUrl(`/apps/invoice/edit/${row.original.id}`, locale),
                   linkProps: {
                     className: classnames('flex items-center bs-[40px] plb-2 pli-4 is-full gap-2 text-textSecondary')
                   }
                 },
                 {
                   text: 'Duplicate',
-                  icon: 'tabler-copy text-[22px]',
+                  icon: 'tabler-copy',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -210,6 +211,10 @@ const InvoiceListTable = ({ invoiceData }) => {
     setAnchorEl(event.currentTarget)
   }
 
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <Card>
       <CardHeader
@@ -242,6 +247,17 @@ const InvoiceListTable = ({ invoiceData }) => {
             >
               Export
             </Button>
+            <Menu open={open} anchorEl={anchorEl} onClose={handleClose} id='user-view-overview-export'>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                pdf
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                xlsx
+              </MenuItem>
+              <MenuItem onClick={handleClose} className='uppercase'>
+                csv
+              </MenuItem>
+            </Menu>
           </div>
         }
       />

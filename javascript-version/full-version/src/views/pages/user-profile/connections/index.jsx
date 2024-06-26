@@ -10,6 +10,7 @@ import Button from '@mui/material/Button'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import Link from '@components/Link'
+import CustomIconButton from '@core/components/mui/IconButton'
 
 const Connections = ({ data }) => {
   return (
@@ -30,7 +31,7 @@ const Connections = ({ data }) => {
                       menuItemProps: { className: 'text-error hover:bg-[var(--mui-palette-error-lightOpacity)]' }
                     }
                   ]}
-                  iconButtonProps={{ className: 'absolute top-6 right-5 text-textDisabled' }}
+                  iconButtonProps={{ className: 'absolute top-6 end-5 text-textDisabled' }}
                 />
                 <CardContent className='flex items-center flex-col gap-6'>
                   <Avatar src={item.avatar} className='!mbs-5 bs-[100px] is-[100px]' />
@@ -66,9 +67,9 @@ const Connections = ({ data }) => {
                     >
                       {item.isConnected ? 'Connected' : 'Connect'}
                     </Button>
-                    <Button variant='tonal' color='secondary' className='bs-[38px] is-[38px] min-is-0 p-1.5'>
-                      <i className='tabler-mail text-[22px]' />
-                    </Button>
+                    <CustomIconButton variant='tonal' color='secondary'>
+                      <i className='tabler-mail' />
+                    </CustomIconButton>
                   </div>
                 </CardContent>
               </Card>

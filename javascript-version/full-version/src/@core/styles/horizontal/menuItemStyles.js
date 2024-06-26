@@ -1,7 +1,7 @@
 // Util Imports
 import { menuClasses } from '@menu/utils/menuClasses'
 
-const menuItemStyles = (settings, theme) => ({
+const menuItemStyles = (theme, iconClass) => ({
   root: ({ level }) => ({
     ...(level === 0 && {
       borderRadius: 6
@@ -59,9 +59,12 @@ const menuItemStyles = (settings, theme) => ({
     '& > i, & > svg': {
       fontSize: 'inherit'
     },
-    '& .tabler-circle': {
+    [`& .${iconClass}`]: {
       fontSize: '0.75rem',
       color: 'var(--mui-palette-text-secondary)',
+      ...(level === 1 && {
+        marginInline: theme.spacing(1.25)
+      }),
       [`.${menuClasses.active} &`]: {
         color: 'var(--mui-palette-primary-main)'
       }
@@ -86,14 +89,11 @@ const menuItemStyles = (settings, theme) => ({
   subMenuContent: {
     borderRadius: 'var(--border-radius)',
     backgroundColor: 'var(--mui-palette-background-paper)',
-    ...(settings.skin === 'bordered'
-      ? {
-          boxShadow: 'none',
-          border: '1px solid var(--mui-palette-divider)'
-        }
-      : {
-          boxShadow: 'var(--mui-customShadows-lg)'
-        }),
+    boxShadow: 'var(--mui-customShadows-lg)',
+    '[data-skin="bordered"] &': {
+      boxShadow: 'none',
+      border: '1px solid var(--mui-palette-divider)'
+    },
     '& > ul, & > div > ul': {
       padding: theme.spacing(2),
       '& > li:not(:last-child)': {

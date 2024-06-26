@@ -8,7 +8,7 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import classnames from 'classnames'
@@ -16,9 +16,6 @@ import classnames from 'classnames'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -45,19 +42,17 @@ const data = [
   }
 ]
 
-const SupportTracker = ({ serverMode }) => {
+const SupportTracker = () => {
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const disabledText = 'var(--mui-palette-text-disabled)'
 
   const options = {
     stroke: { dashArray: 10 },
     labels: ['Completed Task'],
-    colors: [theme.palette.primary.main],
+    colors: ['var(--mui-palette-primary-main)'],
     states: {
       hover: {
         filter: { type: 'none' }
@@ -75,7 +70,7 @@ const SupportTracker = ({ serverMode }) => {
         shadeIntensity: 0.5,
         stops: [30, 70, 100],
         inverseColors: false,
-        gradientToColors: [theme.palette.primary.main]
+        gradientToColors: ['var(--mui-palette-primary-main)']
       }
     },
     plotOptions: {
@@ -95,7 +90,7 @@ const SupportTracker = ({ serverMode }) => {
             offsetY: 8,
             fontWeight: 500,
             formatter: value => `${value}%`,
-            color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`),
+            color: 'var(--mui-palette-text-primary)',
             fontFamily: theme.typography.fontFamily,
             fontSize: theme.typography.h2.fontSize
           }

@@ -77,7 +77,7 @@ const AddAction = ({ invoiceData }) => {
                       </Typography>
                       <CustomTextField
                         fullWidth
-                        value={invoiceData[0].id}
+                        value={invoiceData?.[0].id}
                         InputProps={{
                           disabled: true,
                           startAdornment: <InputAdornment position='start'>#</InputAdornment>
@@ -127,7 +127,7 @@ const AddAction = ({ invoiceData }) => {
                     value={selectData?.id || ''}
                     onChange={e => {
                       setFormData({})
-                      setSelectData(invoiceData.slice(0, 5).filter(item => item.id === e.target.value)[0])
+                      setSelectData(invoiceData?.slice(0, 5).filter(item => item.id === e.target.value)[0] || null)
                     }}
                   >
                     <MenuItem
@@ -141,7 +141,7 @@ const AddAction = ({ invoiceData }) => {
                       <i className='tabler-plus text-base' />
                       Add New Customer
                     </MenuItem>
-                    {invoiceData.slice(0, 5).map((invoice, index) => (
+                    {invoiceData?.slice(0, 5).map((invoice, index) => (
                       <MenuItem key={index} value={invoice.id}>
                         {invoice.name}
                       </MenuItem>
@@ -269,7 +269,7 @@ const AddAction = ({ invoiceData }) => {
                   </Grid>
                   <div className='flex flex-col justify-start border-is'>
                     <IconButton size='small' onClick={deleteForm}>
-                      <i className='tabler-x text-actionActive' />
+                      <i className='tabler-x text-2xl text-actionActive' />
                     </IconButton>
                   </div>
                 </div>

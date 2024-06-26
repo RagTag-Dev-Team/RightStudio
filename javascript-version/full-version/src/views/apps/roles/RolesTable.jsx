@@ -104,8 +104,8 @@ const RolesTable = ({ tableData }) => {
   // States
   const [role, setRole] = useState('')
   const [rowSelection, setRowSelection] = useState({})
-
   const [data, setData] = useState(...[tableData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -183,35 +183,36 @@ const RolesTable = ({ tableData }) => {
               variant='tonal'
               className='capitalize'
               label={row.original.status}
-              color={userStatusObj[row.original.status]}
               size='small'
+              color={userStatusObj[row.original.status]}
             />
           </div>
         )
       }),
       columnHelper.accessor('action', {
         header: 'Actions',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
-              <i className='tabler-trash text-[22px] text-textSecondary' />
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
+              <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl('apps/user/view', locale)} className='flex'>
-                <i className='tabler-eye text-[22px] text-textSecondary' />
+              <Link href={getLocalizedUrl('/apps/user/view', locale)} className='flex'>
+                <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-[22px] text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-[22px]',
+                  icon: 'tabler-download',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-[22px]',
+                  icon: 'tabler-edit',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -222,11 +223,11 @@ const RolesTable = ({ tableData }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data,
+    data: filteredData,
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -269,14 +270,14 @@ const RolesTable = ({ tableData }) => {
   }
 
   useEffect(() => {
-    const filteredData = tableData?.filter(user => {
+    const filteredData = data?.filter(user => {
       if (role && user.role !== role) return false
 
       return true
     })
 
-    setData(filteredData)
-  }, [role, tableData, setData])
+    setFilteredData(filteredData)
+  }, [role, data, setFilteredData])
 
   return (
     <Card>

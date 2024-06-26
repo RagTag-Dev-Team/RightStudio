@@ -11,9 +11,6 @@ import CardContent from '@mui/material/CardContent'
 import Collapse from '@mui/material/Collapse'
 import Typography from '@mui/material/Typography'
 
-// Third-party Imports
-import classnames from 'classnames'
-
 const CardActionCollapsible = () => {
   // States
   const [collapse, setCollapse] = useState(false)
@@ -24,7 +21,7 @@ const CardActionCollapsible = () => {
         title='Collapsible'
         action={
           <IconButton size='small' aria-label='collapse' onClick={() => setCollapse(!collapse)}>
-            <i className={classnames(collapse ? 'tabler-chevron-down' : 'tabler-chevron-up', 'text-xl')} />
+            <i className={collapse ? 'tabler-chevron-down' : 'tabler-chevron-up'} />
           </IconButton>
         }
       />

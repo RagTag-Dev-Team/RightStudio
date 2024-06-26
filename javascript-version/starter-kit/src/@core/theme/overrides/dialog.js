@@ -11,7 +11,9 @@ const dialog = skin => ({
               boxShadow: 'none'
             }),
         [theme.breakpoints.down('sm')]: {
-          margin: theme.spacing(6)
+          '&:not(.MuiDialog-paperFullScreen)': {
+            margin: theme.spacing(6)
+          }
         }
       }),
       paperFullScreen: {

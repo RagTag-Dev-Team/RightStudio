@@ -1,7 +1,7 @@
 // Util Imports
 import { menuClasses } from '@menu/utils/menuClasses'
 
-const menuItemStyles = (verticalNavOptions, theme, settings) => {
+const menuItemStyles = (verticalNavOptions, theme) => {
   // Vars
   const { isCollapsed, isHovered, isPopoutWhenCollapsed, transitionDuration } = verticalNavOptions
   const popoutCollapsed = isPopoutWhenCollapsed && isCollapsed
@@ -22,7 +22,10 @@ const menuItemStyles = (verticalNavOptions, theme, settings) => {
           backgroundColor: 'var(--mui-palette-action-selected) !important'
         },
       [`&.${menuClasses.disabled} > .${menuClasses.button}`]: {
-        color: 'var(--mui-palette-text-disabled)'
+        color: 'var(--mui-palette-text-disabled)',
+        '& *': {
+          color: 'inherit'
+        }
       },
       [`&:not(.${menuClasses.subMenuRoot}) > .${menuClasses.button}.${menuClasses.active}`]: {
         ...(popoutCollapsed && level > 0
@@ -129,7 +132,7 @@ const menuItemStyles = (verticalNavOptions, theme, settings) => {
     subMenuContent: ({ level }) => ({
       zIndex: 'calc(var(--drawer-z-index) + 1)',
       borderRadius: 'var(--border-radius)',
-      backgroundColor: 'var(--mui-palette-background-paper)',
+      backgroundColor: popoutCollapsed ? 'var(--mui-palette-background-paper)' : 'transparent',
       ...(popoutCollapsed && {
         '& > ul, & > div > ul': {
           [`& > li:not(:last-child), & > li > .${menuClasses.button}:not(:last-child)`]: {
@@ -137,14 +140,11 @@ const menuItemStyles = (verticalNavOptions, theme, settings) => {
           }
         },
         ...(level === 0 && {
-          ...(settings.skin === 'bordered'
-            ? {
-                boxShadow: 'none',
-                border: '1px solid var(--mui-palette-divider)'
-              }
-            : {
-                boxShadow: 'var(--mui-customShadows-sm)'
-              }),
+          boxShadow: 'var(--mui-customShadows-sm)',
+          '[data-skin="bordered"] &': {
+            boxShadow: 'none',
+            border: '1px solid var(--mui-palette-divider)'
+          },
           [`& .${menuClasses.button}`]: {
             paddingInline: theme.spacing(4)
           },

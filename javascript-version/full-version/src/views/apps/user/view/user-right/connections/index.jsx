@@ -10,10 +10,12 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
-import Button from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
+
+// Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 
 // Vars
 const connectedAccountsArr = [
@@ -129,15 +131,9 @@ const ConnectionsTab = () => {
                     )}
                   </div>
                 </div>
-                <Button
-                  variant='tonal'
-                  color={item.isConnected ? 'error' : 'secondary'}
-                  className='p-1.5 is-[38px] bs-[38px] min-is-0'
-                >
-                  <i
-                    className={classnames(item.isConnected ? 'tabler-trash text-error' : 'tabler-link', 'text-[22px]')}
-                  />
-                </Button>
+                <CustomIconButton variant='tonal' color={item.isConnected ? 'error' : 'secondary'}>
+                  <i className={classnames(item.isConnected ? 'tabler-trash text-error' : 'tabler-link')} />
+                </CustomIconButton>
               </div>
             ))}
           </CardContent>

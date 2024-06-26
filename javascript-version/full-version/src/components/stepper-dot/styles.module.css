@@ -11,6 +11,11 @@
     border-color: var(--mui-palette-primary-main);
     background-color: var(--mui-palette-background-paper);
   }
+
+  &.completedStepperCustomDot {
+    background-color: var(--mui-palette-primary-main);
+    border-color: var(--mui-palette-primary-main);
+  }
 }
 
 .errorColor {

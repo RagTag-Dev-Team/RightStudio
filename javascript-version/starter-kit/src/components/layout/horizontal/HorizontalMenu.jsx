@@ -1,6 +1,3 @@
-// Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
-'use client'
-
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -58,14 +55,14 @@ const HorizontalMenu = () => {
       <Menu
         rootStyles={menuRootStyles(theme)}
         renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
           alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
           renderExpandIcon: ({ open }) => (
             <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
           ),
@@ -83,14 +80,14 @@ const HorizontalMenu = () => {
       {/* <Menu
           rootStyles={menuRootStyles(theme)}
           renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-          menuItemStyles={menuItemStyles(settings, theme)}
+          menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
           renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
             alignmentAxis: 0
           }}
           verticalMenuProps={{
-            menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+            menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
             renderExpandIcon: ({ open }) => (
               <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
             ),
@@ -98,7 +95,7 @@ const HorizontalMenu = () => {
             menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
           }}
         >
-          <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
+          <GenerateHorizontalMenu menuData={menuData(dictionary)} />
         </Menu> */}
     </HorizontalNav>
   )

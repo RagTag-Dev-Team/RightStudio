@@ -17,6 +17,7 @@
  */
 const themeConfig = {
   templateName: 'Vuexy',
+  homePageUrl: '/home',
   settingsCookieName: 'vuexy-mui-next-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
@@ -37,8 +38,7 @@ const themeConfig = {
     contentWidth: 'compact', // 'compact', 'wide'
     detached: true //! true, false (This will not work in the Horizontal Layout)
   },
-  disableRipple: false, // true, false
-  toastPosition: 'top-right' // 'top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left'
+  disableRipple: false // true, false
 }
 
 export default themeConfig

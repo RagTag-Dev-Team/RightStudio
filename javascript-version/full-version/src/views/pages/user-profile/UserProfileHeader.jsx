@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'

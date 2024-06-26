@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles'
 
 // Styled Components
 const AppReactDropzone = styled(Box)(({ theme }) => ({
-  '&.dropzone, & .dropzone': {
+  '& .dropzone': {
     minHeight: 300,
     display: 'flex',
     flexWrap: 'wrap',
@@ -15,8 +15,8 @@ const AppReactDropzone = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: theme.spacing(4),
-    borderRadius: theme.shape.borderRadius,
-    border: `2px dashed ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.22)' : 'rgba(247, 244, 254, 0.14)'}`,
+    borderRadius: 'var(--mui-shape-borderRadius)',
+    border: '2px dashed var(--mui-palette-divider)',
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center'
     },
@@ -29,9 +29,9 @@ const AppReactDropzone = styled(Box)(({ theme }) => ({
       '& .MuiListItem-root': {
         display: 'flex',
         justifyContent: 'space-between',
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: 'var(--mui-shape-borderRadius)',
         padding: theme.spacing(2.5, 2.4, 2.5, 6),
-        border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.14)' : 'rgba(247, 244, 254, 0.14)'}`,
+        border: '1px solid var(--mui-palette-divider)',
         '& .file-details': {
           display: 'flex',
           alignItems: 'center'
@@ -47,8 +47,8 @@ const AppReactDropzone = styled(Box)(({ theme }) => ({
           width: 38,
           height: 38,
           padding: theme.spacing(0.75),
-          borderRadius: theme.shape.borderRadius,
-          border: `1px solid ${theme.palette.mode === 'light' ? 'rgba(93, 89, 98, 0.14)' : 'rgba(247, 244, 254, 0.14)'}`
+          borderRadius: 'var(--mui-shape-borderRadius)',
+          border: '1px solid var(--mui-palette-divider)'
         },
         '& .file-name': {
           fontWeight: 600
@@ -71,7 +71,7 @@ const AppReactDropzone = styled(Box)(({ theme }) => ({
       position: 'absolute',
       width: 'calc(100% - 1rem)',
       height: 'calc(100% - 1rem)',
-      borderRadius: theme.shape.borderRadius
+      borderRadius: 'var(--mui-shape-borderRadius)'
     }
   }
 }))

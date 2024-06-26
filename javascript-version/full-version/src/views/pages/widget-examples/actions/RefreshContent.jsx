@@ -29,7 +29,7 @@ const CardActionRefreshContent = () => {
         title='Refresh Content'
         action={
           <IconButton size='small' aria-label='refresh-content' onClick={handleBackDrop}>
-            <i className='tabler-refresh text-xl' />
+            <i className='tabler-refresh' />
           </IconButton>
         }
       />

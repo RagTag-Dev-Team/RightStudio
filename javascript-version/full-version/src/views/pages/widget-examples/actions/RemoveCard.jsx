@@ -22,7 +22,7 @@ const CardActionRemoveCard = () => {
           title='Remove Card'
           action={
             <IconButton size='small' aria-label='remove-card' onClick={() => setVisibility(!visibility)}>
-              <i className='tabler-x text-xl' />
+              <i className='tabler-x' />
             </IconButton>
           }
         />

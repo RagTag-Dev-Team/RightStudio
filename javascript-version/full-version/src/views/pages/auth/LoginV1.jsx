@@ -43,9 +43,9 @@ const LoginV1 = () => {
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='sm:!p-12'>
-          <div className='flex justify-center mbe-6'>
+          <Link href={getLocalizedUrl('/', locale)} className='flex justify-center mbe-6'>
             <Logo />
-          </div>
+          </Link>
           <div className='flex flex-col gap-1 mbe-6'>
             <Typography variant='h4'>{`Welcome to ${themeConfig.templateName}! 👋🏻`}</Typography>
             <Typography>Please sign-in to your account and start the adventure</Typography>
@@ -74,7 +74,7 @@ const LoginV1 = () => {
                 className='text-end'
                 color='primary'
                 component={Link}
-                href={getLocalizedUrl('pages/auth/forgot-password-v1', locale)}
+                href={getLocalizedUrl('/pages/auth/forgot-password-v1', locale)}
               >
                 Forgot password?
               </Typography>
@@ -84,7 +84,7 @@ const LoginV1 = () => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} href={getLocalizedUrl('pages/auth/register-v1', locale)} color='primary'>
+              <Typography component={Link} href={getLocalizedUrl('/pages/auth/register-v1', locale)} color='primary'>
                 Create an account
               </Typography>
             </div>

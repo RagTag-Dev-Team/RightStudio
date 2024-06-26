@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import dynamic from 'next/dynamic'
 
@@ -8,10 +6,6 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
-import { useColorScheme, useTheme } from '@mui/material/styles'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -19,14 +13,9 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 // Vars
 const series = [{ data: [0, 19, 7, 27, 15, 40] }]
 
-const LineChartProfit = ({ serverMode }) => {
-  // Hooks
-  const theme = useTheme()
-  const { mode } = useColorScheme()
-
+const LineChartProfit = () => {
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const infoColor = theme.palette.info.main
+  const infoColor = 'var(--mui-palette-info-main)'
 
   const options = {
     chart: {
@@ -36,7 +25,7 @@ const LineChartProfit = ({ serverMode }) => {
     tooltip: { enabled: false },
     grid: {
       strokeDashArray: 6,
-      borderColor: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`),
+      borderColor: 'var(--mui-palette-divider)',
       xaxis: {
         lines: { show: true }
       },
@@ -66,7 +55,7 @@ const LineChartProfit = ({ serverMode }) => {
           size: 5.5,
           seriesIndex: 0,
           strokeColor: infoColor,
-          fillColor: theme.palette.background.paper,
+          fillColor: 'var(--mui-palette-background-paper)',
           dataPointIndex: series[0].data.length - 1
         }
       ]

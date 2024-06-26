@@ -1,7 +1,10 @@
 'use client'
 
+// React Imports
+import { useState } from 'react'
+
 // Next Imports
-import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -10,15 +13,23 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 // Third-party Imports
+import { OTPInput } from 'input-otp'
 import classnames from 'classnames'
 
 // Component Imports
+import Form from '@components/Form'
+import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
-import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
+// Style Imports
+import styles from '@/libs/styles/inputOtp.module.css'
 
 // Styled Custom Components
 const TwoStepsIllustration = styled('img')(({ theme }) => ({
@@ -44,7 +55,27 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
+const Slot = props => {
+  return (
+    <div className={classnames(styles.slot, { [styles.slotActive]: props.isActive })}>
+      {props.char !== null && <div>{props.char}</div>}
+      {props.hasFakeCaret && <FakeCaret />}
+    </div>
+  )
+}
+
+const FakeCaret = () => {
+  return (
+    <div className={styles.fakeCaret}>
+      <div className='w-px h-5 bg-textPrimary' />
+    </div>
+  )
+}
+
 const TwoStepsV2 = ({ mode }) => {
+  // States
+  const [otp, setOtp] = useState(null)
+
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
   const lightImg = '/images/pages/auth-mask-light.png'
@@ -54,6 +85,7 @@ const TwoStepsV2 = ({ mode }) => {
   // Hooks
   const { settings } = useSettings()
   const theme = useTheme()
+  const { lang: locale } = useParams()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
   const authBackground = useImageVariant(mode, lightImg, darkImg)
   const characterIllustration = useImageVariant(mode, lightIllustration, darkIllustration)
@@ -78,9 +110,12 @@ const TwoStepsV2 = ({ mode }) => {
         )}
       </div>
       <div className='flex justify-center items-center bs-full bg-backgroundPaper !min-is-full p-6 md:!min-is-[unset] md:p-12 md:is-[480px]'>
-        <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
+        <Link
+          href={getLocalizedUrl('/', locale)}
+          className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'
+        >
           <Logo />
-        </div>
+        </Link>
         <div className='flex flex-col gap-6 is-full sm:is-auto md:is-full sm:max-is-[400px] md:max-is-[unset] mbs-11 sm:mbs-14 md:mbs-0'>
           <div className='flex flex-col gap-1'>
             <Typography variant='h4'>Two Step Verification 💬</Typography>
@@ -91,20 +126,25 @@ const TwoStepsV2 = ({ mode }) => {
               ******1234
             </Typography>
           </div>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-6'>
+          <Form noValidate autoComplete='off' className='flex flex-col gap-6'>
             <div className='flex flex-col gap-2'>
               <Typography>Type your 6 digit security code</Typography>
-              <div className='flex items-center justify-between gap-4'>
-                <CustomTextField size='medium' autoFocus className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-                <CustomTextField size='medium' className='[&_input]:text-center' />
-              </div>
+              <OTPInput
+                onChange={setOtp}
+                value={otp ?? ''}
+                maxLength={6}
+                containerClassName='group flex items-center'
+                render={({ slots }) => (
+                  <div className='flex items-center justify-between w-full gap-4'>
+                    {slots.slice(0, 6).map((slot, idx) => (
+                      <Slot key={idx} {...slot} />
+                    ))}
+                  </div>
+                )}
+              />
             </div>
             <Button fullWidth variant='contained' type='submit'>
-              Skip For Now
+              Verify my account
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Didn&#39;t get the code?</Typography>
@@ -112,7 +152,7 @@ const TwoStepsV2 = ({ mode }) => {
                 Resend
               </Typography>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

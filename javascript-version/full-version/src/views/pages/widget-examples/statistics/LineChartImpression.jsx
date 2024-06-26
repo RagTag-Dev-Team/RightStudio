@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import dynamic from 'next/dynamic'
 
@@ -8,7 +6,6 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
-import { useTheme } from '@mui/material/styles'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -17,9 +14,7 @@ const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexChart
 const series = [{ name: 'Income', data: [3350, 3350, 5000, 5000, 2950, 2950, 1500, 1500, 3750, 3750, 5700, 5700] }]
 
 const LineChartImpression = () => {
-  // Hooks
-  const theme = useTheme()
-
+  // Vars
   const options = {
     chart: {
       parentHeightOffset: 0,
@@ -31,7 +26,7 @@ const LineChartImpression = () => {
       curve: 'straight',
       lineCap: 'round'
     },
-    colors: [theme.palette.error.main],
+    colors: ['var(--mui-palette-error-main)'],
     grid: {
       padding: {
         top: 10,

@@ -162,7 +162,7 @@ const WebsiteAnalyticsSlider = () => {
                       '& .MuiBadge-dot': {
                         width: '8px !important',
                         height: '8px !important',
-                        backgroundColor: `${theme.palette.common.white} !important`,
+                        backgroundColor: 'var(--mui-palette-common-white) !important',
                         opacity: 0.4
                       },
                       '&.active .MuiBadge-dot': {

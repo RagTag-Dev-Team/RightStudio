@@ -1,8 +1,5 @@
 'use client'
 
-// MUI Imports
-import { useTheme } from '@mui/material/styles'
-
 // Third-party Imports
 import classnames from 'classnames'
 
@@ -24,7 +21,6 @@ const Footer = props => {
 
   // Hooks
   const { settings } = useSettings()
-  const theme = useTheme()
 
   // Vars
   const { footerContentWidth } = settings
@@ -37,7 +33,6 @@ const Footer = props => {
 
   return (
     <StyledFooter
-      theme={theme}
       overrideStyles={overrideStyles}
       className={classnames(verticalLayoutClasses.footer, 'is-full', {
         [verticalLayoutClasses.footerDetached]: footerDetached,

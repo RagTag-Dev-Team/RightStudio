@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -10,7 +8,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Menu, MenuItem } from '@menu/vertical-menu'
 
 // Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 
 // Styled Component Imports
@@ -30,7 +27,6 @@ const VerticalMenu = ({ scrollMenu }) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
-  const { settings } = useSettings()
   const { isBreakpointReached } = useVerticalNav()
 
   // Vars
@@ -55,7 +51,7 @@ const VerticalMenu = ({ scrollMenu }) => {
       {/* Vertical Menu */}
       <Menu
         popoutMenuOffset={{ mainAxis: 23 }}
-        menuItemStyles={menuItemStyles(verticalNavOptions, theme, settings)}
+        menuItemStyles={menuItemStyles(verticalNavOptions, theme)}
         renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
@@ -69,12 +65,12 @@ const VerticalMenu = ({ scrollMenu }) => {
       </Menu>
       {/* <Menu
           popoutMenuOffset={{ mainAxis: 23 }}
-          menuItemStyles={menuItemStyles(verticalNavOptions, theme, settings)}
+          menuItemStyles={menuItemStyles(verticalNavOptions, theme)}
           renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
           renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
           menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
         >
-          <GenerateVerticalMenu menuData={menuData(dictionary, params)} />
+          <GenerateVerticalMenu menuData={menuData(dictionary)} />
         </Menu> */}
     </ScrollWrapper>
   )

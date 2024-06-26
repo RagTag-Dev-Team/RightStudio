@@ -24,7 +24,7 @@ const TableFilters = ({ setData, tableData }) => {
       return true
     })
 
-    setData(filteredData)
+    setData(filteredData || [])
   }, [role, plan, status, tableData, setData])
 
   return (

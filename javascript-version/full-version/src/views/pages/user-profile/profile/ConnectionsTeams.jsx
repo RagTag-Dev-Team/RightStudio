@@ -1,21 +1,17 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
 
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
+import CustomIconButton from '@core/components/mui/IconButton'
+import Link from '@components/Link'
 
 const ConnectionsTeams = props => {
   // props
@@ -42,19 +38,14 @@ const ConnectionsTeams = props => {
                       <Typography variant='body2'>{connection.connections} Connections</Typography>
                     </div>
                   </div>
-                  <Button
-                    variant={connection.isFriend ? 'tonal' : 'contained'}
-                    className='is-[38px] bs-[38px] min-is-0 p-2'
-                  >
-                    <i
-                      className={connection.isFriend ? 'tabler-user-check text-[22px]' : 'tabler-user-x text-[22px]'}
-                    />
-                  </Button>
+                  <CustomIconButton color='primary' variant={connection.isFriend ? 'tonal' : 'contained'}>
+                    <i className={connection.isFriend ? 'tabler-user-check' : 'tabler-user-x'} />
+                  </CustomIconButton>
                 </div>
               ))}
           </CardContent>
           <CardActions className='flex justify-center'>
-            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+            <Typography component={Link} color='primary'>
               View all connections
             </Typography>
           </CardActions>
@@ -84,7 +75,7 @@ const ConnectionsTeams = props => {
               ))}
           </CardContent>
           <CardActions className='flex justify-center'>
-            <Typography href='/' component={Link} onClick={e => e.preventDefault()} color='primary'>
+            <Typography component={Link} color='primary'>
               View all teams
             </Typography>
           </CardActions>

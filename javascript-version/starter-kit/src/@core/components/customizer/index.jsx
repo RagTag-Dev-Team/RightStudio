@@ -151,28 +151,25 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
   return (
     !breakpointReached && (
       <div
-        className={classnames('customizer bs-full flex flex-col', styles.customizer, {
+        className={classnames('customizer', styles.customizer, {
           [styles.show]: isOpen,
           [styles.smallScreen]: isMobileScreen
         })}
       >
-        <div
-          className={classnames('customizer-toggler flex items-center justify-center cursor-pointer', styles.toggler)}
-          onClick={handleToggle}
-        >
+        <div className={styles.toggler} onClick={handleToggle}>
           <i className='tabler-settings text-[22px]' />
         </div>
-        <div className={classnames('customizer-header flex items-center justify-between', styles.header)}>
+        <div className={styles.header}>
           <div className='flex flex-col'>
             <h4 className={styles.customizerTitle}>Theme Customizer</h4>
             <p className={styles.customizerSubtitle}>Customize & Preview in Real Time</p>
           </div>
           <div className='flex gap-4'>
             <div onClick={resetSettings} className='relative flex cursor-pointer'>
-              <i className={classnames('tabler-refresh', styles.textPrimaryColor)} />
+              <i className='tabler-refresh text-textPrimary' />
               <div className={classnames(styles.dotStyles, { [styles.show]: isSettingsChanged })} />
             </div>
-            <i className={classnames('tabler-x cursor-pointer', styles.textPrimaryColor)} onClick={handleToggle} />
+            <i className='tabler-x text-textPrimary cursor-pointer' onClick={handleToggle} />
           </div>
         </div>
         <ScrollWrapper
@@ -180,15 +177,9 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
             ? { className: 'bs-full overflow-y-auto overflow-x-hidden' }
             : { options: { wheelPropagation: false, suppressScrollX: true } })}
         >
-          <div className={classnames('customizer-body flex flex-col', styles.customizerBody)}>
-            <div className='theming-section flex flex-col gap-6'>
-              <Chip
-                label='Theming'
-                size='small'
-                color='primary'
-                variant='tonal'
-                className={classnames('self-start', styles.chip)}
-              />
+          <div className={styles.customizerBody}>
+            <div className='flex flex-col gap-6'>
+              <Chip label='Theming' size='small' color='primary' variant='tonal' className='self-start rounded-sm' />
               <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Primary Color</p>
                 <div className='flex items-center justify-between'>
@@ -337,14 +328,8 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
               )}
             </div>
             <hr className={styles.hr} />
-            <div className='layout-section flex flex-col gap-6'>
-              <Chip
-                label='Layout'
-                variant='tonal'
-                size='small'
-                color='primary'
-                className={classnames('self-start', styles.chip)}
-              />
+            <div className='flex flex-col gap-6'>
+              <Chip label='Layout' variant='tonal' size='small' color='primary' className='self-start rounded-sm' />
               <div className='flex flex-col gap-2'>
                 <p className='font-medium'>Layouts</p>
                 <div className='flex items-center justify-between'>

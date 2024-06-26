@@ -1,14 +1,18 @@
 'use client'
 
+// React Imports
+import { forwardRef } from 'react'
+
 // Next Imports
 import NextLink from 'next/link'
 
-const Link = props => {
+const Link = (props, ref) => {
   // Props
   const { href, onClick, ...rest } = props
 
   return (
     <NextLink
+      ref={ref}
       {...rest}
       href={href || '/'}
       onClick={onClick ? e => onClick(e) : !href ? e => e.preventDefault() : undefined}
@@ -16,4 +20,4 @@ const Link = props => {
   )
 }
 
-export default Link
+export default forwardRef(Link)

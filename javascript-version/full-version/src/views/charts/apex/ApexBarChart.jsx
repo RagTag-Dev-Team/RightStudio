@@ -1,29 +1,18 @@
-'use client'
-
 // Next Imports
 import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
-import { useColorScheme, useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
-const ApexBarChart = ({ serverMode }) => {
-  // Hooks
-  const theme = useTheme()
-  const { mode } = useColorScheme()
-
+const ApexBarChart = () => {
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
-  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const divider = 'var(--mui-palette-divider)'
+  const disabledText = 'var(--mui-palette-text-disabled)'
 
   const options = {
     chart: {

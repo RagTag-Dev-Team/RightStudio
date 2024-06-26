@@ -15,7 +15,7 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Third Party Imports
 import classnames from 'classnames'
@@ -23,9 +23,6 @@ import classnames from 'classnames'
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -83,16 +80,14 @@ const renderTabPanels = (value, theme, options, colors) => {
   return tabData.map((item, index) => {
     const max = Math.max(...item.series[0].data)
     const seriesIndex = item.series[0].data.indexOf(max)
-
-    const finalColors = colors.map((color, i) =>
-      seriesIndex === i ? rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 1)`) : color
-    )
+    const finalColors = colors.map((color, i) => (seriesIndex === i ? 'var(--mui-palette-primary-main)' : color))
 
     return (
       <TabPanel key={index} value={item.type} className='!p-0'>
         <AppReactApexCharts
           type='bar'
           height={230}
+          width='100%'
           options={{ ...options, colors: finalColors }}
           series={item.series}
         />
@@ -101,23 +96,21 @@ const renderTabPanels = (value, theme, options, colors) => {
   })
 }
 
-const EarningReportsWithTabs = ({ serverMode }) => {
+const EarningReportsWithTabs = () => {
   // States
   const [value, setValue] = useState('orders')
 
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const disabledText = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
+  const disabledText = 'var(--mui-palette-text-disabled)'
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  const colors = Array(9).fill(rgbaToHex(`rgb(${theme.palette.primary.mainChannel} / 0.16)`))
+  const colors = Array(9).fill('var(--mui-palette-primary-lightOpacity)')
 
   const options = {
     chart: {
@@ -140,7 +133,7 @@ const EarningReportsWithTabs = ({ serverMode }) => {
       formatter: val => `${val}k`,
       style: {
         fontWeight: 500,
-        colors: [rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)],
+        colors: ['var(--mui-palette-text-primary)'],
         fontSize: theme.typography.body1.fontSize
       }
     },
@@ -164,7 +157,7 @@ const EarningReportsWithTabs = ({ serverMode }) => {
     },
     xaxis: {
       axisTicks: { show: false },
-      axisBorder: { color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`) },
+      axisBorder: { color: 'var(--mui-palette-divider)' },
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
       labels: {
         style: {

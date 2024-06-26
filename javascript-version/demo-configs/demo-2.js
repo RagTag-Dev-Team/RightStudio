@@ -17,6 +17,7 @@
  */
 const themeConfig = {
   templateName: 'Vuexy',
+  homePageUrl: '/dashboards/crm',
   settingsCookieName: 'vuexy-mui-next-demo-2',
   mode: 'light', // 'system', 'light', 'dark'
   skin: 'bordered', // 'default', 'bordered'

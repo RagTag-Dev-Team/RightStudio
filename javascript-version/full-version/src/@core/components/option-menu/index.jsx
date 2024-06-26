@@ -7,6 +7,7 @@ import { useRef, useState } from 'react'
 import Link from 'next/link'
 
 // MUI Imports
+import Tooltip from '@mui/material/Tooltip'
 import Box from '@mui/material/Box'
 import Popper from '@mui/material/Popper'
 import MenuItem from '@mui/material/MenuItem'
@@ -23,6 +24,13 @@ import classnames from 'classnames'
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
+const IconButtonWrapper = props => {
+  // Props
+  const { tooltipProps, children } = props
+
+  return tooltipProps?.title ? <Tooltip {...tooltipProps}>{children}</Tooltip> : children
+}
+
 const MenuItemWrapper = ({ children, option }) => {
   if (option.href) {
     return (
@@ -37,7 +45,7 @@ const MenuItemWrapper = ({ children, option }) => {
 
 const OptionMenu = props => {
   // Props
-  const { icon, iconClassName, options, leftAlignMenu, iconButtonProps } = props
+  const { tooltipProps, icon, iconClassName, options, leftAlignMenu, iconButtonProps } = props
 
   // States
   const [open, setOpen] = useState(false)
@@ -62,15 +70,17 @@ const OptionMenu = props => {
 
   return (
     <>
-      <IconButton ref={anchorRef} size='small' onClick={handleToggle} {...iconButtonProps}>
-        {typeof icon === 'string' ? (
-          <i className={classnames(icon, iconClassName)} />
-        ) : icon ? (
-          icon
-        ) : (
-          <i className={classnames('tabler-dots-vertical', iconClassName)} />
-        )}
-      </IconButton>
+      <IconButtonWrapper tooltipProps={tooltipProps}>
+        <IconButton ref={anchorRef} size='small' onClick={handleToggle} {...iconButtonProps}>
+          {typeof icon === 'string' ? (
+            <i className={classnames(icon, iconClassName)} />
+          ) : icon ? (
+            icon
+          ) : (
+            <i className={classnames('tabler-dots-vertical', iconClassName)} />
+          )}
+        </IconButton>
+      </IconButtonWrapper>
       <Popper
         open={open}
         anchorEl={anchorRef.current}

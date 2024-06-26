@@ -1,8 +1,14 @@
+// Next Imports
+import { headers } from 'next/headers'
+
 // Third-party Imports
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Component Imports
 import BuyNowButton from '@components/buy-now-button'
+
+// HOC Imports
+import TranslationWrapper from '@/hocs/TranslationWrapper'
 
 // Config Imports
 import { i18n } from '@configs/i18n'
@@ -21,15 +27,18 @@ export const metadata = {
 
 const RootLayout = ({ children, params }) => {
   // Vars
+  const headersList = headers()
   const direction = i18n.langDirection[params.lang]
 
   return (
-    <html id='__next' lang={params.lang} dir={direction}>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>
-        {children}
-        <BuyNowButton />
-      </body>
-    </html>
+    <TranslationWrapper headersList={headersList} lang={params.lang}>
+      <html id='__next' lang={params.lang} dir={direction}>
+        <body className='flex is-full min-bs-full flex-auto flex-col'>
+          {children}
+          <BuyNowButton />
+        </body>
+      </html>
+    </TranslationWrapper>
   )
 }
 

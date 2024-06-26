@@ -8,6 +8,11 @@ import themeConfig from '@configs/themeConfig'
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  flex-shrink: 0;
   min-block-size: var(--header-height);
 
   &.${verticalLayoutClasses.headerContentCompact} {

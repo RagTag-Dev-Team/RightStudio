@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState, useEffect } from 'react'
 
 // Next Imports
 import Link from 'next/link'
@@ -37,10 +37,10 @@ import { getLocalizedUrl } from '@/utils/i18n'
 
 const ScrollWrapper = ({ children, hidden }) => {
   if (hidden) {
-    return <div className='overflow-x-hidden max-bs-[434px]'>{children}</div>
+    return <div className='overflow-x-hidden bs-full'>{children}</div>
   } else {
     return (
-      <PerfectScrollbar className='max-bs-[434px]' options={{ wheelPropagation: false, suppressScrollX: true }}>
+      <PerfectScrollbar className='bs-full' options={{ wheelPropagation: false, suppressScrollX: true }}>
         {children}
       </PerfectScrollbar>
     )
@@ -53,6 +53,7 @@ const ShortcutsDropdown = ({ shortcuts }) => {
 
   // Refs
   const anchorRef = useRef(null)
+  const ref = useRef(null)
 
   // Hooks
   const hidden = useMediaQuery(theme => theme.breakpoints.down('lg'))
@@ -68,6 +69,19 @@ const ShortcutsDropdown = ({ shortcuts }) => {
     setOpen(prevOpen => !prevOpen)
   }, [])
 
+  useEffect(() => {
+    const adjustPopoverHeight = () => {
+      if (ref.current) {
+        // Calculate available height, subtracting any fixed UI elements' height as necessary
+        const availableHeight = window.innerHeight - 100
+
+        ref.current.style.height = `${Math.min(availableHeight, 550)}px`
+      }
+    }
+
+    window.addEventListener('resize', adjustPopoverHeight)
+  }, [])
+
   return (
     <>
       <IconButton ref={anchorRef} onClick={handleToggle} className='text-textPrimary'>
@@ -78,10 +92,11 @@ const ShortcutsDropdown = ({ shortcuts }) => {
         transition
         disablePortal
         placement='bottom-end'
+        ref={ref}
         anchorEl={anchorRef.current}
         {...(isSmallScreen
           ? {
-              className: 'is-full  !mbs-3 z-[1]',
+              className: 'is-full  !mbs-3 z-[1] max-bs-[517px]',
               modifiers: [
                 {
                   name: 'preventOverflow',
@@ -91,14 +106,14 @@ const ShortcutsDropdown = ({ shortcuts }) => {
                 }
               ]
             }
-          : { className: 'is-96  !mbs-3 z-[1]' })}
+          : { className: 'is-96  !mbs-3 z-[1] max-bs-[517px]' })}
       >
         {({ TransitionProps, placement }) => (
           <Fade {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' ? 'right top' : 'left top' }}>
-            <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
+            <Paper className={classnames('bs-full', settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg')}>
               <ClickAwayListener onClickAway={handleClose}>
-                <div>
-                  <div className='flex items-center justify-between plb-3 pli-4 is-full gap-2'>
+                <div className='bs-full flex flex-col'>
+                  <div className='flex items-center justify-between plb-3.5 pli-4 is-full gap-2'>
                     <Typography variant='h6' className='flex-auto'>
                       Shortcuts
                     </Typography>

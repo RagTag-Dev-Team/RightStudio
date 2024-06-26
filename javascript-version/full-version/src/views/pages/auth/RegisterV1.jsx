@@ -40,9 +40,9 @@ const RegisterV1 = () => {
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='sm:!p-12'>
-          <div className='flex justify-center mbe-6'>
+          <Link href={getLocalizedUrl('/', locale)} className='flex justify-center mbe-6'>
             <Logo />
-          </div>
+          </Link>
           <div className='flex flex-col gap-1 mbe-6'>
             <Typography variant='h4'>Adventure starts here 🚀</Typography>
             <Typography>Make your app management easy and fun!</Typography>
@@ -81,7 +81,7 @@ const RegisterV1 = () => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>Already have an account?</Typography>
-              <Typography component={Link} href={getLocalizedUrl('pages/auth/login-v1', locale)} color='primary'>
+              <Typography component={Link} href={getLocalizedUrl('/pages/auth/login-v1', locale)} color='primary'>
                 Sign in instead
               </Typography>
             </div>

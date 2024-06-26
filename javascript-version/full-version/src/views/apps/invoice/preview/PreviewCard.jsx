@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -12,6 +10,7 @@ import Logo from '@components/layout/shared/Logo'
 
 // Style Imports
 import tableStyles from '@core/styles/table.module.css'
+import './print.css'
 
 // Vars
 const data = [
@@ -47,7 +46,7 @@ const data = [
 
 const PreviewCard = ({ invoiceData, id }) => {
   return (
-    <Card>
+    <Card className='previewCard'>
       <CardContent className='sm:!p-12'>
         <Grid container spacing={6}>
           <Grid item xs={12}>
@@ -66,8 +65,8 @@ const PreviewCard = ({ invoiceData, id }) => {
                 <div className='flex flex-col gap-6'>
                   <Typography variant='h5'>{`Invoice #${id}`}</Typography>
                   <div className='flex flex-col gap-1'>
-                    <Typography color='text.primary'>{`Date Issued: ${invoiceData.issuedDate}`}</Typography>
-                    <Typography color='text.primary'>{`Date Due: ${invoiceData.dueDate}`}</Typography>
+                    <Typography color='text.primary'>{`Date Issued: ${invoiceData?.issuedDate}`}</Typography>
+                    <Typography color='text.primary'>{`Date Due: ${invoiceData?.dueDate}`}</Typography>
                   </div>
                 </div>
               </div>
@@ -81,11 +80,11 @@ const PreviewCard = ({ invoiceData, id }) => {
                     Invoice To:
                   </Typography>
                   <div>
-                    <Typography>{invoiceData.name}</Typography>
-                    <Typography>{invoiceData.company}</Typography>
-                    <Typography>{invoiceData.address}</Typography>
-                    <Typography>{invoiceData.contact}</Typography>
-                    <Typography>{invoiceData.companyEmail}</Typography>
+                    <Typography>{invoiceData?.name}</Typography>
+                    <Typography>{invoiceData?.company}</Typography>
+                    <Typography>{invoiceData?.address}</Typography>
+                    <Typography>{invoiceData?.contact}</Typography>
+                    <Typography>{invoiceData?.companyEmail}</Typography>
                   </div>
                 </div>
               </Grid>

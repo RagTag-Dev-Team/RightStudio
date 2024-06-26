@@ -127,10 +127,11 @@ module.exports = {
     },
     "import/parsers": {},
     "import/resolver": {
+      "node": {},
       "typescript": {
         "project": "./jsconfig.json"
       }
     }
   },
   "overrides": []
-};
+}

@@ -10,6 +10,9 @@ import LayoutContent from './components/horizontal/LayoutContent'
 // Util Imports
 import { horizontalLayoutClasses } from './utils/layoutClasses'
 
+// Styled Component Imports
+import StyledContentWrapper from './styles/horizontal/StyledContentWrapper'
+
 const HorizontalLayout = props => {
   // Props
   const { header, footer, children } = props
@@ -17,11 +20,11 @@ const HorizontalLayout = props => {
   return (
     <div className={classnames(horizontalLayoutClasses.root, 'flex flex-auto')}>
       <HorizontalNavProvider>
-        <div className={classnames(horizontalLayoutClasses.contentWrapper, 'flex flex-col is-full')}>
+        <StyledContentWrapper className={classnames(horizontalLayoutClasses.contentWrapper, 'flex flex-col is-full')}>
           {header || null}
           <LayoutContent>{children}</LayoutContent>
           {footer || null}
-        </div>
+        </StyledContentWrapper>
       </HorizontalNavProvider>
     </div>
   )

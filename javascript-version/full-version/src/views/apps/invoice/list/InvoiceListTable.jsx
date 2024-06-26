@@ -97,8 +97,8 @@ const InvoiceListTable = ({ invoiceData }) => {
   // States
   const [status, setStatus] = useState('')
   const [rowSelection, setRowSelection] = useState({})
-
   const [data, setData] = useState(...[invoiceData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -133,7 +133,7 @@ const InvoiceListTable = ({ invoiceData }) => {
         cell: ({ row }) => (
           <Typography
             component={Link}
-            href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale)}
+            href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale)}
             color='primary'
           >{`#${row.original.id}`}</Typography>
         )
@@ -150,12 +150,12 @@ const InvoiceListTable = ({ invoiceData }) => {
                 <br />
                 <Typography variant='body2' component='span' className='text-inherit'>
                   Balance:
-                </Typography>
+                </Typography>{' '}
                 {row.original.balance}
                 <br />
                 <Typography variant='body2' component='span' className='text-inherit'>
                   Due Date:
-                </Typography>
+                </Typography>{' '}
                 {row.original.dueDate}
               </div>
             }
@@ -202,33 +202,34 @@ const InvoiceListTable = ({ invoiceData }) => {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
-              <i className='tabler-trash text-[22px] text-textSecondary' />
+            <IconButton onClick={() => setData(data?.filter(invoice => invoice.id !== row.original.id))}>
+              <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl(`apps/invoice/preview/${row.original.id}`, locale)} className='flex'>
-                <i className='tabler-eye text-[22px] text-textSecondary' />
+              <Link href={getLocalizedUrl(`/apps/invoice/preview/${row.original.id}`, locale)} className='flex'>
+                <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-[22px] text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-[22px]',
+                  icon: 'tabler-download',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-pencil text-[22px]',
-                  href: getLocalizedUrl(`apps/invoice/edit/${row.original.id}`, locale),
+                  icon: 'tabler-pencil',
+                  href: getLocalizedUrl(`/apps/invoice/edit/${row.original.id}`, locale),
                   linkProps: {
                     className: 'flex items-center is-full plb-2 pli-4 gap-2 text-textSecondary'
                   }
                 },
                 {
                   text: 'Duplicate',
-                  icon: 'tabler-copy text-[22px]',
+                  icon: 'tabler-copy',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -239,11 +240,11 @@ const InvoiceListTable = ({ invoiceData }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data,
+    data: filteredData,
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -286,14 +287,14 @@ const InvoiceListTable = ({ invoiceData }) => {
   }
 
   useEffect(() => {
-    const filteredData = invoiceData?.filter(invoice => {
+    const filteredData = data?.filter(invoice => {
       if (status && invoice.invoiceStatus.toLowerCase().replace(/\s+/g, '-') !== status) return false
 
       return true
     })
 
-    setData(filteredData)
-  }, [status, invoiceData, setData])
+    setFilteredData(filteredData)
+  }, [status, data, setFilteredData])
 
   return (
     <Card>

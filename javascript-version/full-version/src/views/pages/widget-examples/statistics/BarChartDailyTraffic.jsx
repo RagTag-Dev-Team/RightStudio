@@ -8,23 +8,17 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
-import { useColorScheme, useTheme } from '@mui/material/styles'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
+import { useTheme } from '@mui/material/styles'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 const series = [{ data: [40, 53, 66, 79, 92, 105, 118] }]
 
-const BarChartDailyTraffic = ({ serverMode }) => {
+const BarChartDailyTraffic = () => {
   // Hook
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-
   const options = {
     chart: {
       parentHeightOffset: 0,
@@ -39,7 +33,7 @@ const BarChartDailyTraffic = ({ serverMode }) => {
     legend: { show: false },
     tooltip: { enabled: false },
     dataLabels: { enabled: false },
-    colors: [theme.palette.warning.main],
+    colors: ['var(--mui-palette-warning-main)'],
     states: {
       hover: {
         filter: { type: 'none' }
@@ -64,7 +58,7 @@ const BarChartDailyTraffic = ({ serverMode }) => {
       tickPlacement: 'on',
       labels: {
         style: {
-          colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`),
+          colors: 'var(--mui-palette-text-disabled)',
           fontFamily: theme.typography.fontFamily,
           fontSize: theme.typography.body2.fontSize
         }
@@ -103,7 +97,7 @@ const BarChartDailyTraffic = ({ serverMode }) => {
           </div>
           <Chip variant='tonal' color='success' label='+15%' size='small' />
         </div>
-        <AppReactApexCharts type='bar' height={156} series={series} options={options} />
+        <AppReactApexCharts type='bar' height={156} width='100%' series={series} options={options} />
       </CardContent>
     </Card>
   )

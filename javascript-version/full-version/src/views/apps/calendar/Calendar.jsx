@@ -1,12 +1,8 @@
-'use client'
-
 // React Imports
 import { useEffect, useRef } from 'react'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
-
-// Third-party imports
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
@@ -14,7 +10,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 
-// Vars
+// Slice Imports
+import { filterEvents, selectedEvent, updateEvent } from '@/redux-store/slices/calendar'
+
 const blankEvent = {
   title: '',
   start: '',
@@ -31,12 +29,11 @@ const blankEvent = {
 const Calendar = props => {
   // Props
   const {
-    calendars,
+    calendarStore,
     calendarApi,
     setCalendarApi,
     calendarsColor,
-    handleSelectEvent,
-    handleUpdateEvent,
+    dispatch,
     handleAddEventSidebarToggle,
     handleLeftSidebarToggle
   } = props
@@ -52,11 +49,12 @@ const Calendar = props => {
       // @ts-ignore
       setCalendarApi(calendarRef.current?.getApi())
     }
-  }, [calendarApi, setCalendarApi])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // calendarOptions(Props)
   const calendarOptions = {
-    events: calendars.events,
+    events: calendarStore.events,
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
@@ -109,7 +107,7 @@ const Calendar = props => {
     },
     eventClick({ event: clickedEvent, jsEvent }) {
       jsEvent.preventDefault()
-      handleSelectEvent(clickedEvent)
+      dispatch(selectedEvent(clickedEvent))
       handleAddEventSidebarToggle()
 
       if (clickedEvent.url) {
@@ -136,7 +134,7 @@ const Calendar = props => {
       ev.start = info.date
       ev.end = info.date
       ev.allDay = true
-      handleSelectEvent(ev)
+      dispatch(selectedEvent(ev))
       handleAddEventSidebarToggle()
     },
 
@@ -146,7 +144,8 @@ const Calendar = props => {
           ? We can use `eventDragStop` but it doesn't return updated event so we have to use `eventDrop` which returns updated event
         */
     eventDrop({ event: droppedEvent }) {
-      handleUpdateEvent(droppedEvent)
+      dispatch(updateEvent(droppedEvent))
+      dispatch(filterEvents())
     },
 
     /*
@@ -154,13 +153,15 @@ const Calendar = props => {
           ? Docs: https://fullcalendar.io/docs/eventResize
         */
     eventResize({ event: resizedEvent }) {
-      handleUpdateEvent(resizedEvent)
+      dispatch(updateEvent(resizedEvent))
+      dispatch(filterEvents())
     },
+
+    // @ts-ignore
     ref: calendarRef,
     direction: theme.direction
   }
 
-  // @ts-ignore
   return <FullCalendar {...calendarOptions} />
 }
 

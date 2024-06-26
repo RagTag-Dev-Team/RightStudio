@@ -37,7 +37,7 @@ const tabs = {
                     })
               }),
           '& .MuiTabScrollButton-root': {
-            borderRadius: theme.shape.borderRadius
+            borderRadius: 'var(--mui-shape-borderRadius)'
           }
         },
         '& ~ .MuiTabPanel-root': {
@@ -70,6 +70,12 @@ const tabs = {
         color: 'var(--mui-palette-text-primary)',
         '& > .MuiTab-iconWrapper': {
           fontSize: '1.125rem',
+          ...(ownerState.iconPosition === 'top' && {
+            marginBlockEnd: theme.spacing(1.5)
+          }),
+          ...(ownerState.iconPosition === 'bottom' && {
+            marginBlockStart: theme.spacing(1.5)
+          }),
           ...(ownerState.iconPosition === 'start' && {
             marginInlineEnd: theme.spacing(1.5)
           }),

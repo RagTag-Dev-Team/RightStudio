@@ -59,7 +59,7 @@ const LineAreaYearlySalesChart = () => {
             {
               opacity: 0,
               offset: 100,
-              color: theme.palette.background.paper
+              color: 'var(--mui-palette-background-paper)'
             }
           ]
         ]

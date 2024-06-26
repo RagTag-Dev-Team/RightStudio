@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import { useState } from 'react'
 
@@ -19,7 +17,7 @@ import SendInvoiceDrawer from '@views/apps/invoice/shared/SendInvoiceDrawer'
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
 
-const PreviewActions = ({ id }) => {
+const PreviewActions = ({ id, onButtonClick }) => {
   // States
   const [paymentDrawerOpen, setPaymentDrawerOpen] = useState(false)
   const [sendDrawerOpen, setSendDrawerOpen] = useState(false)
@@ -44,15 +42,7 @@ const PreviewActions = ({ id }) => {
             Download
           </Button>
           <div className='flex items-center gap-4'>
-            <Button
-              fullWidth
-              target='_blank'
-              component={Link}
-              color='secondary'
-              variant='tonal'
-              className='capitalize'
-              href={`/apps/invoice/print/${id}`}
-            >
+            <Button fullWidth color='secondary' variant='tonal' className='capitalize' onClick={onButtonClick}>
               Print
             </Button>
             <Button
@@ -61,7 +51,7 @@ const PreviewActions = ({ id }) => {
               color='secondary'
               variant='tonal'
               className='capitalize'
-              href={getLocalizedUrl(`apps/invoice/edit/${id}`, locale)}
+              href={getLocalizedUrl(`/apps/invoice/edit/${id}`, locale)}
             >
               Edit
             </Button>

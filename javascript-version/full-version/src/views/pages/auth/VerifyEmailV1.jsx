@@ -1,7 +1,7 @@
 'use client'
 
 // Next Imports
-import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // MUI Imports
 import Card from '@mui/material/Card'
@@ -11,18 +11,25 @@ import Button from '@mui/material/Button'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
+import Link from '@components/Link'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Component Imports
 import AuthIllustrationWrapper from './AuthIllustrationWrapper'
 
 const VerifyEmailV1 = () => {
+  // Hooks
+  const { lang: locale } = useParams()
+
   return (
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='sm:!p-12'>
-          <div className='flex justify-center mbe-6'>
+          <Link href={getLocalizedUrl('/', locale)} className='flex justify-center mbe-6'>
             <Logo />
-          </div>
+          </Link>
           <div className='flex flex-col gap-1 mbe-6'>
             <Typography variant='h4'>Verify your email ✉️</Typography>
             <Typography>
@@ -36,7 +43,7 @@ const VerifyEmailV1 = () => {
           </Button>
           <div className='flex justify-center items-center flex-wrap gap-2'>
             <Typography>Didn&#39;t get the mail?</Typography>
-            <Typography color='primary' component={Link} href='/' onClick={e => e.preventDefault()}>
+            <Typography color='primary' component={Link}>
               Resend
             </Typography>
           </div>

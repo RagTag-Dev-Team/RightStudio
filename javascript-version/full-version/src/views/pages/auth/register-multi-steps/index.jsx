@@ -3,6 +3,10 @@
 // React Imports
 import { useState } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
@@ -26,6 +30,9 @@ import StepBillingDetails from './StepBillingDetails'
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
 import { useSettings } from '@core/hooks/useSettings'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Custom Components
 const RegisterIllustration = styled('img')(({ theme }) => ({
@@ -66,7 +73,7 @@ const Step = styled(MuiStep)(({ theme }) => ({
   paddingInline: theme.spacing(7),
   paddingBlock: theme.spacing(1),
   '& + i': {
-    color: theme.palette.text.secondary
+    color: 'var(--mui-palette-text-secondary)'
   },
   '&:first-of-type': {
     paddingInlineStart: 0
@@ -78,10 +85,10 @@ const Step = styled(MuiStep)(({ theme }) => ({
     display: 'none'
   },
   '&.Mui-completed .step-title, &.Mui-completed .step-subtitle': {
-    color: theme.palette.text.disabled
+    color: 'var(--mui-palette-text-disabled)'
   },
   '&.Mui-completed + i': {
-    color: theme.palette.primary.main
+    color: 'var(--mui-palette-primary-main)'
   },
   [theme.breakpoints.down('md')]: {
     padding: 0,
@@ -115,6 +122,7 @@ const RegisterMultiSteps = ({ mode }) => {
   // Hooks
   const { settings } = useSettings()
   const theme = useTheme()
+  const { lang: locale } = useParams()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
@@ -153,9 +161,12 @@ const RegisterMultiSteps = ({ mode }) => {
         )}
       </div>
       <div className='flex flex-1 justify-center items-center bs-full bg-backgroundPaper'>
-        <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
+        <Link
+          href={getLocalizedUrl('/', locale)}
+          className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'
+        >
           <Logo />
-        </div>
+        </Link>
         <StepperWrapper className='p-6 sm:p-8 max-is-[46.25rem] mbs-11 sm:mbs-14 lg:mbs-0'>
           <Stepper
             activeStep={activeStep}

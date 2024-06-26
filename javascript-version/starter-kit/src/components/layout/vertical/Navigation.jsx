@@ -3,6 +3,9 @@
 // React Imports
 import { useEffect, useRef } from 'react'
 
+// Next Imports
+import Link from 'next/link'
+
 // MUI Imports
 import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
@@ -100,7 +103,9 @@ const Navigation = props => {
     >
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
-        <Logo />
+        <Link href='/'>
+          <Logo />
+        </Link>
         {!(isCollapsed && !isHovered) && (
           <NavCollapseIcons
             lockedIcon={<i className='tabler-circle-dot text-xl' />}

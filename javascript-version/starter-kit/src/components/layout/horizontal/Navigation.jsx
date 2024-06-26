@@ -1,5 +1,3 @@
-'use client'
-
 // Third-party Imports
 import styled from '@emotion/styled'
 import classnames from 'classnames'

@@ -1,9 +1,9 @@
-const verticalMenuData = (dictionary, params) => [
+const verticalMenuData = dictionary => [
   // This is how you will normally render submenu
   {
     label: dictionary['navigation'].dashboards,
     suffix: {
-      label: '2',
+      label: '5',
       color: 'error'
     },
     icon: 'tabler-smart-home',
@@ -23,6 +23,52 @@ const verticalMenuData = (dictionary, params) => [
         label: dictionary['navigation'].eCommerce,
         icon: 'tabler-circle',
         href: '/dashboards/ecommerce'
+      },
+      {
+        label: dictionary['navigation'].academy,
+        icon: 'tabler-circle',
+        href: '/dashboards/academy'
+      },
+      {
+        label: dictionary['navigation'].logistics,
+        icon: 'tabler-circle',
+        href: '/dashboards/logistics'
+      }
+    ]
+  },
+  {
+    label: dictionary['navigation'].frontPages,
+    icon: 'tabler-files',
+    children: [
+      {
+        label: dictionary['navigation'].landing,
+        href: '/front-pages/landing-page',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].pricing,
+        href: '/front-pages/pricing',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].payment,
+        href: '/front-pages/payment',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].checkout,
+        href: '/front-pages/checkout',
+        target: '_blank',
+        excludeLang: true
+      },
+      {
+        label: dictionary['navigation'].helpCenter,
+        href: '/front-pages/help-center',
+        target: '_blank',
+        excludeLang: true
       }
     ]
   },
@@ -33,9 +79,127 @@ const verticalMenuData = (dictionary, params) => [
     isSection: true,
     children: [
       {
+        label: dictionary['navigation'].eCommerce,
+        icon: 'tabler-shopping-cart',
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/ecommerce/dashboard'
+          },
+          {
+            label: dictionary['navigation'].products,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/products/list'
+              },
+              {
+                label: dictionary['navigation'].add,
+                href: '/apps/ecommerce/products/add'
+              },
+              {
+                label: dictionary['navigation'].category,
+                href: '/apps/ecommerce/products/category'
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].orders,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/orders/list'
+              },
+              {
+                label: dictionary['navigation'].details,
+                href: '/apps/ecommerce/orders/details/5434',
+                exactMatch: false,
+                activeUrl: '/apps/ecommerce/orders/details'
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].customers,
+            children: [
+              {
+                label: dictionary['navigation'].list,
+                href: '/apps/ecommerce/customers/list'
+              },
+              {
+                label: dictionary['navigation'].details,
+                href: '/apps/ecommerce/customers/details/879861',
+                exactMatch: false,
+                activeUrl: '/apps/ecommerce/customers/details'
+              }
+            ]
+          },
+          {
+            label: dictionary['navigation'].manageReviews,
+            href: '/apps/ecommerce/manage-reviews'
+          },
+          {
+            label: dictionary['navigation'].referrals,
+            href: '/apps/ecommerce/referrals'
+          },
+          {
+            label: dictionary['navigation'].settings,
+            href: '/apps/ecommerce/settings'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].academy,
+        icon: 'tabler-school',
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/academy/dashboard'
+          },
+          {
+            label: dictionary['navigation'].myCourses,
+            href: '/apps/academy/my-courses'
+          },
+          {
+            label: dictionary['navigation'].courseDetails,
+            href: '/apps/academy/course-details'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].logistics,
+        icon: 'tabler-truck',
+        children: [
+          {
+            label: dictionary['navigation'].dashboard,
+            href: '/apps/logistics/dashboard'
+          },
+          {
+            label: dictionary['navigation'].fleet,
+            href: '/apps/logistics/fleet'
+          }
+        ]
+      },
+      {
+        label: dictionary['navigation'].email,
+        icon: 'tabler-mail',
+        href: '/apps/email',
+        exactMatch: false,
+        activeUrl: '/apps/email'
+      },
+      {
+        label: dictionary['navigation'].chat,
+        icon: 'tabler-message-circle-2',
+        href: '/apps/chat'
+      },
+      {
         label: dictionary['navigation'].calendar,
         icon: 'tabler-calendar',
         href: '/apps/calendar'
+      },
+      {
+        label: dictionary['navigation'].kanban,
+        icon: 'tabler-copy',
+        href: '/apps/kanban'
       },
       {
         label: dictionary['navigation'].invoice,
@@ -49,12 +213,16 @@ const verticalMenuData = (dictionary, params) => [
           {
             label: dictionary['navigation'].preview,
             icon: 'tabler-circle',
-            href: `/apps/invoice/preview/${params.id || '4987'}`
+            href: '/apps/invoice/preview/4987',
+            exactMatch: false,
+            activeUrl: '/apps/invoice/preview'
           },
           {
             label: dictionary['navigation'].edit,
             icon: 'tabler-circle',
-            href: `/apps/invoice/edit/${params.id || '4987'}`
+            href: '/apps/invoice/edit/4987',
+            exactMatch: false,
+            activeUrl: '/apps/invoice/edit'
           },
           {
             label: dictionary['navigation'].add,
@@ -325,11 +493,6 @@ const verticalMenuData = (dictionary, params) => [
             href: '/pages/widget-examples/actions'
           }
         ]
-      },
-      {
-        label: 'Icons Test',
-        icon: 'tabler-icons',
-        href: '/icons-test'
       }
     ]
   },
@@ -426,7 +589,7 @@ const verticalMenuData = (dictionary, params) => [
         icon: 'tabler-book-2',
         suffix: <i className='tabler-external-link text-xl' />,
         target: '_blank',
-        href: 'https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+        href: `${process.env.NEXT_PUBLIC_DOCS_URL}`
       },
       {
         label: dictionary['navigation'].others,

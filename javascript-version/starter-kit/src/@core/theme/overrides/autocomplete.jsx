@@ -53,7 +53,7 @@ const autocomplete = skin => ({
           paddingBlock: theme.spacing(2),
           marginInline: theme.spacing(2),
           marginBlock: theme.spacing(0.5),
-          borderRadius: theme.shape.borderRadius,
+          borderRadius: 'var(--mui-shape-borderRadius)',
           '&[aria-selected="true"]': {
             backgroundColor: 'var(--mui-palette-primary-lightOpacity)',
             color: 'var(--mui-palette-primary-main)',

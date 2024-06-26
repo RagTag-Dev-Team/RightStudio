@@ -10,16 +10,16 @@ const iconButton = {
         }
       },
       sizeSmall: ({ theme }) => ({
-        padding: theme.spacing(1.75),
+        padding: theme.spacing(1.25),
         fontSize: '1.25rem'
       }),
       sizeMedium: ({ theme }) => ({
-        padding: theme.spacing(1.75),
-        fontSize: '1.5rem'
+        padding: theme.spacing(2),
+        fontSize: '1.375rem'
       }),
       sizeLarge: ({ theme }) => ({
-        padding: theme.spacing(1.75),
-        fontSize: '1.75rem'
+        padding: theme.spacing(3),
+        fontSize: '1.5rem'
       })
     },
     variants: [

@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
@@ -17,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip'
 // Component Imports
 import OptionMenu from '@core/components/option-menu'
 import CustomAvatar from '@core/components/mui/Avatar'
+import Link from '@components/Link'
 
 const Projects = ({ data }) => {
   return (
@@ -31,13 +27,7 @@ const Projects = ({ data }) => {
                     <div className='flex items-center gap-4'>
                       <CustomAvatar src={item.avatar} size={38} />
                       <div>
-                        <Typography
-                          variant='h5'
-                          href='/'
-                          component={Link}
-                          onClick={e => e.preventDefault()}
-                          className='hover:text-primary'
-                        >
+                        <Typography variant='h5' component={Link} className='hover:text-primary'>
                           {item.title}
                         </Typography>
                         <Typography>

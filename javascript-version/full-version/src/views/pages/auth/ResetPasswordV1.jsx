@@ -40,9 +40,9 @@ const ResetPasswordV1 = () => {
     <AuthIllustrationWrapper>
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='sm:!p-12'>
-          <div className='flex justify-center mbe-6'>
+          <Link href={getLocalizedUrl('/', locale)} className='flex justify-center mbe-6'>
             <Logo />
-          </div>
+          </Link>
           <div className='flex flex-col gap-1 mbe-6'>
             <Typography variant='h4'>Reset Password 🔒</Typography>
             <Typography>Your new password must be different from previously used passwords</Typography>
@@ -87,7 +87,7 @@ const ResetPasswordV1 = () => {
               Set New Password
             </Button>
             <Typography className='flex justify-center items-center' color='primary'>
-              <Link href={getLocalizedUrl('pages/auth/login-v1', locale)} className='flex items-center gap-1.5'>
+              <Link href={getLocalizedUrl('/pages/auth/login-v1', locale)} className='flex items-center gap-1.5'>
                 <DirectionalIcon
                   ltrIconClass='tabler-chevron-left'
                   rtlIconClass='tabler-chevron-right'

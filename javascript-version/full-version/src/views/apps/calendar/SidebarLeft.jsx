@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
@@ -14,17 +12,18 @@ import classnames from 'classnames'
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
+// Slice Imports
+import { filterAllCalendarLabels, filterCalendarLabel, selectedEvent } from '@/redux-store/slices/calendar'
+
 const SidebarLeft = props => {
   // Props
   const {
     mdAbove,
     leftSidebarOpen,
-    calendars,
+    calendarStore,
     calendarsColor,
     calendarApi,
-    handleSelectEvent,
-    handleAllCalendars,
-    handleCalendarsUpdate,
+    dispatch,
     handleLeftSidebarToggle,
     handleAddEventSidebarToggle
   } = props
@@ -42,8 +41,8 @@ const SidebarLeft = props => {
             control={
               <Checkbox
                 color={value}
-                checked={calendars.selectedCalendars.indexOf(key) > -1}
-                onChange={() => handleCalendarsUpdate(key)}
+                checked={calendarStore.selectedCalendars.indexOf(key) > -1}
+                onChange={() => dispatch(filterCalendarLabel(key))}
               />
             }
           />
@@ -52,7 +51,7 @@ const SidebarLeft = props => {
     : null
 
   const handleSidebarToggleSidebar = () => {
-    handleSelectEvent(null)
+    dispatch(selectedEvent(null))
     handleAddEventSidebarToggle()
   }
 
@@ -119,8 +118,8 @@ const SidebarLeft = props => {
             control={
               <Checkbox
                 color='secondary'
-                checked={calendars.selectedCalendars.length === colorsArr.length}
-                onChange={e => handleAllCalendars(e.target.checked)}
+                checked={calendarStore.selectedCalendars.length === colorsArr.length}
+                onChange={e => dispatch(filterAllCalendarLabels(e.target.checked))}
               />
             }
           />

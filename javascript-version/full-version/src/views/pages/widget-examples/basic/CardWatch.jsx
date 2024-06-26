@@ -8,7 +8,7 @@ import Button from '@mui/material/Button'
 const CardWatch = () => {
   return (
     <Card>
-      <CardMedia image='/images/cards/5.png' className='bs-[140px]' />
+      <CardMedia image='/images/cards/6.png' className='bs-[140px]' />
       <CardContent>
         <Typography variant='h5' className='mbe-2'>
           Apple Watch

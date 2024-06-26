@@ -3,7 +3,6 @@ import { createContext, useMemo, useState } from 'react'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
-import demoConfigs from '@configs/demoConfigs'
 import primaryColorConfig from '@configs/primaryColorConfig'
 
 // Hook Imports
@@ -14,9 +13,6 @@ export const SettingsContext = createContext(null)
 
 // Settings Provider
 export const SettingsProvider = props => {
-  const demoName = props.demoName || null
-  const demoConfigurations = demoName ? demoConfigs[demoName] : {}
-
   // Initial Settings
   const initialSettings = {
     mode: themeConfig.mode,
@@ -26,18 +22,17 @@ export const SettingsProvider = props => {
     navbarContentWidth: themeConfig.navbar.contentWidth,
     contentWidth: themeConfig.contentWidth,
     footerContentWidth: themeConfig.footer.contentWidth,
-    primaryColor: primaryColorConfig[0].main,
-    ...(demoName && demoConfigurations)
+    primaryColor: primaryColorConfig[0].main
   }
 
   const updatedInitialSettings = {
     ...initialSettings,
-    mode: props.mode || (demoName && demoConfigurations.mode) || themeConfig.mode
+    mode: props.mode || themeConfig.mode
   }
 
   // Cookies
   const [settingsCookie, updateSettingsCookie] = useObjectCookie(
-    demoName ? themeConfig.settingsCookieName.replace('demo-1', demoName) : themeConfig.settingsCookieName,
+    themeConfig.settingsCookieName,
     JSON.stringify(props.settingsCookie) !== '{}' ? props.settingsCookie : updatedInitialSettings
   )
 

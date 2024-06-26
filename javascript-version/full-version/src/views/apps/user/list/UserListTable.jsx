@@ -107,8 +107,8 @@ const UserListTable = ({ tableData }) => {
   // States
   const [addUserOpen, setAddUserOpen] = useState(false)
   const [rowSelection, setRowSelection] = useState({})
-
   const [data, setData] = useState(...[tableData])
+  const [filteredData, setFilteredData] = useState(data)
   const [globalFilter, setGlobalFilter] = useState('')
 
   // Hooks
@@ -184,37 +184,38 @@ const UserListTable = ({ tableData }) => {
           <div className='flex items-center gap-3'>
             <Chip
               variant='tonal'
-              className='capitalize'
               label={row.original.status}
-              color={userStatusObj[row.original.status]}
               size='small'
+              color={userStatusObj[row.original.status]}
+              className='capitalize'
             />
           </div>
         )
       }),
       columnHelper.accessor('action', {
         header: 'Action',
-        cell: () => (
+        cell: ({ row }) => (
           <div className='flex items-center'>
-            <IconButton>
-              <i className='tabler-trash text-[22px] text-textSecondary' />
+            <IconButton onClick={() => setData(data?.filter(product => product.id !== row.original.id))}>
+              <i className='tabler-trash text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl('apps/user/view', locale)} className='flex'>
-                <i className='tabler-eye text-[22px] text-textSecondary' />
+              <Link href={getLocalizedUrl('/apps/user/view', locale)} className='flex'>
+                <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
             <OptionMenu
-              iconClassName='text-[22px] text-textSecondary'
+              iconButtonProps={{ size: 'medium' }}
+              iconClassName='text-textSecondary'
               options={[
                 {
                   text: 'Download',
-                  icon: 'tabler-download text-[22px]',
+                  icon: 'tabler-download',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 },
                 {
                   text: 'Edit',
-                  icon: 'tabler-edit text-[22px]',
+                  icon: 'tabler-edit',
                   menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
                 }
               ]}
@@ -225,11 +226,11 @@ const UserListTable = ({ tableData }) => {
       })
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, filteredData]
   )
 
   const table = useReactTable({
-    data: data,
+    data: filteredData,
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -271,7 +272,7 @@ const UserListTable = ({ tableData }) => {
     <>
       <Card>
         <CardHeader title='Filters' className='pbe-4' />
-        <TableFilters setData={setData} tableData={tableData} />
+        <TableFilters setData={setFilteredData} tableData={data} />
         <div className='flex justify-between flex-col items-start md:flex-row md:items-center p-6 border-bs gap-4'>
           <CustomTextField
             select
@@ -373,7 +374,12 @@ const UserListTable = ({ tableData }) => {
           }}
         />
       </Card>
-      <AddUserDrawer open={addUserOpen} handleClose={() => setAddUserOpen(!addUserOpen)} />
+      <AddUserDrawer
+        open={addUserOpen}
+        handleClose={() => setAddUserOpen(!addUserOpen)}
+        userData={data}
+        setData={setData}
+      />
     </>
   )
 }

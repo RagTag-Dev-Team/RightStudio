@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -73,7 +71,7 @@ const NotificationsTab = () => {
           </tbody>
         </table>
       </div>
-      <CardActions className='flex items-center gap-2'>
+      <CardActions className='flex items-center'>
         <Button variant='contained' type='submit'>
           Save Changes
         </Button>

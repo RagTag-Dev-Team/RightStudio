@@ -1,7 +1,4 @@
-'use strict'
-
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,css}'],
   corePlugins: {
     preflight: false
@@ -12,3 +9,5 @@ module.exports = {
     extend: {}
   }
 }
+
+export default config

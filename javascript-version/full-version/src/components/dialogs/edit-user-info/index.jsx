@@ -43,7 +43,7 @@ const EditUserInfo = ({ open, setOpen, data }) => {
 
   const handleClose = () => {
     setOpen(false)
-    setUserData(initialData)
+    setUserData(data || initialData)
   }
 
   return (

@@ -80,7 +80,7 @@ const BrowserStates = () => {
                     size={26}
                     value={100}
                     thickness={5}
-                    sx={{ position: 'absolute', color: theme => theme.palette.customColors.trackBg }}
+                    sx={{ position: 'absolute', color: 'var(--mui-palette-customColors-trackBg)' }}
                   />
                   <CircularProgress
                     variant='determinate'

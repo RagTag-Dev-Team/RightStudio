@@ -1,6 +1,3 @@
-// Do not remove this following 'use client' else SubMenu rendered in vertical menu on smaller screen will not work.
-'use client'
-
 // Next Imports
 import { useParams } from 'next/navigation'
 
@@ -50,7 +47,7 @@ const HorizontalMenu = ({ dictionary }) => {
   // Vars
   const { skin } = settings
   const { transitionDuration } = verticalNavOptions
-  const { lang: locale, id } = params
+  const { lang: locale } = params
 
   return (
     <HorizontalNav
@@ -65,14 +62,14 @@ const HorizontalMenu = ({ dictionary }) => {
       <Menu
         rootStyles={menuRootStyles(theme)}
         renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-        menuItemStyles={menuItemStyles(settings, theme)}
+        menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         popoutMenuOffset={{
           mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
           alignmentAxis: 0
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
           renderExpandIcon: ({ open }) => (
             <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
           ),
@@ -90,17 +87,89 @@ const HorizontalMenu = ({ dictionary }) => {
           <MenuItem href={`/${locale}/dashboards/ecommerce`} icon={<i className='tabler-shopping-cart' />}>
             {dictionary['navigation'].eCommerce}
           </MenuItem>
+          <MenuItem href={`/${locale}/dashboards/academy`} icon={<i className='tabler-school' />}>
+            {dictionary['navigation'].academy}
+          </MenuItem>
+          <MenuItem href={`/${locale}/dashboards/logistics`} icon={<i className='tabler-truck' />}>
+            {dictionary['navigation'].logistics}
+          </MenuItem>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].apps} icon={<i className='tabler-mail' />}>
+          <SubMenu label={dictionary['navigation'].eCommerce} icon={<i className='tabler-shopping-cart' />}>
+            <MenuItem href={`/${locale}/apps/ecommerce/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <SubMenu label={dictionary['navigation'].products}>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/add`}>{dictionary['navigation'].add}</MenuItem>
+              <MenuItem href={`/${locale}/apps/ecommerce/products/category`}>
+                {dictionary['navigation'].category}
+              </MenuItem>
+            </SubMenu>
+            <SubMenu label={dictionary['navigation'].orders}>
+              <MenuItem href={`/${locale}/apps/ecommerce/orders/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/orders/details/5434`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/orders/details'
+              >
+                {dictionary['navigation'].details}
+              </MenuItem>
+            </SubMenu>
+            <SubMenu label={dictionary['navigation'].customers}>
+              <MenuItem href={`/${locale}/apps/ecommerce/customers/list`}>{dictionary['navigation'].list}</MenuItem>
+              <MenuItem
+                href={`/${locale}/apps/ecommerce/customers/details/879861`}
+                exactMatch={false}
+                activeUrl='/apps/ecommerce/customers/details'
+              >
+                {dictionary['navigation'].details}
+              </MenuItem>
+            </SubMenu>
+            <MenuItem href={`/${locale}/apps/ecommerce/manage-reviews`}>
+              {dictionary['navigation'].manageReviews}
+            </MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/referrals`}>{dictionary['navigation'].referrals}</MenuItem>
+            <MenuItem href={`/${locale}/apps/ecommerce/settings`}>{dictionary['navigation'].settings}</MenuItem>
+          </SubMenu>
+          <SubMenu label={dictionary['navigation'].academy} icon={<i className='tabler-school' />}>
+            <MenuItem href={`/${locale}/apps/academy/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/apps/academy/my-courses`}>{dictionary['navigation'].myCourses}</MenuItem>
+            <MenuItem href={`/${locale}/apps/academy/course-details`}>
+              {dictionary['navigation'].courseDetails}
+            </MenuItem>
+          </SubMenu>
+          <SubMenu label={dictionary['navigation'].logistics} icon={<i className='tabler-truck' />}>
+            <MenuItem href={`/${locale}/apps/logistics/dashboard`}>{dictionary['navigation'].dashboard}</MenuItem>
+            <MenuItem href={`/${locale}/apps/logistics/fleet`}>{dictionary['navigation'].fleet}</MenuItem>
+          </SubMenu>
+          <MenuItem
+            href={`/${locale}/apps/email`}
+            icon={<i className='tabler-mail' />}
+            exactMatch={false}
+            activeUrl='/apps/email'
+          >
+            {dictionary['navigation'].email}
+          </MenuItem>
+          <MenuItem href={`/${locale}/apps/chat`} icon={<i className='tabler-message-circle-2' />}>
+            {dictionary['navigation'].chat}
+          </MenuItem>
           <MenuItem href={`/${locale}/apps/calendar`} icon={<i className='tabler-calendar' />}>
             {dictionary['navigation'].calendar}
           </MenuItem>
+          <MenuItem href={`/${locale}/apps/kanban`} icon={<i className='tabler-copy' />}>
+            {dictionary['navigation'].kanban}
+          </MenuItem>
           <SubMenu label={dictionary['navigation'].invoice} icon={<i className='tabler-file-description' />}>
             <MenuItem href={`/${locale}/apps/invoice/list`}>{dictionary['navigation'].list}</MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/preview/${id || '4987'}`}>
+            <MenuItem
+              href={`/${locale}/apps/invoice/preview/4987`}
+              exactMatch={false}
+              activeUrl='/apps/invoice/preview'
+            >
               {dictionary['navigation'].preview}
             </MenuItem>
-            <MenuItem href={`/${locale}/apps/invoice/edit/${id || '4987'}`}>{dictionary['navigation'].edit}</MenuItem>
+            <MenuItem href={`/${locale}/apps/invoice/edit/4987`} exactMatch={false} activeUrl='/apps/invoice/edit'>
+              {dictionary['navigation'].edit}
+            </MenuItem>
             <MenuItem href={`/${locale}/apps/invoice/add`}>{dictionary['navigation'].add}</MenuItem>
           </SubMenu>
           <SubMenu label={dictionary['navigation'].user} icon={<i className='tabler-user' />}>
@@ -213,9 +282,23 @@ const HorizontalMenu = ({ dictionary }) => {
             <MenuItem href={`/${locale}/pages/widget-examples/charts`}>{dictionary['navigation'].charts}</MenuItem>
             <MenuItem href={`/${locale}/pages/widget-examples/actions`}>{dictionary['navigation'].actions}</MenuItem>
           </SubMenu>
-          <MenuItem href={`/${locale}/icons-test`} icon={<i className='tabler-icons' />}>
-            Icons Test
-          </MenuItem>
+          <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>
+            <MenuItem href='/front-pages/landing-page' target='_blank'>
+              {dictionary['navigation'].landing}
+            </MenuItem>
+            <MenuItem href='/front-pages/pricing' target='_blank'>
+              {dictionary['navigation'].pricing}
+            </MenuItem>
+            <MenuItem href='/front-pages/payment' target='_blank'>
+              {dictionary['navigation'].payment}
+            </MenuItem>
+            <MenuItem href='/front-pages/checkout' target='_blank'>
+              {dictionary['navigation'].checkout}
+            </MenuItem>
+            <MenuItem href='/front-pages/help-center' target='_blank'>
+              {dictionary['navigation'].helpCenter}
+            </MenuItem>
+          </SubMenu>
         </SubMenu>
         <SubMenu label={dictionary['navigation'].formsAndTables} icon={<i className='tabler-file-invoice' />}>
           <MenuItem href={`/${locale}/forms/form-layouts`} icon={<i className='tabler-layout' />}>
@@ -292,7 +375,7 @@ const HorizontalMenu = ({ dictionary }) => {
             suffix={<i className='tabler-external-link text-xl' />}
             target='_blank'
             icon={<i className='tabler-book-2' />}
-            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}`}
           >
             {dictionary['navigation'].documentation}
           </MenuItem>
@@ -323,14 +406,14 @@ const HorizontalMenu = ({ dictionary }) => {
       {/* <Menu
           rootStyles={menuRootStyles(theme)}
           renderExpandIcon={({ level }) => <RenderExpandIcon level={level} />}
-          menuItemStyles={menuItemStyles(settings, theme)}
+          menuItemStyles={menuItemStyles(theme, 'tabler-circle')}
           renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
           popoutMenuOffset={{
             mainAxis: ({ level }) => (level && level > 0 ? 14 : 12),
             alignmentAxis: 0
           }}
           verticalMenuProps={{
-            menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme, settings),
+            menuItemStyles: verticalMenuItemStyles(verticalNavOptions, theme),
             renderExpandIcon: ({ open }) => (
               <RenderVerticalExpandIcon open={open} transitionDuration={transitionDuration} />
             ),
@@ -338,7 +421,7 @@ const HorizontalMenu = ({ dictionary }) => {
             menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
           }}
         >
-          <GenerateHorizontalMenu menuData={menuData(dictionary, params)} />
+          <GenerateHorizontalMenu menuData={menuData(dictionary)} />
         </Menu> */}
     </HorizontalNav>
   )

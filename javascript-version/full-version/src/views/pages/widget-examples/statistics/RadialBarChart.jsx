@@ -1,5 +1,3 @@
-'use client'
-
 // Next Imports
 import dynamic from 'next/dynamic'
 
@@ -8,22 +6,12 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
-import { useColorScheme, useTheme } from '@mui/material/styles'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
-const RadialBarChart = ({ serverMode }) => {
-  // Hooks
-  const theme = useTheme()
-  const { mode } = useColorScheme()
-
+const RadialBarChart = () => {
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-
   const options = {
     chart: {
       sparkline: { enabled: true },
@@ -38,20 +26,20 @@ const RadialBarChart = ({ serverMode }) => {
       lineCap: 'round',
       curve: 'smooth'
     },
-    colors: [theme.palette.warning.main],
+    colors: ['var(--mui-palette-warning-main)'],
     plotOptions: {
       radialBar: {
         endAngle: 90,
         startAngle: -90,
         hollow: { size: '60%' },
-        track: { background: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`), strokeWidth: '40%' },
+        track: { background: 'var(--mui-palette-divider)', strokeWidth: '40%' },
         dataLabels: {
           name: { show: false },
           value: {
             offsetY: 0,
             fontWeight: 500,
             fontSize: '1.5rem',
-            color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`)
+            color: 'var(--mui-palette-text-primary)'
           }
         }
       }

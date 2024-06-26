@@ -11,7 +11,7 @@ import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import MuiStepper from '@mui/material/Stepper'
-import styled from '@mui/material/styles/styled'
+import { styled } from '@mui/material/styles'
 
 // Component Imports
 import StepCart from './StepCart'

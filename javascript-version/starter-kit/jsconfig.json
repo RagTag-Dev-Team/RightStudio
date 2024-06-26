@@ -42,16 +42,11 @@
       ],
       "@views/*": [
         "./src/views/*"
-      ],
-      "@reducers/*": [
-        "./src/reducers/*"
       ]
     }
   },
   "include": [
-    ".eslintrc.js",
-    "next.config.js",
-    "postcss.config.js",
+    "next.config.mjs",
     "tailwind.config.js",
     "**/*.js",
     "**/*.jsx"

@@ -74,7 +74,7 @@ const ProjectStatus = () => {
             {
               offset: 100,
               opacity: 0.1,
-              color: theme.palette.background.paper
+              color: 'var(--mui-palette-background-paper)'
             }
           ]
         ]
@@ -125,7 +125,7 @@ const ProjectStatus = () => {
             </Typography>
           </div>
         </div>
-        <AppReactApexCharts type='area' height={234} series={series} options={options} />
+        <AppReactApexCharts type='area' height={234} width='100%' series={series} options={options} />
         <div className='flex flex-col gap-4'>
           {data.map((item, index) => (
             <div key={index} className='flex items-center justify-between gap-4'>

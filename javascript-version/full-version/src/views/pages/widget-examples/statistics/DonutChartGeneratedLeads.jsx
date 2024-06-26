@@ -7,33 +7,26 @@ import dynamic from 'next/dynamic'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-import { useColorScheme, useTheme } from '@mui/material/styles'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
+import { useTheme } from '@mui/material/styles'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 const series = [32, 41, 41, 70]
 
-const BarChartRevenueGrowth = ({ serverMode }) => {
+const BarChartRevenueGrowth = () => {
   // Hook
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-
-  // Vars
-  const textSecondary = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`)
-  const successColor = theme.palette.success.main
+  const textSecondary = 'var(--mui-palette-text-secondary)'
+  const successColor = 'var(--mui-palette-success-main)'
 
   const options = {
     colors: [
       successColor,
-      rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.7)`),
-      rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.5)`),
-      rgbaToHex(`rgb(${theme.palette.success.mainChannel} / 0.16)`)
+      'rgba(var(--mui-palette-success-mainChannel) / 0.7)',
+      'rgba(var(--mui-palette-success-mainChannel) / 0.5)',
+      'var(--mui-palette-success-lightOpacity)'
     ],
     stroke: { width: 0 },
     legend: { show: false },
@@ -72,7 +65,7 @@ const BarChartRevenueGrowth = ({ serverMode }) => {
               offsetY: -15,
               fontWeight: 500,
               formatter: val => `${val}`,
-              color: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.9)`),
+              color: 'var(--mui-palette-text-primary)',
               fontFamily: theme.typography.fontFamily,
               fontSize: theme.typography.h3.fontSize
             },

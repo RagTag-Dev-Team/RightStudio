@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import { useState } from 'react'
 
@@ -52,8 +50,8 @@ const AddPaymentDrawer = ({ open, handleClose }) => {
     >
       <div className='flex items-center justify-between plb-5 pli-6'>
         <Typography variant='h5'>Add New User</Typography>
-        <IconButton onClick={handleReset}>
-          <i className='tabler-x text-textPrimary' />
+        <IconButton size='small' onClick={handleReset}>
+          <i className='tabler-x text-2xl text-textPrimary' />
         </IconButton>
       </div>
       <Divider />

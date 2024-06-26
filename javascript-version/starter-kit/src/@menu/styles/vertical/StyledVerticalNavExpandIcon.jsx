@@ -14,12 +14,11 @@ const StyledVerticalNavExpandIcon = styled.span`
   & > svg {
     transition: ${({ transitionDuration }) => `transform ${transitionDuration}ms ease-in-out`};
     ${({ open }) => open && 'transform: rotate(90deg);'}
-  }
 
-  [dir='rtl'] & > i,
-  [dir='rtl'] & > svg {
-    transform: rotate(180deg);
-    ${({ open }) => open && 'transform: rotate(90deg);'}
+    [dir='rtl'] & {
+      transform: rotate(180deg);
+      ${({ open }) => open && 'transform: rotate(90deg);'}
+    }
   }
 `
 

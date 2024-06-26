@@ -8,13 +8,13 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Component Imports
+import CustomIconButton from '@core/components/mui/IconButton'
 import CustomTextField from '@core/components/mui/TextField'
 import CustomAvatar from '@core/components/mui/Avatar'
 import DialogCloseButton from '../DialogCloseButton'
@@ -59,8 +59,8 @@ const ReferEarn = ({ open, setOpen }) => {
       <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-12 sm:pli-16'>
         Refer & Earn
         <Typography component='span' className='flex flex-col text-center'>
-          Invite your friend to {themeConfig.templateName}, if they sign up, you and your friend will get 30 days free
-          trial
+          {`Invite your friend to ${themeConfig.templateName}, if they sign up, you and your friend will get 30 days free
+          trial`}
         </Typography>
       </DialogTitle>
       <DialogContent className='flex flex-col gap-6 pbs-0 sm:pli-16 sm:pbe-16'>
@@ -124,15 +124,15 @@ const ReferEarn = ({ open, setOpen }) => {
               }}
             />
             <div className='flex items-center gap-1'>
-              <IconButton className='rounded text-white bg-facebook'>
+              <CustomIconButton className='rounded text-white bg-facebook'>
                 <i className='tabler-brand-facebook' />
-              </IconButton>
-              <IconButton className='rounded text-white bg-twitter'>
+              </CustomIconButton>
+              <CustomIconButton className='rounded text-white bg-twitter'>
                 <i className='tabler-brand-twitter' />
-              </IconButton>
-              <IconButton className='rounded text-white bg-linkedin'>
+              </CustomIconButton>
+              <CustomIconButton className='rounded text-white bg-linkedin'>
                 <i className='tabler-brand-linkedin' />
-              </IconButton>
+              </CustomIconButton>
             </div>
           </div>
         </div>

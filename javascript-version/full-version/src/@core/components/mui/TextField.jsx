@@ -37,7 +37,7 @@ const TextFieldStyled = styled(TextField)(({ theme }) => ({
       display: 'none'
     },
     '&.MuiInputBase-sizeSmall': {
-      borderRadius: theme.shape.borderRadius
+      borderRadius: 'var(--mui-shape-borderRadius)'
     },
     '&.Mui-error': {
       borderColor: 'var(--mui-palette-error-main)'
@@ -94,10 +94,10 @@ const TextFieldStyled = styled(TextField)(({ theme }) => ({
       paddingInlineStart: '0px !important'
     }
   },
-  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedStart': {
+  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedStart:not(.MuiAutocomplete-inputRoot)': {
     paddingInlineStart: '14px'
   },
-  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd': {
+  '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd:not(.MuiAutocomplete-inputRoot)': {
     paddingInlineEnd: '14px'
   },
   '& .MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.Mui-focused:not(.MuiAutocomplete-inputRoot)': {

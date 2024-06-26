@@ -4,12 +4,13 @@
 import { useState } from 'react'
 
 // MUI Imports
+import { styled } from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import Step from '@mui/material/Step'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
-import Stepper from '@mui/material/Stepper'
+import MuiStepper from '@mui/material/Stepper'
 import MenuItem from '@mui/material/MenuItem'
 import StepLabel from '@mui/material/StepLabel'
 import Typography from '@mui/material/Typography'
@@ -22,7 +23,7 @@ import IconButton from '@mui/material/IconButton'
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { email, object, minLength, string, array, forward, custom } from 'valibot'
+import { email, object, minLength, string, array, forward, pipe, nonEmpty, check } from 'valibot'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -46,36 +47,53 @@ const steps = [
   }
 ]
 
-const accountSchema = object(
-  {
-    username: string([minLength(1, 'This field is required')]),
-    email: string([minLength(1, 'This field is required'), email()]),
-    password: string([
-      minLength(1, 'This field is required'),
-      minLength(8, 'Password must be at least 8 characters long')
-    ]),
-    confirmPassword: string([minLength(1, 'This field is required')])
-  },
-  [
-    forward(
-      custom(input => input.password === input.confirmPassword, 'Passwords do not match.'),
-      ['confirmPassword']
-    )
-  ]
+// Styled Components
+const Stepper = styled(MuiStepper)(({ theme }) => ({
+  justifyContent: 'center',
+  '& .MuiStep-root': {
+    '&:first-of-type': {
+      paddingInlineStart: 0
+    },
+    '&:last-of-type': {
+      paddingInlineEnd: 0
+    },
+    [theme.breakpoints.down('md')]: {
+      paddingInline: 0
+    }
+  }
+}))
+
+const accountValidationSchema = object({
+  username: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  email: pipe(string(), nonEmpty('This field is required'), email('Please enter a valid email address')),
+  password: pipe(
+    string(),
+    nonEmpty('This field is required'),
+    minLength(8, 'Password must be at least 8 characters long')
+  ),
+  confirmPassword: pipe(string(), nonEmpty('This field is required'), minLength(1))
+})
+
+const accountSchema = pipe(
+  accountValidationSchema,
+  forward(
+    check(input => input.password === input.confirmPassword, 'Passwords do not match.'),
+    ['confirmPassword']
+  )
 )
 
 const personalSchema = object({
-  firstName: string([minLength(1, 'This field is required')]),
-  lastName: string([minLength(1, 'This field is required')]),
-  country: string([minLength(1, 'This field is required')]),
-  language: array(string(), [minLength(1, 'This field is required')])
+  firstName: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  lastName: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  country: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  language: pipe(array(string()), nonEmpty('This field is required'), minLength(1))
 })
 
 const socialSchema = object({
-  twitter: string([minLength(1, 'This field is required')]),
-  facebook: string([minLength(1, 'This field is required')]),
-  google: string([minLength(1, 'This field is required')]),
-  linkedIn: string([minLength(1, 'This field is required')])
+  twitter: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  facebook: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  google: pipe(string(), nonEmpty('This field is required'), minLength(1)),
+  linkedIn: pipe(string(), nonEmpty('This field is required'), minLength(1))
 })
 
 const StepperLinearWithValidation = () => {

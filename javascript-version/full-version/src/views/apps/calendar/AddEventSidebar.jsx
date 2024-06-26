@@ -1,5 +1,3 @@
-'use client'
-
 // React Imports
 import { useState, useEffect, forwardRef, useCallback } from 'react'
 
@@ -25,6 +23,9 @@ import CustomTextField from '@core/components/mui/TextField'
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
+// Slice Imports
+import { addEvent, deleteEvent, updateEvent, selectedEvent, filterEvents } from '@/redux-store/slices/calendar'
+
 // Vars
 const capitalize = string => string && string[0].toUpperCase() + string.slice(1)
 
@@ -42,16 +43,7 @@ const defaultState = {
 
 const AddEventSidebar = props => {
   // Props
-  const {
-    calendars,
-    calendarApi,
-    handleAddEvent,
-    handleUpdateEvent,
-    handleDeleteEvent,
-    handleSelectEvent,
-    addEventSidebarOpen,
-    handleAddEventSidebarToggle
-  } = props
+  const { calendarStore, dispatch, addEventSidebarOpen, handleAddEventSidebarToggle } = props
 
   // States
   const [values, setValues] = useState(defaultState)
@@ -82,8 +74,8 @@ const AddEventSidebar = props => {
   } = useForm({ defaultValues: { title: '' } })
 
   const resetToStoredValues = useCallback(() => {
-    if (calendars.selectedEvent !== null) {
-      const event = calendars.selectedEvent
+    if (calendarStore.selectedEvent !== null) {
+      const event = calendarStore.selectedEvent
 
       setValue('title', event.title || '')
       setValues({
@@ -97,17 +89,17 @@ const AddEventSidebar = props => {
         startDate: event.start !== null ? event.start : new Date()
       })
     }
-  }, [setValue, calendars.selectedEvent])
+  }, [setValue, calendarStore.selectedEvent])
 
   const resetToEmptyValues = useCallback(() => {
     setValue('title', '')
     setValues(defaultState)
   }, [setValue])
 
-  const handleSidebarClose = async () => {
+  const handleSidebarClose = () => {
     setValues(defaultState)
     clearErrors()
-    handleSelectEvent(null)
+    dispatch(selectedEvent(null))
     handleAddEventSidebarToggle()
   }
 
@@ -127,24 +119,25 @@ const AddEventSidebar = props => {
     }
 
     if (
-      calendars.selectedEvent === null ||
-      (calendars.selectedEvent !== null && !calendars.selectedEvent.title.length)
+      calendarStore.selectedEvent === null ||
+      (calendarStore.selectedEvent !== null && !calendarStore.selectedEvent.title.length)
     ) {
-      handleAddEvent(modifiedEvent)
+      dispatch(addEvent(modifiedEvent))
     } else {
-      handleUpdateEvent({ id: parseInt(calendars.selectedEvent.id), ...modifiedEvent })
+      dispatch(updateEvent({ ...modifiedEvent, id: calendarStore.selectedEvent.id }))
     }
 
-    calendarApi.refetchEvents()
+    dispatch(filterEvents())
     handleSidebarClose()
   }
 
   const handleDeleteButtonClick = () => {
-    if (calendars.selectedEvent) {
-      handleDeleteEvent(parseInt(calendars.selectedEvent.id))
+    if (calendarStore.selectedEvent) {
+      dispatch(deleteEvent(calendarStore.selectedEvent.id))
+      dispatch(filterEvents())
     }
 
-    calendarApi.getEventById(calendars.selectedEvent.id).remove()
+    // calendarApi.getEventById(calendarStore.selectedEvent.id).remove()
     handleSidebarClose()
   }
 
@@ -155,7 +148,10 @@ const AddEventSidebar = props => {
   }
 
   const RenderSidebarFooter = () => {
-    if (calendars.selectedEvent === null || (calendars.selectedEvent && !calendars.selectedEvent.title.length)) {
+    if (
+      calendarStore.selectedEvent === null ||
+      (calendarStore.selectedEvent && !calendarStore.selectedEvent.title.length)
+    ) {
       return (
         <div className='flex gap-4'>
           <Button type='submit' variant='contained'>
@@ -183,12 +179,12 @@ const AddEventSidebar = props => {
   const ScrollWrapper = isBelowSmScreen ? 'div' : PerfectScrollbar
 
   useEffect(() => {
-    if (calendars.selectedEvent !== null) {
+    if (calendarStore.selectedEvent !== null) {
       resetToStoredValues()
     } else {
       resetToEmptyValues()
     }
-  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendars.selectedEvent])
+  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, calendarStore.selectedEvent])
 
   return (
     <Drawer
@@ -200,20 +196,20 @@ const AddEventSidebar = props => {
     >
       <Box className='flex justify-between items-center sidebar-header plb-5 pli-6 border-be'>
         <Typography variant='h5'>
-          {calendars.selectedEvent && calendars.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
+          {calendarStore.selectedEvent && calendarStore.selectedEvent.title.length ? 'Update Event' : 'Add Event'}
         </Typography>
-        {calendars.selectedEvent && calendars.selectedEvent.title.length ? (
-          <Box className='flex items-center' sx={{ gap: calendars.selectedEvent !== null ? 1 : 0 }}>
+        {calendarStore.selectedEvent && calendarStore.selectedEvent.title.length ? (
+          <Box className='flex items-center' sx={{ gap: calendarStore.selectedEvent !== null ? 1 : 0 }}>
             <IconButton size='small' onClick={handleDeleteButtonClick}>
-              <i className='tabler-trash text-xl text-textPrimary' />
+              <i className='tabler-trash text-2xl text-textPrimary' />
             </IconButton>
             <IconButton size='small' onClick={handleSidebarClose}>
-              <i className='tabler-x text-xl text-textPrimary' />
+              <i className='tabler-x text-2xl text-textPrimary' />
             </IconButton>
           </Box>
         ) : (
           <IconButton size='small' onClick={handleSidebarClose}>
-            <i className='tabler-x text-xl text-textPrimary' />
+            <i className='tabler-x text-2xl text-textPrimary' />
           </IconButton>
         )}
       </Box>

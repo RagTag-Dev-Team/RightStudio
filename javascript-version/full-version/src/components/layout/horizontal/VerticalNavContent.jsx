@@ -1,3 +1,7 @@
+// Next Imports
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -11,10 +15,12 @@ import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { mapHorizontalToVerticalMenu } from '@menu/utils/menuUtils'
+import { getLocalizedUrl } from '@/utils/i18n'
 
 const VerticalNavContent = ({ children }) => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
+  const { lang: locale } = useParams()
 
   // Vars
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
@@ -22,7 +28,9 @@ const VerticalNavContent = ({ children }) => {
   return (
     <>
       <NavHeader>
-        <Logo />
+        <Link href={getLocalizedUrl('/', locale)}>
+          <Logo />
+        </Link>
         <NavCollapseIcons
           lockedIcon={<i className='tabler-circle-dot text-xl' />}
           unlockedIcon={<i className='tabler-circle text-xl' />}

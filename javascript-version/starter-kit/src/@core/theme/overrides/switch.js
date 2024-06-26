@@ -31,7 +31,7 @@ const switchOverrides = {
               }
             })
       }),
-      switchBase: ({ theme, ownerState }) => ({
+      switchBase: ({ ownerState }) => ({
         top: 2,
         left: 1,
         '&.Mui-checked': {
@@ -45,7 +45,7 @@ const switchOverrides = {
           boxShadow: `var(--mui-customShadows-${ownerState.color}-sm)`
         },
         '&:not(.Mui-checked) + .MuiSwitch-track': {
-          boxShadow: `0 0 4px rgb(var(--mui-palette-common-${theme.palette.mode === 'light' ? 'onBackgroundChannel' : 'backgroundChannel'}) / 0.16) inset`
+          boxShadow: '0 0 4px rgb(0 0 0 / 0.16) inset'
         },
         '&.Mui-disabled + .MuiSwitch-track': {
           opacity: 1

@@ -23,7 +23,7 @@ import Alert from '@mui/material/Alert'
 import { signIn } from 'next-auth/react'
 import { Controller, useForm } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { object, minLength, string, email } from 'valibot'
+import { email, object, minLength, string, pipe, nonEmpty } from 'valibot'
 import classnames from 'classnames'
 
 // Component Imports
@@ -65,11 +65,12 @@ const MaskImg = styled('img')({
 })
 
 const schema = object({
-  email: string([minLength(1, 'This field is required'), email('Email is invalid')]),
-  password: string([
-    minLength(1, 'This field is required'),
+  email: pipe(string(), minLength(1, 'This field is required'), email('Email is invalid')),
+  password: pipe(
+    string(),
+    nonEmpty('This field is required'),
     minLength(5, 'Password must be at least 5 characters long')
-  ])
+  )
 })
 
 const Login = ({ mode }) => {
@@ -127,7 +128,7 @@ const Login = ({ mode }) => {
       // Vars
       const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-      router.push(getLocalizedUrl(redirectURL, locale))
+      router.replace(getLocalizedUrl(redirectURL, locale))
     } else {
       if (res?.error) {
         const error = JSON.parse(res.error)
@@ -165,7 +166,13 @@ const Login = ({ mode }) => {
               <span className='font-medium'>admin</span>
             </Typography>
           </Alert>
-          <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
+          <form
+            noValidate
+            autoComplete='off'
+            action={() => {}}
+            onSubmit={handleSubmit(onSubmit)}
+            className='flex flex-col gap-6'
+          >
             <Controller
               name='email'
               control={control}

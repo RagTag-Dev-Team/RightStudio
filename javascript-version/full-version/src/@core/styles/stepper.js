@@ -27,6 +27,9 @@ const StepperWrapper = styled(Box)(({ theme }) => {
         marginRight: theme.spacing(2),
         color: 'var(--mui-palette-text-primary) !important'
       },
+      '&:not(:has(.step-subtitle)) .step-number': {
+        ...theme.typography.h6
+      },
       '& .step-title': {
         ...theme.typography.body1,
         fontWeight: 500,

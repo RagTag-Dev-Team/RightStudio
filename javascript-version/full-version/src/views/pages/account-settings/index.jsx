@@ -25,51 +25,21 @@ const AccountSettings = ({ tabContentList }) => {
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <CustomTabList onChange={handleChange} variant='scrollable' pill='true'>
+            <Tab label='Account' icon={<i className='tabler-users' />} iconPosition='start' value='account' />
+            <Tab label='Security' icon={<i className='tabler-lock' />} iconPosition='start' value='security' />
             <Tab
-              label={
-                <div className='flex items-center gap-1.5'>
-                  <i className='tabler-users text-lg' />
-                  Account
-                </div>
-              }
-              value='account'
-            />
-            <Tab
-              label={
-                <div className='flex items-center gap-1.5'>
-                  <i className='tabler-lock text-lg' />
-                  Security
-                </div>
-              }
-              value='security'
-            />
-            <Tab
-              label={
-                <div className='flex items-center gap-1.5'>
-                  <i className='tabler-bookmark text-lg' />
-                  Billing & Plans
-                </div>
-              }
+              label='Billing & Plans'
+              icon={<i className='tabler-bookmark' />}
+              iconPosition='start'
               value='billing-plans'
             />
             <Tab
-              label={
-                <div className='flex items-center gap-1.5'>
-                  <i className='tabler-bell text-lg' />
-                  Notifications
-                </div>
-              }
+              label='Notifications'
+              icon={<i className='tabler-bell' />}
+              iconPosition='start'
               value='notifications'
             />
-            <Tab
-              label={
-                <div className='flex items-center gap-1.5'>
-                  <i className='tabler-link text-lg' />
-                  Connections
-                </div>
-              }
-              value='connections'
-            />
+            <Tab label='Connections' icon={<i className='tabler-link' />} iconPosition='start' value='connections' />
           </CustomTabList>
         </Grid>
         <Grid item xs={12}>

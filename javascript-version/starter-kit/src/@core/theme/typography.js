@@ -71,7 +71,7 @@ const typography = fontFamily => ({
   },
   caption: {
     fontSize: '0.8125rem',
-    lineHeight: 1.3846154,
+    lineHeight: 1.38462,
     letterSpacing: '0.4px'
   },
   overline: {

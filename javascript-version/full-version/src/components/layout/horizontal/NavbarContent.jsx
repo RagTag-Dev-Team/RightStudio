@@ -1,4 +1,6 @@
-'use client'
+// Next Imports
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -18,6 +20,7 @@ import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Vars
 const shortcuts = [
@@ -110,6 +113,7 @@ const notifications = [
 const NavbarContent = () => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
+  const { lang: locale } = useParams()
 
   return (
     <div
@@ -118,7 +122,11 @@ const NavbarContent = () => {
       <div className='flex items-center gap-4'>
         <NavToggle />
         {/* Hide Logo on Smaller screens */}
-        {!isBreakpointReached && <Logo />}
+        {!isBreakpointReached && (
+          <Link href={getLocalizedUrl('/', locale)}>
+            <Logo />
+          </Link>
+        )}
       </div>
 
       <div className='flex items-center'>

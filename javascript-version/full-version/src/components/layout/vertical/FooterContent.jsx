@@ -8,21 +8,13 @@ import classnames from 'classnames'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
-import useHorizontalNav from '@menu/hooks/useHorizontalNav'
-import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 
 const FooterContent = () => {
   // Hooks
-  const { settings } = useSettings()
-  const { isBreakpointReached: isVerticalBreakpointReached } = useVerticalNav()
-  const { isBreakpointReached: isHorizontalBreakpointReached } = useHorizontalNav()
-
-  // Vars
-  const isBreakpointReached =
-    settings.layout === 'vertical' ? isVerticalBreakpointReached : isHorizontalBreakpointReached
+  const { isBreakpointReached } = useVerticalNav()
 
   return (
     <div

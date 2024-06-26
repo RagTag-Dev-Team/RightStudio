@@ -7,13 +7,10 @@ import dynamic from 'next/dynamic'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import { useColorScheme, useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 
 // Components Imports
 import OptionMenu from '@core/components/option-menu'
-
-// Util Imports
-import { rgbaToHex } from '@/utils/rgbaToHex'
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
@@ -24,22 +21,20 @@ const series = [
   { name: 'Visits', data: [25, 35, 20, 20, 20, 20] }
 ]
 
-const Sales = ({ serverMode }) => {
+const Sales = () => {
   // Hooks
   const theme = useTheme()
-  const { mode } = useColorScheme()
 
   // Vars
-  const _mode = (mode === 'system' ? serverMode : mode) || serverMode
-  const textDisabled = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.4)`)
-  const divider = rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.12)`)
+  const textDisabled = 'var(--mui-palette-text-disabled)'
+  const divider = 'var(--mui-palette-divider)'
 
   const options = {
     chart: {
       parentHeightOffset: 0,
       toolbar: { show: false }
     },
-    colors: [theme.palette.primary.main, theme.palette.info.main],
+    colors: ['var(--mui-palette-primary-main)', 'var(--mui-palette-info-main)'],
     plotOptions: {
       radar: {
         polygons: {
@@ -56,7 +51,7 @@ const Sales = ({ serverMode }) => {
     markers: { size: 0 },
     legend: {
       fontSize: '13px',
-      labels: { colors: rgbaToHex(`rgb(${theme.mainColorChannels[_mode]} / 0.7)`) },
+      labels: { colors: 'var(--mui-palette-text-secondary)' },
       markers: { offsetY: -1, offsetX: theme.direction === 'rtl' ? 7 : -4 },
       itemMargin: { horizontal: 9 }
     },
