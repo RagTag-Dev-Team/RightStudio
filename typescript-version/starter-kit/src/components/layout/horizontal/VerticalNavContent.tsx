@@ -1,3 +1,6 @@
+// Next Imports
+import Link from 'next/link'
+
 // Third-party Imports
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -25,7 +28,9 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
   return (
     <>
       <NavHeader>
-        <Logo />
+        <Link href='/'>
+          <Logo />
+        </Link>
         <NavCollapseIcons
           lockedIcon={<i className='tabler-circle-dot text-xl' />}
           unlockedIcon={<i className='tabler-circle text-xl' />}

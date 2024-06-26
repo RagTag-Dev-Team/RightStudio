@@ -1,5 +1,3 @@
-'use client'
-
 // MUI Imports
 import Grid from '@mui/material/Grid'
 import Radio from '@mui/material/Radio'
@@ -38,7 +36,7 @@ const Root = styled('div', {
   '&.active': {
     borderColor: 'var(--mui-palette-primary-main)',
     '& > svg, & > i': {
-      color: 'var(--mui-palette-primary-main)'
+      color: 'var(--mui-palette-primary-main) !important'
     }
   },
   '&.radio-only .MuiRadio-root': {

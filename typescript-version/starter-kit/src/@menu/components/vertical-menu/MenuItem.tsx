@@ -13,7 +13,7 @@ import { useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
-import type { ChildrenType, MenuItemElement, RootStylesType } from '../../types'
+import type { ChildrenType, MenuItemElement, MenuItemExactMatchUrlProps, RootStylesType } from '../../types'
 
 // Component Imports
 import MenuButton from './MenuButton'
@@ -34,7 +34,8 @@ import StyledVerticalMenuItem from '../../styles/vertical/StyledVerticalMenuItem
 
 export type MenuItemProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'> &
   RootStylesType &
-  Partial<ChildrenType> & {
+  Partial<ChildrenType> &
+  MenuItemExactMatchUrlProps & {
     icon?: ReactElement
     prefix?: ReactNode
     suffix?: ReactNode
@@ -60,6 +61,8 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
     suffix,
     level = 0,
     disabled = false,
+    exactMatch = true,
+    activeUrl,
     component,
     onActiveChange,
     rootStyles,
@@ -107,7 +110,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
 
     if (href) {
       // Check if the current url matches any of the children urls
-      if (pathname === href) {
+      if (exactMatch ? pathname === href : activeUrl && pathname.includes(activeUrl)) {
         setActive(true)
       } else {
         setActive(false)

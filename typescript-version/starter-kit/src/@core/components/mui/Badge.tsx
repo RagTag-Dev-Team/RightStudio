@@ -1,8 +1,5 @@
 'use client'
 
-// React Imports
-import React from 'react'
-
 // MUI Imports
 import MuiBadge from '@mui/material/Badge'
 import type { BadgeProps } from '@mui/material/Badge'
@@ -14,12 +11,12 @@ export type CustomBadgeProps = BadgeProps & {
 
 const Badge = styled(MuiBadge)<CustomBadgeProps>(({ tonal, color }) => {
   return {
-    '& .MuiBadge-badge.MuiBadge-standard': {
-      ...(tonal === 'true' && {
+    ...(tonal === 'true' && {
+      '& .MuiBadge-badge.MuiBadge-standard': {
         color: `var(--mui-palette-${color}-main)`,
         backgroundColor: `var(--mui-palette-${color}-lightOpacity)`
-      })
-    }
+      }
+    })
   }
 })
 

@@ -9,6 +9,7 @@ import type { IconButtonProps } from '@mui/material/IconButton'
 import type { MenuItemProps } from '@mui/material/MenuItem'
 import type { DividerProps } from '@mui/material/Divider'
 import type { BoxProps } from '@mui/material/Box'
+import type { TooltipProps } from '@mui/material/Tooltip'
 
 export type OptionDividerType = {
   divider: boolean
@@ -32,6 +33,7 @@ export type OptionMenuItemType = {
 export type OptionType = string | OptionDividerType | OptionMenuItemType
 
 export type OptionsMenuType = {
+  tooltipProps?: Omit<TooltipProps, 'children'>
   icon?: ReactNode
   iconClassName?: string
   options: OptionType[]

@@ -28,9 +28,16 @@ const menu = (skin: Skin): Theme['components'] => ({
     styleOverrides: {
       root: ({ theme }) => ({
         paddingBlock: theme.spacing(2),
+        gap: theme.spacing(2),
         color: 'var(--mui-palette-text-primary)',
         marginInline: theme.spacing(2),
         borderRadius: 'var(--mui-shape-borderRadius)',
+        '& i, & svg': {
+          fontSize: '1.375rem'
+        },
+        '& .MuiListItemIcon-root': {
+          minInlineSize: 0
+        },
         '&:not(:last-of-type)': {
           marginBlockEnd: theme.spacing(0.5)
         },
@@ -40,7 +47,7 @@ const menu = (skin: Skin): Theme['components'] => ({
           '& .MuiListItemIcon-root': {
             color: 'var(--mui-palette-primary-main)'
           },
-          '&:hover': {
+          '&:hover, &.Mui-focused, &.Mui-focusVisible': {
             backgroundColor: 'var(--mui-palette-primary-mainOpacity)'
           }
         },

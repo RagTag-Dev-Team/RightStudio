@@ -3,168 +3,33 @@ import type { Theme } from '@mui/material/styles'
 
 const slider: Theme['components'] = {
   MuiSlider: {
-    variants: [
-      {
-        props: { color: 'primary' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-primary-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-primary-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-primary-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-primary-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-primary-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-primary-lightOpacity)'
-          }
-        }
-      },
-      {
-        props: { color: 'secondary' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-secondary-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-secondary-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-secondary-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-secondary-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-secondary-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-secondary-lightOpacity)'
-          }
-        }
-      },
-      {
-        props: { color: 'error' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-error-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-error-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-error-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-error-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-error-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-error-lightOpacity)'
-          }
-        }
-      },
-      {
-        props: { color: 'warning' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-warning-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-warning-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-warning-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-warning-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-warning-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-warning-lightOpacity)'
-          }
-        }
-      },
-      {
-        props: { color: 'info' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-info-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-info-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-info-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-info-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-info-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-info-lightOpacity)'
-          }
-        }
-      },
-      {
-        props: { color: 'success' },
-        style: {
-          '& .MuiSlider-rail': {
-            color: 'var(--mui-palette-success-lightOpacity)'
-          },
-          '&.Mui-disabled': {
-            opacity: 0.45,
-            color: 'var(--mui-palette-success-main)'
-          },
-          '& .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-focusVisible': {
-            boxShadow: '0 0 0 8px var(--mui-palette-success-lightOpacity)'
-          },
-          '& .MuiSlider-thumb.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 13px var(--mui-palette-success-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall:hover, & .MuiSlider-thumbSizeSmall.Mui-focusVisible': {
-            boxShadow: '0 0 0 7px var(--mui-palette-success-lightOpacity)'
-          },
-          '& .MuiSlider-thumbSizeSmall.Mui-active.Mui-focusVisible': {
-            boxShadow: '0 0 0 10px var(--mui-palette-success-lightOpacity)'
-          }
-        }
-      }
-    ],
     styleOverrides: {
       root: ({ ownerState }) => ({
+        boxSizing: 'border-box',
         ...(ownerState.orientation === 'horizontal'
           ? ownerState.size !== 'small'
-            ? { blockSize: 4 }
+            ? { blockSize: 6 }
             : { blockSize: 4 }
           : ownerState.size !== 'small'
-            ? { inlineSize: 4 }
-            : { inlineSize: 4 })
+            ? { inlineSize: 6 }
+            : { inlineSize: 4 }),
+        '&.Mui-disabled': {
+          opacity: 0.45,
+          color: `var(--mui-palette-${ownerState.color}-main)`
+        }
       }),
       thumb: ({ ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
               blockSize: 14,
               inlineSize: 14,
-              border: '2px solid currentColor'
+              border: '2px solid currentColor',
+              '&:hover, &.Mui-focusVisible': {
+                boxShadow: `0 0 0 7px var(--mui-palette-${ownerState.color}-lightOpacity)`
+              },
+              '&.Mui-active.Mui-focusVisible': {
+                boxShadow: `0 0 0 10px var(--mui-palette-${ownerState.color}-lightOpacity)`
+              }
             }
           : {
               blockSize: 22,
@@ -188,25 +53,46 @@ const slider: Theme['components'] = {
                 blockSize: 38,
                 inlineSize: 38
               })
+        },
+        '&:hover, &.Mui-focusVisible': {
+          boxShadow: `0 0 0 8px var(--mui-palette-${ownerState.color}-lightOpacity)`
+        },
+        '&.Mui-active.Mui-focusVisible': {
+          boxShadow: `0 0 0 13px var(--mui-palette-${ownerState.color}-lightOpacity)`
         }
       }),
-      rail: {
-        opacity: 1
-      },
-      valueLabel: ({ theme }) => ({
-        padding: theme.spacing(0.5, 2.5),
+      rail: ({ ownerState }) => ({
+        opacity: 1,
+        color: `var(--mui-palette-${ownerState.color}-lightOpacity)`,
+        ...(ownerState.track === 'inverted' && {
+          backgroundColor: `var(--mui-palette-${ownerState.color}-main)`
+        })
+      }),
+      valueLabel: ({ theme, ownerState }) => ({
+        ...(ownerState.size === 'small'
+          ? {
+              ...theme.typography.caption,
+              padding: theme.spacing(0.5, 2),
+              borderRadius: 'var(--mui-shape-customBorderRadius-sm)'
+            }
+          : {
+              ...theme.typography.body2,
+              fontWeight: theme.typography.fontWeightMedium,
+              padding: theme.spacing(0.5, 2.5),
+              borderRadius: 'var(--mui-shape-borderRadius)'
+            }),
         color: 'var(--mui-palette-customColors-tooltipText)',
-        borderRadius: 'var(--mui-shape-borderRadius)',
         backgroundColor: 'var(--mui-palette-Tooltip-bg)',
         '&:before': {
           display: 'none'
         }
       }),
-      trackInverted: {
-        '& .MuiSlider-rail': {
-          backgroundColor: 'var(--mui-palette-primary-main)'
-        }
-      }
+      track: ({ theme, ownerState }) => ({
+        ...(ownerState.track === 'inverted' && {
+          backgroundColor: `color-mix(in srgb, ${theme.palette[ownerState.color || 'primary'].main} 16%, var(--mui-palette-background-paper))`,
+          borderColor: `color-mix(in srgb, ${theme.palette[ownerState.color || 'primary'].main} 16%, var(--mui-palette-background-paper))`
+        })
+      })
     }
   }
 }

@@ -61,6 +61,7 @@
           padding-inline: 1.5rem 1rem;
         }
         &:has(input[type='checkbox']) {
+          inline-size: 51px;
           padding-inline-start: 0.9375rem;
         }
       }

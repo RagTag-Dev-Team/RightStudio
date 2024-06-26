@@ -15,7 +15,9 @@ const breadcrumbs: Theme['components'] = {
       },
       li: ({ theme }) => ({
         lineHeight: theme.typography.body1.lineHeight,
-        color: 'var(--mui-palette-text-primary)'
+        '& > *:not(a)': {
+          color: 'var(--mui-palette-text-primary)'
+        }
       })
     }
   }
