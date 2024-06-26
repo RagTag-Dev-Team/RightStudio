@@ -205,6 +205,13 @@ const sidebars: SidebarsConfig = {
     },
     "guide/customizing-our-component",
     "guide/deployment",
+    {
+      type: "category",
+      label: "Migration",
+      items: [
+        "guide/migration/v2.0.0-to-v3.0.0",
+      ]
+    },
     "guide/credit",
   ],
   userInterfaceSidebar: [
