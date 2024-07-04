@@ -11,7 +11,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk'
 
 // Type Imports
-import type { Locale } from '@/configs/i18n'
+import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import DefaultSuggestions from './DefaultSuggestions'
