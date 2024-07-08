@@ -758,8 +758,8 @@ const data: SearchData[] = [
   },
   {
     id: '107',
-    name: 'Picker',
-    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/picker`,
+    name: 'Date & Time Pickers',
+    url: `${process.env.NEXT_PUBLIC_DOCS_URL}/docs/user-interface/form-elements/pickers`,
     icon: 'Icon',
     section: 'Forms & Tables'
   },

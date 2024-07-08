@@ -29,6 +29,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 
 // Component Imports
+import Link from '@components/Link'
 import CustomTabList from '@core/components/mui/TabList'
 
 // Styled Component Imports
@@ -62,35 +63,35 @@ const ProductInventory = () => {
                   label='Restock'
                   icon={<i className='ri-add-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start min-is-full'
+                  className='flex-row justify-start min-is-full text-start'
                 />
                 <Tab
                   value='shipping'
                   label='Shipping'
                   icon={<i className='ri-car-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start min-is-full'
+                  className='flex-row justify-start min-is-full text-start'
                 />
                 <Tab
                   value='global-delivery'
                   label='Global Delivery'
                   icon={<i className='ri-global-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start min-is-full'
+                  className='flex-row justify-start min-is-full text-start'
                 />
                 <Tab
                   value='attributes'
                   label='Attributes'
                   icon={<i className='ri-link-m' />}
                   iconPosition='start'
-                  className='flex-row justify-start min-is-full'
+                  className='flex-row justify-start min-is-full text-start'
                 />
                 <Tab
                   value='advanced'
                   label='Advanced'
                   icon={<i className='ri-lock-unlock-line' />}
                   iconPosition='start'
-                  className='flex-row justify-start min-is-full'
+                  className='flex-row justify-start min-is-full text-start'
                 />
               </CustomTabList>
             </div>
@@ -174,7 +175,7 @@ const ProductInventory = () => {
                           </Typography>
                           <Typography variant='body2'>
                             Only available with Shipping method:{' '}
-                            <span className='text-primary'>Fulfilled by Company name</span>
+                            <Link className='text-primary'>Fulfilled by Company name</Link>
                           </Typography>
                         </>
                       }
@@ -201,7 +202,7 @@ const ProductInventory = () => {
                           </Typography>
                           <Typography variant='body2'>
                             Deliver to your country of residence{' '}
-                            <span className='text-primary'>Change profile address</span>
+                            <Link className='text-primary'>Change profile address</Link>
                           </Typography>
                         </>
                       }

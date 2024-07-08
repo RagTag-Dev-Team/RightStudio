@@ -310,9 +310,10 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
+            className='is-full sm:is-auto'
           />
-          <div className='flex items-center gap-x-4'>
-            <FormControl fullWidth size='small' className='is-[140px] flex-auto'>
+          <div className='flex flex-col sm:flex-row items-center gap-4 is-full sm:is-auto'>
+            <FormControl fullWidth size='small' className='sm:is-[140px] flex-auto is-full'>
               <Select
                 fullWidth
                 id='select-status'
@@ -325,7 +326,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
                 <MenuItem value='Pending'>Pending</MenuItem>
               </Select>
             </FormControl>
-            <Button variant='contained' startIcon={<i className='ri-upload-2-line' />}>
+            <Button variant='contained' className='is-full sm:is-auto' startIcon={<i className='ri-upload-2-line' />}>
               Export
             </Button>
           </div>

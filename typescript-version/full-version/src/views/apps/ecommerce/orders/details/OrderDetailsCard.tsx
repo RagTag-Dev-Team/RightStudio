@@ -133,9 +133,7 @@ const OrderTable = () => {
               <Typography color='text.primary' className='font-medium'>
                 {row.original.productName}
               </Typography>
-              <Typography variant='body2' color='textSecondary'>
-                {row.original.brand}
-              </Typography>
+              <Typography variant='body2'>{row.original.brand}</Typography>
             </div>
           </div>
         )

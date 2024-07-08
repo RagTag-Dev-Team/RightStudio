@@ -328,13 +328,21 @@ const ProductCategoryTable = () => {
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
+            className='is-full sm:is-auto'
           />
-          <div className='flex items-center gap-x-4'>
-            <Button color='secondary' variant='outlined' startIcon={<i className='ri-upload-2-line' />}>
+          <div className='flex flex-col items-center gap-4 is-full sm:flex-row sm:is-auto'>
+            <Button
+              color='secondary'
+              fullWidth
+              variant='outlined'
+              className='is-full sm:is-auto'
+              startIcon={<i className='ri-upload-2-line' />}
+            >
               Export
             </Button>
             <Button
               variant='contained'
+              className='is-full sm:is-auto'
               onClick={() => setAddCategoryOpen(!addCategoryOpen)}
               startIcon={<i className='ri-add-line' />}
             >

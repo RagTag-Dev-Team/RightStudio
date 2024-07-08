@@ -189,13 +189,13 @@ const AddCategoryDrawer = (props: Props) => {
             placeholder='Write a Comment...'
           />
           <FormControl fullWidth>
-            <InputLabel id='plan-select'>Parent Status</InputLabel>
+            <InputLabel id='plan-select'>Category Status</InputLabel>
             <Select
               fullWidth
               id='select-status'
               value={status}
               onChange={e => setStatus(e.target.value)}
-              label='Parent Status'
+              label='Category Status'
               labelId='status-select'
             >
               <MenuItem value='Published'>Published</MenuItem>

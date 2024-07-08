@@ -13,7 +13,7 @@ const LocationName = () => {
       <CardHeader title='Location Name' />
       <CardContent className='flex flex-col items-start gap-4'>
         <TextField fullWidth label='Location Name' placeholder='Empire Hub' />
-        <FormControlLabel control={<Checkbox />} label='Fulfill online orders from this location' />
+        <FormControlLabel control={<Checkbox defaultChecked />} label='Fulfill online orders from this location' />
         <Alert severity='info' icon={<i className='ri-information-line' />}>
           This is your default location. To change whether you fulfill online orders from this location, select another
           default location first.
