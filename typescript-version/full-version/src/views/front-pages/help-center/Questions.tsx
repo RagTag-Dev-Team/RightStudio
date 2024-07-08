@@ -1,8 +1,3 @@
-'use client'
-
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
@@ -16,6 +11,7 @@ import FormControl from '@mui/material/FormControl'
 import classnames from 'classnames'
 
 // Component Imports
+import Link from '@components/Link'
 import DirectionalIcon from '@components/DirectionalIcon'
 
 // Styles Imports
@@ -93,17 +89,13 @@ const Questions = () => {
               </div>
               <div className='flex flex-col gap-4'>
                 {articleList.map((article, index) => (
-                  <Typography
-                    key={index}
-                    component={Link}
-                    href='/'
-                    onClick={e => {
-                      e.preventDefault()
-                    }}
-                    className='flex gap-2 justify-between'
-                  >
-                    <Typography>{article}</Typography>
-                    <DirectionalIcon ltrIconClass='ri-arrow-right-s-line' rtlIconClass='ri-arrow-left-s-line' />
+                  <Typography key={index} component={Link} className='flex gap-2 justify-between hover:text-primary'>
+                    <Typography color='inherit'>{article}</Typography>
+                    <DirectionalIcon
+                      ltrIconClass='ri-arrow-right-s-line'
+                      rtlIconClass='ri-arrow-left-s-line'
+                      className='text-textDisabled'
+                    />
                   </Typography>
                 ))}
               </div>

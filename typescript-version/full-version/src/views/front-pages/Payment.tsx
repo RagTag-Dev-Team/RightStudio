@@ -121,156 +121,154 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
   return (
     <section className={classnames('md:plb-[100px] plb-6', frontCommonStyles.layoutSpacing)}>
       <Card>
-        <CardContent className='p-0'>
-          <Grid container>
-            <Grid item md={12} lg={7}>
-              <div className='flex flex-col max-sm:gap-y-5 gap-y-8 p-8 border-be lg:border-be-0 lg:border-e bs-full'>
-                <div>
-                  <Typography variant='h4'>Checkout</Typography>
-                  <Typography color='text.secondary'>
-                    All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit
-                    your needs.
-                  </Typography>
-                </div>
-                <div className='flex gap-5'>
-                  <Grid container spacing={5}>
-                    {cardData.map((item, index) => (
-                      <CustomInputHorizontal
-                        key={index}
-                        type='radio'
-                        name='paymemt-method'
-                        data={item}
-                        selected={selectInput}
-                        handleChange={handlePaymentChange}
-                        gridProps={{ sm: 6, xs: 12 }}
-                      />
-                    ))}
+        <Grid container>
+          <Grid item md={12} lg={7}>
+            <CardContent className='flex flex-col max-sm:gap-y-5 gap-y-8 sm:p-8 border-be lg:border-be-0 lg:border-e bs-full'>
+              <div>
+                <Typography variant='h4'>Checkout</Typography>
+                <Typography color='text.secondary'>
+                  All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit
+                  your needs.
+                </Typography>
+              </div>
+              <div className='flex gap-5'>
+                <Grid container spacing={5}>
+                  {cardData.map((item, index) => (
+                    <CustomInputHorizontal
+                      key={index}
+                      type='radio'
+                      name='paymemt-method'
+                      data={item}
+                      selected={selectInput}
+                      handleChange={handlePaymentChange}
+                      gridProps={{ sm: 6, xs: 12 }}
+                    />
+                  ))}
+                </Grid>
+              </div>
+              <div>
+                <Typography variant='h4' className='mbe-6'>
+                  Billing Details
+                </Typography>
+                <Grid container spacing={5}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField fullWidth label='Email Address' defaultValue='admin@master.com' type='email' />
                   </Grid>
-                </div>
+                  <Grid item xs={12} sm={6}>
+                    <TextField fullWidth type='password' id='password-input' label='Password' defaultValue='admin' />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <FormControl fullWidth>
+                      <InputLabel id='country-select-label'>Billing Country</InputLabel>
+                      <Select
+                        labelId='country-select-label'
+                        id='country-select'
+                        value={selectCountry}
+                        label='Billing Country'
+                        onChange={handleCountryChange}
+                      >
+                        {countries.map(country => (
+                          <MenuItem key={country} value={country}>
+                            {country}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      label='Billing Zip / Postal Code'
+                      id='postal-code-input'
+                      placeholder='123456'
+                      fullWidth
+                      type='number'
+                    />
+                  </Grid>
+                </Grid>
+              </div>
+              {selectInput === 'credit-card' && (
                 <div>
                   <Typography variant='h4' className='mbe-6'>
-                    Billing Details
+                    Credit Card Info
                   </Typography>
                   <Grid container spacing={5}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label='Email Address' defaultValue='admin@master.com' type='email' />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth type='password' id='password-input' label='Password' defaultValue='admin' />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FormControl fullWidth>
-                        <InputLabel id='country-select-label'>Billing Country</InputLabel>
-                        <Select
-                          labelId='country-select-label'
-                          id='country-select'
-                          value={selectCountry}
-                          label='Billing Country'
-                          onChange={handleCountryChange}
-                        >
-                          {countries.map(country => (
-                            <MenuItem key={country} value={country}>
-                              {country}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12}>
                       <TextField
-                        label='Billing Zip / Postal Code'
-                        id='postal-code-input'
-                        placeholder='123456'
                         fullWidth
+                        id='card-number-input'
+                        placeholder='8763 2345 3478'
+                        label='Card Number'
                         type='number'
                       />
                     </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                      <TextField fullWidth id='expiry-date' placeholder='05/2026' label='EXP. date' type='number' />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                      <TextField fullWidth id='cvv' placeholder='734' label='CVV' type='number' />
+                    </Grid>
                   </Grid>
                 </div>
-                {selectInput === 'credit-card' && (
-                  <>
-                    <Typography variant='h4' className='mbe-6'>
-                      Credit Card Info
-                    </Typography>
-                    <Grid container spacing={5}>
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          id='card-number-input'
-                          placeholder='8763 2345 3478'
-                          label='Card Number'
-                          type='number'
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
-                      </Grid>
-                      <Grid item xs={12} sm={3}>
-                        <TextField fullWidth id='expiry-date' placeholder='05/2026' label='EXP. date' type='number' />
-                      </Grid>
-                      <Grid item xs={12} sm={3}>
-                        <TextField fullWidth id='cvv' placeholder='734' label='CVV' type='number' />
-                      </Grid>
-                    </Grid>
-                  </>
-                )}
-              </div>
-            </Grid>
-            <Grid item md={12} lg={5}>
-              <div className='flex flex-col gap-8 p-8'>
-                <div className='flex flex-col gap-2'>
-                  <Typography variant='h4'>Order Summary</Typography>
-                  <Typography color='text.secondary'>
-                    It can help you manage and service orders before, during, and after fulfillment.
-                  </Typography>
-                </div>
-                <div className='flex flex-col gap-5'>
-                  <div className='flex flex-col gap-4 p-6 bg-actionHover rounded'>
-                    <Typography color='text.secondary'>A simple start for everyone</Typography>
-                    <div className='flex items-baseline'>
-                      <Typography variant='h4'>$59.99</Typography>
-                      <Typography component='sub' color='text.secondary'>
-                        /month
-                      </Typography>
-                    </div>
-                    <OpenDialogOnElementClick
-                      element={Button}
-                      elementProps={buttonProps}
-                      dialog={PricingDialog}
-                      dialogProps={{ data }}
-                    />
-                  </div>
-                  <div>
-                    <div className='flex gap-2 items-center justify-between mbe-2'>
-                      <Typography color='text.secondary'>Subscription</Typography>
-                      <Typography className='font-medium'>$85.99</Typography>
-                    </div>
-                    <div className='flex gap-2 items-center justify-between'>
-                      <Typography color='text.secondary'>Tax</Typography>
-                      <Typography className='font-medium'>$4.99</Typography>
-                    </div>
-                    <Divider className='mlb-4' />
-                    <div className='flex gap-2 items-center justify-between'>
-                      <Typography color='text.secondary'>Total</Typography>
-                      <Typography className='font-medium'>$90.98</Typography>
-                    </div>
-                  </div>
-                  <Button
-                    variant='contained'
-                    color='success'
-                    endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
-                  >
-                    Proceed With Payment
-                  </Button>
-                </div>
+              )}
+            </CardContent>
+          </Grid>
+          <Grid item md={12} lg={5}>
+            <CardContent className='flex flex-col gap-8 sm:p-8'>
+              <div className='flex flex-col gap-2'>
+                <Typography variant='h4'>Order Summary</Typography>
                 <Typography color='text.secondary'>
-                  By continuing, you accept to our Terms of Services and Privacy Policy. Please note that payments are
-                  non-refundable.
+                  It can help you manage and service orders before, during, and after fulfillment.
                 </Typography>
               </div>
-            </Grid>
+              <div className='flex flex-col gap-5'>
+                <div className='flex flex-col gap-4 p-6 bg-actionHover rounded'>
+                  <Typography color='text.secondary'>A simple start for everyone</Typography>
+                  <div className='flex items-baseline'>
+                    <Typography variant='h4'>$59.99</Typography>
+                    <Typography component='sub' color='text.secondary'>
+                      /month
+                    </Typography>
+                  </div>
+                  <OpenDialogOnElementClick
+                    element={Button}
+                    elementProps={buttonProps}
+                    dialog={PricingDialog}
+                    dialogProps={{ data }}
+                  />
+                </div>
+                <div>
+                  <div className='flex gap-2 items-center justify-between mbe-2'>
+                    <Typography color='text.secondary'>Subscription</Typography>
+                    <Typography className='font-medium'>$85.99</Typography>
+                  </div>
+                  <div className='flex gap-2 items-center justify-between'>
+                    <Typography color='text.secondary'>Tax</Typography>
+                    <Typography className='font-medium'>$4.99</Typography>
+                  </div>
+                  <Divider className='mlb-4' />
+                  <div className='flex gap-2 items-center justify-between'>
+                    <Typography color='text.secondary'>Total</Typography>
+                    <Typography className='font-medium'>$90.98</Typography>
+                  </div>
+                </div>
+                <Button
+                  variant='contained'
+                  color='success'
+                  endIcon={<DirectionalIcon ltrIconClass='ri-arrow-right-line' rtlIconClass='ri-arrow-left-line' />}
+                >
+                  Proceed With Payment
+                </Button>
+              </div>
+              <Typography color='text.secondary'>
+                By continuing, you accept to our Terms of Services and Privacy Policy. Please note that payments are
+                non-refundable.
+              </Typography>
+            </CardContent>
           </Grid>
-        </CardContent>
+        </Grid>
       </Card>
     </section>
   )

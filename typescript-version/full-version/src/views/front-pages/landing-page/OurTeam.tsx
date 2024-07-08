@@ -115,7 +115,7 @@ const OurTeam = () => {
         <Grid container rowSpacing={16} columnSpacing={6} className='pbs-[100px]'>
           {team.map((member, index) => (
             <Grid item xs={12} md={6} lg={3} key={index}>
-              <Card className='shadow-none border rounded overflow-visible' color={member.color as ThemeColor}>
+              <Card className='border rounded overflow-visible' color={member.color as ThemeColor}>
                 <div className='flex flex-col items-center justify-center p-0'>
                   <div
                     className='flex justify-center is-full mli-auto text-center bs-[189px] relative overflow-visible rounded-bs'

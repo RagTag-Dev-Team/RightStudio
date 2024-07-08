@@ -18,7 +18,7 @@ const HorizontalWithAvatar = (props: CardStatsHorizontalWithAvatarProps) => {
 
   return (
     <Card>
-      <CardContent className='flex items-center justify-between'>
+      <CardContent className='flex items-center justify-between gap-2'>
         <div className='flex flex-col gap-1'>
           <Typography variant='h5'>{stats}</Typography>
           <Typography variant='body2'>{title}</Typography>

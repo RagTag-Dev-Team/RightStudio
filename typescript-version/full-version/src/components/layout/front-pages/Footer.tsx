@@ -148,7 +148,7 @@ const Footer = () => {
             frontCommonStyles.layoutSpacing
           )}
         >
-          <Typography className='text-white text-[13px]'>
+          <Typography className='text-white' variant='body2'>
             <span>{`© ${new Date().getFullYear()}, Made with `}</span>
             <span>{`❤️`}</span>
             <span>{` by `}</span>

@@ -121,7 +121,7 @@ const PricingPlan = () => {
           <Grid item key={index} xs={12} lg={4}>
             <Card
               variant='outlined'
-              className={`${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`}
+              {...(plan.current && { className: 'border-2 border-[var(--mui-palette-primary-main)]' })}
             >
               <CardContent className='flex flex-col gap-8 p-8'>
                 <div className='is-full flex flex-col gap-3'>
@@ -137,7 +137,7 @@ const PricingPlan = () => {
                         {plan.price}
                       </Typography>
                     </div>
-                    <div className='flex flex-col gap-1'>
+                    <div className='flex flex-col gap-0.5'>
                       <Typography className='font-medium'>Per month</Typography>
                       <Typography variant='body2' color='text.secondary'>
                         10% off for yearly subscription
