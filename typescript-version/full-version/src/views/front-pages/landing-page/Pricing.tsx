@@ -83,17 +83,21 @@ const PricingPlan = () => {
       id='pricing-plans'
       className={classnames('flex flex-col gap-8 lg:gap-12 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
-      <ElementTwo />
       <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Pricing Plans</Typography>
+        <div className='flex is-full justify-center relative'>
+          <ElementTwo className='absolute inline-start-0' />
+          <div className='flex items-center justify-center mbe-6 gap-3 text-center'>
+            <Lines />
+            <Typography color='text.primary' className='font-medium uppercase'>
+              Pricing Plans
+            </Typography>
+          </div>
         </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
+        <div className='flex items-baseline flex-wrap gap-2 mbe-3 sm:mbe-1'>
           <Typography variant='h5' className='font-bold'>
             Tailored pricing plans
           </Typography>
-          <Typography className='text-[18px] font-medium'>designed for you</Typography>
+          <Typography className='text-[18px]'>designed for you</Typography>
         </div>
         <Typography color='text.secondary' className='font-medium text-center'>
           All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit your
@@ -116,10 +120,8 @@ const PricingPlan = () => {
         {pricingPlans.map((plan, index) => (
           <Grid item key={index} xs={12} lg={4}>
             <Card
-              className={classnames(
-                'border shadow-none',
-                ` ${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`
-              )}
+              variant='outlined'
+              className={`${plan.current && 'border-2 border-[var(--mui-palette-primary-main)]'}`}
             >
               <CardContent className='flex flex-col gap-8 p-8'>
                 <div className='is-full flex flex-col gap-3'>

@@ -206,8 +206,10 @@ const CustomerReviews = () => {
                       {item.svg}
                       <Typography>{item.desc}</Typography>
                       <Rating value={item.rating} readOnly />
-                      <Typography className='font-medium'>{item.name}</Typography>
-                      <Typography variant='body2'>{item.position}</Typography>
+                      <div>
+                        <Typography className='font-medium'>{item.name}</Typography>
+                        <Typography variant='body2'>{item.position}</Typography>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

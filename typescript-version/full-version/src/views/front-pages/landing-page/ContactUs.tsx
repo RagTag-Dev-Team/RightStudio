@@ -54,13 +54,17 @@ const ContactUs = () => {
       className={classnames('flex flex-col gap-14 plb-[100px]', frontCommonStyles.layoutSpacing)}
       ref={ref}
     >
-      <ElementTwo />
       <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Contact Us</Typography>
+        <div className='flex is-full justify-center items-center relative'>
+          <ElementTwo className='absolute inline-start-0' />
+          <div className='flex items-center justify-center mbe-6 gap-3'>
+            <Lines />
+            <Typography color='text.primary' className='font-medium uppercase'>
+              Contact Us
+            </Typography>
+          </div>
         </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
+        <div className='flex items-baseline flex-wrap gap-2 mbe-3 sm:mbe-1'>
           <Typography variant='h5' className='font-bold'>
             Lets work
           </Typography>
@@ -75,16 +79,16 @@ const ContactUs = () => {
           <Grid item xs={12} md={6} lg={4}>
             <Card className='bg-primary'>
               <CardContent className='flex flex-col gap-5 pli-8 pbs-8 pbe-7'>
-                <div className='flex flex-col gap-[6px]'>
-                  <Typography className='font-medium text-white'>Let’s contact with us</Typography>
+                <div className='flex flex-col gap-1.5'>
+                  <Typography className='font-medium text-white'>Let&apos;s contact with us</Typography>
                   <Typography variant='h5' className='text-white'>
                     Share your ideas or requirement with our experts.
                   </Typography>
                 </div>
                 <img src='/images/front-pages/landing-page/chat.png' alt='chat' className='is-full' />
                 <Typography className='text-white'>
-                  Looking for more customisation, more features, and more anything? Don’t worry, We’ve provide you with
-                  an entire team of experienced professionals.
+                  Looking for more customisation, more features, and more anything? Don&apos;t worry, We&apos;ve provide
+                  you with an entire team of experienced professionals.
                 </Typography>
               </CardContent>
             </Card>

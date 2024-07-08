@@ -4,8 +4,6 @@ import { useEffect, useRef } from 'react'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import MuiCard from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 import { styled } from '@mui/material/styles'
 
 // Type Imports
@@ -49,7 +47,7 @@ const team = [
   }
 ]
 
-const Card = styled(MuiCard)`
+const Card = styled('div')`
   &:hover {
     border-color: ${(props: { color: ThemeColor }) => props.color};
 
@@ -94,15 +92,17 @@ const OurTeam = () => {
   return (
     <section id='team' className='plb-[100px]' ref={ref}>
       <div className={frontCommonStyles.layoutSpacing}>
-        <div className='text-end'>
-          <ElementOne />
-        </div>
         <div className='flex flex-col items-center justify-center'>
-          <div className='flex items-center justify-center mbe-4 gap-3'>
-            <Lines />
-            <Typography className='font-medium uppercase'>Our Great Team</Typography>
+          <div className='flex is-full justify-center relative'>
+            <ElementOne className='absolute inline-end-0' />
+            <div className='flex items-center justify-center mbe-6 gap-3'>
+              <Lines />
+              <Typography color='text.primary' className='font-medium uppercase'>
+                Our Great Team
+              </Typography>
+            </div>
           </div>
-          <div className='flex items-center justify-center flex-wrap gap-2 mbe-3 sm:mbe-1'>
+          <div className='flex items-baseline flex-wrap gap-2 mbe-3 sm:mbe-1'>
             <Typography variant='h5' className='font-bold'>
               Supported
             </Typography>
@@ -112,13 +112,13 @@ const OurTeam = () => {
             Who is behind these great-looking interfaces?
           </Typography>
         </div>
-        <Grid container rowSpacing={16} columnSpacing={6} className='mbe-8 pbs-[100px]'>
+        <Grid container rowSpacing={16} columnSpacing={6} className='pbs-[100px]'>
           {team.map((member, index) => (
             <Grid item xs={12} md={6} lg={3} key={index}>
-              <Card className='shadow-none border overflow-visible' color={member.color as ThemeColor}>
-                <CardContent className='flex flex-col items-center justify-center p-0'>
+              <Card className='shadow-none border rounded overflow-visible' color={member.color as ThemeColor}>
+                <div className='flex flex-col items-center justify-center p-0'>
                   <div
-                    className='flex justify-center is-full mli-auto text-center bs-[189px] relative overflow-visible'
+                    className='flex justify-center is-full mli-auto text-center bs-[189px] relative overflow-visible rounded-bs'
                     style={{ backgroundColor: member.color }}
                   >
                     <img src={member.image} alt={member.name} className='bs-[240px] absolute block-start-[-50px]' />
@@ -134,7 +134,7 @@ const OurTeam = () => {
                       <i className='ri-linkedin-box-line text-[22px]' />
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </Grid>
           ))}

@@ -88,49 +88,47 @@ const Faqs = () => {
       ref={ref}
       className={classnames('flex flex-col gap-16 plb-[100px]', frontCommonStyles.layoutSpacing)}
     >
-      <div className='text-end'>
-        <ElementOne />
-      </div>
       <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mbe-4 gap-3'>
-          <Lines />
-          <Typography className='font-medium uppercase'>Faq</Typography>
+        <div className='flex is-full justify-center items-center relative'>
+          <ElementOne className='absolute inline-end-0' />
+          <div className='flex items-center justify-center mbe-6 gap-3'>
+            <Lines />
+            <Typography color='text.primary' className='font-medium uppercase'>
+              Faq
+            </Typography>
+          </div>
         </div>
-        <div className='flex items-center flex-wrap justify-center gap-x-2 mbe-1'>
+        <div className='flex items-baseline flex-wrap gap-2 mbe-3 sm:mbe-1'>
+          <Typography className='text-[18px]'>Frequently asked</Typography>
           <Typography variant='h5' className='font-bold'>
-            Frequently asked
+            questions
           </Typography>
-          <Typography className='text-[18px]'> questions</Typography>
         </div>
         <Typography color='text.secondary' className='font-medium text-center'>
           Browse through these FAQs to find answers to commonly asked questions.
         </Typography>
       </div>
-      <div>
-        <Grid container>
-          <Grid item xs={12} lg={5} className='text-center'>
-            <img
-              src='/images/front-pages/landing-page/sitting-girl-with-laptop.png'
-              alt='girl with laptop'
-              className='is-[80%] max-is-[320px]'
-            />
-          </Grid>
-          <Grid item xs={12} lg={7}>
-            <div>
-              {FaqsData.map((data, index) => {
-                return (
-                  <Accordion key={index} defaultExpanded={data.active}>
-                    <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
-                      {data.question}
-                    </AccordionSummary>
-                    <AccordionDetails>{data.answer}</AccordionDetails>
-                  </Accordion>
-                )
-              })}
-            </div>
-          </Grid>
+      <Grid container spacing={6}>
+        <Grid item xs={12} lg={5} className='text-center'>
+          <img
+            src='/images/front-pages/landing-page/sitting-girl-with-laptop.png'
+            alt='girl with laptop'
+            className='is-[80%] max-is-[320px]'
+          />
         </Grid>
-      </div>
+        <Grid item xs={12} lg={7}>
+          {FaqsData.map((data, index) => {
+            return (
+              <Accordion key={index} defaultExpanded={data.active}>
+                <AccordionSummary aria-controls={data.id + '-content'} id={data.id + '-header'}>
+                  {data.question}
+                </AccordionSummary>
+                <AccordionDetails>{data.answer}</AccordionDetails>
+              </Accordion>
+            )
+          })}
+        </Grid>
+      </Grid>
     </section>
   )
 }

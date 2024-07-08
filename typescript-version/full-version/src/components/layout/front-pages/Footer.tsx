@@ -114,10 +114,10 @@ const Footer = () => {
                   <div className='flex items-center pli-5 plb-[7px] gap-6'>
                     <img src='/images/front-pages/apple-icon.png' alt='apple store' className='bs-[34px]' />
                     <div className='flex flex-col items-start'>
-                      <Typography variant='body2' color='white' className='capitalize opacity-80'>
+                      <Typography variant='body2' color='white' className='opacity-80'>
                         Download on the
                       </Typography>
-                      <Typography color='white' className='font-medium capitalize opacity-90'>
+                      <Typography color='white' className='font-medium opacity-90'>
                         App Store
                       </Typography>
                     </div>
@@ -148,15 +148,15 @@ const Footer = () => {
             frontCommonStyles.layoutSpacing
           )}
         >
-          <p className='text-white text-[13px]'>
+          <Typography className='text-white text-[13px]'>
             <span>{`© ${new Date().getFullYear()}, Made with `}</span>
             <span>{`❤️`}</span>
             <span>{` by `}</span>
             <Link href='https://themeselection.com' target='_blank' className='font-medium text-white'>
               ThemeSelection
             </Link>
-          </p>
-          <div className='flex gap-6 items-center'>
+          </Typography>
+          <div className='flex gap-1.5 items-center'>
             <IconButton component={Link} size='small' href='https://github.com/themeselection' target='_blank'>
               <i className='ri-github-fill text-white text-lg' />
             </IconButton>

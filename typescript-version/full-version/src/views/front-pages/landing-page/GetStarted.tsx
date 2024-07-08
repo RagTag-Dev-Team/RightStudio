@@ -28,7 +28,7 @@ const GetStarted = () => {
           frontCommonStyles.layoutSpacing
         )}
       >
-        <div className='flex flex-col items-start gap-y-8 gap-x-4 pbs-9 lg:plb-9 z-[1]'>
+        <div className='flex flex-col items-start gap-y-8 pbs-9 lg:plb-9 z-[1]'>
           <div className='flex flex-col gap-1'>
             <Typography variant='h5' color='primary' className='font-bold'>
               Ready to Get Started?

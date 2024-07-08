@@ -62,7 +62,7 @@ const ProductStat = () => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
 
   return (
-    <section className='plb-[64px]'>
+    <section className='plb-[84px]'>
       <div className={frontCommonStyles.layoutSpacing}>
         <Grid container spacing={6}>
           {statData.map((stat, index) => (
@@ -86,9 +86,7 @@ const ProductStat = () => {
                   <Typography variant='h4' className='font-bold'>
                     {stat.value}+
                   </Typography>
-                  <Typography className='font-medium' color='text.secondary'>
-                    {stat.title}
-                  </Typography>
+                  <Typography className='font-medium'>{stat.title}</Typography>
                 </div>
               </div>
             </Grid>

@@ -124,7 +124,7 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
         <CardContent className='p-0'>
           <Grid container>
             <Grid item md={12} lg={7}>
-              <div className='flex flex-col gap-y-8 p-8 border-be lg:border-be-0 lg:border-e bs-full'>
+              <div className='flex flex-col max-sm:gap-y-5 gap-y-8 p-8 border-be lg:border-be-0 lg:border-e bs-full'>
                 <div>
                   <Typography variant='h4'>Checkout</Typography>
                   <Typography color='text.secondary'>
@@ -133,7 +133,7 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                   </Typography>
                 </div>
                 <div className='flex gap-5'>
-                  <Grid container spacing={4}>
+                  <Grid container spacing={5}>
                     {cardData.map((item, index) => (
                       <CustomInputHorizontal
                         key={index}
@@ -147,57 +147,72 @@ const Payment = ({ data }: { data: PricingPlanType[] }) => {
                     ))}
                   </Grid>
                 </div>
-                <div className='flex flex-col gap-6 mbe-1'>
-                  <Typography variant='h4'>Billing Details</Typography>
-                  <div className='flex sm:flex-row flex-col gap-5'>
-                    <TextField fullWidth label='Email Address' defaultValue='admin@master.com' type='email' />
-                    <TextField fullWidth type='password' id='password-input' label='Password' defaultValue='admin' />
-                  </div>
-                  <div className='flex sm:flex-row flex-col gap-5'>
-                    <FormControl fullWidth>
-                      <InputLabel id='country-select-label'>Billing Country</InputLabel>
-                      <Select
-                        labelId='country-select-label'
-                        id='country-select'
-                        value={selectCountry}
-                        label='Billing Country'
-                        onChange={handleCountryChange}
-                      >
-                        {countries.map(country => (
-                          <MenuItem key={country} value={country}>
-                            {country}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-
-                    <TextField
-                      label='Billing Zip / Postal Code'
-                      id='postal-code-input'
-                      placeholder='123456'
-                      fullWidth
-                      type='number'
-                    />
-                  </div>
+                <div>
+                  <Typography variant='h4' className='mbe-6'>
+                    Billing Details
+                  </Typography>
+                  <Grid container spacing={5}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label='Email Address' defaultValue='admin@master.com' type='email' />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth type='password' id='password-input' label='Password' defaultValue='admin' />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <FormControl fullWidth>
+                        <InputLabel id='country-select-label'>Billing Country</InputLabel>
+                        <Select
+                          labelId='country-select-label'
+                          id='country-select'
+                          value={selectCountry}
+                          label='Billing Country'
+                          onChange={handleCountryChange}
+                        >
+                          {countries.map(country => (
+                            <MenuItem key={country} value={country}>
+                              {country}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label='Billing Zip / Postal Code'
+                        id='postal-code-input'
+                        placeholder='123456'
+                        fullWidth
+                        type='number'
+                      />
+                    </Grid>
+                  </Grid>
                 </div>
                 {selectInput === 'credit-card' && (
-                  <div className='flex flex-col gap-6 mbe-1'>
-                    <Typography variant='h4'>Credit Card Info</Typography>
-                    <TextField
-                      fullWidth
-                      id='card-number-input'
-                      placeholder='8763 2345 3478'
-                      label='Card Number'
-                      type='number'
-                    />
-                    <div className='flex sm:flex-row flex-col gap-5'>
-                      <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
-                      <div className='flex gap-5'>
+                  <>
+                    <Typography variant='h4' className='mbe-6'>
+                      Credit Card Info
+                    </Typography>
+                    <Grid container spacing={5}>
+                      <Grid item xs={12}>
+                        <TextField
+                          fullWidth
+                          id='card-number-input'
+                          placeholder='8763 2345 3478'
+                          label='Card Number'
+                          type='number'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField fullWidth id='card-holder-name' placeholder='John Doe' label='Card Holder' />
+                      </Grid>
+                      <Grid item xs={12} sm={3}>
                         <TextField fullWidth id='expiry-date' placeholder='05/2026' label='EXP. date' type='number' />
+                      </Grid>
+                      <Grid item xs={12} sm={3}>
                         <TextField fullWidth id='cvv' placeholder='734' label='CVV' type='number' />
-                      </div>
-                    </div>
-                  </div>
+                      </Grid>
+                    </Grid>
+                  </>
                 )}
               </div>
             </Grid>

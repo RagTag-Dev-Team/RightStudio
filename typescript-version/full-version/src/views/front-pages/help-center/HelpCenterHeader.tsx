@@ -47,7 +47,7 @@ const HelpCenterHeader = ({ searchValue, setSearchValue }: Props) => {
             )
           }}
         />
-        <Typography className='mbe-6'>or choose a category to quickly find the help you need</Typography>
+        <Typography>or choose a category to quickly find the help you need</Typography>
       </div>
     </section>
   )
