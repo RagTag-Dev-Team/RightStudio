@@ -79,9 +79,9 @@ const ActivityTimeline = () => {
               </div>
               <Typography>6 team members in a project</Typography>
               <AvatarGroup total={6}>
-                <Avatar alt='Remy Sharp' src='/static/images/avatar/1.jpg' />
-                <Avatar alt='Travis Howard' src='/static/images/avatar/2.jpg' />
-                <Avatar alt='Cindy Baker' src='/static/images/avatar/3.jpg' />
+                <Avatar alt='Remy Sharp' src='/images/avatar/1.jpg' />
+                <Avatar alt='Travis Howard' src='/images/avatar/2.jpg' />
+                <Avatar alt='Cindy Baker' src='/images/avatar/3.jpg' />
               </AvatarGroup>
             </TimelineContent>
           </TimelineItem>
