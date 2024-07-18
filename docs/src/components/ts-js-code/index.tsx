@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 // Docusaurus Imports
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
@@ -6,6 +8,7 @@ import CodeBlock from '@theme/CodeBlock'
 const ts = require('typescript')
 const prettier = require('prettier/standalone')
 const parserTypescript = require('prettier/parser-typescript')
+const prettierPluginEstree = require('prettier/plugins/estree')
 
 const stripTypes = (origCode: string) => {
   const modifiedCode = origCode.replace(/\r/g, '').replace(/\n\n/g, '\n//--EMPTYLINE--\n')
@@ -25,7 +28,7 @@ const stripTypes = (origCode: string) => {
 const format = (code: string) =>
   prettier.format(code, {
     parser: 'typescript',
-    plugins: [parserTypescript],
+    plugins: [parserTypescript, prettierPluginEstree],
     arrowParens: 'avoid',
     bracketSpacing: true,
     htmlWhitespaceSensitivity: 'css',
@@ -44,8 +47,19 @@ const format = (code: string) =>
   })
 
 const TsToJsCode = ({ children }: { children: string }) => {
-  const tsCode = format(children)
-  const jsCode = format(stripTypes(children))
+  const [tsCode, setTsCode] = useState('');
+  const [jsCode, setJsCode] = useState('');
+
+  useEffect(() => {
+    const formatCode = async () => {
+      const formattedTsCode = await format(children);
+      const formattedJsCode = await format(stripTypes(children));
+      setTsCode(formattedTsCode);
+      setJsCode(formattedJsCode);
+    };
+
+    formatCode();
+  }, [children]);
 
   return tsCode === jsCode ? (
     <CodeBlock language='tsx'>{tsCode}</CodeBlock>

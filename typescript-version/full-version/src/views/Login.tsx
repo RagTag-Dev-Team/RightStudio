@@ -11,7 +11,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 
 // Type Imports
-import type { Locale } from '@/configs/i18n'
+import type { Locale } from '@configs/i18n'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'

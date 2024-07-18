@@ -6,6 +6,9 @@
   border-color: var(--mui-palette-divider);
   transition-duration: 0.2s;
   transition-property: color, border-color, box-shadow, transform;
+  [data-theme='dark'] & {
+    color: #f9fafb;
+  }
   &:hover {
     color: var(--ifm-color-primary);
     border-color: rgb(var(--mui-palette-dividerChannel) / 0.2);
