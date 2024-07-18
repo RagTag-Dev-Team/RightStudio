@@ -43,34 +43,34 @@ importers:
         specifier: ^5.11.5
         version: 5.11.5
       '@fullcalendar/core':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15
       '@fullcalendar/daygrid':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15(@fullcalendar/core@6.1.15)
       '@fullcalendar/interaction':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15(@fullcalendar/core@6.1.15)
       '@fullcalendar/list':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15(@fullcalendar/core@6.1.15)
       '@fullcalendar/react':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15(@fullcalendar/core@6.1.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@fullcalendar/timegrid':
-        specifier: ^6.1.14
+        specifier: ^6.1.15
         version: 6.1.15(@fullcalendar/core@6.1.15)
       '@hookform/resolvers':
-        specifier: ^3.7.0
+        specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.52.1(react@18.3.1))
       '@mui/lab':
-        specifier: 5.0.0-alpha.170
-        version: 5.0.0-alpha.170(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 5.0.0-alpha.172
+        version: 5.0.0-alpha.172(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material':
-        specifier: ^5.15.21
+        specifier: ^5.16.4
         version: 5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mui/material-nextjs':
-        specifier: ^5.15.11
+        specifier: ^5.16.4
         version: 5.16.4(@emotion/cache@11.11.0)(@mui/material@5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@prisma/client':
         specifier: ^5.17.0
@@ -85,35 +85,35 @@ importers:
         specifier: ^8.19.3
         version: 8.19.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tiptap/extension-color':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/extension-text-style@2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4)))
       '@tiptap/extension-list-item':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-placeholder':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)
       '@tiptap/extension-text-align':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-text-style':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/extension-underline':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))
       '@tiptap/pm':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4
       '@tiptap/react':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/core@2.5.4(@tiptap/pm@2.5.4))(@tiptap/pm@2.5.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tiptap/starter-kit':
-        specifier: ^2.4.0
+        specifier: ^2.5.4
         version: 2.5.4(@tiptap/pm@2.5.4)
       apexcharts:
-        specifier: ^3.49.2
-        version: 3.50.0
+        specifier: 3.49.0
+        version: 3.49.0
       bootstrap-icons:
         specifier: ^1.11.3
         version: 1.11.3
@@ -136,7 +136,7 @@ importers:
         specifier: ^6.8.6
         version: 6.8.6
       mapbox-gl:
-        specifier: ^3.5.0
+        specifier: ^3.5.1
         version: 3.5.1
       negotiator:
         specifier: ^0.6.3
@@ -152,13 +152,13 @@ importers:
         version: 18.3.1
       react-apexcharts:
         specifier: ^1.4.1
-        version: 1.4.1(apexcharts@3.50.0)(react@18.3.1)
+        version: 1.4.1(apexcharts@3.49.0)(react@18.3.1)
       react-colorful:
         specifier: ^5.6.1
         version: 5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-datepicker:
-        specifier: ^6.9.0
-        version: 6.9.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^7.3.0
+        version: 7.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -193,11 +193,11 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       valibot:
-        specifier: ^0.35.0
-        version: 0.35.0
+        specifier: ^0.36.0
+        version: 0.36.0
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.225
+        specifier: ^2.2.229
         version: 2.2.229
       '@iconify/tools':
         specifier: ^4.0.4
@@ -220,9 +220,6 @@ importers:
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
-      '@types/react-datepicker':
-        specifier: ^6.2.0
-        version: 6.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
@@ -786,8 +783,8 @@ packages:
   '@mui/core-downloads-tracker@5.16.4':
     resolution: {integrity: sha512-rNdHXhclwjEZnK+//3SR43YRx0VtjdHnUFhMSGYmAMJve+KiwEja/41EYh8V3pZKqF2geKyfcFUenTfDTYUR4w==}
 
-  '@mui/lab@5.0.0-alpha.170':
-    resolution: {integrity: sha512-0bDVECGmrNjd3+bLdcLiwYZ0O4HP5j5WSQm5DV6iA/Z9kr8O6AnvZ1bv9ImQbbX7Gj3pX4o43EKwCutj3EQxQg==}
+  '@mui/lab@5.0.0-alpha.172':
+    resolution: {integrity: sha512-stpa3WTsDE1HamFR4eeS6Bhxalm+u9FhzzNph/PrDMdWSRBHlJs2mqvZ6FEoO22O7MOCwNMqbXTkvEwsyEf0ew==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -1417,9 +1414,6 @@ packages:
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
-  '@types/react-datepicker@6.2.0':
-    resolution: {integrity: sha512-+JtO4Fm97WLkJTH8j8/v3Ldh7JCNRwjMYjRaKh4KHH0M3jJoXtwiD3JBCsdlg3tsFIw9eQSqyAPeVDN2H2oM9Q==}
-
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
 
@@ -1582,8 +1576,8 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  apexcharts@3.50.0:
-    resolution: {integrity: sha512-LJT1PNAm+NoIU3aogL2P+ViC0y/Cjik54FdzzGV54UNnGQLBoLe5ok3fxsJDTgyez45BGYT8gqNpYKqhdfy5sg==}
+  apexcharts@3.49.0:
+    resolution: {integrity: sha512-2T9HnbQFLCuYRPndQLmh+bEQFoz0meUbvASaGgiSKDuYhWcLBodJtIpKql2aOtMx4B/sHrWW0dm90HsW4+h2PQ==}
 
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
@@ -3402,8 +3396,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  react-datepicker@6.9.0:
-    resolution: {integrity: sha512-QTxuzeem7BUfVFWv+g5WuvzT0c5BPo+XTCNbMTZKSZQLU+cMMwSUHwspaxuIcDlwNcOH0tiJ+bh1fJ2yxOGYWA==}
+  react-datepicker@7.3.0:
+    resolution: {integrity: sha512-EqRKLAtLZUTztiq6a+tjSjQX9ES0Xd229JPckAtyZZ4GoY3rtvNWAzkYZnQUf6zTWT50Ki0+t+W9VRQIkSJLfg==}
     peerDependencies:
       react: ^16.9.0 || ^17 || ^18
       react-dom: ^16.9.0 || ^17 || ^18
@@ -4099,8 +4093,8 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
-  valibot@0.35.0:
-    resolution: {integrity: sha512-+i2aCRkReTrd5KBN/dW2BrPOvFnU5LXTV2xjZnjnqUIO8YUx6P2+MgRrkwF2FhkexgyKq/NIZdPdknhHf5A/Ww==}
+  valibot@0.36.0:
+    resolution: {integrity: sha512-CjF1XN4sUce8sBK9TixrDqFM7RwNkuXdJu174/AwmQUB62QbCQADg5lLe8ldBalFgtj1uKj+pKwDJiNo4Mn+eQ==}
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
@@ -4664,7 +4658,7 @@ snapshots:
 
   '@mui/core-downloads-tracker@5.16.4': {}
 
-  '@mui/lab@5.0.0-alpha.170(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mui/lab@5.0.0-alpha.172(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@mui/material@5.16.4(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.8
       '@mui/base': 5.0.0-beta.40(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5245,15 +5239,6 @@ snapshots:
 
   '@types/prop-types@15.7.12': {}
 
-  '@types/react-datepicker@6.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@floating-ui/react': 0.26.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/react': 18.3.3
-      date-fns: 3.6.0
-    transitivePeerDependencies:
-      - react
-      - react-dom
-
   '@types/react-dom@18.3.0':
     dependencies:
       '@types/react': 18.3.3
@@ -5449,7 +5434,7 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  apexcharts@3.50.0:
+  apexcharts@3.49.0:
     dependencies:
       '@yr/monotone-cubic-spline': 1.0.3
       svg.draggable.js: 2.2.2
@@ -7556,9 +7541,9 @@ snapshots:
 
   quickselect@2.0.0: {}
 
-  react-apexcharts@1.4.1(apexcharts@3.50.0)(react@18.3.1):
+  react-apexcharts@1.4.1(apexcharts@3.49.0)(react@18.3.1):
     dependencies:
-      apexcharts: 3.50.0
+      apexcharts: 3.49.0
       prop-types: 15.8.1
       react: 18.3.1
 
@@ -7567,7 +7552,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  react-datepicker@6.9.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-datepicker@7.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@floating-ui/react': 0.26.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
@@ -8389,7 +8374,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  valibot@0.35.0: {}
+  valibot@0.36.0: {}
 
   victory-vendor@36.9.2:
     dependencies:

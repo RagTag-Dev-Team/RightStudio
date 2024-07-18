@@ -251,7 +251,7 @@ const ProductInventory = () => {
                         </Typography>
                         <AppReactDatepicker
                           selected={date}
-                          onChange={(date: Date) => setDate(date)}
+                          onChange={(date: Date | null) => setDate(date)}
                           placeholderText='MM/DD/YYYY'
                           customInput={<TextField fullWidth size='small' />}
                         />

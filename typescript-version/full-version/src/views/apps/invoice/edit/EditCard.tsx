@@ -78,7 +78,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData?: InvoiceType; id: st
                       <AppReactDatepicker
                         selected={issueDate}
                         id='payment-date'
-                        onChange={(date: Date) => setIssueDate(date)}
+                        onChange={(date: Date | null) => date !== null && setIssueDate(date)}
                         customInput={<TextField fullWidth size='small' />}
                       />
                     </div>
@@ -87,7 +87,7 @@ const EditCard = ({ invoiceData, id, data }: { invoiceData?: InvoiceType; id: st
                       <AppReactDatepicker
                         selected={dueDate}
                         id='payment-date'
-                        onChange={(date: Date) => setDueDate(date)}
+                        onChange={(date: Date | null) => date !== null && setDueDate(date)}
                         customInput={<TextField fullWidth size='small' />}
                       />
                     </div>

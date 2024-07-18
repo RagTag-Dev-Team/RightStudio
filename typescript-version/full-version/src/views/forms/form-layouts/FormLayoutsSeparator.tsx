@@ -223,7 +223,7 @@ const FormLayoutsSeparator = () => {
                 selected={formData.date}
                 showYearDropdown
                 showMonthDropdown
-                onChange={(date: Date) => setFormData({ ...formData, date })}
+                onChange={(date: Date | null) => setFormData({ ...formData, date })}
                 placeholderText='MM/DD/YYYY'
                 customInput={<TextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
               />

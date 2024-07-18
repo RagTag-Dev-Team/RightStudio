@@ -69,7 +69,7 @@ const StepPropertyDetails = ({ activeStep, handleNext, handlePrev, steps }: Prop
           selected={date}
           placeholderText='YYYY-MM-DD'
           dateFormat={'yyyy-MM-dd'}
-          onChange={(date: Date) => setDate(date)}
+          onChange={(date: Date | null) => setDate(date)}
           customInput={<TextField fullWidth label='Available From' />}
         />
       </Grid>
