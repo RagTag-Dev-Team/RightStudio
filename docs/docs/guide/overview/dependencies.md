@@ -93,7 +93,6 @@ You may add / update / remove any other dependencies according to your requireme
 ## Date Time Picker
 
 ```json
-"@types/react-datepicker" // Typescript version only
 "date-fns" // date formatter
 "react-datepicker"
 ```
