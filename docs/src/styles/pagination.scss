@@ -1,14 +1,14 @@
 // Previous and Next buttons styles
 .pagination-nav__link {
   color: #3e3d3d;
-  [data-theme='dark'] & {
-    color: #f9fafb;
-  }
   padding-inline: 2rem;
   border-radius: 0.375rem;
   border-color: var(--ifm-color-emphasis-200);
   transition-duration: 0.2s;
   transition-property: color, border-color, box-shadow, transform;
+  [data-theme='dark'] & {
+    color: #f9fafb;
+  }
   &:hover {
     color: var(--ifm-color-primary);
     border-color: var(--ifm-color-emphasis-300);
@@ -34,10 +34,10 @@
 .pagination-nav__sublabel {
   font-size: 13px;
   color: rgba(136, 153, 168, 1);
+  font-weight: var(--ifm-font-weight-normal);
   [data-theme='dark'] & {
     color: #a2a9b9;
   }
-  font-weight: var(--ifm-font-weight-normal);
 }
 
 .pagination-nav__link--next {
