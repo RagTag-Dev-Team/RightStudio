@@ -27,9 +27,10 @@ import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const params = useParams()
-  const { isBreakpointReached } = useVerticalNav()
+  const verticalNavOptions = useVerticalNav()
 
   // Vars
+  const { isBreakpointReached } = verticalNavOptions
   const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
@@ -44,7 +45,7 @@ const VerticalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof ge
     >
       {/* Incase you also want to scroll NavHeader to scroll with Vertical Menu, remove NavHeader from above and paste it below this comment */}
       {/* Vertical Menu */}
-      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles()}>
+      <Menu popoutMenuOffset={{ mainAxis: 10 }} menuItemStyles={menuItemStyles(verticalNavOptions)}>
         <SubMenu label={dictionary['navigation'].dashboards} suffix={<Chip label='5' size='small' color='error' />}>
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>

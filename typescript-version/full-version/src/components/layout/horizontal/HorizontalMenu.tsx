@@ -10,6 +10,9 @@ import VerticalNavContent from './VerticalNavContent'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
+// Hook Imports
+import useVerticalNav from '@menu/hooks/useVerticalNav'
+
 // Style Imports
 import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
 import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
@@ -19,6 +22,8 @@ import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCust
 // import menuData from '@/data/navigation/horizontalMenuData'
 
 const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
+  // Hooks
+  const verticalNavOptions = useVerticalNav()
   const params = useParams()
 
   // Vars
@@ -40,7 +45,7 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           alignmentAxis: ({ level }) => (level && level > 0 ? -5 : 0)
         }}
         verticalMenuProps={{
-          menuItemStyles: verticalMenuItemStyles()
+          menuItemStyles: verticalMenuItemStyles(verticalNavOptions)
         }}
       >
         <SubMenu label={dictionary['navigation'].dashboards}>
