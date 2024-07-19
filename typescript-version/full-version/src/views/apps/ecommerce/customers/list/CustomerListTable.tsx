@@ -263,32 +263,39 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between flex-col sm:flex-row sm:items-center gap-y-4'>
+        <CardContent className='flex justify-between flex-wrap flex-col items-start sm:flex-row sm:items-center gap-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
+            className='is-full sm:is-auto'
           />
-          <div className='flex max-sm:flex-col items-start sm:items-center gap-4'>
-            <div className='flex item-center gap-4'>
+          <div className='flex max-sm:flex-col items-start sm:items-center gap-4 is-full sm:is-auto'>
+            <div className='flex items-start sm:items-center gap-4 flex-col sm:flex-row is-full sm:is-auto'>
               <CustomTextField
                 select
                 value={table.getState().pagination.pageSize}
                 onChange={e => table.setPageSize(Number(e.target.value))}
-                className='is-[70px]'
+                className='is-full sm:is-[70px]'
               >
                 <MenuItem value='10'>10</MenuItem>
                 <MenuItem value='25'>25</MenuItem>
                 <MenuItem value='50'>50</MenuItem>
                 <MenuItem value='100'>100</MenuItem>
               </CustomTextField>
-              <Button variant='tonal' color='secondary' startIcon={<i className='tabler-upload' />}>
+              <Button
+                variant='tonal'
+                className='is-full sm:is-auto'
+                color='secondary'
+                startIcon={<i className='tabler-upload' />}
+              >
                 Export
               </Button>
             </div>
             <Button
               variant='contained'
               color='primary'
+              className='is-full sm:is-auto'
               startIcon={<i className='tabler-plus' />}
               onClick={() => setCustomerUserOpen(!customerUserOpen)}
             >

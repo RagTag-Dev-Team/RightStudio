@@ -309,13 +309,14 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
+            className='is-full sm:is-auto'
           />
-          <div className='flex flex-wrap items-center gap-4'>
+          <div className='flex flex-col sm:flex-row items-center gap-4 is-full sm:is-auto'>
             <CustomTextField
               select
               value={table.getState().pagination.pageSize}
               onChange={e => table.setPageSize(Number(e.target.value))}
-              className='flex-auto is-[70px]'
+              className='sm:is-[140px] flex-auto is-full'
             >
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='25'>25</MenuItem>
@@ -326,13 +327,18 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
               fullWidth
               value={status}
               onChange={e => setStatus(e.target.value)}
-              className='is-[140px] flex-auto'
+              className='is-full sm:is-[140px] flex-auto'
             >
               <MenuItem value='All'>All</MenuItem>
               <MenuItem value='Published'>Published</MenuItem>
               <MenuItem value='Pending'>Pending</MenuItem>
             </CustomTextField>
-            <Button variant='tonal' startIcon={<i className='tabler-upload' />} color='secondary'>
+            <Button
+              variant='tonal'
+              className='is-full sm:is-auto'
+              startIcon={<i className='tabler-upload' />}
+              color='secondary'
+            >
               Export
             </Button>
           </div>
