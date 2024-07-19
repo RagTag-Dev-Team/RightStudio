@@ -30,10 +30,10 @@ const InviteAndShare = () => {
           <div className='flex items-center gap-4'>
             <TextField size='small' placeholder='pixinvent.com/?ref=6479' className='flex-auto' />
             <div className='flex gap-2'>
-              <CustomIconButton variant='contained' className='bg-[#4267B2] text-white'>
+              <CustomIconButton variant='contained' className='bg-facebook text-white'>
                 <i className='ri-facebook-circle-line' />
               </CustomIconButton>
-              <CustomIconButton variant='contained' className='bg-[#1DA1F2] text-white'>
+              <CustomIconButton variant='contained' className='bg-twitter text-white'>
                 <i className='ri-twitter-line' />
               </CustomIconButton>
             </div>

@@ -261,17 +261,17 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4'>
+        <CardContent className='flex justify-between flex-wrap max-sm:flex-col sm:items-center gap-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
-            className='is-full sm:is-auto'
+            className='max-sm:is-full'
           />
-          <div className='flex gap-4 flex-col sm:flex-row is-full sm:is-auto'>
+          <div className='flex gap-4 max-sm:flex-col max-sm:is-full'>
             <Button
               variant='outlined'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
               color='secondary'
               startIcon={<i className='ri-upload-2-line' />}
             >
@@ -280,7 +280,7 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
             <Button
               variant='contained'
               color='primary'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
               startIcon={<i className='ri-add-line' />}
               onClick={() => setCustomerUserOpen(!customerUserOpen)}
             >

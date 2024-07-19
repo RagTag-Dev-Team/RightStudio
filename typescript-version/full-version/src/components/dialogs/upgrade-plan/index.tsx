@@ -60,7 +60,7 @@ const UpgradePlan = ({ open, setOpen }: UpgradePlanProps) => {
                 <MenuItem value='Company'>Company - $999/month</MenuItem>
               </Select>
             </FormControl>
-            <Button variant='contained' className='capitalize sm:is-auto is-full'>
+            <Button variant='contained' className='capitalize max-sm:is-full'>
               Upgrade
             </Button>
           </div>

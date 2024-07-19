@@ -307,18 +307,18 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
             color='secondary'
             variant='outlined'
             startIcon={<i className='ri-upload-2-line text-xl' />}
-            className='is-full sm:is-auto'
+            className='max-sm:is-full'
           >
             Export
           </Button>
-          <div className='flex items-center gap-x-4 is-full flex-col sm:is-auto sm:flex-row'>
+          <div className='flex items-center gap-x-4 flex-col max-sm:is-full sm:flex-row'>
             <DebouncedInput
               value={globalFilter ?? ''}
               onChange={value => setGlobalFilter(String(value))}
               placeholder='Search User'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
             />
-            <Button variant='contained' onClick={() => setAddUserOpen(!addUserOpen)} className='is-full sm:is-auto'>
+            <Button variant='contained' onClick={() => setAddUserOpen(!addUserOpen)} className='max-sm:is-full'>
               Add New User
             </Button>
           </div>

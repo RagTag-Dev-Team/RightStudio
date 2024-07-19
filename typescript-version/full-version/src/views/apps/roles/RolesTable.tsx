@@ -314,18 +314,18 @@ const RolesTable = ({ tableData }: { tableData?: UsersType[] }) => {
           variant='outlined'
           color='secondary'
           startIcon={<i className='ri-upload-2-line' />}
-          className='is-full sm:is-auto'
+          className='max-sm:is-full'
         >
           Export
         </Button>
-        <div className='flex flex-col !items-start is-full sm:flex-row sm:is-auto sm:items-center'>
+        <div className='flex flex-col !items-start max-sm:is-full sm:flex-row sm:items-center'>
           <DebouncedInput
             value={globalFilter ?? ''}
-            className='is-full sm:is-auto min-is-[220px]'
+            className='max-sm:is-full min-is-[220px]'
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search User'
           />
-          <FormControl size='small' className='is-full sm:is-auto'>
+          <FormControl size='small' className='max-sm:is-full'>
             <InputLabel id='roles-app-role-select-label'>Select Role</InputLabel>
             <Select
               value={role}

@@ -10,6 +10,7 @@ import Button from '@mui/material/Button'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabPanel from '@mui/lab/TabPanel'
+import Typography from '@mui/material/Typography'
 
 // Component Imports
 import CustomTabList from '@core/components/mui/TabList'
@@ -26,6 +27,9 @@ const Settings = ({ tabContentList }: { tabContentList: { [key: string]: ReactEl
     <TabContext value={activeTab}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={4}>
+          <Typography variant='h5' className='mbe-4'>
+            Getting Started
+          </Typography>
           <CustomTabList orientation='vertical' onChange={handleChange} className='is-full' pill='true'>
             <Tab
               label='Store Details'

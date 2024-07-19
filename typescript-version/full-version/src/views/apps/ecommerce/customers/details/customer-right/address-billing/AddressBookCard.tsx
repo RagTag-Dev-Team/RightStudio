@@ -105,7 +105,7 @@ const CustomerAddress = (props: propsType) => {
           >
             <i className='ri-arrow-down-s-line text-textPrimary' />
           </IconButton>
-          <div className='flex flex-col gap-1'>
+          <div className='flex flex-col items-start gap-1'>
             <div className='flex items-center gap-2'>
               <Typography color='text.primary' className='font-medium'>
                 {typeOfAddress}

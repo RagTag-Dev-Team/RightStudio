@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar'
 
 const CardFacebook = () => {
   return (
-    <Card className='bg-[#3b5998]'>
+    <Card className='bg-facebook'>
       <CardContent>
         <div className='flex items-center gap-2 mbe-4'>
           <i className='ri-facebook-fill text-3xl text-white' />

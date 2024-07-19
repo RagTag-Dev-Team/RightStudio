@@ -151,7 +151,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <img src={row.original.productImage} width={38} height={38} className='rounded bg-actionHover' />
-            <div className='flex flex-col'>
+            <div className='flex flex-col items-start'>
               <Typography className='font-medium' color='text.primary'>
                 {row.original.product}
               </Typography>
@@ -167,7 +167,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         cell: ({ row }) => (
           <div className='flex items-center gap-3'>
             <CustomAvatar src={row.original.avatar} size={34} />
-            <div>
+            <div className='flex flex-col items-start'>
               <Typography
                 component={Link}
                 href={getLocalizedUrl('/apps/ecommerce/customers/details/879861', locale as Locale)}
@@ -305,14 +305,14 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
   return (
     <>
       <Card>
-        <div className='flex justify-between flex-col items-start sm:flex-row sm:items-center gap-y-4 p-5'>
+        <div className='flex justify-between flex-col items-start flex-wrap sm:flex-row sm:items-center gap-4 p-5'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
-            className='is-full sm:is-auto'
+            className='max-sm:is-full'
           />
-          <div className='flex flex-col sm:flex-row items-center gap-4 is-full sm:is-auto'>
+          <div className='flex flex-col sm:flex-row items-center gap-4 max-sm:is-full'>
             <FormControl fullWidth size='small' className='sm:is-[140px] flex-auto is-full'>
               <Select
                 fullWidth
@@ -326,7 +326,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
                 <MenuItem value='Pending'>Pending</MenuItem>
               </Select>
             </FormControl>
-            <Button variant='contained' className='is-full sm:is-auto' startIcon={<i className='ri-upload-2-line' />}>
+            <Button variant='contained' className='max-sm:is-full' startIcon={<i className='ri-upload-2-line' />}>
               Export
             </Button>
           </div>

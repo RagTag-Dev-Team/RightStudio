@@ -98,7 +98,7 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
             </InputLabel>
             <div className='flex items-center is-full flex-wrap sm:flex-nowrap'>
               <TextField fullWidth size='small' id='refer-email' placeholder='johnDoe@email.com' />
-              <Button variant='contained' className='is-full sm:is-auto'>
+              <Button variant='contained' className='max-sm:is-full'>
                 Send
               </Button>
             </div>
@@ -125,13 +125,13 @@ const ReferEarn = ({ open, setOpen }: ReferEarnProps) => {
                 }
               />
               <div className='flex items-center'>
-                <CustomIconButton className='rounded text-white bg-[#4267b2]'>
+                <CustomIconButton className='rounded text-white bg-facebook'>
                   <i className='ri-facebook-circle-line' />
                 </CustomIconButton>
-                <CustomIconButton className='rounded text-white bg-[#1da1f2]'>
+                <CustomIconButton className='rounded text-white bg-twitter'>
                   <i className='ri-twitter-line' />
                 </CustomIconButton>
-                <CustomIconButton className='rounded text-white bg-[#007bb6]'>
+                <CustomIconButton className='rounded text-white bg-linkedin'>
                   <i className='ri-linkedin-line' />
                 </CustomIconButton>
               </div>

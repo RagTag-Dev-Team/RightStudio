@@ -38,8 +38,6 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 const ProductInventory = () => {
   // States
   const [activeTab, setActiveTab] = useState('restock')
-  const [shipping, setShipping] = useState('seller')
-  const [delivery, setDelivery] = useState('worldwide')
   const [date, setDate] = useState<Date | null>(null)
 
   // Hooks
@@ -117,8 +115,7 @@ const ProductInventory = () => {
                   <Typography className='font-medium'>Shipping Type</Typography>
                   <RadioGroup
                     name='radio-buttons-group'
-                    value={shipping}
-                    onChange={e => setShipping(e.target.value)}
+                    defaultValue='seller'
                     className='items-start gap-4'
                     aria-labelledby='shipping-type-radio-buttons-group-label'
                   >
@@ -160,8 +157,7 @@ const ProductInventory = () => {
                   <Typography className='font-medium'>Global Delivery</Typography>
                   <RadioGroup
                     name='radio-buttons-group'
-                    value={delivery}
-                    onChange={e => setDelivery(e.target.value)}
+                    defaultValue='worldwide'
                     className='items-start gap-4'
                     aria-labelledby='global-delivery-radio-buttons-group-label'
                   >

@@ -1,6 +1,3 @@
-// MUI Imports
-import type { AvatarProps } from '@mui/material'
-
 // Type Imports
 import type { ThemeColor } from '@core/types'
 import type { CustomAvatarProps } from '@core/components/mui/Avatar'
@@ -10,9 +7,8 @@ export type CardStatsHorizontalWithAvatarProps = {
   title: string
   avatarIcon: string
   avatarColor?: ThemeColor
-  avatarVariant?: AvatarProps['variant']
+  avatarVariant?: CustomAvatarProps['variant']
   avatarSkin?: CustomAvatarProps['skin']
-  avatarIconSize?: number
   avatarSize?: number
 }
 
