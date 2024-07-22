@@ -47,7 +47,7 @@ module.exports = plugin(function () {}, {
         actionFocus: 'var(--mui-palette-action-focus)',
         backgroundPaper: 'var(--mui-palette-background-paper)',
         backgroundDefault: 'var(--mui-palette-background-default)',
-        facebook: '#497CE2',
+        facebook: '#4267B2',
         twitter: '#1DA1F2',
         linkedin: '#007BB6'
       },
