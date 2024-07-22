@@ -150,7 +150,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         cell: ({ row }) => (
           <div className='flex items-center gap-4'>
             <img src={row.original.productImage} width={38} height={38} className='rounded bg-actionHover' />
-            <div>
+            <div className='flex flex-col items-start'>
               <Typography className='font-medium' color='text.primary'>
                 {row.original.product}
               </Typography>
@@ -166,7 +166,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
         cell: ({ row }) => (
           <div className='flex items-center gap-4'>
             <CustomAvatar src={row.original.avatar} size={34} />
-            <div>
+            <div className='flex flex-col items-start'>
               <Typography
                 component={Link}
                 href={getLocalizedUrl('/apps/ecommerce/customers/details/879861', locale as Locale)}
@@ -309,9 +309,9 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search Product'
-            className='is-full sm:is-auto'
+            className='max-sm:is-full'
           />
-          <div className='flex flex-col sm:flex-row items-center gap-4 is-full sm:is-auto'>
+          <div className='flex max-sm:flex-col sm:items-center gap-4 max-sm:is-full'>
             <CustomTextField
               select
               value={table.getState().pagination.pageSize}
@@ -335,7 +335,7 @@ const ManageReviewsTable = ({ reviewsData }: { reviewsData?: ReviewType[] }) => 
             </CustomTextField>
             <Button
               variant='tonal'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
               startIcon={<i className='tabler-upload' />}
               color='secondary'
             >

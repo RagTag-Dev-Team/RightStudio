@@ -88,7 +88,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
           marginInlineEnd: theme.spacing(2),
           color: 'var(--mui-palette-text-secondary) !important',
           marginLeft: `${theme.spacing(-2)} !important`,
-          padding: `${theme.spacing(1.275, 2)} !important`,
+          padding: `${theme.spacing(1.25, 2)} !important`,
           '&:focus': {
             outline: 0,
             boxShadow: 'none'
@@ -136,7 +136,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         borderRight: 0
       },
       '&[role="presentation"]': {
-        borderRightWidth: 0
+        borderInline: 0
       }
     },
     '& colgroup col': {
@@ -267,7 +267,8 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
         ...theme.typography.body1,
         fontWeight: 500,
         color: 'var(--mui-palette-text-primary)',
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        textDecoration: 'none !important'
       }
     },
 
@@ -295,7 +296,7 @@ const AppFullCalendar = styled('div')(({ theme }: { theme: Theme }) => ({
     },
     '& .fc-scrollgrid': {
       borderColor: 'var(--mui-palette-divider)',
-      borderInlineStart: 0
+      borderInline: 0
     },
     '& .fc-daygrid-day-events': {
       marginTop: theme.spacing(2.5),

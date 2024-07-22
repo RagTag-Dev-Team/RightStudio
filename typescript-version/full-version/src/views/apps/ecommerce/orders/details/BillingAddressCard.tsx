@@ -56,7 +56,7 @@ const BillingAddress = () => {
             <Typography>UK</Typography>
           </div>
         </div>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col items-start gap-1'>
           <Typography variant='h5'>Mastercard</Typography>
           <Typography>Card Number: ******4291</Typography>
         </div>

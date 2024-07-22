@@ -106,7 +106,6 @@ const ExampleComponent = () => {
       avatarColor="primary"
       avatarVariant="rounded"
       avatarSkin="light"
-      avatarIconSize={24}
       avatarSize={42}
     />
   );
@@ -125,7 +124,6 @@ export default ExampleComponent;
 | avatarColor    | `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'warning'` \| `'info'` | No       | Color theme for the avatar                |
 | avatarVariant  | `'circular'` \| `'rounded'` \| `'square'`                                           | No       | Variant for the avatar                    |
 | avatarSkin     | `'light'` \| `'filled'` \| `'light-static'`                                         | No       | Skin for the avatar                       |
-| avatarIconSize | `number`                                                                            | No       | Size of the icon inside the avatar        |
 | avatarSize     | `number`                                                                            | No       | Size of the avatar                        |
 
 ## Card Customer Statistics

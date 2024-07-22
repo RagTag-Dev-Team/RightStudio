@@ -263,15 +263,15 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
   return (
     <>
       <Card>
-        <CardContent className='flex justify-between flex-wrap flex-col items-start sm:flex-row sm:items-center gap-4'>
+        <CardContent className='flex justify-between flex-wrap max-sm:flex-col sm:items-center gap-4'>
           <DebouncedInput
             value={globalFilter ?? ''}
             onChange={value => setGlobalFilter(String(value))}
             placeholder='Search'
-            className='is-full sm:is-auto'
+            className='max-sm:is-full'
           />
-          <div className='flex max-sm:flex-col items-start sm:items-center gap-4 is-full sm:is-auto'>
-            <div className='flex items-start sm:items-center gap-4 flex-col sm:flex-row is-full sm:is-auto'>
+          <div className='flex max-sm:flex-col items-start sm:items-center gap-4 max-sm:is-full'>
+            <div className='flex items-start sm:items-center gap-4 flex-col max-sm:is-full'>
               <CustomTextField
                 select
                 value={table.getState().pagination.pageSize}
@@ -285,7 +285,7 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
               </CustomTextField>
               <Button
                 variant='tonal'
-                className='is-full sm:is-auto'
+                className='max-sm:is-full'
                 color='secondary'
                 startIcon={<i className='tabler-upload' />}
               >
@@ -295,7 +295,7 @@ const CustomerListTable = ({ customerData }: { customerData?: Customer[] }) => {
             <Button
               variant='contained'
               color='primary'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
               startIcon={<i className='tabler-plus' />}
               onClick={() => setCustomerUserOpen(!customerUserOpen)}
             >

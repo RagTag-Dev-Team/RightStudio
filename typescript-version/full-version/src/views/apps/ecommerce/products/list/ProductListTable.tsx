@@ -224,14 +224,12 @@ const ProductListTable = ({ productData }: { productData?: ProductType[] }) => {
       columnHelper.accessor('status', {
         header: 'Status',
         cell: ({ row }) => (
-          <div className='flex items-center gap-3'>
-            <Chip
-              label={productStatusObj[row.original.status].title}
-              variant='tonal'
-              color={productStatusObj[row.original.status].color}
-              size='small'
-            />
-          </div>
+          <Chip
+            label={productStatusObj[row.original.status].title}
+            variant='tonal'
+            color={productStatusObj[row.original.status].color}
+            size='small'
+          />
         )
       }),
       columnHelper.accessor('actions', {
