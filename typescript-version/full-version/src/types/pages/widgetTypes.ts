@@ -48,7 +48,6 @@ export type CardStatsSquareProps = {
   avatarIcon: string
   avatarColor?: ThemeColor
   avatarSize?: number
-  avatarIconSize?: number
   avatarVariant?: CustomAvatarProps['variant']
   avatarSkin?: CustomAvatarProps['skin']
   stats: string
@@ -59,7 +58,6 @@ export type CardStatsHorizontalProps = {
   title: string
   stats: string
   avatarIcon: string
-  avatarIconSize?: number
   avatarColor?: ThemeColor
   avatarSize?: number
   avatarSkin?: CustomAvatarProps['skin']
@@ -71,7 +69,6 @@ export type CardStatsVerticalProps = {
   stats: string
   avatarIcon: string
   avatarSize?: number
-  avatarIconSize?: number
   avatarSkin?: CustomAvatarProps['skin']
   avatarColor?: ThemeColor
   chipText: string
@@ -87,7 +84,6 @@ export type CardStatsWithAreaChartProps = {
   avatarIcon: string
   avatarSize?: number
   avatarColor?: ThemeColor
-  avatarIconSize?: number
   avatarSkin?: CustomAvatarProps['skin']
 }
 
