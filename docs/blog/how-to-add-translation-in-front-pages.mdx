@@ -4,13 +4,13 @@ hide_table_of_contents: true
 
 # How to add Translation in Front Pages
 
-### To add translation in front pages, you need to follow these steps:
+To add translation in front pages, you need to follow these steps:
 
-1. Move the whole `src/app/front-pages` folder inside the `[lang]/(blank-layout-pages)` folder.
+1. Move the whole `src/app/front-pages` folder inside the `[lang]/(blank-layout-pages)` folder
 
-2. After moving the `front-pages` folder inside the `[lang]/(blank-layout-pages)` folder, you need to update the
-`src/app/[lang]/(blank-layout-pages)/front-pages/layout.tsx` file. Copy the following code and paste it
-inside this file:
+{/* truncate */}
+
+2. After moving the `front-pages` folder inside the `[lang]/(blank-layout-pages)` folder, you need to update the `src/app/[lang]/(blank-layout-pages)/front-pages/layout.tsx` file. Copy the following code and paste it inside this file:
 
     ```tsx
     // Component Imports
@@ -35,9 +35,7 @@ inside this file:
 
 3. Now It is important to update the URL throughout the `front-pages` folder, to make the translation work for navigating to the front pages.
 
-   For example lets update links of `src/components/layout/front-pages/DropdownMenu.tsx` file:
-
-
+    For example lets update links of `src/components/layout/front-pages/DropdownMenu.tsx` file:
 
     ```diff
     - import { usePathname } from 'next/navigation'
