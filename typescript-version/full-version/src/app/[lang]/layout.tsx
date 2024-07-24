@@ -24,7 +24,7 @@ import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 
 export const metadata = {
-  title: 'Master Next.js Framework Independent ',
+  title: 'Master Next.js Framework Independent',
   description: 'Master Next.js Framework Independent'
 }
 

@@ -1,12 +1,16 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+import CodeBlock from '@theme/CodeBlock'
 
 # How to add Search in Starter Kit
 
-Search has been implemented in the full-version only. If you have started your project using the starter kit as per our suggestion, please follow the below steps in order to implement search functionality in your project.
+The search functionality is available only in the `full-version`. If you have started your project using the `starter-kit` as per our suggestion, please follow the steps below to implement the search functionality in your project.
 
-Begin by installing `cmdk` package which is related to search functionality
+#### Step 1: Install `cmdk` Package
+
+Begin by installing the `cmdk` package, which is required for the search functionality.
+
+{/* truncate */}
 
 Run the appropriate command in your project's root directory based on your package manager:
 
@@ -15,17 +19,23 @@ Run the appropriate command in your project's root directory based on your packa
     <CodeBlock language='bash'>pnpm install cmdk</CodeBlock>
   </TabItem>
   <TabItem value="yarn">
-    <CodeBlock language='bash'>yarn install cmdk</CodeBlock>
+    <CodeBlock language='bash'>yarn add cmdk</CodeBlock>
   </TabItem>
   <TabItem value="npm">
     <CodeBlock language='bash'>npm install cmdk</CodeBlock>
   </TabItem>
 </Tabs>
 
-1. Copy `full-version/src/components/layout/shared/search` folder from the full-version and paste it in your project's `src/components/layout/shared` folder.
+#### Step 2: Copy Search Components
 
-2. You have to create a `searchData.ts/js` file in your project's `src/data/` folder. This file will contain the data that will be used for search.
+Copy the `full-version/src/components/layout/shared/search` folder from the `full-version` and paste it into your project's `src/components/layout/shared` folder.
 
-3. Import the `<NavSearch />` component in `src/components/layout/vertical/NavbarContent.tsx` file and add after the `<NavToggle />` component.
+#### Step 3: Create `searchData.ts` File
 
-That's it. You have successfully implemented search functionality in your project.🥳🎉
+Create a `searchData.ts` file in your project's `src/data` folder. This file will contain the data to be used for the search functionality.
+
+#### Step 4: Update Navbar
+
+Import the `<NavSearch />` component into the `src/components/layout/vertical/NavbarContent.tsx` file. Add it after the `<NavToggle />` component.
+
+That's it. You have successfully implemented the search functionality in your project. 🥳 🎉
