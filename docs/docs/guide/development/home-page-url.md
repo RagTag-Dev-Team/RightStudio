@@ -20,6 +20,6 @@ const themeConfig: Config = {
 }
 ```
 
-Additionally, update the `destination` variable in the `src/next.config.mjs` file to match the home page URL.
+Additionally, update the `destination` variable in the `next.config.mjs` file to match the home page URL.
 
 By updating these files, you ensure that users are redirected to the correct home page URL when they visit the root URL of your website.

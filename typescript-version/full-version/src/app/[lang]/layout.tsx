@@ -25,7 +25,7 @@ import '@/app/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Master Next.js Framework Independent ',
+  title: 'Master Next.js Framework Independent',
   description: 'Master Next.js Framework Independent'
 }
 

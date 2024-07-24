@@ -1,54 +1,37 @@
 # How to remove Fake DB and use Real API
 
-We are using Next.js API routes to fetch data from the database. You can find all the API routes in `src/app/api` folder. This makes our template API ready and you can use it with any backend.
+In the `full-version`, we use a fake database (fake-DB) to fetch data via server actions. This setup simplifies the project initialization. However, for real-world applications, you'll need to fetch data from a real API. This guide will walk you through the steps to remove the fake DB and configure your project to use a real API.
 
-### How to remove Fake DB
-However, you won't need fake DB if you are using real API. In this case please follow below steps to remove fake DB from the template.
+Let's get started with the steps:
 
-- If you are not using the fake DB then you can remove `src/fake-db` folder.
+<!--truncate-->
 
-- Remove imports related to fake DB.
-    :::warning NOTE
-    Now all (fake) API calls will result **Module not found** error, until you replace them with your own real API endpoints.
-    :::
+#### 1. Remove the Fake DB
 
-### How to replace API endpoints
-As fake DB is removed, and you are using real API, you can delete the whole folder `src/app/api` and replace it with your own API endpoints.
+Delete the `src/fake-db` folder from your project. This folder contains the mock data you no longer need.
 
-Make sure you've built the APIs in your backend and connected them to your database before you switch out the sample APIs with the real ones.
+#### 2. Remove API routes
 
-:::warning NOTE
-If the structure of the data you receive from the API is different from the sample data, you will need to update the code in the components that use the data.
+Delete the `src/app/api` folder to eliminate the fake API routes set up for the project.
 
-You can refer to the data structure in `src/fake-db` folder.
-:::
+#### 3. Remove server actions
 
-- For example you want to fetch data from `https://fakedata.example.com/` then you can create a file `src/app/**/page.tsx` and add following code:
+Delete the `src/app/server` folder, which contains the server actions used to interact with the fake DB.
 
-```tsx page.tsx
-// Component Imports
-import Component from '@views/pages/component'
+#### 4. Clean up import statements
 
-const getData = async () => {
+In the `src/app` folder, locate and remove all import statements related to the server actions. These import statements typically look like this:
 
-  const res = await fetch(`https://fakedata.example.com/`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch page Data')
-  }
-
-  return res.json()
-}
-
-const ComponentPage = async () => {
-
-  const data = await getData()
-
-  return <Component data={data} />
-}
-
-export default ComponentPage
-
+```ts
+import { /* functionName */ } from '@/app/server/actions'
 ```
 
-You can refer [Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching) documentation for more information on data fetching.
+#### 5. Update data fetching logic
+
+In the files where you removed the server action import statements, you'll find commented-out code for fetching data from the real API. Uncomment this code and update the fetch() function with your real API URL.
+
+#### 6. Verify data structures
+
+Ensure that the data structures returned by your real API match those expected by your application. If the structures differ, you may need to update the API response format or adjust your application code to handle the new data structure.
+
+That's it. You have successfully removed the fake DB and configured your project to fetch data from a real API. 🥳 🎉
