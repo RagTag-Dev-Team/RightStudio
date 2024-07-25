@@ -340,14 +340,14 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData?: InvoiceType[] }) => {
   return (
     <Card>
       <CardContent className='flex justify-between flex-col items-start md:items-center md:flex-row gap-4'>
-        <div className='flex items-center justify-between gap-4'>
-          <div className='flex items-center gap-2'>
+        <div className='flex flex-col sm:flex-row items-center justify-between gap-4 is-full sm:is-auto'>
+          <div className='flex items-center gap-2 is-full sm:is-auto'>
             <Typography className='hidden sm:block'>Show</Typography>
             <CustomTextField
               select
               value={table.getState().pagination.pageSize}
               onChange={e => table.setPageSize(Number(e.target.value))}
-              className='is-[70px]'
+              className='is-[70px] max-sm:is-full'
             >
               <MenuItem value='10'>10</MenuItem>
               <MenuItem value='25'>25</MenuItem>

@@ -334,19 +334,24 @@ const OrderListTable = ({ orderData }: { orderData?: OrderType[] }) => {
           placeholder='Search Order'
           className='sm:is-auto'
         />
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center max-sm:flex-col gap-4 max-sm:is-full is-auto'>
           <CustomTextField
             select
             value={table.getState().pagination.pageSize}
             onChange={e => table.setPageSize(Number(e.target.value))}
-            className='is-[70px]'
+            className='is-[70px] max-sm:is-full'
           >
             <MenuItem value='10'>10</MenuItem>
             <MenuItem value='25'>25</MenuItem>
             <MenuItem value='50'>50</MenuItem>
             <MenuItem value='100'>100</MenuItem>
           </CustomTextField>
-          <Button variant='tonal' color='secondary' startIcon={<i className='tabler-upload' />}>
+          <Button
+            variant='tonal'
+            color='secondary'
+            startIcon={<i className='tabler-upload' />}
+            className='max-sm:is-full is-auto'
+          >
             Export
           </Button>
         </div>
