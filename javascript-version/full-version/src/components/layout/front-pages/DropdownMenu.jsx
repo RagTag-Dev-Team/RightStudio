@@ -340,7 +340,7 @@ const DropdownMenu = props => {
           ))}
         </div>
         {!isBelowLgScreen && (
-          <div className='bg-backgroundDefault p-2 rounded'>
+          <div className='flex bg-backgroundDefault p-2 rounded'>
             <img src='/images/front-pages/dropdown-image.png' width='385' alt='dropdown image' className='rounded' />
           </div>
         )}

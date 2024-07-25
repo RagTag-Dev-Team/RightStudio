@@ -4,6 +4,7 @@ import { menuClasses, verticalNavClasses } from '@menu/utils/menuClasses'
 const navigationCustomStyles = (verticalNavOptions, theme) => {
   // Vars
   const { collapsedWidth, isCollapsed, isHovered, transitionDuration } = verticalNavOptions
+  const collapsedHovered = isCollapsed && isHovered
   const collapsedNotHovered = isCollapsed && !isHovered
 
   return {
@@ -31,6 +32,9 @@ const navigationCustomStyles = (verticalNavOptions, theme) => {
       boxShadow: 'var(--mui-customShadows-sm)',
       '[data-skin="bordered"] &': {
         boxShadow: 'none',
+        ...(collapsedHovered && {
+          boxShadow: 'var(--mui-customShadows-sm)'
+        }),
         borderColor: 'var(--mui-palette-divider)'
       }
     },

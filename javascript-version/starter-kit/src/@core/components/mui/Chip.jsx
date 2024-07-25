@@ -9,11 +9,9 @@ import { styled } from '@mui/material'
 
 const Chip = styled(MuiChip)(({ round }) => {
   return {
-    '&': {
-      ...(round === 'true' && {
-        borderRadius: 16
-      })
-    }
+    ...(round === 'true' && {
+      borderRadius: 500
+    })
   }
 })
 

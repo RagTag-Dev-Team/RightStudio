@@ -84,7 +84,7 @@ const EditCard = ({ invoiceData, id, data }) => {
                         boxProps={{ className: 'is-full' }}
                         selected={issueDate}
                         id='payment-date'
-                        onChange={date => setIssueDate(date)}
+                        onChange={date => date !== null && setIssueDate(date)}
                         customInput={<CustomTextField fullWidth />}
                       />
                     </div>
@@ -96,7 +96,7 @@ const EditCard = ({ invoiceData, id, data }) => {
                         boxProps={{ className: 'is-full' }}
                         selected={dueDate}
                         id='payment-date'
-                        onChange={date => setDueDate(date)}
+                        onChange={date => date !== null && setDueDate(date)}
                         customInput={<CustomTextField fullWidth />}
                       />
                     </div>

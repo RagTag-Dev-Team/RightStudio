@@ -146,7 +146,7 @@ const KanbanDrawer = props => {
               selected={date ? new Date(date) : new Date()}
               id='basic-input'
               onChange={date => {
-                setDate(date)
+                date !== null && setDate(date)
               }}
               placeholderText='Click to select a date'
               dateFormat={'d MMMM, yyyy'}

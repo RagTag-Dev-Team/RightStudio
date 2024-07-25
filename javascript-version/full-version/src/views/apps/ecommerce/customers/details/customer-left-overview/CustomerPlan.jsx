@@ -3,9 +3,9 @@
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import MuiButton from '@mui/material/Button'
+import { styled } from '@mui/material/styles'
 
 // Component Imports
 import UpgradePlan from '@components/dialogs/upgrade-plan'
@@ -25,7 +25,7 @@ const CustomerPlan = () => {
 
   return (
     <Card>
-      <CardContent className='flex flex-col gap-3 bg-gradient-to-tr	from-primary to-[#9E95F5]'>
+      <CardContent className='flex flex-col gap-6 bg-gradient-to-tr	from-primary to-[#9E95F5]'>
         <div className='flex items-center justify-between'>
           <div className='flex flex-col gap-4'>
             <Typography variant='h5' color='common.white'>
@@ -33,7 +33,7 @@ const CustomerPlan = () => {
             </Typography>
             <Typography color='common.white'>Upgrade customer to premium membership to access pro features.</Typography>
           </div>
-          <img src='/images/apps/ecommerce/3d-rocket.png' height={138} />
+          <img src='/images/apps/ecommerce/3d-rocket.png' className='-mis-7 -mbe-7' />
         </div>
         <OpenDialogOnElementClick element={Button} elementProps={buttonProps} dialog={UpgradePlan} />
       </CardContent>

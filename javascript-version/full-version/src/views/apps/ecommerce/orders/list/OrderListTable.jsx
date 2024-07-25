@@ -45,10 +45,10 @@ import { getLocalizedUrl } from '@/utils/i18n'
 import tableStyles from '@core/styles/table.module.css'
 
 export const paymentStatus = {
-  1: { text: 'Paid', color: 'success' },
-  2: { text: 'Pending', color: 'warning' },
-  3: { text: 'Cancelled', color: 'secondary' },
-  4: { text: 'Failed', color: 'error' }
+  1: { text: 'Paid', color: 'success', colorClassName: 'text-success' },
+  2: { text: 'Pending', color: 'warning', colorClassName: 'text-warning' },
+  3: { text: 'Cancelled', color: 'secondary', colorClassName: 'text-secondary' },
+  4: { text: 'Failed', color: 'error', colorClassName: 'text-error' }
 }
 export const statusChipColor = {
   Delivered: { color: 'success' },
@@ -171,7 +171,7 @@ const OrderListTable = ({ orderData }) => {
             <i
               className={classnames(
                 'tabler-circle-filled bs-2.5 is-2.5',
-                `text-${paymentStatus[row.original.payment].color}`
+                paymentStatus[row.original.payment].colorClassName
               )}
             />
             <Typography color={`${paymentStatus[row.original.payment].color}.main`} className='font-medium'>
@@ -199,11 +199,10 @@ const OrderListTable = ({ orderData }) => {
               <img
                 src={row.original.method === 'mastercard' ? mastercard : paypal}
                 height={row.original.method === 'mastercard' ? 11 : 14}
-                className='rounded-xs'
               />
             </div>
             <Typography>
-              ...{row.original.method === 'mastercard' ? row.original.methodNumber : '@gmail.com'}
+              {`...${row.original.method === 'mastercard' ? row.original.methodNumber : '@gmail.com'}`}
             </Typography>
           </div>
         )
@@ -286,26 +285,31 @@ const OrderListTable = ({ orderData }) => {
 
   return (
     <Card>
-      <CardContent className='flex max-sm:flex-col justify-between items-start sm:items-center gap-4'>
+      <CardContent className='flex justify-between max-sm:flex-col sm:items-center gap-4'>
         <DebouncedInput
           value={globalFilter ?? ''}
           onChange={value => setGlobalFilter(String(value))}
           placeholder='Search Order'
           className='sm:is-auto'
         />
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center max-sm:flex-col gap-4 max-sm:is-full is-auto'>
           <CustomTextField
             select
             value={table.getState().pagination.pageSize}
             onChange={e => table.setPageSize(Number(e.target.value))}
-            className='is-[70px]'
+            className='is-[70px] max-sm:is-full'
           >
             <MenuItem value='10'>10</MenuItem>
             <MenuItem value='25'>25</MenuItem>
             <MenuItem value='50'>50</MenuItem>
             <MenuItem value='100'>100</MenuItem>
           </CustomTextField>
-          <Button variant='tonal' color='secondary' startIcon={<i className='tabler-upload' />}>
+          <Button
+            variant='tonal'
+            color='secondary'
+            startIcon={<i className='tabler-upload' />}
+            className='max-sm:is-full is-auto'
+          >
             Export
           </Button>
         </div>

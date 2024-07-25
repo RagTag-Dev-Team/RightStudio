@@ -169,7 +169,7 @@ const AddCategoryDrawer = props => {
           <CustomTextField
             select
             fullWidth
-            label='Parent Status'
+            label='Category Status'
             value={status}
             onChange={e => setStatus(e.target.value)}
           >

@@ -4,7 +4,7 @@
 import { redirect, usePathname } from 'next/navigation'
 
 // Config Imports
-import themeConfig from '@/configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'

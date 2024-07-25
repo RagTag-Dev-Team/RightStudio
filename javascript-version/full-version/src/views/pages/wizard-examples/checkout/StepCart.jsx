@@ -229,7 +229,7 @@ const StepCart = ({ handleNext }) => {
           </CardContent>
         </div>
         <div className='flex justify-normal sm:justify-end xl:justify-normal'>
-          <Button className='is-full sm:is-auto lg:is-full' variant='contained' onClick={handleNext}>
+          <Button className='max-sm:is-full lg:is-full' variant='contained' onClick={handleNext}>
             Place Order
           </Button>
         </div>

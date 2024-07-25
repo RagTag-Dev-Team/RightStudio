@@ -47,7 +47,7 @@ const UpgradePlan = ({ open, setOpen }) => {
               <MenuItem value='Enterprise'>Enterprise - $499/month</MenuItem>
               <MenuItem value='Company'>Company - $999/month</MenuItem>
             </CustomTextField>
-            <Button variant='contained' className='capitalize sm:is-auto is-full'>
+            <Button variant='contained' className='capitalize max-sm:is-full'>
               Upgrade
             </Button>
           </div>

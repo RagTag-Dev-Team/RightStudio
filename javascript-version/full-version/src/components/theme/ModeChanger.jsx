@@ -10,11 +10,11 @@ import { useMedia } from 'react-use'
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
-const ModeChanger = () => {
+const ModeChanger = ({ systemMode }) => {
   // Hooks
   const { setMode } = useColorScheme()
   const { settings } = useSettings()
-  const isDark = useMedia('(prefers-color-scheme: dark)', false)
+  const isDark = useMedia('(prefers-color-scheme: dark)', systemMode === 'dark')
 
   useEffect(() => {
     if (settings.mode) {

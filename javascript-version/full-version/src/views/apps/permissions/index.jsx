@@ -96,7 +96,7 @@ const Permissions = ({ permissionsData }) => {
     variant: 'contained',
     children: 'Add Permission',
     onClick: () => handleAddPermission(),
-    className: 'is-full sm:is-auto',
+    className: 'max-sm:is-full',
     startIcon: <i className='tabler-plus' />
   }
 
@@ -214,7 +214,7 @@ const Permissions = ({ permissionsData }) => {
               value={globalFilter ?? ''}
               onChange={value => setGlobalFilter(String(value))}
               placeholder='Search Permissions'
-              className='is-full sm:is-auto'
+              className='max-sm:is-full'
             />
             <OpenDialogOnElementClick
               element={Button}

@@ -45,7 +45,7 @@ const statData = [
 
 const ProductStat = () => {
   return (
-    <section className='plb-[64px] bg-backgroundPaper'>
+    <section className='plb-[84px] bg-backgroundPaper'>
       <div className={frontCommonStyles.layoutSpacing}>
         <Grid container spacing={6}>
           {statData.map((stat, index) => (
@@ -61,9 +61,7 @@ const ProductStat = () => {
                   <Typography variant='h3' className='font-medium'>
                     {stat.value}
                   </Typography>
-                  <Typography className='font-medium' color='text.secondary'>
-                    {stat.title}
-                  </Typography>
+                  <Typography className='font-medium'>{stat.title}</Typography>
                 </div>
               </div>
             </Grid>

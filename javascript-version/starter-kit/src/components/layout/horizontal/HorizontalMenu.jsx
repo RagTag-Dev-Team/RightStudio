@@ -7,7 +7,6 @@ import VerticalNavContent from './VerticalNavContent'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
-import { useSettings } from '@core/hooks/useSettings'
 
 // Styled Component Imports
 import StyledHorizontalNavExpandIcon from '@menu/styles/horizontal/StyledHorizontalNavExpandIcon'
@@ -36,10 +35,8 @@ const HorizontalMenu = () => {
   // Hooks
   const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
-  const { settings } = useSettings()
 
   // Vars
-  const { skin } = settings
   const { transitionDuration } = verticalNavOptions
 
   return (
@@ -48,8 +45,7 @@ const HorizontalMenu = () => {
       verticalNavContent={VerticalNavContent}
       verticalNavProps={{
         customStyles: verticalNavigationCustomStyles(verticalNavOptions, theme),
-        backgroundColor:
-          skin === 'bordered' ? 'var(--mui-palette-background-paper)' : 'var(--mui-palette-background-default)'
+        backgroundColor: 'var(--mui-palette-background-paper)'
       }}
     >
       <Menu

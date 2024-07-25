@@ -64,12 +64,12 @@ const DebouncedColorPicker = props => {
   return (
     <>
       <HexColorPicker
-        color={!isColorFromPrimaryConfig ? settings.primaryColor ?? primaryColorConfig[0].main : '#eee'}
+        color={!isColorFromPrimaryConfig ? (settings.primaryColor ?? primaryColorConfig[0].main) : '#eee'}
         onChange={setDebouncedColor}
       />
       <HexColorInput
         className={styles.colorInput}
-        color={!isColorFromPrimaryConfig ? settings.primaryColor ?? primaryColorConfig[0].main : '#eee'}
+        color={!isColorFromPrimaryConfig ? (settings.primaryColor ?? primaryColorConfig[0].main) : '#eee'}
         onChange={setDebouncedColor}
         prefixed
         placeholder='Type a color'

@@ -1,3 +1,6 @@
+// MUI Imports
+import Button from '@mui/material/Button'
+
 // Third-party Imports
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
@@ -9,6 +12,7 @@ import Providers from '@components/Providers'
 import BlankLayout from '@layouts/BlankLayout'
 import FrontLayout from '@components/layout/front-pages'
 import BuyNowButton from '@components/buy-now-button'
+import ScrollToTop from '@core/components/scroll-to-top'
 
 // Util Imports
 import { getSystemMode } from '@core/utils/serverHelpers'
@@ -38,6 +42,14 @@ const Layout = ({ children }) => {
               <FrontLayout>
                 {children}
                 <BuyNowButton />
+                <ScrollToTop className='mui-fixed'>
+                  <Button
+                    variant='contained'
+                    className='is-10 bs-10 rounded-full p-0 min-is-0 flex items-center justify-center'
+                  >
+                    <i className='tabler-arrow-up' />
+                  </Button>
+                </ScrollToTop>
               </FrontLayout>
             </IntersectionProvider>
           </BlankLayout>

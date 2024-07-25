@@ -35,7 +35,7 @@ const GetStarted = ({ mode }) => {
           frontCommonStyles.layoutSpacing
         )}
       >
-        <div className='flex flex-col items-start gap-y-8 gap-x-4 pbs-9 lg:plb-9 z-[1]'>
+        <div className='flex flex-col items-start gap-y-8 pbs-9 lg:plb-9 z-[1]'>
           <div className='flex flex-col'>
             <Typography variant='h3' color='primary' className='font-bold text-[2.125rem]'>
               Ready to Get Started?

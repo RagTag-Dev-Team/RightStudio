@@ -10,7 +10,7 @@ const HorizontalStatisticsCard = ({ data }) => {
       <Grid container spacing={6}>
         {data.map((item, index) => (
           <Grid key={index} item xs={12} sm={6} md={3}>
-            <CardStatsHorizontalWithAvatar {...item} avatarSkin='light' avatarIconSize={24} />
+            <CardStatsHorizontalWithAvatar {...item} avatarSkin='light' />
           </Grid>
         ))}
       </Grid>

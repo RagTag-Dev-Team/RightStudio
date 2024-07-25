@@ -3,9 +3,6 @@
 // React Imports
 import { useState } from 'react'
 
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -21,6 +18,7 @@ import { styled } from '@mui/material/styles'
 import { useDropzone } from 'react-dropzone'
 
 // Component Imports
+import Link from '@components/Link'
 import CustomAvatar from '@core/components/mui/Avatar'
 
 // Styled Component Imports
@@ -97,13 +95,7 @@ const ProductImage = () => {
         <CardHeader
           title='Product Image'
           action={
-            <Typography
-              component={Link}
-              href='/'
-              onClick={e => e.preventDefault()}
-              color='primary'
-              className='font-medium'
-            >
+            <Typography component={Link} color='primary' className='font-medium'>
               Add media from URL
             </Typography>
           }

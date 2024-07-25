@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { useColorScheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -37,6 +38,7 @@ const HeroSection = ({ mode }) => {
   const elementsImage = useImageVariant(mode, elementsImageLight, elementsImageDark)
   const heroSectionBg = useImageVariant(mode, heroSectionBgLight, heroSectionBgDark)
   const _mode = (muiMode === 'system' ? mode : muiMode) || mode
+  const isAboveLgScreen = useMediaQuery(theme => theme.breakpoints.up('lg'))
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -96,7 +98,7 @@ const HeroSection = ({ mode }) => {
       </div>
       <div
         className={classnames('relative text-center', frontCommonStyles.layoutSpacing)}
-        style={{ transform: transform }}
+        style={{ transform: isAboveLgScreen ? transform : 'none' }}
       >
         <Link href='/' target='_blank' className='block relative'>
           <img src={dashboardImage} alt='dashboard-image' className={classnames('mli-auto', styles.heroSecDashboard)} />

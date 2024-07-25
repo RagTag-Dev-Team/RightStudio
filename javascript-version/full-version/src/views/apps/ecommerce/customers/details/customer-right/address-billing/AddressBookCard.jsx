@@ -25,7 +25,7 @@ const propData = [
     name: 'Violet Mendoza',
     streetAddress: '23 Shatinon Mekalan',
     area: 'Melbourne, VIC 3000,',
-    city: 'LondonUK'
+    city: 'London'
   },
   {
     typeOfAddress: 'Office',
@@ -33,7 +33,7 @@ const propData = [
     name: 'Archie Mendoza',
     streetAddress: '45 Roker Terrace',
     area: 'Latheronwheel',
-    city: 'LondonUK'
+    city: 'London'
   },
   {
     typeOfAddress: 'Family',
@@ -41,7 +41,7 @@ const propData = [
     name: 'George Mendoza',
     streetAddress: '512 Water Plant',
     area: 'Melbourne, VIC 3000',
-    city: 'LondonUK'
+    city: 'London'
   }
 ]
 
@@ -54,7 +54,7 @@ const data = {
   address1: '23 Shatinon Mekalan',
   address2: 'Melbourne, VIC 3000',
   landmark: 'Near Water Plant',
-  city: 'LondonUK',
+  city: 'London',
   state: 'Capholim',
   zipCode: '403114',
   taxId: 'TAX-875623',
@@ -94,7 +94,7 @@ const CustomerAddress = props => {
           >
             <i className='tabler-chevron-down text-textPrimary' />
           </IconButton>
-          <div className='flex flex-col gap-1'>
+          <div className='flex flex-col items-start gap-1'>
             <div className='flex items-center gap-2'>
               <Typography color='text.primary' className='font-medium'>
                 {typeOfAddress}

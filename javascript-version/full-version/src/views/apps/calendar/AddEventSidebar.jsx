@@ -142,7 +142,7 @@ const AddEventSidebar = props => {
   }
 
   const handleStartDate = date => {
-    if (date > values.endDate) {
+    if (date && date > values.endDate) {
       setValues({ ...values, startDate: new Date(date), endDate: new Date(date) })
     }
   }
@@ -257,7 +257,7 @@ const AddEventSidebar = props => {
               showTimeSelect={!values.allDay}
               dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
               customInput={<PickersComponent label='Start Date' registername='startDate' />}
-              onChange={date => setValues({ ...values, startDate: new Date(date) })}
+              onChange={date => date !== null && setValues({ ...values, startDate: new Date(date) })}
               onSelect={handleStartDate}
             />
             <AppReactDatepicker
@@ -270,7 +270,7 @@ const AddEventSidebar = props => {
               showTimeSelect={!values.allDay}
               dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
               customInput={<PickersComponent label='End Date' registername='endDate' />}
-              onChange={date => setValues({ ...values, endDate: new Date(date) })}
+              onChange={date => date !== null && setValues({ ...values, endDate: new Date(date) })}
             />
             <FormControl>
               <FormControlLabel
