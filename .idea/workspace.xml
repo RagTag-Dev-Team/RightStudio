@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Successfully integrates surql gen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/schema.surql" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/schema.surql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
