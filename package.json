@@ -11,7 +11,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "build:icons": "tsx src/assets/iconify-icons/bundle-icons-css.ts",
-    "migrate": "dotenv -e .env -- npx surql-gen -c src/surrealdb/surql-gen.json",
+    "migrate": "dotenv -e .env -- npx surql-gen -c src/surrealdb/surql-gen.json && prisma migrate dev",
     "postinstall": "prisma generate && npm run build:icons",
     "removeI18n": "tsx src/remove-translation-scripts/index.ts"
   },
@@ -76,6 +76,7 @@
     "react-use": "^17.5.1",
     "recharts": "^2.12.7",
     "server-only": "^0.0.1",
+    "surrealdb.js": "1.0.0-beta.9",
     "valibot": "^0.36.0"
   },
   "devDependencies": {
