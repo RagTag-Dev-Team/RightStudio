@@ -1,0 +1,146 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: surrealdb-cluster1
+  region: us-west-2
+  version: '1.27'
+  tags:
+    karpenter.sh/discovery: surrealdb-cluster1
+    env: surrealdb-cluster1
+iam:
+  withOIDC: true
+vpc:
+  cidr: 10.0.0.0/16
+  clusterEndpoints:
+    privateAccess: true
+    publicAccess: true
+addons:
+  - name: vpc-cni
+    resolveConflicts: overwrite
+  - name: aws-ebs-csi-driver
+    wellKnownPolicies:      # add IAM and service account
+      ebsCSIController: true
+
+managedNodeGroups:
+
+  - name: admin
+    desiredCapacity: 1
+    privateNetworking: true
+    labels:
+      dedicated: admin
+
+  - name: tidb-1a
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2a"]
+    instanceType: c5.2xlarge
+    labels:
+      dedicated: tidb
+    taints:
+      - key: "dedicated"
+        value: "tidb"
+        effect: NoSchedule
+
+  - name: tidb-1b
+    desiredCapacity: 0
+    privateNetworking: true
+    availabilityZones: ["us-west-2b"]
+    instanceType: c5.2xlarge
+    labels:
+      dedicated: tidb
+    taints:
+      - key: "dedicated"
+        value: "tidb"
+        effect: NoSchedule
+
+  - name: tidb-1c
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2c"]
+    instanceType: c5.2xlarge
+    labels:
+      dedicated: tidb
+    taints:
+      - key: "dedicated"
+        value: "tidb"
+        effect: NoSchedule
+
+  - name: pd-1a
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2a"]
+    instanceType: c5.xlarge
+    labels:
+      dedicated: pd
+    taints:
+      - key: "dedicated"
+        value: "pd"
+        effect: NoSchedule
+
+  - name: pd-1b
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2b"]
+    instanceType: c5.xlarge
+    labels:
+      dedicated: pd
+    taints:
+      - key: "dedicated"
+        value: "pd"
+        effect: NoSchedule
+
+  - name: pd-1c
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2c"]
+    instanceType: c5.xlarge
+    labels:
+      dedicated: pd
+    taints:
+      - key: "dedicated"
+        value: "pd"
+        effect: NoSchedule
+
+  - name: tikv-1a
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2a"]
+    instanceType: r5b.2xlarge
+    labels:
+      dedicated: tikv
+    taints:
+
+      - key: "dedicated"
+        value: "tikv"
+        effect: NoSchedule
+
+  - name: tikv-1b
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2b"]
+    instanceType: r5b.2xlarge
+    labels:
+      dedicated: tikv
+    taints:
+      - key: "dedicated"
+        value: "tikv"
+        effect: NoSchedule
+
+  - name: tikv-1c
+    desiredCapacity: 1
+    privateNetworking: true
+    availabilityZones: ["us-west-2c"]
+    instanceType: r5b.2xlarge
+    labels:
+      dedicated: tikv
+    taints:
+      - key: "dedicated"
+        value: "tikv"
+        effect: NoSchedule
+
+  - name: default
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 4
+    instanceType: m5.large
+    privateNetworking: false
