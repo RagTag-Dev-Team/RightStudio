@@ -5,30 +5,73 @@
 OPTION IMPORT;
 
 -- ------------------------------
+-- AUTHENTICATION
+-- ------------------------------
+
+DEFINE SCOPE account SESSION 1d
+	SIGNIN (
+		SELECT * FROM user WHERE wallet_address = $wallet_address OR email = $email AND crypto::argon2::compare(password, $password)
+	)
+	SIGNUP (
+		CREATE user CONTENT {
+			name: $name,
+			email: $email,
+			password: crypto::argon2::generate($password),
+			wallet_address: $wallet_address,
+		}
+	);
+
+
+
+-- ------------------------------
 -- TABLE: account
 -- ------------------------------
 
 DEFINE TABLE account SCHEMAFULL PERMISSIONS NONE;
 
+DEFINE INDEX wallet_address ON account FIELDS wallet_address UNIQUE;
 DEFINE FIELD wallet_address ON account TYPE string;
 DEFINE FIELD role ON account TYPE string;
-DEFINE FIELD firstname ON account TYPE option<string>;
-DEFINE FIELD lastname ON account TYPE option<string>;
-DEFINE FIELD email ON account TYPE option<string>;
+DEFINE FIELD firstname ON account TYPE string;
+DEFINE FIELD lastname ON account TYPE string;
+DEFINE FIELD email ON account TYPE string;
 DEFINE FIELD accessToken ON account TYPE object;
 DEFINE FIELD created_date ON account TYPE datetime;
 
 -- ------------------------------
--- TABLE: catalog
+-- TABLE: library
 -- ------------------------------
 
-DEFINE TABLE catalog SCHEMAFULL PERMISSIONS NONE;
+DEFINE TABLE library SCHEMAFULL PERMISSIONS NONE;
 
-DEFINE FIELD id ON catalog TYPE string ;
-DEFINE FIELD owner_id ON catalog TYPE string;
-DEFINE FIELD total_assets ON catalog TYPE decimal;
-DEFINE FIELD value ON catalog TYPE decimal;
-DEFINE FIELD created_date ON catalog TYPE datetime;
+DEFINE FIELD id ON library TYPE string ;
+DEFINE FIELD owner_id ON library TYPE string;
+DEFINE FIELD total_assets ON library TYPE decimal;
+DEFINE FIELD value ON library TYPE decimal;
+DEFINE FIELD created_date ON library TYPE datetime;
+
+-- ------------------------------
+-- TABLE: audio_file
+-- ------------------------------
+
+DEFINE TABLE audio_file SCHEMALESS PERMISSIONS NONE;
+
+DEFINE FIELD id ON audio_file TYPE string ;
+DEFINE FIELD name ON audio_file TYPE string;
+DEFINE FIELD description ON audio_file TYPE string;
+DEFINE FIELD type ON audio_file TYPE string;
+DEFINE FIELD size ON audio_file TYPE number;
+DEFINE FIELD duration ON audio_file TYPE number;
+DEFINE FIELD thumbnail ON audio_file TYPE string;
+DEFINE FIELD url ON audio_file TYPE string;
+DEFINE FIELD created_date ON audio_file TYPE datetime;
+DEFINE FIELD updated_date ON audio_file TYPE datetime;
+DEFINE FIELD owner_id ON audio_file TYPE string;
+DEFINE FIELD ragtag_id ON audio_file TYPE string;
+DEFINE FIELD metadata ON audio_file TYPE object;
+DEFINE FIELD rights ON audio_file TYPE object;
+DEFINE FIELD licenses ON audio_file TYPE object;
+
 
 
 -- ------------------------------
@@ -48,40 +91,6 @@ DEFINE FIELD name ON album TYPE string;
 DEFINE FIELD type ON album TYPE string;
 DEFINE FIELD size ON album TYPE number;
 DEFINE FIELD created_date ON album TYPE datetime;
-
-
--- ------------------------------
--- TABLE: single_track
--- ------------------------------
-
-DEFINE TABLE single_track SCHEMAFULL PERMISSIONS NONE;
-
-DEFINE FIELD id ON single_track TYPE string ;
-DEFINE FIELD owner_id ON single_track TYPE string;
-DEFINE FIELD ragtag_id ON single_track TYPE string;
-DEFINE FIELD metadata ON single_track TYPE object;
-DEFINE FIELD rights ON single_track TYPE object;
-DEFINE FIELD licenses ON single_track TYPE object;
-DEFINE FIELD name ON single_track TYPE string;
-DEFINE FIELD type ON single_track TYPE string;
-DEFINE FIELD size ON single_track TYPE number;
-
--- ------------------------------
--- TABLE: stem
--- ------------------------------
-
-DEFINE TABLE stem SCHEMAFULL PERMISSIONS NONE;
-
-DEFINE FIELD id ON stem TYPE string ;
-DEFINE FIELD owner_id ON stem TYPE string;
-DEFINE FIELD ragtag_id ON stem TYPE string;
-DEFINE FIELD metadata ON stem TYPE object;
-DEFINE FIELD rights ON stem TYPE object;
-DEFINE FIELD licenses ON stem TYPE object;
-DEFINE FIELD name ON stem TYPE string;
-DEFINE FIELD type ON stem TYPE string;
-DEFINE FIELD size ON stem TYPE number;
-
 
 
 -- ------------------------------
@@ -154,7 +163,7 @@ BEGIN TRANSACTION;
 -- RELATE artist:70l5ea927k8g0d98p54d -> create:00b3fs963m5j0a12q44w -> product:49y6hz025a6q7b34f12z CONTENT { __: true, id: create:00b3fs963m5j0a12q44w, in: artist:70l5ea927k8g0d98p54d, out: product:49y6hz025a6q7b34f12z, product_name: 'utilities seen sh secure', quantity: 3 };
 
 -- ------------------------------
--- TABLE DATA: single_track
+-- TABLE DATA: audio_file
 -- ------------------------------
 
 -- UPDATE daily_sales:009lql0imrsh94fb8h2s CONTENT { currency: '£', day: '2023-11-28', id: daily_sales:009lql0imrsh94fb8h2s, number_of_orders: 28, sum_sales: 558374.63 };
@@ -175,13 +184,13 @@ BEGIN TRANSACTION;
 -- TABLE DATA: right
 -- ------------------------------
 
-UPDATE review:00a0ic854u4j7z02s00v CONTENT { artist: artist:73z6oc419v1c5v34j20x, id: review:00a0ic854u4j7z02s00v, person: person:67s8cp304i4p6p83q02d, product: product:41v2qv923h3o7s55e96l, rating: 3, review_text: 'repeat languages tr rest hospital consulting infrastructure melissa proposal singing finally hey eggs left market title yards identify movement themselves existing lake questions exchange meter strip up archive interview rather mostly transit stuff attitude fundamental palestinian estate cast yours eye lawyer academy sunset holy gang' };
+-- UPDATE review:00a0ic854u4j7z02s00v CONTENT { artist: artist:73z6oc419v1c5v34j20x, id: review:00a0ic854u4j7z02s00v, person: person:67s8cp304i4p6p83q02d, product: product:41v2qv923h3o7s55e96l, rating: 3, review_text: 'repeat languages tr rest hospital consulting infrastructure melissa proposal singing finally hey eggs left market title yards identify movement themselves existing lake questions exchange meter strip up archive interview rather mostly transit stuff attitude fundamental palestinian estate cast yours eye lawyer academy sunset holy gang' };
 
 -- ------------------------------
 -- TABLE DATA: license
 -- ------------------------------
 
-UPDATE review:00a0ic854u4j7z02s00v CONTENT { artist: artist:73z6oc419v1c5v34j20x, id: review:00a0ic854u4j7z02s00v, person: person:67s8cp304i4p6p83q02d, product: product:41v2qv923h3o7s55e96l, rating: 3, review_text: 'repeat languages tr rest hospital consulting infrastructure melissa proposal singing finally hey eggs left market title yards identify movement themselves existing lake questions exchange meter strip up archive interview rather mostly transit stuff attitude fundamental palestinian estate cast yours eye lawyer academy sunset holy gang' };
+-- UPDATE review:00a0ic854u4j7z02s00v CONTENT { artist: artist:73z6oc419v1c5v34j20x, id: review:00a0ic854u4j7z02s00v, person: person:67s8cp304i4p6p83q02d, product: product:41v2qv923h3o7s55e96l, rating: 3, review_text: 'repeat languages tr rest hospital consulting infrastructure melissa proposal singing finally hey eggs left market title yards identify movement themselves existing lake questions exchange meter strip up archive interview rather mostly transit stuff attitude fundamental palestinian estate cast yours eye lawyer academy sunset holy gang' };
 
 -- ------------------------------
 -- TRANSACTION
