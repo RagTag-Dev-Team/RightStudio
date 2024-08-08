@@ -100,3 +100,6 @@ src/assets/iconify-icons/generated-icons.css
 /src/surrealdb/migrations/_generated/verificationToken/verificationTokenSchemaGen.ts
 /src/surrealdb/migrations/schema/verificationToken/verificationTokenTypes.ts
 /src/surrealdb/migrations/
+/src/prisma/dev.db-journal
+/src/prisma/migrations/20240808195434_devdata/migration.sql
+/src/prisma/migrations/migration_lock.toml
