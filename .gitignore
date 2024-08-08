@@ -99,3 +99,4 @@ src/assets/iconify-icons/generated-icons.css
 /src/surrealdb/migrations/schema/verificationToken/verificationTokenSchema.ts
 /src/surrealdb/migrations/_generated/verificationToken/verificationTokenSchemaGen.ts
 /src/surrealdb/migrations/schema/verificationToken/verificationTokenTypes.ts
+/src/surrealdb/migrations/
