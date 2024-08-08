@@ -17,7 +17,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
-import Alert from '@mui/material/Alert'
+//import Alert from '@mui/material/Alert'
 
 // Third-party Imports
 import { signIn } from 'next-auth/react'
@@ -82,7 +82,8 @@ const schema = object({
     string(),
     nonEmpty('This field is required'),
     minLength(5, 'Password must be at least 5 characters long')
-  )
+  ),
+  wallet_address: string()
 })
 
 const Login = ({ mode }: { mode: SystemMode }) => {
@@ -114,8 +115,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
   } = useForm<FormData>({
     resolver: valibotResolver(schema),
     defaultValues: {
-      email: 'admin@vuexy.com',
-      password: 'admin'
+      email: '',
+      password: ''
     }
   })
 
@@ -133,6 +134,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     const res = await signIn('credentials', {
       email: data.email,
       password: data.password,
+      wallet_address: data.wallet_address,
       redirect: false
     })
 
