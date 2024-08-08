@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Updates surql">
-      <change afterPath="$PROJECT_DIR$/run_surreal.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/surrealdb/surrealdb-cluster.yml" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Successfully integrates surql gen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prisma/migrations/20231221071046_/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prisma/migrations/migration_lock.toml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,21 +52,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "RSD-15-Setup",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\manny\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;RSD-15-Setup&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/manny/IdeaProjects/RightStudio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\manny\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\manny\IdeaProjects\RightStudio" />
@@ -222,7 +223,9 @@
       <workItem from="1723061921249" duration="2756000" />
       <workItem from="1723098977786" duration="556000" />
       <workItem from="1723099744555" duration="180000" />
-      <workItem from="1723099939119" duration="6693000" />
+      <workItem from="1723099939119" duration="7092000" />
+      <workItem from="1723107582970" duration="497000" />
+      <workItem from="1723108094552" duration="268000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -256,7 +259,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723089790834</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Successfully integrates surql gen">
+      <option name="closed" value="true" />
+      <created>1723107439984</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723107439984</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Successfully integrates surql gen">
+      <option name="closed" value="true" />
+      <created>1723107502663</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723107502663</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +287,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Adds Surreal DB and cli tool." />
     <MESSAGE value="Updates surql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates surql" />
+    <MESSAGE value="Successfully integrates surql gen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully integrates surql gen" />
   </component>
 </project>
