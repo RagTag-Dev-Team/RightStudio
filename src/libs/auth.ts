@@ -116,6 +116,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
+      console.log('Session'+JSON.stringify(session,null,2));
+
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
         session.user.name = token.name
