@@ -11,7 +11,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "build:icons": "tsx src/assets/iconify-icons/bundle-icons-css.ts",
-    "migrate": "dotenv -e .env -- npx prisma migrate dev",
+    "migrate": "dotenv -e .env -- npx surql-gen -c src/surrealdb/surql-gen.json",
     "postinstall": "prisma generate && npm run build:icons",
     "removeI18n": "tsx src/remove-translation-scripts/index.ts"
   },
