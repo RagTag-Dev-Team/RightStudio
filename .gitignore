@@ -103,3 +103,4 @@ src/assets/iconify-icons/generated-icons.css
 /src/prisma/dev.db-journal
 /src/prisma/migrations/20240808195434_devdata/migration.sql
 /src/prisma/migrations/migration_lock.toml
+/docs/
