@@ -32,7 +32,9 @@ export const authOptions: NextAuthOptions = {
          * For e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
          * You can also use the `req` object to obtain additional parameters (i.e., the request IP address)
          */
-        const { email, password } = credentials as { email: string; password: string }
+        const { email, password, wallet_address } = credentials as { email: string; password: string, wallet_address: string }
+
+        console.log('Credentials');
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -41,7 +43,7 @@ export const authOptions: NextAuthOptions = {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, wallet_address })
           })
 
           const data = await res.json()
@@ -116,6 +118,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
+      console.log('Session'+JSON.stringify(session,null,2));
+
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
         session.user.name = token.name
