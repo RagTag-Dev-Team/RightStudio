@@ -83,7 +83,7 @@ const schema = object({
     nonEmpty('This field is required'),
     minLength(5, 'Password must be at least 5 characters long')
   ),
-  wallet_address: string()
+  wallet_address:  string()
 })
 
 const Login = ({ mode }: { mode: SystemMode }) => {
@@ -116,7 +116,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     resolver: valibotResolver(schema),
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
+      wallet_address: ''
     }
   })
 

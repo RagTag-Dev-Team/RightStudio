@@ -1,6 +1,6 @@
 {
   "schemaFile": "src/surrealdb/schema.surql",
-  "surreal": "ws://localhost:8000",
+  "surreal": "http://localhost:8000",
   "username": "ragtag_admin",
   "password": "bWFubnk6c0FzMyp6MnAh",
   "ns": "rgtg",
