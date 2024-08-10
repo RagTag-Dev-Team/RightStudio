@@ -70,7 +70,8 @@ const Register = ({ mode }: { mode: SystemMode }) => {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    wallet_address: ''
   })
 
   // Vars
@@ -111,7 +112,7 @@ const Register = ({ mode }: { mode: SystemMode }) => {
 
   const handleSubmit = async (e:Event) => {
     e.preventDefault()
-    const {name, email, password } = formValues
+    const {name, email, password, wallet_address } = formValues
 
 
 
@@ -121,7 +122,7 @@ const Register = ({ mode }: { mode: SystemMode }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({name, email, password }),
+        body: JSON.stringify({name, email, password, wallet_address}),
       });
 
       if (!response.ok) {
@@ -166,7 +167,7 @@ const Register = ({ mode }: { mode: SystemMode }) => {
             <Typography variant='h4'>The RightStudio adventure starts here. 🚀</Typography>
             <Typography>Take control of your media rights now!</Typography>
           </div>
-          <form noValidate autoComplete='off' onSubmit={(e) => {
+          <form noValidate autoComplete='off' onSubmit={e => {
             //@ts-ignore
              handleSubmit(e)}} className='flex flex-col gap-6'>
             <CustomTextField

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Deletes docs file." />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Ignore typescript errors">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Register.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -369,7 +372,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723318785806</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Ignore typescript errors">
+      <option name="closed" value="true" />
+      <created>1723327243929</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723327243929</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +396,7 @@
     <MESSAGE value="updates schema" />
     <MESSAGE value="Deletes docs file." />
     <MESSAGE value="Adds SurrealDB callout to Registration page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adds SurrealDB callout to Registration page." />
+    <MESSAGE value="Ignore typescript errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore typescript errors" />
   </component>
 </project>
