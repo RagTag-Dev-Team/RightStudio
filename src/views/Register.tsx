@@ -126,7 +126,9 @@ const Register = ({ mode }: { mode: SystemMode }) => {
       });
 
       if (!response.ok) {
+
         throw new Error("Network response was not ok");
+
       }
 
       // Process response here
