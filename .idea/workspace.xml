@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="updates schema">
-      <change afterPath="$PROJECT_DIR$/src/libs/surreal.ts" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Functioning Surreal DB client.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/login/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/libs/surreal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/surreal.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surql-gen.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,6 +233,8 @@
       <workItem from="1723108638909" duration="93000" />
       <workItem from="1723135917156" duration="988000" />
       <workItem from="1723143282916" duration="1040000" />
+      <workItem from="1723305726187" duration="317000" />
+      <workItem from="1723307878894" duration="2922000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />

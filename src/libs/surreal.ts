@@ -10,15 +10,19 @@ const namespace = process.env.NEXT_PUBLIC_SURREALDB_NS
 export async function initDb(): Promise<Surreal | undefined> {
   if (db) return db;
   db = new Surreal();
+
   try {
 // Authenticate using a pair of credentials
     await db.connect(`${connectionString}/rpc`);
 
 
     await db.use({ namespace: "rgtg", database: "rgtg_db" });
-    await db.signin(
-      {username: username, password: password});
+    await db.signin({
+      username: "ragtag_admin",
+      password:"bWFubnk6c0FzMyp6MnAh"
+    });
 
+    console.log("Connected to SurrealDB");
 
     return db;
   } catch (err) {
