@@ -98,16 +98,18 @@ const Register = ({ mode }: { mode: SystemMode }) => {
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
+  //@ts-ignore
   const handleChange = (e) => {
 
     const { name, value } = e.target
+
     setFormValues(prevValues => ({
       ...prevValues,
       [name]: value
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:Event) => {
     e.preventDefault()
     const {name, email, password } = formValues
 
@@ -164,7 +166,9 @@ const Register = ({ mode }: { mode: SystemMode }) => {
             <Typography variant='h4'>The RightStudio adventure starts here. 🚀</Typography>
             <Typography>Take control of your media rights now!</Typography>
           </div>
-          <form noValidate autoComplete='off' onSubmit={(e) => { handleSubmit(e)}} className='flex flex-col gap-6'>
+          <form noValidate autoComplete='off' onSubmit={(e) => {
+            //@ts-ignore
+             handleSubmit(e)}} className='flex flex-col gap-6'>
             <CustomTextField
               autoFocus
               fullWidth

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Deletes docs file.">
-      <change afterPath="$PROJECT_DIR$/src/app/api/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Register.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Deletes docs file." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +59,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "RSD-15-Setup",
+    "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio/src/app/api/register",
     "node.js.detected.package.eslint": "true",
@@ -388,6 +384,7 @@
     <MESSAGE value="Successfully integrates surql gen" />
     <MESSAGE value="updates schema" />
     <MESSAGE value="Deletes docs file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Deletes docs file." />
+    <MESSAGE value="Adds SurrealDB callout to Registration page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds SurrealDB callout to Registration page." />
   </component>
 </project>
