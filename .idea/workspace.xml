@@ -4,292 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Functioning Surreal DB client.">
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Deletes docs file.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/assets/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/add-or-remove-authentication.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/configure-local-template-like-demos.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-add-rtl-in-swiper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-change-colors.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-change-fonts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-change-logo.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-change-mode.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-change-skin.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-clear-browser-cache.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-hide-menu.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-implement-acl.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-override-component-styling.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-update-this-template.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/how-to-use-directions.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/installation-errors.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/installation-warning.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/integrate-template-into-existing-project.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/migration-from-pages-to-app-router.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/remove-nextjs.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/server-side-menu.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/update-navbar-and-footer.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/why-app-runs-slow-in-local.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/why-cannot-revert-to-default-theme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/why-default-collapsed-menu-be-avoided.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/why-should-I-not-upgrade-the-package-manually.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/faqs/why-static-export-is-not-possible.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/add-auth.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/credentials-provider.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/google-prisma.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/remove-auth.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/authentication/securing-page.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/card-statistics.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/custom-inputs/horizontal.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/custom-inputs/image.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/custom-inputs/override-custom-inputs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/custom-inputs/vertical.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/form.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/generate-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/link.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/open-dialog-on-element-click.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/custom/option-menu.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/libs/apex-charts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/libs/recharts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/autocomplete.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/avatar.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/badge.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/button.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/card.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/chip.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/iconButton.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/pagination.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/select.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/stepper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/tabs.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/text-field.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/mui/timeline-dot.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-full-calendar.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-keen-slider.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-react-apex-charts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-react-datepicker.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-react-dropzone.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-react-toastify.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/components/styled-libs/app-recharts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/credit.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/customizing-our-component.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/deployment.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/apps-and-pages-setup/apps.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/apps-and-pages-setup/intro.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/apps-and-pages-setup/pages.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/demo-config.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/environment-variables.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/folder-structure.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/home-page-url.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/nextjs-api.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/rtl.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/add-new-custom-color.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/change-primary-color.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/create-your-own-theme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-breakpoints.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-color-palette.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-component-styling.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-custom-color.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-shadow.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/override-typography.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/theming/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/translation/add-i18n-to-Starter-kit.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/translation/how-to-remove-i18n/manually.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/development/translation/how-to-remove-i18n/using-script.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/hooks/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/hooks/useHorizontalNav.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/hooks/useMediaQuery.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/hooks/useSettings.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/hooks/useVerticalNav.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/before-after-content.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/customizer.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/horizontal-layout-components.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/how-to-use-react-icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/icons.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/layout-classes.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/layout-types.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/menu-classes.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/menu-styling.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/layout/vertical-layout-components.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/logo.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/migration/v2.0.0-to-v3.0.0.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/migration/v3.0.0-to-v3.1.0.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/dependencies.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/getting-started.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/getting-support.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/github-access.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/installation.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/overview/starter-kit-vs-full-package.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/settings/settings-context.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/settings/theme-configurations.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/settings/vscode-configurations.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/guide/tags.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/breakpoint.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/breakpoints.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/custom-breakpoint.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/custom-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/hide-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/switch-to-vertical.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/horizontal-nav/vertical-nav-props.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/component.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/disabled.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/exact-match-and-active-url.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/on-click.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/prefix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/suffix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-item/target.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-position/horizontal-navbar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-position/vertical-navbar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-render/dynamic-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-render/exclude-lang.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-render/menu-with-api.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-render/static-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-scroll/browser-scroll.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu-scroll/perfect-scroll.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/expand-icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/expanded-menu-item-icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/menu-item-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/popout-menu-offset.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/text-truncate.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/transition-duration.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/trigger-popout.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/menu/vertical-menu-props.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/component.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/content-classname.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/disabled.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/on-click.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/on-open-change.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/prefix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/horizontal-examples/submenu/suffix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/component.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/disabled.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/exact-match-and-active-url.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/on-click.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/prefix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/suffix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-item/target.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-position/fixed-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-position/scroll-with-content.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-render/dynamic-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-render/exclude-lang.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-render/menu-with-api.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-render/static-menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-scroll/full-menu-scroll.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-scroll/popout-scroll.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/prefix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-section/suffix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-types/collapsed-hover.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-types/collapsed-popout.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu-types/toggle.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/collapsed-menu-section-label.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/expand-icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/expanded-menu-item-icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/menu-item-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/menu-section-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/popout-collapsed.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/popout-menu-offset.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/sub-menu-open-behavior.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/text-truncate.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/transition-duration.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/menu/trigger-popout.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/nav-collapse-icons.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/component.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/content-classname.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/default-open.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/disabled.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/icon.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/on-click.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/on-open-change.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/prefix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/root-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/submenu/suffix.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/backdrop-color.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/background-color.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/background-image.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/basic.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/breakpoint.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/breakpoints.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/collapsed-width.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/custom-breakpoint.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/custom-styles.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/index.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/overlay.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/transition-duration.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/menu-examples/vertical-examples/vertical-nav/width.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/accordion.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/alerts.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/avatars.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/badges.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/button-group.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/buttons.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/chips.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/dialogs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/list.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/menu.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/more.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/pagination.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/progress.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/ratings.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/snackbar.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/swiper.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/tabs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/test.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/timeline.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/components/toasts.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/autocomplete.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/checkbox.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/custom-inputs.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/editor.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/file-uploader.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/pickers.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/radio.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/select.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/slider.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/switch.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/test.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/text-field.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/form-elements/textarea.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/foundation.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/foundation/colors.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/foundation/icons.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/foundation/shadows.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/foundation/typography.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/user-interface/mui-table.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="stg" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -314,6 +32,16 @@
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/RagTag-Dev-Team/RightStudio.git&quot;,
     &quot;accountId&quot;: &quot;99c70521-bcae-4153-9e56-449bfb10b695&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;RagTag-Dev-Team&quot;,
+    &quot;repository&quot;: &quot;RightStudio&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -514,6 +242,7 @@
       <workItem from="1723143282916" duration="1040000" />
       <workItem from="1723305726187" duration="317000" />
       <workItem from="1723307878894" duration="2922000" />
+      <workItem from="1723314720613" duration="389000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -587,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723143652873</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Deletes docs file.">
+      <option name="closed" value="true" />
+      <created>1723313695038</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723313695038</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,6 +338,7 @@
     <MESSAGE value="Updates surql" />
     <MESSAGE value="Successfully integrates surql gen" />
     <MESSAGE value="updates schema" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates schema" />
+    <MESSAGE value="Deletes docs file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deletes docs file." />
   </component>
 </project>
