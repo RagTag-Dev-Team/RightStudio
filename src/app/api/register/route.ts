@@ -72,8 +72,23 @@ export async function POST(req: Request) {
       }
     )
   } else {
+    console.log('creds',name, email, password, wallet_address);
 
-    const newUser = await rep.createUser({name, email, password, wallet_address})
+    const now = new Date(Date.UTC(0, 0, 0, 0, 0, 0));
+
+    console.log(now.toISOString())
+
+    const newUser = await rep.createUser({
+      name:name,
+      email: email,
+      password: password,
+      wallet_address: wallet_address,
+      image: '',
+      emailVerified: now.toISOString(),
+      accounts: [],
+      sessions: []
+
+    })
 
       console.log('NewUser',newUser);
     const { password: _, ...filteredUserData } = newUser
