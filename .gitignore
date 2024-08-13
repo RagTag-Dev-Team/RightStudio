@@ -106,3 +106,4 @@ src/assets/iconify-icons/generated-icons.css
 /docs/
 
 .vercel
+/.env.development

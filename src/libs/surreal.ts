@@ -16,10 +16,10 @@ export async function initDb(): Promise<Surreal | undefined> {
     await db.connect(`${connectionString}/rpc`);
 
 
-    await db.use({ namespace: "rgtg", database: "rgtg_db" });
+    await db.use({ namespace: namespace, database: database });
     await db.signin({
-      username: "ragtag_admin",
-      password:"bWFubnk6c0FzMyp6MnAh"
+      username: username,
+      password:password
     });
 
     console.log("Connected to SurrealDB");

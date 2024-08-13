@@ -20,8 +20,9 @@ type ResponseUser = {
 
 let db: Surreal | undefined;
 
-// Mock data for demo purpose
-// import { users } from './users'
+
+const database = process.env.NEXT_PUBLIC_SURREALDB_DB
+const namespace = process.env.NEXT_PUBLIC_SURREALDB_NS
 
 
 export async function POST(req: Request) {
@@ -29,7 +30,9 @@ export async function POST(req: Request) {
   const { name, email, password, wallet_address } = await req.json()
 
   // Connect to SurrealDB
- db = await initDb()
+
+ db = await initDb();
+
 
 
   // @ts-ignore
@@ -52,6 +55,7 @@ export async function POST(req: Request) {
 
   if (user) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     //@ts-ignore
     const { password: _, ...filteredUserData } = user
 
@@ -71,9 +75,49 @@ export async function POST(req: Request) {
         statusText: 'Unauthorized Access'
       }
     )
-  } else {
-    console.log('creds',name, email, password, wallet_address);
+  }
+  else {
+    //@ts-ignore
+    console.log('Creating new user',name,email,password,wallet_address);
+  console.log(namespace,database);
 
+
+    const newUser = await db.signup({
+      namespace: namespace,
+      database: database,
+
+      // Provide the name of the access method
+      scope: 'user',
+
+      // Provide the variables used by the signup query
+      name: name,
+      email: email,
+      password: password,
+      wallet_address: wallet_address,
+    });
+
+
+    console.log('new user',newUser);
+
+    // @ts-ignore
+    const {
+
+      //@ts-ignore
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      password: _ ,
+
+      //@ts-ignore
+      ...filteredUserData
+
+    } = newUser
+
+    response = {
+      ...filteredUserData
+    }
+
+    return NextResponse.json(response)
+
+/*
     const now = new Date(Date.UTC(0, 0, 0, 0, 0, 0));
 
     console.log(now.toISOString())
@@ -81,6 +125,9 @@ export async function POST(req: Request) {
     const newUser = await rep.createUser({
       name:name,
       email: email,
+
+      //@ts-ignore
+
       password: password,
       wallet_address: wallet_address,
       image: '',
@@ -91,13 +138,21 @@ export async function POST(req: Request) {
     })
 
       console.log('NewUser',newUser);
-    const { password: _, ...filteredUserData } = newUser
+
+    const {
+
+      //@ts-ignore
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      password: _ ,
+      ...filteredUserData
+    } = newUser
 
     response = {
       ...filteredUserData
     }
 
-    return NextResponse.json(response)
+ */
+
 
     // We return 401 status code and error message if user is not found
 

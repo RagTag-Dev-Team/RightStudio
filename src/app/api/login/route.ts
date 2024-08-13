@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 
 import type { Surreal } from 'surrealdb.js'
 
+
+
 import { getUserRepository } from '@/surrealdb/migrations/client/user/getUserRepository'
 import { initDb } from '@/libs/surreal'
 
@@ -18,6 +20,8 @@ type ResponseUser = {
 }
 
 let db: Surreal | undefined;
+
+
 
 // Mock data for demo purpose
 // import { users } from './users'
