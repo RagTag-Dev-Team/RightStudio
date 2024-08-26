@@ -17,10 +17,9 @@ export async function initDb(): Promise<Surreal | undefined> {
 
 
     await db.use({ namespace: namespace, database: database });
-    await db.signin({
-      username: username,
-      password:password
-    });
+
+    // @ts-ignore
+    await db.signin({username: username, password:password });
 
     console.log("Connected to SurrealDB");
 

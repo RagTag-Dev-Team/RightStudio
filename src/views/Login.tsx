@@ -4,13 +4,16 @@
 import { useState } from 'react'
 
 // Next Imports
-import Link from 'next/link'
+// import Link from 'next/link'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+
+/*
+
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Checkbox from '@mui/material/Checkbox'
@@ -18,16 +21,35 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
-//import Alert from '@mui/material/Alert'
+ */
+
+import Alert from '@mui/material/Alert'
 
 // Third-party Imports
 import { signIn } from 'next-auth/react'
-import { Controller, useForm } from 'react-hook-form'
-import { valibotResolver } from '@hookform/resolvers/valibot'
-import { email, object, minLength, string, pipe, nonEmpty } from 'valibot'
-import type { SubmitHandler } from 'react-hook-form'
-import type { InferInput } from 'valibot'
+
+// import { Controller, useForm } from 'react-hook-form'
+// import { valibotResolver } from '@hookform/resolvers/valibot'
+// import { email, object, minLength, string, pipe, nonEmpty } from 'valibot'
+
+// import type { SubmitHandler } from 'react-hook-form'
+// import type { InferInput } from 'valibot'
+
 import classnames from 'classnames'
+
+import { darkTheme } from "thirdweb/react";
+
+import { ConnectButton } from "thirdweb/react";
+
+import { client } from '@/libs/thirdwebclient'
+import {
+  generatePayload,
+  isLoggedIn,
+  logout
+} from '@/libs/auth'
+
+
+
 
 // Type Imports
 import type { SystemMode } from '@core/types'
@@ -37,10 +59,13 @@ import type { Locale } from '@/configs/i18n'
 
 import Logo from '@components/layout/shared/Logo'
 
-import CustomTextField from '@core/components/mui/TextField'
+// import CustomTextField from '@core/components/mui/TextField'
 
 // Config Imports
-import themeConfig from '@configs/themeConfig'
+// import themeConfig from '@configs/themeConfig'
+
+
+
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -77,9 +102,13 @@ type ErrorType = {
   message: string[]
 }
 
-type FormData = InferInput<typeof schema>
+// type FormData = InferInput<typeof schema>
 
-const schema = object({
+const THIRDWEB_CLIENT = client;
+
+
+
+/* const schema = object({
   email: pipe(string(), minLength(1, 'This field is required'), email('Email is invalid')),
   password: pipe(
     string(),
@@ -89,9 +118,11 @@ const schema = object({
   wallet_address:  string()
 })
 
+ */
+
 const Login = ({ mode }: { mode: SystemMode }) => {
   // States
-  const [isPasswordShown, setIsPasswordShown] = useState(false)
+//  const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [errorState, setErrorState] = useState<ErrorType | null>(null)
 
   // Vars
@@ -111,6 +142,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
+  /*
   const {
     control,
     handleSubmit,
@@ -124,6 +156,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     }
   })
 
+   */
+
   const characterIllustration = useImageVariant(
     mode,
     lightIllustration,
@@ -132,8 +166,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     borderedDarkIllustration
   )
 
-  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
-
+ // const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+/*
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     const res = await signIn('credentials', {
       email: data.email,
@@ -156,6 +190,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     }
   }
 
+ */
+
   return (
     <div className='flex bs-full justify-center'>
       <div
@@ -173,19 +209,85 @@ const Login = ({ mode }: { mode: SystemMode }) => {
         <div className='absolute block-start-5 sm:block-start-[33px] inline-start-6 sm:inline-start-[38px]'>
           <Logo />
         </div>
-        <div className='flex flex-col gap-6 is-full sm:is-auto md:is-full sm:max-is-[400px] md:max-is-[unset] mbs-8 sm:mbs-11 md:mbs-0'>
+        <div className='flex flex-col gap-6 is-full sm:is-auto md:is-full sm:max-is-[400px] md:max-is-[unset] mbs-8 sm:mbs-11 md:mbs-0 text-center'>
           <div className='flex flex-col gap-1'>
-            <Typography variant='h4'>{`Welcome to ${themeConfig.templateName}! 👋🏻`}</Typography>
-            <Typography>Please sign-in to your account and start the adventure</Typography>
+            <Typography variant='h4'>{`Welcome to RightStudio! `}</Typography>
+            <Typography>Your journey starts here.</Typography>
           </div>
-          {/* Alert
-          <Alert icon={false} className='bg-[var(--mui-palette-primary-lightOpacity)]'>
-            <Typography variant='body2' color='primary'>
-              Email: <span className='font-medium'>admin@vuexy.com</span> / Pass:{' '}
-              <span className='font-medium'>admin</span>
-            </Typography>
-          </Alert>
-           */}
+
+          <ConnectButton
+            client={THIRDWEB_CLIENT}
+            theme={darkTheme({
+              colors: {
+                primaryButtonBg: "#247cdb",
+                primaryButtonText: "#ffffff",
+              },
+            })}
+            connectModal={
+              {
+                title: "Connect to RightStudio",
+                titleIcon: "/images/pages/rightstudio-icon-color.png",
+                size: "wide",
+                showThirdwebBranding: false,
+              }
+            }
+            connectButton={{
+              label: "Get Started",
+            }}
+
+            auth={{
+              isLoggedIn: async (address) => {
+                console.log("checking if logged in!", { address });
+
+                return await isLoggedIn();
+              },
+              doLogin: async (params) => {
+
+                const res = await signIn('credentials', {
+
+                  wallet_address: params.payload.address,
+                  redirect: false
+                })
+
+                if (res && res.ok && res.error === null) {
+                  // Vars
+                  const redirectURL = searchParams.get('redirectTo') ?? '/'
+
+                  router.replace(getLocalizedUrl(redirectURL, locale as Locale))
+                }
+                else {
+                  if (res?.error) {
+                    const error = JSON.parse(res.error)
+
+
+                    setErrorState(error)
+                  }
+                }
+
+                //  await login(params);
+
+              },
+
+              getLoginPayload: async ({ address }) =>
+                generatePayload({ address }),
+              doLogout: async () => {
+                console.log("logging out!");
+                await logout();
+              },
+            }}
+
+
+
+
+          />
+          {errorState && errorState.message && (
+            <Alert icon={false} className='bg-[var(--mui-palette-primary-lightOpacity)] text-center'>
+              <Typography variant='body2' color='error'>
+                <span className='font-medium'>{errorState.message.join(' ')}</span>
+              </Typography>
+            </Alert>
+          )}
+          {/*
           <form
             noValidate
             autoComplete='off'
@@ -276,6 +378,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
               Sign in with Google
             </Button>
           </form>
+          */}
         </div>
       </div>
     </div>

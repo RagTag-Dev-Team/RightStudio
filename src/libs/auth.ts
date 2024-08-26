@@ -1,15 +1,76 @@
 // Third-party Imports
+
 import CredentialProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
-import { PrismaAdapter } from '@auth/prisma-adapter'
-import { PrismaClient } from '@prisma/client'
+
+// import { PrismaAdapter } from '@auth/prisma-adapter'
+// import { PrismaClient } from '@prisma/client'
+
+import { SurrealDBAdapter } from "@auth/surrealdb-adapter"
+
+
 import type { NextAuthOptions } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
+import type { VerifyLoginPayloadParams} from "thirdweb/auth";
 
-const prisma = new PrismaClient()
+import { createAuth } from "thirdweb/auth";
+
+import { privateKeyAccount } from "thirdweb/wallets";
+
+import { initDb } from "@/libs/surreal"
+
+import { client } from "./thirdwebclient";
+
+const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY;
+
+
+// const prisma = new PrismaClient()
+
+const surrealClient = initDb();
+
+if (!privateKey) {
+  throw new Error("Missing THIRDWEB_ADMIN_PRIVATE_KEY in .env file.");
+}
+
+const thirdwebAuth = createAuth({
+  domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || "",
+  adminAccount: privateKeyAccount({ client, privateKey }),
+  client: client,
+});
+
+export const generatePayload = thirdwebAuth.generatePayload;
+
+export async function login(payload: VerifyLoginPayloadParams) {
+  const verifiedPayload = await thirdwebAuth.verifyPayload(payload);
+
+  if (verifiedPayload.valid) {
+    const jwt = await thirdwebAuth.generateJWT({
+      payload: verifiedPayload.payload,
+    });
+
+  console.log('JWT'+jwt)
+
+  }
+}
+
+export async function logout() {
+//  cookies().delete("jwt");
+}
+
+export async function isLoggedIn() {
+  // const jwt = cookies().get("jwt");
+  const jwt = null;
+
+  if (!jwt) {
+    return false;
+  }
+
+
+return true;
+}
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as Adapter,
+  adapter: SurrealDBAdapter(surrealClient) as Adapter,
 
   // ** Configure one or more authentication providers
   // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
@@ -17,7 +78,7 @@ export const authOptions: NextAuthOptions = {
     CredentialProvider({
       // ** The name to display on the sign in form (e.g. 'Sign in with...')
       // ** For more details on Credentials Provider, visit https://next-auth.js.org/providers/credentials
-      name: 'Credentials',
+      name: 'Thirdweb',
       type: 'credentials',
 
       /*
@@ -34,7 +95,7 @@ export const authOptions: NextAuthOptions = {
          */
         const { email, password, wallet_address } = credentials as { email: string; password: string, wallet_address: string }
 
-        console.log('Credentials');
+
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -48,9 +109,7 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json()
 
-          if (res.status === 401) {
-            throw new Error(JSON.stringify(data))
-          }
+
 
           if (res.status === 200) {
             /*
@@ -58,6 +117,10 @@ export const authOptions: NextAuthOptions = {
              * user data below. Below return statement will set the user object in the token and the same is set in
              * the session which will be accessible all over the app.
              */
+
+
+
+
             return data
           }
 
@@ -108,17 +171,35 @@ export const authOptions: NextAuthOptions = {
      */
     async jwt({ token, user }) {
       if (user) {
-        /*
-         * For adding custom parameters to user in session, we first need to add those parameters
-         * in token which then will be available in the `session()` callback
-         */
-        token.name = user.name
+        const adapter = SurrealDBAdapter(surrealClient);
+
+        //@ts-ignore
+        if (user.newUser) {
+          //@ts-ignore
+          user.newUser = false;
+          user.image = '/images/avatars/1.png'
+
+          // Use the adapter to create a new user with newUserData
+        // @ts-ignore
+          const createdUser =  await adapter.createUser(user);
+
+        token.name = createdUser.name
+
+        }
+        else {
+          /*
+        * For adding custom parameters to user in session, we first need to add those parameters
+        * in token which then will be available in the `session()` callback
+        */
+          token.name = user.name
+        }
+
       }
 
       return token
     },
     async session({ session, token }) {
-      console.log('Session'+JSON.stringify(session,null,2));
+     // console.log('Session'+JSON.stringify(session,null,2));
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
