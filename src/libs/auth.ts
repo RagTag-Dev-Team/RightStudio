@@ -170,6 +170,7 @@ export const authOptions: NextAuthOptions = {
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
     async jwt({ token, user }) {
+      console.log('JWT callback',user)
       if (user) {
         const adapter = SurrealDBAdapter(surrealClient);
 
@@ -184,6 +185,7 @@ export const authOptions: NextAuthOptions = {
           const createdUser =  await adapter.createUser(user);
 
         token.name = createdUser.name
+          token.email = createdUser.email
 
         }
         else {
@@ -199,7 +201,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-     // console.log('Session'+JSON.stringify(session,null,2));
+      console.log('Session'+JSON.stringify(session,null,2));
+      console.log('Token'+JSON.stringify(token,null,2));
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter

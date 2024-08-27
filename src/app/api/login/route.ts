@@ -68,16 +68,33 @@ export async function POST(req: Request) {
   else {
     // We return 401 status code and error message if user is not found
 
-    const responseUser: ResponseUser | null =
-      {
-        name: wallet_address,
-        email: email,
-        password: password,
-        image: '',
-        wallet_address: wallet_address,
-        newUser: true
+
+      if(!email || !password ){
+        const responseUser: ResponseUser = {
+          name: 'Unknown User',
+          email: '',
+          password: '',
+          image: '/images/avatars/1.png',
+          wallet_address: wallet_address,
+          newUser: true
+        };
+
+        return NextResponse.json(responseUser)
+
+      }
+      else {
+        const responseUser: ResponseUser = {
+          name: 'Unknown User',
+          email: email,
+          password: password,
+          image: '/images/avatars/1.png',
+          wallet_address: wallet_address,
+          newUser: true
+        };
+
+        return NextResponse.json(responseUser)
       }
 
-    return NextResponse.json(responseUser)
+
   }
 }
