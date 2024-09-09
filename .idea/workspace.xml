@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Removes registration and implements wallet sign in.  &#10;&#10;Additional sign in types not tested.  &#10;Currenty handled by NextAuth">
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds default values">
+      <change afterPath="$PROJECT_DIR$/src/app/api/login/route.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/auth.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/cirql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/shared/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/shared/Logo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/surreal_akash.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surreal_akash.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/surrealdb/surql-gen-dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surql-gen-dev.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +72,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio/public/images/avatars",
+    "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio/src/app/api/login",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\api\login" />
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\libs" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\public\images\avatars" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\surrealdb" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\api\register" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\public\images\pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,8 +217,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -250,7 +256,11 @@
       <workItem from="1723541476434" duration="593000" />
       <workItem from="1723661458699" duration="835000" />
       <workItem from="1724527014123" duration="590000" />
-      <workItem from="1724603162924" duration="33931000" />
+      <workItem from="1724603162924" duration="58050000" />
+      <workItem from="1724823967933" duration="61000" />
+      <workItem from="1724888258528" duration="189000" />
+      <workItem from="1724892169011" duration="1417000" />
+      <workItem from="1725855657272" duration="11740000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -420,7 +430,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724714574581</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Adds default values">
+      <option name="closed" value="true" />
+      <created>1724718816614</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1724718816614</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,6 +457,7 @@
     <MESSAGE value="Ignore typescript errors" />
     <MESSAGE value="Successully implements Register form." />
     <MESSAGE value="Removes registration and implements wallet sign in.  &#10;&#10;Additional sign in types not tested.  &#10;Currenty handled by NextAuth" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removes registration and implements wallet sign in.  &#10;&#10;Additional sign in types not tested.  &#10;Currenty handled by NextAuth" />
+    <MESSAGE value="Adds default values" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds default values" />
   </component>
 </project>

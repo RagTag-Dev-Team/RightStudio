@@ -72,12 +72,12 @@ const Logo = ({ color }: { color?: CSSProperties['color'] }) => {
   return (
     <div className='flex items-center'>
       {layout === 'collapsed' && !isHovered ? (
-        <img src="/images/pages/rightstudio-icon-color.png" alt="RightStudio" className="h-8"/>
+        <img src="/images/pages/rightstudio-icon-color.png" alt="RightStudio" className="h-6"/>
       ) : (
 
 
 
-        <img src="/images/pages/rightstudio-logo-white-text-side.png" alt="RightStudio" className="h-8 "/>
+        <img src="/images/pages/rightstudio-logo-white-text-side.png" alt="RightStudio" className="h-6 "/>
       )}
     </div>
   )

@@ -7,6 +7,8 @@ import GoogleProvider from 'next-auth/providers/google'
 // import { PrismaClient } from '@prisma/client'
 
 import { SurrealDBAdapter } from "@auth/surrealdb-adapter"
+import type { Surreal } from 'surrealdb.js'
+import { getUserRepository } from '@/surrealdb/migrations/client/user/getUserRepository'
 
 
 import type { NextAuthOptions } from 'next-auth'
@@ -17,21 +19,16 @@ import { createAuth } from "thirdweb/auth";
 
 import { privateKeyAccount } from "thirdweb/wallets";
 
-import { initDb } from "@/libs/cirql"
-import { client } from "./thirdwebclient";
-import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
+import { initDb } from "@/libs/surreal"
 
-import type { User, UserCreate } from '@/surrealdb/migrations/schema/user/userTypes'
-import { create } from 'cirql'
+import { client } from "./thirdwebclient";
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY;
 
 
 // const prisma = new PrismaClient()
 
-
-
-const cirql = initDb();
+const surrealClient = initDb();
 
 if (!privateKey) {
   throw new Error("Missing THIRDWEB_ADMIN_PRIVATE_KEY in .env file.");
@@ -43,6 +40,7 @@ const thirdwebAuth = createAuth({
   client: client,
 });
 
+let db: Surreal | undefined;
 
 
 export const generatePayload = thirdwebAuth.generatePayload;
@@ -77,6 +75,7 @@ return true;
 }
 
 export const authOptions: NextAuthOptions = {
+  adapter:SurrealDBAdapter(surrealClient) as Adapter,
 
   // ** Configure one or more authentication providers
   // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
@@ -101,6 +100,8 @@ export const authOptions: NextAuthOptions = {
          */
         const { email, password, wallet_address } = credentials as { email: string; password: string, wallet_address: string }
 
+        db = await initDb()
+        const rep = getUserRepository(db);
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -127,9 +128,9 @@ export const authOptions: NextAuthOptions = {
             if(data.data.newUser) {
 
               data.data.newUser = false;
-              console.log('Creating User');
+             const createdUser = await rep.createUser(data.data);
 
-
+             console.log('Created User'+JSON.stringify(createdUser,null,2));
 
             }
 

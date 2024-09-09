@@ -122,7 +122,7 @@ importers:
         version: 1.11.3
       cirql:
         specifier: ^1.0.1
-        version: 1.0.1(surrealdb.js@1.0.0-beta.9)(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(zod@3.23.8)
+        version: 1.0.1(surrealdb.js@1.0.0-beta.9)(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.23.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -210,6 +210,9 @@ importers:
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
+      surreal:
+        specifier: ^0.3.7
+        version: 0.3.7
       surreal.js:
         specifier: ^0.4.20
         version: 0.4.20
@@ -221,7 +224,7 @@ importers:
         version: 1.0.0-beta.9
       thirdweb:
         specifier: ^5.48.2
-        version: 5.48.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+        version: 5.48.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)(utf-8-validate@6.0.4)(zod@3.23.8)
       valibot:
         specifier: ^0.36.0
         version: 0.36.0
@@ -2083,6 +2086,9 @@ packages:
 
   '@types/negotiator@0.6.3':
     resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
+
+  '@types/node@14.18.63':
+    resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
 
   '@types/node@20.14.12':
     resolution: {integrity: sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==}
@@ -5822,6 +5828,10 @@ packages:
   surreal.js@0.4.20:
     resolution: {integrity: sha512-widemt3angiZgJx6dlJGhg9KmlceZMmjZ9xzhgBBsDNxak4yKB55DJoG+TZgPUixzQWlLqF0Cc3E2gPuGHSoEA==}
 
+  surreal@0.3.7:
+    resolution: {integrity: sha512-W5TTPvnMdV7NeqtgZazqPRAdg84/R8gNlj3kGeIpZxIu/UsDlfVODQzs31b6H09NlzEM1JUBySW2i+9QD+L7Ow==}
+    engines: {node: '>= 4.0.x'}
+
   surrealdb.js@1.0.0-beta.9:
     resolution: {integrity: sha512-EPodlWRWwfK91qtKHJ246Rljpvl7eB0egHwhthRa/wsxMoEVqUyIqmMSjmweKOGGKxm35NhivYbJh+5LnqI/nA==}
     engines: {node: '>=18.0.0'}
@@ -8180,6 +8190,8 @@ snapshots:
 
   '@types/negotiator@0.6.3': {}
 
+  '@types/node@14.18.63': {}
+
   '@types/node@20.14.12':
     dependencies:
       undici-types: 5.26.5
@@ -8365,13 +8377,13 @@ snapshots:
       loupe: 2.3.7
       pretty-format: 27.5.1
 
-  '@walletconnect/core@2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/core@2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
       '@walletconnect/heartbeat': 1.2.1
       '@walletconnect/jsonrpc-provider': 1.0.13
       '@walletconnect/jsonrpc-types': 1.0.3
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/jsonrpc-ws-connection': 1.0.14(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/jsonrpc-ws-connection': 1.0.14(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/keyvaluestorage': 1.1.1
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
@@ -8403,13 +8415,13 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@walletconnect/core@2.15.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/core@2.15.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-provider': 1.0.14
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/jsonrpc-ws-connection': 1.0.14(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/jsonrpc-ws-connection': 1.0.14(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/keyvaluestorage': 1.1.1
       '@walletconnect/logger': 2.1.2
       '@walletconnect/relay-api': 1.0.11
@@ -8443,16 +8455,16 @@ snapshots:
     dependencies:
       tslib: 1.14.1
 
-  '@walletconnect/ethereum-provider@2.12.2(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@5.0.10)':
+  '@walletconnect/ethereum-provider@2.12.2(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@6.0.4)':
     dependencies:
       '@walletconnect/jsonrpc-http-connection': 1.0.8
       '@walletconnect/jsonrpc-provider': 1.0.14
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
-      '@walletconnect/sign-client': 2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/sign-client': 2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/types': 2.12.2
-      '@walletconnect/universal-provider': 2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/universal-provider': 2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/utils': 2.12.2
       events: 3.3.0
     transitivePeerDependencies:
@@ -8530,12 +8542,12 @@ snapshots:
       '@walletconnect/jsonrpc-types': 1.0.4
       tslib: 1.14.1
 
-  '@walletconnect/jsonrpc-ws-connection@1.0.14(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/jsonrpc-ws-connection@1.0.14(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/safe-json': 1.0.2
       events: 3.3.0
-      ws: 7.5.10(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ws: 7.5.10(bufferutil@4.0.8)(utf-8-validate@6.0.4)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -8607,9 +8619,9 @@ snapshots:
     dependencies:
       tslib: 1.14.1
 
-  '@walletconnect/sign-client@2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/sign-client@2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
-      '@walletconnect/core': 2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/core': 2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.1
       '@walletconnect/jsonrpc-utils': 1.0.8
@@ -8637,9 +8649,9 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@walletconnect/sign-client@2.15.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/sign-client@2.15.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
-      '@walletconnect/core': 2.15.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/core': 2.15.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.2
       '@walletconnect/jsonrpc-utils': 1.0.8
@@ -8718,14 +8730,14 @@ snapshots:
       - ioredis
       - uWebSockets.js
 
-  '@walletconnect/universal-provider@2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@walletconnect/universal-provider@2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)':
     dependencies:
       '@walletconnect/jsonrpc-http-connection': 1.0.8
       '@walletconnect/jsonrpc-provider': 1.0.13
       '@walletconnect/jsonrpc-types': 1.0.4
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/logger': 2.1.2
-      '@walletconnect/sign-client': 2.12.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/sign-client': 2.12.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@walletconnect/types': 2.12.2
       '@walletconnect/utils': 2.12.2
       events: 3.3.0
@@ -9768,9 +9780,9 @@ snapshots:
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
-  cirql@1.0.1(surrealdb.js@1.0.0-beta.9)(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(zod@3.23.8):
+  cirql@1.0.1(surrealdb.js@1.0.0-beta.9)(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4))(zod@3.23.8):
     dependencies:
-      isomorphic-ws: 5.0.0(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))
+      isomorphic-ws: 5.0.0(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4))
       surrealdb.js: 1.0.0-beta.9
       vitest: 0.29.8
       zod: 3.23.8
@@ -11315,13 +11327,13 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  isomorphic-ws@5.0.0(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)):
+  isomorphic-ws@5.0.0(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)):
     dependencies:
-      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
 
-  isows@1.0.4(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)):
+  isows@1.0.4(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)):
     dependencies:
-      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
 
   isows@1.0.4(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)):
     dependencies:
@@ -13097,6 +13109,11 @@ snapshots:
       bufferutil: 4.0.8
       utf-8-validate: 5.0.10
 
+  surreal@0.3.7:
+    dependencies:
+      '@types/node': 14.18.63
+      tslib: 2.6.3
+
   surrealdb.js@1.0.0-beta.9:
     dependencies:
       '@icholy/duration': 5.1.0
@@ -13258,7 +13275,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  thirdweb@5.48.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8):
+  thirdweb@5.48.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)(utf-8-validate@6.0.4)(zod@3.23.8):
     dependencies:
       '@coinbase/wallet-sdk': 4.0.3
       '@emotion/react': 11.11.4(@types/react@18.3.3)(react@18.3.1)
@@ -13272,8 +13289,8 @@ snapshots:
       '@radix-ui/react-icons': 1.3.0(react@18.3.1)
       '@radix-ui/react-tooltip': 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query': 5.29.2(react@18.3.1)
-      '@walletconnect/ethereum-provider': 2.12.2(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@5.0.10)
-      '@walletconnect/sign-client': 2.15.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@walletconnect/ethereum-provider': 2.12.2(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@6.0.4)
+      '@walletconnect/sign-client': 2.15.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       abitype: 1.0.5(typescript@5.5.4)(zod@3.23.8)
       fast-text-encoding: 1.0.6
       fuse.js: 7.0.0
@@ -13281,7 +13298,7 @@ snapshots:
       mipd: 0.0.7(typescript@5.5.4)
       node-libs-browser: 2.2.1
       uqr: 0.1.2
-      viem: 2.19.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8)
+      viem: 2.19.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@6.0.4)(zod@3.23.8)
     optionalDependencies:
       react: 18.3.1
       typescript: 5.5.4
@@ -13590,7 +13607,7 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  viem@2.19.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.23.8):
+  viem@2.19.3(bufferutil@4.0.8)(typescript@5.5.4)(utf-8-validate@6.0.4)(zod@3.23.8):
     dependencies:
       '@adraffy/ens-normalize': 1.10.0
       '@noble/curves': 1.4.0
@@ -13598,9 +13615,9 @@ snapshots:
       '@scure/bip32': 1.4.0
       '@scure/bip39': 1.3.0
       abitype: 1.0.5(typescript@5.5.4)(zod@3.23.8)
-      isows: 1.0.4(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))
+      isows: 1.0.4(ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4))
       webauthn-p256: 0.0.5
-      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
     optionalDependencies:
       typescript: 5.5.4
     transitivePeerDependencies:
@@ -13777,10 +13794,15 @@ snapshots:
       bufferutil: 4.0.8
       utf-8-validate: 5.0.10
 
-  ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+  ws@7.5.10(bufferutil@4.0.8)(utf-8-validate@6.0.4):
     optionalDependencies:
       bufferutil: 4.0.8
-      utf-8-validate: 5.0.10
+      utf-8-validate: 6.0.4
+
+  ws@8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    optionalDependencies:
+      bufferutil: 4.0.8
+      utf-8-validate: 6.0.4
 
   ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4):
     optionalDependencies:
