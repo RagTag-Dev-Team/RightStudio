@@ -113,8 +113,7 @@ export const authOptions: NextAuthOptions = {
           })
 
           const data = await res.json()
-
-
+          console.log('Data'+JSON.stringify(data,null,2));
 
           if (res.status === 200) {
             /*
@@ -199,6 +198,7 @@ export const authOptions: NextAuthOptions = {
 
 
 
+
       }
 
 
@@ -211,14 +211,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
    //  console.log('Session'+JSON.stringify(session,null,2));
 
-      if(!session.id){
-        console.log('Session does not exist');
-       // const newSession = await dbadapter.createSession(session)
 
-       // console.log('New Session'+JSON.stringify(newSession,null,2));
-
-        // return newSession;
-      }
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter

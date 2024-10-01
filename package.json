@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --names surreal,next \"pnpm run dev:surreal\" \"pnpm run dev:next\"",
-    "dev:surreal": "dotenv -- cross-var surreal start --allow-all --auth --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% --bind 0.0.0.0:8000 memory",
+    "dev:surreal": "dotenv -- cross-var surreal start --allow-all --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% --bind 0.0.0.0:8000 memory",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
@@ -13,7 +13,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "build:icons": "tsx src/assets/iconify-icons/bundle-icons-css.ts",
-    "migrate": "dotenv -e .env -- npx prisma migrate dev && npx surql-gen -c src/surrealdb/surql-gen.json",
+    "migrate": "dotenv -e .env -- npx prisma migrate dev && npx surql-gen -c src/surrealdb/surql-gen-dev.json",
     "postinstall": "prisma generate && npm run build:icons",
     "removeI18n": "tsx src/remove-translation-scripts/index.ts"
   },

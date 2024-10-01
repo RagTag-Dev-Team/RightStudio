@@ -25,7 +25,7 @@ export async function initDb(): Promise<Cirql | undefined> {
     // Use Cirql to connect to SurrealDB
 
     await cirql.handle.connect(`${connectionString}/rpc`);
-
+    console.log("Cirql is Connected to SurrealDB");
 
  // Uncomment the next line to use SurrealDB
     //   await db.use({ namespace: namespace, database: database });
@@ -34,6 +34,9 @@ export async function initDb(): Promise<Cirql | undefined> {
  //   await db.signin({username: username, password:password });
 
 
+    console.log("Authenitcating with SurrealDB");
+
+    // @ts-ignore
     await cirql.handle.signin({
       namespace: namespace,
       database: database,
@@ -41,7 +44,7 @@ export async function initDb(): Promise<Cirql | undefined> {
       password: password,
     });
 
-    console.log("Cirql is Connected to SurrealDB");
+
 
 // Uncomment the next line to use SurrealDB
     // return db;

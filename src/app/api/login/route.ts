@@ -8,7 +8,7 @@ import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
 import type { User } from '@/surrealdb/migrations/schema/user/userTypes'
 
 
-import { getDb, initDb } from '@/libs/cirql'
+import { getDb, initDb } from '@/libs/surreal'
 
 //import type { UserTable } from './users'
 
@@ -23,21 +23,20 @@ type ResponseUser = {
 
 
 
-const db = await getDb();
+const db = await initDb();
 
 export async function POST(req: Request) {
   // Vars
   const { email, password, wallet_address } = await req.json()
 
   const users = await db.execute({
-    query: select().from('user'),
+    query: select().from('user').where({wallet_address: wallet_address}),
     schema: userCreateSchema
   })
 
 //@ts-ignore
 
   const selectedUser = users.find(u => u.email === email && u.password === password || u.wallet_address === wallet_address)
-
 
   let response: null | User = null
 
@@ -54,10 +53,15 @@ export async function POST(req: Request) {
       ...filteredUserData
     }
 
-    return NextResponse.json(response)
+    return NextResponse.json( {
+      status:200,
+      statusText:"OK",
+      data:response
+    })
   }
   else {
     const db = await getDb();
+    const currentDatetime = new Date().toISOString();
 
     // We return 401 status code and error message if user is not found
   const newUser = await db.execute({
@@ -67,6 +71,9 @@ export async function POST(req: Request) {
     password: password || '',
     image: "/images/avatars/1.png",
     wallet_address: wallet_address,
+      accounts: [],
+      sessions: [],
+      emailVerified: currentDatetime,
   }),
     schema: userCreateSchema
   })
