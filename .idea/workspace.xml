@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Successfully implements cirql">
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Backup before reverting to direct SurrealDB call as opposed to Cirql">
+      <change afterPath="$PROJECT_DIR$/src/app/api/mentaport/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/mentaport/actions/mentaport/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/mentaport/actions/mentaport/mentaport-sdk.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/apps/invoice/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/apps/invoice/add/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/cirql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/cirql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/surreal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/surreal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/memory-2024-08-26.surql" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/dev.surql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surrealdb/surql-gen-dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/surrealdb/surql-gen-dev.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/manny/IdeaProjects/RightStudio/src/app/api/login&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/manny/IdeaProjects/RightStudio/src/app/api/mentaport&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -83,11 +85,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\api\mentaport" />
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\libs\mentaport" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\api\login" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\libs" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\public\images\avatars" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\surrealdb" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio" />
     </key>
   </component>
   <component name="RunManager">
@@ -261,6 +263,11 @@
       <workItem from="1725855657272" duration="12060000" />
       <workItem from="1725870853500" duration="6673000" />
       <workItem from="1727757361847" duration="1671000" />
+      <workItem from="1727823546470" duration="653000" />
+      <workItem from="1728899279836" duration="371000" />
+      <workItem from="1728957249204" duration="360000" />
+      <workItem from="1728958035595" duration="7271000" />
+      <workItem from="1729474041171" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -446,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725870524360</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Backup before reverting to direct SurrealDB call as opposed to Cirql">
+      <option name="closed" value="true" />
+      <created>1727823599480</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727823599480</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,6 +482,7 @@
     <MESSAGE value="Removes registration and implements wallet sign in.  &#10;&#10;Additional sign in types not tested.  &#10;Currenty handled by NextAuth" />
     <MESSAGE value="Adds default values" />
     <MESSAGE value="Successfully implements cirql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully implements cirql" />
+    <MESSAGE value="Backup before reverting to direct SurrealDB call as opposed to Cirql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backup before reverting to direct SurrealDB call as opposed to Cirql" />
   </component>
 </project>

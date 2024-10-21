@@ -17,12 +17,13 @@ import { createAuth } from "thirdweb/auth";
 
 import { privateKeyAccount } from "thirdweb/wallets";
 
-import { initDb } from "@/libs/cirql"
+import { initDb } from "@/libs/surreal"
 import { client } from "./thirdwebclient";
 import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
 
 import type { User, UserCreate } from '@/surrealdb/migrations/schema/user/userTypes'
-import { create } from 'cirql'
+
+//import { create } from 'cirql'
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY;
 

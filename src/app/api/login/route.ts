@@ -1,7 +1,7 @@
 // Next Imports
 import { NextResponse } from 'next/server'
 
-import { select, create } from 'cirql'
+
 
 import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
 
@@ -23,16 +23,20 @@ type ResponseUser = {
 
 
 
-const db = await initDb();
+
 
 export async function POST(req: Request) {
   // Vars
   const { email, password, wallet_address } = await req.json()
 
+  /*
+
   const users = await db.execute({
     query: select().from('user').where({wallet_address: wallet_address}),
     schema: userCreateSchema
   })
+
+   */
 
 //@ts-ignore
 
@@ -62,7 +66,7 @@ export async function POST(req: Request) {
   else {
     const db = await getDb();
     const currentDatetime = new Date().toISOString();
-
+/*
     // We return 401 status code and error message if user is not found
   const newUser = await db.execute({
     query: create('user').setAll({
@@ -77,6 +81,8 @@ export async function POST(req: Request) {
   }),
     schema: userCreateSchema
   })
+
+ */
 
 
 

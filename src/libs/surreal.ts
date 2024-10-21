@@ -1,36 +1,23 @@
-import { Surreal } from "surrealdb.js";
+import { Surreal } from "surrealdb";
+
 
 let db: Surreal | undefined;
+
 const connectionString = process.env.NEXT_PUBLIC_SURREALDB_CONNECTION
-const username = process.env.NEXT_PUBLIC_SURREALDB_USERNAME
-const password = process.env.NEXT_PUBLIC_SURREALDB_PASSWORD
 const database = process.env.NEXT_PUBLIC_SURREALDB_DB
 const namespace = process.env.NEXT_PUBLIC_SURREALDB_NS
 
 export async function initDb(): Promise<Surreal | undefined> {
   if (db) return db;
+
   db = new Surreal();
 
   try {
-// Authenticate using a pair of credentials
     await db.connect(`${connectionString}/rpc`);
-
-
-    await db.use({
-      namespace: namespace,
-      database: database,
-      auth: {
-        username: username,
-        password: password
-      }
-    });
-
-    // @ts-ignore
-  //  await db.signin({username: username, password:password });
-
-    console.log("Connected to SurrealDB");
+    await db.use({ namespace: `${namespace}`, database: `${database}` });
 
     return db;
+
   } catch (err) {
     console.error("Failed to connect to SurrealDB:", err);
     throw err;

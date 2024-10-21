@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --names surreal,next \"pnpm run dev:surreal\" \"pnpm run dev:next\"",
-    "dev:surreal": "dotenv -- cross-var surreal start --allow-all --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% --bind 0.0.0.0:8000 memory",
+    "dev:surreal": "dotenv -- cross-var surreal start -A --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% --bind 0.0.0.0:8000 memory",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
@@ -36,6 +36,7 @@
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
     "@hookform/resolvers": "^3.9.0",
+    "@mentaport/certificates": "1.1.8-alpha.3",
     "@mui/lab": "5.0.0-alpha.172",
     "@mui/material": "^5.16.4",
     "@mui/material-nextjs": "^5.16.4",
