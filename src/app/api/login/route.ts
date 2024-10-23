@@ -1,96 +1,64 @@
-// Next Imports
 import { NextResponse } from 'next/server'
 
 
-
-import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
-
-import type { User } from '@/surrealdb/migrations/schema/user/userTypes'
+import { jsonify } from 'surrealdb'
 
 
-import { getDb, initDb } from '@/libs/surreal'
+import { getDb } from '@/libs/surreal'
 
-//import type { UserTable } from './users'
 
-type ResponseUser = {
-  name: string
-  email: string
-  password: string
-  image: string
-  wallet_address: string,
-  newUser: boolean
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  image: string;
+  wallet_address: string;
 }
-
-
-
-
+let userRecord: any
 
 export async function POST(req: Request) {
   // Vars
   const { email, password, wallet_address } = await req.json()
+  const db = await getDb()
 
-  /*
+  if (!db) {
+    console.error('Database not initialized')
 
-  const users = await db.execute({
-    query: select().from('user').where({wallet_address: wallet_address}),
-    schema: userCreateSchema
-  })
-
-   */
-
-//@ts-ignore
-
-  const selectedUser = users.find(u => u.email === email && u.password === password || u.wallet_address === wallet_address)
-
-  let response: null | User = null
-
-
-
-  if (selectedUser) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    //@ts-ignore
-    const { password: _, ...filteredUserData } = selectedUser
-
-    // @ts-ignore
-
-    response = {
-      ...filteredUserData
-    }
-
-    return NextResponse.json( {
-      status:200,
-      statusText:"OK",
-      data:response
-    })
+    return
   }
-  else {
-    const db = await getDb();
-    const currentDatetime = new Date().toISOString();
-/*
-    // We return 401 status code and error message if user is not found
-  const newUser = await db.execute({
-    query: create('user').setAll({
-    name: "New User",
-    email: email || '',
-    password: password || '',
-    image: "/images/avatars/1.png",
-    wallet_address: wallet_address,
-      accounts: [],
-      sessions: [],
-      emailVerified: currentDatetime,
-  }),
-    schema: userCreateSchema
-  })
-
- */
 
 
 
+  try {
+
+    const users = await db.select<User>("User");
+
+    console.log("All users:", jsonify(users));
+    userRecord = users.find((user: User) => user.wallet_address === wallet_address)
+
+  } catch (error) {
+    console.error('Error querying user:', error)
+  }
+
+
+  if (!userRecord) {
     return NextResponse.json({
-      status:200,
-      statusText:"OK",
-      data:newUser
-    },
-     )
+      status: 200,
+      statusText: 'OK',
+      userRecord: {
+          newUser: true,
+          wallet_address: wallet_address,
+          email: email,
+          password: password
+        }
+
+    })
+  } else {
+    return NextResponse.json({
+      status: 200,
+      statusText: 'OK',
+      userRecord: userRecord
+    })
   }
 }

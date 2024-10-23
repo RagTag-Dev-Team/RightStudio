@@ -37,19 +37,10 @@ import { signIn } from 'next-auth/react'
 
 import classnames from 'classnames'
 
-import { darkTheme } from "thirdweb/react";
-
-import { ConnectButton } from "thirdweb/react";
+import { darkTheme, ConnectButton } from 'thirdweb/react'
 
 import { client } from '@/libs/thirdwebclient'
-import {
-  generatePayload,
-  isLoggedIn,
-  logout
-} from '@/libs/auth'
-
-
-
+import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
@@ -63,9 +54,6 @@ import Logo from '@components/layout/shared/Logo'
 
 // Config Imports
 // import themeConfig from '@configs/themeConfig'
-
-
-
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -104,9 +92,7 @@ type ErrorType = {
 
 // type FormData = InferInput<typeof schema>
 
-const THIRDWEB_CLIENT = client;
-
-
+const THIRDWEB_CLIENT = client
 
 /* const schema = object({
   email: pipe(string(), minLength(1, 'This field is required'), email('Email is invalid')),
@@ -122,7 +108,7 @@ const THIRDWEB_CLIENT = client;
 
 const Login = ({ mode }: { mode: SystemMode }) => {
   // States
-//  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  //  const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [errorState, setErrorState] = useState<ErrorType | null>(null)
 
   // Vars
@@ -166,8 +152,8 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     borderedDarkIllustration
   )
 
- // const handleClickShowPassword = () => setIsPasswordShown(show => !show)
-/*
+  // const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+  /*
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     const res = await signIn('credentials', {
       email: data.email,
@@ -219,32 +205,29 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             client={THIRDWEB_CLIENT}
             theme={darkTheme({
               colors: {
-                primaryButtonBg: "#247cdb",
-                primaryButtonText: "#ffffff",
-              },
-            })}
-            connectModal={
-              {
-                title: "Connect to RightStudio",
-                titleIcon: "/images/pages/rightstudio-icon-color.png",
-                size: "wide",
-                showThirdwebBranding: false,
+                primaryButtonBg: '#247cdb',
+                primaryButtonText: '#ffffff'
               }
-            }
-            connectButton={{
-              label: "Get Started",
+            })}
+            connectModal={{
+              title: 'Connect to RightStudio',
+              titleIcon: '/images/pages/rightstudio-icon-color.png',
+              size: 'wide',
+              showThirdwebBranding: false
             }}
-
+            connectButton={{
+              label: 'Get Started'
+            }}
             auth={{
-              isLoggedIn: async (address) => {
-                console.log("checking if logged in!", { address });
+              isLoggedIn: async address => {
+                console.log('checking if logged in!', { address })
 
-                return await isLoggedIn();
+                return await isLoggedIn()
               },
-              doLogin: async (params) => {
+              doLogin: async params => {
+                console.log('doLogin', { params })
 
                 const res = await signIn('credentials', {
-
                   wallet_address: params.payload.address,
                   redirect: false
                 })
@@ -254,31 +237,23 @@ const Login = ({ mode }: { mode: SystemMode }) => {
                   const redirectURL = searchParams.get('redirectTo') ?? '/'
 
                   router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-                }
-                else {
+                } else {
                   if (res?.error) {
                     const error = JSON.parse(res.error)
-
 
                     setErrorState(error)
                   }
                 }
 
                 //  await login(params);
-
               },
 
-              getLoginPayload: async ({ address }) =>
-                generatePayload({ address }),
+              getLoginPayload: async ({ address }) => generatePayload({ address }),
               doLogout: async () => {
-                console.log("logging out!");
-                await logout();
-              },
+                console.log('logging out!')
+                await logout()
+              }
             }}
-
-
-
-
           />
           {errorState && errorState.message && (
             <Alert icon={false} className='bg-[var(--mui-palette-primary-lightOpacity)] text-center'>

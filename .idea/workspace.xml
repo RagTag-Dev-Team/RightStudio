@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Backup before reverting to direct SurrealDB call as opposed to Cirql">
-      <change afterPath="$PROJECT_DIR$/src/app/api/mentaport/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/mentaport/actions/mentaport/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/libs/mentaport/actions/mentaport/mentaport-sdk.ts" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="SurrealDB not functional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/apps/invoice/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/apps/invoice/add/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/surreal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/surreal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +265,10 @@
       <workItem from="1728899279836" duration="371000" />
       <workItem from="1728957249204" duration="360000" />
       <workItem from="1728958035595" duration="7271000" />
-      <workItem from="1729474041171" duration="729000" />
+      <workItem from="1729474041171" duration="3216000" />
+      <workItem from="1729481145456" duration="2482000" />
+      <workItem from="1729635003470" duration="758000" />
+      <workItem from="1729637231945" duration="4405000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -461,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727823599480</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="SurrealDB not functional">
+      <option name="closed" value="true" />
+      <created>1729474951935</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1729474951935</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +492,7 @@
     <MESSAGE value="Adds default values" />
     <MESSAGE value="Successfully implements cirql" />
     <MESSAGE value="Backup before reverting to direct SurrealDB call as opposed to Cirql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Backup before reverting to direct SurrealDB call as opposed to Cirql" />
+    <MESSAGE value="SurrealDB not functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="SurrealDB not functional" />
   </component>
 </project>
