@@ -220,12 +220,12 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             }}
             auth={{
               isLoggedIn: async address => {
-                console.log('checking if logged in!', { address })
+
 
                 return await isLoggedIn()
               },
               doLogin: async params => {
-                console.log('doLogin', { params })
+
 
                 const res = await signIn('credentials', {
                   wallet_address: params.payload.address,
