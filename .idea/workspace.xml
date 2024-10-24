@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="SurrealDB not functional">
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Successful implements update version of SurrealDB.&#10;&#10;Login Flow created.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/libs/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/surreal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/surreal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,8 +210,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -268,7 +263,10 @@
       <workItem from="1729474041171" duration="3216000" />
       <workItem from="1729481145456" duration="2482000" />
       <workItem from="1729635003470" duration="758000" />
-      <workItem from="1729637231945" duration="4405000" />
+      <workItem from="1729637231945" duration="5591000" />
+      <workItem from="1729799225923" duration="45000" />
+      <workItem from="1729799287461" duration="3256000" />
+      <workItem from="1729803248007" duration="2651000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -470,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729474951935</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Successful implements update version of SurrealDB.&#10;&#10;Login Flow created.">
+      <option name="closed" value="true" />
+      <created>1729642073947</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1729642073947</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,6 +499,7 @@
     <MESSAGE value="Successfully implements cirql" />
     <MESSAGE value="Backup before reverting to direct SurrealDB call as opposed to Cirql" />
     <MESSAGE value="SurrealDB not functional" />
-    <option name="LAST_COMMIT_MESSAGE" value="SurrealDB not functional" />
+    <MESSAGE value="Successful implements update version of SurrealDB.&#10;&#10;Login Flow created." />
+    <option name="LAST_COMMIT_MESSAGE" value="Successful implements update version of SurrealDB.&#10;&#10;Login Flow created." />
   </component>
 </project>

@@ -10,6 +10,10 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import type { NextAuthOptions } from 'next-auth'
 
+import { jsonify } from 'surrealdb'
+
+
+
 //import type { Adapter } from 'next-auth/adapters'
 import type { VerifyLoginPayloadParams } from 'thirdweb/auth'
 
@@ -19,15 +23,8 @@ import { privateKeyAccount } from 'thirdweb/wallets'
 
 import { client } from './thirdwebclient'
 
-//import { userCreateSchema } from '@/surrealdb/migrations/schema/user/userSchema'
-
-//import type { User, UserCreate } from '@/surrealdb/migrations/schema/user/userTypes'
-
-//import { create } from 'cirql'
-
-import { jsonify } from 'surrealdb'
-
 import { getDb } from '@/libs/surreal'
+
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY
 
@@ -130,18 +127,23 @@ export const authOptions: NextAuthOptions = {
              * user data below. Below return statement will set the user object in the token and the same is set in
              * the session which will be accessible all over the app.
              */
-            const db = await getDb()
-            console.log("new user?", data.userRecord.newUser)
+
+
             if (data.userRecord.newUser) {
               data.userRecord.newUser = false
               console.log('Creating User')
               const db = await getDb();
+
               if (!db) {
                 console.error("Database not initialized");
+
                 return;
               }
+
               try {
+                // @ts-ignore
                 const user = await db.create<User>("User", data.userRecord);
+
                 console.log("User created:", jsonify(user));
               } catch (err: unknown) {
                 console.error("Failed to create user:", err instanceof Error ? err.message : String(err));
@@ -209,8 +211,14 @@ export const authOptions: NextAuthOptions = {
          * For adding custom parameters to user in session, we first need to add those parameters
          * in token which then will be available in the `session()` callback
          */
+
+
         token.name = user.name
         token.email = user.email
+
+        //@ts-ignore
+
+        token.wallet_address = user.wallet_address
       }
 
       return token
@@ -221,7 +229,11 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
         session.user.name = token.name
+
+        //@ts-ignore
+        session.user.wallet_address = token.wallet_address
       }
+
 
       return session
     }
