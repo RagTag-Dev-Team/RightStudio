@@ -3,7 +3,6 @@ import { useRef } from 'react'
 
 // Next Imports
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -13,7 +12,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
-import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import NavHeader from '@menu/components/vertical-menu/NavHeader'
@@ -25,7 +23,6 @@ import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { mapHorizontalToVerticalMenu } from '@menu/utils/menuUtils'
-import { getLocalizedUrl } from '@/utils/i18n'
 
 const StyledBoxForShadow = styled('div')(({ theme }) => ({
   top: 60,
@@ -48,7 +45,6 @@ const StyledBoxForShadow = styled('div')(({ theme }) => ({
 const VerticalNavContent = ({ children }: ChildrenType) => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
-  const { lang: locale } = useParams()
 
   // Refs
   const shadowRef = useRef(null)
@@ -74,7 +70,7 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
   return (
     <>
       <NavHeader>
-        <Link href={getLocalizedUrl('/', locale as Locale)}>
+        <Link href='/'>
           <Logo />
         </Link>
         <NavCollapseIcons

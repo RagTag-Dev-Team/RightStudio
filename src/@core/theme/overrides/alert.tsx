@@ -42,7 +42,7 @@ const alerts: Theme['components'] = {
       },
       action: {
         padding: 0,
-        marginRight: 0,
+        marginRight: 0
       }
     },
     variants: [

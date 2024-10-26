@@ -20,7 +20,13 @@ const IndeterminateIcon = () => {
   return (
     <svg width='1em' height='1em' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path d='M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7Z' fill='currentColor' />
-      <path d='M8.5 12h7' stroke='var(--mui-palette-common-white)' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+      <path
+        d='M8.5 12h7'
+        stroke='var(--mui-palette-common-white)'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
     </svg>
   )
 }
@@ -29,7 +35,13 @@ const CheckedIcon = () => {
   return (
     <svg width='1em' height='1em' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path d='M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7Z' fill='currentColor' />
-      <path d='m8.5 12 2.5 2.5 5-5' stroke='var(--mui-palette-common-white)' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+      <path
+        d='m8.5 12 2.5 2.5 5-5'
+        stroke='var(--mui-palette-common-white)'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
     </svg>
   )
 }

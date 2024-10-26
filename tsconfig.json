@@ -10,24 +10,15 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "moduleDetection": "force",
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    // Best practices
-    "noFallthroughCasesInSwitch": true,
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
     "plugins": [
       {
         "name": "next"

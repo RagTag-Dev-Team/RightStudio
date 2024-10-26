@@ -45,7 +45,7 @@ const radio: Theme['components'] = {
               '& svg': {
                 fontSize: '1.5rem'
               }
-          }),
+            }),
         '&:not(.Mui-checked):not(.Mui-disabled) svg, &:not(.Mui-checked):not(.Mui-disabled) i': {
           color: 'var(--mui-palette-text-disabled)'
         },
