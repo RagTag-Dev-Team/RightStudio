@@ -12,8 +12,6 @@ import type { NextAuthOptions } from 'next-auth'
 
 import { jsonify } from 'surrealdb'
 
-
-
 //import type { Adapter } from 'next-auth/adapters'
 import type { VerifyLoginPayloadParams } from 'thirdweb/auth'
 
@@ -24,7 +22,6 @@ import { privateKeyAccount } from 'thirdweb/wallets'
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
-
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY
 
@@ -69,14 +66,13 @@ export async function isLoggedIn() {
   return true
 }
 
-
 interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  image: string;
-  wallet_address: string;
+  id: string
+  name: string
+  email: string
+  password: string
+  image: string
+  wallet_address: string
 }
 
 export const authOptions: NextAuthOptions = {
@@ -107,6 +103,7 @@ export const authOptions: NextAuthOptions = {
           wallet_address: string
         }
 
+        console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -120,7 +117,6 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json()
 
-
           if (res.status === 200) {
             /*
              * Please unset all the sensitive information of the user either from API response or before returning
@@ -128,31 +124,27 @@ export const authOptions: NextAuthOptions = {
              * the session which will be accessible all over the app.
              */
 
-
             if (data.userRecord.newUser) {
               data.userRecord.newUser = false
               console.log('Creating User')
-              const db = await getDb();
+              const db = await getDb()
 
               if (!db) {
-                console.error("Database not initialized");
+                console.error('Database not initialized')
 
-                return;
+                return
               }
 
               try {
                 // @ts-ignore
-                const user = await db.create<User>("User", data.userRecord);
+                const user = await db.create<User>('User', data.userRecord)
 
-                console.log("User created:", jsonify(user));
+                console.log('User created:', jsonify(user))
               } catch (err: unknown) {
-                console.error("Failed to create user:", err instanceof Error ? err.message : String(err));
+                console.error('Failed to create user:', err instanceof Error ? err.message : String(err))
               } finally {
-                await db.close();
+                await db.close()
               }
-
-
-
             }
 
             return data.userRecord
@@ -212,7 +204,6 @@ export const authOptions: NextAuthOptions = {
          * in token which then will be available in the `session()` callback
          */
 
-
         token.name = user.name
         token.email = user.email
 
@@ -233,7 +224,6 @@ export const authOptions: NextAuthOptions = {
         //@ts-ignore
         session.user.wallet_address = token.wallet_address
       }
-
 
       return session
     }

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Updates login CRUD operations and cleans up console log statements.">
-      <change beforePath="$PROJECT_DIR$/src/views/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Removes console log statements from Login">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/login/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/libs/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/auth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +266,8 @@
       <workItem from="1729637231945" duration="5591000" />
       <workItem from="1729799225923" duration="45000" />
       <workItem from="1729799287461" duration="3256000" />
-      <workItem from="1729803248007" duration="2982000" />
+      <workItem from="1729803248007" duration="3719000" />
+      <workItem from="1729984696353" duration="92000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -482,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729806204362</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Removes console log statements from Login">
+      <option name="closed" value="true" />
+      <created>1729806391370</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1729806391370</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,6 +518,7 @@
     <MESSAGE value="SurrealDB not functional" />
     <MESSAGE value="Successful implements update version of SurrealDB.&#10;&#10;Login Flow created." />
     <MESSAGE value="Updates login CRUD operations and cleans up console log statements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates login CRUD operations and cleans up console log statements." />
+    <MESSAGE value="Removes console log statements from Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removes console log statements from Login" />
   </component>
 </project>

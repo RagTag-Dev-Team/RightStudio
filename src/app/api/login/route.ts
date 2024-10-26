@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 
-
 import { jsonify } from 'surrealdb'
-
 
 import { getDb } from '@/libs/surreal'
 
@@ -34,7 +32,6 @@ export async function POST(req: Request) {
 
     //@ts-ignore
     userRecord = jsonify(...result[0])
-
   } catch (error) {
     console.error('Error querying user:', error)
   }
