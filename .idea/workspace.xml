@@ -4,21 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds Cursor files and updates auth cleanup">
-      <change afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AuthRedirect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/contexts/nextAuthProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hocs/AuthGuard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hocs/GuestOnlyRoute.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds auth to starter kit">
+      <change afterPath="$PROJECT_DIR$/src/contexts/intersectionContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/academy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/calendar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/chat.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/ecommerce.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/email.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/invoice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/kanban.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/logistics.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/permissions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/apps/userList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/pages/faq.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/pages/pricing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/pages/userProfile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fake-db/pages/widgetExamples.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useIntersection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppFullCalendar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppKeenSlider.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppReactApexCharts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppReactDatepicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppReactDropzone.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppReactToastify.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/AppRecharts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/inputOtp.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/styles/tiptapEditor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/ReduxProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/slices/calendar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/slices/chat.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/slices/email.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/slices/kanban.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(blank-layout-pages)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(blank-layout-pages)/(guest-only)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(blank-layout-pages)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(blank-layout-pages)/(guest-only)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/(private)/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/(private)/home/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/(private)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@core/components/customizer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@core/components/customizer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@core/hooks/useLayoutInit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/@core/hooks/useLayoutInit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@core/theme/overrides/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@core/theme/overrides/alert.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@core/theme/overrides/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@core/theme/overrides/checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@core/theme/overrides/radio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@core/theme/overrides/radio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/themeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/themeConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hocs/AuthGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hocs/AuthGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +58,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="starter-kit" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,30 +98,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "starter-kit",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio/src/app/(blank-layout-pages)/(guest-only)",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\manny\\IdeaProjects\\RightStudio\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;demo-mentaport&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/manny/IdeaProjects/RightStudio/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\manny\\IdeaProjects\\RightStudio\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\(blank-layout-pages)\(guest-only)" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\components" />
-      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\hocs" />
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\contexts" />
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\libs" />
+      <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\views" />
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\app\api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -285,6 +315,7 @@
       <workItem from="1729803248007" duration="3719000" />
       <workItem from="1729984696353" duration="92000" />
       <workItem from="1729984806422" duration="599000" />
+      <workItem from="1729994366473" duration="127000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -518,7 +549,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729984850248</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Adds auth to starter kit">
+      <option name="closed" value="true" />
+      <created>1729987934233</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1729987934233</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,6 +584,7 @@
     <MESSAGE value="Updates login CRUD operations and cleans up console log statements." />
     <MESSAGE value="Removes console log statements from Login" />
     <MESSAGE value="Adds Cursor files and updates auth cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adds Cursor files and updates auth cleanup" />
+    <MESSAGE value="Adds auth to starter kit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds auth to starter kit" />
   </component>
 </project>

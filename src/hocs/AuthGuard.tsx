@@ -10,5 +10,4 @@ import AuthRedirect from '@/components/AuthRedirect'
 export default async function AuthGuard({ children }: ChildrenType) {
   const session = await getServerSession()
 
-  return <>{session ? children : <AuthRedirect lang={''} />}</>
-}
+  return <>{session ? children : <AuthRedirect />}</>}

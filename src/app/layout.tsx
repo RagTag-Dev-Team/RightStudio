@@ -1,6 +1,10 @@
 // Third-party Imports
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
+import { SettingsProvider } from '@core/contexts/settingsContext'
+
+import { getMode, getSettingsFromCookie } from '@core/utils/serverHelpers'
+
 // Type Imports
 import type { ChildrenType } from '@core/types'
 
@@ -19,10 +23,16 @@ export const metadata = {
 const RootLayout = ({ children }: ChildrenType) => {
   // Vars
   const direction = 'ltr'
+  const mode = getMode()
+  const settingsCookie = getSettingsFromCookie()
 
   return (
     <html id='__next' lang='en' dir={direction}>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
+      <body className='flex is-full min-bs-full flex-auto flex-col'>
+        <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
+          {children}
+        </SettingsProvider>
+      </body>
     </html>
   )
 }
