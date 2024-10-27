@@ -23,6 +23,7 @@
     "@mui/material-nextjs": "^5.16.4",
     "classnames": "^2.5.1",
     "next": "^14.2.5",
+    "next-auth": "^4.24.10",
     "react": "^18.3.1",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.3.1",
@@ -63,5 +64,6 @@
   },
   "overrides": {
     "rimraf": "^5.0.7"
-  }
+  },
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }

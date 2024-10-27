@@ -2,6 +2,7 @@
 import type { ChildrenType, Direction } from '@core/types'
 
 // Context Imports
+import { NextAuthProvider } from '@/contexts/nextAuthProvider'
 import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
