@@ -14,7 +14,7 @@ import { useSettings } from '@core/hooks/useSettings'
 const useLayoutInit = (colorSchemeFallback: 'light' | 'dark') => {
   // Hooks
   const { settings } = useSettings()
-  const { setMode } = useColorScheme()
+  const { setMode, setColorScheme } = useColorScheme()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, updateCookieColorPref] = useCookie('colorPref')
   const isDark = useMedia('(prefers-color-scheme: dark)', colorSchemeFallback === 'dark')
@@ -27,6 +27,7 @@ const useLayoutInit = (colorSchemeFallback: 'light' | 'dark') => {
     if (settings.mode === 'system') {
       // We need to change the mode in settings context to apply the mode change to MUI components
       setMode(appMode)
+      setColorScheme(appMode)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
