@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Corrects Config to make File Upload the Home Page">
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds file uploader dropzone to form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/dashboards/fileUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/dashboards/fileUpload/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -274,7 +272,7 @@
       <workItem from="1729984696353" duration="92000" />
       <workItem from="1730146237929" duration="6311000" />
       <workItem from="1730155446284" duration="1791000" />
-      <workItem from="1730157384303" duration="582000" />
+      <workItem from="1730157384303" duration="763000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -516,7 +514,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730157418567</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Adds file uploader dropzone to form">
+      <option name="closed" value="true" />
+      <created>1730158021642</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1730158021642</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,6 +550,7 @@
     <MESSAGE value="Removes console log statements from Login" />
     <MESSAGE value="Removes extra menu items" />
     <MESSAGE value="Corrects Config to make File Upload the Home Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrects Config to make File Upload the Home Page" />
+    <MESSAGE value="Adds file uploader dropzone to form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds file uploader dropzone to form" />
   </component>
 </project>

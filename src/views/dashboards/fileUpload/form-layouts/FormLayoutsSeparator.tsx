@@ -79,7 +79,7 @@ const FormLayoutsSeparator = () => {
 
   return (
     <Card>
-      <CardHeader title='Multi Column with Form Separator' />
+      <CardHeader title='File Uploader' />
       <Divider />
       <form onSubmit={e => e.preventDefault()}>
         <CardContent>
@@ -87,6 +87,7 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12}>
               <FileUploaderRestrictions />
             </Grid>
+            {/*
             <Grid item xs={12}>
               <Typography variant='body2' className='font-medium'>
                 1. Account Details
@@ -242,6 +243,7 @@ const FormLayoutsSeparator = () => {
                 onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
               />
             </Grid>
+            */}
           </Grid>
         </CardContent>
         <Divider />
