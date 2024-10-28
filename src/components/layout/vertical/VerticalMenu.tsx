@@ -82,15 +82,18 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
         <SubMenu
-          label={dictionary['navigation'].dashboards}
+          label='Home'
           icon={<i className='tabler-smart-home' />}
 
         >
+          <MenuItem href={`/${locale}/dashboards/fileUpload`}>{dictionary['navigation'].fileUpload}</MenuItem>
+          {/*
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
+          */}
         </SubMenu>
         {/*
         <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>

@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "لوحات القيادة",
+    "fileUpload": "File Upload",
     "crm": "إدارة علاقات العملاء",
     "analytics": "تحليلات",
     "eCommerce": "التجارة الإلكترونية",

@@ -1,6 +1,7 @@
 {
   "navigation": {
     "dashboards": "Tableaux de bord",
+    "fileUpload": "File Upload",
     "crm": "GRC",
     "analytics": "Analytique",
     "eCommerce": "commerce électronique",

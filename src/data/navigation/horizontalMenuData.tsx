@@ -10,6 +10,11 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
     children: [
       // This is how you will normally render menu item
       {
+        label: dictionary['navigation'].fileUpload,
+        icon: 'tabler-chart-pie-2',
+        href: '/dashboards/fileUpload'
+      },
+      {
         label: dictionary['navigation'].crm,
         icon: 'tabler-chart-pie-2',
         href: '/dashboards/crm'
