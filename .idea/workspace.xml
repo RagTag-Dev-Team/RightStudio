@@ -4,27 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Removes extra menu items">
-      <change afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/dashboards/fileUpload/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsAlignment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsBasic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsCollapsible.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsIcons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsTabs.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Corrects Config to make File Upload the Home Page">
+      <change afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthRedirect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthRedirect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/vertical/VerticalMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/vertical/VerticalMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/themeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/themeConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dictionaries/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dictionaries/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dictionaries/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dictionaries/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dictionaries/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dictionaries/fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/navigation/horizontalMenuData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/navigation/horizontalMenuData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/navigation/verticalMenuData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/navigation/verticalMenuData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/searchData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/searchData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prisma/dev.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/dashboards/fileUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/dashboards/fileUpload/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,22 +61,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/manny/IdeaProjects/RightStudio/src/views/dashboards/fileUpload",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\manny\\IdeaProjects\\RightStudio\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/manny/IdeaProjects/RightStudio/src/views/dashboards/fileUpload&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\manny\\IdeaProjects\\RightStudio\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\manny\IdeaProjects\RightStudio\src\views\dashboards\fileUpload" />
@@ -290,6 +274,7 @@
       <workItem from="1729984696353" duration="92000" />
       <workItem from="1730146237929" duration="6311000" />
       <workItem from="1730155446284" duration="1791000" />
+      <workItem from="1730157384303" duration="582000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -523,7 +508,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730148528423</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Corrects Config to make File Upload the Home Page">
+      <option name="closed" value="true" />
+      <created>1730157418567</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1730157418567</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,6 +543,7 @@
     <MESSAGE value="Updates login CRUD operations and cleans up console log statements." />
     <MESSAGE value="Removes console log statements from Login" />
     <MESSAGE value="Removes extra menu items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removes extra menu items" />
+    <MESSAGE value="Corrects Config to make File Upload the Home Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrects Config to make File Upload the Home Page" />
   </component>
 </project>

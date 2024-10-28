@@ -18,6 +18,7 @@ import IconButton from '@mui/material/IconButton'
 
 // Components Imports
 import CustomTextField from '@core/components/mui/TextField'
+import FileUploaderRestrictions from '@views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx'
 
 // Styled Component Imports
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
@@ -83,6 +84,9 @@ const FormLayoutsSeparator = () => {
       <form onSubmit={e => e.preventDefault()}>
         <CardContent>
           <Grid container spacing={6}>
+            <Grid item xs={12}>
+              <FileUploaderRestrictions />
+            </Grid>
             <Grid item xs={12}>
               <Typography variant='body2' className='font-medium'>
                 1. Account Details
