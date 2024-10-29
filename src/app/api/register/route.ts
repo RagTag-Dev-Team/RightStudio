@@ -1,10 +1,8 @@
 // Next Imports
 import { NextResponse } from 'next/server'
 
-import type { Surreal } from 'surrealdb.js'
 
-import { getUserRepository } from '@/surrealdb/migrations/client/user/getUserRepository'
-import { initDb } from '@/libs/surreal'
+import { getDb } from '@/libs/surreal'
 
 
 //import type { UserTable } from './users'
@@ -18,7 +16,7 @@ type ResponseUser = {
   wallet_address: string
 }
 
-let db: Surreal | undefined;
+let db: any;
 
 
 const database = process.env.NEXT_PUBLIC_SURREALDB_DB
@@ -31,7 +29,7 @@ export async function POST(req: Request) {
 
   // Connect to SurrealDB
 
- db = await initDb();
+ db = await getDb();
 
 
 

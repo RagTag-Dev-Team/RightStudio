@@ -30,13 +30,13 @@ const FileUploaderRestrictions = () => {
     maxFiles: 2,
     maxSize: 2000000,
     accept: {
-      'image/*': ['.png', '.jpg', '.jpeg', '.gif']
+      'audio/wav': ['.wav']
     },
     onDrop: (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
     },
     onDropRejected: () => {
-      toast.error('You can only upload 2 files & maximum size of 2 MB.', {
+      toast.error('You can only upload wav files that have been mastered', {
         autoClose: 3000
       })
     }
@@ -82,7 +82,7 @@ const FileUploaderRestrictions = () => {
 
   return (
     <>
-      <div {...getRootProps({ className: 'dropzone' })}>
+      <div {...getRootProps({ className: 'dropzone',style: { border: '2px dashed #000', padding: '20px', borderColor:'rgb(225 222 245/0.12)' }  })}>
         <input {...getInputProps()} />
         <div className='flex items-center flex-col'>
           <Avatar variant='rounded' className='bs-12 is-12 mbe-9'>
@@ -91,8 +91,8 @@ const FileUploaderRestrictions = () => {
           <Typography variant='h4' className='mbe-2.5'>
             Drop files here or click to upload.
           </Typography>
-          <Typography>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
-          <Typography>Max 2 files and max size of 2 MB</Typography>
+          <Typography>Allowed *.wav</Typography>
+          <Typography>Max 1 file.</Typography>
         </div>
       </div>
       {files.length ? (
