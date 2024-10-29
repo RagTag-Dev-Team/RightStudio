@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds file uploader dropzone to form">
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Removes Fields">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FormLayoutsSeparator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +271,7 @@
       <workItem from="1729984696353" duration="92000" />
       <workItem from="1730146237929" duration="6311000" />
       <workItem from="1730155446284" duration="1791000" />
-      <workItem from="1730157384303" duration="763000" />
+      <workItem from="1730157384303" duration="1968000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -522,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730158021642</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Removes Fields">
+      <option name="closed" value="true" />
+      <created>1730158183285</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1730158183285</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,6 +558,7 @@
     <MESSAGE value="Removes extra menu items" />
     <MESSAGE value="Corrects Config to make File Upload the Home Page" />
     <MESSAGE value="Adds file uploader dropzone to form" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adds file uploader dropzone to form" />
+    <MESSAGE value="Removes Fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removes Fields" />
   </component>
 </project>
