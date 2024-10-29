@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Removes Fields">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds styling to file upload zone.">
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +273,7 @@
       <workItem from="1730155446284" duration="1791000" />
       <workItem from="1730157384303" duration="1968000" />
       <workItem from="1730162853335" duration="441000" />
-      <workItem from="1730163310877" duration="2052000" />
+      <workItem from="1730163310877" duration="2254000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -542,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730163145203</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Adds styling to file upload zone.">
+      <option name="closed" value="true" />
+      <created>1730165409809</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1730165409809</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,6 +577,7 @@
     <MESSAGE value="Corrects Config to make File Upload the Home Page" />
     <MESSAGE value="Adds file uploader dropzone to form" />
     <MESSAGE value="Removes Fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removes Fields" />
+    <MESSAGE value="Adds styling to file upload zone." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds styling to file upload zone." />
   </component>
 </project>
