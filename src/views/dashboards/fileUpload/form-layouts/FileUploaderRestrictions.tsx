@@ -27,10 +27,9 @@ const FileUploaderRestrictions = () => {
 
   // Hooks
   const { getRootProps, getInputProps } = useDropzone({
-    maxFiles: 2,
-    maxSize: 2000000,
+    maxFiles: 1,
     accept: {
-      'audio/wav': ['.wav']
+      'audio/*': ['.wav']
     },
     onDrop: (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
