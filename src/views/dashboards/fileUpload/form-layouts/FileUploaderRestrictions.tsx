@@ -27,10 +27,9 @@ const FileUploaderRestrictions = () => {
 
   // Hooks
   const { getRootProps, getInputProps } = useDropzone({
-    maxFiles: 2,
-    maxSize: 2000000,
+    maxFiles: 1,
     accept: {
-      'audio/wav': ['.wav']
+      'audio/*': ['.wav']
     },
     onDrop: (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
@@ -91,7 +90,7 @@ const FileUploaderRestrictions = () => {
           <Typography variant='h4' className='mbe-2.5'>
             Drop files here or click to upload.
           </Typography>
-          <Typography>Allowed *.wav</Typography>
+          <Typography>Only audio files are with *.wav extension are allowed.</Typography>
           <Typography>Max 1 file.</Typography>
         </div>
       </div>

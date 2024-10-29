@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adds styling to file upload zone.">
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/(dashboard)/(private)/layout.tsx" afterDir="false" />
+    <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adjusts file limits">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +274,7 @@
       <workItem from="1730155446284" duration="1791000" />
       <workItem from="1730157384303" duration="1968000" />
       <workItem from="1730162853335" duration="441000" />
-      <workItem from="1730163310877" duration="2254000" />
+      <workItem from="1730163310877" duration="2846000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -547,7 +548,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730165409809</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Removes footer from the vertical Layout">
+      <option name="closed" value="true" />
+      <created>1730165653453</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1730165653453</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Adjusts file limits">
+      <option name="closed" value="true" />
+      <created>1730166046771</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1730166046771</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,6 +595,8 @@
     <MESSAGE value="Adds file uploader dropzone to form" />
     <MESSAGE value="Removes Fields" />
     <MESSAGE value="Adds styling to file upload zone." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adds styling to file upload zone." />
+    <MESSAGE value="Removes footer from the vertical Layout" />
+    <MESSAGE value="Adjusts file limits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusts file limits" />
   </component>
 </project>
