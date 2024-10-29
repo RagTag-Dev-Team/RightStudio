@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3b932c94-31e1-4cfe-abcc-6e2b1e876c75" name="Changes" comment="Adjusts file limits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dashboards/fileUpload/form-layouts/FileUploaderRestrictions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +275,7 @@
       <workItem from="1730155446284" duration="1791000" />
       <workItem from="1730157384303" duration="1968000" />
       <workItem from="1730162853335" duration="441000" />
-      <workItem from="1730163310877" duration="2846000" />
+      <workItem from="1730163310877" duration="6247000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -564,7 +565,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730166046771</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Adjusts file limits">
+      <option name="closed" value="true" />
+      <created>1730166191432</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1730166191432</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
