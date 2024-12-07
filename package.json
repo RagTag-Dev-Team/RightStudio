@@ -68,6 +68,7 @@
     "keen-slider": "^6.8.6",
     "mapbox-gl": "^3.5.2",
     "music-metadata": "^10.5.1",
+    "music-metadata-browser": "^2.5.11",
     "negotiator": "^0.6.3",
     "next": "^14.2.5",
     "next-auth": "^4.24.7",

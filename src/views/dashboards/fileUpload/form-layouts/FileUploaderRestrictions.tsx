@@ -1,6 +1,8 @@
 // React Imports
 import { useState } from 'react'
 
+import { upload } from 'thirdweb/storage'
+
 // MUI Imports
 import List from '@mui/material/List'
 import Avatar from '@mui/material/Avatar'
@@ -11,9 +13,12 @@ import Typography from '@mui/material/Typography'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
+import { parseBlob } from 'music-metadata-browser'
 
 // Icon Imports
 import { useDropzone } from 'react-dropzone'
+
+import { client } from '@/libs/thirdwebclient'
 
 type FileProp = {
   name: string
@@ -29,10 +34,15 @@ const FileUploaderRestrictions = () => {
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 1,
     accept: {
-      'audio/*': ['.wav']
+      'audio/*': ['.wav', '.mp3']
     },
-    onDrop: (acceptedFiles: File[]) => {
+    onDrop: async (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
+
+      // read the metadata of the first file (since maxFiles is 1)
+      const metadata = await parseBlob(acceptedFiles[0])
+
+      console.log('Showing metadata', JSON.stringify(metadata, null, 2))
     },
     onDropRejected: () => {
       toast.error('You can only upload wav files that have been mastered', {
@@ -75,13 +85,30 @@ const FileUploaderRestrictions = () => {
     </ListItem>
   ))
 
+  const handleUploadFiles = async () => {
+    // console.log('Uploading files', files)
+
+    //upload files to IPFS
+    const uris = await upload({
+      client,
+      files: [files[0]]
+    })
+
+    console.log('Uploaded files', uris)
+  }
+
   const handleRemoveAllFiles = () => {
     setFiles([])
   }
 
   return (
     <>
-      <div {...getRootProps({ className: 'dropzone',style: { border: '2px dashed #000', padding: '20px', borderColor:'rgb(225 222 245/0.12)' }  })}>
+      <div
+        {...getRootProps({
+          className: 'dropzone',
+          style: { border: '2px dashed #000', padding: '20px', borderColor: 'rgb(225 222 245/0.12)' }
+        })}
+      >
         <input {...getInputProps()} />
         <div className='flex items-center flex-col'>
           <Avatar variant='rounded' className='bs-12 is-12 mbe-9'>
@@ -98,10 +125,15 @@ const FileUploaderRestrictions = () => {
         <>
           <List>{fileList}</List>
           <div className='buttons'>
+            {/*
             <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
               Remove All
             </Button>
-            <Button variant='contained'>Upload Files</Button>
+
+            <Button variant='contained' onClick={handleUploadFiles}>
+              Upload Files
+            </Button>
+            */}
           </div>
         </>
       ) : null}

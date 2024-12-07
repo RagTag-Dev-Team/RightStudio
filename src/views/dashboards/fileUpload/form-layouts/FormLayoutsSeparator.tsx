@@ -8,11 +8,13 @@ import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
+
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
+
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 
@@ -87,16 +89,16 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12}>
               <FileUploaderRestrictions />
             </Grid>
-            {/*
+
             <Grid item xs={12}>
               <Typography variant='body2' className='font-medium'>
-                1. Account Details
+                1. File Details
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='UserName'
+                label='Title'
                 placeholder='johnDoe '
                 value={formData.username}
                 onChange={e => setFormData({ ...formData, username: e.target.value })}
@@ -106,7 +108,7 @@ const FormLayoutsSeparator = () => {
               <CustomTextField
                 fullWidth
                 type='email'
-                label='Email'
+                label='FileType'
                 value={formData.email}
                 placeholder='johndoe@gmail.com'
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -115,7 +117,7 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='Password'
+                label='Duration'
                 placeholder='············'
                 id='form-layout-separator-password'
                 type={formData.isPasswordShown ? 'text' : 'password'}
@@ -140,7 +142,7 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='Confirm Password'
+                label='Release Date'
                 placeholder='············'
                 id='form-layout-separator-confirm-password'
                 type={formData.isConfirmPasswordShown ? 'text' : 'password'}
@@ -167,13 +169,13 @@ const FormLayoutsSeparator = () => {
             </Grid>
             <Grid item xs={12}>
               <Typography variant='body2' className='font-medium'>
-                2. Personal Info
+                2. File Metadata
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='First Name'
+                label='Artist'
                 placeholder='John'
                 value={formData.firstName}
                 onChange={e => setFormData({ ...formData, firstName: e.target.value })}
@@ -182,7 +184,7 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='Last Name'
+                label='Album'
                 placeholder='Doe'
                 value={formData.lastName}
                 onChange={e => setFormData({ ...formData, lastName: e.target.value })}
@@ -207,7 +209,7 @@ const FormLayoutsSeparator = () => {
               <CustomTextField
                 select
                 fullWidth
-                label='Language'
+                label='Release Year'
                 value={formData.language}
                 SelectProps={{
                   multiple: true,
@@ -230,7 +232,7 @@ const FormLayoutsSeparator = () => {
                 showMonthDropdown
                 onChange={(date: Date | null) => setFormData({ ...formData, date })}
                 placeholderText='MM/DD/YYYY'
-                customInput={<CustomTextField fullWidth label='Birth Date' placeholder='MM-DD-YYYY' />}
+                customInput={<CustomTextField fullWidth label='Release Date' placeholder='MM-DD-YYYY' />}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -243,13 +245,12 @@ const FormLayoutsSeparator = () => {
                 onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
               />
             </Grid>
-            */}
           </Grid>
         </CardContent>
         <Divider />
         <CardActions>
           <Button type='submit' variant='contained' className='mie-2'>
-            Submit
+            Store Media
           </Button>
           <Button
             type='reset'
