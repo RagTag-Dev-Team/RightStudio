@@ -81,17 +81,19 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <SubMenu
-          label={dictionary['navigation'].dashboards}
-          icon={<i className='tabler-smart-home' />}
-          suffix={<CustomChip label='5' size='small' color='error' round='true' />}
-        >
+        <SubMenu label='Home' icon={<i className='tabler-smart-home' />}>
+          <MenuItem href={`/${locale}/dashboards/fileUpload`}>{dictionary['navigation'].fileUpload}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/fileLibrary`}>{dictionary['navigation'].fileLibrary}</MenuItem>
+
+          {/*
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/ecommerce`}>{dictionary['navigation'].eCommerce}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
+          */}
         </SubMenu>
+        {/*
         <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>
           <MenuItem href='/front-pages/landing-page' target='_blank'>
             {dictionary['navigation'].landing}
@@ -386,6 +388,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
             <MenuItem disabled>{dictionary['navigation'].disabledMenu}</MenuItem>
           </SubMenu>
         </MenuSection>
+        */}
       </Menu>
       {/* <Menu
         popoutMenuOffset={{ mainAxis: 23 }}

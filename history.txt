@@ -1,0 +1,2 @@
+#V2
+SELECT * FROM user WHERE wallet_address ='0x3d26B6e2245859666a005918EbC768f8fe5954c4'

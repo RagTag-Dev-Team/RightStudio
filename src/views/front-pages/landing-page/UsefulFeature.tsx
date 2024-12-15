@@ -27,33 +27,33 @@ import frontCommonStyles from '@views/front-pages/styles.module.css'
 const feature = [
   {
     icon: <LaptopCharging color='var(--mui-palette-primary-main)' />,
-    title: 'Quality Code',
-    description: 'Code structure that all developers will easily understand and fall in love with.'
+    title: 'Media Records',
+    description: 'Tag your media with metadata to make it easier to find and use.'
   },
   {
     icon: <Rocket color='var(--mui-palette-primary-main)' />,
-    title: 'Continuous Updates',
-    description: 'Free updates for the next 12 months, including new demos and features.'
+    title: 'Media Portfolio',
+    description: 'Reward your media with incentives and rewards.'
   },
   {
     icon: <Paper color='var(--mui-palette-primary-main)' />,
-    title: 'Stater-Kit',
-    description: 'Start your project quickly without having to remove unnecessary features.'
+    title: 'Transactions',
+    description: 'Track your transactions and media rights.'
   },
   {
     icon: <Check color='var(--mui-palette-primary-main)' />,
-    title: 'API Ready',
-    description: 'Just change the endpoint and see your own data loaded within seconds.'
+    title: 'Incentives and Rewards',
+    description: 'Learn how to use incentives and rewards to drive media usage.'
   },
   {
     icon: <User color='var(--mui-palette-primary-main)' />,
-    title: 'Excellent Support',
-    description: 'An easy-to-follow doc with lots of references and code examples.'
+    title: 'Marketplace',
+    description: 'Offer your media to the world.'
   },
   {
     icon: <Document color='var(--mui-palette-primary-main)' />,
-    title: 'Well Documented',
-    description: 'An easy-to-follow doc with lots of references and code examples.'
+    title: 'Community',
+    description: 'Collaborate with other creators and users.'
   }
 ]
 

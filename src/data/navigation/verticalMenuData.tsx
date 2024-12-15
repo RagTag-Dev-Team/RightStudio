@@ -14,6 +14,16 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
     children: [
       // This is how you will normally render menu item
       {
+        label: dictionary['navigation'].fileUpload,
+        icon: 'tabler-circle',
+        href: '/dashboards/fileUpload'
+      },
+      {
+        label: dictionary['navigation'].fileLibrary,
+        icon: 'tabler-circle',
+        href: '/dashboards/fileLibrary'
+      },
+      {
         label: dictionary['navigation'].crm,
         icon: 'tabler-circle',
         href: '/dashboards/crm'

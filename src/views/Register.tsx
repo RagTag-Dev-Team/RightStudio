@@ -60,9 +60,19 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
+
+
+
 const Register = ({ mode }: { mode: SystemMode }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+    wallet_address: ''
+  })
 
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
@@ -89,6 +99,51 @@ const Register = ({ mode }: { mode: SystemMode }) => {
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
+  //@ts-ignore
+  const handleChange = (e) => {
+
+    const { name, value } = e.target
+
+    setFormValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e:Event) => {
+    e.preventDefault()
+    const {name, email, password, wallet_address } = formValues
+
+
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({name, email, password, wallet_address}),
+      });
+
+      if (!response.ok) {
+
+        throw new Error("Network response was not ok");
+
+      }
+
+      // Process response here
+      console.log("Registration Successful", response);
+
+    //  toast({ title: "Registration Successful" });
+
+    } catch (error: any) {
+      console.error("Registration Failed:", error);
+
+     // toast({ title: "Registration Failed", description: error.message });
+    }
+  }
+
+
   return (
     <div className='flex bs-full justify-center'>
       <div
@@ -114,14 +169,34 @@ const Register = ({ mode }: { mode: SystemMode }) => {
             <Typography variant='h4'>The RightStudio adventure starts here. 🚀</Typography>
             <Typography>Take control of your media rights now!</Typography>
           </div>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()} className='flex flex-col gap-6'>
-            <CustomTextField autoFocus fullWidth label='Username' placeholder='Enter your username' />
-            <CustomTextField fullWidth label='Email' placeholder='Enter your email' />
+          <form noValidate autoComplete='off' onSubmit={e => {
+            //@ts-ignore
+             handleSubmit(e)}} className='flex flex-col gap-6'>
+            <CustomTextField
+              autoFocus
+              fullWidth
+              label='Username'
+              placeholder='Enter your username'
+              name='name'
+              value={formValues.name}
+              onChange={handleChange}
+            />
+            <CustomTextField
+              fullWidth
+              label='Email'
+              placeholder='Enter your email'
+              name='email'
+              value={formValues.email}
+              onChange={handleChange}
+            />
             <CustomTextField
               fullWidth
               label='Password'
               placeholder='············'
               type={isPasswordShown ? 'text' : 'password'}
+              name='password'
+              value={formValues.password}
+              onChange={handleChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='end'>

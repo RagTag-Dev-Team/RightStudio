@@ -1,42 +1,43 @@
-import { Surreal } from "surrealdb.js";
+import Surreal from "surrealdb"
 
-let db: Surreal | undefined;
+interface DbConfig {
+  url: string
+  namespace: string
+  database: string
+  user: string
+  pass: string
+}
+
 const connectionString = process.env.NEXT_PUBLIC_SURREALDB_CONNECTION
-const username = process.env.NEXT_PUBLIC_SURREALDB_USERNAME
-const password = process.env.NEXT_PUBLIC_SURREALDB_PASSWORD
 const database = process.env.NEXT_PUBLIC_SURREALDB_DB
 const namespace = process.env.NEXT_PUBLIC_SURREALDB_NS
+const user = process.env.NEXT_PUBLIC_SURREALDB_USERNAME
+const pass = process.env.NEXT_PUBLIC_SURREALDB_PASSWORD
 
-export async function initDb(): Promise<Surreal | undefined> {
-  if (db) return db;
-  db = new Surreal();
+const DEFAULT_CONFIG: DbConfig = {
+  url: `${connectionString}`,
+  user: `${user}`,
+  pass: `${pass}`,
+  namespace: `${namespace}`,
+  database: `${database}`,
+
+}
+
+export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal> {
+  const db = new Surreal();
 
   try {
-// Authenticate using a pair of credentials
-    await db.connect(`${connectionString}/rpc`);
-
-
-    await db.use({ namespace: "rgtg", database: "rgtg_db" });
+    await db.connect(config.url);
+    await db.use({ namespace: config.namespace, database: config.database });
     await db.signin({
-      username: "ragtag_admin",
-      password:"bWFubnk6c0FzMyp6MnAh"
+      username: config.user,
+      password: config.pass
     });
-
-    console.log("Connected to SurrealDB");
 
     return db;
   } catch (err) {
-    console.error("Failed to connect to SurrealDB:", err);
+    console.error("Failed to connect to SurrealDB:", err instanceof Error ? err.message : String(err));
+    await db.close();
     throw err;
   }
-}
-
-export async function closeDb(): Promise<void> {
-  if (!db) return;
-  await db.close();
-  db = undefined;
-}
-
-export function getDb(): Surreal | undefined {
-  return db;
 }

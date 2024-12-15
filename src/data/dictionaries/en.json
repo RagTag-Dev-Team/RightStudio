@@ -1,6 +1,8 @@
 {
   "navigation": {
     "dashboards": "Dashboards",
+    "fileUpload": "File Upload",
+    "fileLibrary": "File Library",
     "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",

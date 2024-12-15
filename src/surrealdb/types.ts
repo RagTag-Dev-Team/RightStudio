@@ -1,12 +1,23 @@
 // Type Imports
-import { ThemeColor } from 'src/@core/layouts/types'
-import {
+
+//@ts-ignore
+
+import type { ThemeColor } from 'src/@core/layouts/types'
+
+// eslint-disable-next-line import/no-unresolved
+
+// @ts-ignore
+import type {
   CardStatsSquareProps,
   CardStatsVerticalProps,
   CardStatsHorizontalProps,
   CardStatsWithAreaChartProps,
   CardStatsHorizontalWithDetailsProps
-} from 'src/@core/components/card-statistics/types'
+
+}
+
+// @ts-ignore
+from  'src/@core/components/card-statistics/types'
 
 // Template Search
 //----------------

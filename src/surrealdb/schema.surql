@@ -8,7 +8,22 @@ OPTION IMPORT;
 -- SCOPES
 -- ------------------------------
 
-DEFINE SCOPE account SESSION 1d SIGNUP (CREATE user CONTENT { email: $email, name: $name, password: crypto::argon2::generate($password), wallet_address: $wallet_address }) SIGNIN (SELECT * FROM user WHERE wallet_address = $wallet_address OR email = $email AND crypto::argon2::compare(password, $password));
+DEFINE SCOPE user SESSION 1d
+SIGNUP (
+  CREATE user SET
+    email = $email,
+    name = $name,
+    pass = crypto::argon2::generate($password),
+    wallet_address = $wallet_address
+
+
+  )
+
+ SIGNIN (
+ SELECT * FROM user WHERE email = $email AND crypto::argon2::compare(password, $password)
+ );
+
+
 
 -- ------------------------------
 -- TABLE: account
@@ -79,7 +94,10 @@ DEFINE INDEX sessionToken ON session FIELDS sessionToken;
 -- TABLE: user
 -- ------------------------------
 
-DEFINE TABLE user TYPE NORMAL SCHEMAFULL PERMISSIONS NONE;
+DEFINE TABLE user TYPE NORMAL SCHEMAFULL
+PERMISSIONS
+    FOR select, update WHERE id = $auth.id,
+    FOR create, delete NONE;
 
 DEFINE FIELD accounts ON user TYPE array<record<account>> PERMISSIONS FOR select, create, update, delete WHERE FULL;
 DEFINE FIELD accounts[*] ON user TYPE record<account> PERMISSIONS FULL;

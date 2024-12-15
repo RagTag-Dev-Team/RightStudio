@@ -1,77 +1,61 @@
-// Next Imports
 import { NextResponse } from 'next/server'
 
-import type { Surreal } from 'surrealdb.js'
+import { jsonify } from 'surrealdb'
 
-import { getUserRepository } from '@/surrealdb/migrations/client/user/getUserRepository'
-import { initDb } from '@/libs/surreal'
+import { getDb } from '@/libs/surreal'
 
-//import type { UserTable } from './users'
-
-type ResponseUser = {
-  id: number
+interface User {
+  id: string
   name: string
   email: string
   password: string
   image: string
   wallet_address: string
 }
-
-let db: Surreal | undefined;
-
-// Mock data for demo purpose
-// import { users } from './users'
-
+let userRecord: any
 
 export async function POST(req: Request) {
   // Vars
   const { email, password, wallet_address } = await req.json()
+  const db = await getDb()
 
-  // Connect to SurrealDB
- db = await initDb()
+  if (!db) {
+    console.error('Database not initialized')
 
+    return
+  }
 
-  // @ts-ignore
-  const rep = getUserRepository(db);
+  try {
+    console.log()
 
+    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
 
-
- const users = await rep.getAllUsers()
-
-//@ts-ignore
-
-  const user = users.find(u => u.email === email && u.password === password || u.wallet_address === wallet_address)
-
-  console.log('UserResult',users);
-
-
- // const user = users.find(u => u.email === email && u.password === password)
-
-  let response: null | ResponseUser = null
-
-  if (user) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     //@ts-ignore
-    const { password: _, ...filteredUserData } = user
+    userRecord = jsonify(...result[0])
+  } catch (error) {
+    console.error('Error querying user:', error)
+  }
 
-    // @ts-ignore
+  if (!userRecord) {
+    console.log('User does not exist.')
 
-    response = {
-      ...filteredUserData
-    }
-
-    return NextResponse.json(response)
-  } else {
-    // We return 401 status code and error message if user is not found
-    return NextResponse.json(
-      {
-        // We create object here to separate each error message for each field in case of multiple errors
-        message: ['Email or Password is invalid']
-      },
-      {
-        status: 401,
-        statusText: 'Unauthorized Access'
+    return NextResponse.json({
+      status: 200,
+      statusText: 'OK',
+      userRecord: {
+        newUser: true,
+        wallet_address: wallet_address,
+        email: email,
+        password: password
       }
-    )
+    })
+  } else {
+    console.log('User found in database')
+
+    return NextResponse.json({
+      status: 200,
+      statusText: 'OK',
+      userRecord: userRecord
+    })
   }
 }

@@ -17,7 +17,7 @@ import Header from '@components/layout/horizontal/Header'
 import Navbar from '@components/layout/vertical/Navbar'
 import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
-import Customizer from '@core/components/customizer'
+// import Customizer from '@core/components/customizer'
 import ScrollToTop from '@core/components/scroll-to-top'
 import AuthGuard from '@/hocs/AuthGuard'
 
@@ -44,7 +44,8 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
             <VerticalLayout
               navigation={<Navigation dictionary={dictionary} mode={mode} systemMode={systemMode} />}
               navbar={<Navbar />}
-              footer={<VerticalFooter />}
+
+             // footer={<VerticalFooter />}
             >
               {children}
             </VerticalLayout>
@@ -63,7 +64,10 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
             <i className='tabler-arrow-up' />
           </Button>
         </ScrollToTop>
+        {/* Hide Customizer on production
+
         <Customizer dir={direction} />
+        */}
       </AuthGuard>
     </Providers>
   )

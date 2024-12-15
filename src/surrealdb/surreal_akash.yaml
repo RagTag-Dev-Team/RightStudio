@@ -9,7 +9,7 @@ services:
         to:
           - global: true
     env:
-      - SURREAL_USER=ragtag_user
+      - SURREAL_USER=ragtag_admin
       - SURREAL_PASS=bWFubnk6c0FzMyp6MnAh
       - SURREAL_AUTH=true
     args:
@@ -20,11 +20,11 @@ profiles:
     surrealdb:
       resources:
         cpu:
-          units: 1
+          units: 2
         memory:
-          size: 16Gi
+          size: 32Gi
         storage:
-          - size: 100Gi
+          - size: 50Gi
   placement:
     akash:
       pricing:

@@ -6,7 +6,14 @@ import AddCard from '@views/apps/invoice/add/AddCard'
 import AddActions from '@views/apps/invoice/add/AddActions'
 
 // Data Imports
-import { getInvoiceData } from '@/app/server/actions'
+import { _getMentaportSDK} from  '@/libs/mentaport/actions/mentaport/mentaport-sdk'
+import {
+  ICertificateArg,
+  ContentTypes,
+  ContentFormat,
+  ICertificate,
+  IResults
+} from '@mentaport/certificates';
 
 /**
  * ! If you need data using an API call, uncomment the below API code, update the `process.env.API_URL` variable in the
@@ -26,14 +33,31 @@ import { getInvoiceData } from '@/app/server/actions'
   return res.json()
 }
  */
-const InvoiceAdd = async () => {
+const CreateCertificate = async () => {
   // Vars
-  const data = await getInvoiceData()
+  const getFileTypeStr = (fileType: string) => {
+    const types = fileType.split('/');
+    let type = ""
+    let format: ContentFormat = ContentFormat[types[1] as keyof typeof ContentFormat];
+
+    if(!format && types[1] == 'jpeg')
+      format = ContentFormat.jpg;
+
+    for (const key in ContentTypes) {
+      if (ContentTypes[key as keyof typeof ContentTypes].toLowerCase() === types[0]) {
+        type =  ContentTypes[key as keyof typeof ContentTypes];
+      }
+    }
+
+    return {type, format};
+  };
 
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={9}>
+
         <AddCard invoiceData={data} />
+
       </Grid>
       <Grid item xs={12} md={3}>
         <AddActions />
@@ -42,4 +66,4 @@ const InvoiceAdd = async () => {
   )
 }
 
-export default InvoiceAdd
+export default CreateCertificate

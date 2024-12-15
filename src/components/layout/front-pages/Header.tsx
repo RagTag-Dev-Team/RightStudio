@@ -63,7 +63,7 @@ const Header = ({ mode }: { mode: Mode }) => {
               <Link href='/front-pages/landing-page'>
                 <Logo />
               </Link>
-              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              {/* <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} /> */}
             </div>
           )}
           <div className='flex items-center gap-2 sm:gap-4'>
@@ -87,7 +87,7 @@ const Header = ({ mode }: { mode: Mode }) => {
                 className='whitespace-nowrap'
                 target='_blank'
               >
-                Purchase Now
+                Connect
               </Button>
             )}
           </div>

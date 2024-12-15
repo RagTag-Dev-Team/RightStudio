@@ -1,0 +1,11 @@
+{
+  "schemaFile": "src/surrealdb/dev.surql",
+  "surreal": "http://localhost:8000",
+  "username": "ragtag_admin",
+  "password": "bWFubnk6c0FzMyp6MnAh",
+  "ns": "rgtg",
+  "db": "rgtg_db",
+  "outputFolder": "./src/surrealdb/migrations",
+  "generateClient": false,
+  "lib": "surrealdb.js"
+}

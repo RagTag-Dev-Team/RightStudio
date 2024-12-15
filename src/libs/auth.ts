@@ -1,23 +1,88 @@
 // Third-party Imports
+
 import CredentialProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
-import { PrismaAdapter } from '@auth/prisma-adapter'
-import { PrismaClient } from '@prisma/client'
-import type { NextAuthOptions } from 'next-auth'
-import type { Adapter } from 'next-auth/adapters'
 
-const prisma = new PrismaClient()
+// import { PrismaAdapter } from '@auth/prisma-adapter'
+// import { PrismaClient } from '@prisma/client'
+
+//  import { SurrealDBAdapter } from "@auth/surrealdb-adapter"
+
+import type { NextAuthOptions } from 'next-auth'
+
+import { jsonify } from 'surrealdb'
+
+//import type { Adapter } from 'next-auth/adapters'
+import type { VerifyLoginPayloadParams } from 'thirdweb/auth'
+
+import { createAuth } from 'thirdweb/auth'
+
+import { privateKeyAccount } from 'thirdweb/wallets'
+
+import { client } from './thirdwebclient'
+
+import { getDb } from '@/libs/surreal'
+
+const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY
+
+// const prisma = new PrismaClient()
+
+if (!privateKey) {
+  throw new Error('Missing THIRDWEB_ADMIN_PRIVATE_KEY in .env file.')
+}
+
+const thirdwebAuth = createAuth({
+  domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || '',
+  adminAccount: privateKeyAccount({ client, privateKey }),
+  client: client
+})
+
+export const generatePayload = thirdwebAuth.generatePayload
+
+export async function login(payload: VerifyLoginPayloadParams) {
+  const verifiedPayload = await thirdwebAuth.verifyPayload(payload)
+
+  if (verifiedPayload.valid) {
+    const jwt = await thirdwebAuth.generateJWT({
+      payload: verifiedPayload.payload
+    })
+
+    console.log('JWT' + jwt)
+  }
+}
+
+export async function logout() {
+  //  cookies().delete("jwt");
+}
+
+export async function isLoggedIn() {
+  // const jwt = cookies().get("jwt");
+  const jwt = null
+
+  if (!jwt) {
+    return false
+  }
+
+  return true
+}
+
+interface User {
+  id: string
+  name: string
+  email: string
+  password: string
+  image: string
+  wallet_address: string
+}
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as Adapter,
-
   // ** Configure one or more authentication providers
   // ** Please refer to https://next-auth.js.org/configuration/options#providers for more `providers` options
   providers: [
     CredentialProvider({
       // ** The name to display on the sign in form (e.g. 'Sign in with...')
       // ** For more details on Credentials Provider, visit https://next-auth.js.org/providers/credentials
-      name: 'Credentials',
+      name: 'Credential',
       type: 'credentials',
 
       /*
@@ -32,9 +97,13 @@ export const authOptions: NextAuthOptions = {
          * For e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
          * You can also use the `req` object to obtain additional parameters (i.e., the request IP address)
          */
-        const { email, password, wallet_address } = credentials as { email: string; password: string, wallet_address: string }
+        const { email, password, wallet_address } = credentials as {
+          email: string
+          password: string
+          wallet_address: string
+        }
 
-        console.log('Credentials');
+        console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -48,17 +117,37 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json()
 
-          if (res.status === 401) {
-            throw new Error(JSON.stringify(data))
-          }
-
           if (res.status === 200) {
             /*
              * Please unset all the sensitive information of the user either from API response or before returning
              * user data below. Below return statement will set the user object in the token and the same is set in
              * the session which will be accessible all over the app.
              */
-            return data
+
+            if (data.userRecord.newUser) {
+              data.userRecord.newUser = false
+              console.log('Creating User')
+              const db = await getDb()
+
+              if (!db) {
+                console.error('Database not initialized')
+
+                return
+              }
+
+              try {
+                // @ts-ignore
+                const user = await db.create<User>('User', data.userRecord)
+
+                console.log('User created:', jsonify(user))
+              } catch (err: unknown) {
+                console.error('Failed to create user:', err instanceof Error ? err.message : String(err))
+              } finally {
+                await db.close()
+              }
+            }
+
+            return data.userRecord
           }
 
           return null
@@ -106,23 +195,34 @@ export const authOptions: NextAuthOptions = {
      * the `session()` callback. So we have to add custom parameters in `token`
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
-    async jwt({ token, user }) {
-      if (user) {
+    async jwt({ token, user, account }) {
+      if (user && account) {
+        //@ts-ignore
+
         /*
          * For adding custom parameters to user in session, we first need to add those parameters
          * in token which then will be available in the `session()` callback
          */
+
         token.name = user.name
+        token.email = user.email
+
+        //@ts-ignore
+
+        token.wallet_address = user.wallet_address
       }
 
       return token
     },
     async session({ session, token }) {
-      console.log('Session'+JSON.stringify(session,null,2));
+      //  console.log('Session'+JSON.stringify(session,null,2));
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
         session.user.name = token.name
+
+        //@ts-ignore
+        session.user.wallet_address = token.wallet_address
       }
 
       return session
