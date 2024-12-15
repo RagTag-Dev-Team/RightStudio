@@ -82,7 +82,7 @@ const HeroSection = ({ mode }: { mode: SystemMode }) => {
             With RightStudio, Media rights are immutable.
           </Typography>
           <Typography className='font-medium' color='text.primary'>
-            RightStudio is where creators and commerce are rewarded through actionable incen
+            RightStudio is where creators and commerce are rewarded through actionable incentives.
           </Typography>
           <div className='flex mbs-6 items-baseline justify-center relative'>
             <div className='flex gap-2 absolute inline-start-[0%] block-start-[41%] max-md:hidden'>
