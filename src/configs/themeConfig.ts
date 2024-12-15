@@ -55,7 +55,7 @@ export type Config = {
 
 const themeConfig: Config = {
   templateName: 'RightStudio',
-  homePageUrl: '/dashboards/fileUpload',
+  homePageUrl: '/front-pages/landing-page',
   settingsCookieName: 'rightStudioSettings',
   mode: 'dark', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'

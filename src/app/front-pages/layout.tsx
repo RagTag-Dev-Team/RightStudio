@@ -14,7 +14,6 @@ import { IntersectionProvider } from '@/contexts/intersectionContext'
 import Providers from '@components/Providers'
 import BlankLayout from '@layouts/BlankLayout'
 import FrontLayout from '@components/layout/front-pages'
-import BuyNowButton from '@components/buy-now-button'
 import ScrollToTop from '@core/components/scroll-to-top'
 
 // Util Imports
@@ -27,9 +26,9 @@ import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 
 export const metadata = {
-  title: 'Vuexy - MUI Next.js Admin Dashboard Template',
+  title: 'RightStudio.media',
   description:
-    'Vuexy - MUI Next.js Admin Dashboard Template - is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.'
+    ' With RightStudio, Media rights are immutable. We are the first to offer a platform that allows you to manage your media rights in a way that is both secure and efficient.'
 }
 
 const Layout = ({ children }: ChildrenType) => {
@@ -44,7 +43,7 @@ const Layout = ({ children }: ChildrenType) => {
             <IntersectionProvider>
               <FrontLayout>
                 {children}
-                <BuyNowButton />
+
                 <ScrollToTop className='mui-fixed'>
                   <Button
                     variant='contained'

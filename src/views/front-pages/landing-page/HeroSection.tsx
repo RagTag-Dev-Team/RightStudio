@@ -79,10 +79,10 @@ const HeroSection = ({ mode }: { mode: SystemMode }) => {
           <Typography
             className={classnames('font-extrabold sm:text-[42px] text-3xl mbe-4 leading-[48px]', styles.heroText)}
           >
-            All in one sass application for your business
+            With RightStudio, Media rights are immutable.
           </Typography>
           <Typography className='font-medium' color='text.primary'>
-            No coding required to make customizations. The live customizer has everything your marketing need.
+            RightStudio is where creators and commerce are rewarded through actionable incen
           </Typography>
           <div className='flex mbs-6 items-baseline justify-center relative'>
             <div className='flex gap-2 absolute inline-start-[0%] block-start-[41%] max-md:hidden'>
@@ -107,9 +107,6 @@ const HeroSection = ({ mode }: { mode: SystemMode }) => {
       >
         <Link href='/' target='_blank' className='block relative'>
           <img src={dashboardImage} alt='dashboard-image' className={classnames('mli-auto', styles.heroSecDashboard)} />
-          <div className={classnames('absolute', styles.heroSectionElements)}>
-            <img src={elementsImage} alt='dashboard-elements' />
-          </div>
         </Link>
       </div>
     </section>

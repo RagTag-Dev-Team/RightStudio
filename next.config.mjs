@@ -4,32 +4,32 @@ const nextConfig = {
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     // !! WARN !!
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   redirects: async () => {
     return [
       {
         source: '/',
-        destination: '/en/dashboards/fileUpload',
+        destination: '/front-pages/landing-page',
         permanent: true,
         locale: false
       },
       {
         source: '/:lang(en|fr|ar)',
-        destination: '/:lang/dashboards/fileUpload',
+        destination: 'fr',
         permanent: true,
         locale: false
       },
       {
         source: '/((?!(?:en|fr|ar|front-pages|favicon.ico)\\b)):path',
-        destination: '/en/:path',
+        destination: '/front-pages/landing-page',
         permanent: true,
         locale: false
       }

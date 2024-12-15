@@ -15,6 +15,11 @@ const horizontalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>
         href: '/dashboards/fileUpload'
       },
       {
+        label: dictionary['navigation'].fileLibrary,
+        icon: 'tabler-chart-pie-2',
+        href: '/dashboards/fileLibrary'
+      },
+      {
         label: dictionary['navigation'].crm,
         icon: 'tabler-chart-pie-2',
         href: '/dashboards/crm'

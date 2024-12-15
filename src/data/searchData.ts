@@ -18,6 +18,13 @@ const data: SearchData[] = [
   },
   {
     id: '2',
+    name: 'File Library',
+    url: '/dashboards/fileLibrary',
+    icon: 'tabler-chart-pie-2',
+    section: 'Dashboards'
+  },
+  {
+    id: '3',
     name: 'CRM Dashboard',
     url: '/dashboards/crm',
     icon: 'tabler-chart-pie-2',

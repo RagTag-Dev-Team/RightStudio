@@ -19,6 +19,11 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         href: '/dashboards/fileUpload'
       },
       {
+        label: dictionary['navigation'].fileLibrary,
+        icon: 'tabler-circle',
+        href: '/dashboards/fileLibrary'
+      },
+      {
         label: dictionary['navigation'].crm,
         icon: 'tabler-circle',
         href: '/dashboards/crm'
