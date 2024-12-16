@@ -2,6 +2,8 @@
 import { useEffect, useRef } from 'react'
 
 // MUI Imports
+import Link from 'next/link'
+
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
@@ -28,12 +30,14 @@ const feature = [
   {
     icon: <LaptopCharging color='var(--mui-palette-primary-main)' />,
     title: 'Media Records',
-    description: 'Tag your media with metadata to make it easier to find and use.'
+    description: 'Tag your media with metadata to make it easier to find and use.',
+    link: '/media-records'
   },
   {
     icon: <Rocket color='var(--mui-palette-primary-main)' />,
     title: 'Media Portfolio',
-    description: 'Reward your media with incentives and rewards.'
+    description: 'Reward your media with incentives and rewards.',
+    link: '/media-portfolio'
   },
   {
     icon: <Paper color='var(--mui-palette-primary-main)' />,
@@ -47,13 +51,13 @@ const feature = [
   },
   {
     icon: <User color='var(--mui-palette-primary-main)' />,
-    title: 'Marketplace',
-    description: 'Offer your media to the world.'
+    title: 'White Paper',
+    description: 'Coming Soon!'
   },
   {
     icon: <Document color='var(--mui-palette-primary-main)' />,
     title: 'Community',
-    description: 'Collaborate with other creators and users.'
+    description: 'Coming Soon!'
   }
 ]
 
@@ -112,7 +116,7 @@ const UsefulFeature = () => {
             {feature.map((item, index) => (
               <Grid item xs={12} sm={6} lg={4} key={index}>
                 <div className='flex flex-col gap-2 justify-center items-center'>
-                  {item.icon}
+                  {item.link ? <Link href={item.link}>{item.icon}</Link> : <div>{item.icon}</div>}
                   <Typography className='mbs-2' variant='h5'>
                     {item.title}
                   </Typography>
