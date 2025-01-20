@@ -9,14 +9,14 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 
-import MenuItem from '@mui/material/MenuItem'
+// import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 
-import InputAdornment from '@mui/material/InputAdornment'
-import IconButton from '@mui/material/IconButton'
+// import InputAdornment from '@mui/material/InputAdornment'
+// import IconButton from '@mui/material/IconButton'
 
 // Components Imports
 import CustomTextField from '@core/components/mui/TextField'
@@ -26,56 +26,39 @@ import FileUploaderRestrictions from '@views/dashboards/fileUpload/form-layouts/
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 type FormDataType = {
-  username: string
-  email: string
-  password: string
-  isPasswordShown: boolean
-  confirmPassword: string
-  isConfirmPasswordShown: boolean
-  firstName: string
-  lastName: string
-  country: string
-  language: string[]
-  date: Date | null
-  phoneNumber: string
+  title: string
+  artist: string
+  album: string
+  filetype: string
+  filesize: string
+  duration: string
+  label: string
+  releaseDate: Date | null
 }
 
 const FormLayoutsSeparator = () => {
   // States
   const [formData, setFormData] = useState<FormDataType>({
-    username: '',
-    email: '',
-    password: '',
-    isPasswordShown: false,
-    confirmPassword: '',
-    isConfirmPasswordShown: false,
-    firstName: '',
-    lastName: '',
-    country: '',
-    language: [],
-    date: null,
-    phoneNumber: ''
+    title: '',
+    artist: '',
+    album: '',
+    filetype: '',
+    filesize: '',
+    duration: '',
+    label: '',
+    releaseDate: null
   })
-
-  const handleClickShowPassword = () => setFormData(show => ({ ...show, isPasswordShown: !show.isPasswordShown }))
-
-  const handleClickShowConfirmPassword = () =>
-    setFormData(show => ({ ...show, isConfirmPasswordShown: !show.isConfirmPasswordShown }))
 
   const handleReset = () => {
     setFormData({
-      username: '',
-      email: '',
-      password: '',
-      isPasswordShown: false,
-      confirmPassword: '',
-      isConfirmPasswordShown: false,
-      firstName: '',
-      lastName: '',
-      country: '',
-      language: [],
-      date: null,
-      phoneNumber: ''
+      title: '',
+      artist: '',
+      album: '',
+      filetype: '',
+      filesize: '',
+      duration: '',
+      label: '',
+      releaseDate: null
     })
   }
 
@@ -99,138 +82,47 @@ const FormLayoutsSeparator = () => {
               <CustomTextField
                 fullWidth
                 label='Title'
-                placeholder='johnDoe '
-                value={formData.username}
-                onChange={e => setFormData({ ...formData, username: e.target.value })}
+                placeholder='Song Title'
+                value={formData.title}
+                onChange={e => setFormData({ ...formData, title: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                type='email'
-                label='FileType'
-                value={formData.email}
-                placeholder='johndoe@gmail.com'
-                onChange={e => setFormData({ ...formData, email: e.target.value })}
+                type='artist'
+                label='Artist Name'
+                value={formData.artist}
+                placeholder='Artist Name'
+                onChange={e => setFormData({ ...formData, artist: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='Duration'
-                placeholder='············'
-                id='form-layout-separator-password'
-                type={formData.isPasswordShown ? 'text' : 'password'}
-                value={formData.password}
-                onChange={e => setFormData({ ...formData, password: e.target.value })}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        onClick={handleClickShowPassword}
-                        onMouseDown={e => e.preventDefault()}
-                        aria-label='toggle password visibility'
-                      >
-                        <i className={formData.isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                label='Release Date'
-                placeholder='············'
-                id='form-layout-separator-confirm-password'
-                type={formData.isConfirmPasswordShown ? 'text' : 'password'}
-                value={formData.confirmPassword}
-                onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        onClick={handleClickShowConfirmPassword}
-                        onMouseDown={e => e.preventDefault()}
-                        aria-label='toggle confirm password visibility'
-                      >
-                        <i className={formData.isConfirmPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Divider />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant='body2' className='font-medium'>
-                2. File Metadata
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                label='Artist'
-                placeholder='John'
-                value={formData.firstName}
-                onChange={e => setFormData({ ...formData, firstName: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
+                type='album'
                 label='Album'
-                placeholder='Doe'
-                value={formData.lastName}
-                onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                value={formData.album}
+                placeholder='Album'
+                onChange={e => setFormData({ ...formData, album: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <CustomTextField
-                select
                 fullWidth
-                label='Country'
-                value={formData.country}
-                onChange={e => setFormData({ ...formData, country: e.target.value })}
-              >
-                <MenuItem value=''>Select Country</MenuItem>
-                <MenuItem value='UK'>UK</MenuItem>
-                <MenuItem value='USA'>USA</MenuItem>
-                <MenuItem value='Australia'>Australia</MenuItem>
-                <MenuItem value='Germany'>Germany</MenuItem>
-              </CustomTextField>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                select
-                fullWidth
-                label='Release Year'
-                value={formData.language}
-                SelectProps={{
-                  multiple: true,
-                  onChange: e => setFormData({ ...formData, language: e.target.value as string[] })
-                }}
-              >
-                <MenuItem value='English'>English</MenuItem>
-                <MenuItem value='French'>French</MenuItem>
-                <MenuItem value='Spanish'>Spanish</MenuItem>
-                <MenuItem value='Portuguese'>Portuguese</MenuItem>
-                <MenuItem value='Italian'>Italian</MenuItem>
-                <MenuItem value='German'>German</MenuItem>
-                <MenuItem value='Arabic'>Arabic</MenuItem>
-              </CustomTextField>
+                label='Label'
+                type='string'
+                placeholder='Label Name'
+                value={formData.label}
+                onChange={e => setFormData({ ...formData, label: e.target.value })}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <AppReactDatepicker
-                selected={formData.date}
+                selected={formData.releaseDate}
                 showYearDropdown
                 showMonthDropdown
-                onChange={(date: Date | null) => setFormData({ ...formData, date })}
+                onChange={(date: Date | null) => setFormData({ ...formData, releaseDate: date })}
                 placeholderText='MM/DD/YYYY'
                 customInput={<CustomTextField fullWidth label='Release Date' placeholder='MM-DD-YYYY' />}
               />
@@ -238,11 +130,29 @@ const FormLayoutsSeparator = () => {
             <Grid item xs={12} sm={6}>
               <CustomTextField
                 fullWidth
-                label='Phone Number'
-                type='number'
-                placeholder='123-456-7890'
-                value={formData.phoneNumber}
-                onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
+                type='filetype'
+                label='File Type'
+                value={formData.filetype}
+                placeholder='File Type'
+                onChange={e => setFormData({ ...formData, filetype: e.target.value })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <CustomTextField
+                fullWidth
+                label='File Size'
+                placeholder='0 MB'
+                value={formData.filesize}
+                onChange={e => setFormData({ ...formData, filesize: e.target.value })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <CustomTextField
+                fullWidth
+                label='Duration'
+                placeholder='0:00'
+                value={formData.duration}
+                onChange={e => setFormData({ ...formData, duration: e.target.value })}
               />
             </Grid>
           </Grid>

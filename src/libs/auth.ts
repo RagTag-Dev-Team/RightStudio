@@ -57,6 +57,7 @@ export async function logout() {
 
 export async function isLoggedIn() {
   // const jwt = cookies().get("jwt");
+  // check if jwt is in the cookies
   const jwt = null
 
   if (!jwt) {
