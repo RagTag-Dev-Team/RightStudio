@@ -118,6 +118,8 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json()
 
+          console.log('Data: ' + JSON.stringify(data, null, 2))
+
           if (res.status === 200) {
             /*
              * Please unset all the sensitive information of the user either from API response or before returning
