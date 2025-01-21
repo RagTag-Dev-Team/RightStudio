@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   console.log('DB: ' + JSON.stringify(db, null, 2))
 
   if (!db) {
-    console.error('Database not initialized')
+    console.log('Database not initialized')
 
     return
   }
