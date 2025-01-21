@@ -19,6 +19,8 @@ export async function POST(req: Request) {
   const { email, password, wallet_address } = await req.json()
   const db = await getDb()
 
+  console.log('DB: ' + JSON.stringify(db, null, 2))
+
   if (!db) {
     console.error('Database not initialized')
 
