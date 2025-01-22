@@ -1,4 +1,4 @@
-import Surreal from "surrealdb"
+import Surreal from 'surrealdb'
 
 interface DbConfig {
   url: string
@@ -19,25 +19,26 @@ const DEFAULT_CONFIG: DbConfig = {
   user: `${user}`,
   pass: `${pass}`,
   namespace: `${namespace}`,
-  database: `${database}`,
-
+  database: `${database}`
 }
 
 export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal> {
-  const db = new Surreal();
+  const db = new Surreal()
 
   try {
-    await db.connect(config.url);
-    await db.use({ namespace: config.namespace, database: config.database });
+    console.log('DB String: ' + config.url)
+
+    await db.connect(config.url)
+    await db.use({ namespace: config.namespace, database: config.database })
     await db.signin({
       username: config.user,
       password: config.pass
-    });
+    })
 
-    return db;
+    return db
   } catch (err) {
-    console.error("Failed to connect to SurrealDB:", err instanceof Error ? err.message : String(err));
-    await db.close();
-    throw err;
+    console.error('Failed to connect to SurrealDB:', err instanceof Error ? err.message : String(err))
+    await db.close()
+    throw err
   }
 }
