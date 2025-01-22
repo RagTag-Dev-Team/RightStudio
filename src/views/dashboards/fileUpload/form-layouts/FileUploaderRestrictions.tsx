@@ -6,7 +6,6 @@ import { upload } from 'thirdweb/storage'
 // MUI Imports
 import List from '@mui/material/List'
 import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
 import ListItem from '@mui/material/ListItem'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -26,7 +25,18 @@ type FileProp = {
   size: number
 }
 
-const FileUploaderRestrictions = () => {
+interface FileUploaderRestrictionsProps {
+  onMetadata?: (metadata: {
+    title?: string
+    artist?: string
+    album?: string
+    filetype?: string
+    filesize?: string
+    duration?: string
+  }) => void
+}
+
+const FileUploaderRestrictions = ({ onMetadata }: FileUploaderRestrictionsProps) => {
   // States
   const [files, setFiles] = useState<File[]>([])
 
@@ -39,10 +49,38 @@ const FileUploaderRestrictions = () => {
     onDrop: async (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
 
+      const file = acceptedFiles[0]
+
       // read the metadata of the first file (since maxFiles is 1)
       const metadata = await parseBlob(acceptedFiles[0])
 
-      console.log('Showing metadata', JSON.stringify(metadata, null, 2))
+      // Format metadata for the form
+      if (onMetadata) {
+        const formattedMetadata = {
+          // Standard ID3v2.4 tags
+          title: metadata.common.title || '', // TIT2
+          artist: metadata.common.artist || '', // TPE1
+          album: metadata.common.album || '', // TALB
+          label: metadata.common.label || '', // TPUB
+          releaseDate: metadata.common.date
+            ? new Date(metadata.common.date.toString()) // Handle various date formats
+            : null,
+
+          // File information
+          filetype: file.type,
+          filesize: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+          duration: metadata.format.duration
+            ? `${Math.floor(metadata.format.duration / 60)}:${Math.floor(metadata.format.duration % 60)
+                .toString()
+                .padStart(2, '0')}`
+            : ''
+        }
+
+        onMetadata(formattedMetadata)
+        console.log('Showing metadata', JSON.stringify(formattedMetadata, null, 2))
+      }
+
+      //console.log('Showing metadata', JSON.stringify(metadata, null, 2))
     },
     onDropRejected: () => {
       toast.error('You can only upload wav files that have been mastered', {

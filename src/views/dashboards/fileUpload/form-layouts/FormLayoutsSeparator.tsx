@@ -15,6 +15,25 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 
+import { getContract, defineChain, prepareContractCall, sendTransaction } from 'thirdweb'
+
+// Get Session
+import { getSession } from 'next-auth/react'
+
+import { client } from '@/libs/thirdwebclient'
+
+const assetcontract = getContract({
+  client,
+  chain: defineChain(80002),
+  address: '0xAdb629cd79CabC7cB33ff5219716AE24Cb21437E'
+})
+
+const tagzcontract = getContract({
+  client,
+  chain: defineChain(80002),
+  address: '0xAdb629cd79CabC7cB33ff5219716AE24Cb21437E'
+})
+
 // import InputAdornment from '@mui/material/InputAdornment'
 // import IconButton from '@mui/material/IconButton'
 
@@ -36,6 +55,8 @@ type FormDataType = {
   releaseDate: Date | null
 }
 
+// If a file is dropped on the FileUploaderRestrictions component, we need to store the metadata in the database and populate the form with the metadata.
+
 const FormLayoutsSeparator = () => {
   // States
   const [formData, setFormData] = useState<FormDataType>({
@@ -48,6 +69,14 @@ const FormLayoutsSeparator = () => {
     label: '',
     releaseDate: null
   })
+
+  const handleMetadata = (metadata: Partial<FormDataType>) => {
+    console.log('Metadata received:', metadata)
+    setFormData(prevData => ({
+      ...prevData,
+      ...metadata
+    }))
+  }
 
   const handleReset = () => {
     setFormData({
@@ -62,15 +91,20 @@ const FormLayoutsSeparator = () => {
     })
   }
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(JSON.stringify(formData, null, 2))
+  }
+
   return (
     <Card>
       <CardHeader title='File Uploader' />
       <Divider />
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={e => handleSubmit(e)}>
         <CardContent>
           <Grid container spacing={6}>
             <Grid item xs={12}>
-              <FileUploaderRestrictions />
+              <FileUploaderRestrictions onMetadata={handleMetadata} />
             </Grid>
 
             <Grid item xs={12}>
