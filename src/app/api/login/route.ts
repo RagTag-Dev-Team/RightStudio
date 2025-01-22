@@ -24,7 +24,10 @@ export async function POST(req: Request) {
   if (!db) {
     console.log('Database not initialized')
 
-    return
+    return NextResponse.json({
+      status: 500,
+      statusText: 'Database not initialized'
+    })
   }
 
   try {

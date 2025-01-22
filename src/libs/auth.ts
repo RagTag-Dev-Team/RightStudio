@@ -119,7 +119,7 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json()
 
-          // console.log('Data: ' + JSON.stringify(data, null, 2))
+          console.log('Data: ' + JSON.stringify(data, null, 2))
 
           if (res.status === 200) {
             /*
