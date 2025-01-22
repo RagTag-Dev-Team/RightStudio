@@ -19,7 +19,7 @@ const FrontLayout = ({ children }: ChildrenType) => {
     <div className={frontLayoutClasses.root}>
       <Header mode={mode} />
       {children}
-      <Footer mode={mode} />
+      {/* <Footer mode={mode} /> */}
     </div>
   )
 }

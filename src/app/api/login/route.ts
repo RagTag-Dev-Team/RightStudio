@@ -19,10 +19,15 @@ export async function POST(req: Request) {
   const { email, password, wallet_address } = await req.json()
   const db = await getDb()
 
-  if (!db) {
-    console.error('Database not initialized')
+  //console.log('DB: ' + JSON.stringify(db, null, 2))
 
-    return
+  if (!db) {
+    console.log('Database not initialized')
+
+    return NextResponse.json({
+      status: 500,
+      statusText: 'Database not initialized'
+    })
   }
 
   try {

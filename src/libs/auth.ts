@@ -57,6 +57,7 @@ export async function logout() {
 
 export async function isLoggedIn() {
   // const jwt = cookies().get("jwt");
+  // check if jwt is in the cookies
   const jwt = null
 
   if (!jwt) {
@@ -103,7 +104,8 @@ export const authOptions: NextAuthOptions = {
           wallet_address: string
         }
 
-        console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
+        // console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
+        console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
@@ -116,6 +118,8 @@ export const authOptions: NextAuthOptions = {
           })
 
           const data = await res.json()
+
+          console.log('Data: ' + JSON.stringify(data, null, 2))
 
           if (res.status === 200) {
             /*
