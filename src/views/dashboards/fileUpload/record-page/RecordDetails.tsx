@@ -7,13 +7,16 @@ import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 
 // Component Imports
+import { StringRecordId } from 'surrealdb'
+
 import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
@@ -33,6 +36,7 @@ type RecordDataType = {
   ipfsUrl: string
   status: 'unminted' | 'minted'
   uploadedAt: string
+  coverImage?: string
 }
 
 const RecordDetails = ({ recordId }: { recordId: string }) => {
@@ -42,12 +46,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   useEffect(() => {
     const fetchRecord = async () => {
       const db = await getDb()
-      const record = await db.select<RecordDataType>(`media:${recordId}`)
 
-      if (record && record[0]) {
+      console.log('Fetching record:', recordId)
+      const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
+
+      console.log('Record:', record)
+
+      if (record) {
         const recordWithDate: RecordDataType = {
-          ...record[0],
-          releaseDate: record[0].releaseDate ? new Date(record[0].releaseDate) : null
+          ...record,
+          releaseDate: record.releaseDate ? new Date(record.releaseDate) : null
         }
 
         setRecordData(recordWithDate)
@@ -76,13 +84,24 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   }
 
   if (!recordData) {
-    return <Typography>Loading...</Typography>
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '80vh'
+        }}
+      >
+        <CircularProgress size={60} />
+      </Box>
+    )
   }
 
   return (
     <Card>
       <CardHeader
-        title='Record Details'
+        title='Media Details'
         action={
           <Chip
             label={recordData.status.toUpperCase()}
@@ -93,6 +112,39 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       <Divider />
       <CardContent>
         <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {recordData.coverImage && (
+                <Box sx={{ width: 200, height: 200 }}>
+                  <img
+                    src={recordData.coverImage}
+                    alt='Cover Art'
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </Box>
+              )}
+              <CustomTextField
+                type='file'
+                fullWidth
+                label='Cover Image'
+                disabled={!isEditing}
+                InputLabelProps={{ shrink: true }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const file = e.target.files?.[0]
+
+                  if (file) {
+                    const reader = new FileReader()
+
+                    reader.onload = e => {
+                      setRecordData({ ...recordData, coverImage: e.target?.result as string })
+                    }
+
+                    reader.readAsDataURL(file)
+                  }
+                }}
+              />
+            </Box>
+          </Grid>
           <Grid item xs={12} sm={6}>
             <CustomTextField
               fullWidth
@@ -175,7 +227,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               onClick={handleMint}
               disabled={recordData.status === 'minted'}
             >
-              Mint Record
+              Mint Media
             </Button>
           </>
         )}

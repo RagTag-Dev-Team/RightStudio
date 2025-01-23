@@ -25,6 +25,7 @@ interface FileUploaderRestrictionsProps {
       filetype?: string
       filesize?: string
       duration?: string
+      coverImage?: string
     },
     file: File
   ) => void
@@ -49,6 +50,8 @@ const FileUploaderRestrictions = ({ onMetadata }: FileUploaderRestrictionsProps)
         // read the metadata of the first file (since maxFiles is 1)
         const metadata = await parseBlob(acceptedFiles[0])
 
+        //  console.log('Metadata:', metadata)
+
         // Format metadata for the form
         if (onMetadata) {
           const formattedMetadata = {
@@ -58,6 +61,11 @@ const FileUploaderRestrictions = ({ onMetadata }: FileUploaderRestrictionsProps)
             album: metadata.common.album || '',
             label: Array.isArray(metadata.common.label) ? metadata.common.label[0] || '' : metadata.common.label || '',
             releaseDate: metadata.common.date ? new Date(metadata.common.date.toString()) : null,
+
+            // Add cover art if available
+            coverImage: metadata.common.picture?.[0]
+              ? `data:${metadata.common.picture[0].format};base64,${metadata.common.picture[0].data.toString('base64')}`
+              : undefined,
 
             // File information
             filetype: file.type,

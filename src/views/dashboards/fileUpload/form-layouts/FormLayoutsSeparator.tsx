@@ -47,6 +47,7 @@ type FormDataType = {
   duration: string
   label: string
   releaseDate: Date | null
+  coverImage?: string
 }
 
 // If a file is dropped on the FileUploaderRestrictions component, we need to store the metadata in the database and populate the form with the metadata.
@@ -81,7 +82,8 @@ const FormLayoutsSeparator = () => {
       releaseDate: metadata.releaseDate || null,
       filetype: metadata.filetype || '',
       filesize: metadata.filesize || '',
-      duration: metadata.duration || ''
+      duration: metadata.duration || '',
+      coverImage: metadata.coverImage || undefined
     }))
 
     // Update file state
@@ -133,13 +135,20 @@ const FormLayoutsSeparator = () => {
 
       // Prepare metadata for database
       const mediaMetadata = {
-        ...formData,
+        title: formData.title,
+        artist: formData.artist,
+        album: formData.album,
+        label: formData.label,
+        releaseDate: formData.releaseDate,
+        filetype: formData.filetype,
+        filesize: formData.filesize,
+        duration: formData.duration,
         ipfsUrl: uploadUrl,
         uploadedAt: new Date().toISOString(),
         status: 'unminted'
       }
 
-      console.log('Media Metadata:', mediaMetadata)
+      // console.log('Media Metadata:', mediaMetadata)
 
       // Save to SurrealDB
       const created = await db.create('media', mediaMetadata)
@@ -199,99 +208,131 @@ const FormLayoutsSeparator = () => {
       <form onSubmit={e => handleSubmit(e)}>
         <CardContent>
           <Grid container spacing={6}>
-            <Grid item xs={12}>
-              <FileUploaderRestrictions onMetadata={handleMetadata} />
-            </Grid>
+            {!formData.title && (
+              <Grid item xs={12}>
+                <FileUploaderRestrictions onMetadata={handleMetadata} />
+              </Grid>
+            )}
 
             <Grid item xs={12}>
-              <Typography variant='body2' className='font-medium'>
-                1. File Details
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                label='Title'
-                placeholder='Song Title'
-                value={formData.title}
-                onChange={e => setFormData({ ...formData, title: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                type='artist'
-                label='Artist Name'
-                value={formData.artist}
-                placeholder='Artist Name'
-                onChange={e => setFormData({ ...formData, artist: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                type='album'
-                label='Album'
-                value={formData.album}
-                placeholder='Album'
-                onChange={e => setFormData({ ...formData, album: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                label='Label'
-                type='string'
-                placeholder='Label Name'
-                value={formData.label}
-                onChange={e => setFormData({ ...formData, label: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <AppReactDatepicker
-                required
-                selected={formData.releaseDate}
-                showYearDropdown
-                showMonthDropdown
-                onChange={(date: Date | null) => setFormData({ ...formData, releaseDate: date })}
-                placeholderText='MM/DD/YYYY'
-                customInput={<CustomTextField required fullWidth label='Release Date' placeholder='MM-DD-YYYY' />}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                type='filetype'
-                label='File Type'
-                value={formData.filetype}
-                placeholder='File Type'
-                onChange={e => setFormData({ ...formData, filetype: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                label='File Size'
-                placeholder='0 MB'
-                value={formData.filesize}
-                onChange={e => setFormData({ ...formData, filesize: e.target.value })}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <CustomTextField
-                fullWidth
-                required
-                label='Duration'
-                placeholder='0:00'
-                value={formData.duration}
-                onChange={e => setFormData({ ...formData, duration: e.target.value })}
-              />
+              <Grid container spacing={6}>
+                <Grid item xs={12} sm={4} md={3}>
+                  {formData.coverImage ? (
+                    <Box sx={{ width: '100%', height: 300, overflow: 'hidden', borderRadius: 1 }}>
+                      <img
+                        src={formData.coverImage}
+                        alt='Cover Art'
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </Box>
+                  ) : (
+                    <Box
+                      sx={{
+                        width: '100%',
+                        height: 300,
+                        borderRadius: 1,
+                        bgcolor: 'action.disabledBackground',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <Typography color='text.disabled'>Cover Image</Typography>
+                    </Box>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={8} md={9}>
+                  <Grid container spacing={6}>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        label='Title'
+                        placeholder='Song Title'
+                        value={formData.title}
+                        onChange={e => setFormData({ ...formData, title: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        type='artist'
+                        label='Artist Name'
+                        value={formData.artist}
+                        placeholder='Artist Name'
+                        onChange={e => setFormData({ ...formData, artist: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        type='album'
+                        label='Album'
+                        value={formData.album}
+                        placeholder='Album'
+                        onChange={e => setFormData({ ...formData, album: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        label='Label'
+                        type='string'
+                        placeholder='Label Name'
+                        value={formData.label}
+                        onChange={e => setFormData({ ...formData, label: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <AppReactDatepicker
+                        required
+                        selected={formData.releaseDate}
+                        showYearDropdown
+                        showMonthDropdown
+                        onChange={(date: Date | null) => setFormData({ ...formData, releaseDate: date })}
+                        placeholderText='MM/DD/YYYY'
+                        customInput={
+                          <CustomTextField required fullWidth label='Release Date' placeholder='MM-DD-YYYY' />
+                        }
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        type='filetype'
+                        label='File Type'
+                        value={formData.filetype}
+                        placeholder='File Type'
+                        onChange={e => setFormData({ ...formData, filetype: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        label='File Size'
+                        placeholder='0 MB'
+                        value={formData.filesize}
+                        onChange={e => setFormData({ ...formData, filesize: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <CustomTextField
+                        fullWidth
+                        required
+                        label='Duration'
+                        placeholder='0:00'
+                        value={formData.duration}
+                        onChange={e => setFormData({ ...formData, duration: e.target.value })}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </CardContent>
