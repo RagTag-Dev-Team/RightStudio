@@ -26,7 +26,7 @@ export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal>
   const db = new Surreal()
 
   try {
-    console.log('DB String: ' + config.url)
+    // console.log('DB String: ' + config.url)
 
     await db.connect(config.url)
     await db.use({ namespace: config.namespace, database: config.database })
