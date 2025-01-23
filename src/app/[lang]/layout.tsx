@@ -9,7 +9,6 @@ import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
 
 // Component Imports
-import BuyNowButton from '@components/buy-now-button'
 
 // HOC Imports
 import TranslationWrapper from '@/hocs/TranslationWrapper'
@@ -26,7 +25,7 @@ import '@assets/iconify-icons/generated-icons.css'
 export const metadata = {
   title: 'RightStudio - Your Media. Your Rights',
   description:
-    'RightStudio is a platform that allows you to create, manage, and distribute your media content while protecting your rights with the Ragtag protocol. Sign up now!',
+    'RightStudio is a platform that allows you to create, manage, and distribute your media content while protecting your rights with the Ragtag protocol. Sign up now!'
 }
 
 const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
@@ -37,9 +36,7 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
   return (
     <TranslationWrapper headersList={headersList} lang={params.lang}>
       <html id='__next' lang={params.lang} dir={direction}>
-        <body className='flex is-full min-bs-full flex-auto flex-col'>
-          {children}
-        </body>
+        <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
       </html>
     </TranslationWrapper>
   )
