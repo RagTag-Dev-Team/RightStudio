@@ -24,6 +24,12 @@ import Button from '@mui/material/Button'
 // Third-party Imports
 import { signOut, useSession } from 'next-auth/react'
 
+import { ConnectButton } from 'thirdweb/react'
+
+import { inAppWallet, createWallet } from 'thirdweb/wallets'
+
+import { client } from '@/libs/thirdwebclient'
+
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
@@ -42,6 +48,19 @@ const BadgeContentSpan = styled('span')({
   backgroundColor: 'var(--mui-palette-success-main)',
   boxShadow: '0 0 0 2px var(--mui-palette-background-paper)'
 })
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: ['google', 'discord', 'email', 'phone', 'github', 'apple', 'facebook', 'coinbase']
+    }
+  }),
+  createWallet('io.metamask'),
+  createWallet('com.coinbase.wallet'),
+  createWallet('me.rainbow'),
+  createWallet('io.rabby'),
+  createWallet('io.zerion.wallet')
+]
 
 const UserDropdown = () => {
   // States
@@ -86,6 +105,9 @@ const UserDropdown = () => {
 
   return (
     <>
+      <ConnectButton wallets={wallets} client={client} />
+
+      {/*
       <Badge
         ref={anchorRef}
         overlap='circular'
@@ -164,6 +186,7 @@ const UserDropdown = () => {
           </Fade>
         )}
       </Popper>
+      */}
     </>
   )
 }
