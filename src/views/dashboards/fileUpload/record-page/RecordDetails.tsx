@@ -159,6 +159,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
       }
 
+      const walletAddress = activeAccount
+
       // console.log(metadata)
       {
         const mintResponse = await fetch('/api/mint', {
@@ -166,7 +168,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ metadata, walletAddress: activeAccount.address })
+          body: JSON.stringify({ metadata, walletAddress })
         })
 
         if (!mintResponse.ok) {

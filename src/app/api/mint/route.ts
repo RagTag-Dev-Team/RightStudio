@@ -1,11 +1,12 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { Engine } from '@thirdweb-dev/engine'
+import { mintTo } from 'thirdweb/extensions/erc721'
 
-import { defineChain } from 'thirdweb'
+import { prepareContractCall, sendTransaction } from 'thirdweb'
+import { useActiveAccount } from 'thirdweb/react'
 
-import { mediaCollectionAddress } from '@/utils/getMediaContract'
+import { mediaCollectionAddress, mediaContract } from '@/utils/getMediaContract'
 
 const { ENGINE_URL, BACKEND_WALLET_ADDRESS, CHAIN_ID, ENGINE_SECRET_KEY, MEDIA_CONTRACT_ADDRESS } = process.env
 
@@ -14,36 +15,36 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing environment variables' }, { status: 500 })
   }
 
-  const engine = new Engine({
-    url: ENGINE_URL,
-    accessToken: ENGINE_SECRET_KEY
-  })
-
   const { metadata, walletAddress } = await req.json()
 
-  console.log('metadata', metadata)
-  console.log('walletAddress', walletAddress)
-
-  const contract = MEDIA_CONTRACT_ADDRESS
+  const contract = mediaContract
   const chainId = CHAIN_ID
   const backendWalletAddress = BACKEND_WALLET_ADDRESS
 
   try {
     // console.log(`URL:  ${ENGINE_URL}/contract/${CHAIN_ID}/${mediaCollectionAddress}/erc721/mint-to?simulateTx=true`)
 
+    const NFTMetadata = {
+      name: metadata.name,
+      description: metadata.description,
+      image: metadata.image,
+      properties: metadata.properties
+    }
+
     console.log('Sending request to engine to mint NFT ')
 
-    const mint = await engine.erc721.mintTo(chainId, contract as string, backendWalletAddress, {
-      receiver: walletAddress,
-      metadata: {
-        name: metadata.name,
-        description: metadata.description,
-        image: metadata.image,
-        properties: metadata.properties
-      }
+    const transaction = mintTo({
+      contract,
+      to: walletAddress.address,
+      nft: NFTMetadata
     })
 
-    console.log(mint)
+    const { transactionHash } = await sendTransaction({
+      walletAddress,
+      transaction
+    })
+
+    return new NextResponse(JSON.stringify({ message: 'NFT minted successfully', transactionHash }), { status: 200 })
 
     {
       /*

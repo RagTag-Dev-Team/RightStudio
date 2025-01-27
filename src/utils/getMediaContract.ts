@@ -9,5 +9,5 @@ export const mediaCollectionAddress = process.env.MEDIA_CONTRACT_ADDRESS
 export const mediaContract = getContract({
   client,
   chain: defineChain(80002),
-  address: `${mediaCollectionAddress}`
+  address: mediaCollectionAddress as string
 })
