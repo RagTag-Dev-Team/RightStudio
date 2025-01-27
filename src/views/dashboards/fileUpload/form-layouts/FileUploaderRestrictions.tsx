@@ -79,6 +79,7 @@ const FileUploaderRestrictions = ({ onMetadata }: FileUploaderRestrictionsProps)
 
           // Pass both metadata and file to parent component
           onMetadata(formattedMetadata, file)
+          setFiles([file])
         }
       } catch (error) {
         console.error('Error reading file metadata:', error)

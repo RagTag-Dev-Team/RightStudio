@@ -122,13 +122,30 @@ const FormLayoutsSeparator = () => {
         setUploadProgress(prev => Math.min(prev + 10, 90))
       }, 500)
 
-      // Upload file to IPFS
+      // Upload audio file to IPFS
       const uploadUrl = await upload({
         client,
         files: [file]
       })
 
+      // Upload cover art to IPFS if it exists
+      let coverArtUrl = formData.coverImage
+
+      if (coverArtUrl && coverArtUrl.startsWith('data:')) {
+        // Convert base64 to blob
+        const response = await fetch(coverArtUrl)
+        const blob = await response.blob()
+        const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
+
+        // Upload cover art to IPFS
+        coverArtUrl = await upload({
+          client,
+          files: [coverArtFile]
+        })
+      }
+
       console.log('Upload URL:', uploadUrl)
+      console.log('Cover Art URL:', coverArtUrl)
 
       clearInterval(progressInterval)
       setUploadProgress(100)
@@ -144,11 +161,12 @@ const FormLayoutsSeparator = () => {
         filesize: formData.filesize,
         duration: formData.duration,
         ipfsUrl: uploadUrl,
+        coverImage: coverArtUrl,
         uploadedAt: new Date().toISOString(),
         status: 'unminted'
       }
 
-      // console.log('Media Metadata:', mediaMetadata)
+      console.log('Media Metadata:', mediaMetadata)
 
       // Save to SurrealDB
       const created = await db.create('media', mediaMetadata)
