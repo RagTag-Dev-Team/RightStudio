@@ -141,7 +141,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     try {
       console.log('Minting record:', recordId)
 
-      //   console.log('activeAccount', activeAccount)
+      console.log('activeAccount', activeAccount)
+      console.log('imageUrl', imageUrl)
 
       // Create metadata object from record fields
       const metadata = {
@@ -172,7 +173,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         })
 
         if (!mintResponse.ok) {
-          console.log(mintResponse)
+          console.log(await mintResponse.json())
           throw new Error('Minting failed')
         }
 
