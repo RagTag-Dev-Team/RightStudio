@@ -193,13 +193,14 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       //database is not working
 
-      const mintUpdated = await db.update(new RecordId('media', recordId), {
+      const updatedRecord = await db.update(new RecordId('media', `${recordId}`), {
+        ...recordData,
         status: 'minted',
         owner: activeAccount.address,
         transactionHash: transactionHash
       })
 
-      console.log('mintUpdated', mintUpdated)
+      console.log('updatedRecord', updatedRecord)
 
       // Update local state with the hash
       setRecordData(prev =>
@@ -214,7 +215,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       )
       setIsEditing(false)
 
-      //   console.log('recordData', recordData)
+      console.log('recordData', recordData)
       setShowSuccess(true)
     } catch (error) {
       console.error('Error during minting process:', error)

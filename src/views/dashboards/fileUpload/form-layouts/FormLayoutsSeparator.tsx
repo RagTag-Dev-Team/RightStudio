@@ -122,6 +122,8 @@ const FormLayoutsSeparator = () => {
         setUploadProgress(prev => Math.min(prev + 10, 90))
       }, 500)
 
+      console.log('uploading file', file)
+
       // Upload audio file to IPFS
       const uploadUrl = await upload({
         client,
