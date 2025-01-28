@@ -19,7 +19,7 @@ import { resolveScheme } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 
-import { StringRecordId } from 'surrealdb'
+import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
@@ -191,7 +191,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Update record status in database
       const db = await getDb()
 
-      const mintUpdated = await db.update(`media:${recordId}`, {
+      //database is not working
+
+      const mintUpdated = await db.update(new RecordId('media', recordId), {
         status: 'minted',
         owner: activeAccount.address,
         transactionHash: transactionHash
