@@ -35,6 +35,9 @@ import { getDb } from '@/libs/surreal'
 
 // Add import for useSession
 
+// Add this constant at the top with other constants
+const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
+
 type RecordDataType = {
   id?: string
   title: string
@@ -50,6 +53,7 @@ type RecordDataType = {
   uploadedAt: string
   coverImage?: string
   owner?: string
+  transactionHash?: string
 }
 
 // Add this type definition at the top of the file, after the imports
@@ -77,6 +81,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Fetch record data
       console.log('Fetching record:', recordId)
       const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
+
+      console.log('record', record)
 
       if (record) {
         const recordWithDate: RecordDataType = {
@@ -141,8 +147,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     try {
       console.log('Minting record:', recordId)
 
-      console.log('activeAccount', activeAccount)
-      console.log('imageUrl', imageUrl)
+      //  console.log('activeAccount', activeAccount)
+      // console.log('imageUrl', imageUrl)
 
       // Create metadata object from record fields
       const metadata = {
@@ -162,56 +168,54 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       const walletAddress = activeAccount
 
-      // console.log(metadata)
-      {
-        const mintResponse = await fetch('/api/mint', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ metadata, walletAddress })
-        })
+      const mintResponse = await fetch('/api/mint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ metadata, walletAddress })
+      })
 
-        if (!mintResponse.ok) {
-          console.log(await mintResponse.json())
-          throw new Error('Minting failed')
-        }
-
-        const mintData = await mintResponse.json()
-
-        console.log(JSON.stringify(mintData))
+      if (!mintResponse.ok) {
+        throw new Error('Minting failed')
       }
+
+      const { transactionHash } = await mintResponse.json()
+
+      console.log('hash', transactionHash)
 
       // After successful minting, show confetti
       setShowConfetti(true)
-      setTimeout(() => setShowConfetti(false), 5000) // Hide confetti after 5 seconds
+      setTimeout(() => setShowConfetti(false), 5000)
 
       // Update record status in database
       const db = await getDb()
 
-      await db.update(`media:${recordId}`, {
+      const mintUpdated = await db.update(`media:${recordId}`, {
         status: 'minted',
-        owner: activeAccount.address // Add the owner field
+        owner: activeAccount.address,
+        transactionHash: transactionHash
       })
 
-      // Update local state
+      console.log('mintUpdated', mintUpdated)
+
+      // Update local state with the hash
       setRecordData(prev =>
         prev
           ? {
               ...prev,
               status: 'minted',
-              owner: activeAccount.address // Add the owner field here too
+              owner: activeAccount.address,
+              transactionHash: transactionHash
             }
           : null
       )
       setIsEditing(false)
 
-      // Add after successful mint
+      //   console.log('recordData', recordData)
       setShowSuccess(true)
     } catch (error) {
       console.error('Error during minting process:', error)
-
-      // throw error
     } finally {
       setIsMinting(false)
     }
@@ -412,6 +416,29 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 </Grid>
                 <Grid item xs={12}>
                   <CustomTextField fullWidth label='IPFS URL' value={recordData.ipfsUrl} disabled />
+                </Grid>
+                <Grid item xs={12}>
+                  {recordData.transactionHash && (
+                    <CustomTextField
+                      fullWidth
+                      label='Transaction Hash'
+                      value={recordData.transactionHash}
+                      disabled
+                      InputProps={{
+                        endAdornment: (
+                          <Button
+                            component='a'
+                            href={`${AMOY_EXPLORER}${recordData.transactionHash}`}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            size='small'
+                          >
+                            View on Explorer
+                          </Button>
+                        )
+                      }}
+                    />
+                  )}
                 </Grid>
               </Grid>
             </Grid>

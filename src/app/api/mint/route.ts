@@ -98,6 +98,20 @@ export async function POST(req: NextRequest) {
       // Break if status is 'mined' or 'failed'
       if (statusData.result.status === 'mined' || statusData.result.status === 'failed') {
         transactionStatus = statusData.result.status
+
+        // Store the transaction hash when mined
+        const transactionHash = statusData.result.transactionHash
+
+        if (transactionStatus === 'mined') {
+          return new NextResponse(
+            JSON.stringify({
+              message: 'NFT minted successfully',
+              transactionHash
+            }),
+            { status: 200 }
+          )
+        }
+
         break
       }
 
