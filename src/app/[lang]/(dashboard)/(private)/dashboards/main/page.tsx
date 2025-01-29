@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Box from '@mui/material/Box'
 
 // Generated Icon CSS Imports
 import '@assets/iconify-icons/generated-icons.css'
@@ -37,7 +36,7 @@ const DashboardMain = () => {
               Welcome back, {userData.name}! 👋
             </Typography>
             <Typography variant='body1' color='text.secondary'>
-              Here's an overview of your digital assets and recent activity.
+              Here&apos;s an overview of your digital assets and recent activity.
             </Typography>
           </CardContent>
         </Card>
@@ -50,6 +49,8 @@ const DashboardMain = () => {
             <CardStatVertical
               title='RAGZ'
               stats={userData.ragzBalance}
+              subtitle='Current Balance'
+              chipText='+12%'
               avatarIcon='tabler-currency-dollar'
               avatarColor='primary'
               avatarSkin='light'
@@ -58,8 +59,10 @@ const DashboardMain = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <CardStatVertical
-              title='TAGZ Balance'
+              title='TAGZ'
               stats={userData.tagzBalance}
+              subtitle='Current Balance'
+              chipText='+12%'
               avatarIcon='tabler-coin'
               avatarColor='success'
               avatarSkin='light'
@@ -68,8 +71,10 @@ const DashboardMain = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <CardStatVertical
-              title='Assets Owned'
+              title='Assets'
               stats={userData.nftCount.toString()}
+              subtitle='Total Owned'
+              chipText='+12%'
               avatarIcon='tabler-photo'
               avatarColor='info'
               avatarSkin='light'
@@ -84,9 +89,9 @@ const DashboardMain = () => {
         <Card>
           <CardContent>
             <Typography variant='h5' sx={{ mb: 4 }}>
-              Recent Transactions
+              Recent Activity
             </Typography>
-            <LastTransaction serverMode={serverMode} limit={10} />
+            <LastTransaction serverMode={serverMode} />
           </CardContent>
         </Card>
       </Grid>
