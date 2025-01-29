@@ -285,7 +285,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             }}
           >
             <CircularProgress size={60} />
-            <Box sx={{ color: 'white', mt: 2 }}>Minting Record...</Box>
+            <Box sx={{ color: 'white', mt: 2 }}>
+              {recordData?.transactionHash ? 'Awarding TAGZ...' : 'Minting Record...'}
+            </Box>
           </Box>
         )}
         <CardHeader
