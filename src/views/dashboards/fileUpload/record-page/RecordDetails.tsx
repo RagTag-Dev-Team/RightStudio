@@ -189,14 +189,14 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Update record status in database
       const db = await getDb()
 
-      const updatedRecord = await db.update(new RecordId('media', `${recordId}`), {
+      await db.update(new RecordId('media', `${recordId}`), {
         ...recordData,
         status: 'minted',
         owner: activeAccount.address,
         transactionHash: transactionHash
       })
 
-      console.log('updatedRecord', updatedRecord)
+      //    console.log('updatedRecord', updatedRecord)
 
       // Update local state with the hash
       setRecordData(prev =>

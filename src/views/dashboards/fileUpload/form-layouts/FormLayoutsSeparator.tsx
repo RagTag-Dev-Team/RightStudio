@@ -23,8 +23,6 @@ import { upload } from 'thirdweb/storage'
 
 import Box from '@mui/material/Box'
 
-import LinearProgress from '@mui/material/LinearProgress'
-
 import { alpha } from '@mui/material/styles'
 
 import CircularProgress from '@mui/material/CircularProgress'

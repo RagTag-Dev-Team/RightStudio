@@ -1,5 +1,9 @@
+import { Agent } from 'https'
+
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
+
+import fetch from 'node-fetch'
 
 const {
   ENGINE_URL,
@@ -12,8 +16,12 @@ const {
 
 export async function POST(req: NextRequest) {
   if (
-    (!ENGINE_URL || !BACKEND_WALLET_ADDRESS || !CHAIN_ID || !ENGINE_SECRET_KEY || !NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
-    !TAGZ_TOKEN_ADDRESS)
+    !ENGINE_URL ||
+    !BACKEND_WALLET_ADDRESS ||
+    !CHAIN_ID ||
+    !ENGINE_SECRET_KEY ||
+    !NEXT_PUBLIC_THIRDWEB_SECRET_KEY ||
+    !TAGZ_TOKEN_ADDRESS
   ) {
     return NextResponse.json({ error: 'Missing environment variables' }, { status: 500 })
   }
@@ -43,6 +51,7 @@ export async function POST(req: NextRequest) {
 
     return new NextResponse(JSON.stringify({ message: 'NFT minted successfully', transactionHash }), { status: 200 })
 */
+
     console.log('walletAddress', walletAddress)
 
     const res = await fetch(`${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_TOKEN_ADDRESS}/erc20/mint-to?simulateTx=true`, {
@@ -56,7 +65,7 @@ export async function POST(req: NextRequest) {
         toAddress: walletAddress,
         amount: '100.0'
       }),
-      agent: new (require('https').Agent)({
+      agent: new Agent({
         rejectUnauthorized: false
       })
     })

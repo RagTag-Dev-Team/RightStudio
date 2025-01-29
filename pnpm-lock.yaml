@@ -183,6 +183,9 @@ importers:
       next-auth:
         specifier: ^4.24.7
         version: 4.24.7(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      node-fetch:
+        specifier: ^2.7.0
+        version: 2.7.0
       pino-pretty:
         specifier: ^11.2.2
         version: 11.2.2
@@ -277,6 +280,9 @@ importers:
       '@types/node':
         specifier: ^20.14.12
         version: 20.14.12
+      '@types/node-fetch':
+        specifier: '2'
+        version: 2.6.12
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -2251,6 +2257,9 @@ packages:
 
   '@types/negotiator@0.6.3':
     resolution: {integrity: sha512-JkXTOdKs5MF086b/pt8C3+yVp3iDUwG635L7oCH6HvJvvr6lSUU5oe/gLXnPEfYRROHjJIPgCV6cuAg8gGkntQ==}
+
+  '@types/node-fetch@2.6.12':
+    resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
 
   '@types/node@16.18.11':
     resolution: {integrity: sha512-3oJbGBUWuS6ahSnEq1eN2XrCyf4YsWI8OyCvo7c64zQJNplk3mO84t53o8lfTk+2ji59g5ycfc6qQ3fdHliHuA==}
@@ -9109,6 +9118,11 @@ snapshots:
       '@types/pbf': 3.0.5
 
   '@types/negotiator@0.6.3': {}
+
+  '@types/node-fetch@2.6.12':
+    dependencies:
+      '@types/node': 20.14.12
+      form-data: 4.0.0
 
   '@types/node@16.18.11': {}
 
