@@ -11,6 +11,13 @@ import CardHeader from '@mui/material/CardHeader'
 import TextField from '@mui/material/TextField'
 import CircularProgress from '@mui/material/CircularProgress'
 import Chip from '@mui/material/Chip'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import Icon from '@mui/material/Icon'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
 // Third-party Imports
 import type { FilterFn } from '@tanstack/react-table'
@@ -27,9 +34,11 @@ import { rankItem } from '@tanstack/match-sorter-utils'
 import { resolveScheme } from 'thirdweb/storage'
 
 import { client } from '@/libs/thirdwebclient'
+import FormLayoutsSeparator from '../dashboards/fileUpload/form-layouts/FormLayoutsSeparator'
 
 // Style Imports
 import styles from '@core/styles/table.module.css'
+import '@assets/iconify-icons/generated-icons.css'
 
 // Types
 interface TrackRecord {
@@ -109,6 +118,7 @@ const MusicLibrary = () => {
   const [data, setData] = useState<TrackRecord[]>([])
   const [globalFilter, setGlobalFilter] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   // Thirdweb hooks
   const account = useActiveAccount()
@@ -180,6 +190,11 @@ const MusicLibrary = () => {
     globalFilterFn: fuzzyFilter
   })
 
+  // Add drawer toggle handler
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen)
+  }
+
   return (
     <Card>
       {isLoading && (
@@ -190,12 +205,21 @@ const MusicLibrary = () => {
       <CardHeader
         title='My Music Library'
         action={
-          <TextField
-            placeholder='Search...'
-            value={globalFilter}
-            onChange={e => setGlobalFilter(e.target.value)}
-            size='small'
-          />
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            <TextField
+              placeholder='Search...'
+              value={globalFilter}
+              onChange={e => setGlobalFilter(e.target.value)}
+              size='small'
+            />
+            <Button
+              variant='contained'
+              onClick={toggleDrawer}
+              startIcon={<Icon className='tabler-music-plus'>add</Icon>}
+            >
+              Add New Media
+            </Button>
+          </Box>
         }
       />
       <div className='overflow-x-auto'>
@@ -234,6 +258,43 @@ const MusicLibrary = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Add the Drawer component */}
+      <Drawer
+        anchor='right'
+        open={drawerOpen}
+        onClose={toggleDrawer}
+        ModalProps={{
+          keepMounted: true
+        }}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: {
+              xs: '100%',
+              sm: '1000px'
+            },
+            maxWidth: '100vw'
+          }
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            p: theme => theme.spacing(3, 4)
+          }}
+        >
+          <Typography variant='h6'>Add New Media</Typography>
+          <IconButton className='tabler:x' onClick={toggleDrawer}>
+            <Icon className='tabler-x'>close</Icon>
+          </IconButton>
+        </Box>
+        <Divider sx={{ mb: 0 }} />
+        <Box sx={{ p: theme => theme.spacing(4) }}>
+          <FormLayoutsSeparator onSuccess={toggleDrawer} />
+        </Box>
+      </Drawer>
     </Card>
   )
 }

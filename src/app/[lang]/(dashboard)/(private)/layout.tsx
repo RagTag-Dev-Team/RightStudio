@@ -1,5 +1,10 @@
 // MUI Imports
+import { Suspense } from 'react'
+
+// import { usePathname } from 'next/navigation'
+
 import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
@@ -15,7 +20,8 @@ import Providers from '@components/Providers'
 import Navigation from '@components/layout/vertical/Navigation'
 import Header from '@components/layout/horizontal/Header'
 import Navbar from '@components/layout/vertical/Navbar'
-import VerticalFooter from '@components/layout/vertical/Footer'
+
+// import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
 
 // import Customizer from '@core/components/customizer'
@@ -28,6 +34,19 @@ import { i18n } from '@configs/i18n'
 // Util Imports
 import { getDictionary } from '@/utils/getDictionary'
 import { getMode, getSystemMode } from '@core/utils/serverHelpers'
+
+// Router Import
+
+// React Import
+
+// Loading component for navigation
+const NavigationLoader = () => {
+  return (
+    <div className='fixed inset-0 flex items-center justify-center bg-background/50 z-50'>
+      <CircularProgress />
+    </div>
+  )
+}
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
   // Vars
@@ -48,12 +67,12 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
 
               // footer={<VerticalFooter />}
             >
-              {children}
+              <Suspense fallback={<NavigationLoader />}>{children}</Suspense>
             </VerticalLayout>
           }
           horizontalLayout={
             <HorizontalLayout header={<Header dictionary={dictionary} />} footer={<HorizontalFooter />}>
-              {children}
+              <Suspense fallback={<NavigationLoader />}>{children}</Suspense>
             </HorizontalLayout>
           }
         />

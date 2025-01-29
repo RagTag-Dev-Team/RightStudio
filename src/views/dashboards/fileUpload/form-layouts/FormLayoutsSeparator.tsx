@@ -58,7 +58,12 @@ type FormDataType = {
 
 // If a file is dropped on the FileUploaderRestrictions component, we need to store the metadata in the database and populate the form with the metadata.
 
-const FormLayoutsSeparator = () => {
+// Add this to the component's props
+interface FormLayoutsSeparatorProps {
+  onSuccess?: () => void
+}
+
+const FormLayoutsSeparator = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
   const router = useRouter()
 
   // States
@@ -180,6 +185,11 @@ const FormLayoutsSeparator = () => {
         // Reset states before redirect
         handleReset()
 
+        // Call onSuccess if provided
+        if (onSuccess) {
+          onSuccess()
+        }
+
         router.push(`/en/dashboards/record/${recordId}`)
       }
     } catch (error) {
@@ -231,32 +241,39 @@ const FormLayoutsSeparator = () => {
 
             <Grid item xs={12}>
               <Grid container spacing={6}>
-                <Grid item xs={12} sm={4} md={3}>
-                  {formData.coverImage ? (
-                    <Box sx={{ width: '100%', height: 300, overflow: 'hidden', borderRadius: 1 }}>
+                <Grid item xs={12} sm={5} md={4}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      aspectRatio: '1/1',
+                      border: theme => `1px solid ${theme.palette.divider}`,
+                      borderRadius: 1,
+                      overflow: 'hidden',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      '&:hover': { opacity: 0.8 }
+                    }}
+                  >
+                    {formData.coverImage ? (
                       <img
                         src={formData.coverImage}
                         alt='Cover Art'
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover'
+                        }}
                       />
-                    </Box>
-                  ) : (
-                    <Box
-                      sx={{
-                        width: '100%',
-                        height: 300,
-                        borderRadius: 1,
-                        bgcolor: 'action.disabledBackground',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}
-                    >
-                      <Typography color='text.disabled'>Cover Image</Typography>
-                    </Box>
-                  )}
+                    ) : (
+                      <Box sx={{ textAlign: 'center', p: 3 }}>
+                        <span>No cover image</span>
+                      </Box>
+                    )}
+                  </Box>
                 </Grid>
-                <Grid item xs={12} sm={8} md={9}>
+                <Grid item xs={12} sm={7} md={8}>
                   <Grid container spacing={6}>
                     <Grid item xs={12} sm={6}>
                       <CustomTextField

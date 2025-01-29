@@ -24,9 +24,6 @@ import { RecordId, StringRecordId } from 'surrealdb'
 import { useActiveAccount } from 'thirdweb/react'
 
 import { client } from '@/libs/thirdwebclient'
-
-// Component Imports
-
 import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
@@ -97,9 +94,12 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         // If there's a coverImage URI, fetch it from thirdweb
         if (record.coverImage) {
           try {
-            const url = await resolveScheme({ client, uri: record.coverImage })
+            const url = resolveScheme({
+              client,
+              uri: record.coverImage
+            })
 
-            console.log(url)
+            //  console.log(url)
             setImageUrl(url)
           } catch (error) {
             console.error('Error downloading cover image:', error)
@@ -496,6 +496,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           )}
         </CardActions>
       </Card>
+
       <Snackbar
         open={showSuccess}
         autoHideDuration={6000}
