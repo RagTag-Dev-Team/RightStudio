@@ -142,14 +142,14 @@ const MusicLibrary = () => {
           title: track.title,
           artist: track.artist,
           album: track.album,
-          createdDate: track.createdDate,
+          createdDate: track.uploadedAt,
           status: track.status,
           tokenId: track.tokenId
         }))
 
-        // Sort tracks by createdAt date in descending order (most recent first)
+        // Sort tracks by uploadedAt date in descending order (most recent first)
         const sortedTracks = transformedTracks.sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          (a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
         )
 
         setData(sortedTracks)
