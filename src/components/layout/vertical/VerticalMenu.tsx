@@ -1,5 +1,5 @@
 // Next Imports
-import { useParams } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
@@ -51,12 +51,21 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
   const params = useParams()
+  const pathname = usePathname()
 
   // Vars
   const { isBreakpointReached, transitionDuration } = verticalNavOptions
   const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
+
+  const getRecordId = () => {
+    const match = pathname.match(/\/dashboards\/record\/(.+)$/)
+
+    return match ? match[1] : null
+  }
+
+  const recordId = getRecordId()
 
   return (
     // eslint-disable-next-line lines-around-comment
@@ -81,10 +90,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <SubMenu label='Home' icon={<i className='tabler-smart-home' />}>
-          <MenuItem href={`/${locale}/dashboards/fileUpload`}>{dictionary['navigation'].fileUpload}</MenuItem>
-          <MenuItem href={`/${locale}/dashboards/fileLibrary`}>{dictionary['navigation'].fileLibrary}</MenuItem>
-
+        <SubMenu label='Dashboards' icon={<i className='tabler-dashboard' />}>
           {/*
           <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>
@@ -92,6 +98,14 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           <MenuItem href={`/${locale}/dashboards/academy`}>{dictionary['navigation'].academy}</MenuItem>
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
           */}
+        </SubMenu>
+        <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
+          <MenuItem href={`/${locale}/dashboards/fileLibrary`}>{dictionary['navigation'].fileLibrary}</MenuItem>
+          {recordId && (
+            <MenuItem href={`/${locale}/dashboards/record/${recordId}`} active={true}>
+              Media Detail
+            </MenuItem>
+          )}
         </SubMenu>
         {/*
         <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>
