@@ -74,6 +74,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   const activeAccount = useActiveAccount()
 
+  const [successMessage, setSuccessMessage] = useState<string>('')
+
   useEffect(() => {
     const fetchData = async () => {
       const db = await getDb()
@@ -184,14 +186,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       console.log('hash', transactionHash)
 
-      // After successful minting, show confetti
-      setShowConfetti(true)
-      setTimeout(() => setShowConfetti(false), 5000)
-
       // Update record status in database
       const db = await getDb()
-
-      //database is not working
 
       const updatedRecord = await db.update(new RecordId('media', `${recordId}`), {
         ...recordData,
@@ -209,16 +205,14 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               ...prev,
               status: 'minted',
               owner: activeAccount.address,
-              transactionHash: transactionHash
+              transactionHash: transactionHash,
+              dateMinted: new Date()
             }
           : null
       )
       setIsEditing(false)
 
-      console.log('recordData', recordData)
-
-      //reward user with tagz
-
+      // Reward user with tagz
       const rewardResponse = await fetch('/api/reward', {
         method: 'POST',
         headers: {
@@ -227,9 +221,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         body: JSON.stringify({ walletAddress: activeAccount.address })
       })
 
-      console.log('rewardResponse', rewardResponse)
+      const rewardData = await rewardResponse.json()
+
+      console.log('rewardResponse', rewardData)
+
+      // Show confetti after both minting and reward are complete
+      setShowConfetti(true)
+      setTimeout(() => setShowConfetti(false), 5000)
 
       setShowSuccess(true)
+      setSuccessMessage(`Record successfully minted! You've earned ${rewardData.amount} TAGZ for minting this record.`)
     } catch (error) {
       console.error('Error during minting process:', error)
     } finally {
@@ -498,7 +499,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert severity='success' onClose={() => setShowSuccess(false)}>
-          Record successfully minted!
+          {successMessage}
         </Alert>
       </Snackbar>
     </>

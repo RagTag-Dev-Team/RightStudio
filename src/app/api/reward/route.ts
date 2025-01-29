@@ -7,15 +7,18 @@ const {
   CHAIN_ID,
   ENGINE_SECRET_KEY,
   NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
-  TAGZ_CONTRACT_ADDRESS
+  TAGZ_TOKEN_ADDRESS
 } = process.env
 
 export async function POST(req: NextRequest) {
-  if (!ENGINE_URL || !BACKEND_WALLET_ADDRESS || !CHAIN_ID || !ENGINE_SECRET_KEY || !NEXT_PUBLIC_THIRDWEB_SECRET_KEY) {
+  if (
+    (!ENGINE_URL || !BACKEND_WALLET_ADDRESS || !CHAIN_ID || !ENGINE_SECRET_KEY || !NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
+    !TAGZ_TOKEN_ADDRESS)
+  ) {
     return NextResponse.json({ error: 'Missing environment variables' }, { status: 500 })
   }
 
-  const { walletAddress } = await req.json()
+  const { walletAddress, amount } = await req.json()
 
   console.log('walletAddress', walletAddress)
 
@@ -40,25 +43,23 @@ export async function POST(req: NextRequest) {
 
     return new NextResponse(JSON.stringify({ message: 'NFT minted successfully', transactionHash }), { status: 200 })
 */
+    console.log('walletAddress', walletAddress)
 
-    const res = await fetch(
-      `${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_CONTRACT_ADDRESS}/erc20/mint-to?simulateTx=true`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
-          'Content-Type': 'application/json',
-          'x-backend-wallet-address': `${BACKEND_WALLET_ADDRESS}`
-        },
-        body: JSON.stringify({
-          toAddress: walletAddress.address,
-          amount: 100
-        }),
-        agent: new (require('https').Agent)({
-          rejectUnauthorized: false
-        })
-      }
-    )
+    const res = await fetch(`${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_TOKEN_ADDRESS}/erc20/mint-to?simulateTx=true`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
+        'Content-Type': 'application/json',
+        'x-backend-wallet-address': `${BACKEND_WALLET_ADDRESS}`
+      },
+      body: JSON.stringify({
+        toAddress: walletAddress,
+        amount: amount
+      }),
+      agent: new (require('https').Agent)({
+        rejectUnauthorized: false
+      })
+    })
 
     const data = await res.json()
 

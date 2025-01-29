@@ -27,6 +27,8 @@ import LinearProgress from '@mui/material/LinearProgress'
 
 import { alpha } from '@mui/material/styles'
 
+import CircularProgress from '@mui/material/CircularProgress'
+
 import { client } from '@/libs/thirdwebclient'
 
 import CustomTextField from '@core/components/mui/TextField'
@@ -37,6 +39,8 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Add these imports at the top
 import { getDb } from '@/libs/surreal'
+
+// Add this import
 
 type FormDataType = {
   title: string
@@ -69,7 +73,6 @@ const FormLayoutsSeparator = () => {
 
   const [file, setFile] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
-  const [uploadProgress, setUploadProgress] = useState(0)
 
   const handleMetadata = (metadata: Partial<FormDataType>, uploadedFile: File) => {
     // Update form data with metadata
@@ -117,14 +120,6 @@ const FormLayoutsSeparator = () => {
     try {
       setIsUploading(true)
 
-      // Simulate progress updates
-      const progressInterval = setInterval(() => {
-        setUploadProgress(prev => Math.min(prev + 10, 90))
-      }, 500)
-
-      // console.log('uploading file', file)
-
-      // Upload audio file to IPFS
       const uploadUrl = await upload({
         client,
         files: [file]
@@ -146,12 +141,6 @@ const FormLayoutsSeparator = () => {
         })
       }
 
-      //  console.log('Upload URL:', uploadUrl)
-      //  console.log('Cover Art URL:', coverArtUrl)
-
-      clearInterval(progressInterval)
-      setUploadProgress(100)
-
       // Prepare metadata for database
       const mediaMetadata = {
         title: formData.title,
@@ -168,28 +157,23 @@ const FormLayoutsSeparator = () => {
         status: 'unminted'
       }
 
-      // console.log('Media Metadata:', mediaMetadata)
-
-      // Save to SurrealDB
       const created = await db.create('media', mediaMetadata)
 
       console.log('Metadata saved to database:', created)
 
-      // Navigate to the record page
+      // Only hide the spinner after successful redirect
       if (created && created[0] && created[0].id) {
         console.log('Created:', created)
         const recordId = String(created[0].id).split(':')[1]
 
+        // Reset states before redirect
+        handleReset()
+
         router.push(`/en/dashboards/record/${recordId}`)
       }
-
-      // Reset form after successful upload and save
-      handleReset()
     } catch (error) {
       console.error('Error during upload or save:', error)
-    } finally {
       setIsUploading(false)
-      setUploadProgress(0)
     }
   }
 
@@ -212,14 +196,14 @@ const FormLayoutsSeparator = () => {
             p: 4
           }}
         >
-          <Typography variant='h6' sx={{ mb: 4 }}>
+          <CircularProgress size={60} sx={{ mb: 4 }} />
+          <Typography variant='h6' sx={{ mb: 2 }}>
             Uploading File...
           </Typography>
-          <Box sx={{ width: '80%', maxWidth: 400 }}>
-            <LinearProgress variant='determinate' value={uploadProgress} />
-          </Box>
-          <Typography variant='body2' sx={{ mt: 2 }}>
-            {uploadProgress}%
+          <Typography variant='body2' color='text.secondary' textAlign='center'>
+            Please keep this window open while we process your transaction.
+            <br />
+            This may take a few moments.
           </Typography>
         </Box>
       )}
