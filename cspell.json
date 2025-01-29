@@ -20,6 +20,7 @@
         "nextjs",
         "pino",
         "reduxjs",
+        "rocksdb",
         "sebastianwessel",
         "stylelint",
         "stylis",

@@ -109,3 +109,17 @@ src/assets/iconify-icons/generated-icons.css
 /.env.development
 
 .vercel
+surrealdb/data/000013.sst
+surrealdb/data/000016.sst
+surrealdb/data/000023.sst
+surrealdb/data/000024.log
+surrealdb/data/CURRENT
+surrealdb/data/IDENTITY
+surrealdb/data/LOCK
+surrealdb/data/LOG
+surrealdb/data/LOG.old.1738102970104095
+surrealdb/data/LOG.old.1738103470042542
+surrealdb/data/LOG.old.1738106457033281
+surrealdb/data/MANIFEST-000025
+surrealdb/data/OPTIONS-000020
+surrealdb/data/OPTIONS-000027

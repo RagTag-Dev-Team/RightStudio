@@ -122,7 +122,7 @@ const FormLayoutsSeparator = () => {
         setUploadProgress(prev => Math.min(prev + 10, 90))
       }, 500)
 
-      console.log('uploading file', file)
+      // console.log('uploading file', file)
 
       // Upload audio file to IPFS
       const uploadUrl = await upload({
@@ -146,8 +146,8 @@ const FormLayoutsSeparator = () => {
         })
       }
 
-      console.log('Upload URL:', uploadUrl)
-      console.log('Cover Art URL:', coverArtUrl)
+      //  console.log('Upload URL:', uploadUrl)
+      //  console.log('Cover Art URL:', coverArtUrl)
 
       clearInterval(progressInterval)
       setUploadProgress(100)
@@ -168,7 +168,7 @@ const FormLayoutsSeparator = () => {
         status: 'unminted'
       }
 
-      console.log('Media Metadata:', mediaMetadata)
+      // console.log('Media Metadata:', mediaMetadata)
 
       // Save to SurrealDB
       const created = await db.create('media', mediaMetadata)

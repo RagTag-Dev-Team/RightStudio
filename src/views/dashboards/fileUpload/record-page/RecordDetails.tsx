@@ -216,6 +216,19 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setIsEditing(false)
 
       console.log('recordData', recordData)
+
+      //reward user with tagz
+
+      const rewardResponse = await fetch('/api/reward', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ walletAddress: activeAccount.address })
+      })
+
+      console.log('rewardResponse', rewardResponse)
+
       setShowSuccess(true)
     } catch (error) {
       console.error('Error during minting process:', error)

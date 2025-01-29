@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --names surreal,next \"pnpm run dev:surreal\" \"pnpm run dev:next\"",
-    "dev:surreal": "dotenv -- cross-var surreal start --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% memory",
+    "dev:surreal": "dotenv -- cross-var surreal start --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% rocksdb:./surrealdb/data",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
