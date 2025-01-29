@@ -10,6 +10,7 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import TextField from '@mui/material/TextField'
 import CircularProgress from '@mui/material/CircularProgress'
+import Chip from '@mui/material/Chip'
 
 // Third-party Imports
 import type { FilterFn } from '@tanstack/react-table'
@@ -37,7 +38,7 @@ interface TrackRecord {
   title: string
   artist: string
   album: string
-  releaseYear: string
+  createdDate: string
   status: 'minted' | 'unminted'
   tokenId?: string
 }
@@ -79,13 +80,25 @@ const columns = [
     cell: info => info.getValue(),
     header: 'Album'
   }),
-  columnHelper.accessor('releaseYear', {
-    cell: info => info.getValue(),
-    header: 'Release Year'
+  columnHelper.accessor('createdDate', {
+    cell: info => {
+      const date = new Date(info.getValue())
+
+      return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    },
+    header: 'Created Date'
   }),
   columnHelper.accessor('status', {
     cell: info => (
-      <span className={info.getValue() === 'minted' ? 'text-success' : 'text-warning'}>{info.getValue()}</span>
+      <Chip
+        label={info.getValue().toUpperCase()}
+        color={info.getValue() === 'minted' ? 'success' : 'warning'}
+        size='small'
+      />
     ),
     header: 'Status'
   })
@@ -97,7 +110,6 @@ const MusicLibrary = () => {
   const [globalFilter, setGlobalFilter] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
-  // Thirdweb hooks
   // Thirdweb hooks
   const account = useActiveAccount()
 
@@ -115,10 +127,7 @@ const MusicLibrary = () => {
         const response = await fetch(`/api/tracks/all?owner=${account.address}`)
         const tracks = await response.json()
 
-        //show each track while looping
         tracks.forEach((track: any) => {
-          console.log('track', track.coverImage)
-
           const coverArt = resolveScheme({
             client,
             uri: `${track.coverImage}`
@@ -133,12 +142,17 @@ const MusicLibrary = () => {
           title: track.title,
           artist: track.artist,
           album: track.album,
-          releaseYear: track.releaseYear,
+          createdDate: track.createdDate,
           status: track.status,
           tokenId: track.tokenId
         }))
 
-        setData(transformedTracks)
+        // Sort tracks by createdAt date in descending order (most recent first)
+        const sortedTracks = transformedTracks.sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+
+        setData(sortedTracks)
       } catch (error) {
         console.error('Error fetching data:', error)
       } finally {

@@ -29,6 +29,8 @@ import { alpha } from '@mui/material/styles'
 
 import CircularProgress from '@mui/material/CircularProgress'
 
+import { useActiveAccount } from 'thirdweb/react'
+
 import { client } from '@/libs/thirdwebclient'
 
 import CustomTextField from '@core/components/mui/TextField'
@@ -52,6 +54,8 @@ type FormDataType = {
   label: string
   releaseDate: Date | null
   coverImage?: string
+  owner: string
+  dateCreated: Date
 }
 
 // If a file is dropped on the FileUploaderRestrictions component, we need to store the metadata in the database and populate the form with the metadata.
@@ -68,11 +72,15 @@ const FormLayoutsSeparator = () => {
     filesize: '',
     duration: '',
     label: '',
-    releaseDate: null
+    releaseDate: null,
+    owner: '',
+    dateCreated: new Date()
   })
 
   const [file, setFile] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
+
+  const activeAccount = useActiveAccount()
 
   const handleMetadata = (metadata: Partial<FormDataType>, uploadedFile: File) => {
     // Update form data with metadata
@@ -86,7 +94,9 @@ const FormLayoutsSeparator = () => {
       filetype: metadata.filetype || '',
       filesize: metadata.filesize || '',
       duration: metadata.duration || '',
-      coverImage: metadata.coverImage || undefined
+      coverImage: metadata.coverImage || undefined,
+      owner: activeAccount?.address || '',
+      dateCreated: new Date()
     }))
 
     // Update file state
@@ -102,7 +112,9 @@ const FormLayoutsSeparator = () => {
       filesize: '',
       duration: '',
       label: '',
-      releaseDate: null
+      releaseDate: null,
+      owner: '',
+      dateCreated: new Date()
     })
   }
 
@@ -154,7 +166,8 @@ const FormLayoutsSeparator = () => {
         ipfsUrl: uploadUrl,
         coverImage: coverArtUrl,
         uploadedAt: new Date().toISOString(),
-        status: 'unminted'
+        status: 'unminted',
+        owner: formData.owner
       }
 
       const created = await db.create('media', mediaMetadata)

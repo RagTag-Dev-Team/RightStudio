@@ -218,7 +218,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ walletAddress: activeAccount.address })
+        body: JSON.stringify({ walletAddress: activeAccount.address, amount: '100.0' })
       })
 
       const rewardData = await rewardResponse.json()
@@ -230,7 +230,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setTimeout(() => setShowConfetti(false), 5000)
 
       setShowSuccess(true)
-      setSuccessMessage(`Record successfully minted! You've earned ${rewardData.amount} TAGZ for minting this record.`)
+      setSuccessMessage(
+        `Record successfully minted! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for minting this record.`
+      )
     } catch (error) {
       console.error('Error during minting process:', error)
     } finally {

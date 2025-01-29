@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         toAddress: walletAddress,
-        amount: amount
+        amount: '100.0'
       }),
       agent: new (require('https').Agent)({
         rejectUnauthorized: false
@@ -98,7 +98,8 @@ export async function POST(req: NextRequest) {
           return new NextResponse(
             JSON.stringify({
               message: 'Tagz minted successfully',
-              transactionHash
+              transactionHash,
+              amount
             }),
             { status: 200 }
           )
