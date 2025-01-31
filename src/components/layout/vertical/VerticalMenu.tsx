@@ -101,7 +101,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           */}
         </SubMenu>
         <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
-          <MenuItem href={`/${locale}/dashboards/fileLibrary`}>{dictionary['navigation'].fileLibrary}</MenuItem>
+          <MenuItem href={`/${locale}/dashboards/fileLibrary`}>Media Collection</MenuItem>
           {recordId && <MenuItem href={`/${locale}/dashboards/record/${recordId}`}>Media Detail</MenuItem>}
         </SubMenu>
         {/*
