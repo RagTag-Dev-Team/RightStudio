@@ -109,6 +109,7 @@ src/assets/iconify-icons/generated-icons.css
 /.env.development
 
 .vercel
+surrealdb/data/*
 surrealdb/data/000013.sst
 surrealdb/data/000016.sst
 surrealdb/data/000023.sst
