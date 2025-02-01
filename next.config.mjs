@@ -17,19 +17,19 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/front-pages/landing-page',
+        destination: '/home',
         permanent: true,
         locale: false
       },
       {
         source: '/:lang(en|fr|ar)',
-        destination: 'fr',
+        destination: '/:lang/home',
         permanent: true,
         locale: false
       },
       {
         source: '/((?!(?:en|fr|ar|front-pages|favicon.ico)\\b)):path',
-        destination: '/front-pages/landing-page',
+        destination: '/en/:path',
         permanent: true,
         locale: false
       }

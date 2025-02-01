@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme } from 'thirdweb/storage'
+import { resolveScheme, download } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 
@@ -23,9 +23,20 @@ import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
+import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+import { ContentFormat, AITrainingMiningInfo, ICertificate } from '@mentaport/certificates'
+
 import { client } from '@/libs/thirdwebclient'
 import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+
+import {
+  CreateCertificate,
+  Verify,
+  GetCertificates,
+  GetContracts,
+  UpdateCertificate
+} from '@/libs/mentaport/actions/mentaport/index'
 
 // Database Import
 import { getDb } from '@/libs/surreal'
@@ -53,6 +64,39 @@ type RecordDataType = {
   transactionHash?: string
 }
 
+const newCert: ICertificateArg = {
+  contractId: process.env.MENTAPORT_CONTRACT_ID!, // "your-contract-id",
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png, // will be updated when file is selected
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
+}
+
+const updateCert: ICertificateUpdateArg = {
+  contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || '',
+  certId: '',
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png,
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
+}
+
 // Add this type definition at the top of the file, after the imports
 
 const RecordDetails = ({ recordId }: { recordId: string }) => {
@@ -72,6 +116,17 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   const activeAccount = useActiveAccount()
 
   const [successMessage, setSuccessMessage] = useState<string>('')
+
+  // Add new state for watermark processing
+  const [isWatermarking, setIsWatermarking] = useState(false)
+
+  const [certId, setCertId] = useState<string>('')
+
+  const [contractId, setContractId] = useState<string>(process.env.NEXT_PUBLIC_CONTRACT_ID!)
+
+  const [onlyActiveContracts, setOnlyActiveContracts] = useState<boolean>(true)
+
+  const [newCertificateArgs, setNewCertificateArgs] = useState<ICertificateArg>({ ...newCert })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -237,6 +292,63 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       console.error('Error during minting process:', error)
     } finally {
       setIsMinting(false)
+    }
+  }
+
+  // Add watermark handler function
+  const handleWatermark = async () => {
+    if (!recordData) return
+
+    setIsWatermarking(true)
+
+    try {
+      // Download the file from IPFS
+      const fileResponse = await download({
+        client,
+        uri: recordData.ipfsUrl
+      })
+
+      if (!fileResponse.ok) {
+        throw new Error('Failed to download file from IPFS')
+      }
+
+      // Get the file blob
+      const fileBlob = await fileResponse.blob()
+
+      // Create payload with record data and file blob
+      const payload = {
+        recordId,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        fileType: recordData.filetype,
+        fileBlob: await fileBlob.arrayBuffer() // Convert blob to array buffer for JSON
+      }
+
+      // Send to watermark API
+      const response = await fetch('/api/watermark', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const { status, data: resData, message } = response
+
+      if (status && resData) {
+        console.log('resData', resData)
+        console.log('message', message)
+      }
+
+      setSuccessMessage('Watermark successfully added to the media file!')
+      setShowSuccess(true)
+    } catch (error) {
+      console.error('Error during watermarking:', error)
+      setSuccessMessage('Failed to add watermark to the file')
+      setShowSuccess(true)
+    } finally {
+      setIsWatermarking(false)
     }
   }
 
@@ -466,11 +578,18 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions>
+        <CardActions sx={{ justifyContent: 'space-between' }}>
           {recordData.status === 'minted' ? (
-            <Box sx={{ p: 2 }}>
-              <Chip label='MINTED' color='success' />
-            </Box>
+            <>
+              <Box sx={{ p: 2 }}>
+                <Chip label='MINTED' color='success' />
+              </Box>
+              <Box sx={{ p: 2 }}>
+                <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
+                  {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                </Button>
+              </Box>
+            </>
           ) : (
             <>
               {isEditing ? (
