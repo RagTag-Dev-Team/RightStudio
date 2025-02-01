@@ -12,17 +12,10 @@ import IconButton from '@mui/material/IconButton'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import type { Theme } from '@mui/material/styles'
+import Button from '@mui/material/Button'
 
 // Third-party Imports
 import classnames from 'classnames'
-
-import { signIn, getSession } from 'next-auth/react'
-
-import { darkTheme, ConnectButton } from 'thirdweb/react'
-
-import { client } from '@/libs/thirdwebclient'
-
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
@@ -60,7 +53,11 @@ const Header = ({ mode }: { mode: Mode }) => {
     disableHysteresis: true
   })
 
-  const THIRDWEB_CLIENT = client
+  const handleLoginClick = () => {
+    const redirectURL = searchParams.get('redirectTo') ?? '/en/dashboards/main'
+
+    router.push(`/en/login?redirectTo=${encodeURIComponent(redirectURL)}`)
+  }
 
   return (
     <header className={classnames(frontLayoutClasses.header, styles.header)}>
@@ -85,65 +82,19 @@ const Header = ({ mode }: { mode: Mode }) => {
             </div>
           )}
           <div className='flex items-center gap-2 sm:gap-4'>
-            <ConnectButton
-              client={THIRDWEB_CLIENT}
-              theme={darkTheme({
-                colors: {
-                  primaryButtonBg: '#247cdb',
-                  primaryButtonText: '#ffffff'
-                }
-              })}
-              connectModal={{
-                title: 'Connect to RightStudio',
-                titleIcon: '/images/pages/rightstudio-icon-color.png',
-                size: 'wide',
-                showThirdwebBranding: false
-              }}
-              connectButton={{
-                label: 'Get Started'
-              }}
-              auth={{
-                isLoggedIn: async address => {
-                  const session = await getSession()
-
-                  console.log('session', session)
-
-                  if (!session) {
-                    return false
-                  } else {
-                    return true
-                  }
-                },
-                doLogin: async params => {
-                  console.log('logging in!')
-
-                  const res = await signIn('credentials', {
-                    wallet_address: params.payload.address,
-                    redirect: false
-                  })
-
-                  if (res && res.ok && res.error === null) {
-                    // Vars
-                    const redirectURL = searchParams.get('redirectTo') ?? '/en/dashboards/fileLibrary'
-
-                    console.log('redirectURL', redirectURL)
-                    router.replace('/en/dashboards/fileLibrary')
-                  } else {
-                    if (res?.error) {
-                      const error = JSON.parse(res.error)
-
-                      setErrorState(error)
-                    }
-                  }
-                },
-                getLoginPayload: async (address: string) => {
-                  return await generatePayload(address)
-                },
-                doLogout: async () => {
-                  await logout()
+            <Button
+              variant='contained'
+              onClick={handleLoginClick}
+              sx={{
+                backgroundColor: '#247cdb',
+                color: '#ffffff',
+                '&:hover': {
+                  backgroundColor: '#1b5ca3'
                 }
               }}
-            />
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </div>
