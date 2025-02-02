@@ -13,6 +13,12 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true
   },
+  images: {
+    domains: [
+      // ... any existing domains ...
+      'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
+    ]
+  },
   redirects: async () => {
     return [
       {

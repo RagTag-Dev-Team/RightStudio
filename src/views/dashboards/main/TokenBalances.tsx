@@ -9,6 +9,13 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
 import { useTheme } from '@mui/material/styles'
+import CircularProgress from '@mui/material/CircularProgress'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
 
 import type { ApexOptions } from 'apexcharts'
 
@@ -19,7 +26,6 @@ import { useState, useEffect } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import CircularProgress from '@mui/material/CircularProgress'
 
 // ThirdWeb Imports
 import { useActiveAccount } from 'thirdweb/react'
@@ -35,15 +41,20 @@ const TokenBalances = () => {
   const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
 
   // State for balances and loading
-
   const [isLoading, setIsLoading] = useState(true)
+
+  const [tokenBalances, setTokenBalances] = useState<{ [key: string]: string }>({
+    RAGZ: '0',
+    TAGZ: '0',
+    'Minted Media': '0'
+  })
 
   const [chartData, setChartData] = useState<any>({
     series: [0, 0],
     options: {
       chart: {
         type: 'donut',
-        width: 380
+        width: 300
       },
       fill: {
         type: 'gradient',
@@ -66,7 +77,7 @@ const TokenBalances = () => {
         successColorWithOpacity,
         successColorWithOpacity
       ],
-      labels: ['RAGZ', 'TAGZ', 'RSMC'],
+      labels: ['RAGZ', 'TAGZ', 'Minted Media'],
       legend: {
         labels: {
           colors: '#fff'
@@ -79,7 +90,7 @@ const TokenBalances = () => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 180
             },
             legend: {
               position: 'bottom'
@@ -121,10 +132,16 @@ const TokenBalances = () => {
 
           console.log('tokenBalance', tokenBalance)
 
+          setTokenBalances({
+            RAGZ: ragzBalance,
+            TAGZ: tagzBalance,
+            'Minted Media': nftBalance
+          })
+
           setChartData({
             series: tokenBalance,
             options: {
-              labels: ['RAGZ', 'TAGZ', 'RSMC'],
+              labels: ['RAGZ', 'TAGZ', 'Minted Media'],
               legend: {
                 labels: {
                   colors: '#fff'
@@ -162,7 +179,6 @@ const TokenBalances = () => {
         <div className='flex flex-col gap-y-4'>
           <div className='flex flex-col gap-y-2'>
             <Typography variant='h5'>Portfolio</Typography>
-            <Typography>Account Balances</Typography>
           </div>
           <div className='flex justify-center'>
             {isLoading ? (
@@ -170,13 +186,38 @@ const TokenBalances = () => {
             ) : (
               <AppReactApexCharts
                 type='donut'
-                width={380}
-                height={380}
+                width={300}
+                height={300}
                 series={chartData.series}
                 options={chartData.options}
               />
             )}
           </div>
+          {!isLoading && (
+            <>
+              <Typography>Account Balances</Typography>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Token</TableCell>
+                      <TableCell align='right'>Balance</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {Object.entries(tokenBalances).map(([token, balance]) => (
+                      <TableRow key={token}>
+                        <TableCell component='th' scope='row'>
+                          {token}
+                        </TableCell>
+                        <TableCell align='right'>{balance}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </>
+          )}
         </div>
       </CardContent>
     </Card>
