@@ -53,41 +53,37 @@ export async function POST(req: Request) {
       username: ''
     }
 
-    /*
+    const baseUrl = process.env.NEXT_PUBLIC_MENTAPORT_API_URL!
+
+    const params = new URLSearchParams({
+      contractId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
+      name: title,
+      description: `${artist} - ${album}`,
+      copyrightInfo: CopyrightInfo.Copyrighted,
+      contentType: ContentTypes.Audio,
+      username: '',
+      album: album,
+      albumYear: '',
+      aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+      usingAI: 'false',
+      aiSoftware: '',
+      aiModel: ''
+    })
+
+    const urlWithParams = `${baseUrl}/certificates/create/?${params.toString()}`
+
+    console.log('urlWithParams', urlWithParams)
+
     const myHeaders = new Headers()
 
     myHeaders.append('Accept', 'application/json')
     myHeaders.append('Content-Type', 'multipart/form-data')
-    myHeaders.append('x-api-key', `${process.env.MENTAPORT_API_KEY!}`)
-
-    // Create URL with query parameters
-    const baseUrl = 'https://public.api.mentaport.xyz/prod/v1/certificates/create'
-
-    const params = new URLSearchParams({
-      contractId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
-      contentFormat: initCertificateArgs.contentType,
-      username: initCertificateArgs.username,
-      name: initCertificateArgs.name,
-      description: initCertificateArgs.description,
-      copyrightInfo: initCertificateArgs.copyrightInfo,
-      aiTrainingMiningInfo: initCertificateArgs.aiTrainingMiningInfo,
-      usingAI: initCertificateArgs.usingAI,
-      aiSoftware: initCertificateArgs.aiSoftware,
-      aiModel: initCertificateArgs.aiModel,
-      album: initCertificateArgs.album,
-      albumYear: initCertificateArgs.albumYear,
-      city: initCertificateArgs.city,
-      country: initCertificateArgs.country
-    })
-
-    const urlWithParams = `${baseUrl}?${params.toString()}`
-
-    console.log('urlWithParams', urlWithParams)
+    myHeaders.append('x-api-key', process.env.MENTAPORT_API_KEY!)
 
     const requestOptions = {
       method: 'GET',
       headers: myHeaders,
-      redirect: 'follow'
+      redirect: 'follow' as RequestRedirect
     }
 
     const presignedURL = await fetch(urlWithParams, requestOptions)
@@ -100,9 +96,9 @@ export async function POST(req: Request) {
       .catch(error => console.error('Error getting presigned URL:', error))
 
     console.log('presignedURL', presignedURL)
-    */
 
     // console.log('initCertificateArgs', initCertificateArgs)
+
     const result = await Create(formData, initCertificateArgs)
 
     console.log('result', result)
@@ -132,7 +128,16 @@ export async function Create(data: FormData, initCertificateArgs: ICertificateAr
 
     initCertificateArgs.contentType = typeInfo.type as ContentTypes
 
+    console.log('file', file)
+
     const sdk = await _getMentaportSDK()
+
+    console.log('sdk', sdk)
+
+    console.log('Creating Certificate')
+    const createResult = await sdk.createCertificate(initCertificateArgs, blob)
+
+    console.log('createResult', createResult)
 
     // console.log('sdk', sdk)
     const initResult = await sdk.initCertificate(initCertificateArgs)

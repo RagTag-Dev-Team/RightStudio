@@ -1,6 +1,6 @@
 'use server'
 
-//  import type { Environment } from '@mentaport/certificates'
+import type { Environment } from '@mentaport/certificates'
 import { CertificateSDK } from '@mentaport/certificates'
 
 let _mentaportSDK: CertificateSDK | null = null
@@ -20,7 +20,9 @@ async function _initMentaportSdk() {
     throw new Error('It is not possible to create a CertificateSDK due to an initialization problem.')
   }
 
-  _mentaportSDK.setClient()
+  _mentaportSDK.setClientEnv(`${process.env.NEXT_PUBLIC_MENTAPORT_API_URL}` as Environment)
+
+  console.log('mentaportSDK', _mentaportSDK)
 
   //_mentaportSDK.setClientEnv(process.env.MENTAPORT_ENVIRONMENT! as Environment)
 

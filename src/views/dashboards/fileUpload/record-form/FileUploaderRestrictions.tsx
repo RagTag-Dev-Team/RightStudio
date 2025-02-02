@@ -107,10 +107,11 @@ const FileUploaderRestrictions = ({ onMetadata }: FileUploaderRestrictionsProps)
             <i className='tabler-upload' />
           </Avatar>
           <Typography variant='h4' className='mbe-2.5'>
-            Drop files here or click to upload.
+            Upload Your Audio Track
           </Typography>
-          <Typography>Only audio files are with *.wav extension are allowed.</Typography>
-          <Typography>Max 1 file.</Typography>
+          <Typography>Drag and drop your audio file here, or click to browse</Typography>
+          <Typography>Only .wav files are accepted</Typography>
+          <Typography className='text-sm text-gray-400'>Maximum 1 file at a time</Typography>
         </div>
       </div>
     </>

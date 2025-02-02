@@ -40,6 +40,7 @@ import { resolveScheme } from 'thirdweb/storage'
 
 import { client } from '@/libs/thirdwebclient'
 import FormLayoutsSeparator from '../dashboards/fileUpload/form-layouts/FormLayoutsSeparator'
+import RecordCreateForm from '../dashboards/fileUpload/record-form/RecordCreateForm'
 
 // Style Imports
 import styles from '@core/styles/table.module.css'
@@ -468,7 +469,8 @@ const MusicLibrary = () => {
         </Box>
         <Divider sx={{ mb: 0 }} />
         <Box sx={{ p: theme => theme.spacing(4) }}>
-          <FormLayoutsSeparator onSuccess={toggleDrawer} />
+          <RecordCreateForm onSuccess={toggleDrawer} />
+          {/* <FormLayoutsSeparator onSuccess={toggleDrawer} /> */}
         </Box>
       </Drawer>
     </Card>
