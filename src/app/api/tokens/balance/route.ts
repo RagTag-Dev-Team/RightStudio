@@ -1,7 +1,10 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { tagzContract, tagzCollectionAddress, mediaCollectionAddress } from '@/utils/getMediaContract'
+import { mediaCollectionAddress } from '@/utils/getMediaContract'
+
+// Cache duration in seconds (e.g., 60 seconds = 1 minute)
+const CACHE_DURATION = 60
 
 const {
   ENGINE_URL,
@@ -27,6 +30,15 @@ export async function POST(req: NextRequest) {
 
   const { account } = await req.json()
 
+  // Create a response with cache headers
+  const response = await fetchBalances(account)
+
+  response.headers.set('Cache-Control', `s-maxage=${CACHE_DURATION}, stale-while-revalidate`)
+
+  return response
+}
+
+async function fetchBalances(account: string) {
   const ragzRes = await fetch(
     `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${account}`,
     {
@@ -34,9 +46,7 @@ export async function POST(req: NextRequest) {
       headers: {
         Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
       },
-      agent: new (require('https').Agent)({
-        rejectUnauthorized: false
-      })
+      next: { revalidate: CACHE_DURATION }
     }
   )
 
@@ -46,7 +56,8 @@ export async function POST(req: NextRequest) {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
-      }
+      },
+      next: { revalidate: CACHE_DURATION }
     }
   )
 
@@ -56,19 +67,14 @@ export async function POST(req: NextRequest) {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
-      }
+      },
+      next: { revalidate: CACHE_DURATION }
     }
   )
 
   const ragzResult = await ragzRes.json()
-
   const tagzResult = await tagzRes.json()
-
   const nftResult = await nftRes.json()
-
-  console.log('ragzResult', ragzResult)
-  console.log('tagzResult', tagzResult)
-  console.log('nftResult', nftResult)
 
   return NextResponse.json({ ragzResult, tagzResult, nftResult }, { status: 200 })
 }

@@ -50,44 +50,6 @@ const CovertArtUploader = ({ disabled, onImageSelect }: CovertArtUploaderProps) 
     disabled
   })
 
-  const renderFilePreview = (file: FileProp) => {
-    if (file.type.startsWith('image')) {
-      return <img width={38} height={38} alt={file.name} src={URL.createObjectURL(file as any)} />
-    } else {
-      return <i className='tabler-file-description' />
-    }
-  }
-
-  const handleRemoveFile = (file: FileProp) => {
-    const uploadedFiles = files
-    const filtered = uploadedFiles.filter((i: FileProp) => i.name !== file.name)
-
-    setFiles([...filtered])
-  }
-
-  const fileList = files.map((file: FileProp) => (
-    <ListItem key={file.name}>
-      <div className='file-details'>
-        <div className='file-preview'>{renderFilePreview(file)}</div>
-        <div>
-          <Typography className='file-name'>{file.name}</Typography>
-          <Typography className='file-size' variant='body2'>
-            {Math.round(file.size / 100) / 10 > 1000
-              ? `${(Math.round(file.size / 100) / 10000).toFixed(1)} mb`
-              : `${(Math.round(file.size / 100) / 10).toFixed(1)} kb`}
-          </Typography>
-        </div>
-      </div>
-      <IconButton onClick={() => handleRemoveFile(file)}>
-        <i className='tabler-x text-xl' />
-      </IconButton>
-    </ListItem>
-  ))
-
-  const handleRemoveAllFiles = () => {
-    setFiles([])
-  }
-
   return (
     <div {...getRootProps({ className: 'dropzone' })}>
       <input {...getInputProps()} />
