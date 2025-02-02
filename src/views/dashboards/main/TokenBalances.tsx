@@ -113,8 +113,8 @@ const TokenBalances = () => {
     }
   })
 
-  const [balances, setBalances] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  const [, setBalances] = useState<any>(null)
+  const [, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchBalances = async () => {
