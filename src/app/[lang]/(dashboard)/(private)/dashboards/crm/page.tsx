@@ -17,15 +17,12 @@ import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
 import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
 import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
 import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
-import LastTransaction from '@views/dashboards/crm/LastTransaction'
 import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
 
 // Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
 
 const DashboardCRM = () => {
   // Vars
-  const serverMode = getServerMode()
 
   // Get user account information
 
@@ -94,9 +91,7 @@ const DashboardCRM = () => {
       <Grid item xs={12} md={6} lg={4}>
         <ActiveProjects />
       </Grid>
-      <Grid item xs={12} md={6}>
-        <LastTransaction serverMode={serverMode} />
-      </Grid>
+      <Grid item xs={12} md={6}></Grid>
       <Grid item xs={12} md={6}>
         <ActivityTimeline />
       </Grid>

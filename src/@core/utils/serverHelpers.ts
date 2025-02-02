@@ -38,21 +38,10 @@ export const getSystemMode = (): SystemMode => {
 }
 
 export const getServerMode = () => {
-  // Check if we're running on the client side
-  if (typeof window !== 'undefined') {
-    return process.env.NEXT_PUBLIC_SERVER_MODE || 'development'
-  }
+  const mode = getMode()
+  const systemMode = getSystemMode()
 
-  // Server-side logic (if needed)
-  try {
-    const { headers } = require('next/headers')
-
-    // Add your server-side specific logic here
-    return process.env.SERVER_MODE || 'development'
-  } catch {
-    // Fallback if headers are not available
-    return process.env.NEXT_PUBLIC_SERVER_MODE || 'development'
-  }
+  return mode === 'system' ? systemMode : mode
 }
 
 export const getSkin = () => {
