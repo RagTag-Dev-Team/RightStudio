@@ -194,7 +194,7 @@ const LatestSlider = () => {
                       </div>
 
                       <Box sx={{ mt: 'auto' }}>
-                        <Link href={`/records/${track.id.replace('media:', '')}`} passHref>
+                        <Link href={`/dashboards/record/${track.id.replace('media:', '')}`} passHref>
                           <Button variant='contained' endIcon={<i className='tabler-arrow-badge-right' />}>
                             View Track Details
                           </Button>
