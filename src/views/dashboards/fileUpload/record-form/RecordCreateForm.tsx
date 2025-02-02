@@ -64,7 +64,7 @@ interface FormLayoutsSeparatorProps {
   onSuccess?: () => void
 }
 
-const FormLayoutsSeparator = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
+const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
   const router = useRouter()
 
   // States
@@ -303,6 +303,7 @@ const FormLayoutsSeparator = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => 
                         />
                         <Box
                           className='overlay'
+                          y
                           sx={{
                             position: 'absolute',
                             top: 0,
@@ -482,4 +483,4 @@ const FormLayoutsSeparator = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => 
   )
 }
 
-export default FormLayoutsSeparator
+export default RecordCreateForm

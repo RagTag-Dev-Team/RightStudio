@@ -129,7 +129,15 @@ const TokenBalances = () => {
           return
         }
 
-        const response = await fetch('/api/balances')
+        if (!account) {
+          return
+        }
+
+        const response = await fetch('/api/tokens/balance', {
+          method: 'POST',
+          body: JSON.stringify({ account: account.address })
+        })
+
         const data = await response.json()
 
         // Update the cache with new data and timestamp

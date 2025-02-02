@@ -159,6 +159,7 @@ const MusicLibrary = () => {
   const [globalFilter, setGlobalFilter] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isRedirecting, setIsRedirecting] = useState(false)
 
   // Thirdweb hooks
   const account = useActiveAccount()
@@ -235,7 +236,7 @@ const MusicLibrary = () => {
         const tracks = await response.json()
 
         tracks.forEach((track: any) => {
-          console.log('track', track)
+          //   console.log('track', track)
 
           // Only resolve the coverArt if coverImage exists
           if (track.coverImage) {
@@ -310,133 +311,145 @@ const MusicLibrary = () => {
     setDrawerOpen(!drawerOpen)
   }
 
+  // Modify the drawer content to include the new loading handler
+  const handleFormSuccess = () => {
+    setIsRedirecting(true)
+    setDrawerOpen(false)
+  }
+
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {isLoading && (
+      {(isLoading || isRedirecting) && (
         <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
           <CircularProgress size={60} />
         </div>
       )}
-      <CardHeader
-        title='My Music Library'
-        action={
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            <TextField
-              placeholder='Search...'
-              value={globalFilter}
-              onChange={e => setGlobalFilter(e.target.value)}
-              size='small'
-            />
-            <Button
-              variant='contained'
-              onClick={toggleDrawer}
-              startIcon={<Icon className='tabler-music-plus'>add</Icon>}
-            >
-              Add New Media
-            </Button>
-          </Box>
-        }
-      />
-      <Box
-        sx={{
-          flexGrow: 1,
-          overflow: 'hidden',
-          minHeight: 0,
-          maxHeight: 'calc(100vh - 300px)',
-          '&::-webkit-scrollbar': {
-            display: 'none'
-          },
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none'
-        }}
-      >
-        <div className='overflow-y-auto overflow-x-auto h-full scrollbar-hide'>
-          <table className={styles.table}>
-            <thead>
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map(header => (
-                    <th
-                      key={header.id}
-                      onClick={header.column.getToggleSortingHandler()}
-                      className={header.column.getCanSort() ? 'cursor-pointer select-none' : ''}
-                    >
-                      {header.isPlaceholder ? null : (
-                        <div className='flex items-center gap-2'>
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {{
-                            asc: ' 🔼',
-                            desc: ' 🔽'
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </div>
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map(row => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Box>
 
-      <Box
-        sx={{
-          borderTop: theme => `1px solid ${theme.palette.divider}`,
-          backgroundColor: theme => theme.palette.background.paper
-        }}
-      >
-        {/* Add pagination controls */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant='body2'>Rows per page:</Typography>
-            <Select
-              value={table.getState().pagination.pageSize}
-              onChange={e => {
-                table.setPageSize(Number(e.target.value))
-              }}
-              size='small'
-            >
-              {[10, 25, 50, 100].map(pageSize => (
-                <MenuItem key={pageSize} value={pageSize}>
-                  {pageSize}
-                </MenuItem>
-              ))}
-            </Select>
+      {/* Only show content when not redirecting */}
+      {!isRedirecting && (
+        <>
+          <CardHeader
+            title='My Music Library'
+            action={
+              <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                <TextField
+                  placeholder='Search...'
+                  value={globalFilter}
+                  onChange={e => setGlobalFilter(e.target.value)}
+                  size='small'
+                />
+                <Button
+                  variant='contained'
+                  onClick={toggleDrawer}
+                  startIcon={<Icon className='tabler-music-plus'>add</Icon>}
+                >
+                  Add New Media
+                </Button>
+              </Box>
+            }
+          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              overflow: 'hidden',
+              minHeight: 0,
+              maxHeight: 'calc(100vh - 300px)',
+              '&::-webkit-scrollbar': {
+                display: 'none'
+              },
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+            <div className='overflow-y-auto overflow-x-auto h-full scrollbar-hide'>
+              <table className={styles.table}>
+                <thead>
+                  {table.getHeaderGroups().map(headerGroup => (
+                    <tr key={headerGroup.id}>
+                      {headerGroup.headers.map(header => (
+                        <th
+                          key={header.id}
+                          onClick={header.column.getToggleSortingHandler()}
+                          className={header.column.getCanSort() ? 'cursor-pointer select-none' : ''}
+                        >
+                          {header.isPlaceholder ? null : (
+                            <div className='flex items-center gap-2'>
+                              {flexRender(header.column.columnDef.header, header.getContext())}
+                              {{
+                                asc: ' 🔼',
+                                desc: ' 🔽'
+                              }[header.column.getIsSorted() as string] ?? null}
+                            </div>
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+                  ))}
+                </thead>
+                <tbody>
+                  {table.getRowModel().rows.map(row => (
+                    <tr key={row.id}>
+                      {row.getVisibleCells().map(cell => (
+                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant='body2'>
-              Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-            </Typography>
-            <Button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()} size='small'>
-              {'<<'}
-            </Button>
-            <Button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} size='small'>
-              Previous
-            </Button>
-            <Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} size='small'>
-              Next
-            </Button>
-            <Button
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              disabled={!table.getCanNextPage()}
-              size='small'
-            >
-              {'>>'}
-            </Button>
-          </Box>
-        </Box>
-      </Box>
 
-      {/* Add the Drawer component */}
+          <Box
+            sx={{
+              borderTop: theme => `1px solid ${theme.palette.divider}`,
+              backgroundColor: theme => theme.palette.background.paper
+            }}
+          >
+            {/* Add pagination controls */}
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Typography variant='body2'>Rows per page:</Typography>
+                <Select
+                  value={table.getState().pagination.pageSize}
+                  onChange={e => {
+                    table.setPageSize(Number(e.target.value))
+                  }}
+                  size='small'
+                >
+                  {[10, 25, 50, 100].map(pageSize => (
+                    <MenuItem key={pageSize} value={pageSize}>
+                      {pageSize}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Typography variant='body2'>
+                  Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+                </Typography>
+                <Button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()} size='small'>
+                  {'<<'}
+                </Button>
+                <Button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} size='small'>
+                  Previous
+                </Button>
+                <Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} size='small'>
+                  Next
+                </Button>
+                <Button
+                  onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                  disabled={!table.getCanNextPage()}
+                  size='small'
+                >
+                  {'>>'}
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </>
+      )}
+
+      {/* Modify the Drawer to pass the success handler */}
       <Drawer
         anchor='right'
         open={drawerOpen}
@@ -469,7 +482,7 @@ const MusicLibrary = () => {
         </Box>
         <Divider sx={{ mb: 0 }} />
         <Box sx={{ p: theme => theme.spacing(4) }}>
-          <RecordCreateForm onSuccess={toggleDrawer} />
+          <RecordCreateForm onSuccess={handleFormSuccess} />
           {/* <FormLayoutsSeparator onSuccess={toggleDrawer} /> */}
         </Box>
       </Drawer>
