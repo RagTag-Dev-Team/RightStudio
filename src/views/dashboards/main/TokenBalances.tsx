@@ -168,7 +168,7 @@ const TokenBalances = () => {
 
           //  console.log('ragzResult', ragzResult)
           //  console.log('tagzResult', tagzResult.result.displayValue)
-          console.log('nftResult', nftResult)
+          // console.log('nftResult', nftResult)
 
           // Format the balance to 2 decimal places
           const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
@@ -178,7 +178,7 @@ const TokenBalances = () => {
           // const nftBalance = Number(nftResult.result)
           const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-          console.log('tokenBalance', tokenBalance)
+          //  console.log('tokenBalance', tokenBalance)
 
           setTokenBalances({
             RAGZ: ragzBalance,

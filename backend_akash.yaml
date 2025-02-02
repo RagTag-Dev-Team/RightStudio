@@ -1,0 +1,138 @@
+---
+version: '2.0'
+services:
+  surrealdb:
+    image: surrealdb/surrealdb
+    expose:
+      - port: 8000
+        as: 8000
+        to:
+          - global: true
+    env:
+      - SURREAL_USER=ragtag_admin
+      - SURREAL_PASS=bWFubnk6c0FzMyp6MnAh
+      - SURREAL_AUTH=true
+    args:
+      - start
+      - --user
+      - ragtag_admin
+      - --pass
+      - bWFubnk6c0FzMyp6MnAh
+  postgres:
+    image: postgres
+    env:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    expose:
+      - port: 5432
+        proto: tcp
+        as: 5432
+        to:
+          - global: true
+          - service: thirdwebengine
+          - service: redis
+  redis:
+    image: redis:7.2.4
+    depends_on:
+      - postgres
+    expose:
+      - port: 6379
+        proto: tcp
+        as: 6379
+        to:
+          - global: true
+          - service: thirdwebengine
+          - service: redis
+  thirdwebengine:
+    image: thirdweb/engine:latest
+    env:
+      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
+      - REDIS_URL=redis://redis:6379/0
+      - THIRDWEB_API_SECRET_KEY="kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw"
+      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
+      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
+      - ENABLE_HTTPS=true
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    depends_on:
+      - postgres
+      - redis
+    expose:
+      - port: 3005
+        as: 3005
+        to:
+          - global: true
+          - service: thirdwebengine
+          - service: redis
+
+profiles:
+  compute:
+    surrealdb:
+      resources:
+        cpu:
+          units: 2
+        memory:
+          size: 32Gi
+        storage:
+          - size: 50Gi
+    postgres:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 128Mi
+        storage:
+          - size: 16Gi
+    redis:
+      resources:
+        cpu:
+          units: 2
+        memory:
+          size: 32Gi
+        storage:
+          - size: 50Gi
+    thirdwebengine:
+      resources:
+        cpu:
+          units: 2
+        memory:
+          size: 32Gi
+        storage:
+          - size: 50Gi
+
+  placement:
+    akash:
+      pricing:
+        surrealdb:
+          denom: uakt
+          amount: 10000
+        postgres:
+          denom: uakt
+          amount: 10000
+        redis:
+          denom: uakt
+          amount: 10000
+        thirdwebengine:
+          denom: uakt
+          amount: 10000
+      signedBy:
+        anyOf:
+          - akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63
+          - akash18qa2a2ltfyvkyj0ggj3hkvuj6twzyumuaru9s4
+deployment:
+  surrealdb:
+    akash:
+      profile: surrealdb
+      count: 1
+  postgres:
+    akash:
+      profile: postgres
+      count: 1
+  redis:
+    akash:
+      profile: redis
+      count: 1
+  thirdwebengine:
+    akash:
+      profile: thirdwebengine
+      count: 1

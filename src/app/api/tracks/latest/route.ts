@@ -19,8 +19,6 @@ export async function GET() {
       LIMIT 5
     `)
 
-    console.log(tracks)
-
     // Create a response with cache headers
     const response = NextResponse.json(tracks[0])
 

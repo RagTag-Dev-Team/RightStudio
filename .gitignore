@@ -152,3 +152,4 @@ surrealdb/data/LOG.old.1738308871766138
 surrealdb/data/MANIFEST-000075
 surrealdb/data/OPTIONS-000072
 surrealdb/data/OPTIONS-000077
+.env.backup
