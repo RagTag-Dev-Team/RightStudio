@@ -4,11 +4,9 @@
 import Grid from '@mui/material/Grid'
 
 // ThirdWeb Imports
-import { useActiveAccount } from 'thirdweb/react'
-import { useContract, useTokenBalance } from '@thirdweb-dev/react'
 
 // Component Imports
-import TokenBalances from '@views/dashboards/crm/TokenBalances'
+import TokenBalances from '@views/dashboards/main/TokenBalances'
 
 import DistributedBarChartOrder from '@views/dashboards/crm/DistributedBarChartOrder'
 import LineAreaYearlySalesChart from '@views/dashboards/crm/LineAreaYearlySalesChart'
@@ -30,21 +28,13 @@ const DashboardCRM = () => {
   const serverMode = getServerMode()
 
   // Get user account information
-  const account = useActiveAccount()
 
   // Get RAGZ token contract and balance
-  const { contract: ragzContract } = useContract('YOUR_RAGZ_CONTRACT_ADDRESS')
-  const { data: ragzBalance, isLoading: isLoadingRagz } = useTokenBalance(ragzContract, account?.address)
-
-  // Get TAGZ token contract and balance
-  const { contract: tagzContract } = useContract('YOUR_TAGZ_CONTRACT_ADDRESS')
-  const { data: tagzBalance, isLoading: isLoadingTagz } = useTokenBalance(tagzContract, account?.address)
 
   // You can access account properties like:
   // account?.address - wallet address
   // account?.chainId - connected chain ID
   // account?.connector - wallet connector info
-  console.log('account', account)
 
   return (
     <Grid container spacing={6}>
@@ -85,39 +75,7 @@ const DashboardCRM = () => {
           chipVariant='tonal'
         />
       </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={2}>
-        <CardStatVertical
-          title='Wallet Address'
-          subtitle='Connected Account'
-          stats={account?.address ? `${account.address.slice(0, 6)}...${account.address.slice(-4)}` : 'Not Connected'}
-          avatarColor='primary'
-          avatarIcon='tabler-wallet'
-          avatarSkin='light'
-          avatarSize={44}
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={2}>
-        <CardStatVertical
-          title='RAGZ Balance'
-          subtitle='Your Token Balance'
-          stats={isLoadingRagz ? 'Loading...' : ragzBalance?.displayValue || '0'}
-          avatarColor='success'
-          avatarIcon='tabler-coin'
-          avatarSkin='light'
-          avatarSize={44}
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={2}>
-        <CardStatVertical
-          title='TAGZ Balance'
-          subtitle='Your Token Balance'
-          stats={isLoadingTagz ? 'Loading...' : tagzBalance?.displayValue || '0'}
-          avatarColor='info'
-          avatarIcon='tabler-coin'
-          avatarSkin='light'
-          avatarSize={44}
-        />
-      </Grid>
+
       <Grid item xs={12} md={8} lg={4}>
         <BarChartRevenueGrowth />
       </Grid>
