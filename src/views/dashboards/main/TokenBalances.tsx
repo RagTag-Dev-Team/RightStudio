@@ -33,6 +33,18 @@ import { useActiveAccount } from 'thirdweb/react'
 // Component Imports
 import CardStatVertical from '@/components/card-statistics/Vertical'
 
+// Add cache interface
+interface CacheData {
+  balances: any // Update this type based on your balance data structure
+  timestamp: number
+}
+
+// Cache duration in milliseconds (30 seconds)
+const CACHE_DURATION = 30000
+
+// Create a cache object outside the component to persist between renders
+let balancesCache: CacheData | null = null
+
 const TokenBalances = () => {
   // Get user account information
   const account = useActiveAccount()
@@ -100,6 +112,42 @@ const TokenBalances = () => {
       ]
     }
   })
+
+  const [balances, setBalances] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchBalances = async () => {
+      try {
+        // Check if we have cached data and if it's still valid
+        const now = Date.now()
+
+        if (balancesCache && now - balancesCache.timestamp < CACHE_DURATION) {
+          setBalances(balancesCache.balances)
+          setLoading(false)
+
+          return
+        }
+
+        const response = await fetch('/api/balances')
+        const data = await response.json()
+
+        // Update the cache with new data and timestamp
+        balancesCache = {
+          balances: data,
+          timestamp: now
+        }
+
+        setBalances(data)
+      } catch (error) {
+        console.error('Error fetching balances:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchBalances()
+  }, [])
 
   useEffect(() => {
     const fetchBalances = async () => {

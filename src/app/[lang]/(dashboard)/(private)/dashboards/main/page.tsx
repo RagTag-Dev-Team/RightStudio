@@ -1,15 +1,16 @@
 // React Imports
 
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 
 // Thirdweb Imports
-import { useActiveAccount } from 'thirdweb/react'
+// import { useActiveAccount } from 'thirdweb/react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
+
+// import Typography from '@mui/material/Typography'
+// import Card from '@mui/material/Card'
+// import CardContent from '@mui/material/CardContent'
 
 // Generated Icon CSS Imports
 import '@assets/iconify-icons/generated-icons.css'
@@ -17,26 +18,25 @@ import '@assets/iconify-icons/generated-icons.css'
 // Component Imports
 
 // Component Imports
-import DistributedBarChartOrder from '@views/dashboards/crm/DistributedBarChartOrder'
-import LineAreaYearlySalesChart from '@views/dashboards/crm/LineAreaYearlySalesChart'
-import CardStatVertical from '@/components/card-statistics/Vertical'
-import BarChartRevenueGrowth from '@views/dashboards/crm/BarChartRevenueGrowth'
-import EarningReportsWithTabs from '@views/dashboards/crm/EarningReportsWithTabs'
-import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
-import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
-import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
-import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
-import LastTransaction from '@views/dashboards/crm/LastTransaction'
-import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
+// import DistributedBarChartOrder from '@views/dashboards/crm/DistributedBarChartOrder'
+// import LineAreaYearlySalesChart from '@views/dashboards/crm/LineAreaYearlySalesChart'
+// import CardStatVertical from '@/components/card-statistics/Vertical'
+// import BarChartRevenueGrowth from '@views/dashboards/crm/BarChartRevenueGrowth'
+// import EarningReportsWithTabs from '@views/dashboards/crm/EarningReportsWithTabs'
+// import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
+// import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
+// import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
+// import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
+// import LastTransaction from '@views/dashboards/crm/LastTransaction'
+// import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
 import TokenBalances from '@views/dashboards/main/TokenBalances'
 
 // Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
+
 import LatestSlider from '@/views/dashboards/main/LatestSlider'
 
 const DashboardMain = async () => {
   // Vars
-  const serverMode = getServerMode()
 
   return (
     <Grid container spacing={6}>
@@ -50,8 +50,7 @@ const DashboardMain = async () => {
         </Grid>
       </Grid>
 
-      {/* Rest of the dashboard components */}
-      <Grid item xs={12} lg={8}>
+      {/* Rest of the dashboard components
         <EarningReportsWithTabs />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
@@ -69,6 +68,8 @@ const DashboardMain = async () => {
       <Grid item xs={12} md={6}>
         <ActivityTimeline />
       </Grid>
+      */}
+      <Grid item xs={12} lg={8}></Grid>
     </Grid>
   )
 }

@@ -53,6 +53,7 @@ export async function POST(req: Request) {
       username: ''
     }
 
+    /*
     const myHeaders = new Headers()
 
     myHeaders.append('Accept', 'application/json')
@@ -99,6 +100,7 @@ export async function POST(req: Request) {
       .catch(error => console.error('Error getting presigned URL:', error))
 
     console.log('presignedURL', presignedURL)
+    */
 
     // console.log('initCertificateArgs', initCertificateArgs)
     const result = await Create(formData, initCertificateArgs)

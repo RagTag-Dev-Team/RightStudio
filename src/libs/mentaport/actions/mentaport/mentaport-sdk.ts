@@ -1,5 +1,6 @@
 'use server'
-import type { Environment } from '@mentaport/certificates'
+
+//  import type { Environment } from '@mentaport/certificates'
 import { CertificateSDK } from '@mentaport/certificates'
 
 let _mentaportSDK: CertificateSDK | null = null
@@ -20,7 +21,8 @@ async function _initMentaportSdk() {
   }
 
   _mentaportSDK.setClient()
-  _mentaportSDK.setClientEnv(process.env.MENTAPORT_ENVIRONMENT! as Environment)
+
+  //_mentaportSDK.setClientEnv(process.env.MENTAPORT_ENVIRONMENT! as Environment)
 
   return _mentaportSDK
 }

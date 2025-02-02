@@ -2,10 +2,6 @@ import { NextResponse } from 'next/server'
 
 import { type NextRequest } from 'next/server'
 
-import { resolveScheme } from 'thirdweb/storage'
-
-import { client } from '@/libs/thirdwebclient'
-
 import { getDb } from '@/libs/surreal'
 
 export async function GET(request: NextRequest) {
