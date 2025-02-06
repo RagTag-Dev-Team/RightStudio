@@ -21,35 +21,39 @@ const getFileTypeStr = (fileType: string) => {
 
 export async function POST(req: Request) {
   const request = await req.json()
+  const { recordData } = request
 
-  const { recordId, title, artist, album, fileType, fileBlob } = request
-
-  if (!recordId || !fileBlob) {
-    return new Response(JSON.stringify({ error: 'recordId and file data are required' }), { status: 400 })
+  if (!recordData) {
+    return new Response(JSON.stringify({ error: 'recordData is required' }), { status: 400 })
   }
 
   try {
-    // Convert the array buffer back to a Blob
-    const file = new Blob([fileBlob], { type: fileType })
+    // Download file from IPFS URL
+    const fileResponse = await fetch(recordData.ipfsUrl)
+    const fileBlob = await fileResponse.blob()
+
+    // Convert Blob to File
+    const file = new File([fileBlob], recordData.title, { type: fileBlob.type })
 
     const formData = new FormData()
-
+    
     formData.append('file', file)
+
+    const { title, artist, album } = recordData
 
     const initCertificateArgs: ICertificateArg = {
       contractId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
       name: title,
       description: `${artist} - ${album}`,
-      copyrightInfo: CopyrightInfo.Copyrighted,
+      copyrightInfo: CopyrightInfo.NoCopyright,
       aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
       usingAI: false,
       aiSoftware: '',
       aiModel: '',
-      album,
+      album: album,
       albumYear: '',
       city: '',
       country: '',
-      contentType: ContentTypes.Audio,
       username: ''
     }
 
@@ -59,7 +63,7 @@ export async function POST(req: Request) {
       contractId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
       name: title,
       description: `${artist} - ${album}`,
-      copyrightInfo: CopyrightInfo.Copyrighted,
+      copyrightInfo: CopyrightInfo.NoCopyright,
       contentType: ContentTypes.Audio,
       username: '',
       album: album,
@@ -121,12 +125,9 @@ export async function Create(data: FormData, initCertificateArgs: ICertificateAr
     }
 
     const bytes = await file.arrayBuffer()
-
     const buffer = Buffer.from(bytes)
     const blob = new Blob([buffer], { type: file.type })
     const typeInfo = getFileTypeStr(file.type)
-
-    initCertificateArgs.contentType = typeInfo.type as ContentTypes
 
     console.log('file', file)
 
@@ -139,29 +140,16 @@ export async function Create(data: FormData, initCertificateArgs: ICertificateAr
 
     console.log('createResult', createResult)
 
-    // console.log('sdk', sdk)
-    const initResult = await sdk.initCertificate(initCertificateArgs)
-
-    console.log('initResult', initResult)
-
-    if (!initResult.status || !initResult.data) {
+    if (!createResult.status || !createResult.data) {
       console.error('There was a problem creating the certificate')
-
-      return { status: false, statusCode: initResult.statusCode, message: initResult.message }
+      return { status: false, statusCode: createResult.statusCode, message: createResult.message }
     }
 
     console.log('now uploading content')
 
-    const certId = initResult.data.certId
+    const certId = createResult.data.certId
 
-    // generate
-
-    const genRes = await sdk.generateCertificate(
-      initCertificateArgs.contractId,
-      certId,
-      typeInfo.format as ContentFormat,
-      blob
-    )
+    const genRes = await sdk.createCertificate(initCertificateArgs, blob)
 
     if (!genRes.status) {
       console.error('There was a problem uploading contnet for certificate')

@@ -12,8 +12,11 @@ import type { getDictionary } from '@/utils/getDictionary'
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
-import CustomChip from '@core/components/mui/Chip'
+import { Menu, SubMenu, MenuItem } from '@menu/vertical-menu'
+
+// import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+
+// import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
@@ -101,7 +104,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           */}
         </SubMenu>
         <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
-          <MenuItem href={`/${locale}/media/library`}>Media Library</MenuItem>
+          <MenuItem href={`/${locale}/media/library`}>{dictionary['navigation'].mediaLibrary}</MenuItem>
           {recordId && <MenuItem href={`/${locale}/media/record/${recordId}`}>Media Detail</MenuItem>}
         </SubMenu>
         {/*

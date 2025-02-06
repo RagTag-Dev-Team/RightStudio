@@ -41,7 +41,7 @@ import { resolveScheme } from 'thirdweb/storage'
 import { client } from '@/libs/thirdwebclient'
 
 // import FormLayoutsSeparator from '../dashboards/fileUpload/form-layouts/FormLayoutsSeparator'
-import RecordCreateForm from '../dashboards/fileUpload/record-form/RecordCreateForm'
+import RecordCreateForm from '@views/media/record-form/RecordCreateForm'
 
 // Style Imports
 import styles from '@core/styles/table.module.css'

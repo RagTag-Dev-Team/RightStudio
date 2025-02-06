@@ -101,12 +101,14 @@ export async function POST(req: NextRequest) {
 
         // Store the transaction hash when mined
         const transactionHash = statusData.result.transactionHash
+        const tokenId = statusData.result.tokenId
 
         if (transactionStatus === 'mined') {
           return new NextResponse(
             JSON.stringify({
               message: 'NFT minted successfully',
-              transactionHash
+              transactionHash,
+              tokenId
             }),
             { status: 200 }
           )
