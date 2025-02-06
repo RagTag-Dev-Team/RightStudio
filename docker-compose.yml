@@ -1,4 +1,4 @@
-name: mannyj37/rightstudio-backend
+name: mannyj37/rightstudio:backend
 services:
   surrealdb:
     platform: 'linux/amd64'
@@ -16,6 +16,7 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
     ports:
       - '5432:5432'
     networks:

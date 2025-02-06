@@ -136,25 +136,53 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
     try {
       setIsUploading(true)
 
-      const uploadUrl = await upload({
-        client,
-        files: [file]
-      })
+      // Add timeout and retry logic for upload
+      const uploadWithRetry = async (file: File, retries = 3): Promise<string> => {
+        try {
+          const uploadUrl = await upload({
+            client,
+            files: [file],
 
-      // Upload cover art to IPFS if it exists
+            // Add upload options
+            options: {
+              uploadWithGatewayUrl: true,
+              uploadWithoutDirectory: true
+            }
+          })
+
+          return uploadUrl
+        } catch (error) {
+          if (retries > 0) {
+            // Wait for 2 seconds before retrying
+            await new Promise(resolve => setTimeout(resolve, 2000))
+
+            return uploadWithRetry(file, retries - 1)
+          }
+
+          throw error
+        }
+      }
+
+      // Upload main file
+      const uploadUrl = await uploadWithRetry(file)
+
+      // Handle cover art upload
       let coverArtUrl = formData.coverImage
 
       if (coverArtUrl && coverArtUrl.startsWith('data:')) {
-        // Convert base64 to blob
-        const response = await fetch(coverArtUrl)
-        const blob = await response.blob()
-        const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
+        try {
+          const response = await fetch(coverArtUrl)
+          const blob = await response.blob()
+          const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
 
-        // Upload cover art to IPFS
-        coverArtUrl = await upload({
-          client,
-          files: [coverArtFile]
-        })
+          // Upload cover art with retry logic
+          coverArtUrl = await uploadWithRetry(coverArtFile)
+        } catch (error) {
+          console.error('Error uploading cover art:', error)
+
+          // Continue without cover art if it fails
+          coverArtUrl = undefined
+        }
       }
 
       // Prepare metadata for database
@@ -174,27 +202,31 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
         owner: formData.owner
       }
 
-      const created = await db.create('media', mediaMetadata)
+      try {
+        const created = await db.create('media', mediaMetadata)
 
-      console.log('Metadata saved to database:', created)
-
-      // Only hide the spinner after successful redirect
-      if (created && created[0] && created[0].id) {
         console.log('Created:', created)
-        const recordId = String(created[0].id).split(':')[1]
 
-        // Reset states before redirect
-        handleReset()
+        if (created && created[0] && created[0].id) {
+          const recordId = String(created[0].id).split(':')[1]
 
-        // Call onSuccess if provided
-        if (onSuccess) {
-          onSuccess()
+          handleReset()
+
+          if (onSuccess) {
+            onSuccess()
+          }
+
+          router.push(`/en/dashboards/record/${recordId}`)
         }
-
-        router.push(`/en/dashboards/record/${recordId}`)
+      } catch (dbError) {
+        console.error('Database error:', dbError)
+        throw new Error('Failed to save to database')
       }
     } catch (error) {
       console.error('Error during upload or save:', error)
+
+      // Show error to user
+      alert('Upload failed. Please try again.')
       setIsUploading(false)
     }
   }
@@ -303,7 +335,6 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
                         />
                         <Box
                           className='overlay'
-                          y
                           sx={{
                             position: 'absolute',
                             top: 0,

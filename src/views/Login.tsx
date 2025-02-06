@@ -11,29 +11,12 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-
-/*
-
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
-import Checkbox from '@mui/material/Checkbox'
-import Button from '@mui/material/Button'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Divider from '@mui/material/Divider'
-
- */
+import CircularProgress from '@mui/material/CircularProgress'
 
 import Alert from '@mui/material/Alert'
 
 // Third-party Imports
 import { signIn } from 'next-auth/react'
-
-// import { Controller, useForm } from 'react-hook-form'
-// import { valibotResolver } from '@hookform/resolvers/valibot'
-// import { email, object, minLength, string, pipe, nonEmpty } from 'valibot'
-
-// import type { SubmitHandler } from 'react-hook-form'
-// import type { InferInput } from 'valibot'
 
 import classnames from 'classnames'
 
@@ -49,11 +32,6 @@ import type { Locale } from '@/configs/i18n'
 // Component Imports
 
 import Logo from '@components/layout/shared/Logo'
-
-// import CustomTextField from '@core/components/mui/TextField'
-
-// Config Imports
-// import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
 import { useImageVariant } from '@core/hooks/useImageVariant'
@@ -90,26 +68,12 @@ type ErrorType = {
   message: string[]
 }
 
-// type FormData = InferInput<typeof schema>
-
 const THIRDWEB_CLIENT = client
-
-/* const schema = object({
-  email: pipe(string(), minLength(1, 'This field is required'), email('Email is invalid')),
-  password: pipe(
-    string(),
-    nonEmpty('This field is required'),
-    minLength(5, 'Password must be at least 5 characters long')
-  ),
-  wallet_address:  string()
-})
-
- */
 
 const Login = ({ mode }: { mode: SystemMode }) => {
   // States
-  //  const [isPasswordShown, setIsPasswordShown] = useState(false)
   const [errorState, setErrorState] = useState<ErrorType | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
@@ -128,22 +92,6 @@ const Login = ({ mode }: { mode: SystemMode }) => {
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
-  /*
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormData>({
-    resolver: valibotResolver(schema),
-    defaultValues: {
-      email: '',
-      password: '',
-      wallet_address: ''
-    }
-  })
-
-   */
-
   const characterIllustration = useImageVariant(
     mode,
     lightIllustration,
@@ -152,34 +100,13 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     borderedDarkIllustration
   )
 
-  // const handleClickShowPassword = () => setIsPasswordShown(show => !show)
-  /*
-  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    const res = await signIn('credentials', {
-      email: data.email,
-      password: data.password,
-      wallet_address: data.wallet_address,
-      redirect: false
-    })
-
-    if (res && res.ok && res.error === null) {
-      // Vars
-      const redirectURL = searchParams.get('redirectTo') ?? '/'
-
-      router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-    } else {
-      if (res?.error) {
-        const error = JSON.parse(res.error)
-
-        setErrorState(error)
-      }
-    }
-  }
-
- */
-
   return (
     <div className='flex bs-full justify-center'>
+      {isLoading && (
+        <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
+          <CircularProgress />
+        </div>
+      )}
       <div
         className={classnames(
           'flex bs-full items-center justify-center flex-1 min-bs-[100dvh] relative p-6 max-md:hidden',
@@ -220,34 +147,37 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             }}
             auth={{
               isLoggedIn: async address => {
-
+                console.log('Checking login status for address:', address)
 
                 return await isLoggedIn()
               },
               doLogin: async params => {
+                setIsLoading(true)
 
+                try {
+                  const res = await signIn('credentials', {
+                    wallet_address: params.payload.address,
+                    redirect: false
+                  })
 
-                const res = await signIn('credentials', {
-                  wallet_address: params.payload.address,
-                  redirect: false
-                })
+                  if (res && res.ok && res.error === null) {
+                    const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-                if (res && res.ok && res.error === null) {
-                  // Vars
-                  const redirectURL = searchParams.get('redirectTo') ?? '/'
+                    router.replace(getLocalizedUrl(redirectURL, locale as Locale))
+                  } else {
+                    if (res?.error) {
+                      const error = JSON.parse(res.error)
 
-                  router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-                } else {
-                  if (res?.error) {
-                    const error = JSON.parse(res.error)
+                      setErrorState(error)
+                    }
 
-                    setErrorState(error)
+                    setIsLoading(false)
                   }
+                } catch (error) {
+                  setIsLoading(false)
+                  setErrorState({ message: ['An unexpected error occurred'] })
                 }
-
-                //  await login(params);
               },
-
               getLoginPayload: async ({ address }) => generatePayload({ address }),
               doLogout: async () => {
                 console.log('logging out!')
@@ -262,98 +192,6 @@ const Login = ({ mode }: { mode: SystemMode }) => {
               </Typography>
             </Alert>
           )}
-          {/*
-          <form
-            noValidate
-            autoComplete='off'
-            action={() => {}}
-            onSubmit={handleSubmit(onSubmit)}
-            className='flex flex-col gap-6'
-          >
-            <Controller
-              name='email'
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <CustomTextField
-                  {...field}
-                  autoFocus
-                  fullWidth
-                  type='email'
-                  label='Email'
-                  placeholder='Enter your email'
-                  onChange={e => {
-                    field.onChange(e.target.value)
-                    errorState !== null && setErrorState(null)
-                  }}
-                  {...((errors.email || errorState !== null) && {
-                    error: true,
-                    helperText: errors?.email?.message || errorState?.message[0]
-                  })}
-                />
-              )}
-            />
-            <Controller
-              name='password'
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <CustomTextField
-                  {...field}
-                  fullWidth
-                  label='Password'
-                  placeholder='············'
-                  id='login-password'
-                  type={isPasswordShown ? 'text' : 'password'}
-                  onChange={e => {
-                    field.onChange(e.target.value)
-                    errorState !== null && setErrorState(null)
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                          <i className={isPasswordShown ? 'tabler-eye' : 'tabler-eye-off'} />
-                        </IconButton>
-                      </InputAdornment>
-                    )
-                  }}
-                  {...(errors.password && { error: true, helperText: errors.password.message })}
-                />
-              )}
-            />
-            <div className='flex justify-between items-center gap-x-3 gap-y-1 flex-wrap'>
-              <FormControlLabel control={<Checkbox defaultChecked />} label='Remember me' />
-              <Typography
-                className='text-end'
-                color='primary'
-                component={Link}
-                href={getLocalizedUrl('/forgot-password', locale as Locale)}
-              >
-                Forgot password?
-              </Typography>
-            </div>
-            <Button fullWidth variant='contained' type='submit'>
-              Login
-            </Button>
-            <div className='flex justify-center items-center flex-wrap gap-2'>
-              <Typography>New on our platform?</Typography>
-              <Typography component={Link} href={getLocalizedUrl('/register', locale as Locale)} color='primary'>
-                Create an account
-              </Typography>
-            </div>
-            <Divider className='gap-2'>or</Divider>
-            <Button
-              color='secondary'
-              className='self-center text-textPrimary'
-              startIcon={<img src='/images/logos/google.png' alt='Google' width={22} />}
-              sx={{ '& .MuiButton-startIcon': { marginInlineEnd: 3 } }}
-              onClick={() => signIn('google')}
-            >
-              Sign in with Google
-            </Button>
-          </form>
-          */}
         </div>
       </div>
     </div>
