@@ -911,23 +911,49 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions sx={{ justifyContent: 'flex-end' }}>
+        <CardActions sx={{ justifyContent: 'space-between' }}>
           {recordData.status === 'minted' ? (
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', p: 2 }}>
-              {!recordData.watermarkedUrl ? (
-                <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
-                  {isWatermarking ? 'Processing...' : 'Add Watermark'}
-                </Button>
-              ) : (
-                <Button
-                  variant='contained'
-                  onClick={handleDownloadWatermarked}
-                  startIcon={<i className='tabler-download' />}
-                >
-                  Download Watermarked File
-                </Button>
-              )}
-            </Box>
+            <>
+              {/* Empty Box on the left for spacing */}
+              <Box sx={{ flex: 1 }} />
+
+              {/* Centered download button */}
+              <Box sx={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
+                {!recordData.watermarkedUrl ? (
+                  <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
+                    {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                  </Button>
+                ) : (
+                  <Button
+                    variant='contained'
+                    onClick={handleDownloadWatermarked}
+                    startIcon={<i className='tabler-download' />}
+                  >
+                    Download Watermarked File
+                  </Button>
+                )}
+              </Box>
+
+              {/* Logo on the right */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, justifyContent: 'flex-end' }}>
+                {recordData.watermarkedUrl && (
+                  <>
+                    <Typography variant='caption' sx={{ color: 'text.secondary' }}>
+                      Certified with
+                    </Typography>
+                    <img
+                      src='/images/logos/mentaport_logo_black_small.svg'
+                      alt='Mentaport'
+                      style={{
+                        height: '14px',
+                        filter: 'brightness(0) invert(1) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5))',
+                        opacity: 1
+                      }}
+                    />
+                  </>
+                )}
+              </Box>
+            </>
           ) : (
             <>
               {isEditing ? (
