@@ -896,20 +896,15 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions sx={{ justifyContent: 'space-between' }}>
+        <CardActions sx={{ justifyContent: 'flex-end' }}>
           {recordData.status === 'minted' ? (
-            <>
-              <Box sx={{ p: 2 }}>
-                <Chip label='MINTED' color='success' />
-              </Box>
-              <Box sx={{ p: 2 }}>
-                {!recordData.watermarkedUrl && (
-                  <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
-                    {isWatermarking ? 'Processing...' : 'Add Watermark'}
-                  </Button>
-                )}
-              </Box>
-            </>
+            <Box sx={{ p: 2 }}>
+              {!recordData.watermarkedUrl && (
+                <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
+                  {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                </Button>
+              )}
+            </Box>
           ) : (
             <>
               {isEditing ? (
