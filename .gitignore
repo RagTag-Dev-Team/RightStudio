@@ -153,3 +153,4 @@ surrealdb/data/MANIFEST-000075
 surrealdb/data/OPTIONS-000072
 surrealdb/data/OPTIONS-000077
 .env.backup
+.env.staging
