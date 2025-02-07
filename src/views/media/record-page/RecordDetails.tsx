@@ -29,7 +29,6 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import styled from '@emotion/styled'
-import { styled as muiStyled } from '@mui/material/styles'
 
 import { RecordId, StringRecordId } from 'surrealdb'
 
@@ -38,14 +37,7 @@ import { useActiveAccount } from 'thirdweb/react'
 import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
 import { ContentFormat, AITrainingMiningInfo } from '@mentaport/certificates'
 
-import {
-  CreateCertificate,
-  Verify,
-  GetCertificates,
-  GetProjects,
-  UpdateCertificate,
-  GetDownloadUrl
-} from '@/app/actions/mentaport/index'
+import { CreateCertificate, GetDownloadUrl } from '@/app/actions/mentaport/index'
 
 import { client } from '@/libs/thirdwebclient'
 import CustomTextField from '@core/components/mui/TextField'
@@ -139,7 +131,7 @@ const getContentFormat = (fileType: string): ContentFormat => {
 }
 
 // Update the StyledRibbon component with wider dimensions
-const StyledRibbon = styled('div')(({ theme }) => ({
+const StyledRibbon = styled('div')(() => ({
   position: 'absolute',
   right: -5,
   top: 0,
@@ -171,6 +163,13 @@ const StyledRibbon = styled('div')(({ theme }) => ({
   }
 }))
 
+// Add this type definition near other type definitions
+type CertificateStatusStep = {
+  status: string
+  statusMessage: string
+  error: boolean
+}
+
 const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [recordData, setRecordData] = useState<RecordDataType | null>(null)
@@ -198,30 +197,15 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string>('')
   const [isUploading, setIsUploading] = useState(false)
-  const [loading, setOnLoading] = useState<boolean>(false)
-  const [downloadUrl, setDownloadUrl] = useState<DownloadProps>({ projectId: '', certId: '' })
-
-  const [result, setResult] = useState<string>('')
-  const [certId, setCertId] = useState<string>('')
-  const [projectId, setProjectId] = useState<string>(process.env.NEXT_PUBLIC_PROJECT_ID || '')
-  const [onlyActiveProjects, setOnlyActiveProjects] = useState<boolean>(true)
   const [newCertificateArgs, setNewCertificateArgs] = useState<ICertificateArg>({ ...newCert }) // eslint-disable-line
-
-  const [updateCertificateArgs, setUpdateCertificateArgs] = useState<ICertificateUpdateArg>({ ...updateCert }) // eslint-disable-line
 
   // Add these new state variables near the top with other useState declarations
   const [openWatermarkDialog, setOpenWatermarkDialog] = useState(false)
   const [watermarkProgress, setWatermarkProgress] = useState(0)
   const [watermarkStep, setWatermarkStep] = useState('')
 
-  // Add this type definition near other type definitions
-  type WatermarkSteps = {
-    step: string
-    progress: number
-  }
-
   // Add this function near other handlers
-  const updateWatermarkProgress = ({ step, progress }: WatermarkSteps) => {
+  const updateWatermarkProgress = ({ step, progress }: CertificateStatusStep) => {
     setWatermarkStep(step)
     setWatermarkProgress(progress)
   }
@@ -432,7 +416,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData) return
 
     setIsWatermarking(true)
-    updateWatermarkProgress({ step: 'Downloading file...', progress: 10 })
+    updateWatermarkProgress({ step: 'Initializing certificate creation...', progress: 10 })
 
     try {
       // Download file from IPFS
@@ -441,7 +425,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         uri: recordData.ipfsUrl
       })
 
-      updateWatermarkProgress({ step: 'Processing file...', progress: 30 })
+      updateWatermarkProgress({ step: 'Downloading original file...', progress: 20 })
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
@@ -450,8 +434,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Use the helper function to determine the correct content format
       const contentFormat = getContentFormat(recordData.filetype)
-
-      console.log('contentFormat', contentFormat)
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
@@ -470,7 +452,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         country: ''
       }
 
-      updateWatermarkProgress({ step: 'Creating certificate...', progress: 50 })
+      updateWatermarkProgress({ step: 'Uploading file for certification...', progress: 30 })
 
       // Create form data with file
       const formData = new FormData()
@@ -479,36 +461,37 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
-      updateWatermarkProgress({ step: 'Finalizing watermark...', progress: 80 })
-
-      const { status, data: resData, message } = createdCert
-
-      if (status && resData) {
-        // Get download URL for the watermarked file
-        const downloadUrl = await GetDownloadUrl(resData.projectId, resData.certId)
-
-        console.log('downloadUrl', downloadUrl)
-
-        // Update the record in the database with the certificate info
-        const db = await getDb()
-
-        const updatedRecord = {
-          ...recordData,
-          certificateId: resData.certId,
-          certificateProjectId: resData.projectId,
-          watermarkedUrl: downloadUrl.data
-        }
-
-        await db.update(new RecordId('media', recordId), updatedRecord)
-
-        // Update local state
-        setRecordData(updatedRecord)
-        setSuccessMessage('File successfully watermarked!')
-
-        updateWatermarkProgress({ step: 'Complete!', progress: 100 })
-      } else {
-        throw new Error(message || 'Failed to create certificate')
+      if (!createdCert.status || !createdCert.data) {
+        throw new Error(createdCert.message || 'Failed to create certificate')
       }
+
+      // Update progress based on certificate status
+      const { projectId, certId } = createdCert.data
+
+      // Get the download URL for the watermarked file
+      const downloadUrl = await GetDownloadUrl(projectId, certId)
+
+      if (!downloadUrl.status || !downloadUrl.data) {
+        throw new Error(downloadUrl.message || 'Failed to get download URL')
+      }
+
+      updateWatermarkProgress({ step: 'Certificate created successfully!', progress: 100 })
+
+      // Update the record in the database with the certificate info
+      const db = await getDb()
+
+      const updatedRecord = {
+        ...recordData,
+        certificateId: certId,
+        certificateProjectId: projectId,
+        watermarkedUrl: downloadUrl.data
+      }
+
+      await db.update(new RecordId('media', recordId), updatedRecord)
+
+      // Update local state
+      setRecordData(updatedRecord)
+      setSuccessMessage('File successfully watermarked!')
     } catch (error) {
       console.error('Error during watermarking:', error)
       setSuccessMessage('Failed to add watermark to the file')
@@ -612,6 +595,38 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setShowSuccess(true)
     } finally {
       setIsUploading(false)
+    }
+  }
+
+  // Add this function near other handler functions
+  const handleDownloadWatermarked = async () => {
+    if (!recordData?.watermarkedUrl) return
+
+    try {
+      // Fetch the watermarked file
+      const response = await fetch(recordData.watermarkedUrl)
+      const blob = await response.blob()
+
+      // Create a download link
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+
+      a.href = url
+
+      // Extract filename from the original title or use a default
+      const filename = `${recordData.title || 'watermarked'}.${recordData.filetype.split('/')[1]}`
+
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+
+      // Cleanup
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+    } catch (error) {
+      console.error('Error downloading watermarked file:', error)
+      setSuccessMessage('Failed to download watermarked file')
+      setShowSuccess(true)
     }
   }
 
@@ -898,10 +913,18 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         <Divider />
         <CardActions sx={{ justifyContent: 'flex-end' }}>
           {recordData.status === 'minted' ? (
-            <Box sx={{ p: 2 }}>
-              {!recordData.watermarkedUrl && (
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', p: 2 }}>
+              {!recordData.watermarkedUrl ? (
                 <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
                   {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                </Button>
+              ) : (
+                <Button
+                  variant='contained'
+                  onClick={handleDownloadWatermarked}
+                  startIcon={<i className='tabler-download' />}
+                >
+                  Download Watermarked File
                 </Button>
               )}
             </Box>
@@ -1015,7 +1038,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         maxWidth='md'
         fullWidth
       >
-        <DialogTitle>Create Certificate for Watermarking</DialogTitle>
+        <DialogTitle sx={{ textAlign: 'center' }}>Certify Your Media File</DialogTitle>
+
         <DialogContent>
           {isWatermarking ? (
             <Box sx={{ width: '100%', mt: 2 }}>
@@ -1156,14 +1180,55 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             </Grid>
           )}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenWatermarkDialog(false)} disabled={isWatermarking}>
-            Cancel
-          </Button>
-          <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
-            Create Certificate
-          </Button>
-        </DialogActions>
+
+        <Divider sx={{ mt: 2 }} />
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            px: 3,
+            py: 2
+          }}
+        >
+          <DialogActions
+            sx={{
+              p: 0,
+              flex: 1,
+              justifyContent: 'center'
+            }}
+          >
+            <Button onClick={() => setOpenWatermarkDialog(false)} disabled={isWatermarking}>
+              Cancel
+            </Button>
+            <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
+              Create Certificate
+            </Button>
+          </DialogActions>
+
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+              typography: 'caption',
+              color: 'text.primary',
+              fontWeight: 500
+            }}
+          >
+            Powered By
+            <img
+              src='/images/logos/mentaport_logo_black_small.svg'
+              alt='Mentaport'
+              style={{
+                height: '14px',
+                filter: 'brightness(0) invert(1) drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5))',
+                opacity: 1
+              }}
+            />
+          </Box>
+        </Box>
       </Dialog>
 
       <Snackbar

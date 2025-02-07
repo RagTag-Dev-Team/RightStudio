@@ -71,7 +71,7 @@ export async function CreateCertificate(
     // console.log('genRes', genRes)
 
     if (!genRes.status || genRes.data == null) {
-      console.error('There was a problem uploading contnet for certificate')
+      console.error('There was a problem uploading content for certificate')
 
       return genRes
     }
@@ -83,25 +83,22 @@ export async function CreateCertificate(
     console.log('creation started', genRes.data)
 
     // 2. Check status until is ready (Pending if successful or NonActive if failed)
-
     let resCertStatus = await sdk.getCertificateStatus(projectId, certId)
 
     while (status !== CertificateStatus.Pending && status !== CertificateStatus.NonActive) {
       await sleep(2000)
       resCertStatus = await sdk.getCertificateStatus(projectId, certId)
-      console.log(resCertStatus)
 
       if (!resCertStatus.status) {
-        console.log('error', resCertStatus)
-
-        return { status: resCertStatus.status, message: resCertStatus.message, statusCode: resCertStatus.statusCode }
+        return {
+          status: resCertStatus.status,
+          message: resCertStatus.message,
+          statusCode: resCertStatus.statusCode
+        }
       }
 
       if (resCertStatus.data) {
         if (resCertStatus.data.status.error) {
-          // break error creating certificate
-          console.log(resCertStatus)
-
           return {
             status: false,
             message: resCertStatus.data.status.statusMessage,
@@ -110,6 +107,9 @@ export async function CreateCertificate(
         }
 
         status = resCertStatus.data.status.status
+
+        // Add the status message to the response
+        genRes.data.statusMessage = resCertStatus.data.status.statusMessage
       }
     }
 

@@ -162,6 +162,10 @@ const MediaLibrary = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [isRedirecting, setIsRedirecting] = useState(false)
 
+  // Add pagination state
+  const [pageIndex, setPageIndex] = useState(0)
+  const [pageSize, setPageSize] = useState(10)
+
   // Thirdweb hooks
   const account = useActiveAccount()
 
@@ -299,11 +303,25 @@ const MediaLibrary = () => {
     state: {
       globalFilter,
       pagination: {
-        pageIndex: 0,
-        pageSize: 10
+        pageIndex,
+        pageSize
       }
     },
     onGlobalFilterChange: setGlobalFilter,
+    onPaginationChange: updater => {
+      if (typeof updater === 'function') {
+        const newState = updater({
+          pageIndex,
+          pageSize
+        })
+
+        setPageIndex(newState.pageIndex)
+        setPageSize(newState.pageSize)
+      } else {
+        setPageIndex(updater.pageIndex)
+        setPageSize(updater.pageSize)
+      }
+    },
     globalFilterFn: fuzzyFilter
   })
 
@@ -411,22 +429,22 @@ const MediaLibrary = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Typography variant='body2'>Rows per page:</Typography>
                 <Select
-                  value={table.getState().pagination.pageSize}
+                  value={pageSize}
                   onChange={e => {
                     table.setPageSize(Number(e.target.value))
                   }}
                   size='small'
                 >
-                  {[10, 25, 50, 100].map(pageSize => (
-                    <MenuItem key={pageSize} value={pageSize}>
-                      {pageSize}
+                  {[10, 25, 50, 100].map(size => (
+                    <MenuItem key={size} value={size}>
+                      {size}
                     </MenuItem>
                   ))}
                 </Select>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Typography variant='body2'>
-                  Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+                  Page {pageIndex + 1} of {table.getPageCount()}
                 </Typography>
                 <Button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()} size='small'>
                   {'<<'}
