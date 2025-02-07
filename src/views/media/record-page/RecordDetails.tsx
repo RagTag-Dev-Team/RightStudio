@@ -28,6 +28,8 @@ import LinearProgress from '@mui/material/LinearProgress'
 import MenuItem from '@mui/material/MenuItem'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+import styled from '@emotion/styled'
+import { styled as muiStyled } from '@mui/material/styles'
 
 import { RecordId, StringRecordId } from 'surrealdb'
 
@@ -107,6 +109,7 @@ type RecordDataType = {
   coverImage?: string
   owner?: string
   transactionHash?: string
+  watermarkedUrl?: string
 }
 
 interface DownloadProps {
@@ -134,6 +137,39 @@ const getContentFormat = (fileType: string): ContentFormat => {
       return ContentFormat.png // fallback
   }
 }
+
+// Update the StyledRibbon component with wider dimensions
+const StyledRibbon = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  right: -5,
+  top: 0,
+  zIndex: 2,
+  overflow: 'hidden',
+  width: '100px', // Increased from 75px
+  height: '100px', // Increased from 75px
+  textAlign: 'right',
+  '& span': {
+    fontSize: '10px', // Slightly increased from 9px
+    fontWeight: 'bold',
+    color: 'white',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    lineHeight: '20px',
+    transform: 'rotate(45deg)',
+    width: '140px', // Increased from 100px to accommodate text
+    display: 'block',
+    background: '#4CAF50',
+    boxShadow: `0 3px 10px -5px rgba(0, 0, 0, 1)`,
+    position: 'absolute',
+    top: '25px', // Adjusted to center the wider ribbon
+    right: '-30px', // Adjusted to center the wider ribbon
+    '& i': {
+      fontSize: '1rem',
+      verticalAlign: 'middle',
+      marginRight: '4px'
+    }
+  }
+}))
 
 const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -224,7 +260,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
 
       // Add this debug log
-      //console.log('Record data:', record)
+      console.log('Record data:', record)
 
       if (record) {
         const recordWithDate: RecordDataType = {
@@ -451,6 +487,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         // Get download URL for the watermarked file
         const downloadUrl = await GetDownloadUrl(resData.projectId, resData.certId)
 
+        console.log('downloadUrl', downloadUrl)
+
         // Update the record in the database with the certificate info
         const db = await getDb()
 
@@ -603,7 +641,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           gravity={0.3}
         />
       )}
-      <Card>
+      <Card sx={{ position: 'relative' }}>
         {isMinting && (
           <Box
             sx={{
@@ -644,6 +682,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
                 <Box
                   sx={{
+                    position: 'relative',
                     width: '100%',
                     minHeight: 300,
                     border: theme => `1px solid ${theme.palette.divider}`,
@@ -664,6 +703,13 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 >
                   {imageUrl ? (
                     <Box sx={{ position: 'relative', width: '100%' }}>
+                      {recordData.watermarkedUrl && (
+                        <StyledRibbon>
+                          <span>
+                            <i className='tabler-certificate' /> Certified
+                          </span>
+                        </StyledRibbon>
+                      )}
                       <img
                         src={imageUrl}
                         alt='Cover Art'
@@ -674,7 +720,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                           display: 'block'
                         }}
                       />
-                      {/* Only show the Generate with AI button if we're editing and there's no image */}
+                      {/* Only show the Generate with AI button if we're editing */}
                       {isEditing && (
                         <Box
                           sx={{
@@ -857,9 +903,11 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 <Chip label='MINTED' color='success' />
               </Box>
               <Box sx={{ p: 2 }}>
-                <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
-                  {isWatermarking ? 'Processing...' : 'Add Watermark'}
-                </Button>
+                {!recordData.watermarkedUrl && (
+                  <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
+                    {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                  </Button>
+                )}
               </Box>
             </>
           ) : (
