@@ -120,13 +120,21 @@ const getContentFormat = (fileType: string): ContentFormat => {
       return ContentFormat.mp3
     case 'wav':
       return ContentFormat.wav
+    case 'aiff':
+      return ContentFormat.aiff
+    case 'flac':
+      return ContentFormat.flac
     case 'png':
       return ContentFormat.png
     case 'jpg':
     case 'jpeg':
       return ContentFormat.jpg
+    case 'pdf':
+      return ContentFormat.pdf
     default:
-      return ContentFormat.png // fallback
+      console.warn(`Unrecognized file type: ${fileType}, defaulting to mp3`)
+
+      return ContentFormat.mp3 // Default to mp3 if unknown
   }
 }
 
@@ -437,19 +445,14 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
+        ...newCertificateArgs, // Spread existing values
         projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
-        aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
-        contentFormat: contentFormat,
+        contentFormat: contentFormat, // Set the content format based on file type
         name: recordData.title || 'Untitled',
         username: recordData.artist || 'Unknown Artist',
         description: `${recordData.artist} - ${recordData.album}` || 'No description',
-        usingAI: false,
-        aiSoftware: '',
-        aiModel: '',
         album: recordData.album || '',
-        albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : '',
-        city: '',
-        country: ''
+        albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : ''
       }
 
       updateWatermarkProgress({ step: 'Uploading file for certification...', progress: 30 })
