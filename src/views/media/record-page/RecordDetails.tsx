@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme, download, upload } from 'thirdweb/storage'
+import { resolveScheme, upload } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import Dialog from '@mui/material/Dialog'
@@ -29,7 +29,7 @@ import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
-import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+//import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
 
 import { client } from '@/libs/thirdwebclient'
 import CustomTextField from '@core/components/mui/TextField'
@@ -711,7 +711,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             // Existing prompt input view
             <>
               <DialogContentText sx={{ mb: 2 }}>
-                Describe the cover art you'd like to generate. For best results, be specific about:
+                Describe the cover art you&apos;d like to generate. For best results, be specific about:
               </DialogContentText>
 
               <Box sx={{ mb: 3 }}>
@@ -723,8 +723,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 </ul>
 
                 <DialogContentText sx={{ mt: 2 }}>
-                  Example: "A dreamy watercolor illustration of a sunset over mountains, using purple and orange tones,
-                  with musical notes floating in the sky"
+                  Example: &quot;A dreamy watercolor illustration of a sunset over mountains, using purple and orange
+                  tones, with musical notes floating in the sky&quot;
                 </DialogContentText>
               </Box>
               <CustomTextField
