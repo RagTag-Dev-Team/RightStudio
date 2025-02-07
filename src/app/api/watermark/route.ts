@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     const { title, artist, album } = recordData
 
     const initCertificateArgs: ICertificateArg = {
-      contractId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
+      projectId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
       name: title,
       description: `${artist} - ${album}`,
       copyrightInfo: CopyrightInfo.NoCopyright,

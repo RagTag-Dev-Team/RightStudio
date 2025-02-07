@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme, upload } from 'thirdweb/storage'
+import { resolveScheme, upload, download } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import Dialog from '@mui/material/Dialog'
@@ -24,12 +24,26 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContentText from '@mui/material/DialogContentText'
 import Typography from '@mui/material/Typography'
+import LinearProgress from '@mui/material/LinearProgress'
+import MenuItem from '@mui/material/MenuItem'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Switch from '@mui/material/Switch'
 
 import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
-//import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+import { ContentFormat, AITrainingMiningInfo } from '@mentaport/certificates'
+
+import {
+  CreateCertificate,
+  Verify,
+  GetCertificates,
+  GetProjects,
+  UpdateCertificate,
+  GetDownloadUrl
+} from '@/app/actions/mentaport/index'
 
 import { client } from '@/libs/thirdwebclient'
 import CustomTextField from '@core/components/mui/TextField'
@@ -42,6 +56,40 @@ import { getDb } from '@/libs/surreal'
 
 // Add this constant at the top with other constants
 const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
+
+const newCert: ICertificateArg = {
+  projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!, // "your-project-id",
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png, // will be updated when file is selected
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
+}
+
+// eslint-disable-next-line prefer-const
+let updateCert: ICertificateUpdateArg = {
+  projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID || '',
+  certId: '',
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png,
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
+}
 
 type RecordDataType = {
   id?: string
@@ -61,7 +109,31 @@ type RecordDataType = {
   transactionHash?: string
 }
 
+interface DownloadProps {
+  projectId: string
+  certId: string
+}
+
 // Add this type definition at the top of the file, after the imports
+
+const getContentFormat = (fileType: string): ContentFormat => {
+  // Extract the extension from the filetype (e.g., "audio/wav" -> "wav")
+  const extension = fileType.split('/').pop()?.toLowerCase() || ''
+
+  switch (extension) {
+    case 'mp3':
+      return ContentFormat.mp3
+    case 'wav':
+      return ContentFormat.wav
+    case 'png':
+      return ContentFormat.png
+    case 'jpg':
+    case 'jpeg':
+      return ContentFormat.jpg
+    default:
+      return ContentFormat.png // fallback
+  }
+}
 
 const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -90,16 +162,69 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string>('')
   const [isUploading, setIsUploading] = useState(false)
+  const [loading, setOnLoading] = useState<boolean>(false)
+  const [downloadUrl, setDownloadUrl] = useState<DownloadProps>({ projectId: '', certId: '' })
+
+  const [result, setResult] = useState<string>('')
+  const [certId, setCertId] = useState<string>('')
+  const [projectId, setProjectId] = useState<string>(process.env.NEXT_PUBLIC_PROJECT_ID || '')
+  const [onlyActiveProjects, setOnlyActiveProjects] = useState<boolean>(true)
+  const [newCertificateArgs, setNewCertificateArgs] = useState<ICertificateArg>({ ...newCert }) // eslint-disable-line
+
+  const [updateCertificateArgs, setUpdateCertificateArgs] = useState<ICertificateUpdateArg>({ ...updateCert }) // eslint-disable-line
+
+  // Add these new state variables near the top with other useState declarations
+  const [openWatermarkDialog, setOpenWatermarkDialog] = useState(false)
+  const [watermarkProgress, setWatermarkProgress] = useState(0)
+  const [watermarkStep, setWatermarkStep] = useState('')
+
+  // Add this type definition near other type definitions
+  type WatermarkSteps = {
+    step: string
+    progress: number
+  }
+
+  // Add this function near other handlers
+  const updateWatermarkProgress = ({ step, progress }: WatermarkSteps) => {
+    setWatermarkStep(step)
+    setWatermarkProgress(progress)
+  }
+
+  // Add this function near other handlers
+  const handleOpenWatermarkDialog = () => {
+    if (!recordData) return
+
+    // Pre-populate the certificate args with record data
+    setNewCertificateArgs(prev => ({
+      ...prev,
+      name: recordData.title,
+      username: recordData.artist,
+      description: `${recordData.artist} - ${recordData.album}`,
+      album: recordData.album,
+      albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : '',
+
+      // Keep other fields from previous state
+      projectId: prev.projectId,
+      aiTrainingMiningInfo: prev.aiTrainingMiningInfo,
+      usingAI: prev.usingAI,
+      aiSoftware: prev.aiSoftware,
+      aiModel: prev.aiModel,
+      city: prev.city,
+      country: prev.country
+    }))
+
+    setOpenWatermarkDialog(true)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       const db = await getDb()
 
-      console.log('Fetching record:', recordId)
+      // console.log('Fetching record:', recordId)
       const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
 
       // Add this debug log
-      console.log('Record data:', record)
+      //console.log('Record data:', record)
 
       if (record) {
         const recordWithDate: RecordDataType = {
@@ -111,7 +236,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
 
         // Add this debug log
-        console.log('Processed record data:', recordWithDate)
+        //console.log('Processed record data:', recordWithDate)
 
         setRecordData(recordWithDate)
 
@@ -266,36 +391,95 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     }
   }
 
-  // Add watermark handler function
+  // Update the handleWatermark function
   const handleWatermark = async () => {
     if (!recordData) return
 
     setIsWatermarking(true)
+    updateWatermarkProgress({ step: 'Downloading file...', progress: 10 })
 
     try {
-      // Send to watermark API
-      const response = await fetch('/api/watermark', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(recordData)
+      // Download file from IPFS
+      const fileUrl = await download({
+        client,
+        uri: recordData.ipfsUrl
       })
 
-      const res = await response.json()
+      updateWatermarkProgress({ step: 'Processing file...', progress: 30 })
 
-      if (res) {
-        console.log('res', res)
+      // Create a blob from the URL
+      const response = await fetch(fileUrl.url)
+      const blob = await response.blob()
+      const file = new File([blob], recordData.title, { type: blob.type })
+
+      // Use the helper function to determine the correct content format
+      const contentFormat = getContentFormat(recordData.filetype)
+
+      console.log('contentFormat', contentFormat)
+
+      // Create certificate args with all required fields
+      const certificateArgs: ICertificateArg = {
+        projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
+        aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+        contentFormat: ContentFormat.wav,
+        name: recordData.title || 'Untitled',
+        username: recordData.artist || 'Unknown Artist',
+        description: `${recordData.artist} - ${recordData.album}` || 'No description',
+        usingAI: false,
+        aiSoftware: '',
+        aiModel: '',
+        album: recordData.album || '',
+        albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : '',
+        city: '',
+        country: ''
       }
 
-      setSuccessMessage('Watermark successfully added to the media file!')
-      setShowSuccess(true)
+      updateWatermarkProgress({ step: 'Creating certificate...', progress: 50 })
+
+      // Create form data with file
+      const formData = new FormData()
+
+      formData.append('file', file)
+
+      const createdCert = await CreateCertificate(formData, certificateArgs)
+
+      updateWatermarkProgress({ step: 'Finalizing watermark...', progress: 80 })
+
+      const { status, data: resData, message } = createdCert
+
+      if (status && resData) {
+        // Get download URL for the watermarked file
+        const downloadUrl = await GetDownloadUrl(resData.projectId, resData.certId)
+
+        // Update the record in the database with the certificate info
+        const db = await getDb()
+
+        const updatedRecord = {
+          ...recordData,
+          certificateId: resData.certId,
+          certificateProjectId: resData.projectId,
+          watermarkedUrl: downloadUrl.data
+        }
+
+        await db.update(new RecordId('media', recordId), updatedRecord)
+
+        // Update local state
+        setRecordData(updatedRecord)
+        setSuccessMessage('File successfully watermarked!')
+
+        updateWatermarkProgress({ step: 'Complete!', progress: 100 })
+      } else {
+        throw new Error(message || 'Failed to create certificate')
+      }
     } catch (error) {
       console.error('Error during watermarking:', error)
       setSuccessMessage('Failed to add watermark to the file')
-      setShowSuccess(true)
     } finally {
       setIsWatermarking(false)
+      setOpenWatermarkDialog(false)
+      setShowSuccess(true)
+      setWatermarkProgress(0)
+      setWatermarkStep('')
     }
   }
 
@@ -673,7 +857,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 <Chip label='MINTED' color='success' />
               </Box>
               <Box sx={{ p: 2 }}>
-                <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
+                <Button variant='contained' onClick={handleOpenWatermarkDialog} disabled={isWatermarking}>
                   {isWatermarking ? 'Processing...' : 'Add Watermark'}
                 </Button>
               </Box>
@@ -779,6 +963,163 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               </Button>
             </>
           )}
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={openWatermarkDialog}
+        onClose={() => !isWatermarking && setOpenWatermarkDialog(false)}
+        maxWidth='md'
+        fullWidth
+      >
+        <DialogTitle>Create Certificate for Watermarking</DialogTitle>
+        <DialogContent>
+          {isWatermarking ? (
+            <Box sx={{ width: '100%', mt: 2 }}>
+              <Typography variant='body2' sx={{ mb: 1 }}>
+                {watermarkStep}
+              </Typography>
+              <LinearProgress variant='determinate' value={watermarkProgress} />
+            </Box>
+          ) : (
+            <Grid container spacing={3} sx={{ mt: 1 }}>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='Name'
+                  value={newCertificateArgs.name}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, name: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='Username'
+                  value={newCertificateArgs.username}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, username: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <CustomTextField
+                  fullWidth
+                  multiline
+                  rows={3}
+                  label='Description'
+                  value={newCertificateArgs.description}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, description: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='Album'
+                  value={newCertificateArgs.album}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, album: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='Album Year'
+                  value={newCertificateArgs.albumYear}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, albumYear: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='City'
+                  value={newCertificateArgs.city}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, city: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <CustomTextField
+                  fullWidth
+                  label='Country'
+                  value={newCertificateArgs.country}
+                  onChange={e => setNewCertificateArgs(prev => ({ ...prev, country: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <CustomTextField
+                  select
+                  fullWidth
+                  label='AI Training/Mining Info'
+                  value={newCertificateArgs.aiTrainingMiningInfo}
+                  onChange={e =>
+                    setNewCertificateArgs(prev => ({
+                      ...prev,
+                      aiTrainingMiningInfo: e.target.value as AITrainingMiningInfo
+                    }))
+                  }
+                >
+                  {Object.values(AITrainingMiningInfo).map(value => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))}
+                </CustomTextField>
+              </Grid>
+
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={newCertificateArgs.usingAI}
+                      onChange={e =>
+                        setNewCertificateArgs(prev => ({
+                          ...prev,
+                          usingAI: e.target.checked
+                        }))
+                      }
+                    />
+                  }
+                  label='Using AI'
+                />
+              </Grid>
+
+              {newCertificateArgs.usingAI && (
+                <>
+                  <Grid item xs={12} sm={6}>
+                    <CustomTextField
+                      fullWidth
+                      label='AI Software'
+                      value={newCertificateArgs.aiSoftware}
+                      onChange={e =>
+                        setNewCertificateArgs(prev => ({
+                          ...prev,
+                          aiSoftware: e.target.value
+                        }))
+                      }
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={6}>
+                    <CustomTextField
+                      fullWidth
+                      label='AI Model'
+                      value={newCertificateArgs.aiModel}
+                      onChange={e =>
+                        setNewCertificateArgs(prev => ({
+                          ...prev,
+                          aiModel: e.target.value
+                        }))
+                      }
+                    />
+                  </Grid>
+                </>
+              )}
+            </Grid>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenWatermarkDialog(false)} disabled={isWatermarking}>
+            Cancel
+          </Button>
+          <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
+            Create Certificate
+          </Button>
         </DialogActions>
       </Dialog>
 

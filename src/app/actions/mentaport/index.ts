@@ -3,7 +3,7 @@
 import type { ICertificateArg, ICertificate, IResults, ICertificateUpdateArg } from '@mentaport/certificates'
 import { ContentTypes, ContentFormat, VerificationStatus, CertificateStatus } from '@mentaport/certificates'
 
-import { _getMentaportSDK } from '@/libs/mentaport/actions/mentaport/mentaport-sdk'
+import { _getMentaportSDK } from '@/app/actions/mentaport/mentaport-sdk'
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
@@ -12,7 +12,22 @@ const getFileTypeStr = (fileType: string) => {
   let type = ''
   let format: ContentFormat = ContentFormat[types[1] as keyof typeof ContentFormat]
 
-  if (!format && types[1] == 'jpeg') format = ContentFormat.jpg
+  // Handle audio formats specifically
+  if (types[0] === 'audio') {
+    format =
+      types[1] === 'mp3'
+        ? ContentFormat.mp3
+        : types[1] === 'wav'
+          ? ContentFormat.wav
+          : types[1] === 'mpeg'
+            ? ContentFormat.mp3
+            : format
+  }
+
+  // Handle image formats
+  else if (!format && types[1] === 'jpeg') {
+    format = ContentFormat.jpg
+  }
 
   for (const key in ContentTypes) {
     if (ContentTypes[key as keyof typeof ContentTypes].toLowerCase() === types[0]) {
@@ -28,6 +43,8 @@ export async function CreateCertificate(
   data: FormData,
   initCertificateArgs: ICertificateArg
 ): Promise<IResults<ICertificate>> {
+  console.log('initCertificateArgs', data)
+
   try {
     const file: File | null = data.get('file') as unknown as File
 
@@ -40,12 +57,18 @@ export async function CreateCertificate(
     const blob = new Blob([buffer], { type: file.type })
     const typeInfo = getFileTypeStr(file.type)
 
+    // console.log('file', file)
+
     initCertificateArgs.contentFormat = typeInfo.format as ContentFormat
 
     const sdk = await _getMentaportSDK()
 
+    console.log('initCertificateArgs', initCertificateArgs)
+
     // 1. Create certificate by setting information and uploading content
     const genRes = await sdk.createCertificate(initCertificateArgs, blob)
+
+    // console.log('genRes', genRes)
 
     if (!genRes.status || genRes.data == null) {
       console.error('There was a problem uploading contnet for certificate')
@@ -60,6 +83,7 @@ export async function CreateCertificate(
     console.log('creation started', genRes.data)
 
     // 2. Check status until is ready (Pending if successful or NonActive if failed)
+
     let resCertStatus = await sdk.getCertificateStatus(projectId, certId)
 
     while (status !== CertificateStatus.Pending && status !== CertificateStatus.NonActive) {
@@ -165,7 +189,6 @@ export async function Verify(data: FormData) {
     const url = 'http://examples.mentaport.com/upload'
 
     // 1. Verify content by uploading content
-
     console.log('jer 1e')
     const verRes = await sdk.verifyContent(typeInfo.format, url, blob)
 
@@ -242,7 +265,6 @@ export async function GetCertificates(projectId?: string, certId?: string) {
 export async function GetProjects(activeProjects: boolean) {
   try {
     const sdk = await _getMentaportSDK()
-
     const result = await sdk.getProjects(activeProjects)
 
     console.log(result)
