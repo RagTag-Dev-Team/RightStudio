@@ -76,10 +76,6 @@ async function fetchBalances(account: string) {
     }
   )
 
-  console.log('ragzRes', ragzRes)
-  console.log('tagzRes', tagzRes)
-  console.log('nftRes', nftRes)
-
   const ragzResult = await ragzRes.json()
   const tagzResult = await tagzRes.json()
   const nftResult = await nftRes.json()

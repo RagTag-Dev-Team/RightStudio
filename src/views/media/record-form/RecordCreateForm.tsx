@@ -150,11 +150,13 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
 
     try {
       setIsUploading(true)
-      console.log('file', file)
+
+      // convert the file a New File Object
+      const newFile = new File([file], file.name, { type: file.type })
 
       const uploadUrl = await upload({
         client,
-        files: [file]
+        files: [newFile]
       })
 
       console.log('uploadUrl', uploadUrl)
