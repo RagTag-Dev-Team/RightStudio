@@ -63,7 +63,7 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
   const getRecordId = () => {
-    const match = pathname.match(/\/dashboards\/record\/(.+)$/)
+    const match = pathname.match(/\/media\/record\/(.+)$/)
 
     return match ? match[1] : null
   }

@@ -231,7 +231,7 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
             onSuccess()
           }
 
-          router.push(`/en/dashboards/record/${recordId}`)
+          router.push(`/en/media/record/${recordId}`)
         }
       } catch (dbError) {
         console.error('Database error:', dbError)
