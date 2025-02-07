@@ -145,6 +145,34 @@ const LatestSlider = () => {
     )
   }
 
+  if (tracks.length === 0) {
+    return (
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <CardHeader title='Latest Tracks' />
+        <CardContent
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 3
+          }}
+        >
+          <i className='tabler-music-off' style={{ fontSize: '48px', opacity: 0.5 }} />
+          <Typography variant='body1' color='text.secondary' align='center'>
+            No tracks available yet.
+          </Typography>
+          <Link href='/en/media/library' passHref>
+            <Button variant='contained' startIcon={<i className='tabler-plus' />}>
+              Add Tracks to Library
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardHeader title='Latest Tracks' />

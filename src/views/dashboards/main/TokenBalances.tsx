@@ -140,6 +140,8 @@ const TokenBalances = () => {
 
         const data = await response.json()
 
+        console.log('data', data)
+
         // Update the cache with new data and timestamp
         balancesCache = {
           balances: data,

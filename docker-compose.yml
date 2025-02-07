@@ -1,4 +1,4 @@
-name: mannyj37/rightstudio:backend
+name: 'mannyj37/rightstudio:backend'
 services:
   surrealdb:
     platform: 'linux/amd64'

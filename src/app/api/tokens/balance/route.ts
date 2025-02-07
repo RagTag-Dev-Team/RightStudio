@@ -39,6 +39,10 @@ export async function POST(req: NextRequest) {
 }
 
 async function fetchBalances(account: string) {
+  console.log('ENGINE_URL', ENGINE_URL)
+
+  //  console.log('NEXT_PUBLIC_THIRDWEB_SECRET_KEY', NEXT_PUBLIC_THIRDWEB_SECRET_KEY)
+
   const ragzRes = await fetch(
     `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${account}`,
     {
@@ -71,6 +75,10 @@ async function fetchBalances(account: string) {
       next: { revalidate: CACHE_DURATION }
     }
   )
+
+  console.log('ragzRes', ragzRes)
+  console.log('tagzRes', tagzRes)
+  console.log('nftRes', nftRes)
 
   const ragzResult = await ragzRes.json()
   const tagzResult = await tagzRes.json()

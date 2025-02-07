@@ -7,6 +7,7 @@
     "dev": "concurrently --names surreal,next \"pnpm run dev:surreal\" \"pnpm run dev:next\"",
     "dev:surreal": "dotenv -- cross-var surreal start --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% rocksdb:./surrealdb/data",
     "dev:next": "next dev",
+    "dev:staging": "dotenv -e .env.staging -- next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext ts --ext tsx --max-warnings 0",

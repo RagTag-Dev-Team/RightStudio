@@ -150,36 +150,14 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
 
     try {
       setIsUploading(true)
+      console.log('file', file)
 
-      // Add timeout and retry logic for upload
-      const uploadWithRetry = async (file: File, retries = 3): Promise<string> => {
-        try {
-          const uploadUrl = await upload({
-            client,
-            files: [file],
+      const uploadUrl = await upload({
+        client,
+        files: [file]
+      })
 
-            // Add upload options
-            options: {
-              uploadWithGatewayUrl: true,
-              uploadWithoutDirectory: true
-            }
-          })
-
-          return uploadUrl
-        } catch (error) {
-          if (retries > 0) {
-            // Wait for 2 seconds before retrying
-            await new Promise(resolve => setTimeout(resolve, 2000))
-
-            return uploadWithRetry(file, retries - 1)
-          }
-
-          throw error
-        }
-      }
-
-      // Upload main file
-      const uploadUrl = await uploadWithRetry(file)
+      console.log('uploadUrl', uploadUrl)
 
       // Handle cover art upload
       let coverArtUrl = formData.coverImage
