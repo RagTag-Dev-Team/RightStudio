@@ -113,10 +113,15 @@ export async function CreateCertificate(
       }
     }
 
-    // if(!resCertStatus!.status || resCertStatus.data?.status == CertificateStatus.NonActive ){
-    //   console.error('There was a problem creating your certificate')
-    //   return {status: resCertStatus.status, message: resCertStatus.message, statusCode: resCertStatus.statusCode}
-    // }
+    // Add check for non-active status after the while loop
+    if (resCertStatus.data?.status.status === CertificateStatus.NonActive) {
+      return {
+        status: false,
+        message: resCertStatus.data.status.statusMessage || 'Certificate is not active',
+        statusCode: resCertStatus.statusCode
+      }
+    }
+
     console.log('Now approving certificate')
 
     // TODO: Before approving, confirm the data from the above call to ensure everything looks good.

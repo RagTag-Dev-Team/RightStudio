@@ -421,7 +421,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const certificateArgs: ICertificateArg = {
         projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
         aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
-        contentFormat: ContentFormat.wav,
+        contentFormat: contentFormat,
         name: recordData.title || 'Untitled',
         username: recordData.artist || 'Unknown Artist',
         description: `${recordData.artist} - ${recordData.album}` || 'No description',

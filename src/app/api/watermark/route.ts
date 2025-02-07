@@ -36,13 +36,14 @@ export async function POST(req: Request) {
     const file = new File([fileBlob], recordData.title, { type: fileBlob.type })
 
     const formData = new FormData()
-    
+
     formData.append('file', file)
 
     const { title, artist, album } = recordData
 
     const initCertificateArgs: ICertificateArg = {
       projectId: process.env.NEXT_PUBLIC_MENTAPORT_CONTRACT_ID!,
+      contentFormat: ContentFormat.jpg,
       name: title,
       description: `${artist} - ${album}`,
       copyrightInfo: CopyrightInfo.NoCopyright,
@@ -142,6 +143,7 @@ export async function Create(data: FormData, initCertificateArgs: ICertificateAr
 
     if (!createResult.status || !createResult.data) {
       console.error('There was a problem creating the certificate')
+
       return { status: false, statusCode: createResult.statusCode, message: createResult.message }
     }
 
