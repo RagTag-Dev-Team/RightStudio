@@ -29,6 +29,16 @@ import CircularProgress from '@mui/material/CircularProgress'
 
 import { useActiveAccount } from 'thirdweb/react'
 
+import Dialog from '@mui/material/Dialog'
+
+import DialogTitle from '@mui/material/DialogTitle'
+
+import DialogContent from '@mui/material/DialogContent'
+
+import DialogActions from '@mui/material/DialogActions'
+
+import DialogContentText from '@mui/material/DialogContentText'
+
 import { client } from '@/libs/thirdwebclient'
 
 import CustomTextField from '@core/components/mui/TextField'
@@ -85,6 +95,11 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
   const [isUploading, setIsUploading] = useState(false)
 
   const activeAccount = useActiveAccount()
+
+  const [openAIDialog, setOpenAIDialog] = useState(false)
+  const [aiPrompt, setAiPrompt] = useState('')
+  const [isGenerating, setIsGenerating] = useState(false)
+  const [generatedImageUrl, setGeneratedImageUrl] = useState<string>('')
 
   const handleMetadata = (metadata: Partial<FormDataType>, uploadedFile: File) => {
     // Update form data with metadata
@@ -231,6 +246,72 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
     }
   }
 
+  const handleGenerateArt = async () => {
+    if (!aiPrompt) return
+
+    setIsGenerating(true)
+    setGeneratedImageUrl('')
+
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ imagePrompt: aiPrompt })
+      })
+
+      const res = await response.json()
+
+      if (res.data.url) {
+        setGeneratedImageUrl(res.data.url)
+      } else {
+        throw new Error('No image URL in response')
+      }
+    } catch (error) {
+      console.error('Error generating cover art:', error)
+
+      // You may want to add error handling UI here
+    } finally {
+      setIsGenerating(false)
+    }
+  }
+
+  const handleAcceptImage = async () => {
+    if (!generatedImageUrl) return
+
+    try {
+      // Fetch the image through our API to handle CORS
+      const response = await fetch('/api/fetch-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ imageUrl: generatedImageUrl })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch image')
+      }
+
+      const imageBlob = await response.blob()
+      const reader = new FileReader()
+
+      reader.onload = e => {
+        if (e.target?.result) {
+          setFormData({ ...formData, coverImage: e.target.result as string })
+        }
+      }
+
+      reader.readAsDataURL(imageBlob)
+      setOpenAIDialog(false)
+    } catch (error) {
+      console.error('Error saving generated image:', error)
+
+      // You may want to add error handling UI here
+    }
+  }
+
   return (
     <Card>
       {isUploading && (
@@ -373,7 +454,6 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
                         <CovertArtUploader
                           disabled={!file}
                           onImageSelect={async (file: File) => {
-                            // Convert File to base64 string
                             const reader = new FileReader()
 
                             reader.onload = e => {
@@ -385,6 +465,14 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
                             reader.readAsDataURL(file)
                           }}
                         />
+                        <Button
+                          variant='contained'
+                          onClick={() => setOpenAIDialog(true)}
+                          sx={{ mt: 2 }}
+                          disabled={!file}
+                        >
+                          Generate with AI
+                        </Button>
                       </Box>
                     )}
                   </Box>
@@ -510,6 +598,80 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
           </Button>
         </CardActions>
       </form>
+
+      <Dialog open={openAIDialog} onClose={() => setOpenAIDialog(false)} maxWidth='sm' fullWidth>
+        <DialogTitle>Generate Cover Art with AI</DialogTitle>
+        <DialogContent>
+          {!generatedImageUrl ? (
+            <>
+              <DialogContentText sx={{ mb: 2 }}>
+                Describe the cover art you'd like to generate. For best results, be specific about:
+              </DialogContentText>
+
+              <Box sx={{ mb: 3 }}>
+                <ul>
+                  <li>Style (e.g., photographic, illustration, abstract)</li>
+                  <li>Colors and mood</li>
+                  <li>Main elements or subjects</li>
+                  <li>Composition and layout</li>
+                </ul>
+
+                <DialogContentText sx={{ mt: 2 }}>
+                  Example: &quot;A dreamy watercolor illustration of a sunset over mountains, using purple and orange
+                  tones, with musical notes floating in the sky&quot;
+                </DialogContentText>
+              </Box>
+              <CustomTextField
+                autoFocus
+                fullWidth
+                multiline
+                rows={4}
+                label='Describe your cover art'
+                value={aiPrompt}
+                onChange={e => setAiPrompt(e.target.value)}
+                disabled={isGenerating}
+              />
+            </>
+          ) : (
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+              <img
+                src={generatedImageUrl}
+                alt='Generated Cover Art'
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '100%',
+                  borderRadius: '4px'
+                }}
+              />
+              <Typography>Do you want to use this image as your cover art?</Typography>
+            </Box>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              setOpenAIDialog(false)
+              setGeneratedImageUrl('')
+            }}
+            disabled={isGenerating}
+          >
+            Cancel
+          </Button>
+          {!generatedImageUrl ? (
+            <Button onClick={handleGenerateArt} variant='contained' disabled={!aiPrompt || isGenerating}>
+              {isGenerating ? 'Generating...' : 'Generate'}
+            </Button>
+          ) : (
+            <>
+              <Button onClick={() => setGeneratedImageUrl('')}>Try Again</Button>
+              <Button onClick={handleAcceptImage} variant='contained'>
+                Use This Image
+              </Button>
+            </>
+          )}
+        </DialogActions>
+      </Dialog>
     </Card>
   )
 }
