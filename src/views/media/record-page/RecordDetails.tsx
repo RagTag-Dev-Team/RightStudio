@@ -413,7 +413,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   // Update the handleWatermark function
   const handleWatermark = async () => {
-    if (!recordData) return
+    if (!recordData || !activeAccount?.address) return
 
     setIsWatermarking(true)
     updateWatermarkProgress({ step: 'Initializing certificate creation...', progress: 10 })
@@ -491,7 +491,29 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Update local state
       setRecordData(updatedRecord)
-      setSuccessMessage('File successfully watermarked!')
+
+      // Reward user with TAGZ
+      const rewardResponse = await fetch('/api/reward', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          walletAddress: activeAccount.address,
+          amount: '100.0'
+        })
+      })
+
+      const rewardData = await rewardResponse.json()
+
+      // Show confetti
+      setShowConfetti(true)
+      setTimeout(() => setShowConfetti(false), 5000)
+
+      // Update success message to include TAGZ reward
+      setSuccessMessage(
+        `File successfully watermarked! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for watermarking this file.`
+      )
     } catch (error) {
       console.error('Error during watermarking:', error)
       setSuccessMessage('Failed to add watermark to the file')

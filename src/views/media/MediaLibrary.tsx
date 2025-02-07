@@ -59,6 +59,7 @@ interface TrackRecord {
   tokenId?: string
   ipfsUrl: string
   owner: string
+  watermarkUrl?: string
 }
 
 const fuzzyFilter: FilterFn<TrackRecord> = (row, columnId, value, addMeta) => {
@@ -223,6 +224,40 @@ const MediaLibrary = () => {
         />
       ),
       header: 'Status'
+    }),
+    columnHelper.accessor('watermarkUrl', {
+      cell: info => {
+        // Add debug log for cell render
+        console.log('Rendering certification cell:', {
+          value: info.getValue(),
+          rowData: info.row.original
+        })
+
+        return (
+          <div className='flex justify-center items-center gap-1'>
+            {info.getValue() === 'certified' ? (
+              <>
+                <Icon className='tabler-certificate text-success' fontSize='small'>
+                  verified
+                </Icon>
+                <Typography variant='caption' className='text-success'>
+                  Certified
+                </Typography>
+              </>
+            ) : (
+              <>
+                <Icon className='tabler-certificate-off text-disabled' fontSize='small'>
+                  gpp_bad
+                </Icon>
+                <Typography variant='caption' className='text-disabled'>
+                  Uncertified
+                </Typography>
+              </>
+            )}
+          </div>
+        )
+      },
+      header: 'Certification'
     })
   ]
 
@@ -240,40 +275,61 @@ const MediaLibrary = () => {
         const response = await fetch(`/api/tracks/all?owner=${account.address}`)
         const tracks = await response.json()
 
-        tracks.forEach((track: any) => {
-          //   console.log('track', track)
+        console.log('Tracks:', tracks)
 
-          // Only resolve the coverArt if coverImage exists
+        tracks.forEach((track: any) => {
+          // Add debug log for initial watermarkedUrl
+          console.log('Initial track watermarkedUrl:', track.id, track.watermarkedUrl)
+
+          // Resolve coverArt if coverImage exists
           if (track.coverImage) {
             track.coverArt = resolveScheme({
               client,
               uri: `${track.coverImage}`
             })
           } else {
-            // Set a default or placeholder image URL
-            track.coverArt = '/images/icons/default-cover-art.jpg' // Replace with your default image path
+            track.coverArt = '/images/icons/default-cover-art.jpg'
           }
 
+          // Resolve ipfsUrl
           track.ipfsUrl = resolveScheme({
             client,
             uri: `${track.ipfsUrl}`
           })
+
+          // Check for watermarkedUrl existence
+          if (track.watermarkedUrl) {
+            // Add debug log for watermarkedUrl processing
+            console.log('Processing watermarkedUrl for track:', track.id)
+            track.watermarkedUrl = 'certified'
+          }
         })
 
-        const transformedTracks = tracks.map((track: any) => ({
-          id: track.id,
-          coverArt: track.coverArt,
-          title: track.title,
-          artist: track.artist,
-          album: track.album,
-          createdDate: track.uploadedAt,
-          status: track.status,
-          tokenId: track.tokenId,
-          ipfsUrl: track.ipfsUrl,
-          owner: track.owner
-        }))
+        const transformedTracks = tracks.map((track: any) => {
+          const transformed = {
+            id: track.id,
+            coverArt: track.coverArt,
+            title: track.title,
+            artist: track.artist,
+            album: track.album,
+            createdDate: track.uploadedAt,
+            status: track.status,
+            tokenId: track.tokenId,
+            ipfsUrl: track.ipfsUrl,
+            owner: track.owner,
+            watermarkUrl: track.watermarkedUrl // Map watermarkedUrl to watermarkUrl for the UI
+          }
 
-        // Sort tracks by uploadedAt date in descending order (most recent first)
+          // Add debug log for final transformed track
+          console.log('Final transformed track:', track.id, {
+            watermarkUrl: transformed.watermarkUrl,
+            originalWatermarkedUrl: track.watermarkedUrl
+          })
+
+          return transformed
+        })
+
+        // Sort tracks by uploadedAt date in descending order
         const sortedTracks = transformedTracks.sort(
           (a: { createdDate: string | number | Date }, b: { createdDate: string | number | Date }) =>
             new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
