@@ -49,7 +49,7 @@ services:
     env:
       - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
       - REDIS_URL=redis://redis:6379/0
-      - THIRDWEB_API_SECRET_KEY="kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw"
+      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
       - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
       - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
       - ENABLE_HTTPS=true
