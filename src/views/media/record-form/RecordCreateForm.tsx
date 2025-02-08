@@ -150,33 +150,16 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
 
     try {
       setIsUploading(true)
-      console.log('file', file)
 
-      // Add timeout and retry logic for upload
-      const uploadWithRetry = async (file: File, retries = 3): Promise<string> => {
-        try {
-          const uploadUrl = await upload({
-            client,
-            files: [file]
+      // Simple direct upload without retries
+      console.log('Uploading file...')
 
-            // Add upload options
-          })
+      const uploadUrl = await upload({
+        client,
+        files: [file]
+      })
 
-          return uploadUrl
-        } catch (error) {
-          if (retries > 0) {
-            // Wait for 2 seconds before retrying
-            await new Promise(resolve => setTimeout(resolve, 2000))
-
-            return uploadWithRetry(file, retries - 1)
-          }
-
-          throw error
-        }
-      }
-
-      // Upload main file
-      const uploadUrl = await uploadWithRetry(file)
+      console.log('uploadUrl', uploadUrl)
 
       // Handle cover art upload
       let coverArtUrl = formData.coverImage
@@ -187,12 +170,13 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
           const blob = await response.blob()
           const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
 
-          // Upload cover art with retry logic
-          coverArtUrl = await uploadWithRetry(coverArtFile)
+          // Upload cover art
+          coverArtUrl = await upload({
+            client,
+            files: [coverArtFile]
+          })
         } catch (error) {
           console.error('Error uploading cover art:', error)
-
-          // Continue without cover art if it fails
           coverArtUrl = ''
         }
       }
@@ -236,8 +220,6 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
       }
     } catch (error) {
       console.error('Error during upload or save:', error)
-
-      // Show error to user
       alert('Upload failed. Please try again.')
       setIsUploading(false)
     }

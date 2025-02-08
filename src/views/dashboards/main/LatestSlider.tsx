@@ -168,6 +168,7 @@ const LatestSlider = () => {
                     >
                       <Image
                         src={track.coverImage}
+                        priority
                         alt={`${track.title} cover art`}
                         fill
                         sizes='(max-width: 768px) 75vw, 300px'
