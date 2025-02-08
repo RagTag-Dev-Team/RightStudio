@@ -150,19 +150,16 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
 
     try {
       setIsUploading(true)
+      console.log('file', file)
 
       // Add timeout and retry logic for upload
       const uploadWithRetry = async (file: File, retries = 3): Promise<string> => {
         try {
           const uploadUrl = await upload({
             client,
-            files: [file],
+            files: [file]
 
             // Add upload options
-            options: {
-              uploadWithGatewayUrl: true,
-              uploadWithoutDirectory: true
-            }
           })
 
           return uploadUrl
