@@ -121,7 +121,7 @@ const UserDropdown = () => {
         <Avatar
           ref={anchorRef}
           alt={session?.user?.name || ''}
-          src={session?.user?.image || '/images/avatars/1.png'}
+          src={session?.user?.image || '/images/avatars/1.svg'}
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-[38px] is-[38px]'
         />
@@ -146,7 +146,7 @@ const UserDropdown = () => {
                 <MenuList>
                   <div className='flex items-center justify-between plb-2 pli-6 gap-2' tabIndex={-1}>
                     <div className='flex items-center gap-2'>
-                      <Avatar alt={session?.user?.name || ''} src={session?.user?.image || '/images/avatars/1.png'} />
+                      <Avatar alt={session?.user?.name || ''} src={session?.user?.image || '/images/avatars/1.svg'} />
                       <div className='flex items-start flex-col'>
                         <Typography className='font-medium' color='text.primary'>
                           {displayName}
