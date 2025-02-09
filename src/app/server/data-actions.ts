@@ -124,3 +124,21 @@ export async function paginate<T>(
     throw error
   }
 }
+
+export async function getLatestTracks<T>(limit: number = 10): Promise<T[]> {
+  try {
+    const result = await db.query(
+      `
+      SELECT * FROM media
+      ORDER BY uploadedAt DESC
+      LIMIT $limit
+    `,
+      { limit }
+    )
+
+    return result as T[]
+  } catch (error) {
+    console.error('Error fetching latest tracks:', error)
+    throw error
+  }
+}

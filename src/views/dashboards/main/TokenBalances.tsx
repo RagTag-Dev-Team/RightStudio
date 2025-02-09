@@ -68,7 +68,7 @@ const TokenBalances = () => {
     options: {
       chart: {
         type: 'donut',
-        width: 300
+        width: 250
       },
       fill: {
         type: 'gradient',
