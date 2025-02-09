@@ -27,18 +27,6 @@ interface Track {
   uploadedAt: string
 }
 
-// Add cache interface
-interface CacheData {
-  tracks: Track[]
-  timestamp: number
-}
-
-// Cache duration in milliseconds (30 seconds)
-const CACHE_DURATION = 30000
-
-// Create a cache object outside the component to persist between renders
-const tracksCache: CacheData | null = null
-
 const LatestSlider = () => {
   const [tracks, setTracks] = useState<Track[]>([])
   const [loading, setLoading] = useState(true)

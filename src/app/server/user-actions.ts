@@ -1,16 +1,8 @@
 'use server'
 
-import { getWalletBalance } from 'thirdweb/wallets'
-import { defineChain } from 'thirdweb'
-import { type Chain } from 'thirdweb/chains'
-
-import { client } from '@/libs/thirdwebclient'
-
 const {
   ENGINE_URL,
-  BACKEND_WALLET_ADDRESS,
   CHAIN_ID,
-  ENGINE_SECRET_KEY,
   TAGZ_TOKEN_ADDRESS,
   RAGZ_TOKEN_ADDRESS,
   NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
@@ -18,7 +10,6 @@ const {
 } = process.env
 
 // Fix the chain definition by ensuring CHAIN_ID is a number
-const chain = defineChain(Number(CHAIN_ID)) as Chain
 
 interface TokenBalances {
   ragzResult: { result: { displayValue: string } }
