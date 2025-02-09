@@ -30,6 +30,9 @@ import Grid from '@mui/material/Grid'
 // ThirdWeb Imports
 import { useActiveAccount } from 'thirdweb/react'
 
+// Add useSession import
+import { useSession } from 'next-auth/react'
+
 // Component Imports
 import CardStatVertical from '@/components/card-statistics/Vertical'
 
@@ -48,6 +51,7 @@ let balancesCache: CacheData | null = null
 const TokenBalances = () => {
   // Get user account information
   const account = useActiveAccount()
+  const { data: session } = useSession()
   const theme = useTheme()
 
   const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
@@ -161,64 +165,65 @@ const TokenBalances = () => {
     const fetchBalances = async () => {
       setIsLoading(true)
 
-      if (!account) {
+      // Get the address from account or session
+      const userAddress = account?.address || session?.user?.wallet_address
+
+      if (!userAddress) {
         return
       }
 
       try {
-        if (account.address) {
-          const getRagzbalance = await fetch('/api/tokens/balance', {
-            method: 'POST',
-            body: JSON.stringify({ account: account.address })
-          })
+        const getRagzbalance = await fetch('/api/tokens/balance', {
+          method: 'POST',
+          body: JSON.stringify({ account: userAddress })
+        })
 
-          const { ragzResult, tagzResult, nftResult } = await getRagzbalance.json()
+        const { ragzResult, tagzResult, nftResult } = await getRagzbalance.json()
 
-          //  console.log('ragzResult', ragzResult)
-          //  console.log('tagzResult', tagzResult.result.displayValue)
-          // console.log('nftResult', nftResult)
+        //  console.log('ragzResult', ragzResult)
+        //  console.log('tagzResult', tagzResult.result.displayValue)
+        // console.log('nftResult', nftResult)
 
-          // Format the balance to 2 decimal places
-          const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
-          const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
-          const nftBalance = Number(nftResult.result).toFixed(2)
+        // Format the balance to 2 decimal places
+        const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
+        const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
+        const nftBalance = Number(nftResult.result).toFixed(2)
 
-          // const nftBalance = Number(nftResult.result)
-          const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
+        // const nftBalance = Number(nftResult.result)
+        const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-          //  console.log('tokenBalance', tokenBalance)
+        //  console.log('tokenBalance', tokenBalance)
 
-          setTokenBalances({
-            RAGZ: ragzBalance,
-            TAGZ: tagzBalance,
-            'Minted Media': nftBalance
-          })
+        setTokenBalances({
+          RAGZ: ragzBalance,
+          TAGZ: tagzBalance,
+          'Minted Media': nftBalance
+        })
 
-          setChartData({
-            series: tokenBalance,
-            options: {
-              labels: ['RAGZ', 'TAGZ', 'Minted Media'],
-              legend: {
-                labels: {
-                  colors: '#fff'
-                }
-              },
-              stroke: {
-                show: false
-              },
-              responsive: [
-                {
-                  breakpoint: 480,
-                  options: {
-                    legend: {
-                      position: 'bottom'
-                    }
+        setChartData({
+          series: tokenBalance,
+          options: {
+            labels: ['RAGZ', 'TAGZ', 'Minted Media'],
+            legend: {
+              labels: {
+                colors: '#fff'
+              }
+            },
+            stroke: {
+              show: false
+            },
+            responsive: [
+              {
+                breakpoint: 480,
+                options: {
+                  legend: {
+                    position: 'bottom'
                   }
                 }
-              ]
-            }
-          })
-        }
+              }
+            ]
+          }
+        })
       } catch (error) {
         console.error('Error fetching balance:', error)
       } finally {
@@ -227,7 +232,7 @@ const TokenBalances = () => {
     }
 
     fetchBalances()
-  }, [account])
+  }, [account, session])
 
   return (
     <Card>
