@@ -1,0 +1,12 @@
+<!-- Blue-violet theme -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 190 184" enable-background="new 0 0 190 184" xml:space="preserve">
+<g>
+	<path fill="#8585F3" d="M95,0.5c52.5,0,95,42.5,95,95c0,52.5-42.5,95-95,95C42.5,190.5,0,148,0,95.5C0,43,42.5,0.5,95,0.5z"/>
+	<!-- Rest of paths with blue-violet colors -->
+	<!-- Main highlight: #3535FA -->
+	<!-- Dark accents: #383E47 -->
+	<!-- Bright accents: #3333FD -->
+	<!-- ... same structure with blue-violet colors ... -->
+</g>
+</svg>
