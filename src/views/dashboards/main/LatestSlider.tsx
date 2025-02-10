@@ -61,7 +61,7 @@ const LatestSlider = () => {
   useEffect(() => {
     const fetchLatestTracks = async () => {
       try {
-        const latestTracks = await getLatestTracks<Track>(10)
+        const latestTracks = await getLatestTracks(10)
 
         console.log(latestTracks)
 
