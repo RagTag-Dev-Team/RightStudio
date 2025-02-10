@@ -235,10 +235,10 @@ const MediaLibrary = () => {
     columnHelper.accessor('watermarkUrl', {
       cell: info => {
         // Add debug log for cell render
-        console.log('Rendering certification cell:', {
-          value: info.getValue(),
-          rowData: info.row.original
-        })
+        // console.log('Rendering certification cell:', {
+        //   value: info.getValue(),
+        //   rowData: info.row.original
+        // })
 
         return (
           <div className='flex justify-center items-center gap-1'>
