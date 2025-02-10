@@ -38,6 +38,8 @@ import { useActiveAccount } from 'thirdweb/react'
 import { rankItem } from '@tanstack/match-sorter-utils'
 import { resolveScheme } from 'thirdweb/storage'
 
+import { useSession } from 'next-auth/react'
+
 import { client } from '@/libs/thirdwebclient'
 
 // import FormLayoutsSeparator from '../dashboards/fileUpload/form-layouts/FormLayoutsSeparator'
@@ -156,8 +158,6 @@ const CoverArtWithPlayButton = ({
 }
 
 import { findByField } from '@/app/server/data-actions'
-
-import { useSession } from 'next-auth/react'
 
 const MediaLibrary = () => {
   // States
@@ -289,7 +289,7 @@ const MediaLibrary = () => {
 
         tracks.forEach((track: any) => {
           // Add debug log for initial watermarkedUrl
-          console.log('Initial track watermarkedUrl:', track.id, track.watermarkedUrl)
+          // console.log('Initial track watermarkedUrl:', track.id, track.watermarkedUrl)
 
           // Resolve coverArt if coverImage exists
           if (track.coverImage) {
@@ -310,7 +310,7 @@ const MediaLibrary = () => {
           // Check for watermarkedUrl existence
           if (track.watermarkedUrl) {
             // Add debug log for watermarkedUrl processing
-            console.log('Processing watermarkedUrl for track:', track.id)
+            // console.log('Processing watermarkedUrl for track:', track.id)
             track.watermarkedUrl = 'certified'
           }
         })
@@ -331,10 +331,10 @@ const MediaLibrary = () => {
           }
 
           // Add debug log for final transformed track
-          console.log('Final transformed track:', track.id, {
-            watermarkUrl: transformed.watermarkUrl,
-            originalWatermarkedUrl: track.watermarkedUrl
-          })
+          // console.log('Final transformed track:', track.id, {
+          //   watermarkUrl: transformed.watermarkUrl,
+          //   originalWatermarkedUrl: track.watermarkedUrl
+          // })
 
           return transformed
         })

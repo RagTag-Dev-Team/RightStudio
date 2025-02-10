@@ -75,11 +75,12 @@ export async function query<T>(sql: string, vars?: Record<string, any>): Promise
   }
 }
 
-export async function findByField<T>(table: string, field: string, value: any): Promise<T[]> {
+export async function findByField(table: string, field: string, value: any): Promise<any> {
   try {
     const result = await db.query(`SELECT * FROM ${table} WHERE ${field} = $value`, { value })
+    const tracks = JSON.parse(JSON.stringify(result[0]))
 
-    return result[0] as T[]
+    return tracks
   } catch (error) {
     console.error(`Error finding records in ${table} by ${field}:`, error)
     throw error
