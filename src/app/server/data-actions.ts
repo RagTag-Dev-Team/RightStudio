@@ -1,3 +1,5 @@
+'use server'
+
 import { getDb } from '@/libs/surreal'
 
 // Initialize SurrealDB connection
@@ -125,7 +127,7 @@ export async function paginate<T>(
   }
 }
 
-export async function getLatestTracks<T>(limit: number = 10): Promise<T[]> {
+export async function getLatestTracks(limit: number = 10): Promise<any> {
   try {
     const result = await db.query(
       `
@@ -136,7 +138,7 @@ export async function getLatestTracks<T>(limit: number = 10): Promise<T[]> {
       { limit }
     )
 
-    return result as T[]
+    return result[0]
   } catch (error) {
     console.error('Error fetching latest tracks:', error)
     throw error

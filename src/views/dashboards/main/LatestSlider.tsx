@@ -63,6 +63,8 @@ const LatestSlider = () => {
       try {
         const latestTracks = await getLatestTracks<Track>(10)
 
+        console.log(latestTracks)
+
         const resolvedTracks = await Promise.all(
           latestTracks.map(async (track: Track) => {
             if (!track.coverImage) {
