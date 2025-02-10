@@ -35,6 +35,13 @@ import TokenBalances from '@views/dashboards/main/TokenBalances'
 
 import LatestSlider from '@/views/dashboards/main/LatestSlider'
 
+// Loading Components
+import TokenBalancesSkeleton from '@/components/skeletons/TokenBalancesSkeleton'
+import LatestSliderSkeleton from '@/components/skeletons/LatestSliderSkeleton'
+
+// Force page to be dynamic
+export const dynamic = 'force-dynamic'
+
 const DashboardMain = async () => {
   // Vars
 

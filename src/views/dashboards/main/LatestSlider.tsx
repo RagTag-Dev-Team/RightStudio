@@ -16,6 +16,8 @@ import AppKeenSlider from '@/libs/styles/AppKeenSlider'
 
 import '@assets/iconify-icons/generated-icons.css'
 
+import { getLatestTracks } from '@/app/server/data-actions'
+
 // Define the Track interface
 interface Track {
   id: string
@@ -24,18 +26,6 @@ interface Track {
   coverImage: string
   uploadedAt: string
 }
-
-// Add cache interface
-interface CacheData {
-  tracks: Track[]
-  timestamp: number
-}
-
-// Cache duration in milliseconds (30 seconds)
-const CACHE_DURATION = 30000
-
-// Create a cache object outside the component to persist between renders
-let tracksCache: CacheData | null = null
 
 const LatestSlider = () => {
   const [tracks, setTracks] = useState<Track[]>([])
@@ -67,25 +57,16 @@ const LatestSlider = () => {
     }
   }, [instanceRef])
 
-  // Fetch the latest tracks
+  // Updated fetch logic
   useEffect(() => {
     const fetchLatestTracks = async () => {
       try {
-        // Check if we have cached data and if it's still valid
-        const now = Date.now()
+        const latestTracks = await getLatestTracks(10)
 
-        if (tracksCache && now - tracksCache.timestamp < CACHE_DURATION) {
-          setTracks(tracksCache.tracks)
-          setLoading(false)
-
-          return
-        }
-
-        const response = await fetch('/api/tracks/latest')
-        const data = await response.json()
+        console.log(latestTracks)
 
         const resolvedTracks = await Promise.all(
-          data.map(async (track: any) => {
+          latestTracks.map(async (track: Track) => {
             if (!track.coverImage) {
               return {
                 ...track,
@@ -104,12 +85,6 @@ const LatestSlider = () => {
             }
           })
         )
-
-        // Update the cache with new data and timestamp
-        tracksCache = {
-          tracks: resolvedTracks,
-          timestamp: now
-        }
 
         setTracks(resolvedTracks)
       } catch (error) {
@@ -168,7 +143,6 @@ const LatestSlider = () => {
                     >
                       <Image
                         src={track.coverImage}
-                        priority
                         alt={`${track.title} cover art`}
                         fill
                         sizes='(max-width: 768px) 75vw, 300px'

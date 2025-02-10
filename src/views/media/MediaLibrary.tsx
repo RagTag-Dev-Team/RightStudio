@@ -155,6 +155,10 @@ const CoverArtWithPlayButton = ({
   )
 }
 
+import { findByField } from '@/app/server/data-actions'
+
+import { useSession } from 'next-auth/react'
+
 const MediaLibrary = () => {
   // States
   const [data, setData] = useState<TrackRecord[]>([])
@@ -169,6 +173,9 @@ const MediaLibrary = () => {
 
   // Thirdweb hooks
   const account = useActiveAccount()
+
+  // Add session hook
+  const { data: session } = useSession()
 
   const columns = [
     columnHelper.accessor('coverArt', {
@@ -262,8 +269,10 @@ const MediaLibrary = () => {
   ]
 
   useEffect(() => {
-    // Don't fetch until we have an account
-    if (!account?.address) {
+    // Check for either active account or session wallet address
+    const walletAddress = account?.address || (session?.user as any)?.wallet_address
+
+    if (!walletAddress) {
       setIsLoading(true)
 
       return
@@ -272,8 +281,9 @@ const MediaLibrary = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch(`/api/tracks/all?owner=${account.address}`)
-        const tracks = await response.json()
+
+        // Use data-actions instead of API call
+        const tracks = await findByField('media', 'owner', walletAddress)
 
         console.log('Tracks:', tracks)
 
@@ -344,7 +354,7 @@ const MediaLibrary = () => {
     }
 
     fetchData()
-  }, [account?.address])
+  }, [account?.address, session])
 
   const table = useReactTable({
     data,

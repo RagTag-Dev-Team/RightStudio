@@ -12,7 +12,7 @@ import type { getDictionary } from '@/utils/getDictionary'
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+import { Menu, SubMenu, MenuItem } from '@menu/vertical-menu'
 
 // import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
 
@@ -103,12 +103,10 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
           */}
         </SubMenu>
-        <MenuSection label='Creator Lab'>
-          <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
-            <MenuItem href={`/${locale}/media/library`}>{dictionary['navigation'].mediaLibrary}</MenuItem>
-            {recordId && <MenuItem href={`/${locale}/media/record/${recordId}`}>Media Detail</MenuItem>}
-          </SubMenu>
-        </MenuSection>
+        <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
+          <MenuItem href={`/${locale}/media/library`}>{dictionary['navigation'].mediaLibrary}</MenuItem>
+          {recordId && <MenuItem href={`/${locale}/media/record/${recordId}`}>Media Detail</MenuItem>}
+        </SubMenu>
         {/*
         <SubMenu label={dictionary['navigation'].frontPages} icon={<i className='tabler-files' />}>
           <MenuItem href='/front-pages/landing-page' target='_blank'>

@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-import Chip from '@mui/material/Chip'
 import { useTheme } from '@mui/material/styles'
 import CircularProgress from '@mui/material/CircularProgress'
 import Table from '@mui/material/Table'
@@ -30,6 +29,11 @@ import Grid from '@mui/material/Grid'
 // ThirdWeb Imports
 import { useActiveAccount } from 'thirdweb/react'
 
+// Add useSession import
+import { useSession } from 'next-auth/react'
+
+import { getUserBalances } from '@/app/server/user-actions'
+
 // Component Imports
 import CardStatVertical from '@/components/card-statistics/Vertical'
 
@@ -43,16 +47,14 @@ interface CacheData {
 const CACHE_DURATION = 30000
 
 // Create a cache object outside the component to persist between renders
-let balancesCache: CacheData | null = null
+const balancesCache: CacheData | null = null
 
 const TokenBalances = () => {
-  // Get user account information
   const account = useActiveAccount()
-  const theme = useTheme()
+  const { data: session } = useSession()
 
   const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
 
-  // State for balances and loading
   const [isLoading, setIsLoading] = useState(true)
 
   const [tokenBalances, setTokenBalances] = useState<{ [key: string]: string }>({
@@ -66,7 +68,7 @@ const TokenBalances = () => {
     options: {
       chart: {
         type: 'donut',
-        width: 300
+        width: 250
       },
       fill: {
         type: 'gradient',
@@ -80,15 +82,6 @@ const TokenBalances = () => {
       stroke: {
         show: false
       },
-      colors: [
-        successColorWithOpacity,
-        successColorWithOpacity,
-        successColorWithOpacity,
-        successColorWithOpacity,
-        'var(--mui-palette-success-main)',
-        successColorWithOpacity,
-        successColorWithOpacity
-      ],
       labels: ['RAGZ', 'TAGZ', 'Minted Media'],
       legend: {
         labels: {
@@ -113,112 +106,41 @@ const TokenBalances = () => {
     }
   })
 
-  const [, setBalances] = useState<any>(null)
-  const [, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchBalances = async () => {
-      try {
-        // Check if we have cached data and if it's still valid
-        const now = Date.now()
-
-        if (balancesCache && now - balancesCache.timestamp < CACHE_DURATION) {
-          setBalances(balancesCache.balances)
-          setLoading(false)
-
-          return
-        }
-
-        if (!account) {
-          return
-        }
-
-        const response = await fetch('/api/tokens/balance', {
-          method: 'POST',
-          body: JSON.stringify({ account: account.address })
-        })
-
-        const data = await response.json()
-
-        // Update the cache with new data and timestamp
-        balancesCache = {
-          balances: data,
-          timestamp: now
-        }
-
-        setBalances(data)
-      } catch (error) {
-        console.error('Error fetching balances:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchBalances()
-  }, [])
-
   useEffect(() => {
     const fetchBalances = async () => {
       setIsLoading(true)
 
-      if (!account) {
+      // Get the address from account or session
+      const userAddress = account?.address || (session?.user as any)?.wallet_address
+
+      if (!userAddress) {
+        setIsLoading(false)
+
         return
       }
 
       try {
-        if (account.address) {
-          const getRagzbalance = await fetch('/api/tokens/balance', {
-            method: 'POST',
-            body: JSON.stringify({ account: account.address })
-          })
+        const { ragzResult, tagzResult, nftResult } = await getUserBalances(userAddress)
 
-          const { ragzResult, tagzResult, nftResult } = await getRagzbalance.json()
+        // Format the balance to 2 decimal places
+        const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
+        const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
+        const nftBalance = Number(nftResult.result).toFixed(2)
 
-          //  console.log('ragzResult', ragzResult)
-          //  console.log('tagzResult', tagzResult.result.displayValue)
-          // console.log('nftResult', nftResult)
+        const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-          // Format the balance to 2 decimal places
-          const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
-          const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
-          const nftBalance = Number(nftResult.result).toFixed(2)
+        console.log('tokenBalance', tokenBalance)
 
-          // const nftBalance = Number(nftResult.result)
-          const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
+        setTokenBalances({
+          RAGZ: ragzBalance,
+          TAGZ: tagzBalance,
+          'Minted Media': nftBalance
+        })
 
-          //  console.log('tokenBalance', tokenBalance)
-
-          setTokenBalances({
-            RAGZ: ragzBalance,
-            TAGZ: tagzBalance,
-            'Minted Media': nftBalance
-          })
-
-          setChartData({
-            series: tokenBalance,
-            options: {
-              labels: ['RAGZ', 'TAGZ', 'Minted Media'],
-              legend: {
-                labels: {
-                  colors: '#fff'
-                }
-              },
-              stroke: {
-                show: false
-              },
-              responsive: [
-                {
-                  breakpoint: 480,
-                  options: {
-                    legend: {
-                      position: 'bottom'
-                    }
-                  }
-                }
-              ]
-            }
-          })
-        }
+        setChartData(prev => ({
+          ...prev,
+          series: tokenBalance
+        }))
       } catch (error) {
         console.error('Error fetching balance:', error)
       } finally {
@@ -227,7 +149,7 @@ const TokenBalances = () => {
     }
 
     fetchBalances()
-  }, [account])
+  }, [account, session])
 
   return (
     <Card>
