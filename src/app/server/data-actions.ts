@@ -79,7 +79,7 @@ export async function findByField<T>(table: string, field: string, value: any): 
   try {
     const result = await db.query(`SELECT * FROM ${table} WHERE ${field} = $value`, { value })
 
-    return result as T[]
+    return result[0] as T[]
   } catch (error) {
     console.error(`Error finding records in ${table} by ${field}:`, error)
     throw error
