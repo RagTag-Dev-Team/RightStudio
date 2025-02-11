@@ -6,12 +6,6 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '1024mb'
-    },
-    responseLimit: '1024mb'
-  },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
