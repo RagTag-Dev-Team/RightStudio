@@ -424,10 +424,7 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
                             transition: 'opacity 0.2s'
                           }}
                         >
-                          <Button
-                            variant='contained'
-                            onClick={() => setFormData({ ...formData, coverImage: undefined })}
-                          >
+                          <Button variant='contained' onClick={() => setFormData({ ...formData, coverImage: '' })}>
                             Change Cover
                           </Button>
                         </Box>
@@ -599,7 +596,7 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
           {!generatedImageUrl ? (
             <>
               <DialogContentText sx={{ mb: 2 }}>
-                Describe the cover art you'd like to generate. For best results, be specific about:
+                Describe the cover art you&apos;d like to generate. For best results, be specific about:
               </DialogContentText>
 
               <Box sx={{ mb: 3 }}>

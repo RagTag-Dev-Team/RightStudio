@@ -28,7 +28,7 @@ import { darkTheme, ConnectButton } from 'thirdweb/react'
 
 import { client } from '@/libs/thirdwebclient'
 
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
+import { generatePayload, logout } from '@/libs/auth'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
@@ -191,17 +191,17 @@ const UserDropdown = () => {
                           label: 'Connect Wallet'
                         }}
                         auth={{
-                          isLoggedIn: async address => {
-                            console.log('address:', address)
-
+                          isLoggedIn: async () => {
                             // Check if there's a valid NextAuth session
                             const isAuthenticated = !!session?.user
-
-                            console.log('Session status:', isAuthenticated)
 
                             return isAuthenticated
                           },
                           doLogin: async params => {
+                            if (!isLoading) {
+                              setIsLoading(true)
+                            }
+
                             try {
                               const res = await signIn('credentials', {
                                 wallet_address: params.payload.address,
@@ -212,25 +212,26 @@ const UserDropdown = () => {
                                 const redirectURL = searchParams.get('redirectTo') ?? '/'
 
                                 router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-
-                                return true
                               } else {
                                 if (res?.error) {
-                                  console.error('Login error:', res.error)
+                                  const error = JSON.parse(res.error)
+
+                                  console.log('error', errorState)
+                                  setErrorState(error)
                                 }
 
-                                return false
+                                setIsLoading(false)
                               }
                             } catch (error) {
-                              console.error('Login error:', error)
-
-                              return false
+                              setIsLoading(false)
+                              setErrorState({ message: ['An unexpected error occurred'] })
                             }
                           },
                           getLoginPayload: async ({ address }) => generatePayload({ address }),
                           doLogout: async () => {
                             console.log('logging out!')
                             await logout()
+                            await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
                           }
                         }}
                       />

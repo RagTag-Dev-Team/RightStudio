@@ -1,10 +1,6 @@
 'use server'
 
-import { upload } from 'thirdweb/storage'
-
 import { getDb } from '@/libs/surreal'
-
-import { client } from '@/libs/thirdwebclient'
 
 // Initialize SurrealDB connection
 const db = await getDb()
@@ -182,8 +178,11 @@ export async function createMediaRecord(data: MediaRecordData): Promise<string> 
       throw new Error('Failed to create record')
     }
 
+    //change the id to a string
+    const recordId = String(record.id).split(':')[1]
+
     // Return the ID of the created record
-    return record.id
+    return recordId
   } catch (error) {
     console.error('Error creating media record:', error)
     throw new Error('Failed to create media record')
