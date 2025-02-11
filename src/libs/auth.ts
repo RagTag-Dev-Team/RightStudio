@@ -19,8 +19,6 @@ import { createAuth } from 'thirdweb/auth'
 
 import { privateKeyAccount } from 'thirdweb/wallets'
 
-import { getServerSession } from 'next-auth'
-
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
@@ -58,9 +56,11 @@ export async function logout() {
 }
 
 export async function isLoggedIn() {
-  const session = await getServerSession(authOptions)
+  // const jwt = cookies().get("jwt");
+  // check if jwt is in the cookies
+  const jwt = null
 
-  if (!session) {
+  if (!jwt) {
     return false
   }
 
@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
-          const res = await fetch(`${process.env.API_URL}/login`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
