@@ -220,10 +220,10 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
           handleReset()
 
           if (onSuccess) {
+            router.push(`/en/media/record/${recordId}`)
             onSuccess()
           }
 
-          router.push(`/en/media/record/${recordId}`)
         } else {
           throw new Error('Failed to get created record ID')
         }

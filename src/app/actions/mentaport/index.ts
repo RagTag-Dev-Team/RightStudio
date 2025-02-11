@@ -10,7 +10,7 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 const getFileTypeStr = (fileType: string) => {
   const types = fileType.split('/')
   let type = ''
-  let format: ContentFormat = ContentFormat[types[1] as keyof typeof ContentFormat]
+  let format: ContentFormat = ContentFormat[types[1].toUpperCase() as keyof typeof ContentFormat]
 
   // Handle audio formats specifically
   if (types[0] === 'audio') {
@@ -27,6 +27,11 @@ const getFileTypeStr = (fileType: string) => {
   // Handle image formats
   else if (!format && types[1] === 'jpeg') {
     format = ContentFormat.jpg
+  }
+
+  // If format is still undefined, try to match it directly
+  if (!format) {
+    format = ContentFormat[types[1].toUpperCase() as keyof typeof ContentFormat]
   }
 
   for (const key in ContentTypes) {

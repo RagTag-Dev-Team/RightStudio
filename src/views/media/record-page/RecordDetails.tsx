@@ -37,6 +37,8 @@ import { useActiveAccount } from 'thirdweb/react'
 import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
 import { ContentFormat, AITrainingMiningInfo } from '@mentaport/certificates'
 
+import { useSession } from 'next-auth/react'
+
 import { CreateCertificate, GetDownloadUrl } from '@/app/actions/mentaport/index'
 
 import { client } from '@/libs/thirdwebclient'
@@ -193,6 +195,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   })
 
   const activeAccount = useActiveAccount()
+  const { data: session } = useSession()
 
   const [successMessage, setSuccessMessage] = useState<string>('')
 
@@ -315,8 +318,12 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   }
 
   const handleMint = async () => {
-    if (!activeAccount?.address) {
-      console.error('No wallet address found in session')
+    const walletAddress = activeAccount?.address || session?.user?.wallet_address
+
+    if (!walletAddress) {
+      console.error('No wallet address found in session or active account')
+      setSuccessMessage('Please connect your wallet to mint')
+      setShowSuccess(true)
 
       return
     }
@@ -325,9 +332,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
     try {
       console.log('Minting record:', recordId)
-
-      //  console.log('activeAccount', activeAccount)
-      // console.log('imageUrl', imageUrl)
 
       // Create metadata object from record fields
       const metadata = {
@@ -344,8 +348,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           ipfsUrl: recordData?.ipfsUrl
         }
       }
-
-      const walletAddress = activeAccount
 
       const mintResponse = await fetch('/api/mint', {
         method: 'POST',
@@ -371,7 +373,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       await db.update(new RecordId('media', `${recordId}`), {
         ...recordData,
         status: 'minted',
-        owner: activeAccount.address,
+        owner: walletAddress,
         transactionHash: transactionHash
       })
 
@@ -383,7 +385,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           ? {
               ...prev,
               status: 'minted',
-              owner: activeAccount.address,
+              owner: walletAddress,
               transactionHash: transactionHash,
               dateMinted: new Date()
             }
@@ -397,7 +399,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ walletAddress: activeAccount.address, amount: '100.0' })
+        body: JSON.stringify({ walletAddress, amount: '100.0' })
       })
 
       const rewardData = await rewardResponse.json()
@@ -421,7 +423,15 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   // Update the handleWatermark function
   const handleWatermark = async () => {
-    if (!recordData || !activeAccount?.address) return
+    const walletAddress = activeAccount?.address || session?.user?.wallet_address
+
+    if (!recordData || !walletAddress) {
+      console.error('No wallet address found in session or active account')
+      setSuccessMessage('Please connect your wallet to add watermark')
+      setShowSuccess(true)
+
+      return
+    }
 
     setIsWatermarking(true)
     updateWatermarkProgress({ step: 'Initializing certificate creation...', progress: 10 })
@@ -440,14 +450,22 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
 
+      // Extract file extension from the filetype or filename
+      const fileExtension =
+        recordData.filetype.split('/').pop()?.toLowerCase() || file.name.split('.').pop()?.toLowerCase() || ''
+
       // Use the helper function to determine the correct content format
-      const contentFormat = getContentFormat(recordData.filetype)
+      const contentFormat = getContentFormat(`audio/${fileExtension}`)
+
+      console.log('File type:', recordData.filetype)
+      console.log('File extension:', fileExtension)
+      console.log('Content format:', contentFormat)
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
-        ...newCertificateArgs, // Spread existing values
+        ...newCertificateArgs,
         projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
-        contentFormat: contentFormat, // Set the content format based on file type
+        contentFormat, // Set the content format based on file extension
         name: recordData.title || 'Untitled',
         username: recordData.artist || 'Unknown Artist',
         description: `${recordData.artist} - ${recordData.album}` || 'No description',
@@ -461,6 +479,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const formData = new FormData()
 
       formData.append('file', file)
+
+      // Log the certificate args before sending
+      console.log('Certificate args:', certificateArgs)
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -502,7 +523,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          walletAddress: activeAccount.address,
+          walletAddress,
           amount: '100.0'
         })
       })

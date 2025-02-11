@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
           'x-backend-wallet-address': `${BACKEND_WALLET_ADDRESS}`
         },
         body: JSON.stringify({
-          receiver: walletAddress.address,
+          receiver: walletAddress,
           metadata: NFTMetadata
         }),
         agent: new (require('https').Agent)({

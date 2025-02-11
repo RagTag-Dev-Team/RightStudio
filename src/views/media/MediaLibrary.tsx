@@ -402,7 +402,8 @@ const MediaLibrary = () => {
   // Modify the drawer content to include the new loading handler
   const handleFormSuccess = () => {
     setIsRedirecting(true)
-    setDrawerOpen(false)
+
+    //   setDrawerOpen(false)
   }
 
   return (
