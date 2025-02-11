@@ -1,6 +1,10 @@
 'use server'
 
+import { upload } from 'thirdweb/storage'
+
 import { getDb } from '@/libs/surreal'
+
+import { client } from '@/libs/thirdwebclient'
 
 // Initialize SurrealDB connection
 const db = await getDb()
@@ -139,9 +143,49 @@ export async function getLatestTracks(limit: number = 10): Promise<any> {
       { limit }
     )
 
-    return result[0]
+    return JSON.parse(JSON.stringify(result[0]))
   } catch (error) {
     console.error('Error fetching latest tracks:', error)
     throw error
+  }
+}
+
+interface MediaRecordData {
+  title: string
+  artist: string
+  album: string
+  filetype: string
+  filesize: string
+  duration: string
+  label: string
+  releaseDate: string
+  coverImage?: string
+  owner: string
+  dateCreated: string
+  ipfsUrl: string
+}
+
+export async function createMediaRecord(data: MediaRecordData): Promise<string> {
+  const db = await getDb()
+
+  try {
+    // Create the record in the database
+    const [record] = await db.create('media', {
+      ...data,
+
+      // Add any additional fields or transformations needed
+      status: 'active',
+      createdAt: new Date().toISOString()
+    })
+
+    if (!record) {
+      throw new Error('Failed to create record')
+    }
+
+    // Return the ID of the created record
+    return record.id
+  } catch (error) {
+    console.error('Error creating media record:', error)
+    throw new Error('Failed to create media record')
   }
 }

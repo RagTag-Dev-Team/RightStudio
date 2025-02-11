@@ -62,7 +62,7 @@ type FormDataType = {
   duration: string
   label: string
   releaseDate: Date | null
-  coverImage?: string
+  coverImage: string
   owner: string
   dateCreated: Date
 }
@@ -72,9 +72,10 @@ type FormDataType = {
 // Add this to the component's props
 interface FormLayoutsSeparatorProps {
   onSuccess?: () => void
+  walletAddress?: string
 }
 
-const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
+const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProps = {}) => {
   const router = useRouter()
 
   // States
@@ -87,12 +88,14 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
     duration: '',
     label: '',
     releaseDate: null,
+    coverImage: '',
     owner: '',
     dateCreated: new Date()
   })
 
   const [file, setFile] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
 
   const activeAccount = useActiveAccount()
 
@@ -113,10 +116,12 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
       filetype: metadata.filetype || '',
       filesize: metadata.filesize || '',
       duration: metadata.duration || '',
-      coverImage: metadata.coverImage || undefined,
-      owner: activeAccount?.address || '',
+      coverImage: metadata.coverImage || '',
+      owner: walletAddress || activeAccount?.address || '',
       dateCreated: new Date()
     }))
+
+    console.log(metadata)
 
     // Update file state
     setFile(uploadedFile)
@@ -132,6 +137,7 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
       duration: '',
       label: '',
       releaseDate: null,
+      coverImage: '',
       owner: '',
       dateCreated: new Date()
     })
@@ -140,26 +146,30 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const db = await getDb()
-    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null)
 
-    if (!isFormValid || !file) {
-      console.error('Please fill in all required fields and upload a file')
+    if (!file) {
+      console.error('Please upload a file')
+
+      return
+    }
+
+    if (!formData.title || !formData.artist || !formData.album) {
+      console.error('Please fill in required fields: title, artist, and album')
 
       return
     }
 
     try {
       setIsUploading(true)
+      setUploadProgress(10) // Show initial progress
 
-      // Simple direct upload without retries
-      console.log('Uploading file...')
-
+      // Single file upload
       const uploadUrl = await upload({
         client,
         files: [file]
       })
 
-      console.log('uploadUrl', uploadUrl)
+      setUploadProgress(70) // Update progress after file upload
 
       // Handle cover art upload
       let coverArtUrl = formData.coverImage
@@ -170,7 +180,6 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
           const blob = await response.blob()
           const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
 
-          // Upload cover art
           coverArtUrl = await upload({
             client,
             files: [coverArtFile]
@@ -181,27 +190,29 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
         }
       }
 
+      setUploadProgress(90) // Update progress after cover art upload
+
       // Prepare metadata for database
       const mediaMetadata = {
         title: formData.title,
         artist: formData.artist,
         album: formData.album,
-        label: formData.label,
-        releaseDate: formData.releaseDate,
+        label: formData.label || '',
+        releaseDate: formData.releaseDate ? formData.releaseDate.toISOString() : null,
         filetype: formData.filetype,
         filesize: formData.filesize,
         duration: formData.duration,
         ipfsUrl: uploadUrl,
-        coverImage: coverArtUrl,
+        coverImage: coverArtUrl || '',
         uploadedAt: new Date().toISOString(),
         status: 'unminted',
-        owner: formData.owner
+        owner: activeAccount?.address || formData.owner
       }
 
       try {
         const created = await db.create('media', mediaMetadata)
 
-        console.log('Created:', created)
+        setUploadProgress(100) // Complete progress
 
         if (created && created[0] && created[0].id) {
           const recordId = String(created[0].id).split(':')[1]
@@ -213,6 +224,8 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
           }
 
           router.push(`/en/media/record/${recordId}`)
+        } else {
+          throw new Error('Failed to get created record ID')
         }
       } catch (dbError) {
         console.error('Database error:', dbError)
@@ -221,7 +234,9 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
     } catch (error) {
       console.error('Error during upload or save:', error)
       alert('Upload failed. Please try again.')
+    } finally {
       setIsUploading(false)
+      setUploadProgress(0)
     }
   }
 
@@ -310,9 +325,9 @@ const RecordCreateForm = ({ onSuccess }: FormLayoutsSeparatorProps = {}) => {
             p: 4
           }}
         >
-          <CircularProgress size={60} sx={{ mb: 4 }} />
+          <CircularProgress variant='determinate' value={uploadProgress} size={60} sx={{ mb: 4 }} />
           <Typography variant='h6' sx={{ mb: 2 }}>
-            Uploading File...
+            Uploading File... {uploadProgress.toFixed(0)}%
           </Typography>
           <Typography variant='body2' color='text.secondary' textAlign='center'>
             Please keep this window open while we process your transaction.

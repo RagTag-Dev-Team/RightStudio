@@ -19,6 +19,8 @@ import { createAuth } from 'thirdweb/auth'
 
 import { privateKeyAccount } from 'thirdweb/wallets'
 
+import { getServerSession } from 'next-auth'
+
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
@@ -56,11 +58,9 @@ export async function logout() {
 }
 
 export async function isLoggedIn() {
-  // const jwt = cookies().get("jwt");
-  // check if jwt is in the cookies
-  const jwt = null
+  const session = await getServerSession(authOptions)
 
-  if (!jwt) {
+  if (!session) {
     return false
   }
 

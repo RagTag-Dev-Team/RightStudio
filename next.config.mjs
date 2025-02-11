@@ -6,6 +6,12 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true
   },
+  api: {
+    bodyParser: {
+      sizeLimit: '1024mb'
+    },
+    responseLimit: '1024mb'
+  },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -14,9 +20,11 @@ const nextConfig = {
     ignoreBuildErrors: true
   },
   images: {
-    domains: [
-      // ... any existing domains ...
-      'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
+      }
     ]
   },
   redirects: async () => {

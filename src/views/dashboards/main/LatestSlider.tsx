@@ -63,7 +63,7 @@ const LatestSlider = () => {
       try {
         const latestTracks = await getLatestTracks(10)
 
-        console.log(latestTracks)
+        //  console.log(latestTracks)
 
         const resolvedTracks = await Promise.all(
           latestTracks.map(async (track: Track) => {

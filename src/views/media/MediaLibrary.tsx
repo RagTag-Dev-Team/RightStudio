@@ -177,6 +177,9 @@ const MediaLibrary = () => {
   // Add session hook
   const { data: session } = useSession()
 
+  // Get the wallet address from either account or session
+  const walletAddress = account?.address || (session?.user as any)?.wallet_address
+
   const columns = [
     columnHelper.accessor('coverArt', {
       cell: info => (
@@ -285,7 +288,7 @@ const MediaLibrary = () => {
         // Use data-actions instead of API call
         const tracks = await findByField('media', 'owner', walletAddress)
 
-        console.log('Tracks:', tracks)
+        //  console.log('Tracks:', tracks)
 
         tracks.forEach((track: any) => {
           // Add debug log for initial watermarkedUrl
@@ -567,7 +570,7 @@ const MediaLibrary = () => {
         </Box>
         <Divider sx={{ mb: 0 }} />
         <Box sx={{ p: theme => theme.spacing(4) }}>
-          <RecordCreateForm onSuccess={handleFormSuccess} />
+          <RecordCreateForm onSuccess={handleFormSuccess} walletAddress={walletAddress} />
           {/* <FormLayoutsSeparator onSuccess={toggleDrawer} /> */}
         </Box>
       </Drawer>

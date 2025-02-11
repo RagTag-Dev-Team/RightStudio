@@ -49,7 +49,7 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
+const VerticalMenu = ({ scrollMenu }: Props) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
@@ -104,8 +104,8 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
           */}
         </SubMenu>
         <MenuSection label='Creator Lab'>
-          <SubMenu label='Portfolio' icon={<i className='tabler-file-description' />}>
-            <MenuItem href={`/${locale}/media/library`}>{dictionary['navigation'].mediaLibrary}</MenuItem>
+          <SubMenu label='Media Manager' icon={<i className='tabler-file-description' />}>
+            <MenuItem href={`/${locale}/media/library`}>Library</MenuItem>
             {recordId && <MenuItem href={`/${locale}/media/record/${recordId}`}>Media Detail</MenuItem>}
           </SubMenu>
         </MenuSection>

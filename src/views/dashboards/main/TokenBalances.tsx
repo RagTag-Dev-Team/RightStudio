@@ -1,13 +1,16 @@
 'use client'
 
 // Next Imports
+import { useState, useEffect } from 'react'
+
 import dynamic from 'next/dynamic'
 
 // MUI Imports
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-import { useTheme } from '@mui/material/styles'
+
+// import { useTheme } from '@mui/material/styles'
 import CircularProgress from '@mui/material/CircularProgress'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -16,15 +19,14 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 
-import type { ApexOptions } from 'apexcharts'
+//import type { ApexOptions } from 'apexcharts'
 
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
 // React Imports
-import { useState, useEffect } from 'react'
 
 // MUI Imports
-import Grid from '@mui/material/Grid'
+// import Grid from '@mui/material/Grid'
 
 // ThirdWeb Imports
 import { useActiveAccount } from 'thirdweb/react'
@@ -35,25 +37,25 @@ import { useSession } from 'next-auth/react'
 import { getUserBalances } from '@/app/server/user-actions'
 
 // Component Imports
-import CardStatVertical from '@/components/card-statistics/Vertical'
+//import CardStatVertical from '@/components/card-statistics/Vertical'
 
 // Add cache interface
-interface CacheData {
-  balances: any // Update this type based on your balance data structure
-  timestamp: number
-}
+// interface CacheData {
+//   balances: any // Update this type based on your balance data structure
+//   timestamp: number
+// }
 
-// Cache duration in milliseconds (30 seconds)
-const CACHE_DURATION = 30000
+// // Cache duration in milliseconds (30 seconds)
+// const CACHE_DURATION = 30000
 
-// Create a cache object outside the component to persist between renders
-const balancesCache: CacheData | null = null
+// // Create a cache object outside the component to persist between renders
+// const balancesCache: CacheData | null = null
 
 const TokenBalances = () => {
   const account = useActiveAccount()
   const { data: session } = useSession()
 
-  const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
+  // const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -129,7 +131,7 @@ const TokenBalances = () => {
 
         const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-        console.log('tokenBalance', tokenBalance)
+        // console.log('tokenBalance', tokenBalance)
 
         setTokenBalances({
           RAGZ: ragzBalance,
@@ -137,7 +139,7 @@ const TokenBalances = () => {
           'Minted Media': nftBalance
         })
 
-        setChartData(prev => ({
+        setChartData((prev: any) => ({
           ...prev,
           series: tokenBalance
         }))
@@ -164,8 +166,8 @@ const TokenBalances = () => {
             ) : (
               <AppReactApexCharts
                 type='donut'
-                width={300}
-                height={300}
+                width={250}
+                height={250}
                 series={chartData.series}
                 options={chartData.options}
               />
