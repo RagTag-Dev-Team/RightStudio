@@ -17,6 +17,9 @@ let userRecord: any
 export async function POST(req: Request) {
   // Vars
   const { email, password, wallet_address } = await req.json()
+
+  console.log('Wallet Address: ' + wallet_address)
+
   const db = await getDb()
 
   console.log('DB: ' + JSON.stringify(db, null, 2))
