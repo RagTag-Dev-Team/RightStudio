@@ -524,40 +524,82 @@ const MediaLibrary = () => {
             }}
           >
             <div className='overflow-y-auto overflow-x-auto h-full scrollbar-hide'>
-              <table className={styles.table}>
-                <thead>
-                  {table.getHeaderGroups().map(headerGroup => (
-                    <tr key={headerGroup.id}>
-                      {headerGroup.headers.map(header => (
-                        <th
-                          key={header.id}
-                          onClick={header.column.getToggleSortingHandler()}
-                          className={header.column.getCanSort() ? 'cursor-pointer select-none' : ''}
-                        >
-                          {header.isPlaceholder ? null : (
-                            <div className='flex items-center gap-2'>
-                              {flexRender(header.column.columnDef.header, header.getContext())}
-                              {{
-                                asc: ' 🔼',
-                                desc: ' 🔽'
-                              }[header.column.getIsSorted() as string] ?? null}
-                            </div>
-                          )}
-                        </th>
-                      ))}
-                    </tr>
-                  ))}
-                </thead>
-                <tbody>
-                  {table.getRowModel().rows.map(row => (
-                    <tr key={row.id}>
-                      {row.getVisibleCells().map(cell => (
-                        <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {isLoading ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%'
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              ) : data.length > 0 ? (
+                <table className={styles.table}>
+                  <thead>
+                    {table.getHeaderGroups().map(headerGroup => (
+                      <tr key={headerGroup.id}>
+                        {headerGroup.headers.map(header => (
+                          <th
+                            key={header.id}
+                            onClick={header.column.getToggleSortingHandler()}
+                            className={header.column.getCanSort() ? 'cursor-pointer select-none' : ''}
+                          >
+                            {header.isPlaceholder ? null : (
+                              <div className='flex items-center gap-2'>
+                                {flexRender(header.column.columnDef.header, header.getContext())}
+                                {{
+                                  asc: ' 🔼',
+                                  desc: ' 🔽'
+                                }[header.column.getIsSorted() as string] ?? null}
+                              </div>
+                            )}
+                          </th>
+                        ))}
+                      </tr>
+                    ))}
+                  </thead>
+                  <tbody>
+                    {table.getRowModel().rows.map(row => (
+                      <tr key={row.id}>
+                        {row.getVisibleCells().map(cell => (
+                          <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100%',
+                    p: 4,
+                    textAlign: 'center'
+                  }}
+                >
+                  <Icon className='tabler-music' sx={{ fontSize: '48px', mb: 2, opacity: 0.5 }}>
+                    library_music
+                  </Icon>
+                  <Typography variant='h6' sx={{ mb: 2 }}>
+                    No tracks found
+                  </Typography>
+                  <Typography variant='body2' color='text.secondary' sx={{ mb: 4 }}>
+                    Get started by uploading your first track to your music library
+                  </Typography>
+                  <Button
+                    variant='contained'
+                    onClick={toggleDrawer}
+                    startIcon={<Icon className='tabler-music-plus'>add</Icon>}
+                  >
+                    Upload Track
+                  </Button>
+                </Box>
+              )}
             </div>
           </Box>
 
