@@ -20,6 +20,12 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import Checkbox from '@mui/material/Checkbox'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContentText from '@mui/material/DialogContentText'
 
 // import TablePagination from '@mui/material/TablePagination'
 
@@ -60,8 +66,10 @@ interface TrackRecord {
   status: 'minted' | 'unminted'
   tokenId?: string
   ipfsUrl: string
+  originalIpfsUrl: string
   owner: string
   watermarkUrl?: string
+  selected?: boolean
 }
 
 const fuzzyFilter: FilterFn<TrackRecord> = (row, columnId, value, addMeta) => {
@@ -180,7 +188,63 @@ const MediaLibrary = () => {
   // Get the wallet address from either account or session
   const walletAddress = account?.address || (session?.user as any)?.wallet_address
 
+  const [selectedRows, setSelectedRows] = useState<string[]>([])
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [recordToDelete, setRecordToDelete] = useState<string | null>(null)
+
+  // Add delete handler
+  const handleDelete = async (ids: string[]) => {
+    try {
+      setIsLoading(true)
+
+      // Extract records to delete
+      const recordsToDelete = data.filter(record => ids.includes(record.id))
+
+      // Extract CIDs from original ipfsUrls
+      const deletePayload = recordsToDelete.map(record => ({
+        id: record.id,
+        cid: record.originalIpfsUrl.replace('ipfs://', '').split('/')[0] // Extract CID portion
+      }))
+
+      console.log(deletePayload)
+
+      // Make API call to delete records
+      const response = await fetch('/api/media/delete', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ records: deletePayload })
+      })
+
+      if (!response.ok) throw new Error('Failed to delete records')
+
+      // Remove deleted records from the table
+      setData(prevData => prevData.filter(record => !ids.includes(record.id)))
+      setSelectedRows([])
+      table.resetRowSelection() // Reset table selection state
+    } catch (error) {
+      console.error('Error deleting records:', error)
+    } finally {
+      setIsLoading(false)
+      setDeleteDialogOpen(false)
+      setRecordToDelete(null)
+    }
+  }
+
   const columns = [
+    // Add selection column
+    columnHelper.display({
+      id: 'select',
+      header: ({ table }) => (
+        <Checkbox
+          checked={table.getIsAllRowsSelected()}
+          indeterminate={table.getIsSomeRowsSelected()}
+          onChange={table.getToggleAllRowsSelectedHandler()}
+        />
+      ),
+      cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onChange={row.getToggleSelectedHandler()} />
+    }),
     columnHelper.accessor('coverArt', {
       cell: info => (
         <CoverArtWithPlayButton
@@ -237,37 +301,38 @@ const MediaLibrary = () => {
     }),
     columnHelper.accessor('watermarkUrl', {
       cell: info => {
-        // Add debug log for cell render
-        // console.log('Rendering certification cell:', {
-        //   value: info.getValue(),
-        //   rowData: info.row.original
-        // })
-
         return (
-          <div className='flex justify-center items-center gap-1'>
+          <div className='flex justify-center items-center'>
             {info.getValue() === 'certified' ? (
-              <>
-                <Icon className='tabler-certificate text-success' fontSize='small'>
-                  verified
-                </Icon>
-                <Typography variant='caption' className='text-success'>
-                  Certified
-                </Typography>
-              </>
+              <Icon className='tabler-certificate text-success' fontSize='small'>
+                verified
+              </Icon>
             ) : (
-              <>
-                <Icon className='tabler-certificate-off text-disabled' fontSize='small'>
-                  gpp_bad
-                </Icon>
-                <Typography variant='caption' className='text-disabled'>
-                  Uncertified
-                </Typography>
-              </>
+              <Icon className='tabler-certificate-off text-disabled' fontSize='small'>
+                gpp_bad
+              </Icon>
             )}
           </div>
         )
       },
       header: 'Certification'
+    }),
+
+    // Add delete action column
+    columnHelper.display({
+      id: 'actions',
+      header: 'Actions',
+      cell: ({ row }) => (
+        <IconButton
+          onClick={() => {
+            setRecordToDelete(row.original.id)
+            setDeleteDialogOpen(true)
+          }}
+          color='error'
+        >
+          <Icon className='tabler-trash'>delete</Icon>
+        </IconButton>
+      )
     })
   ]
 
@@ -288,11 +353,18 @@ const MediaLibrary = () => {
         // Use data-actions instead of API call
         const tracks = await findByField('media', 'owner', walletAddress)
 
-        //  console.log('Tracks:', tracks)
-
         tracks.forEach((track: any) => {
-          // Add debug log for initial watermarkedUrl
-          // console.log('Initial track watermarkedUrl:', track.id, track.watermarkedUrl)
+          // Store original ipfsUrl before resolving
+          const originalIpfsUrl = track.ipfsUrl
+
+          // Resolve ipfsUrl for player
+          track.ipfsUrl = resolveScheme({
+            client,
+            uri: `${track.ipfsUrl}`
+          })
+
+          // Store original URL in a new property
+          track.originalIpfsUrl = originalIpfsUrl
 
           // Resolve coverArt if coverImage exists
           if (track.coverImage) {
@@ -304,12 +376,6 @@ const MediaLibrary = () => {
             track.coverArt = '/images/icons/default-cover-art.jpg'
           }
 
-          // Resolve ipfsUrl
-          track.ipfsUrl = resolveScheme({
-            client,
-            uri: `${track.ipfsUrl}`
-          })
-
           // Check for watermarkedUrl existence
           if (track.watermarkedUrl) {
             // Add debug log for watermarkedUrl processing
@@ -318,29 +384,20 @@ const MediaLibrary = () => {
           }
         })
 
-        const transformedTracks = tracks.map((track: any) => {
-          const transformed = {
-            id: track.id,
-            coverArt: track.coverArt,
-            title: track.title,
-            artist: track.artist,
-            album: track.album,
-            createdDate: track.uploadedAt,
-            status: track.status,
-            tokenId: track.tokenId,
-            ipfsUrl: track.ipfsUrl,
-            owner: track.owner,
-            watermarkUrl: track.watermarkedUrl // Map watermarkedUrl to watermarkUrl for the UI
-          }
-
-          // Add debug log for final transformed track
-          // console.log('Final transformed track:', track.id, {
-          //   watermarkUrl: transformed.watermarkUrl,
-          //   originalWatermarkedUrl: track.watermarkedUrl
-          // })
-
-          return transformed
-        })
+        const transformedTracks = tracks.map((track: any) => ({
+          id: track.id,
+          coverArt: track.coverArt,
+          title: track.title,
+          artist: track.artist,
+          album: track.album,
+          createdDate: track.uploadedAt,
+          status: track.status,
+          tokenId: track.tokenId,
+          ipfsUrl: track.ipfsUrl,
+          originalIpfsUrl: track.originalIpfsUrl, // Keep the original URL
+          owner: track.owner,
+          watermarkUrl: track.watermarkedUrl // Map watermarkedUrl to watermarkUrl for the UI
+        }))
 
         // Sort tracks by uploadedAt date in descending order
         const sortedTracks = transformedTracks.sort(
@@ -374,8 +431,14 @@ const MediaLibrary = () => {
       pagination: {
         pageIndex,
         pageSize
-      }
+      },
+      rowSelection: {} // Add row selection state
     },
+    onRowSelectionChange: () => {
+      // Clear selected rows when table selection changes
+      setSelectedRows([])
+    },
+    enableRowSelection: true, // Enable row selection
     onGlobalFilterChange: setGlobalFilter,
     onPaginationChange: updater => {
       if (typeof updater === 'function') {
@@ -421,6 +484,16 @@ const MediaLibrary = () => {
             title='My Music Library'
             action={
               <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                {selectedRows.length > 0 && (
+                  <Button
+                    variant='contained'
+                    color='error'
+                    onClick={() => setDeleteDialogOpen(true)}
+                    startIcon={<Icon className='tabler-trash'>delete</Icon>}
+                  >
+                    Delete Selected ({selectedRows.length})
+                  </Button>
+                )}
                 <TextField
                   placeholder='Search...'
                   value={globalFilter}
@@ -535,6 +608,41 @@ const MediaLibrary = () => {
               </Box>
             </Box>
           </Box>
+
+          {/* Add Delete Confirmation Dialog */}
+          <Dialog
+            open={deleteDialogOpen}
+            onClose={() => {
+              setDeleteDialogOpen(false)
+              setRecordToDelete(null)
+            }}
+          >
+            <DialogTitle>Confirm Delete</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                {recordToDelete
+                  ? 'Are you sure you want to delete this record?'
+                  : `Are you sure you want to delete ${selectedRows.length} selected records?`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => {
+                  setDeleteDialogOpen(false)
+                  setRecordToDelete(null)
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => handleDelete(recordToDelete ? [recordToDelete] : selectedRows)}
+                color='error'
+                variant='contained'
+              >
+                Delete
+              </Button>
+            </DialogActions>
+          </Dialog>
         </>
       )}
 

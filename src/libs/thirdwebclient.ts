@@ -7,5 +7,6 @@ if (!clientId) {
 }
 
 export const client = createThirdwebClient({
-  clientId: clientId
+  clientId: clientId,
+  secretKey: process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY
 })
