@@ -1,5 +1,7 @@
 'use server'
 
+import { RecordId } from 'surrealdb'
+
 import { getDb } from '@/libs/surreal'
 
 // Initialize SurrealDB connection
@@ -54,7 +56,9 @@ export async function update<T>(table: string, id: string, data: Partial<T>): Pr
 
 export async function remove(table: string, id: string): Promise<boolean> {
   try {
-    await db.delete(`${table}:${id}`)
+    const deletedRecord = await db.delete(new RecordId(table, id))
+
+    console.log(deletedRecord)
 
     return true
   } catch (error) {
