@@ -1,69 +1,22 @@
 import { NextResponse } from 'next/server'
 
-import { jsonify } from 'surrealdb'
-
-import { getDb } from '@/libs/surreal'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  password: string
-  image: string
-  wallet_address: string
-}
-let userRecord: any
+import { loginUser } from '@/app/server/user-actions'
 
 export async function POST(req: Request) {
-  // Vars
   const { email, password, wallet_address } = await req.json()
 
-  console.log('Wallet Address: ' + wallet_address)
+  try {
+    const userRecord = await loginUser(email, password, wallet_address)
 
-  const db = await getDb()
-
-  console.log('DB: ' + JSON.stringify(db, null, 2))
-
-  if (!db) {
-    console.log('Database not initialized')
-
+    return NextResponse.json({
+      status: 200,
+      statusText: 'OK',
+      userRecord
+    })
+  } catch (error) {
     return NextResponse.json({
       status: 500,
-      statusText: 'Database not initialized'
-    })
-  }
-
-  try {
-    console.log()
-
-    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
-
-    //@ts-ignore
-    userRecord = jsonify(...result[0])
-  } catch (error) {
-    console.error('Error querying user:', error)
-  }
-
-  if (!userRecord) {
-    console.log('User does not exist.')
-
-    return NextResponse.json({
-      status: 200,
-      statusText: 'OK',
-      userRecord: {
-        newUser: true,
-        wallet_address: wallet_address,
-        email: email,
-        password: password
-      }
-    })
-  } else {
-    console.log('User found in database')
-
-    return NextResponse.json({
-      status: 200,
-      statusText: 'OK',
-      userRecord: userRecord
+      statusText: error instanceof Error ? error.message : 'Unknown error'
     })
   }
 }

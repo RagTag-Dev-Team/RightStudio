@@ -1,5 +1,9 @@
 'use server'
 
+import { jsonify } from 'surrealdb'
+
+import { getDb } from '@/libs/surreal'
+
 const {
   ENGINE_URL,
   CHAIN_ID,
@@ -59,5 +63,42 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     ragzResult,
     tagzResult,
     nftResult
+  }
+}
+
+interface User {
+  id: string
+  name: string
+  email: string
+  password: string
+  image: string
+  wallet_address: string
+}
+
+export async function loginUser(email: string, password: string, wallet_address: string) {
+  const db = await getDb()
+
+  if (!db) {
+    throw new Error('Database not initialized')
+  }
+
+  try {
+    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
+
+    const userRecord = result[0] ? jsonify(result[0]) : null
+
+    if (!userRecord) {
+      return {
+        newUser: true,
+        wallet_address,
+        email,
+        password
+      }
+    }
+
+    return userRecord
+  } catch (error) {
+    console.error('Error querying user:', error)
+    throw error
   }
 }

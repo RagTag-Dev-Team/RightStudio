@@ -111,6 +111,7 @@ export const authOptions: NextAuthOptions = {
           console.log('API URL: ' + process.env.API_URL)
 
           // ** Login API Call to match the user credentials and receive user data in response along with his role
+
           const res = await fetch(`${process.env.API_URL}/login`, {
             method: 'POST',
             headers: {
@@ -118,6 +119,8 @@ export const authOptions: NextAuthOptions = {
             },
             body: JSON.stringify({ email, password, wallet_address })
           })
+
+          console.log('Res: ' + JSON.stringify(res, null, 2))
 
           const data = await res.json()
 
