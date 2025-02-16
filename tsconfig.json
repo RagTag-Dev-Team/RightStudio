@@ -52,7 +52,7 @@
     }
   },
   "include": [
-    "next.config.mjs",
+    "next.config.ts",
     "tailwind.config.ts",
     "next-env.d.ts",
     "**/*.ts",

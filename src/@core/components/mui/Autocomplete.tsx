@@ -20,7 +20,13 @@ const CustomAutocomplete = forwardRef(
   ) => {
     return (
       // eslint-disable-next-line lines-around-comment
-      <Autocomplete {...props} ref={ref} PaperComponent={props => <Paper {...props} />} />
+      <Autocomplete
+        {...props}
+        ref={ref}
+        slots={{
+          paper: props => <Paper {...props} />
+        }}
+      />
     )
   }
 ) as typeof Autocomplete

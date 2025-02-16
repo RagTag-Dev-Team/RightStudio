@@ -12,97 +12,104 @@
  */
 import { promises as fs } from 'node:fs'
 import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { createRequire } from 'node:module'
 
 // Installation: npm install --save-dev @iconify/tools @iconify/utils @iconify/json @iconify/iconify
 import { cleanupSVG, importDirectory, isEmptyColor, parseColors, runSVGO } from '@iconify/tools'
 import type { IconifyJSON } from '@iconify/types'
 import { getIcons, getIconsCSS, stringToIcon } from '@iconify/utils'
 
-/**
- * Script configuration
- */
-interface BundleScriptCustomSVGConfig {
-  // eslint-disable-next-line lines-around-comment
-  // Path to SVG files
-  dir: string
+const require = createRequire(import.meta.url)
 
-  // True if icons should be treated as monotone: colors replaced with currentColor
-  monotone: boolean
+async function generateIconsCSS() {
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = dirname(__filename)
 
-  // Icon set prefix
-  prefix: string
-}
+  /**
+   * Script configuration
+   */
+  interface BundleScriptCustomSVGConfig {
+    // eslint-disable-next-line lines-around-comment
+    // Path to SVG files
+    dir: string
 
-interface BundleScriptCustomJSONConfig {
-  // eslint-disable-next-line lines-around-comment
-  // Path to JSON file
-  filename: string
+    // True if icons should be treated as monotone: colors replaced with currentColor
+    monotone: boolean
 
-  // List of icons to import. If missing, all icons will be imported
-  icons?: string[]
-}
+    // Icon set prefix
+    prefix: string
+  }
 
-interface BundleScriptConfig {
-  // eslint-disable-next-line lines-around-comment
-  // Custom SVG to import and bundle
-  svg?: BundleScriptCustomSVGConfig[]
+  interface BundleScriptCustomJSONConfig {
+    // eslint-disable-next-line lines-around-comment
+    // Path to JSON file
+    filename: string
 
-  // Icons to bundled from @iconify/json packages
-  icons?: string[]
+    // List of icons to import. If missing, all icons will be imported
+    icons?: string[]
+  }
 
-  // List of JSON files to bundled
-  // Entry can be a string, pointing to filename or a BundleScriptCustomJSONConfig object (see type above)
-  // If entry is a string or object without 'icons' property, an entire JSON file will be bundled
-  json?: (string | BundleScriptCustomJSONConfig)[]
-}
+  interface BundleScriptConfig {
+    // eslint-disable-next-line lines-around-comment
+    // Custom SVG to import and bundle
+    svg?: BundleScriptCustomSVGConfig[]
 
-const sources: BundleScriptConfig = {
-  json: [
-    // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
-    require.resolve('@iconify/json/json/tabler.json'),
+    // Icons to bundled from @iconify/json packages
+    icons?: string[]
 
-    // Custom file with only few icons
-    {
-      filename: require.resolve('@iconify/json/json/line-md.json'),
-      icons: ['home-twotone-alt', 'github', 'document-list', 'document-code', 'image-twotone']
-    }
+    // List of JSON files to bundled
+    // Entry can be a string, pointing to filename or a BundleScriptCustomJSONConfig object (see type above)
+    // If entry is a string or object without 'icons' property, an entire JSON file will be bundled
+    json?: (string | BundleScriptCustomJSONConfig)[]
+  }
 
-    // Custom JSON file
-    // 'json/gg.json'
-  ],
+  const sources: BundleScriptConfig = {
+    json: [
+      // Iconify JSON file (@iconify/json is a package name, /json/ is directory where files are, then filename)
+      require.resolve('@iconify/json/json/tabler.json'),
 
-  icons: [
-    'bx-basket',
-    'bi-airplane-engines',
-    'ri-anchor-line',
-    'uit-adobe-alt',
+      // Custom file with only few icons
+      {
+        filename: require.resolve('@iconify/json/json/line-md.json'),
+        icons: ['home-twotone-alt', 'github', 'document-list', 'document-code', 'image-twotone']
+      }
 
-    // 'fa6-regular-comment',
-    'twemoji-auto-rickshaw'
-  ],
+      // Custom JSON file
+      // 'json/gg.json'
+    ],
 
-  svg: [
-    /* {
-      dir: 'src/assets/iconify-icons/svg',
-      monotone: false,
-      prefix: 'custom'
-    } */
-    /* {
+    icons: [
+      'bx-basket',
+      'bi-airplane-engines',
+      'ri-anchor-line',
+      'uit-adobe-alt',
+
+      // 'fa6-regular-comment',
+      'twemoji-auto-rickshaw'
+    ],
+
+    svg: [
+      /* {
+        dir: 'src/assets/iconify-icons/svg',
+        monotone: false,
+        prefix: 'custom'
+      } */
+      /* {
       dir: 'src/assets/iconify-icons/emojis',
       monotone: false,
       prefix: 'emoji'
     } */
-  ]
-}
+    ]
+  }
 
-// File to save bundle to
-const target = join(__dirname, 'generated-icons.css')
+  // File to save bundle to
+  const target = join(__dirname, 'generated-icons.css')
 
-/**
- * Do stuff!
- */
+  /**
+   * Do stuff!
+   */
 
-;(async function () {
   // Create directory for output if missing
   const dir = dirname(target)
 
@@ -231,7 +238,9 @@ const target = join(__dirname, 'generated-icons.css')
   await fs.writeFile(target, cssContent, 'utf8')
 
   console.log(`Saved CSS to ${target}!`)
-})().catch(err => {
+}
+
+generateIconsCSS().catch(err => {
   console.error(err)
 })
 

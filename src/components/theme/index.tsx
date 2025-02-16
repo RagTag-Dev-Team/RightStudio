@@ -5,12 +5,7 @@ import { useMemo } from 'react'
 
 // MUI Imports
 import { deepmerge } from '@mui/utils'
-import {
-  Experimental_CssVarsProvider as CssVarsProvider,
-  experimental_extendTheme as extendTheme,
-  lighten,
-  darken
-} from '@mui/material/styles'
+import { ThemeProvider, lighten, darken, createTheme } from '@mui/material/styles'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import CssBaseline from '@mui/material/CssBaseline'
 import type {} from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
@@ -40,7 +35,7 @@ type Props = ChildrenType & {
   systemMode: SystemMode
 }
 
-const ThemeProvider = (props: Props) => {
+const CustomThemeProvider = (props: Props) => {
   // Props
   const { children, direction, systemMode } = props
 
@@ -64,7 +59,7 @@ const ThemeProvider = (props: Props) => {
 
   // Merge the primary color scheme override with the core theme
   const theme = useMemo(() => {
-    const newColorScheme = {
+    const newTheme = {
       colorSchemes: {
         light: {
           palette: {
@@ -84,12 +79,15 @@ const ThemeProvider = (props: Props) => {
             }
           }
         }
+      },
+      cssVariables: {
+        colorSchemeSelector: 'data'
       }
     }
 
-    const coreTheme = deepmerge(defaultCoreTheme(settings, currentMode, direction), newColorScheme)
+    const coreTheme = deepmerge(defaultCoreTheme(settings, currentMode, direction), newTheme)
 
-    return extendTheme(coreTheme)
+    return createTheme(coreTheme)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.primaryColor, settings.skin, currentMode])
@@ -104,7 +102,7 @@ const ThemeProvider = (props: Props) => {
         })
       }}
     >
-      <CssVarsProvider
+      <ThemeProvider
         theme={theme}
         defaultMode={systemMode}
         modeStorageKey={`${themeConfig.templateName.toLowerCase().split(' ').join('-')}-mui-template-mode`}
@@ -114,9 +112,9 @@ const ThemeProvider = (props: Props) => {
           <CssBaseline />
           {children}
         </>
-      </CssVarsProvider>
+      </ThemeProvider>
     </AppRouterCacheProvider>
   )
 }
 
-export default ThemeProvider
+export default CustomThemeProvider

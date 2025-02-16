@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
 // Type Imports
-import type { Mode, SystemMode } from '@core/types'
+import type { Mode } from '@core/types'
 
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
@@ -26,7 +26,6 @@ import navigationCustomStyles from '@core/styles/vertical/navigationCustomStyles
 
 type Props = {
   mode: Mode
-  systemMode: SystemMode
 }
 
 const StyledBoxForShadow = styled('div')(({ theme }) => ({
@@ -49,7 +48,7 @@ const StyledBoxForShadow = styled('div')(({ theme }) => ({
 
 const Navigation = (props: Props) => {
   // Props
-  const { mode, systemMode } = props
+  const { mode } = props
 
   // Hooks
   const verticalNavOptions = useVerticalNav()
@@ -62,15 +61,11 @@ const Navigation = (props: Props) => {
 
   // Vars
   const { isCollapsed, isHovered, collapseVerticalNav, isBreakpointReached } = verticalNavOptions
-  const isServer = typeof window === 'undefined'
   const isSemiDark = settings.semiDark
-  let isDark
 
-  if (isServer) {
-    isDark = mode === 'system' ? systemMode === 'dark' : mode === 'dark'
-  } else {
-    isDark = muiMode === 'system' ? muiSystemMode === 'dark' : muiMode === 'dark'
-  }
+  const currentMode = muiMode === 'system' ? muiSystemMode : muiMode || mode
+
+  const isDark = currentMode === 'dark'
 
   const scrollMenu = (container: any, isPerfectScrollbar: boolean) => {
     container = isBreakpointReached || !isPerfectScrollbar ? container.target : container
@@ -104,11 +99,11 @@ const Navigation = (props: Props) => {
       collapsedWidth={71}
       backgroundColor='var(--mui-palette-background-paper)'
       // eslint-disable-next-line lines-around-comment
-      // The following condition adds the data-mui-color-scheme='dark' attribute to the VerticalNav component
+      // The following condition adds the data-dark attribute to the VerticalNav component
       // when semiDark is enabled and the mode or systemMode is light
       {...(isSemiDark &&
         !isDark && {
-          'data-mui-color-scheme': 'dark'
+          'data-dark': ''
         })}
     >
       {/* Nav Header including Logo & nav toggle icons  */}

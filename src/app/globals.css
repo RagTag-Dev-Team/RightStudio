@@ -18,7 +18,7 @@
   --mui-mainColorChannels-shadow: var(--mui-mainColorChannels-lightShadow);
 }
 
-[data-mui-color-scheme='dark'] {
+[data-dark] {
   --backdrop-color: rgb(23 25 37 / 0.6);
   --mui-mainColorChannels-shadow: var(--mui-mainColorChannels-darkShadow);
 }

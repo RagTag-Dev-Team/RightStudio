@@ -6,11 +6,11 @@ import NotFound from '@views/NotFound'
 // Util Imports
 import { getServerMode, getSystemMode } from '@core/utils/serverHelpers'
 
-const NotFoundPage = () => {
+const NotFoundPage = async () => {
   // Vars
   const direction = 'ltr'
-  const mode = getServerMode()
-  const systemMode = getSystemMode()
+  const mode = await getServerMode()
+  const systemMode = await getSystemMode()
 
   return (
     <Providers direction={direction}>

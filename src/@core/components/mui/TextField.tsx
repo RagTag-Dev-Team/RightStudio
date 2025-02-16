@@ -5,8 +5,9 @@ import { forwardRef } from 'react'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
-import type { TextFieldProps } from '@mui/material/TextField'
 import TextField from '@mui/material/TextField'
+import type { TextFieldProps } from '@mui/material/TextField'
+import type { InputLabelProps } from '@mui/material/InputLabel'
 
 const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   '& .MuiInputLabel-root': {
@@ -250,7 +251,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
 }))
 
 const CustomTextField = forwardRef((props: TextFieldProps, ref) => {
-  const { size = 'small', InputLabelProps, ...rest } = props
+  const { size = 'small', slotProps, ...rest } = props
 
   return (
     <TextFieldStyled
@@ -258,7 +259,10 @@ const CustomTextField = forwardRef((props: TextFieldProps, ref) => {
       inputRef={ref}
       {...rest}
       variant='filled'
-      InputLabelProps={{ ...InputLabelProps, shrink: true }}
+      slotProps={{
+        ...slotProps,
+        inputLabel: { ...slotProps?.inputLabel, shrink: true } as InputLabelProps
+      }}
     />
   )
 })

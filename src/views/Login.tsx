@@ -132,19 +132,21 @@ const LoginV2 = ({ mode }: { mode: SystemMode }) => {
               placeholder='············'
               id='outlined-adornment-password'
               type={isPasswordShown ? 'text' : 'password'}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='end'>
-                    <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
-                      <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
-                    </IconButton>
-                  </InputAdornment>
-                )
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <IconButton edge='end' onClick={handleClickShowPassword} onMouseDown={e => e.preventDefault()}>
+                        <i className={isPasswordShown ? 'tabler-eye-off' : 'tabler-eye'} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }
               }}
             />
             <div className='flex justify-between items-center gap-x-3 gap-y-1 flex-wrap'>
               <FormControlLabel control={<Checkbox />} label='Remember me' />
-              <Typography className='text-end' color='primary' component={Link}>
+              <Typography className='text-end' color='primary.main' component={Link}>
                 Forgot password?
               </Typography>
             </div>
@@ -153,7 +155,7 @@ const LoginV2 = ({ mode }: { mode: SystemMode }) => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} color='primary'>
+              <Typography component={Link} color='primary.main'>
                 Create an account
               </Typography>
             </div>

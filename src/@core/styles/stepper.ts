@@ -105,6 +105,6 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
       }
     }
   }
-})
+}) as typeof Box
 
 export default StepperWrapper

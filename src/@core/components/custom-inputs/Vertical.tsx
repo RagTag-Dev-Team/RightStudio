@@ -1,5 +1,5 @@
 // MUI Imports
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid2'
 import Radio from '@mui/material/Radio'
 import Checkbox from '@mui/material/Checkbox'
 import Typography from '@mui/material/Typography'
@@ -86,7 +86,7 @@ const CustomInputVertical = (props: CustomInputVerticalProps) => {
 
   const renderComponent = () => {
     return (
-      <Grid item {...gridProps}>
+      <Grid {...gridProps}>
         <Root
           onClick={() => handleChange(value)}
           className={classnames({

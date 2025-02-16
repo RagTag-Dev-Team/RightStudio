@@ -22,13 +22,7 @@ export const useImageVariant = (
   const { mode: muiMode, systemMode: muiSystemMode } = useColorScheme()
 
   return useMemo(() => {
-    const isServer = typeof window === 'undefined'
-
-    const currentMode = (() => {
-      if (isServer) return mode
-
-      return muiMode === 'system' ? muiSystemMode : muiMode
-    })()
+    const currentMode = muiMode === 'system' ? muiSystemMode : muiMode || mode
 
     const isBordered = settings?.skin === 'bordered'
     const isDarkMode = currentMode === 'dark'
