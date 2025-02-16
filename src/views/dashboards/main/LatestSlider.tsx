@@ -120,6 +120,36 @@ const LatestSlider = () => {
     )
   }
 
+  if (tracks.length === 0) {
+    return (
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <CardHeader title='Latest Tracks' />
+        <CardContent
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 3
+          }}
+        >
+          <Typography variant='h6' color='text.secondary'>
+            No tracks found
+          </Typography>
+          <Typography variant='body1' color='text.secondary'>
+            Start creating new tracks to see them here!
+          </Typography>
+          <Link href='/media/library' passHref>
+            <Button variant='contained' endIcon={<i className='tabler-plus' />}>
+              Create New Track
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardHeader title='Latest Tracks' />

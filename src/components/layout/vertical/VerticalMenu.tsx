@@ -103,10 +103,11 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
           renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
           renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
           menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
-          onMenuItemClick={handleMenuItemClick}
         >
           <SubMenu label='Home' icon={<i className='tabler-home' />}>
-            <MenuItem href={`/${locale}/dashboards/main`}>Dashboard</MenuItem>
+            <MenuItem href={`/${locale}/dashboards/main`} onClick={handleMenuItemClick}>
+              Dashboard
+            </MenuItem>
             {/*
             <MenuItem href={`/${locale}/dashboards/crm`}>{dictionary['navigation'].crm}</MenuItem>
             <MenuItem href={`/${locale}/dashboards/analytics`}>{dictionary['navigation'].analytics}</MenuItem>

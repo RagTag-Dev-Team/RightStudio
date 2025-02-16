@@ -182,11 +182,11 @@ const MediaLibrary = () => {
   // Thirdweb hooks
   const account = useActiveAccount()
 
-  // Add session hook
+  // Replace getSession() with useSession hook
   const { data: session } = useSession()
 
-  // Get the wallet address from either account or session
-  const walletAddress = account?.address || (session?.user as any)?.wallet_address
+  // Update the wallet address to use session data directly
+  const walletAddress = account?.address || session?.user?.wallet_address
 
   const [selectedRows, setSelectedRows] = useState<string[]>([])
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
@@ -337,8 +337,11 @@ const MediaLibrary = () => {
   ]
 
   useEffect(() => {
-    // Check for either active account or session wallet address
-    const walletAddress = account?.address || (session?.user as any)?.wallet_address
+    // Update the wallet address check in useEffect
+    const walletAddress = account?.address || session?.user?.wallet_address
+
+    console.log(account)
+    console.log(session?.user?.wallet_address)
 
     if (!walletAddress) {
       setIsLoading(true)
@@ -577,26 +580,36 @@ const MediaLibrary = () => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: '100%',
+                    height: '400px',
                     p: 4,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    gap: 2
                   }}
                 >
-                  <Icon className='tabler-music' sx={{ fontSize: '48px', mb: 2, opacity: 0.5 }}>
+                  <Icon
+                    className='tabler-music-off'
+                    sx={{
+                      fontSize: '64px',
+                      opacity: 0.5,
+                      color: 'text.disabled'
+                    }}
+                  >
                     library_music
                   </Icon>
-                  <Typography variant='h6' sx={{ mb: 2 }}>
-                    No tracks found
+                  <Typography variant='h6' sx={{ fontWeight: 600 }}>
+                    Your Music Library is Empty
                   </Typography>
-                  <Typography variant='body2' color='text.secondary' sx={{ mb: 4 }}>
-                    Get started by uploading your first track to your music library
+                  <Typography variant='body2' color='text.secondary' sx={{ maxWidth: '500px', mb: 2 }}>
+                    Start building your music collection by uploading your tracks. You can add music files, set cover
+                    art, and manage your entire library from here.
                   </Typography>
                   <Button
                     variant='contained'
                     onClick={toggleDrawer}
                     startIcon={<Icon className='tabler-music-plus'>add</Icon>}
+                    size='large'
                   >
-                    Upload Track
+                    Upload Your First Track
                   </Button>
                 </Box>
               )}

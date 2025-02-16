@@ -120,8 +120,6 @@ export const authOptions: NextAuthOptions = {
             body: JSON.stringify({ email, password, wallet_address })
           })
 
-          console.log('Res: ' + JSON.stringify(res, null, 2))
-
           const data = await res.json()
 
           console.log('Data: ' + JSON.stringify(data, null, 2))
@@ -221,6 +219,8 @@ export const authOptions: NextAuthOptions = {
         token.wallet_address = user.wallet_address
       }
 
+      console.log('Token: ' + JSON.stringify(token, null, 2))
+
       return token
     },
     async session({ session, token }) {
@@ -233,6 +233,8 @@ export const authOptions: NextAuthOptions = {
         //@ts-ignore
         session.user.wallet_address = token.wallet_address
       }
+
+      console.log('Session: ' + JSON.stringify(session, null, 2))
 
       return session
     }

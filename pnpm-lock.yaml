@@ -244,8 +244,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       surrealdb:
-        specifier: ^1.0.6
-        version: 1.1.0(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0)
+        specifier: ^1.2.1
+        version: 1.2.1(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0)
       thirdweb:
         specifier: ^5.86.2
         version: 5.87.4(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(zod@3.24.1)
@@ -6401,8 +6401,8 @@ packages:
     resolution: {integrity: sha512-GMLwnhqMkDQrpBkovK6PHHvvs/8QEW57FnWAA0H31ZhaEN1aFC1EvweIZUTF5UWzSEM3f0+WA3QU1ogTqViuUw==}
     deprecated: Please visit https://www.npmjs.com/package/surrealdb for the updated SurrealDB SDK.
 
-  surrealdb@1.1.0:
-    resolution: {integrity: sha512-EAopFKeIo1lVCR+XEE/oMuh8LCPAIa2xC9MyVs5nw+BJyHc0Fr6F/UWVF9399LRtTBCoqe5G1W0hgxqLqkWaYA==}
+  surrealdb@1.2.1:
+    resolution: {integrity: sha512-WWQ4d7vMCDP6wM2Lo6nil5ub+oVFT4W0fFDhrtNJ7QRWKena/uGMrVosYENk2Oi/ubEyukE+fd7j9gyjE40SPA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       tslib: ^2.6.3
@@ -8496,7 +8496,7 @@ snapshots:
       commander: 12.1.0
       mkdirp: 3.0.1
       rimraf: 5.0.10
-      surrealdb: 1.1.0(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0)
+      surrealdb: 1.2.1(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0)
       testcontainers: 10.18.0
       zod: 3.24.1
     transitivePeerDependencies:
@@ -14225,7 +14225,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  surrealdb@1.1.0(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0):
+  surrealdb@1.2.1(tslib@2.8.1)(typescript@5.7.3)(ws@8.18.0):
     dependencies:
       isows: 1.0.6(ws@8.18.0)
       tslib: 2.8.1

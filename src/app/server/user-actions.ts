@@ -67,6 +67,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
 }
 
 interface User {
+  length: number
   id: string
   name: string
   email: string
@@ -85,9 +86,11 @@ export async function loginUser(email: string, password: string, wallet_address:
   try {
     const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
 
+    console.log('result: ' + JSON.stringify(result, null, 2))
+
     const userRecord = result[0] ? jsonify(result[0]) : null
 
-    if (!userRecord) {
+    if (!userRecord || result[0].length === 0) {
       return {
         newUser: true,
         wallet_address,
@@ -96,7 +99,7 @@ export async function loginUser(email: string, password: string, wallet_address:
       }
     }
 
-    return userRecord
+    return userRecord[0]
   } catch (error) {
     console.error('Error querying user:', error)
     throw error

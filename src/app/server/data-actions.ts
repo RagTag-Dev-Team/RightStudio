@@ -1,5 +1,7 @@
 'use server'
 
+import { getServerSession } from 'next-auth'
+
 import { RecordId } from 'surrealdb'
 
 import { getDb } from '@/libs/surreal'
