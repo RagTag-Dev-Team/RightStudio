@@ -34,7 +34,7 @@ import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
-import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+import type { ICertificateArg } from '@mentaport/certificates'
 import { ContentFormat, AITrainingMiningInfo } from '@mentaport/certificates'
 
 import { useSession } from 'next-auth/react'
@@ -69,24 +69,6 @@ const newCert: ICertificateArg = {
   country: ''
 }
 
-// eslint-disable-next-line prefer-const
-let updateCert: ICertificateUpdateArg = {
-  projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID || '',
-  certId: '',
-  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
-  contentFormat: ContentFormat.png,
-  name: 'Certificate Example',
-  username: 'ExampleUsername',
-  description: 'This certifcate was created to test the sdk example',
-  usingAI: false,
-  aiSoftware: '',
-  aiModel: '',
-  album: '',
-  albumYear: '',
-  city: '',
-  country: ''
-}
-
 type RecordDataType = {
   id?: string
   title: string
@@ -104,11 +86,6 @@ type RecordDataType = {
   owner?: string
   transactionHash?: string
   watermarkedUrl?: string
-}
-
-interface DownloadProps {
-  projectId: string
-  certId: string
 }
 
 // Add this type definition at the top of the file, after the imports
@@ -137,37 +114,37 @@ const getContentFormat = (fileType: string): ContentFormat => {
 }
 
 // Update the StyledRibbon component with wider dimensions
-const StyledRibbon = styled('div')(() => ({
-  position: 'absolute',
-  right: -5,
-  top: 0,
-  zIndex: 2,
-  overflow: 'hidden',
-  width: '100px', // Increased from 75px
-  height: '100px', // Increased from 75px
-  textAlign: 'right',
-  '& span': {
-    fontSize: '10px', // Slightly increased from 9px
-    fontWeight: 'bold',
-    color: 'white',
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    lineHeight: '20px',
-    transform: 'rotate(45deg)',
-    width: '140px', // Increased from 100px to accommodate text
-    display: 'block',
-    background: '#4CAF50',
-    boxShadow: `0 3px 10px -5px rgba(0, 0, 0, 1)`,
-    position: 'absolute',
-    top: '25px', // Adjusted to center the wider ribbon
-    right: '-30px', // Adjusted to center the wider ribbon
-    '& i': {
-      fontSize: '1rem',
-      verticalAlign: 'middle',
-      marginRight: '4px'
+const StyledRibbon = styled('div')`
+  position: absolute;
+  inset-inline-end: -5px;
+  inset-block-start: 0;
+  z-index: 2;
+  overflow: hidden;
+  inline-size: 100px;
+  block-size: 100px;
+  text-align: end;
+  & span {
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    transform: rotate(45deg);
+    inline-size: 140px;
+    display: block;
+    background: #4caf50;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    inset-block-start: 25px;
+    inset-inline-end: -30px;
+    & i {
+      font-size: 1rem;
+      vertical-align: middle;
+      margin-inline-end: 4px;
     }
   }
-}))
+`
 
 // Add this type definition near other type definitions
 type CertificateStatusStep = {
@@ -1040,7 +1017,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         <DialogTitle>Generate Cover Art with AI</DialogTitle>
         <DialogContent>
           {!generatedImageUrl ? (
-            // Existing prompt input view
             <>
               <DialogContentText sx={{ mb: 2 }}>
                 Describe the cover art you&apos;d like to generate. For best results, be specific about:
@@ -1071,7 +1047,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               />
             </>
           ) : (
-            // Generated image preview
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
               <img
                 src={generatedImageUrl}
