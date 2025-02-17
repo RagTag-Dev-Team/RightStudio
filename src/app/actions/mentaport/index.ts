@@ -111,7 +111,7 @@ export async function CreateCertificate(
 
         // Update the response data with the status message
         if (genRes.data) {
-          genRes.data.statusMessage = resCertStatus.data.status.statusMessage
+          genRes.data.status = resCertStatus.data.status.status
         }
       }
     }
