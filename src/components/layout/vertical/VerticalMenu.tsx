@@ -122,7 +122,7 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
                 href={`/${locale}/media/generator`}
                 suffix={<CustomChip label='Beta' size='small' color='warning' round='true' />}
               >
-                Idea Generator
+                Song Generator
               </MenuItem>
             </SubMenu>
             <SubMenu label='Media Manager' icon={<i className='tabler-file-description' />}>
