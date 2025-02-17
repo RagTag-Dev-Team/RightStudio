@@ -95,6 +95,7 @@
     "react-toastify": "^10.0.5",
     "react-use": "^17.5.1",
     "recharts": "^2.12.7",
+    "replicate": "^1.0.1",
     "server-only": "^0.0.1",
     "surrealdb": "^1.2.1",
     "thirdweb": "^5.86.2",

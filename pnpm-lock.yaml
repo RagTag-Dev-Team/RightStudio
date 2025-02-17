@@ -240,6 +240,9 @@ importers:
       recharts:
         specifier: ^2.12.7
         version: 2.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      replicate:
+        specifier: ^1.0.1
+        version: 1.0.1
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -5931,6 +5934,10 @@ packages:
   repeating@2.0.1:
     resolution: {integrity: sha512-ZqtSMuVybkISo2OWvqvm7iHSWngvdaW3IpsT9/uP8v4gMi591LY6h35wdOfvQdWCKFWZWm2Y1Opp4kV7vQKT6A==}
     engines: {node: '>=0.10.0'}
+
+  replicate@1.0.1:
+    resolution: {integrity: sha512-EY+rK1YR5bKHcM9pd6WyaIbv6m2aRIvHfHDh51j/LahlHTLKemTYXF6ptif2sLa+YospupAsIoxw8Ndt5nI3vg==}
+    engines: {git: '>=2.11.0', node: '>=18.0.0', npm: '>=7.19.0', yarn: '>=1.7.0'}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -13702,6 +13709,10 @@ snapshots:
   repeating@2.0.1:
     dependencies:
       is-finite: 1.1.0
+
+  replicate@1.0.1:
+    optionalDependencies:
+      readable-stream: 4.7.0
 
   require-directory@2.1.1: {}
 

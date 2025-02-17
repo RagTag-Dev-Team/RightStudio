@@ -115,8 +115,8 @@ const TokenBalances = () => {
       // Get the address from account or session
       const userAddress = account?.address || (session?.user as any)?.wallet_address
 
-      console.log('userAddress: ' + userAddress)
-      console.log('session: ' + JSON.stringify(session, null, 2))
+      //  console.log('userAddress: ' + userAddress)
+      //  console.log('session: ' + JSON.stringify(session, null, 2))
 
       if (!userAddress) {
         setIsLoading(false)

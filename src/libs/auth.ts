@@ -105,10 +105,10 @@ export const authOptions: NextAuthOptions = {
         }
 
         // console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
-        console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
+        //   console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
 
         try {
-          console.log('API URL: ' + process.env.API_URL)
+          //   console.log('API URL: ' + process.env.API_URL)
 
           // ** Login API Call to match the user credentials and receive user data in response along with his role
 
@@ -142,7 +142,7 @@ export const authOptions: NextAuthOptions = {
 
               try {
                 // @ts-ignore
-                const user = await db.create<User>('User', data.userRecord)
+                //      const user = await db.create<User>('User', data.userRecord)
 
                 console.log('User created:', jsonify(user))
               } catch (err: unknown) {
@@ -230,7 +230,7 @@ export const authOptions: NextAuthOptions = {
         session.user.wallet_address = token.wallet_address
       }
 
-      console.log('Session: ' + JSON.stringify(session, null, 2))
+      //    console.log('Session: ' + JSON.stringify(session, null, 2))
 
       return session
     }
