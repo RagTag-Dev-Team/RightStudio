@@ -20,7 +20,7 @@ import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
 
 // import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
 
-// import CustomChip from '@core/components/mui/Chip'
+import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateVerticalMenu } from '@components/GenerateMenu'
 
@@ -118,7 +118,12 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
           </SubMenu>
           <MenuSection label='Creator Lab'>
             <SubMenu label='Creator Studio' icon={<i className='tabler-file-description' />}>
-              <MenuItem href={`/${locale}/media/generator`}>Song Generator</MenuItem>
+              <MenuItem
+                href={`/${locale}/media/generator`}
+                suffix={<CustomChip label='Beta' size='small' color='warning' round='true' />}
+              >
+                Idea Generator
+              </MenuItem>
             </SubMenu>
             <SubMenu label='Media Manager' icon={<i className='tabler-file-description' />}>
               <MenuItem href={`/${locale}/media/library`}>Library</MenuItem>
