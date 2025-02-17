@@ -56,7 +56,7 @@ const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
 const newCert: ICertificateArg = {
   projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!, // "your-project-id",
   aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
-  contentFormat: ContentFormat.png, // will be updated when file is selected
+  contentFormat: ContentFormat.mp3, // Default to mp3 for audio files
   name: 'Certificate Example',
   username: 'ExampleUsername',
   description: 'This certifcate was created to test the sdk example',
@@ -122,17 +122,13 @@ const getContentFormat = (fileType: string): ContentFormat => {
       return ContentFormat.mp3
     case 'wav':
       return ContentFormat.wav
-    case 'aiff':
-      return ContentFormat.aiff
-    case 'flac':
-      return ContentFormat.flac
     case 'png':
       return ContentFormat.png
     case 'jpg':
     case 'jpeg':
       return ContentFormat.jpg
-    case 'pdf':
-      return ContentFormat.pdf
+    case 'mp4':
+      return ContentFormat.mp4
     default:
       console.warn(`Unrecognized file type: ${fileType}, defaulting to mp3`)
 
@@ -175,9 +171,8 @@ const StyledRibbon = styled('div')(() => ({
 
 // Add this type definition near other type definitions
 type CertificateStatusStep = {
-  status: string
   statusMessage: string
-  error: boolean
+  progress: number
 }
 
 const RecordDetails = ({ recordId }: { recordId: string }) => {
@@ -216,8 +211,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [watermarkStep, setWatermarkStep] = useState('')
 
   // Add this function near other handlers
-  const updateWatermarkProgress = ({ step, progress }: CertificateStatusStep) => {
-    setWatermarkStep(step)
+  const updateWatermarkProgress = ({ statusMessage, progress }: CertificateStatusStep) => {
+    setWatermarkStep(statusMessage)
     setWatermarkProgress(progress)
   }
 
@@ -226,23 +221,21 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData) return
 
     // Pre-populate the certificate args with record data
-    setNewCertificateArgs(prev => ({
-      ...prev,
+    setNewCertificateArgs({
+      projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
+      aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+      contentFormat: getContentFormat(recordData.filetype), // Set content format based on file type
       name: recordData.title,
       username: recordData.artist,
       description: `${recordData.artist} - ${recordData.album}`,
       album: recordData.album,
       albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : '',
-
-      // Keep other fields from previous state
-      projectId: prev.projectId,
-      aiTrainingMiningInfo: prev.aiTrainingMiningInfo,
-      usingAI: prev.usingAI,
-      aiSoftware: prev.aiSoftware,
-      aiModel: prev.aiModel,
-      city: prev.city,
-      country: prev.country
-    }))
+      usingAI: false,
+      aiSoftware: '',
+      aiModel: '',
+      city: '',
+      country: ''
+    })
 
     setOpenWatermarkDialog(true)
   }
@@ -434,7 +427,10 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     }
 
     setIsWatermarking(true)
-    updateWatermarkProgress({ step: 'Initializing certificate creation...', progress: 10 })
+    updateWatermarkProgress({
+      statusMessage: 'Initializing certificate creation...',
+      progress: 10
+    })
 
     try {
       // Download file from IPFS
@@ -443,7 +439,10 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         uri: recordData.ipfsUrl
       })
 
-      updateWatermarkProgress({ step: 'Downloading original file...', progress: 20 })
+      updateWatermarkProgress({
+        statusMessage: 'Downloading original file...',
+        progress: 20
+      })
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
@@ -473,15 +472,15 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : ''
       }
 
-      updateWatermarkProgress({ step: 'Uploading file for certification...', progress: 30 })
+      updateWatermarkProgress({
+        statusMessage: 'Uploading file for certification...',
+        progress: 30
+      })
 
       // Create form data with file
       const formData = new FormData()
 
       formData.append('file', file)
-
-      // Log the certificate args before sending
-      console.log('Certificate args:', certificateArgs)
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -489,8 +488,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         throw new Error(createdCert.message || 'Failed to create certificate')
       }
 
-      // Update progress based on certificate status
+      // Get certificate details
       const { projectId, certId } = createdCert.data
+
+      // Show the status message from the certificate creation
+      if (createdCert.data.status) {
+        updateWatermarkProgress({
+          statusMessage: createdCert.data.status,
+          progress: 50
+        })
+      }
 
       // Get the download URL for the watermarked file
       const downloadUrl = await GetDownloadUrl(projectId, certId)
@@ -499,7 +506,10 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         throw new Error(downloadUrl.message || 'Failed to get download URL')
       }
 
-      updateWatermarkProgress({ step: 'Certificate created successfully!', progress: 100 })
+      updateWatermarkProgress({
+        statusMessage: 'Certificate created successfully!',
+        progress: 100
+      })
 
       // Update the record in the database with the certificate info
       const db = await getDb()
@@ -1146,6 +1156,15 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                   label='Description'
                   value={newCertificateArgs.description}
                   onChange={e => setNewCertificateArgs(prev => ({ ...prev, description: e.target.value }))}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <CustomTextField
+                  fullWidth
+                  label='Content Format'
+                  value={newCertificateArgs.contentFormat}
+                  disabled
+                  helperText='Automatically set based on file type'
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

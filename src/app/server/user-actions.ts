@@ -99,7 +99,7 @@ export async function loginUser(email: string, password: string, wallet_address:
       }
     }
 
-    return userRecord[0]
+    return result[0]
   } catch (error) {
     console.error('Error querying user:', error)
     throw error

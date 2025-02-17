@@ -48,8 +48,6 @@ export async function CreateCertificate(
   data: FormData,
   initCertificateArgs: ICertificateArg
 ): Promise<IResults<ICertificate>> {
-  console.log('initCertificateArgs', data)
-
   try {
     const file: File | null = data.get('file') as unknown as File
 
@@ -67,8 +65,6 @@ export async function CreateCertificate(
     initCertificateArgs.contentFormat = typeInfo.format as ContentFormat
 
     const sdk = await _getMentaportSDK()
-
-    console.log('initCertificateArgs', initCertificateArgs)
 
     // 1. Create certificate by setting information and uploading content
     const genRes = await sdk.createCertificate(initCertificateArgs, blob)
@@ -113,8 +109,10 @@ export async function CreateCertificate(
 
         status = resCertStatus.data.status.status
 
-        // Add the status message to the response
-        genRes.data.statusMessage = resCertStatus.data.status.statusMessage
+        // Update the response data with the status message
+        if (genRes.data) {
+          genRes.data.statusMessage = resCertStatus.data.status.statusMessage
+        }
       }
     }
 
