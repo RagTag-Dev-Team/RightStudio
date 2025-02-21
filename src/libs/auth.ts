@@ -19,6 +19,8 @@ import { createAuth } from 'thirdweb/auth'
 
 import { privateKeyAccount } from 'thirdweb/wallets'
 
+import { loginUser } from '@/app/server/user-actions'
+
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
@@ -106,9 +108,14 @@ export const authOptions: NextAuthOptions = {
 
         // console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
         //   console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
+        const db = await getDb()
 
         try {
           console.log('API URL: ' + process.env.API_URL)
+
+          const userRecord = await loginUser(email, password, wallet_address)
+
+          console.log('User Record: ' + JSON.stringify(userRecord, null, 2))
 
           // ** Login API Call to match the user credentials and receive user data in response along with his role
 
@@ -132,7 +139,6 @@ export const authOptions: NextAuthOptions = {
             if (data.userRecord.newUser) {
               data.userRecord.newUser = false
               console.log('Creating User')
-              const db = await getDb()
 
               if (!db) {
                 console.error('Database not initialized')
