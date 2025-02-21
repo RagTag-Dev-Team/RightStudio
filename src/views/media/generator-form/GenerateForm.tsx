@@ -41,6 +41,13 @@ interface StatusUpdate {
   logs?: string | null // Add this for stream output
 }
 
+interface GenerateSongInput {
+  genre_description: string
+  lyrics: string
+  num_segments: number
+  max_new_tokens: number
+}
+
 const initialFormData: FormData = {
   genre_description: [],
   instrument_description: [],
@@ -189,6 +196,18 @@ export default function GenerateForm() {
     }
   }, [statusUpdates])
 
+  const formatDescriptionForSubmission = (formData: FormData): string => {
+    const descriptions = [
+      ...formData.genre_description,
+      ...formData.instrument_description.map(i => `with ${i}`),
+      ...formData.mood_description.map(m => `in a ${m} style`),
+      ...formData.gender_description.map(g => `using ${g} vocals`),
+      ...formData.timbre_description.map(t => `with ${t} vocal character`)
+    ]
+
+    return descriptions.join(', ')
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -199,7 +218,14 @@ export default function GenerateForm() {
     setElapsedTime('0:00')
 
     try {
-      const id = await generateSong(formData)
+      const submissionData: GenerateSongInput = {
+        genre_description: formatDescriptionForSubmission(formData),
+        lyrics: formData.lyrics,
+        num_segments: formData.num_segments,
+        max_new_tokens: formData.max_new_tokens
+      }
+
+      const id = await generateSong(submissionData)
 
       setPredictionId(id)
       saveGenerationState(id, formData)
