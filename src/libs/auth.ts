@@ -108,7 +108,7 @@ export const authOptions: NextAuthOptions = {
         //   console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
 
         try {
-          //   console.log('API URL: ' + process.env.API_URL)
+          console.log('API URL: ' + process.env.API_URL)
 
           // ** Login API Call to match the user credentials and receive user data in response along with his role
 
