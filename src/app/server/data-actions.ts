@@ -192,3 +192,12 @@ export async function createMediaRecord(data: MediaRecordData): Promise<string> 
     throw new Error('Failed to create media record')
   }
 }
+
+export async function createMedia(mediaMetadata: any) {
+  const db = await getDb()
+  const created = await db.create('media', mediaMetadata)
+
+  await db.close()
+
+  return created
+}

@@ -187,6 +187,7 @@ export const authOptions: NextAuthOptions = {
          * in token which then will be available in the `session()` callback
          */
 
+        console.log('User: ' + JSON.stringify(user, null, 2))
         token.name = user.name
         token.email = user.email
 

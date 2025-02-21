@@ -105,3 +105,12 @@ export async function loginUser(email: string, password: string, wallet_address:
     throw error
   }
 }
+
+export async function createMedia(mediaMetadata: any) {
+  const db = await getDb()
+  const created = await db.create('media', mediaMetadata)
+
+  await db.close()
+
+  return created
+}

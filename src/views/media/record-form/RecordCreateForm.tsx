@@ -52,6 +52,7 @@ import { getDb } from '@/libs/surreal'
 import CovertArtUploader from './CovertArtUploader'
 
 // Add this import
+import { createMedia } from '@/app/server/data-actions'
 
 type FormDataType = {
   title: string
@@ -145,7 +146,6 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const db = await getDb()
 
     if (!file) {
       console.error('Please upload a file')
@@ -210,7 +210,7 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
       }
 
       try {
-        const created = await db.create('media', mediaMetadata)
+        const created = await createMedia(mediaMetadata)
 
         setUploadProgress(100) // Complete progress
 
@@ -223,7 +223,6 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
             router.push(`/en/media/record/${recordId}`)
             onSuccess()
           }
-
         } else {
           throw new Error('Failed to get created record ID')
         }
