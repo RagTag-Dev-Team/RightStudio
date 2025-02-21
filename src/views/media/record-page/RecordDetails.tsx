@@ -223,6 +223,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       try {
         const record = await getRecordById(recordId)
 
+        console.log('record', record)
+
         if (record) {
           const recordWithDate: RecordDataType = {
             ...record,
