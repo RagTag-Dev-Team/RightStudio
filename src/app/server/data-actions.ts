@@ -201,3 +201,17 @@ export async function createMedia(mediaMetadata: any) {
 
   return created
 }
+
+export async function getRecordById(recordId: string) {
+  const db = await getDb()
+  const record = await db.select(`media:${recordId}`)
+  await db.close()
+  return record
+}
+
+export async function updateRecord(recordId: string, data: any) {
+  const db = await getDb()
+  const updated = await db.update(`media:${recordId}`, data)
+  await db.close()
+  return updated
+}

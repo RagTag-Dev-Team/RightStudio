@@ -47,6 +47,7 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Database Import
 import { getDb } from '@/libs/surreal'
+import { getRecordById } from '@/app/server/data-actions'
 
 // Add import for useSession
 
@@ -219,42 +220,33 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const db = await getDb()
+      try {
+        const record = await getRecordById(recordId)
 
-      // console.log('Fetching record:', recordId)
-      const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
+        if (record) {
+          const recordWithDate: RecordDataType = {
+            ...record,
+            status: record.status || 'unminted',
+            releaseDate: record.releaseDate ? new Date(record.releaseDate) : null
+          }
 
-      // Add this debug log
-      console.log('Record data:', record)
+          setRecordData(recordWithDate)
 
-      if (record) {
-        const recordWithDate: RecordDataType = {
-          ...record,
+          if (record.coverImage) {
+            try {
+              const url = resolveScheme({
+                client,
+                uri: record.coverImage
+              })
 
-          // Ensure status is set if missing
-          status: record.status || 'unminted',
-          releaseDate: record.releaseDate ? new Date(record.releaseDate) : null
-        }
-
-        // Add this debug log
-        //console.log('Processed record data:', recordWithDate)
-
-        setRecordData(recordWithDate)
-
-        // If there's a coverImage URI, fetch it from thirdweb
-        if (record.coverImage) {
-          try {
-            const url = resolveScheme({
-              client,
-              uri: record.coverImage
-            })
-
-            //  console.log(url)
-            setImageUrl(url)
-          } catch (error) {
-            console.error('Error downloading cover image:', error)
+              setImageUrl(url)
+            } catch (error) {
+              console.error('Error downloading cover image:', error)
+            }
           }
         }
+      } catch (error) {
+        console.error('Error fetching record:', error)
       }
     }
 
@@ -278,9 +270,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData) return
 
     try {
-      const db = await getDb()
-
-      await db.update(`media:${recordId}`, recordData)
+      await updateRecord(recordId, recordData)
       setIsEditing(false)
     } catch (error) {
       console.error('Error saving record:', error)
