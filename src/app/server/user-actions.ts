@@ -86,7 +86,7 @@ export async function loginUser(email: string, password: string, wallet_address:
   try {
     const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
 
-    console.log('result: ' + JSON.stringify(result, null, 2))
+    //    console.log('result: ' + JSON.stringify(result, null, 2))
 
     const userRecord = result[0] ? jsonify(result[0]) : null
 
