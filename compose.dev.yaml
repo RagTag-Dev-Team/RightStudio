@@ -1,10 +1,6 @@
-name: mannyj37/rightstudio
 services:
   surrealdb:
     platform: 'linux/amd64'
-    environment:
-      - ragtag-demo
-      - start
     image: 'surrealdb/surrealdb:latest'
     command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
     ports:
@@ -46,19 +42,30 @@ services:
     networks:
       - frontend
       - backend
-  webapp:
+  next-app:
+    container_name: next-app
     build:
-      context: .
-      dockerfile: prod.Dockerfile
+      context: ./
+      dockerfile: dev.Dockerfile
+    image: mannyj37/rightstudio:dev
+
+    # Set environment variables based on the .env file
     env_file:
       - .env
-    image: mannyj37/rightstudio:latest
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
     ports:
-      - '3001:3001'
+      - 3000:3000
     networks:
       - frontend
       - backend
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
 networks:
-  # The presence of these objects is sufficient to define them
   frontend: {}
   backend: {}

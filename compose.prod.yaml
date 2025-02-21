@@ -1,16 +1,11 @@
-name: mannyj37/rightstudio
 services:
   surrealdb:
     platform: 'linux/amd64'
-    environment:
-      - ragtag-demo
-      - start
     image: 'surrealdb/surrealdb:latest'
     command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
     ports:
       - '8000:8000'
     networks:
-      - frontend
       - backend
   postgres:
     image: postgres
@@ -21,7 +16,6 @@ services:
     networks:
       - frontend
       - backend
-
   redis:
     image: redis:7.2.4
     ports:
@@ -46,19 +40,22 @@ services:
     networks:
       - frontend
       - backend
-  webapp:
+  next-app:
+    container_name: next-app
     build:
-      context: .
+      context: ./next-app
       dockerfile: prod.Dockerfile
-    env_file:
-      - .env
-    image: mannyj37/rightstudio:latest
+    restart: always
     ports:
-      - '3001:3001'
+      - 3000:3000
     networks:
       - frontend
       - backend
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
 networks:
-  # The presence of these objects is sufficient to define them
   frontend: {}
   backend: {}

@@ -38,6 +38,7 @@ export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal>
     return db
   } catch (err) {
     console.error('Failed to connect to SurrealDB:', err instanceof Error ? err.message : String(err))
+    console.log('DB String: ' + config.url)
     await db.close()
     throw err
   }

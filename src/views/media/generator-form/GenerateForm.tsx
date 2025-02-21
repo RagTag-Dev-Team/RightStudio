@@ -2,10 +2,32 @@
 
 import { useState, useEffect } from 'react'
 
+import Card from '@mui/material/Card'
+import Grid from '@mui/material/Grid'
+import Button from '@mui/material/Button'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import InputAdornment from '@mui/material/InputAdornment'
+import Chip from '@mui/material/Chip'
+import MenuItem from '@mui/material/MenuItem'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Autocomplete from '@mui/material/Autocomplete'
+import Divider from '@mui/material/Divider'
+import Typography from '@mui/material/Typography'
+
+import CustomTextField from '@core/components/mui/TextField'
+
 import { generateSong, checkGenerationStatus } from '@/app/server/ai-actions'
+import { genreTags } from '@/data/genreTags'
+import tags from '@/data/top_200_tags.json'
 
 interface FormData {
-  genre_description: string
+  genre_description: string[]
+  instrument_description: string[]
+  mood_description: string[]
+  gender_description: string[]
+  timbre_description: string[]
   lyrics: string
   num_segments: number
   max_new_tokens: number
@@ -20,7 +42,11 @@ interface StatusUpdate {
 }
 
 const initialFormData: FormData = {
-  genre_description: '',
+  genre_description: [],
+  instrument_description: [],
+  mood_description: [],
+  gender_description: [],
+  timbre_description: [],
   lyrics: '',
   num_segments: 1,
   max_new_tokens: 200
@@ -34,6 +60,20 @@ interface GenerationState {
   startTime: string
 }
 
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
+
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
+    }
+  }
+}
+
+const containsText = (text: string, searchText: string) => text.toLowerCase().indexOf(searchText.toLowerCase()) > -1
+
 export default function GenerateForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [isLoading, setIsLoading] = useState(false)
@@ -43,6 +83,9 @@ export default function GenerateForm() {
   const [startTime, setStartTime] = useState<Date | null>(null)
   const [elapsedTime, setElapsedTime] = useState<string>('0:00')
   const [predictionId, setPredictionId] = useState<string | null>(null)
+  const [searchText, setSearchText] = useState('')
+
+  const displayedGenres = genreTags.filter(genre => containsText(genre, searchText))
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout
@@ -177,6 +220,17 @@ export default function GenerateForm() {
     }))
   }
 
+  const handleGenreChange = (event: any) => {
+    const {
+      target: { value }
+    } = event
+
+    setFormData(prev => ({
+      ...prev,
+      genre_description: typeof value === 'string' ? value.split(',') : value
+    }))
+  }
+
   const getProgressValue = (status: string) => {
     switch (status) {
       case 'starting':
@@ -194,96 +248,309 @@ export default function GenerateForm() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className='space-y-4 max-w-2xl mx-auto'>
-        <div>
-          <label htmlFor='genre_description' className='block mb-2'>
-            Genre Description
-          </label>
-          <input
-            type='text'
-            id='genre_description'
-            name='genre_description'
-            value={formData.genre_description}
-            onChange={handleChange}
-            className='w-full p-2 border rounded'
-            required
-          />
-        </div>
+    <Card>
+      <CardHeader title='Generate AI Song' />
+      <CardContent>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={3}>
+            {/* Music Characteristics Section */}
+            <Grid item xs={12}>
+              <Typography variant='h6' sx={{ mb: 2 }}>
+                Music Characteristics
+              </Typography>
+            </Grid>
 
-        <div>
-          <label htmlFor='lyrics' className='block mb-2'>
-            Lyrics
-          </label>
-          <textarea
-            id='lyrics'
-            name='lyrics'
-            value={formData.lyrics}
-            onChange={handleChange}
-            className='w-full p-2 border rounded h-32'
-            required
-          />
-        </div>
+            {/* Genre Selection */}
+            <Grid item xs={12} md={6}>
+              <Autocomplete
+                multiple
+                id='genre-description'
+                options={tags.genre}
+                value={formData.genre_description}
+                onChange={(_, newValue) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    genre_description: newValue
+                  }))
+                }}
+                renderInput={params => (
+                  <CustomTextField
+                    {...params}
+                    label='Genres'
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <>
+                          <InputAdornment position='start'>
+                            <i className='tabler-music' />
+                          </InputAdornment>
+                          {params.InputProps.startAdornment}
+                        </>
+                      )
+                    }}
+                  />
+                )}
+                renderTags={(value: string[], getTagProps) =>
+                  value.map((option: string, index: number) => (
+                    <Chip {...getTagProps({ index })} key={option} label={option} size='small' />
+                  ))
+                }
+              />
+            </Grid>
 
-        <div>
-          <label htmlFor='num_segments' className='block mb-2'>
-            Number of Segments
-          </label>
-          <input
-            type='number'
-            id='num_segments'
-            name='num_segments'
-            value={formData.num_segments}
-            onChange={handleChange}
-            min='1'
-            className='w-full p-2 border rounded'
-            required
-          />
-        </div>
+            {/* Instruments Selection */}
+            <Grid item xs={12} md={6}>
+              <Autocomplete
+                multiple
+                id='instrument-description'
+                options={tags.instrument}
+                value={formData.instrument_description}
+                onChange={(_, newValue) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    instrument_description: newValue
+                  }))
+                }}
+                renderInput={params => (
+                  <CustomTextField
+                    {...params}
+                    label='Instruments'
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <>
+                          <InputAdornment position='start'>
+                            <i className='tabler-violin' />
+                          </InputAdornment>
+                          {params.InputProps.startAdornment}
+                        </>
+                      )
+                    }}
+                  />
+                )}
+                renderTags={(value: string[], getTagProps) =>
+                  value.map((option: string, index: number) => (
+                    <Chip {...getTagProps({ index })} key={option} label={option} size='small' />
+                  ))
+                }
+              />
+            </Grid>
 
-        <div>
-          <label htmlFor='max_new_tokens' className='block mb-2'>
-            Max New Tokens
-          </label>
-          <input
-            type='number'
-            id='max_new_tokens'
-            name='max_new_tokens'
-            value={formData.max_new_tokens}
-            onChange={handleChange}
-            min='1'
-            className='w-full p-2 border rounded'
-            required
-          />
-        </div>
+            {/* Mood Selection */}
+            <Grid item xs={12} md={4}>
+              <Autocomplete
+                multiple
+                id='mood-description'
+                options={tags.mood}
+                value={formData.mood_description}
+                onChange={(_, newValue) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    mood_description: newValue
+                  }))
+                }}
+                renderInput={params => (
+                  <CustomTextField
+                    {...params}
+                    label='Mood'
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <>
+                          <InputAdornment position='start'>
+                            <i className='tabler-mood-happy' />
+                          </InputAdornment>
+                          {params.InputProps.startAdornment}
+                        </>
+                      )
+                    }}
+                  />
+                )}
+                renderTags={(value: string[], getTagProps) =>
+                  value.map((option: string, index: number) => (
+                    <Chip {...getTagProps({ index })} key={option} label={option} size='small' />
+                  ))
+                }
+              />
+            </Grid>
 
-        <button
-          type='submit'
-          disabled={isLoading}
-          className='w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400'
-        >
-          {isLoading ? 'Generating...' : 'Generate Song'}
-        </button>
+            {/* Gender Selection */}
+            <Grid item xs={12} md={4}>
+              <Autocomplete
+                multiple
+                id='gender-description'
+                options={tags.gender}
+                value={formData.gender_description}
+                onChange={(_, newValue) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    gender_description: newValue
+                  }))
+                }}
+                renderInput={params => (
+                  <CustomTextField
+                    {...params}
+                    label='Voice Type'
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <>
+                          <InputAdornment position='start'>
+                            <i className='tabler-user' />
+                          </InputAdornment>
+                          {params.InputProps.startAdornment}
+                        </>
+                      )
+                    }}
+                  />
+                )}
+                renderTags={(value: string[], getTagProps) =>
+                  value.map((option: string, index: number) => (
+                    <Chip {...getTagProps({ index })} key={option} label={option} size='small' />
+                  ))
+                }
+              />
+            </Grid>
 
-        {audioUrl && (
-          <div className='mt-6 p-4 bg-gray-50 rounded-lg'>
-            <h3 className='font-semibold mb-3'>Generated Song</h3>
-            <div className='space-y-2'>
-              <audio controls className='w-full' src={audioUrl}>
-                Your browser does not support the audio element.
-              </audio>
-              <a
-                href={audioUrl}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-sm text-blue-600 hover:text-blue-800 block mt-2'
-              >
-                Download Audio
-              </a>
-            </div>
-          </div>
-        )}
-      </form>
+            {/* Timbre Selection */}
+            <Grid item xs={12} md={4}>
+              <Autocomplete
+                multiple
+                id='timbre-description'
+                options={tags.timbre.map(t => t.replace(' vocal', ''))}
+                value={formData.timbre_description}
+                onChange={(_, newValue) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    timbre_description: newValue
+                  }))
+                }}
+                renderInput={params => (
+                  <CustomTextField
+                    {...params}
+                    label='Voice Character'
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <>
+                          <InputAdornment position='start'>
+                            <i className='tabler-wave-sine' />
+                          </InputAdornment>
+                          {params.InputProps.startAdornment}
+                        </>
+                      )
+                    }}
+                  />
+                )}
+                renderTags={(value: string[], getTagProps) =>
+                  value.map((option: string, index: number) => (
+                    <Chip {...getTagProps({ index })} key={option} label={option} size='small' />
+                  ))
+                }
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Divider sx={{ my: 2 }} />
+            </Grid>
+
+            {/* Rest of the form remains the same */}
+            <Grid item xs={12}>
+              <CustomTextField
+                fullWidth
+                multiline
+                rows={4}
+                id='lyrics'
+                name='lyrics'
+                label='Lyrics'
+                value={formData.lyrics}
+                onChange={handleChange}
+                placeholder='Enter your lyrics here...'
+                required
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <i className='tabler-text-plus' />
+                    </InputAdornment>
+                  )
+                }}
+                sx={{ '& .MuiInputBase-root.MuiFilledInput-root': { alignItems: 'baseline' } }}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <CustomTextField
+                fullWidth
+                type='number'
+                id='num_segments'
+                name='num_segments'
+                label='Number of Segments'
+                value={formData.num_segments}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <i className='tabler-separator' />
+                    </InputAdornment>
+                  )
+                }}
+                required
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <CustomTextField
+                fullWidth
+                type='number'
+                id='max_new_tokens'
+                name='max_new_tokens'
+                label='Max New Tokens'
+                value={formData.max_new_tokens}
+                onChange={handleChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <i className='tabler-tokens' />
+                    </InputAdornment>
+                  )
+                }}
+                required
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Button fullWidth type='submit' variant='contained' disabled={isLoading} sx={{ height: '3rem' }}>
+                {isLoading ? 'Generating...' : 'Generate Song'}
+              </Button>
+            </Grid>
+
+            {audioUrl && (
+              <Grid item xs={12}>
+                <Card variant='outlined' sx={{ bgcolor: 'action.hover' }}>
+                  <CardContent>
+                    <h3 className='font-semibold mb-3'>Generated Song</h3>
+                    <div className='space-y-2'>
+                      <audio controls className='w-full' src={audioUrl}>
+                        Your browser does not support the audio element.
+                      </audio>
+                      <Button
+                        component='a'
+                        href={audioUrl}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        variant='text'
+                        startIcon={<i className='tabler-download' />}
+                      >
+                        Download Audio
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )}
+          </Grid>
+        </form>
+      </CardContent>
 
       {isLoading && (
         <div className='fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50'>
@@ -326,6 +593,6 @@ export default function GenerateForm() {
           </div>
         </div>
       )}
-    </>
+    </Card>
   )
 }
