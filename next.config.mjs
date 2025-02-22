@@ -13,23 +13,31 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
+      }
+    ]
+  },
   redirects: async () => {
     return [
       {
         source: '/',
-        destination: '/front-pages/landing-page',
+        destination: '/dashboards/main',
         permanent: true,
         locale: false
       },
       {
         source: '/:lang(en|fr|ar)',
-        destination: 'fr',
+        destination: '/:lang/dashboards/main',
         permanent: true,
         locale: false
       },
       {
         source: '/((?!(?:en|fr|ar|front-pages|favicon.ico)\\b)):path',
-        destination: '/front-pages/landing-page',
+        destination: '/en/:path',
         permanent: true,
         locale: false
       }

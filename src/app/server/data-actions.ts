@@ -1,0 +1,217 @@
+'use server'
+
+import { RecordId, StringRecordId } from 'surrealdb'
+
+import { getDb } from '@/libs/surreal'
+
+// Initialize SurrealDB connection
+const db = await getDb()
+
+// Connection configuration
+
+// Generic CRUD Operations
+export async function create<T>(table: string, data: Partial<T>): Promise<T> {
+  try {
+    const created = await db.create(table, data)
+
+    return created as T
+  } catch (error) {
+    console.error(`Error creating record in ${table}:`, error)
+    throw error
+  }
+}
+
+export async function getById<T>(table: string, id: string): Promise<T | null> {
+  try {
+    const record = await db.select(`${table}:${id}`)
+
+    return record as T
+  } catch (error) {
+    console.error(`Error fetching record from ${table}:`, error)
+    throw error
+  }
+}
+
+export async function getAll<T>(table: string): Promise<T[]> {
+  try {
+    const records = await db.select(table)
+
+    return records as T[]
+  } catch (error) {
+    console.error(`Error fetching all records from ${table}:`, error)
+    throw error
+  }
+}
+
+export async function update<T>(table: string, id: string, data: Partial<T>): Promise<T> {
+  try {
+    const updated = await db.merge(`${table}:${id}`, data)
+
+    return updated as T
+  } catch (error) {
+    console.error(`Error updating record in ${table}:`, error)
+    throw error
+  }
+}
+
+export async function remove(table: string, id: string): Promise<boolean> {
+  try {
+    const deletedRecord = await db.delete(new RecordId(table, id))
+
+    console.log(deletedRecord)
+
+    return true
+  } catch (error) {
+    console.error(`Error deleting record from ${table}:`, error)
+    throw error
+  }
+}
+
+// Utility Functions
+export async function query<T>(sql: string, vars?: Record<string, any>): Promise<T> {
+  try {
+    const result = await db.query(sql, vars)
+
+    return result as T
+  } catch (error) {
+    console.error('Error executing query:', error)
+    throw error
+  }
+}
+
+export async function findByField(table: string, field: string, value: any): Promise<any> {
+  try {
+    const result = await db.query(`SELECT * FROM ${table} WHERE ${field} = $value`, { value })
+    const tracks = JSON.parse(JSON.stringify(result[0]))
+
+    return tracks
+  } catch (error) {
+    console.error(`Error finding records in ${table} by ${field}:`, error)
+    throw error
+  }
+}
+
+export async function countRecords(table: string): Promise<number> {
+  try {
+    const result = await db.query(`SELECT count() FROM ${table}`)
+
+    return (result[0] as any).count
+  } catch (error) {
+    console.error(`Error counting records in ${table}:`, error)
+    throw error
+  }
+}
+
+export async function paginate<T>(
+  table: string,
+  page: number = 1,
+  limit: number = 10
+): Promise<{ data: T[]; total: number; pages: number }> {
+  try {
+    const start = (page - 1) * limit
+
+    const [data, countResult] = await Promise.all([
+      db.query(`SELECT * FROM ${table} LIMIT $limit START $start`, {
+        limit,
+        start
+      }),
+      db.query(`SELECT count() FROM ${table}`)
+    ])
+
+    const total = (countResult[0] as any).count
+    const pages = Math.ceil(total / limit)
+
+    return {
+      data: data as T[],
+      total,
+      pages
+    }
+  } catch (error) {
+    console.error(`Error paginating records in ${table}:`, error)
+    throw error
+  }
+}
+
+export async function getLatestTracks(limit: number = 10): Promise<any> {
+  try {
+    const result = await db.query(
+      `
+      SELECT * FROM media
+      ORDER BY uploadedAt DESC
+      LIMIT $limit
+    `,
+      { limit }
+    )
+
+    return JSON.parse(JSON.stringify(result[0]))
+  } catch (error) {
+    console.error('Error fetching latest tracks:', error)
+    throw error
+  }
+}
+
+interface MediaRecordData {
+  title: string
+  artist: string
+  album: string
+  filetype: string
+  filesize: string
+  duration: string
+  label: string
+  releaseDate: string
+  coverImage?: string
+  owner: string
+  dateCreated: string
+  ipfsUrl: string
+}
+
+export async function createMediaRecord(data: MediaRecordData): Promise<string> {
+  const db = await getDb()
+
+  try {
+    // Create the record in the database
+    const [record] = await db.create('media', {
+      ...data,
+
+      // Add any additional fields or transformations needed
+      status: 'active',
+      createdAt: new Date().toISOString()
+    })
+
+    if (!record) {
+      throw new Error('Failed to create record')
+    }
+
+    //change the id to a string
+    const recordId = String(record.id).split(':')[1]
+
+    // Return the ID of the created record
+    return recordId
+  } catch (error) {
+    console.error('Error creating media record:', error)
+    throw new Error('Failed to create media record')
+  }
+}
+
+export async function createMedia(mediaMetadata: any) {
+  const db = await getDb()
+  const created = await db.create('media', mediaMetadata)
+
+  await db.close()
+
+  return created
+}
+
+export async function getRecordById(recordId: string) {
+  const db = await getDb()
+  const record = await db.select(new StringRecordId(`media:${recordId}`))
+  await db.close()
+  return record
+}
+
+export async function updateRecord(recordId: string, data: any) {
+  const db = await getDb()
+  const updated = await db.update(new StringRecordId(`media:${recordId}`), data)
+  await db.close()
+  return updated
+}

@@ -1,0 +1,61 @@
+services:
+  surrealdb:
+    platform: 'linux/amd64'
+    image: 'surrealdb/surrealdb:latest'
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
+    ports:
+      - '8000:8000'
+    networks:
+      - backend
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - frontend
+      - backend
+  redis:
+    image: redis:7.2.4
+    ports:
+      - '6379:6379'
+    networks:
+      - frontend
+      - backend
+  thirdwebengine:
+    image: thirdweb/engine:latest
+    environment:
+      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
+      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
+      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
+      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@host.docker.internal:5432/postgres?sslmode=disable
+      - REDIS_URL=redis://host.docker.internal:6379/0
+      - ENABLE_HTTPS=true
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - '3005:3005'
+    networks:
+      - frontend
+      - backend
+  next-app:
+    container_name: next-app
+    build:
+      context: ./next-app
+      dockerfile: prod.Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+      - backend
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  frontend: {}
+  backend: {}

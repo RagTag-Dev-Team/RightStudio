@@ -19,6 +19,8 @@ import { createAuth } from 'thirdweb/auth'
 
 import { privateKeyAccount } from 'thirdweb/wallets'
 
+import { loginUser } from '@/app/server/user-actions'
+
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
@@ -92,56 +94,33 @@ export const authOptions: NextAuthOptions = {
        */
       credentials: {},
       async authorize(credentials) {
-        /*
-         * You need to provide your own logic here that takes the credentials submitted and returns either
-         * an object representing a user or value that is false/null if the credentials are invalid.
-         * For e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-         * You can also use the `req` object to obtain additional parameters (i.e., the request IP address)
-         */
         const { email, password, wallet_address } = credentials as {
           email: string
           password: string
           wallet_address: string
         }
 
-        // console.log('Credentials: ' + JSON.stringify(credentials, null, 2))
-        console.log('DB String: ' + process.env.NEXT_PUBLIC_SURREALDB_CONNECTION)
+        const db = await getDb()
 
         try {
-          // ** Login API Call to match the user credentials and receive user data in response along with his role
-          const res = await fetch(`${process.env.API_URL}/login`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password, wallet_address })
-          })
+          const userRecord = await loginUser(email, password, wallet_address)
 
-          const data = await res.json()
+          console.log('User Record: ' + JSON.stringify(userRecord, null, 2))
 
-          console.log('Data: ' + JSON.stringify(data, null, 2))
-
-          if (res.status === 200) {
-            /*
-             * Please unset all the sensitive information of the user either from API response or before returning
-             * user data below. Below return statement will set the user object in the token and the same is set in
-             * the session which will be accessible all over the app.
-             */
-
-            if (data.userRecord.newUser) {
-              data.userRecord.newUser = false
+          if (userRecord) {
+            if (userRecord.newUser) {
+              ;(userRecord as any).newUser = false
               console.log('Creating User')
-              const db = await getDb()
 
               if (!db) {
                 console.error('Database not initialized')
 
-                return
+                return null
               }
 
               try {
                 // @ts-ignore
-                const user = await db.create<User>('User', data.userRecord)
+                const user = await db.create<User>('User', userRecord)
 
                 console.log('User created:', jsonify(user))
               } catch (err: unknown) {
@@ -151,7 +130,7 @@ export const authOptions: NextAuthOptions = {
               }
             }
 
-            return data.userRecord
+            return userRecord
           }
 
           return null
@@ -208,6 +187,7 @@ export const authOptions: NextAuthOptions = {
          * in token which then will be available in the `session()` callback
          */
 
+        console.log('User: ' + JSON.stringify(user, null, 2))
         token.name = user.name
         token.email = user.email
 
@@ -228,6 +208,8 @@ export const authOptions: NextAuthOptions = {
         //@ts-ignore
         session.user.wallet_address = token.wallet_address
       }
+
+      //    console.log('Session: ' + JSON.stringify(session, null, 2))
 
       return session
     }

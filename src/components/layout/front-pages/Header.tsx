@@ -12,20 +12,14 @@ import IconButton from '@mui/material/IconButton'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import type { Theme } from '@mui/material/styles'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 
 // Third-party Imports
 import classnames from 'classnames'
 
-import { signIn, getSession } from 'next-auth/react'
-
-import { darkTheme, ConnectButton } from 'thirdweb/react'
-
-import { client } from '@/libs/thirdwebclient'
-
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
-
 // Type Imports
-import type { SystemMode } from '@core/types'
+import type { Mode, SystemMode } from '@core/types'
 import type { Locale } from '@/configs/i18n'
 
 // Component Imports
@@ -50,6 +44,7 @@ const Header = ({ mode }: { mode: Mode }) => {
   const searchParams = useSearchParams()
   const { lang: locale } = useParams()
   const { settings } = useSettings()
+  const [isLoading, setIsLoading] = useState(false)
 
   // Hooks
   const isBelowLgScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
@@ -60,94 +55,73 @@ const Header = ({ mode }: { mode: Mode }) => {
     disableHysteresis: true
   })
 
-  const THIRDWEB_CLIENT = client
+  const handleLoginClick = () => {
+    setIsLoading(true)
+    const redirectURL = searchParams.get('redirectTo') ?? '/en/dashboards/main'
+
+    router.push(`/en/login?redirectTo=${encodeURIComponent(redirectURL)}`)
+  }
 
   return (
-    <header className={classnames(frontLayoutClasses.header, styles.header)}>
-      <div className={classnames(frontLayoutClasses.navbar, styles.navbar, { [styles.headerScrolled]: trigger })}>
-        <div className={classnames(frontLayoutClasses.navbarContent, styles.navbarContent)}>
-          {isBelowLgScreen ? (
+    <>
+      {isLoading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999
+          }}
+        >
+          <CircularProgress sx={{ color: 'white' }} />
+        </div>
+      )}
+      <header className={classnames(frontLayoutClasses.header, styles.header)}>
+        <div className={classnames(frontLayoutClasses.navbar, styles.navbar, { [styles.headerScrolled]: trigger })}>
+          <div className={classnames(frontLayoutClasses.navbarContent, styles.navbarContent)}>
+            {isBelowLgScreen ? (
+              <div className='flex items-center gap-2 sm:gap-4'>
+                <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
+                  <i className='tabler-menu-2 text-textPrimary' />
+                </IconButton>
+                <Link href='/home'>
+                  <Logo />
+                </Link>
+                <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+              </div>
+            ) : (
+              <div className='flex items-center gap-10'>
+                <Link href='/home'>
+                  <Logo />
+                </Link>
+                {/* <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} /> */}
+              </div>
+            )}
             <div className='flex items-center gap-2 sm:gap-4'>
-              <IconButton onClick={() => setIsDrawerOpen(true)} className='-mis-2'>
-                <i className='tabler-menu-2 text-textPrimary' />
-              </IconButton>
-              <Link href='/front-pages/landing-page'>
-                <Logo />
-              </Link>
-              <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-            </div>
-          ) : (
-            <div className='flex items-center gap-10'>
-              <Link href='/front-pages/landing-page'>
-                <Logo />
-              </Link>
-              {/* <FrontMenu mode={mode} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} /> */}
-            </div>
-          )}
-          <div className='flex items-center gap-2 sm:gap-4'>
-            <ConnectButton
-              client={THIRDWEB_CLIENT}
-              theme={darkTheme({
-                colors: {
-                  primaryButtonBg: '#247cdb',
-                  primaryButtonText: '#ffffff'
-                }
-              })}
-              connectModal={{
-                title: 'Connect to RightStudio',
-                titleIcon: '/images/pages/rightstudio-icon-color.png',
-                size: 'wide',
-                showThirdwebBranding: false
-              }}
-              connectButton={{
-                label: 'Get Started'
-              }}
-              auth={{
-                isLoggedIn: async address => {
-                  const session = await getSession()
-
-                  console.log('session', session)
-
-                  if (!session) {
-                    return false
-                  } else {
-                    return true
+              <Button
+                variant='contained'
+                onClick={handleLoginClick}
+                sx={{
+                  backgroundColor: '#247cdb',
+                  color: '#ffffff',
+                  '&:hover': {
+                    backgroundColor: '#1b5ca3'
                   }
-                },
-                doLogin: async params => {
-                  console.log('logging in!')
-
-                  const res = await signIn('credentials', {
-                    wallet_address: params.payload.address,
-                    redirect: false
-                  })
-
-                  if (res && res.ok && res.error === null) {
-                    // Vars
-                    const redirectURL = searchParams.get('redirectTo') ?? '/en/dashboards/fileLibrary'
-
-                    console.log('redirectURL', redirectURL)
-                    router.replace('/en/dashboards/fileLibrary')
-                  } else {
-                    if (res?.error) {
-                      const error = JSON.parse(res.error)
-
-                      setErrorState(error)
-                    }
-                  }
-                },
-                getLoginPayload: async (address: string) => {
-                  return await generatePayload(address)
-                },
-                doLogout: async () => {
-                  await logout()
-                }
-              }}
-            />
+                }}
+              >
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 }
 

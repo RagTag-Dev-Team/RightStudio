@@ -1,7 +1,13 @@
+'use client'
+
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
+// ThirdWeb Imports
+
 // Component Imports
+import TokenBalances from '@views/dashboards/main/TokenBalances'
+
 import DistributedBarChartOrder from '@views/dashboards/crm/DistributedBarChartOrder'
 import LineAreaYearlySalesChart from '@views/dashboards/crm/LineAreaYearlySalesChart'
 import CardStatVertical from '@/components/card-statistics/Vertical'
@@ -11,18 +17,27 @@ import RadarSalesChart from '@views/dashboards/crm/RadarSalesChart'
 import SalesByCountries from '@views/dashboards/crm/SalesByCountries'
 import ProjectStatus from '@views/dashboards/crm/ProjectStatus'
 import ActiveProjects from '@views/dashboards/crm/ActiveProjects'
-import LastTransaction from '@views/dashboards/crm/LastTransaction'
 import ActivityTimeline from '@views/dashboards/crm/ActivityTimeline'
 
 // Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
 
 const DashboardCRM = () => {
   // Vars
-  const serverMode = getServerMode()
+
+  // Get user account information
+
+  // Get RAGZ token contract and balance
+
+  // You can access account properties like:
+  // account?.address - wallet address
+  // account?.chainId - connected chain ID
+  // account?.connector - wallet connector info
 
   return (
     <Grid container spacing={6}>
+      <Grid item xs={12} md={4}>
+        <TokenBalances />
+      </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         <DistributedBarChartOrder />
       </Grid>
@@ -57,6 +72,7 @@ const DashboardCRM = () => {
           chipVariant='tonal'
         />
       </Grid>
+
       <Grid item xs={12} md={8} lg={4}>
         <BarChartRevenueGrowth />
       </Grid>
@@ -75,9 +91,7 @@ const DashboardCRM = () => {
       <Grid item xs={12} md={6} lg={4}>
         <ActiveProjects />
       </Grid>
-      <Grid item xs={12} md={6}>
-        <LastTransaction serverMode={serverMode} />
-      </Grid>
+      <Grid item xs={12} md={6}></Grid>
       <Grid item xs={12} md={6}>
         <ActivityTimeline />
       </Grid>

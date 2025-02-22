@@ -1,11 +1,11 @@
 'use client'
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -22,22 +22,28 @@ import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
-import { signOut, useSession } from 'next-auth/react'
+import { signOut, useSession, signIn } from 'next-auth/react'
 
-import { ConnectButton } from 'thirdweb/react'
-
-import { inAppWallet, createWallet } from 'thirdweb/wallets'
+import { darkTheme, ConnectButton } from 'thirdweb/react'
 
 import { client } from '@/libs/thirdwebclient'
+
+import { generatePayload, logout } from '@/libs/auth'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
 
-// Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 
-// Util Imports
 import { getLocalizedUrl } from '@/utils/i18n'
+
+import { generateUsername } from '@/utils/userUtils'
+
+type ErrorType = {
+  message: string[]
+}
+
+const THIRDWEB_CLIENT = client
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -49,31 +55,45 @@ const BadgeContentSpan = styled('span')({
   boxShadow: '0 0 0 2px var(--mui-palette-background-paper)'
 })
 
-const wallets = [
-  inAppWallet({
-    auth: {
-      options: ['google', 'discord', 'email', 'phone', 'github', 'apple', 'facebook', 'coinbase']
-    }
-  }),
-  createWallet('io.metamask'),
-  createWallet('com.coinbase.wallet'),
-  createWallet('me.rainbow'),
-  createWallet('io.rabby'),
-  createWallet('io.zerion.wallet')
-]
-
 const UserDropdown = () => {
   // States
   const [open, setOpen] = useState(false)
+  const [displayName, setDisplayName] = useState<string>('')
+  const [walletAddress, setWalletAddress] = useState<string>('')
 
   // Refs
   const anchorRef = useRef<HTMLDivElement>(null)
 
   // Hooks
   const router = useRouter()
+
+  const searchParams = useSearchParams()
+
   const { data: session } = useSession()
   const { settings } = useSettings()
   const { lang: locale } = useParams()
+
+  const [errorState, setErrorState] = useState<ErrorType | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Add useEffect to handle username and wallet address
+  useEffect(() => {
+    if (!session?.user?.name) {
+      setDisplayName(generateUsername())
+    } else {
+      setDisplayName(session.user.name)
+    }
+
+    // Set wallet address from session if available
+    if (session?.user && 'wallet_address' in session.user) {
+      const address = (session.user as any).wallet_address
+
+      // Format wallet address to show first 6 and last 4 characters
+      if (address) {
+        setWalletAddress(`${address.slice(0, 6)}...${address.slice(-4)}`)
+      }
+    }
+  }, [session])
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -93,6 +113,9 @@ const UserDropdown = () => {
 
   const handleUserLogout = async () => {
     try {
+      //signout wallet
+      await logout()
+
       // Sign out from the app
       await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
     } catch (error) {
@@ -105,9 +128,6 @@ const UserDropdown = () => {
 
   return (
     <>
-      <ConnectButton wallets={wallets} client={client} />
-
-      {/*
       <Badge
         ref={anchorRef}
         overlap='circular'
@@ -118,7 +138,7 @@ const UserDropdown = () => {
         <Avatar
           ref={anchorRef}
           alt={session?.user?.name || ''}
-          src={session?.user?.image || ''}
+          src={session?.user?.image || '/images/avatars/1.svg'}
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-[38px] is-[38px]'
         />
@@ -141,13 +161,80 @@ const UserDropdown = () => {
             <Paper className={settings.skin === 'bordered' ? 'border shadow-none' : 'shadow-lg'}>
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
-                  <div className='flex items-center plb-2 pli-6 gap-2' tabIndex={-1}>
-                    <Avatar alt={session?.user?.name || ''} src={session?.user?.image || ''} />
-                    <div className='flex items-start flex-col'>
-                      <Typography className='font-medium' color='text.primary'>
-                        {session?.user?.name || ''}
-                      </Typography>
-                      <Typography variant='caption'>{session?.user?.email || ''}</Typography>
+                  <div className='flex items-center justify-between plb-2 pli-6 gap-4' tabIndex={-1}>
+                    <Avatar
+                      alt={session?.user?.name || ''}
+                      src={session?.user?.image || '/images/avatars/1.svg'}
+                      className='bs-[40px] is-[40px]'
+                    />
+                    <div className='flex flex-col flex-grow'>
+                      {walletAddress && (
+                        <Typography className='font-medium mb-1' color='text.primary'>
+                          {displayName}
+                        </Typography>
+                      )}
+                      <ConnectButton
+                        client={THIRDWEB_CLIENT}
+                        theme={darkTheme({
+                          colors: {
+                            primaryButtonBg: '#247cdb',
+                            primaryButtonText: '#ffffff'
+                          }
+                        })}
+                        connectModal={{
+                          title: 'Connect to RightStudio',
+                          titleIcon: '/images/pages/rightstudio-icon-color.png',
+                          size: 'wide',
+                          showThirdwebBranding: false
+                        }}
+                        connectButton={{
+                          label: 'Connect Wallet'
+                        }}
+                        auth={{
+                          isLoggedIn: async () => {
+                            // Check if there's a valid NextAuth session
+                            const isAuthenticated = !!session?.user
+
+                            return isAuthenticated
+                          },
+                          doLogin: async params => {
+                            if (!isLoading) {
+                              setIsLoading(true)
+                            }
+
+                            try {
+                              const res = await signIn('credentials', {
+                                wallet_address: params.payload.address,
+                                redirect: false
+                              })
+
+                              if (res && res.ok && res.error === null) {
+                                const redirectURL = searchParams.get('redirectTo') ?? '/'
+
+                                router.replace(getLocalizedUrl(redirectURL, locale as Locale))
+                              } else {
+                                if (res?.error) {
+                                  const error = JSON.parse(res.error)
+
+                                  console.log('error', errorState)
+                                  setErrorState(error)
+                                }
+
+                                setIsLoading(false)
+                              }
+                            } catch (error) {
+                              setIsLoading(false)
+                              setErrorState({ message: ['An unexpected error occurred'] })
+                            }
+                          },
+                          getLoginPayload: async ({ address }) => generatePayload({ address }),
+                          doLogout: async () => {
+                            console.log('logging out!')
+                            await logout()
+                            await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
+                          }
+                        }}
+                      />
                     </div>
                   </div>
                   <Divider className='mlb-1' />
@@ -186,7 +273,6 @@ const UserDropdown = () => {
           </Fade>
         )}
       </Popper>
-      */}
     </>
   )
 }

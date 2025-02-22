@@ -1,0 +1,12 @@
+<!-- Teal theme -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 190 184" enable-background="new 0 0 190 184" xml:space="preserve">
+<g>
+	<path fill="#85F3D4" d="M95,0.5c52.5,0,95,42.5,95,95c0,52.5-42.5,95-95,95C42.5,190.5,0,148,0,95.5C0,43,42.5,0.5,95,0.5z"/>
+	<!-- Rest of paths with teal colors -->
+	<!-- Main highlight: #35FAD4 -->
+	<!-- Dark accents: #3E4742 -->
+	<!-- Bright accents: #33FDD4 -->
+	<!-- ... same structure with teal colors ... -->
+</g>
+</svg>

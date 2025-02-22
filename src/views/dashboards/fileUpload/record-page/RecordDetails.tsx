@@ -15,25 +15,36 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme } from 'thirdweb/storage'
+import { resolveScheme, download } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 
-import { StringRecordId } from 'surrealdb'
+import { RecordId, StringRecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
+import type { ICertificateArg, ICertificateUpdateArg } from '@mentaport/certificates'
+import { ContentFormat, AITrainingMiningInfo, ICertificate } from '@mentaport/certificates'
+
 import { client } from '@/libs/thirdwebclient'
-
-// Component Imports
-
 import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
+
+import {
+  CreateCertificate,
+  Verify,
+  GetCertificates,
+  GetContracts,
+  UpdateCertificate
+} from '@/libs/mentaport/actions/mentaport/index'
 
 // Database Import
 import { getDb } from '@/libs/surreal'
 
 // Add import for useSession
+
+// Add this constant at the top with other constants
+const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
 
 type RecordDataType = {
   id?: string
@@ -50,6 +61,40 @@ type RecordDataType = {
   uploadedAt: string
   coverImage?: string
   owner?: string
+  transactionHash?: string
+}
+
+const newCert: ICertificateArg = {
+  contractId: process.env.MENTAPORT_CONTRACT_ID!, // "your-contract-id",
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png, // will be updated when file is selected
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
+}
+
+const updateCert: ICertificateUpdateArg = {
+  contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || '',
+  certId: '',
+  aiTrainingMiningInfo: AITrainingMiningInfo.NotAllowed,
+  contentFormat: ContentFormat.png,
+  name: 'Certificate Example',
+  username: 'ExampleUsername',
+  description: 'This certifcate was created to test the sdk example',
+  usingAI: false,
+  aiSoftware: '',
+  aiModel: '',
+  album: '',
+  albumYear: '',
+  city: '',
+  country: ''
 }
 
 // Add this type definition at the top of the file, after the imports
@@ -70,6 +115,19 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   const activeAccount = useActiveAccount()
 
+  const [successMessage, setSuccessMessage] = useState<string>('')
+
+  // Add new state for watermark processing
+  const [isWatermarking, setIsWatermarking] = useState(false)
+
+  const [certId, setCertId] = useState<string>('')
+
+  const [contractId, setContractId] = useState<string>(process.env.NEXT_PUBLIC_CONTRACT_ID!)
+
+  const [onlyActiveContracts, setOnlyActiveContracts] = useState<boolean>(true)
+
+  const [newCertificateArgs, setNewCertificateArgs] = useState<ICertificateArg>({ ...newCert })
+
   useEffect(() => {
     const fetchData = async () => {
       const db = await getDb()
@@ -77,6 +135,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Fetch record data
       console.log('Fetching record:', recordId)
       const record = await db.select<RecordDataType>(new StringRecordId(`media:${recordId}`))
+
+      console.log('record', record)
 
       if (record) {
         const recordWithDate: RecordDataType = {
@@ -89,9 +149,12 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         // If there's a coverImage URI, fetch it from thirdweb
         if (record.coverImage) {
           try {
-            const url = await resolveScheme({ client, uri: record.coverImage })
+            const url = resolveScheme({
+              client,
+              uri: record.coverImage
+            })
 
-            console.log(url)
+            //  console.log(url)
             setImageUrl(url)
           } catch (error) {
             console.error('Error downloading cover image:', error)
@@ -141,7 +204,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     try {
       console.log('Minting record:', recordId)
 
-      //   console.log('activeAccount', activeAccount)
+      //  console.log('activeAccount', activeAccount)
+      // console.log('imageUrl', imageUrl)
 
       // Create metadata object from record fields
       const metadata = {
@@ -161,58 +225,130 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       const walletAddress = activeAccount
 
-      // console.log(metadata)
-      {
-        const mintResponse = await fetch('/api/mint', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ metadata, walletAddress })
-        })
+      const mintResponse = await fetch('/api/mint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ metadata, walletAddress })
+      })
 
-        if (!mintResponse.ok) {
-          console.log(mintResponse)
-          throw new Error('Minting failed')
-        }
-
-        const mintData = await mintResponse.json()
-
-        console.log(JSON.stringify(mintData))
+      if (!mintResponse.ok) {
+        throw new Error('Minting failed')
       }
 
-      // After successful minting, show confetti
-      setShowConfetti(true)
-      setTimeout(() => setShowConfetti(false), 5000) // Hide confetti after 5 seconds
+      const { transactionHash } = await mintResponse.json()
+
+      console.log('hash', transactionHash)
 
       // Update record status in database
       const db = await getDb()
 
-      await db.update(`media:${recordId}`, {
+      await db.update(new RecordId('media', `${recordId}`), {
+        ...recordData,
         status: 'minted',
-        owner: activeAccount.address // Add the owner field
+        owner: activeAccount.address,
+        transactionHash: transactionHash
       })
 
-      // Update local state
+      //    console.log('updatedRecord', updatedRecord)
+
+      // Update local state with the hash
       setRecordData(prev =>
         prev
           ? {
               ...prev,
               status: 'minted',
-              owner: activeAccount.address // Add the owner field here too
+              owner: activeAccount.address,
+              transactionHash: transactionHash,
+              dateMinted: new Date()
             }
           : null
       )
       setIsEditing(false)
 
-      // Add after successful mint
+      // Reward user with tagz
+      const rewardResponse = await fetch('/api/reward', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ walletAddress: activeAccount.address, amount: '100.0' })
+      })
+
+      const rewardData = await rewardResponse.json()
+
+      console.log('rewardResponse', rewardData)
+
+      // Show confetti after both minting and reward are complete
+      setShowConfetti(true)
+      setTimeout(() => setShowConfetti(false), 5000)
+
       setShowSuccess(true)
+      setSuccessMessage(
+        `Record successfully minted! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for minting this record.`
+      )
     } catch (error) {
       console.error('Error during minting process:', error)
-
-      // throw error
     } finally {
       setIsMinting(false)
+    }
+  }
+
+  // Add watermark handler function
+  const handleWatermark = async () => {
+    if (!recordData) return
+
+    setIsWatermarking(true)
+
+    try {
+      // Download the file from IPFS
+      const fileResponse = await download({
+        client,
+        uri: recordData.ipfsUrl
+      })
+
+      if (!fileResponse.ok) {
+        throw new Error('Failed to download file from IPFS')
+      }
+
+      // Get the file blob
+      const fileBlob = await fileResponse.blob()
+
+      // Create payload with record data and file blob
+      const payload = {
+        recordId,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        fileType: recordData.filetype,
+        fileBlob: await fileBlob.arrayBuffer() // Convert blob to array buffer for JSON
+      }
+
+      // Send to watermark API
+      const response = await fetch('/api/watermark', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const { status, data: resData, message } = response
+
+      if (status && resData) {
+        console.log('resData', resData)
+        console.log('message', message)
+      }
+
+      setSuccessMessage('Watermark successfully added to the media file!')
+      setShowSuccess(true)
+    } catch (error) {
+      console.error('Error during watermarking:', error)
+      setSuccessMessage('Failed to add watermark to the file')
+      setShowSuccess(true)
+    } finally {
+      setIsWatermarking(false)
     }
   }
 
@@ -261,7 +397,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             }}
           >
             <CircularProgress size={60} />
-            <Box sx={{ color: 'white', mt: 2 }}>Minting Record...</Box>
+            <Box sx={{ color: 'white', mt: 2 }}>
+              {recordData?.transactionHash ? 'Awarding TAGZ...' : 'Minting Record...'}
+            </Box>
           </Box>
         )}
         <CardHeader
@@ -412,16 +550,46 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                 <Grid item xs={12}>
                   <CustomTextField fullWidth label='IPFS URL' value={recordData.ipfsUrl} disabled />
                 </Grid>
+                <Grid item xs={12}>
+                  {recordData.transactionHash && (
+                    <CustomTextField
+                      fullWidth
+                      label='Transaction Hash'
+                      value={recordData.transactionHash}
+                      disabled
+                      InputProps={{
+                        endAdornment: (
+                          <Button
+                            component='a'
+                            href={`${AMOY_EXPLORER}${recordData.transactionHash}`}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            size='small'
+                          >
+                            View on Explorer
+                          </Button>
+                        )
+                      }}
+                    />
+                  )}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions>
+        <CardActions sx={{ justifyContent: 'space-between' }}>
           {recordData.status === 'minted' ? (
-            <Box sx={{ p: 2 }}>
-              <Chip label='MINTED' color='success' />
-            </Box>
+            <>
+              <Box sx={{ p: 2 }}>
+                <Chip label='MINTED' color='success' />
+              </Box>
+              <Box sx={{ p: 2 }}>
+                <Button variant='contained' onClick={handleWatermark} disabled={isWatermarking}>
+                  {isWatermarking ? 'Processing...' : 'Add Watermark'}
+                </Button>
+              </Box>
+            </>
           ) : (
             <>
               {isEditing ? (
@@ -447,6 +615,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
           )}
         </CardActions>
       </Card>
+
       <Snackbar
         open={showSuccess}
         autoHideDuration={6000}
@@ -454,7 +623,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert severity='success' onClose={() => setShowSuccess(false)}>
-          Record successfully minted!
+          {successMessage}
         </Alert>
       </Snackbar>
     </>
