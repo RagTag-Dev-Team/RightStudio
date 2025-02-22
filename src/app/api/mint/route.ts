@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
     const data = await res.json()
 
     // Add polling mechanism to check transaction status
-    const maxAttempts = 10
+    const maxAttempts = 1000
     let attempts = 0
     let transactionStatus
 
