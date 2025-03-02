@@ -163,6 +163,10 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
       setIsUploading(true)
       setUploadProgress(10) // Show initial progress
 
+      // Check if the file is already uploaded to IPFS
+
+      console.log(client)
+
       // Single file upload
       const uploadUrl = await upload({
         client,
