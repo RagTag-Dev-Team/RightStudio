@@ -53,7 +53,6 @@ services:
       - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
       - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
       - ENABLE_HTTPS=true
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
     depends_on:
       - postgres
       - redis

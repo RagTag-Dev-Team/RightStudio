@@ -47,7 +47,7 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Database Import
 import { getDb } from '@/libs/surreal'
-import { getRecordById } from '@/app/server/data-actions'
+import { getRecordById, mintRecord, getMintingStatus, awardTagz, updateRecord } from '@/app/server/data-actions'
 
 // Add import for useSession
 
@@ -188,6 +188,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
   const [watermarkProgress, setWatermarkProgress] = useState(0)
   const [watermarkStep, setWatermarkStep] = useState('')
 
+  // Add this state near other state declarations
+  const [mintingStatus, setMintingStatus] = useState('')
+
   // Add this function near other handlers
   const updateWatermarkProgress = ({ statusMessage, progress }: CertificateStatusStep) => {
     setWatermarkStep(statusMessage)
@@ -220,6 +223,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log('recordId', recordId)
+
       try {
         const record = await getRecordById(recordId)
 
@@ -228,7 +233,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         if (record) {
           const recordWithDate: RecordDataType = {
             ...record,
-            status: record.status || 'unminted',
             releaseDate: record.releaseDate ? new Date(record.releaseDate) : null
           }
 
@@ -291,10 +295,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     }
 
     setIsMinting(true)
+    setMintingStatus('Initiating minting process...')
 
     try {
-      console.log('Minting record:', recordId)
-
       // Create metadata object from record fields
       const metadata = {
         name: recordData?.title,
@@ -311,37 +314,59 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
       }
 
-      const mintResponse = await fetch('/api/mint', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ metadata, walletAddress })
-      })
+      // Start minting process
+      setMintingStatus('Submitting minting transaction...')
 
-      if (!mintResponse.ok) {
-        throw new Error('Minting failed')
+      //console.log(walletAddress)
+      const queueId = await mintRecord(metadata, walletAddress)
+
+      console.log('queueId', queueId)
+
+      // Poll for minting status
+      setMintingStatus('Waiting for transaction confirmation...')
+      let transactionHash, tokenId
+
+      while (true) {
+        const status = await getMintingStatus(queueId)
+
+        console.log('status', status)
+
+        if (status.errorMessage) {
+          console.log('status', status)
+          throw new Error(`Transaction failed: ${status}`)
+        }
+
+        if (status.status === 'mined') {
+          transactionHash = status.transactionHash
+          tokenId = status.tokenId
+          break
+        }
+
+        if (status.status === 'failed') {
+          console.log('status', status)
+          throw new Error('Transaction failed')
+        }
+
+        // Wait before next poll
+        await new Promise(resolve => setTimeout(resolve, 2000))
       }
 
-      console.log('mintResponse', mintResponse)
-
-      const { transactionHash } = await mintResponse.json()
-
-      console.log('hash', transactionHash)
-
-      // Update record status in database
-      const db = await getDb()
-
-      await db.update(new RecordId('media', `${recordId}`), {
+      // Update record in database
+      setMintingStatus('Updating record details...')
+      await updateRecord(recordId, {
         ...recordData,
         status: 'minted',
         owner: walletAddress,
-        transactionHash: transactionHash
+        transactionHash: transactionHash,
+        tokenId: tokenId,
+        dateMinted: new Date().toISOString()
       })
 
-      //    console.log('updatedRecord', updatedRecord)
+      // Award TAGZ
+      setMintingStatus('Awarding TAGZ...')
+      await awardTagz(walletAddress)
 
-      // Update local state with the hash
+      // Update local state
       setRecordData(prev =>
         prev
           ? {
@@ -349,37 +374,24 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
               status: 'minted',
               owner: walletAddress,
               transactionHash: transactionHash,
+              tokenId: tokenId,
               dateMinted: new Date()
             }
           : null
       )
-      setIsEditing(false)
 
-      // Reward user with tagz
-      const rewardResponse = await fetch('/api/reward', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ walletAddress, amount: '100.0' })
-      })
-
-      const rewardData = await rewardResponse.json()
-
-      console.log('rewardResponse', rewardData)
-
-      // Show confetti after both minting and reward are complete
+      // Show success message and confetti
       setShowConfetti(true)
       setTimeout(() => setShowConfetti(false), 5000)
-
+      setSuccessMessage(`Record successfully minted! You've earned 100 TAGZ for minting this record.`)
       setShowSuccess(true)
-      setSuccessMessage(
-        `Record successfully minted! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for minting this record.`
-      )
     } catch (error) {
       console.error('Error during minting process:', error)
+      setSuccessMessage('Failed to mint record')
+      setShowSuccess(true)
     } finally {
       setIsMinting(false)
+      setMintingStatus('')
     }
   }
 
@@ -700,9 +712,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             }}
           >
             <CircularProgress size={60} />
-            <Box sx={{ color: 'white', mt: 2 }}>
-              {recordData?.transactionHash ? 'Awarding TAGZ...' : 'Minting Record...'}
-            </Box>
+            <Box sx={{ color: 'white', mt: 2 }}>{mintingStatus}</Box>
           </Box>
         )}
         <CardHeader

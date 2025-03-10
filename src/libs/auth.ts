@@ -76,6 +76,7 @@ interface User {
   password: string
   image: string
   wallet_address: string
+  newUser: boolean
 }
 
 export const authOptions: NextAuthOptions = {
@@ -104,8 +105,6 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const userRecord = await loginUser(email, password, wallet_address)
-
-          console.log('User Record: ' + JSON.stringify(userRecord, null, 2))
 
           if (userRecord) {
             if (userRecord.newUser) {

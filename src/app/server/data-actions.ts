@@ -2,7 +2,10 @@
 
 import { RecordId, StringRecordId } from 'surrealdb'
 
+import { constrainPoint } from '@fullcalendar/core/internal'
+
 import { getDb } from '@/libs/surreal'
+import { mediaCollectionAddress } from '@/utils/getMediaContract'
 
 // Initialize SurrealDB connection
 const db = await getDb()
@@ -204,14 +207,212 @@ export async function createMedia(mediaMetadata: any) {
 
 export async function getRecordById(recordId: string) {
   const db = await getDb()
-  const record = await db.select(new StringRecordId(`media:${recordId}`))
+  const record = await db.select(new RecordId('media', recordId))
+
   await db.close()
-  return record
+
+  if (!record) return null
+
+  // Transform the record to a plain object
+  return {
+    id: recordId,
+    title: record.title || '',
+    artist: record.artist || '',
+    album: record.album || '',
+    filetype: record.filetype || '',
+    filesize: record.filesize || '',
+    duration: record.duration || '',
+    label: record.label || '',
+    releaseDate: record.releaseDate || null,
+    ipfsUrl: record.ipfsUrl || '',
+    status: record.status || 'unminted',
+    uploadedAt: record.uploadedAt || '',
+    coverImage: record.coverImage || '',
+    owner: record.owner || '',
+    transactionHash: record.transactionHash || '',
+    watermarkedUrl: record.watermarkedUrl || '',
+    certificateId: record.certificateId || '',
+    certificateProjectId: record.certificateProjectId || '',
+    tokenId: record.tokenId || '',
+    dateMinted: record.dateMinted || null
+  }
 }
 
 export async function updateRecord(recordId: string, data: any) {
   const db = await getDb()
-  const updated = await db.update(new StringRecordId(`media:${recordId}`), data)
+
+  // Remove any complex objects that might cause serialization issues
+  const cleanData = {
+    ...data,
+    releaseDate: data.releaseDate ? data.releaseDate.toISOString() : null
+  }
+
+  const [updated] = await db.update(`media:${recordId}`, cleanData)
+
   await db.close()
-  return updated
+
+  if (!updated) return null
+
+  // Transform the response to match the same structure as getRecordById
+  return {
+    id: recordId,
+    title: updated.title || '',
+    artist: updated.artist || '',
+    album: updated.album || '',
+    filetype: updated.filetype || '',
+    filesize: updated.filesize || '',
+    duration: updated.duration || '',
+    label: updated.label || '',
+    releaseDate: updated.releaseDate || null,
+    ipfsUrl: updated.ipfsUrl || '',
+    status: updated.status || 'unminted',
+    uploadedAt: updated.uploadedAt || '',
+    coverImage: updated.coverImage || '',
+    owner: updated.owner || '',
+    transactionHash: updated.transactionHash || '',
+    watermarkedUrl: updated.watermarkedUrl || '',
+    certificateId: updated.certificateId || '',
+    certificateProjectId: updated.certificateProjectId || '',
+    tokenId: updated.tokenId || '',
+    dateMinted: updated.dateMinted || null
+  }
+}
+
+export async function mintRecord(metadata: any, walletAddress: string) {
+  try {
+    const res = await fetch(
+      `${process.env.ENGINE_URL}/contract/${process.env.CHAIN_ID}/${mediaCollectionAddress}/erc721/mint-to?simulateTx=true`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
+          'Content-Type': 'application/json',
+          'x-backend-wallet-address': `${process.env.BACKEND_WALLET_ADDRESS}`
+        },
+        body: JSON.stringify({
+          receiver: walletAddress,
+          metadata: metadata
+        }),
+        agent: new (require('https').Agent)({
+          rejectUnauthorized: false
+        })
+      }
+    )
+
+    console.log('res', res)
+
+    const data = await res.json()
+
+    console.log('data', data)
+
+    return data.result.queueId
+  } catch (error) {
+    console.error('Error minting record:', error)
+    throw error
+  }
+}
+
+export async function getMintingStatus(queueId: string) {
+  try {
+    const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${queueId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+      }
+    })
+
+    const statusData = await resp.json()
+
+    console.log(statusData)
+
+    return statusData.result
+  } catch (error) {
+    console.error('Error getting minting status:', error)
+    throw error
+  }
+}
+
+export async function awardTagz(walletAddress: string, amount: string = '100.0') {
+  if (
+    !process.env.ENGINE_URL ||
+    !process.env.BACKEND_WALLET_ADDRESS ||
+    !process.env.CHAIN_ID ||
+    !process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY ||
+    !process.env.TAGZ_TOKEN_ADDRESS
+  ) {
+    throw new Error('Missing environment variables')
+  }
+
+  try {
+    const res = await fetch(
+      `${process.env.ENGINE_URL}/contract/${process.env.CHAIN_ID}/${process.env.TAGZ_TOKEN_ADDRESS}/erc20/mint-to?simulateTx=true`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
+          'Content-Type': 'application/json',
+          'x-backend-wallet-address': `${process.env.BACKEND_WALLET_ADDRESS}`
+        },
+        body: JSON.stringify({
+          toAddress: walletAddress,
+          amount: amount
+        }),
+        agent: new (require('https').Agent)({
+          rejectUnauthorized: false
+        })
+      }
+    )
+
+    const data = await res.json()
+
+    // Add polling mechanism to check transaction status
+    const maxAttempts = 10
+    let attempts = 0
+    let transactionStatus
+
+    while (attempts < maxAttempts) {
+      const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${data.result.queueId}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        }
+      })
+
+      const statusData = await resp.json()
+
+      // Check for error message in the response
+      if (statusData.result.errorMessage) {
+        throw new Error(`Transaction failed: ${statusData.result.errorMessage}`)
+      }
+
+      // Break if status is 'mined' or 'failed'
+      if (statusData.result.status === 'mined' || statusData.result.status === 'failed') {
+        transactionStatus = statusData.result.status
+
+        if (transactionStatus === 'mined') {
+          return {
+            message: 'Tagz minted successfully',
+            transactionHash: statusData.result.transactionHash,
+            amount
+          }
+        }
+
+        break
+      }
+
+      attempts++
+
+      // Wait 2 seconds before next attempt
+      await new Promise(resolve => setTimeout(resolve, 2000))
+    }
+
+    if (transactionStatus !== 'mined') {
+      throw new Error(`Minting failed with status: ${transactionStatus}`)
+    }
+
+    return { message: 'Tagz rewarded successfully' }
+  } catch (error) {
+    console.error('Error awarding TAGZ:', error)
+    throw error
+  }
 }

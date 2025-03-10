@@ -43,8 +43,9 @@ services:
   next-app:
     container_name: next-app
     build:
-      context: ./next-app
+      context: ./
       dockerfile: prod.Dockerfile
+    image: mannyj37/rs-backend:latest
     restart: always
     ports:
       - 3000:3000
