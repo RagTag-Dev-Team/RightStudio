@@ -329,6 +329,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       while (true) {
         const status = await getMintingStatus(queueId)
 
+        console.log('status', status)
+
         if (status.errorMessage) {
           console.log('status', status)
           throw new Error(`Transaction failed: ${status}`)
@@ -341,6 +343,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
 
         if (status.status === 'failed') {
+          console.log('status', status)
           throw new Error('Transaction failed')
         }
 
