@@ -328,7 +328,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         const status = await getMintingStatus(queueId)
 
         if (status.errorMessage) {
-          throw new Error(`Transaction failed: ${status.errorMessage}`)
+          console.log('status', status)
+          throw new Error(`Transaction failed: ${status}`)
         }
 
         if (status.status === 'mined') {
