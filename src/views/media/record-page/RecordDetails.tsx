@@ -317,7 +317,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Start minting process
       setMintingStatus('Submitting minting transaction...')
 
-      console.log(walletAddress)
+      //console.log(walletAddress)
       const queueId = await mintRecord(metadata, walletAddress)
 
       console.log('queueId', queueId)

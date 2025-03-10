@@ -299,9 +299,11 @@ export async function mintRecord(metadata: any, walletAddress: string) {
       }
     )
 
-    console.log(res)
+    console.log('res', res)
 
     const data = await res.json()
+
+    console.log('data', data)
 
     return data.result.queueId
   } catch (error) {
