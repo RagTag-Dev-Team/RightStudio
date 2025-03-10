@@ -320,6 +320,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       console.log(walletAddress)
       const queueId = await mintRecord(metadata, walletAddress)
 
+      console.log('queueId', queueId)
+
       // Poll for minting status
       setMintingStatus('Waiting for transaction confirmation...')
       let transactionHash, tokenId
