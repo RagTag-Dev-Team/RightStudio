@@ -42,8 +42,7 @@ import {
 } from '@tanstack/react-table'
 import { useActiveAccount } from 'thirdweb/react'
 import { rankItem } from '@tanstack/match-sorter-utils'
-import { resolveScheme } from 'thirdweb/storage'
-
+import { resolveScheme, unpin } from 'thirdweb/storage'
 import { useSession } from 'next-auth/react'
 
 import { client } from '@/libs/thirdwebclient'
@@ -165,7 +164,7 @@ const CoverArtWithPlayButton = ({
   )
 }
 
-import { findByField } from '@/app/server/data-actions'
+import { findByField, remove } from '@/app/server/data-actions'
 
 const MediaLibrary = () => {
   // States
@@ -174,6 +173,9 @@ const MediaLibrary = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [isRedirecting, setIsRedirecting] = useState(false)
+
+  // Add refresh trigger state
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
 
   // Add pagination state
   const [pageIndex, setPageIndex] = useState(0)
@@ -192,43 +194,132 @@ const MediaLibrary = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [recordToDelete, setRecordToDelete] = useState<string | null>(null)
 
-  // Add delete handler
-  const handleDelete = async (ids: string[]) => {
+  // Add fetchData function outside useEffect for reuse
+  const fetchData = async () => {
     try {
       setIsLoading(true)
 
-      // Extract records to delete
-      const recordsToDelete = data.filter(record => ids.includes(record.id))
+      // Use data-actions instead of API call
+      const tracks = await findByField('media', 'owner', walletAddress)
 
-      // Extract CIDs from original ipfsUrls
-      const deletePayload = recordsToDelete.map(record => ({
-        id: record.id,
-        cid: record.originalIpfsUrl.replace('ipfs://', '').split('/')[0] // Extract CID portion
-      }))
+      tracks.forEach((track: any) => {
+        // Store original ipfsUrl before resolving
+        const originalIpfsUrl = track.ipfsUrl
 
-      console.log(deletePayload)
+        // Resolve ipfsUrl for player
+        track.ipfsUrl = resolveScheme({
+          client,
+          uri: `${track.ipfsUrl}`
+        })
 
-      // Make API call to delete records
-      const response = await fetch('/api/media/delete', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ records: deletePayload })
+        // Store original URL in a new property
+        track.originalIpfsUrl = originalIpfsUrl
+
+        // Resolve coverArt if coverImage exists
+        if (track.coverImage) {
+          track.coverArt = resolveScheme({
+            client,
+            uri: `${track.coverImage}`
+          })
+        } else {
+          track.coverArt = '/images/icons/default-cover-art.jpg'
+        }
+
+        // Check for watermarkedUrl existence
+        if (track.watermarkedUrl) {
+          track.watermarkedUrl = 'certified'
+        }
       })
 
-      if (!response.ok) throw new Error('Failed to delete records')
+      const transformedTracks = tracks.map((track: any) => ({
+        id: track.id,
+        coverArt: track.coverArt,
+        title: track.title,
+        artist: track.artist,
+        album: track.album,
+        createdDate: track.uploadedAt,
+        status: track.status,
+        tokenId: track.tokenId,
+        ipfsUrl: track.ipfsUrl,
+        originalIpfsUrl: track.originalIpfsUrl,
+        owner: track.owner,
+        watermarkUrl: track.watermarkedUrl
+      }))
 
-      // Remove deleted records from the table
-      setData(prevData => prevData.filter(record => !ids.includes(record.id)))
-      setSelectedRows([])
-      table.resetRowSelection() // Reset table selection state
+      // Sort tracks by uploadedAt date in descending order
+      const sortedTracks = transformedTracks.sort(
+        (a: { createdDate: string | number | Date }, b: { createdDate: string | number | Date }) =>
+          new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
+      )
+
+      setData(sortedTracks)
     } catch (error) {
-      console.error('Error deleting records:', error)
+      console.error('Error fetching data:', error)
     } finally {
       setIsLoading(false)
-      setDeleteDialogOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!walletAddress) {
+      setIsLoading(true)
+
+      return
+    }
+
+    fetchData()
+  }, [account?.address, session, refreshTrigger]) // Add refreshTrigger to dependencies
+
+  // Add handleDelete function
+  const handleDelete = async (recordIds: string[]) => {
+    try {
+      setIsLoading(true)
+
+      // Delete each record
+      for (const recordId of recordIds) {
+        // Get the record data to get the IPFS URL
+        const record = data.find(r => r.id === recordId)
+
+        if (record) {
+          // Unpin from IPFS if there's an IPFS URL
+          if (record.originalIpfsUrl) {
+            try {
+              // Extract CID from IPFS URL (everything after ipfs:// but before the first slash)
+              const cid = record.originalIpfsUrl.split('ipfs://')[1]?.split('/')[0]
+
+              console.log('cid', cid)
+
+              if (cid) {
+                await unpin({
+                  client,
+                  cid
+                })
+              }
+            } catch (error) {
+              console.error(`Error unpinning record ${recordId} from IPFS:`, error)
+
+              // Continue with database deletion even if unpinning fails
+            }
+          }
+
+          // Delete from database using the remove action
+          await remove('media', recordId)
+        }
+      }
+
+      // Refresh the library
+      setRefreshTrigger(prev => prev + 1)
+
+      // Clear selection
+      setSelectedRows([])
       setRecordToDelete(null)
+      setDeleteDialogOpen(false)
+    } catch (error) {
+      console.error('Error deleting records:', error)
+
+      // You might want to show an error message to the user here
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -335,89 +426,6 @@ const MediaLibrary = () => {
       )
     })
   ]
-
-  useEffect(() => {
-    // Update the wallet address check in useEffect
-    const walletAddress = account?.address || session?.user?.wallet_address
-
-    console.log(account)
-    console.log(session?.user?.wallet_address)
-
-    if (!walletAddress) {
-      setIsLoading(true)
-
-      return
-    }
-
-    const fetchData = async () => {
-      try {
-        setIsLoading(true)
-
-        // Use data-actions instead of API call
-        const tracks = await findByField('media', 'owner', walletAddress)
-
-        tracks.forEach((track: any) => {
-          // Store original ipfsUrl before resolving
-          const originalIpfsUrl = track.ipfsUrl
-
-          // Resolve ipfsUrl for player
-          track.ipfsUrl = resolveScheme({
-            client,
-            uri: `${track.ipfsUrl}`
-          })
-
-          // Store original URL in a new property
-          track.originalIpfsUrl = originalIpfsUrl
-
-          // Resolve coverArt if coverImage exists
-          if (track.coverImage) {
-            track.coverArt = resolveScheme({
-              client,
-              uri: `${track.coverImage}`
-            })
-          } else {
-            track.coverArt = '/images/icons/default-cover-art.jpg'
-          }
-
-          // Check for watermarkedUrl existence
-          if (track.watermarkedUrl) {
-            // Add debug log for watermarkedUrl processing
-            // console.log('Processing watermarkedUrl for track:', track.id)
-            track.watermarkedUrl = 'certified'
-          }
-        })
-
-        const transformedTracks = tracks.map((track: any) => ({
-          id: track.id,
-          coverArt: track.coverArt,
-          title: track.title,
-          artist: track.artist,
-          album: track.album,
-          createdDate: track.uploadedAt,
-          status: track.status,
-          tokenId: track.tokenId,
-          ipfsUrl: track.ipfsUrl,
-          originalIpfsUrl: track.originalIpfsUrl, // Keep the original URL
-          owner: track.owner,
-          watermarkUrl: track.watermarkedUrl // Map watermarkedUrl to watermarkUrl for the UI
-        }))
-
-        // Sort tracks by uploadedAt date in descending order
-        const sortedTracks = transformedTracks.sort(
-          (a: { createdDate: string | number | Date }, b: { createdDate: string | number | Date }) =>
-            new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
-        )
-
-        setData(sortedTracks)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [account?.address, session])
 
   const table = useReactTable({
     data,

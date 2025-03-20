@@ -30,7 +30,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import styled from '@emotion/styled'
 
-import { RecordId, StringRecordId } from 'surrealdb'
+import { RecordId } from 'surrealdb'
 
 import { useActiveAccount } from 'thirdweb/react'
 
@@ -87,6 +87,10 @@ type RecordDataType = {
   owner?: string
   transactionHash?: string
   watermarkedUrl?: string
+  tokenId?: string
+  dateMinted?: Date | null
+  certificateId?: string
+  certificateProjectId?: string
 }
 
 // Add this type definition at the top of the file, after the imports
@@ -231,9 +235,28 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         console.log('record', record)
 
         if (record) {
+          // Ensure all required fields are strings and properly typed
           const recordWithDate: RecordDataType = {
-            ...record,
-            releaseDate: record.releaseDate ? new Date(record.releaseDate) : null
+            id: record.id,
+            title: String(record.title || ''),
+            artist: String(record.artist || ''),
+            album: String(record.album || ''),
+            filetype: String(record.filetype || ''),
+            filesize: String(record.filesize || ''),
+            duration: String(record.duration || ''),
+            label: String(record.label || ''),
+            releaseDate: record.releaseDate ? new Date(record.releaseDate) : null,
+            ipfsUrl: String(record.ipfsUrl || ''),
+            status: record.status || 'unminted',
+            uploadedAt: String(record.uploadedAt || ''),
+            coverImage: record.coverImage ? String(record.coverImage) : undefined,
+            owner: record.owner ? String(record.owner) : undefined,
+            transactionHash: record.transactionHash ? String(record.transactionHash) : undefined,
+            watermarkedUrl: record.watermarkedUrl ? String(record.watermarkedUrl) : undefined,
+            tokenId: record.tokenId ? String(record.tokenId) : undefined,
+            dateMinted: record.dateMinted ? new Date(record.dateMinted) : null,
+            certificateId: record.certificateId ? String(record.certificateId) : undefined,
+            certificateProjectId: record.certificateProjectId ? String(record.certificateProjectId) : undefined
           }
 
           setRecordData(recordWithDate)
@@ -242,7 +265,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             try {
               const url = resolveScheme({
                 client,
-                uri: record.coverImage
+                uri: String(record.coverImage)
               })
 
               setImageUrl(url)
@@ -317,10 +340,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Start minting process
       setMintingStatus('Submitting minting transaction...')
 
-      //console.log(walletAddress)
       const queueId = await mintRecord(metadata, walletAddress)
-
-      console.log('queueId', queueId)
 
       // Poll for minting status
       setMintingStatus('Waiting for transaction confirmation...')
@@ -329,10 +349,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       while (true) {
         const status = await getMintingStatus(queueId)
 
-        console.log('status', status)
-
         if (status.errorMessage) {
-          console.log('status', status)
           throw new Error(`Transaction failed: ${status}`)
         }
 
@@ -343,7 +360,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
 
         if (status.status === 'failed') {
-          console.log('status', status)
           throw new Error('Transaction failed')
         }
 
@@ -353,32 +369,28 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Update record in database
       setMintingStatus('Updating record details...')
-      await updateRecord(recordId, {
+
+      if (!recordData) {
+        throw new Error('Record data is missing')
+      }
+
+      const updatedData = {
         ...recordData,
-        status: 'minted',
+        status: 'minted' as const,
         owner: walletAddress,
         transactionHash: transactionHash,
         tokenId: tokenId,
         dateMinted: new Date().toISOString()
-      })
+      }
+
+      await updateRecord(recordId, updatedData)
 
       // Award TAGZ
       setMintingStatus('Awarding TAGZ...')
       await awardTagz(walletAddress)
 
       // Update local state
-      setRecordData(prev =>
-        prev
-          ? {
-              ...prev,
-              status: 'minted',
-              owner: walletAddress,
-              transactionHash: transactionHash,
-              tokenId: tokenId,
-              dateMinted: new Date()
-            }
-          : null
-      )
+      setRecordData(updatedData)
 
       // Show success message and confetti
       setShowConfetti(true)
