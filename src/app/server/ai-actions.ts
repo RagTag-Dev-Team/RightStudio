@@ -69,22 +69,50 @@ export async function generateCoverArt(imagePrompt: string) {
   }
 
   try {
-    const response = await openai.images.generate({
-      model: 'dall-e-3',
-      prompt: imagePrompt,
-      n: 1,
-      size: '1024x1024'
+    // Add timeout promise
+    const timeoutDuration = 25000 // 25 seconds
+
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Request timeout')), timeoutDuration)
     })
 
-    if (!response.data) {
+    // Enhance the prompt to encourage faster generation
+    const optimizedPrompt = `Create a simple album cover art: ${imagePrompt}. Focus on essential elements only.`
+
+    // Race between the OpenAI request and timeout
+    const response = await Promise.race([
+      openai.images.generate({
+        model: 'dall-e-3',
+        prompt: optimizedPrompt,
+        n: 1,
+        size: '1024x1024',
+        quality: 'standard', // Use standard quality instead of HD for faster generation
+        style: 'natural' // This tends to be faster than 'vivid'
+      }),
+      timeoutPromise
+    ])
+
+    if (!response || !('data' in response)) {
       throw new Error('Failed to generate image')
     }
 
-    console.log('Generated image: ' + JSON.stringify(response, null, 2))
+    console.log('Generated image URL:', response.data[0].url)
 
     return response.data[0].url
   } catch (error) {
-    console.error(error)
-    throw new Error('Failed to generate image due to internal server error')
+    console.error('Cover art generation error:', error)
+
+    if (error instanceof Error) {
+      if (error.message === 'Request timeout') {
+        throw new Error('Image generation timed out. Please try again.')
+      }
+
+      // Handle rate limiting
+      if (error.message.includes('Rate limit')) {
+        throw new Error('Too many requests. Please wait a moment and try again.')
+      }
+    }
+
+    throw new Error('Failed to generate image. Please try again later.')
   }
 }
