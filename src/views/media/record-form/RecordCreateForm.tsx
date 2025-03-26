@@ -254,7 +254,9 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     try {
       const imageUrl = await generateCoverArt(aiPrompt)
 
-      setGeneratedImageUrl(imageUrl)
+      console.log(imageUrl)
+
+      setGeneratedImageUrl(imageUrl as string)
     } catch (error) {
       console.error('Error generating cover art:', error)
 
