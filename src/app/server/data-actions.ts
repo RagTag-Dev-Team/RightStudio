@@ -238,16 +238,58 @@ export async function getRecordById(recordId: string) {
   }
 }
 
-export async function updateRecord(recordId: string, data: any) {
+// Define the media record type
+type MediaRecord = {
+  id: string
+  title: string
+  artist: string
+  album: string
+  filetype: string
+  filesize: string
+  duration: string
+  label: string
+  releaseDate: string | null
+  ipfsUrl: string
+  status: 'unminted' | 'minted'
+  uploadedAt: string
+  coverImage?: string
+  owner?: string
+  transactionHash?: string
+  watermarkedUrl?: string
+  certificateId?: string
+  certificateProjectId?: string
+  tokenId?: string
+  dateMinted?: string | null
+}
+
+export async function updateRecord(recordId: string, data: Partial<MediaRecord>) {
   const db = await getDb()
 
   // Remove any complex objects that might cause serialization issues
-  const cleanData = {
-    ...data,
-    releaseDate: data.releaseDate ? data.releaseDate.toISOString() : null
+  const cleanData: MediaRecord = {
+    id: recordId,
+    title: data.title || '',
+    artist: data.artist || '',
+    album: data.album || '',
+    filetype: data.filetype || '',
+    filesize: data.filesize || '',
+    duration: data.duration || '',
+    label: data.label || '',
+    releaseDate: typeof data.releaseDate === 'string' ? data.releaseDate : null,
+    ipfsUrl: data.ipfsUrl || '',
+    status: data.status || 'unminted',
+    uploadedAt: data.uploadedAt || '',
+    coverImage: data.coverImage,
+    owner: data.owner,
+    transactionHash: data.transactionHash,
+    watermarkedUrl: data.watermarkedUrl,
+    certificateId: data.certificateId,
+    certificateProjectId: data.certificateProjectId,
+    tokenId: data.tokenId,
+    dateMinted: typeof data.dateMinted === 'string' ? data.dateMinted : null
   }
 
-  const [updated] = await db.update(`media:${recordId}`, cleanData)
+  const updated = await db.update<MediaRecord>(new RecordId('media', recordId), cleanData)
 
   await db.close()
 
