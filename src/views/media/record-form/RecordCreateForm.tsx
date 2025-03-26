@@ -54,6 +54,8 @@ import CovertArtUploader from './CovertArtUploader'
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
 
+import { generateCoverArt } from '@/app/server/ai-actions'
+
 type FormDataType = {
   title: string
   artist: string
@@ -250,21 +252,9 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     setGeneratedImageUrl('')
 
     try {
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ imagePrompt: aiPrompt })
-      })
+      const imageUrl = await generateCoverArt(aiPrompt)
 
-      const res = await response.json()
-
-      if (res.data.url) {
-        setGeneratedImageUrl(res.data.url)
-      } else {
-        throw new Error('No image URL in response')
-      }
+      setGeneratedImageUrl(imageUrl)
     } catch (error) {
       console.error('Error generating cover art:', error)
 

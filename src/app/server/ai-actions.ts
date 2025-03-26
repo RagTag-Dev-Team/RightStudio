@@ -1,9 +1,14 @@
 'use server'
 
 import Replicate from 'replicate'
+import { OpenAI } from 'openai'
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_KEY
+})
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 })
 
 interface GenerateSongInput {
@@ -55,5 +60,31 @@ export async function checkGenerationStatus(predictionId: string): Promise<{
     statusUpdate: statusUpdate as StatusUpdate,
     completed: latest.status === 'succeeded',
     finalOutput: latest.status === 'succeeded' ? latest.output : undefined
+  }
+}
+
+export async function generateCoverArt(imagePrompt: string) {
+  if (!imagePrompt) {
+    throw new Error('Missing required fields')
+  }
+
+  try {
+    const response = await openai.images.generate({
+      model: 'dall-e-3',
+      prompt: imagePrompt,
+      n: 1,
+      size: '1024x1024'
+    })
+
+    if (!response.data) {
+      throw new Error('Failed to generate image')
+    }
+
+    console.log('Generated image: ' + JSON.stringify(response, null, 2))
+
+    return response.data[0].url
+  } catch (error) {
+    console.error(error)
+    throw new Error('Failed to generate image due to internal server error')
   }
 }
