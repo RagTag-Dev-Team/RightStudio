@@ -42,25 +42,6 @@ const nextConfig = {
         locale: false
       }
     ]
-  },
-  async headers() {
-    return [
-      {
-        source: '/api/:path*',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; connect-src 'self' https://*.mentaport.com https://*.vercel.app; img-src 'self' data: https: blob:;"
-          }
-        ]
-      }
-    ]
-  },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '10mb'
-    }
   }
 }
 

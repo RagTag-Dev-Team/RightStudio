@@ -10,18 +10,19 @@ const handleWatermark = async () => {
 
   setIsWatermarking(true)
   updateWatermarkProgress({
-    statusMessage: 'Initiating watermarking process...',
+    statusMessage: 'Initializing watermarking process...',
     progress: 10
   })
 
   try {
+    // Start watermarking process and get job ID
     const response = await fetch('/api/watermark/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        recordId,
+        recordId: recordId,
         ipfsUrl: recordData.ipfsUrl,
         certificateArgs: newCertificateArgs,
         walletAddress
@@ -34,28 +35,36 @@ const handleWatermark = async () => {
 
     const { jobId } = await response.json()
 
-    // Poll Mentaport's status endpoint directly
+    // Poll for status every 3 seconds
     const pollInterval = setInterval(async () => {
       try {
-        const statusResponse = await fetch(`https://api.mentaport.com/v1/certificates/${jobId}/status`, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_MENTAPORT_API_KEY}`
-          }
-        })
-
+        const statusResponse = await fetch(`/api/watermark/status/${jobId}`)
         const status = await statusResponse.json()
 
         if (status.completed) {
-          // Refresh record data
-          const updatedRecord = await getRecordById(recordId)
-          setRecordData(updatedRecord)
+          // Update record data with new watermark info
+          setRecordData({
+            ...recordData,
+            certificateId: status.data.certId,
+            certificateProjectId: status.data.projectId,
+            watermarkedUrl: status.data.downloadUrl
+          })
+
+          // Show success message
+          setShowConfetti(true)
+          setTimeout(() => setShowConfetti(false), 5000)
+          setSuccessMessage(
+            `File successfully watermarked! You've earned ${Number(status.data.tagzAmount).toFixed(2)} TAGZ for watermarking this file.`
+          )
 
           clearInterval(pollInterval)
           setIsWatermarking(false)
           setOpenWatermarkDialog(false)
           setShowSuccess(true)
-          setSuccessMessage('File successfully watermarked!')
+        } else if (status.error) {
+          throw new Error(status.error)
         } else {
+          // Update progress
           updateWatermarkProgress({
             statusMessage: status.message || 'Processing...',
             progress: status.progress || 0
@@ -63,18 +72,22 @@ const handleWatermark = async () => {
         }
       } catch (error) {
         console.error('Status check failed:', error)
+        clearInterval(pollInterval)
+        setIsWatermarking(false)
+        setSuccessMessage('Failed to watermark file: ' + (error instanceof Error ? error.message : 'Unknown error'))
+        setShowSuccess(true)
       }
     }, 3000)
 
-    // Clear interval after 10 minutes
+    // Set timeout after 10 minutes
     setTimeout(() => {
       clearInterval(pollInterval)
       if (isWatermarking) {
         setIsWatermarking(false)
-        setSuccessMessage('Process started. Please check back later.')
+        setSuccessMessage('Watermarking process is taking longer than expected. Please check back later.')
         setShowSuccess(true)
       }
-    }, 600000)
+    }, 600000) // 10 minutes
   } catch (error) {
     console.error('Error starting watermark process:', error)
     setIsWatermarking(false)
