@@ -437,110 +437,156 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         progress: 20
       })
 
-      // Create a blob from the URL
+      // Create a blob from the URL using chunks
       const response = await fetch(fileUrl.url)
-      const blob = await response.blob()
+      const reader = response.body?.getReader()
+      const contentLength = +(response.headers.get('Content-Length') ?? 0)
+
+      if (!reader) {
+        throw new Error('Failed to read file')
+      }
+
+      const chunks: Uint8Array[] = []
+      let receivedLength = 0
+
+      while (true) {
+        const { done, value } = await reader.read()
+
+        if (done) break
+
+        chunks.push(value)
+        receivedLength += value.length
+
+        // Update progress based on downloaded chunks
+        const downloadProgress = (receivedLength / contentLength) * 100
+
+        updateWatermarkProgress({
+          statusMessage: `Downloading file... ${Math.round(downloadProgress)}%`,
+          progress: 20 + downloadProgress * 0.1 // Scale to fit within our progress range
+        })
+      }
+
+      // Combine chunks into a single Uint8Array
+      const chunksAll = new Uint8Array(receivedLength)
+      let position = 0
+
+      for (const chunk of chunks) {
+        chunksAll.set(chunk, position)
+        position += chunk.length
+      }
+
+      // Create blob and file from the combined chunks
+      const blob = new Blob([chunksAll], { type: response.headers.get('Content-Type') || 'application/octet-stream' })
       const file = new File([blob], recordData.title, { type: blob.type })
 
-      // Extract file extension from the filetype or filename
-      const fileExtension =
-        recordData.filetype.split('/').pop()?.toLowerCase() || file.name.split('.').pop()?.toLowerCase() || ''
+      // Split file into smaller chunks if needed
+      const CHUNK_SIZE = 4 * 1024 * 1024 // 4MB chunks
+      const chunks_count = Math.ceil(file.size / CHUNK_SIZE)
 
-      // Use the helper function to determine the correct content format
-      const contentFormat = getContentFormat(`audio/${fileExtension}`)
+      if (chunks_count > 1) {
+        // Handle large files by splitting into chunks
+        const formData = new FormData()
 
-      console.log('File type:', recordData.filetype)
-      console.log('File extension:', fileExtension)
-      console.log('Content format:', contentFormat)
+        formData.append('total_chunks', String(chunks_count))
+        formData.append('file_size', String(file.size))
+        formData.append('certificate_args', JSON.stringify(newCertificateArgs))
 
-      // Create certificate args with all required fields
-      const certificateArgs: ICertificateArg = {
-        ...newCertificateArgs,
-        projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!,
-        contentFormat, // Set the content format based on file extension
-        name: recordData.title || 'Untitled',
-        username: recordData.artist || 'Unknown Artist',
-        description: `${recordData.artist} - ${recordData.album}` || 'No description',
-        album: recordData.album || '',
-        albumYear: recordData.releaseDate ? recordData.releaseDate.getFullYear().toString() : ''
-      }
+        for (let i = 0; i < chunks_count; i++) {
+          const start = i * CHUNK_SIZE
+          const end = Math.min(file.size, start + CHUNK_SIZE)
+          const chunk = file.slice(start, end)
 
-      updateWatermarkProgress({
-        statusMessage: 'Uploading file for certification...',
-        progress: 30
-      })
+          formData.set('chunk_index', String(i))
+          formData.set('file', chunk)
 
-      // Create form data with file
-      const formData = new FormData()
+          await fetch('/api/upload-chunk', {
+            method: 'POST',
+            body: formData
+          })
 
-      formData.append('file', file)
+          updateWatermarkProgress({
+            statusMessage: `Uploading file... ${Math.round(((i + 1) / chunks_count) * 100)}%`,
+            progress: 30 + ((i + 1) / chunks_count) * 20
+          })
+        }
+      } else {
+        // Handle small files directly
+        const formData = new FormData()
 
-      const createdCert = await CreateCertificate(formData, certificateArgs)
+        formData.append('file', file)
 
-      if (!createdCert.status || !createdCert.data) {
-        throw new Error(createdCert.message || 'Failed to create certificate')
-      }
-
-      // Get certificate details
-      const { projectId, certId } = createdCert.data
-
-      // Show the status message from the certificate creation
-      if (createdCert.data.status) {
         updateWatermarkProgress({
-          statusMessage: createdCert.data.status,
-          progress: 50
+          statusMessage: 'Uploading file for certification...',
+          progress: 30
         })
-      }
 
-      // Get the download URL for the watermarked file
-      const downloadUrl = await GetDownloadUrl(projectId, certId)
+        const createdCert = await CreateCertificate(formData, newCertificateArgs)
 
-      if (!downloadUrl.status || !downloadUrl.data) {
-        throw new Error(downloadUrl.message || 'Failed to get download URL')
-      }
+        if (!createdCert.status || !createdCert.data) {
+          throw new Error(createdCert.message || 'Failed to create certificate')
+        }
 
-      updateWatermarkProgress({
-        statusMessage: 'Certificate created successfully!',
-        progress: 100
-      })
+        // Get certificate details
+        const { projectId, certId } = createdCert.data
 
-      // Update the record in the database with the certificate info
-      const db = await getDb()
+        // Show the status message from the certificate creation
+        if (createdCert.data.status) {
+          updateWatermarkProgress({
+            statusMessage: createdCert.data.status,
+            progress: 50
+          })
+        }
 
-      const updatedRecord = {
-        ...recordData,
-        certificateId: certId,
-        certificateProjectId: projectId,
-        watermarkedUrl: downloadUrl.data
-      }
+        // Get the download URL for the watermarked file
+        const downloadUrl = await GetDownloadUrl(projectId, certId)
 
-      await db.update(new RecordId('media', recordId), updatedRecord)
+        if (!downloadUrl.status || !downloadUrl.data) {
+          throw new Error(downloadUrl.message || 'Failed to get download URL')
+        }
 
-      // Update local state
-      setRecordData(updatedRecord)
-
-      // Reward user with TAGZ
-      const rewardResponse = await fetch('/api/reward', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          walletAddress,
-          amount: '100.0'
+        updateWatermarkProgress({
+          statusMessage: 'Certificate created successfully!',
+          progress: 100
         })
-      })
 
-      const rewardData = await rewardResponse.json()
+        // Update the record in the database with the certificate info
+        const db = await getDb()
 
-      // Show confetti
-      setShowConfetti(true)
-      setTimeout(() => setShowConfetti(false), 5000)
+        const updatedRecord = {
+          ...recordData,
+          certificateId: certId,
+          certificateProjectId: projectId,
+          watermarkedUrl: downloadUrl.data
+        }
 
-      // Update success message to include TAGZ reward
-      setSuccessMessage(
-        `File successfully watermarked! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for watermarking this file.`
-      )
+        await db.update(new RecordId('media', recordId), updatedRecord)
+
+        // Update local state
+        setRecordData(updatedRecord)
+
+        // Reward user with TAGZ
+        const rewardResponse = await fetch('/api/reward', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            walletAddress,
+            amount: '100.0'
+          })
+        })
+
+        const rewardData = await rewardResponse.json()
+
+        // Show confetti
+        setShowConfetti(true)
+        setTimeout(() => setShowConfetti(false), 5000)
+
+        // Update success message to include TAGZ reward
+        setSuccessMessage(
+          `File successfully watermarked! You've earned ${Number(rewardData.amount).toFixed(2)} TAGZ for watermarking this file.`
+        )
+      }
     } catch (error) {
       console.error('Error during watermarking:', error)
       setSuccessMessage('Failed to add watermark to the file')
