@@ -156,3 +156,6 @@ surrealdb/data/OPTIONS-000077
 .env.staging
 
 .vercel
+
+.vercel
+.env*.local

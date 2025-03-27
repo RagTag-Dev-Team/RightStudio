@@ -54,7 +54,7 @@ import CovertArtUploader from './CovertArtUploader'
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
 
-import { generateCoverArt } from '@/app/server/ai-actions'
+import { generateCoverArt, checkImageStatus } from '@/app/server/ai-actions'
 
 type FormDataType = {
   title: string
@@ -106,6 +106,7 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
   const [aiPrompt, setAiPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string>('')
+  const [generationError, setGenerationError] = useState<string | null>(null)
 
   const handleMetadata = (metadata: Partial<FormDataType>, uploadedFile: File) => {
     // Update form data with metadata
@@ -249,20 +250,46 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     if (!aiPrompt) return
 
     setIsGenerating(true)
+    setGenerationError(null)
     setGeneratedImageUrl('')
 
     try {
-      const imageUrl = await generateCoverArt(aiPrompt)
+      // Start generation and get job ID
+      const result = await generateCoverArt(aiPrompt)
 
-      console.log(imageUrl)
+      // Poll for status every 2 seconds
+      const pollInterval = setInterval(async () => {
+        try {
+          const status = await checkImageStatus(result.jobId)
 
-      setGeneratedImageUrl(imageUrl as string)
+          if (status.status === 'completed') {
+            setGeneratedImageUrl(status.data.url)
+            setIsGenerating(false)
+            clearInterval(pollInterval)
+          } else if (status.status === 'failed') {
+            throw new Error(status.message || 'Generation failed')
+          }
+        } catch (error) {
+          console.error('Status check failed:', error)
+          setIsGenerating(false)
+          setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
+          clearInterval(pollInterval)
+        }
+      }, 2000)
+
+      // Clear interval after 5 minutes (timeout)
+      setTimeout(() => {
+        clearInterval(pollInterval)
+
+        if (isGenerating) {
+          setIsGenerating(false)
+          setGenerationError('Image generation timed out. Please try again.')
+        }
+      }, 300000)
     } catch (error) {
       console.error('Error generating cover art:', error)
-
-      // You may want to add error handling UI here
-    } finally {
       setIsGenerating(false)
+      setGenerationError(error instanceof Error ? error.message : 'Failed to start image generation')
     }
   }
 
@@ -616,7 +643,25 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
                 value={aiPrompt}
                 onChange={e => setAiPrompt(e.target.value)}
                 disabled={isGenerating}
+                error={!!generationError}
+                helperText={generationError}
               />
+              {isGenerating && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 2,
+                    mt: 4
+                  }}
+                >
+                  <CircularProgress size={40} />
+                  <Typography variant='body2' color='text.secondary'>
+                    Generating your cover art...
+                  </Typography>
+                </Box>
+              )}
             </>
           ) : (
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -639,18 +684,31 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
             onClick={() => {
               setOpenAIDialog(false)
               setGeneratedImageUrl('')
+              setGenerationError(null)
             }}
             disabled={isGenerating}
           >
             Cancel
           </Button>
           {!generatedImageUrl ? (
-            <Button onClick={handleGenerateArt} variant='contained' disabled={!aiPrompt || isGenerating}>
+            <Button
+              onClick={handleGenerateArt}
+              variant='contained'
+              disabled={!aiPrompt || isGenerating}
+              startIcon={isGenerating ? <CircularProgress size={20} color='inherit' /> : null}
+            >
               {isGenerating ? 'Generating...' : 'Generate'}
             </Button>
           ) : (
             <>
-              <Button onClick={() => setGeneratedImageUrl('')}>Try Again</Button>
+              <Button
+                onClick={() => {
+                  setGeneratedImageUrl('')
+                  setGenerationError(null)
+                }}
+              >
+                Try Again
+              </Button>
               <Button onClick={handleAcceptImage} variant='contained'>
                 Use This Image
               </Button>

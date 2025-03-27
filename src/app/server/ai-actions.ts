@@ -3,6 +3,9 @@
 import Replicate from 'replicate'
 import { OpenAI } from 'openai'
 
+import { imageQueue } from './queues/imageQueue'
+import redis from '@/libs/redis'
+
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_KEY
 })
@@ -69,50 +72,49 @@ export async function generateCoverArt(imagePrompt: string) {
   }
 
   try {
-    // Add timeout promise
-    const timeoutDuration = 25000 // 25 seconds
-
-    const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Request timeout')), timeoutDuration)
+    // Add job to queue
+    const job = await imageQueue.add({
+      prompt: imagePrompt,
+      userId: 'user-id' // Replace with actual user ID if available
     })
 
-    // Enhance the prompt to encourage faster generation
-    const optimizedPrompt = `Create a simple album cover art: ${imagePrompt}. Focus on essential elements only.`
-
-    // Race between the OpenAI request and timeout
-    const response = await Promise.race([
-      openai.images.generate({
-        model: 'dall-e-3',
-        prompt: optimizedPrompt,
-        n: 1,
-        size: '1024x1024',
-        quality: 'standard', // Use standard quality instead of HD for faster generation
-        style: 'natural' // This tends to be faster than 'vivid'
-      }),
-      timeoutPromise
-    ])
-
-    if (!response || !('data' in response)) {
-      throw new Error('Failed to generate image')
+    // Return job ID for status checking
+    return {
+      jobId: job.id,
+      status: 'queued',
+      message: 'Image generation has been queued'
     }
-
-    console.log('Generated image URL:', response.data[0].url)
-
-    return response.data[0].url
   } catch (error) {
-    console.error('Cover art generation error:', error)
+    console.error('Failed to queue image generation:', error)
+    throw new Error('Failed to start image generation')
+  }
+}
 
-    if (error instanceof Error) {
-      if (error.message === 'Request timeout') {
-        throw new Error('Image generation timed out. Please try again.')
-      }
+export async function checkImageStatus(jobId: string) {
+  try {
+    // Check Redis first for completed job
+    const cachedResult = await redis.get(`image:${jobId}`)
 
-      // Handle rate limiting
-      if (error.message.includes('Rate limit')) {
-        throw new Error('Too many requests. Please wait a moment and try again.')
-      }
+    if (cachedResult) {
+      return { status: 'completed', data: JSON.parse(cachedResult) }
     }
 
-    throw new Error('Failed to generate image. Please try again later.')
+    // Check job status in queue
+    const job = await imageQueue.getJob(jobId)
+
+    if (!job) {
+      throw new Error('Job not found')
+    }
+
+    const state = await job.getState()
+
+    return {
+      status: state,
+      progress: job.progress(),
+      message: state === 'failed' ? job.failedReason : undefined
+    }
+  } catch (error) {
+    console.error('Failed to check image status:', error)
+    throw new Error('Failed to check image status')
   }
 }
