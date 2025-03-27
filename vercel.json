@@ -5,6 +5,9 @@
   "functions": {
     "src/app/server/**/*": {
       "maxDuration": 30
+    },
+    "src/app/api/**/*": {
+      "maxDuration": 300
     }
   }
 }
