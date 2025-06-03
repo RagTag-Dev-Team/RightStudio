@@ -22,7 +22,11 @@ const DEFAULT_CONFIG: DbConfig = {
   database: `${database}`
 }
 
-export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal> {
+export async function getDb(config: DbConfig = DEFAULT_CONFIG): Promise<Surreal | null> {
+  if (process.env.SKIP_EXTERNAL_CONNECTIONS === 'true') {
+    return null
+  }
+
   const db = new Surreal()
 
   try {

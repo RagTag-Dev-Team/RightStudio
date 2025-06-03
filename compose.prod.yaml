@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   surrealdb:
     platform: 'linux/amd64'
@@ -5,55 +7,127 @@ services:
     command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
     ports:
       - '8000:8000'
+    volumes:
+      - surrealdb_data:/data
     networks:
       - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://localhost:8000/health']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   postgres:
-    image: postgres
+    image: postgres:15-alpine
     environment:
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
     ports:
       - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - frontend
       - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   redis:
-    image: redis:7.2.4
+    image: redis:7.2.4-alpine
     ports:
       - '6379:6379'
+    volumes:
+      - redis_data:/data
     networks:
       - frontend
       - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   thirdwebengine:
     image: thirdweb/engine:latest
     environment:
       - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
       - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
       - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
-      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@host.docker.internal:5432/postgres?sslmode=disable
-      - REDIS_URL=redis://host.docker.internal:6379/0
+      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
+      - REDIS_URL=redis://redis:6379/0
       - ENABLE_HTTPS=true
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports:
       - '3005:3005'
     networks:
       - frontend
       - backend
+    restart: unless-stopped
+
   next-app:
     container_name: next-app
     build:
       context: ./
       dockerfile: prod.Dockerfile
+      args:
+        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+        - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-http://localhost:3001}
+        - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000/api/auth}
+        - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
+        - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+        - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
+        - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
+        - NEXT_PUBLIC_SURREALDB_DB=rgtg
+        - NEXT_PUBLIC_SURREALDB_NS=rgtg
+        - ENGINE_URL=http://thirdwebengine:3005
+        - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
+        - SKIP_EXTERNAL_CONNECTIONS=true
     image: mannyj37/rs-backend:latest
     restart: always
     ports:
-      - 3000:3000
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-http://localhost:3001}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000/api/auth}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
+      - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+      - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
+      - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
+      - NEXT_PUBLIC_SURREALDB_DB=rgtg
+      - NEXT_PUBLIC_SURREALDB_NS=rgtg
+      - ENGINE_URL=http://thirdwebengine:3005
+      - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
+      - SKIP_EXTERNAL_CONNECTIONS=false
+    depends_on:
+      surrealdb:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      thirdwebengine:
+        condition: service_started
     networks:
       - frontend
       - backend
 
-  # Add more containers below (nginx, postgres, etc.)
+volumes:
+  surrealdb_data:
+  postgres_data:
+  redis_data:
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
