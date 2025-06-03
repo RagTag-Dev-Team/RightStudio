@@ -27,9 +27,9 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 # Set build-time environment variables with defaults
-ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
-ARG NEXT_PUBLIC_DOCS_URL=http://localhost:3001
-ARG NEXTAUTH_URL=http://localhost:3000/api/auth
+ARG NEXT_PUBLIC_APP_URL=http://0.0.0.0:3000
+ARG NEXT_PUBLIC_DOCS_URL=http://0.0.0.0:3001
+ARG NEXTAUTH_URL=http://0.0.0.0:3000/api/auth
 ARG NEXTAUTH_SECRET=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
 ARG NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
@@ -67,8 +67,8 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 # Switch to non-root user
 USER nextjs

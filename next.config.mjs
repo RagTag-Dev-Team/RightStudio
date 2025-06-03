@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: undefined // Enable file tracing
+  },
+
+  // Enable static optimization
+  swcMinify: true,
+
+  // Configure images if you're using them
+  images: {
+    domains: ['localhost'],
+    unoptimized: true
+  },
   basePath: process.env.BASEPATH,
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -13,14 +25,6 @@ const nextConfig = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
-      }
-    ]
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
