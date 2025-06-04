@@ -2,7 +2,14 @@
 const nextConfig = {
   output: 'standalone',
   experimental: {
-    outputFileTracingRoot: undefined // Enable file tracing
+    outputFileTracingRoot: process.cwd(),
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/@swc/core-linux-x64-gnu',
+        'node_modules/@swc/core-linux-x64-musl',
+        'node_modules/@esbuild/linux-x64'
+      ]
+    }
   },
 
   // Enable static optimization
