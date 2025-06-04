@@ -112,6 +112,8 @@ services:
       - ENGINE_URL=http://thirdwebengine:3005
       - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
       - SKIP_EXTERNAL_CONNECTIONS=false
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
     depends_on:
       postgres:
         condition: service_healthy
