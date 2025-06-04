@@ -13,7 +13,7 @@ services:
       - backend
     restart: unless-stopped
     healthcheck:
-      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://0.0.0.0:8000/health']
+      test: ['CMD', 'sh', '-c', 'echo > /dev/tcp/localhost/8000']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -113,8 +113,6 @@ services:
       - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
       - SKIP_EXTERNAL_CONNECTIONS=false
     depends_on:
-      surrealdb:
-        condition: service_healthy
       postgres:
         condition: service_healthy
       redis:
