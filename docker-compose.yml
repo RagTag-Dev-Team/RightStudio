@@ -46,18 +46,7 @@ services:
     networks:
       - frontend
       - backend
-  webapp:
-    build:
-      context: .
-      dockerfile: prod.Dockerfile
-    env_file:
-      - .env
-    image: mannyj37/rightstudio:latest
-    ports:
-      - '3001:3001'
-    networks:
-      - frontend
-      - backend
+  
 networks:
   # The presence of these objects is sufficient to define them
   frontend: {}
