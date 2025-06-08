@@ -61,6 +61,8 @@ services:
       - ENABLE_HTTPS=true
       - CORS_ORIGINS=http://localhost:3000,https://app.rightstudio.media
       - ALLOWED_ORIGINS=http://localhost:3000,https://app.rightstudio.media
+      - LOG_LEVEL=debug
+      - NODE_ENV=production
     depends_on:
       postgres:
         condition: service_healthy
