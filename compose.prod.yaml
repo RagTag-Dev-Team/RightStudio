@@ -56,25 +56,31 @@ services:
       retries: 5
 
   thirdwebengine:
-    image: thirdweb/engine:latest
-    environment:
-      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
-      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
-      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
-      - REDIS_URL=redis://redis:6379/0
-      - ENABLE_HTTPS=true
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    ports:
-      - '3005:3005'
-    networks:
-      - frontend
-      - backend
-    restart: unless-stopped
+      image: thirdweb/engine:latest
+      environment:
+        - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
+        - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
+        - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
+        - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
+        - REDIS_URL=redis://redis:6379/0
+        - ENABLE_HTTPS=true
+      depends_on:
+        postgres:
+          condition: service_healthy
+        redis:
+          condition: service_healthy
+      ports:
+        - '3005:3005'
+      networks:
+        - frontend
+        - backend
+      restart: unless-stopped
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
+        interval: 30s
+        timeout: 10s
+        retries: 3
+        start_period: 40s
 
   next-app:
     container_name: next-app
@@ -82,9 +88,9 @@ services:
       context: ./
       dockerfile: prod.Dockerfile
       args:
-        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://0.0.0.0:3000}
+        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
         - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-http://0.0.0.0:3001}
-        - NEXTAUTH_URL=${NEXTAUTH_URL:-http://0.0.0.0:3000/api/auth}
+        - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
         - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
         - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
         - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
