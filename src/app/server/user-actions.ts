@@ -40,7 +40,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
       }
     }
   )
@@ -51,7 +51,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
       }
     }
   )

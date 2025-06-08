@@ -46,6 +46,8 @@ import { getDb } from '@/libs/surreal'
 // Add this constant at the top with other constants
 const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
 
+import { mintRecord, awardTagz } from '@/app/server/data-actions'
+
 type RecordDataType = {
   id?: string
   title: string
@@ -204,9 +206,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     try {
       console.log('Minting record:', recordId)
 
-      //  console.log('activeAccount', activeAccount)
-      // console.log('imageUrl', imageUrl)
-
       // Create metadata object from record fields
       const metadata = {
         name: recordData?.title,
@@ -223,23 +222,10 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         }
       }
 
-      const walletAddress = activeAccount
+      console.log('Account', activeAccount)
 
-      const mintResponse = await fetch('/api/mint', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ metadata, walletAddress })
-      })
-
-      if (!mintResponse.ok) {
-        throw new Error('Minting failed')
-      }
-
-      const { transactionHash } = await mintResponse.json()
-
-      console.log('hash', transactionHash)
+      // Use mintRecord action instead of API call
+      const queueId = await mintRecord(metadata, activeAccount.address)
 
       // Update record status in database
       const db = await getDb()
@@ -248,35 +234,25 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         ...recordData,
         status: 'minted',
         owner: activeAccount.address,
-        transactionHash: transactionHash
+        transactionHash: queueId
       })
 
-      //    console.log('updatedRecord', updatedRecord)
-
-      // Update local state with the hash
+      // Update local state
       setRecordData(prev =>
         prev
           ? {
               ...prev,
               status: 'minted',
               owner: activeAccount.address,
-              transactionHash: transactionHash,
+              transactionHash: queueId,
               dateMinted: new Date()
             }
           : null
       )
       setIsEditing(false)
 
-      // Reward user with tagz
-      const rewardResponse = await fetch('/api/reward', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ walletAddress: activeAccount.address, amount: '100.0' })
-      })
-
-      const rewardData = await rewardResponse.json()
+      // Reward user with tagz using the action
+      const rewardData = await awardTagz(activeAccount.address, '100.0')
 
       console.log('rewardResponse', rewardData)
 
@@ -435,6 +411,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
                       document.getElementById('cover-image-input')?.click()
                     }
                   }}
+                  s
                 >
                   {imageUrl ? (
                     <img
