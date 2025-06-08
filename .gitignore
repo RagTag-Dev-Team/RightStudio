@@ -159,3 +159,4 @@ surrealdb/data/OPTIONS-000077
 
 .vercel
 .env*.local
+env.development
