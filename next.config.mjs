@@ -1,5 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: process.cwd(),
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/@swc/core-linux-x64-gnu',
+        'node_modules/@swc/core-linux-x64-musl',
+        'node_modules/@esbuild/linux-x64'
+      ]
+    }
+  },
+
+  // Enable static optimization
+  swcMinify: true,
+
+  // Configure images if you're using them
+  images: {
+    domains: ['localhost'],
+    unoptimized: true
+  },
   basePath: process.env.BASEPATH,
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -13,13 +33,26 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ba6b2bc767e84a320980ca82ef69a345.ipfscdn.io'
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        net: false,
+        tls: false,
+        fs: false,
+        child_process: false
       }
-    ]
+    }
+
+    // Add this to ensure proper standalone output
+    if (isServer) {
+      config.output = {
+        ...config.output,
+        libraryTarget: 'commonjs2'
+      }
+    }
+
+    return config
   },
   redirects: async () => {
     return [

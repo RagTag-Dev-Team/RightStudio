@@ -10,7 +10,8 @@ const {
   TAGZ_TOKEN_ADDRESS,
   RAGZ_TOKEN_ADDRESS,
   NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
-  MEDIA_CONTRACT_ADDRESS
+  MEDIA_CONTRACT_ADDRESS,
+  ENGINE_SECRET_KEY
 } = process.env
 
 // Fix the chain definition by ensuring CHAIN_ID is a number
@@ -28,7 +29,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
       }
     }
   )
@@ -39,7 +40,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
       }
     }
   )
@@ -50,7 +51,7 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
     {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
       }
     }
   )
