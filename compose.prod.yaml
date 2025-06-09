@@ -90,11 +90,11 @@ services:
         - NEXT_PUBLIC_SURREALDB_NS=rgtg
         - ENGINE_URL=http://thirdwebengine:3005
         - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
+        - NODE_TLS_REJECT_UNAUTHORIZED=0
         - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
         - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
         - NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=rightstudio.media
         - NEXT_PUBLIC_THIRDWEB_ADMIN_KEY=1361831375a445ec8e6d856ae0af0ef9fe4fe2a6c644629f62b9b70575b9814e
-
     image: mannyj37/rs-backend:latest
     restart: always
     ports:
@@ -112,6 +112,7 @@ services:
       - NEXT_PUBLIC_SURREALDB_NS=rgtg
       - ENGINE_URL=http://thirdwebengine:3005
       - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
       - SKIP_EXTERNAL_CONNECTIONS=false
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
