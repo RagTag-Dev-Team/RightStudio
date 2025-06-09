@@ -4,11 +4,12 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh rocksdb:./src/surrealdb/data
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
     ports:
       - '8000:8000'
     volumes:
       - surrealdb_data:/data
+    user: '1000:1000'
     networks:
       - backend
     restart: unless-stopped
@@ -58,7 +59,7 @@ services:
       - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
       - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
       - REDIS_URL=redis://redis:6379/0
-      - ENABLE_HTTPS=true
+      - ENABLE_HTTPS=false
       - CORS_ORIGINS=http://localhost:3000,https://app.rightstudio.media
       - ALLOWED_ORIGINS=http://localhost:3000,https://app.rightstudio.media
     depends_on:
@@ -84,13 +85,13 @@ services:
         - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
         - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
         - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-        - NEXT_PUBLIC_SURREALDB_CONNECTION=http://146.190.163.111:8000/rpc
+        - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
         - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
         - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
         - NEXT_PUBLIC_SURREALDB_DB=rgtg
         - NEXT_PUBLIC_SURREALDB_NS=rgtg
-        - ENGINE_URL=https://146.190.163.111:3005
-        - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDE4MEE0MEEyYjgwMzQxOTc2MGUzZWRFRjQwRGNjRmY5QWNlMmM3MDciLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDI5NTY2MDYsIm5iZiI6MTc0OTM1NjYwNiwiaWF0IjoxNzQ5MzU2NjA2LCJqdGkiOiIxZTVlMGI0My04OTFjLTQwMWYtYTFkZC00YjczN2FmYmU4NTgiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHg1MmUxZTIyOGYwZjFhMTY0YjAzZmU5MjQzM2I5MTU5MzIxZGZmNzI1MDBiNjI0ODRhZTE5M2QyZGI0ODc4ZjRlMDE0MjIxMzIwZWI4YTc5Yjk4MmNjMDliZGNkZTFhODFhNzUzOGE5OTY0OGY4YTA0YTdiYzU0YmQwNWQ2MzRjMDFj
+        - ENGINE_URL=http://thirdwebengine:3005
+        - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
         - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
         - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
         - NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=rightstudio.media
@@ -106,12 +107,12 @@ services:
       - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
       - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-      - NEXT_PUBLIC_SURREALDB_CONNECTION=http://146.190.163.111:8000/rpc
+      - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
       - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
       - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
       - NEXT_PUBLIC_SURREALDB_DB=rgtg
       - NEXT_PUBLIC_SURREALDB_NS=rgtg
-      - ENGINE_URL=https://146.190.163.111:3005
+      - ENGINE_URL=http://thirdwebengine:3005
       - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
       - SKIP_EXTERNAL_CONNECTIONS=false
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
@@ -122,6 +123,8 @@ services:
       redis:
         condition: service_healthy
       thirdwebengine:
+        condition: service_started
+      surrealdb:
         condition: service_started
     networks:
       - frontend
