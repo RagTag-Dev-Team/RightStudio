@@ -134,8 +134,6 @@ const TokenBalances = () => {
 
         const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-        // console.log('tokenBalance', tokenBalance)
-
         setTokenBalances({
           RAGZ: ragzBalance,
           TAGZ: tagzBalance,

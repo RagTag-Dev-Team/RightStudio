@@ -1,8 +1,12 @@
 'use server'
 
+import { getWalletBalance } from 'thirdweb/wallets'
+
 import { jsonify } from 'surrealdb'
 
 import { getDb } from '@/libs/surreal'
+
+import { client } from '@/libs/thirdwebclient'
 
 const {
   ENGINE_URL,
@@ -11,10 +15,12 @@ const {
   RAGZ_TOKEN_ADDRESS,
   NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
   MEDIA_CONTRACT_ADDRESS,
-  ENGINE_SECRET_KEY
+  ENGINE_SECRET_KEY,
+  CLIENT_ID
 } = process.env
 
 // Fix the chain definition by ensuring CHAIN_ID is a number
+const chain = CHAIN_ID
 
 interface TokenBalances {
   ragzResult: { result: { displayValue: string } }
@@ -23,6 +29,8 @@ interface TokenBalances {
 }
 
 export async function getUserBalances(address: string): Promise<TokenBalances> {
+  console.log('Getting balances')
+
   // Get RAGZ balance
   const ragzRes = await fetch(
     `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
@@ -33,6 +41,8 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
       }
     }
   )
+
+  console.log(ragzRes)
 
   // Get TAGZ balance
   const tagzRes = await fetch(
