@@ -52,7 +52,7 @@ import { getRecordById, mintRecord, getMintingStatus, awardTagz, updateRecord } 
 // Add import for useSession
 
 // Add this constant at the top with other constants
-const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
+const AMOY_EXPLORER = 'https://sepolia.etherscan.io/tx/'
 
 const newCert: ICertificateArg = {
   projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!, // "your-project-id",
@@ -350,7 +350,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         const status = await getMintingStatus(queueId)
 
         if (status.errorMessage) {
-          throw new Error(`Transaction failed: ${status}`)
+          throw new Error(`Transaction failed: ${status.errorMessage}`)
         }
 
         if (status.status === 'mined') {
@@ -399,7 +399,11 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setShowSuccess(true)
     } catch (error) {
       console.error('Error during minting process:', error)
-      setSuccessMessage('Failed to mint record')
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
+
+      setSuccessMessage(
+        `Minting failed: ${errorMessage}. If this issue persists, please contact support at support@rightstudio.media`
+      )
       setShowSuccess(true)
     } finally {
       setIsMinting(false)

@@ -166,80 +166,100 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
       setIsUploading(true)
       setUploadProgress(10) // Show initial progress
 
-      // Check if the file is already uploaded to IPFS
-
-      console.log(client)
-
-      // Single file upload
-      const uploadUrl = await upload({
-        client,
-        files: [file]
+      // Create a timeout promise
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Upload timed out. Please try again.')), 300000) // 5 minute timeout
       })
 
-      setUploadProgress(70) // Update progress after file upload
-
-      // Handle cover art upload
-      let coverArtUrl = formData.coverImage
-
-      if (coverArtUrl && coverArtUrl.startsWith('data:')) {
+      // Race between upload and timeout
+      const uploadPromise = (async () => {
         try {
-          const response = await fetch(coverArtUrl)
-          const blob = await response.blob()
-          const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
+          console.log(client)
 
-          coverArtUrl = await upload({
+          // Single file upload
+          const uploadUrl = await upload({
             client,
-            files: [coverArtFile]
+            files: [file]
           })
-        } catch (error) {
-          console.error('Error uploading cover art:', error)
-          coverArtUrl = ''
-        }
-      }
 
-      setUploadProgress(90) // Update progress after cover art upload
+          setUploadProgress(70) // Update progress after file upload
 
-      // Prepare metadata for database
-      const mediaMetadata = {
-        title: formData.title,
-        artist: formData.artist,
-        album: formData.album,
-        label: formData.label || '',
-        releaseDate: formData.releaseDate ? formData.releaseDate.toISOString() : null,
-        filetype: formData.filetype,
-        filesize: formData.filesize,
-        duration: formData.duration,
-        ipfsUrl: uploadUrl,
-        coverImage: coverArtUrl || '',
-        uploadedAt: new Date().toISOString(),
-        status: 'unminted',
-        owner: activeAccount?.address || formData.owner
-      }
+          // Handle cover art upload
+          let coverArtUrl = formData.coverImage
 
-      try {
-        const created = await createMedia(mediaMetadata)
+          if (coverArtUrl && coverArtUrl.startsWith('data:')) {
+            try {
+              const response = await fetch(coverArtUrl)
+              const blob = await response.blob()
+              const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
 
-        setUploadProgress(100) // Complete progress
-
-        if (created && created[0] && created[0].id) {
-          const recordId = String(created[0].id).split(':')[1]
-
-          handleReset()
-
-          if (onSuccess) {
-            router.push(`/en/media/record/${recordId}`)
-            onSuccess()
+              coverArtUrl = await upload({
+                client,
+                files: [coverArtFile]
+              })
+            } catch (error) {
+              console.error('Error uploading cover art:', error)
+              coverArtUrl = ''
+            }
           }
-        } else {
-          throw new Error('Failed to get created record ID')
+
+          setUploadProgress(90) // Update progress after cover art upload
+
+          // Prepare metadata for database
+          const mediaMetadata = {
+            title: formData.title,
+            artist: formData.artist,
+            album: formData.album,
+            label: formData.label || '',
+            releaseDate: formData.releaseDate ? formData.releaseDate.toISOString() : null,
+            filetype: formData.filetype,
+            filesize: formData.filesize,
+            duration: formData.duration,
+            ipfsUrl: uploadUrl,
+            coverImage: coverArtUrl || '',
+            uploadedAt: new Date().toISOString(),
+            status: 'unminted',
+            owner: activeAccount?.address || formData.owner
+          }
+
+          const created = await createMedia(mediaMetadata)
+
+          setUploadProgress(100) // Complete progress
+
+          if (created && created[0] && created[0].id) {
+            const recordId = String(created[0].id).split(':')[1]
+
+            handleReset()
+
+            if (onSuccess) {
+              router.push(`/en/media/record/${recordId}`)
+              onSuccess()
+            }
+          } else {
+            throw new Error('Failed to get created record ID')
+          }
+        } catch (error) {
+          throw error
         }
-      } catch (dbError) {
-        console.error('Database error:', dbError)
-        throw new Error('Failed to save to database')
-      }
+      })()
+
+      await Promise.race([uploadPromise, timeoutPromise])
     } catch (error) {
       console.error('Error during upload or save:', error)
-      alert('Upload failed. Please try again.')
+      const errorMessage = error instanceof Error ? error.message : 'Upload failed. Please try again.'
+
+      // Show error dialog to user
+      if (window.confirm(`${errorMessage}\n\nWould you like to try uploading again?`)) {
+        // Reset form state but keep the file
+        setUploadProgress(0)
+        setIsUploading(false)
+
+        return
+      }
+
+      // If user doesn't want to retry, reset everything
+      handleReset()
+      setFile(null)
     } finally {
       setIsUploading(false)
       setUploadProgress(0)

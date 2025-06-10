@@ -58,6 +58,7 @@ const TokenBalances = () => {
   // const successColorWithOpacity = 'var(--mui-palette-success-lightOpacity)'
 
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const [tokenBalances, setTokenBalances] = useState<{ [key: string]: string }>({
     RAGZ: '0',
@@ -111,14 +112,13 @@ const TokenBalances = () => {
   useEffect(() => {
     const fetchBalances = async () => {
       setIsLoading(true)
+      setError(null)
 
       // Get the address from account or session
       const userAddress = account?.address || (session?.user as any)?.wallet_address
 
-      //  console.log('userAddress: ' + userAddress)
-      //  console.log('session: ' + JSON.stringify(session, null, 2))
-
       if (!userAddress) {
+        setError('No wallet address found')
         setIsLoading(false)
 
         return
@@ -146,6 +146,7 @@ const TokenBalances = () => {
         }))
       } catch (error) {
         console.error('Error fetching balance:', error)
+        setError(error instanceof Error ? error.message : 'Failed to fetch balances')
       } finally {
         setIsLoading(false)
       }
@@ -164,6 +165,8 @@ const TokenBalances = () => {
           <div className='flex justify-center'>
             {isLoading ? (
               <CircularProgress size={100} />
+            ) : error ? (
+              <Typography color='error'>{error}</Typography>
             ) : (
               <AppReactApexCharts
                 type='donut'
@@ -174,7 +177,7 @@ const TokenBalances = () => {
               />
             )}
           </div>
-          {!isLoading && (
+          {!isLoading && !error && (
             <>
               <Typography>Account Balances</Typography>
               <TableContainer>

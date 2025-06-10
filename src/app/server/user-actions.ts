@@ -29,51 +29,87 @@ interface TokenBalances {
 }
 
 export async function getUserBalances(address: string): Promise<TokenBalances> {
-  console.log('Getting balances')
+  console.log('Getting balances for address:', address)
+  console.log('Using ENGINE_URL:', ENGINE_URL)
+  console.log('Using CHAIN_ID:', CHAIN_ID)
 
-  // Get RAGZ balance
-  const ragzRes = await fetch(
-    `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+  if (!address) {
+    throw new Error('No wallet address provided')
+  }
+
+  if (
+    !ENGINE_URL ||
+    !CHAIN_ID ||
+    !RAGZ_TOKEN_ADDRESS ||
+    !TAGZ_TOKEN_ADDRESS ||
+    !MEDIA_CONTRACT_ADDRESS ||
+    !ENGINE_SECRET_KEY
+  ) {
+    throw new Error('Missing required environment variables')
+  }
+
+  try {
+    // Get RAGZ balance
+    const ragzRes = await fetch(
+      `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+        }
       }
+    )
+
+    if (!ragzRes.ok) {
+      throw new Error(`RAGZ balance fetch failed: ${ragzRes.status} ${ragzRes.statusText}`)
     }
-  )
 
-  console.log(ragzRes)
-
-  // Get TAGZ balance
-  const tagzRes = await fetch(
-    `${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+    // Get TAGZ balance
+    const tagzRes = await fetch(
+      `${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+        }
       }
-    }
-  )
+    )
 
-  // Get NFT balance (media contract)
-  const nftRes = await fetch(
-    `${ENGINE_URL}/contract/${CHAIN_ID}/${MEDIA_CONTRACT_ADDRESS}/erc721/balance-of?walletAddress=${address}`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+    if (!tagzRes.ok) {
+      throw new Error(`TAGZ balance fetch failed: ${tagzRes.status} ${tagzRes.statusText}`)
+    }
+
+    // Get NFT balance (media contract)
+    const nftRes = await fetch(
+      `${ENGINE_URL}/contract/${CHAIN_ID}/${MEDIA_CONTRACT_ADDRESS}/erc721/balance-of?walletAddress=${address}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
+        }
       }
+    )
+
+    if (!nftRes.ok) {
+      throw new Error(`NFT balance fetch failed: ${nftRes.status} ${nftRes.statusText}`)
     }
-  )
 
-  const ragzResult = await ragzRes.json()
-  const tagzResult = await tagzRes.json()
-  const nftResult = await nftRes.json()
+    const ragzResult = await ragzRes.json()
+    const tagzResult = await tagzRes.json()
+    const nftResult = await nftRes.json()
 
-  return {
-    ragzResult,
-    tagzResult,
-    nftResult
+    console.log('RAGZ Result:', ragzResult)
+    console.log('TAGZ Result:', tagzResult)
+    console.log('NFT Result:', nftResult)
+
+    return {
+      ragzResult,
+      tagzResult,
+      nftResult
+    }
+  } catch (error) {
+    console.error('Error fetching balances:', error)
+    throw error
   }
 }
 
