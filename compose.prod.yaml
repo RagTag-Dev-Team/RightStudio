@@ -111,7 +111,7 @@ services:
       - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
       - NEXT_PUBLIC_SURREALDB_DB=rgtg
       - NEXT_PUBLIC_SURREALDB_NS=rgtg
-      - ENGINE_URL=http://thirdwebengine:3005
+      - ENGINE_URL=https://thirdwebengine:3005
       - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
       - SKIP_EXTERNAL_CONNECTIONS=false
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
