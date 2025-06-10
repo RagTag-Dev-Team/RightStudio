@@ -77,6 +77,7 @@ services:
 
   next-app:
     container_name: next-app
+    image: mannyj37/rs-backend:latest
     build:
       context: ./
       dockerfile: prod.Dockerfile
@@ -99,7 +100,6 @@ services:
         - NEXT_PUBLIC_THIRDWEB_ADMIN_KEY=1361831375a445ec8e6d856ae0af0ef9fe4fe2a6c644629f62b9b70575b9814e
         - BACKEND_WALLET_ADDRESS=0xa50670F30b54C5861225457b3ca3A48E202F2E93
         - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDFhQjhjNDVBRUJjZjRDNjExNzVCRjM5QzRjZDZiMTYzYkZFNDgwODgiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDMxOTYxMjQsIm5iZiI6MTc0OTU5NjEyNCwiaWF0IjoxNzQ5NTk2MTI0LCJqdGkiOiI1OTFjNWQ1Yy0xZjU2LTQzZGEtOWM0ZS1kYzZiNmMyNmI2MTUiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHhkZWRjYmQ2MjA2MWNiM2MwMGJkOTUwYmZlZjI4ZjViMWE1MjYzOGQ0YWQ2ZjcyYjM2MmRmZGNhMGFhMDE3NzViMTI3ZGQxYTlkODU0MzcwODlkYzBmODJkZjhkNTdiNzczMWRlODAxMWIxMGU5MDJiYzE0OWU3ZjlkYjY2NTY5MTFi
-    image: mannyj37/rs-backend:latest
     restart: always
     ports:
       - '3000:3000'
