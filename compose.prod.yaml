@@ -4,12 +4,12 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh rocksdb:/surrealdb
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh rocksdb:/surrealdb/mydatabase.db
     ports:
       - '8000:8000'
     volumes:
-      - surrealdb_data:/surrealdb
-
+      - ./surrealdb:/surrealdb
+    user: '${UID:-1000}:${GID:-1000}'
     networks:
       - backend
     restart: unless-stopped
@@ -136,7 +136,6 @@ services:
       - backend
 
 volumes:
-  surrealdb_data:
   postgres_data:
   redis_data:
 
