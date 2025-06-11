@@ -160,3 +160,15 @@ surrealdb/data/OPTIONS-000077
 .vercel
 .env*.local
 env.development
+surrealdb/mydatabase.db/000035.log
+surrealdb/mydatabase.db/000037.sst
+surrealdb/mydatabase.db/CURRENT
+surrealdb/mydatabase.db/IDENTITY
+surrealdb/mydatabase.db/LOCK
+surrealdb/mydatabase.db/LOG
+surrealdb/mydatabase.db/LOG.old.1749601002452876
+surrealdb/mydatabase.db/LOG.old.1749601085969974
+surrealdb/mydatabase.db/LOG.old.1749601140135083
+surrealdb/mydatabase.db/MANIFEST-000032
+surrealdb/mydatabase.db/OPTIONS-000025
+surrealdb/mydatabase.db/OPTIONS-000034

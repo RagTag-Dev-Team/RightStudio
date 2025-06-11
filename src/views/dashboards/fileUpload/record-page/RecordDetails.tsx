@@ -46,7 +46,7 @@ import { getDb } from '@/libs/surreal'
 // Add this constant at the top with other constants
 const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
 
-import { mintRecord, awardTagz } from '@/app/server/data-actions'
+import { mintRecord, awardTagz, updateRecord } from '@/app/server/data-actions'
 
 type RecordDataType = {
   id?: string
@@ -185,9 +185,30 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData) return
 
     try {
-      const db = await getDb()
+      const updatedRecord = {
+        id: recordId,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        filetype: recordData.filetype,
+        filesize: recordData.filesize,
+        duration: recordData.duration,
+        label: recordData.label,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        ipfsUrl: recordData.ipfsUrl,
+        status: recordData.status || 'unminted',
+        uploadedAt: recordData.uploadedAt,
+        coverImage: recordData.coverImage,
+        owner: recordData.owner,
+        transactionHash: recordData.transactionHash,
+        watermarkedUrl: recordData.watermarkedUrl,
+        tokenId: recordData.tokenId,
+        dateMinted: recordData.dateMinted?.toISOString() || null,
+        certificateId: recordData.certificateId,
+        certificateProjectId: recordData.certificateProjectId
+      }
 
-      await db.update(`media:${recordId}`, recordData)
+      await updateRecord(recordId, updatedRecord)
       setIsEditing(false)
     } catch (error) {
       console.error('Error saving record:', error)
@@ -228,14 +249,30 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const queueId = await mintRecord(metadata, activeAccount.address)
 
       // Update record status in database
-      const db = await getDb()
-
-      await db.update(new RecordId('media', `${recordId}`), {
-        ...recordData,
+      const updatedRecord = {
+        id: recordId,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        filetype: recordData.filetype,
+        filesize: recordData.filesize,
+        duration: recordData.duration,
+        label: recordData.label,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        ipfsUrl: recordData.ipfsUrl,
         status: 'minted',
+        uploadedAt: recordData.uploadedAt,
+        coverImage: recordData.coverImage,
         owner: activeAccount.address,
-        transactionHash: queueId
-      })
+        transactionHash: queueId,
+        watermarkedUrl: recordData.watermarkedUrl,
+        tokenId: recordData.tokenId,
+        dateMinted: new Date().toISOString(),
+        certificateId: recordData.certificateId,
+        certificateProjectId: recordData.certificateProjectId
+      }
+
+      await updateRecord(recordId, updatedRecord)
 
       // Update local state
       setRecordData(prev =>
