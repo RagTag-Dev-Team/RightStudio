@@ -105,6 +105,7 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=production
+      - NODE_OPTIONS="--max-old-space-size=4096"
       - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
       - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
       - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
