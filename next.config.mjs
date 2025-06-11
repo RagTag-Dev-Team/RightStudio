@@ -9,8 +9,7 @@ const nextConfig = {
         'node_modules/@swc/core-linux-x64-musl',
         'node_modules/@esbuild/linux-x64'
       ]
-    },
-    serverActions: true
+    }
   },
 
   // Enable static optimization
@@ -77,9 +76,12 @@ const nextConfig = {
       }
     ]
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '100mb'
+  // Configure API route options
+  serverRuntimeConfig: {
+    api: {
+      bodyParser: {
+        sizeLimit: '100mb'
+      }
     }
   }
 }
