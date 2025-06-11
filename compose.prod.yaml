@@ -4,7 +4,7 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh rocksdb:/surrealdb/mydatabase.db
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh --tls --cert surrealdb/certs/server.crt --key surrealdb/certs/server.key rocksdb:/surrealdb/mydatabase.db
     ports:
       - '8000:8000'
     volumes:
@@ -87,7 +87,7 @@ services:
         - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
         - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
         - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-        - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+        - NEXT_PUBLIC_SURREALDB_CONNECTION=https://surrealdb:8000/rpc
         - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
         - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
         - NEXT_PUBLIC_SURREALDB_DB=rgtg
@@ -109,7 +109,7 @@ services:
       - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
       - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-      - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+      - NEXT_PUBLIC_SURREALDB_CONNECTION=https://surrealdb:8000/rpc
       - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
       - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
       - NEXT_PUBLIC_SURREALDB_DB=rgtg
