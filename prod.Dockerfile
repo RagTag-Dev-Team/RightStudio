@@ -15,8 +15,7 @@ RUN apk add --no-cache \
     openssl
 
 
-RUN npm install -g pnpm && \
-    ln -s /usr/local/bin/pnpm /usr/local/bin/pnpm
+RUN npm install -g pnpm
 
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
@@ -33,7 +32,7 @@ ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
 ARG NEXT_PUBLIC_DOCS_URL=http://localhost:3001
 ARG NEXTAUTH_URL=http://localhost:3000/api/auth
 ARG NEXTAUTH_SECRET=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-ARG NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+ARG NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
 ARG NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
 ARG NEXT_PUBLIC_SURREALDB_DB=rgtg
@@ -80,11 +79,13 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/package.json ./package.json
+
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -103,4 +104,4 @@ USER nextjs
 EXPOSE 3000
 
 # Start the application with host binding
-CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nStarting Next.js...' && node server.js"]
+CMD ["node", "server.js"]
