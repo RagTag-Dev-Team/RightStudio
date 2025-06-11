@@ -57,10 +57,8 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build the application with explicit standalone output
-RUN pnpm build && \
-    ls -la .next && \
-    ls -la .next/standalone || echo "Standalone directory not found"
+# Build the application
+RUN pnpm build
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
@@ -72,8 +70,9 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy necessary files
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
 # Create directory for certificates
 RUN mkdir -p /app/surrealdb/certs
@@ -93,4 +92,4 @@ ENV HOSTNAME "0.0.0.0"
 ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
 # Start the application
-CMD ["node", "server.js"]
+CMD ["pnpm", "start"]
