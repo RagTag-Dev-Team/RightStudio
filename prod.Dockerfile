@@ -17,6 +17,7 @@ RUN apk add --no-cache \
 
 RUN npm install -g pnpm
 
+
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
 
@@ -103,5 +104,5 @@ USER nextjs
 # Expose the port
 EXPOSE 3000
 
-# Start the application with host binding
-CMD ["node", "server.js"]
+# Start the application with host binding and debugging
+CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking standalone directory:' && ls -la standalone || echo 'Standalone directory not found' && echo '\nStarting Next.js...' && node standalone/server.js"]
