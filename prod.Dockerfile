@@ -65,8 +65,9 @@ FROM base AS runner
 
 WORKDIR /app
 
-# Install pnpm in the runner stage
-RUN npm install -g pnpm
+# Install pnpm in the runner stage and ensure it's in PATH
+RUN npm install -g pnpm && \
+    ln -s /usr/local/bin/pnpm /usr/local/bin/pnpm
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -94,5 +95,5 @@ ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
-# Start the application using pnpm
-CMD ["pnpm", "start"]
+# Start the application using node directly
+CMD ["node", ".next/server.js"]
