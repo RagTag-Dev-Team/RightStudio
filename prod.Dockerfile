@@ -14,7 +14,8 @@ RUN apk add --no-cache \
     g++ \
     openssl
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm && \
+    ln -s /usr/local/bin/pnpm /usr/local/bin/pnpm
 
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
