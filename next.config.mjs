@@ -83,6 +83,11 @@ const nextConfig = {
         sizeLimit: '100mb'
       }
     }
+  },
+  // Ensure proper standalone output
+  distDir: '.next',
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
   }
 }
 
