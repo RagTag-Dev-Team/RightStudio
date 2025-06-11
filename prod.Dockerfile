@@ -76,6 +76,8 @@ FROM base AS runner
 
 WORKDIR /app
 
+RUN npm install pnpm
+
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
