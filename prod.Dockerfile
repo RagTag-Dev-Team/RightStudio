@@ -87,6 +87,8 @@ COPY --from=builder /app/package.json ./package.json
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
 
 # Switch to non-root user
@@ -95,4 +97,5 @@ USER nextjs
 # Expose the port
 EXPOSE 3000
 
+# Start the application with host binding
 CMD ["node", "server.js"]
