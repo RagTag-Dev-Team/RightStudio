@@ -57,8 +57,10 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build the application
-RUN pnpm build
+# Build the application with explicit standalone output
+RUN pnpm build && \
+    ls -la .next && \
+    ls -la .next/standalone || echo "Standalone directory not found"
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner

@@ -44,14 +44,6 @@ const nextConfig = {
       }
     }
 
-    // Ensure proper standalone output
-    if (isServer) {
-      config.output = {
-        ...config.output,
-        libraryTarget: 'commonjs2'
-      }
-    }
-
     return config
   },
   redirects: async () => {
@@ -86,8 +78,6 @@ const nextConfig = {
     }
   },
 
-  // Ensure proper standalone output
-  distDir: '.next',
   generateBuildId: async () => {
     return 'build-' + Date.now()
   }
