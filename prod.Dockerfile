@@ -73,6 +73,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+# Create directory for certificates
+RUN mkdir -p /app/surrealdb/certs
+
 # Set the correct permissions
 RUN chown -R nextjs:nodejs /app
 
@@ -85,6 +88,7 @@ EXPOSE 3000
 # Set environment variables
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
+ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
 # Start the application
 CMD ["node", "server.js"]

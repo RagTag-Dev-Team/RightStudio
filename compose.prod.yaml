@@ -4,7 +4,7 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh --tls --cert surrealdb/certs/server.crt --key surrealdb/certs/server.key rocksdb:/surrealdb/mydatabase.db
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh --tls --cert surrealdb/certs/server.crt --key surrealdb/certs/server.key --web-crt surrealdb/certs/server.crt --web-key surrealdb/certs/server.key rocksdb:/surrealdb/mydatabase.db
     ports:
       - '8000:8000'
     volumes:
@@ -122,6 +122,9 @@ services:
       - NODE_TLS_REJECT_UNAUTHORIZED=0
       - BACKEND_WALLET_ADDRESS=0xa50670F30b54C5861225457b3ca3A48E202F2E93
       - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDFhQjhjNDVBRUJjZjRDNjExNzVCRjM5QzRjZDZiMTYzYkZFNDgwODgiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDMxOTYxMjQsIm5iZiI6MTc0OTU5NjEyNCwiaWF0IjoxNzQ5NTk2MTI0LCJqdGkiOiI1OTFjNWQ1Yy0xZjU2LTQzZGEtOWM0ZS1kYzZiNmMyNmI2MTUiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHhkZWRjYmQ2MjA2MWNiM2MwMGJkOTUwYmZlZjI4ZjViMWE1MjYzOGQ0YWQ2ZjcyYjM2MmRmZGNhMGFhMDE3NzViMTI3ZGQxYTlkODU0MzcwODlkYzBmODJkZjhkNTdiNzczMWRlODAxMWIxMGU5MDJiYzE0OWU3ZjlkYjY2NTY5MTFi
+      - NODE_EXTRA_CA_CERTS=/app/surrealdb/certs/server.crt
+    volumes:
+      - ./surrealdb/certs:/app/surrealdb/certs:ro
     depends_on:
       postgres:
         condition: service_healthy

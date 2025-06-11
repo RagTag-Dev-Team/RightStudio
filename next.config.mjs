@@ -76,6 +76,7 @@ const nextConfig = {
       }
     ]
   },
+
   // Configure API route options
   serverRuntimeConfig: {
     api: {
@@ -84,6 +85,7 @@ const nextConfig = {
       }
     }
   },
+
   // Ensure proper standalone output
   distDir: '.next',
   generateBuildId: async () => {
