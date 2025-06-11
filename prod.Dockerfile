@@ -57,17 +57,18 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build the application
-RUN pnpm build
+# Build the application with debugging
+RUN echo "Building Next.js..." && \
+    pnpm build && \
+    echo "\nChecking .next directory structure:" && \
+    ls -la .next && \
+    echo "\nChecking .next/server directory:" && \
+    ls -la .next/server || echo "Server directory not found"
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
 
 WORKDIR /app
-
-# Install pnpm in the runner stage and ensure it's in PATH
-RUN npm install -g pnpm && \
-    ln -s /usr/local/bin/pnpm /usr/local/bin/pnpm
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -77,9 +78,6 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-
-# Create directory for certificates
-RUN mkdir -p /app/surrealdb/certs
 
 # Set the correct permissions
 RUN chown -R nextjs:nodejs /app
@@ -94,6 +92,7 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 ENV NODE_TLS_REJECT_UNAUTHORIZED 0
+ENV NODE_ENV production
 
-# Start the application using node directly
-CMD ["node", ".next/server.js"]
+# Start the application using pnpm
+CMD ["pnpm", "start"]
