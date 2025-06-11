@@ -44,7 +44,7 @@ const nextConfig = {
       }
     }
 
-    // Add this to ensure proper standalone output
+    // Ensure proper standalone output
     if (isServer) {
       config.output = {
         ...config.output,
