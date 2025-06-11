@@ -103,4 +103,4 @@ USER nextjs
 EXPOSE 3000
 
 # Start the application with host binding
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nStarting Next.js...' && node server.js"]
