@@ -75,8 +75,8 @@ FROM base AS runner
 WORKDIR /app
 
 # Don't run production as root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
