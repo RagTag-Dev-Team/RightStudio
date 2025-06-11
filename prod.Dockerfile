@@ -63,7 +63,7 @@ ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 RUN echo "Current directory contents:" && \
     ls -la && \
     echo "\nBuilding Next.js..." && \
-    pnpm build && \
+    NODE_ENV=production pnpm build && \
     echo "\nChecking .next directory:" && \
     ls -la .next && \
     echo "\nChecking .next/standalone:" && \
@@ -92,6 +92,9 @@ ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
+
+# Set the correct permissions
+RUN chown -R nextjs:nodejs /app
 
 # Switch to non-root user
 USER nextjs
