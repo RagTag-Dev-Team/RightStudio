@@ -16,9 +16,6 @@ RUN apk add --no-cache \
 
 RUN npm install -g pnpm
 
-COPY src/prisma ./src/prisma/
-COPY src/assets ./src/assets/
-
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN pnpm install --frozen-lockfile
@@ -73,6 +70,10 @@ RUN pnpm build && \
         find .next -type d && \
         echo "Checking next.config.mjs:" && \
         cat next.config.mjs && \
+        echo "Checking package.json:" && \
+        cat package.json && \
+        echo "Checking node_modules:" && \
+        ls -la node_modules/.bin && \
         exit 1; \
     fi
 
