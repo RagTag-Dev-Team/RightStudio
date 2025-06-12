@@ -113,7 +113,7 @@ ENV SKIP_EXTERNAL_CONNECTIONS=false
 
 # Copy only necessary files from builder
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./.next/standalone
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
 
@@ -133,4 +133,4 @@ USER nextjs
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application
-CMD ["node", "server.js"]
+CMD ["node", "./next/standalone/server.js"]
