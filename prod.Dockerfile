@@ -19,8 +19,8 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy package files first to leverage Docker cache
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+# Copy all files first
+COPY . .
 
 # Install dependencies
 RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -28,11 +28,6 @@ RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
     else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
     fi
-
-# Copy source files
-COPY src/prisma ./src/prisma/
-COPY src/assets ./src/assets/
-COPY . .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -64,6 +59,15 @@ ENV ENGINE_SECRET_KEY=$ENGINE_SECRET_KEY
 ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+
+# Generate Prisma client
+RUN if [ -f "src/prisma/schema.prisma" ]; then \
+    if [ -f yarn.lock ]; then yarn prisma generate; \
+    elif [ -f package-lock.json ]; then npx prisma generate; \
+    elif [ -f pnpm-lock.yaml ]; then pnpm prisma generate; \
+    else npx prisma generate; \
+    fi; \
+    fi
 
 # Build Next.js with proper error handling
 RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
