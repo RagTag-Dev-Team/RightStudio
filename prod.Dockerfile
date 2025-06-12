@@ -13,11 +13,7 @@ RUN apk add --no-cache \
     npm install -g pnpm
 
 # Copy package files and assets
-COPY package.json pnpm-lock.yaml* yarn.lock* package-lock.json* ./
-COPY src/prisma ./src/prisma/
-COPY src/assets ./src/assets/
-COPY tsconfig.json ./
-COPY next.config.mjs ./
+  COPY . .
 
 # Install dependencies based on lockfile
 RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -79,11 +75,14 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js with proper error handling
-RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
-    elif [ -f package-lock.json ]; then npm run build || (echo "Build failed" && exit 1); \
-    elif [ -f pnpm-lock.yaml ]; then pnpm build || (echo "Build failed" && exit 1); \
-    else npm run build || (echo "Build failed" && exit 1); \
+# Set Node.js memory limits
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Build Next.js with proper error handling and increased memory
+RUN if [ -f yarn.lock ]; then NODE_OPTIONS="--max-old-space-size=4096" yarn build || (echo "Build failed" && exit 1); \
+    elif [ -f package-lock.json ]; then NODE_OPTIONS="--max-old-space-size=4096" npm run build || (echo "Build failed" && exit 1); \
+    elif [ -f pnpm-lock.yaml ]; then NODE_OPTIONS="--max-old-space-size=4096" pnpm build || (echo "Build failed" && exit 1); \
+    else NODE_OPTIONS="--max-old-space-size=4096" npm run build || (echo "Build failed" && exit 1); \
     fi
 
 # Verify the build output and debug file structure
@@ -109,6 +108,7 @@ ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 
 # Copy necessary files from builder
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
