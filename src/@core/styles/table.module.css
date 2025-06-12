@@ -3,81 +3,91 @@
   border-collapse: collapse;
   font-size: 0.8125rem;
   white-space: nowrap;
+}
 
-  [align='right'] > * {
-    text-align: end;
-  }
-  [align='center'] > * {
-    text-align: center;
-  }
+.tableRightAlign {
+  text-align: end;
+}
 
-  thead {
-    text-transform: uppercase;
-    color: var(--mui-palette-text-primary);
-    border-block-start: 1px solid var(--border-color);
+.tableCenterAlign {
+  text-align: center;
+}
 
-    th {
-      font-weight: 500;
-      font-size: 0.8125rem;
-      letter-spacing: 0.2px;
-      line-height: 1.8462;
-      text-align: start;
-      block-size: 56px;
-      &:not(:first-of-type):not(:last-of-type) {
-        padding-block: 0.5rem;
-        padding-inline: 1rem;
-      }
-      &:first-of-type {
-        &:not(:has(input[type='checkbox'])) {
-          padding-block: 0.5rem;
-          padding-inline: 1.5rem 1rem;
-        }
-        &:has(input[type='checkbox']) {
-          padding-inline-start: 0.9375rem;
-        }
-      }
-      &:last-of-type {
-        padding-block: 0.5rem;
-        padding-inline: 1rem 1.5rem;
-      }
-    }
-  }
+.table thead {
+  text-transform: uppercase;
+  color: var(--mui-palette-text-primary);
+  border-block-start: 1px solid var(--border-color);
+}
 
-  tbody {
-    color: var(--mui-palette-text-secondary);
+.table thead th {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.2px;
+  line-height: 1.8462;
+  text-align: start;
+  block-size: 56px;
+}
 
-    th,
-    td {
-      font-size: 0.9375rem;
-      line-height: 1.4667;
-      block-size: 50px;
-      &:not(:first-of-type):not(:last-of-type) {
-        padding-block: 0.5rem;
-        padding-inline: 1rem;
-      }
-      &:first-of-type {
-        &:not(:has(input[type='checkbox'])) {
-          padding-block: 0.5rem;
-          padding-inline: 1.5rem 1rem;
-        }
-        &:has(input[type='checkbox']) {
-          inline-size: 51px;
-          padding-inline-start: 0.9375rem;
-        }
-      }
-      &:last-of-type {
-        padding-block: 0.5rem;
-        padding-inline: 1rem 1.5rem;
-      }
-    }
+.table thead th:not(:first-of-type):not(:last-of-type) {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
 
-    tr:not(:last-child) {
-      border-block-end: 1px solid var(--border-color);
-    }
-    tr {
-      border-block-start: 1px solid var(--border-color);
-    }
-  }
+.table thead th:first-of-type:not(:has(input[type='checkbox'])) {
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem 1rem;
+}
+
+.table thead th:first-of-type:has(input[type='checkbox']) {
+  padding-inline-start: 0.9375rem;
+}
+
+.table thead th:last-of-type {
+  padding-block: 0.5rem;
+  padding-inline: 1rem 1.5rem;
+}
+
+.table tbody {
+  color: var(--mui-palette-text-secondary);
+}
+
+.table tbody th,
+.table tbody td {
+  font-size: 0.9375rem;
+  line-height: 1.4667;
+  block-size: 50px;
+}
+
+.table tbody th:not(:first-of-type):not(:last-of-type),
+.table tbody td:not(:first-of-type):not(:last-of-type) {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+.table tbody th:first-of-type:not(:has(input[type='checkbox'])),
+.table tbody td:first-of-type:not(:has(input[type='checkbox'])) {
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem 1rem;
+}
+
+.table tbody th:first-of-type:has(input[type='checkbox']),
+.table tbody td:first-of-type:has(input[type='checkbox']) {
+  inline-size: 51px;
+  padding-inline-start: 0.9375rem;
+}
+
+.table tbody th:last-of-type,
+.table tbody td:last-of-type {
+  padding-block: 0.5rem;
+  padding-inline: 1rem 1.5rem;
+}
+
+.table tbody tr:not(:last-child) {
+  border-block-end: 1px solid var(--border-color);
+}
+
+.table tbody tr {
+  border-block-start: 1px solid var(--border-color);
 }
 
 .cellWithInput input {
@@ -89,8 +99,8 @@
   padding-block: 6px;
   padding-inline: 10px;
   margin-inline: -10px;
+}
 
-  &:focus-visible {
-    outline: 1px solid var(--mui-palette-primary-main);
-  }
+.cellWithInput input:focus-visible {
+  outline: 1px solid var(--mui-palette-primary-main);
 }

@@ -30,10 +30,7 @@ RUN \
   fi
 
 # Copy source files
-COPY src ./src
-COPY public ./public
-COPY next.config.mjs .
-COPY tsconfig.json .
+COPY . .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -79,7 +76,6 @@ FROM base AS runner
 
 WORKDIR /app
 
-RUN npm install pnpm
 
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
