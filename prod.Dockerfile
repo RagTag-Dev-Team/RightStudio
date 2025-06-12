@@ -14,6 +14,7 @@ RUN apk add --no-cache \
     g++ \
     openssl
 
+# Install pnpm
 RUN npm install -g pnpm
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
@@ -69,6 +70,9 @@ RUN pnpm build
 FROM base AS runner
 
 WORKDIR /app
+
+# Install pnpm in the runner stage
+RUN npm install -g pnpm
 
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
