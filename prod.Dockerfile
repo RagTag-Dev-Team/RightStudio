@@ -42,7 +42,7 @@ COPY --from=deps /app/tsconfig.json ./
 COPY --from=deps /app/next.config.mjs ./
 
 # Copy the rest of the application
-COPY --from=deps /app .
+COPY --from=deps /app/.next ./.next
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -102,6 +102,9 @@ RUN apk add --no-cache curl tini
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+USER nextjs
+
+
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
@@ -131,10 +134,9 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 # Expose the port
 EXPOSE 3000
 
-USER nextjs
 
 # Use tini as init system
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application with absolute path
-CMD ["node", "/app/server.js"]
+CMD ["node", "server.js"]
