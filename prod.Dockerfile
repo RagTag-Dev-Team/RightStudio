@@ -93,8 +93,12 @@ ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
 
-# Set the correct permissions
-RUN chown -R nextjs:nodejs /app
+# Set the correct permissions for all directories and files
+RUN chown -R nextjs:nodejs /app && \
+    chmod -R 755 /app && \
+    chmod -R 755 /app/.next && \
+    chmod -R 755 /app/node_modules && \
+    chmod -R 755 /app/public
 
 # Switch to non-root user
 USER nextjs
@@ -103,4 +107,4 @@ USER nextjs
 EXPOSE 3000
 
 # Start the application with host binding and debugging
-CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking .next directory:' && ls -la .next && echo '\nStarting Next.js...' && node .next/server.js"]
+CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking .next directory:' && ls -la .next && echo '\nChecking .next/server.js permissions:' && ls -la .next/server.js && echo '\nStarting Next.js...' && node .next/server.js"]
