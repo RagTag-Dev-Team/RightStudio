@@ -67,16 +67,12 @@ ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
 # Build Next.js with debugging
-RUN echo "Current directory contents:" && \
-    ls -la && \
-    echo "\nBuilding Next.js..." && \
-    NODE_ENV=production pnpm build && \
-    echo "\nChecking .next directory:" && \
-    ls -la .next && \
-    echo "\nChecking .next/standalone:" && \
-    ls -la .next/standalone || echo "Standalone directory not found" && \
-    echo "\nChecking .next/static:" && \
-    ls -la .next/static || echo "Static directory not found"
+RUN \
+  if [ -f yarn.lock ]; then yarn build; \
+  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm build; \
+  else npm run build; \
+  fi
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
