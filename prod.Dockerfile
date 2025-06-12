@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1
 
 # Stage 1: Dependencies
-FROM node:18-alpine AS deps
+FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Install build dependencies and pnpm
@@ -22,27 +22,6 @@ RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
     fi
 
-# Stage 2: Builder
-FROM node:18-alpine AS builder
-WORKDIR /app
-
-# Install build dependencies and pnpm
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    openssl && \
-    npm install -g pnpm
-
-# Copy dependencies and configuration from deps stage
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/src/prisma ./src/prisma
-COPY --from=deps /app/src/assets ./src/assets
-COPY --from=deps /app/tsconfig.json ./
-COPY --from=deps /app/next.config.mjs ./
-
-# Copy the rest of the application
-COPY --from=deps /app/.next ./.next
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -75,15 +54,7 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Set Node.js memory limits
-ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-# Build Next.js with proper error handling and increased memory
-RUN if [ -f yarn.lock ]; then NODE_OPTIONS="--max-old-space-size=4096" yarn build || (echo "Build failed" && exit 1); \
-    elif [ -f package-lock.json ]; then NODE_OPTIONS="--max-old-space-size=4096" npm run build || (echo "Build failed" && exit 1); \
-    elif [ -f pnpm-lock.yaml ]; then NODE_OPTIONS="--max-old-space-size=4096" pnpm build || (echo "Build failed" && exit 1); \
-    else NODE_OPTIONS="--max-old-space-size=4096" npm run build || (echo "Build failed" && exit 1); \
-    fi
 
 # Verify the build output and debug file structure
 RUN ls -la .next/standalone && \
@@ -111,21 +82,18 @@ ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
-ENV NODE_OPTIONS="--max-old-space-size=2048"
 
 # Copy necessary files from builder
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
+
 
 # Debug: List files in the current directory
 RUN ls -la && \
     echo "Contents of /app:" && \
     find . -type f -name "server.js"
 
-# Set proper permissions
-RUN chmod -R 777 /app
+
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
@@ -135,8 +103,6 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 EXPOSE 3000
 
 
-# Use tini as init system
-ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application with absolute path
 CMD ["node", "server.js"]
