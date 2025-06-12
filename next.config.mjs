@@ -1,11 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true
-  },
+  output: 'standalone',
 
-  // Enable static optimization
-  swcMinify: true,
 
   // Configure images if you're using them
   images: {
