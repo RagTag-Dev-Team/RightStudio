@@ -21,10 +21,19 @@ COPY src/assets ./src/assets/
 
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-RUN pnpm install --frozen-lockfile
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm i; \
+  # Allow install without lockfile, so example works even without Node.js installed locally
+  else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
+  fi
 
 # Copy source files
-COPY . .
+COPY src ./src
+COPY public ./public
+COPY next.config.mjs .
+COPY tsconfig.json .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -79,12 +88,12 @@ RUN npm install pnpm
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
+USER nextjs
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -100,11 +109,9 @@ RUN chown -R nextjs:nodejs /app && \
     chmod -R 755 /app/node_modules && \
     chmod -R 755 /app/public
 
-# Switch to non-root user
-USER nextjs
 
 # Expose the port
 EXPOSE 3000
 
 # Start the application with host binding and debugging
-CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking .next directory:' && ls -la .next && echo '\nChecking .next/server.js permissions:' && ls -la .next/server.js && echo '\nStarting Next.js...' && node .next/server.js"]
+CMD ["node", "server.js"]
