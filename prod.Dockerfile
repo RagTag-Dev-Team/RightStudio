@@ -2,34 +2,37 @@
 
 FROM node:18-alpine AS base
 
+# Install common dependencies
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    openssl \
+    curl \
+    tini
+
 # Step 1. Rebuild the source code only when needed
 FROM base AS builder
 
 WORKDIR /app
 
-# Install system dependencies
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    openssl
-
+# Install pnpm
 RUN npm install -g pnpm
-
-COPY src/prisma ./src/prisma/
-COPY src/assets ./src/assets/
 
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then pnpm i; \
-  # Allow install without lockfile, so example works even without Node.js installed locally
-  else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
-  fi
+
+# Install dependencies with proper caching
+RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store \
+    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then npm ci; \
+    elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
+    else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
+    fi
 
 # Copy source files
+COPY src/prisma ./src/prisma/
+COPY src/assets ./src/assets/
 COPY . .
 
 # Set build-time environment variables with defaults
@@ -63,24 +66,27 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js with debugging
-RUN \
-  if [ -f yarn.lock ]; then yarn build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then pnpm build; \
-  else npm run build; \
-  fi
+# Build Next.js with proper error handling
+RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store \
+    if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
+    elif [ -f package-lock.json ]; then npm run build || (echo "Build failed" && exit 1); \
+    elif [ -f pnpm-lock.yaml ]; then pnpm build || (echo "Build failed" && exit 1); \
+    else npm run build || (echo "Build failed" && exit 1); \
+    fi
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
 
 WORKDIR /app
 
-
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
-USER nextjs
+
+# Install production dependencies only
+RUN apk add --no-cache curl
+
+
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
@@ -96,14 +102,22 @@ ENV SKIP_EXTERNAL_CONNECTIONS=false
 
 # Set the correct permissions for all directories and files
 RUN chown -R nextjs:nodejs /app && \
-    chmod -R 755 /app && \
-    chmod -R 755 /app/.next && \
-    chmod -R 755 /app/node_modules && \
-    chmod -R 755 /app/public
+    chmod -R 777 /app && \
+    chmod -R 777 /app/.next && \
+    chmod -R 777 /app/node_modules && \
+    chmod -R 777 /app/public
 
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Expose the port
 EXPOSE 3000
 
-# Start the application with host binding and debugging
+USER nextjs
+
+# Use tini as init system
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start the application with host binding and proper logging
 CMD ["node", "server.js"]

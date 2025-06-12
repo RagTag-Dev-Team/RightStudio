@@ -7,7 +7,11 @@ const nextConfig = {
       '*': [
         'node_modules/@swc/core-linux-x64-gnu',
         'node_modules/@swc/core-linux-x64-musl',
-        'node_modules/@esbuild/linux-x64'
+        'node_modules/@esbuild/linux-x64',
+        'node_modules/.pnpm',
+        'node_modules/.cache',
+        'node_modules/.bin',
+        'node_modules/.vite'
       ]
     },
     serverActions: true
@@ -77,9 +81,71 @@ const nextConfig = {
       }
     ]
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '100mb'
+  serverRuntimeConfig: {
+    api: {
+      bodyParser: {
+        sizeLimit: '100mb'
+      }
+    }
+  },
+
+  // Add security headers
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ]
+      }
+    ]
+  },
+
+  // Add compression
+  compress: true,
+
+  // Add CORS configuration
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/api/:path*',
+          has: [
+            {
+              type: 'header',
+              key: 'origin'
+            }
+          ],
+          destination: '/api/:path*'
+        }
+      ]
     }
   }
 }
