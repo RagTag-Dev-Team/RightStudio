@@ -4,7 +4,7 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh rocksdb:/surrealdb/mydatabase.db
     ports:
       - '8000:8000'
     volumes:
