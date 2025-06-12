@@ -80,7 +80,7 @@ services:
     image: mannyj37/rs-backend:latest
     build:
       context: ./
-      dockerfile: Dockerfile.prod
+      dockerfile: prod.Dockerfile
       args:
         - NODE_ENV=production
         - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
