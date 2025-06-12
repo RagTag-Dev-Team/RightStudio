@@ -24,7 +24,14 @@ COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN pnpm install --frozen-lockfile
 
 # Copy source files
-COPY . .
+COPY src ./src
+COPY public ./public
+COPY next.config.mjs .
+COPY tsconfig.json .
+COPY postcss.config.mjs .
+COPY tailwind.config.ts .
+COPY src/prisma ./src/prisma/
+
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -57,17 +64,8 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js with debugging
-RUN echo "Current directory contents:" && \
-    ls -la && \
-    echo "\nBuilding Next.js..." && \
-    pnpm build && \
-    echo "\nChecking .next directory:" && \
-    ls -la .next && \
-    echo "\nChecking .next/standalone:" && \
-    ls -la .next/standalone || echo "Standalone directory not found" && \
-    echo "\nChecking .next/static:" && \
-    ls -la .next/static || echo "Static directory not found"
+# Build Next.js
+RUN pnpm build
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
