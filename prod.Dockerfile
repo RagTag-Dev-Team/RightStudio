@@ -79,8 +79,6 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-
-
 # Build Next.js with proper error handling
 RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
     elif [ -f package-lock.json ]; then npm run build || (echo "Build failed" && exit 1); \
@@ -88,8 +86,9 @@ RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
     else npm run build || (echo "Build failed" && exit 1); \
     fi
 
-# Verify the build output
-RUN if [ ! -d ".next/standalone" ]; then \
+# Verify the build output and debug file structure
+RUN ls -la .next/standalone && \
+    if [ ! -d ".next/standalone" ]; then \
     echo "Error: .next/standalone directory not found. Make sure output: 'standalone' is set in next.config.mjs" && exit 1; \
     fi
 
@@ -111,11 +110,16 @@ ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
 
-# Copy only necessary files from builder
+# Copy necessary files from builder
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
+
+# Debug: List files in the current directory
+RUN ls -la && \
+    echo "Contents of /app:" && \
+    find . -type f -name "server.js"
 
 # Set proper permissions
 RUN chmod -R 777 /app
@@ -132,5 +136,5 @@ USER nextjs
 # Use tini as init system
 ENTRYPOINT ["/sbin/tini", "--"]
 
-# Start the application
-CMD ["node", "./next/standalone/server.js"]
+# Start the application with absolute path
+CMD ["node", "/app/server.js"]
