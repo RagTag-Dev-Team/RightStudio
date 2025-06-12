@@ -76,6 +76,11 @@ RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
     else npm run build || (echo "Build failed" && exit 1); \
     fi
 
+# Verify the build output
+RUN if [ ! -d ".next/standalone" ]; then \
+    echo "Error: .next/standalone directory not found. Make sure output: 'standalone' is set in next.config.mjs" && exit 1; \
+    fi
+
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
 
@@ -90,8 +95,8 @@ RUN apk add --no-cache curl
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 # Set environment variables
 ENV NODE_ENV=production
