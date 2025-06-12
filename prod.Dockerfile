@@ -15,6 +15,8 @@ RUN apk add --no-cache \
     openssl
 
 RUN npm install -g pnpm
+COPY src/prisma ./src/prisma/
+COPY src/assets ./src/assets/
 
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
