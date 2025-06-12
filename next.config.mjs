@@ -13,8 +13,7 @@ const nextConfig = {
         'node_modules/.bin',
         'node_modules/.vite'
       ]
-    },
-    serverActions: true
+    }
   },
 
   // Enable static optimization
