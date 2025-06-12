@@ -4,13 +4,20 @@
 FROM node:18-alpine AS deps
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
+# Install build dependencies and pnpm
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    openssl && \
+    npm install -g pnpm
 
-# Copy only package files first to leverage cache
+# Copy package files and assets
 COPY package.json pnpm-lock.yaml* yarn.lock* package-lock.json* ./
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
+COPY tsconfig.json ./
+COPY next.config.mjs ./
 
 # Install dependencies based on lockfile
 RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -31,9 +38,14 @@ RUN apk add --no-cache \
     openssl && \
     npm install -g pnpm
 
-# Copy dependencies from deps stage
+# Copy dependencies and configuration from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/src/prisma ./src/prisma
+COPY --from=deps /app/src/assets ./src/assets
+COPY --from=deps /app/tsconfig.json ./
+COPY --from=deps /app/next.config.mjs ./
+
+# Copy the rest of the application
 COPY . .
 
 # Set build-time environment variables with defaults
@@ -114,6 +126,7 @@ ENV SKIP_EXTERNAL_CONNECTIONS=false
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
 
 # Set proper permissions
 RUN chmod -R 755 /app
