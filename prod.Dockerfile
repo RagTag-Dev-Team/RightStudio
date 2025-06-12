@@ -23,15 +23,17 @@ RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies and pnpm
 RUN apk add --no-cache \
     python3 \
     make \
     g++ \
-    openssl
+    openssl && \
+    npm install -g pnpm
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/src/prisma ./src/prisma
 COPY . .
 
 # Set build-time environment variables with defaults
@@ -67,11 +69,15 @@ ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
 # Generate Prisma client
 RUN if [ -f "src/prisma/schema.prisma" ]; then \
+    echo "Generating Prisma client..." && \
     if [ -f yarn.lock ]; then yarn prisma generate; \
     elif [ -f package-lock.json ]; then npx prisma generate; \
     elif [ -f pnpm-lock.yaml ]; then pnpm prisma generate; \
     else npx prisma generate; \
     fi; \
+    else \
+    echo "Prisma schema not found at src/prisma/schema.prisma"; \
+    exit 1; \
     fi
 
 # Build Next.js with proper error handling
