@@ -22,9 +22,8 @@ RUN npm install -g pnpm
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 
-# Install dependencies with proper caching
-RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store \
-    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+# Install dependencies
+RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     elif [ -f package-lock.json ]; then npm ci; \
     elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
     else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
@@ -67,8 +66,7 @@ ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
 # Build Next.js with proper error handling
-RUN --mount=type=cache,id=pnpm,target=/root/.pnpm-store \
-    if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
+RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
     elif [ -f package-lock.json ]; then npm run build || (echo "Build failed" && exit 1); \
     elif [ -f pnpm-lock.yaml ]; then pnpm build || (echo "Build failed" && exit 1); \
     else npm run build || (echo "Build failed" && exit 1); \
@@ -85,8 +83,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 
 # Install production dependencies only
 RUN apk add --no-cache curl
-
-
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
