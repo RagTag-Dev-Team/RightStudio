@@ -31,6 +31,7 @@ COPY tsconfig.json .
 COPY postcss.config.mjs .
 COPY tailwind.config.ts .
 COPY src/prisma ./src/prisma/
+COPY .env .
 
 
 # Set build-time environment variables with defaults
@@ -64,8 +65,15 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js
-RUN pnpm build
+# Build Next.js with verification
+RUN pnpm build && \
+    if [ ! -d ".next/standalone" ]; then \
+        echo "Error: .next/standalone directory not found. Checking build output..." && \
+        ls -la .next && \
+        echo "Contents of .next directory:" && \
+        find .next -type d && \
+        exit 1; \
+    fi
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
@@ -81,6 +89,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/package.json ./package.json
+
 
 # Set environment variables
 ENV NODE_ENV=production
