@@ -4,7 +4,7 @@ services:
   surrealdb:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
-    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh 
+    command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh
     ports:
       - '8000:8000'
     volumes:
@@ -80,7 +80,7 @@ services:
     image: mannyj37/rs-backend:latest
     build:
       context: ./
-      dockerfile: Dockerfile.prod
+      dockerfile: prod.Dockerfile
       args:
         - NODE_ENV=production
         - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
