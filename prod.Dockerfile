@@ -118,7 +118,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
 
 # Set proper permissions
-RUN chmod -R 755 /app
+RUN chmod -R 777 /app
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
