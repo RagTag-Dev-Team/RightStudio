@@ -1,33 +1,36 @@
 # syntax=docker.io/docker/dockerfile:1
 
-FROM node:18-alpine AS base
-
-# Install common dependencies
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    openssl \
-    curl \
-    tini
-
-# Step 1. Rebuild the source code only when needed
-FROM base AS builder
-
+# Stage 1: Dependencies
+FROM node:18-alpine AS deps
 WORKDIR /app
 
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy all files first
-COPY . .
+# Copy only package files first to leverage cache
+COPY package.json pnpm-lock.yaml* yarn.lock* package-lock.json* ./
 
-# Install dependencies
+# Install dependencies based on lockfile
 RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     elif [ -f package-lock.json ]; then npm ci; \
     elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
     else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
     fi
+
+# Stage 2: Builder
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+# Install build dependencies
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    openssl
+
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -81,22 +84,16 @@ RUN if [ ! -d ".next/standalone" ]; then \
     echo "Error: .next/standalone directory not found. Make sure output: 'standalone' is set in next.config.mjs" && exit 1; \
     fi
 
-# Step 2. Production image, copy all the files and run next
-FROM base AS runner
-
+# Stage 3: Runner
+FROM node:18-alpine AS runner
 WORKDIR /app
 
-# Don't run production as root
+# Install only production dependencies
+RUN apk add --no-cache curl tini
+
+# Create non-root user
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
-
-# Install production dependencies only
-RUN apk add --no-cache curl
-
-# Copy necessary files from builder
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -105,12 +102,13 @@ ENV HOSTNAME=0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
 
-# Set the correct permissions for all directories and files
-RUN chown -R nextjs:nodejs /app && \
-    chmod -R 777 /app && \
-    chmod -R 777 /app/.next && \
-    chmod -R 777 /app/node_modules && \
-    chmod -R 777 /app/public
+# Copy only necessary files from builder
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Set proper permissions
+RUN chmod -R 755 /app
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
@@ -124,5 +122,5 @@ USER nextjs
 # Use tini as init system
 ENTRYPOINT ["/sbin/tini", "--"]
 
-# Start the application with host binding and proper logging
+# Start the application
 CMD ["node", "server.js"]
