@@ -42,7 +42,7 @@ COPY --from=deps /app/tsconfig.json ./
 COPY --from=deps /app/next.config.mjs ./
 
 # Copy the rest of the application
-COPY . .
+COPY --from=deps /app .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
