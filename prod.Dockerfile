@@ -9,6 +9,8 @@ RUN npm install -g pnpm
 
 # Copy only package files first to leverage cache
 COPY package.json pnpm-lock.yaml* yarn.lock* package-lock.json* ./
+COPY src/prisma ./src/prisma/
+COPY src/assets ./src/assets/
 
 # Install dependencies based on lockfile
 RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
