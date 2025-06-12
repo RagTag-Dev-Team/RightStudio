@@ -79,18 +79,7 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Generate Prisma client
-RUN if [ -f "src/prisma/schema.prisma" ]; then \
-    echo "Generating Prisma client..." && \
-    if [ -f yarn.lock ]; then yarn prisma generate; \
-    elif [ -f package-lock.json ]; then npx prisma generate; \
-    elif [ -f pnpm-lock.yaml ]; then pnpm prisma generate; \
-    else npx prisma generate; \
-    fi; \
-    else \
-    echo "Prisma schema not found at src/prisma/schema.prisma"; \
-    exit 1; \
-    fi
+
 
 # Build Next.js with proper error handling
 RUN if [ -f yarn.lock ]; then yarn build || (echo "Build failed" && exit 1); \
@@ -124,7 +113,7 @@ ENV SKIP_EXTERNAL_CONNECTIONS=false
 
 # Copy only necessary files from builder
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./.next/standalone
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/src/assets ./src/assets
 
