@@ -29,7 +29,6 @@ COPY next.config.mjs .
 COPY tsconfig.json .
 COPY postcss.config.mjs .
 COPY tailwind.config.ts .
-COPY src/prisma ./src/prisma/
 COPY .env .
 
 # Set build-time environment variables with defaults
@@ -63,21 +62,8 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js with verification
-RUN pnpm build && \
-    echo "Checking build output..." && \
-    ls -la .next && \
-    if [ ! -d ".next/standalone" ]; then \
-        echo "Error: .next/standalone directory not found. Contents of .next directory:" && \
-        find .next -type d && \
-        echo "Checking next.config.mjs:" && \
-        cat next.config.mjs && \
-        echo "Checking package.json:" && \
-        cat package.json && \
-        echo "Checking node_modules:" && \
-        ls -la node_modules/.bin && \
-        exit 1; \
-    fi
+# Build Next.js
+RUN pnpm build
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
@@ -90,8 +76,8 @@ RUN addgroup --system --gid 1001 nodejs && \
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 # Set environment variables
@@ -105,4 +91,4 @@ USER nextjs
 # Expose the port
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["pnpm", "start"]

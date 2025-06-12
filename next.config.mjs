@@ -1,22 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
   experimental: {
-    outputFileTracingRoot: process.cwd(),
-    outputFileTracingExcludes: {
-      '*': [
-        'node_modules/@swc/core-linux-x64-gnu',
-        'node_modules/@swc/core-linux-x64-musl',
-        'node_modules/@esbuild/linux-x64',
-        'node_modules/.pnpm/**',
-        'node_modules/.cache/**',
-        'node_modules/.bin/**'
-      ]
-    },
-    serverActions: true,
-    outputFileTracingIncludes: {
-      '/**/*': ['**/*']
-    }
+    serverActions: true
   },
 
   // Enable static optimization
@@ -48,14 +33,6 @@ const nextConfig = {
         tls: false,
         fs: false,
         child_process: false
-      }
-    }
-
-    // Add this to ensure proper standalone output
-    if (isServer) {
-      config.output = {
-        ...config.output,
-        libraryTarget: 'commonjs2'
       }
     }
 
