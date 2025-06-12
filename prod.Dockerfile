@@ -14,9 +14,7 @@ RUN apk add --no-cache \
     g++ \
     openssl
 
-
 RUN npm install -g pnpm
-
 
 COPY src/prisma ./src/prisma/
 COPY src/assets ./src/assets/
@@ -82,13 +80,11 @@ RUN npm install pnpm
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/package.json ./package.json
-
+COPY --from=builder /app/node_modules ./node_modules
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -107,4 +103,4 @@ USER nextjs
 EXPOSE 3000
 
 # Start the application with host binding and debugging
-CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking standalone directory:' && ls -la standalone || echo 'Standalone directory not found' && echo '\nStarting Next.js...' && node standalone/server.js"]
+CMD ["sh", "-c", "echo 'Current directory contents:' && ls -la && echo '\nChecking .next directory:' && ls -la .next && echo '\nStarting Next.js...' && node .next/server.js"]
