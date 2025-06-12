@@ -5,6 +5,7 @@ services:
     platform: 'linux/amd64'
     image: 'surrealdb/surrealdb:latest'
     command: start --user rgtg_admin --pass bWFubnk6c0FzMyp6MnAh 
+    ports:
       - '8000:8000'
     volumes:
       - ./surrealdb:/surrealdb
