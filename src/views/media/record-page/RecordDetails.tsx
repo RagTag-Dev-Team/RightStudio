@@ -478,6 +478,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Award TAGZ
       setMintingStatus('Awarding TAGZ...')
+      console.log('Wallet'+ walletAddress)
       await awardTagz(walletAddress)
 
       // Show success message and confetti
