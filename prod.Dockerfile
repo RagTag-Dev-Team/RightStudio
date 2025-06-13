@@ -21,7 +21,8 @@ COPY src/assets ./src/assets/
 
 # Copy package files first to leverage Docker cache
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile && \
+    pnpm add critters
 
 # Copy source files
 COPY . .
