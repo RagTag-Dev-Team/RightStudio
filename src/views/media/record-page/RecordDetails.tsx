@@ -478,7 +478,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Award TAGZ
       setMintingStatus('Awarding TAGZ...')
-      console.log('Wallet'+ walletAddress)
+      console.log('Wallet' + walletAddress)
       await awardTagz(walletAddress)
 
       // Show success message and confetti
@@ -620,18 +620,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       }
 
       // Reward user with TAGZ
-      const rewardResponse = await fetch('/api/reward', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          walletAddress,
-          amount: '100.0'
-        })
-      })
-
-      const rewardData = await rewardResponse.json()
+      const rewardData = await awardTagz(walletAddress)
 
       // Show confetti
       setShowConfetti(true)
