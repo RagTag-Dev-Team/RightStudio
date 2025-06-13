@@ -91,7 +91,7 @@ COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 
 # Install production dependencies
 RUN pnpm install --prod
-RUN pnpm build 
+
 
 # Set environment variables
 ENV NODE_ENV=production
