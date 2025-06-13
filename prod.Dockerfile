@@ -1,34 +1,37 @@
 # syntax=docker.io/docker/dockerfile:1
 
-# Stage 1: Dependencies
-FROM node:18-alpine AS builder
+FROM node:18-alpine AS base
+
+# Step 1. Rebuild the source code only when needed
+FROM base AS builder
+
 WORKDIR /app
 
-# Install build dependencies and pnpm
+# Install system dependencies
 RUN apk add --no-cache \
     python3 \
     make \
     g++ \
-    openssl && \
-    npm install -g pnpm
+    openssl
 
-# Copy package files and assets
-  COPY . .
+RUN npm install -g pnpm
 
-# Install dependencies based on lockfile
-RUN if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm ci; \
-    elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
-    else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
-    fi
+COPY src/prisma ./src/prisma/
+COPY src/assets ./src/assets/
 
+# Copy package files first to leverage Docker cache
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+RUN pnpm install --frozen-lockfile
+
+# Copy source files
+COPY . .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
 ARG NEXT_PUBLIC_DOCS_URL=http://localhost:3001
 ARG NEXTAUTH_URL=http://localhost:3000/api/auth
 ARG NEXTAUTH_SECRET=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-ARG NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+ARG NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
 ARG NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
 ARG NEXT_PUBLIC_SURREALDB_DB=rgtg
@@ -54,55 +57,42 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
+# Build Next.js with debugging
+RUN echo "Current directory contents:" && \
+    ls -la && \
+    echo "\nBuilding Next.js..." && \
+    pnpm build && \
+    echo "\nChecking .next directory:" && \
+    ls -la .next && \
+    echo "\nChecking .next/standalone:" && \
+    ls -la .next/standalone || echo "Standalone directory not found" && \
+    echo "\nChecking .next/static:" && \
+    ls -la .next/static || echo "Static directory not found"
 
+# Step 2. Production image, copy all the files and run next
+FROM base AS runner
 
-# Verify the build output and debug file structure
-RUN ls -la .next/standalone && \
-    if [ ! -d ".next/standalone" ]; then \
-    echo "Error: .next/standalone directory not found. Make sure output: 'standalone' is set in next.config.mjs" && exit 1; \
-    fi
-
-# Stage 3: Runner
-FROM node:18-alpine AS runner
 WORKDIR /app
 
-# Install only production dependencies
-RUN apk add --no-cache curl tini
-
-# Create non-root user
+# Don't run production as root
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-USER nextjs
-
+# Copy necessary files from builder
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/package.json ./package.json
 
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV HOSTNAME=0.0.0.0
-ENV NEXT_TELEMETRY_DISABLED=1
 ENV SKIP_EXTERNAL_CONNECTIONS=false
 
-# Copy necessary files from builder
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-
-
-# Debug: List files in the current directory
-RUN ls -la && \
-    echo "Contents of /app:" && \
-    find . -type f -name "server.js"
-
-
-
-# Add healthcheck
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:3000/api/health || exit 1
+# Switch to non-root user
+USER nextjs
 
 # Expose the port
 EXPOSE 3000
 
-
-
-# Start the application with absolute path
 CMD ["node", "server.js"]
