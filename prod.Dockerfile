@@ -79,11 +79,19 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+# Install production dependencies
+RUN npm install -g pnpm
+
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
+
+# Install production dependencies
+RUN pnpm install --prod
+RUN pnpm build 
 
 # Set environment variables
 ENV NODE_ENV=production
