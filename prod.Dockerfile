@@ -83,6 +83,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -95,4 +96,5 @@ USER nextjs
 # Expose the port
 EXPOSE 3000
 
+# Start the application
 CMD ["pnpm", "start"]
