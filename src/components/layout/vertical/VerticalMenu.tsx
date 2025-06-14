@@ -116,7 +116,9 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
             <MenuItem href={`/${locale}/dashboards/logistics`}>{dictionary['navigation'].logistics}</MenuItem>
             */}
           </SubMenu>
+
           <MenuSection label='Creator Lab'>
+            {/*
             <SubMenu label='Creator Studio' icon={<i className='tabler-file-description' />}>
               <MenuItem
                 href={`/${locale}/media/generator`}
@@ -125,6 +127,7 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
                 Song Generator
               </MenuItem>
             </SubMenu>
+            */}
             <SubMenu label='Media Manager' icon={<i className='tabler-file-description' />}>
               <MenuItem href={`/${locale}/media/library`}>Library</MenuItem>
               {recordId && <MenuItem href={`/${locale}/media/record/${recordId}`}>Media Detail</MenuItem>}

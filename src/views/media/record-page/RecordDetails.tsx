@@ -30,8 +30,6 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import styled from '@emotion/styled'
 
-import { RecordId } from 'surrealdb'
-
 import { useActiveAccount } from 'thirdweb/react'
 
 import type { ICertificateArg } from '@mentaport/certificates'
@@ -46,13 +44,13 @@ import CustomTextField from '@core/components/mui/TextField'
 import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Database Import
-import { getDb } from '@/libs/surreal'
 import { getRecordById, mintRecord, getMintingStatus, awardTagz, updateRecord } from '@/app/server/data-actions'
+import type { MediaRecord } from '@/app/server/data-actions'
 
 // Add import for useSession
 
 // Add this constant at the top with other constants
-const AMOY_EXPLORER = 'https://amoy.polygonscan.com/tx/'
+const AMOY_EXPLORER = 'https://sepolia.etherscan.io/tx/'
 
 const newCert: ICertificateArg = {
   projectId: process.env.NEXT_PUBLIC_MENTAPORT_PROJECT_ID!, // "your-project-id",
@@ -299,7 +297,59 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData) return
 
     try {
-      await updateRecord(recordId, recordData)
+      const updatedRecord = {
+        id: recordId,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        filetype: recordData.filetype,
+        filesize: recordData.filesize,
+        duration: recordData.duration,
+        label: recordData.label,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        ipfsUrl: recordData.ipfsUrl,
+        status: recordData.status || 'unminted',
+        uploadedAt: recordData.uploadedAt,
+        coverImage: recordData.coverImage,
+        owner: recordData.owner,
+        transactionHash: recordData.transactionHash,
+        watermarkedUrl: recordData.watermarkedUrl,
+        tokenId: recordData.tokenId,
+        dateMinted: recordData.dateMinted?.toISOString() || null,
+        certificateId: recordData.certificateId,
+        certificateProjectId: recordData.certificateProjectId
+      }
+
+      const result = await updateRecord(recordId, updatedRecord)
+
+      // Update local state with the result from the backend
+      if (result) {
+        const updatedData: RecordDataType = {
+          id: result.id,
+          title: result.title,
+          artist: result.artist,
+          album: result.album,
+          filetype: result.filetype,
+          filesize: result.filesize,
+          duration: result.duration,
+          label: result.label,
+          releaseDate: result.releaseDate ? new Date(result.releaseDate) : null,
+          ipfsUrl: result.ipfsUrl,
+          status: result.status || 'unminted',
+          uploadedAt: result.uploadedAt,
+          coverImage: result.coverImage,
+          owner: result.owner,
+          transactionHash: result.transactionHash,
+          watermarkedUrl: result.watermarkedUrl,
+          tokenId: result.tokenId,
+          dateMinted: result.dateMinted ? new Date(result.dateMinted) : null,
+          certificateId: result.certificateId,
+          certificateProjectId: result.certificateProjectId
+        }
+
+        setRecordData(updatedData)
+      }
+
       setIsEditing(false)
     } catch (error) {
       console.error('Error saving record:', error)
@@ -350,7 +400,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         const status = await getMintingStatus(queueId)
 
         if (status.errorMessage) {
-          throw new Error(`Transaction failed: ${status}`)
+          throw new Error(`Transaction failed: ${status.errorMessage}`)
         }
 
         if (status.status === 'mined') {
@@ -375,22 +425,61 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       }
 
       const updatedData = {
-        ...recordData,
+        id: recordData.id,
+        title: recordData.title,
+        artist: recordData.artist,
+        album: recordData.album,
+        filetype: recordData.filetype,
+        filesize: recordData.filesize,
+        duration: recordData.duration,
+        label: recordData.label,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        ipfsUrl: recordData.ipfsUrl,
         status: 'minted' as const,
+        uploadedAt: recordData.uploadedAt,
+        coverImage: recordData.coverImage,
         owner: walletAddress,
         transactionHash: transactionHash,
+        watermarkedUrl: recordData.watermarkedUrl,
         tokenId: tokenId,
-        dateMinted: new Date().toISOString()
+        dateMinted: new Date().toISOString(),
+        certificateId: recordData.certificateId,
+        certificateProjectId: recordData.certificateProjectId
       }
 
-      await updateRecord(recordId, updatedData)
+      const result = await updateRecord(recordId, updatedData)
+
+      if (result) {
+        const updatedRecordData: RecordDataType = {
+          id: result.id,
+          title: result.title,
+          artist: result.artist,
+          album: result.album,
+          filetype: result.filetype,
+          filesize: result.filesize,
+          duration: result.duration,
+          label: result.label,
+          releaseDate: result.releaseDate ? new Date(result.releaseDate) : null,
+          ipfsUrl: result.ipfsUrl,
+          status: result.status || 'unminted',
+          uploadedAt: result.uploadedAt,
+          coverImage: result.coverImage,
+          owner: result.owner,
+          transactionHash: result.transactionHash,
+          watermarkedUrl: result.watermarkedUrl,
+          tokenId: result.tokenId,
+          dateMinted: result.dateMinted ? new Date(result.dateMinted) : null,
+          certificateId: result.certificateId,
+          certificateProjectId: result.certificateProjectId
+        }
+
+        setRecordData(updatedRecordData)
+      }
 
       // Award TAGZ
       setMintingStatus('Awarding TAGZ...')
+      console.log('Wallet' + walletAddress)
       await awardTagz(walletAddress)
-
-      // Update local state
-      setRecordData(updatedData)
 
       // Show success message and confetti
       setShowConfetti(true)
@@ -399,7 +488,11 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setShowSuccess(true)
     } catch (error) {
       console.error('Error during minting process:', error)
-      setSuccessMessage('Failed to mint record')
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
+
+      setSuccessMessage(
+        `Minting failed: ${errorMessage}. If this issue persists, please contact support at support@rightstudio.media`
+      )
       setShowSuccess(true)
     } finally {
       setIsMinting(false)
@@ -505,33 +598,29 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       })
 
       // Update the record in the database with the certificate info
-      const db = await getDb()
-
       const updatedRecord = {
         ...recordData,
         certificateId: certId,
         certificateProjectId: projectId,
-        watermarkedUrl: downloadUrl.data
+        watermarkedUrl: downloadUrl.data,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        dateMinted: recordData.dateMinted?.toISOString() || null,
+        status: recordData.status || 'unminted'
       }
 
-      await db.update(new RecordId('media', recordId), updatedRecord)
+      const result = await updateRecord(recordId, updatedRecord)
 
-      // Update local state
-      setRecordData(updatedRecord)
+      // Update local state with the result from the backend
+      if (result) {
+        setRecordData({
+          ...result,
+          releaseDate: result.releaseDate ? new Date(result.releaseDate) : null,
+          dateMinted: result.dateMinted ? new Date(result.dateMinted) : null
+        })
+      }
 
       // Reward user with TAGZ
-      const rewardResponse = await fetch('/api/reward', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          walletAddress,
-          amount: '100.0'
-        })
-      })
-
-      const rewardData = await rewardResponse.json()
+      const rewardData = await awardTagz(walletAddress)
 
       // Show confetti
       setShowConfetti(true)
@@ -620,19 +709,25 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       console.log('uri', uri)
 
       // Update database
-      const db = await getDb()
-
       const updatedRecord = {
         ...recordData,
-        coverImage: uri
+        coverImage: uri,
+        releaseDate: recordData.releaseDate?.toISOString() || null,
+        dateMinted: recordData.dateMinted?.toISOString() || null,
+        status: recordData.status || 'unminted'
       }
 
-      const dbResult = await db.update(new RecordId('media', `${recordId}`), updatedRecord)
+      const result = await updateRecord(recordId, updatedRecord)
 
-      console.log('dbResult', dbResult)
+      // Update local state with the result from the backend
+      if (result) {
+        setRecordData({
+          ...result,
+          releaseDate: result.releaseDate ? new Date(result.releaseDate) : null,
+          dateMinted: result.dateMinted ? new Date(result.dateMinted) : null
+        })
+      }
 
-      // Update local state
-      setRecordData(updatedRecord)
       setImageUrl(resolveScheme({ client, uri }))
 
       setSuccessMessage('Cover art updated successfully!')

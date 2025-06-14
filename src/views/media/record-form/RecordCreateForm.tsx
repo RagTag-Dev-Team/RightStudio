@@ -54,6 +54,8 @@ import CovertArtUploader from './CovertArtUploader'
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
 
+import { generateCoverArt, checkImageStatus } from '@/app/server/ai-actions'
+
 type FormDataType = {
   title: string
   artist: string
@@ -104,6 +106,7 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
   const [aiPrompt, setAiPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string>('')
+  const [generationError, setGenerationError] = useState<string | null>(null)
 
   const handleMetadata = (metadata: Partial<FormDataType>, uploadedFile: File) => {
     // Update form data with metadata
@@ -163,80 +166,100 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
       setIsUploading(true)
       setUploadProgress(10) // Show initial progress
 
-      // Check if the file is already uploaded to IPFS
-
-      console.log(client)
-
-      // Single file upload
-      const uploadUrl = await upload({
-        client,
-        files: [file]
+      // Create a timeout promise
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Upload timed out. Please try again.')), 300000) // 5 minute timeout
       })
 
-      setUploadProgress(70) // Update progress after file upload
-
-      // Handle cover art upload
-      let coverArtUrl = formData.coverImage
-
-      if (coverArtUrl && coverArtUrl.startsWith('data:')) {
+      // Race between upload and timeout
+      const uploadPromise = (async () => {
         try {
-          const response = await fetch(coverArtUrl)
-          const blob = await response.blob()
-          const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
+          console.log(client)
 
-          coverArtUrl = await upload({
+          // Single file upload
+          const uploadUrl = await upload({
             client,
-            files: [coverArtFile]
+            files: [file]
           })
-        } catch (error) {
-          console.error('Error uploading cover art:', error)
-          coverArtUrl = ''
-        }
-      }
 
-      setUploadProgress(90) // Update progress after cover art upload
+          setUploadProgress(70) // Update progress after file upload
 
-      // Prepare metadata for database
-      const mediaMetadata = {
-        title: formData.title,
-        artist: formData.artist,
-        album: formData.album,
-        label: formData.label || '',
-        releaseDate: formData.releaseDate ? formData.releaseDate.toISOString() : null,
-        filetype: formData.filetype,
-        filesize: formData.filesize,
-        duration: formData.duration,
-        ipfsUrl: uploadUrl,
-        coverImage: coverArtUrl || '',
-        uploadedAt: new Date().toISOString(),
-        status: 'unminted',
-        owner: activeAccount?.address || formData.owner
-      }
+          // Handle cover art upload
+          let coverArtUrl = formData.coverImage
 
-      try {
-        const created = await createMedia(mediaMetadata)
+          if (coverArtUrl && coverArtUrl.startsWith('data:')) {
+            try {
+              const response = await fetch(coverArtUrl)
+              const blob = await response.blob()
+              const coverArtFile = new File([blob], 'cover-art.jpg', { type: 'image/jpeg' })
 
-        setUploadProgress(100) // Complete progress
-
-        if (created && created[0] && created[0].id) {
-          const recordId = String(created[0].id).split(':')[1]
-
-          handleReset()
-
-          if (onSuccess) {
-            router.push(`/en/media/record/${recordId}`)
-            onSuccess()
+              coverArtUrl = await upload({
+                client,
+                files: [coverArtFile]
+              })
+            } catch (error) {
+              console.error('Error uploading cover art:', error)
+              coverArtUrl = ''
+            }
           }
-        } else {
-          throw new Error('Failed to get created record ID')
+
+          setUploadProgress(90) // Update progress after cover art upload
+
+          // Prepare metadata for database
+          const mediaMetadata = {
+            title: formData.title,
+            artist: formData.artist,
+            album: formData.album,
+            label: formData.label || '',
+            releaseDate: formData.releaseDate ? formData.releaseDate.toISOString() : null,
+            filetype: formData.filetype,
+            filesize: formData.filesize,
+            duration: formData.duration,
+            ipfsUrl: uploadUrl,
+            coverImage: coverArtUrl || '',
+            uploadedAt: new Date().toISOString(),
+            status: 'unminted',
+            owner: activeAccount?.address || formData.owner
+          }
+
+          const created = await createMedia(mediaMetadata)
+
+          setUploadProgress(100) // Complete progress
+
+          if (created && created[0] && created[0].id) {
+            const recordId = String(created[0].id).split(':')[1]
+
+            handleReset()
+
+            if (onSuccess) {
+              router.push(`/en/media/record/${recordId}`)
+              onSuccess()
+            }
+          } else {
+            throw new Error('Failed to get created record ID')
+          }
+        } catch (error) {
+          throw error
         }
-      } catch (dbError) {
-        console.error('Database error:', dbError)
-        throw new Error('Failed to save to database')
-      }
+      })()
+
+      await Promise.race([uploadPromise, timeoutPromise])
     } catch (error) {
       console.error('Error during upload or save:', error)
-      alert('Upload failed. Please try again.')
+      const errorMessage = error instanceof Error ? error.message : 'Upload failed. Please try again.'
+
+      // Show error dialog to user
+      if (window.confirm(`${errorMessage}\n\nWould you like to try uploading again?`)) {
+        // Reset form state but keep the file
+        setUploadProgress(0)
+        setIsUploading(false)
+
+        return
+      }
+
+      // If user doesn't want to retry, reset everything
+      handleReset()
+      setFile(null)
     } finally {
       setIsUploading(false)
       setUploadProgress(0)
@@ -247,30 +270,46 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     if (!aiPrompt) return
 
     setIsGenerating(true)
+    setGenerationError(null)
     setGeneratedImageUrl('')
 
     try {
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ imagePrompt: aiPrompt })
-      })
+      // Start generation and get job ID
+      const result = await generateCoverArt(aiPrompt)
 
-      const res = await response.json()
+      // Poll for status every 2 seconds
+      const pollInterval = setInterval(async () => {
+        try {
+          const status = await checkImageStatus(result.jobId)
 
-      if (res.data.url) {
-        setGeneratedImageUrl(res.data.url)
-      } else {
-        throw new Error('No image URL in response')
-      }
+          if (status.status === 'completed') {
+            setGeneratedImageUrl(status.data.url)
+            setIsGenerating(false)
+            clearInterval(pollInterval)
+          } else if (status.status === 'failed') {
+            throw new Error(status.message || 'Generation failed')
+          }
+        } catch (error) {
+          console.error('Status check failed:', error)
+          setIsGenerating(false)
+          setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
+          clearInterval(pollInterval)
+        }
+      }, 2000)
+
+      // Clear interval after 5 minutes (timeout)
+      setTimeout(() => {
+        clearInterval(pollInterval)
+
+        if (isGenerating) {
+          setIsGenerating(false)
+          setGenerationError('Image generation timed out. Please try again.')
+        }
+      }, 300000)
     } catch (error) {
       console.error('Error generating cover art:', error)
-
-      // You may want to add error handling UI here
-    } finally {
       setIsGenerating(false)
+      setGenerationError(error instanceof Error ? error.message : 'Failed to start image generation')
     }
   }
 
@@ -624,7 +663,25 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
                 value={aiPrompt}
                 onChange={e => setAiPrompt(e.target.value)}
                 disabled={isGenerating}
+                error={!!generationError}
+                helperText={generationError}
               />
+              {isGenerating && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 2,
+                    mt: 4
+                  }}
+                >
+                  <CircularProgress size={40} />
+                  <Typography variant='body2' color='text.secondary'>
+                    Generating your cover art...
+                  </Typography>
+                </Box>
+              )}
             </>
           ) : (
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -647,18 +704,31 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
             onClick={() => {
               setOpenAIDialog(false)
               setGeneratedImageUrl('')
+              setGenerationError(null)
             }}
             disabled={isGenerating}
           >
             Cancel
           </Button>
           {!generatedImageUrl ? (
-            <Button onClick={handleGenerateArt} variant='contained' disabled={!aiPrompt || isGenerating}>
+            <Button
+              onClick={handleGenerateArt}
+              variant='contained'
+              disabled={!aiPrompt || isGenerating}
+              startIcon={isGenerating ? <CircularProgress size={20} color='inherit' /> : null}
+            >
               {isGenerating ? 'Generating...' : 'Generate'}
             </Button>
           ) : (
             <>
-              <Button onClick={() => setGeneratedImageUrl('')}>Try Again</Button>
+              <Button
+                onClick={() => {
+                  setGeneratedImageUrl('')
+                  setGenerationError(null)
+                }}
+              >
+                Try Again
+              </Button>
               <Button onClick={handleAcceptImage} variant='contained'>
                 Use This Image
               </Button>

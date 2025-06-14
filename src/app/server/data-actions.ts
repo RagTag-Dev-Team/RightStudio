@@ -327,7 +327,7 @@ export async function mintRecord(metadata: any, walletAddress: string) {
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
+          Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`,
           'Content-Type': 'application/json',
           'x-backend-wallet-address': `${process.env.BACKEND_WALLET_ADDRESS}`
         },
@@ -359,7 +359,7 @@ export async function getMintingStatus(queueId: string) {
     const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${queueId}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+        Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`
       }
     })
 
@@ -391,7 +391,7 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`,
+          Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`,
           'Content-Type': 'application/json',
           'x-backend-wallet-address': `${process.env.BACKEND_WALLET_ADDRESS}`
         },
@@ -416,7 +416,7 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
       const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${data.result.queueId}`, {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_THIRDWEB_SECRET_KEY}`
+          Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`
         }
       })
 

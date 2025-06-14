@@ -1,5 +1,10 @@
 {
   "git": {
     "deploymentEnabled": false
+  },
+  "functions": {
+    "src/app/server/**/*": {
+      "maxDuration": 30
+    }
   }
 }
