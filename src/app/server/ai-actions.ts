@@ -1,7 +1,7 @@
 'use server'
 
 import Replicate from 'replicate'
-import { OpenAI } from 'openai'
+import OpenAI from 'openai'
 
 import { imageQueue } from './queues/imageQueue'
 import redis from '@/libs/redis'
@@ -73,6 +73,8 @@ export async function generateCoverArt(imagePrompt: string) {
 
   try {
     // Add job to queue
+    console.log('image Promt', imagePrompt)
+
     const job = await imageQueue.add({
       prompt: imagePrompt,
       userId: 'user-id' // Replace with actual user ID if available

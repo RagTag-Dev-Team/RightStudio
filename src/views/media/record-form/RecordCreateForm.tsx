@@ -53,8 +53,7 @@ import CovertArtUploader from './CovertArtUploader'
 
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
-
-import { generateCoverArt, checkImageStatus } from '@/app/server/ai-actions'
+import { generateCoverArt } from '@/app/server/ai-actions'
 
 type FormDataType = {
   title: string
@@ -274,42 +273,27 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     setGeneratedImageUrl('')
 
     try {
-      // Start generation and get job ID
-      const result = await generateCoverArt(aiPrompt)
 
-      // Poll for status every 2 seconds
-      const pollInterval = setInterval(async () => {
-        try {
-          const status = await checkImageStatus(result.jobId)
+    const response = await generateCoverArt(aiPrompt);
+    
+    console.log(response);
 
-          if (status.status === 'completed') {
-            setGeneratedImageUrl(status.data.url)
-            setIsGenerating(false)
-            clearInterval(pollInterval)
-          } else if (status.status === 'failed') {
-            throw new Error(status.message || 'Generation failed')
-          }
-        } catch (error) {
-          console.error('Status check failed:', error)
-          setIsGenerating(false)
-          setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
-          clearInterval(pollInterval)
-        }
-      }, 2000)
+      const result = await response.json()
 
-      // Clear interval after 5 minutes (timeout)
-      setTimeout(() => {
-        clearInterval(pollInterval)
+      if (result.error) {
+        throw new Error(result.error)
+      }
 
-        if (isGenerating) {
-          setIsGenerating(false)
-          setGenerationError('Image generation timed out. Please try again.')
-        }
-      }, 300000)
+      if (!result.data?.url) {
+        throw new Error('No image URL in response')
+      }
+
+      setGeneratedImageUrl(result.data.url)
     } catch (error) {
       console.error('Error generating cover art:', error)
+      setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
+    } finally {
       setIsGenerating(false)
-      setGenerationError(error instanceof Error ? error.message : 'Failed to start image generation')
     }
   }
 
