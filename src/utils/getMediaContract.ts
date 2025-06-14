@@ -9,12 +9,12 @@ export const tagzCollectionAddress = process.env.TAGZ_TOKEN_ADDRESS
 
 export const mediaContract = getContract({
   client,
-  chain: defineChain(80002),
+  chain: defineChain(11155111),
   address: process.env.NEXT_PUBLIC_MEDIA_CONTRACT_ADDRESS!
 })
 
 export const tagzContract = getContract({
   client,
-  chain: defineChain(80002),
+  chain: defineChain(11155111),
   address: process.env.TAGZ_TOKEN_ADDRESS!
 })

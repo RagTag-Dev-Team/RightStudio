@@ -5,6 +5,7 @@ const handleWatermark = async () => {
     console.error('No wallet address found in session or active account')
     setSuccessMessage('Please connect your wallet to add watermark')
     setShowSuccess(true)
+
     return
   }
 
@@ -82,6 +83,7 @@ const handleWatermark = async () => {
     // Set timeout after 10 minutes
     setTimeout(() => {
       clearInterval(pollInterval)
+
       if (isWatermarking) {
         setIsWatermarking(false)
         setSuccessMessage('Watermarking process is taking longer than expected. Please check back later.')
