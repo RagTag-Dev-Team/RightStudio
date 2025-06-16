@@ -57,17 +57,8 @@ ENV SKIP_EXTERNAL_CONNECTIONS=$SKIP_EXTERNAL_CONNECTIONS
 ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
-# Build Next.js with debugging
-RUN echo "Current directory contents:" && \
-    ls -la && \
-    echo "\nBuilding Next.js..." && \
-    pnpm build && \
-    echo "\nChecking .next directory:" && \
-    ls -la .next && \
-    echo "\nChecking .next/standalone:" && \
-    ls -la .next/standalone || echo "Standalone directory not found" && \
-    echo "\nChecking .next/static:" && \
-    ls -la .next/static || echo "Static directory not found"
+# Build Next.js
+RUN pnpm build
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
@@ -84,6 +75,9 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/package.json ./package.json
 
+# Create .next directory if it doesn't exist
+RUN mkdir -p .next
+
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
@@ -95,4 +89,5 @@ USER nextjs
 # Expose the port
 EXPOSE 3000
 
+# Start the application
 CMD ["node", "server.js"]

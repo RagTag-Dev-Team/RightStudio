@@ -1,19 +1,16 @@
-import { mediaCollectionAddress } from '@/utils/getMediaContract';
 'use server'
 
 import { getWalletBalance } from 'thirdweb/wallets'
 
 import { jsonify } from 'surrealdb'
 
-import { readContract } from "thirdweb";
+import { readContract } from 'thirdweb'
 
+import { ragzContract, tagzContract, mediaContract } from '@/utils/getMediaContract'
 
 import { getDb } from '@/libs/surreal'
 
 import { client } from '@/libs/thirdwebclient'
-
-
-
 
 const {
   ENGINE_URL,
@@ -56,66 +53,47 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
   }
 
   try {
-
-
-    const data = await readContract({
-      mediaCollectionAddress,
-      method:
-      "function balanceOf(address owner) view returns (uint256)",
-      params: [address],
-
+    // Get RAGZ balance
+    const ragzRes = await readContract({
+      contract: ragzContract,
+      method: 'function balanceOf(address owner) view returns (uint256)',
+      params: [address]
     })
 
-    console.log(data)
-
-    // Get RAGZ balance
-    const ragzRes = await fetch(
-      `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
-        }
-      }
-    )
-
-    if (!ragzRes.ok) {
-      throw new Error(`RAGZ balance fetch failed: ${ragzRes.status} ${ragzRes.statusText}`)
-    }
-
     // Get TAGZ balance
-    const tagzRes = await fetch(
-      `${ENGINE_URL}/contract/${CHAIN_ID}/${TAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
-        }
-      }
-    )
 
-    if (!tagzRes.ok) {
-      throw new Error(`TAGZ balance fetch failed: ${tagzRes.status} ${tagzRes.statusText}`)
+    const tagzRes = await readContract({
+      contract: tagzContract,
+      method: 'function balanceOf(address owner) view returns (uint256)',
+      params: [address]
+    })
+
+    // Get NFT balance
+    const nftRes = await readContract({
+      contract: mediaContract,
+      method: 'function balanceOf(address owner) view returns (uint256)',
+      params: [address]
+    })
+
+    const TOKEN_DECIMALS = 18n // Most ERC20 tokens use 18 decimals
+
+    const ragzResult = {
+      result: {
+        displayValue: (Number(ragzRes) / Number(10n ** TOKEN_DECIMALS)).toString()
+      }
     }
 
-    // Get NFT balance (media contract)
-    const nftRes = await fetch(
-      `${ENGINE_URL}/contract/${CHAIN_ID}/${MEDIA_CONTRACT_ADDRESS}/erc721/balance-of?walletAddress=${address}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${ENGINE_SECRET_KEY}`
-        }
+    const tagzResult = {
+      result: {
+        displayValue: (Number(tagzRes) / Number(10n ** TOKEN_DECIMALS)).toString()
       }
-    )
-
-    if (!nftRes.ok) {
-      throw new Error(`NFT balance fetch failed: ${nftRes.status} ${nftRes.statusText}`)
     }
 
-    const ragzResult = await ragzRes.json()
-    const tagzResult = await tagzRes.json()
-    const nftResult = await nftRes.json()
+    const nftResult = {
+      result: {
+        displayValue: nftRes.toString() // NFT balance is already a count
+      }
+    }
 
     console.log('RAGZ Result:', ragzResult)
     console.log('TAGZ Result:', tagzResult)

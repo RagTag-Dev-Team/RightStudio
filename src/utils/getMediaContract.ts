@@ -18,3 +18,9 @@ export const tagzContract = getContract({
   chain: defineChain(11155111),
   address: process.env.TAGZ_TOKEN_ADDRESS!
 })
+
+export const ragzContract = getContract({
+  client,
+  chain: defineChain(11155111),
+  address: process.env.RAGZ_TOKEN_ADDRESS!
+})
