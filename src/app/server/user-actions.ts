@@ -1,12 +1,19 @@
+import { mediaCollectionAddress } from '@/utils/getMediaContract';
 'use server'
 
 import { getWalletBalance } from 'thirdweb/wallets'
 
 import { jsonify } from 'surrealdb'
 
+import { readContract } from "thirdweb";
+
+
 import { getDb } from '@/libs/surreal'
 
 import { client } from '@/libs/thirdwebclient'
+
+
+
 
 const {
   ENGINE_URL,
@@ -49,6 +56,18 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
   }
 
   try {
+
+
+    const data = await readContract({
+      mediaCollectionAddress,
+      method:
+      "function balanceOf(address owner) view returns (uint256)",
+      params: [address],
+
+    })
+
+    console.log(data)
+
     // Get RAGZ balance
     const ragzRes = await fetch(
       `${ENGINE_URL}/contract/${CHAIN_ID}/${RAGZ_TOKEN_ADDRESS}/erc20/balance-of?wallet_address=${address}`,
