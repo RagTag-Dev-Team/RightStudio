@@ -1,17 +1,25 @@
 #!/bin/bash
 
 # Env Vars
-#POSTGRES_USER="myuser"
-#POSTGRES_PASSWORD=$(openssl rand -base64 12)  # Generate a random 12-character password
-#POSTGRES_DB="mydatabase"
-#SECRET_KEY="my-secret" # for the demo app
-#NEXT_PUBLIC_SAFE_KEY="safe-key" # for the demo app
-#DOMAIN_NAME="nextselfhost.dev" # replace with your own
-#EMAIL="your-email@example.com" # replace with your own
+SURREAL_USER="rgtg_admin"
+SURREAL_PASSWORD="bWFubnk6c0FzMyp6MnAh"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="postgres"
+POSTGRES_DB="postgres"
+NEXTAUTH_SECRET="4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA"
+NEXT_PUBLIC_APP_URL="https://app.rightstudio.media"
+NEXT_PUBLIC_DOCS_URL="https://docs.rightstudio.media"
+NEXT_PUBLIC_SURREALDB_DB="rgtg"
+NEXT_PUBLIC_SURREALDB_NS="rgtg"
+ENGINE_SECRET_KEY="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweGM1ZDFiNjMwNTk2NkM5YzQyNjExZWQ0MTY4OTFFYmZmYTI5MzNiQjgiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDIxNzU0NTcsIm5iZiI6MTc0ODU3NTQ1NywiaWF0IjoxNzQ4NTc1NDU3LCJqdGkiOiJmY2Q2YzI2Yy05NTAwLTQ4NjMtYmUyZC1hMDA5MjAyODBhNTgiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHgxNjhiYWE0YzkxOTU5Yjg4ZTI1OGE3OWM1MTY2NGU3NjIyMjBlZWRhMzFjODVlMmZjNWQzZWIwNDk0NmI5MWFjNjdiNDgwNDM2MjhjNzBkNGJkZTU3N2QzZjA4NDY1MzdmZTFiMTNhMGQ2ZTM1Yzk3YjY5M2JiNjYxY2IzYjMyODFj"
+THIRDWEB_API_SECRET_KEY="kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw"
+ADMIN_WALLET_ADDRESS="0x3d26B6e2245859666a005918EbC768f8fe5954c4"
+DOMAIN_NAME="app.rightstudio.media"
+EMAIL="your-email@example.com" # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/leerob/next-self-host.git"
-APP_DIR=~/myapp
+REPO_URL="https://github.com/mannyj37/RightStudio.git"
+APP_DIR=~/rightstudio
 SWAP_SIZE="1G"  # Swap size of 1GB
 
 # Update package list and upgrade existing packages
@@ -70,29 +78,45 @@ else
   cd $APP_DIR
 fi
 
-# For Docker internal communication ("db" is the name of Postgres container)
-DATABASE_URL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB"
+# Create the .env file inside the app directory
+cat > "$APP_DIR/.env" <<EOL
+# App URLs
+NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
+NEXT_PUBLIC_DOCS_URL=$NEXT_PUBLIC_DOCS_URL
+NEXTAUTH_URL=$NEXT_PUBLIC_APP_URL/api/auth
+NEXTAUTH_SECRET=$NEXTAUTH_SECRET
 
-# For external tools (like Drizzle Studio)
-DATABASE_URL_EXTERNAL="postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
+# SurrealDB Configuration
+NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+NEXT_PUBLIC_SURREALDB_USERNAME=$SURREAL_USER
+NEXT_PUBLIC_SURREALDB_PASSWORD=$SURREAL_PASSWORD
+NEXT_PUBLIC_SURREALDB_DB=$NEXT_PUBLIC_SURREALDB_DB
+NEXT_PUBLIC_SURREALDB_NS=$NEXT_PUBLIC_SURREALDB_NS
 
-# Create the .env file inside the app directory (~/myapp/.env)
-echo "POSTGRES_USER=$POSTGRES_USER" > "$APP_DIR/.env"
-echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> "$APP_DIR/.env"
-echo "POSTGRES_DB=$POSTGRES_DB" >> "$APP_DIR/.env"
-echo "DATABASE_URL=$DATABASE_URL" >> "$APP_DIR/.env"
-echo "DATABASE_URL_EXTERNAL=$DATABASE_URL_EXTERNAL" >> "$APP_DIR/.env"
+# PostgreSQL Configuration
+POSTGRES_USER=$POSTGRES_USER
+POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+POSTGRES_DB=$POSTGRES_DB
 
-# These are just for the demo of env vars
-echo "SECRET_KEY=$SECRET_KEY" >> "$APP_DIR/.env"
-echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >> "$APP_DIR/.env"
+# ThirdWeb Configuration
+ENGINE_URL=https://thirdwebengine:3005
+ENGINE_SECRET_KEY=$ENGINE_SECRET_KEY
+THIRDWEB_API_SECRET_KEY=$THIRDWEB_API_SECRET_KEY
+ADMIN_WALLET_ADDRESS=$ADMIN_WALLET_ADDRESS
+NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=rightstudio.media
+NEXT_PUBLIC_THIRDWEB_ADMIN_KEY=1361831375a445ec8e6d856ae0af0ef9fe4fe2a6c644629f62b9b70575b9814e
+
+# Other Settings
+NODE_ENV=production
+SKIP_EXTERNAL_CONNECTIONS=false
+EOL
 
 # Install Nginx
 sudo apt install nginx -y
 
 # Remove old Nginx config (if it exists)
-sudo rm -f /etc/nginx/sites-available/myapp
-sudo rm -f /etc/nginx/sites-enabled/myapp
+sudo rm -f /etc/nginx/sites-available/rightstudio
+sudo rm -f /etc/nginx/sites-enabled/rightstudio
 
 # Stop Nginx temporarily to allow Certbot to run in standalone mode
 sudo systemctl stop nginx
@@ -111,7 +135,7 @@ if [ ! -f /etc/letsencrypt/ssl-dhparams.pem ]; then
 fi
 
 # Create Nginx config with reverse proxy, SSL support, rate limiting, and streaming support
-sudo cat > /etc/nginx/sites-available/myapp <<EOL
+sudo cat > /etc/nginx/sites-available/rightstudio <<EOL
 limit_req_zone \$binary_remote_addr zone=mylimit:10m rate=10r/s;
 
 server {
@@ -150,30 +174,30 @@ server {
 EOL
 
 # Create symbolic link if it doesn't already exist
-sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
+sudo ln -s /etc/nginx/sites-available/rightstudio /etc/nginx/sites-enabled/rightstudio
 
 # Restart Nginx to apply the new configuration
 sudo systemctl restart nginx
 
-# Build and run the Docker containers from the app directory (~/myapp)
+# Build and run the Docker containers from the app directory
 cd $APP_DIR
-sudo docker-compose up --build -d
+sudo docker-compose -f compose.prod.yaml up --build -d
 
 # Check if Docker Compose started correctly
-if ! sudo docker-compose ps | grep "Up"; then
+if ! sudo docker-compose -f compose.prod.yaml ps | grep "Up"; then
   echo "Docker containers failed to start. Check logs with 'docker-compose logs'."
   exit 1
 fi
 
 # Output final message
-echo "Deployment complete. Your Next.js app and PostgreSQL database are now running.
-Next.js is available at https://$DOMAIN_NAME, and the PostgreSQL database is accessible from the web service.
+echo "Deployment complete. Your Next.js app and all services are now running.
+Next.js is available at https://$DOMAIN_NAME
 
-The .env file has been created with the following values:
-- POSTGRES_USER
-- POSTGRES_PASSWORD (randomly generated)
-- POSTGRES_DB
-- DATABASE_URL
-- DATABASE_URL_EXTERNAL
-- SECRET_KEY
-- NEXT_PUBLIC_SAFE_KEY"
+The following services are running:
+- Next.js App (port 3000)
+- SurrealDB (port 8000)
+- PostgreSQL (port 5432)
+- Redis (port 6379)
+- ThirdWeb Engine (port 3005)
+
+The .env file has been created with all necessary configuration values."

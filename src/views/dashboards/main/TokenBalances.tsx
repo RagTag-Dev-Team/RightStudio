@@ -130,7 +130,7 @@ const TokenBalances = () => {
         // Format the balance to 2 decimal places
         const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
         const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
-        const nftBalance = Number(nftResult.result).toFixed(2)
+        const nftBalance = Number(nftResult.result.displayValue).toFixed(2)
 
         const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
