@@ -14,7 +14,7 @@ interface ImageJobData {
 }
 
 export const imageQueue = new Queue<ImageJobData>('image-generation', {
-  redis: process.env.REDIS_URL || 'redis://redis:6379/0',
+  redis: process.env.REDIS_URL || 'redis://redis:6379',
   defaultJobOptions: {
     attempts: 3,
     backoff: {
@@ -42,23 +42,30 @@ imageQueue.process(async job => {
       style: 'natural'
     })
 
-    console.log(JSON.stringify(response.data[0].url, null, 2))
+
 
     if (!response.data?.[0]?.url) {
       throw new Error('No image URL generated')
     }
 
     // Store the result in Redis with 24h expiration
-    await redis.set(
-      `image:${job.id}`,
-      JSON.stringify({
-        url: response.data[0].url,
-        userId,
-        timestamp: new Date().toISOString()
-      }),
-      'EX',
-      86400 // 24 hours
-    )
+    try {
+      await redis.set(
+        `image:${job.id}`,
+        JSON.stringify({
+          url: response.data[0].url,
+          userId,
+          timestamp: new Date().toISOString()
+        }),
+        'EX',
+        86400 // 24 hours
+      )
+      console.log(`Successfully stored image data in Redis for job ${job.id}`)
+    } catch (redisError) {
+      console.error(`Failed to store image data in Redis for job ${job.id}:`, redisError)
+
+      // Don't throw here - we still want to return the image URL even if Redis storage fails
+    }
 
     return { imageUrl: response.data[0].url }
   } catch (error) {
