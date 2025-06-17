@@ -1,5 +1,5 @@
 // Next Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useParams, usePathname } from 'next/navigation'
 
@@ -76,6 +76,11 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
 
   // Add loading state
   const [isLoading, setIsLoading] = useState(false)
+
+  // Reset loading state when route changes
+  useEffect(() => {
+    setIsLoading(false)
+  }, [pathname])
 
   // Add click handler
   const handleMenuItemClick = () => {
