@@ -4,11 +4,24 @@ import { RecordId, StringRecordId } from 'surrealdb'
 
 import { constrainPoint } from '@fullcalendar/core/internal'
 
+import { Engine } from 'thirdweb'
+
+import { mintTo } from 'thirdweb/extensions/erc721'
+
+import { mediaContract, mediaCollectionAddress } from '@/utils/getMediaContract'
+
+import { client } from '@/libs/thirdwebclient'
+
 import { getDb } from '@/libs/surreal'
-import { mediaCollectionAddress } from '@/utils/getMediaContract'
 
 // Initialize SurrealDB connection
 const db = await getDb()
+
+const myServerWallet = Engine.serverWallet({
+  client,
+  address: process.env.THIRDWEB_SERVER_WALLET,
+  vaultAccessToken: process.env.THIRDWEB_VAULT_TOKEN
+})
 
 // Connection configuration
 
@@ -322,32 +335,57 @@ export async function updateRecord(recordId: string, data: Partial<MediaRecord>)
 
 export async function mintRecord(metadata: any, walletAddress: string) {
   try {
-    const res = await fetch(
-      `${process.env.ENGINE_URL}/contract/${process.env.CHAIN_ID}/${mediaCollectionAddress}/erc721/mint-to?simulateTx=true`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`,
-          'Content-Type': 'application/json',
-          'x-backend-wallet-address': `${process.env.BACKEND_WALLET_ADDRESS}`
+    // Format metadata according to ERC721 standard
+    const nftMetadata = {
+      name: metadata.name,
+      description: metadata.description,
+      image: metadata.image,
+      attributes: [
+        {
+          trait_type: 'Artist',
+          value: metadata.properties.artist
         },
-        body: JSON.stringify({
-          receiver: walletAddress,
-          metadata: metadata
-        }),
-        agent: new (require('https').Agent)({
-          rejectUnauthorized: false
-        })
+        {
+          trait_type: 'Album',
+          value: metadata.properties.album
+        },
+        {
+          trait_type: 'Label',
+          value: metadata.properties.label
+        },
+        {
+          trait_type: 'Release Date',
+          value: metadata.properties.releaseDate
+        },
+        {
+          trait_type: 'Duration',
+          value: metadata.properties.duration
+        }
+      ],
+      properties: {
+        files: [
+          {
+            uri: metadata.properties.ipfsUrl,
+            type: metadata.properties.fileType
+          }
+        ],
+        category: 'audio'
       }
-    )
+    }
 
-    console.log('res', res)
+    // Prepare the contract call for minting
+    const transaction = mintTo({
+      contract: mediaContract,
+      to: walletAddress,
+      nft: nftMetadata
+    })
 
-    const data = await res.json()
+    // Send the transaction using the backend wallet
+    const { transactionId } = await myServerWallet.enqueueTransaction({
+      transaction
+    })
 
-    console.log('data', data)
-
-    return data.result.queueId
+    return transactionId
   } catch (error) {
     console.error('Error minting record:', error)
     throw error
@@ -355,6 +393,26 @@ export async function mintRecord(metadata: any, walletAddress: string) {
 }
 
 export async function getMintingStatus(queueId: string) {
+  const transactionId = queueId
+
+  console.log('TransactionId', JSON.stringify(transactionId))
+
+  try {
+    const executionResult = await Engine.getTransactionStatus({
+      client,
+      transactionId
+    })
+
+
+
+    return executionResult
+  } catch (error) {
+    console.error('Error getting minting status:', error)
+    throw error
+  }
+
+  /*
+
   try {
     const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${queueId}`, {
       method: 'GET',
@@ -372,6 +430,7 @@ export async function getMintingStatus(queueId: string) {
     console.error('Error getting minting status:', error)
     throw error
   }
+    */
 }
 
 export async function awardTagz(walletAddress: string, amount: string = '100.0') {

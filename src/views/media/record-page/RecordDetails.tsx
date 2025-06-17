@@ -399,11 +399,13 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       while (true) {
         const status = await getMintingStatus(queueId)
 
+        console.log(status)
+
         if (status.errorMessage) {
           throw new Error(`Transaction failed: ${status.errorMessage}`)
         }
 
-        if (status.status === 'mined') {
+        if (status.status === 'CONFIRMED') {
           transactionHash = status.transactionHash
           tokenId = status.tokenId
           break
