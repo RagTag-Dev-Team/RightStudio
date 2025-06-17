@@ -4,11 +4,11 @@ import { RecordId, StringRecordId } from 'surrealdb'
 
 import { constrainPoint } from '@fullcalendar/core/internal'
 
-import { Engine } from 'thirdweb'
+import { Engine, prepareContractCall } from 'thirdweb'
 
 import { mintTo } from 'thirdweb/extensions/erc721'
 
-import { mediaContract, mediaCollectionAddress } from '@/utils/getMediaContract'
+import { mediaContract, tagzContract } from '@/utils/getMediaContract'
 
 import { client } from '@/libs/thirdwebclient'
 
@@ -403,8 +403,6 @@ export async function getMintingStatus(queueId: string) {
       transactionId
     })
 
-
-
     return executionResult
   } catch (error) {
     console.error('Error getting minting status:', error)
@@ -434,6 +432,18 @@ export async function getMintingStatus(queueId: string) {
 }
 
 export async function awardTagz(walletAddress: string, amount: string = '100.0') {
+  try {
+    const transaction = await prepareContractCall({
+      contract: tagzContract,
+      method: 'function mintTo(address to, uint256 amount)',
+      params: [walletAddress, BigInt(Math.floor(parseFloat(amount) * 1e18))]
+    })
+
+    const { transactionId } = await myServerWallet.enqueueTransaction({
+      transaction
+    })
+
+    /*
   if (
     !process.env.ENGINE_URL ||
     !process.env.BACKEND_WALLET_ADDRESS ||
@@ -443,6 +453,11 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
   ) {
     throw new Error('Missing environment variables')
   }
+
+
+
+
+
 
   try {
     const res = await fetch(
@@ -466,34 +481,34 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
 
     const data = await res.json()
 
+    */
+
     // Add polling mechanism to check transaction status
     const maxAttempts = 10
     let attempts = 0
     let transactionStatus
 
     while (attempts < maxAttempts) {
-      const resp = await fetch(`${process.env.ENGINE_URL}/transaction/status/${data.result.queueId}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${process.env.ENGINE_SECRET_KEY}`
-        }
+      const resp = await Engine.getTransactionStatus({
+        client,
+        transactionId
       })
 
-      const statusData = await resp.json()
+      console.log(resp.status)
 
       // Check for error message in the response
-      if (statusData.result.errorMessage) {
-        throw new Error(`Transaction failed: ${statusData.result.errorMessage}`)
+      if (resp.errorMessage) {
+        throw new Error(`Transaction failed: ${resp.errorMessage}`)
       }
 
       // Break if status is 'mined' or 'failed'
-      if (statusData.result.status === 'mined' || statusData.result.status === 'failed') {
-        transactionStatus = statusData.result.status
+      if (resp.status === 'CONFIRMED' || resp.status === 'FAILED') {
+        transactionStatus = resp.status
 
-        if (transactionStatus === 'mined') {
+        if (transactionStatus === 'CONFIRMED') {
           return {
             message: 'Tagz minted successfully',
-            transactionHash: statusData.result.transactionHash,
+            transactionHash: resp.transactionHash,
             amount
           }
         }
@@ -504,10 +519,10 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
       attempts++
 
       // Wait 2 seconds before next attempt
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      await new Promise(resolve => setTimeout(resolve, 6000))
     }
 
-    if (transactionStatus !== 'mined') {
+    if (transactionStatus !== 'CONFIRMED') {
       throw new Error(`Minting failed with status: ${transactionStatus}`)
     }
 

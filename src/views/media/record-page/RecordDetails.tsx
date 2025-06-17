@@ -534,6 +534,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
+
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
 
@@ -569,6 +570,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const formData = new FormData()
 
       formData.append('file', file)
+
+      console.log('creating cert', certificateArgs)
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
