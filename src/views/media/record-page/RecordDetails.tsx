@@ -571,7 +571,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       formData.append('file', file)
 
-      console.log('creating cert', certificateArgs)
+
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -598,7 +598,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       }
 
       updateWatermarkProgress({
-        statusMessage: 'Certificate created successfully!',
+        statusMessage: 'Certificate created successfully! Now Awarding TAGZ.',
         progress: 100
       })
 
