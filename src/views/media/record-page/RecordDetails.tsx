@@ -568,11 +568,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create form data with file
       const formData = new FormData()
-
       formData.append('file', file)
 
-
-
+      console.log(formData, certificateArgs)
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
       if (!createdCert.status || !createdCert.data) {
@@ -585,10 +583,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Show the status message from the certificate creation
       if (createdCert.data.status) {
         updateWatermarkProgress({
-          statusMessage: createdCert.data.status,
+          statusMessage: `Certificate created: ${createdCert.data.status}`,
           progress: 50
         })
       }
+
+      // Poll for certificate status
+      updateWatermarkProgress({
+        statusMessage: 'Waiting for certificate processing...',
+        progress: 60
+      })
 
       // Get the download URL for the watermarked file
       const downloadUrl = await GetDownloadUrl(projectId, certId)
@@ -752,8 +756,19 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData?.watermarkedUrl) return
 
     try {
-      // Fetch the watermarked file
-      const response = await fetch(recordData.watermarkedUrl)
+      // Fetch the watermarked file through our API
+      const response = await fetch('/api/download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: recordData.watermarkedUrl })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to download file')
+      }
+
       const blob = await response.blob()
 
       // Create a download link

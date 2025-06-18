@@ -104,8 +104,9 @@ src/assets/iconify-icons/generated-icons.css
 /src/prisma/migrations/migration_lock.toml
 /docs/
 
+tsx-0
 
-
+surrealdb
 
 .vercel
 

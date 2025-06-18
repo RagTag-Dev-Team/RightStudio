@@ -8,7 +8,7 @@
     "dev:surreal": "dotenv -- cross-var surreal start --user %NEXT_PUBLIC_SURREALDB_USERNAME% --pass %NEXT_PUBLIC_SURREALDB_PASSWORD% rocksdb:./src/surrealdb/data",
     "dev:next": "next dev",
     "dev:staging": "dotenv -e .env.staging -- next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' next build",
     "start": "next start",
     "lint": "eslint . --ext ts --ext tsx --max-warnings 0",
     "lint:fix": "next lint --fix",

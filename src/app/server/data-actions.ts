@@ -519,7 +519,7 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
       attempts++
 
       // Wait 2 seconds before next attempt
-      await new Promise(resolve => setTimeout(resolve, 6000))
+      await new Promise(resolve => setTimeout(resolve, 2000))
     }
 
     if (transactionStatus !== 'CONFIRMED') {

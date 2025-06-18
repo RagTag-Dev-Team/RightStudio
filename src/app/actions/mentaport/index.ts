@@ -69,7 +69,7 @@ export async function CreateCertificate(
     // 1. Create certificate by setting information and uploading content
     const genRes = await sdk.createCertificate(initCertificateArgs, blob)
 
-    // console.log('genRes', genRes)
+     console.log('genRes', genRes)
 
     if (!genRes.status || genRes.data == null) {
       console.error('There was a problem uploading content for certificate')
@@ -81,7 +81,7 @@ export async function CreateCertificate(
     const certId = genRes.data.certId
     let status = genRes.data.status
 
-    console.log('creation started', genRes.data)
+
 
     // 2. Check status until is ready (Pending if successful or NonActive if failed)
     let resCertStatus = await sdk.getCertificateStatus(projectId, certId)

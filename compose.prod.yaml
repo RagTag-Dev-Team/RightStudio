@@ -8,8 +8,7 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - surrealdb_data:/surrealdb
-    user: '${UID:-1000}:${GID:-1000}'
+      - ./surrealdb:/surrealdb
     networks:
       - backend
     restart: unless-stopped
