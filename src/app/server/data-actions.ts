@@ -484,7 +484,7 @@ export async function awardTagz(walletAddress: string, amount: string = '100.0')
     */
 
     // Add polling mechanism to check transaction status
-    const maxAttempts = 10
+    const maxAttempts = 30
     let attempts = 0
     let transactionStatus
 
