@@ -536,10 +536,11 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
-      console.log('file downloa',response)
+      console.log('file download',response)
 
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
+      console.log('Blob',blob)
 
       // Extract file extension from the filetype or filename
       const fileExtension =
@@ -548,9 +549,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Use the helper function to determine the correct content format
       const contentFormat = getContentFormat(`audio/${fileExtension}`)
 
-      console.log('File type:', recordData.filetype)
-      console.log('File extension:', fileExtension)
-      console.log('Content format:', contentFormat)
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
@@ -573,7 +571,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const formData = new FormData()
       formData.append('file', file)
 
-      console.log('creating cert',JSON.stringify(certificateArgs, null,2))
+
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
