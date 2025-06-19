@@ -26,11 +26,10 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+.env.local
 .env
 
-# vercel
-.vercel
+
 
 # typescript
 *.tsbuildinfo
@@ -105,19 +104,13 @@ src/assets/iconify-icons/generated-icons.css
 /src/prisma/migrations/migration_lock.toml
 /docs/
 
-.vercel
-/.env.development
+tsx-0
+
+surrealdb
 
 .vercel
 
-.env.backup
-.env.staging
 
-.vercel
-
-.vercel
-.env*.local
-env.development
 surrealdb/mydatabase.db/000035.log
 surrealdb/mydatabase.db/000037.sst
 surrealdb/mydatabase.db/CURRENT

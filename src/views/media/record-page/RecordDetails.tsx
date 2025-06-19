@@ -399,11 +399,13 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       while (true) {
         const status = await getMintingStatus(queueId)
 
+        console.log(status)
+
         if (status.errorMessage) {
           throw new Error(`Transaction failed: ${status.errorMessage}`)
         }
 
-        if (status.status === 'mined') {
+        if (status.status === 'CONFIRMED') {
           transactionHash = status.transactionHash
           tokenId = status.tokenId
           break
@@ -525,6 +527,8 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         uri: recordData.ipfsUrl
       })
 
+     
+
       updateWatermarkProgress({
         statusMessage: 'Downloading original file...',
         progress: 20
@@ -532,8 +536,11 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
+      console.log('file download',response)
+
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
+      console.log('Blob',blob)
 
       // Extract file extension from the filetype or filename
       const fileExtension =
@@ -542,9 +549,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Use the helper function to determine the correct content format
       const contentFormat = getContentFormat(`audio/${fileExtension}`)
 
-      console.log('File type:', recordData.filetype)
-      console.log('File extension:', fileExtension)
-      console.log('Content format:', contentFormat)
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
@@ -565,8 +569,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create form data with file
       const formData = new FormData()
-
       formData.append('file', file)
+
+
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -580,10 +585,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Show the status message from the certificate creation
       if (createdCert.data.status) {
         updateWatermarkProgress({
-          statusMessage: createdCert.data.status,
+          statusMessage: `Certificate created: ${createdCert.data.status}`,
           progress: 50
         })
       }
+
+      // Poll for certificate status
+      updateWatermarkProgress({
+        statusMessage: 'Waiting for certificate processing...',
+        progress: 60
+      })
 
       // Get the download URL for the watermarked file
       const downloadUrl = await GetDownloadUrl(projectId, certId)
@@ -593,7 +604,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       }
 
       updateWatermarkProgress({
-        statusMessage: 'Certificate created successfully!',
+        statusMessage: 'Certificate created successfully! Now Awarding TAGZ.',
         progress: 100
       })
 
@@ -747,9 +758,35 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     if (!recordData?.watermarkedUrl) return
 
     try {
-      // Fetch the watermarked file
-      const response = await fetch(recordData.watermarkedUrl)
+      setSuccessMessage('Starting download...')
+      setShowSuccess(true)
+
+      // Fetch the watermarked file through our API
+      const response = await fetch('/api/download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: recordData.watermarkedUrl })
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.details || 'Failed to download file')
+      }
+
+      // Check if we got a JSON error response
+      const contentType = response.headers.get('content-type')
+      if (contentType?.includes('application/json')) {
+        const errorData = await response.json()
+        throw new Error(errorData.details || 'Failed to download file')
+      }
+
       const blob = await response.blob()
+      
+      if (blob.size === 0) {
+        throw new Error('Downloaded file is empty')
+      }
 
       // Create a download link
       const url = window.URL.createObjectURL(blob)
@@ -767,9 +804,12 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       // Cleanup
       window.URL.revokeObjectURL(url)
       document.body.removeChild(a)
+
+      setSuccessMessage('Download completed successfully!')
+      setShowSuccess(true)
     } catch (error) {
       console.error('Error downloading watermarked file:', error)
-      setSuccessMessage('Failed to download watermarked file')
+      setSuccessMessage(`Failed to download watermarked file: ${error instanceof Error ? error.message : 'Unknown error'}`)
       setShowSuccess(true)
     }
   }

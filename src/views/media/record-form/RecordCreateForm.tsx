@@ -53,7 +53,7 @@ import CovertArtUploader from './CovertArtUploader'
 
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
-import { generateCoverArt } from '@/app/server/ai-actions'
+import { generateCoverArt, checkImageStatus } from '@/app/server/ai-actions'
 
 type FormDataType = {
   title: string
@@ -273,22 +273,34 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     setGeneratedImageUrl('')
 
     try {
+      const response = await generateCoverArt(aiPrompt)
 
-    const response = await generateCoverArt(aiPrompt);
-    
-    console.log(response);
-
-      const result = await response.json()
-
-      if (result.error) {
-        throw new Error(result.error)
+      if (!response.jobId) {
+        throw new Error('No job ID received')
       }
 
-      if (!result.data?.url) {
-        throw new Error('No image URL in response')
+      // Poll for the result
+      let attempts = 0
+      const maxAttempts = 30 // 30 seconds timeout
+
+      while (attempts < maxAttempts) {
+        const statusResponse = await checkImageStatus(String(response.jobId))
+
+        if (statusResponse.status === 'completed' && statusResponse.data) {
+          setGeneratedImageUrl(statusResponse.data.url)
+          break
+        } else if (statusResponse.status === 'failed') {
+          throw new Error(statusResponse.message || 'Image generation failed')
+        }
+
+        // Wait 1 second before next attempt
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        attempts++
       }
 
-      setGeneratedImageUrl(result.data.url)
+      if (attempts >= maxAttempts) {
+        throw new Error('Image generation timed out')
+      }
     } catch (error) {
       console.error('Error generating cover art:', error)
       setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
