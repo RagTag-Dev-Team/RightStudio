@@ -27,11 +27,11 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 # Set build-time environment variables with defaults
-ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
-ARG NEXT_PUBLIC_DOCS_URL=http://localhost:3001
-ARG NEXTAUTH_URL=http://localhost:3000/api/auth
+ARG NEXT_PUBLIC_APP_URL=https://app.rightstudio.media
+ARG NEXT_PUBLIC_DOCS_URL=httsp://app.rightstudio.media:3001
+ARG NEXTAUTH_URL=https://app.rightstudio.media/api/auth
 ARG NEXTAUTH_SECRET=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-ARG NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
+ARG NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
 ARG NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
 ARG NEXT_PUBLIC_SURREALDB_DB=rgtg
