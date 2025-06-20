@@ -280,6 +280,8 @@ const MediaLibrary = () => {
         // Get the record data to get the IPFS URL
         const record = data.find(r => r.id === recordId)
 
+        console.log('Deleting Record', record)
+
         if (record) {
           // Unpin from IPFS if there's an IPFS URL
           if (record.originalIpfsUrl) {
@@ -301,7 +303,7 @@ const MediaLibrary = () => {
               // Continue with database deletion even if unpinning fails
             }
           }
-
+            
           // Delete from database using the remove action
           await remove('media', recordId)
         }
