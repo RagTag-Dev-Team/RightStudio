@@ -71,10 +71,15 @@ export async function update<T>(table: string, id: string, data: Partial<T>): Pr
 }
 
 export async function remove(table: string, id: string): Promise<boolean> {
-  try {
-    const deletedRecord = await db.delete(new RecordId(table, id))
 
-    console.log(deletedRecord)
+
+console.log('table and id',table,id)
+
+try {
+    console.log("table and id",table,id)
+    const deletedRecord = await db?.delete(new StringRecordId(`${id}`))
+
+    console.log('Deleted Record',deletedRecord)
 
     return true
   } catch (error) {
