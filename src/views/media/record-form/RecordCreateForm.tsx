@@ -53,7 +53,6 @@ import CovertArtUploader from './CovertArtUploader'
 
 // Add this import
 import { createMedia } from '@/app/server/data-actions'
-
 import { generateCoverArt, checkImageStatus } from '@/app/server/ai-actions'
 
 type FormDataType = {
@@ -274,42 +273,39 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
     setGeneratedImageUrl('')
 
     try {
-      // Start generation and get job ID
-      const result = await generateCoverArt(aiPrompt)
+      const response = await generateCoverArt(aiPrompt)
 
-      // Poll for status every 2 seconds
-      const pollInterval = setInterval(async () => {
-        try {
-          const status = await checkImageStatus(result.jobId)
+      if (!response.jobId) {
+        throw new Error('No job ID received')
+      }
 
-          if (status.status === 'completed') {
-            setGeneratedImageUrl(status.data.url)
-            setIsGenerating(false)
-            clearInterval(pollInterval)
-          } else if (status.status === 'failed') {
-            throw new Error(status.message || 'Generation failed')
-          }
-        } catch (error) {
-          console.error('Status check failed:', error)
-          setIsGenerating(false)
-          setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
-          clearInterval(pollInterval)
+      // Poll for the result
+      let attempts = 0
+      const maxAttempts = 30 // 30 seconds timeout
+
+      while (attempts < maxAttempts) {
+        const statusResponse = await checkImageStatus(String(response.jobId))
+
+        if (statusResponse.status === 'completed' && statusResponse.data) {
+          setGeneratedImageUrl(statusResponse.data.url)
+          break
+        } else if (statusResponse.status === 'failed') {
+          throw new Error(statusResponse.message || 'Image generation failed')
         }
-      }, 2000)
 
-      // Clear interval after 5 minutes (timeout)
-      setTimeout(() => {
-        clearInterval(pollInterval)
+        // Wait 1 second before next attempt
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        attempts++
+      }
 
-        if (isGenerating) {
-          setIsGenerating(false)
-          setGenerationError('Image generation timed out. Please try again.')
-        }
-      }, 300000)
+      if (attempts >= maxAttempts) {
+        throw new Error('Image generation timed out')
+      }
     } catch (error) {
       console.error('Error generating cover art:', error)
+      setGenerationError(error instanceof Error ? error.message : 'Failed to generate image')
+    } finally {
       setIsGenerating(false)
-      setGenerationError(error instanceof Error ? error.message : 'Failed to start image generation')
     }
   }
 

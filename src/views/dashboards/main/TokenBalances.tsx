@@ -40,16 +40,25 @@ import { getUserBalances } from '@/app/server/user-actions'
 //import CardStatVertical from '@/components/card-statistics/Vertical'
 
 // Add cache interface
-// interface CacheData {
-//   balances: any // Update this type based on your balance data structure
-//   timestamp: number
-// }
+interface CacheData {
+  balances: {
+    RAGZ: string
+    TAGZ: string
+    'Minted Media': string
+  }
+  chartData: {
+    series: number[]
+    options: any
+  }
+  timestamp: number
+  userAddress: string // Add userAddress to ensure cache is user-specific
+}
 
-// // Cache duration in milliseconds (30 seconds)
-// const CACHE_DURATION = 30000
+// Cache duration in milliseconds (5 minutes)
+const CACHE_DURATION = 5 * 60 * 1000
 
-// // Create a cache object outside the component to persist between renders
-// const balancesCache: CacheData | null = null
+// Cache key for localStorage
+const CACHE_KEY = 'token_balances_cache'
 
 const TokenBalances = () => {
   const account = useActiveAccount()
@@ -124,26 +133,70 @@ const TokenBalances = () => {
         return
       }
 
+      // Check if we have valid cached data in localStorage
+      const now = Date.now()
+
+      try {
+        const cachedData = localStorage.getItem(CACHE_KEY)
+
+        if (cachedData) {
+          const parsedCache: CacheData = JSON.parse(cachedData)
+
+          // Check if cache is valid and belongs to current user
+          if (parsedCache.userAddress === userAddress && now - parsedCache.timestamp < CACHE_DURATION) {
+            setTokenBalances(parsedCache.balances)
+            setChartData(parsedCache.chartData)
+            setIsLoading(false)
+
+            return
+          }
+        }
+      } catch (error) {
+        console.error('Error reading from cache:', error)
+
+        // Continue with fresh fetch if cache read fails
+      }
+
       try {
         const { ragzResult, tagzResult, nftResult } = await getUserBalances(userAddress)
 
         // Format the balance to 2 decimal places
         const ragzBalance = Number(ragzResult.result.displayValue).toFixed(2)
         const tagzBalance = Number(tagzResult.result.displayValue).toFixed(2)
-        const nftBalance = Number(nftResult.result).toFixed(2)
+        const nftBalance = Number(nftResult.result.displayValue).toFixed(2)
 
         const tokenBalance = [Number(ragzBalance), Number(tagzBalance), Number(nftBalance)]
 
-        setTokenBalances({
+        const newBalances = {
           RAGZ: ragzBalance,
           TAGZ: tagzBalance,
           'Minted Media': nftBalance
-        })
+        }
 
-        setChartData((prev: any) => ({
-          ...prev,
+        const newChartData = {
+          ...chartData,
           series: tokenBalance
-        }))
+        }
+
+        // Update state
+        setTokenBalances(newBalances)
+        setChartData(newChartData)
+
+        // Update cache in localStorage
+        const cacheData: CacheData = {
+          balances: newBalances,
+          chartData: newChartData,
+          timestamp: now,
+          userAddress
+        }
+
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData))
+        } catch (error) {
+          console.error('Error saving to cache:', error)
+
+          // Continue even if cache save fails
+        }
       } catch (error) {
         console.error('Error fetching balance:', error)
         setError(error instanceof Error ? error.message : 'Failed to fetch balances')
