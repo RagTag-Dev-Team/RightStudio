@@ -22,13 +22,13 @@ import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
-import { signOut, useSession, signIn } from 'next-auth/react'
+import { signOut, useSession, signIn, getSession } from 'next-auth/react'
 
 import { darkTheme, ConnectButton } from 'thirdweb/react'
 
 import { client } from '@/libs/thirdwebclient'
 
-import { generatePayload, logout } from '@/libs/auth'
+import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
@@ -191,11 +191,24 @@ const UserDropdown = () => {
                           label: 'Connect Wallet'
                         }}
                         auth={{
-                          isLoggedIn: async () => {
-                            // Check if there's a valid NextAuth session
-                            const isAuthenticated = !!session?.user
+                          isLoggedIn: async address => {
 
-                            return isAuthenticated
+                            console.log('Checking login status for address:', address)
+
+                            // Check if there's a valid NextAuth session
+                            const loggedIn = await isLoggedIn()
+
+                            console.log('loggedIn', loggedIn)
+
+                            const session = await getSession()
+
+                            console.log('session', session)
+
+                            if (!session) {
+                              return false
+                            } else {
+                              return true
+                            }
                           },
                           doLogin: async params => {
                             if (!isLoading) {

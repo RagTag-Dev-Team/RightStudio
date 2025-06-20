@@ -60,11 +60,9 @@ export async function logout() {
 export async function isLoggedIn() {
   // const jwt = cookies().get("jwt");
   // check if jwt is in the cookies
-  const jwt = null
+ // const jwt = null
 
-  if (!jwt) {
-    return false
-  }
+
 
   return true
 }
@@ -107,8 +105,8 @@ export const authOptions: NextAuthOptions = {
           const userRecord = await loginUser(email, password, wallet_address)
 
           if (userRecord) {
-            if (userRecord.newUser) {
-              ;(userRecord as any).newUser = false
+            // If it's a new user, create them in the database first
+            if ('newUser' in userRecord && userRecord.newUser) {
               console.log('Creating User')
 
               if (!db) {
@@ -118,24 +116,47 @@ export const authOptions: NextAuthOptions = {
               }
 
               try {
-                // @ts-ignore
-                const user = await db.create<User>('User', userRecord)
+                // Create the user with required fields
+                const userData = {
+                  name: email, // Use email as name if not provided
+                  email,
+                  password,
+                  wallet_address,
+                  image: '', // Default empty image
+                  newUser: false
+                }
 
-                console.log('User created:', jsonify(user))
+                // @ts-ignore
+                const createdUser = await db.create<User>('User', userData)
+                const user = jsonify(createdUser)
+
+                console.log('User created:', user)
+
+                console.log('Returned from authorize (created):', user)
+
+                return user as User
               } catch (err: unknown) {
                 console.error('Failed to create user:', err instanceof Error ? err.message : String(err))
+
+                return null
               } finally {
                 await db.close()
               }
             }
 
-            return userRecord
-          }
+            console.log(userRecord)
 
-          return null
+            console.log('Returned from authorize:', userRecord)
+
+            // Return existing user
+            return Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
+          }
         } catch (e: any) {
           throw new Error(e.message)
         }
+
+        // Always return null if no user is found or created
+        return null
       }
     }),
 
@@ -178,27 +199,19 @@ export const authOptions: NextAuthOptions = {
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
     async jwt({ token, user, account }) {
+      console.log('token user account', token, user, account)
+
       if (user && account) {
-        //@ts-ignore
-
-        /*
-         * For adding custom parameters to user in session, we first need to add those parameters
-         * in token which then will be available in the `session()` callback
-         */
-
-        console.log('User: ' + JSON.stringify(user, null, 2))
         token.name = user.name
         token.email = user.email
-
-        //@ts-ignore
-
         token.wallet_address = user.wallet_address
       }
 
       return token
     },
     async session({ session, token }) {
-      //  console.log('Session'+JSON.stringify(session,null,2));
+  
+
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
@@ -208,7 +221,7 @@ export const authOptions: NextAuthOptions = {
         session.user.wallet_address = token.wallet_address
       }
 
-      //    console.log('Session: ' + JSON.stringify(session, null, 2))
+      console.log('Session: ' + JSON.stringify(session, null, 2))
 
       return session
     }
