@@ -114,7 +114,7 @@ const UserDropdown = () => {
   const handleUserLogout = async () => {
     try {
       //signout wallet
-      await logout()
+
 
       // Sign out from the app
       await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
@@ -174,7 +174,7 @@ const UserDropdown = () => {
                         </Typography>
                       )}
                       <ConnectButton
-                        client={THIRDWEB_CLIENT}
+                        client={client}
                         theme={darkTheme({
                           colors: {
                             primaryButtonBg: '#247cdb',
@@ -196,19 +196,18 @@ const UserDropdown = () => {
                             console.log('Checking login status for address:', address)
 
                             // Check if there's a valid NextAuth session
-                            const loggedIn = await isLoggedIn()
 
-                            console.log('loggedIn', loggedIn)
 
                             const session = await getSession()
 
                             console.log('session', session)
 
-                            if (!session) {
+                            if (!session?.user) {
                               return false
-                            } else {
-                              return true
                             }
+
+                              return true
+
                           },
                           doLogin: async params => {
                             if (!isLoading) {

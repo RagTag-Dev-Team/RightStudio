@@ -8,7 +8,7 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - surrealdb_data:/surrealdb
+      - ./surrealdb:/surrealdb
 
     networks:
       - backend
@@ -80,35 +80,16 @@ services:
     build:
       context: ./
       dockerfile: prod.Dockerfile
-      args:
-        - NODE_ENV=production
-        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
-        - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
-        - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
-        - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-        - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
-        - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
-        - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
-        - NEXT_PUBLIC_SURREALDB_DB=rgtg
-        - NEXT_PUBLIC_SURREALDB_NS=rgtg
-        - ENGINE_URL=https://thirdwebengine:3005
-        - ENGINE_SECRET_KEY=${ENGINE_SECRET_KEY}
-        - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-        - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-        - NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=rightstudio.media
-        - NEXT_PUBLIC_THIRDWEB_ADMIN_KEY=1361831375a445ec8e6d856ae0af0ef9fe4fe2a6c644629f62b9b70575b9814e
-        - BACKEND_WALLET_ADDRESS=0x94B078112c4001B358Ccb4CC5544aF0BA2FAFB1D
-        - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDJjMzFkYkMyMjA1NjE5M0MzM2ZlMGQ2NzAzQzQ1MDgzNTZiNTE5MDciLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDMxMTc4NTEsIm5iZiI6MTc0OTUxNzg1MSwiaWF0IjoxNzQ5NTE3ODUxLCJqdGkiOiI5Y2JlNTdmYi04YWI2LTQ0OTItOTQ2ZS0xZDYxZDZkZDEzZjEiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHhjMDJiZTQ3MzNlYzIyYjE3NjY3Y2FlM2ExMTQwODMwNzE3NzlhOGRlNmExZjBmOTIxMGFkNzhhMzgwNTQyM2RkNzlhMTliMDdhOGY1N2NiMDBiNTk5YTJhNTA0NjcxOWRiNGNiOTRiYjA0MDAyOWEzYTcyOWU2OTI1Y2ExNTA0ZDFj
 
-    image: mannyj37/rs-backend:latest
+    image: mannyj37/rs-demo:latest
     restart: always
     ports:
       - '3000:3000'
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://app.rightstudio.media}
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
       - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
-      - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000/api/auth}
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
       - NEXT_PUBLIC_SURREALDB_CONNECTION=http://surrealdb:8000/rpc
       - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin

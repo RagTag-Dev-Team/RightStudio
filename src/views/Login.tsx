@@ -16,7 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Alert from '@mui/material/Alert'
 
 // Third-party Imports
-import { signIn } from 'next-auth/react'
+import { signIn, getSession } from 'next-auth/react'
 
 import classnames from 'classnames'
 
@@ -149,7 +149,13 @@ const Login = ({ mode }: { mode: SystemMode }) => {
               isLoggedIn: async address => {
                 console.log('Checking login status for address:', address)
 
-                return await isLoggedIn()
+                const loggedInStatus = await getSession()
+
+                if(!loggedInStatus?.user){
+                  return false
+                }
+
+                return true
               },
               doLogin: async params => {
                 setIsLoading(true)

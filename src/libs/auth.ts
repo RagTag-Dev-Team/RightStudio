@@ -199,7 +199,6 @@ export const authOptions: NextAuthOptions = {
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
     async jwt({ token, user, account }) {
-      console.log('token user account', token, user, account)
 
       if (user && account) {
         token.name = user.name
@@ -210,7 +209,7 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-  
+
 
 
       if (session.user) {
