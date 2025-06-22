@@ -105,20 +105,16 @@ export async function loginUser(email: string, password: string, wallet_address:
   try {
     console.log('Attempting to query user with wallet_address:', wallet_address)
 
-    // First, let's see what tables exist
-    const tables = await db.query('INFO FOR DB')
-    console.log('Available tables:', tables)
 
     // Try to query the user table - use uppercase User to match the database
-    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = $wallet_address`, {
-      wallet_address: wallet_address
-    })
+    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = $wallet_address`)
 
     console.log('loginUser result:', JSON.stringify(result, null, 2))
 
     // Check if we got any results
     if (!result || result.length === 0 || !result[0] || result[0].length === 0) {
       console.log('No user found, returning newUser object')
+
       return {
         newUser: true,
         wallet_address,
@@ -128,7 +124,9 @@ export async function loginUser(email: string, password: string, wallet_address:
     }
 
     const userRecord = jsonify(result[0])
+
     console.log('User found:', userRecord)
+
     return result[0]
   } catch (error) {
     console.error('Error querying user:', error)
@@ -136,6 +134,7 @@ export async function loginUser(email: string, password: string, wallet_address:
     // If the query fails, it might be because the table doesn't exist or has different schema
     // Return a newUser object so the authentication can proceed
     console.log('Query failed, returning newUser object as fallback')
+
     return {
       newUser: true,
       wallet_address,

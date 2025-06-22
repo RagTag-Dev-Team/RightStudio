@@ -25,6 +25,7 @@ import { client } from './thirdwebclient'
 import { getDb } from '@/libs/surreal'
 
 import { generateUsername } from '@/utils/userUtils'
+import { Session } from 'inspector/promises'
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY
 
@@ -63,7 +64,6 @@ export async function isLoggedIn() {
   // check if jwt is in the cookies
 
   // const jwt = null
-
 
   return true
 }
@@ -113,6 +113,8 @@ export const authOptions: NextAuthOptions = {
             // For wallet authentication, use a dummy email/password combination
             const userRecord = await loginUser(email, password, wallet_address)
 
+            console.log('First Query for User ', userRecord)
+
             if (userRecord) {
               // If it's a new user, create them in the database first
               if ('newUser' in userRecord && userRecord.newUser) {
@@ -139,14 +141,15 @@ export const authOptions: NextAuthOptions = {
 
                   // @ts-ignore
                   const createdUser = await db.create<User>('User', userData)
-                  const user = jsonify(createdUser)
+                  const userArr = Array.isArray(createdUser) ? createdUser : [createdUser]
 
-                  console.log('User created successfully:', user)
+                  console.log('User created successfully:', userArr[0])
+                  const user = jsonify(userArr[0])
 
                   // Remove password from returned user object
-                  const userWithoutPassword = { ...user } as any
+                  const userWithoutPassword = { ...user, password: undefined } as User
 
-                  delete userWithoutPassword.password
+                  console.log(' user without password', userWithoutPassword)
 
                   return userWithoutPassword as User
                 } catch (err: unknown) {
@@ -169,9 +172,8 @@ export const authOptions: NextAuthOptions = {
                 }
               }
 
-          // Return existing user
+              // Return existing user
               const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
-
 
               console.log('Authorize returning user:', userToReturn)
 
@@ -207,14 +209,15 @@ export const authOptions: NextAuthOptions = {
 
                   // @ts-ignore
                   const createdUser = await db.create<User>('User', userData)
-                  const user = jsonify(createdUser)
+                  const userArr = Array.isArray(createdUser) ? createdUser : [createdUser]
 
-                  console.log('User created successfully:', user)
+                  console.log('User created successfully:', userArr[0])
+                  const user = jsonify(userArr[0])
 
                   // Remove password from returned user object
-                  const userWithoutPassword = { ...user } as any
+                  const userWithoutPassword = { ...user, password: undefined } as User
 
-                  delete userWithoutPassword.password
+                  console.log(' user without password', userWithoutPassword)
 
                   return userWithoutPassword as User
                 } catch (err: unknown) {
@@ -236,7 +239,6 @@ export const authOptions: NextAuthOptions = {
                   await db.close()
                 }
               }
-
 
               // Return existing user
               const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
@@ -332,6 +334,8 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
 
+      console.log('Starting session callback', session, token)
+
       // Ensure session.user exists
       if (!session.user) {
         session.user = {
@@ -342,15 +346,16 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-
-
-        console.log('Session callback - Session updated:', {
-          name: session.user.name,
-          email: session.user.email,
-          wallet_address: (session.user as any).wallet_address
-        })
+      else{
+        session.user.name = token.name
+        session.user.email = token.email
+        session.user.wallet_address = token.wallet_address as string
       }
 
+      console.log('Session callback - Session updated:', 
+        JSON.stringify(session,null, 2)
+
+      )
 
       return session
     }
