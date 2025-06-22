@@ -7,6 +7,7 @@ import type { ChildrenType, Direction } from '@core/types'
 import { NextAuthProvider } from '@/contexts/nextAuthProvider'
 import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
+import { AuthLoadingProvider } from '@/contexts/authLoadingContext'
 import ThemeProvider from '@components/theme'
 import ReduxProvider from '@/redux-store/ReduxProvider'
 
@@ -35,7 +36,9 @@ const Providers = (props: Props) => {
         <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
           <ThemeProvider direction={direction} systemMode={systemMode}>
             <ReduxProvider>
-              <ThirdwebProvider>{children}</ThirdwebProvider>
+              <AuthLoadingProvider>
+                <ThirdwebProvider>{children}</ThirdwebProvider>
+              </AuthLoadingProvider>
             </ReduxProvider>
             <AppReactToastify direction={direction} hideProgressBar />
           </ThemeProvider>

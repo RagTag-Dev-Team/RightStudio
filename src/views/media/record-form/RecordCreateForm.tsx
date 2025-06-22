@@ -167,13 +167,13 @@ const RecordCreateForm = ({ onSuccess, walletAddress }: FormLayoutsSeparatorProp
 
       // Create a timeout promise
       const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Upload timed out. Please try again.')), 300000) // 5 minute timeout
+        setTimeout(() => reject(new Error('Upload timed out. Please try again.')), 600000) // 10 minute timeout
       })
 
       // Race between upload and timeout
       const uploadPromise = (async () => {
         try {
-          console.log(client)
+          
 
           // Single file upload
           const uploadUrl = await upload({
