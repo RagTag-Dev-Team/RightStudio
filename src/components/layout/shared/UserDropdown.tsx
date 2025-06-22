@@ -20,10 +20,12 @@ import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
+
 import { signOut, useSession } from 'next-auth/react'
 
 import ButtonConnect from '@/components/button-connect'
 import { logout } from '@/app/server/auth-actions.ts'
+
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
@@ -137,7 +139,9 @@ const UserDropdown = () => {
                       className='bs-[40px] is-[40px]'
                     />
                     <div className='flex flex-col flex-grow'>
+
                       <ButtonConnect />
+
                     </div>
                   </div>
                   <Divider className='mlb-1' />

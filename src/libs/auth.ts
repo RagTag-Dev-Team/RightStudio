@@ -61,7 +61,9 @@ export async function logout() {
 export async function isLoggedIn() {
   // const jwt = cookies().get("jwt");
   // check if jwt is in the cookies
+
   // const jwt = null
+
 
   return true
 }
@@ -167,8 +169,9 @@ export const authOptions: NextAuthOptions = {
                 }
               }
 
-              // Return existing user
+          // Return existing user
               const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
+
 
               console.log('Authorize returning user:', userToReturn)
 
@@ -234,6 +237,7 @@ export const authOptions: NextAuthOptions = {
                 }
               }
 
+
               // Return existing user
               const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
 
@@ -248,6 +252,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         // Always return null if no user is found or created
+
         console.log('Authorize returning null - no user found')
 
         return null
@@ -292,6 +297,7 @@ export const authOptions: NextAuthOptions = {
      * the `session()` callback. So we have to add custom parameters in `token`
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
+
     async jwt({ token, user }) {
       if (user) {
         // Handle case where user might be an array (from SurrealDB)
@@ -325,6 +331,7 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
+
       // Ensure session.user exists
       if (!session.user) {
         session.user = {
@@ -335,14 +342,7 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      if (session.user) {
-        // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
-        session.user.name = token.name || 'Unknown User'
-        session.user.email = token.email || 'unknown@wallet.local'
-        session.user.image = token.picture || ''
 
-        //@ts-ignore
-        session.user.wallet_address = token.wallet_address || undefined
 
         console.log('Session callback - Session updated:', {
           name: session.user.name,
@@ -350,6 +350,7 @@ export const authOptions: NextAuthOptions = {
           wallet_address: (session.user as any).wallet_address
         })
       }
+
 
       return session
     }
