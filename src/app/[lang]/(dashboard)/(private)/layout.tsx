@@ -6,6 +6,9 @@ import { Suspense } from 'react'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 
+// Third-party Imports
+import { getServerSession } from 'next-auth'
+
 // Type Imports
 import type { ChildrenType } from '@core/types'
 import type { Locale } from '@configs/i18n'
@@ -27,6 +30,7 @@ import HorizontalFooter from '@components/layout/horizontal/Footer'
 // import Customizer from '@core/components/customizer'
 import ScrollToTop from '@core/components/scroll-to-top'
 import AuthGuard from '@/hocs/AuthGuard'
+import SessionRefresher from '@/components/SessionRefresher'
 
 // Config Imports
 import { i18n } from '@configs/i18n'
@@ -34,6 +38,9 @@ import { i18n } from '@configs/i18n'
 // Util Imports
 import { getDictionary } from '@/utils/getDictionary'
 import { getMode, getSystemMode } from '@core/utils/serverHelpers'
+
+// Lib Imports
+import { authOptions } from '@/libs/auth'
 
 // Router Import
 
@@ -55,9 +62,18 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
   const mode = getMode()
   const systemMode = getSystemMode()
 
+  // Check session in layout for debugging
+  const session = await getServerSession(authOptions)
+  console.log('Dashboard Layout - Session check:', {
+    exists: !!session,
+    user: session?.user,
+    wallet_address: session?.user?.wallet_address
+  })
+
   return (
     <Providers direction={direction}>
       <AuthGuard locale={params.lang}>
+        <SessionRefresher />
         <LayoutWrapper
           systemMode={systemMode}
           verticalLayout={

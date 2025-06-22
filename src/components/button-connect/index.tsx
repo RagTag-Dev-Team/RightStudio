@@ -1,34 +1,95 @@
 import { useState } from 'react'
 
-import Link from 'next/link'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
-import { signIn, getSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 import { darkTheme, ConnectButton } from 'thirdweb/react'
 
-import classnames from 'classnames'
+ import { sepolia } from 'thirdweb/chains'
+
+ import { inAppWallet, createWallet } from "thirdweb/wallets";
+
 
 import { client } from '@/libs/thirdwebclient'
 
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
 
-// Third-party Imports
 
-// Style Imports
-import styles from './styles.module.css'
+
+
+import { generatePayload, login, logout } from './actions/auth'
+
+// Type Imports
+import type { Locale } from '@/configs/i18n'
+
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+
+// Context Imports
+import { useAuthLoading } from '@/contexts/authLoadingContext'
+
+type ErrorType = {
+  message: string[]
+}
 
 const THIRDWEB_CLIENT = client
+
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "email",
+        "passkey",
+        "github",
+        "facebook",
+        "apple",
+      ],
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
+
 
 const ButtonConnect = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { lang: locale } = useParams()
+  const { setAuthLoading, setAuthError } = useAuthLoading()
+  const { data: session, status, update } = useSession()
 
   const [errorState, setErrorState] = useState<ErrorType | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Update both local and global loading state
+  const updateLoadingState = (loading: boolean) => {
+    setIsLoading(loading)
+    setAuthLoading(loading)
+  }
+
+  // Update both local and global error state
+  const updateErrorState = (error: ErrorType | null) => {
+    setErrorState(error)
+    setAuthError(error)
+  }
+
+
 
   return (
     <ConnectButton
       client={THIRDWEB_CLIENT}
+      accountAbstraction={{
+        chain: sepolia,
+        sponsorGas: true,
+      }}
+      wallets={wallets}
+      autoConnect={true}
       theme={darkTheme({
         colors: {
           primaryButtonBg: '#247cdb',
@@ -46,47 +107,99 @@ const ButtonConnect = () => {
       }}
       auth={{
         isLoggedIn: async address => {
-          const loggedIn = await isLoggedIn()
+          console.log('ButtonConnect - isLoggedIn called with address:', address)
+          console.log('ButtonConnect - Current session status:', status)
+          console.log('ButtonConnect - Current session data:', session)
 
-          console.log('loggedIn', loggedIn)
+          // If session is still loading, wait a bit and check again
+          if (status === 'loading') {
+            console.log('ButtonConnect - Session still loading, waiting...')
 
-          const session = await getSession()
+            // Wait a short time for session to load
+            await new Promise(resolve => setTimeout(resolve, 100))
 
-          console.log('session', session)
-
-          if (!session) {
             return false
-          } else {
-            return true
           }
+
+          // If not authenticated, return false immediately
+          if (status !== 'authenticated') {
+            console.log('ButtonConnect - Session not authenticated, status:', status)
+
+            return false
+          }
+
+          // If authenticated but session might still be loading, wait a bit
+          if (status === 'authenticated' && !session?.user?.wallet_address) {
+            console.log('ButtonConnect - Session authenticated but wallet address not loaded yet, waiting...')
+            await new Promise(resolve => setTimeout(resolve, 200))
+          }
+
+          // Check if we have a NextAuth session and if the wallet address matches
+          if (session?.user?.wallet_address) {
+            const sessionWallet = session.user.wallet_address.toLowerCase()
+            const addressWallet = address.toLowerCase()
+            const isLoggedIn = sessionWallet === addressWallet
+
+            console.log('ButtonConnect - Session found, checking wallet match:', {
+              sessionWallet,
+              addressWallet,
+              isMatch: isLoggedIn
+            })
+
+            return isLoggedIn
+          }
+
+          console.log('ButtonConnect - No session found or no wallet address in session')
+
+          return false
         },
         doLogin: async params => {
-          console.log('logging in!')
+          updateLoadingState(true)
 
-          const res = await signIn('credentials', {
-            wallet_address: params.payload.address,
-            redirect: false
-          })
+          try {
+            await login(params)
 
-          if (res && res.ok && res.error === null) {
-            // Vars
-            const redirectURL = searchParams.get('redirectTo') ?? '/en/dashboards/fileLibrary'
+            console.log('Next Auth Sign In')
 
-            console.log('redirectURL', redirectURL)
-            router.replace('/en/dashboards/fileLibrary')
-          } else {
-            if (res?.error) {
-              const error = JSON.parse(res.error)
+            const res = await signIn('credentials', {
+              email: `${params.payload.address}@wallet.local`,
+              password: 'wallet-auth',
+              wallet_address: params.payload.address,
+              redirect: false
+            })
 
-              setErrorState(error)
+            if (res && res.ok && res.error === null) {
+              // Force session update after successful login
+              await update()
+
+              const redirectURL = searchParams.get('redirectTo') ?? '/'
+
+              router.replace(getLocalizedUrl(redirectURL, locale as Locale))
+            } else {
+              if (res?.error) {
+                const error = JSON.parse(res.error)
+
+                updateErrorState(error)
+              }
+
+              updateLoadingState(false)
             }
+          } catch (error) {
+            updateLoadingState(false)
+            updateErrorState({ message: ['An unexpected error occurred'] })
           }
         },
-        getLoginPayload: async (address: string) => {
-          return await generatePayload(address)
-        },
+        getLoginPayload: async ({ address }) => generatePayload({ address, chainId: Number(process.env.CHAIN_ID) }),
         doLogout: async () => {
+          console.log('logging out!')
           await logout()
+
+          // Get current pathname for redirect
+          const currentPath = window.location.pathname
+          const baseUrl = window.location.origin
+          const logoutUrl = `${baseUrl}/login?redirectTo=${encodeURIComponent(currentPath)}`
+
+          await signOut({ callbackUrl: logoutUrl })
         }
       }}
     />

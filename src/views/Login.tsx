@@ -5,7 +5,6 @@ import { useState } from 'react'
 
 // Next Imports
 // import Link from 'next/link'
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 // MUI Imports
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -16,18 +15,12 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Alert from '@mui/material/Alert'
 
 // Third-party Imports
-import { signIn } from 'next-auth/react'
-
 import classnames from 'classnames'
 
-import { darkTheme, ConnectButton } from 'thirdweb/react'
-
-import { client } from '@/libs/thirdwebclient'
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
+import ButtonConnect from '@/components/button-connect'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
-import type { Locale } from '@/configs/i18n'
 
 // Component Imports
 
@@ -37,8 +30,8 @@ import Logo from '@components/layout/shared/Logo'
 import { useImageVariant } from '@core/hooks/useImageVariant'
 import { useSettings } from '@core/hooks/useSettings'
 
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
+// Context Imports
+import { useAuthLoading } from '@/contexts/authLoadingContext'
 
 // Styled Custom Components
 const LoginIllustration = styled('img')(({ theme }) => ({
@@ -68,12 +61,12 @@ type ErrorType = {
   message: string[]
 }
 
-const THIRDWEB_CLIENT = client
-
 const Login = ({ mode }: { mode: SystemMode }) => {
   // States
-  const [errorState, setErrorState] = useState<ErrorType | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [errorState] = useState<ErrorType | null>(null)
+
+  // Context
+  const { isAuthLoading, authError } = useAuthLoading()
 
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
@@ -84,9 +77,6 @@ const Login = ({ mode }: { mode: SystemMode }) => {
   const borderedLightIllustration = '/images/illustrations/auth/v2-login-light-border.png'
 
   // Hooks
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const { lang: locale } = useParams()
   const { settings } = useSettings()
   const theme = useTheme()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
@@ -102,7 +92,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
 
   return (
     <div className='flex bs-full justify-center'>
-      {isLoading && (
+      {isAuthLoading && (
         <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
           <CircularProgress />
         </div>
@@ -127,69 +117,10 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             <Typography variant='h4'>{`Welcome to RightStudio! `}</Typography>
             <Typography>Your journey starts here.</Typography>
           </div>
-
-          <ConnectButton
-            client={THIRDWEB_CLIENT}
-            theme={darkTheme({
-              colors: {
-                primaryButtonBg: '#247cdb',
-                primaryButtonText: '#ffffff'
-              }
-            })}
-            connectModal={{
-              title: 'Connect to RightStudio',
-              titleIcon: '/images/pages/rightstudio-icon-color.png',
-              size: 'wide',
-              showThirdwebBranding: false
-            }}
-            connectButton={{
-              label: 'Get Started'
-            }}
-            auth={{
-              isLoggedIn: async address => {
-                console.log('Checking login status for address:', address)
-
-                return await isLoggedIn()
-              },
-              doLogin: async params => {
-                setIsLoading(true)
-
-                try {
-                  const res = await signIn('credentials', {
-                    wallet_address: params.payload.address,
-                    redirect: false
-                  })
-
-                  if (res && res.ok && res.error === null) {
-                    const redirectURL = searchParams.get('redirectTo') ?? '/'
-
-                    router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-                  } else {
-                    if (res?.error) {
-                      const error = JSON.parse(res.error)
-
-                      setErrorState(error)
-                    }
-
-                    setIsLoading(false)
-                  }
-                } catch (error) {
-                  setIsLoading(false)
-                  setErrorState({ message: ['An unexpected error occurred'] })
-                }
-              },
-              getLoginPayload: async ({ address }) => generatePayload({ address }),
-              doLogout: async () => {
-                console.log('logging out!')
-                await logout()
-              }
-            }}
-          />
-          {errorState && errorState.message && (
-            <Alert icon={false} className='bg-[var(--mui-palette-primary-lightOpacity)] text-center'>
-              <Typography variant='body2' color='error'>
-                <span className='font-medium'>{errorState.message.join(' ')}</span>
-              </Typography>
+          <ButtonConnect />
+          {(authError || errorState) && (
+            <Alert severity='error'>
+              {(authError?.message || errorState?.message || ['An error occurred']).join(', ')}
             </Alert>
           )}
         </div>
