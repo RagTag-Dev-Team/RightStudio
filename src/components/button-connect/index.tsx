@@ -6,7 +6,16 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 
 import { darkTheme, ConnectButton } from 'thirdweb/react'
 
+ import { sepolia } from 'thirdweb/chains'
+
+ import { inAppWallet, createWallet } from "thirdweb/wallets";
+
+
 import { client } from '@/libs/thirdwebclient'
+
+
+
+
 
 import { generatePayload, login, logout } from './actions/auth'
 
@@ -24,6 +33,29 @@ type ErrorType = {
 }
 
 const THIRDWEB_CLIENT = client
+
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "email",
+        "passkey",
+        "github",
+        "facebook",
+        "apple",
+      ],
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
+
 
 const ButtonConnect = () => {
   const router = useRouter()
@@ -52,6 +84,11 @@ const ButtonConnect = () => {
   return (
     <ConnectButton
       client={THIRDWEB_CLIENT}
+      accountAbstraction={{
+        chain: sepolia,
+        sponsorGas: true,
+      }}
+      wallets={wallets}
       autoConnect={true}
       theme={darkTheme({
         colors: {
