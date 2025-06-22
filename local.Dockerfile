@@ -25,12 +25,12 @@ RUN pnpm install --frozen-lockfile
 
 # Copy source files
 COPY . .
-COPY .env .
+
 
 # Set build-time environment variables with defaults
-ARG NEXT_PUBLIC_APP_URL=https://app.rightstudio.media
+ARG NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
 ARG NEXT_PUBLIC_DOCS_URL=httsp://app.rightstudio.media:3001
-ARG NEXTAUTH_URL=https://app.rightstudio.media/api/auth
+ARG NEXTAUTH_URL=http://localhost:3000/api/auth
 ARG NEXTAUTH_SECRET=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
 ARG NEXT_PUBLIC_SURREALDB_CONNECTION=${NEXT_PUBLIC_SURREALDB_CONNECTION}
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin

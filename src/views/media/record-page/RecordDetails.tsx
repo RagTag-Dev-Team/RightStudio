@@ -527,7 +527,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         uri: recordData.ipfsUrl
       })
 
-     
+
 
       updateWatermarkProgress({
         statusMessage: 'Downloading original file...',
@@ -536,10 +536,12 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create a blob from the URL
       const response = await fetch(fileUrl.url)
+
       console.log('file download',response)
 
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
+
       console.log('Blob',blob)
 
       // Extract file extension from the filetype or filename
@@ -569,6 +571,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Create form data with file
       const formData = new FormData()
+
       formData.append('file', file)
 
 
@@ -783,7 +786,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       }
 
       const blob = await response.blob()
-      
+
       if (blob.size === 0) {
         throw new Error('Downloaded file is empty')
       }

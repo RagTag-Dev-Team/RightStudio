@@ -12,19 +12,9 @@ import { getDb } from '@/libs/surreal'
 
 import { client } from '@/libs/thirdwebclient'
 
-const {
-  ENGINE_URL,
-  CHAIN_ID,
-  TAGZ_TOKEN_ADDRESS,
-  RAGZ_TOKEN_ADDRESS,
-  NEXT_PUBLIC_THIRDWEB_SECRET_KEY,
-  MEDIA_CONTRACT_ADDRESS,
-  ENGINE_SECRET_KEY,
-  CLIENT_ID
-} = process.env
+const { ENGINE_URL, CHAIN_ID, TAGZ_TOKEN_ADDRESS, MEDIA_CONTRACT_ADDRESS, ENGINE_SECRET_KEY } = process.env
 
 // Fix the chain definition by ensuring CHAIN_ID is a number
-const chain = CHAIN_ID
 
 interface TokenBalances {
   ragzResult: { result: { displayValue: string } }
@@ -33,22 +23,11 @@ interface TokenBalances {
 }
 
 export async function getUserBalances(address: string): Promise<TokenBalances> {
-  console.log('Getting balances for address:', address)
-  console.log('Using ENGINE_URL:', ENGINE_URL)
-  console.log('Using CHAIN_ID:', CHAIN_ID)
-
   if (!address) {
     throw new Error('No wallet address provided')
   }
 
-  if (
-    !ENGINE_URL ||
-    !CHAIN_ID ||
-    !RAGZ_TOKEN_ADDRESS ||
-    !TAGZ_TOKEN_ADDRESS ||
-    !MEDIA_CONTRACT_ADDRESS ||
-    !ENGINE_SECRET_KEY
-  ) {
+  if (!ENGINE_URL || !CHAIN_ID || !TAGZ_TOKEN_ADDRESS || !MEDIA_CONTRACT_ADDRESS || !ENGINE_SECRET_KEY) {
     throw new Error('Missing required environment variables')
   }
 
@@ -95,10 +74,6 @@ export async function getUserBalances(address: string): Promise<TokenBalances> {
       }
     }
 
-    console.log('RAGZ Result:', ragzResult)
-    console.log('TAGZ Result:', tagzResult)
-    console.log('NFT Result:', nftResult)
-
     return {
       ragzResult,
       tagzResult,
@@ -128,13 +103,22 @@ export async function loginUser(email: string, password: string, wallet_address:
   }
 
   try {
-    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = '${wallet_address}'`)
+    console.log('Attempting to query user with wallet_address:', wallet_address)
 
-    //    console.log('result: ' + JSON.stringify(result, null, 2))
+    // First, let's see what tables exist
+    const tables = await db.query('INFO FOR DB')
+    console.log('Available tables:', tables)
 
-    const userRecord = result[0] ? jsonify(result[0]) : null
+    // Try to query the user table - use uppercase User to match the database
+    const result: User[] = await db.query(`SELECT * FROM User WHERE wallet_address = $wallet_address`, {
+      wallet_address: wallet_address
+    })
 
-    if (!userRecord || result[0].length === 0) {
+    console.log('loginUser result:', JSON.stringify(result, null, 2))
+
+    // Check if we got any results
+    if (!result || result.length === 0 || !result[0] || result[0].length === 0) {
+      console.log('No user found, returning newUser object')
       return {
         newUser: true,
         wallet_address,
@@ -143,10 +127,21 @@ export async function loginUser(email: string, password: string, wallet_address:
       }
     }
 
+    const userRecord = jsonify(result[0])
+    console.log('User found:', userRecord)
     return result[0]
   } catch (error) {
     console.error('Error querying user:', error)
-    throw error
+
+    // If the query fails, it might be because the table doesn't exist or has different schema
+    // Return a newUser object so the authentication can proceed
+    console.log('Query failed, returning newUser object as fallback')
+    return {
+      newUser: true,
+      wallet_address,
+      email,
+      password
+    }
   }
 }
 

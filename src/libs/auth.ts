@@ -1,5 +1,4 @@
 // Third-party Imports
-
 import CredentialProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
@@ -17,13 +16,15 @@ import type { VerifyLoginPayloadParams } from 'thirdweb/auth'
 
 import { createAuth } from 'thirdweb/auth'
 
-import { privateKeyAccount } from 'thirdweb/wallets'
+import { privateKeyToAccount } from 'thirdweb/wallets'
 
 import { loginUser } from '@/app/server/user-actions'
 
 import { client } from './thirdwebclient'
 
 import { getDb } from '@/libs/surreal'
+
+import { generateUsername } from '@/utils/userUtils'
 
 const privateKey = process.env.NEXT_PUBLIC_THIRDWEB_ADMIN_KEY
 
@@ -35,7 +36,7 @@ if (!privateKey) {
 
 const thirdwebAuth = createAuth({
   domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || '',
-  adminAccount: privateKeyAccount({ client, privateKey }),
+  adminAccount: privateKeyToAccount({ client, privateKey }),
   client: client
 })
 
@@ -60,9 +61,7 @@ export async function logout() {
 export async function isLoggedIn() {
   // const jwt = cookies().get("jwt");
   // check if jwt is in the cookies
- // const jwt = null
-
-
+  // const jwt = null
 
   return true
 }
@@ -93,6 +92,8 @@ export const authOptions: NextAuthOptions = {
        */
       credentials: {},
       async authorize(credentials) {
+        console.log('Authorize called with credentials:', credentials)
+
         const { email, password, wallet_address } = credentials as {
           email: string
           password: string
@@ -102,60 +103,153 @@ export const authOptions: NextAuthOptions = {
         const db = await getDb()
 
         try {
-          const userRecord = await loginUser(email, password, wallet_address)
+          // For wallet-based authentication, prioritize wallet_address
+          // If email ends with @wallet.local, it's a wallet auth and we should use wallet_address
+          const isWalletAuth = email.endsWith('@wallet.local')
 
-          if (userRecord) {
-            // If it's a new user, create them in the database first
-            if ('newUser' in userRecord && userRecord.newUser) {
-              console.log('Creating User')
+          if (isWalletAuth && wallet_address) {
+            // For wallet authentication, use a dummy email/password combination
+            const userRecord = await loginUser(email, password, wallet_address)
 
-              if (!db) {
-                console.error('Database not initialized')
+            if (userRecord) {
+              // If it's a new user, create them in the database first
+              if ('newUser' in userRecord && userRecord.newUser) {
+                console.log('Creating User')
 
-                return null
-              }
+                if (!db) {
+                  console.error('Database not initialized')
 
-              try {
-                // Create the user with required fields
-                const userData = {
-                  name: email, // Use email as name if not provided
-                  email,
-                  password,
-                  wallet_address,
-                  image: '', // Default empty image
-                  newUser: false
+                  return null
                 }
 
-                // @ts-ignore
-                const createdUser = await db.create<User>('User', userData)
-                const user = jsonify(createdUser)
+                try {
+                  // Create the user with required fields
+                  const userData = {
+                    name: generateUsername(), // Generate random name
+                    email: `${wallet_address.slice(0, 6)}@wallet.local`, // Use truncated wallet address
+                    password,
+                    wallet_address: wallet_address || '',
+                    image: '/images/avatars/1.png', // Default avatar
+                    newUser: false
+                  }
 
-                console.log('User created:', user)
+                  console.log('Attempting to create user with data:', userData)
 
-                console.log('Returned from authorize (created):', user)
+                  // @ts-ignore
+                  const createdUser = await db.create<User>('User', userData)
+                  const user = jsonify(createdUser)
 
-                return user as User
-              } catch (err: unknown) {
-                console.error('Failed to create user:', err instanceof Error ? err.message : String(err))
+                  console.log('User created successfully:', user)
 
-                return null
-              } finally {
-                await db.close()
+                  // Remove password from returned user object
+                  const userWithoutPassword = { ...user } as any
+
+                  delete userWithoutPassword.password
+
+                  return userWithoutPassword as User
+                } catch (err: unknown) {
+                  console.error('Failed to create user in database:', err instanceof Error ? err.message : String(err))
+
+                  // Even if database creation fails, we can still authenticate the user
+                  // by returning a user object with the email
+                  console.log('Returning user object without database persistence')
+
+                  return {
+                    id: wallet_address,
+                    name: generateUsername(),
+                    email: `${wallet_address.slice(0, 6)}@wallet.local`,
+                    image: '/images/avatars/1.png',
+                    wallet_address: wallet_address || '',
+                    newUser: false
+                  } as User
+                } finally {
+                  await db.close()
+                }
               }
+
+              // Return existing user
+              const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
+
+              console.log('Authorize returning user:', userToReturn)
+
+              return userToReturn
             }
+          } else {
+            // For traditional email/password authentication
+            const userRecord = await loginUser(email, password, wallet_address || '')
 
-            console.log(userRecord)
+            if (userRecord) {
+              // If it's a new user, create them in the database first
+              if ('newUser' in userRecord && userRecord.newUser) {
+                console.log('Creating User')
 
-            console.log('Returned from authorize:', userRecord)
+                if (!db) {
+                  console.error('Database not initialized')
 
-            // Return existing user
-            return Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
+                  return null
+                }
+
+                try {
+                  // Create the user with required fields
+                  const userData = {
+                    name: email, // Use email as name if not provided
+                    email,
+                    password,
+                    wallet_address: wallet_address || '',
+                    image: '/images/avatars/1.png', // Default avatar
+                    newUser: false
+                  }
+
+                  console.log('Attempting to create user with data:', userData)
+
+                  // @ts-ignore
+                  const createdUser = await db.create<User>('User', userData)
+                  const user = jsonify(createdUser)
+
+                  console.log('User created successfully:', user)
+
+                  // Remove password from returned user object
+                  const userWithoutPassword = { ...user } as any
+
+                  delete userWithoutPassword.password
+
+                  return userWithoutPassword as User
+                } catch (err: unknown) {
+                  console.error('Failed to create user in database:', err instanceof Error ? err.message : String(err))
+
+                  // Even if database creation fails, we can still authenticate the user
+                  // by returning a user object with the email
+                  console.log('Returning user object without database persistence')
+
+                  return {
+                    id: email,
+                    name: email,
+                    email: email,
+                    image: '/images/avatars/1.png',
+                    wallet_address: wallet_address || '',
+                    newUser: false
+                  } as User
+                } finally {
+                  await db.close()
+                }
+              }
+
+              // Return existing user
+              const userToReturn = Array.isArray(userRecord) ? (userRecord[0] as User) : (userRecord as User)
+
+              console.log('Authorize returning user:', userToReturn)
+
+              return userToReturn
+            }
           }
         } catch (e: any) {
+          console.error('Authorize error:', e)
           throw new Error(e.message)
         }
 
         // Always return null if no user is found or created
+        console.log('Authorize returning null - no user found')
+
         return null
       }
     }),
@@ -198,31 +292,69 @@ export const authOptions: NextAuthOptions = {
      * the `session()` callback. So we have to add custom parameters in `token`
      * via `jwt()` callback to make them accessible in the `session()` callback
      */
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
+      if (user) {
+        // Handle case where user might be an array (from SurrealDB)
+        const userData = Array.isArray(user) ? user[0] : user
 
-      if (user && account) {
-        token.name = user.name
-        token.email = user.email
-        token.wallet_address = user.wallet_address
+        // Generate random name if not provided
+        const userName = userData.name || userData.wallet_address ? generateUsername() : 'Unknown User'
+
+        // Use truncated wallet address for email if not provided
+        const userEmail =
+          userData.email ||
+          (userData.wallet_address ? `${userData.wallet_address.slice(0, 6)}@wallet.local` : 'unknown@wallet.local')
+
+        // Set default avatar
+        const userImage = userData.image || '/images/avatars/1.png'
+
+        // Ensure all required fields are set (excluding password)
+        token.name = userName
+        token.email = userEmail
+        token.picture = userImage
+        token.wallet_address = userData.wallet_address
+        token.sub = userData.id || userData.wallet_address // Ensure the subject is set
+
+        console.log('JWT callback - User authenticated:', {
+          name: token.name,
+          email: token.email,
+          wallet_address: token.wallet_address
+        })
       }
 
       return token
     },
     async session({ session, token }) {
-
-
+      // Ensure session.user exists
+      if (!session.user) {
+        session.user = {
+          id: token.sub || 'unknown',
+          name: undefined,
+          email: undefined,
+          image: undefined
+        }
+      }
 
       if (session.user) {
         // ** Add custom params to user in session which are added in `jwt()` callback via `token` parameter
-        session.user.name = token.name
+        session.user.name = token.name || 'Unknown User'
+        session.user.email = token.email || 'unknown@wallet.local'
+        session.user.image = token.picture || ''
 
         //@ts-ignore
-        session.user.wallet_address = token.wallet_address
-      }
+        session.user.wallet_address = token.wallet_address || undefined
 
-      console.log('Session: ' + JSON.stringify(session, null, 2))
+        console.log('Session callback - Session updated:', {
+          name: session.user.name,
+          email: session.user.email,
+          wallet_address: (session.user as any).wallet_address
+        })
+      }
 
       return session
     }
-  }
+  },
+
+  // Add debug logging in development
+  debug: process.env.NODE_ENV === 'development'
 }

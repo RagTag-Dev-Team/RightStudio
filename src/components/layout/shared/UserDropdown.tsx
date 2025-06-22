@@ -1,11 +1,9 @@
 'use client'
-
-// React Imports
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -22,28 +20,15 @@ import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
 // Third-party Imports
-import { signOut, useSession, signIn, getSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
-import { darkTheme, ConnectButton } from 'thirdweb/react'
-
-import { client } from '@/libs/thirdwebclient'
-
-import { generatePayload, isLoggedIn, logout } from '@/libs/auth'
+import ButtonConnect from '@/components/button-connect'
+import { logout } from '@/app/server/auth-actions.ts'
 
 // Type Imports
 import type { Locale } from '@configs/i18n'
-
 import { useSettings } from '@core/hooks/useSettings'
-
 import { getLocalizedUrl } from '@/utils/i18n'
-
-import { generateUsername } from '@/utils/userUtils'
-
-type ErrorType = {
-  message: string[]
-}
-
-const THIRDWEB_CLIENT = client
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -58,42 +43,21 @@ const BadgeContentSpan = styled('span')({
 const UserDropdown = () => {
   // States
   const [open, setOpen] = useState(false)
-  const [displayName, setDisplayName] = useState<string>('')
-  const [walletAddress, setWalletAddress] = useState<string>('')
 
   // Refs
   const anchorRef = useRef<HTMLDivElement>(null)
 
   // Hooks
   const router = useRouter()
-
-  const searchParams = useSearchParams()
-
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const { settings } = useSettings()
   const { lang: locale } = useParams()
 
-  const [errorState, setErrorState] = useState<ErrorType | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-
-  // Add useEffect to handle username and wallet address
-  useEffect(() => {
-    if (!session?.user?.name) {
-      setDisplayName(generateUsername())
-    } else {
-      setDisplayName(session.user.name)
-    }
-
-    // Set wallet address from session if available
-    if (session?.user && 'wallet_address' in session.user) {
-      const address = (session.user as any).wallet_address
-
-      // Format wallet address to show first 6 and last 4 characters
-      if (address) {
-        setWalletAddress(`${address.slice(0, 6)}...${address.slice(-4)}`)
-      }
-    }
-  }, [session])
+  // Add logging to understand session state
+  console.log('UserDropdown - session status:', status)
+  console.log('UserDropdown - session data:', session)
+  console.log('UserDropdown - session user:', session?.user)
+  console.log('UserDropdown - session user wallet_address:', session?.user?.wallet_address)
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -114,10 +78,15 @@ const UserDropdown = () => {
   const handleUserLogout = async () => {
     try {
       //signout wallet
+      await logout()
 
+      // Get current pathname for redirect
+      const currentPath = window.location.pathname
+      const baseUrl = window.location.origin
+      const logoutUrl = `${baseUrl}/login?redirectTo=${encodeURIComponent(currentPath)}`
 
       // Sign out from the app
-      await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
+      await signOut({ callbackUrl: logoutUrl })
     } catch (error) {
       console.error(error)
 
@@ -168,85 +137,7 @@ const UserDropdown = () => {
                       className='bs-[40px] is-[40px]'
                     />
                     <div className='flex flex-col flex-grow'>
-                      {walletAddress && (
-                        <Typography className='font-medium mb-1' color='text.primary'>
-                          {displayName}
-                        </Typography>
-                      )}
-                      <ConnectButton
-                        client={client}
-                        theme={darkTheme({
-                          colors: {
-                            primaryButtonBg: '#247cdb',
-                            primaryButtonText: '#ffffff'
-                          }
-                        })}
-                        connectModal={{
-                          title: 'Connect to RightStudio',
-                          titleIcon: '/images/pages/rightstudio-icon-color.png',
-                          size: 'wide',
-                          showThirdwebBranding: false
-                        }}
-                        connectButton={{
-                          label: 'Connect Wallet'
-                        }}
-                        auth={{
-                          isLoggedIn: async address => {
-
-                            console.log('Checking login status for address:', address)
-
-                            // Check if there's a valid NextAuth session
-
-
-                            const session = await getSession()
-
-                            console.log('session', session)
-
-                            if (!session?.user) {
-                              return false
-                            }
-
-                              return true
-
-                          },
-                          doLogin: async params => {
-                            if (!isLoading) {
-                              setIsLoading(true)
-                            }
-
-                            try {
-                              const res = await signIn('credentials', {
-                                wallet_address: params.payload.address,
-                                redirect: false
-                              })
-
-                              if (res && res.ok && res.error === null) {
-                                const redirectURL = searchParams.get('redirectTo') ?? '/'
-
-                                router.replace(getLocalizedUrl(redirectURL, locale as Locale))
-                              } else {
-                                if (res?.error) {
-                                  const error = JSON.parse(res.error)
-
-                                  console.log('error', errorState)
-                                  setErrorState(error)
-                                }
-
-                                setIsLoading(false)
-                              }
-                            } catch (error) {
-                              setIsLoading(false)
-                              setErrorState({ message: ['An unexpected error occurred'] })
-                            }
-                          },
-                          getLoginPayload: async ({ address }) => generatePayload({ address }),
-                          doLogout: async () => {
-                            console.log('logging out!')
-                            await logout()
-                            await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL })
-                          }
-                        }}
-                      />
+                      <ButtonConnect />
                     </div>
                   </div>
                   <Divider className='mlb-1' />
@@ -267,6 +158,7 @@ const UserDropdown = () => {
                     <Typography color='text.primary'>FAQ</Typography>
                   </MenuItem>
                   <div className='flex items-center plb-2 pli-3'>
+                    {/*}
                     <Button
                       fullWidth
                       variant='contained'
@@ -278,6 +170,7 @@ const UserDropdown = () => {
                     >
                       Logout
                     </Button>
+                    */}
                   </div>
                 </MenuList>
               </ClickAwayListener>
