@@ -9,8 +9,7 @@ services:
     depends_on:
       - app
     networks:
-      - frontend
-      - backend
+      - app-network
 
   app:
     build:
@@ -19,13 +18,10 @@ services:
     environment:
       - NODE_ENV=production
     networks:
-      - frontend
-      - backend
+      - app-network
     depends_on:
       - surrealdb
-      - postgres
       - redis
-      - thirdwebengine
 
   surrealdb:
     platform: 'linux/amd64'
@@ -37,44 +33,14 @@ services:
     ports:
       - '8000:8000'
     networks:
-      - frontend
-      - backend
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - '5432:5432'
-    networks:
-      - frontend
-      - backend
+      - app-network
 
   redis:
     image: redis:7.2.4
     ports:
       - '6379:6379'
     networks:
-      - frontend
-      - backend
-  thirdwebengine:
-    image: thirdweb/engine:latest
-    environment:
-      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
-      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
-      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@host.docker.internal:5432/postgres?sslmode=disable
-      - REDIS_URL=redis://host.docker.internal:6379/0
-      - ENABLE_HTTPS=true
-    depends_on:
-      - postgres
-      - redis
-    ports:
-      - '3005:3005'
-    networks:
-      - frontend
-      - backend
+      - app-network
 
 networks:
-  # The presence of these objects is sufficient to define them
-  frontend: {}
-  backend: {}
+  app-network: {}
