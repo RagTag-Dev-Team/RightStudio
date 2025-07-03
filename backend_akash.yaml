@@ -18,51 +18,14 @@ services:
       - ragtag_admin
       - --pass
       - bWFubnk6c0FzMyp6MnAh
-  postgres:
-    image: postgres
-    env:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
-    expose:
-      - port: 5432
-        proto: tcp
-        as: 5432
-        to:
-          - global: true
-          - service: thirdwebengine
-          - service: redis
   redis:
     image: redis:7.2.4
-    depends_on:
-      - postgres
     expose:
       - port: 6379
         proto: tcp
         as: 6379
         to:
           - global: true
-          - service: thirdwebengine
-          - service: redis
-  thirdwebengine:
-    image: thirdweb/engine:latest
-    env:
-      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
-      - REDIS_URL=redis://redis:6379/0
-      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
-      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
-      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-      - ENABLE_HTTPS=true
-    depends_on:
-      - postgres
-      - redis
-    expose:
-      - port: 3005
-        as: 3005
-        to:
-          - global: true
-          - service: thirdwebengine
-          - service: redis
 
 profiles:
   compute:
@@ -74,23 +37,7 @@ profiles:
           size: 32Gi
         storage:
           - size: 50Gi
-    postgres:
-      resources:
-        cpu:
-          units: 1
-        memory:
-          size: 128Mi
-        storage:
-          - size: 16Gi
     redis:
-      resources:
-        cpu:
-          units: 2
-        memory:
-          size: 32Gi
-        storage:
-          - size: 50Gi
-    thirdwebengine:
       resources:
         cpu:
           units: 2
@@ -105,13 +52,7 @@ profiles:
         surrealdb:
           denom: uakt
           amount: 10000
-        postgres:
-          denom: uakt
-          amount: 10000
         redis:
-          denom: uakt
-          amount: 10000
-        thirdwebengine:
           denom: uakt
           amount: 10000
       signedBy:
@@ -123,15 +64,7 @@ deployment:
     akash:
       profile: surrealdb
       count: 1
-  postgres:
-    akash:
-      profile: postgres
-      count: 1
   redis:
     akash:
       profile: redis
-      count: 1
-  thirdwebengine:
-    akash:
-      profile: thirdwebengine
       count: 1

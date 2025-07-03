@@ -60,8 +60,6 @@ fi
 echo "Update complete. Your app and all services have been deployed with the latest changes:
 - Next.js App (port 3000)
 - SurrealDB (port 8000)
-- PostgreSQL (port 5432)
 - Redis (port 6379)
-- ThirdWeb Engine (port 3005)
 
 You can check the logs with: sudo docker-compose -f compose.prod.yaml logs -f"

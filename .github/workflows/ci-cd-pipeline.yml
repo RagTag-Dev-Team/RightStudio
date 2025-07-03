@@ -1,0 +1,463 @@
+name: CI/CD Pipeline - RightStudio
+run-name: ${{ github.event_name == 'push' && '🔄' || '🚀' }} ${{ github.ref_name == 'main' && 'Production' || 'Development' }} Deployment
+
+on:
+  push:
+    branches: [main, develop, staging]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      force_deploy:
+        description: 'Force deployment even if tests fail'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # Lint and Test Job
+  lint-and-test:
+    name: 🔍 Lint and Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔍 Run ESLint
+        run: pnpm lint
+
+      - name: 🧪 Run TypeScript check
+        run: npx tsc --noEmit
+
+      - name: 🎨 Run Prettier check
+        run: pnpm format --check
+
+  # Build and Test Job
+  build-and-test:
+    name: 🏗️ Build and Test
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    timeout-minutes: 20
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build application
+        run: pnpm build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=8192'
+
+      - name: 📦 Build Docker image
+        run: |
+          docker build -f prod.Dockerfile -t ${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker build -f prod.Dockerfile -t ${{ env.IMAGE_NAME }}:latest .
+
+      - name: 🏷️ Tag Docker images
+        run: |
+          docker tag ${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: 🔐 Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📤 Push Docker images
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+  # Development Deployment
+  deploy-development:
+    name: 🚀 Deploy to Development
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/develop' || (github.event_name == 'workflow_dispatch' && inputs.environment == 'development')
+    environment: development
+    timeout-minutes: 30
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+
+      - name: 🔑 Add host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.DEV_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🚀 Deploy to Development Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USERNAME }}
+          port: ${{ secrets.DEV_PORT }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          script: |
+            # Navigate to app directory
+            cd ~/rightstudio
+
+            # Pull latest changes
+            git pull origin develop
+
+            # Update environment variables for development
+            cat > .env <<EOL
+            # App URLs
+            NEXT_PUBLIC_APP_URL=${{ secrets.DEV_APP_URL }}
+            NEXT_PUBLIC_DOCS_URL=${{ secrets.DEV_DOCS_URL }}
+            NEXTAUTH_URL=${{ secrets.DEV_APP_URL }}/api/auth
+            NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
+            # SurrealDB Configuration
+            NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+            NEXT_PUBLIC_SURREALDB_USERNAME=${{ secrets.SURREAL_USER }}
+            NEXT_PUBLIC_SURREALDB_PASSWORD=${{ secrets.SURREAL_PASSWORD }}
+            NEXT_PUBLIC_SURREALDB_DB=${{ secrets.SURREAL_DB }}
+            NEXT_PUBLIC_SURREALDB_NS=${{ secrets.SURREAL_NS }}
+
+            # Other Settings
+            NODE_ENV=development
+            SKIP_EXTERNAL_CONNECTIONS=false
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            EOL
+
+            # Pull latest Docker images
+            docker-compose -f compose.dev.yaml pull
+
+            # Stop and remove existing containers
+            docker-compose -f compose.dev.yaml down
+
+            # Start services with new images
+            docker-compose -f compose.dev.yaml up -d --build
+
+            # Clean up unused images
+            docker image prune -f
+
+      - name: ✅ Health Check - Development
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USERNAME }}
+          port: ${{ secrets.DEV_PORT }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          script: |
+            # Wait for services to be ready
+            sleep 30
+
+            # Check if Next.js app is responding
+            if curl -f http://localhost:3000/api/health; then
+              echo "✅ Development deployment successful!"
+            else
+              echo "❌ Development deployment failed!"
+              exit 1
+            fi
+
+  # Staging Deployment
+  deploy-staging:
+    name: 🧪 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/staging' || (github.event_name == 'workflow_dispatch' && inputs.environment == 'staging')
+    environment: staging
+    timeout-minutes: 30
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+
+      - name: 🔑 Add host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.STAGING_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🚀 Deploy to Staging Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USERNAME }}
+          port: ${{ secrets.STAGING_PORT }}
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          script: |
+            # Navigate to app directory
+            cd ~/rightstudio
+
+            # Pull latest changes
+            git pull origin staging
+
+            # Update environment variables for staging
+            cat > .env <<EOL
+            # App URLs
+            NEXT_PUBLIC_APP_URL=${{ secrets.STAGING_APP_URL }}
+            NEXT_PUBLIC_DOCS_URL=${{ secrets.STAGING_DOCS_URL }}
+            NEXTAUTH_URL=${{ secrets.STAGING_APP_URL }}/api/auth
+            NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
+            # SurrealDB Configuration
+            NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+            NEXT_PUBLIC_SURREALDB_USERNAME=${{ secrets.SURREAL_USER }}
+            NEXT_PUBLIC_SURREALDB_PASSWORD=${{ secrets.SURREAL_PASSWORD }}
+            NEXT_PUBLIC_SURREALDB_DB=${{ secrets.SURREAL_DB }}
+            NEXT_PUBLIC_SURREALDB_NS=${{ secrets.SURREAL_NS }}
+
+            # Other Settings
+            NODE_ENV=staging
+            SKIP_EXTERNAL_CONNECTIONS=false
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            EOL
+
+            # Pull latest Docker images
+            docker-compose -f compose.prod.yaml pull
+
+            # Stop and remove existing containers
+            docker-compose -f compose.prod.yaml down
+
+            # Start services with new images
+            docker-compose -f compose.prod.yaml up -d --build
+
+            # Clean up unused images
+            docker image prune -f
+
+      - name: ✅ Health Check - Staging
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USERNAME }}
+          port: ${{ secrets.STAGING_PORT }}
+          key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          script: |
+            # Wait for services to be ready
+            sleep 30
+
+            # Check if Next.js app is responding
+            if curl -f https://${{ secrets.STAGING_DOMAIN }}/api/health; then
+              echo "✅ Staging deployment successful!"
+            else
+              echo "❌ Staging deployment failed!"
+              exit 1
+            fi
+
+  # Production Deployment
+  deploy-production:
+    name: 🚀 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && inputs.environment == 'production')
+    environment: production
+    timeout-minutes: 45
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+
+      - name: 🔑 Add host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.PROD_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🚀 Deploy to Production Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          port: ${{ secrets.PROD_PORT }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            # Navigate to app directory
+            cd ~/rightstudio
+
+            # Create backup before deployment
+            BACKUP_DIR="backup-$(date +%Y%m%d-%H%M%S)"
+            mkdir -p ~/backups/$BACKUP_DIR
+            cp -r . ~/backups/$BACKUP_DIR/
+
+            # Pull latest changes
+            git pull origin main
+
+            # Update environment variables for production
+            cat > .env <<EOL
+            # App URLs
+            NEXT_PUBLIC_APP_URL=${{ secrets.PROD_APP_URL }}
+            NEXT_PUBLIC_DOCS_URL=${{ secrets.PROD_DOCS_URL }}
+            NEXTAUTH_URL=${{ secrets.PROD_APP_URL }}/api/auth
+            NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
+            # SurrealDB Configuration
+            NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+            NEXT_PUBLIC_SURREALDB_USERNAME=${{ secrets.SURREAL_USER }}
+            NEXT_PUBLIC_SURREALDB_PASSWORD=${{ secrets.SURREAL_PASSWORD }}
+            NEXT_PUBLIC_SURREALDB_DB=${{ secrets.SURREAL_DB }}
+            NEXT_PUBLIC_SURREALDB_NS=${{ secrets.SURREAL_NS }}
+
+            # Other Settings
+            NODE_ENV=production
+            SKIP_EXTERNAL_CONNECTIONS=false
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            EOL
+
+            # Pull latest Docker images
+            docker-compose -f compose.prod.yaml pull
+
+            # Stop and remove existing containers
+            docker-compose -f compose.prod.yaml down
+
+            # Start services with new images
+            docker-compose -f compose.prod.yaml up -d --build
+
+            # Clean up unused images
+            docker image prune -f
+
+            # Clean up old backups (keep last 5)
+            cd ~/backups && ls -t | tail -n +6 | xargs -r rm -rf
+
+      - name: ✅ Health Check - Production
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          port: ${{ secrets.PROD_PORT }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            # Wait for services to be ready
+            sleep 45
+
+            # Check if Next.js app is responding
+            if curl -f https://${{ secrets.PROD_DOMAIN }}/api/health; then
+              echo "✅ Production deployment successful!"
+            else
+              echo "❌ Production deployment failed!"
+              exit 1
+            fi
+
+      - name: 📧 Notify Deployment Success
+        if: success()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          channel: '#deployments'
+          text: 'Production deployment successful! 🚀'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: 📧 Notify Deployment Failure
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          channel: '#deployments'
+          text: 'Production deployment failed! ❌'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # Rollback Job (Manual trigger)
+  rollback:
+    name: 🔄 Rollback Deployment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment
+    environment: ${{ github.event.inputs.environment }}
+    timeout-minutes: 30
+
+    steps:
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ github.event.inputs.environment == 'production' && secrets.PROD_SSH_PRIVATE_KEY || github.event.inputs.environment == 'staging' && secrets.STAGING_SSH_PRIVATE_KEY || secrets.DEV_SSH_PRIVATE_KEY }}
+
+      - name: 🔑 Add host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ github.event.inputs.environment == 'production' && secrets.PROD_HOST || github.event.inputs.environment == 'staging' && secrets.STAGING_HOST || secrets.DEV_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🔄 Rollback to previous version
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ github.event.inputs.environment == 'production' && secrets.PROD_HOST || github.event.inputs.environment == 'staging' && secrets.STAGING_HOST || secrets.DEV_HOST }}
+          username: ${{ github.event.inputs.environment == 'production' && secrets.PROD_USERNAME || github.event.inputs.environment == 'staging' && secrets.STAGING_USERNAME || secrets.DEV_USERNAME }}
+          port: ${{ github.event.inputs.environment == 'production' && secrets.PROD_PORT || github.event.inputs.environment == 'staging' && secrets.STAGING_PORT || secrets.DEV_PORT }}
+          key: ${{ github.event.inputs.environment == 'production' && secrets.PROD_SSH_PRIVATE_KEY || github.event.inputs.environment == 'staging' && secrets.STAGING_SSH_PRIVATE_KEY || secrets.DEV_SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/rightstudio
+
+            # Find the most recent backup
+            LATEST_BACKUP=$(ls -t ~/backups/ | head -n1)
+
+            if [ -n "$LATEST_BACKUP" ]; then
+              echo "Rolling back to backup: $LATEST_BACKUP"
+
+              # Stop current services
+              docker-compose -f compose.prod.yaml down
+
+              # Restore from backup
+              rm -rf ./*
+              cp -r ~/backups/$LATEST_BACKUP/* .
+
+              # Restart services
+              docker-compose -f compose.prod.yaml up -d
+
+              echo "Rollback completed successfully!"
+            else
+              echo "No backup found for rollback!"
+              exit 1
+            fi
