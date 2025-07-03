@@ -305,8 +305,10 @@ export const authOptions: NextAuthOptions = {
         // Handle case where user might be an array (from SurrealDB)
         const userData = Array.isArray(user) ? user[0] : user
 
+        console.log('JWT callback - Processing user data:', userData)
+
         // Generate random name if not provided
-        const userName = userData.name || userData.wallet_address ? generateUsername() : 'Unknown User'
+        const userName = userData.name || (userData.wallet_address ? generateUsername() : 'Unknown User')
 
         // Use truncated wallet address for email if not provided
         const userEmail =
@@ -326,16 +328,14 @@ export const authOptions: NextAuthOptions = {
         console.log('JWT callback - User authenticated:', {
           name: token.name,
           email: token.email,
-          wallet_address: token.wallet_address
+          wallet_address: token.wallet_address,
+          sub: token.sub
         })
       }
 
       return token
     },
     async session({ session, token }) {
-
-      console.log('Starting session callback', session, token)
-
       // Ensure session.user exists
       if (!session.user) {
         session.user = {
@@ -346,16 +346,22 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      else{
-        session.user.name = token.name
-        session.user.email = token.email
-        session.user.wallet_address = token.wallet_address as string
-      }
+      // Update session with token data - ensure we use the token data directly
+      session.user.name = token.name || 'Unknown User'
+      session.user.email = token.email || 'unknown@wallet.local'
+      session.user.image = token.picture || '/images/avatars/1.png'
+      ;(session.user as any).wallet_address = token.wallet_address
 
-      console.log('Session callback - Session updated:', 
-        JSON.stringify(session,null, 2)
-
-      )
+      console.log('Session callback - Session updated:', {
+        name: session.user.name,
+        email: session.user.email,
+        wallet_address: (session.user as any).wallet_address,
+        tokenData: {
+          name: token.name,
+          email: token.email,
+          wallet_address: token.wallet_address
+        }
+      })
 
       return session
     }

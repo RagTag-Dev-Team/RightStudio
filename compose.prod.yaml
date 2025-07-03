@@ -10,28 +10,8 @@ services:
     volumes:
       - ./surrealdb:/surrealdb
     networks:
-      - backend
+      - app-network
     restart: unless-stopped
-
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
-    ports:
-      - '5432:5432'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - frontend
-      - backend
-    restart: unless-stopped
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U postgres']
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   redis:
     image: redis:7.2.4-alpine
@@ -41,38 +21,13 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - frontend
-      - backend
+      - app-network
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
-
-  thirdwebengine:
-    image: thirdweb/engine:latest
-    environment:
-      - ENCRYPTION_PASSWORD=4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA
-      - THIRDWEB_API_SECRET_KEY=kmYo0w4r2cIg8Vkrm4_3DReCyEUbLVs7Qt-AUc6qKCfhMV_I8_KBQRlJoQHiVaruTb7eHuzxinSZfYEQHinetw
-      - ADMIN_WALLET_ADDRESS=0x3d26B6e2245859666a005918EbC768f8fe5954c4
-      - POSTGRES_CONNECTION_URL=postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable
-      - REDIS_URL=redis://redis:6379/0
-      - ENABLE_HTTPS=true
-      - CORS_ORIGINS=http://localhost:3000,https://app.rightstudio.media,https://thirdweb.com
-      - ALLOWED_ORIGINS=http://localhost:3000,https://app.rightstudio.media,https://thirdweb.com
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    ports:
-      - '3005:3005'
-    networks:
-      - frontend
-      - backend
-    restart: unless-stopped
 
   next-app:
     container_name: next-app
@@ -92,13 +47,8 @@ services:
         - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
         - NEXT_PUBLIC_SURREALDB_DB=rgtg
         - NEXT_PUBLIC_SURREALDB_NS=rgtg
-        - ENGINE_URL=https://thirdwebengine:3005
         - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
         - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-        - NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN=rightstudio.media
-        - NEXT_PUBLIC_THIRDWEB_ADMIN_KEY=1361831375a445ec8e6d856ae0af0ef9fe4fe2a6c644629f62b9b70575b9814e
-        - BACKEND_WALLET_ADDRESS=0x0E3e2469CaC34FC26726ee31C7E812aB739c75F8
-        - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDk3NTNGQmRBNUQzMjAxMDczMjdmZDNGNjAwMzQxOWQ3MDc1NTNhNEEiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDM0NDkxNjQsIm5iZiI6MTc0OTg0OTE2NCwiaWF0IjoxNzQ5ODQ5MTY0LCJqdGkiOiI2ZmZiNTBjOC02YTNjLTQyODItYjgxNy0zYmUxNzJiNDI3YzAiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHg1ZWMxNmJlOWM2NjJiYmUxNWFhMjEwOThmNDNhN2U3ZjY0YjlkYmZiZjg5MTgwMGRkN2YwNzE4ZTcyMWM4ODI1M2U1MTdiYWFhZTY0NTEyZmI5ZjQxYjRhZGJlNjU3YjJmMzk0MDUzMzRlMTk3ZTA3NTBhNTdlNjFkZjE2Y2RlNzFj
     restart: always
     ports:
       - '3000:3000'
@@ -113,32 +63,22 @@ services:
       - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
       - NEXT_PUBLIC_SURREALDB_DB=rgtg
       - NEXT_PUBLIC_SURREALDB_NS=rgtg
-      - ENGINE_URL=https://thirdwebengine:3005
       - SKIP_EXTERNAL_CONNECTIONS=false
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-      - BACKEND_WALLET_ADDRESS=0x0E3e2469CaC34FC26726ee31C7E812aB739c75F8
-      - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDk3NTNGQmRBNUQzMjAxMDczMjdmZDNGNjAwMzQxOWQ3MDc1NTNhNEEiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDM0NDkxNjQsIm5iZiI6MTc0OTg0OTE2NCwiaWF0IjoxNzQ5ODQ5MTY0LCJqdGkiOiI2ZmZiNTBjOC02YTNjLTQyODItYjgxNy0zYmUxNzJiNDI3YzAiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHg1ZWMxNmJlOWM2NjJiYmUxNWFhMjEwOThmNDNhN2U3ZjY0YjlkYmZiZjg5MTgwMGRkN2YwNzE4ZTcyMWM4ODI1M2U1MTdiYWFhZTY0NTEyZmI5ZjQxYjRhZGJlNjU3YjJmMzk0MDUzMzRlMTk3ZTA3NTBhNTdlNjFkZjE2Y2RlNzFj
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
     depends_on:
-      postgres:
-        condition: service_healthy
       redis:
         condition: service_healthy
-      thirdwebengine:
-        condition: service_started
       surrealdb:
         condition: service_started
     networks:
-      - frontend
-      - backend
+      - app-network
 
 volumes:
-  postgres_data:
   redis_data:
   surrealdb_data:
 
-# Define a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
+# Define a single network for all services to communicate
 networks:
-  frontend: {}
-  backend: {}
+  app-network: {}

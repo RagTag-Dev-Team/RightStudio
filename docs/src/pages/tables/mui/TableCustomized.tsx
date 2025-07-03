@@ -4,8 +4,10 @@ import { styled } from '@mui/material/styles'
 import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
 import TableContainer from '@mui/material/TableContainer'
-import TableRow, { TableRowProps } from '@mui/material/TableRow'
-import TableCell, { TableCellProps, tableCellClasses } from '@mui/material/TableCell'
+import type { TableRowProps } from '@mui/material/TableRow';
+import TableRow from '@mui/material/TableRow'
+import type { TableCellProps} from '@mui/material/TableCell';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 
 const StyledTableCell = styled(TableCell)<TableCellProps>(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

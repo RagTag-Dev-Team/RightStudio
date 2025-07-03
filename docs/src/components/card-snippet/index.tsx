@@ -4,11 +4,11 @@ import type { ReactNode } from "react"
 
 // MUI Imports
 import Card from "@mui/material/Card"
-import { CardProps } from "@mui/material/Card"
+import type { CardProps } from "@mui/material/Card"
 import CardHeader from "@mui/material/CardHeader"
 import CardContent from "@mui/material/CardContent"
 import Divider from "@mui/material/Divider"
-import { Theme } from "@mui/material/styles"
+import type { Theme } from "@mui/material/styles"
 import Collapse from "@mui/material/Collapse"
 import IconButton from "@mui/material/IconButton"
 import useMediaQuery from "@mui/material/useMediaQuery"

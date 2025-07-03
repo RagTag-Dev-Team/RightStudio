@@ -5,13 +5,14 @@ import { forwardRef, useContext, useEffect, useState } from 'react'
 import type { AnchorHTMLAttributes, ForwardRefRenderFunction, ReactElement, MouseEvent, ReactNode } from 'react'
 
 // Next Imports
-import { usePathname } from '../../hooks/usePathname'
 
 // Third-party Imports
 import classnames from 'classnames'
 import { useUpdateEffect } from 'react-use'
 import type { CSSObject } from '@emotion/styled'
 import { useFloatingTree } from '@floating-ui/react'
+
+import { usePathname } from '../../hooks/usePathname'
 
 // Type Imports
 import type { ChildrenType, MenuItemElement, MenuItemExactMatchUrlProps, RootStylesType } from '../../types'

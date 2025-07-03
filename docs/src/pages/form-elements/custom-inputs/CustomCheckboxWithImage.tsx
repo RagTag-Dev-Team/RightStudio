@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputImgData } from '@core/components/custom-inputs/types'
+import type { CustomInputImgData } from '@core/components/custom-inputs/types'
 
 // Components Imports
 import CustomInputImg from '@core/components/custom-inputs/Image'
@@ -37,6 +37,7 @@ const CustomCheckboxWithImage = () => {
   const handleChange = (value: string) => {
     if (selected.includes(value)) {
       const updatedArr = selected.filter(item => item !== value)
+
       setSelected(updatedArr)
     } else {
       setSelected([...selected, value])

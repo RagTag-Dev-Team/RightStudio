@@ -24,6 +24,7 @@ const MenuComposition = () => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return
     }
+
     setOpen(false)
   }
 

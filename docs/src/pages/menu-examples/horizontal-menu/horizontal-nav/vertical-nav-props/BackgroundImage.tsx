@@ -8,12 +8,15 @@ import classnames from 'classnames'
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
 import VerticalNavContent from '../../VerticalNavContent'
 
 // Style Imports
 import styles from '../../styles.module.css'
-import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
-import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const BackgroundImage = () => {
   return (
@@ -25,6 +28,7 @@ const BackgroundImage = () => {
         verticalNavContent={VerticalNavContent}
         verticalNavProps={{
           backgroundColor: 'rgba(248, 248, 248, 0.8)',
+
           // The following customStyles prop is used to show this example properly in the documentation.
           // You need to remove this prop in your implementation.
           customStyles: {
@@ -36,6 +40,7 @@ const BackgroundImage = () => {
               insetInlineEnd: '-600%'
             }
           },
+
           // Remove the code till here 
           backgroundImage: useBaseUrl('/images/menu-bg-image.png'),
         }}

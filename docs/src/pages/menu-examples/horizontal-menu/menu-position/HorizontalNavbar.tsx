@@ -6,15 +6,17 @@ import classnames from 'classnames'
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
-import VerticalNavContent from '../VerticalNavContent'
+
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Style Imports
-import styles from '../styles.module.css'
 import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import styles from '../styles.module.css'
+import VerticalNavContent from '../VerticalNavContent'
 
 const HorizontalNavbar = () => {
   // Hooks
@@ -29,6 +31,7 @@ const HorizontalNavbar = () => {
           hideMenu
           switchToVertical
           verticalNavContent={VerticalNavContent}
+
           // The following customStyles prop is used to show this example properly in the documentation.
           // You need to remove this prop in your implementation.
           verticalNavProps={{
@@ -42,6 +45,7 @@ const HorizontalNavbar = () => {
             },
             backgroundColor: 'var(--mui-palette-background-paper)'
           }}
+
           // Remove the code till here 
         >
           <Menu menuItemStyles={menuItemStyles()} verticalMenuProps={{ menuItemStyles: verticalMenuItemStyles() }}>

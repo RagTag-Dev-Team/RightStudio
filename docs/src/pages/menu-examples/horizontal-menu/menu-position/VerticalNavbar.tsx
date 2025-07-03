@@ -17,15 +17,17 @@ import HorizontalNav, {
 } from '@menu/horizontal-menu'
 
 // Style Imports
-import styles from '../styles.module.css'
 import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import styles from '../styles.module.css'
 
 const VerticalNavbar = () => {
   return (
     <div className='flex w-full'>
       <VerticalNav 
         breakpoint='md'
+
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
@@ -40,6 +42,7 @@ const VerticalNavbar = () => {
           }
         }}
         backgroundColor='var(--mui-palette-background-paper)'
+
         // Remove the code till here 
       >
         <VerticalMenu menuItemStyles={verticalMenuItemStyles()}>

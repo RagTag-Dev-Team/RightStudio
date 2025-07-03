@@ -10,13 +10,15 @@ import { useKeenSlider } from 'keen-slider/react'
 
 import { Card, CardHeader, CardContent, Button, Grid, Typography, Box, CircularProgress } from '@mui/material'
 
+import { useSession } from 'next-auth/react'
+
 import { client } from '@/libs/thirdwebclient'
 
 import AppKeenSlider from '@/libs/styles/AppKeenSlider'
 
 import '@assets/iconify-icons/generated-icons.css'
 
-import { getLatestTracks } from '@/app/server/data-actions'
+import { getUserLatestTracks } from '@/app/server/data-actions'
 
 // Define the Track interface
 interface Track {
@@ -30,6 +32,7 @@ interface Track {
 const LatestSlider = () => {
   const [tracks, setTracks] = useState<Track[]>([])
   const [loading, setLoading] = useState(true)
+  const { data: session, status } = useSession()
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     slides: {
@@ -57,16 +60,20 @@ const LatestSlider = () => {
     }
   }, [instanceRef])
 
-  // Updated fetch logic
+  // Updated fetch logic to get user's tracks
   useEffect(() => {
-    const fetchLatestTracks = async () => {
-      try {
-        const latestTracks = await getLatestTracks(10)
+    const fetchUserTracks = async () => {
+      // Don't fetch if session is still loading or user is not authenticated
+      if (status === 'loading' || !session?.user?.wallet_address) {
+        return
+      }
 
-        //  console.log(latestTracks)
+      try {
+        setLoading(true)
+        const userTracks = await getUserLatestTracks(session.user.wallet_address, 10)
 
         const resolvedTracks = await Promise.all(
-          latestTracks.map(async (track: Track) => {
+          userTracks.map(async (track: Track) => {
             if (!track.coverImage) {
               return {
                 ...track,
@@ -88,19 +95,19 @@ const LatestSlider = () => {
 
         setTracks(resolvedTracks)
       } catch (error) {
-        console.error('Error fetching tracks:', error)
+        console.error('Error fetching user tracks:', error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchLatestTracks()
-  }, [])
+    fetchUserTracks()
+  }, [session?.user?.wallet_address, status])
 
   if (loading) {
     return (
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <CardHeader title='Latest Tracks' />
+        <CardHeader title='Your Latest Tracks' />
         <CardContent
           sx={{
             flex: 1,
@@ -113,7 +120,7 @@ const LatestSlider = () => {
         >
           <CircularProgress size={60} />
           <Typography variant='body1' color='text.secondary'>
-            Loading latest tracks...
+            Loading your tracks...
           </Typography>
         </CardContent>
       </Card>
@@ -123,7 +130,7 @@ const LatestSlider = () => {
   if (tracks.length === 0) {
     return (
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <CardHeader title='Latest Tracks' />
+        <CardHeader title='Your Latest Tracks' />
         <CardContent
           sx={{
             flex: 1,
@@ -138,11 +145,11 @@ const LatestSlider = () => {
             No tracks found
           </Typography>
           <Typography variant='body1' color='text.secondary'>
-            Start creating new tracks to see them here!
+            You haven&apos;t created any tracks yet. Start creating your first track to see it here!
           </Typography>
           <Link href='/media/library' passHref>
             <Button variant='contained' endIcon={<i className='tabler-plus' />}>
-              Create New Track
+              Create Your First Track
             </Button>
           </Link>
         </CardContent>
@@ -152,7 +159,7 @@ const LatestSlider = () => {
 
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <CardHeader title='Latest Tracks' />
+      <CardHeader title='Your Latest Tracks' />
       <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', p: 4 }}>
         <AppKeenSlider sx={{ flex: 1 }}>
           <div ref={sliderRef} className='keen-slider h-full'>

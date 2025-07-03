@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // Context Imports
 import { VerticalNavProvider } from "@menu/contexts/verticalNavContext";

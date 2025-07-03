@@ -1,10 +1,11 @@
 'use client'
 
 // MUI Imports
+import { useEffect, useState } from 'react'
+
 import { deepmerge } from '@mui/utils'
 
 // React imports
-import { useEffect, useState } from 'react'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -14,8 +15,9 @@ import HorizontalNav, { Menu } from '@menu/horizontal-menu'
 import { GenerateHorizontalMenu } from '@docComponents/GenerateMenu'
 
 // Style Imports
-import styles from '../styles.module.css'
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import styles from '../styles.module.css'
 
 const MenuWithAPI = () => {
   // States

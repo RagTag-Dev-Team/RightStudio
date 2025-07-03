@@ -12,6 +12,7 @@ const Breakpoint = () => {
     <div className='flex'>
       <VerticalNav
         breakpoint='md'
+
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
@@ -24,6 +25,7 @@ const Breakpoint = () => {
           }
         }}
         backgroundColor='var(--mui-palette-background-paper)'
+
         // Remove the code till here
       >
         <Menu menuItemStyles={menuItemStyles()}>

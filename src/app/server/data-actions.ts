@@ -71,15 +71,13 @@ export async function update<T>(table: string, id: string, data: Partial<T>): Pr
 }
 
 export async function remove(table: string, id: string): Promise<boolean> {
+  console.log('table and id', table, id)
 
-
-console.log('table and id',table,id)
-
-try {
-    console.log("table and id",table,id)
+  try {
+    console.log('table and id', table, id)
     const deletedRecord = await db?.delete(new StringRecordId(`${id}`))
 
-    console.log('Deleted Record',deletedRecord)
+    console.log('Deleted Record', deletedRecord)
 
     return true
   } catch (error) {
@@ -167,6 +165,25 @@ export async function getLatestTracks(limit: number = 10): Promise<any> {
     return JSON.parse(JSON.stringify(result[0]))
   } catch (error) {
     console.error('Error fetching latest tracks:', error)
+    throw error
+  }
+}
+
+export async function getUserLatestTracks(owner: string, limit: number = 10): Promise<any> {
+  try {
+    const result = await db.query(
+      `
+      SELECT * FROM media
+      WHERE owner = $owner
+      ORDER BY uploadedAt DESC
+      LIMIT $limit
+    `,
+      { owner, limit }
+    )
+
+    return JSON.parse(JSON.stringify(result[0]))
+  } catch (error) {
+    console.error('Error fetching user latest tracks:', error)
     throw error
   }
 }

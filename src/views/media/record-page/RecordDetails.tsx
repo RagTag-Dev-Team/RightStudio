@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme, upload, download } from 'thirdweb/storage'
+import { resolveScheme, upload } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import Dialog from '@mui/material/Dialog'
@@ -45,7 +45,6 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Database Import
 import { getRecordById, mintRecord, getMintingStatus, awardTagz, updateRecord } from '@/app/server/data-actions'
-import type { MediaRecord } from '@/app/server/data-actions'
 
 // Add import for useSession
 
@@ -243,16 +242,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             filesize: String(record.filesize || ''),
             duration: String(record.duration || ''),
             label: String(record.label || ''),
-            releaseDate: record.releaseDate ? new Date(record.releaseDate) : null,
+            releaseDate: record.releaseDate ? new Date(String(record.releaseDate)) : null,
             ipfsUrl: String(record.ipfsUrl || ''),
-            status: record.status || 'unminted',
+            status: (record.status as 'unminted' | 'minted') || 'unminted',
             uploadedAt: String(record.uploadedAt || ''),
             coverImage: record.coverImage ? String(record.coverImage) : undefined,
             owner: record.owner ? String(record.owner) : undefined,
             transactionHash: record.transactionHash ? String(record.transactionHash) : undefined,
             watermarkedUrl: record.watermarkedUrl ? String(record.watermarkedUrl) : undefined,
             tokenId: record.tokenId ? String(record.tokenId) : undefined,
-            dateMinted: record.dateMinted ? new Date(record.dateMinted) : null,
+            dateMinted: record.dateMinted ? new Date(String(record.dateMinted)) : null,
             certificateId: record.certificateId ? String(record.certificateId) : undefined,
             certificateProjectId: record.certificateProjectId ? String(record.certificateProjectId) : undefined
           }
@@ -394,25 +393,24 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Poll for minting status
       setMintingStatus('Waiting for transaction confirmation...')
-      let transactionHash, tokenId
+      let transactionHash: string | undefined
 
       while (true) {
         const status = await getMintingStatus(queueId)
 
         console.log(status)
 
-        if (status.errorMessage) {
-          throw new Error(`Transaction failed: ${status.errorMessage}`)
+        // Check for failed status
+        if (status.status === 'FAILED') {
+          throw new Error('Transaction failed')
         }
 
         if (status.status === 'CONFIRMED') {
           transactionHash = status.transactionHash
-          tokenId = status.tokenId
-          break
-        }
 
-        if (status.status === 'failed') {
-          throw new Error('Transaction failed')
+          // Note: tokenId is not available in the ExecutionResult,
+          // it would need to be retrieved separately from the contract
+          break
         }
 
         // Wait before next poll
@@ -443,7 +441,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         owner: walletAddress,
         transactionHash: transactionHash,
         watermarkedUrl: recordData.watermarkedUrl,
-        tokenId: tokenId,
+        tokenId: undefined, // tokenId not available from ExecutionResult
         dateMinted: new Date().toISOString(),
         certificateId: recordData.certificateId,
         certificateProjectId: recordData.certificateProjectId
@@ -521,28 +519,37 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     })
 
     try {
-      // Download file from IPFS
-      const fileUrl = await download({
-        client,
-        uri: recordData.ipfsUrl
-      })
-
-
-
       updateWatermarkProgress({
         statusMessage: 'Downloading original file...',
         progress: 20
       })
 
-      // Create a blob from the URL
-      const response = await fetch(fileUrl.url)
+      // Resolve the IPFS URL to a fetchable URL
+      let resolvedUrl: string
 
-      console.log('file download',response)
+      try {
+        resolvedUrl = resolveScheme({
+          client,
+          uri: recordData.ipfsUrl
+        })
+      } catch (error) {
+        console.error('Error resolving IPFS URL:', error)
+        throw new Error('Failed to resolve IPFS URL')
+      }
+
+      // Create a blob from the resolved URL
+      const response = await fetch(resolvedUrl)
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      console.log('file download', response)
 
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
 
-      console.log('Blob',blob)
+      console.log('Blob', blob)
 
       // Extract file extension from the filetype or filename
       const fileExtension =
@@ -550,7 +557,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Use the helper function to determine the correct content format
       const contentFormat = getContentFormat(`audio/${fileExtension}`)
-
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
@@ -573,8 +579,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const formData = new FormData()
 
       formData.append('file', file)
-
-
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -646,7 +650,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       )
     } catch (error) {
       console.error('Error during watermarking:', error)
-      setSuccessMessage('Failed to add watermark to the file')
+      setSuccessMessage(
+        `Failed to add watermark to the file: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
     } finally {
       setIsWatermarking(false)
       setOpenWatermarkDialog(false)
@@ -758,63 +764,183 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
   // Add this function near other handler functions
   const handleDownloadWatermarked = async () => {
-    if (!recordData?.watermarkedUrl) return
+    if (!recordData?.watermarkedUrl || !recordData?.certificateId || !recordData?.certificateProjectId) return
 
     try {
       setSuccessMessage('Starting download...')
       setShowSuccess(true)
 
-      // Fetch the watermarked file through our API
-      const response = await fetch('/api/download', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url: recordData.watermarkedUrl })
-      })
+      const downloadUrl = recordData.watermarkedUrl
 
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.details || 'Failed to download file')
+      // First try to download with the existing URL
+      try {
+        const response = await fetch('/api/download', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url: downloadUrl })
+        })
+
+        if (response.ok) {
+          // Check if we got a JSON error response
+          const contentType = response.headers.get('content-type')
+
+          if (!contentType?.includes('application/json')) {
+            const blob = await response.blob()
+
+            if (blob.size > 0) {
+              // Success! Download the file
+              await downloadFile(blob)
+
+              return
+            }
+          }
+        }
+      } catch (error) {
+        console.log('Initial download failed, trying to refresh URL...')
       }
 
-      // Check if we got a JSON error response
-      const contentType = response.headers.get('content-type')
-      if (contentType?.includes('application/json')) {
-        const errorData = await response.json()
-        throw new Error(errorData.details || 'Failed to download file')
-      }
-
-      const blob = await response.blob()
-
-      if (blob.size === 0) {
-        throw new Error('Downloaded file is empty')
-      }
-
-      // Create a download link
-      const url = window.URL.createObjectURL(blob)
-      const a = document.createElement('a')
-
-      a.href = url
-
-      // Extract filename from the original title or use a default
-      const filename = `${recordData.title || 'watermarked'}.${recordData.filetype.split('/')[1]}`
-
-      a.download = filename
-      document.body.appendChild(a)
-      a.click()
-
-      // Cleanup
-      window.URL.revokeObjectURL(url)
-      document.body.removeChild(a)
-
-      setSuccessMessage('Download completed successfully!')
+      // If we get here, the URL has likely expired, so refresh it
+      setSuccessMessage('Refreshing download link...')
       setShowSuccess(true)
+
+      try {
+        const refreshResponse = await fetch('/api/watermark/refresh-url', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            projectId: recordData.certificateProjectId,
+            certId: recordData.certificateId
+          })
+        })
+
+        if (!refreshResponse.ok) {
+          throw new Error('Failed to refresh download URL')
+        }
+
+        const { url: newDownloadUrl } = await refreshResponse.json()
+
+        if (!newDownloadUrl) {
+          throw new Error('No download URL received')
+        }
+
+        // Try downloading with the new URL
+        const downloadResponse = await fetch('/api/download', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url: newDownloadUrl })
+        })
+
+        if (!downloadResponse.ok) {
+          const errorData = await downloadResponse.json()
+
+          throw new Error(errorData.details || 'Failed to download file')
+        }
+
+        // Check if we got a JSON error response
+        const contentType = downloadResponse.headers.get('content-type')
+
+        if (contentType?.includes('application/json')) {
+          const errorData = await downloadResponse.json()
+
+          throw new Error(errorData.details || 'Failed to download file')
+        }
+
+        const blob = await downloadResponse.blob()
+
+        if (blob.size === 0) {
+          throw new Error('Downloaded file is empty')
+        }
+
+        // Update the stored URL in the database
+        const updatedRecord = {
+          ...recordData,
+          watermarkedUrl: newDownloadUrl,
+          releaseDate: recordData.releaseDate?.toISOString() || null,
+          dateMinted: recordData.dateMinted?.toISOString() || null,
+          status: recordData.status || 'unminted'
+        }
+
+        await updateRecord(recordId, updatedRecord)
+
+        // Update local state
+        setRecordData({
+          ...recordData,
+          watermarkedUrl: newDownloadUrl
+        })
+
+        // Download the file
+        await downloadFile(blob)
+      } catch (refreshError) {
+        console.error('Error refreshing download URL:', refreshError)
+        throw new Error('Failed to refresh download URL. Please try again later.')
+      }
     } catch (error) {
       console.error('Error downloading watermarked file:', error)
-      setSuccessMessage(`Failed to download watermarked file: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      setSuccessMessage(
+        `Failed to download watermarked file: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
       setShowSuccess(true)
     }
+  }
+
+  // Helper function to handle the actual file download
+  const downloadFile = async (blob: Blob) => {
+    // Create a download link
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+
+    a.href = url
+
+    // Extract file extension from the original filetype
+    const getFileExtension = (filetype: string): string => {
+      // Handle common audio formats
+      const audioExtensions: { [key: string]: string } = {
+        'audio/mp3': 'mp3',
+        'audio/wav': 'wav',
+        'audio/flac': 'flac',
+        'audio/aac': 'aac',
+        'audio/ogg': 'ogg',
+        'audio/m4a': 'm4a',
+        'audio/wma': 'wma',
+        'audio/webm': 'webm'
+      }
+
+      // Check if we have a direct mapping
+      if (audioExtensions[filetype]) {
+        return audioExtensions[filetype]
+      }
+
+      // Fallback: extract from MIME type
+      const parts = filetype.split('/')
+
+      if (parts.length === 2) {
+        return parts[1]
+      }
+
+      // Default fallback
+      return 'mp3'
+    }
+
+    const fileExtension = getFileExtension(recordData!.filetype)
+
+    const filename = `${recordData!.title || 'watermarked'}.${fileExtension}`
+
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+
+    // Cleanup
+    window.URL.revokeObjectURL(url)
+    document.body.removeChild(a)
+
+    setSuccessMessage('Download completed successfully!')
+    setShowSuccess(true)
   }
 
   if (!recordData) {

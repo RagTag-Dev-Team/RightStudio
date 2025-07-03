@@ -1,5 +1,6 @@
 // Components Imports
 import CustomAutocomplete from '@core/components/mui/Autocomplete'
+
 const options = ['Option 1', 'Option 2']
 
 const AutocompleteCustomInput = () => {

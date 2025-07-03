@@ -8,8 +8,9 @@ import classnames from 'classnames'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
-import styles from '../styles.module.css'
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import styles from '../styles.module.css'
 
 const PerfectScroll = () => {
   return (

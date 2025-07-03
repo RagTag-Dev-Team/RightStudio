@@ -1,5 +1,6 @@
 // React Imports
-import { ChangeEvent, useState } from 'react'
+import type { ChangeEvent} from 'react';
+import { useState } from 'react'
 
 // Component Imports
 import CustomTextField from '@core/components/mui/TextField'

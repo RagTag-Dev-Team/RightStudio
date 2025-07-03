@@ -1,6 +1,8 @@
+import * as path from 'path';
+
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
-import * as path from 'path';
+
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const config: Config = {
@@ -10,6 +12,7 @@ const config: Config = {
 
   // Set the production url of your site here
   url: 'https://demos.pixinvent.com',
+
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',

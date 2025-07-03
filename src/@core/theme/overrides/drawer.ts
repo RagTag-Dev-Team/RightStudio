@@ -17,7 +17,19 @@ const drawer = (skin: Skin): Theme['components'] => ({
       paper: {
         ...(skin !== 'bordered' && {
           boxShadow: 'var(--mui-customShadows-lg)'
-        })
+        }),
+        '&[aria-hidden="true"]': {
+          '& button:focus, & input:focus, & [tabindex]:focus': {
+            outline: 'none'
+          }
+        }
+      },
+      root: {
+        '& .MuiBackdrop-root': {
+          '&[aria-hidden="true"]': {
+            pointerEvents: 'none'
+          }
+        }
       }
     }
   }

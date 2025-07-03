@@ -1,10 +1,11 @@
 'use client'
 
 // MUI Imports
+import { useEffect, useState } from 'react'
+
 import { deepmerge } from '@mui/utils'
 
 // React imports
-import { useEffect, useState } from 'react'
 
 // Component imports
 import VerticalNav, { Menu } from '@menu/vertical-menu'

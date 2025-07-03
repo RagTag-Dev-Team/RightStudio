@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import Queue from 'bull'
 
 const watermarkQueue = new Queue('watermark-queue', process.env.REDIS_URL || '')
@@ -37,6 +38,7 @@ export async function GET(request: Request, { params }: { params: { jobId: strin
     })
   } catch (error) {
     console.error('Failed to check job status:', error)
-    return NextResponse.json({ error: 'Failed to check status' }, { status: 500 })
+    
+return NextResponse.json({ error: 'Failed to check status' }, { status: 500 })
   }
 }

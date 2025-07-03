@@ -6,12 +6,15 @@ import classnames from 'classnames'
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
 import VerticalNavContent from '../VerticalNavContent'
 
 // Style Imports
 import styles from '../styles.module.css'
-import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
-import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const VerticalMenuProps = () => {
   return (
@@ -21,6 +24,7 @@ const VerticalMenuProps = () => {
         switchToVertical
         breakpoint='md' 
         verticalNavContent={VerticalNavContent}
+
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         verticalNavProps={{
@@ -34,6 +38,7 @@ const VerticalMenuProps = () => {
           },
           backgroundColor: 'var(--mui-palette-background-paper)'
         }}
+
         // Remove the code till here 
       >
         <Menu

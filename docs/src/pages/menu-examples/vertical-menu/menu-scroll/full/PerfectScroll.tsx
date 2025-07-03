@@ -14,6 +14,7 @@ const FullMenuPerfectScroll = () => {
   return (
     <VerticalNav 
       customBreakpoint='200px' 
+
       // The following customStyles prop is used to show this example properly in the documentation.
       // You need to remove this prop in your implementation.
       customStyles={{
@@ -23,6 +24,7 @@ const FullMenuPerfectScroll = () => {
         }
       }}
       backgroundColor='var(--mui-palette-background-paper)'
+
       // Remove the code till here
     >
       <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>

@@ -6,12 +6,15 @@ import classnames from 'classnames'
 // Component Imports
 import NavToggle from '@components/layout/horizontal/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
+
+import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
+
+import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
 import VerticalNavContent from '../../VerticalNavContent'
 
 // Style Imports
 import styles from '../../styles.module.css'
-import verticalMenuItemStyles from '@docComponents/styles/vertical/menuItemStyles'
-import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
 
 const BackgroundColor = () => {
   return (
@@ -24,6 +27,7 @@ const BackgroundColor = () => {
         verticalNavProps={{
           customStyles: {
             color: '#b056ff',
+
             // The following customStyles prop is used to show this example properly in the documentation.
             // You need to remove this prop in your implementation.
             '& .ts-vertical-nav-container': { borderInlineEndColor: 'var(--mui-palette-divider)'},
@@ -32,6 +36,7 @@ const BackgroundColor = () => {
               position: 'absolute',
               insetInlineEnd: '-600%'
             }
+
             // Remove the code till here
           },
           backgroundColor: 'var(--mui-palette-background-paper)'

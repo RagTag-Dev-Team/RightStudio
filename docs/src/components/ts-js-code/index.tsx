@@ -20,6 +20,7 @@ const stripTypes = (origCode: string) => {
       jsx: ts.JsxEmit.Preserve
     }
   })
+
   const code = result.outputText
 
   return code.replace(/\r/g, '').replace(/\n\s*\/\/--EMPTYLINE--\n/g, '\n\n')
@@ -54,6 +55,7 @@ const TsToJsCode = ({ children }: { children: string }) => {
     const formatCode = async () => {
       const formattedTsCode = await format(children);
       const formattedJsCode = await format(stripTypes(children));
+
       setTsCode(formattedTsCode);
       setJsCode(formattedJsCode);
     };

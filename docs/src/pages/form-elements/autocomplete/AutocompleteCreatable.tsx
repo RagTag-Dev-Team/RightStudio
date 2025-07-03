@@ -41,6 +41,7 @@ const AutocompleteCreatable = () => {
         if (typeof option === 'string') {
           return option || ''
         }
+
         if ((option as FilmOptionType).inputValue as string) {
           return ((option as FilmOptionType).inputValue as string) || ''
         }

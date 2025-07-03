@@ -42,6 +42,7 @@ const SwiperZoom = () => {
       WebkitTransform: `scale(${scale})`
     }
   }
+
   const theme = useTheme()
 
   return (
