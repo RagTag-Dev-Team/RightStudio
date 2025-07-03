@@ -16,6 +16,7 @@ const MutationPlugin: KeenSliderPlugin = slider => {
       slider.update()
     })
   })
+
   const config = { childList: true }
 
   slider.on('created', () => {
@@ -32,6 +33,7 @@ const SwiperMutationObserver = () => {
 
   // Hooks
   const theme = useTheme()
+
   const [ref] = useKeenSlider<HTMLDivElement>(
     {
       slides: {

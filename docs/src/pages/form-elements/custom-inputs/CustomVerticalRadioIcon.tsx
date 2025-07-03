@@ -1,5 +1,6 @@
 // React Imports
-import { ChangeEvent, useState } from 'react'
+import type { ChangeEvent} from 'react';
+import { useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
@@ -8,7 +9,7 @@ import Grid from '@mui/material/Grid'
 import classnames from 'classnames'
 
 // Type Import
-import { CustomInputVerticalData } from '@core/components/custom-inputs/types'
+import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Components Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'

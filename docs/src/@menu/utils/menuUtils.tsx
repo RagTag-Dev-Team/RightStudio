@@ -6,6 +6,8 @@ import type { ReactElement, ReactNode } from 'react'
 import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
+import { GenerateVerticalMenu } from '@docComponents/GenerateMenu'
+
 import type { ChildrenType, RenderExpandedMenuItemIcon } from '../types'
 
 // Component Imports
@@ -15,7 +17,6 @@ import {
   Menu as HorizontalMenu
 } from '../horizontal-menu'
 import { SubMenu as VerticalSubMenu, MenuItem as VerticalMenuItem, Menu as VerticalMenu } from '../vertical-menu'
-import { GenerateVerticalMenu } from '@docComponents/GenerateMenu'
 
 // Util Imports
 import { menuClasses } from './menuClasses'

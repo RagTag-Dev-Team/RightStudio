@@ -1,11 +1,12 @@
 // React Imports
-import { ChangeEvent, useState } from 'react'
+import type { ChangeEvent} from 'react';
+import { useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputImgData } from '@core/components/custom-inputs/types'
+import type { CustomInputImgData } from '@core/components/custom-inputs/types'
 
 // Components Imports
 import CustomInputImg from '@core/components/custom-inputs/Image'

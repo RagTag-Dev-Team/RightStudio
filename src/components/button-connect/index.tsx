@@ -117,15 +117,15 @@ const ButtonConnect = () => {
 
             // Wait a short time for session to load
             await new Promise(resolve => setTimeout(resolve, 100))
-
-            return false
+            
+return false
           }
 
           // If not authenticated, return false immediately
           if (status !== 'authenticated') {
             console.log('ButtonConnect - Session not authenticated, status:', status)
-
-            return false
+            
+return false
           }
 
           // If authenticated but session might still be loading, wait a bit
@@ -143,15 +143,16 @@ const ButtonConnect = () => {
             console.log('ButtonConnect - Session found, checking wallet match:', {
               sessionWallet,
               addressWallet,
-              isMatch: isLoggedIn
+              isMatch: isLoggedIn,
+              sessionUser: session.user
             })
 
             return isLoggedIn
           }
 
           console.log('ButtonConnect - No session found or no wallet address in session')
-
-          return false
+          
+return false
         },
         doLogin: async params => {
           updateLoadingState(true)
@@ -170,7 +171,11 @@ const ButtonConnect = () => {
 
             if (res && res.ok && res.error === null) {
               // Force session update after successful login
+              console.log('Login successful, updating session...')
               await update()
+
+              // Wait a moment for session to be fully updated
+              await new Promise(resolve => setTimeout(resolve, 500))
 
               const redirectURL = searchParams.get('redirectTo') ?? '/'
 
@@ -180,11 +185,14 @@ const ButtonConnect = () => {
                 const error = JSON.parse(res.error)
 
                 updateErrorState(error)
+              } else {
+                updateErrorState({ message: ['Login failed'] })
               }
 
               updateLoadingState(false)
             }
           } catch (error) {
+            console.error('Login error:', error)
             updateLoadingState(false)
             updateErrorState({ message: ['An unexpected error occurred'] })
           }

@@ -15,7 +15,7 @@ import CardActions from '@mui/material/CardActions'
 import Chip from '@mui/material/Chip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import { resolveScheme, upload, download } from 'thirdweb/storage'
+import { resolveScheme, upload } from 'thirdweb/storage'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import Dialog from '@mui/material/Dialog'
@@ -45,7 +45,6 @@ import AppReactDatepicker from '@/libs/styles/AppReactDatepicker'
 
 // Database Import
 import { getRecordById, mintRecord, getMintingStatus, awardTagz, updateRecord } from '@/app/server/data-actions'
-import type { MediaRecord } from '@/app/server/data-actions'
 
 // Add import for useSession
 
@@ -245,7 +244,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
             label: String(record.label || ''),
             releaseDate: record.releaseDate ? new Date(record.releaseDate) : null,
             ipfsUrl: String(record.ipfsUrl || ''),
-            status: record.status || 'unminted',
+            status: (record.status as 'unminted' | 'minted') || 'unminted',
             uploadedAt: String(record.uploadedAt || ''),
             coverImage: record.coverImage ? String(record.coverImage) : undefined,
             owner: record.owner ? String(record.owner) : undefined,
@@ -394,25 +393,24 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Poll for minting status
       setMintingStatus('Waiting for transaction confirmation...')
-      let transactionHash, tokenId
+      let transactionHash: string | undefined
 
       while (true) {
         const status = await getMintingStatus(queueId)
 
         console.log(status)
 
-        if (status.errorMessage) {
-          throw new Error(`Transaction failed: ${status.errorMessage}`)
+        // Check for failed status
+        if (status.status === 'FAILED') {
+          throw new Error('Transaction failed')
         }
 
         if (status.status === 'CONFIRMED') {
           transactionHash = status.transactionHash
-          tokenId = status.tokenId
-          break
-        }
 
-        if (status.status === 'failed') {
-          throw new Error('Transaction failed')
+          // Note: tokenId is not available in the ExecutionResult,
+          // it would need to be retrieved separately from the contract
+          break
         }
 
         // Wait before next poll
@@ -443,7 +441,7 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
         owner: walletAddress,
         transactionHash: transactionHash,
         watermarkedUrl: recordData.watermarkedUrl,
-        tokenId: tokenId,
+        tokenId: undefined, // tokenId not available from ExecutionResult
         dateMinted: new Date().toISOString(),
         certificateId: recordData.certificateId,
         certificateProjectId: recordData.certificateProjectId
@@ -521,28 +519,37 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
     })
 
     try {
-      // Download file from IPFS
-      const fileUrl = await download({
-        client,
-        uri: recordData.ipfsUrl
-      })
-
-
-
       updateWatermarkProgress({
         statusMessage: 'Downloading original file...',
         progress: 20
       })
 
-      // Create a blob from the URL
-      const response = await fetch(fileUrl.url)
+      // Resolve the IPFS URL to a fetchable URL
+      let resolvedUrl: string
 
-      console.log('file download',response)
+      try {
+        resolvedUrl = resolveScheme({
+          client,
+          uri: recordData.ipfsUrl
+        })
+      } catch (error) {
+        console.error('Error resolving IPFS URL:', error)
+        throw new Error('Failed to resolve IPFS URL')
+      }
+
+      // Create a blob from the resolved URL
+      const response = await fetch(resolvedUrl)
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      console.log('file download', response)
 
       const blob = await response.blob()
       const file = new File([blob], recordData.title, { type: blob.type })
 
-      console.log('Blob',blob)
+      console.log('Blob', blob)
 
       // Extract file extension from the filetype or filename
       const fileExtension =
@@ -550,7 +557,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       // Use the helper function to determine the correct content format
       const contentFormat = getContentFormat(`audio/${fileExtension}`)
-
 
       // Create certificate args with all required fields
       const certificateArgs: ICertificateArg = {
@@ -573,8 +579,6 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       const formData = new FormData()
 
       formData.append('file', file)
-
-
 
       const createdCert = await CreateCertificate(formData, certificateArgs)
 
@@ -646,7 +650,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       )
     } catch (error) {
       console.error('Error during watermarking:', error)
-      setSuccessMessage('Failed to add watermark to the file')
+      setSuccessMessage(
+        `Failed to add watermark to the file: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
     } finally {
       setIsWatermarking(false)
       setOpenWatermarkDialog(false)
@@ -775,13 +781,16 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
 
       if (!response.ok) {
         const errorData = await response.json()
+
         throw new Error(errorData.details || 'Failed to download file')
       }
 
       // Check if we got a JSON error response
       const contentType = response.headers.get('content-type')
+
       if (contentType?.includes('application/json')) {
         const errorData = await response.json()
+
         throw new Error(errorData.details || 'Failed to download file')
       }
 
@@ -812,7 +821,9 @@ const RecordDetails = ({ recordId }: { recordId: string }) => {
       setShowSuccess(true)
     } catch (error) {
       console.error('Error downloading watermarked file:', error)
-      setSuccessMessage(`Failed to download watermarked file: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      setSuccessMessage(
+        `Failed to download watermarked file: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
       setShowSuccess(true)
     }
   }

@@ -1,11 +1,12 @@
 // React Imports
-import { ChangeEvent, useState } from 'react'
+import type { ChangeEvent} from 'react';
+import { useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
 // Type Import
-import { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
+import type { CustomInputHorizontalData } from '@core/components/custom-inputs/types'
 
 // Components Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'

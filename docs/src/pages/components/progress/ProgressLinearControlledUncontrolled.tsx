@@ -15,6 +15,7 @@ const ProgressLinearControlledUncontrolled = () => {
         if (oldProgress === 100) {
           return 0
         }
+
         const diff = Math.random() * 10
 
         return Math.min(oldProgress + diff, 100)

@@ -49,6 +49,7 @@ const SwiperThumbnails = () => {
   // Hooks
   const theme = useTheme()
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>()
+
   const [thumbnailRef] = useKeenSlider<HTMLDivElement>(
     {
       slides: {

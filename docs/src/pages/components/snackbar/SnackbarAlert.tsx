@@ -1,5 +1,6 @@
 // React Imports
-import { SyntheticEvent, useState } from 'react'
+import type { SyntheticEvent} from 'react';
+import { useState } from 'react'
 
 // MUI Imports
 import Alert from '@mui/material/Alert'
@@ -18,6 +19,7 @@ const SnackbarAlert = () => {
     if (reason === 'clickaway') {
       return
     }
+
     setOpen(false)
   }
 

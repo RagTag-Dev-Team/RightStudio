@@ -36,6 +36,7 @@ const SnackbarConsecutive = () => {
     if (reason === 'clickaway') {
       return
     }
+
     setOpen(false)
   }
 

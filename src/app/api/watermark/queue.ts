@@ -1,6 +1,8 @@
 import Queue from 'bull'
-import { getDb } from '@/libs/surreal'
+
 import { RecordId } from 'surrealdb'
+
+import { getDb } from '@/libs/surreal'
 import { CreateCertificate, GetDownloadUrl } from '@/app/actions/mentaport/index'
 
 const watermarkQueue = new Queue('watermark-queue', process.env.REDIS_URL || '')
@@ -17,6 +19,7 @@ watermarkQueue.process(async job => {
 
     // Create form data
     const formData = new FormData()
+
     formData.append('file', file)
 
     // Create certificate
@@ -40,6 +43,7 @@ watermarkQueue.process(async job => {
     // Update database
     job.progress(80)
     const db = await getDb()
+
     await db.update(new RecordId('media', recordId), {
       certificateId: certId,
       certificateProjectId: projectId,
@@ -48,6 +52,7 @@ watermarkQueue.process(async job => {
 
     // Award TAGZ
     job.progress(90)
+
     const rewardResponse = await fetch('/api/reward', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

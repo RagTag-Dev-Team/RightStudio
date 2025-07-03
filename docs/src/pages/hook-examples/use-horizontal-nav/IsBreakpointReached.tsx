@@ -3,13 +3,15 @@
 // Comopoent Imports
 import NavToggle from '@components/layout/vertical/NavToggle'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
-import VerticalNavContent from '../../menu-examples/horizontal-menu/VerticalNavContent'
+
 
 // Hook Imports
 import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Style Imports
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import VerticalNavContent from '../../menu-examples/horizontal-menu/VerticalNavContent'
 
 const IsBreakpointReached = () => {
   // Hooks
@@ -21,6 +23,7 @@ const IsBreakpointReached = () => {
         switchToVertical
         breakpoint='md'
         verticalNavContent={VerticalNavContent}
+
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         verticalNavProps={{ 
@@ -32,6 +35,7 @@ const IsBreakpointReached = () => {
             }
           },
           backgroundColor: 'var(--mui-palette-background-paper)'
+
           // Remove the code till here 
          }}
       >

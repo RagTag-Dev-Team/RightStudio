@@ -1,6 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import type { ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react'
 
 type ErrorType = {
   message: string[]
@@ -18,10 +19,13 @@ const AuthLoadingContext = createContext<AuthLoadingContextType | undefined>(und
 
 export const useAuthLoading = () => {
   const context = useContext(AuthLoadingContext)
+
   if (context === undefined) {
     throw new Error('useAuthLoading must be used within an AuthLoadingProvider')
   }
-  return context
+
+  
+return context
 }
 
 interface AuthLoadingProviderProps {

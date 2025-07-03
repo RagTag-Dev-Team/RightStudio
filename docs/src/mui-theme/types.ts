@@ -5,6 +5,7 @@ import type { Theme, ComponentsOverrides } from '@mui/material/styles'
 import type { CustomInputHorizontalProps, CustomInputVerticalProps, CustomInputImgProps } from '@docComponents/custom-inputs/types'
 
 declare module '@mui/material/styles' {
+
   // Theme
   interface Theme {
     shape: {

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
-import { getDb } from '@/libs/surreal'
+
 import { RecordId } from 'surrealdb'
+
+import { getDb } from '@/libs/surreal'
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +13,7 @@ export async function POST(req: Request) {
     if (status === 'completed') {
       // Update database
       const db = await getDb()
+
       await db.update(new RecordId('media', recordId), {
         certificateId,
         certificateProjectId: projectId,
@@ -31,6 +34,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Webhook processing failed:', error)
-    return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 })
+    
+return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 })
   }
 }

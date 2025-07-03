@@ -78,12 +78,8 @@ services:
       - BACKEND_WALLET_ADDRESS=0x0E3e2469CaC34FC26726ee31C7E812aB739c75F8
       - ENGINE_SECRET_KEY=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIweDk3NTNGQmRBNUQzMjAxMDczMjdmZDNGNjAwMzQxOWQ3MDc1NTNhNEEiLCJzdWIiOiIweDNkMjZCNmUyMjQ1ODU5NjY2YTAwNTkxOEViQzc2OGY4ZmU1OTU0YzQiLCJhdWQiOiJ0aGlyZHdlYi5jb20iLCJleHAiOjQ5MDM0NDkxNjQsIm5iZiI6MTc0OTg0OTE2NCwiaWF0IjoxNzQ5ODQ5MTY0LCJqdGkiOiI2ZmZiNTBjOC02YTNjLTQyODItYjgxNy0zYmUxNzJiNDI3YzAiLCJjdHgiOnsicGVybWlzc2lvbnMiOiJBRE1JTiJ9fQ.MHg1ZWMxNmJlOWM2NjJiYmUxNWFhMjEwOThmNDNhN2U3ZjY0YjlkYmZiZjg5MTgwMGRkN2YwNzE4ZTcyMWM4ODI1M2U1MTdiYWFhZTY0NTEyZmI5ZjQxYjRhZGJlNjU3YjJmMzk0MDUzMzRlMTk3ZTA3NTBhNTdlNjFkZjE2Y2RlNzFj
     depends_on:
-      postgres:
-        condition: service_healthy
       redis:
         condition: service_healthy
-      thirdwebengine:
-        condition: service_started
       surrealdb:
         condition: service_started
     networks:

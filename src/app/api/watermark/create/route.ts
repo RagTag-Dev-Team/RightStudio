@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server'
+
 import Queue from 'bull'
-import { getDb } from '@/libs/surreal'
+
 import { RecordId } from 'surrealdb'
+
+import { getDb } from '@/libs/surreal'
 import { CreateCertificate, GetDownloadUrl } from '@/app/actions/mentaport/index'
 
 // Initialize Redis queue
@@ -22,6 +25,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ jobId: job.id })
   } catch (error) {
     console.error('Failed to create watermark job:', error)
-    return NextResponse.json({ error: 'Failed to start watermarking process' }, { status: 500 })
+    
+return NextResponse.json({ error: 'Failed to start watermarking process' }, { status: 500 })
   }
 }

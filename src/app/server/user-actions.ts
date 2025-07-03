@@ -12,6 +12,8 @@ import { getDb } from '@/libs/surreal'
 
 import { client } from '@/libs/thirdwebclient'
 
+import { generateUsername } from '@/utils/userUtils'
+
 const { ENGINE_URL, CHAIN_ID, TAGZ_TOKEN_ADDRESS, MEDIA_CONTRACT_ADDRESS, ENGINE_SECRET_KEY } = process.env
 
 // Fix the chain definition by ensuring CHAIN_ID is a number
@@ -107,6 +109,7 @@ export async function loginUser(email: string, password: string, wallet_address:
 
     // First, let's see what tables exist
     const tables = await db.query('INFO FOR DB')
+
     console.log('Available tables:', tables)
 
     // Try to query the user table - use uppercase User to match the database
@@ -119,28 +122,45 @@ export async function loginUser(email: string, password: string, wallet_address:
     // Check if we got any results
     if (!result || result.length === 0 || !result[0] || result[0].length === 0) {
       console.log('No user found, returning newUser object')
-      return {
+      
+return {
         newUser: true,
         wallet_address,
         email,
-        password
+        password,
+        name: generateUsername(), // Add default name
+        image: '/images/avatars/1.png' // Add default image
       }
     }
 
     const userRecord = jsonify(result[0])
+
     console.log('User found:', userRecord)
-    return result[0]
+
+    // Ensure the returned user has all required fields
+    const user = Array.isArray(userRecord) ? userRecord[0] : userRecord
+
+    
+return {
+      ...user,
+      name: user.name || generateUsername(),
+      image: user.image || '/images/avatars/1.png',
+      email: user.email || `${wallet_address.slice(0, 6)}@wallet.local`
+    }
   } catch (error) {
     console.error('Error querying user:', error)
 
     // If the query fails, it might be because the table doesn't exist or has different schema
     // Return a newUser object so the authentication can proceed
     console.log('Query failed, returning newUser object as fallback')
-    return {
+    
+return {
       newUser: true,
       wallet_address,
       email,
-      password
+      password,
+      name: generateUsername(),
+      image: '/images/avatars/1.png'
     }
   }
 }

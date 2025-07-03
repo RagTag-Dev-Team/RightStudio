@@ -13,9 +13,11 @@ const SwiperAutoSwitch = () => {
       slider => {
         let mouseOver = false
         let timeout: number | ReturnType<typeof setTimeout>
+
         const clearNextTimeout = () => {
           clearTimeout(timeout as number)
         }
+
         const nextTimeout = () => {
           clearTimeout(timeout as number)
           if (mouseOver) return

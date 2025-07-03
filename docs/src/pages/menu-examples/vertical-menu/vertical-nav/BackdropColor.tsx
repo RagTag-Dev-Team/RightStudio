@@ -13,6 +13,7 @@ const BackdropColor = () => {
       <VerticalNav 
         breakpoint='always'
         backdropColor='rgba(84, 75, 126, 0.5)'
+
         // The following customStyles prop is used to show this example properly in the documentation.
         // You need to remove this prop in your implementation.
         customStyles={{
@@ -24,6 +25,7 @@ const BackdropColor = () => {
           }
         }}
         backgroundColor='var(--mui-palette-background-paper)'
+
         // Remove the code till here
       >
         <Menu menuItemStyles={menuItemStyles()}>

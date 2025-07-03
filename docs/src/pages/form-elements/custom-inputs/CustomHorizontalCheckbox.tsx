@@ -37,6 +37,7 @@ const CustomHorizontalCheckbox = () => {
   const handleChange = (value: string) => {
     if (selected.includes(value)) {
       const updatedArr = selected.filter((item) => item !== value)
+
       setSelected(updatedArr)
     } else {
       setSelected([...selected, value])

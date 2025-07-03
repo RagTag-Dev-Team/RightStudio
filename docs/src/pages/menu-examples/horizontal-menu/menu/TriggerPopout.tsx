@@ -19,8 +19,9 @@ import type { MenuProps } from '@menu/components/horizontal-menu/Menu'
 import HorizontalNav, { Menu, MenuItem, SubMenu } from '@menu/horizontal-menu'
 
 // Style Imports
-import styles from '../styles.module.css'
 import menuItemStyles from '@docComponents/styles/horizontal/menuItemStyles'
+
+import styles from '../styles.module.css'
 
 const TriggerPopout = () => {
   // States

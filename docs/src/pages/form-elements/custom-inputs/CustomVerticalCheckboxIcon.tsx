@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import classnames from 'classnames'
 
 // Type Imports
-import { CustomInputVerticalData } from '@core/components/custom-inputs/types'
+import type { CustomInputVerticalData } from '@core/components/custom-inputs/types'
 
 // Components Imports
 import CustomInputVertical from '@core/components/custom-inputs/Vertical'
@@ -46,6 +46,7 @@ const CustomVerticalCheckboxIcon = () => {
   const handleChange = (value: string) => {
     if (selected.includes(value)) {
       const updatedArr = selected.filter((item) => item !== value)
+
       setSelected(updatedArr)
     } else {
       setSelected([...selected, value])

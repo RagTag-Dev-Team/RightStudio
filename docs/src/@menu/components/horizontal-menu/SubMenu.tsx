@@ -13,7 +13,6 @@ import type {
 } from 'react'
 
 // Next Imports
-import { usePathname } from '../../hooks/usePathname'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -39,6 +38,8 @@ import {
   useTransitionStyles
 } from '@floating-ui/react'
 import type { CSSObject } from '@emotion/styled'
+
+import { usePathname } from '../../hooks/usePathname'
 
 // Type Imports
 import type { ChildrenType, RootStylesType, SubMenuItemElement } from '../../types'

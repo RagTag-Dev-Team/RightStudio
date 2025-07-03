@@ -1,5 +1,6 @@
 // React Imports
-import { ChangeEvent, MouseEvent, useState } from 'react'
+import type { ChangeEvent, MouseEvent} from 'react';
+import { useState } from 'react'
 
 // MUI Imports
 import Box from '@mui/material/Box'
@@ -78,10 +79,13 @@ const descendingComparator = <T extends Record<string, any>>(a: T, b: T, orderBy
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
+
   if (b[orderBy] > a[orderBy]) {
     return 1;
   }
-  return 0;
+
+  
+return 0;
 };
 
 const getComparator = <Key extends keyof any>(
@@ -96,8 +100,10 @@ const getComparator = <Key extends keyof any>(
 // need to support IE11, you can use Array.prototype.sort() directly
 const stableSort = <T extends Record<string, any>>(array: readonly T[], comparator: (a: T, b: T) => number) => {
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number])
+
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0])
+
     if (order !== 0) return order
 
     return a[1] - b[1]
@@ -142,6 +148,7 @@ const headCells: readonly HeadCell[] = [
 const EnhancedTableHead = (props: EnhancedTableProps) => {
   // Props
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props
+
   const createSortHandler = (property: keyof Data) => (event: MouseEvent<unknown>) => {
     onRequestSort(event, property)
   }
@@ -227,6 +234,7 @@ const EnhancedTable = () => {
 
   const handleRequestSort = (event: MouseEvent<unknown>, property: keyof Data) => {
     const isAsc = orderBy === property && order === 'asc'
+
     setOrder(isAsc ? 'desc' : 'asc')
     setOrderBy(property)
   }
@@ -234,10 +242,12 @@ const EnhancedTable = () => {
   const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       const newSelecteds = rows.map(n => n.name)
+
       setSelected(newSelecteds)
 
       return
     }
+
     setSelected([])
   }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
@@ -8,7 +9,9 @@ import './styles.scss'
 
 const HomepageHeader = () => {
   const {siteConfig} = useDocusaurusContext()
-  return (
+
+  
+return (
     <header className='hero hero--primary hero-banner'>
       <div className='container'>
         <h1 className='hero__title'>{siteConfig.title}</h1>

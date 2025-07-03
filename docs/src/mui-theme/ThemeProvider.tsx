@@ -15,7 +15,6 @@ import type {} from '@mui/material/themeCssVarsAugmentation'
 import type {} from '@mui/lab/themeAugmentation'
 
 // Component Imports
-import ChangeMuiMode from './ChangeMuiMode'
 
 // Config Imports
 import themeConfig from '@configs/themeConfig'
@@ -27,6 +26,8 @@ import spacing from '@core/theme/spacing'
 import shadows from '@core/theme/shadows'
 import customShadows from '@core/theme/customShadows'
 import typography from '@core/theme/typography'
+
+import ChangeMuiMode from './ChangeMuiMode'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Hooks

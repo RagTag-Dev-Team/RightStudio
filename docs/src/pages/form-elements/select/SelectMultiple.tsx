@@ -14,6 +14,7 @@ import CustomTextField from '@core/components/mui/TextField'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
+
 const MenuProps = {
   PaperProps: {
     style: {
@@ -54,6 +55,7 @@ const SelectMultiple = () => {
         value.push(options[i].value)
       }
     }
+
     setPersonNameNative(value)
   }
 

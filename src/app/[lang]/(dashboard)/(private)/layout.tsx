@@ -64,6 +64,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
 
   // Check session in layout for debugging
   const session = await getServerSession(authOptions)
+
   console.log('Dashboard Layout - Session check:', {
     exists: !!session,
     user: session?.user,
