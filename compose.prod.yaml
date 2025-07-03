@@ -31,6 +31,7 @@ services:
 
   next-app:
     container_name: next-app
+    env_file: .env
     image: mannyj37/rs-backend:latest
     build:
       context: ./
@@ -41,7 +42,7 @@ services:
         - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
         - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
         - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-        - NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+        - NEXT_PUBLIC_SURREALDB_CONNECTION=${NEXT_PUBLIC_SURREALDB_CONNECTION}
         - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
         - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
         - NEXT_PUBLIC_SURREALDB_DB=rgtg
@@ -57,7 +58,7 @@ services:
       - NEXT_PUBLIC_DOCS_URL=${NEXT_PUBLIC_DOCS_URL:-https://docs.rightstudio.media}
       - NEXTAUTH_URL=${NEXTAUTH_URL:-https://app.rightstudio.media/api/auth}
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-4gGjs8xEUbYTpbK9CzBZjKVGsSNlyXohMx7U7D2ItZA}
-      - NEXT_PUBLIC_SURREALDB_CONNECTION=ws://surrealdb:8000
+      - NEXT_PUBLIC_SURREALDB_CONNECTION=${NEXT_PUBLIC_SURREALDB_CONNECTION}
       - NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin
       - NEXT_PUBLIC_SURREALDB_PASSWORD=bWFubnk6c0FzMyp6MnAh
       - NEXT_PUBLIC_SURREALDB_DB=rgtg

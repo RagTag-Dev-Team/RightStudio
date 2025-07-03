@@ -117,14 +117,14 @@ const ButtonConnect = () => {
 
             // Wait a short time for session to load
             await new Promise(resolve => setTimeout(resolve, 100))
-            
+
 return false
           }
 
           // If not authenticated, return false immediately
           if (status !== 'authenticated') {
             console.log('ButtonConnect - Session not authenticated, status:', status)
-            
+
 return false
           }
 
@@ -147,11 +147,11 @@ return false
               sessionUser: session.user
             })
 
-            return isLoggedIn
+            return true
           }
 
           console.log('ButtonConnect - No session found or no wallet address in session')
-          
+
 return false
         },
         doLogin: async params => {
