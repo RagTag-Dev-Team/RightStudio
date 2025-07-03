@@ -25,6 +25,12 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       console.error('Response not OK:', response.status, response.statusText)
+
+      // If it's a 403 error, it's likely an expired presigned URL
+      if (response.status === 403) {
+        throw new Error('Download URL has expired. Please try again to refresh the link.')
+      }
+
       throw new Error(`Failed to fetch file: ${response.status} ${response.statusText}`)
     }
 
@@ -58,10 +64,13 @@ export async function POST(req: Request) {
     })
   } catch (error) {
     console.error('Error downloading file:', error)
-    
-return NextResponse.json({
-      error: 'Failed to download file',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 })
+
+    return NextResponse.json(
+      {
+        error: 'Failed to download file',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
+      { status: 500 }
+    )
   }
 }
