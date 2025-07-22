@@ -92,7 +92,7 @@ const LatestSlider = () => {
             }
           })
         )
-
+        console.log(resolvedTracks)
         setTracks(resolvedTracks)
       } catch (error) {
         console.error('Error fetching user tracks:', error)
@@ -206,7 +206,7 @@ const LatestSlider = () => {
                       </div>
 
                       <Box sx={{ mt: 'auto' }}>
-                        <Link href={`/dashboards/record/${track.id.replace('media:', '')}`} passHref>
+                        <Link href={`/media/record/${track.id.replace('media:', '')}`} passHref>
                           <Button variant='contained' endIcon={<i className='tabler-arrow-badge-right' />}>
                             View Track Details
                           </Button>

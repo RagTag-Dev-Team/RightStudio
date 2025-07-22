@@ -29,7 +29,7 @@ COPY .env .
 
 # Set build-time environment variables with defaults
 ARG NEXT_PUBLIC_APP_URL=https://app.rightstudio.media
-ARG NEXT_PUBLIC_DOCS_URL=httsp://app.rightstudio.media:3001
+ARG NEXT_PUBLIC_DOCS_URL=httpw://app.rightstudio.media:3001
 ARG NEXTAUTH_URL=https://app.rightstudio.media/api/auth
 ARG NEXT_PUBLIC_SURREALDB_CONNECTION=${NEXT_PUBLIC_SURREALDB_CONNECTION}
 ARG NEXT_PUBLIC_SURREALDB_USERNAME=rgtg_admin

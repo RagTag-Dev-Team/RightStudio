@@ -66,7 +66,7 @@ services:
       - SKIP_EXTERNAL_CONNECTIONS=false
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - NODE_TLS_REJECT_UNAUTHORIZED=1
     depends_on:
       redis:
         condition: service_healthy
